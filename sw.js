@@ -1,8 +1,9 @@
 /* BCS Desk — offline app shell */
-const CACHE = 'bcs-desk-v11.2';
+const CACHE = 'bcs-desk-v11.3';
 const ASSETS = [
   './',
   './index.html',
+  './yt.html',
   './manifest.webmanifest',
   './icons/icon-192.png',
   './icons/icon-512.png',

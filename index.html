@@ -2,19 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>BCS Desk — Jaipur Developer & Project Intelligence</title>
-<meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
-<meta name="theme-color" content="#3A3928">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="BCS Desk">
-<meta name="application-name" content="BCS Desk">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BCS — Jaipur Developer & Project Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
@@ -1171,6 +1160,16 @@ body.advisor-mode #resaleViewDelete{display:none !important}
 .media-pop{position:fixed;right:16px;bottom:112px;z-index:72;width:min(392px,calc(100vw - 24px));max-height:calc(100vh - 132px);background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 34px 70px -22px rgba(20,30,25,.55);display:none;flex-direction:column;overflow:hidden}
 .media-pop.on{display:flex;animation:mediaIn .26s cubic-bezier(.2,.8,.3,1)}
 @keyframes mediaIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+.media-pop.theater{left:50%;right:auto;transform:translateX(-50%);bottom:24px;width:min(1040px,calc(100vw - 32px));max-height:calc(100vh - 48px)}
+.media-pop.theater.on{animation:none}
+.media-pop.theater .mp-body{display:flex;flex-direction:column}
+.media-pop.theater .yt-stage{aspect-ratio:16/9;max-height:calc(100vh - 330px);min-height:220px}
+.media-pop.theater .yt-stage iframe{height:100%}
+.media-pop .yt-item.playing{outline:2px solid #C79A2E;outline-offset:-2px}
+@media (max-width:820px){
+  .media-pop.theater{left:10px;right:10px;transform:none;bottom:10px;width:auto;max-height:calc(100vh - 20px)}
+  .media-pop.theater .yt-stage{max-height:calc(100vh - 300px)}
+}
 .mp-head{display:flex;align-items:center;gap:10px;padding:13px 14px 11px;background:
   radial-gradient(120% 150% at 100% 0%,rgba(199,154,46,.16),transparent 55%),
   linear-gradient(145deg,#F8F4EA,#EDF3EE);border-bottom:1px solid var(--line);flex:none}
@@ -1897,22 +1896,6 @@ body.locked>header,body.locked>main,body.locked>.storage,body.locked>.mob-add,bo
   .present-sheet{padding:0;overflow:visible}
   .present-proj{break-inside:avoid}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-}
-
-/* ---------------- mobile / installed app ---------------- */
-@media (max-width:820px){
-  /* 16px prevents iOS auto-zoom when a field gets focus */
-  input,select,textarea,.field input,.field select,.field textarea,.lock-input input{font-size:16px}
-  .lock-input input{letter-spacing:3px}
-  .btn,.dtab,.dtab,.nav button,.lock-input .btn{min-height:38px}
-  .toast{bottom:calc(14px + env(safe-area-inset-bottom))}
-}
-@supports (padding: env(safe-area-inset-top)){
-  header{padding-top:env(safe-area-inset-top)}
-  main{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
-  .storage{bottom:calc(13px + env(safe-area-inset-bottom))}
-  .mob-add{bottom:calc(18px + env(safe-area-inset-bottom))}
-  .media-dock,.media-mini{bottom:calc(14px + env(safe-area-inset-bottom))}
 }
 </style>
 </head>
@@ -2662,6 +2645,7 @@ body.locked>header,body.locked>main,body.locked>.storage,body.locked>.mob-add,bo
       <div><b>BCS Media Lounge</b><span id="mpNow">Song search · web music · live radio</span></div>
     </div>
     <div class="mp-hbtns">
+      <button id="mpExpand" title="Bada player / theater mode" aria-label="Toggle theater mode">⤢</button>
       <button id="mpMin" title="Minimize — playing chalta rahega" aria-label="Minimize player">–</button>
       <button id="mpClose" title="Close and stop" aria-label="Close player">✕</button>
     </div>
@@ -2676,7 +2660,7 @@ body.locked>header,body.locked>main,body.locked>.storage,body.locked>.mob-add,bo
         <input id="ytInput" placeholder="Song ka naam, YouTube link ya video ID" spellcheck="false" aria-label="Song name or YouTube link">
         <button class="btn primary sm" type="submit">Play</button>
       </form>
-      <div class="mp-note">Song / artist ka naam likh ke <b>Play</b> — pehla YouTube result isi popup me chalega. YouTube link bhi paste kar sakte hain.</div>
+      <div class="mp-note">Song / artist ka naam likh ke <b>Play</b> — isi popup me video chalega. YouTube link ya video ID bhi paste kar sakte hain.</div>
       <div class="yt-stage" id="ytStage"></div>
       <div class="yt-now" id="ytNow">
         <span class="yn-live" id="ytLiveBadge">Playing</span>
@@ -2685,6 +2669,8 @@ body.locked>header,body.locked>main,body.locked>.storage,body.locked>.mob-add,bo
         <button type="button" class="yn-next" id="ytNext" title="Agla search result try karein" hidden>↻ Next</button>
         <button type="button" class="yn-stop" id="ytStop">Stop</button>
       </div>
+      <div class="mp-sec-head" id="ytResultsHead" hidden><b>Search results</b><span id="ytResultsCount"></span></div>
+      <div class="yt-list" id="ytResults"></div>
       <div class="mp-sec-head"><b>Saved videos</b><span id="ytCount">none yet</span></div>
       <div class="yt-list" id="ytList"></div>
     </div>
@@ -2694,28 +2680,27 @@ body.locked>header,body.locked>main,body.locked>.storage,body.locked>.mob-add,bo
           <input id="songInput" placeholder="Song / artist — direct YouTube play" spellcheck="false" aria-label="Search a song on YouTube">
           <button class="btn primary sm" type="submit" id="songPlayBtn">▶ Play</button>
         </form>
-        <div class="mq-note">Link ki zaroorat nahi — naam likho, music turant YouTube se chalega.</div>
+        <div class="mq-note">Link ki zaroorat nahi — naam likho, YouTube Music style results se song chunein. Video isi app me chalega.</div>
       </div>
+      <div class="mp-sec-head" id="songResultsHead" hidden><b>YouTube Music · in-app</b><span id="songResultsCount"></span></div>
+      <div class="yt-list" id="songResults"></div>
       <div class="music-now">
         <div class="music-eq paused" id="musicEq"><i></i><i></i><i></i><i></i></div>
         <div class="mn-meta"><b id="musicName">Pick a station</b><span id="musicSub">Ad-free live radio</span></div>
         <button type="button" class="music-play" id="musicToggle" aria-label="Play music">▶</button>
       </div>
       <div class="music-vol"><span>🔈</span><input type="range" id="musicVol" min="0" max="100" value="75" aria-label="Volume"><b id="musicVolTxt">75%</b></div>
-      <div class="mp-sec-head"><b>Music apps</b><span>One-tap web players</span></div>
+      <div class="mp-sec-head"><b>Music apps</b><span>Sab kuch isi app me</span></div>
       <div class="mp-apps" id="musicApps">
         <button type="button" class="mp-app" data-webmusic="https://music.vispark.in/" data-wmtitle="Vispark Music">
           <b>VISPARK</b><span>In-app player</span>
         </button>
-        <a class="mp-app" href="https://freefy.app/" target="_blank" rel="noopener">
-          <b>Freefy</b><span>New tab ↗</span>
-        </a>
-        <a class="mp-app" href="https://music.youtube.com/" target="_blank" rel="noopener">
-          <b>YouTube Music</b><span>New tab ↗</span>
-        </a>
-        <a class="mp-app" href="https://www.youtube.com/" target="_blank" rel="noopener">
-          <b>YouTube</b><span>New tab ↗</span>
-        </a>
+        <button type="button" class="mp-app" data-ytmode="music">
+          <b>YouTube Music</b><span>In-app search</span>
+        </button>
+        <button type="button" class="mp-app" data-ytmode="yt">
+          <b>YouTube</b><span>In-app search &amp; play</span>
+        </button>
       </div>
       <div class="mp-sec-head"><b>Live ad-free radio</b><span>No ads · instant</span></div>
       <div class="mp-stations" id="musicStations"></div>
@@ -8083,25 +8068,59 @@ function toggleFeature(id){
 $('#globalSearch').addEventListener('input', () => { if(currentView === 'dashboard') go('projects'); else render(); });
 
 /* backup / restore / csv */
-$('#exportBtn').addEventListener('click', () => {
-  const blob = new Blob([JSON.stringify(db, null, 2)], {type:'application/json'});
+async function collectBackupMedia(srcDb){
+  const media = {};
+  const keys = new Set();
+  const addKey = k => { if(k) keys.add(k); };
+  for(const p of (srcDb.projects || [])){
+    addKey(p.imageKey);
+    (p.inventoryImageKeys || []).forEach(addKey);
+    for(const u of (p.units || [])) addKey(u.imageKey);
+  }
+  for(const d of (srcDb.developers || [])) addKey(d.photoKey);
+  for(const a of (srcDb.advisors || [])) addKey(a.photoKey);
+  for(const r of (srcDb.resale || [])) addKey(r.imageKey);
+  for(const k of keys){
+    try{ const full = await idbGet(k); if(full) media[k] = full; }catch(e){}
+  }
+  return media;
+}
+async function downloadBackup(){
+  const copy = JSON.parse(JSON.stringify(db));
+  let media = {};
+  try{ media = await collectBackupMedia(copy); }catch(e){}
+  const count = Object.keys(media).length;
+  const payload = count ? Object.assign({}, copy, {__media: media, __backupAt: Date.now()}) : copy;
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   const d = new Date();
   a.download = `bcs-backup-${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}.json`;
-  a.click(); URL.revokeObjectURL(a.href); toast('Backup downloaded');
-});
+  a.click(); URL.revokeObjectURL(a.href);
+  toast(count ? `Backup downloaded · ${count} full photos included` : 'Backup downloaded');
+}
+$('#exportBtn').addEventListener('click', () => downloadBackup());
 $('#importBtn').addEventListener('click', () => $('#importFile').click());
 $('#exportCsvBtn').addEventListener('click', exportCSV);
 $('#importFile').addEventListener('change', e => {
   const f = e.target.files[0]; if(!f) return;
   const rd = new FileReader();
-  rd.onload = () => {
+  rd.onload = async () => {
     try{
       const data = JSON.parse(rd.result);
       if(!data || !Array.isArray(data.developers) || !Array.isArray(data.projects)) throw new Error('bad');
       if(!confirm('Replace all current data with this backup?')) return;
-      db = normalizeDb(data); save(); render(); toast('Backup restored');
+      const media = (data.__media && typeof data.__media === 'object') ? data.__media : null;
+      delete data.__media; delete data.__backupAt;
+      db = normalizeDb(data);
+      let restoredMedia = 0;
+      if(media){
+        for(const k of Object.keys(media)){
+          try{ await idbPut(k, media[k]); restoredMedia++; }catch(err){}
+        }
+      }
+      save(); render();
+      toast(restoredMedia ? `Backup restored · ${restoredMedia} full photos` : 'Backup restored');
     }catch(err){ toast('Invalid backup file', true); }
   };
   rd.readAsText(f); e.target.value = '';
@@ -10260,6 +10279,8 @@ function initMedia(){
   const ytStage = $('#ytStage'), ytList = $('#ytList'), ytInput = $('#ytInput');
   const ytNow = $('#ytNow'), ytNowTitle = $('#ytNowTitle'), ytCount = $('#ytCount');
   const ytLiveBadge = $('#ytLiveBadge'), ytOpen = $('#ytOpen'), ytNext = $('#ytNext');
+  const ytResultsEl = $('#ytResults'), ytResultsHead = $('#ytResultsHead'), ytResultsCount = $('#ytResultsCount');
+  const songResultsEl = $('#songResults'), songResultsHead = $('#songResultsHead'), songResultsCount = $('#songResultsCount');
   const musicName = $('#musicName'), musicSub = $('#musicSub'), musicToggle = $('#musicToggle');
   const musicEq = $('#musicEq'), stationBox = $('#musicStations');
   const miniEq = $('#miniEq'), miniTitle = $('#miniTitle'), miniSub = $('#miniSub'), miniPlay = $('#miniPlay');
@@ -10288,8 +10309,15 @@ function initMedia(){
   let ytQueue = [];           // candidate video ids from a search
   let ytQueueIndex = -1;
   let ytQueueQuery = '';      // original search text (for fallback links)
+  let ytResults = [];         // {id, title} list shown under the player
   let ytConfirmTimer = 0;
+  let ytReady = false;
   const ytBlocked = new Set();
+  // YouTube blocks embeds on file:// and localhost origins. This tiny public
+  // helper page embeds the player with a valid https origin, so video plays
+  // inside the app even when the desktop app is opened from a local file.
+  const YT_HELPER = 'https://realestateajaysharma-jp.github.io/bcs-desk/yt.html';
+  const YT_HELPER_ORIGIN = 'https://realestateajaysharma-jp.github.io';
 
   const stationList = () => [...STATIONS, ...(M.music.custom || []).map(s => ({ ...s, custom:true }))];
   const stationById = id => stationList().find(s => s.id === id);
@@ -10309,10 +10337,7 @@ function initMedia(){
     for(const p of pats){ const m = s.match(p); if(m) return m[1]; }
     return '';
   }
-  const embedUrl = id => {
-    const origin = /^https?:$/.test(location.protocol) ? '&origin=' + encodeURIComponent(location.origin) : '';
-    return `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1${origin}`;
-  };
+  const embedUrl = id => `${YT_HELPER}?v=${encodeURIComponent(id)}&autoplay=1`;
   const placeholder = () => `<div class="yt-placeholder"><div class="yp-ico">▶</div><b>YouTube popup ready</b><span>Song ka naam likhein — video isi floating frame me chalega, poori app ke saath.</span></div>`;
 
   async function resolveYouTubeTitle(id){
@@ -10324,21 +10349,11 @@ function initMedia(){
     }catch(e){ return ''; }
   }
 
-  /* --- YouTube embed health: handshake + auto-skip blocked videos --- */
+  /* --- YouTube embed health (helper page sends ready/state/error) --- */
   let ytHandshakeTimer = 0;
 
   function resetYtHandshake(){
     if(ytHandshakeTimer){ clearTimeout(ytHandshakeTimer); ytHandshakeTimer = 0; }
-  }
-
-  // YouTube only posts onReady/onError after the parent says it is listening.
-  function pingYtPlayer(frame, pid, attempt){
-    if(!frame || pid !== ytPlayerId) return;
-    try{
-      frame.contentWindow.postMessage(JSON.stringify({ event:'listening', id:pid, channel:'bcs' }), '*');
-    }catch(e){}
-    const n = Number(attempt) || 0;
-    if(n < 6) ytHandshakeTimer = setTimeout(() => pingYtPlayer(frame, pid, n + 1), 400 + n * 350);
   }
 
   function registerSaved(id, title){
@@ -10415,22 +10430,32 @@ function initMedia(){
   }
 
   function onYtMessage(e){
-    if(e.origin !== 'https://www.youtube-nocookie.com' && e.origin !== 'https://www.youtube.com') return;
+    if(e.origin !== YT_HELPER_ORIGIN && e.origin !== 'https://www.youtube-nocookie.com' && e.origin !== 'https://www.youtube.com') return;
     let d = e.data;
     try{ if(typeof d === 'string') d = JSON.parse(d); }catch(err){ return; }
     if(!d || typeof d !== 'object' || !d.event) return;
-    if(!ytPlayerId || d.id !== ytPlayerId) return;
-    if(d.event === 'initialDelivery' || d.event === 'onReady'){
-      resetYtHandshake();
-      if(d.event === 'onReady' && ytLiveBadge) ytLiveBadge.textContent = 'Loading…';
+    if(d.__bcsYt){
+      if(d.event === 'ready'){
+        resetYtHandshake();
+        ytReady = true;
+        if(ytLiveBadge) ytLiveBadge.textContent = 'Ready';
+        return;
+      }
+      if(d.event === 'error'){ onYtError(d.info); return; }
+      if(d.event === 'state'){
+        const st = Number(d.info);
+        if(st === 1) confirmYtPlaying();
+        else if(st === 2 && ytPlayingId && ytLiveBadge) ytLiveBadge.textContent = 'Paused';
+        else if(st === 3 && ytLiveBadge) ytLiveBadge.textContent = 'Buffering…';
+        return;
+      }
       return;
     }
+    // Direct embed fallback (if a helper page is unreachable and youtube posts directly)
+    if(!ytPlayerId || d.id !== ytPlayerId) return;
+    if(d.event === 'onReady'){ ytReady = true; if(ytLiveBadge) ytLiveBadge.textContent = 'Ready'; return; }
     if(d.event === 'onError'){ onYtError(d.info); return; }
-    if(d.event === 'onStateChange'){
-      const st = Number(d.info);
-      if(st === 1) confirmYtPlaying();
-      else if(st === 3 && ytLiveBadge) ytLiveBadge.textContent = 'Buffering…';
-    }
+    if(d.event === 'onStateChange' && Number(d.info) === 1) confirmYtPlaying();
   }
   window.addEventListener('message', onYtMessage);
 
@@ -10469,6 +10494,19 @@ function initMedia(){
       : `<div class="mp-empty">Abhi koi video saved nahi. Upar YouTube link paste karke Play karein — yahan automatically aa jayegi.</div>`;
   }
 
+  function renderYtResults(){
+    const html = ytResults.map(v => `<div class="yt-item ${v.id === ytPlayingId ? 'playing' : ''}" data-ytplay="${esc(v.id)}" role="button" tabindex="0" title="${esc(v.title)}">
+      <img class="yt-thumb" src="https://i.ytimg.com/vi/${esc(v.id)}/mqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+      <span class="yt-meta"><b>${esc(v.title)}</b><span>Tap to play · YouTube</span></span>
+    </div>`).join('');
+    [ytResultsEl, songResultsEl].forEach(el => { if(el) el.innerHTML = html; });
+    const n = ytResults.length;
+    if(ytResultsHead) ytResultsHead.hidden = !n;
+    if(songResultsHead) songResultsHead.hidden = !n;
+    if(ytResultsCount) ytResultsCount.textContent = n ? n + ' results' : '';
+    if(songResultsCount) songResultsCount.textContent = n ? n + ' songs' : '';
+  }
+
   function renderStations(){
     const list = stationList();
     stationBox.innerHTML = list.map(s => `<div class="station ${s.id === selectedStationId ? 'on' : ''}" data-station="${esc(s.id)}" role="button" tabindex="0" title="${esc(s.name)} · ${esc(s.url)}">
@@ -10494,8 +10532,10 @@ function initMedia(){
     ytNow.classList.remove('blocked');
     if(ytNext) ytNext.hidden = true;
     M.youtube.current = null;
+    ytReady = false;
     save();
     renderSaved();
+    renderYtResults();
     paintFab();
   }
 
@@ -10511,6 +10551,7 @@ function initMedia(){
     const pid = 'bcsYt' + ytSeq;
     ytPlayerId = pid;
     ytPlayingId = id;
+    ytReady = false;
     const existing = M.youtube.saved.find(v => v.id === id);
     const title = knownTitle || (existing && existing.title) || 'YouTube video';
     M.youtube.current = { id, title };
@@ -10520,14 +10561,14 @@ function initMedia(){
     ytNowTitle.textContent = title;
     if(ytOpen) ytOpen.href = 'https://www.youtube.com/watch?v=' + encodeURIComponent(id);
     if(ytNext) ytNext.hidden = !(ytQueue.length && ytQueueIndex < ytQueue.length - 1);
-    ytStage.innerHTML = `<iframe id="${pid}" src="${embedUrl(id)}" data-ytid="${esc(id)}" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
-    pingYtPlayer(ytStage.querySelector('iframe'), pid, 0);
-    // Safety net for browsers that never deliver postMessage events.
+    ytStage.innerHTML = `<iframe id="${pid}" src="${embedUrl(id)}" data-ytid="${esc(id)}" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>`;
+    // If the helper page never responds, tell the user instead of spinning forever.
     ytConfirmTimer = setTimeout(() => {
-      if(ytPlayingId === id && ytPlayerId === pid) confirmYtPlaying();
-    }, 6000);
+      if(ytPlayingId === id && !ytReady && ytLiveBadge) ytLiveBadge.textContent = 'Load nahi hua';
+    }, 12000);
     paintFab();
     renderSaved();
+    renderYtResults();
     if(!knownTitle && (!existing || existing.title === 'YouTube video' || !existing.title)){
       resolveYouTubeTitle(id).then(t => {
         if(!t) return;
@@ -10581,23 +10622,38 @@ function initMedia(){
       const res = await fetch('https://r.jina.ai/http://www.youtube.com/results?search_query=' + encodeURIComponent(q));
       if(!res.ok) throw new Error('search ' + res.status);
       const txt = await res.text();
-      const ids = [];
-      for(const m of txt.matchAll(/watch\?v=([A-Za-z0-9_-]{11})/g)){
-        const id = m[1];
-        if(!ids.includes(id) && !ytBlocked.has(id)) ids.push(id);
-        if(ids.length >= 10) break;
+      const found = [];
+      const seen = new Set();
+      for(const m of txt.matchAll(/^###\s*\[([^\]]+)\]\((https?:\/\/www\.youtube\.com\/watch\?v=([A-Za-z0-9_-]{11})[^)]*)\)/gm)){
+        let title = m[1].replace(/\\+/g, ' ').replace(/\s+/g, ' ').trim();
+        const id = m[3];
+        if(!id || seen.has(id) || ytBlocked.has(id)) continue;
+        if(/^Mix\s*-\s*/i.test(title)) continue;
+        seen.add(id);
+        found.push({ id, title: title.slice(0, 150) || 'YouTube video' });
+        if(found.length >= 12) break;
       }
-      if(!ids.length) throw new Error('no video found');
-      setTab('yt');
-      ytQueue = ids;
+      if(!found.length){
+        for(const m of txt.matchAll(/watch\?v=([A-Za-z0-9_-]{11})/g)){
+          const id = m[1];
+          if(seen.has(id) || ytBlocked.has(id)) continue;
+          seen.add(id);
+          found.push({ id, title: 'YouTube video' });
+          if(found.length >= 12) break;
+        }
+      }
+      if(!found.length) throw new Error('no video found');
+      ytResults = found;
+      ytQueue = found.map(v => v.id);
       ytQueueIndex = 0;
       ytQueueQuery = q;
-      playYouTube(ids[0], '', { fromQueue:true });
-      toast('▶ ' + q + ' — YouTube');
+      renderYtResults();
+      setTab('yt');
+      playYouTube(found[0].id, found[0].title, { fromQueue:true });
+      toast('▶ ' + q + ' — ' + found.length + ' results');
     }catch(err){
       console.warn('BCS song search failed', err);
-      toast('Direct search nahi hua — YouTube par search khul raha hai', true);
-      window.open('https://www.youtube.com/results?search_query=' + encodeURIComponent(q), '_blank', 'noopener');
+      toast('Search nahi hua — internet check karein, ya YouTube link / video ID paste karein', true);
     }finally{
       songBusy = false;
       if(btn){ btn.textContent = old || '▶ Play'; btn.disabled = false; }
@@ -10731,6 +10787,31 @@ function initMedia(){
     }
   });
 
+  // search results wiring (YouTube pane + YouTube Music pane)
+  function playFromResults(id){
+    if(!id) return;
+    ytQueue = ytResults.map(v => v.id);
+    ytQueueIndex = ytQueue.indexOf(id);
+    if(ytQueueIndex < 0) ytQueueIndex = 0;
+    setTab('yt');
+    playYouTube(id, '', { fromQueue:true });
+  }
+  function wireResultList(el){
+    if(!el) return;
+    el.addEventListener('click', e => {
+      const item = e.target.closest('[data-ytplay]');
+      if(item) playFromResults(item.dataset.ytplay);
+    });
+    el.addEventListener('keydown', e => {
+      if((e.key === 'Enter' || e.key === ' ') && e.target.matches('[data-ytplay]')){
+        e.preventDefault();
+        playFromResults(e.target.dataset.ytplay);
+      }
+    });
+  }
+  wireResultList(ytResultsEl);
+  wireResultList(songResultsEl);
+
   // music station wiring
   stationBox.addEventListener('click', e => {
     const del = e.target.closest('[data-delstation]');
@@ -10785,6 +10866,12 @@ function initMedia(){
   });
   $('#mpMin').addEventListener('click', minimizePop);
   $('#mpClose').addEventListener('click', closeAll);
+  const expandBtn = $('#mpExpand');
+  if(expandBtn) expandBtn.addEventListener('click', () => {
+    const big = pop.classList.toggle('theater');
+    expandBtn.textContent = big ? '⤡' : '⤢';
+    expandBtn.title = big ? 'Chhota player' : 'Bada player / theater mode';
+  });
   mini.addEventListener('click', e => {
     if(e.target.closest('#miniStop')){ closeAll(); return; }
     if(e.target.closest('#miniPlay')) return;
@@ -10804,7 +10891,17 @@ function initMedia(){
   });
   if($('#musicApps')) $('#musicApps').addEventListener('click', e => {
     const web = e.target.closest('[data-webmusic]');
-    if(web) openWebMusic(web.dataset.webmusic, web.dataset.wmtitle);
+    if(web){ openWebMusic(web.dataset.webmusic, web.dataset.wmtitle); return; }
+    const mode = e.target.closest('[data-ytmode]');
+    if(mode){
+      const isMusic = mode.dataset.ytmode === 'music';
+      setTab(isMusic ? 'music' : 'yt');
+      const inp = isMusic ? $('#songInput') : ytInput;
+      if(inp){ inp.focus(); inp.select(); }
+      pop.scrollTop = 0;
+      const body = pop.querySelector('.mp-body');
+      if(body) body.scrollTop = 0;
+    }
   });
   if($('#wmClose')) $('#wmClose').addEventListener('click', closeWebMusic);
   if($('#webMusic')) $('#webMusic').addEventListener('click', e => {
@@ -11824,6 +11921,55 @@ async function restoreFromIdbIfEmpty(){
   }catch(e){ return false; }
 }
 
+async function idbStats(){
+  try{
+    const d = await idbOpen();
+    return await new Promise(resolve => {
+      const tx = d.transaction(IDB_STORE, 'readonly');
+      const req = tx.objectStore(IDB_STORE).openCursor();
+      let count = 0, bytes = 0;
+      req.onsuccess = () => {
+        const cur = req.result;
+        if(!cur) return resolve({ count, mb: bytes / 1024 / 1024 });
+        if(cur.key !== IDB_DB_KEY){ count += 1; bytes += String(cur.value || '').length; }
+        cur.continue();
+      };
+      req.onerror = () => resolve({ count, mb: bytes / 1024 / 1024 });
+    });
+  }catch(e){ return { count: 0, mb: 0 }; }
+}
+function hasOffloadableImages(){
+  const big = s => !!s && String(s).startsWith('data:') && String(s).length >= 38000;
+  for(const p of (db.projects || [])){
+    if(big(p.image)) return true;
+    if((p.inventoryImages || []).some(big)) return true;
+    if((p.units || []).some(u => big(u.image))) return true;
+  }
+  if((db.developers || []).some(d => big(d.photo))) return true;
+  if((db.advisors || []).some(a => big(a.photo))) return true;
+  if((db.resale || []).some(r => big(r.image))) return true;
+  return false;
+}
+let proactiveOffloadTimer = null;
+function scheduleProactiveOffload(delay){
+  clearTimeout(proactiveOffloadTimer);
+  proactiveOffloadTimer = setTimeout(async () => {
+    if(window.__bcsOptimizing) return;
+    if(document.querySelector('.modal.on')) return;
+    const usage = storageUsage();
+    if(usage.pct < 70 || !hasOffloadableImages()) return;
+    window.__bcsOptimizing = true;
+    try{
+      const n = await offloadImages();
+      if(n){
+        localStorage.setItem(LS_KEY, JSON.stringify(db));
+        storageMeter(); mirrorToIdb(); render();
+        toast(`${n} photos browser database me shift — text space free`);
+      }
+    }catch(e){}
+    finally{ window.__bcsOptimizing = false; }
+  }, delay || 4000);
+}
 function storageUsage(){
   let bytes = 0;
   try{ bytes = (localStorage.getItem(LS_KEY) || '').length; }catch(e){}
@@ -11858,7 +12004,7 @@ function renderHealth(){
     <div class="health-grid">
       ${healthCard('Average data quality', avg + '/100', `${grade.label} · ${grade.note}. ${scores.filter(x => x.s.score < 65).length} projects ko verify karna hai.`, '<button class="btn ghost sm" id="healthQualityBtn2">Manage rating items</button>')}
       ${healthCard('Duplicate groups', dupCount, dupCount ? 'Developers, projects, clients ya advisors me duplicate mile hain.' : 'Koi duplicate group nahi mila.', '<button class="btn ghost sm" id="healthDupBtn2">Open duplicate checker</button>')}
-      ${healthCard('Storage used', usage.kb + ' KB', `${usage.imgCount} images · ~${usage.imgMb.toFixed(1)} MB image data. Browser limit ~5 MB.`, '<button class="btn ghost sm" id="healthCompressBtn">Compress images</button>')}
+      ${healthCard('Storage used', usage.kb + ' KB', `${usage.imgCount} images · ~${usage.imgMb.toFixed(1)} MB image data. Text limit ~5 MB; photos browser database me (phone par 1 GB+).`, '<button class="btn ghost sm" id="healthCompressBtn">Compress images</button>')}
       ${healthCard('Price history', withHistory + '/' + projects.length, 'Projects with at least one logged price revision.', '<button class="btn ghost sm" data-goto="projects">Open projects</button>')}
       ${healthCard('Unit inventory', totalUnits, `${availableUnits} units available · ${withUnits}/${projects.length} projects track units.`, '<button class="btn ghost sm" data-goto="projects">Add units</button>')}
       ${healthCard('Templates', (db.templates || []).length, 'Ready-to-copy developer, project aur advisor messages.', '<button class="btn ghost sm" data-goto="templates">Open templates</button>')}
@@ -11888,17 +12034,17 @@ function renderHealth(){
       </div>
     </div>
     <div class="dsec">
-      <div class="dsec-head"><h4>Storage safety</h4><span class="hint">Browser localStorage ~5 MB. Images sabse zyada jagah lete hain.</span></div>
+      <div class="dsec-head"><h4>Storage safety</h4><span class="hint">Text ~5 MB; full photos browser database me (1 GB+). Backup me photos bhi aati hain.</span></div>
       <div class="health-card" style="max-width:520px">
-        <div class="lab">Local database</div>
+        <div class="lab">Text database (localStorage)</div>
         <div class="big">${usage.kb} KB <span style="font-size:13px;color:var(--mut)">/ ~5120 KB</span></div>
         <div style="height:9px;background:#EEF2EF;border-radius:999px;overflow:hidden;margin-top:9px"><i style="display:block;height:100%;width:${Math.max(2, usage.pct).toFixed(0)}%;background:${usage.pct > 85 ? '#B5623F' : usage.pct > 65 ? '#C49A3E' : '#6E9B7C'};border-radius:999px"></i></div>
-        <p>${usage.pct > 85 ? 'Storage almost full — images compress karein ya backup lekar photos hata dein.' : 'Space theek hai. Backup regularly lein.'}</p>
+        <p id="idbStatsLine" style="margin-top:4px;color:var(--mut)">Photos in browser database: checking…</p>
+        <p>${usage.pct > 85 ? 'Text storage almost full — photos compress karein ya backup lekar photos hata dein.' : 'Space theek hai. Backup regularly lein.'}</p>
         <div class="conn-actions" style="margin-top:10px">
           <button class="btn ghost sm" id="healthCompressBtn2">Compress all images</button>
           <button class="btn ghost sm" id="healthOffloadBtn">Move full images to IDB</button>
           <button class="btn ghost sm" id="healthBackupBtn2">Download JSON backup</button>
-          <button class="btn ghost sm" id="healthShareBtn">Share backup</button>
           <button class="btn ghost sm" id="healthRestoreBtn">Restore from browser DB</button>
         </div>
       </div>
@@ -11907,23 +12053,6 @@ function renderHealth(){
   ['#healthQualityBtn2'].forEach(sel => { const el = $(sel); if(el) el.addEventListener('click', openQualityManager); });
   ['#healthDupBtn2'].forEach(sel => { const el = $(sel); if(el) el.addEventListener('click', openDuplicates); });
   ['#healthBackupBtn2'].forEach(sel => { const el = $(sel); if(el) el.addEventListener('click', () => $('#exportBtn').click()); });
-  const shareBtn = $('#healthShareBtn');
-  if(shareBtn){
-    if(!(navigator.canShare && navigator.canShare({ files: [new File(['{}'], 'x.json', { type: 'application/json' })] }))){
-      shareBtn.style.display = 'none';
-    } else {
-      shareBtn.addEventListener('click', async () => {
-        try{
-          const blob = new Blob([JSON.stringify(db, null, 2)], { type: 'application/json' });
-          const file = new File([blob], `bcs-backup-${todayISO()}.json`, { type: 'application/json' });
-          await navigator.share({ files: [file], title: 'BCS Desk backup', text: 'BCS Desk backup file' });
-        }catch(e){
-          if(e && e.name === 'AbortError') return;
-          toast('Share not available — use Download JSON backup', true);
-        }
-      });
-    }
-  }
   ['#healthCompressBtn', '#healthCompressBtn2'].forEach(sel => { const el = $(sel); if(el) el.addEventListener('click', compressAllImages); });
   const offloadBtn = $('#healthOffloadBtn');
   if(offloadBtn) offloadBtn.addEventListener('click', async () => {
@@ -11936,6 +12065,10 @@ function renderHealth(){
   });
   const restoreBtn = $('#healthRestoreBtn');
   if(restoreBtn) restoreBtn.addEventListener('click', restoreFromIdb);
+  idbStats().then(s => {
+    const el = $('#idbStatsLine');
+    if(el) el.textContent = `Full photos in browser DB: ${s.count} · ~${s.mb.toFixed(1)} MB · JSON backup me include hoti hain`;
+  });
 }
 function compressDataUrl(src, max, quality){
   return new Promise(resolve => {
@@ -12476,20 +12609,10 @@ applyRoleChrome();
 render();
 mirrorToIdb();
 restoreFromIdbIfEmpty().then(restored => { if(!restored && !hadLocalData) save(); });
-
-/* ---------- PWA: offline shell + persistent storage ---------- */
-if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
-  });
-}
-if(navigator.storage && navigator.storage.persist){
-  navigator.storage.persist().catch(() => {});
-}
-try{
-  const qv = new URLSearchParams(location.search).get('view');
-  if(qv && document.querySelector('#view-' + qv)) go(qv);
-}catch(e){}
+scheduleProactiveOffload(5000);
+document.addEventListener('visibilitychange', () => {
+  if(document.visibilityState === 'visible') scheduleProactiveOffload(2500);
+});
 </script>
 </body>
 </html>
