@@ -12148,9 +12148,11 @@ async function syncPull(opts){
       return { ok:true, unchanged:true };
     }
     if(localDirty && remoteNewer && !opts.force){
+      const wasConflict = cfg.status === 'conflict';
       syncInFlight = false;
       writeSyncCfg({ status:'conflict' });
       paintSyncStatus();
+      if(!wasConflict) toast('Cloud par naye changes hain — Health → Cloud sync me Push/Pull chunein');
       return { ok:false, conflict:true, remote:env };
     }
 
