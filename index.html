@@ -3186,6 +3186,7 @@ body.locked>header,body.locked>main,body.locked>.storage,body.locked>.mob-add,bo
         <div class="field"><label>Email</label><input id="dEmail" type="email" placeholder="owner@company.com"></div>
         <div class="field"><label>Phone</label><input id="dPhone" placeholder="+91 …"></div>
       </div>
+      <div class="field"><label>Developer website</label><input id="dWebsite" type="url" inputmode="url" placeholder="https://www.company.com" spellcheck="false"></div>
       <div class="field"><label>Notes</label><textarea id="dNotes" placeholder="Relationship, slab discussion, references…"></textarea></div>
       <div class="field"><label>Developer remarks</label><textarea id="dRemarks" placeholder="Payment behaviour, approval style, launch plans, do's &amp; don'ts — anything you want to remember about this developer…"></textarea></div>
     </div>
@@ -4053,6 +4054,7 @@ function normalizeDb(d){
   d.developers.forEach(x => {
     if(x.notes == null) x.notes = '';
     if(x.remarks == null) x.remarks = '';
+    if(x.website == null) x.website = '';
   });
   const projectIds = new Set(d.projects.map(p => p.id));
   const advisorIds = new Set(d.advisors.map(a => a.id));
@@ -5331,6 +5333,7 @@ function renderDeveloperProfile(){
     <div class="profile-contact">
       ${d.phone ? `<a href="tel:${esc(d.phone)}">☏ ${esc(d.phone)}</a>` : ''}
       ${wa ? `<a class="wa" href="${wa}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
+      ${d.website ? `<a href="${esc(normalizeWebUrl(d.website))}" target="_blank" rel="noopener">🌐 Website</a>` : ''}
       ${d.email ? `<a href="mailto:${esc(d.email)}">✉ ${esc(d.email)}</a>` : ''}
       <span>${corrIds.length} corridor${corrIds.length === 1 ? '' : 's'}</span>
       <span>${clients.length} client${clients.length === 1 ? '' : 's'} linked</span>
@@ -7785,6 +7788,12 @@ function openProject(id, presetCorridor, presetDevId){
   showOverlay('projectModal');
   setTimeout(() => $('#pName').focus(), 80);
 }
+function normalizeWebUrl(v){
+  v = String(v || '').trim();
+  if(!v) return '';
+  if(!/^https?:\/\//i.test(v)) v = 'https://' + v.replace(/^\/+/, '');
+  return v;
+}
 function openDeveloper(id){
   if(!isAdmin()) return toast('Advisor login sirf view ke liye hai — admin se edit karwayein', true);
   editingDeveloper = id ? db.developers.find(d => d.id === id) : null;
@@ -7795,6 +7804,7 @@ function openDeveloper(id){
   $('#dOwner').value = d.ownerName || '';
   $('#dEmail').value = d.email || '';
   $('#dPhone').value = d.phone || '';
+  $('#dWebsite').value = d.website || '';
   $('#dNotes').value = d.notes || '';
   $('#dRemarks').value = d.remarks || '';
   tempDevImage = d.photo || null;
@@ -7997,6 +8007,7 @@ $('#dSave').addEventListener('click', () => {
     ownerName: $('#dOwner').value.trim(),
     email: $('#dEmail').value.trim(),
     phone: $('#dPhone').value.trim(),
+    website: normalizeWebUrl($('#dWebsite').value.trim()),
     notes: $('#dNotes').value.trim(),
     remarks: $('#dRemarks').value.trim(),
     photo: tempDevImage || '',
@@ -8140,7 +8151,7 @@ function loadXLSX(){
 }
 const XL = {
   projects: ['Project ID','Project name','Developer','Corridor','Status','Property types','Plot use','RERA number','Approval type','Approval detail','Society name','Legal remarks','Price min (L)','Price max (L)','Rate','Rate unit','Possession','Location','Google Maps link','Configurations / sizes','Important note','Note on card','Amenities','Positives','Watch-outs','Connectivity','Inventory notes','Sold out','Sold-out note','Internal notes','Featured','Checklist','Advisors','Quality score','Price revisions','Latest revision','Units total','Units available','Units on hold','Units booked','Units sold'],
-  developers: ['Developer ID','Developer name','Owner name','Email','Phone','Notes','Remarks'],
+  developers: ['Developer ID','Developer name','Owner name','Email','Phone','Website','Notes','Remarks'],
   advisors: ['Advisor ID','Advisor name','Phone','Email','Group name','Team size','City','Pipeline status','Active','Slab rate / sq yd','Commission %','Corridors','Slab / terms','Next follow-up','Last contact','Notes'],
   clients: ['Client ID','Client name','Phone','Email','Lead advisor','Pipeline status','Next follow-up','Last contact','Budget min (L)','Budget max (L)','Timeline','Property types','Corridors','Requirement','Suggested projects','Notes'],
   bookings: ['Booking ID','Client','Project','Deal value (L)','Booking amount (L)','Received (L)','Commission %','Stage','Booking date','Advisor','Notes'],
@@ -8208,7 +8219,7 @@ function buildWorkbookData(withData){
   const rows = withData ? (() => {
     const data = { projects: [], developers: [], advisors: [], clients: [], bookings: [], corridors: [], checklist: [], news: [], videoIdeas: [], linkCats: [], links: [], units: [], priceHistory: [] };
     db.corridors.forEach(c => data.corridors.push([c.id, c.name, c.color]));
-    db.developers.forEach(d => data.developers.push([d.id, d.name, d.ownerName || '', d.email || '', d.phone || '', d.notes || '', d.remarks || '']));
+    db.developers.forEach(d => data.developers.push([d.id, d.name, d.ownerName || '', d.email || '', d.phone || '', d.website || '', d.notes || '', d.remarks || '']));
     db.advisors.forEach(a => data.advisors.push([
       a.id, a.name, a.phone || '', a.email || '', a.groupName || '', a.teamSize ?? '', a.city || '',
       advisorStatusMeta(a.status).label, a.status === 'active' ? 'Yes' : 'No',
