@@ -95,6 +95,9 @@
       else if(d.cmd === 'stop') player.stopVideo();
       else if(d.cmd === 'seek') player.seekTo(Math.max(0, +d.value || 0), true);
       else if(d.cmd === 'volume') player.setVolume(Math.max(0, Math.min(100, +d.value || 0)));
+      else if(d.cmd === 'mute') player.mute();
+      else if(d.cmd === 'unmute') player.unMute();
+      else if(d.cmd === 'stateNow') send('stateNow', player.getPlayerState());
     }catch(err){}
   });
 })();
