@@ -2,8 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BCS — Jaipur Developer & Project Intelligence</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>BCS Desk — Jaipur Developer & Project Intelligence</title>
+<meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
+<meta name="theme-color" content="#3A3928">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="BCS Desk">
+<meta name="application-name" content="BCS Desk">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
@@ -1896,6 +1907,21 @@ body.locked>header,body.locked>main,body.locked>.storage,body.locked>.mob-add,bo
   .present-sheet{padding:0;overflow:visible}
   .present-proj{break-inside:avoid}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+/* ---------------- mobile / installed app ---------------- */
+@media (max-width:820px){
+  /* 16px prevents iOS auto-zoom when a field gets focus */
+  input,select,textarea,.field input,.field select,.field textarea,.lock-input input{font-size:16px}
+  .lock-input input{letter-spacing:3px}
+  .btn,.dtab,.dtab,.nav button,.lock-input .btn{min-height:38px}
+  .toast{bottom:calc(14px + env(safe-area-inset-bottom))}
+}
+@supports (padding: env(safe-area-inset-top)){
+  header{padding-top:env(safe-area-inset-top)}
+  main{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+  .storage{bottom:calc(13px + env(safe-area-inset-bottom))}
+  .mob-add{bottom:calc(18px + env(safe-area-inset-bottom))}
+  .media-dock,.media-mini{bottom:calc(14px + env(safe-area-inset-bottom))}
 }
 </style>
 </head>
@@ -12045,6 +12071,7 @@ function renderHealth(){
           <button class="btn ghost sm" id="healthCompressBtn2">Compress all images</button>
           <button class="btn ghost sm" id="healthOffloadBtn">Move full images to IDB</button>
           <button class="btn ghost sm" id="healthBackupBtn2">Download JSON backup</button>
+          <button class="btn ghost sm" id="healthShareBtn">Share backup</button>
           <button class="btn ghost sm" id="healthRestoreBtn">Restore from browser DB</button>
         </div>
       </div>
@@ -12053,6 +12080,28 @@ function renderHealth(){
   ['#healthQualityBtn2'].forEach(sel => { const el = $(sel); if(el) el.addEventListener('click', openQualityManager); });
   ['#healthDupBtn2'].forEach(sel => { const el = $(sel); if(el) el.addEventListener('click', openDuplicates); });
   ['#healthBackupBtn2'].forEach(sel => { const el = $(sel); if(el) el.addEventListener('click', () => $('#exportBtn').click()); });
+  const shareBtn = $('#healthShareBtn');
+  if(shareBtn){
+    if(!(navigator.canShare && navigator.canShare({ files: [new File(['{}'], 'x.json', { type: 'application/json' })] }))){
+      shareBtn.style.display = 'none';
+    } else {
+      shareBtn.addEventListener('click', async () => {
+        try{
+          const copy = JSON.parse(JSON.stringify(db));
+          let media = {};
+          try{ media = await collectBackupMedia(copy); }catch(e){}
+          const count = Object.keys(media).length;
+          const payload = count ? Object.assign({}, copy, { __media: media, __backupAt: Date.now() }) : copy;
+          const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+          const file = new File([blob], `bcs-backup-${todayISO()}.json`, { type: 'application/json' });
+          await navigator.share({ files: [file], title: 'BCS Desk backup', text: 'BCS Desk backup file' });
+        }catch(e){
+          if(e && e.name === 'AbortError') return;
+          toast('Share not available — use Download JSON backup', true);
+        }
+      });
+    }
+  }
   ['#healthCompressBtn', '#healthCompressBtn2'].forEach(sel => { const el = $(sel); if(el) el.addEventListener('click', compressAllImages); });
   const offloadBtn = $('#healthOffloadBtn');
   if(offloadBtn) offloadBtn.addEventListener('click', async () => {
@@ -12613,6 +12662,20 @@ scheduleProactiveOffload(5000);
 document.addEventListener('visibilitychange', () => {
   if(document.visibilityState === 'visible') scheduleProactiveOffload(2500);
 });
+
+/* ---------- PWA: offline shell + persistent storage ---------- */
+if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+if(navigator.storage && navigator.storage.persist){
+  navigator.storage.persist().catch(() => {});
+}
+try{
+  const qv = new URLSearchParams(location.search).get('view');
+  if(qv && document.querySelector('#view-' + qv)) go(qv);
+}catch(e){}
 </script>
 </body>
 </html>
