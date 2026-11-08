@@ -2515,7 +2515,71 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
       </div>
     </div>
 
-    <!-- v15: pulse strip → corridors → type cards -->
+    <!-- v15: dayline (date · motivation · live time) → greeting creative → pulse strip → corridors → type cards -->
+    <div class="dayline" id="dashHeadline" aria-label="Aaj ka din — date, motivation aur time">
+      <div class="dl-cell dl-date">
+        <b id="thDay">08</b>
+        <div class="dl-meta">
+          <span class="dl-hi" id="thWeekdayHi">रविवार</span>
+          <span class="dl-line"><span id="thWeekdayEn">Sunday</span> · <span id="thMonth">November 2026</span></span>
+          <span class="dl-sub" id="thMonthHi">नवंबर · 2026</span>
+        </div>
+      </div>
+      <div class="th-quote dl-quote" id="thQuoteBox" aria-label="Today's motivation">
+        <span class="th-qmark">“</span>
+        <p id="thQuote">…</p>
+        <span class="th-qby" id="thQuoteBy"></span>
+        <button type="button" class="th-qrefresh" id="thQuoteRefresh" title="Next motivation" aria-label="Next motivation">↻</button>
+      </div>
+      <div class="dl-cell dl-time" aria-label="Local time">
+        <b class="dl-clock"><span id="dlClock">10:48</span><i id="dlSeconds">:32</i></b>
+        <div class="dl-timemeta">
+          <span class="dl-zone"><b id="dlMeridiem">AM</b> · IST · Jaipur</span>
+          <span class="dl-detail" id="dlDetail">Sunday, 08 November</span>
+          <span class="dl-next" id="dlNext">Diwali · aaj hi hai</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="today-hero" id="todayHero" aria-label="Aaj ka festival — ek calendar poster jaisi creative, WhatsApp-shareable">
+      <div class="th-cal" aria-hidden="true">
+        <div class="th-cal-band" id="thCalMonth">NOVEMBER</div>
+        <div class="th-cal-body">
+          <b class="th-cal-day" id="thCalDay">08</b>
+          <span class="th-cal-week" id="thCalWeek">रविवार</span>
+          <span class="th-cal-year" id="thCalYear">Sunday · 2026</span>
+        </div>
+      </div>
+
+      <div class="th-main">
+        <div class="th-top">
+          <span class="th-badge"><span class="th-emoji" id="thEmoji">🪔</span><span id="thFestivalName">Diwali</span></span>
+          <span class="th-today-chip" id="thTodayChip">Aaj · Today</span>
+        </div>
+        <h3 id="thFestivalHi">दीपावली</h3>
+        <div class="th-name-en" id="thFestivalEn">Diwali · Lakshmi Puja</div>
+        <p class="th-greet-hi" id="thGreetHi">दीपों की रोशनी, माँ लक्ष्मी की कृपा — आपका जीवन सदा उजालों से भरा रहे।</p>
+        <p class="th-greet-en" id="thGreetEn">Lights of diyas, grace of Maa Lakshmi — may your life always shine bright.</p>
+        <div class="th-upcoming" aria-label="Upcoming festivals">
+          <div class="th-up-head"><span>Coming up</span><small>next 3</small></div>
+          <div class="th-up-list" id="thUpcoming"></div>
+        </div>
+      </div>
+
+      <aside class="th-brand">
+        <div class="th-logo" aria-hidden="true">BCS</div>
+        <b class="th-brand-name">Business City Square</b>
+        <span class="th-brand-sub">Jaipur Property Intelligence</span>
+        <span class="th-handle">@ajaysharma.bcs</span>
+        <div class="th-brand-actions">
+          <button type="button" class="th-tool primary" id="thSharePoster" title="WhatsApp Share poster — 1080×1920 status">WhatsApp share</button>
+          <button type="button" class="th-tool" id="thRefreshQuote" title="Change the motivation line in this card only">↻ New motivation</button>
+          <button type="button" class="th-tool ghost" id="thManage" style="display:none">⚙ Manage</button>
+        </div>
+        <span class="th-watermark">BCS · Business City Square · Jaipur</span>
+      </aside>
+    </section>
+
     <div class="pulse-strip" id="pulseStrip" aria-label="Aaj ka desk pulse">
       <button type="button" class="pulse-card pulse-task" data-goto="dayplan" title="Day plan kholein">
         <span class="pulse-ic">◷</span>
