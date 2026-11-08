@@ -64,6 +64,7 @@ nav button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(46,45,3
 .btn.gold{background:var(--gold);color:#FFF9ED}
 .btn.gold:hover{background:#8C6628}
 .btn.danger{color:var(--danger);background:#FBEDE8;border:1px solid #F0D8CE}
+.btn:focus-visible,.icon-btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2.5px solid rgba(165,123,54,.55);outline-offset:2px}
 .icon-btn{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);transition:.18s}
 .icon-btn:hover{border-color:#C9D1CC}
 .icon-btn svg{opacity:.6}
@@ -1130,6 +1131,8 @@ body.advisor-mode #resaleViewDelete{display:none !important}
 /* ---------------- v6: tool dock (sticky + calc) ---------------- */
 .tooldock{position:fixed;left:14px;bottom:14px;z-index:70;display:flex;gap:7px;padding:8px 10px;border-radius:16px;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 8px 24px -8px rgba(46,45,32,.18)}
 .dock-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:54px;height:54px;border-radius:14px;border:1px solid var(--line);background:#fff;cursor:pointer;transition:.18s;padding:0}
+.dock-btn:hover{border-color:rgba(165,123,54,.45);background:#FFFDF6;transform:translateY(-2px);box-shadow:0 10px 22px -14px rgba(58,57,40,.45)}
+.dock-btn:active{transform:scale(.94)}
 .dock-btn span{font-size:17px;line-height:1}
 .dock-btn i{font-style:normal;font-size:8px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--mut)}
 .dock-btn:hover{transform:translateY(-3px);background:rgba(255,255,255,.6);box-shadow:0 4px 12px -4px rgba(46,45,32,.15);border-color:transparent}
