@@ -1983,6 +1983,27 @@ nav button.on{background:linear-gradient(135deg,#fff 0%,#FFF7E7 100%);box-shadow
 .istat:nth-child(3) b{color:#7B67C6}
 .istat:nth-child(4) b{color:#C95C85}
 .istat:nth-child(5) b{color:#4C8FD6;font-size:18px}
+.hero-life{align-items:stretch}
+.hero-life .intro-main{min-width:0;flex:1}
+.hero-life .intro-right{display:flex;flex-direction:column;gap:12px;justify-content:center;min-width:min(440px,38%)}
+.hero-focus{display:flex;align-items:center;gap:10px;max-width:640px;text-align:left;background:linear-gradient(90deg,rgba(255,248,234,.96),rgba(239,246,240,.92));border:1px solid rgba(165,123,54,.28);color:var(--ink);border-radius:999px;padding:9px 14px;font-size:12.5px;font-weight:650;line-height:1.35;margin-top:14px;transition:.18s;box-shadow:0 10px 24px -22px rgba(58,57,40,.45)}
+.hero-focus:hover{border-color:rgba(165,123,54,.6);transform:translateY(-1px)}
+.hero-focus-dot{width:9px;height:9px;flex:none;border-radius:50%;background:var(--gold);box-shadow:0 0 0 6px rgba(165,123,54,.12);animation:heroPulse 2s ease-in-out infinite}
+@keyframes heroPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.25);opacity:.65}}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.hero-actions .hero-cta-note{font-size:11px;color:var(--mut)}
+.hero-stat{cursor:pointer;text-align:left;font:inherit;min-width:104px}
+.hero-stat:hover{border-color:rgba(165,123,54,.45);transform:translateY(-2px)}
+.hero-road{border:1px solid rgba(229,234,232,.75);background:rgba(255,255,255,.66);border-radius:16px;padding:11px 13px}
+.hero-road h4{font-size:9px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+.hero-road-rows{display:grid;gap:6px}
+.hero-road-row{display:flex;align-items:center;gap:8px;width:100%;text-align:left;font-size:11.5px;color:var(--ink);border:0;background:transparent;padding:2px 0;cursor:pointer}
+.hero-road-row:hover{color:var(--gold)}
+.hero-road-row .cor-dot{flex:none}
+.hero-road-row b{font-weight:800}
+.hero-road-row small{color:var(--mut);font-weight:650;white-space:nowrap}
+.hero-road-row em{margin-left:auto;font-style:normal;font-size:9px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--gold)}
+@media (max-width:980px){.hero-life{flex-direction:column;gap:18px}.hero-life .intro-right{min-width:0}.hero-actions .btn{flex:1 1 auto}.hero-stat{min-width:0;flex:1}.hero-focus{max-width:none}}
 .pulse-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 0 28px}
 .pulse-card{position:relative;overflow:hidden;display:flex;align-items:center;gap:12px;padding:16px 16px;border:1px solid rgba(229,234,232,.9);border-radius:18px;background:#fff;box-shadow:0 14px 30px -22px rgba(46,45,32,.14);text-align:left;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;cursor:pointer}
 .pulse-card:hover{transform:translateY(-2px);border-color:rgba(165,123,54,.22);box-shadow:0 18px 36px -22px rgba(46,45,32,.18)}
@@ -2315,6 +2336,21 @@ body.locked>.quick-add-dock{visibility:hidden}
   padding:0;
 }
 .dash-card-header .dl-quote .th-qrefresh:hover{background:#d0e2d6;transform:rotate(-30deg)}
+.dash-card-header .dl-date{flex-wrap:wrap;row-gap:8px}
+.dash-card-header .miniweek{flex:1 1 100%;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;padding-top:4px}
+.mini-day{display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 2px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink2);transition:.18s}
+.mini-day span{font-size:8px;font-weight:800;letter-spacing:.5px;color:var(--mut)}
+.mini-day b{font-size:13px;line-height:1}
+.mini-day i{font-style:normal;font-size:10px;line-height:1;color:var(--mut)}
+.mini-day.today{background:linear-gradient(135deg,var(--olive),#2C2B1C);color:#F6F2E7;border-color:transparent}
+.mini-day.today span,.mini-day.today i{color:rgba(246,242,231,.75)}
+.mini-day.fest{border-color:rgba(165,123,54,.55);background:#FFF8EA;color:var(--ink)}
+.mini-day.fest:hover{transform:translateY(-1px)}
+.dl-quicklink{display:inline-flex;align-items:center;gap:5px;margin-top:7px;padding:6px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--gold);font-size:10px;font-weight:800;transition:.18s;align-self:flex-end}
+.dl-quicklink:hover{border-color:var(--gold);background:#FFF8EA;transform:translateY(-1px)}
+.dlf-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.dl-mini-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 10px;border:1px solid rgba(165,123,54,.28);background:#fff;color:var(--gold);border-radius:999px;font-size:10px;font-weight:800;transition:.18s}
+.dl-mini-btn:hover{border-color:var(--gold);background:#FFF4DA;transform:translateY(-1px)}
 
 /* --- Row 1 . Col 3: live time --- */
 .dash-card-header .dl-time{
@@ -3345,6 +3381,14 @@ body[data-theme="dark"] .advisor-pipeline button.on{background:#D8C99A;border-co
 body[data-theme="dark"] .active-adv-table-wrap,body[data-theme="dark"] .active-adv-table,body[data-theme="dark"] .active-adv-table th,body[data-theme="dark"] .active-adv-table td{background:var(--panel);border-color:var(--line);color:var(--ink2)}
 body[data-theme="dark"] .active-adv-table .aa-open{background:#26301F;border-color:var(--line);color:var(--ink)}
 body[data-theme="dark"] .lock{background:linear-gradient(145deg,#141813,#2B2D22)}
+body[data-theme="dark"] .dl-quicklink,body[data-theme="dark"] .dl-mini-btn{background:#1B201B;border-color:var(--line);color:#E7C46E}
+body[data-theme="dark"] .mini-day{background:#1B201B;border-color:var(--line);color:var(--ink2)}
+body[data-theme="dark"] .mini-day.fest{background:#2B2A1D}
+body[data-theme="dark"] .hero-focus{background:linear-gradient(90deg,#2E3324,#242B22);border-color:#4A4430;color:var(--ink)}
+body[data-theme="dark"] .hero-road{background:#1B201B;border-color:var(--line);color:var(--ink)}
+body[data-theme="dark"] .hero-road h4{color:var(--mut)}
+body[data-theme="dark"] .hero-road small{color:var(--mut)}
+body[data-theme="dark"] .hero-actions .hero-cta-note{color:var(--mut)}
 body[data-theme="dark"] .intro{background:linear-gradient(120deg,#1B201B,#242923);border-color:rgba(48,56,48,.95);box-shadow:0 24px 60px -42px rgba(0,0,0,.8)}
 body[data-theme="dark"] .intro h2,body[data-theme="dark"] .intro-cta span{color:var(--ink)}
 body[data-theme="dark"] .intro p,body[data-theme="dark"] .eyebrow,body[data-theme="dark"] .istat span{color:var(--mut)}
@@ -3503,22 +3547,30 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
 <main>
   <!-- ============ DASHBOARD ============ -->
   <section class="view on" id="view-dashboard">
-    <div class="intro">
-      <div>
+    <div class="intro hero-life">
+      <div class="intro-main">
         <div class="eyebrow" id="dashEyebrow">BCS · Jaipur portfolio</div>
         <h2>Every developer, every plot,<br><em>one clear view.</em></h2>
-        <p>Prices, approvals and people across every Jaipur corridor — saved privately in this browser. Naya corridor bhi add kar sakte hain.</p>
-        <div class="intro-cta">
+        <p>Prices, approvals, people aur payments — ek hi control room. Jo change save hota hai, wahi sab pages mein live reflect hota hai.</p>
+        <button type="button" id="heroFocusLine" class="hero-focus" aria-live="polite"><span class="hero-focus-dot"></span><span>Today ka focus load ho raha hai…</span></button>
+        <div class="intro-cta hero-actions">
           <button class="btn primary" data-goto="advisory">Start client advisory →</button>
-          <span>Budget · timeline · shortlist · presentation</span>
+          <button class="btn gold" id="heroAddProjectBtn" type="button">+ Add project</button>
+          <button class="btn ghost" id="heroRoadBtn" type="button">Top road hub ◉</button>
+          <button class="btn ghost" data-goto="advisors" type="button">Advisors</button>
+          <button class="btn ghost" data-goto="dayplan" type="button">Day plan</button>
+          <span class="hero-cta-note">Budget · timeline · shortlist · presentation</span>
         </div>
       </div>
-      <div class="intro-stats">
-        <div class="istat"><b id="statDevs">0</b><span>Developers</span></div>
-        <div class="istat"><b id="statProjects">0</b><span>Projects</span></div>
-        <div class="istat"><b id="statAdvisors">0</b><span>Active advisors</span></div>
-        <div class="istat"><b id="statClients">0</b><span>Clients</span></div>
-        <div class="istat"><b id="statValue">—</b><span>Price range</span></div>
+      <div class="intro-right">
+        <div class="intro-stats">
+          <button type="button" class="istat hero-stat" data-goto="developers" title="Open developers"><b id="statDevs">0</b><span>Developers</span></button>
+          <button type="button" class="istat hero-stat" data-goto="projects" title="Open projects"><b id="statProjects">0</b><span>Projects</span></button>
+          <button type="button" class="istat hero-stat" data-goto="advisors" title="Open advisors"><b id="statAdvisors">0</b><span>Active advisors</span></button>
+          <button type="button" class="istat hero-stat" data-goto="clients" title="Open clients"><b id="statClients">0</b><span>Clients</span></button>
+          <button type="button" class="istat hero-stat" data-goto="analytics" title="Open analytics"><b id="statValue">—</b><span>Price range</span></button>
+        </div>
+        <div class="hero-pulse" id="heroRoadPulse"></div>
       </div>
     </div>
 
@@ -3542,11 +3594,13 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
             <span class="dl-line"><span id="thWeekdayEn">Sunday</span> · <span id="thMonth">November 2026</span></span>
             <span class="dl-sub" id="thMonthHi">नवंबर · 2026</span>
           </div>
+          <div class="miniweek" id="thWeekStrip" aria-label="7-day mini calendar"></div>
         </div>
         <div class="th-quote dl-quote" id="thQuoteBox" aria-label="Today's motivation">
           <span class="th-qmark">“</span>
           <p id="thQuote">…</p>
           <span class="th-qby" id="thQuoteBy"></span>
+          <button type="button" class="th-qrefresh" id="thQuoteCopy" title="Copy motivation" aria-label="Copy motivation">⧉</button>
           <button type="button" class="th-qrefresh" id="thQuoteRefresh" title="Next motivation" aria-label="Next motivation">↻</button>
         </div>
         <div class="dl-cell dl-time" aria-label="Local time">
@@ -3555,6 +3609,7 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
             <span class="dl-zone"><b id="dlMeridiem">AM</b> · IST · Jaipur</span>
             <span class="dl-detail" id="dlDetail">Sunday, 08 November</span>
             <span class="dl-next" id="dlNext">Diwali · aaj hi hai</span>
+            <button type="button" class="dl-quicklink" id="thAddTaskBtn">+ Add task</button>
           </div>
         </div>
         <!-- Festival row (calendar lives in the date cell above) -->
@@ -3569,6 +3624,12 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
             <div class="dlf-greets">
               <p class="dlf-greet-hi" id="thGreetHiMerged">दीपों की रोशनी, माँ लक्ष्मी की कृपा — आपका जीवन सदा उजालों से भरा रहे।</p>
               <p class="dlf-greet-en" id="thGreetEnMerged">Lights of diyas, grace of Maa Lakshmi — may your life always shine bright.</p>
+            </div>
+            <div class="dlf-actions">
+              <button type="button" class="dl-mini-btn" id="thCopyHi">Copy Hindi greet</button>
+              <button type="button" class="dl-mini-btn" id="thCopyEn">Copy English greet</button>
+              <button type="button" class="dl-mini-btn" id="thNextPoster">Next poster →</button>
+              <button type="button" class="dl-mini-btn" id="thThemePrev">Theme</button>
             </div>
           </div>
         </div>
@@ -3588,6 +3649,7 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
             <span class="dl-bcs-go" aria-hidden="true">↗</span>
           </button>
           <button type="button" class="dl-bcs-ghost" id="thRefreshQuote">↻<em>Naya<br>quote</em></button>
+          <button type="button" class="dl-bcs-ghost" id="thRoadHubBtn">⌁<em>Road<br>hub</em></button>
           <button type="button" class="dl-bcs-ghost" id="thManage" style="display:none">⚙<em>Manage<br>lists</em></button>
         </div>
       </div>
@@ -7347,6 +7409,48 @@ function renderDashboard(){
   const prices = projects.flatMap(p => [p.priceMin,p.priceMax]).filter(v => v!=null && v!=='' && !isNaN(v)).map(Number);
   $('#statValue').textContent = prices.length ? fmtPrice(Math.min(...prices)).replace('₹','') + ' – ' + fmtPrice(Math.max(...prices)).replace('₹','') : '—';
 
+  /* live hero: today focus + top roads */
+  const todayISO2 = todayISO();
+  const focusTask = dayTodos(todayISO2).find(t => !t.done) || overdueTodos(todayISO2)[0] || null;
+  const dueClient = clients.filter(c => c.nextFollowUp && c.nextFollowUp <= todayISO2 && !['booked','lost'].includes(c.clientStatus || 'new')).sort((a,b) => (a.nextFollowUp || '').localeCompare(b.nextFollowUp || ''))[0] || null;
+  const dueAdvisor = advisors.filter(a => a.nextFollowUp && a.nextFollowUp <= todayISO2 && a.status !== 'inactive').sort((a,b) => (a.nextFollowUp || '').localeCompare(b.nextFollowUp || ''))[0] || null;
+  const focus = $('#heroFocusLine');
+  if(focus){
+    if(focusTask){
+      focus.innerHTML = `<span class="hero-focus-dot"></span><span><b>Today focus</b> · ${esc(focusTask.time ? focusTask.time + ' — ' : '')}${esc(focusTask.title || 'Task')}</span>`;
+      focus.dataset.target = 'dayplan';
+      focus.onclick = () => go('dayplan');
+    } else if(dueClient){
+      focus.innerHTML = `<span class="hero-focus-dot"></span><span><b>Follow up</b> · ${esc(dueClient.name || dueClient.phone || 'Client')} — ${esc(followupInfo(dueClient.nextFollowUp).label)}</span>`;
+      focus.onclick = () => openClientProfile(dueClient.id);
+    } else if(dueAdvisor){
+      focus.innerHTML = `<span class="hero-focus-dot"></span><span><b>Advisor check</b> · ${esc(dueAdvisor.name)} — ${esc(followupInfo(dueAdvisor.nextFollowUp).label)}</span>`;
+      focus.onclick = () => openAdvisorProfile(dueAdvisor.id);
+    } else {
+      focus.innerHTML = `<span class="hero-focus-dot"></span><span><b>Queue clear</b> · koi urgent follow-up nahi — naya client ya project add karo</span>`;
+      focus.onclick = () => go('clients');
+    }
+  }
+  const roadCounts = db.corridors.map(c => ({
+    c,
+    projects: projects.filter(p => p.corridor === c.id).length,
+    advisors: advisorsForRoad(c.id).length,
+    devs: new Set(projects.filter(p => p.corridor === c.id).map(p => p.developerId).filter(Boolean)).size
+  })).sort((a,b) => b.projects - a.projects || b.advisors - a.advisors).slice(0,3);
+  const pulse = $('#heroRoadPulse');
+  if(pulse){
+    pulse.innerHTML = roadCounts.length ? `
+      <div class="hero-road"><h4>Road pulse · click for hub</h4><div class="hero-road-rows">
+        ${roadCounts.map(x => `<button type="button" class="hero-road-row" data-roadpulse="${x.c.id}"><span class="cor-dot" style="background:${x.c.color}"></span><b>${esc(x.c.name)}</b><small>${x.projects} proj · ${x.advisors} adv · ${x.devs} dev</small><em>Hub</em></button>`).join('')}
+      </div></div>` : '<div class="hero-road"><h4>Road pulse</h4><small>Koi corridor data abhi nahi.</small></div>';
+    $$('#heroRoadPulse [data-roadpulse]').forEach(btn => btn.onclick = () => openRoadHub(btn.dataset.roadpulse));
+  }
+  const topRoad = roadCounts[0];
+  const addProjectBtn = $('#heroAddProjectBtn');
+  if(addProjectBtn) addProjectBtn.onclick = () => openProject(null, $('#filterCorridor')?.value || (topRoad ? topRoad.c.id : 'agra'));
+  const roadBtn = $('#heroRoadBtn');
+  if(roadBtn) roadBtn.onclick = () => { if(topRoad) openRoadHub(topRoad.c.id); };
+
   // category strip
   $('#catStrip').innerHTML = TYPE_CARDS.map(tc => {
     const ps = projects.filter(p => (p.types||[]).some(t => tc.types.includes(t)));
@@ -7748,6 +7852,19 @@ function renderDailyHero(){
   const q = dailyQuoteRecord();
   if($('#thQuote')) $('#thQuote').textContent = q.text || '';
   if($('#thQuoteBy')) $('#thQuoteBy').textContent = q.by ? '— ' + q.by : '';
+
+  const strip = $('#thWeekStrip');
+  if(strip){
+    const dow = ['S','M','T','W','T','F','S'];
+    strip.innerHTML = Array.from({length:7}, (_, i) => {
+      const off = i - 3;
+      const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + off);
+      const isoLocal = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      const f = festivalByDate(isoLocal);
+      const cls = ['mini-day', off === 0 ? 'today' : '', f ? 'fest' : ''].join(' ').trim();
+      return `<button type="button" class="${cls}" data-weekday="${isoLocal}" title="${f ? esc(f.name) : 'No festival'}"><span>${dow[d.getDay()]}</span><b>${d.getDate()}</b><i>${f ? esc(f.emoji || '✨') : '·'}</i></button>`;
+    }).join('');
+  }
 
   const manage = $('#thManage');
   if(manage) manage.style.display = isAdmin() ? 'inline-flex' : 'none';
@@ -8254,7 +8371,51 @@ function initDailyHero(){
   const refresh = () => cycleDailyQuote();
   const a = $('#thRefreshQuote'); if(a) a.addEventListener('click', refresh);
   const b = $('#thQuoteRefresh'); if(b) b.addEventListener('click', refresh);
+  const copyText = (txt, msg) => {
+    if(!txt) return;
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(() => toast(msg)).catch(() => toast(msg));
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = txt; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); toast(msg); }catch(e){ toast('Copy nahi ho paya', true); }
+      ta.remove();
+    }
+  };
+  const qcopy = $('#thQuoteCopy'); if(qcopy) qcopy.addEventListener('click', () => copyText($('#thQuote')?.textContent || '', 'Motivation copied ✓'));
   const share = $('#thSharePoster'); if(share) share.addEventListener('click', () => openPosterFor('today'));
+  const nextPoster = $('#thNextPoster'); if(nextPoster) nextPoster.addEventListener('click', () => {
+    const next = upcomingFestivals(1)[0];
+    openPosterFor(next ? next.id : 'today');
+  });
+  const copyHi = $('#thCopyHi'); if(copyHi) copyHi.addEventListener('click', () => copyText($('#thGreetHiMerged')?.textContent || '', 'Hindi greeting copied ✓'));
+  const copyEn = $('#thCopyEn'); if(copyEn) copyEn.addEventListener('click', () => copyText($('#thGreetEnMerged')?.textContent || '', 'English greeting copied ✓'));
+  const themePrev = $('#thThemePrev'); if(themePrev) themePrev.addEventListener('click', () => {
+    const fest = festivalByDate(todayISO()) || virtualTodayFestival();
+    const themes = Object.keys(FESTIVAL_THEMES || {});
+    const i = Math.max(0, themes.indexOf(fest.theme));
+    const next = themes[(i + 1) % themes.length] || fest.theme;
+    if(fest.id && fest.id !== 'virtual-today'){
+      const stored = festivalById(fest.id);
+      if(stored){ stored.theme = next; save(); }
+    } else {
+      fest.theme = next;
+    }
+    if(posterFestival && posterFestival.id === fest.id) posterFestival.theme = next;
+    toast('Poster theme: ' + next);
+  });
+  const addTask = $('#thAddTaskBtn'); if(addTask) addTask.addEventListener('click', () => go('dayplan'));
+  const roadHub = $('#thRoadHubBtn'); if(roadHub) roadHub.addEventListener('click', () => {
+    const top = [...(db.corridors || [])].sort((x,y) => db.projects.filter(p => p.corridor === y.id).length - db.projects.filter(p => p.corridor === x.id).length)[0];
+    if(top) openRoadHub(top.id);
+  });
+  const week = $('#thWeekStrip'); if(week) week.addEventListener('click', e => {
+    const day = e.target.closest('[data-weekday]');
+    if(!day) return;
+    const f = festivalByDate(day.dataset.weekday);
+    if(f) openPosterFor(f.id);
+    else toast('Is din koi festival nahi hai — Manage se add karo');
+  });
   const manage = $('#thManage'); if(manage) manage.addEventListener('click', openFestivalManager);
   const up = $('#thUpcoming');
   if(up) up.addEventListener('click', e => {
