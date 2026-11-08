@@ -4028,6 +4028,57 @@ body[data-theme="dark"] .calc-body .field input,body[data-theme="dark"] .calc-bo
     <p class="lock-note">Privacy view, not encryption — data stays on this device. Admin password 5794 · advisor password 1111.</p>
   </div>
 </div>
+<script>
+(function(){
+  try{
+    var ROLE='admin', AUTH='bcs_auth_v1';
+    function $(s){ return document.querySelector(s); }
+    function $$(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); }
+    function err(m){ var e=$('#lockErr'); if(e){ e.textContent=m; } var c=$('#lockCard'); if(c){ c.classList.remove('shake'); void c.offsetWidth; c.classList.add('shake'); } }
+    function setRole(r){
+      ROLE=r==='advisor'?'advisor':'admin';
+      $$('#lockRoles button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-lockrole')===ROLE); });
+      $('#lockAdminBlock').classList.toggle('on', ROLE==='admin');
+      $('#lockAdvisorBlock').classList.toggle('on', ROLE==='advisor');
+      $('#lockSubmit').textContent=ROLE==='admin'?'Unlock admin desk →':'Enter advisor view →';
+      $('#lockErr').textContent='';
+    }
+    function advisorList(){
+      try{ var raw=localStorage.getItem('bcs_db_v1'); if(!raw) return []; var db=JSON.parse(raw); return (db.advisors||[]).filter(function(a){ return a.status!=='inactive'; }); }catch(e){ return []; }
+    }
+    function fillAdvisor(){
+      var sel=$('#lockAdvisor'); if(!sel) return;
+      var list=advisorList();
+      sel.innerHTML=list.length?list.map(function(a){ return '<option value="'+a.id+'">'+(a.name||'Advisor')+'</option>'; }).join(''):'<option value="">No active advisor</option>';
+    }
+    function unlock(){
+      try{ sessionStorage.setItem(AUTH, JSON.stringify({role:ROLE, advisorId: ROLE==='advisor' ? ($('#lockAdvisor')||{}).value : undefined })); }catch(e){}
+      try{ if(typeof window.render==='function') window.render(); }catch(e){}
+      var ls=$('#lockScreen'); if(ls) ls.classList.remove('on');
+      document.body.classList.remove('locked');
+    }
+    var form=$('#lockForm');
+    if(form){
+      $$('#lockRoles button').forEach(function(b){ b.addEventListener('click', function(){ setRole(b.getAttribute('data-lockrole')); if(ROLE==='advisor') fillAdvisor(); }); });
+      form.addEventListener('submit', function(ev){
+        ev.preventDefault();
+        if(window.__bcsLockWired){ return; }
+        if(ROLE==='admin'){
+          var v=($('#lockPass')||{}).value||'';
+          if(String(v).trim()==='5794'){ unlock(); } else { err('Galat password — dobara try karein.'); }
+          return;
+        }
+        var v2=($('#lockAdvisorPass')||{}).value||'';
+        if(String(v2).trim()!=='1111'){ err('Galat advisor password — common password 1111 hai.'); return; }
+        var id=($('#lockAdvisor')||{}).value||'';
+        if(!id){ err('Ek active advisor select karo.'); return; }
+        unlock();
+      });
+      fillAdvisor();
+    }
+  }catch(e){}
+})();
+</script>
 
 <header>
   <div class="hwrap">
@@ -9709,8 +9760,8 @@ function quoteText(){
   }));
   $('#calcPrintAll')?.addEventListener('click', () => window.print());
   $('#calcShareAll')?.addEventListener('click', calcShareAll);
-  loadRates();
-  runAll();
+  try{ loadRates(); }catch(e){}
+  try{ runAll(); }catch(e){}
 })();
 function openVisit(id, presetClientId, presetProjectId, presetAdvisorId){
   const v = id ? (db.visits || []).find(x => x.id === id) : null;
@@ -16666,6 +16717,7 @@ $('#lockRoles').addEventListener('click', e => {
   const b = e.target.closest('[data-lockrole]');
   if(b) setLockRole(b.dataset.lockrole);
 });
+window.__bcsLockWired = true;
 $('#lockForm').addEventListener('submit', e => {
   e.preventDefault();
   if(lockRole === 'admin'){
