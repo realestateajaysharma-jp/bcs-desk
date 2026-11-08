@@ -3921,6 +3921,42 @@ body[data-theme="dark"] .calc-card{background:var(--panel);border-color:var(--li
 body[data-theme="dark"] .calc-head{background:rgba(27,32,27,.6)}
 body[data-theme="dark"] .calc-out{background:#1B201B;border-color:var(--line)}
 body[data-theme="dark"] .calc-up{background:#2B2A1D;color:#E7C46E;border-color:#4A4430}
+
+/* ==== BCS SIX-LAYERS PACK — trust • location • gallery • prediction • circle rate • bank offers ==== */
+.trust-strip{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 4px}
+.trust-badge{flex:1 1 150px;display:flex;gap:9px;align-items:center;border:1px solid var(--line);background:#FCFDFC;border-radius:13px;padding:9px 11px;min-width:0}
+.trust-badge b{font-size:12.5px;line-height:1.25;display:block}
+.trust-badge small{display:block;font-size:11px;color:var(--mut);margin-top:1px;line-height:1.35}
+.trust-badge .tick{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:14px;flex:none;background:#E4F3EC;color:#2F6644;border:1px solid #BFD8C8}
+.trust-badge.warn .tick{background:#FBEDE8;color:#A4452B;border-color:#F0D8CE}
+.trust-badge.warn b{color:#8E3A1F}
+.loc-score{display:flex;gap:12px;align-items:center;border:1px solid var(--line);background:linear-gradient(135deg,#FCFDFC,#FFF8EA);border-radius:15px;padding:12px;margin-bottom:12px;flex-wrap:wrap}
+.loc-ring{flex:none;width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:var(--panel);border:4px solid #4F8A63;text-align:center}
+.loc-ring b{font-family:'Fraunces',serif;font-size:19px;line-height:1}
+.loc-ring span{font-size:8px;font-weight:900;text-transform:uppercase;color:var(--mut);display:block}
+.loc-ring.mid{border-color:#C49A3E}.loc-ring.low{border-color:#C24646}
+.loc-copy{flex:1;min-width:220px}
+.loc-copy h5{font-family:'Fraunces',serif;font-size:15px}
+.loc-copy p{font-size:12px;color:var(--mut);margin-top:3px;line-height:1.5}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:10px}
+.gallery-item{position:relative;border-radius:13px;overflow:hidden;border:1px solid var(--line);background:var(--panel);aspect-ratio:4/3;display:block;width:100%;text-align:left;padding:0}
+.gallery-item img,.gallery-item video{width:100%;height:100%;object-fit:cover;display:block}
+.gallery-item .g-label{position:absolute;left:0;right:0;bottom:0;padding:20px 9px 7px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.82));color:#fff;font-size:11px;font-weight:700;line-height:1.35}
+.gallery-item .g-type{position:absolute;top:7px;left:7px;background:rgba(20,22,16,.82);color:#F6F2E7;font-size:9px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;padding:3px 8px;border-radius:999px}
+.gallery-item .g-del{position:absolute;top:6px;right:6px;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.95);color:#A4452B;display:grid;place-items:center;font-size:12px}
+.pred-line{display:flex;flex-wrap:wrap;gap:10px;align-items:center;border:1px solid var(--line);border-radius:14px;background:#FCFDFC;padding:12px;margin-top:10px}
+.pred-arrow{font-family:'Fraunces',serif;font-size:26px;font-weight:700;line-height:1}
+.pred-arrow.up{color:#2F6644}.pred-arrow.down{color:#A4452B}.pred-arrow.flat{color:var(--mut)}
+.circle-compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.circle-compare>div{border:1px solid var(--line);border-radius:13px;padding:11px 12px;background:#FCFDFC}
+.circle-compare small{font-size:10px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;color:var(--mut);display:block}
+.circle-compare b{font-family:'Fraunces',serif;font-size:18px;display:block;margin-top:4px}
+.circle-compare p{font-size:11.5px;color:var(--mut);margin-top:3px;line-height:1.45}
+@media (max-width:760px){.circle-compare{grid-template-columns:1fr}}
+body[data-theme="dark"] .trust-badge,body[data-theme="dark"] .loc-score,body[data-theme="dark"] .pred-line,body[data-theme="dark"] .circle-compare>div{background:#1B201B;border-color:var(--line);color:var(--ink)}
+body[data-theme="dark"] .loc-ring{background:var(--panel);color:var(--ink)}
+body[data-theme="dark"] .trust-badge .tick{background:#17301F;color:#A7E0C0;border-color:#245A3A}
+body[data-theme="dark"] .trust-badge.warn .tick{background:#361A15;color:#F2A18D;border-color:#5A2B20}
 @media print{
   body{background:#fff !important}
   header,.tooldock,.toolpop,.toast,nav,.hbtns{display:none !important}
@@ -4895,6 +4931,25 @@ body[data-theme="dark"] .calc-up{background:#2B2A1D;color:#E7C46E;border-color:#
     </div>
     <div class="links-stats" id="calcStats"></div>
     <div class="calc-grid">
+      <div class="calc-card" id="calcBank">
+        <div class="calc-head"><span class="calc-ic">🏛️</span><div><h4>Bank Offer Comparison</h4><small>5 banks — best total cost</small></div><span class="calc-up">FY 2026-27</span></div>
+        <div class="calc-body">
+          <div class="field"><label>Loan amount (₹)</label><input id="bkAmt" type="number" min="0" value="5000000"></div>
+          <div id="bkOut" style="margin-top:10px"></div>
+          <div class="calc-src">Rates indicative — bank letter + CIBIL check confirm karein. Processing fee + tenure ke saath total compare hai.</div>
+        </div>
+      </div>
+      <div class="calc-card" id="calcCircle">
+        <div class="calc-head"><span class="calc-ic">🏷️</span><div><h4>Circle vs Market</h4><small>Registry vs market — stamp duty basis</small></div></div>
+        <div class="calc-body">
+          <div class="grid2">
+            <div class="field"><label>Market rate (₹)</label><input id="ccMarket" type="number" min="0" value="6000"></div>
+            <div class="field"><label>Circle rate (₹)</label><input id="ccCircle" type="number" min="0" value="4500"></div>
+          </div>
+          <div class="calc-out" id="ccOut"></div>
+          <div class="calc-src">Stamp duty max(market, circle) pe lagti hai — Collector latest notification confirm karein.</div>
+        </div>
+      </div>
       <div class="calc-card" id="calcEmi">
         <div class="calc-head"><span class="calc-ic">🏦</span><div><h4>Home Loan EMI</h4><small>MCLR + bank rate se EMI, total interest</small></div><span class="calc-up">FY 2026-27</span></div>
         <div class="calc-body">
@@ -7540,6 +7595,11 @@ function normalizeDb(d){
     if(p.inventoryNotes == null) p.inventoryNotes = '';
     if(!Array.isArray(p.inventoryImages)) p.inventoryImages = [];
     if(!Array.isArray(p.inventoryImageKeys)) p.inventoryImageKeys = [];
+    if(!Array.isArray(p.gallery)) p.gallery = [];
+    p.gallery = p.gallery.filter(g => g && g.url).map(g => ({ id: g.id || uid(), type: g.type === 'video' ? 'video' : 'photo', url: String(g.url).trim().slice(0, 800), label: String(g.label || '').trim().slice(0, 80) }));
+    if(p.circleRate == null || p.circleRate === '') p.circleRate = null;
+    if(p.circleUnit == null || p.circleUnit === '') p.circleUnit = '';
+    if(p.circleDate == null) p.circleDate = '';
     if(!Array.isArray(p.priceHistory)) p.priceHistory = [];
     p.priceHistory = p.priceHistory.filter(r => r && (r.date || r.at)).map(r => {
       const nv = v => (v == null || v === '' || isNaN(+v)) ? null : +v;
@@ -9273,19 +9333,34 @@ function quoteText(){
     const wrap = $('#calcStats');
     if(!wrap) return;
     wrap.innerHTML = `
-      <div><div class="k">Calculators</div><div class="v">8</div></div>
+      <div><div class="k">Calculators</div><div class="v">10</div></div>
       <div><div class="k">Stamp + Reg</div><div class="v">7.0%</div></div>
       <div><div class="k">GST</div><div class="v">1% / 5%</div></div>
       <div><div class="k">Bigha (Raj)</div><div class="v">2529 yd²</div></div>`;
   }
+  function bankCalc(){
+    const out = $('#bkOut'); if(!out) return;
+    const amt = parseAmt('#bkAmt');
+    out.innerHTML = bankCompareHTML(amt);
+  }
+  function circleCalc(){
+    const out = $('#ccOut'); if(!out) return;
+    const m = parseAmt('#ccMarket'), c = parseAmt('#ccCircle');
+    const diff = c ? (m - c) / c * 100 : 0;
+    const basis = Math.max(m, c);
+    out.innerHTML = `
+      <div class="calc-row"><span>Registry basis (max)</span><b>₹ ${inr(basis)} / unit</b></div>
+      <div class="calc-row"><span>Market premium</span><b>${diff >= 0 ? '+' : ''}${diff.toFixed(1)}%</b></div>
+      <div class="calc-total"><span>Stamp duty @6% (basis)</span><b>₹ ${inr(basis * 0.06)} / unit</b></div>`;
+  }
   function calcShareAll(){
-    const parts = ['#emOut','#rgOut','#gstOut','#cmOut','#rnOut','#arOut','#afOut','#ppOut'].map(id => $(id)?.innerText?.replace(/\s+/g,' ').trim()).filter(Boolean);
+    const parts = ['#bkOut','#ccOut','#emOut','#rgOut','#gstOut','#cmOut','#rnOut','#arOut','#afOut','#ppOut'].map(id => $(id)?.innerText?.replace(/\s+/g,' ').trim()).filter(Boolean);
     const text = ['*BCS Calculator Summary*', '', parts.join('\n'), '', 'BCS · Business City Square · @ajaysharma.bcs'].join('\n');
     if(navigator.share){ navigator.share({ title: 'BCS Calculators', text }).catch(() => {}); } else { window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank'); }
   }
-  const fns = [emiCalc, regCalc, gstCalc, commCalc, rentCalc, areaCalc, affordCalc, prepayCalc];
+  const fns = [bankCalc, circleCalc, emiCalc, regCalc, gstCalc, commCalc, rentCalc, areaCalc, affordCalc, prepayCalc];
   function runAll(){ fns.forEach(f => { try{ f(); }catch(e){} }); }
-  const ids = ['#emAmt','#emRate','#emYears','#emFee','#rgAmt','#rgStamp','#rgReg','#rgSur','#gstAmt','#gstType','#cmAmt','#cmPct','#cmTds','#cmGst','#rnVal','#rnRent','#rnGrowth','#rnVac','#arVal','#arFrom','#afInc','#afRate','#afYears','#afFoir','#ppLoan','#ppAmt','#ppRate','#ppYears'];
+  const ids = ['#bkAmt','#ccMarket','#ccCircle','#emAmt','#emRate','#emYears','#emFee','#rgAmt','#rgStamp','#rgReg','#rgSur','#gstAmt','#gstType','#cmAmt','#cmPct','#cmTds','#cmGst','#rnVal','#rnRent','#rnGrowth','#rnVac','#arVal','#arFrom','#afInc','#afRate','#afYears','#afFoir','#ppLoan','#ppAmt','#ppRate','#ppYears'];
   ids.forEach(id => { const el = $(id); if(el){ el.addEventListener('input', runAll); el.addEventListener('change', runAll); } });
   $('#calcPrintAll')?.addEventListener('click', () => window.print());
   $('#calcShareAll')?.addEventListener('click', calcShareAll);
@@ -13310,9 +13385,120 @@ async function copyPresentationText(){
 }
 
 /* ---------- project detail ("all in one") ---------- */
+/* Trust & verification layer */
+function trustLayer(p){
+  const docs = (db.documents || []).filter(d => d.projectId === p.id);
+  const verifiedDocs = docs.filter(d => d.status === 'verified').length;
+  const hasPhoto = !!(p.image || (p.gallery || []).length || (p.inventoryImages || []).length);
+  const items = [
+    { id:'rera', label: p.rera ? 'RERA verified' : 'RERA pending', sub: p.rera ? p.rera : 'RERA number not recorded', ok: !!p.rera },
+    { id:'approval', label: p.approval ? 'Approval recorded' : 'Approval pending', sub: approvalLabel(p, true) || 'No approval on file', ok: !!p.approval },
+    { id:'photo', label: hasPhoto ? 'Photo verified' : 'Photo missing', sub: hasPhoto ? ((p.gallery || []).length) + ' gallery · ' + ((p.inventoryImages || []).length) + ' inventory' : 'Add at least one photo', ok: hasPhoto },
+    { id:'docs', label: docs.length ? verifiedDocs + '/' + docs.length + ' docs verified' : 'Docs not vaulted', sub: docs.length ? 'RERA, OC, title tracking' : 'Add RERA/OC/title docs', ok: docs.length > 0 && verifiedDocs === docs.length },
+  ];
+  const score = Math.round(items.filter(i => i.ok).length / items.length * 100);
+  return { items, score };
+}
+function trustStripHTML(p){
+  const t = trustLayer(p);
+  return `<div class="trust-strip">${t.items.map(i => `<div class="trust-badge ${i.ok ? '' : 'warn'}"><span class="tick">${i.ok ? '✓' : '!'}</span><span><b>${esc(i.label)}</b><small>${esc(i.sub)}</small></span></div>`).join('')}</div>`;
+}
+/* Location intelligence */
+function locDistKm(text){
+  if(!text) return null;
+  const m = String(text).match(/([\d.]+)\s*(km|meter|m\b|metre)/i);
+  if(!m) return null;
+  const v = parseFloat(m[1]) || 0;
+  const isM = /met|^\s*m\b/i.test(m[2]) && !/km/i.test(m[2]);
+  return isM && v > 5 ? v / 1000 : v;
+}
+function locationScore(p){
+  const conns = (p.connectivity || []).filter(c => c.label && locDistKm(c.distance) != null);
+  const kms = conns.map(c => locDistKm(c.distance));
+  if(!kms.length){
+    const cor = corridor(p.corridor);
+    return { score: 55, label: 'General', rows: [], note: (cor.name || '') + ' corridor baseline — connectivity rows add karo to precise score milega.' };
+  }
+  const avg = kms.reduce((a,b) => a + b, 0) / kms.length;
+  const entries = conns.map(c => ({ c, km: locDistKm(c.distance) })).sort((a,b) => a.km - b.km);
+  const nearest = entries[0];
+  const score = Math.max(10, Math.min(98, Math.round(100 - Math.min(avg, 15) * 6)));
+  return { score, label: score >= 85 ? 'Prime' : score >= 65 ? 'Good' : 'Far', rows: entries, note: `Avg ${avg.toFixed(1)} km · nearest ${nearest.c.label} ${nearest.km.toFixed(1)} km` };
+}
+function locScoreHTML(p){
+  const ls = locationScore(p);
+  const cls = ls.score >= 85 ? '' : ls.score >= 65 ? 'mid' : 'low';
+  return `<div class="loc-score"><div class="loc-ring ${cls}"><div><b>${ls.score}</b><span>/100</span></div></div><div class="loc-copy"><h5>Location intelligence · ${esc(ls.label)}</h5><p>${esc(ls.note)}${ls.rows.length ? ' · ' + ls.rows.slice(0,3).map(r => esc(r.c.label) + ' ' + r.km.toFixed(1) + 'km').join(' · ') : ''}</p></div></div>`;
+}
+/* Price prediction (linear regression on rate history) */
+function pricePrediction(p){
+  const pts = [...(p.priceHistory || [])].filter(r => r.newRate != null || r.newMin != null || r.newMax != null)
+    .sort((a,b) => (a.at || 0) - (b.at || 0))
+    .map(r => ({ at: r.at || Date.parse(r.date || todayISO()) || Date.now(), val: r.newRate ?? ((r.newMin != null || r.newMax != null) ? ((((r.newMin || r.newMax) + (r.newMax || r.newMin)) / 2) * 100000) : null) }))
+    .filter(x => x.val != null);
+  if(pts.length < 2){
+    const cur = p.pricePerUnit || (p.priceMin ? p.priceMin * 100000 : null);
+    return { pts, slope: 0, pct: 0, next: cur, dir: 'flat', months: 3 };
+  }
+  const t0 = pts[0].at;
+  const xs = pts.map(x => (x.at - t0) / 86400000 / 30.4);
+  const ys = pts.map(x => x.val);
+  const n = pts.length;
+  const mx = xs.reduce((a,b) => a + b, 0) / n, my = ys.reduce((a,b) => a + b, 0) / n;
+  const num = xs.reduce((a,b,i) => a + (b - mx) * (ys[i] - my), 0);
+  const den = xs.reduce((a,b) => a + Math.pow(b - mx, 2), 0) || 1;
+  const slope = num / den; // per month
+  const last = ys[ys.length - 1];
+  const pct = last ? slope / last * 100 : 0;
+  const next3 = last + slope * 3;
+  const dir = pct >= 0.3 ? 'up' : pct <= -0.3 ? 'down' : 'flat';
+  return { pts, slope, pct, next: next3, dir, months: 3 };
+}
+function predHTML(p){
+  const pr = pricePrediction(p);
+  if(!pr.pts.length) return '';
+  const arrow = pr.dir === 'up' ? '↗' : pr.dir === 'down' ? '↘' : '→';
+  const verb = pr.dir === 'up' ? 'Rate badhne ka signal' : pr.dir === 'down' ? 'Rate narm padne ka signal' : 'Rate stable';
+  return `<div class="pred-line"><span class="pred-arrow ${pr.dir}">${arrow}</span><span style="flex:1;min-width:200px"><b style="font-size:13px">${esc(verb)} — 3 month outlook</b><br><small style="color:var(--mut);font-size:11.5px;line-height:1.5">Slope ${pr.pct >= 0 ? '+' : ''}${pr.pct.toFixed(2)}%/month · Forecast ${pr.next ? '₹' + Math.round(pr.next).toLocaleString('en-IN') : '—'} · Basis ${pr.pts.length} revision(s)</small></span><span class="rate-chip ${pr.dir === 'up' ? 'up' : pr.dir === 'down' ? 'down' : 'hot'}">${pr.dir === 'up' ? 'Bullish' : pr.dir === 'down' ? 'Soft' : 'Flat'}</span></div>`;
+}
+/* Circle rate vs market */
+function circleCompareHTML(p){
+  const curRate = p.pricePerUnit || null;
+  const circ = p.circleRate || null;
+  if(!curRate && !circ) return '';
+  const unit = p.circleUnit || p.priceUnit || '';
+  const diff = (curRate && circ) ? Math.round((curRate - circ) / circ * 1000) / 10 : null;
+  const circTotal = circ ? '₹' + Number(circ).toLocaleString('en-IN') + ' / ' + unit : '—';
+  return `<div class="circle-compare">
+    <div><small>Market rate</small><b>${curRate ? '₹' + Number(curRate).toLocaleString('en-IN') + ' / ' + esc(unit) : '—'}</b><p>${esc(priceRange(p))}</p></div>
+    <div><small>Circle rate (registry)</small><b>${circTotal}</b><p>${p.circleDate ? 'Updated ' + esc(fmtDate(p.circleDate)) : 'Circle rate add karo — stamp duty ke liye'}</p></div>
+  </div>${diff != null ? `<p style="font-size:12px;margin-top:8px;color:${diff >= 0 ? 'var(--ink2)' : '#2F6644'};font-weight:700">${diff >= 0 ? 'Market' : 'Registry'} ${diff >= 0 ? 'circle se' : 'ke mukable market'} ${Math.abs(diff).toFixed(1)}% ${diff >= 0 ? 'upar' : 'neeche'} — stamp duty max(market, circle) pe lagegi.</p>` : ''}`;
+}
+/* Bank offer comparison (FY 2026-27, editable note) */
+const BANK_OFFERS = [
+  { bank:'SBI', rate:8.5, fee:0.35, note:'Min processing, 5-day disb.' },
+  { bank:'HDFC', rate:8.65, fee:0.5, note:'Balance transfer offers' },
+  { bank:'ICICI', rate:8.7, fee:0.5, note:'Zero-fee festive' },
+  { bank:'BOB', rate:8.75, fee:0.25, note:'Salaried focus' },
+  { bank:'PNB', rate:8.8, fee:0.5, note:'PSU stable' },
+];
+function bankCompareHTML(loanAmt){
+  const amt = Number(loanAmt) || 5000000;
+  const rows = BANK_OFFERS.map(b => {
+    const r = b.rate / 1200, n = 240;
+    const emi = b.rate ? amt * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1) : amt / n;
+    const total = emi * n + amt * b.fee / 100;
+    return { ...b, emi, total };
+  }).sort((a,b) => a.total - b.total);
+  const best = rows[0];
+  return `<div class="calc-out" style="margin-top:0"><div class="calc-total"><span>Best total — ${esc(best.bank)} @${best.rate}%</span><b>₹ ${Math.round(best.total).toLocaleString('en-IN')}</b></div>
+  ${rows.map(r => `<div class="calc-row"><span>${esc(r.bank)} @${r.rate}% · fee ${r.fee}%</span><b>EMI ₹${Math.round(r.emi).toLocaleString('en-IN')}</b></div>`).join('')}
+  <p class="calc-src" style="margin-top:4px">${esc(best.note)} — rates FY 2026-27 indicative. Bank letter + CIBIL confirm karein. Loan ₹${amt.toLocaleString('en-IN')} / 20y basis.</p></div>`;
+}
 let detailId = null, detailTab = 'overview';
 const DETAIL_TABS = [
   { id:'overview', label:'Overview' },
+  { id:'gallery', label:'Gallery & video', short:'Gallery' },
   { id:'price', label:'Price history', short:'Price' },
   { id:'quality', label:'Quality', short:'Quality' },
   { id:'amenities', label:'Amenities' },
@@ -13339,6 +13525,7 @@ function openDetail(id){
   showOverlay('detailModal');
 }
 function detailTabCount(p, id){
+  if(id === 'gallery') return (p.gallery || []).length;
   if(id === 'amenities') return (p.amenities || []).length;
   if(id === 'checklist') return checklistOf(p).length;
   if(id === 'map') return (p.connectivity || []).filter(c => c.label).length;
@@ -13422,6 +13609,8 @@ function renderDetail(){
         <div class="health-score ${health.grade.cls}"><b>${health.score}</b><span>/100 · ${esc(health.grade.label)}</span></div>
         <div class="health-copy"><div class="lab">Property health score — ${esc(health.grade.note)}</div><div class="health-bars">${[['Data',health.components.data],['Legal',health.components.legal],['Commercial',health.components.commercial],['Demand',health.components.demand],['Docs',health.components.docs]].map(([k,v]) => `<div><span>${k}</span><i><em style="width:${v}%"></em></i><b>${v}</b></div>`).join('')}</div>${health.risks.length ? `<p class="health-risks">⚠️ ${esc(health.risks.join(' · '))}</p>` : '<p class="health-risks ok">✅ No major red flags in current records.</p>'}</div>
       </div>
+      ${trustStripHTML(p)}
+      ${locScoreHTML(p)}
       <div class="dprice-line">
         <div class="dprice"><small>Guide price</small>${priceRange(p)}</div>
         <div class="dchips">${feats.map(f => `<span class="dchip green">${esc(f)}</span>`).join('')}</div>
@@ -13461,8 +13650,31 @@ function renderDetail(){
       ${p.notes ? `<div class="dnotes"><div class="lab">Advisor notes (internal)</div><p>${esc(p.notes)}</p></div>` : ''}`;
   }
 
+  if(detailTab === 'gallery'){
+    const gal = p.gallery || [];
+    body = `<div class="dsec">
+      <div class="dsec-head"><h4>Gallery & video</h4><span class="cnt">${gal.length}</span></div>
+      ${isAdmin() ? `<div class="grid2" style="margin-bottom:10px">
+        <div class="field"><label>Photo / video URL</label><input id="galUrl" placeholder="https://… jpg / youtube / mp4"></div>
+        <div class="field"><label>Type / Label</label><input id="galLabel" placeholder="e.g. 3BHK floor plan"><input id="galType" type="hidden" value="photo"></div>
+      </div>
+      <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px">
+        <button class="btn primary sm" id="galAddUrl">+ Add URL</button>
+        <label class="btn ghost sm" style="cursor:pointer">📸 Upload photo<input type="file" id="galFile" accept="image/*" style="display:none"></label>
+      </div>` : ''}
+      ${gal.length ? `<div class="gallery-grid">${gal.map(g => `
+        <div class="gallery-item">
+          ${g.type === 'video' ? `<video src="${esc(g.url)}" muted preload="metadata"></video>` : `<img src="${esc(g.url)}" alt="${esc(g.label || g.type)}" loading="lazy">`}
+          <span class="g-type">${g.type === 'video' ? '▶ Video' : 'Photo'}</span>
+          ${g.label ? `<span class="g-label">${esc(g.label)}</span>` : ''}
+          ${isAdmin() ? `<button type="button" class="g-del" data-gal-del="${g.id}" title="Remove">✕</button>` : ''}
+        </div>`).join('')}</div>
+        <p style="font-size:11px;color:var(--mut);margin-top:8px">Video pe click karne se project detail me hi play hota hai. YouTube link ke liye type mein “video” URL paste karein aur label me naam likhein — BCS auto-detect karega.</p>` : `<div class="dempty">Abhi gallery khali hai. ${isAdmin() ? 'URL paste karo ya photo upload karo — client ko yahi sabse zyada bharosa deta hai.' : 'Photo verified tab me ek baar admin se add karwayein.'}</div>`}
+    </div>`;
+  }
+
   if(detailTab === 'price'){
-    body = renderPriceTab(p);
+    body = renderPriceTab(p) + circleCompareHTML(p) + predHTML(p);
   }
 
   if(detailTab === 'quality'){
@@ -13482,6 +13694,7 @@ function renderDetail(){
   if(detailTab === 'map'){
     const conns = (p.connectivity || []).filter(x => x.label || x.distance || x.note);
     body = `
+      ${locScoreHTML(p)}
       <div class="map-frame"><iframe src="${mapEmbedUrl(p)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map — ${esc(p.name)}"></iframe></div>
       <div class="map-open">
         <a class="btn ghost sm" href="${esc(mapOpenUrl(p))}" target="_blank" rel="noopener">Open in Google Maps ↗</a>
@@ -13616,6 +13829,35 @@ function bindDetail(){
   $$('#detailBody [data-chk-del]').forEach(el => el.addEventListener('click', () => deleteProjectChecklistItem(detailId, el.dataset.chkDel)));
   $$('#detailBody [data-chk-openproject]').forEach(el => el.addEventListener('click', () => { closeModal('detailModal'); openProject(el.dataset.chkOpenproject); setTimeout(() => setProjectTab('checklist'), 30); }));
 
+  /* gallery tab */
+  const galAdd = $('#galAddUrl');
+  if(galAdd) galAdd.addEventListener('click', () => {
+    const p = currentDetail(); if(!p || !isAdmin()) return;
+    const url = ($('#galUrl')?.value || '').trim();
+    if(!url) return toast('Photo/video URL paste karein', true);
+    const label = ($('#galLabel')?.value || '').trim();
+    const isVid = /youtube\.com|youtu\.be|\.mp4|vimeo/i.test(url);
+    p.gallery = p.gallery || [];
+    p.gallery.push({ id: uid(), type: isVid ? 'video' : 'photo', url, label });
+    save(); toast('Gallery me add ho gaya ✓'); renderDetail();
+  });
+  $$('#detailBody [data-gal-del]').forEach(b => b.addEventListener('click', () => {
+    if(!isAdmin()) return;
+    const p = currentDetail(); if(!p) return;
+    p.gallery = (p.gallery || []).filter(g => g.id !== b.dataset.galDel);
+    save(); toast('Gallery item removed'); renderDetail();
+  }));
+  const galFile = $('#galFile');
+  if(galFile) galFile.addEventListener('change', async e => {
+    const f = e.target.files[0]; if(!f) return;
+    const data = await fileToImage(f, 900, .72);
+    if(!data) return;
+    const p = currentDetail(); if(!p) return;
+    p.gallery = p.gallery || [];
+    p.gallery.push({ id: uid(), type: 'photo', url: data, label: ($('#galLabel')?.value || '').trim() || f.name });
+    save(); toast('Photo upload ✓'); renderDetail();
+  });
+
   $$('#detailBody [data-invimg]').forEach(btn => btn.addEventListener('click', () => {
     const p = currentDetail();
     if(!p) return;
@@ -13671,6 +13913,14 @@ function bindDetail(){
 
   /* price history */
   $$('#detailBody [data-priceadd]').forEach(b => b.addEventListener('click', () => openPriceEntry(detailId)));
+  const circSave = $('#circSave');
+  if(circSave) circSave.addEventListener('click', () => {
+    const p = currentDetail(); if(!p || !isAdmin()) return;
+    p.circleRate = $('#circRateIn').value === '' ? null : (+$('#circRateIn').value || 0);
+    p.circleUnit = $('#circUnitIn').value;
+    p.circleDate = $('#circDateIn').value || todayISO();
+    save(); renderDetail(); toast('Circle rate saved — stamp duty comparison updated');
+  });
   $$('#detailBody [data-priceedit]').forEach(b => b.addEventListener('click', () => openPriceEntry(detailId, b.dataset.priceedit)));
   $$('#detailBody [data-pricedelete]').forEach(b => b.addEventListener('click', () => deletePriceEntry(detailId, b.dataset.pricedelete)));
 
@@ -17426,6 +17676,16 @@ function renderPriceTab(p){
     <div><div class="k">Base price</div><div class="v">${trend && trend.baseV != null ? fmtPrice(trend.baseV) : '—'}<small>First recorded</small></div></div>
   </div>
   ${series.length > 1 ? `<div class="price-chart">${priceChartSVG(series)}</div>` : ''}
+  ${isAdmin() ? `<div class="dsec">
+    <div class="dsec-head"><h4>Circle rate (registry) — Rajasthan Collector</h4><span class="cnt">Admin</span></div>
+    <div class="grid2">
+      <div class="field"><label>Circle rate</label><input id="circRateIn" type="number" min="0" value="${p.circleRate ?? ''}" placeholder="₹ / sq yd"></div>
+      <div class="field"><label>Unit</label><select id="circUnitIn"><option value="sqyd" ${p.circleUnit === 'sqyd' ? 'selected' : ''}>sq yd</option><option value="sqft" ${p.circleUnit === 'sqft' ? 'selected' : ''}>sq ft</option></select></div>
+      <div class="field"><label>Updated date</label><input id="circDateIn" type="date" value="${p.circleDate || ''}"></div>
+      <div class="field"><label>&nbsp;</label><button class="btn primary sm" id="circSave" type="button">Save circle rate</button></div>
+    </div>
+    <p class="mini-note" style="margin-top:8px">Stamp duty max(market, circle) pe lagti hai — fresh Collector notification se ye update karo.</p>
+  </div>` : ''}
   <div class="dsec">
     <div class="dsec-head"><h4>Revision timeline</h4><span class="cnt">${h.length}</span>
       ${isAdmin() ? '<button class="btn ghost sm" data-priceadd="1" style="margin-left:auto">+ Add revision</button>' : ''}
