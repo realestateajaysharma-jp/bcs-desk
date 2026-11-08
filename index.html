@@ -5161,13 +5161,14 @@ body[data-theme="dark"] .calc-body .field input,body[data-theme="dark"] .calc-bo
   <section class="view" id="view-pulse">
     <div class="adv-head">
       <div>
-        <div class="eyebrow">BCS · market intelligence · Aurum Pulse + Square Yards</div>
-        <h2 class="adv-title">Jaipur market,<br><em>dono sources, ek tab.</em></h2>
-        <p class="adv-sub">Aurum Pulse (PropTiger) + Square Yards ki live Jaipur intelligence — ek hi jagah compare aur reuse karo. BCS apne project ka rate inke median se match karke Trust Sheet me lagata hai. <b>Vaishali (mature), Mansarovar (mid), Jagatpura (new stock), Ajmer Road (new launches)</b> — verified listings + developer pipeline ek sath.</p>
+        <div class="eyebrow">BCS · market intelligence · Aurum + Square Yards + 2bigha</div>
+        <h2 class="adv-title">Jaipur market,<br><em>teeson sources, ek tab.</em></h2>
+        <p class="adv-sub">Aurum Pulse + Square Yards + 2bigha (plots/farmland map) — ek hi jagah compare aur reuse karo. Apartments ke liye Pulse/SY, plots aur agriculture land ke liye 2bigha ka live map. BCS apne project ka rate inke median se match karke Trust Sheet me lagata hai. <b>Vaishali (mature), Mansarovar (mid), Jagatpura (new stock), Ajmer Road (new launches)</b> — verified listings + developer pipeline ek sath.</p>
       </div>
       <div class="adv-head-actions">
-        <button class="btn ghost" id="pulseOpen">↗ Aurum open</button>
-        <button class="btn ghost" id="pulseSyOpen">↗ Square Yards open</button>
+        <button class="btn ghost" id="pulseOpen">↗ Aurum</button>
+        <button class="btn ghost" id="pulseSyOpen">↗ Square Yards</button>
+        <button class="btn ghost" id="pulse2bOpen">↗ 2bigha map</button>
         <button class="btn primary" id="pulseShare">Share WhatsApp</button>
       </div>
     </div>
@@ -5175,10 +5176,10 @@ body[data-theme="dark"] .calc-body .field input,body[data-theme="dark"] .calc-bo
       <div><div class="k">Pulse total proj</div><div class="v">969</div></div>
       <div><div class="k">New launches</div><div class="v">348</div></div>
       <div><div class="k">SY median ₹/sqft</div><div class="v">₹4.8k</div></div>
-      <div><div class="k">SY listings</div><div class="v">1,066</div></div>
+      <div><div class="k">2bigha Jaipur plots</div><div class="v">Map live</div></div>
     </div>
     <div class="panel" style="margin-top:12px">
-      <div class="panel-head"><h4>Jaipur at a glance — dono sources ka summary</h4><span class="n-badge">Sep-Nov 2026</span></div>
+      <div class="panel-head"><h4>Jaipur at a glance — teeson sources ka summary</h4><span class="n-badge">Sep-Nov 2026</span></div>
       <div class="brief-grid">
         <div class="brief-box"><h5>🏘️ Aurum — localities</h5><p><b>Vaishali</b> mature, <b>Mansarovar</b> mid & resale strong, <b>Jagatpura</b> new stock + airport, <b>Ajmer Road</b> sabse bada launch pipeline, <b>Tonk</b> airport corridor. Infra: Metro + Delhi-Mumbai Expressway belt, Mahindra SEZ.</p></div>
         <div class="brief-box"><h5>📈 Square Yards — price trend</h5><p>Asking median <b>₹4,800/sq ft</b> (Sep 2026, cooling QoQ). Quarterly: Sep 4,850 · Jun 4,950 · Mar 4,900 · Dec 5,000. Micromarket: Central 8,400 · East 5,250 · West 4,750 · South 4,600 · North 4,400.</p></div>
@@ -5187,21 +5188,24 @@ body[data-theme="dark"] .calc-body .field input,body[data-theme="dark"] .calc-bo
       </div>
       <div class="brief-grid" style="margin-top:10px">
         <div class="brief-box"><h5>🏛️ Top developers (SY)</h5><p><b>Ashiana</b> 13 proj · 47yr · ₹10.8L–5.42 Cr · <b>Manglam</b> 38 proj · <b>Upasana</b> 33 proj · <b>Unique Dream</b> 45 proj · <b>Sand Dune</b> 72 proj · <b>Suncity</b> 5 proj. BCS Developers tab se cross-check karo.</p></div>
-        <div class="brief-box"><h5>💰 How BCS uses this</h5><p>SY median (4.8k) vs BCS project rate = over/…, Pulse vs SY = corridor truth. Trust Sheet + Price Prediction isi se jodte hain — client ko “market se 8% neeche” confidently bolo.</p></div>
+        <div class="brief-box"><h5>🌾 2bigha — plots & farmland (Jaipur map)</h5><p>Agriculture / farm / industrial plots ka live map. Sample: <b>5 Bigha industrial (Rampura)</b> · <b>1,595 sq yd residential</b> · <b>2.31 Bigha commercial (Vaishali)</b>. BCS plots ke liye verified title + photo + owner details ke saath search karo.</p></div>
+        <div class="brief-box"><h5>💰 How BCS uses this</h5><p>SY median (4.8k) vs BCS project rate = over/under-…, Pulse vs SY = corridor truth, 2bigha = plot/location validation. Trust Sheet + Price Prediction isi se jodte hain — client ko “market se 8% neeche” confidently bolo.</p></div>
+        <div class="brief-box"><h5>🧭 When to use which</h5><p><b>Apartments/flats:</b> Pulse + SY · <b>Plots/farmland:</b> 2bigha map zoom (Jaipur centre lat 26.98, lng 75.59) · <b>Glossary/circle rate:</b> Aurum tools + BCS Calculators.</p></div>
       </div>
       <div style="margin-top:12px">
-        <div class="seg" id="pulseTabs" style="display:inline-flex">
+        <div class="seg" id="pulseTabs" style="display:inline-flex;flex-wrap:wrap">
           <button data-pulse-src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" class="on">Aurum Pulse</button>
           <button data-pulse-src="https://www.squareyards.com/jaipur-real-estate">Square Yards</button>
+          <button data-pulse-src="https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77">2bigha — Jaipur plots map</button>
         </div>
-        <iframe id="pulseFrame" src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum Pulse + Square Yards" style="width:100%;height:560px;border:1px solid var(--line);border-radius:14px;background:#fff" loading="lazy"></iframe>
+        <iframe id="pulseFrame" src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum Pulse + Square Yards + 2bigha" style="width:100%;height:560px;border:1px solid var(--line);border-radius:14px;background:#fff" loading="lazy"></iframe>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center">
           <a class="btn ghost sm" href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">↗ Aurum full page</a>
           <a class="btn ghost sm" href="https://www.squareyards.com/jaipur-real-estate" target="_blank" rel="noopener">↗ Square Yards Jaipur</a>
+          <a class="btn ghost sm" href="https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77" target="_blank" rel="noopener">↗ 2bigha Jaipur plots map</a>
           <a class="btn ghost sm" href="https://www.squareyards.com/new-projects-in-jaipur" target="_blank" rel="noopener">New launches — SY</a>
           <a class="btn ghost sm" href="https://www.squareyards.com/ready-to-move-projects-in-jaipur" target="_blank" rel="noopener">Ready to move — SY</a>
-          <a class="btn ghost sm" href="https://www.aurumproptech.in/pulse/glossary" target="_blank" rel="noopener">Glossary — Aurum</a>
-          <span style="font-size:11px;color:var(--mut)">Sources: Aurum Pulse (PropTiger) + Square Yards · checked Nov 2026 · BCS independent verify karke use karo.</span>
+          <span style="font-size:11px;color:var(--mut)">Sources: Aurum Pulse (PropTiger) · Square Yards · 2bigha · checked Nov 2026 · BCS independent verify karke use karo.</span>
         </div>
       </div>
     </div>
@@ -9614,8 +9618,9 @@ function quoteText(){
   $('#rtReset')?.addEventListener('click', resetRates);
   $('#pulseOpen')?.addEventListener('click', () => window.open('https://www.aurumproptech.in/pulse/properties/jaipur/overview', '_blank', 'noopener'));
   $('#pulseSyOpen')?.addEventListener('click', () => window.open('https://www.squareyards.com/jaipur-real-estate', '_blank', 'noopener'));
+  $('#pulse2bOpen')?.addEventListener('click', () => window.open('https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77', '_blank', 'noopener'));
   $('#pulseShare')?.addEventListener('click', () => {
-    const txt = '*BCS Market Pulse — Jaipur* (Aurum + Square Yards)\n' + 'Pulse: 969 projects · 348 new launches · Avg ₹5,223/sq ft\n' + 'Square Yards: 1,066 listings · Median ₹4.8k/sq ft · Sep 4,850\n' + 'Vaishali 6,550 · Ajmer Rd 3,450 · Jagatpura 4,800 · Mansarovar 4,350 · Tonk Rd 5,400\n' + 'Ashiana Oma ₹1.35–5.42 Cr · Manglam 38 proj · Upasana 33\n' + 'Aurum: https://www.aurumproptech.in/pulse/properties/jaipur/overview\n' + 'SY: https://www.squareyards.com/jaipur-real-estate\n' + 'BCS · Business City Square · @ajaysharma.bcs';
+    const txt = '*BCS Market Pulse — Jaipur* (Aurum + Square Yards + 2bigha)\n' + 'Pulse: 969 projects · 348 new launches · Avg ₹5,223/sq ft\n' + 'Square Yards: 1,066 listings · Median ₹4.8k/sq ft · Sep 4,850\n' + 'Vaishali 6,550 · Ajmer Rd 3,450 · Jagatpura 4,800 · Mansarovar 4,350 · Tonk Rd 5,400\n' + '2bigha plots (Jaipur map): Industrial 5 Bigha · 1,595 sq yd · Commercial Vaishali\n' + 'Aurum: https://www.aurumproptech.in/pulse/properties/jaipur/overview\n' + 'SY: https://www.squareyards.com/jaipur-real-estate\n' + '2bigha: https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.98&lng=75.59&zoom=7.77\n' + 'BCS · Business City Square · @ajaysharma.bcs';
     if(navigator.share){ navigator.share({ title: 'BCS Market Pulse — Jaipur', text: txt }).catch(() => {}); } else { window.open('https://wa.me/?text=' + encodeURIComponent(txt), '_blank'); }
   });
   $$('#pulseTabs button').forEach(b => b.addEventListener('click', () => {
