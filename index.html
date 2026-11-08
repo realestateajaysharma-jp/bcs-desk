@@ -4064,8 +4064,13 @@ body[data-theme="dark"] table td{color:var(--ink2)}
     <form id="lockForm" autocomplete="off">
       <div class="lock-form-block on" id="lockAdminBlock">
         <label for="lockPass">Admin password</label>
-        <div class="lock-input">
-          <input id="lockPass" type="password" inputmode="numeric" placeholder="••••" autocomplete="current-password" aria-label="Admin password">
+        <div class="lock-input" style="position:relative">
+          <input id="lockPass" type="password" inputmode="numeric" placeholder="••••" autocomplete="current-password" aria-label="Admin password" style="padding-right:44px">
+          <button type="button" class="xbtn" id="passEye" title="Show / hide" aria-label="Show password" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:none;cursor:pointer;font-size:14px">👁</button>
+        </div>
+        <div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:8px">
+          <button type="button" class="dl-mini-btn" id="fillAdminPass">Fill 5794</button>
+          <span style="font-size:11px;color:var(--mut);align-self:center">Suspect wrong tab? Advisor tab pe 5794 nahi lagega — Admin tab pe hi lagao.</span>
         </div>
       </div>
       <div class="lock-form-block" id="lockAdvisorBlock">
@@ -4078,14 +4083,14 @@ body[data-theme="dark"] table td{color:var(--ink2)}
         <div class="lock-hint">Sab advisors ke liye ek hi password: <b>1111</b>. Advisor select karenge to sirf unka assigned data dikhega.</div>
       </div>
       <button type="submit" class="btn primary" id="lockSubmit" style="width:100%;margin-top:10px;justify-content:center">Unlock desk →</button>
-      <div class="lock-err" id="lockErr"></div>
+      <div class="lock-err" id="lockErr" aria-live="polite"></div>
     </form>
     <div class="lock-admin">
       <div class="avatar">AS</div>
       <div><b>Ajay Sharma</b><span>Administrator · BCS</span></div>
       <span class="lock-secure">Local only</span>
     </div>
-    <p class="lock-note">Privacy view, not encryption — data stays on this device. Admin password 5794 · advisor password 1111.</p>
+    <p class="lock-note" style="font-size:12px;line-height:1.6">Privacy view, not encryption — data stays on this device.<br><b style="color:#43463D">Admin password 5794 · Advisor password 1111</b><br>Admin tab pe hi 5794 lagao. Nahi khule toh page refresh karke dobara try karo.</p>
   </div>
 </div>
 
@@ -16756,12 +16761,25 @@ $('#lockForm').addEventListener('submit', e => {
 });
 function lockError(msg, focusSel){
   $('#lockErr').textContent = msg;
+  $('#lockErr').style.display = 'block';
   const card = $('#lockCard');
   card.classList.remove('shake');
   void card.offsetWidth;
   card.classList.add('shake');
   try{ $(focusSel).select(); }catch(e){}
 }
+$('#passEye')?.addEventListener('click', () => {
+  const inp = $('#lockPass');
+  if(!inp) return;
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+  $('#passEye').textContent = inp.type === 'text' ? '🙈' : '👁';
+  inp.focus();
+});
+$('#fillAdminPass')?.addEventListener('click', () => {
+  if($('#lockPass')) $('#lockPass').value = '5794';
+  $('#lockErr').textContent = '';
+  $('#lockErr').style.display = 'none';
+});
 $('#lockBtn').addEventListener('click', () => {
   try{ sessionStorage.removeItem(AUTH_KEY); }catch(e){}
   authState = null;
