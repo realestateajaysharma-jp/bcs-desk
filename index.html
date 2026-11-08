@@ -3957,6 +3957,8 @@ body[data-theme="dark"] .trust-badge,body[data-theme="dark"] .loc-score,body[dat
 body[data-theme="dark"] .loc-ring{background:var(--panel);color:var(--ink)}
 body[data-theme="dark"] .trust-badge .tick{background:#17301F;color:#A7E0C0;border-color:#245A3A}
 body[data-theme="dark"] .trust-badge.warn .tick{background:#361A15;color:#F2A18D;border-color:#5A2B20}
+body[data-theme="dark"] .calc-card,body[data-theme="dark"] #ratesStudio,body[data-theme="dark"] #taxNewsStrip{background:var(--panel);border-color:var(--line);color:var(--ink)}
+body[data-theme="dark"] .calc-body .field input,body[data-theme="dark"] .calc-body .field select,body[data-theme="dark"] #ratesStudio .field input{background:#12160F;border-color:var(--line);color:var(--ink)}
 @media print{
   body{background:#fff !important}
   header,.tooldock,.toolpop,.toast,nav,.hbtns{display:none !important}
@@ -4903,6 +4905,11 @@ body[data-theme="dark"] .trust-badge.warn .tick{background:#361A15;color:#F2A18D
     </div>
 
     <div class="links-stats" id="taxStats"></div>
+    <div class="panel" id="taxNewsStrip" style="margin-top:12px">
+      <div class="panel-head"><h4>🔴 Live updates — FY 2026-27 (best sources)</h4><span class="n-badge" id="taxNewsCount">6</span></div>
+      <p style="font-size:12px;color:var(--mut);line-height:1.55;margin-bottom:10px">Incometax / CBIC / Ministry of Housing ke latest notifications se hand-picked. Har card pe <b>source link</b> — client ko turant forward karo. <b>Last checked: 08 Nov 2026.</b></p>
+      <div class="tax-grid" id="taxNewsGrid" style="margin-top:0"></div>
+    </div>
 
     <div class="toolbar links-toolbar">
       <div class="adv-search links-search">
@@ -4930,6 +4937,27 @@ body[data-theme="dark"] .trust-badge.warn .tick{background:#361A15;color:#F2A18D
       </div>
     </div>
     <div class="links-stats" id="calcStats"></div>
+    <div class="panel" id="ratesStudio" style="margin-top:12px">
+      <div class="panel-head"><h4>⚙️ Rates Studio — ek jagah bharo, sab calculators update</h4><span class="n-badge">FY 2026-27</span></div>
+      <p style="font-size:12px;color:var(--mut);line-height:1.55;margin-bottom:10px">Naya slab/notification aaye toh bas yahin update karke <b>Save rates</b> dabao — EMI, registration, GST, brokerage, sab calculator turant naye rate use karenge. Browser me save hota hai.</p>
+      <div class="grid2" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr));display:grid;gap:10px">
+        <div class="field"><label>Stamp duty %</label><input id="rtStamp" type="number" step="0.1" min="0" value="6"></div>
+        <div class="field"><label>Registration %</label><input id="rtReg" type="number" step="0.1" min="0" value="1"></div>
+        <div class="field"><label>Surcharge %</label><input id="rtSur" type="number" step="0.1" min="0" value="0"></div>
+        <div class="field"><label>MCLR / Home loan %</label><input id="rtMclr" type="number" step="0.05" min="0" value="8.6"></div>
+        <div class="field"><label>Processing fee %</label><input id="rtFee" type="number" step="0.05" min="0" value="0.5"></div>
+        <div class="field"><label>Brokerage %</label><input id="rtBroker" type="number" step="0.1" min="0" value="2"></div>
+        <div class="field"><label>TDS (194-IB) %</label><input id="rtTds" type="number" step="0.1" min="0" value="5"></div>
+        <div class="field"><label>GST brokerage %</label><input id="rtGstB" type="number" step="0.1" min="0" value="18"></div>
+        <div class="field"><label>Rent growth %</label><input id="rtGrowth" type="number" step="0.1" min="0" value="5"></div>
+        <div class="field"><label>FY label</label><input id="rtFy" type="text" value="FY 2026-27" placeholder="FY 2026-27"></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+        <button class="btn primary sm" id="rtSave">Save rates</button>
+        <button class="btn ghost sm" id="rtReset">Reset defaults</button>
+        <span style="margin-left:auto;font-size:11px;color:var(--mut);align-self:center" id="rtSavedNote">Saved in browser · sab calculators isse link hain</span>
+      </div>
+    </div>
     <div class="calc-grid">
       <div class="calc-card" id="calcBank">
         <div class="calc-head"><span class="calc-ic">🏛️</span><div><h4>Bank Offer Comparison</h4><small>5 banks — best total cost</small></div><span class="calc-up">FY 2026-27</span></div>
@@ -5062,8 +5090,53 @@ body[data-theme="dark"] .trust-badge.warn .tick{background:#361A15;color:#F2A18D
           <div class="calc-src">Prepay charges floating rate pe generally nil — bank letter confirm karein. Tenure vs EMI kam ka option dekho.</div>
         </div>
       </div>
+      <div class="calc-card" id="calcSip">
+        <div class="calc-head"><span class="calc-ic">🌱</span><div><h4>SIP / Investment Growth</h4><small>Down-payment ke liye future value</small></div></div>
+        <div class="calc-body">
+          <div class="grid2">
+            <div class="field"><label>Monthly SIP (₹)</label><input id="spAmt" type="number" min="0" value="25000"></div>
+            <div class="field"><label>Duration (years)</label><input id="spYrs" type="number" min="1" max="30" value="7"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Expected return (% p.a.)</label><input id="spRet" type="number" min="0" step="0.5" value="12"></div>
+            <div class="field"><label>Inflation (%)</label><input id="spInf" type="number" min="0" step="0.1" value="6"></div>
+          </div>
+          <div class="calc-out" id="spOut"></div>
+          <div class="calc-src">Illustrative only — mutual fund market risk. Down-payment target ke liye horizon banao.</div>
+        </div>
+      </div>
+      <div class="calc-card" id="calcRentOwn">
+        <div class="calc-head"><span class="calc-ic">⚖️</span><div><h4>Rent vs Own Break-even</h4><small>Kitne saal ke baad kharidna better</small></div></div>
+        <div class="calc-body">
+          <div class="grid2">
+            <div class="field"><label>Monthly rent (₹)</label><input id="roRent" type="number" min="0" value="35000"></div>
+            <div class="field"><label>Property value (₹)</label><input id="roVal" type="number" min="0" value="6500000"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Loan rate (% p.a.)</label><input id="roRate" type="number" min="0" step="0.05" value="8.6"></div>
+            <div class="field"><label>Property appreciation (% p.a.)</label><input id="roApp" type="number" min="0" step="0.5" value="6"></div>
+          </div>
+          <div class="calc-out" id="roOut"></div>
+          <div class="calc-src">Rough break-even — maintenance, tax benefit, mobility ke liye CA se check karein.</div>
+        </div>
+      </div>
+      <div class="calc-card" id="calcDelay">
+        <div class="calc-head"><span class="calc-ic">⏳</span><div><h4>RERA Delay Interest</h4><small>MCLR + 2% — promised date se delay</small></div><span class="calc-up">RERA Act</span></div>
+        <div class="calc-body">
+          <div class="grid2">
+            <div class="field"><label>Paid amount (₹)</label><input id="dlPaid" type="number" min="0" value="1500000"></div>
+            <div class="field"><label>Delay (months)</label><input id="dlMonths" type="number" min="0" value="6"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>MCLR (% p.a.)</label><input id="dlMclr" type="number" min="0" step="0.05" value="8.6"></div>
+            <div class="field"><label>Interest = MCLR + 2%</label><input id="dlRateOut" type="text" readonly value="+2% add"></div>
+          </div>
+          <div class="calc-out" id="dlOut"></div>
+          <div class="calc-src">RERA section 31 / rules: bank MCLR + 2% interest. Exact SBI MCLR at delay date confirm karein.</div>
+        </div>
+      </div>
     </div>
-    <p class="lock-hint" style="margin-top:14px">Rates har notification pe badal sakte hain — har calculator me slab input hai taaki admin turant update kar sake. Final legal/tax advice ke liye CA/advocate se confirm karein.</p>
+    <p class="lock-hint" style="margin-top:14px">Rates har notification pe badal sakte hain — upar <b>Rates Studio</b> me ek jagah update karo. Final legal/tax advice ke liye CA/advocate se confirm karein.</p>
   </section>
 
   <section class="view" id="view-templates">
@@ -9333,10 +9406,10 @@ function quoteText(){
     const wrap = $('#calcStats');
     if(!wrap) return;
     wrap.innerHTML = `
-      <div><div class="k">Calculators</div><div class="v">10</div></div>
-      <div><div class="k">Stamp + Reg</div><div class="v">7.0%</div></div>
+      <div><div class="k">Calculators</div><div class="v">13</div></div>
+      <div><div class="k">Stamp + Reg</div><div class="v">${num('#rgStamp') + num('#rgReg')}%</div></div>
       <div><div class="k">GST</div><div class="v">1% / 5%</div></div>
-      <div><div class="k">Bigha (Raj)</div><div class="v">2529 yd²</div></div>`;
+      <div><div class="k">Home loan</div><div class="v">${num('#emRate')}%</div></div>`;
   }
   function bankCalc(){
     const out = $('#bkOut'); if(!out) return;
@@ -9351,20 +9424,97 @@ function quoteText(){
     out.innerHTML = `
       <div class="calc-row"><span>Registry basis (max)</span><b>₹ ${inr(basis)} / unit</b></div>
       <div class="calc-row"><span>Market premium</span><b>${diff >= 0 ? '+' : ''}${diff.toFixed(1)}%</b></div>
-      <div class="calc-total"><span>Stamp duty @6% (basis)</span><b>₹ ${inr(basis * 0.06)} / unit</b></div>`;
+      <div class="calc-total"><span>Stamp duty @${num('#rgStamp')}% (basis)</span><b>₹ ${inr(basis * num('#rgStamp') / 100)} / unit</b></div>`;
+  }
+  function sipCalc(){
+    const P = parseAmt('#spAmt'), r = num('#spRet') / 12 / 100, n = Math.max(1, Math.round(num('#spYrs') * 12));
+    const fv = P * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+    const invested = P * n;
+    $('#spOut').innerHTML = `
+      <div class="calc-row"><span>Invested</span><b>₹ ${inr(invested)}</b></div>
+      <div class="calc-row"><span>Expected gains @${num('#spRet')}%</span><b>₹ ${inr(Math.max(0, fv - invested))}</b></div>
+      <div class="calc-total"><span>Future value</span><b>₹ ${inr(fv)}</b></div>`;
+  }
+  function rentOwnCalc(){
+    const rent = parseAmt('#roRent'), val = parseAmt('#roVal'), r = num('#roRate') / 12 / 100, app = num('#roApp') / 100;
+    const n = 240, emi = r ? val * 0.8 * r * Math.pow(1+r,n)/(Math.pow(1+r,n)-1) : (val*0.8)/n;
+    let cumRent = 0, cumApt = val;
+    let breakYear = 0;
+    for(let y = 1; y <= 15; y++){
+      cumRent += rent * 12 * Math.pow(1.05, y-1);
+      cumApt = val * Math.pow(1+app, y);
+      if(emi * 12 * y >= cumRent && breakYear === 0 && cumApt > val) breakYear = y;
+    }
+    $('#roOut').innerHTML = `
+      <div class="calc-row"><span>EMI (80% loan)</span><b>₹ ${inr(emi)}</b></div>
+      <div class="calc-row"><span>Rent 15y growth @5%</span><b>₹ ${inr(cumRent)}</b></div>
+      <div class="calc-row"><span>Value after 10y @${num('#roApp')}%</span><b>₹ ${inr(val*Math.pow(1+app,10))}</b></div>
+      <div class="calc-total"><span>Indicative break-even</span><b>${breakYear ? breakYear + ' yrs' : '10+ yrs'}</b></div>`;
+  }
+  function delayCalc(){
+    const paid = parseAmt('#dlPaid'), mo = Math.max(0, num('#dlMonths')), mclr = num('#dlMclr');
+    const rate = (mclr + 2) / 100;
+    const interest = paid * rate * mo / 12;
+    $('#dlRateOut').value = (mclr + 2).toFixed(2) + '%';
+    $('#dlOut').innerHTML = `
+      <div class="calc-row"><span>Interest rate (MCLR+2%)</span><b>${(mclr+2).toFixed(2)}%</b></div>
+      <div class="calc-row"><span>Delay period</span><b>${mo} months</b></div>
+      <div class="calc-total"><span>Compensation due</span><b>₹ ${inr(interest)}</b></div>`;
+  }
+  /* Rates Studio — master source */
+  const RAT_KEY = 'bcs_rates_v1';
+  const MAP = { rtStamp:'#rgStamp', rtReg:'#rgReg', rtSur:'#rgSur', rtMclr:'#emRate', rtFee:'#emFee', rtBroker:'#cmPct', rtTds:'#cmTds', rtGstB:'#cmGst', rtGrowth:'#rnGrowth' };
+  function applyRatesToCalcs(){
+    Object.entries(MAP).forEach(([a,b]) => { const v = $( '#'+a)?.value; if(v !== '' && v != null && $(b)) $(b).value = v; });
+    if($('#rtMclr')?.value){
+      if($('#afRate')) $('#afRate').value = $('#rtMclr').value;
+      if($('#ppRate')) $('#ppRate').value = $('#rtMclr').value;
+      if($('#roRate')) $('#roRate').value = $('#rtMclr').value;
+      if($('#dlMclr')) $('#dlMclr').value = $('#rtMclr').value;
+    }
+    if($('#rtFy')?.value){
+      const fy = $('#rtFy').value;
+      $$('.calc-up').forEach(el => { if(el.textContent.includes('FY')) el.textContent = fy; });
+    }
+  }
+  function loadRates(){
+    try{
+      const raw = localStorage.getItem(RAT_KEY);
+      if(!raw) return;
+      const r = JSON.parse(raw);
+      Object.keys(r).forEach(k => { const el = $('#'+k); if(el) el.value = r[k]; });
+      if(r.rtFy) $('#rtFy').value = r.rtFy;
+    }catch(e){}
+    applyRatesToCalcs();
+  }
+  function saveRates(){
+    const r = {};
+    ['rtStamp','rtReg','rtSur','rtMclr','rtFee','rtBroker','rtTds','rtGstB','rtGrowth','rtFy'].forEach(k => { r[k] = $('#'+k)?.value ?? ''; });
+    try{ localStorage.setItem(RAT_KEY, JSON.stringify(r)); }catch(e){}
+    applyRatesToCalcs();
+    $('#rtSavedNote').textContent = 'Saved ' + new Date().toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' }) + ' · sab calculators link hain';
+    toast('Rates saved ✓ — sab calculators update');
+    runAll();
+  }
+  function resetRates(){
+    ['rtStamp','rtReg','rtSur','rtMclr','rtFee','rtBroker','rtTds','rtGstB','rtGrowth','rtFy'].forEach(k => { const d = { rtStamp:6, rtReg:1, rtSur:0, rtMclr:8.6, rtFee:0.5, rtBroker:2, rtTds:5, rtGstB:18, rtGrowth:5, rtFy:'FY 2026-27' }[k]; if($('#'+k)) $('#'+k).value = d; });
+    try{ localStorage.removeItem(RAT_KEY); }catch(e){}
+    applyRatesToCalcs(); runAll(); toast('Rates reset');
   }
   function calcShareAll(){
-    const parts = ['#bkOut','#ccOut','#emOut','#rgOut','#gstOut','#cmOut','#rnOut','#arOut','#afOut','#ppOut'].map(id => $(id)?.innerText?.replace(/\s+/g,' ').trim()).filter(Boolean);
+    const parts = ['#bkOut','#ccOut','#emOut','#rgOut','#gstOut','#cmOut','#rnOut','#arOut','#afOut','#ppOut','#spOut','#roOut','#dlOut'].map(id => $(id)?.innerText?.replace(/\s+/g,' ').trim()).filter(Boolean);
     const text = ['*BCS Calculator Summary*', '', parts.join('\n'), '', 'BCS · Business City Square · @ajaysharma.bcs'].join('\n');
     if(navigator.share){ navigator.share({ title: 'BCS Calculators', text }).catch(() => {}); } else { window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank'); }
   }
-  const fns = [bankCalc, circleCalc, emiCalc, regCalc, gstCalc, commCalc, rentCalc, areaCalc, affordCalc, prepayCalc];
-  function runAll(){ fns.forEach(f => { try{ f(); }catch(e){} }); }
-  const ids = ['#bkAmt','#ccMarket','#ccCircle','#emAmt','#emRate','#emYears','#emFee','#rgAmt','#rgStamp','#rgReg','#rgSur','#gstAmt','#gstType','#cmAmt','#cmPct','#cmTds','#cmGst','#rnVal','#rnRent','#rnGrowth','#rnVac','#arVal','#arFrom','#afInc','#afRate','#afYears','#afFoir','#ppLoan','#ppAmt','#ppRate','#ppYears'];
+  const fns = [bankCalc, circleCalc, emiCalc, regCalc, gstCalc, commCalc, rentCalc, areaCalc, affordCalc, prepayCalc, sipCalc, rentOwnCalc, delayCalc];
+  function runAll(){ fns.forEach(f => { try{ f(); }catch(e){} }); renderCalcStats(); }
+  const ids = ['#bkAmt','#ccMarket','#ccCircle','#emAmt','#emRate','#emYears','#emFee','#rgAmt','#rgStamp','#rgReg','#rgSur','#gstAmt','#gstType','#cmAmt','#cmPct','#cmTds','#cmGst','#rnVal','#rnRent','#rnGrowth','#rnVac','#arVal','#arFrom','#afInc','#afRate','#afYears','#afFoir','#ppLoan','#ppAmt','#ppRate','#ppYears','#spAmt','#spYrs','#spRet','#spInf','#roRent','#roVal','#roRate','#roApp','#dlPaid','#dlMonths','#dlMclr'];
   ids.forEach(id => { const el = $(id); if(el){ el.addEventListener('input', runAll); el.addEventListener('change', runAll); } });
+  $('#rtSave')?.addEventListener('click', saveRates);
+  $('#rtReset')?.addEventListener('click', resetRates);
   $('#calcPrintAll')?.addEventListener('click', () => window.print());
   $('#calcShareAll')?.addEventListener('click', calcShareAll);
-  renderCalcStats();
+  loadRates();
   runAll();
 })();
 function openVisit(id, presetClientId, presetProjectId, presetAdvisorId){
@@ -20309,6 +20459,39 @@ async function shareTaxArticle(id){
   }
   window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
 }
+/* Live updates — editable pool from best official sources (FY 2026-27) */
+const TAX_LIVE = [
+  { date:'2026-08-15', cat:'saving', title:'Budget 2026-27: Revised slabs for new regime', body:'Central Budget 2026-27 me new regime ke basic exemption aur slab revised. Agar aap buyer hain toh total income tax benefit calculator me new slab lagao — purana slab galat tax dikhayega.', action:'Buyer ki salary slab new regime se check karo — old regime abhi bhi chahiye toh deduction proof rakho.', source:'Income Tax India · Finance Ministry', url:'https://www.incometax.gov.in/iec/foportal/help/individual/return-applicable-1', tags:['Budget 2026','new regime','slab'] },
+  { date:'2026-06-01', cat:'advice', title:'RERA Rajasthan: % escrow rule abhi bhi 70%', body:'Rajasthan me promoter ko collection ka 70% alag RERA escrow account me rakhna hai. Agreement me % verify karo — 100% bahar nikala toh risk flag karo.', action:'Promoter se escrow statement mangwao before token.', source:'RERA Rajasthan', url:'https://rera.rajasthan.gov.in/', tags:['RERA','escrow','rajasthan'] },
+  { date:'2026-05-20', cat:'facts', title:'CBIC: GST on under-construction — 1% / 5% abhi bhi standstill', body:'Under-construction GST ka affordable 1% aur non-affordable 5% (1/3 abatement ke baad) rule same hai. Ready-to-move 0% hai. Agreement type ke hisab se calculator me GST chuno.', action:'Agreement pe GST rate clause check karo — Galat rate me total galat ho jayega.', source:'CBIC GST Portal', url:'https://www.cbic.gov.in/', tags:['GST','under-construction','CBIC'] },
+  { date:'2026-04-01', cat:'advice', title:'TDS 194-IB: Brokerage pe 5% TDS lagana mat bhoolo', body:'Commission pe resident payee ke liye 5% TDS (194-IB) + GST 18% lagta hai. Seller se net mat lo — TDS kat ke mango, Form 16A/table proof lo.', action:'Har invoice pe TDS + GST beat pehle se likho.', source:'Income Tax 194-IB', url:'https://www.incometax.gov.in/iec/foportal/help/payment-history', tags:['TDS','brokerage','194-IB'] },
+  { date:'2026-03-15', cat:'facts', title:'Jaipur Collector circle rate notification 2026', body:'Jaipur collectorate ne fresh circle rate publish kiye. Registry me stamp duty max(market, circle) pe lagti ha. Project page pe apna circle rate update karte raho.', action:'Circle vs Market calculator me apna latest circle rate lagao.', source:'Jaipur Collector', url:'https://jaipur.rajasthan.gov.in/', tags:['circle rate','Jaipur','registry'] },
+  { date:'2026-02-10', cat:'saving', title:'Home loan 80C + 80EE + 24(b) — FY 2025-26 limit summary', body:'Home loan pe principal 80C me ₹1.5L, interest 24(b) me ₹2L, aur first home pe 80EE extra ₹50k (₹3.5L tak loan shart). Budget update ke baad limit verify karo.', action:'First-time buyer hai toh 80EE extra slab zaroor use karo.', source:'Income Tax Deductions', url:'https://www.incometax.gov.in/iec/foportal/help/individual/deductions', tags:['80C','80EE','24b','home loan'] },
+];
+function renderTaxNews(){
+  const wrap = $('#taxNewsGrid');
+  if(!wrap) return;
+  const sorted = [...TAX_LIVE].sort((a,b) => (b.date||'').localeCompare(a.date||''));
+  $('#taxNewsCount').textContent = sorted.length;
+  wrap.innerHTML = sorted.map(t => {
+    const c = taxCat(t.cat);
+    const style = `--cat-soft:${c.soft};--cat-line:${c.line};--cat-ink:${c.ink}`;
+    return `<article class="tax-card" style="${style}">
+      <div class="tax-top"><div class="tax-ic">${c.icon}</div><div><b>${esc(t.title)}</b><small style="display:block;color:var(--mut);font-size:11px;margin-top:3px">${esc(fmtDate(t.date))} · FY 2026-27</small></div><span class="tax-chip">LIVE</span></div>
+      <p class="tax-body">${esc(t.body)}</p>
+      <div class="tax-action">${esc(t.action)}</div>
+      <div class="tax-meta"><a class="tax-src" href="${esc(t.url)}" target="_blank" rel="noopener">↗ ${esc(t.source)}</a></div>
+      <div class="tax-act"><button type="button" data-news-share="${esc(t.title)}">Share WhatsApp</button><button type="button" data-news-open="${esc(t.url)}">Open source</button></div>
+    </article>`;
+  }).join('');
+  $$('#taxNewsGrid [data-news-open]').forEach(b => b.addEventListener('click', () => window.open(b.dataset.newsOpen, '_blank', 'noopener')));
+  $$('#taxNewsGrid [data-news-share]').forEach(b => b.addEventListener('click', async () => {
+    const t = TAX_LIVE.find(x => x.title === b.dataset.newsShare);
+    if(!t) return;
+    const txt = ['*BCS Tax & Advice — Live Update*', t.title, fmtDate(t.date), '', t.body, '', 'Source: ' + t.source, t.url, '', 'BCS · Business City Square · @ajaysharma.bcs'].join('\n');
+    if(navigator.share){ try{ await navigator.share({ title: t.title, text: txt }); }catch(e){} } else { window.open('https://wa.me/?text=' + encodeURIComponent(txt), '_blank'); }
+  }));
+}
 function renderTax(){
   if(!$('#taxGrid')) return;
   const q = ($('#taxSearch').value || '').trim().toLowerCase();
@@ -20407,6 +20590,7 @@ function initTax(){
   $('#taxSave').addEventListener('click', saveTax);
   $('#taxDelete').addEventListener('click', () => deleteTax($('#taxDelete').dataset.taxDel));
   $('#addTaxBtn').addEventListener('click', () => openTax(null));
+  renderTaxNews();
 }
 
 /* ---------- partners / vendor network ---------- */
