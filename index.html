@@ -2262,6 +2262,7 @@ body.locked>.tooldock,body.locked>.toolpop{visibility:hidden}
 .dock-btn i{font-size:7.5px}
 
 /* ---- 4. custom fields ---- */
+body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advisor-mode #devFieldsBtn,body.advisor-mode #fieldsBtn{display:none!important}
 .cf-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
 .cf-item{min-width:0;display:flex;flex-direction:column;gap:5px}
 .cf-item.cf-full{grid-column:1/-1}
@@ -11541,6 +11542,8 @@ function applyRoleChrome(){
   if(lockBtn) lockBtn.title = admin ? 'Lock desk — Ajay Sharma' : 'Lock desk — ' + (me ? me.name : 'Advisor');
   const mob = $('#mobAdd');
   if(mob) mob.style.display = admin ? '' : 'none';
+  const fieldsBtn = $('#fieldsBtn');
+  if(fieldsBtn) fieldsBtn.style.display = admin ? '' : 'none';
   populateLockAdvisors();
 }
 
