@@ -99,7 +99,7 @@ main{max-width:1480px;margin:0 auto;padding:26px 32px 96px}
 .cat-low b{font-weight:700;color:var(--ink)}
 
 /* ---------------- sections ---------------- */
-.sec-head{display:flex;align-items:center;justify-content:space-between;margin:34px 2px 16px;gap:16px}
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin:34px 2px 16px;gap:16px;flex-wrap:wrap}
 .sec-head h3{font-family:'Fraunces',serif;font-size:22px;font-weight:600;letter-spacing:-.3px}
 .sec-head .sub{font-size:12.5px;color:var(--mut)}
 .sec-head .link{font-size:12.5px;color:var(--ink2);font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px}
@@ -2204,6 +2204,240 @@ body.locked>.quick-add-dock{visibility:hidden}
 @media (max-width:340px){
   .pulse-strip{grid-template-columns:1fr}
 }
+/* ==================================================================
+   v14 — dashboard split · custom fields · kanban/list · analytics
+   ================================================================== */
+
+/* ---- 1. dashboard dayline: date + motivation first ---- */
+.dash-headline{
+  position:relative;isolation:isolate;overflow:hidden;display:grid;
+  grid-template-columns:196px minmax(0,1fr) auto;align-items:stretch;
+  margin:0 0 14px;border-radius:20px;color:#FFF9EC;
+  border:1px solid rgba(255,255,255,.28);
+  background:linear-gradient(120deg,var(--th-bg1,#B2482A) 0%,var(--th-bg2,#D9832F) 70%,var(--th-bg1,#B2482A) 100%);
+  box-shadow:0 22px 50px -40px rgba(72,37,18,.9),inset 0 1px 0 rgba(255,255,255,.2);
+}
+.dash-headline:before{content:"";position:absolute;right:-90px;top:-150px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.3),transparent 68%);z-index:-1;pointer-events:none}
+.dhl-date{display:flex;flex-direction:column;justify-content:center;gap:3px;padding:13px 18px;background:rgba(28,18,8,.16);border-right:1px solid rgba(255,255,255,.16);min-width:0}
+.dhl-hi{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--th-accent,#FFD98F);opacity:.95}
+.dhl-dayrow{display:flex;align-items:center;gap:10px;min-width:0}
+.dhl-dayrow>b{font-family:'Fraunces',serif;font-size:42px;line-height:.9;font-weight:600;letter-spacing:-1.5px;text-shadow:0 8px 20px rgba(0,0,0,.16)}
+.dhl-meta{display:flex;flex-direction:column;gap:1px;min-width:0}
+.dhl-meta>span:first-child{font-size:12px;font-weight:800;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dhl-en{font-size:10px;opacity:.72;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dhl-quote{margin:0!important;max-width:none!important;border-radius:0!important;background:transparent!important;border:none!important;align-items:center!important;padding:12px 16px!important;min-width:0}
+.dhl-quote p{font-size:13px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dhl-quote .th-qby{align-self:center}
+.dhl-tools{display:flex;flex-direction:column;justify-content:center;gap:5px;padding:10px 12px;border-left:1px solid rgba(255,255,255,.16);min-width:132px}
+.dhl-tools .th-tool{justify-content:center;font-size:10.5px;padding:5px 9px}
+
+/* ---- 2. today hero + desk pulse sit side by side ---- */
+.dash-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(286px,344px);gap:14px;margin:0 0 22px;align-items:stretch}
+.dash-split .today-hero{grid-template-columns:minmax(0,1fr) 246px;margin:0;height:100%}
+.dash-split .th-main{padding:16px 18px 15px;gap:3px}
+.dash-split .th-main h3{font-size:26px}
+.dash-split .th-greet-hi{font-size:13px;line-height:1.5}
+.dash-split .th-greet-en{font-size:11.5px;line-height:1.45}
+.dash-split .th-upcoming{padding:13px 13px 12px}
+.dash-split .th-up-item{padding:6px 7px}
+.dash-split .th-up-copy b{font-size:11px}
+.dash-split .th-up-days{font-size:8px;padding:2px 5px}
+.dash-split .pulse-strip{grid-template-columns:1fr 1fr;grid-auto-rows:1fr;margin:0;gap:9px;height:100%}
+.dash-split .pulse-card{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:5px;padding:11px 12px 15px;border-radius:14px}
+.dash-split .pulse-card .pulse-ic{width:30px;height:30px;border-radius:9px;font-size:13px}
+.dash-split .pulse-copy{width:100%;gap:1px}
+.dash-split .pulse-copy b{font-size:17px;white-space:normal;line-height:1.15}
+.dash-split .pulse-copy span{white-space:normal;font-size:8.5px;letter-spacing:.6px;line-height:1.25}
+.dash-split .pulse-tag{position:absolute;top:9px;right:9px;font-size:8px;padding:3px 6px;letter-spacing:.2px}
+
+/* ---- 3. vertical, scroll-safe tool dock (slim left rail; content never under it) ---- */
+body.locked>.tooldock,body.locked>.toolpop{visibility:hidden}
+@media (min-width:821px){
+  body{padding-left:60px}
+  .tooldock{left:0;top:0;bottom:0;width:60px;z-index:70;display:flex;flex-direction:column;justify-content:center;gap:9px;padding:12px 4px;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-right:1px solid var(--line)}
+  .tooldock .dock-btn{width:48px;height:48px}
+  .toolpop{left:72px;top:50%;bottom:auto;transform:translateY(-50%);width:320px;max-height:calc(100vh - 48px);overflow-y:auto;overscroll-behavior:contain}
+  main{padding-bottom:96px}
+}
+.dock-btn i{font-size:7.5px}
+
+/* ---- 4. custom fields ---- */
+.cf-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.cf-item{min-width:0;display:flex;flex-direction:column;gap:5px}
+.cf-item.cf-full{grid-column:1/-1}
+.cf-item>label{font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--mut);display:flex;align-items:center;gap:6px}
+.cf-item>label .cf-type{font-size:8px;font-weight:800;letter-spacing:.4px;padding:2px 5px;border-radius:99px;background:#F0F4F1;color:#6E7C71;border:1px solid var(--line2);text-transform:uppercase}
+.cf-item input[type=text],.cf-item input[type=number],.cf-item input[type=date],.cf-item select,.cf-item textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:#FCFDFC;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:.15s}
+.cf-item textarea{min-height:60px;resize:vertical}
+.cf-item input:focus,.cf-item select:focus,.cf-item textarea:focus{border-color:#A9C4B5;box-shadow:0 0 0 3px rgba(65,86,63,.08)}
+.cf-checks{display:flex;flex-wrap:wrap;gap:5px}
+.cf-check{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border:1px solid var(--line);border-radius:8px;background:#FCFDFC;font-size:11.5px;font-weight:600;color:var(--ink2);cursor:pointer}
+.cf-check input{accent-color:var(--olive);width:14px;height:14px}
+.cf-check.on{background:#EFF6F1;border-color:#BFD8C8;color:#2F6644}
+.cf-switch{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--ink2);font-weight:600;cursor:pointer;padding:4px 0}
+.cf-switch input{width:16px;height:16px;accent-color:var(--olive)}
+.cf-empty{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:11px 12px;border:1px dashed #D9C99D;border-radius:10px;background:#FFFDF5;font-size:11.5px;color:#8A7A48;font-weight:600;line-height:1.45}
+.cf-view{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-top:13px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#FBFDFB}
+.cf-view .cf-row{min-width:0}
+.cf-view .cf-row.full{grid-column:1/-1}
+.cf-view .cf-lab{font-size:9px;letter-spacing:.9px;text-transform:uppercase;color:var(--mut);font-weight:800;margin-bottom:2px}
+.cf-view .cf-val{font-size:12.5px;color:var(--ink);font-weight:600;line-height:1.45;word-break:break-word;white-space:pre-wrap}
+.cf-view .cf-val .cf-pill{display:inline-block;margin:0 4px 3px 0;padding:2px 7px;border-radius:99px;background:#EEF4F0;border:1px solid var(--line2);font-size:10.5px;font-weight:700;color:#3E5A48}
+.cf-view .cf-val .cf-yes{color:#2F6B54}
+.cf-view .cf-val .cf-no{color:#A4452B}
+.fld-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.fld-row{display:grid;grid-template-columns:minmax(0,1fr) 128px auto auto;gap:7px;align-items:start;padding:9px;border:1px solid var(--line);border-radius:10px;background:#FCFDFC}
+.fld-row .fld-main{display:flex;flex-direction:column;gap:5px;min-width:0}
+.fld-row input,.fld-row select{width:100%;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:#fff;font-family:'DM Sans',sans-serif;font-size:12px;outline:none}
+.fld-row input:focus,.fld-row select:focus{border-color:#A9C4B5}
+.fld-row .fld-opts{font-size:11px}
+.fld-row .fld-move{display:flex;gap:4px}
+.fld-row .fld-move button,.fld-row .fld-del{width:26px;height:26px;border-radius:7px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:11px;color:var(--ink2)}
+.fld-row .fld-del{color:var(--danger);background:#FBEDE8;border-color:#F0D8CE}
+.fld-row .fld-tbl{display:flex;align-items:center;justify-content:center;padding-top:5px}
+.fld-row .fld-tbl input{width:16px;height:16px;accent-color:var(--olive)}
+.fld-entity-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
+.fld-entity-tabs button{padding:6px 11px;border-radius:8px;border:1px solid var(--line);background:#FCFDFC;font-size:11.5px;font-weight:700;color:var(--ink2)}
+.fld-entity-tabs button.on{background:var(--olive);color:#F6F2E7;border-color:var(--olive)}
+.fld-hint{font-size:10.5px;color:var(--mut);line-height:1.5;margin-bottom:10px}
+
+/* ---- 5. kanban / list / table views ---- */
+.view-switch{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.vt-table-wrap{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:auto;max-width:100%}
+.vt-table{width:100%;border-collapse:collapse;min-width:620px}
+.vt-table th{position:sticky;top:0;z-index:1;background:#FBFCFA;text-align:left;font-size:9px;letter-spacing:.8px;text-transform:uppercase;color:var(--mut);font-weight:800;padding:11px 13px;border-bottom:1px solid var(--line);white-space:nowrap}
+.vt-table th.sortable{cursor:pointer;user-select:none}
+.vt-table th.sortable:hover{color:var(--ink)}
+.vt-table th .sort-ind{font-size:9px;opacity:.55;margin-left:3px}
+.vt-table td{padding:10px 13px;border-bottom:1px solid var(--line2);font-size:12.5px;color:var(--ink2);vertical-align:middle}
+.vt-table tbody tr:last-child td{border-bottom:none}
+.vt-table tbody tr{cursor:pointer;transition:.12s}
+.vt-table tbody tr:hover{background:#F7FAF8}
+.vt-table .cell-main b{display:block;font-size:13px;color:var(--ink);font-weight:700;line-height:1.25}
+.vt-table .cell-main span{font-size:10px;color:var(--mut);font-weight:600}
+.vt-table .cell-num{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:700;color:var(--ink)}
+.vt-table .cell-note{font-size:11px;color:var(--ink2);max-width:220px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vt-table .cell-empty{color:#A9ADA3}
+.vt-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:99px;font-size:9.5px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;border:1px solid var(--line2);background:#F4F6F4;color:var(--ink2);white-space:nowrap}
+.vt-pill.green{background:#EAF5EF;border-color:#D3E9DD;color:#2F6B54}
+.vt-pill.gold{background:#FBF3DC;border-color:#EEDDB3;color:#8A6D1F}
+.vt-pill.blue{background:#EAF1F8;border-color:#D3E1EE;color:#41678F}
+.vt-pill.red{background:#FBEDE8;border-color:#F0D8CE;color:#A4452B}
+.vt-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:middle}
+.vt-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.vt-toolbar .vt-count{font-size:11.5px;color:var(--mut);font-weight:700}
+.dev-kanban{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:12px}
+.dev-kcol{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:11px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;min-width:0}
+.dev-kcol-head{display:flex;align-items:center;gap:7px;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+.dev-kcol-head b{font-size:12px;color:var(--ink);font-weight:800;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dev-kcol-head .n{font-size:9.5px;font-weight:800;padding:2px 7px;border-radius:99px;background:#EFF4F1;color:var(--sage-ink)}
+.dev-kcard{padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:#FCFDFC;cursor:pointer;transition:.15s}
+.dev-kcard:hover{background:#fff;border-color:#C9D6CF;box-shadow:0 8px 18px -14px rgba(46,45,32,.4);transform:translateY(-1px)}
+.dev-kcard b{display:block;font-size:11.5px;color:var(--ink);font-weight:700;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dev-kcard span{display:block;font-size:9.5px;color:var(--mut);font-weight:600;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dev-kcard .dev-status-strip{margin-top:6px;grid-template-columns:repeat(4,1fr)}
+.dev-kempty{font-size:10.5px;color:#A9ADA3;padding:12px 4px;text-align:center;font-weight:600}
+.cor-table-toggle{display:flex;align-items:center;gap:8px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end;min-width:0}
+
+/* ---- 6. analytics ---- */
+.an-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.kpi{position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:14px 16px;box-shadow:var(--shadow)}
+.kpi:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--kc,#B18A3E)}
+.kpi .k{font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:var(--mut);font-weight:800;margin-bottom:3px}
+.kpi .v{font-family:'Fraunces',serif;font-size:25px;font-weight:600;letter-spacing:-.4px;color:var(--ink);line-height:1.1}
+.kpi .s{font-size:10px;color:var(--mut);font-weight:600;margin-top:2px}
+.an-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.an-card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:16px 17px;box-shadow:var(--shadow);min-width:0}
+.an-card-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:12px}
+.an-card-head h4{font-family:'Fraunces',serif;font-size:16px;font-weight:600;letter-spacing:-.2px}
+.an-card-head span{font-size:10px;color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:.6px}
+.an-bars{display:flex;flex-direction:column;gap:8px}
+.an-bar{display:grid;grid-template-columns:108px minmax(0,1fr) 52px;gap:9px;align-items:center;cursor:pointer}
+.an-bar .an-lab{font-size:11px;font-weight:700;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.an-track{height:9px;border-radius:99px;background:#EEF2EF;overflow:hidden}
+.an-fill{display:block;height:100%;border-radius:99px;transition:width .5s cubic-bezier(.2,.8,.3,1)}
+.an-bar .an-num{text-align:right;font-size:11px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.an-donut-wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.an-donut{position:relative;width:146px;height:146px;border-radius:50%;flex:none}
+.an-donut:after{content:"";position:absolute;inset:19px;border-radius:50%;background:var(--panel);box-shadow:inset 0 0 0 1px var(--line2)}
+.an-donut .an-donut-mid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1;text-align:center}
+.an-donut .an-donut-mid b{font-family:'Fraunces',serif;font-size:25px;font-weight:600;line-height:1;color:var(--ink)}
+.an-donut .an-donut-mid span{font-size:8.5px;text-transform:uppercase;letter-spacing:.8px;color:var(--mut);font-weight:800;margin-top:3px}
+.an-legend{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1}
+.an-legend div{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--ink2);font-weight:600}
+.an-legend .dot{width:8px;height:8px;border-radius:2px;flex:none}
+.an-legend b{margin-left:auto;color:var(--ink);font-weight:800;font-variant-numeric:tabular-nums}
+.an-funnel{display:flex;flex-direction:column;gap:5px}
+.an-fstep{display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:9px;background:#F7FAF8;border:1px solid var(--line2);min-width:0}
+.an-fstep .fname{font-size:11px;font-weight:700;color:var(--ink2);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.an-fstep .fbar{height:6px;border-radius:99px;background:var(--oline,#4E7C62);min-width:4px;max-width:44%;flex:none}
+.an-fstep .fnum{font-size:11px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;min-width:26px;text-align:right}
+.an-insights{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.an-insight{display:flex;gap:9px;padding:10px 11px;border-radius:10px;border:1px solid var(--line);background:linear-gradient(145deg,#FFFDF7,#F8FBF8);font-size:11.5px;line-height:1.5;color:var(--ink2);font-weight:600}
+.an-insight .ic{flex:none;font-size:14px;line-height:1.2}
+.an-insight b{color:var(--ink)}
+.an-table{width:100%;border-collapse:collapse;min-width:520px}
+.an-table th{text-align:left;font-size:9px;letter-spacing:.7px;text-transform:uppercase;color:var(--mut);font-weight:800;padding:8px 9px;border-bottom:1px solid var(--line);white-space:nowrap}
+.an-table td{padding:8px 9px;border-bottom:1px solid var(--line2);font-size:11.5px;color:var(--ink2);font-weight:600;white-space:nowrap}
+.an-table tr:last-child td{border-bottom:none}
+.an-table td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:800;color:var(--ink)}
+.an-table td.nm{color:var(--ink);font-weight:700;white-space:normal}
+.an-scroll{overflow:auto;max-width:100%;margin:0 -4px}
+.an-empty{padding:22px;text-align:center;color:#A9ADA3;font-size:12px;font-weight:600}
+
+/* ---- 7. v14 responsive ---- */
+@media (max-width:1180px){
+  .dash-split{grid-template-columns:minmax(0,1fr) 300px}
+  .dash-split .today-hero{grid-template-columns:minmax(0,1fr)}
+  .dash-split .th-upcoming{grid-column:1/-1;border-left:none;border-top:1px solid rgba(255,255,255,.16);padding:11px 14px 12px}
+  .dash-split .th-up-list{flex-direction:row;overflow-x:auto;gap:7px;padding-bottom:2px}
+  .dash-split .th-up-item{min-width:180px;flex:none}
+  .an-kpis{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:980px){
+  .dash-headline{grid-template-columns:170px minmax(0,1fr)}
+  .dhl-tools{grid-column:1/-1;flex-direction:row;border-left:none;border-top:1px solid rgba(255,255,255,.16);padding:8px 12px}
+  .dhl-tools .th-tool{flex:1}
+  .dash-split{grid-template-columns:1fr}
+  .dash-split .pulse-strip{grid-template-columns:repeat(4,1fr)}
+  .dash-split .pulse-card{padding:11px}
+  .an-grid{grid-template-columns:1fr}
+  .cf-grid{grid-template-columns:1fr}
+}
+@media (max-width:820px){
+  html{overflow-x:hidden}
+  body{padding-left:46px}
+  .tooldock{flex-direction:column;left:0;top:50%;bottom:auto;transform:translateY(-50%);gap:6px;padding:8px 3px;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-right:1px solid var(--line)}
+  .dock-btn{width:40px;height:42px}
+  .toolpop{left:54px;right:auto;top:50%;bottom:auto;transform:translateY(-50%);width:min(310px,calc(100vw - 66px));max-height:calc(100vh - 48px);overflow-y:auto;overscroll-behavior:contain}
+  main{padding-bottom:126px!important}
+  .dash-headline{grid-template-columns:1fr;border-radius:16px}
+  .dhl-date{flex-direction:row;align-items:center;gap:12px;padding:11px 14px;border-right:none;border-bottom:1px solid rgba(255,255,255,.16)}
+  .dhl-dayrow>b{font-size:36px}
+  .dhl-quote{padding:10px 14px!important}
+  .dhl-quote p{font-size:12px}
+  .dhl-tools{border-top:1px solid rgba(255,255,255,.14)}
+  .dhl-tools .th-tool{font-size:10px;padding:6px}
+  .dash-split .pulse-strip{grid-template-columns:1fr 1fr}
+  .dash-split .th-main h3{font-size:23px}
+  .an-insights{grid-template-columns:1fr}
+  .fld-row{grid-template-columns:1fr auto auto}
+  .fld-row .fld-main{grid-column:1/-1}
+  .fld-row .fld-tbl{grid-column:1;justify-content:flex-start;padding:0}
+  .vt-table{min-width:560px}
+}
+@media (max-width:560px){
+  .dhl-quote .th-qby{display:none}
+  .dhl-tools .th-tool.primary{order:-1}
+  .an-kpis{grid-template-columns:1fr 1fr;gap:9px}
+  .kpi .v{font-size:21px}
+  .kpi{padding:11px 12px}
+  .an-card{padding:13px 12px}
+  .an-bar{grid-template-columns:88px minmax(0,1fr) 44px;gap:7px}
+  .vt-toolbar{gap:7px}
+  .dev-kanban{grid-template-columns:1fr}
+  .cf-view{grid-template-columns:1fr}
+}
 @media (prefers-reduced-motion:reduce){
   *,*:before,*:after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
 }
@@ -2279,6 +2513,7 @@ body.locked>.quick-add-dock{visibility:hidden}
     </div>
     <nav id="nav">
       <button data-view="dashboard" class="on">Dashboard</button>
+      <button data-view="analytics">Analytics</button>
       <button data-view="projects">Projects</button>
       <button data-view="resale">Resale</button>
       <button data-view="developers">Developers</button>
@@ -2346,62 +2581,71 @@ body.locked>.quick-add-dock{visibility:hidden}
       </div>
     </div>
 
-    <section class="today-hero" id="todayHero" aria-label="Aaj ka festival, motivation aur aane wale din">
-      <div class="th-date">
-        <span class="th-weekday" id="thWeekdayHi">रविवार</span>
-        <b id="thDay">08</b>
-        <span class="th-month" id="thMonth">November 2026</span>
-        <span class="th-weekday-en" id="thWeekdayEn">Sunday</span>
-        <span class="th-month-hi" id="thMonthHi">नवंबर</span>
-      </div>
-      <div class="th-main">
-        <div class="th-top">
-          <span class="th-badge"><span class="th-emoji" id="thEmoji">🪔</span><span id="thFestivalName">Diwali</span></span>
-          <span class="th-today-chip" id="thTodayChip">Aaj · Today</span>
-          <div class="th-tools">
-            <button type="button" class="th-tool" id="thRefreshQuote" title="Change the motivation line in this card only">↻ New motivation</button>
-            <button type="button" class="th-tool primary" id="thSharePoster">Share poster</button>
-            <button type="button" class="th-tool" id="thManage" style="display:none">⚙ Manage</button>
+    <!-- v14: date + motivation first, then festival card & desk pulse side by side -->
+    <div class="dash-headline" id="dashHeadline" aria-label="Aaj ka din aur motivation">
+      <div class="dhl-date">
+        <span class="dhl-hi" id="thWeekdayHi">रविवार</span>
+        <div class="dhl-dayrow">
+          <b id="thDay">08</b>
+          <div class="dhl-meta">
+            <span id="thMonth">November 2026</span>
+            <span class="dhl-en"><span id="thWeekdayEn">Sunday</span> · <span id="thMonthHi">नवंबर</span></span>
           </div>
         </div>
-        <h3 id="thFestivalHi">दीपावली</h3>
-        <div class="th-name-en" id="thFestivalEn">Diwali · Lakshmi Puja</div>
-        <p class="th-greet-hi" id="thGreetHi">दीपों की रोशनी, माँ लक्ष्मी की कृपा — आपका जीवन सदा उजालों से भरा रहे।</p>
-        <p class="th-greet-en" id="thGreetEn">Lights of diyas, grace of Maa Lakshmi — may your life always shine bright.</p>
-        <div class="th-quote" id="thQuoteBox">
-          <span class="th-qmark">“</span>
-          <p id="thQuote">…</p>
-          <span class="th-qby" id="thQuoteBy"></span>
-          <button type="button" class="th-qrefresh" id="thQuoteRefresh" title="Next motivation" aria-label="Next motivation">↻</button>
-        </div>
       </div>
-      <aside class="th-upcoming" aria-label="Upcoming festivals">
-        <div class="th-up-head"><span>Coming up</span><small>next 3</small></div>
-        <div class="th-up-list" id="thUpcoming"></div>
-      </aside>
-    </section>
+      <div class="th-quote dhl-quote" id="thQuoteBox">
+        <span class="th-qmark">“</span>
+        <p id="thQuote">…</p>
+        <span class="th-qby" id="thQuoteBy"></span>
+        <button type="button" class="th-qrefresh" id="thQuoteRefresh" title="Next motivation" aria-label="Next motivation">↻</button>
+      </div>
+      <div class="dhl-tools">
+        <button type="button" class="th-tool primary" id="thSharePoster" title="Festival poster banayein">Share poster</button>
+        <button type="button" class="th-tool" id="thRefreshQuote" title="Change the motivation line in this card only">↻ New motivation</button>
+        <button type="button" class="th-tool" id="thManage" style="display:none">⚙ Manage</button>
+      </div>
+    </div>
 
-    <div class="pulse-strip" id="pulseStrip" aria-label="Aaj ka desk pulse">
-      <button type="button" class="pulse-card pulse-task" data-goto="dayplan" title="Day plan kholein">
-        <span class="pulse-ic">◷</span>
-        <span class="pulse-copy"><b id="pulseTasks">0</b><span id="pulseTaskSub">Tasks today</span></span>
-        <span class="pulse-tag ok" id="pulseTaskTag">Plan</span>
-        <span class="pulse-meter"><i id="pulseTaskBar"></i></span>
-      </button>
-      <button type="button" class="pulse-card pulse-follow" data-goto="clients" title="Client follow-ups kholein">
-        <span class="pulse-ic">☎</span>
-        <span class="pulse-copy"><b id="pulseFollow">0</b><span id="pulseFollowSub">Follow-ups due</span></span>
-        <span class="pulse-tag ok" id="pulseFollowTag">All clear</span>
-      </button>
-      <button type="button" class="pulse-card pulse-new" data-goto="projects" title="Naye projects dekhein">
-        <span class="pulse-ic">✦</span>
-        <span class="pulse-copy"><b id="pulseNew">0</b><span id="pulseNewSub">New this week</span></span>
-        <span class="pulse-tag" id="pulseNewTag">Pipeline</span>
-      </button>
-      <button type="button" class="pulse-card pulse-focus" data-goto="dayplan" title="Aaj ka next task">
-        <span class="pulse-ic">▶</span>
-        <span class="pulse-copy"><b id="pulseNext">Add a task</b><span id="pulseNextSub">plan your day</span></span>
-      </button>
+    <div class="dash-split">
+      <section class="today-hero" id="todayHero" aria-label="Aaj ka festival aur aane wale din">
+        <div class="th-main">
+          <div class="th-top">
+            <span class="th-badge"><span class="th-emoji" id="thEmoji">🪔</span><span id="thFestivalName">Diwali</span></span>
+            <span class="th-today-chip" id="thTodayChip">Aaj · Today</span>
+          </div>
+          <h3 id="thFestivalHi">दीपावली</h3>
+          <div class="th-name-en" id="thFestivalEn">Diwali · Lakshmi Puja</div>
+          <p class="th-greet-hi" id="thGreetHi">दीपों की रोशनी, माँ लक्ष्मी की कृपा — आपका जीवन सदा उजालों से भरा रहे।</p>
+          <p class="th-greet-en" id="thGreetEn">Lights of diyas, grace of Maa Lakshmi — may your life always shine bright.</p>
+        </div>
+        <aside class="th-upcoming" aria-label="Upcoming festivals">
+          <div class="th-up-head"><span>Coming up</span><small>next 3</small></div>
+          <div class="th-up-list" id="thUpcoming"></div>
+        </aside>
+      </section>
+
+      <div class="pulse-strip" id="pulseStrip" aria-label="Aaj ka desk pulse">
+        <button type="button" class="pulse-card pulse-task" data-goto="dayplan" title="Day plan kholein">
+          <span class="pulse-ic">◷</span>
+          <span class="pulse-copy"><b id="pulseTasks">0</b><span id="pulseTaskSub">Tasks today</span></span>
+          <span class="pulse-tag ok" id="pulseTaskTag">Plan</span>
+          <span class="pulse-meter"><i id="pulseTaskBar"></i></span>
+        </button>
+        <button type="button" class="pulse-card pulse-follow" data-goto="clients" title="Client follow-ups kholein">
+          <span class="pulse-ic">☎</span>
+          <span class="pulse-copy"><b id="pulseFollow">0</b><span id="pulseFollowSub">Follow-ups due</span></span>
+          <span class="pulse-tag ok" id="pulseFollowTag">All clear</span>
+        </button>
+        <button type="button" class="pulse-card pulse-new" data-goto="projects" title="Naye projects dekhein">
+          <span class="pulse-ic">✦</span>
+          <span class="pulse-copy"><b id="pulseNew">0</b><span id="pulseNewSub">New this week</span></span>
+          <span class="pulse-tag" id="pulseNewTag">Pipeline</span>
+        </button>
+        <button type="button" class="pulse-card pulse-focus" data-goto="dayplan" title="Aaj ka next task">
+          <span class="pulse-ic">▶</span>
+          <span class="pulse-copy"><b id="pulseNext">Add a task</b><span id="pulseNextSub">plan your day</span></span>
+        </button>
+      </div>
     </div>
 
     <div class="cat-strip" id="catStrip"></div>
@@ -2409,7 +2653,13 @@ body.locked>.quick-add-dock{visibility:hidden}
     <div class="sec-head">
       <h3>Road corridors</h3>
       <span class="sub">Click a corridor to open its board</span>
-      <button class="btn ghost sm" id="manageCorridorsBtn" style="margin-left:auto">⚙ Manage corridors</button>
+      <div class="cor-table-toggle">
+        <div class="seg" id="corrViewToggle">
+          <button data-cormode="cards" class="on">Cards</button>
+          <button data-cormode="table">Table</button>
+        </div>
+        <button class="btn ghost sm" id="manageCorridorsBtn">⚙ Manage corridors</button>
+      </div>
     </div>
     <div class="corridor-grid" id="corridorGrid"></div>
 
@@ -2488,21 +2738,30 @@ body.locked>.quick-add-dock{visibility:hidden}
       </div>
       <div class="spacer"></div>
       <div class="seg" id="viewToggle">
-        <button data-mode="board" class="on">Board</button>
+        <button data-mode="board" class="on">Kanban</button>
         <button data-mode="gallery">Gallery</button>
+        <button data-mode="list">List</button>
       </div>
+      <button class="btn ghost sm" id="projectFieldsBtn" title="Apne custom columns / fields banayein">⚙ Fields</button>
       <button class="btn ghost sm" id="compareBtn" title="2–4 projects compare karein">⚖ Compare</button>
       <button class="btn ghost sm" id="exportCsvBtn">Export CSV</button>
     </div>
     <div class="board" id="board"></div>
     <div class="show-grid" id="galleryGrid" style="display:none"></div>
+    <div id="projectListWrap" style="display:none"></div>
   </section>
 
   <!-- ============ DEVELOPERS ============ -->
   <section class="view" id="view-developers">
     <div class="sec-head">
-      <h3>Developers & owners</h3>
-      <div class="pill-wrap">
+      <h3>Developers &amp; owners</h3>
+      <div class="pill-wrap view-switch">
+        <div class="seg" id="devViewToggle">
+          <button data-devview="cards" class="on">Cards</button>
+          <button data-devview="list">List</button>
+          <button data-devview="kanban">Kanban</button>
+        </div>
+        <button class="btn ghost" id="devFieldsBtn" title="Developer ke apne custom fields banayein">⚙ Fields</button>
         <button class="btn ghost" id="dupBtn">Duplicate check</button>
         <button class="btn primary" id="addDevBtn">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
@@ -2512,6 +2771,8 @@ body.locked>.quick-add-dock{visibility:hidden}
     </div>
     <div class="dev-board" id="devBoard"></div>
     <div class="dev-grid" id="devGrid"></div>
+    <div id="devListWrap" style="display:none"></div>
+    <div class="dev-kanban" id="devKanban" style="display:none"></div>
   </section>
 
   <!-- ============ RESALE ============ -->
@@ -2984,12 +3245,73 @@ body.locked>.quick-add-dock{visibility:hidden}
     <div id="healthBody"></div>
     <div id="syncWrap"></div>
   </section>
+
+  <!-- ============ ANALYTICS ============ -->
+  <section class="view" id="view-analytics">
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · business intelligence</div>
+        <h2 class="adv-title">Where the business<br><em>is actually going.</em></h2>
+        <p class="adv-sub">Corridor-wise supply, price bands, client pipeline, bookings aur advisor performance — sab ek jagah, live from your own records. Koi number hard-coded nahi hai; jo aap add karenge wahi yahan dikhega.</p>
+      </div>
+      <div class="adv-head-actions">
+        <div class="seg" id="anRangeToggle">
+          <button data-anrange="all" class="on">All time</button>
+          <button data-anrange="90">Last 90 days</button>
+        </div>
+      </div>
+    </div>
+    <div class="an-kpis" id="anKpis"></div>
+    <div class="an-grid">
+      <div class="an-card">
+        <div class="an-card-head"><h4>Projects by corridor</h4><span>supply spread</span></div>
+        <div class="an-bars" id="anCorridor"></div>
+      </div>
+      <div class="an-card">
+        <div class="an-card-head"><h4>Status mix</h4><span>portfolio health</span></div>
+        <div class="an-donut-wrap" id="anStatus"></div>
+      </div>
+    </div>
+    <div class="an-grid">
+      <div class="an-card">
+        <div class="an-card-head"><h4>Client pipeline</h4><span>lead → booking</span></div>
+        <div class="an-funnel" id="anPipeline"></div>
+      </div>
+      <div class="an-card">
+        <div class="an-card-head"><h4>Inventory value by corridor</h4><span>₹ lakh · guide prices</span></div>
+        <div class="an-bars" id="anValue"></div>
+      </div>
+    </div>
+    <div class="an-grid">
+      <div class="an-card">
+        <div class="an-card-head"><h4>Property type split</h4><span>where demand sits</span></div>
+        <div class="an-bars" id="anTypes"></div>
+      </div>
+      <div class="an-card">
+        <div class="an-card-head"><h4>What the numbers say</h4><span>auto insights</span></div>
+        <div class="an-insights" id="anInsights"></div>
+      </div>
+    </div>
+    <div class="an-card" style="margin-bottom:14px">
+      <div class="an-card-head"><h4>Developer performance</h4><span>projects · RERA · price band</span></div>
+      <div class="an-scroll"><table class="an-table" id="anDevTable"></table></div>
+    </div>
+    <div class="an-card" style="margin-bottom:14px">
+      <div class="an-card-head"><h4>Corridor scorecard</h4><span>supply · price · bookings</span></div>
+      <div class="an-scroll"><table class="an-table" id="anCorrTable"></table></div>
+    </div>
+    <div class="an-card">
+      <div class="an-card-head"><h4>Advisor network performance</h4><span>clients · bookings · commission</span></div>
+      <div class="an-scroll"><table class="an-table" id="anAdvisorTable"></table></div>
+    </div>
+  </section>
 </main>
 
 <!-- ============ TOOL DOCK: sticky + calculator (har view se available) ============ -->
 <div class="tooldock" id="toolDock">
   <button class="dock-btn" id="stickyBtn" title="Sticky note — koi bhi scratch, auto-save"><span>📌</span><i>Sticky</i></button>
   <button class="dock-btn" id="calcBtn" title="Quick calculator"><span>🧮</span><i>Calc</i></button>
+  <button class="dock-btn" id="fieldsBtn" title="Custom fields — apne columns banayein"><span>⚙</span><i>Fields</i></button>
 </div>
 <div class="toolpop" id="stickyPop">
   <div class="tp-head"><b>📌 Sticky note</b><button class="xbtn sm" data-toolclose="stickyPop">✕</button></div>
@@ -3265,6 +3587,7 @@ body.locked>.quick-add-dock{visibility:hidden}
       <button type="button" data-ptab="legal">Pricing &amp; approval</button>
       <button type="button" data-ptab="details">Amenities &amp; inventory</button>
       <button type="button" data-ptab="checklist">Checklist</button>
+      <button type="button" data-ptab="custom">My fields</button>
     </div>
     <div class="modal-body">
 
@@ -3438,6 +3761,12 @@ body.locked>.quick-add-dock{visibility:hidden}
           <div id="pChkDefaultList"></div>
           <p class="mini-note">Default list har naye project par apne aap lagti hai. “Apply defaults to all projects” dabane se purane projects mein sirf missing items add honge — ticked items safe rahenge.</p>
         </div>
+      </div>
+
+      <div class="pane" data-pane="custom">
+        <div class="fld-hint">Apne columns / headings yahan add karein — text, number, date, checkbox, dropdown ya multi-select. Ye fields project form, detail aur list table mein dikhenge.</div>
+        <div id="pCustomFields"></div>
+        <button type="button" class="btn ghost sm" data-cfmanage="project" style="margin-top:10px">⚙ Manage / add project fields</button>
       </div>
 
     </div>
@@ -3666,6 +3995,7 @@ body.locked>.quick-add-dock{visibility:hidden}
       <div class="field"><label>Developer website</label><input id="dWebsite" type="url" inputmode="url" placeholder="https://www.company.com" spellcheck="false"></div>
       <div class="field"><label>Notes</label><textarea id="dNotes" placeholder="Relationship, slab discussion, references…"></textarea></div>
       <div class="field"><label>Developer remarks</label><textarea id="dRemarks" placeholder="Payment behaviour, approval style, launch plans, do's &amp; don'ts — anything you want to remember about this developer…"></textarea></div>
+      <div class="field"><label>My custom fields <button type="button" class="quick-add-btn" data-cfmanage="developer">⚙ Manage</button></label><div id="dCustomFields"></div></div>
     </div>
     <div class="modal-foot">
       <button class="btn danger" id="dDelete" style="margin-right:auto">Delete developer</button>
@@ -3748,6 +4078,7 @@ body.locked>.quick-add-dock{visibility:hidden}
         <input class="pick-search" id="aProjectSearch" placeholder="Search project or developer…">
         <div class="pick-list" id="aProjects"></div>
       </div>
+      <div class="field"><label>My custom fields <button type="button" class="quick-add-btn" data-cfmanage="advisor">⚙ Manage</button></label><div id="aCustomFields"></div></div>
     </div>
     <div class="modal-foot">
       <button class="btn danger" id="aDelete" style="margin-right:auto">Delete advisor</button>
@@ -3819,6 +4150,7 @@ body.locked>.quick-add-dock{visibility:hidden}
         <div class="pick-list" id="cProjects"></div>
       </div>
       <div class="field"><label>Internal notes</label><textarea id="cNotes" placeholder="Meeting notes, negotiation, family details…"></textarea></div>
+      <div class="field"><label>My custom fields <button type="button" class="quick-add-btn" data-cfmanage="client">⚙ Manage</button></label><div id="cCustomFields"></div></div>
     </div>
     <div class="modal-foot">
       <button class="btn danger" id="cDelete" style="margin-right:auto">Delete client</button>
@@ -4066,6 +4398,7 @@ body.locked>.quick-add-dock{visibility:hidden}
         <div class="field"><label>Listing advisor</label><select id="rAdvisor"></select></div>
       </div>
       <div class="field"><label>Resale notes</label><textarea id="rNotes" placeholder="Original rate, reason for selling, loan status, registry date, negotiation notes…"></textarea></div>
+      <div class="field"><label>My custom fields <button type="button" class="quick-add-btn" data-cfmanage="resale">⚙ Manage</button></label><div id="rCustomFields"></div></div>
     </div>
     <div class="modal-foot">
       <button class="btn danger" id="rDelete" style="margin-right:auto">Delete resale unit</button>
@@ -4089,6 +4422,29 @@ body.locked>.quick-add-dock{visibility:hidden}
       <button class="btn ghost" id="resaleViewCopy">Copy for WhatsApp</button>
       <button class="btn ghost" id="resaleViewProject">Open project</button>
       <button class="btn primary" id="resaleViewEdit">Edit</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CUSTOM FIELDS MANAGER ============ -->
+<div class="overlay" id="fieldsModal">
+  <div class="modal" style="width:min(820px,100%)">
+    <div class="modal-head">
+      <h3>My custom fields</h3>
+      <button class="xbtn" data-close="fieldsModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="fld-hint">Har section ke apne fields bana sakte hain — jo aapko chahiye, jab chahiye. Type choose karein: text, number, date, checkbox, dropdown ya multi-select. “In list” tick karne par ye column list/table view mein bhi dikhega.</div>
+      <div class="fld-entity-tabs" id="fldEntityTabs"></div>
+      <div class="fld-list" id="fldList"></div>
+      <div class="conn-actions">
+        <input id="fldNewLabel" placeholder="Naya field — jaise Status, Property type, Plot use, Possession…" style="flex:1;min-width:200px">
+        <button type="button" class="btn primary sm" id="fldAdd">+ Add field</button>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="fieldsModal">Cancel</button>
+      <button class="btn primary" id="fldSave">Save fields</button>
     </div>
   </div>
 </div>
@@ -4402,6 +4758,25 @@ const RESALE_STATUSES = [
   { id:'hold',      label:'On hold' },
   { id:'sold',      label:'Sold' },
 ];
+/* v14 — user-defined fields (any section, any answer type) */
+const CF_ENTITIES = [
+  { id:'project',   label:'Projects',    form:'#pCustomFields' },
+  { id:'developer', label:'Developers',  form:'#dCustomFields' },
+  { id:'client',    label:'Clients',     form:'#cCustomFields' },
+  { id:'advisor',   label:'Advisors',    form:'#aCustomFields' },
+  { id:'resale',    label:'Resale',      form:'#rCustomFields' },
+];
+const CF_TYPES = [
+  { id:'text',        label:'Text box' },
+  { id:'textarea',    label:'Long text' },
+  { id:'number',      label:'Number' },
+  { id:'date',        label:'Date' },
+  { id:'checkbox',    label:'Checkbox (yes / no)' },
+  { id:'select',      label:'Dropdown' },
+  { id:'multiselect', label:'Multi-select list' },
+];
+const CF_TYPE_LABEL = Object.fromEntries(CF_TYPES.map(t => [t.id, t.label]));
+const CF_ENTITY_LABEL = Object.fromEntries(CF_ENTITIES.map(e => [e.id, e.label]));
 const TIMELINES = [
   { id:'ready', label:'Ready to move', rank:0 },
   { id:'6m', label:'Within 6 months', rank:1 },
@@ -4950,6 +5325,38 @@ function normalizeDb(d){
   if(d.daily.festivalRefreshNote == null) d.daily.festivalRefreshNote = '';
   if(!Array.isArray(d.daily.deletedFestivalIds)) d.daily.deletedFestivalIds = [];
   d.daily.deletedFestivalIds = d.daily.deletedFestivalIds.filter(id => typeof id === 'string').slice(0, 300);
+  // v14 — user-defined custom fields + per-record values + saved view preferences
+  if(!Array.isArray(d.customFields)) d.customFields = [];
+  d.customFields = d.customFields
+    .filter(f => f && CF_ENTITIES.some(e => e.id === f.entity))
+    .map((f, i) => {
+      const opts = Array.isArray(f.options)
+        ? f.options
+        : String(f.options || '').split(',');
+      return {
+        id: f.id || uid(),
+        entity: f.entity,
+        label: String(f.label || '').trim().slice(0, 80),
+        type: CF_TYPES.some(t => t.id === f.type) ? f.type : 'text',
+        options: opts.map(o => String(o).trim()).filter(Boolean).slice(0, 60),
+        inTable: f.inTable !== false,
+        order: Number.isFinite(+f.order) ? +f.order : i,
+        active: f.active !== false,
+        createdAt: f.createdAt || Date.now(),
+        updatedAt: f.updatedAt || f.createdAt || Date.now()
+      };
+    })
+    .filter(f => f.label)
+    .sort((a, b) => a.order - b.order);
+  ['projects','developers','clients','advisors','resale'].forEach(k => {
+    (d[k] || []).forEach(r => {
+      if(!r.custom || typeof r.custom !== 'object' || Array.isArray(r.custom)) r.custom = {};
+    });
+  });
+  if(!d.ui || typeof d.ui !== 'object') d.ui = {};
+  if(!['board','gallery','list'].includes(d.ui.projectsMode)) d.ui.projectsMode = 'board';
+  if(!['cards','list','kanban'].includes(d.ui.devViewMode)) d.ui.devViewMode = 'cards';
+  if(!['cards','table'].includes(d.ui.corrViewMode)) d.ui.corrViewMode = 'cards';
   if(!d.version || d.version < 11) d.version = 11;
   return d;
 }
@@ -5506,7 +5913,9 @@ function chainClientsForAdvisor(a){
 
 /* ---------- navigation ---------- */
 let currentView = 'dashboard';
-let projectsMode = 'board';
+let projectsMode = (db.ui && db.ui.projectsMode) || 'board';
+let devViewMode = (db.ui && db.ui.devViewMode) || 'cards';
+let corrViewMode = (db.ui && db.ui.corrViewMode) || 'cards';
 let activeCategory = null;
 let overlayZ = 90;
 function showOverlay(id){
@@ -5531,14 +5940,6 @@ document.body.addEventListener('click', e => {
   const g = e.target.closest('[data-goto]');
   if(g) go(g.dataset.goto);
 });
-$('#viewToggle').addEventListener('click', e => {
-  const b = e.target.closest('button[data-mode]');
-  if(!b) return;
-  projectsMode = b.dataset.mode;
-  $$('#viewToggle button').forEach(x => x.classList.toggle('on', x.dataset.mode === projectsMode));
-  renderProjects();
-});
-
 /* ---------- dashboard ---------- */
 function renderDashboard(){
   const projects = scopedProjects(), devs = scopedDevelopers(), clients = scopedClients();
@@ -5587,33 +5988,45 @@ function renderDashboard(){
     go('projects');
   }));
 
-  // corridors
-  $('#corridorGrid').innerHTML = db.corridors.map(c => {
-    const ps = projects.filter(p => p.corridor === c.id);
-    const devs = new Set(ps.map(p => p.developerId).filter(Boolean)).size;
-    const pr = ps.flatMap(p => [p.priceMin,p.priceMax]).filter(v => v!=null && v!=='' && !isNaN(v)).map(Number);
-    const price = pr.length ? fmtPrice(Math.min(...pr)) + ' – ' + fmtPrice(Math.max(...pr)) : 'No projects yet';
-    const cnt = st => ps.filter(p => p.status === st).length;
-    return `<div class="cor-card" data-corridor="${c.id}">
-      <div class="stripe" style="background:${c.color}"></div>
-      <div class="cor-top">
-        <div class="cor-name"><span class="cor-dot" style="background:${c.color}"></span>${c.name}</div>
-        <span class="cor-count">${ps.length} project${ps.length===1?'':'s'}</span>
-      </div>
-      <div class="cor-price">${price}<small>${ps.length ? 'start / top' : ''}</small></div>
-      <div class="cor-meta"><span><b>${devs}</b> developer${devs===1?'':'s'}</span><span><b>${ps.filter(p=>p.rera).length}</b> RERA</span></div>
-      <div class="cor-mini">
-        <div><span class="dot ongoing"></span>${cnt('ongoing')} ongoing</div>
-        <div><span class="dot upcoming"></span>${cnt('upcoming')} upcoming</div>
-        <div><span class="dot completed"></span>${cnt('completed')} completed</div>
-      </div>
-    </div>`;
-  }).join('');
-  $$('#corridorGrid .cor-card').forEach(card => card.addEventListener('click', () => {
-    activeCategory = null;
-    $('#filterCorridor').value = card.dataset.corridor;
-    go('projects');
-  }));
+  // corridors — cards or sortable table
+  $$('#corrViewToggle button').forEach(x => x.classList.toggle('on', x.dataset.cormode === corrViewMode));
+  if(corrViewMode === 'table'){
+    $('#corridorGrid').style.display = 'block';
+    $('#corridorGrid').className = 'corridor-table';
+    $('#corridorGrid').innerHTML = corridorTableHTML(projects);
+    $$('#corridorGrid [data-corridor]').forEach(row => row.addEventListener('click', () => {
+      activeCategory = null; $('#filterCorridor').value = row.dataset.corridor; go('projects');
+    }));
+  } else {
+    $('#corridorGrid').style.display = '';
+    $('#corridorGrid').className = 'corridor-grid';
+    $('#corridorGrid').innerHTML = db.corridors.map(c => {
+      const ps = projects.filter(p => p.corridor === c.id);
+      const devs = new Set(ps.map(p => p.developerId).filter(Boolean)).size;
+      const pr = ps.flatMap(p => [p.priceMin,p.priceMax]).filter(v => v!=null && v!=='' && !isNaN(v)).map(Number);
+      const price = pr.length ? fmtPrice(Math.min(...pr)) + ' – ' + fmtPrice(Math.max(...pr)) : 'No projects yet';
+      const cnt = st => ps.filter(p => p.status === st).length;
+      return `<div class="cor-card" data-corridor="${c.id}">
+        <div class="stripe" style="background:${c.color}"></div>
+        <div class="cor-top">
+          <div class="cor-name"><span class="cor-dot" style="background:${c.color}"></span>${c.name}</div>
+          <span class="cor-count">${ps.length} project${ps.length===1?'':'s'}</span>
+        </div>
+        <div class="cor-price">${price}<small>${ps.length ? 'start / top' : ''}</small></div>
+        <div class="cor-meta"><span><b>${devs}</b> developer${devs===1?'':'s'}</span><span><b>${ps.filter(p=>p.rera).length}</b> RERA</span></div>
+        <div class="cor-mini">
+          <div><span class="dot ongoing"></span>${cnt('ongoing')} ongoing</div>
+          <div><span class="dot upcoming"></span>${cnt('upcoming')} upcoming</div>
+          <div><span class="dot completed"></span>${cnt('completed')} completed</div>
+        </div>
+      </div>`;
+    }).join('');
+    $$('#corridorGrid .cor-card').forEach(card => card.addEventListener('click', () => {
+      activeCategory = null;
+      $('#filterCorridor').value = card.dataset.corridor;
+      go('projects');
+    }));
+  }
 
   // featured showcase — starred projects, latest 4; fallback: newest
   const featured = projects.filter(p => p.isFeatured).sort((a,b) => (b.createdAt||0) - (a.createdAt||0));
@@ -5774,6 +6187,12 @@ function renderDailyHero(){
   hero.style.setProperty('--th-bg1', pal.bg1);
   hero.style.setProperty('--th-bg2', pal.bg2);
   hero.style.setProperty('--th-accent', pal.accent);
+  const dhl = $('#dashHeadline');
+  if(dhl){
+    dhl.style.setProperty('--th-bg1', pal.bg1);
+    dhl.style.setProperty('--th-bg2', pal.bg2);
+    dhl.style.setProperty('--th-accent', pal.accent);
+  }
 
   if($('#thWeekdayHi')) $('#thWeekdayHi').textContent = HINDI_WEEKDAYS[now.getDay()];
   if($('#thWeekdayEn')) $('#thWeekdayEn').textContent = now.toLocaleDateString('en-IN', { weekday:'long' });
@@ -6431,9 +6850,17 @@ function renderProjects(){
     <div class="tile"><b>${list.filter(p=>p.rera).length}</b><span>RERA registered</span></div>`;
 
   const isBoard = projectsMode === 'board';
+  const isList = projectsMode === 'list';
   $('#board').style.display = isBoard ? 'grid' : 'none';
-  $('#galleryGrid').style.display = isBoard ? 'none' : 'grid';
+  $('#galleryGrid').style.display = projectsMode === 'gallery' ? 'grid' : 'none';
+  $('#projectListWrap').style.display = isList ? 'block' : 'none';
+  $$('#viewToggle button').forEach(x => x.classList.toggle('on', x.dataset.mode === projectsMode));
 
+  if(isList){
+    $('#projectListWrap').innerHTML = projectTableHTML(list);
+    bindProjectRows('#projectListWrap');
+    return;
+  }
   if(!isBoard){
     $('#galleryGrid').innerHTML = list.length ? list.map(showCard).join('') : `<div class="show-empty-note">${emptyBlock('Nothing matches these filters','Try a different corridor, type or search term.')}</div>`;
     bindShowcase('#galleryGrid');
@@ -6577,6 +7004,21 @@ function renderDevelopers(){
   const q = $('#globalSearch').value.trim().toLowerCase();
   let list = [...scopedDevelopers()].sort((a,b) => (a.name||'').localeCompare(b.name||''));
   if(q) list = list.filter(d => [d.name,d.ownerName,d.email,d.phone,d.notes,d.remarks].filter(Boolean).join(' ').toLowerCase().includes(q));
+  $$('#devViewToggle button').forEach(x => x.classList.toggle('on', x.dataset.devview === devViewMode));
+  $('#devBoard').style.display = devViewMode === 'cards' ? '' : 'none';
+  $('#devGrid').style.display = devViewMode === 'cards' ? 'grid' : 'none';
+  $('#devListWrap').style.display = devViewMode === 'list' ? 'block' : 'none';
+  $('#devKanban').style.display = devViewMode === 'kanban' ? 'grid' : 'none';
+  if(devViewMode === 'list'){
+    $('#devListWrap').innerHTML = devTableHTML(list);
+    bindDevRows('#devListWrap');
+    return;
+  }
+  if(devViewMode === 'kanban'){
+    $('#devKanban').innerHTML = devKanbanHTML(list);
+    bindDevRows('#devKanban');
+    return;
+  }
   renderDevBoard();
   $('#devGrid').innerHTML = list.length ? list.map(d => {
     const ps = projectsForDeveloper(d.id);
@@ -6667,6 +7109,7 @@ function renderDeveloperProfile(){
       <span>${clients.length} client${clients.length === 1 ? '' : 's'} linked</span>
       <span>Price band: ${esc(priceRangeOf(ps))}</span>
     </div>
+    ${customFieldsView('developer', d)}
     <div class="dev-profile-stats">
       <button type="button" class="${!filt ? 'on' : ''}" data-devpfilter=""><div class="k">All projects</div><div class="v">${ps.length}</div></button>
       ${DEV_BUCKETS.map(b => `<button type="button" class="${filt === b.id ? 'on' : ''}" data-devpfilter="${b.id}"><div class="k">${b.label}</div><div class="v">${cnt[b.id]}</div></button>`).join('')}
@@ -6979,6 +7422,7 @@ function openAdvisor(id, presetStatus){
   $('#aCommission').value = a.commissionPct ?? '';
   $('#aSlab').value = a.slab || '';
   $('#aNotes').value = a.notes || '';
+  renderCustomFields('#aCustomFields', 'advisor', a.custom || {});
   $('#aProjectSearch').value = '';
   $$('#aCorridors input').forEach(i => { i.checked = (a.corridors || []).includes(i.value); });
   tempAdvisorImage = a.photo || null;
@@ -7012,6 +7456,7 @@ function saveAdvisor(){
     commissionPct: number($('#aCommission').value) ?? 0,
     corridors: $$('#aCorridors input:checked').map(i => i.value),
     projectIds: readProjectPicker('#aProjects'),
+    custom: cfPayload(editingAdvisor, '#aCustomFields'),
   };
   if(editingAdvisor){ Object.assign(editingAdvisor, payload); editingAdvisor.updatedAt = Date.now(); toast('Advisor updated'); }
   else { db.advisors.push({ id:uid(), createdAt:Date.now(), updatedAt:Date.now(), ...payload }); toast(status === 'active' ? 'Active BCS advisor added' : 'Advisor added to pipeline'); }
@@ -7068,6 +7513,7 @@ function renderAdvisorProfile(){
       ${wa ? `<a class="wa" href="${wa}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
       ${a.email ? `<a href="mailto:${esc(a.email)}">✉ ${esc(a.email)}</a>` : ''}
     </div>
+    ${customFieldsView('advisor', a)}
     ${isAdmin() ? `<div class="profile-block">
       <div class="lab">Daily recruitment actions</div>
       <div class="adv-quick">
@@ -7464,6 +7910,7 @@ function openClient(id){
   $('#cTimeline').value = c.timeline || '';
   $('#cRequirement').value = c.requirement || '';
   $('#cNotes').value = c.notes || '';
+  renderCustomFields('#cCustomFields', 'client', c.custom || {});
   const advisorOptions = isAdmin() ? db.advisors : [currentAdvisor()].filter(Boolean);
   $('#cAdvisor').innerHTML = '<option value="">— Admin desk / unassigned —</option>' +
     advisorOptions.map(a => `<option value="${a.id}">${esc(a.name)}</option>`).join('');
@@ -7497,6 +7944,7 @@ function saveClient(){
     requirement: $('#cRequirement').value.trim(),
     notes: $('#cNotes').value.trim(),
     projectIds: readProjectPicker('#cProjects'),
+    custom: cfPayload(editingClient, '#cCustomFields'),
     updatedAt: Date.now(),
   };
   if(editingClient){
@@ -7574,6 +8022,7 @@ function renderClientProfile(){
       <span>${esc(fu.label)}</span>
       ${adv ? `<a href="#" data-cadvisor="${adv.id}">Advisor: ${esc(adv.name)}</a>` : `<span>No advisor assigned</span>`}
     </div>
+    ${customFieldsView('client', c)}
     <div class="pipeline" style="margin-bottom:14px">
       ${CLIENT_STATUSES.map(s => `<button type="button" data-cstatus="${s.id}" class="${(c.clientStatus || 'new') === s.id ? 'on' : ''}">${esc(s.label)}</button>`).join('')}
     </div>
@@ -7808,6 +8257,7 @@ function openResale(id, presetProjectId){
   $('#rClient').value = r.clientId || '';
   $('#rAdvisor').value = r.advisorId || ((currentAdvisor() || {}).id || '');
   $('#rNotes').value = r.notes || '';
+  renderCustomFields('#rCustomFields', 'resale', r.custom || {});
 
   if(presetProjectId) syncResaleProjectFields();
   showOverlay('resaleModal');
@@ -7835,6 +8285,7 @@ function saveResale(){
     advisorId: $('#rAdvisor').value || '',
     status: $('#rStatus').value || 'available',
     notes: $('#rNotes').value.trim(),
+    custom: cfPayload(editingResale, '#rCustomFields'),
     updatedAt: Date.now(),
   };
   let saved;
@@ -7897,6 +8348,7 @@ function openResaleView(id){
       <div class="profile-block"><div class="lab">Linked project</div><div class="val">${p ? esc(p.name) : esc(r.projectName || 'Not linked')}</div></div>
     </div>
     ${r.notes ? `<div class="profile-block"><div class="lab">Resale notes</div><p>${esc(r.notes)}</p></div>` : ''}
+    ${customFieldsView('resale', r)}
     <div class="resale-playbook"><b>Deal playbook:</b> Seller se original rate, loan/registry status aur handover date confirm karein. Buyer ko BCS quote, unit documents aur project approval status ek hi sheet mein dein.</div>`;
   showOverlay('resaleViewModal');
 }
@@ -8621,6 +9073,7 @@ function renderDetail(){
         ${rows.map(([lab, val]) => `<div class="dcell"><div class="lab">${lab}</div><div class="val">${val}</div></div>`).join('')}
         <div class="dcell full"><div class="lab">Location</div><div class="val">${esc(p.location || '—')}${p.mapUrl ? ` · <a href="${esc(p.mapUrl)}" target="_blank" rel="noopener">Open saved map ↗</a>` : ''}</div></div>
       </div>
+      ${customFieldsView('project', p)}
       ${prosConsHTML(p)}
       ${p.remarks ? `<div class="dremarks"><div class="lab">Approval / legal remarks</div><p>${esc(p.remarks)}</p></div>` : ''}
       ${d ? `<div class="ddev" data-opendev="${d.id}" title="Open developer profile — all projects">
@@ -9112,6 +9565,7 @@ function openProject(id, presetCorridor, presetDevId){
   tempProjectAdvisors = id ? advisorsForProject(id).map(a => a.id) : [];
   renderProjectAdvisorPicker(tempProjectAdvisors);
   renderProjectChecklistEditor(id ? p : { checklist: db.defaultChecklist.map(label => ({ id:uid(), label, done:false, doneAt:null, custom:false })) });
+  renderCustomFields('#pCustomFields', 'project', p.custom || {});
   setProjectTab('basic');
   showOverlay('projectModal');
   setTimeout(() => $('#pName').focus(), 80);
@@ -9135,6 +9589,7 @@ function openDeveloper(id){
   $('#dWebsite').value = d.website || '';
   $('#dNotes').value = d.notes || '';
   $('#dRemarks').value = d.remarks || '';
+  renderCustomFields('#dCustomFields', 'developer', d.custom || {});
   tempDevImage = d.photo || null;
   setPreview('#dPreview', tempDevImage);
   showOverlay('developerModal');
@@ -9294,6 +9749,7 @@ $('#pSave').addEventListener('click', () => {
     inventoryImages: [...tempInventoryImages],
     notes: $('#pNotes').value.trim(),
     checklist: readChecklistEditor(),
+    custom: cfPayload(editingProject, '#pCustomFields'),
   };
   let savedProject;
   const oldPrice = editingProject ? {
@@ -9340,6 +9796,7 @@ $('#dSave').addEventListener('click', () => {
     remarks: $('#dRemarks').value.trim(),
     photo: tempDevImage || '',
     photoKey: editingDeveloper && editingDeveloper.photo === (tempDevImage || '') ? (editingDeveloper.photoKey || '') : '',
+    custom: cfPayload(editingDeveloper, '#dCustomFields'),
   };
   if(editingDeveloper){ Object.assign(editingDeveloper, payload); toast('Developer updated'); }
   else { db.developers.push({ id:uid(), ...payload }); toast('Developer added'); }
@@ -14156,9 +14613,594 @@ function initExperience(){
   });
 }
 
+/* ==================================================================
+   v14 helpers — custom fields, table/kanban views, analytics
+   ================================================================== */
+
+/* ---------- custom fields: definitions ---------- */
+function cfFields(entity){
+  return (db.customFields || [])
+    .filter(f => f.entity === entity && f.active !== false)
+    .sort((a, b) => a.order - b.order);
+}
+function cfInputHTML(f, value){
+  const id = f.id, v = value;
+  if(f.type === 'checkbox'){
+    const on = v === true || v === 'true' || v === 1;
+    return `<label class="cf-switch"><input type="checkbox" data-cfid="${id}" ${on ? 'checked' : ''}> <span>${on ? 'Yes' : 'Mark yes / no'}</span></label>`;
+  }
+  if(f.type === 'textarea'){
+    return `<textarea data-cfid="${id}" rows="3" placeholder="Type here…">${esc(v == null ? '' : v)}</textarea>`;
+  }
+  if(f.type === 'number'){
+    return `<input type="number" step="any" data-cfid="${id}" value="${v == null ? '' : esc(v)}" placeholder="e.g. 125000">`;
+  }
+  if(f.type === 'date'){
+    return `<input type="date" data-cfid="${id}" value="${esc(v || '')}">`;
+  }
+  if(f.type === 'select'){
+    const opts = f.options || [];
+    if(!opts.length) return `<input type="text" data-cfid="${id}" value="${esc(v || '')}" placeholder="Options add karein (⚙ Manage)">`;
+    return `<select data-cfid="${id}"><option value="">— Select —</option>${opts.map(o => `<option value="${esc(o)}" ${String(v) === o ? 'selected' : ''}>${esc(o)}</option>`).join('')}</select>`;
+  }
+  if(f.type === 'multiselect'){
+    const opts = f.options || [];
+    const vals = Array.isArray(v) ? v.map(String) : (v ? [String(v)] : []);
+    if(!opts.length) return `<input type="text" data-cfid="${id}" value="${esc(vals.join(', '))}" placeholder="Options add karein (⚙ Manage)">`;
+    return `<div class="cf-checks">${opts.map(o => {
+      const on = vals.includes(o);
+      return `<label class="cf-check ${on ? 'on' : ''}"><input type="checkbox" data-cfid="${id}" data-cfmulti="1" value="${esc(o)}" ${on ? 'checked' : ''}>${esc(o)}</label>`;
+    }).join('')}</div>`;
+  }
+  return `<input type="text" data-cfid="${id}" value="${esc(v == null ? '' : v)}" placeholder="Type here…">`;
+}
+function renderCustomFields(sel, entity, values){
+  const host = $(sel);
+  if(!host) return;
+  host.dataset.cfentity = entity;
+  const fields = cfFields(entity);
+  if(!fields.length){
+    host.innerHTML = `<div class="cf-empty"><span>Is section ke liye abhi koi custom field nahi hai. Status, property type, possession — jo chahiye add karein.</span>${isAdmin() ? `<button type="button" class="btn ghost sm" data-cfmanage="${entity}">＋ Add field</button>` : ''}</div>`;
+    return;
+  }
+  host.innerHTML = `<div class="cf-grid">${fields.map(f => {
+    const full = f.type === 'textarea' || f.type === 'multiselect';
+    return `<div class="cf-item ${full ? 'cf-full' : ''}">
+      <label>${esc(f.label)}<span class="cf-type">${CF_TYPE_LABEL[f.type] || f.type}</span></label>
+      ${cfInputHTML(f, (values || {})[f.id])}
+    </div>`;
+  }).join('')}</div>`;
+  host.querySelectorAll('.cf-check input').forEach(cb => {
+    cb.addEventListener('change', () => cb.closest('.cf-check').classList.toggle('on', cb.checked));
+  });
+}
+function readCustomFields(sel){
+  const host = $(sel);
+  if(!host) return {};
+  const entity = host.dataset.cfentity || '';
+  const out = {};
+  cfFields(entity).forEach(f => {
+    if(f.type === 'multiselect'){
+      out[f.id] = [...host.querySelectorAll(`input[data-cfid="${f.id}"][data-cfmulti]:checked`)].map(i => i.value);
+      return;
+    }
+    const el = host.querySelector(`[data-cfid="${f.id}"]`);
+    if(!el) return;
+    if(f.type === 'checkbox'){ out[f.id] = !!el.checked; return; }
+    const raw = el.value;
+    if(f.type === 'number'){ out[f.id] = raw === '' ? null : (+raw || 0); return; }
+    out[f.id] = String(raw || '').trim();
+  });
+  return out;
+}
+function cfPayload(existing, sel){
+  return Object.assign({}, (existing && existing.custom) || {}, readCustomFields(sel));
+}
+function cfValueHTML(f, val){
+  if(f.type === 'checkbox') return val ? '<span class="cf-yes">Yes</span>' : '<span class="cf-no">No</span>';
+  if(Array.isArray(val)) return val.length ? val.map(x => `<span class="cf-pill">${esc(x)}</span>`).join('') : '—';
+  if(f.type === 'date' && val) return esc(fmtDate(val));
+  if(f.type === 'number' && val !== '' && val != null && !isNaN(+val)) return esc((+val).toLocaleString('en-IN'));
+  return val === '' || val == null ? '—' : esc(String(val));
+}
+function customFieldsView(entity, record){
+  const fields = cfFields(entity);
+  if(!fields.length || !record) return '';
+  const custom = record.custom || {};
+  const rows = fields.filter(f => {
+    const v = custom[f.id];
+    return v !== undefined && v !== null && v !== '' && !(Array.isArray(v) && !v.length);
+  });
+  if(!rows.length) return '';
+  return `<div class="cf-view">${rows.map(f => `<div class="cf-row ${f.type === 'textarea' ? 'full' : ''}">
+    <div class="cf-lab">${esc(f.label)}</div>
+    <div class="cf-val">${cfValueHTML(f, custom[f.id])}</div>
+  </div>`).join('')}</div>`;
+}
+
+/* ---------- custom fields: manager ---------- */
+let cfManagerEntity = 'project';
+let cfDrafts = {};
+function openFieldManager(entity){
+  if(!isAdmin()) return toast('Advisor login custom fields edit nahi kar sakta', true);
+  cfManagerEntity = CF_ENTITIES.some(e => e.id === entity) ? entity : 'project';
+  cfDrafts = {};
+  CF_ENTITIES.forEach(e => {
+    cfDrafts[e.id] = cfFields(e.id).map(f => ({ ...f, options: [...(f.options || [])] }));
+  });
+  $('#fldNewLabel').value = '';
+  renderFieldManager();
+  showOverlay('fieldsModal');
+}
+function syncFieldManager(){
+  $$('#fldList .fld-row').forEach(row => {
+    const rec = (cfDrafts[cfManagerEntity] || []).find(f => f.id === row.dataset.fldrow);
+    if(!rec) return;
+    const label = row.querySelector('[data-fldfield="label"]');
+    const type = row.querySelector('[data-fldfield="type"]');
+    const opts = row.querySelector('[data-fldfield="options"]');
+    const inTbl = row.querySelector('[data-fldfield="inTable"]');
+    rec.label = label ? label.value.trim() : rec.label;
+    rec.type = type ? type.value : rec.type;
+    if(opts) rec.options = opts.value.split(',').map(s => s.trim()).filter(Boolean);
+    rec.inTable = inTbl ? inTbl.checked : rec.inTable;
+  });
+}
+function renderFieldManager(){
+  $('#fldEntityTabs').innerHTML = CF_ENTITIES.map(e =>
+    `<button type="button" class="${e.id === cfManagerEntity ? 'on' : ''}" data-fldentity="${e.id}">${e.label} <span style="opacity:.6">${(cfDrafts[e.id] || []).length}</span></button>`
+  ).join('');
+  const rows = cfDrafts[cfManagerEntity] || [];
+  $('#fldList').innerHTML = rows.length ? rows.map((f, i) => `
+    <div class="fld-row" data-fldrow="${f.id}">
+      <div class="fld-main">
+        <input data-fldfield="label" value="${esc(f.label)}" placeholder="Field name — e.g. Status, Property type, Possession">
+        ${['select','multiselect'].includes(f.type) ? `<input data-fldfield="options" class="fld-opts" value="${esc((f.options || []).join(', '))}" placeholder="Options comma se alag — e.g. Hot, Warm, Cold">` : ''}
+      </div>
+      <select data-fldfield="type">${CF_TYPES.map(t => `<option value="${t.id}" ${t.id === f.type ? 'selected' : ''}>${t.label}</option>`).join('')}</select>
+      <div class="fld-tbl" title="List / table view mein column dikhayein"><input type="checkbox" data-fldfield="inTable" ${f.inTable ? 'checked' : ''}></div>
+      <div class="fld-move">
+        <button type="button" data-fldmove="up" ${i === 0 ? 'disabled' : ''} title="Upar">↑</button>
+        <button type="button" data-fldmove="down" ${i === rows.length - 1 ? 'disabled' : ''} title="Neeche">↓</button>
+        <button type="button" class="fld-del" data-flddel="1" title="Delete field">✕</button>
+      </div>
+    </div>`).join('') : `<div class="cf-empty"><span>Is section mein abhi koi custom field nahi hai. Neeche naam likh kar “Add field” dabayein.</span></div>`;
+}
+function refreshOpenCustomForms(){
+  if($('#projectModal').classList.contains('on')) renderCustomFields('#pCustomFields', 'project', (editingProject && editingProject.custom) || {});
+  if($('#developerModal').classList.contains('on')) renderCustomFields('#dCustomFields', 'developer', (editingDeveloper && editingDeveloper.custom) || {});
+  if($('#clientModal').classList.contains('on')) renderCustomFields('#cCustomFields', 'client', (editingClient && editingClient.custom) || {});
+  if($('#advisorModal').classList.contains('on')) renderCustomFields('#aCustomFields', 'advisor', (editingAdvisor && editingAdvisor.custom) || {});
+  if($('#resaleModal').classList.contains('on')) renderCustomFields('#rCustomFields', 'resale', (editingResale && editingResale.custom) || {});
+}
+
+/* ---------- projects: list table + sorting ---------- */
+let projectSortKey = 'new', projectSortDir = -1;
+function projectSortVal(p, key){
+  if(key === 'name') return (p.name || '').toLowerCase();
+  if(key === 'developer') return ((dev(p.developerId) || {}).name || '').toLowerCase();
+  if(key === 'corridor') return (corridor(p.corridor).name || '').toLowerCase();
+  if(key === 'status') return ({ ongoing:0, upcoming:1, completed:2 })[p.status] ?? 9;
+  if(key === 'price') return number(p.priceMin) ?? number(p.priceMax) ?? Infinity;
+  if(key === 'rera') return p.rera ? 1 : 0;
+  return p.createdAt || 0;
+}
+function projectTableHTML(list){
+  const fields = cfFields('project').filter(f => f.inTable);
+  const sorted = [...list].sort((a, b) => {
+    const av = projectSortVal(a, projectSortKey), bv = projectSortVal(b, projectSortKey);
+    if(av < bv) return -1 * projectSortDir;
+    if(av > bv) return 1 * projectSortDir;
+    return 0;
+  });
+  const cols = [
+    ['name', 'Project'], ['developer', 'Developer'], ['corridor', 'Corridor'],
+    ['status', 'Status'], ['price', 'Price'], ['rera', 'Approval']
+  ];
+  const head = cols.map(([k, l]) => `<th class="sortable" data-psort="${k}">${l}<span class="sort-ind">${projectSortKey === k ? (projectSortDir > 0 ? '↑' : '↓') : '↕'}</span></th>`).join('')
+    + fields.map(f => `<th>${esc(f.label)}</th>`).join('');
+  const rows = sorted.map(p => {
+    const d = dev(p.developerId);
+    const c = corridor(p.corridor);
+    return `<tr data-pdetail="${p.id}">
+      <td class="cell-main"><b>${esc(p.name)}</b><span>${esc(typeLabel(p.types))}${p.soldOut ? ' · Sold out' : ''}</span></td>
+      <td>${esc(d ? d.name : '—')}</td>
+      <td><span class="vt-dot" style="background:${c.color}"></span>${esc(c.name)}</td>
+      <td><span class="vt-pill ${p.status === 'ongoing' ? 'green' : p.status === 'upcoming' ? 'gold' : 'blue'}">${esc(statusLabel[p.status] || p.status)}</span></td>
+      <td class="cell-num">${esc(priceRange(p))}</td>
+      <td>${p.rera ? `<span class="vt-pill green">RERA</span>` : `<span class="vt-pill">${esc(approvalLabel(p) || '—')}</span>`}</td>
+      ${fields.map(f => `<td>${cfInlineValue(f, (p.custom || {})[f.id])}</td>`).join('')}
+    </tr>`;
+  }).join('');
+  return `<div class="vt-toolbar"><span class="vt-count">${list.length} project${list.length === 1 ? '' : 's'} · row par click karke detail kholein</span></div>
+    <div class="vt-table-wrap"><table class="vt-table"><thead><tr>${head}</tr></thead><tbody>${rows || `<tr><td colspan="${cols.length + fields.length}" class="cell-empty" style="text-align:center;padding:26px">No projects match these filters.</td></tr>`}</tbody></table></div>`;
+}
+function cfInlineValue(f, v){
+  if(v === undefined || v === null || v === '' || (Array.isArray(v) && !v.length)) return '<span class="cell-empty">—</span>';
+  if(f.type === 'checkbox') return v ? '<span class="vt-pill green">Yes</span>' : '<span class="vt-pill">No</span>';
+  if(Array.isArray(v)) return esc(v.join(', '));
+  return esc(String(v));
+}
+function bindProjectRows(scope){
+  $$(scope + ' [data-pdetail]').forEach(tr => tr.addEventListener('click', () => openDetail(tr.dataset.pdetail)));
+  $$(scope + ' th[data-psort]').forEach(th => th.addEventListener('click', () => {
+    const k = th.dataset.psort;
+    if(projectSortKey === k) projectSortDir *= -1;
+    else { projectSortKey = k; projectSortDir = k === 'price' || k === 'rera' ? -1 : 1; }
+    renderProjects();
+  }));
+}
+
+/* ---------- developers: table + kanban ---------- */
+function devTableHTML(list){
+  const fields = cfFields('developer').filter(f => f.inTable);
+  const rows = list.map(d => {
+    const ps = projectsForDeveloper(d.id);
+    const corr = [...new Set(ps.map(p => p.corridor))];
+    return `<tr data-devopen="${d.id}">
+      <td class="cell-main"><b>${esc(d.name)}</b><span>${esc(d.ownerName || 'Owner not set')}</span></td>
+      <td>${esc(d.phone || '—')}</td>
+      <td>${esc(d.email || '—')}</td>
+      <td class="cell-num">${ps.length}</td>
+      <td>${corr.length ? corr.map(id => `<span class="vt-dot" style="background:${corridor(id).color}"></span>${esc(corridor(id).name.replace(' Road', ''))}`).join(' · ') : '<span class="cell-empty">—</span>'}</td>
+      <td>${esc(priceRangeOf(ps))}</td>
+      ${fields.map(f => `<td>${cfInlineValue(f, (d.custom || {})[f.id])}</td>`).join('')}
+    </tr>`;
+  }).join('');
+  const head = ['Developer', 'Phone', 'Email', 'Projects', 'Corridors', 'Price band'].map(h => `<th>${h}</th>`).join('')
+    + fields.map(f => `<th>${esc(f.label)}</th>`).join('');
+  return `<div class="vt-toolbar"><span class="vt-count">${list.length} developer${list.length === 1 ? '' : 's'} · row par click karke profile kholein</span></div>
+    <div class="vt-table-wrap"><table class="vt-table"><thead><tr>${head}</tr></thead><tbody>${rows || `<tr><td colspan="${6 + fields.length}" class="cell-empty" style="text-align:center;padding:26px">No developers yet.</td></tr>`}</tbody></table></div>`;
+}
+function devKanbanHTML(list){
+  const groups = db.corridors.map(c => {
+    const devs = list.filter(d => {
+      const ps = projectsForDeveloper(d.id);
+      return ps.length && ps[0].corridor === c.id;
+    });
+    return { c, devs };
+  }).filter(g => g.devs.length);
+  const loose = list.filter(d => {
+    const ps = projectsForDeveloper(d.id);
+    return !ps.length || !db.corridors.some(c => ps[0].corridor === c.id);
+  });
+  if(loose.length) groups.push({ c: { name:'No corridor yet', color:'#8A9790' }, devs: loose });
+  if(!groups.length) return `<div class="an-empty" style="grid-column:1/-1">No developers yet — add your first developer.</div>`;
+  return groups.map(g => `<div class="dev-kcol">
+    <div class="dev-kcol-head"><span class="vt-dot" style="background:${g.c.color}"></span><b>${esc(g.c.name)}</b><span class="n">${g.devs.length}</span></div>
+    ${g.devs.map(d => {
+      const ps = projectsForDeveloper(d.id);
+      return `<div class="dev-kcard" data-devopen="${d.id}">
+        <b>${esc(d.name)}</b>
+        <span>${esc(d.ownerName || 'Owner not set')}</span>
+        <span>${ps.length} project${ps.length === 1 ? '' : 's'} · ${esc(priceRangeOf(ps))}</span>
+      </div>`;
+    }).join('')}
+  </div>`).join('');
+}
+function bindDevRows(scope){
+  $$(scope + ' [data-devopen]').forEach(c => c.addEventListener('click', e => {
+    if(e.target.closest('[data-deldev]')) return;
+    if(e.target.closest('[data-devedit]')){ openDeveloper(c.dataset.devopen); return; }
+    const sb = e.target.closest('[data-devstatus]');
+    if(sb){ openDeveloperProfile(c.dataset.devopen, sb.dataset.devstatus); return; }
+    openDeveloperProfile(c.dataset.devopen);
+  }));
+  $$(scope + ' [data-deldev]').forEach(b => b.addEventListener('click', e => {
+    e.stopPropagation(); confirmDeleteDeveloper(b.dataset.deldev);
+  }));
+}
+
+/* ---------- dashboard corridors: sortable table ---------- */
+function corridorTableHTML(projects){
+  const rows = db.corridors.map(c => {
+    const ps = projects.filter(p => p.corridor === c.id);
+    const devs = new Set(ps.map(p => p.developerId).filter(Boolean)).size;
+    const pr = ps.flatMap(p => [p.priceMin, p.priceMax]).filter(v => v != null && v !== '' && !isNaN(v)).map(Number);
+    const price = pr.length ? fmtPrice(Math.min(...pr)) + ' – ' + fmtPrice(Math.max(...pr)) : '—';
+    const cnt = st => ps.filter(p => p.status === st).length;
+    const bks = (db.bookings || []).filter(b => ((bookingProject(b) || {}).corridor === c.id)).length;
+    return { c, ps, devs, price, cnt, bks };
+  }).sort((a, b) => b.ps.length - a.ps.length);
+  return `<div class="vt-table-wrap"><table class="vt-table">
+    <thead><tr><th>Corridor</th><th>Projects</th><th>Developers</th><th>Price band</th><th>Ongoing</th><th>Upcoming</th><th>Completed</th><th>Bookings</th></tr></thead>
+    <tbody>${rows.map(r => `<tr data-corridor="${r.c.id}">
+      <td class="cell-main"><b><span class="vt-dot" style="background:${r.c.color}"></span>${esc(r.c.name)}</b></td>
+      <td class="cell-num">${r.ps.length}</td>
+      <td class="cell-num">${r.devs}</td>
+      <td class="cell-num">${esc(r.price)}</td>
+      <td><span class="vt-pill green">${r.cnt('ongoing')}</span></td>
+      <td><span class="vt-pill gold">${r.cnt('upcoming')}</span></td>
+      <td><span class="vt-pill blue">${r.cnt('completed')}</span></td>
+      <td class="cell-num">${r.bks}</td>
+    </tr>`).join('')}</tbody></table></div>`;
+}
+
+/* ---------- analytics ---------- */
+let anRange = 'all';
+const AN_COLORS = ['#4E7C62','#B4673F','#9A7B3F','#54779E','#8A6480','#5F8452','#3F7C7A','#A0555F'];
+function anBarHTML(label, value, max, color, display, attrs){
+  const pct = max > 0 ? Math.max(2, Math.round(value / max * 100)) : 0;
+  return `<div class="an-bar" ${attrs || ''}>
+    <span class="an-lab" title="${esc(label)}">${esc(label)}</span>
+    <span class="an-track"><i class="an-fill" style="width:${pct}%;background:${color}"></i></span>
+    <span class="an-num">${display == null ? value : display}</span>
+  </div>`;
+}
+function anMid(p){
+  const a = number(p.priceMin), b = number(p.priceMax);
+  if(a == null && b == null) return null;
+  return a == null ? b : b == null ? a : (a + b) / 2;
+}
+function renderAnalytics(){
+  const allProjects = scopedProjects();
+  const clients = scopedClients();
+  const devs = scopedDevelopers();
+  const advisors = isAdmin() ? db.advisors : [currentAdvisor()].filter(Boolean);
+  const bookings = (typeof scopedBookings === 'function' ? scopedBookings() : db.bookings) || [];
+  const cutoff = anRange === '90' ? (Date.now() - 90 * 86400000) : 0;
+  const inRange = r => !cutoff || (r.createdAt || r.updatedAt || 0) >= cutoff;
+  const projects = cutoff ? allProjects.filter(inRange) : allProjects;
+  const rClients = cutoff ? clients.filter(inRange) : clients;
+  const rBookings = cutoff ? bookings.filter(b => {
+    const t = b.bookingDate ? new Date(b.bookingDate + 'T00:00:00').getTime() : (b.createdAt || 0);
+    return t >= cutoff;
+  }) : bookings;
+
+  const totalValue = projects.reduce((n, p) => n + (anMid(p) || 0), 0);
+  const dealValue = rBookings.reduce((n, b) => n + (number(b.dealValue) ?? number(b.bookingAmount) ?? 0), 0);
+  const commission = rBookings.reduce((n, b) => n + (bookingCommission(b) || 0), 0);
+  const activePipeline = rClients.filter(c => !['booked','lost'].includes(c.clientStatus || 'new')).length;
+  const bookedClients = rClients.filter(c => c.clientStatus === 'booked').length;
+  const activeAdvisors = advisors.filter(a => a.status === 'active');
+  const teamStrength = advisors.reduce((n, a) => n + (+a.teamSize || 0), 0);
+  const resale = scopedResale();
+  const resaleValue = resale.filter(r => r.status !== 'sold' && r.price != null).reduce((n, r) => n + (+r.price || 0), 0);
+  const rera = projects.filter(p => p.rera).length;
+  const today = todayISO();
+  const dueFollow = rClients.filter(c => c.nextFollowUp && c.nextFollowUp <= today && !['booked','lost'].includes(c.clientStatus || 'new')).length;
+
+  const kpis = [
+    ['Projects', projects.length, `${projects.filter(p => p.status === 'ongoing').length} ongoing · ${projects.filter(p => p.status === 'upcoming').length} upcoming`, '#4E7C62'],
+    ['Guide inventory value', totalValue ? fmtPrice(totalValue) : '—', `${rera}/${projects.length || 0} RERA registered`, '#B4673F'],
+    ['Bookings value', dealValue ? fmtPrice(dealValue) : '—', `${rBookings.length} booking${rBookings.length === 1 ? '' : 's'} tracked`, '#54779E'],
+    ['Commission potential', commission ? fmtPrice(commission) : '—', 'from tracked bookings', '#9A7B3F'],
+    ['Clients', rClients.length, `${activePipeline} active pipeline`, '#8A6480'],
+    ['Booked clients', bookedClients, `${rClients.length ? Math.round(bookedClients / rClients.length * 100) : 0}% conversion`, '#5F8452'],
+    ['Advisor network', activeAdvisors.length + '/' + advisors.length, `${teamStrength} team members`, '#3F7C7A'],
+    ['Resale ask value', resaleValue ? fmtPrice(resaleValue) : '—', `${resale.filter(r => r.status === 'available').length} available units`, '#A0555F'],
+  ];
+  if($('#anKpis')) $('#anKpis').innerHTML = kpis.map(([k, v, s, color]) => `<div class="kpi" style="--kc:${color}"><div class="k">${esc(k)}</div><div class="v">${esc(String(v))}</div><div class="s">${esc(s)}</div></div>`).join('');
+
+  // corridor bars
+  const corrRows = db.corridors.map((c, i) => ({ c, n: projects.filter(p => p.corridor === c.id).length, i }))
+    .sort((a, b) => b.n - a.n);
+  const maxCorr = Math.max(1, ...corrRows.map(r => r.n));
+  if($('#anCorridor')) $('#anCorridor').innerHTML = corrRows.map(r =>
+    anBarHTML(r.c.name, r.n, maxCorr, r.c.color || AN_COLORS[r.i % AN_COLORS.length], `${r.n}`, `data-ancorr="${r.c.id}" title="Open ${esc(r.c.name)} projects"`)
+  ).join('') || `<div class="an-empty">No corridors yet.</div>`;
+  $$('#anCorridor [data-ancorr]').forEach(el => el.addEventListener('click', () => {
+    activeCategory = null; $('#filterCorridor').value = el.dataset.ancorr; go('projects');
+  }));
+
+  // status donut
+  const statuses = [['ongoing','Ongoing','#4E7C62'],['upcoming','Upcoming','#C49A3E'],['completed','Completed','#54779E']];
+  const totalStatus = projects.length || 1;
+  let acc = 0;
+  const stops = statuses.map(([id, , color]) => {
+    const n = projects.filter(p => p.status === id).length;
+    const from = acc / totalStatus * 360; acc += n;
+    const to = acc / totalStatus * 360;
+    return `${color} ${from}deg ${to}deg`;
+  });
+  if($('#anStatus')) $('#anStatus').innerHTML = `
+    <div class="an-donut" style="background:conic-gradient(${projects.length ? stops.join(',') : '#EEF2EF 0deg 360deg'})">
+      <div class="an-donut-mid"><b>${projects.length}</b><span>projects</span></div>
+    </div>
+    <div class="an-legend">${statuses.map(([id, label, color]) => {
+      const n = projects.filter(p => p.status === id).length;
+      return `<div><span class="dot" style="background:${color}"></span>${label}<b>${n}</b></div>`;
+    }).join('')}
+    <div><span class="dot" style="background:#A8A79E"></span>RERA registered<b>${rera}</b></div>
+    </div>`;
+
+  // client funnel
+  const maxF = Math.max(1, ...CLIENT_STATUSES.map(s => rClients.filter(c => (c.clientStatus || 'new') === s.id).length));
+  if($('#anPipeline')) $('#anPipeline').innerHTML = CLIENT_STATUSES.map(s => {
+    const n = rClients.filter(c => (c.clientStatus || 'new') === s.id).length;
+    const pct = Math.max(4, Math.round(n / maxF * 100));
+    const color = s.id === 'lost' ? '#A8A79E' : s.id === 'booked' ? '#4E7C62' : '#54779E';
+    return `<div class="an-fstep"><span class="fname">${esc(s.label)}</span><span class="fbar" style="width:${Math.min(pct, 44)}%;background:${color}"></span><span class="fnum">${n}</span></div>`;
+  }).join('');
+
+  // corridor value bars
+  const valRows = db.corridors.map(c => ({
+    c,
+    v: projects.filter(p => p.corridor === c.id).reduce((n, p) => n + (anMid(p) || 0), 0)
+  })).filter(r => r.v > 0).sort((a, b) => b.v - a.v);
+  const maxVal = Math.max(1, ...valRows.map(r => r.v));
+  if($('#anValue')) $('#anValue').innerHTML = valRows.length ? valRows.map(r =>
+    anBarHTML(r.c.name, r.v, maxVal, r.c.color || '#B4673F', fmtPrice(r.v).replace('₹', ''))
+  ).join('') : `<div class="an-empty">Add guide prices to projects to see corridor value.</div>`;
+
+  // property type split
+  const typeRows = TYPES.map(t => ({ t, n: projects.filter(p => (p.types || []).includes(t.id)).length }))
+    .filter(r => r.n > 0).sort((a, b) => b.n - a.n);
+  const maxType = Math.max(1, ...typeRows.map(r => r.n));
+  if($('#anTypes')) $('#anTypes').innerHTML = typeRows.length ? typeRows.map((r, i) =>
+    anBarHTML(r.t.label, r.n, maxType, AN_COLORS[i % AN_COLORS.length], `${r.n}`)
+  ).join('') : `<div class="an-empty">No property types recorded yet.</div>`;
+
+  // insights
+  const topCorr = corrRows[0];
+  const topVal = valRows[0];
+  const topDev = [...devs].map(d => ({ d, n: projectsForDeveloper(d.id).length })).sort((a, b) => b.n - a.n)[0];
+  const topAdvisor = [...advisors].map(a => ({
+    a, n: rClients.filter(c => c.advisorId === a.id).length,
+    cms: rBookings.filter(b => b.advisorId === a.id).reduce((s, b) => s + (bookingCommission(b) || 0), 0)
+  })).sort((a, b) => b.n - a.n || b.cms - a.cms)[0];
+  const insights = [
+    topCorr && topCorr.n ? `<div class="an-insight"><span class="ic">📍</span><div><b>${esc(topCorr.c.name)}</b> leads supply with <b>${topCorr.n}</b> project${topCorr.n === 1 ? '' : 's'} — ${Math.round(topCorr.n / (projects.length || 1) * 100)}% of the portfolio.</div></div>` : '',
+    topVal ? `<div class="an-insight"><span class="ic">💰</span><div><b>${esc(topVal.c.name)}</b> carries the highest guide value at <b>${esc(fmtPrice(topVal.v))}</b>.</div></div>` : '',
+    `<div class="an-insight"><span class="ic">✅</span><div>RERA coverage is <b>${projects.length ? Math.round(rera / projects.length * 100) : 0}%</b>. ${projects.length - rera ? `<b>${projects.length - rera}</b> project${projects.length - rera === 1 ? '' : 's'} still need registration details.` : 'Every project has a RERA number on record.'}</div></div>`,
+    `<div class="an-insight"><span class="ic">🔁</span><div>Client conversion is <b>${rClients.length ? Math.round(bookedClients / rClients.length * 100) : 0}%</b> (${bookedClients} booked of ${rClients.length}). ${dueFollow ? `<b>${dueFollow}</b> follow-up${dueFollow === 1 ? '' : 's'} due today or overdue.` : 'No follow-ups pending right now.'}</div></div>`,
+    topDev && topDev.n ? `<div class="an-insight"><span class="ic">🏗️</span><div><b>${esc(topDev.d.name)}</b> is your largest developer with <b>${topDev.n}</b> project${topDev.n === 1 ? '' : 's'}.</div></div>` : '',
+    topAdvisor && topAdvisor.n ? `<div class="an-insight"><span class="ic">🤝</span><div><b>${esc(topAdvisor.a.name)}</b> handles the most client leads (<b>${topAdvisor.n}</b>)${topAdvisor.cms ? ` and has generated <b>${esc(fmtPrice(topAdvisor.cms))}</b> in commission potential` : ''}.</div></div>` : '',
+    `<div class="an-insight"><span class="ic">🏷️</span><div>Resale inventory: <b>${resale.filter(r => r.status === 'available').length}</b> available, <b>${resale.filter(r => r.status === 'hold').length}</b> on hold, <b>${resale.filter(r => r.status === 'sold').length}</b> sold.</div></div>`,
+  ].filter(Boolean).slice(0, 6);
+  if($('#anInsights')) $('#anInsights').innerHTML = insights.join('') || `<div class="an-empty">Add projects, clients and bookings — insights yahan apne aap ban jayenge.</div>`;
+
+  // developer performance table
+  if($('#anDevTable')) {
+    const rows = devs.map(d => {
+      const ps = projectsForDeveloper(d.id);
+      const c = devBucketCounts(ps);
+      return `<tr><td class="nm">${esc(d.name)}</td><td class="num">${ps.length}</td><td class="num">${c.ongoing}</td><td class="num">${c.upcoming}</td><td class="num">${c.completed}</td><td class="num">${ps.filter(p => p.rera).length}</td><td class="num">${clientsForDeveloper(d.id).length}</td><td class="num">${esc(priceRangeOf(ps))}</td></tr>`;
+    }).join('');
+    $('#anDevTable').innerHTML = `<thead><tr><th>Developer</th><th>Projects</th><th>Ongoing</th><th>Upcoming</th><th>Done</th><th>RERA</th><th>Clients</th><th>Price band</th></tr></thead><tbody>${rows || `<tr><td colspan="8" class="an-empty">No developers yet.</td></tr>`}</tbody>`;
+  }
+
+  // corridor scorecard
+  if($('#anCorrTable')) {
+    const rows = corrRows.map(r => {
+      const ps = projects.filter(p => p.corridor === r.c.id);
+      const v = ps.reduce((n, p) => n + (anMid(p) || 0), 0);
+      const bks = rBookings.filter(b => ((bookingProject(b) || {}).corridor === r.c.id)).length;
+      return `<tr><td class="nm"><span class="vt-dot" style="background:${r.c.color}"></span>${esc(r.c.name)}</td><td class="num">${ps.length}</td><td class="num">${new Set(ps.map(p => p.developerId).filter(Boolean)).size}</td><td class="num">${ps.filter(p => p.status === 'ongoing').length}</td><td class="num">${ps.filter(p => p.status === 'upcoming').length}</td><td class="num">${v ? esc(fmtPrice(v)) : '—'}</td><td class="num">${bks}</td></tr>`;
+    }).join('');
+    $('#anCorrTable').innerHTML = `<thead><tr><th>Corridor</th><th>Projects</th><th>Developers</th><th>Ongoing</th><th>Upcoming</th><th>Guide value</th><th>Bookings</th></tr></thead><tbody>${rows || `<tr><td colspan="7" class="an-empty">No corridors yet.</td></tr>`}</tbody>`;
+  }
+
+  // advisor performance
+  if($('#anAdvisorTable')) {
+    const rows = advisors.map(a => {
+      const cl = rClients.filter(c => c.advisorId === a.id);
+      const bks = rBookings.filter(b => b.advisorId === a.id);
+      const cms = bks.reduce((n, b) => n + (bookingCommission(b) || 0), 0);
+      return `<tr><td class="nm">${esc(a.name)}</td><td><span class="vt-pill ${a.status === 'active' ? 'green' : a.status === 'inactive' ? 'red' : 'gold'}">${esc(advisorStatusMeta(a.status).label)}</span></td><td class="num">${+a.teamSize || 0}</td><td class="num">${(a.projectIds || []).length}</td><td class="num">${cl.length}</td><td class="num">${cl.filter(c => c.clientStatus === 'booked').length}</td><td class="num">${bks.length}</td><td class="num">${cms ? esc(fmtPrice(cms)) : '—'}</td></tr>`;
+    }).join('');
+    $('#anAdvisorTable').innerHTML = `<thead><tr><th>Advisor</th><th>Status</th><th>Team</th><th>Projects</th><th>Clients</th><th>Booked</th><th>Bookings</th><th>Commission</th></tr></thead><tbody>${rows || `<tr><td colspan="8" class="an-empty">No advisors yet.</td></tr>`}</tbody>`;
+  }
+}
+
+/* ---------- v14 event wiring ---------- */
+$('#viewToggle').addEventListener('click', e => {
+  const b = e.target.closest('button[data-mode]');
+  if(!b) return;
+  projectsMode = b.dataset.mode;
+  db.ui.projectsMode = projectsMode;
+  save();
+  $$('#viewToggle button').forEach(x => x.classList.toggle('on', x.dataset.mode === projectsMode));
+  renderProjects();
+});
+$('#devViewToggle').addEventListener('click', e => {
+  const b = e.target.closest('button[data-devview]');
+  if(!b) return;
+  devViewMode = b.dataset.devview;
+  db.ui.devViewMode = devViewMode;
+  save();
+  renderDevelopers();
+});
+$('#corrViewToggle').addEventListener('click', e => {
+  const b = e.target.closest('button[data-cormode]');
+  if(!b) return;
+  corrViewMode = b.dataset.cormode;
+  db.ui.corrViewMode = corrViewMode;
+  save();
+  renderDashboard();
+});
+$('#anRangeToggle').addEventListener('click', e => {
+  const b = e.target.closest('button[data-anrange]');
+  if(!b) return;
+  anRange = b.dataset.anrange;
+  $$('#anRangeToggle button').forEach(x => x.classList.toggle('on', x.dataset.anrange === anRange));
+  renderAnalytics();
+});
+$('#projectFieldsBtn').addEventListener('click', () => openFieldManager('project'));
+$('#devFieldsBtn').addEventListener('click', () => openFieldManager('developer'));
+$('#fieldsBtn').addEventListener('click', () => openFieldManager());
+document.body.addEventListener('click', e => {
+  const m = e.target.closest('[data-cfmanage]');
+  if(m){ e.preventDefault(); openFieldManager(m.dataset.cfmanage); }
+});
+$('#fldEntityTabs').addEventListener('click', e => {
+  const b = e.target.closest('[data-fldentity]');
+  if(!b) return;
+  syncFieldManager();
+  cfManagerEntity = b.dataset.fldentity;
+  renderFieldManager();
+});
+$('#fldList').addEventListener('change', e => {
+  const row = e.target.closest('[data-fldrow]');
+  if(!row) return;
+  const wasType = e.target.matches('[data-fldfield="type"]');
+  syncFieldManager();
+  if(wasType) renderFieldManager();
+});
+$('#fldList').addEventListener('click', e => {
+  const row = e.target.closest('[data-fldrow]');
+  if(!row) return;
+  const rows = cfDrafts[cfManagerEntity] || [];
+  const idx = rows.findIndex(f => f.id === row.dataset.fldrow);
+  if(idx < 0) return;
+  if(e.target.closest('[data-flddel]')){
+    syncFieldManager();
+    cfDrafts[cfManagerEntity].splice(idx, 1);
+    renderFieldManager();
+    return;
+  }
+  const mv = e.target.closest('[data-fldmove]');
+  if(mv){
+    syncFieldManager();
+    const dir = mv.dataset.fldmove === 'up' ? -1 : 1;
+    const j = idx + dir;
+    if(j >= 0 && j < rows.length){
+      const tmp = rows[idx]; rows[idx] = rows[j]; rows[j] = tmp;
+    }
+    renderFieldManager();
+  }
+});
+$('#fldAdd').addEventListener('click', () => {
+  const label = $('#fldNewLabel').value.trim();
+  if(!label) return toast('Field ka naam likhein', true);
+  syncFieldManager();
+  cfDrafts[cfManagerEntity].push({
+    id: uid(), entity: cfManagerEntity, label, type: 'text', options: [], inTable: true,
+    order: cfDrafts[cfManagerEntity].length, active: true, createdAt: Date.now(), updatedAt: Date.now()
+  });
+  $('#fldNewLabel').value = '';
+  renderFieldManager();
+  toast('Field added — type / options choose karein');
+});
+$('#fldSave').addEventListener('click', () => {
+  syncFieldManager();
+  const all = [];
+  let missing = false;
+  CF_ENTITIES.forEach(e => {
+    (cfDrafts[e.id] || []).forEach((f, i) => {
+      if(!f.label) missing = true;
+      all.push({
+        ...f, entity: e.id, order: i,
+        updatedAt: Date.now(), createdAt: f.createdAt || Date.now(),
+        options: (f.options || []).filter(Boolean)
+      });
+    });
+  });
+  if(missing) return toast('Har field ka naam zaroori hai', true);
+  db.customFields = all.filter(f => f.label);
+  save();
+  closeModal('fieldsModal');
+  refreshOpenCustomForms();
+  render();
+  if($('#detailModal').classList.contains('on') && detailId) renderDetail();
+  toast('Custom fields saved');
+});
+
+/* ---------- render ---------- */
 function render(){
   fillFilterCorridor($('#filterCorridor').value);
   if(currentView === 'dashboard') renderDashboard();
+  if(currentView === 'analytics') renderAnalytics();
   if(currentView === 'projects') renderProjects();
   if(currentView === 'resale') renderResale();
   if(currentView === 'developers') renderDevelopers();
