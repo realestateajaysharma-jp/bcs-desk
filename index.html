@@ -5136,22 +5136,45 @@ body[data-theme="dark"] .calc-body .field input,body[data-theme="dark"] .calc-bo
           <div class="calc-src">RERA section 31 / rules: bank MCLR + 2% interest. Exact SBI MCLR at delay date confirm karein.</div>
         </div>
       </div>
-      <div class="calc-card" id="calcCirclePro">
-        <div class="calc-head"><span class="calc-ic">🏷️</span><div><h4>Circle Rate Calculator — Jaipur</h4><small>Collector rate se circle value</small></div><span class="calc-up">Jaipur</span></div>
+      <div class="calc-card" id="calcCirclePro" style="grid-column:1/-1">
+        <div class="calc-head"><span class="calc-ic">🏛️</span><div><h4>DLC Rate (Circle) — Jaipur Collector</h4><small>Rajasthan e-Panjiyan • Information Services → e-Value (Online DLC)</small></div><span class="calc-up">Jaipur • DLC</span></div>
         <div class="calc-body">
-          <div class="field"><label>Locality</label><select id="crLocality">
-            <option value="vaishali">Vaishali Nagar</option><option value="mansarovar" selected>Mansarovar</option><option value="ajmer">Ajmer Road</option><option value="tonk">Tonk Road</option><option value="jagatpura">Jagatpura</option><option value="malviya">Malviya Nagar</option><option value="banipark">Bani Park / C-Scheme</option><option value="pratap">Pratap Nagar</option><option value="sikar">Sikar Road</option>
-          </select></div>
-          <div class="grid2">
-            <div class="field"><label>Property type</label><select id="crType"><option value="residential">Residential</option><option value="commercial">Commercial</option><option value="plot">Plot</option></select></div>
-            <div class="field"><label>Area (sq yd)</label><input id="crArea" type="number" min="0" value="240"></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:11px">
+            <a class="btn primary sm" href="https://epanjiyan.rajasthan.gov.in/" target="_blank" rel="noopener">↗ Check online — e-Panjiyan</a>
+            <span style="font-size:11.5px;color:var(--mut)">epanjiyan.rajasthan.gov.in · District → Urban/Rural → SRO → Zone → Colony → Captcha → Show Result</span>
+          </div>
+          <div style="border:1px solid var(--line);border-radius:13px;background:#FCFDFC;padding:11px 12px;margin-bottom:11px">
+            <b style="font-size:12.5px;display:block;margin-bottom:6px">Kaise check karein (6 steps)</b>
+            <ol style="font-size:12px;color:var(--ink2);line-height:1.65;padding-left:17px;margin:0">
+              <li>e-Panjiyan portal pe jao — <b>epanjiyan.rajasthan.gov.in</b></li>
+              <li><b>Information Services</b> me ja ke <b>“e-Value (Online DLC)”</b> chun lo</li>
+              <li><b>District: Jaipur</b> select karo</li>
+              <li><b>Urban ya Rural</b> select karo</li>
+              <li>Apna <b>Sub-Registrar Office (SRO)</b>, phir <b>zone aur colony/locality</b> select karo</li>
+              <li><b>Captcha</b> bharo → <b>Show Result</b> — wahan <b>residential / commercial / industrial / agricultural</b> ke alag-alag rate aur kabhi <b>exterior vs interior</b> alag dikhenge</li>
+            </ol>
+            <p style="font-size:11px;color:var(--mut);line-height:1.6;margin-top:7px">Registry duty <b>max(market value, DLC value)</b> pe lagti hai — deal se pehle latest DLC zaroor verify karo. Neeche BCS default rates sirf indicative hain.</p>
           </div>
           <div class="grid2">
-            <div class="field"><label>Circle rate (₹ / sq yd) — editable</label><input id="crRate" type="number" min="0" value="4500"></div>
+            <div class="field"><label>District (Jaipur)</label><input value="Jaipur" disabled></div>
+            <div class="field"><label>Urban / Rural</label><select id="crUrbanRural"><option value="urban">Urban</option><option value="rural">Rural</option></select></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>SRO / Locality</label><select id="crLocality">
+              <option value="vaishali">Vaishali Nagar</option><option value="mansarovar" selected>Mansarovar</option><option value="ajmer">Ajmer Road</option><option value="tonk">Tonk Road</option><option value="jagatpura">Jagatpura</option><option value="malviya">Malviya Nagar</option><option value="banipark">Bani Park / C-Scheme</option><option value="pratap">Pratap Nagar</option><option value="sikar">Sikar Road</option>
+            </select></div>
+            <div class="field"><label>Property type (DLC list)</label><select id="crType"><option value="residential">Residential</option><option value="commercial">Commercial</option><option value="plot">Plot / Agricultural</option><option value="industrial">Industrial</option></select></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Area (sq yd)</label><input id="crArea" type="number" min="0" value="240"></div>
+            <div class="field"><label>Location tag</label><select id="crTag"><option value="exterior">Exterior (main road)</option><option value="interior">Interior (colony)</option></select></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>DLC rate (₹ / sq yd) — e-Value se bharo</label><input id="crRate" type="number" min="0" value="4500"></div>
             <div class="field"><label>&nbsp;</label><button class="btn ghost sm" id="crLoad" style="width:100%">Load locality default</button></div>
           </div>
           <div class="calc-out" id="crOut"></div>
-          <div class="calc-src">Indicative Jaipur circle rates — latest Collector notification confirm karo. Registry duty max(market, circle) pe lagti hai. Aurum Circle Rate tool style: City → Locality → Type → instantly value.</div>
+          <div class="calc-src">DLC (Collector rate) — Jaipur me sab ise circle rate kehte hain; official name DLC hai. Result me residential/commercial/industrial/agri aur exterior/interior alag ho sakte hain. e-Value (Online DLC) se latest verify karo.</div>
         </div>
       </div>
     </div>
@@ -5161,51 +5184,55 @@ body[data-theme="dark"] .calc-body .field input,body[data-theme="dark"] .calc-bo
   <section class="view" id="view-pulse">
     <div class="adv-head">
       <div>
-        <div class="eyebrow">BCS · market intelligence · Aurum + Square Yards + 2bigha</div>
-        <h2 class="adv-title">Jaipur market,<br><em>teeson sources, ek tab.</em></h2>
-        <p class="adv-sub">Aurum Pulse + Square Yards + 2bigha (plots/farmland map) — ek hi jagah compare aur reuse karo. Apartments ke liye Pulse/SY, plots aur agriculture land ke liye 2bigha ka live map. BCS apne project ka rate inke median se match karke Trust Sheet me lagata hai. <b>Vaishali (mature), Mansarovar (mid), Jagatpura (new stock), Ajmer Road (new launches)</b> — verified listings + developer pipeline ek sath.</p>
+        <div class="eyebrow">BCS · market intelligence · Aurum + Square Yards + 2bigha + PropertyWala</div>
+        <h2 class="adv-title">Jaipur market,<br><em>charon sources, ek tab.</em></h2>
+        <p class="adv-sub">Aurum Pulse + Square Yards + 2bigha (plots map) + PropertyWala (search + news) — ek hi jagah compare aur reuse karo. Apartments ke liye Pulse/SY/PW, plots ke liye 2bigha. BCS apne project ka rate inke median se match karke Trust Sheet me lagata hai. <b>Vaishali, Mansarovar, Jagatpura, Ajmer Road</b> — verified listings + developer pipeline + live news ek sath.</p>
       </div>
       <div class="adv-head-actions">
         <button class="btn ghost" id="pulseOpen">↗ Aurum</button>
         <button class="btn ghost" id="pulseSyOpen">↗ Square Yards</button>
         <button class="btn ghost" id="pulse2bOpen">↗ 2bigha map</button>
+        <button class="btn ghost" id="pulsePwOpen">↗ PropertyWala</button>
         <button class="btn primary" id="pulseShare">Share WhatsApp</button>
       </div>
     </div>
     <div class="links-stats">
       <div><div class="k">Pulse total proj</div><div class="v">969</div></div>
-      <div><div class="k">New launches</div><div class="v">348</div></div>
       <div><div class="k">SY median ₹/sqft</div><div class="v">₹4.8k</div></div>
-      <div><div class="k">2bigha Jaipur plots</div><div class="v">Map live</div></div>
+      <div><div class="k">PW Jaipur featured</div><div class="v">6 proj</div></div>
+      <div><div class="k">PW news (today)</div><div class="v">JDA ₹575 Cr</div></div>
     </div>
     <div class="panel" style="margin-top:12px">
-      <div class="panel-head"><h4>Jaipur at a glance — teeson sources ka summary</h4><span class="n-badge">Sep-Nov 2026</span></div>
+      <div class="panel-head"><h4>Jaipur at a glance — charon sources ka summary</h4><span class="n-badge">Nov 2026</span></div>
       <div class="brief-grid">
         <div class="brief-box"><h5>🏘️ Aurum — localities</h5><p><b>Vaishali</b> mature, <b>Mansarovar</b> mid & resale strong, <b>Jagatpura</b> new stock + airport, <b>Ajmer Road</b> sabse bada launch pipeline, <b>Tonk</b> airport corridor. Infra: Metro + Delhi-Mumbai Expressway belt, Mahindra SEZ.</p></div>
-        <div class="brief-box"><h5>📈 Square Yards — price trend</h5><p>Asking median <b>₹4,800/sq ft</b> (Sep 2026, cooling QoQ). Quarterly: Sep 4,850 · Jun 4,950 · Mar 4,900 · Dec 5,000. Micromarket: Central 8,400 · East 5,250 · West 4,750 · South 4,600 · North 4,400.</p></div>
-        <div class="brief-box"><h5>🏷️ Top locality rates (SY) — reference</h5><p>Ajmer Rd ~₹3,450 · Vaishali ~₹6,550 · Jagatpura ~₹4,800 · Mansarovar ~₹4,350 · Tonk Rd ~₹5,400 · Pratap Nagar ~₹5,050 · Kalwara ~₹9,750 (apt avg). Rental: 1BHK ₹9.3k · 2BHK ₹21.7k · 3BHK ₹37.4k.</p></div>
-        <div class="brief-box"><h5>🔥 Hot projects (SY, sample)</h5><p>Ashiana Oma (Mansarovar Ext) ₹1.35–5.42 Cr · Ashiana Ekansh ₹93L–2.46 Cr · Ashiana One44 (Jagatpura) ₹1.9–2.5 Cr · Ashiana Nitara (Ajmer Rd) ₹75L–2.91 Cr. BCS me apna project inke against compare karo.</p></div>
+        <div class="brief-box"><h5>📈 Square Yards — price trend</h5><p>Median <b>₹4,800/sq ft</b> (Sep 2026). Sep 4,850 · Jun 4,950 · Mar 4,900 · Dec 5,000. Central 8,400 · East 5,250 · West 4,750 · South 4,600 · North 4,400.</p></div>
+        <div class="brief-box"><h5>🏷️ Locality rates (SY) — reference</h5><p>Ajmer Rd ~₹3,450 · Vaishali ~₹6,550 · Jagatpura ~₹4,800 · Mansarovar ~₹4,350 · Tonk Rd ~₹5,400 · Pratap ~₹5,050. Rental 1BHK ₹9.3k · 2BHK ₹21.7k · 3BHK ₹37.4k.</p></div>
+        <div class="brief-box"><h5>🔥 Hot projects (SY)</h5><p>Ashiana Oma ₹1.35–5.42 Cr · Ekansh ₹93L–2.46 Cr · One44 ₹1.9–2.5 Cr · Nitara ₹75L–2.91 Cr.</p></div>
       </div>
       <div class="brief-grid" style="margin-top:10px">
-        <div class="brief-box"><h5>🏛️ Top developers (SY)</h5><p><b>Ashiana</b> 13 proj · 47yr · ₹10.8L–5.42 Cr · <b>Manglam</b> 38 proj · <b>Upasana</b> 33 proj · <b>Unique Dream</b> 45 proj · <b>Sand Dune</b> 72 proj · <b>Suncity</b> 5 proj. BCS Developers tab se cross-check karo.</p></div>
-        <div class="brief-box"><h5>🌾 2bigha — plots & farmland (Jaipur map)</h5><p>Agriculture / farm / industrial plots ka live map. Sample: <b>5 Bigha industrial (Rampura)</b> · <b>1,595 sq yd residential</b> · <b>2.31 Bigha commercial (Vaishali)</b>. BCS plots ke liye verified title + photo + owner details ke saath search karo.</p></div>
-        <div class="brief-box"><h5>💰 How BCS uses this</h5><p>SY median (4.8k) vs BCS project rate = over/under-…, Pulse vs SY = corridor truth, 2bigha = plot/location validation. Trust Sheet + Price Prediction isi se jodte hain — client ko “market se 8% neeche” confidently bolo.</p></div>
-        <div class="brief-box"><h5>🧭 When to use which</h5><p><b>Apartments/flats:</b> Pulse + SY · <b>Plots/farmland:</b> 2bigha map zoom (Jaipur centre lat 26.98, lng 75.59) · <b>Glossary/circle rate:</b> Aurum tools + BCS Calculators.</p></div>
+        <div class="brief-box"><h5>🏛️ Top developers (SY)</h5><p><b>Ashiana</b> 13 proj · <b>Manglam</b> 38 · <b>Upasana</b> 33 · <b>Unique Dream</b> 45 · <b>Sand Dune</b> 72. BCS Developers se cross-check karo.</p></div>
+        <div class="brief-box"><h5>🌾 2bigha — plots & farmland map</h5><p>5 Bigha industrial (Rampura) · 1,595 sq yd residential · 2.31 Bigha commercial (Vaishali). Plots ke liye live Jaipur map.</p></div>
+        <div class="brief-box"><h5>🏠 PropertyWala — Featured Jaipur</h5><p>Platinum Greens Opulence ₹1.24–1.68 Cr · Trimurty Divinity ₹2.89–3.83 Cr · Parth Aangan ₹1.51–2.23 Cr · Green Grandeur ₹96L–1.65 Cr · Manglam Kanak Vatika plots ₹9.6–65L · Shubh Mangal Elegance ₹3.61 Cr.</p></div>
+        <div class="brief-box"><h5>📰 PropertyWala — News live for BCS</h5><p><b>JDA ₹575 Cr works</b> (Gopalpura Bypass ₹250.85 Cr) · <b>RHB 4 schemes</b> (Pratap Nagar) · <b>Ashiana ₹1,000 Cr land plan</b> · <b>Adani at Mahindra World City</b> · <b>Metro Phase-2 DPR</b> · <b>15.76% price surge 2025</b>. BCS News tab me seed ho gayi hain.</p></div>
+        <div class="brief-box"><h5>💰 How BCS uses this</h5><p>SY/PW median vs BCS rate = over/under-…, Pulse vs SY = corridor truth, 2bigha = plot validation, PW = resale + comps.</p></div>
+        <div class="brief-box"><h5>🧭 When to use which</h5><p><b>Flats:</b> Pulse + SY + PW · <b>Plots:</b> 2bigha + PW plots · <b>News/Policy:</b> PW News + BCS News.</p></div>
       </div>
       <div style="margin-top:12px">
         <div class="seg" id="pulseTabs" style="display:inline-flex;flex-wrap:wrap">
           <button data-pulse-src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" class="on">Aurum Pulse</button>
           <button data-pulse-src="https://www.squareyards.com/jaipur-real-estate">Square Yards</button>
-          <button data-pulse-src="https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77">2bigha — Jaipur plots map</button>
+          <button data-pulse-src="https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77">2bigha — Plots map</button>
+          <button data-pulse-src="https://www.propertywala.com/jaipur_rajasthan/">PropertyWala — Jaipur</button>
         </div>
-        <iframe id="pulseFrame" src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum Pulse + Square Yards + 2bigha" style="width:100%;height:560px;border:1px solid var(--line);border-radius:14px;background:#fff" loading="lazy"></iframe>
+        <iframe id="pulseFrame" src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum + Square Yards + 2bigha + PropertyWala" style="width:100%;height:560px;border:1px solid var(--line);border-radius:14px;background:#fff" loading="lazy"></iframe>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center">
-          <a class="btn ghost sm" href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">↗ Aurum full page</a>
-          <a class="btn ghost sm" href="https://www.squareyards.com/jaipur-real-estate" target="_blank" rel="noopener">↗ Square Yards Jaipur</a>
-          <a class="btn ghost sm" href="https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77" target="_blank" rel="noopener">↗ 2bigha Jaipur plots map</a>
-          <a class="btn ghost sm" href="https://www.squareyards.com/new-projects-in-jaipur" target="_blank" rel="noopener">New launches — SY</a>
-          <a class="btn ghost sm" href="https://www.squareyards.com/ready-to-move-projects-in-jaipur" target="_blank" rel="noopener">Ready to move — SY</a>
-          <span style="font-size:11px;color:var(--mut)">Sources: Aurum Pulse (PropTiger) · Square Yards · 2bigha · checked Nov 2026 · BCS independent verify karke use karo.</span>
+          <a class="btn ghost sm" href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">↗ Aurum</a>
+          <a class="btn ghost sm" href="https://www.squareyards.com/jaipur-real-estate" target="_blank" rel="noopener">↗ Square Yards</a>
+          <a class="btn ghost sm" href="https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77" target="_blank" rel="noopener">↗ 2bigha map</a>
+          <a class="btn ghost sm" href="https://www.propertywala.com/jaipur_rajasthan/" target="_blank" rel="noopener">↗ PropertyWala Jaipur</a>
+          <a class="btn ghost sm" href="https://www.propertywala.com/news/" target="_blank" rel="noopener">PW News</a>
+          <span style="font-size:11px;color:var(--mut)">Sources: Aurum (PropTiger) · Square Yards · 2bigha · PropertyWala · Nov 2026 · Verify karke use karo.</span>
         </div>
       </div>
     </div>
@@ -7136,6 +7163,17 @@ const DEFAULT_NEWS_CATEGORIES = [
   { id:'advisory',      label:'Advisory note' },
   { id:'other',         label:'Other' },
 ];
+/* PropertyWala Jaipur — curated seeds (Nov 2026) */
+const PROPERTYWALA_JAIPUR_NEWS = [
+  { title:'JDA approves ₹575 Cr infrastructure works in Jaipur — Gopalpura Bypass elevated road included', source:'PropertyWala Research', url:'https://propertywala.com/news/infrastructure/jda-approves-infrastructure-works-worth-over-575-crore-in-jaipur-including-gopalpura-bypass-elevated-road', summary:'JDA ne ₹250.85 Cr Gopalpura Bypass elevated road ke saath ₹575 Cr ke city works flag kare. Ajmer Road + Sanganer corridor ko support milega.', date:'2026-11-06', category:'infrastructure', siteName:'PropertyWala' },
+  { title:'Rajasthan Housing Board launches four schemes — two in Jaipur Pratap Nagar & Indira Gandhi Nagar', source:'PropertyWala Research', url:'https://propertywala.com/news/new-launches/rajasthan-housing-board-launches-four-schemes-two-in-jaipurs-pratap-nagar-and-indira-gandhi-nagar', summary:'CM Bhajanlal Sharma ne 4 schemes launch ki — Pratap Nagar 146 units, Indira Gandhi Nagar 144 journalist flats. Lottery allotment aane wala hai.', date:'2026-11-05', category:'project', siteName:'PropertyWala' },
+  { title:'Ashiana Housing evaluating land in Bhiwadi — ₹1,000+ Cr FY27 acquisition plan incl. Jaipur', source:'PropertyWala Research', url:'https://propertywala.com/news/industry/ashiana-housing-evaluating-land-in-bhiwadi-as-part-of-over-1-000-crore-fy27-acquisition-plan', summary:'Ashiana FY27 me ₹1,000 Cr+ land buys target rakhe hai, Bhiwadi/NCR aur Jaipur sites evaluate kar raha hai.', date:'2026-11-04', category:'market', siteName:'PropertyWala' },
+  { title:'Adani Group explores data & convention centre at Mahindra World City, Jaipur', source:'PropertyWala Research', url:'https://propertywala.com/news/commercial/adani-group-explores-data-and-convention-centre-at-mahindra-world-city-in-jaipur', summary:'Gautam Adani ne CM Bhajan Lal Sharma se milkar Mahindra World City tour kiya — Ajmer Road + expressway corridor pe commercial boost possible hai.', date:'2026-10-09', category:'infrastructure', siteName:'PropertyWala' },
+  { title:'Jaipur Metro Phase-2 DPR cleared — new growth corridors near stations', source:'PropertyWala Research', url:'https://propertywala.com/news/infrastructure/jaipur-metro-phase-2-dpr-approval-spurs-realty-momentum', summary:'Phase-2 DPR approved — Sitapura se Vidhyadhar Nagar corridor par fresh price prospect auction. Station ke 1-2 km me re-check karo.', date:'2026-06-16', category:'infrastructure', siteName:'PropertyWala' },
+  { title:'Jaipur 15.76% price surge in 2025 — corridor-wise growth decode', source:'PropertyWala Guides', url:'https://propertywala.com/blog/guides/decoding-jaipurs-15-76-percent-price-surge-in-2025', summary:'Q3 2025 me 15.76% jump — undervalued pockets + return tactics. Investor ke liye corridor hi alpha hai.', date:'2026-05-23', category:'market', siteName:'PropertyWala' },
+  { title:'Jaipur ultra-luxury booming: ₹10+ Cr homes up 170% YoY (2025)', source:'PropertyWala Trends', url:'https://propertywala.com/blog/trends/jaipurs-ultra-luxury-real-estate-why-10-crore-homes-are-booming-in-2025', summary:'₹10-20 Cr homes me Vaishali Nagar premium lead — HNI chase is real. BCS luxury comps isi se tune karo.', date:'2026-05-13', category:'market', siteName:'PropertyWala' },
+  { title:'Jaipur Office stock 9.7msf, add 6.62msf by 2028 (Commercial)', source:'PropertyWala In the News', url:'https://propertywala.com/jaipur_rajasthan/', summary:'Tier-II commercial leader: office stock 9.7msf, warehousing 22% vacancy, 2.4msf supply by 2028. Ajmer Road Sitapura belt ke liye positive.', date:'2026-10-22', category:'project', siteName:'PropertyWala' },
+];
 const DEFAULT_ADVISOR_STATUSES = [
   { id:'prospect',  label:'Prospect / to call', short:'Prospect', cls:'status-new' },
   { id:'contacted', label:'Contacted',          short:'Contacted', cls:'status-contacted' },
@@ -7894,6 +7932,14 @@ function normalizeDb(d){
     if(n.updatedAt == null) n.updatedAt = n.createdAt;
   });
   d.news = d.news.filter(n => n.title || n.url || n.body);
+  if(+d.newsSeedVersion !== 2){
+    const urls = new Set(d.news.map(n => n.url).filter(Boolean));
+    PROPERTYWALA_JAIPUR_NEWS.forEach((item, i) => {
+      if(urls.has(item.url)) return;
+      d.news.push({ id: uid(), createdAt: Date.now() + i * 1000, updatedAt: Date.now() + i * 1000, pinned: i < 2, ...item });
+    });
+    d.newsSeedVersion = 2;
+  }
   d.todos.forEach(t => {
     if(t.id == null) t.id = uid();
     if(t.date == null) t.date = todayISO();
@@ -9549,19 +9595,27 @@ function quoteText(){
     const area = parseAmt('#crArea'), rate = parseAmt('#crRate');
     const cip = rate * area;
     const stamp = cip * num('#rgStamp') / 100, reg = cip * num('#rgReg') / 100;
+    const loc = $('#crLocality')?.value || 'mansarovar';
+    const typ = $('#crType')?.value || 'residential';
+    const urb = $('#crUrbanRural')?.value || 'urban';
+    const tag = $('#crTag')?.value || 'exterior';
     out.innerHTML = `
-      <div class="calc-row"><span>Circle rate</span><b>₹ ${inr(rate)} / sq yd</b></div>
+      <div class="calc-row"><span>DLC — Jaipur → ${urb === 'urban' ? 'Urban' : 'Rural'} → ${esc(loc)} → ${esc(typ)}</span><b>${esc(tag === 'exterior' ? 'Exterior' : 'Interior')}</b></div>
+      <div class="calc-row"><span>DLC rate (e-Value)</span><b>₹ ${inr(rate)} / sq yd</b></div>
       <div class="calc-row"><span>Area</span><b>${inr(area)} sq yd</b></div>
-      <div class="calc-row"><span>Circle value</span><b>₹ ${inr(cip)}</b></div>
+      <div class="calc-row"><span>DLC value</span><b>₹ ${inr(cip)}</b></div>
       <div class="calc-row"><span>Stamp @${num('#rgStamp')}% + Reg @${num('#rgReg')}%</span><b>₹ ${inr(stamp + reg)}</b></div>
-      <div class="calc-total"><span>Registry basis (circle)</span><b>₹ ${inr(cip + stamp + reg)}</b></div>`;
+      <div class="calc-total"><span>Registry basis (DLC)</span><b>₹ ${inr(cip + stamp + reg)}</b></div>
+      <p style="font-size:11px;color:var(--mut);margin-top:4px">e-Panjiyan → Information Services → e-Value (Online DLC) se latest verify karo — result me residential/commercial/industrial/agri aur exterior/interior alag milenge.</p>`;
   }
   function loadCircleDefault(){
     const loc = $('#crLocality')?.value || 'mansarovar';
     const base = JAIPUR_CIRCLE[loc] || 4500;
     const typ = $('#crType')?.value || 'residential';
-    const mult = typ === 'commercial' ? 1.6 : typ === 'plot' ? 0.85 : 1;
-    if($('#crRate')) $('#crRate').value = Math.round(base * mult);
+    const mult = typ === 'commercial' ? 1.6 : typ === 'plot' || typ === 'industrial' ? 0.85 : 1;
+    const tag = $('#crTag')?.value || 'exterior';
+    const adj = tag === 'interior' ? 0.9 : 1;
+    if($('#crRate')) $('#crRate').value = Math.round(base * mult * adj);
     circleProCalc();
   }
   /* Rates Studio — master source */
@@ -9611,7 +9665,7 @@ function quoteText(){
   }
   const fns = [bankCalc, circleCalc, circleProCalc, emiCalc, regCalc, gstCalc, commCalc, rentCalc, areaCalc, affordCalc, prepayCalc, sipCalc, rentOwnCalc, delayCalc];
   function runAll(){ fns.forEach(f => { try{ f(); }catch(e){} }); renderCalcStats(); }
-  const ids = ['#bkAmt','#ccMarket','#ccCircle','#crLocality','#crType','#crArea','#crRate','#emAmt','#emRate','#emYears','#emFee','#rgAmt','#rgStamp','#rgReg','#rgSur','#gstAmt','#gstType','#cmAmt','#cmPct','#cmTds','#cmGst','#rnVal','#rnRent','#rnGrowth','#rnVac','#arVal','#arFrom','#afInc','#afRate','#afYears','#afFoir','#ppLoan','#ppAmt','#ppRate','#ppYears','#spAmt','#spYrs','#spRet','#spInf','#roRent','#roVal','#roRate','#roApp','#dlPaid','#dlMonths','#dlMclr'];
+  const ids = ['#bkAmt','#ccMarket','#ccCircle','#crLocality','#crType','#crArea','#crRate','#crUrbanRural','#crTag','#emAmt','#emRate','#emYears','#emFee','#rgAmt','#rgStamp','#rgReg','#rgSur','#gstAmt','#gstType','#cmAmt','#cmPct','#cmTds','#cmGst','#rnVal','#rnRent','#rnGrowth','#rnVac','#arVal','#arFrom','#afInc','#afRate','#afYears','#afFoir','#ppLoan','#ppAmt','#ppRate','#ppYears','#spAmt','#spYrs','#spRet','#spInf','#roRent','#roVal','#roRate','#roApp','#dlPaid','#dlMonths','#dlMclr'];
   ids.forEach(id => { const el = $(id); if(el){ el.addEventListener('input', runAll); el.addEventListener('change', runAll); } });
   $('#crLoad')?.addEventListener('click', loadCircleDefault);
   $('#rtSave')?.addEventListener('click', saveRates);
@@ -9619,8 +9673,9 @@ function quoteText(){
   $('#pulseOpen')?.addEventListener('click', () => window.open('https://www.aurumproptech.in/pulse/properties/jaipur/overview', '_blank', 'noopener'));
   $('#pulseSyOpen')?.addEventListener('click', () => window.open('https://www.squareyards.com/jaipur-real-estate', '_blank', 'noopener'));
   $('#pulse2bOpen')?.addEventListener('click', () => window.open('https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77', '_blank', 'noopener'));
+  $('#pulsePwOpen')?.addEventListener('click', () => window.open('https://www.propertywala.com/jaipur_rajasthan/', '_blank', 'noopener'));
   $('#pulseShare')?.addEventListener('click', () => {
-    const txt = '*BCS Market Pulse — Jaipur* (Aurum + Square Yards + 2bigha)\n' + 'Pulse: 969 projects · 348 new launches · Avg ₹5,223/sq ft\n' + 'Square Yards: 1,066 listings · Median ₹4.8k/sq ft · Sep 4,850\n' + 'Vaishali 6,550 · Ajmer Rd 3,450 · Jagatpura 4,800 · Mansarovar 4,350 · Tonk Rd 5,400\n' + '2bigha plots (Jaipur map): Industrial 5 Bigha · 1,595 sq yd · Commercial Vaishali\n' + 'Aurum: https://www.aurumproptech.in/pulse/properties/jaipur/overview\n' + 'SY: https://www.squareyards.com/jaipur-real-estate\n' + '2bigha: https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.98&lng=75.59&zoom=7.77\n' + 'BCS · Business City Square · @ajaysharma.bcs';
+    const txt = '*BCS Market Pulse — Jaipur* (Aurum + Square Yards + 2bigha + PropertyWala)\n' + 'Pulse: 969 projects · SY: 1,066 listings · PW: 6 featured Jaipur projects\n' + 'News: JDA ₹575 Cr works · RHB 4 schemes · Ashiana ₹1,000 Cr land plan\n' + 'Aurum: https://www.aurumproptech.in/pulse/properties/jaipur/overview\n' + 'SY: https://www.squareyards.com/jaipur-real-estate\n' + '2bigha: https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.98&lng=75.59&zoom=7.77\n' + 'PW: https://www.propertywala.com/jaipur_rajasthan/\n' + 'News: https://www.propertywala.com/news/\n' + 'BCS · Business City Square · @ajaysharma.bcs';
     if(navigator.share){ navigator.share({ title: 'BCS Market Pulse — Jaipur', text: txt }).catch(() => {}); } else { window.open('https://wa.me/?text=' + encodeURIComponent(txt), '_blank'); }
   });
   $$('#pulseTabs button').forEach(b => b.addEventListener('click', () => {
