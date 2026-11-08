@@ -2189,7 +2189,7 @@ body.locked>.quick-add-dock{visibility:hidden}
 /* ============ Unified Header Card: Calendar+Date+Greeting | Motivation | Live Time ============ */
 .dash-card-header{
   display:grid;
-  grid-template-columns: minmax(228px, auto) 1fr minmax(212px, auto);
+  grid-template-columns: minmax(202px, 238px) minmax(0, 1fr) minmax(150px, 180px) minmax(258px, 302px);
   grid-template-rows: auto auto auto;
   gap:0;
   align-items:stretch;
@@ -2346,20 +2346,21 @@ body.locked>.quick-add-dock{visibility:hidden}
 .mini-day.today span,.mini-day.today i{color:rgba(246,242,231,.75)}
 .mini-day.fest{border-color:rgba(165,123,54,.55);background:#FFF8EA;color:var(--ink)}
 .mini-day.fest:hover{transform:translateY(-1px)}
-.dl-quicklink{display:inline-flex;align-items:center;gap:5px;margin-top:7px;padding:6px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--gold);font-size:10px;font-weight:800;transition:.18s;align-self:flex-end}
+.dl-quicklink{display:inline-flex;align-items:center;gap:5px;margin-top:7px;padding:6px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--gold);font-size:10px;font-weight:800;transition:.18s;align-self:center}
 .dl-quicklink:hover{border-color:var(--gold);background:#FFF8EA;transform:translateY(-1px)}
 .dlf-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
 .dl-mini-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 10px;border:1px solid rgba(165,123,54,.28);background:#fff;color:var(--gold);border-radius:999px;font-size:10px;font-weight:800;transition:.18s}
 .dl-mini-btn:hover{border-color:var(--gold);background:#FFF4DA;transform:translateY(-1px)}
 
-/* --- Row 1 . Col 3: live time --- */
+/* --- Row 1 . Col 3: live time (compact, centred) --- */
 .dash-card-header .dl-time{
   grid-column:3; grid-row:1;
-  gap:14px;
-  padding:16px 20px;
+  gap:10px;
+  padding:14px 14px;
   background:linear-gradient(135deg, rgba(58,57,40,.055), rgba(58,57,40,.02));
-  justify-content:flex-end;
-  text-align:right;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
   min-width:0;
 }
 .dash-card-header .dl-clock{
@@ -2372,11 +2373,39 @@ body.locked>.quick-add-dock{visibility:hidden}
   color:var(--ink);
 }
 .dash-card-header .dl-clock i{font-style:normal;font-size:19px;color:var(--gold)}
-.dash-card-header .dl-timemeta{display:flex;flex-direction:column;gap:3px;align-items:flex-end;min-width:0}
+.dash-card-header .dl-timemeta{display:flex;flex-direction:column;gap:3px;align-items:center;text-align:center;min-width:0}
 .dash-card-header .dl-zone{font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--mut);font-weight:800;white-space:nowrap}
 .dash-card-header .dl-zone b{color:var(--olive)}
 .dash-card-header .dl-detail{font-size:11px;color:var(--mut);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .dash-card-header .dl-next{font-size:9px;letter-spacing:.6px;color:var(--gold);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+
+/* --- Row 1 . Col 4: full-month mini calendar --- */
+.dash-card-header .dl-month{
+  grid-column:4; grid-row:1;
+  border-left:1px solid var(--line);
+  background:linear-gradient(160deg, rgba(255,248,234,.5), rgba(255,255,255,.1));
+  padding:12px 14px 11px;
+  min-width:0;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.dl-month-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+.dl-month-head strong{font-size:12px;letter-spacing:.4px;color:var(--ink)}
+.dl-month-head button{font-size:9px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;color:var(--gold);background:#fff;border:1px solid rgba(165,123,54,.28);border-radius:999px;padding:4px 8px;transition:.18s}
+.dl-month-head button:hover{background:#FFF4DA;transform:translateY(-1px)}
+.mini-month-head,.mini-month-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.mini-month-head span{text-align:center;font-size:8px;font-weight:900;letter-spacing:.5px;color:var(--mut)}
+.mini-month-day{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;height:25px;border-radius:8px;border:1px solid transparent;background:transparent;color:var(--ink2);font-size:10px;font-weight:750;transition:.16s;padding:0}
+.mini-month-day:hover{border-color:rgba(165,123,54,.45);background:#fff;transform:translateY(-1px)}
+.mini-month-day.today .mini-month-date{width:19px;height:19px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,var(--olive),#2C2B1C);color:#F6F2E7}
+.mini-month-day.fest .mini-month-date{color:#B45B08;font-weight:900}
+.mini-month-day.leave .mini-month-date{color:#C24646;font-weight:900}
+.mini-month-day.client .mini-month-date{color:#2F8F6B;font-weight:900}
+.mini-month-day.content .mini-month-date{color:#3A7CA5;font-weight:900}
+.mini-month-dots{display:flex;align-items:center;justify-content:center;gap:2px;height:5px}
+.mini-month-dots i{width:4px;height:4px;border-radius:50%;background:var(--c);display:block}
+.mini-month-legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;color:var(--mut);font-size:8px;font-weight:800;letter-spacing:.4px;text-transform:uppercase}
+.mini-month-legend span{display:inline-flex;align-items:center;gap:4px}
+.mini-month-legend i{width:6px;height:6px;border-radius:50%;background:var(--c);display:inline-block}
 
 /* --- Row 2: festival band (calendar lives in date cell) --- */
 .dash-card-header .dl-festival{
@@ -2817,31 +2846,33 @@ body.locked>.quick-add-dock{visibility:hidden}
   .dlf-greet-hi{max-width:440px}
 }
 @media (max-width:1080px){
-  .dash-card-header{grid-template-columns:1fr 1fr; grid-template-rows:auto auto auto auto;}
+  .dash-card-header{grid-template-columns:1fr 1fr; grid-template-rows:auto auto auto auto auto;}
   .dash-card-header .dl-date{grid-column:1; grid-row:1; border-right:none; border-bottom:1px solid var(--line);}
-  .dash-card-header .dl-time{grid-column:2; grid-row:1; border-left:none; border-bottom:1px solid var(--line); background:transparent;}
+  .dash-card-header .dl-time{grid-column:2; grid-row:1; border-left:none; border-bottom:1px solid var(--line);}
+  .dash-card-header .dl-month{grid-column:1/-1; grid-row:2; border-left:none; border-bottom:1px solid var(--line);}
   .dash-card-header .dl-date{background:transparent;}
-  .dash-card-header .dl-quote{grid-column:1/-1; grid-row:2; border-left:none; border-right:none; border-top:none; border-bottom:1px solid var(--line);}
-  .dash-card-header .dl-festival{grid-column:1/-1; grid-row:3;}
-  .dl-merged-bottom{grid-column:1/-1; grid-row:4; flex-wrap:wrap;}
+  .dash-card-header .dl-quote{grid-column:1/-1; grid-row:3; border-left:none; border-right:none; border-top:none; border-bottom:1px solid var(--line);}
+  .dash-card-header .dl-festival{grid-column:1/-1; grid-row:4;}
+  .dl-merged-bottom{grid-column:1/-1; grid-row:5; flex-wrap:wrap;}
   .dl-upcoming{flex:1 1 100%;}
   .dl-bcs{flex:1 1 auto; min-width:270px;}
 }
 @media (max-width:760px){
-  .dash-card-header{grid-template-columns:1fr; grid-template-rows:auto auto auto auto auto;}
+  .dash-card-header{grid-template-columns:1fr; grid-template-rows:auto auto auto auto auto auto;}
   .dash-card-header .dl-date{grid-column:1; grid-row:1; gap:13px; padding:14px 16px;}
   .dash-card-header .dl-date .dlf-cal{width:66px}
   .dlf-cal-day{font-size:26px}
   .dash-card-header .dl-greet{font-size:14.5px}
   .dash-card-header .dl-quote{grid-column:1; grid-row:2; padding:12px 16px; border-bottom:1px solid var(--line);}
-  .dash-card-header .dl-time{grid-column:1; grid-row:3; justify-content:space-between; align-items:center; border-left:none; text-align:right; padding:12px 16px;}
-  .dash-card-header .dl-timemeta{align-items:flex-end}
+  .dash-card-header .dl-time{grid-column:1; grid-row:3; justify-content:center; align-items:center; border-left:none; text-align:center; padding:12px 16px;}
+  .dash-card-header .dl-timemeta{align-items:center;text-align:center}
   .dash-card-header .dl-clock{font-size:30px}
   .dash-card-header .dl-quote .th-qby{display:none}
-  .dash-card-header .dl-festival{grid-column:1; grid-row:4; padding:14px 16px 15px;}
+  .dash-card-header .dl-month{grid-column:1; grid-row:4; border-left:none; border-bottom:1px solid var(--line);}
+  .dash-card-header .dl-festival{grid-column:1; grid-row:5; padding:14px 16px 15px;}
   .dash-card-header .dlf-main h3{font-size:19px}
   .dlf-greets{gap:8px; flex-direction:column; margin-top:2px}
-  .dl-merged-bottom{grid-column:1; grid-row:5; flex-wrap:wrap; gap:10px; padding:12px 16px 14px;}
+  .dl-merged-bottom{grid-column:1; grid-row:6; flex-wrap:wrap; gap:10px; padding:12px 16px 14px;}
   .dl-bcs{flex:1 1 100%;}
   .dl-bcs-ghost{width:46px; min-height:46px}
 }
@@ -3373,6 +3404,9 @@ body[data-theme="dark"] table,body[data-theme="dark"] th,body[data-theme="dark"]
 body[data-theme="dark"] .vt-table th{background:#20261F;color:var(--mut)}
 body[data-theme="dark"] .an-bar .an-track{background:#2B332B}
 body[data-theme="dark"] .status-pill,body[data-theme="dark"] .tm-chip,body[data-theme="dark"] .status-chip{background:rgba(229,190,98,.12);color:#F1D992}
+body[data-theme="dark"] .mini-month-day{background:#1B201B;border-color:var(--line);color:var(--ink2)}
+body[data-theme="dark"] .mini-month-day:hover{background:rgba(210,190,120,.12)}
+body[data-theme="dark"] .mini-month-day.today{background:linear-gradient(135deg,#3E3520,#23251D);color:#F7F3E7}
 body[data-theme="dark"] .cal-cell{background:#1B201B;border-color:var(--line);color:var(--ink)}
 body[data-theme="dark"] .cal-cell.empty{background:rgba(27,32,27,.55)}
 body[data-theme="dark"] .cal-cell.today{background:linear-gradient(180deg,#2E3324,#1B201B)}
@@ -3382,6 +3416,7 @@ body[data-theme="dark"] .cal-chip.mark-leave{background:#332B16;color:#F1D992;bo
 body[data-theme="dark"] .cal-chip.mark-booked{background:#17301F;color:#A7E0C0;border-color:#245A3A}
 body[data-theme="dark"] .cal-chip.mark-busy{background:#361A15;color:#F2A18D;border-color:#5A2B20}
 body[data-theme="dark"] .cal-chip.mark-custom{background:#241E3B;color:#C9D1FF;border-color:#3A2E6B}
+body[data-theme="dark"] .cal-chip.mark-content{background:#152A38;color:#A9D3F2;border-color:#274C67}
 body[data-theme="dark"] .toast{background:#26301F;color:#E7DFC8}
 body[data-theme="dark"] .toast.err{background:#5A2B20;color:#F7C9B7}
 body[data-theme="dark"] :is(.team-stats,.links-stats,.pipeline-stats){background:var(--line);border-color:var(--line)}
@@ -3446,6 +3481,7 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
 .cal-chip.mark-booked{background:#E4F3EC;color:#2F6644;border-color:#BFD8C8}
 .cal-chip.mark-busy{background:#FBECEA;color:#A4452B;border-color:#F0D8CE}
 .cal-chip.mark-custom{background:#F1EDFB;color:#5A4AA8;border-color:#D8D0F5}
+.cal-chip.mark-content{background:#DCEBF5;color:#285F82;border-color:#BFD8ED}
 .cal-chip.fest{background:#FFF8EA;color:#8A6D1F;border-color:#E8D39A}
 .cal-chip.task,.cal-chip.follow,.cal-chip.book{background:#EEF3FB;color:#3F66A8;border-color:#D2E0F5}
 .month-legend-row{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:12px}
@@ -3672,6 +3708,17 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
             <button type="button" class="dl-quicklink" id="thAddTaskBtn">+ Add task</button>
           </div>
         </div>
+        <aside class="dl-month" aria-label="Full month mini calendar">
+          <div class="dl-month-head"><strong id="thMonthMini">November 2026</strong><button type="button" id="thMonthToday">Today</button></div>
+          <div class="mini-month-head"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div>
+          <div class="mini-month-grid" id="thMonthGrid"></div>
+          <div class="mini-month-legend">
+            <span><i style="--c:#2F8F6B"></i>Client</span>
+            <span><i style="--c:#F2994A"></i>Festival</span>
+            <span><i style="--c:#C24646"></i>Leave</span>
+            <span><i style="--c:#3A7CA5"></i>Content</span>
+          </div>
+        </aside>
         <!-- Festival row (calendar lives in the date cell above) -->
         <div class="dl-cell dl-festival">
           <div class="dlf-main">
@@ -4726,6 +4773,7 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
             <option value="leave">Leave</option>
             <option value="booked">Booked</option>
             <option value="busy">Busy</option>
+            <option value="content">Content / campaign</option>
             <option value="custom">Label</option>
           </select></div>
         </div>
@@ -5961,9 +6009,10 @@ const BCS_CARD_THEMES = {
   midnight:{ bg1:'#11151F', bg2:'#242E45', accent:'#8EC5FF', ink:'#F4F7FF', mut:'rgba(244,247,255,.74)' }
 };
 const MONTH_MARK_TYPES = {
-  leave:{ label:'Leave', color:'#C99A2B', bg:'#FFF4DA' },
+  leave:{ label:'Leave', color:'#C24646', bg:'#FBECEA' },
   booked:{ label:'Booked', color:'#2F8F6B', bg:'#E4F3EC' },
-  busy:{ label:'Busy', color:'#C24646', bg:'#FBECEA' },
+  busy:{ label:'Busy', color:'#C99A2B', bg:'#FFF4DA' },
+  content:{ label:'Content', color:'#3A7CA5', bg:'#DCEBF5' },
   custom:{ label:'Label', color:'#7B67C6', bg:'#F1EDFB' }
 };
 
@@ -7927,6 +7976,7 @@ function saveMonthMark(e){
   renderMarkList(date);
   renderMonthCalendar();
   renderSeniorDesk();
+  renderDailyHero();
 }
 function deleteMonthMark(id){
   const m = (db.monthMarks || []).find(x => x.id === id);
@@ -7937,6 +7987,7 @@ function deleteMonthMark(id){
   renderMarkList(m.date);
   renderMonthCalendar();
   renderSeniorDesk();
+  renderDailyHero();
   toast('Mark deleted');
 }
 function initMonthCalendar(){
@@ -8239,6 +8290,43 @@ function renderDailyHero(){
       const cls = ['mini-day', off === 0 ? 'today' : '', f ? 'fest' : ''].join(' ').trim();
       return `<button type="button" class="${cls}" data-weekday="${isoLocal}" title="${f ? esc(f.name) : 'No festival'}"><span>${dow[d.getDay()]}</span><b>${d.getDate()}</b><i>${f ? esc(f.emoji || '✨') : '·'}</i></button>`;
     }).join('');
+  }
+
+  const miniMonth = $('#thMonthGrid');
+  if(miniMonth){
+    const y = monthCursor.getFullYear(), m = monthCursor.getMonth();
+    const title = $('#thMonthMini');
+    if(title) title.textContent = new Date(y, m + 1, 0).toLocaleDateString('en-IN', { month:'long', year:'numeric' });
+    const first = new Date(y, m, 1);
+    const blank = first.getDay();
+    const days = new Date(y, m + 1, 0).getDate();
+    const marksBy = new Map();
+    (db.monthMarks || []).forEach(mark => { if(!marksBy.has(mark.date)) marksBy.set(mark.date, []); marksBy.get(mark.date).push(mark); });
+    const taskBy = new Map();
+    (db.todos || []).forEach(t => { if(t.date) { if(!taskBy.has(t.date)) taskBy.set(t.date, []); taskBy.get(t.date).push(t); } });
+    const followBy = new Map();
+    scopedClients().forEach(c => { if(c.nextFollowUp) { if(!followBy.has(c.nextFollowUp)) followBy.set(c.nextFollowUp, []); followBy.get(c.nextFollowUp).push(c); } });
+    const bookBy = new Map();
+    scopedBookings().forEach(b => { if(b.bookingDate) { if(!bookBy.has(b.bookingDate)) bookBy.set(b.bookingDate, []); bookBy.get(b.bookingDate).push(b); } });
+    const cells = [];
+    for(let i = 0; i < blank; i++) cells.push('<span class="mini-month-day empty"></span>');
+    for(let d = 1; d <= days; d++){
+      const iso = calendarISO(new Date(y, m, d));
+      const f = festivalByDate(iso);
+      const marks = marksBy.get(iso) || [];
+      const hasClient = (bookBy.get(iso) || []).length || (followBy.get(iso) || []).length;
+      const hasContent = marks.some(x => x.type === 'content') || (taskBy.get(iso) || []).length;
+      const hasLeave = marks.some(x => x.type === 'leave');
+      const dots = [
+        hasClient ? '<i style="--c:#2F8F6B"></i>' : '',
+        f ? '<i style="--c:#F2994A"></i>' : '',
+        hasLeave ? '<i style="--c:#C24646"></i>' : '',
+        hasContent ? '<i style="--c:#3A7CA5"></i>' : ''
+      ].join('');
+      const cls = ['mini-month-day', iso === iso ? (iso === todayISO() ? 'today' : '') : '', f ? 'fest' : '', hasLeave ? 'leave' : '', hasClient ? 'client' : '', hasContent ? 'content' : ''].join(' ');
+      cells.push(`<button type="button" class="${cls.trim()}" data-weekday="${iso}" title="${esc(f ? f.name : 'Open this date')}"><span class="mini-month-date">${d}</span><span class="mini-month-dots">${dots}</span></button>`);
+    }
+    miniMonth.innerHTML = cells.join('');
   }
 
   const manage = $('#thManage');
@@ -9055,6 +9143,20 @@ function initDailyHero(){
     const f = festivalByDate(day.dataset.weekday);
     if(f) openPosterFor(f.id);
     else toast('Is din koi festival nahi hai — Manage se add karo');
+  });
+  const monthGrid = $('#thMonthGrid'); if(monthGrid) monthGrid.addEventListener('click', e => {
+    const day = e.target.closest('[data-weekday]');
+    if(!day) return;
+    const iso = day.dataset.weekday;
+    const f = festivalByDate(iso);
+    if(f && e.detail >= 2) openPosterFor(f.id);
+    else openMonthMark(iso);
+  });
+  const monthToday = $('#thMonthToday'); if(monthToday) monthToday.addEventListener('click', () => {
+    const d = new Date();
+    monthCursor = new Date(d.getFullYear(), d.getMonth(), 1);
+    renderMonthCalendar();
+    renderDailyHero();
   });
   const manage = $('#thManage'); if(manage) manage.addEventListener('click', openFestivalManager);
   const up = $('#thUpcoming');
