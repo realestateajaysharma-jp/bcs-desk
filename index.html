@@ -3442,6 +3442,18 @@ select{
 }
 @media (max-width:1080px){ .senior-grid{grid-template-columns:1fr 1fr} .senior-panel:last-child{grid-column:1/-1} }
 @media (max-width:640px){ .senior-grid{grid-template-columns:1fr} .sen-metrics{grid-template-columns:1fr 1fr} .fest-quote{flex-basis:260px} .fest-card{flex-basis:175px} }
+.health-score-card{display:flex;gap:14px;align-items:center;border:1px solid var(--line);background:linear-gradient(135deg,#FCFDFC,#FFF8EA);border-radius:16px;padding:12px;margin-bottom:12px}
+.health-score{flex:none;width:74px;height:74px;border-radius:50%;display:grid;place-items:center;background:var(--panel);border:4px solid #4F8A63;box-shadow:inset 0 0 0 6px var(--line2)}
+.health-score b{font-family:'Fraunces',serif;font-size:22px;line-height:1}
+.health-score span{font-size:8px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--mut)}
+.health-score.grade-d{border-color:#C24646}.health-score.grade-c{border-color:#C49A3E}.health-score.grade-b{border-color:#54779E}.health-score.grade-a{border-color:#4F8A63}
+.health-copy{flex:1;min-width:0}
+.health-bars{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:7px 0}
+.health-bars>div{font-size:8.5px;font-weight:900;text-transform:uppercase;color:var(--mut);display:flex;flex-direction:column;gap:4px}
+.health-bars i{display:block;height:6px;border-radius:999px;background:var(--line2);overflow:hidden}
+.health-bars em{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--sage-ink))}
+.health-bars b{font-size:10px;color:var(--ink)}
+.health-risks{font-size:11px;color:#A4452B;font-weight:750}.health-risks.ok{color:#2F6644}
 .queue-panel{padding:13px 15px}
 .queue-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .queue-row{display:flex;align-items:center;gap:10px;text-align:left;border:1px solid var(--line);background:#fff;border-radius:13px;padding:9px 11px;transition:.18s;width:100%}
@@ -3472,7 +3484,23 @@ select{
 .readiness-list{display:flex;flex-wrap:wrap;gap:6px}
 .readiness-chip{font-size:10.5px;font-weight:800;border:1px solid var(--line);border-radius:999px;padding:5px 9px;color:var(--mut);background:#FAFBFA}
 .readiness-chip.done{color:#2F6644;background:#E4F3EC;border-color:#BFD8C8}
-.progress-mini{display:block;height:5px;border-radius:999px;background:var(--line2);overflow:hidden;margin-top:4px}
+.partner-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:13px}
+.partner-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px 16px;box-shadow:0 12px 26px -20px rgba(46,45,32,.16);transition:.2s}
+.partner-card:hover{transform:translateY(-2px);box-shadow:0 18px 34px -22px rgba(46,45,32,.22)}
+.partner-top{display:flex;gap:10px;align-items:center}
+.partner-ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--sage);color:var(--sage-ink);font-size:17px;flex:none}
+.partner-top b{font-family:'Fraunces',serif;font-size:16px}
+.partner-top small{display:block;font-size:11px;color:var(--mut);font-weight:700;margin-top:2px;text-transform:uppercase;letter-spacing:.7px}
+.partner-meta{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0}
+.partner-meta span{font-size:10px;font-weight:800;border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:var(--ink2);background:#FAFBFA}
+.partner-notes{font-size:12px;color:var(--mut);line-height:1.5;min-height:36px}
+.partner-act{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.partner-act button{padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:#FCFDFC;font-size:10.5px;font-weight:800;color:var(--ink2)}
+.partner-act button:hover{border-color:var(--gold);color:var(--gold)}
+.partner-act .del{color:var(--danger);background:#FBEDE8;border-color:#F0D8CE}
+body[data-theme="dark"] .partner-card{background:var(--panel);border-color:var(--line);color:var(--ink)}
+body[data-theme="dark"] .partner-act button{background:#20261F;border-color:var(--line);color:var(--ink2)}
+
 .progress-mini i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--sage-ink))}
 @media (max-width:760px){ .queue-list{grid-template-columns:1fr} .dossier-grid{grid-template-columns:1fr} }
 .road-chip{display:inline-flex;align-items:center;gap:6px;cursor:pointer;transition:.18s}
@@ -3738,6 +3766,7 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
       <button data-view="resale">Resale</button>
       <button data-view="developers">Developers</button>
       <button data-view="advisors">Advisors</button>
+      <button data-view="partners">Partners</button>
       <button data-view="clients">Clients</button>
       <button data-view="dayplan">Day Plan</button>
       <button data-view="news">News</button>
@@ -3944,9 +3973,17 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
     <div class="sec-head queue-head">
       <h3>Next-best-action queue</h3>
       <span class="sub">Subah kholte hi kaam shuru — sabse urgent pehle</span>
-      <button class="btn ghost sm" id="queueAddTask" style="margin-left:auto">+ Task</button>
+      <button class="btn ghost sm" id="weeklyBtn" style="margin-left:auto">📊 Weekly report</button>
+      <button class="btn ghost sm" id="teamBoardBtn">Team board</button>
+      <button class="btn ghost sm" id="queueAddTask">+ Task</button>
     </div>
     <div class="panel queue-panel" id="nextQueue"></div>
+
+    <div class="sec-head journey-head">
+      <h3>WhatsApp journey desk</h3>
+      <span class="sub">Ek click — wa.me open, no auto spam. Har send log hoga.</span>
+    </div>
+    <div class="panel journey-panel" id="journeyPanel"></div>
 
     <div class="sec-head fest-head">
       <h3>Month festivals & creatives</h3>
@@ -4171,6 +4208,25 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
       <span style="font-size:11.5px;color:var(--mut)">Projects assigned from an advisor profile or the project form</span>
     </div>
     <div class="advisor-grid" id="advisorGrid"></div>
+  </section>
+
+  <section class="view" id="view-partners">
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · partner ecosystem</div>
+        <h2 class="adv-title">Bank, CA, legal,<br><em>interiors aur contractors.</em></h2>
+        <p class="adv-sub">Har deal me kaam aane wale partners ek jagah — type, contact, city, referral/commission aur notes. Click karo, related record kholo, save karo.</p>
+      </div>
+      <div class="adv-head-actions"><button class="btn primary" id="addPartnerBtn">+ Add partner</button></div>
+    </div>
+    <div class="links-stats" id="partnerStats"></div>
+    <div class="toolbar links-toolbar">
+      <div class="adv-search links-search"><input id="partnerSearch" placeholder="Search partner, type, city…"></div>
+      <select id="partnerTypeFilter"><option value="">All types</option></select>
+      <div class="spacer"></div>
+      <span class="links-toolbar-note" id="partnerCount"></span>
+    </div>
+    <div class="partner-grid" id="partnerGrid"></div>
   </section>
 
   <!-- ============ CLIENTS ============ -->
@@ -5170,6 +5226,20 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
   </div>
 </div>
 
+<!-- ============ WEEKLY REPORT ============ -->
+<div class="overlay" id="weeklyModal">
+  <div class="modal" style="width:min(760px,100%)">
+    <div class="modal-head"><h3 id="weeklyTitle">Weekly BCS report</h3><button class="xbtn" data-close="weeklyModal">✕</button></div>
+    <div class="modal-body" id="weeklyBody"></div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="weeklyModal">Close</button>
+      <button class="btn ghost" id="weeklyCopy">Copy text</button>
+      <button class="btn ghost" id="weeklyPrint">Print / PDF</button>
+      <button class="btn primary" id="weeklyShare">Share WhatsApp</button>
+    </div>
+  </div>
+</div>
+
 <!-- ============ PROJECT DETAIL ============ -->
 <div class="overlay" id="detailModal">
   <div class="modal">
@@ -6036,6 +6106,35 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
   </div>
 </div>
 
+<!-- ============ PARTNER EDITOR ============ -->
+<div class="overlay" id="partnerModal">
+  <div class="modal" style="width:min(640px,100%)">
+    <div class="modal-head"><h3 id="partnerTitle">Add partner</h3><button class="xbtn" data-close="partnerModal">✕</button></div>
+    <div class="modal-body">
+      <div class="grid2">
+        <div class="field"><label>Partner name *</label><input id="pName" placeholder="e.g. Sharma Home Loans"></div>
+        <div class="field"><label>Type</label><select id="pType"><option value="bank">Bank / home loan</option><option value="ca">CA / tax</option><option value="legal">Legal</option><option value="interiors">Interiors</option><option value="contractor">Contractor</option><option value="rent">Rent / rental</option><option value="vendor">Vendor</option><option value="other">Other</option></select></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Phone</label><input id="pPhone" placeholder="+91 …"></div>
+        <div class="field"><label>Email</label><input id="pEmail" placeholder="name@firm.in"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>City</label><input id="pCity" placeholder="Jaipur"></div>
+        <div class="field"><label>Referral fee (₹)</label><input id="pReferral" type="number" min="0" placeholder="0"></div>
+      </div>
+      <div class="field"><label>Commission (%)</label><input id="pCommission" type="number" min="0" step="0.05" placeholder="e.g. 1.5"></div>
+      <div class="field"><label>Notes</label><textarea id="pNotes" rows="3" placeholder="Speciality, response time, areas served…"></textarea></div>
+      <input type="hidden" id="pId">
+    </div>
+    <div class="modal-foot">
+      <button class="btn danger" id="pDelete" style="margin-right:auto">Delete</button>
+      <button class="btn ghost" data-close="partnerModal">Cancel</button>
+      <button class="btn primary" id="pSave">Save partner</button>
+    </div>
+  </div>
+</div>
+
 <!-- ============ CLIENT PROFILE ============ -->
 <div class="overlay profile-modal" id="clientProfileModal">
   <div class="modal">
@@ -6666,6 +6765,25 @@ function qualityScore(p){
   const score = total ? Math.round(got / total * 100) : 0;
   return { score, total, got, autoPassed, autoTotal, manualTotal, manualRated, manualW, count:cs.length };
 }
+function propertyHealth(p){
+  const qs = qualityScore(p);
+  const docs = (db.documents || []).filter(d => d.projectId === p.id);
+  const verified = docs.filter(d => d.status === 'verified').length;
+  const riskDocs = docs.filter(d => d.status === 'expired' || d.status === 'missing').length;
+  const docsScore = docs.length ? Math.round((verified / docs.length) * 100) : 35;
+  const legal = Math.min(100, (p.rera ? 35 : 0) + (p.approval ? 30 : 0) + (p.remarks ? 10 : 0) + docsScore * .25);
+  const commercial = Math.min(100, ((p.priceMin != null || p.priceMax != null) ? 35 : 0) + ((p.priceHistory || []).length ? 20 : 0) + (unitList(p).length ? 25 : 12) + (p.inventoryNotes ? 10 : 0) + (p.pricePerUnit != null ? 10 : 0));
+  const demand = Math.min(100, Math.min(45, advisorsForProject(p.id).length * 15) + Math.min(35, clientsForProject(p.id).length * 12) + Math.min(20, resaleForProject(p.id).length * 10) + (p.soldOut && !resaleForProject(p.id).length ? 0 : 8));
+  const score = Math.round(qs.score * .4 + legal * .25 + commercial * .2 + demand * .15);
+  const risks = [];
+  if(!p.rera) risks.push('RERA missing');
+  if(!p.approval) risks.push('Approval missing');
+  if(!p.developerId) risks.push('Developer unlinked');
+  if(riskDocs) risks.push(riskDocs + ' doc alert');
+  if(!docs.length) risks.push('Docs not vaulted');
+  if(qs.score < 65) risks.push('Data quality low');
+  return { score, grade: qualityGrade(score), components: { data: qs.score, legal: Math.round(legal), commercial: Math.round(commercial), demand: Math.round(demand), docs: Math.round(docsScore) }, risks, docs };
+}
 function qualityGrade(score){
   if(score >= 90) return { label:'A+', cls:'grade-a', note:'Investment ready' };
   if(score >= 80) return { label:'A',  cls:'grade-a', note:'Strong data' };
@@ -6895,6 +7013,8 @@ function normalizeDb(d){
   if(!Array.isArray(d.resale)) d.resale = [];
   if(!Array.isArray(d.bookings)) d.bookings = [];
   if(!Array.isArray(d.visits)) d.visits = [];
+  if(!Array.isArray(d.partners)) d.partners = [];
+  if(!Array.isArray(d.journeyLogs)) d.journeyLogs = [];
   if(!Array.isArray(d.documents)) d.documents = [];
   if(!Array.isArray(d.news)) d.news = [];
   if(!Array.isArray(d.todos)) d.todos = [];
@@ -7119,6 +7239,29 @@ function normalizeDb(d){
     if(!c.readiness || typeof c.readiness !== 'object' || Array.isArray(c.readiness)) c.readiness = {};
     keys.forEach(k => { c.readiness[k] = !!c.readiness[k]; });
   });
+  const PARTNER_TYPES = ['bank','ca','legal','interiors','contractor','rent','vendor','other'];
+  d.partners = d.partners.filter(p => p && String(p.id || '') && String(p.name || '').trim()).map((p, i) => ({
+    id: p.id || uid(),
+    name: String(p.name || '').trim().slice(0, 120),
+    type: PARTNER_TYPES.includes(p.type) ? p.type : 'other',
+    phone: String(p.phone || '').trim().slice(0, 40),
+    email: String(p.email || '').trim().slice(0, 120),
+    city: String(p.city || '').trim().slice(0, 80),
+    notes: String(p.notes || '').trim().slice(0, 600),
+    commissionPct: p.commissionPct == null || p.commissionPct === '' ? 0 : (+p.commissionPct || 0),
+    referralFee: p.referralFee == null || p.referralFee === '' ? 0 : (+p.referralFee || 0),
+    createdAt: p.createdAt || Date.now() + i,
+    updatedAt: p.updatedAt || p.createdAt || Date.now() + i
+  }));
+  d.journeyLogs = d.journeyLogs.filter(j => j && j.id && j.kind && j.at).map(j => ({
+    id: j.id || uid(),
+    kind: j.kind,
+    clientId: clientIds.has(j.clientId) ? j.clientId : '',
+    projectId: projectIds.has(j.projectId) ? j.projectId : '',
+    advisorId: advisorIds.has(j.advisorId) ? j.advisorId : '',
+    at: j.at || Date.now(),
+    text: String(j.text || '').slice(0, 500)
+  })).slice(0, 500);
   d.news.forEach(n => {
     if(n.id == null) n.id = uid();
     if(n.title == null) n.title = '';
@@ -8287,6 +8430,7 @@ function renderDashboard(){
   renderPulse();
   renderSeniorDesk();
   renderNextQueue();
+  renderJourneyPanel();
   renderDailyHero();
 }
 
@@ -8486,6 +8630,10 @@ function renderNextQueue(){
   }));
   const add = $('#queueAddTask');
   if(add) add.onclick = () => go('dayplan');
+  const weekly = $('#weeklyBtn');
+  if(weekly) weekly.onclick = openWeekly;
+  const team = $('#teamBoardBtn');
+  if(team) team.onclick = openTeamBoard;
 }
 function openDossier(p){
   if(!p) return;
@@ -8681,6 +8829,109 @@ function saveLead(){
   const rec = { id:uid(), name, phone, email:'', advisorId:$('#leadAdvisor').value || '', clientStatus:'new', corridors: $('#leadCorridor').value ? [$('#leadCorridor').value] : [], projectIds:[], types:[], budgetMin: $('#leadMin').value ? +$('#leadMin').value : null, budgetMax: $('#leadMax').value ? +$('#leadMax').value : null, timeline: $('#leadTimeline').value, requirement: $('#leadReq').value.trim(), notes:'Lead captured via QR/form', nextFollowUp:'', lastContact:'', transferHistory:[], custom:{}, readiness:{kyc:false,income:false,bankPreapproval:false,cibil:false,agreement:false}, createdAt:Date.now(), updatedAt:Date.now() };
   db.clients.push(rec);
   save(); closeModal('leadModal'); render(); toast('Lead saved — client desk ready');
+}
+function journeyText(kind, ctx){
+  const name = ctx?.client?.name || 'ji';
+  const project = ctx?.project?.name || 'property';
+  if(kind === 'payment'){
+    const b = ctx.booking;
+    return `Namaste ${name} ji,\n\n*Payment reminder — BCS*\nProject: ${project}\nPending: ${fmtPrice((bookingPending(b) || 0) / 100000) || '—'}\n\nPlease confirm receipt/payment plan taaki aapki booking slot secure rahe.\n\n— Ajay Sharma, BCS`;
+  }
+  if(kind === 'feedback'){
+    return `Namaste ${name} ji,\n\nAapki ${project} visit kaisi rahi? Feedback dijiye — location, price ya payment plan me koi doubt ho to main turant clear kar deta hoon.\n\n— Ajay Sharma, BCS`;
+  }
+  if(kind === 'followup'){
+    return `Namaste ${name} ji,\n\nMain BCS se — ${project} ko lekar aapka next step confirm karna tha. Kuch aur details chahiye to main turant bhej deta hoon.\n\n— Ajay Sharma, BCS`;
+  }
+  return `Namaste ${name} ji,\n\n${project} ke baare me quick update: main aapke liye latest price, availability aur next step ready rakhta hoon. Koi bhi doubt ho to yahin likho.\n\n— Ajay Sharma, BCS`;
+}
+function dueJourneys(){
+  const items = [];
+  const today = todayISO();
+  scopedBookings().forEach(b => {
+    if(b.stage === 'cancelled') return;
+    const pend = bookingPending(b) || 0;
+    if(pend > 0) items.push({ kind:'payment', id:b.id, title:(bookingClient(b)?.name || 'Booking'), sub:'Payment pending · ' + fmtPrice(pend), priority: (b.bookingDate || today) <= today ? 0 : 2, clientId:b.clientId, projectId:b.projectId });
+  });
+  (db.visits || []).filter(v => v.date && v.date <= today && !v.outcome?.includes('booked') && !v.nextDate).forEach(v => items.push({ kind:'feedback', id:v.id, title:(db.clients.find(c => c.id === v.clientId)?.name || 'Client'), sub:'Post-visit feedback due', clientId:v.clientId, projectId:v.projectId, priority:2 }));
+  scopedClients().filter(c => c.nextFollowUp && c.nextFollowUp <= today && !['booked','lost'].includes(c.clientStatus || 'new')).forEach(c => items.push({ kind:'followup', id:c.id, title:c.name || c.phone || 'Client', sub:'Follow-up due · ' + followupInfo(c.nextFollowUp).label, clientId:c.id, priority: urgencyRank(c.nextFollowUp) }));
+  return items.sort((a,b) => a.priority - b.priority).slice(0,6);
+}
+function renderJourneyPanel(){
+  const wrap = $('#journeyPanel');
+  if(!wrap) return;
+  const items = dueJourneys();
+  const logs = (db.journeyLogs || []).length;
+  const last = [...(db.journeyLogs || [])].sort((a,b) => (b.at || 0) - (a.at || 0))[0];
+  wrap.innerHTML = `
+    <div class="panel-head"><h4>Journey sends (${items.length} due)</h4><span class="n-badge">Log: ${logs} sent</span></div>
+    ${items.length ? `<div class="queue-list">${items.map(i => `<button type="button" class="queue-row" data-journey="${i.kind}:${i.id}"><span class="queue-ic">💬</span><span><b>${esc(i.title)}</b><small>${esc(i.sub)}</small></span><em>Send ›</em></button>`).join('')}</div>` : '<div class="empty-inline">Abhi koi journey due nahi — jab follow-up, payment ya feedback bane, yahan auto aayega.</div>'}
+    ${last ? `<p class="lock-hint" style="margin-top:8px">Last send: ${esc((db.clients.find(c => c.id === last.clientId)?.name || '—'))} · ${esc(new Date(last.at).toLocaleString('en-IN', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' }))}</p>` : ''}
+  `;
+  $$('#journeyPanel [data-journey]').forEach(btn => btn.addEventListener('click', () => sendJourney(btn.dataset.journey)));
+}
+function sendJourney(spec){
+  const [kind, id] = String(spec || '').split(':');
+  let clientId = '', projectId = '', advisorId = '', booking = null, visit = null;
+  if(kind === 'payment'){ booking = scopedBookings().find(b => b.id === id); clientId = booking?.clientId || ''; projectId = booking?.projectId || ''; advisorId = booking?.advisorId || ''; }
+  if(kind === 'feedback'){ visit = (db.visits || []).find(v => v.id === id); clientId = visit?.clientId || ''; projectId = visit?.projectId || ''; advisorId = visit?.advisorId || ''; }
+  if(kind === 'followup'){ clientId = id; }
+  const client = clientId ? db.clients.find(c => c.id === clientId) : null;
+  const project = projectId ? scopedProjects().find(p => p.id === projectId) : null;
+  if(!client) return toast('Client linked hona chahiye', true);
+  const text = journeyText(kind, { client, project, booking });
+  const digits = waLink(client.phone);
+  if(!db.journeyLogs) db.journeyLogs = [];
+  db.journeyLogs.push({ id: uid(), kind, clientId, projectId, advisorId, at: Date.now(), text });
+  save();
+  if(window.open) window.open((digits ? digits : 'https://wa.me/?text=') + (digits ? '&text=' : '') + encodeURIComponent(text), '_blank');
+  else window.location.href = 'https://wa.me/?text=' + encodeURIComponent(text);
+  renderJourneyPanel();
+}
+function weeklyRange(){
+  const d = new Date();
+  const day = (d.getDay() + 6) % 7; // Monday = 0
+  const start = new Date(d.getFullYear(), d.getMonth(), d.getDate() - day);
+  const end = new Date(start.getFullYear(), start.getMonth(), start.getDate() + 6);
+  const iso = x => `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`;
+  return { start: iso(start), end: iso(end) };
+}
+function weeklyReport(){
+  const { start, end } = weeklyRange();
+  const inWeek = x => x >= start && x <= end;
+  const projects = scopedProjects();
+  const newProjects = projects.filter(p => p.createdAt && inWeek(new Date(p.createdAt).toISOString().slice(0,10)));
+  const priceChanges = projects.flatMap(p => (p.priceHistory || []).filter(r => inWeek(r.date || '')).map(r => ({ p, r })));
+  const bookings = scopedBookings().filter(b => inWeek(b.bookingDate || ''));
+  const received = bookings.reduce((n,b) => n + (Number(b.received) || 0), 0);
+  const pending = bookings.reduce((n,b) => n + (bookingPending(b) || 0), 0);
+  const commission = bookings.reduce((n,b) => n + (bookingCommission(b) || 0), 0);
+  const visits = (db.visits || []).filter(v => inWeek(v.date || ''));
+  const newClients = scopedClients().filter(c => c.createdAt && inWeek(new Date(c.createdAt).toISOString().slice(0,10)));
+  const dueClients = scopedClients().filter(c => c.nextFollowUp && c.nextFollowUp <= end);
+  const docsAlerts = (db.documents || []).filter(d => d.expiry && d.expiry >= todayISO() && d.expiry <= addISO(todayISO(), 45));
+  const upcoming = upcomingFestivals(7, todayISO());
+  const lines = [
+    `*BCS Weekly Business Report*`,
+    `${fmtDate(start)} — ${fmtDate(end)}`,
+    '',
+    `Inventory: ${newProjects.length} new project(s)${newProjects.length ? ' — ' + newProjects.map(p => p.name).join(', ') : ''}`,
+    `Bookings: ${bookings.length} · Received ${fmtPrice(received / 100000) || '—'} · Pending ${fmtPrice(pending / 100000) || '—'} · Commission ${fmtPrice(commission / 100000) || '—'}`,
+    `Site visits: ${visits.length} logged (${visits.filter(v => v.outcome === 'hot').length} hot, ${visits.filter(v => v.outcome === 'booked').length} booked)`,
+    `Clients: ${newClients.length} new · ${dueClients.length} follow-up due by week-end`,
+    `Price updates: ${priceChanges.length}${priceChanges.length ? ' — ' + priceChanges.map(x => x.p.name).join(', ') : ''}`,
+    `Document alerts (45d): ${docsAlerts.length}${docsAlerts.length ? ' — ' + docsAlerts.map(d => d.name + ' (' + fmtDate(d.expiry) + ')').join(', ') : ''}`,
+    `Upcoming festival creatives: ${upcoming.length ? upcoming.map(f => f.name + ' ' + fmtDate(f.date)).join(', ') : 'none'}`,
+    '',
+    'BCS · Business City Square · @ajaysharma.bcs'
+  ];
+  return { text: lines.join('\n'), html: lines.map(x => `<p>${esc(x)}</p>`).join(''), start, end };
+}
+function openWeekly(){
+  const rep = weeklyReport();
+  $('#weeklyTitle').textContent = `Weekly report — ${fmtDate(rep.start)} to ${fmtDate(rep.end)}`;
+  $('#weeklyBody').innerHTML = rep.html;
+  showOverlay('weeklyModal');
 }
 function openTeamBoard(){
   const advisors = visibleAdvisors().map(a => {
@@ -12442,7 +12693,12 @@ function renderDetail(){
       ['Approval detail / authority', esc(p.approval || '—')],
       p.societyName ? ['Society name', esc(p.societyName)] : null,
     ].filter(Boolean);
+    const health = propertyHealth(p);
     body = `
+      <div class="health-score-card">
+        <div class="health-score ${health.grade.cls}"><b>${health.score}</b><span>/100 · ${esc(health.grade.label)}</span></div>
+        <div class="health-copy"><div class="lab">Property health score — ${esc(health.grade.note)}</div><div class="health-bars">${[['Data',health.components.data],['Legal',health.components.legal],['Commercial',health.components.commercial],['Demand',health.components.demand],['Docs',health.components.docs]].map(([k,v]) => `<div><span>${k}</span><i><em style="width:${v}%"></em></i><b>${v}</b></div>`).join('')}</div>${health.risks.length ? `<p class="health-risks">⚠️ ${esc(health.risks.join(' · '))}</p>` : '<p class="health-risks ok">✅ No major red flags in current records.</p>'}</div>
+      </div>
       <div class="dprice-line">
         <div class="dprice"><small>Guide price</small>${priceRange(p)}</div>
         <div class="dchips">${feats.map(f => `<span class="dchip green">${esc(f)}</span>`).join('')}</div>
@@ -19170,6 +19426,107 @@ function initTax(){
   $('#addTaxBtn').addEventListener('click', () => openTax(null));
 }
 
+/* ---------- partners / vendor network ---------- */
+const PARTNER_TYPES = [
+  { id:'bank', label:'Bank / home loan', icon:'🏦' },
+  { id:'ca', label:'CA / tax', icon:'🧮' },
+  { id:'legal', label:'Legal', icon:'⚖️' },
+  { id:'interiors', label:'Interiors', icon:'🛋️' },
+  { id:'contractor', label:'Contractor', icon:'🏗️' },
+  { id:'rent', label:'Rent / rental', icon:'🔑' },
+  { id:'vendor', label:'Vendor', icon:'📦' },
+  { id:'other', label:'Other', icon:'✨' }
+];
+const partnerTypeMeta = id => PARTNER_TYPES.find(x => x.id === id) || PARTNER_TYPES[7];
+function renderPartners(){
+  if(!$('#partnerGrid')) return;
+  const q = ($('#partnerSearch').value || '').trim().toLowerCase();
+  const type = $('#partnerTypeFilter').value || '';
+  const list = (db.partners || []).filter(p => {
+    if(type && p.type !== type) return false;
+    if(!q) return true;
+    return [p.name, p.notes, p.city, partnerTypeMeta(p.type).label].join(' ').toLowerCase().includes(q);
+  });
+  const types = new Set((db.partners || []).map(p => p.type)).size;
+  const referralTotal = (db.partners || []).reduce((n,p) => n + (Number(p.referralFee) || 0), 0);
+  $('#partnerStats').innerHTML = `
+    <div><div class="k">Partners</div><div class="v">${(db.partners || []).length}</div></div>
+    <div><div class="k">Types</div><div class="v">${types}</div></div>
+    <div><div class="k">Cities</div><div class="v">${new Set((db.partners || []).map(p => p.city).filter(Boolean)).size}</div></div>
+    <div><div class="k">Referral flow</div><div class="v">${referralTotal ? fmtPrice(referralTotal / 100000) : '—'}</div></div>`;
+  $('#partnerCount').textContent = `${list.length} of ${(db.partners || []).length}`;
+  const admin = isAdmin();
+  $('#partnerGrid').innerHTML = list.length ? list.map(p => {
+    const meta = partnerTypeMeta(p.type);
+    return `<article class="partner-card">
+      <div class="partner-top"><div class="partner-ic">${meta.icon}</div><div><b>${esc(p.name)}</b><small>${esc(meta.label)}</small></div></div>
+      <div class="partner-meta">
+        ${p.city ? `<span>📍 ${esc(p.city)}</span>` : ''}
+        ${p.phone ? `<span>☏ ${esc(p.phone)}</span>` : ''}
+        ${p.commissionPct ? `<span>${esc(p.commissionPct)}% comm.</span>` : ''}
+        ${p.referralFee ? `<span>Ref ${fmtPrice(p.referralFee)}</span>` : ''}
+      </div>
+      <p class="partner-notes">${esc(p.notes || 'Notes abhi nahi — edit karke jodein.')}</p>
+      <div class="partner-act">
+        ${p.phone ? `<a class="btn ghost sm" href="tel:${esc(p.phone)}">Call</a><a class="btn ghost sm" href="${waLink(p.phone)}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
+        ${admin ? `<button type="button" data-partneredit="${p.id}">✎ Edit</button><button type="button" class="del" data-partnerdel="${p.id}">✕ Delete</button>` : ''}
+      </div>
+    </article>`;
+  }).join('') : `<div class="links-board-empty tm-empty">${emptyBlock('Koi partner nahi', q || type ? 'Search/filter clear karein.' : 'Pehla partner add karein — bank/CA/legal/interior sab yahin.', admin ? '+ Add partner' : '', 'addpartner')}</div>`;
+  $$('#partnerGrid [data-partneredit]').forEach(b => b.addEventListener('click', () => openPartner(db.partners.find(x => x.id === b.dataset.partneredit))));
+  $$('#partnerGrid [data-partnerdel]').forEach(b => b.addEventListener('click', () => deletePartner(b.dataset.partnerdel)));
+  const seed = $('#partnerGrid [data-addpartner]');
+  if(seed) seed.addEventListener('click', () => openPartner(null));
+}
+function openPartner(p){
+  if(!isAdmin()) return toast('Advisor login se edit nahi hota', true);
+  $('#partnerTitle').textContent = p ? 'Edit partner — ' + (p.name || '') : 'Add partner';
+  $('#pId').value = p?.id || '';
+  $('#pName').value = p?.name || '';
+  $('#pType').value = p?.type || 'other';
+  $('#pPhone').value = p?.phone || '';
+  $('#pEmail').value = p?.email || '';
+  $('#pCity').value = p?.city || '';
+  $('#pNotes').value = p?.notes || '';
+  $('#pReferral').value = p?.referralFee ?? '';
+  $('#pCommission').value = p?.commissionPct ?? '';
+  $('#pDelete').style.display = p ? '' : 'none';
+  showOverlay('partnerModal');
+}
+function savePartner(){
+  if(!isAdmin()) return toast('Advisor login se edit nahi hota', true);
+  const name = $('#pName').value.trim();
+  if(!name) return toast('Partner name likhein', true);
+  const rec = { name, type: $('#pType').value, phone: $('#pPhone').value.trim(), email: $('#pEmail').value.trim(), city: $('#pCity').value.trim(), referralFee: number($('#pReferral').value) ?? 0, commissionPct: number($('#pCommission').value) ?? 0, notes: $('#pNotes').value.trim(), updatedAt: Date.now() };
+  const id = $('#pId').value;
+  if(id){
+    const p = db.partners.find(x => x.id === id);
+    if(p) Object.assign(p, rec);
+    toast('Partner updated');
+  } else {
+    db.partners.push({ id: uid(), createdAt: Date.now(), ...rec });
+    toast('Partner saved');
+  }
+  save(); renderPartners(); closeModal('partnerModal');
+}
+function deletePartner(id){
+  if(!id) return;
+  const p = db.partners.find(x => x.id === id);
+  if(!p) return;
+  if(!confirm(`"${p.name}" delete karein?`)) return;
+  db.partners = db.partners.filter(x => x.id !== id);
+  save(); renderPartners(); toast('Partner deleted');
+}
+function initPartners(){
+  if(!$('#partnerGrid')) return;
+  $('#partnerTypeFilter').innerHTML = '<option value="">All types</option>' + PARTNER_TYPES.map(x => `<option value="${x.id}">${x.label}</option>`).join('');
+  $('#partnerSearch').addEventListener('input', renderPartners);
+  $('#partnerTypeFilter').addEventListener('change', renderPartners);
+  $('#addPartnerBtn').addEventListener('click', () => openPartner(null));
+  $('#pSave').addEventListener('click', savePartner);
+  $('#pDelete').addEventListener('click', () => deletePartner($('#pId').value));
+}
+
 /* ---------- render ---------- */
 function render(){
   fillFilterCorridor($('#filterCorridor').value);
@@ -19185,6 +19542,7 @@ function render(){
   if(currentView === 'links') renderLinks();
   if(currentView === 'terminology') renderTerminology();
   if(currentView === 'tax') renderTax();
+  if(currentView === 'partners') renderPartners();
   if(currentView === 'advisory'){ renderSavedBriefs(); renderAdvisoryResults(); }
   if(currentView === 'templates') renderTemplates();
   if(currentView === 'health'){ renderHealth(); renderSyncCard(); }
@@ -19202,6 +19560,7 @@ initNews();
 initLinks();
 initTerminology();
 initTax();
+initPartners();
 initCorridorManager();
 initTools();
 initMedia();
