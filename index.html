@@ -5197,22 +5197,45 @@ body[data-theme="dark"] table td{color:var(--ink2)}
           <div class="calc-src">RERA section 31 / rules: bank MCLR + 2% interest. Exact SBI MCLR at delay date confirm karein.</div>
         </div>
       </div>
-      <div class="calc-card" id="calcCirclePro">
-        <div class="calc-head"><span class="calc-ic">🏷️</span><div><h4>Circle Rate Calculator — Jaipur</h4><small>Collector rate se circle value</small></div><span class="calc-up">Jaipur</span></div>
+      <div class="calc-card" id="calcCirclePro" style="grid-column:1/-1">
+        <div class="calc-head"><span class="calc-ic">🏛️</span><div><h4>DLC Rate (Circle) — Jaipur Collector</h4><small>Rajasthan e-Panjiyan • Information Services → e-Value (Online DLC)</small></div><span class="calc-up">Jaipur • DLC</span></div>
         <div class="calc-body">
-          <div class="field"><label>Locality</label><select id="crLocality">
-            <option value="vaishali">Vaishali Nagar</option><option value="mansarovar" selected>Mansarovar</option><option value="ajmer">Ajmer Road</option><option value="tonk">Tonk Road</option><option value="jagatpura">Jagatpura</option><option value="malviya">Malviya Nagar</option><option value="banipark">Bani Park / C-Scheme</option><option value="pratap">Pratap Nagar</option><option value="sikar">Sikar Road</option>
-          </select></div>
-          <div class="grid2">
-            <div class="field"><label>Property type</label><select id="crType"><option value="residential">Residential</option><option value="commercial">Commercial</option><option value="plot">Plot</option></select></div>
-            <div class="field"><label>Area (sq yd)</label><input id="crArea" type="number" min="0" value="240"></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:11px">
+            <a class="btn primary sm" href="https://epanjiyan.rajasthan.gov.in/" target="_blank" rel="noopener">↗ Check online — e-Panjiyan</a>
+            <span style="font-size:11.5px;color:var(--mut)">epanjiyan.rajasthan.gov.in · District → Urban/Rural → SRO → Zone → Colony → Captcha → Show Result</span>
+          </div>
+          <div style="border:1px solid var(--line);border-radius:13px;background:#FCFDFC;padding:11px 12px;margin-bottom:11px">
+            <b style="font-size:12.5px;display:block;margin-bottom:6px">Kaise check karein (6 steps)</b>
+            <ol style="font-size:12px;color:var(--ink2);line-height:1.65;padding-left:17px;margin:0">
+              <li>e-Panjiyan portal pe jao — <b>epanjiyan.rajasthan.gov.in</b></li>
+              <li><b>Information Services</b> me ja ke <b>“e-Value (Online DLC)”</b> chun lo</li>
+              <li><b>District: Jaipur</b> select karo</li>
+              <li><b>Urban ya Rural</b> select karo</li>
+              <li>Apna <b>Sub-Registrar Office (SRO)</b>, phir <b>zone aur colony/locality</b> select karo</li>
+              <li><b>Captcha</b> bharo → <b>Show Result</b> — wahan <b>residential / commercial / industrial / agricultural</b> ke alag-alag rate aur kabhi <b>exterior vs interior</b> alag dikhenge</li>
+            </ol>
+            <p style="font-size:11px;color:var(--mut);line-height:1.6;margin-top:7px">Registry duty <b>max(market value, DLC value)</b> pe lagti hai — deal se pehle latest DLC zaroor verify karo. BCS neeche jo default rates deta hai, sirf indicative hain.</p>
           </div>
           <div class="grid2">
-            <div class="field"><label>Circle rate (₹ / sq yd) — editable</label><input id="crRate" type="number" min="0" value="4500"></div>
+            <div class="field"><label>District / Tehsil (default Jaipur)</label><input id="crDistrict" value="Jaipur" disabled></div>
+            <div class="field"><label>Urban / Rural</label><select id="crUrbanRural"><option value="urban">Urban</option><option value="rural">Rural</option></select></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>SRO / Locality</label><select id="crLocality">
+              <option value="vaishali">Vaishali Nagar</option><option value="mansarovar" selected>Mansarovar</option><option value="ajmer">Ajmer Road</option><option value="tonk">Tonk Road</option><option value="jagatpura">Jagatpura</option><option value="malviya">Malviya Nagar</option><option value="banipark">Bani Park / C-Scheme</option><option value="pratap">Pratap Nagar</option><option value="sikar">Sikar Road</option>
+            </select></div>
+            <div class="field"><label>Property type (DLC list)</label><select id="crType"><option value="residential">Residential</option><option value="commercial">Commercial</option><option value="plot">Plot / Agricultural</option><option value="industrial">Industrial</option></select></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Area (sq yd)</label><input id="crArea" type="number" min="0" value="240"></div>
+            <div class="field"><label>Location tag</label><select id="crTag"><option value="exterior">Exterior (main road)</option><option value="interior">Interior (colony)</option></select></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>DLC rate (₹ / sq yd) — e-Value se bharo</label><input id="crRate" type="number" min="0" value="4500"></div>
             <div class="field"><label>&nbsp;</label><button class="btn ghost sm" id="crLoad" style="width:100%">Load locality default</button></div>
           </div>
           <div class="calc-out" id="crOut"></div>
-          <div class="calc-src">Indicative Jaipur circle rates — latest Collector notification confirm karo. Registry duty max(market, circle) pe lagti hai. Aurum Circle Rate tool style: City → Locality → Type → instantly value.</div>
+          <div class="calc-src">DLC (Collector rate) — Jaipur me sabse kehte hain circle rate; official name DLC hai. Result me residential/commercial/industrial/agricultural aur exterior/interior alag ho sakte hain. BCS default indicative hai — e-Value (Online DLC) se latest verify karo.</div>
         </div>
       </div>
     </div>
@@ -9639,19 +9662,27 @@ function quoteText(){
     const area = parseAmt('#crArea'), rate = parseAmt('#crRate');
     const cip = rate * area;
     const stamp = cip * num('#rgStamp') / 100, reg = cip * num('#rgReg') / 100;
+    const loc = $('#crLocality')?.value || 'mansarovar';
+    const typ = $('#crType')?.value || 'residential';
+    const urb = $('#crUrbanRural')?.value || 'urban';
+    const tag = $('#crTag')?.value || 'exterior';
     out.innerHTML = `
-      <div class="calc-row"><span>Circle rate</span><b>₹ ${inr(rate)} / sq yd</b></div>
+      <div class="calc-row"><span>DLC — Jaipur → ${urb === 'urban' ? 'Urban' : 'Rural'} → ${esc(loc)} → ${esc(typ)}</span><b>${esc(tag === 'exterior' ? 'Exterior' : 'Interior')}</b></div>
+      <div class="calc-row"><span>DLC rate (e-Value)</span><b>₹ ${inr(rate)} / sq yd</b></div>
       <div class="calc-row"><span>Area</span><b>${inr(area)} sq yd</b></div>
-      <div class="calc-row"><span>Circle value</span><b>₹ ${inr(cip)}</b></div>
+      <div class="calc-row"><span>DLC value</span><b>₹ ${inr(cip)}</b></div>
       <div class="calc-row"><span>Stamp @${num('#rgStamp')}% + Reg @${num('#rgReg')}%</span><b>₹ ${inr(stamp + reg)}</b></div>
-      <div class="calc-total"><span>Registry basis (circle)</span><b>₹ ${inr(cip + stamp + reg)}</b></div>`;
+      <div class="calc-total"><span>Registry basis (DLC)</span><b>₹ ${inr(cip + stamp + reg)}</b></div>
+      <p style="font-size:11px;color:var(--mut);margin-top:4px">e-Panjiyan → Information Services → e-Value (Online DLC) se latest rate verify karo — result me residential/commercial/industrial/agri aur exterior/interior alag-alag milenge.</p>`;
   }
   function loadCircleDefault(){
     const loc = $('#crLocality')?.value || 'mansarovar';
     const base = JAIPUR_CIRCLE[loc] || 4500;
     const typ = $('#crType')?.value || 'residential';
-    const mult = typ === 'commercial' ? 1.6 : typ === 'plot' ? 0.85 : 1;
-    if($('#crRate')) $('#crRate').value = Math.round(base * mult);
+    const mult = typ === 'commercial' ? 1.6 : typ === 'plot' || typ === 'industrial' ? 0.85 : 1;
+    const tag = $('#crTag')?.value || 'exterior';
+    const adj = tag === 'interior' ? 0.9 : 1;
+    if($('#crRate')) $('#crRate').value = Math.round(base * mult * adj);
     circleProCalc();
   }
   /* Rates Studio — master source */
@@ -9701,7 +9732,7 @@ function quoteText(){
   }
   const fns = [bankCalc, circleCalc, circleProCalc, emiCalc, regCalc, gstCalc, commCalc, rentCalc, areaCalc, affordCalc, prepayCalc, sipCalc, rentOwnCalc, delayCalc];
   function runAll(){ fns.forEach(f => { try{ f(); }catch(e){} }); renderCalcStats(); }
-  const ids = ['#bkAmt','#ccMarket','#ccCircle','#crLocality','#crType','#crArea','#crRate','#emAmt','#emRate','#emYears','#emFee','#rgAmt','#rgStamp','#rgReg','#rgSur','#gstAmt','#gstType','#cmAmt','#cmPct','#cmTds','#cmGst','#rnVal','#rnRent','#rnGrowth','#rnVac','#arVal','#arFrom','#afInc','#afRate','#afYears','#afFoir','#ppLoan','#ppAmt','#ppRate','#ppYears','#spAmt','#spYrs','#spRet','#spInf','#roRent','#roVal','#roRate','#roApp','#dlPaid','#dlMonths','#dlMclr'];
+  const ids = ['#bkAmt','#ccMarket','#ccCircle','#crLocality','#crType','#crArea','#crRate','#crUrbanRural','#crTag','#emAmt','#emRate','#emYears','#emFee','#rgAmt','#rgStamp','#rgReg','#rgSur','#gstAmt','#gstType','#cmAmt','#cmPct','#cmTds','#cmGst','#rnVal','#rnRent','#rnGrowth','#rnVac','#arVal','#arFrom','#afInc','#afRate','#afYears','#afFoir','#ppLoan','#ppAmt','#ppRate','#ppYears','#spAmt','#spYrs','#spRet','#spInf','#roRent','#roVal','#roRate','#roApp','#dlPaid','#dlMonths','#dlMclr'];
   ids.forEach(id => { const el = $(id); if(el){ el.addEventListener('input', runAll); el.addEventListener('change', runAll); } });
   $('#crLoad')?.addEventListener('click', loadCircleDefault);
   $('#rtSave')?.addEventListener('click', saveRates);
