@@ -9,7 +9,21 @@
 <style>
   html,body{margin:0;height:100%;background:#0d0d0a;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#f1efe6}
   #player,#player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
-  .msg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:18px;background:radial-gradient(120% 120% at 20% 6%,#3E3E2E,#16160F 74%)}
+  #cover{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:0;margin:0;padding:16px;cursor:pointer;text-align:center;color:#fff;
+    background:
+      radial-gradient(110% 90% at 18% 8%, rgba(224,106,82,.34), transparent 55%),
+      radial-gradient(100% 100% at 88% 92%, rgba(123,103,198,.36), transparent 58%),
+      linear-gradient(145deg,#2b2a1d,#141410 70%);
+    transition:opacity .2s}
+  #cover.hide{display:none}
+  #cover .play{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-size:25px;line-height:1;
+    background:linear-gradient(135deg,#e7b84b,#e06a52);color:#241b10;box-shadow:0 16px 34px -14px rgba(0,0,0,.65),inset 0 0 0 1px rgba(255,255,255,.28);
+    transition:transform .18s}
+  #cover:hover .play{transform:scale(1.07)}
+  #cover b{font-size:13px;font-weight:800;letter-spacing:.1px}
+  #cover span{font-size:10.5px;line-height:1.55;color:#c9c6b4;max-width:270px}
+  #cover .yt-mark{position:absolute;top:10px;left:12px;font-size:9px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#e7b84b;opacity:.9}
+  .msg{position:absolute;inset:0;z-index:7;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:18px;background:radial-gradient(120% 120% at 20% 6%,#3E3E2E,#16160F 74%)}
   .msg b{font-size:13px;font-weight:700;line-height:1.3}
   .msg span{font-size:11px;color:#a9a792;max-width:270px;line-height:1.55}
   .msg a{color:#e6d3a6;font-size:11px;font-weight:800;text-decoration:none;border:1px solid rgba(230,211,166,.4);border-radius:8px;padding:6px 10px;margin-top:2px}
@@ -18,6 +32,12 @@
 </head>
 <body>
 <div id="player"></div>
+<button id="cover" type="button" aria-label="Play video with sound">
+  <span class="yt-mark">BCS · YouTube</span>
+  <span class="play">▶</span>
+  <b>Video play karein</b>
+  <span>Tap karte hi isi frame me video + awaaz start ho jayegi. YouTube par jaane ki zaroorat nahi.</span>
+</button>
 <script>
 (function(){
   var q = new URLSearchParams(location.search);
@@ -25,6 +45,8 @@
   var autoplay = q.get('autoplay') !== '0';
   var start = Math.max(0, parseInt(q.get('start') || '0', 10) || 0);
   var player = null;
+  var cover = document.getElementById('cover');
+  var started = false;
 
   function send(event, info){
     try{
@@ -32,7 +54,11 @@
     }catch(e){}
   }
 
+  function hideCover(){ if(cover) cover.classList.add('hide'); }
+  function showCover(){ if(cover && !started) cover.classList.remove('hide'); }
+
   function fail(code, text){
+    hideCover();
     var host = document.getElementById('player');
     host.innerHTML = '<div class="msg"><b>Video yahan nahi chal raha</b><span>' +
       (text || 'YouTube ne is video ka embed band rakha hai.') +
@@ -41,9 +67,28 @@
     send('error', code);
   }
 
+  function startPlayback(){
+    if(!player) return;
+    try{ player.unMute(); }catch(e){}
+    try{ player.setVolume(100); }catch(e){}
+    try{ player.playVideo(); }catch(e){}
+  }
+
   if(!/^[A-Za-z0-9_-]{11}$/.test(vid)){
     fail(2, 'Video ID valid nahi hai.');
     return;
+  }
+
+  if(cover){
+    cover.addEventListener('click', function(){
+      startPlayback();
+      window.setTimeout(function(){
+        var st = -1;
+        try{ st = player.getPlayerState(); }catch(e){}
+        if(st === 1 || st === 3){ hideCover(); }
+        else { showCover(); }
+      }, 1600);
+    });
   }
 
   function boot(){
@@ -63,10 +108,14 @@
         events: {
           onReady: function(e){
             send('ready', 0);
-            try{ if(autoplay) e.target.playVideo(); }catch(err){}
+            if(autoplay) window.setTimeout(function(){ try{ e.target.playVideo(); }catch(err){} }, 140);
           },
           onError: function(e){ fail(e.data); },
-          onStateChange: function(e){ send('state', e.data); }
+          onStateChange: function(e){
+            send('state', e.data);
+            if(e.data === 1){ started = true; hideCover(); }
+            else if((e.data === -1 || e.data === 5 || e.data === 2) && !started){ showCover(); }
+          }
         }
       });
       window.__bcsYtPlayer = player;
@@ -90,7 +139,7 @@
     try{ if(typeof d === 'string') d = JSON.parse(d); }catch(err){ return; }
     if(!d || d.__bcsYt !== 'cmd' || !player) return;
     try{
-      if(d.cmd === 'play') player.playVideo();
+      if(d.cmd === 'play') startPlayback();
       else if(d.cmd === 'pause') player.pauseVideo();
       else if(d.cmd === 'stop') player.stopVideo();
       else if(d.cmd === 'seek') player.seekTo(Math.max(0, +d.value || 0), true);

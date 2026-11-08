@@ -1908,6 +1908,180 @@ body.locked>header,body.locked>main,body.locked>.storage,body.locked>.mob-add,bo
   .present-proj{break-inside:avoid}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
+
+/* ================= v12 — colourful, playful daily desk ================= */
+:root{
+  --coral:#DF6A51; --peach:#F5B08A; --sun:#E7B84B; --teal:#2F8F7A;
+  --sky:#4C8FD6; --violet:#7B67C6; --rose:#C95C85; --lime:#7CAC5A;
+  --grad-warm:linear-gradient(135deg,#DF6A51,#E7B84B);
+  --grad-cool:linear-gradient(135deg,#2F8F7A,#4C8FD6);
+  --grad-violet:linear-gradient(135deg,#7B67C6,#C95C85);
+  --grad-lime:linear-gradient(135deg,#7CAC5A,#E7B84B);
+  --ring-shadow:0 0 0 3px rgba(123,103,198,.13);
+}
+body{
+  background-color:#F4F7F6;
+  background-image:
+    radial-gradient(920px 560px at 1% -10%, rgba(223,106,81,.20), transparent 60%),
+    radial-gradient(780px 580px at 101% -8%, rgba(47,143,122,.18), transparent 58%),
+    radial-gradient(880px 620px at 50% 108%, rgba(123,103,198,.15), transparent 64%);
+  background-attachment:fixed;
+}
+body[data-accent="emerald"]{
+  --gold:#2F8F6B; --gold-soft:#DDF3EA; --sage:#D6EEE5; --sage-ink:#2F6B54;
+  --olive:#263B33; --sand:#EAF5EF; --mint:#D6F3EC; --rose:#3F8F7A;
+}
+body[data-accent="indigo"]{
+  --gold:#5C6ED0; --gold-soft:#E4E7FB; --sage:#E3E7FB; --sage-ink:#44509A;
+  --olive:#2A3158; --sand:#EEF0FC; --mint:#E1E6FF; --rose:#6C69C9;
+}
+body[data-accent="rose"]{
+  --gold:#C0527C; --gold-soft:#F8E2EC; --sage:#F6E1EA; --sage-ink:#8B3B5D;
+  --olive:#422A35; --sand:#FBEAF1; --mint:#FCE5EF; --rose:#C0527C;
+}
+header:before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--coral),var(--sun),var(--teal),var(--sky),var(--violet),var(--rose));opacity:.85}
+header{background:rgba(249,251,250,.78)}
+.logo{background:linear-gradient(135deg,#26261A 0%,#3A3928 44%,#8A6A2E 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18),0 6px 16px -8px rgba(58,57,40,.6)}
+.brand h1{letter-spacing:-.35px}
+nav{background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.8);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 8px 22px -18px rgba(46,45,32,.55)}
+nav button{transition:background .2s,color .2s,transform .15s,box-shadow .2s}
+nav button:hover{background:rgba(255,255,255,.55);transform:translateY(-1px)}
+nav button.on{background:linear-gradient(135deg,#fff 0%,#FFF7E7 100%);box-shadow:0 2px 8px rgba(46,45,32,.12),inset 0 0 0 1px rgba(231,184,75,.25)}
+.btn.primary{background:linear-gradient(135deg,var(--olive),#536249);box-shadow:0 10px 22px -14px rgba(58,57,40,.7)}
+.btn.primary:hover{background:linear-gradient(135deg,#252417,#5C6E51);box-shadow:0 14px 28px -15px rgba(58,57,40,.75)}
+.btn.gold{background:linear-gradient(135deg,var(--gold),#C9963F)}
+.btn.ghost{background:rgba(255,255,255,.72)}
+.btn.ghost:hover{background:#fff;border-color:#BFCFC6;box-shadow:0 8px 18px -16px rgba(46,45,32,.5)}
+.searchbox{background:rgba(255,255,255,.82);transition:.2s}
+.searchbox:focus-within{border-color:#B9A6E8;box-shadow:var(--ring-shadow);background:#fff}
+.qa-trigger{width:auto;min-width:38px;padding:0 9px;display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#fff,#FFF8EA);border-color:#EADFC8;color:var(--ink2)}
+.qa-trigger:hover{border-color:#D9B97B;box-shadow:0 8px 18px -16px rgba(165,123,54,.8)}
+.qa-trigger kbd{font:700 10px/1 'DM Sans',sans-serif;background:#F3E8D3;color:#8F6A2B;border-radius:5px;padding:4px 5px;letter-spacing:.4px}
+.intro{position:relative;isolation:isolate;overflow:hidden;padding:26px 28px;border-radius:26px;border:1px solid rgba(255,255,255,.86);background:linear-gradient(120deg,rgba(255,255,255,.94),rgba(255,255,255,.58));box-shadow:0 24px 60px -42px rgba(46,45,32,.55)}
+.intro:before{content:"";position:absolute;right:-100px;top:-130px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(231,184,75,.35),rgba(223,106,81,.15) 48%,transparent 68%);z-index:-1}
+.intro:after{content:"";position:absolute;left:-130px;bottom:-190px;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(123,103,198,.25),rgba(47,143,122,.12) 48%,transparent 68%);z-index:-1}
+.intro h2 em{background:linear-gradient(90deg,#BF5D3B 0%,#AF822A 46%,#3F8B6B 92%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.intro-cta .btn{box-shadow:0 12px 24px -16px rgba(58,57,40,.65)}
+.intro-stats{gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.istat{padding:10px 13px;border-radius:14px;border:1px solid rgba(255,255,255,.9);background:rgba(255,255,255,.7);box-shadow:0 10px 24px -22px rgba(46,45,32,.65);transition:transform .18s,box-shadow .18s}
+.istat:hover{transform:translateY(-2px);box-shadow:0 14px 28px -22px rgba(46,45,32,.75)}
+.istat b{font-size:24px}
+.istat:nth-child(1) b{color:#2F8F7A}
+.istat:nth-child(2) b{color:#B98028}
+.istat:nth-child(3) b{color:#7B67C6}
+.istat:nth-child(4) b{color:#C95C85}
+.istat:nth-child(5) b{color:#4C8FD6;font-size:18px}
+.pulse-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 28px}
+.pulse-card{position:relative;overflow:hidden;display:flex;align-items:center;gap:11px;padding:14px 15px;border:1px solid rgba(255,255,255,.9);border-radius:16px;background:rgba(255,255,255,.78);box-shadow:0 14px 34px -30px rgba(46,45,32,.7);text-align:left;transition:transform .18s,box-shadow .18s,border-color .18s}
+.pulse-card:hover{transform:translateY(-3px);border-color:#D9E4DE;box-shadow:0 20px 40px -30px rgba(46,45,32,.8)}
+.pulse-ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:#fff;font-size:16px;font-weight:800;flex:none;box-shadow:0 10px 20px -14px rgba(46,45,32,.75)}
+.pulse-task .pulse-ic{background:var(--grad-warm)}
+.pulse-follow .pulse-ic{background:var(--grad-cool)}
+.pulse-new .pulse-ic{background:var(--grad-violet)}
+.pulse-focus .pulse-ic{background:var(--grad-lime)}
+.pulse-copy{min-width:0;flex:1;display:flex;flex-direction:column;gap:2px}
+.pulse-copy b{font-family:'Fraunces',serif;font-size:19px;font-weight:600;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.2px}
+.pulse-copy span{font-size:9.5px;text-transform:uppercase;letter-spacing:.9px;color:var(--mut);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pulse-tag{font-size:9px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:4px 7px;border-radius:999px;background:#F1F4F2;color:var(--ink2);border:1px solid var(--line2);flex:none}
+.pulse-tag.warn{background:#FBEDE8;border-color:#F0D8CE;color:var(--danger)}
+.pulse-tag.ok{background:#EAF5EF;border-color:#D3E9DD;color:#2F6B54}
+.pulse-meter{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(46,45,32,.07)}
+.pulse-meter i{display:block;height:100%;width:0;background:var(--grad-warm);transition:width .55s cubic-bezier(.2,.8,.3,1)}
+#catStrip .cat-card{background:linear-gradient(180deg,#fff 0%,#FCFEFC 100%);transition:transform .2s,box-shadow .2s,border-color .2s}
+#catStrip .cat-card:before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.72) 48%,transparent 64%);transform:translateX(-125%);transition:transform .55s ease;pointer-events:none}
+#catStrip .cat-card:hover:before{transform:translateX(125%)}
+#catStrip .cat-card:hover{transform:translateY(-4px);box-shadow:0 20px 44px -26px rgba(46,45,32,.4)}
+#catStrip .cat-card:nth-child(1) .cat-ic{background:linear-gradient(135deg,#FFE3D4,#FFC5A5);color:#A84B2F}
+#catStrip .cat-card:nth-child(2) .cat-ic{background:linear-gradient(135deg,#E3F3FF,#BFDFFB);color:#2F6FA8}
+#catStrip .cat-card:nth-child(3) .cat-ic{background:linear-gradient(135deg,#E7F6E4,#C6E7BC);color:#47793C}
+#catStrip .cat-card:nth-child(4) .cat-ic{background:linear-gradient(135deg,#F2E9FF,#DCCBF8);color:#6C4FA8}
+#catStrip .cat-card:nth-child(5) .cat-ic{background:linear-gradient(135deg,#FFF0D8,#F8DDA9);color:#9B6C25}
+#catStrip .cat-card:nth-child(6) .cat-ic{background:linear-gradient(135deg,#FFE6ED,#F8C2D3);color:#A84667}
+#catStrip .cat-card:nth-child(7) .cat-ic{background:linear-gradient(135deg,#E1F7F1,#BEE9DB);color:#2C7564}
+#catStrip .cat-count{box-shadow:0 4px 12px -8px rgba(46,45,32,.5)}
+.cor-card{background:linear-gradient(180deg,#fff 0%,#FCFEFC 100%)}
+.cor-card:before{content:"";position:absolute;right:-48px;top:-54px;width:130px;height:130px;border-radius:50%;background:var(--cor,#D8F0EC);opacity:.14;transition:transform .3s,opacity .3s;pointer-events:none}
+.cor-card:hover:before{transform:scale(1.35);opacity:.2}
+.cor-card:hover{border-color:var(--cor,#D6DEDA);box-shadow:0 18px 38px -24px rgba(46,45,32,.38)}
+.cor-card .stripe{height:4px;box-shadow:0 2px 10px -4px var(--cor,transparent)}
+.show-card{box-shadow:0 20px 44px -32px rgba(46,45,32,.6)}
+.show-card:hover{box-shadow:0 30px 66px -34px rgba(46,45,32,.66),0 0 0 1px rgba(231,184,75,.28)}
+.show-card .viewbtn{box-shadow:0 8px 18px -12px rgba(20,20,12,.8)}
+.panel{position:relative;overflow:hidden;background:linear-gradient(180deg,#fff 0%,#FCFEFC 100%)}
+.panel:before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--peach),var(--sun),var(--teal),var(--sky),var(--violet));opacity:.7}
+.panel-head h4{letter-spacing:-.25px}
+.tile{position:relative;overflow:hidden;background:linear-gradient(145deg,#fff,#FFFBF5)}
+.tile:nth-child(4n+1){background:linear-gradient(145deg,#fff,#FFF1EA)}
+.tile:nth-child(4n+2){background:linear-gradient(145deg,#fff,#EDF8F3)}
+.tile:nth-child(4n+3){background:linear-gradient(145deg,#fff,#F2EEFC)}
+.tile:nth-child(4n+4){background:linear-gradient(145deg,#fff,#FFF7E4)}
+.tile:after{content:"";position:absolute;right:-26px;bottom:-30px;width:80px;height:80px;border-radius:50%;background:var(--sun);opacity:.08}
+.tile:nth-child(4n+2):after{background:var(--teal)}
+.tile:nth-child(4n+3):after{background:var(--violet)}
+.tile:nth-child(4n+4):after{background:var(--coral)}
+.tile b{transition:transform .18s}
+.tile:hover b{transform:translateY(-1px)}
+.quick-add-dock{position:fixed;left:18px;bottom:18px;z-index:69;display:inline-flex;align-items:center;gap:8px;padding:9px 13px 9px 9px;border-radius:999px;background:linear-gradient(135deg,#2E2D20,#4B5A3B 62%,#A57B36 130%);color:#F8F3E6;box-shadow:0 16px 34px -16px rgba(46,45,32,.7),inset 0 0 0 1px rgba(255,255,255,.16);font-size:12px;font-weight:700;transition:transform .18s,box-shadow .18s}
+.quick-add-dock:hover{transform:translateY(-3px);box-shadow:0 22px 40px -18px rgba(46,45,32,.8)}
+.quick-add-dock .plus{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--sun),var(--coral));color:#2E2414;font-size:17px;font-weight:800;line-height:1}
+.quick-add-dock kbd{font:700 9px/1 'DM Sans',sans-serif;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);border-radius:5px;padding:3px 4px;color:#F2E8CF}
+body.locked>.quick-add-dock{visibility:hidden}
+.qa-layer{position:fixed;inset:0;z-index:300;display:none;align-items:flex-start;justify-content:center;padding:9vh 18px 24px;background:rgba(24,30,26,.45);backdrop-filter:blur(9px)}
+.qa-layer.on{display:flex;animation:qafade .18s ease}
+@keyframes qafade{from{opacity:0}to{opacity:1}}
+.qa-box{width:min(700px,100%);max-height:min(76vh,720px);display:flex;flex-direction:column;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.75);background:linear-gradient(180deg,rgba(255,255,255,.99),rgba(250,253,251,.98));box-shadow:0 44px 100px -30px rgba(18,25,21,.6);animation:qapop .22s cubic-bezier(.2,.8,.3,1)}
+@keyframes qapop{from{transform:translateY(12px) scale(.98);opacity:.6}to{transform:none;opacity:1}}
+.qa-head{display:flex;align-items:center;gap:11px;padding:15px 17px;border-bottom:1px solid var(--line);background:linear-gradient(110deg,#FFFAF0,#F4FAF7 58%,#F6F1FF)}
+.qa-head .qa-mark{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--sun),var(--coral));color:#2E2414;font-weight:800;font-size:15px;flex:none}
+.qa-head input{flex:1;min-width:0;border:0;outline:0;background:transparent;font-size:15.5px;font-weight:600;color:var(--ink)}
+.qa-head input::placeholder{color:#9DA298;font-weight:500}
+.qa-head .qa-esc{font:700 9px/1 'DM Sans',sans-serif;color:var(--mut);background:#fff;border:1px solid var(--line);border-radius:6px;padding:5px 6px;flex:none}
+.qa-list{overflow:auto;padding:8px;display:flex;flex-direction:column;gap:3px}
+.qa-item{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:12px;border:1px solid transparent;cursor:pointer;transition:.12s;text-align:left;width:100%}
+.qa-item:hover,.qa-item.on{background:linear-gradient(90deg,#FFF6E8,#EEF8F2);border-color:#EADFC8;transform:translateX(1px)}
+.qa-item .qico{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff;font-size:13px;font-weight:800;flex:none;box-shadow:0 8px 16px -12px rgba(46,45,32,.7)}
+.qa-item .qbody{min-width:0;flex:1;display:flex;flex-direction:column;gap:1px}
+.qa-item .qbody b{font-size:12.5px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qa-item .qbody span{font-size:10.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qa-item .qkind{font-size:8.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mut);background:#F3F6F4;border:1px solid var(--line2);border-radius:999px;padding:3px 7px;flex:none}
+.qa-empty{padding:28px 16px;text-align:center;color:var(--mut);font-size:12.5px}
+.qa-foot{display:flex;align-items:center;gap:14px;padding:9px 16px;border-top:1px solid var(--line);background:#FBFCFB;font-size:9.5px;color:var(--mut);font-weight:700;letter-spacing:.3px}
+.qa-foot span{display:flex;align-items:center;gap:4px}
+.qa-foot kbd{font:700 9px/1 'DM Sans',sans-serif;background:#fff;border:1px solid var(--line);border-radius:4px;padding:2px 4px;color:var(--ink2)}
+.confetti-layer{position:fixed;inset:0;z-index:250;pointer-events:none;overflow:hidden}
+.confetti-layer i{position:absolute;top:-14px;width:8px;height:13px;border-radius:2px;animation:confettiFall 1.5s cubic-bezier(.15,.7,.3,1) forwards}
+@keyframes confettiFall{0%{transform:translateY(-10px) rotate(0);opacity:1}100%{transform:translateY(102vh) rotate(540deg);opacity:0}}
+@media (max-width:1100px){
+  .pulse-strip{grid-template-columns:1fr 1fr}
+  .intro-stats{justify-content:flex-start}
+}
+@media (max-width:820px){
+  .intro{padding:20px 18px;border-radius:20px}
+  .intro-stats{gap:8px}
+  .istat{padding:8px 10px;border-radius:11px}
+  .istat b{font-size:20px}
+  .istat span{font-size:8.5px;letter-spacing:.9px}
+  .pulse-strip{gap:8px;margin-bottom:22px}
+  .pulse-card{padding:11px 11px;border-radius:13px;gap:8px}
+  .pulse-ic{width:31px;height:31px;border-radius:9px;font-size:13px}
+  .pulse-copy b{font-size:15px}
+  .pulse-copy span{font-size:8px;letter-spacing:.5px}
+  .pulse-tag{display:none}
+  .qa-trigger{display:none}
+  .quick-add-dock{display:none}
+  .qa-layer{padding:12px 10px 20px;align-items:flex-start}
+  .qa-box{max-height:84vh;border-radius:18px}
+  .qa-head{padding:12px 13px}
+  .qa-head input{font-size:16px}
+  .qa-item{padding:9px}
+}
+@media (max-width:340px){
+  .pulse-strip{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+}
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -2009,6 +2183,13 @@ body.locked>header,body.locked>main,body.locked>.storage,body.locked>.mob-add,bo
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
         <span class="lbl">Add project</span>
       </button>
+      <button class="icon-btn qa-trigger" id="qaTrigger" title="Quick actions &amp; search (⌘K)" aria-label="Quick actions">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.7 4.8L18.5 9.5l-4.8 1.7L12 16l-1.7-4.8L5.5 9.5l4.8-1.7L12 3Z"/><path d="m18 15 .8 2.2L21 18l-2.2.8L18 21l-.8-2.2L15 18l2.2-.8L18 15Z"/></svg>
+        <kbd>⌘K</kbd>
+      </button>
+      <button class="icon-btn" id="accentBtn" title="Change desk accent — colour mood" aria-label="Change desk accent">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3a9 9 0 1 0 0 18c1.7 0 2.2-1 1.5-2.2-.5-.8-.2-1.8.8-1.8H17a4 4 0 0 0 4-4 9 9 0 0 0-9-10Z"/><circle cx="7.5" cy="11" r="1.1" fill="currentColor" stroke="none"/><circle cx="10" cy="7.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="7.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </button>
       <span class="role-chip" id="roleChip"></span>
       <button class="icon-btn" id="lockBtn" title="Lock desk — Ajay Sharma" aria-label="Lock desk">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
@@ -2037,6 +2218,29 @@ body.locked>header,body.locked>main,body.locked>.storage,body.locked>.mob-add,bo
         <div class="istat"><b id="statClients">0</b><span>Clients</span></div>
         <div class="istat"><b id="statValue">—</b><span>Price range</span></div>
       </div>
+    </div>
+
+    <div class="pulse-strip" id="pulseStrip" aria-label="Aaj ka desk pulse">
+      <button type="button" class="pulse-card pulse-task" data-goto="dayplan" title="Day plan kholein">
+        <span class="pulse-ic">◷</span>
+        <span class="pulse-copy"><b id="pulseTasks">0</b><span id="pulseTaskSub">Tasks today</span></span>
+        <span class="pulse-tag ok" id="pulseTaskTag">Plan</span>
+        <span class="pulse-meter"><i id="pulseTaskBar"></i></span>
+      </button>
+      <button type="button" class="pulse-card pulse-follow" data-goto="clients" title="Client follow-ups kholein">
+        <span class="pulse-ic">☎</span>
+        <span class="pulse-copy"><b id="pulseFollow">0</b><span id="pulseFollowSub">Follow-ups due</span></span>
+        <span class="pulse-tag ok" id="pulseFollowTag">All clear</span>
+      </button>
+      <button type="button" class="pulse-card pulse-new" data-goto="projects" title="Naye projects dekhein">
+        <span class="pulse-ic">✦</span>
+        <span class="pulse-copy"><b id="pulseNew">0</b><span id="pulseNewSub">New this week</span></span>
+        <span class="pulse-tag" id="pulseNewTag">Pipeline</span>
+      </button>
+      <button type="button" class="pulse-card pulse-focus" data-goto="dayplan" title="Aaj ka next task">
+        <span class="pulse-ic">▶</span>
+        <span class="pulse-copy"><b id="pulseNext">Add a task</b><span id="pulseNextSub">plan your day</span></span>
+      </button>
     </div>
 
     <div class="cat-strip" id="catStrip"></div>
@@ -2765,6 +2969,22 @@ body.locked>header,body.locked>main,body.locked>.storage,body.locked>.mob-add,bo
 </div>
 
 <audio id="musicAudio" preload="none"></audio>
+
+<button class="quick-add-dock" id="quickAddDock" type="button" title="Quick actions &amp; search (⌘K)">
+  <span class="plus">+</span><span>Quick add</span><kbd>⌘K</kbd>
+</button>
+
+<div class="qa-layer" id="qaLayer" aria-hidden="true">
+  <div class="qa-box" role="dialog" aria-modal="true" aria-label="Quick actions and search">
+    <div class="qa-head">
+      <span class="qa-mark">⌘</span>
+      <input id="qaInput" type="text" placeholder="Kuch bhi dhundein — project, client, action…" autocomplete="off" spellcheck="false" aria-label="Search actions and records">
+      <span class="qa-esc">ESC</span>
+    </div>
+    <div class="qa-list" id="qaList"></div>
+    <div class="qa-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>↵</kbd> open</span><span><kbd>⌘K</kbd> close</span><span style="margin-left:auto">Everything stays editable</span></div>
+  </div>
+</div>
 
 <div class="storage" id="storageMeter"></div>
 <button class="mob-add" id="mobAdd">+</button>
@@ -5024,6 +5244,43 @@ function renderDashboard(){
   renderBookingMini();
   renderNewsMini();
   renderLinksMini();
+  renderPulse();
+}
+
+function renderPulse(){
+  if(!$('#pulseStrip')) return;
+  const today = todayISO();
+  const tasks = dayTodos(today);
+  const done = tasks.filter(t => t.done).length;
+  const pct = tasks.length ? Math.round(done / tasks.length * 100) : 0;
+  if($('#pulseTasks')) $('#pulseTasks').textContent = tasks.length ? done + '/' + tasks.length : '0';
+  if($('#pulseTaskSub')) $('#pulseTaskSub').textContent = tasks.length ? 'Tasks done today' : 'No tasks yet';
+  if($('#pulseTaskBar')) $('#pulseTaskBar').style.width = pct + '%';
+  if($('#pulseTaskTag')){
+    $('#pulseTaskTag').textContent = tasks.length ? (pct === 100 ? 'Done' : pct + '%') : 'Plan';
+    $('#pulseTaskTag').className = 'pulse-tag ' + (pct === 100 ? 'ok' : (tasks.length ? '' : 'ok'));
+  }
+
+  const due = scopedClients().filter(c => c.nextFollowUp && c.nextFollowUp <= today && !['booked','lost'].includes(c.clientStatus || 'new'));
+  if($('#pulseFollow')) $('#pulseFollow').textContent = due.length;
+  if($('#pulseFollowSub')) $('#pulseFollowSub').textContent = due.length ? 'Follow-ups due' : 'Follow-ups clear';
+  if($('#pulseFollowTag')){
+    $('#pulseFollowTag').textContent = due.length ? 'Today' : 'All clear';
+    $('#pulseFollowTag').className = 'pulse-tag ' + (due.length ? 'warn' : 'ok');
+  }
+
+  const weekAgo = Date.now() - 7 * 86400000;
+  const fresh = scopedProjects().filter(p => p.createdAt && p.createdAt >= weekAgo).length;
+  if($('#pulseNew')) $('#pulseNew').textContent = fresh;
+  if($('#pulseNewSub')) $('#pulseNewSub').textContent = fresh ? 'New this week' : 'This week';
+  if($('#pulseNewTag')){
+    $('#pulseNewTag').textContent = fresh ? 'Fresh' : 'Pipeline';
+    $('#pulseNewTag').className = 'pulse-tag' + (fresh ? ' ok' : '');
+  }
+
+  const next = tasks.find(t => !t.done) || overdueTodos(today)[0] || null;
+  if($('#pulseNext')) $('#pulseNext').textContent = next ? (next.title || 'Next task') : 'Add a task';
+  if($('#pulseNextSub')) $('#pulseNextSub').textContent = next ? ((next.time ? next.time + ' · ' : '') + (next.priority && next.priority !== 'normal' ? next.priority + ' priority' : 'Next up')) : 'plan your day';
 }
 
 const arrowIco = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14m0 0-5-5m5 5-5 5"/></svg>';
@@ -8049,12 +8306,7 @@ function confirmDeleteDeveloper(id, closeAfter){
 /* add buttons */
 function openNewProject(){ openProject(null, $('#filterCorridor').value || 'agra'); }
 $('#addProjectTop').addEventListener('click', openNewProject);
-$('#mobAdd').addEventListener('click', () => {
-  if(currentView === 'developers') return openDeveloper(null);
-  if(currentView === 'advisors') return openAdvisor(null);
-  if(currentView === 'clients') return openClient(null);
-  openNewProject();
-});
+$('#mobAdd').addEventListener('click', () => openQuickActions());
 $('#addDevBtn').addEventListener('click', () => openDeveloper(null));
 document.body.addEventListener('click', e => {
   const f = e.target.closest('[data-fav]');
@@ -8124,6 +8376,7 @@ async function downloadBackup(){
   a.download = `bcs-backup-${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}.json`;
   a.click(); URL.revokeObjectURL(a.href);
   toast(count ? `Backup downloaded · ${count} full photos included` : 'Backup downloaded');
+  celebrate();
 }
 $('#exportBtn').addEventListener('click', () => downloadBackup());
 $('#importBtn').addEventListener('click', () => $('#importFile').click());
@@ -9924,7 +10177,7 @@ function toggleTodo(id){
   t.doneAt = t.done ? Date.now() : null;
   t.updatedAt = Date.now();
   save(); renderDayplan();
-  if(t.done) toast('Done ✓ — ' + t.title);
+  if(t.done){ toast('Done ✓ — ' + t.title); celebrate(); }
 }
 function deleteTodo(id){
   const t = db.todos.find(x => x.id === id);
@@ -10344,6 +10597,7 @@ function initMedia(){
   // inside the app even when the desktop app is opened from a local file.
   const YT_HELPER = 'https://realestateajaysharma-jp.github.io/bcs-desk/yt.html';
   const YT_HELPER_ORIGIN = 'https://realestateajaysharma-jp.github.io';
+  const YT_HELPER_VER = 5;
 
   const stationList = () => [...STATIONS, ...(M.music.custom || []).map(s => ({ ...s, custom:true }))];
   const stationById = id => stationList().find(s => s.id === id);
@@ -10363,7 +10617,7 @@ function initMedia(){
     for(const p of pats){ const m = s.match(p); if(m) return m[1]; }
     return '';
   }
-  const embedUrl = id => `${YT_HELPER}?v=${encodeURIComponent(id)}&autoplay=1`;
+  const embedUrl = id => `${YT_HELPER}?v=${encodeURIComponent(id)}&autoplay=1&h=${YT_HELPER_VER}`;
   const placeholder = () => `<div class="yt-placeholder"><div class="yp-ico">▶</div><b>YouTube popup ready</b><span>Song ka naam likhein — video isi floating frame me chalega, poori app ke saath.</span></div>`;
 
   async function resolveYouTubeTitle(id){
@@ -10464,7 +10718,7 @@ function initMedia(){
       if(d.event === 'ready'){
         resetYtHandshake();
         ytReady = true;
-        if(ytLiveBadge) ytLiveBadge.textContent = 'Ready';
+        if(ytLiveBadge) ytLiveBadge.textContent = 'Tap ▶';
         return;
       }
       if(d.event === 'error'){ onYtError(d.info); return; }
@@ -12623,6 +12877,225 @@ function initFeatureControls(){
   const hb = $('#healthBackupBtn'); if(hb) hb.addEventListener('click', () => $('#exportBtn').click());
 }
 
+/* ---------- v12: accent mood, quick actions, confetti ---------- */
+const ACCENTS = [
+  { id:'saffron', label:'Saffron', color:'#E7B84B' },
+  { id:'emerald', label:'Emerald', color:'#2F8F6B' },
+  { id:'indigo',  label:'Indigo',  color:'#5C6ED0' },
+  { id:'rose',    label:'Rose',    color:'#C0527C' }
+];
+const ACCENT_KEY = 'bcs_accent_v1';
+function applyAccent(id){
+  const a = ACCENTS.find(x => x.id === id) || ACCENTS[0];
+  document.body.dataset.accent = a.id;
+  try{ localStorage.setItem(ACCENT_KEY, a.id); }catch(e){}
+}
+function cycleAccent(){
+  const cur = document.body.dataset.accent || 'saffron';
+  const i = ACCENTS.findIndex(a => a.id === cur);
+  const next = ACCENTS[(i + 1) % ACCENTS.length];
+  applyAccent(next.id);
+  toast('Desk accent · ' + next.label);
+}
+function celebrate(){
+  try{ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; }catch(e){}
+  const layer = document.createElement('div');
+  layer.className = 'confetti-layer';
+  const colors = ['#DF6A51','#E7B84B','#2F8F7A','#4C8FD6','#7B67C6','#C95C85','#7CAC5A'];
+  for(let i = 0; i < 26; i++){
+    const s = document.createElement('i');
+    s.style.left = (Math.random() * 100) + '%';
+    s.style.background = colors[i % colors.length];
+    s.style.animationDelay = (Math.random() * .25) + 's';
+    s.style.width = (5 + Math.random() * 5) + 'px';
+    s.style.height = (9 + Math.random() * 9) + 'px';
+    layer.appendChild(s);
+  }
+  document.body.appendChild(layer);
+  setTimeout(() => layer.remove(), 1900);
+}
+
+let qaItems = [];
+let qaIndex = 0;
+
+function quickActionList(){
+  const list = [
+    { kind:'Go', label:'Dashboard', sub:'Pulse, corridors aur featured projects', icon:'◈', color:'linear-gradient(135deg,#E7B84B,#DF6A51)', keys:'home overview', run:() => go('dashboard') },
+    { kind:'Go', label:'Projects', sub:'Board, gallery, compare aur inventory', icon:'▦', color:'linear-gradient(135deg,#2F8F7A,#4C8FD6)', keys:'board property plots', run:() => go('projects') },
+    { kind:'Go', label:'Resale', sub:'Secondary inventory aur seller units', icon:'↻', color:'linear-gradient(135deg,#C95C85,#7B67C6)', keys:'secondary resale', run:() => go('resale') },
+    { kind:'Go', label:'Developers', sub:'Builders, owners aur project pipeline', icon:'▤', color:'linear-gradient(135deg,#4C8FD6,#2F8F7A)', keys:'builders owners', run:() => go('developers') },
+    { kind:'Go', label:'Advisors', sub:'Network, recruitment aur assignments', icon:'♜', color:'linear-gradient(135deg,#7B67C6,#C95C85)', keys:'team network', run:() => go('advisors') },
+    { kind:'Go', label:'Clients', sub:'Pipeline, follow-ups aur bookings', icon:'☎', color:'linear-gradient(135deg,#DF6A51,#E7B84B)', keys:'crm followup booking', run:() => go('clients') },
+    { kind:'Go', label:'Day Plan', sub:'Tasks, focus timer aur aaj ka plan', icon:'◷', color:'linear-gradient(135deg,#7CAC5A,#E7B84B)', keys:'today task timer', run:() => go('dayplan') },
+    { kind:'Go', label:'News', sub:'Market updates, links aur editorial notes', icon:'✎', color:'linear-gradient(135deg,#4C8FD6,#7B67C6)', keys:'feed updates', run:() => go('news') },
+    { kind:'Go', label:'Links', sub:'RERA, JDA, portals aur apni websites', icon:'↗', color:'linear-gradient(135deg,#2F8F7A,#7CAC5A)', keys:'websites bookmarks', run:() => go('links') },
+    { kind:'Go', label:'Advisory', sub:'Client brief, shortlist aur presentation', icon:'★', color:'linear-gradient(135deg,#E7B84B,#C95C85)', keys:'present shortlist', run:() => go('advisory') },
+    { kind:'Go', label:'Templates', sub:'WhatsApp, developer aur advisor messages', icon:'✉', color:'linear-gradient(135deg,#DF6A51,#7B67C6)', keys:'message copy', run:() => go('templates') },
+    { kind:'Go', label:'Health', sub:'Storage, backup, sync aur quality', icon:'♥', color:'linear-gradient(135deg,#2F8F7A,#4C8FD6)', keys:'backup sync storage', run:() => go('health') }
+  ];
+  if(isAdmin()){
+    list.push(
+      { kind:'Add', label:'New project', sub:'Project form — sab fields editable', icon:'+', color:'linear-gradient(135deg,#2F8F7A,#7CB98A)', keys:'add create property', run:() => openNewProject() },
+      { kind:'Add', label:'New developer', sub:'Builder / owner profile', icon:'+', color:'linear-gradient(135deg,#4C8FD6,#7B67C6)', keys:'add create builder', run:() => openDeveloper(null) },
+      { kind:'Add', label:'New advisor', sub:'Recruitment pipeline me add karein', icon:'+', color:'linear-gradient(135deg,#7B67C6,#C95C85)', keys:'add create team', run:() => openAdvisor(null) },
+      { kind:'Add', label:'New client', sub:'Requirement aur follow-up ke saath', icon:'+', color:'linear-gradient(135deg,#DF6A51,#E7B84B)', keys:'add create lead', run:() => openClient(null) },
+      { kind:'Add', label:'New resale unit', sub:'Seller unit / secondary inventory', icon:'+', color:'linear-gradient(135deg,#C95C85,#7B67C6)', keys:'add create secondary', run:() => openResale(null) },
+      { kind:'Add', label:'New booking', sub:'Booking, payment aur commission', icon:'+', color:'linear-gradient(135deg,#E7B84B,#2F8F7A)', keys:'add create payment', run:() => openBooking(null) },
+      { kind:'Add', label:'New news note', sub:'Link preview ya editorial update', icon:'+', color:'linear-gradient(135deg,#4C8FD6,#2F8F7A)', keys:'add create update', run:() => openNews(null) },
+      { kind:'Add', label:'New website link', sub:'RERA, portal ya reference URL', icon:'+', color:'linear-gradient(135deg,#2F8F7A,#4C8FD6)', keys:'add create url', run:() => openLink(null) },
+      { kind:'Add', label:'New template', sub:'Ready-to-copy message', icon:'+', color:'linear-gradient(135deg,#DF6A51,#7B67C6)', keys:'add create message', run:() => openTemplate() },
+      { kind:'Add', label:'Quick task', sub:'Aaj ke day plan me task jodein', icon:'+', color:'linear-gradient(135deg,#7CAC5A,#E7B84B)', keys:'add create todo', run:() => { go('dayplan'); setTimeout(() => { const el = $('#tTitle'); if(el) el.focus(); }, 350); } },
+      { kind:'Edit', label:'Manage corridors', sub:'Corridor add / edit / delete', icon:'⚙', color:'linear-gradient(135deg,#A57B36,#7CAC5A)', keys:'edit roads add delete', run:() => { const el = $('#manageCorridorsBtn'); if(el) el.click(); } },
+      { kind:'Data', label:'Backup JSON', sub:'Full data + photos download', icon:'↓', color:'linear-gradient(135deg,#2F8F7A,#4C8FD6)', keys:'export save', run:() => { const el = $('#exportBtn'); if(el) el.click(); } },
+      { kind:'Data', label:'Restore backup', sub:'JSON file se data wapas laayein', icon:'↑', color:'linear-gradient(135deg,#DF6A51,#E7B84B)', keys:'import restore', run:() => { const el = $('#importBtn'); if(el) el.click(); } }
+    );
+  }
+  list.push(
+    { kind:'Look', label:'Change accent', sub:'Saffron → Emerald → Indigo → Rose', icon:'✦', color:'linear-gradient(135deg,#7B67C6,#C95C85)', keys:'colour color theme', run:() => cycleAccent() },
+    { kind:'Data', label:'Lock desk', sub:'Session band karein', icon:'⌑', color:'linear-gradient(135deg,#3A3928,#7A6B4F)', keys:'logout lock', run:() => { const el = $('#lockBtn'); if(el) el.click(); } }
+  );
+  return list;
+}
+
+function quickSearchRecords(q){
+  const needle = q.toLowerCase();
+  const hit = (...vals) => vals.filter(Boolean).join(' ').toLowerCase().includes(needle);
+  const out = [];
+  scopedProjects().filter(p => hit(p.name, p.location, p.sizes, (p.types || []).map(t => typeName[t] || t).join(' '), (dev(p.developerId) || {}).name))
+    .slice(0, 5).forEach(p => out.push({
+      kind:'Project', label:p.name, sub:(corridor(p.corridor).name || 'Jaipur') + ' · ' + priceRange(p),
+      icon:'▦', color:'linear-gradient(135deg,#2F8F7A,#4C8FD6)', run:() => openDetail(p.id)
+    }));
+  scopedDevelopers().filter(d => hit(d.name, d.ownerName, d.email, d.phone)).slice(0, 4).forEach(d => out.push({
+    kind:'Developer', label:d.name, sub:d.ownerName || 'Owner not set',
+    icon:'▤', color:'linear-gradient(135deg,#4C8FD6,#7B67C6)', run:() => openDeveloperProfile(d.id)
+  }));
+  scopedClients().filter(c => hit(c.name, c.phone, c.email, c.requirement, c.notes)).slice(0, 4).forEach(c => out.push({
+    kind:'Client', label:c.name, sub:clientStatusLabel(c.clientStatus) + (c.phone ? ' · ' + c.phone : ''),
+    icon:'☎', color:'linear-gradient(135deg,#DF6A51,#E7B84B)', run:() => openClientProfile(c.id)
+  }));
+  if(isAdmin()){
+    (db.news || []).filter(n => hit(n.title, n.summary, n.body, n.source)).slice(0, 3).forEach(n => out.push({
+      kind:'News', label:n.title || 'News note', sub:fmtDate(n.date) + ' · ' + (n.category || 'update'),
+      icon:'✎', color:'linear-gradient(135deg,#7B67C6,#C95C85)', run:() => openNewsReader(n.id)
+    }));
+  }
+  return out;
+}
+
+function renderQuickActions(){
+  const listEl = $('#qaList');
+  if(!listEl) return;
+  const input = $('#qaInput');
+  const q = (input ? input.value : '').trim();
+  const all = quickActionList();
+  const acts = q ? all.filter(a => (a.label + ' ' + a.sub + ' ' + (a.keys || '')).toLowerCase().includes(q.toLowerCase())).slice(0, 9) : all.slice(0, 14);
+  const records = q.length >= 2 ? quickSearchRecords(q) : [];
+  qaItems = acts.concat(records).slice(0, 18);
+  if(qaIndex >= qaItems.length) qaIndex = 0;
+  listEl.innerHTML = qaItems.length
+    ? qaItems.map((a, i) => `<button type="button" class="qa-item ${i === qaIndex ? 'on' : ''}" data-qa="${i}">
+        <span class="qico" style="background:${a.color}">${esc(a.icon)}</span>
+        <span class="qbody"><b>${esc(a.label)}</b><span>${esc(a.sub)}</span></span>
+        <span class="qkind">${esc(a.kind)}</span>
+      </button>`).join('')
+    : '<div class="qa-empty">Kuch match nahi mila — project ka naam, client, developer ya action try karein.</div>';
+}
+
+function runQuickAction(i){
+  const item = qaItems[i];
+  if(!item) return;
+  closeQuickActions();
+  try{ item.run(); }
+  catch(e){ console.warn('BCS quick action failed', e); toast('Action nahi chala — dobara try karein', true); }
+}
+
+function openQuickActions(){
+  if(document.body.classList.contains('locked')) return;
+  const layer = $('#qaLayer');
+  if(!layer) return;
+  qaIndex = 0;
+  const input = $('#qaInput');
+  if(input) input.value = '';
+  renderQuickActions();
+  layer.classList.add('on');
+  layer.setAttribute('aria-hidden', 'false');
+  setTimeout(() => { if(input) input.focus(); }, 40);
+}
+
+function closeQuickActions(){
+  const layer = $('#qaLayer');
+  if(!layer) return;
+  layer.classList.remove('on');
+  layer.setAttribute('aria-hidden', 'true');
+}
+
+function toggleQuickActions(){
+  const layer = $('#qaLayer');
+  if(layer && layer.classList.contains('on')) closeQuickActions();
+  else openQuickActions();
+}
+
+function initExperience(){
+  let savedAccent = 'saffron';
+  try{ savedAccent = localStorage.getItem(ACCENT_KEY) || 'saffron'; }catch(e){}
+  applyAccent(savedAccent);
+
+  const accentBtn = $('#accentBtn');
+  if(accentBtn) accentBtn.addEventListener('click', cycleAccent);
+  const trigger = $('#qaTrigger');
+  if(trigger) trigger.addEventListener('click', openQuickActions);
+  const dock = $('#quickAddDock');
+  if(dock) dock.addEventListener('click', openQuickActions);
+
+  const layer = $('#qaLayer');
+  if(layer){
+    layer.addEventListener('mousedown', e => { if(e.target === layer) closeQuickActions(); });
+  }
+  const list = $('#qaList');
+  if(list){
+    list.addEventListener('click', e => {
+      const item = e.target.closest('[data-qa]');
+      if(item) runQuickAction(+item.dataset.qa);
+    });
+    list.addEventListener('mousemove', e => {
+      const item = e.target.closest('[data-qa]');
+      if(!item) return;
+      const i = +item.dataset.qa;
+      if(i === qaIndex) return;
+      qaIndex = i;
+      $$('#qaList .qa-item').forEach((el, n) => el.classList.toggle('on', n === i));
+    });
+  }
+  const input = $('#qaInput');
+  if(input) input.addEventListener('input', () => { qaIndex = 0; renderQuickActions(); });
+
+  document.addEventListener('keydown', e => {
+    const mod = e.metaKey || e.ctrlKey;
+    if(mod && String(e.key).toLowerCase() === 'k'){
+      e.preventDefault();
+      toggleQuickActions();
+      return;
+    }
+    if(!layer || !layer.classList.contains('on')) return;
+    if(e.key === 'Escape'){ e.preventDefault(); closeQuickActions(); return; }
+    if(e.key === 'ArrowDown'){
+      e.preventDefault();
+      if(qaItems.length){ qaIndex = (qaIndex + 1) % qaItems.length; renderQuickActions(); }
+      return;
+    }
+    if(e.key === 'ArrowUp'){
+      e.preventDefault();
+      if(qaItems.length){ qaIndex = (qaIndex - 1 + qaItems.length) % qaItems.length; renderQuickActions(); }
+      return;
+    }
+    if(e.key === 'Enter'){
+      e.preventDefault();
+      runQuickAction(qaIndex);
+    }
+  });
+}
+
 function render(){
   fillFilterCorridor($('#filterCorridor').value);
   if(currentView === 'dashboard') renderDashboard();
@@ -12652,6 +13125,7 @@ initTools();
 initMedia();
 initFeatureControls();
 initCloudSync();
+initExperience();
 const hadLocalData = !!localStorage.getItem(LS_KEY);
 if(!hadLocalData && !window.indexedDB) save();
 applyRoleChrome();
@@ -12662,7 +13136,6 @@ scheduleProactiveOffload(5000);
 document.addEventListener('visibilitychange', () => {
   if(document.visibilityState === 'visible') scheduleProactiveOffload(2500);
 });
-
 /* ---------- PWA: offline shell + persistent storage ---------- */
 if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
   window.addEventListener('load', () => {
