@@ -949,6 +949,7 @@ body.advisor-mode #importBtn,
 body.advisor-mode #exportCsvBtn,
 body.advisor-mode #addDevBtn,
 body.advisor-mode #addAdvisorBtn,
+body.advisor-mode #addTermBtn,
 body.advisor-mode #addResaleBtn,
 body.advisor-mode #detailEdit,
 body.advisor-mode #detailDelete,
@@ -2989,6 +2990,33 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
 .an-scroll{overflow:auto;max-width:100%;margin:0 -2px;border-radius:12px}
 .an-empty{padding:26px;text-align:center;color:var(--mut);font-size:13px;font-weight:600}
 
+/* ---- 6.8 terminology (shabdkosh) ---- */
+.tm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:13px}
+.tm-card{background:#fff;border:1px solid rgba(229,234,232,.9);border-radius:16px;padding:15px 16px;box-shadow:0 12px 26px -20px rgba(46,45,32,.16);min-width:0;display:flex;flex-direction:column;gap:8px;transition:box-shadow .2s ease,transform .2s ease}
+.tm-card:hover{transform:translateY(-2px);box-shadow:0 18px 34px -22px rgba(46,45,32,.22);border-color:rgba(165,123,54,.25)}
+.tm-card .tm-top{display:flex;align-items:flex-start;gap:9px}
+.tm-card .tm-ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:16px;flex:none;background:var(--cat-soft,#F0F4F1);border:1px solid var(--cat-line,rgba(229,234,232,.9))}
+.tm-card .tm-head{flex:1;min-width:0}
+.tm-card .tm-head b{display:block;font-family:'Fraunces',serif;font-size:15.5px;font-weight:600;color:var(--ink);letter-spacing:-.2px;line-height:1.25}
+.tm-card .tm-head i{font-style:normal;font-size:11px;color:var(--mut);font-weight:600}
+.tm-card .tm-cats{display:flex;flex-wrap:wrap;gap:5px}
+.tm-chip{font-size:8.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--cat-soft,#F0F4F1);border:1px solid var(--cat-line,var(--line2));color:var(--cat-ink,#3E5A48)}
+.tm-chip.calc{background:#FFF7E4;border-color:#EEDDB3;color:#7A5A23}
+.tm-card .tm-meaning{font-size:12.5px;line-height:1.55;color:var(--ink2);font-weight:500;margin:0}
+.tm-card .tm-meaning b{color:var(--ink)}
+.tm-formula{background:linear-gradient(135deg,#FFFDF4,#FFF8E2);border:1px dashed #E3CE8F;border-radius:11px;padding:9px 11px;font-size:12px;font-weight:700;color:#7A5A23;line-height:1.5;overflow-x:auto;white-space:pre-wrap}
+.tm-formula::before{content:'Formula';display:block;font-size:8px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#A8853B;margin-bottom:3px}
+.tm-example{background:#F7FAF8;border:1px solid var(--line2);border-radius:11px;padding:8px 11px;font-size:11.5px;color:var(--ink2);line-height:1.5}
+.tm-example::before{content:'Numbers';display:block;font-size:8px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:var(--olive);margin-bottom:3px}
+.tm-card .tm-regions{font-size:10.5px;color:#8A7A48;font-weight:600;background:#FFFBEF;border:1px solid #EFE3BC;border-radius:9px;padding:5px 10px;line-height:1.45}
+.tm-card .tm-act{display:flex;gap:6px;margin-top:auto;padding-top:4px}
+.tm-card .tm-act button{flex:none;padding:4px 10px;border-radius:8px;border:1px solid var(--line);background:#FCFDFC;font-size:10.5px;font-weight:700;color:var(--ink2);cursor:pointer;transition:.15s}
+.tm-card .tm-act button:hover{border-color:rgba(165,123,54,.4);color:var(--gold);background:#FFFBEA}
+.tm-card .tm-act .del{color:var(--danger);background:#FBEDE8;border-color:#F0D8CE}
+.tm-empty{grid-column:1/-1}
+@media (max-width:560px){
+  .tm-grid{grid-template-columns:1fr}
+}
 /* ---- 7. v15 responsive ---- */
 @media (max-width:1180px){
   .an-kpis{grid-template-columns:repeat(2,1fr)}
@@ -3037,6 +3065,192 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
 .istat b{transition:color .2s}
 .istat:hover b{color:var(--gold)}
 .show-card:hover{border-color:#D8C58E}
+/* ---------- Modern visual pass (v16) ---------- */
+:root{
+  --mod-ink-track:#F8FAF9;
+  --mod-line:#DCE8DF;
+  --mod-radius:20px;
+  --mod-shadow:0 14px 36px -22px rgba(46,45,32,.22);
+  --mod-shadow-lg:0 24px 60px -30px rgba(46,45,32,.35);
+}
+body{
+  background:
+    radial-gradient(900px 500px at 8% -12%, rgba(165,123,54,.08), transparent 62%),
+    radial-gradient(900px 560px at 100% -8%, rgba(65,86,63,.09), transparent 66%),
+    var(--bg);
+  text-rendering:optimizeLegibility;
+}
+header{
+  border-bottom:1px solid rgba(220,232,223,.85);
+  box-shadow:0 10px 28px -24px rgba(46,45,32,.28);
+}
+.hwrap{gap:18px}
+.logo{
+  border-radius:14px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25), 0 8px 18px -10px rgba(46,45,32,.55);
+}
+nav{
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(220,232,223,.8);
+  border-radius:999px;
+  padding:5px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 0 6px 16px -14px rgba(46,45,32,.22);
+}
+nav button{
+  position:relative;
+  padding:8px 13px;
+  border-radius:999px;
+  font-size:12.5px;
+  font-weight:650;
+}
+nav button:hover{background:rgba(58,57,40,.06);color:var(--ink)}
+nav button.on{
+  background:linear-gradient(135deg,var(--olive),#2C2B1C);
+  color:#F6F2E7;
+  box-shadow:0 8px 18px -10px rgba(44,43,28,.5), inset 0 1px 0 rgba(255,255,255,.18);
+}
+nav button.on::after{
+  content:"";
+  position:absolute;
+  left:50%; bottom:3px;
+  width:16px; height:2px;
+  border-radius:2px;
+  background:var(--gold);
+  transform:translateX(-50%);
+}
+.searchbox{
+  border-radius:999px;
+  background:rgba(255,255,255,.86);
+  border-color:rgba(220,232,223,.9);
+  box-shadow:0 8px 20px -18px rgba(46,45,32,.25);
+}
+.btn{
+  border-radius:999px;
+  min-height:38px;
+  padding:9px 15px;
+  font-size:12.5px;
+  font-weight:700;
+  letter-spacing:.1px;
+  box-shadow:0 8px 18px -14px rgba(46,45,32,.35);
+}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn.primary{
+  background:linear-gradient(135deg,var(--olive),#2C2B1C);
+  color:#F6F2E7;
+  border:1px solid rgba(44,43,28,.15);
+}
+.btn.ghost{
+  background:rgba(255,255,255,.8);
+  border:1px solid var(--line);
+  color:var(--ink2);
+}
+.btn.gold{
+  background:linear-gradient(135deg,var(--gold),#8C6628);
+  color:#FFF9ED;
+  border:1px solid rgba(165,123,54,.25);
+}
+.btn.danger{
+  border-radius:999px;
+  box-shadow:none;
+}
+.icon-btn{
+  border-radius:999px;
+  background:rgba(255,255,255,.82);
+  box-shadow:0 6px 16px -14px rgba(46,45,32,.3);
+}
+.icon-btn:hover{transform:translateY(-1px);border-color:var(--gold);background:#fff}
+.icon-btn:active{transform:scale(.96)}
+input,select,textarea{
+  transition:border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:rgba(165,123,54,.55) !important;
+  box-shadow:0 0 0 4px rgba(165,123,54,.1);
+  background:#fff;
+}
+select{
+  border-radius:12px;
+  padding:9px 12px;
+  background:#fff;
+  border:1px solid var(--line);
+}
+.seg{
+  border-radius:999px;
+  padding:4px;
+  background:rgba(255,255,255,.78);
+  border:1px solid var(--line);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8);
+}
+.seg button{border-radius:999px}
+.seg button.on{
+  background:linear-gradient(135deg,var(--olive),#2C2B1C);
+  color:#F6F2E7;
+  box-shadow:0 6px 14px -10px rgba(44,43,28,.45);
+}
+.panel,.dash-card,.an-card,.tm-card,.cat-card,.cor-card,.pulse-card,.link-item,.tpl-card{
+  border-radius:var(--mod-radius);
+  box-shadow:var(--mod-shadow);
+}
+.panel:hover,.dash-card:hover,.an-card:hover,.cat-card:hover,.cor-card:hover,.pulse-card:hover,.link-item:hover,.tpl-card:hover{
+  border-color:rgba(165,123,54,.32);
+}
+.overlay{
+  background:rgba(46,45,32,.38);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+.modal{
+  border-radius:22px;
+  border:1px solid rgba(220,232,223,.85);
+  box-shadow:0 28px 80px -26px rgba(46,45,32,.42);
+}
+.modal-head{border-bottom:1px solid var(--line2)}
+.xbtn{border-radius:999px;transition:.18s}
+.xbtn:hover{background:#fff;border-color:var(--gold)}
+.field input,.field select,.field textarea{
+  border-radius:12px;
+  background:#FBFDFC;
+  border:1px solid var(--line);
+  padding:10px 12px;
+}
+.field textarea{min-height:76px;resize:vertical}
+.dock-btn{
+  border-radius:16px;
+  background:rgba(255,255,255,.9);
+  border-color:rgba(220,232,223,.95);
+  box-shadow:0 10px 24px -18px rgba(46,45,32,.35);
+}
+.dock-btn:hover{transform:translateY(-2px);border-color:rgba(165,123,54,.5);box-shadow:0 14px 28px -18px rgba(46,45,32,.45)}
+.toolpop,.popover,.modal{overflow:hidden}
+.tooldock{
+  border-radius:20px;
+  padding:8px 10px;
+  box-shadow:0 18px 42px -20px rgba(46,45,32,.38);
+}
+.viewbtn{
+  border-radius:999px;
+  box-shadow:0 8px 18px -12px rgba(46,45,32,.45);
+}
+.tm-card .tm-ic{border-radius:12px}
+.tm-formula{border-radius:12px}
+.tm-example{border-radius:12px}
+.tm-card .tm-act button{border-radius:999px}
+@media (max-width:900px){
+  .hwrap{padding:12px 16px}
+  nav{order:3;width:100%}
+  .searchbox{min-width:200px;flex:1}
+  .btn{min-height:36px}
+  .modal{border-radius:18px}
+}
+@media (max-width:560px){
+  nav{padding:4px}
+  nav button{padding:7px 10px;font-size:12px}
+  .btn{width:100%;justify-content:center}
+  .btn.sm{width:auto}
+  .hbtns .btn{width:auto}
+  .tm-card{padding:14px 15px}
+}
 @media (prefers-reduced-motion:reduce){
   *,*:before,*:after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
 }
@@ -3121,6 +3335,7 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
       <button data-view="dayplan">Day Plan</button>
       <button data-view="news">News</button>
       <button data-view="links">Links</button>
+      <button data-view="terminology">Terminology</button>
       <button data-view="advisory">Advisory</button>
       <button data-view="templates">Templates</button>
       <button data-view="health">Health</button>
@@ -3245,7 +3460,7 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
             </span>
             <span class="dl-bcs-go" aria-hidden="true">↗</span>
           </button>
-          <button type="button" class="dl-bcs-ghost" id="thQuoteRefresh">↻<em>Naya<br>quote</em></button>
+          <button type="button" class="dl-bcs-ghost" id="thRefreshQuote">↻<em>Naya<br>quote</em></button>
           <button type="button" class="dl-bcs-ghost" id="thManage" style="display:none">⚙<em>Manage<br>lists</em></button>
         </div>
       </div>
@@ -3824,6 +4039,41 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
     </div>
 
     <div class="links-board" id="linksBoard"></div>
+  </section>
+
+  <section class="view" id="view-terminology">
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · learning desk</div>
+        <h2 class="adv-title">Real estate shabdkosh —<br><em>terms, meanings & calculations.</em></h2>
+        <p class="adv-sub">India bhar ke real estate ke terms ek jagah — legal, financial, RERA, area, tax sab categories mein. Har term ka matlab, calculation aur real example. States ke alag naam aur alag rules bhi note kiye gaye hain. Client advisory ke waqt yehi se terminology clear karein.</p>
+      </div>
+      <div class="adv-head-actions">
+        <button class="btn primary" id="addTermBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+          Add term
+        </button>
+      </div>
+    </div>
+
+    <div class="links-stats" id="tmStats"></div>
+
+    <div class="toolbar links-toolbar">
+      <div class="adv-search links-search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="tmSearch" placeholder="Search term, meaning or formula…">
+      </div>
+      <select id="tmCategoryFilter"><option value="">All categories</option></select>
+      <select id="tmKindFilter">
+        <option value="">Terms + Formulas</option>
+        <option value="term">Only terms</option>
+        <option value="calc">Only calculations</option>
+      </select>
+      <div class="spacer"></div>
+      <span class="links-toolbar-note" id="tmCount"></span>
+    </div>
+
+    <div class="tm-grid" id="tmGrid"></div>
   </section>
 
   <section class="view" id="view-templates">
@@ -4942,6 +5192,41 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
   </div>
 </div>
 
+<!-- ============ TERMINOLOGY EDITOR ============ -->
+<div class="overlay" id="terminologyModal">
+  <div class="modal" style="width:min(620px,100%)">
+    <div class="modal-head">
+      <h3 id="tmTitle">New term</h3>
+      <button class="xbtn" data-close="terminologyModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="grid2">
+        <div class="field"><label>Term (English) *</label><input id="tmTerm" placeholder="e.g. FSI / Floor Space Index"></div>
+        <div class="field"><label>Term (Hindi)</label><input id="tmTermHi" placeholder="e.g. एफ़एसआई"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Category</label><select id="tmCategory"></select></div>
+        <div class="field"><label>Type</label>
+          <select id="tmKind">
+            <option value="term">Term (meaning only)</option>
+            <option value="calc">Calculation (formula + example)</option>
+          </select>
+        </div>
+      </div>
+      <div class="field"><label>Meaning *</label><textarea id="tmMeaning" placeholder="Iska matlab kya hai, kis se farak padta hai…"></textarea></div>
+      <div class="field"><label>Calculation / formula (agar calculation hai)</label><textarea id="tmCalc" placeholder="e.g. EMI = P × r × (1+r)ⁿ / ((1+r)ⁿ − 1)"></textarea></div>
+      <div class="field"><label>Example / numbers (agar calculation hai)</label><textarea id="tmExample" placeholder="e.g. ₹50L loan, 9% (0.75%/month), 20 years…"></textarea></div>
+      <div class="field"><label>State-wise note (optional)</label><input id="tmRegions" placeholder="e.g. UP/Delhi: circle rate · TN: guideline value"></div>
+      <div class="lock-hint">Yeh sab aapke browser aur cloud sync mein save hoga — poore team ke liye.</div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn danger" id="tmDelete" style="margin-right:auto">Delete term</button>
+      <button class="btn ghost" data-close="terminologyModal">Cancel</button>
+      <button class="btn primary" id="tmSave">Save term</button>
+    </div>
+  </div>
+</div>
+
 <!-- ============ LINK CATEGORY EDITOR ============ -->
 <div class="overlay" id="linkCatModal">
   <div class="modal" style="width:min(460px,100%)">
@@ -5624,6 +5909,65 @@ function seed(){
     ]
   };
 }
+/* ---------- terminology (shabdkosh) ---------- */
+const TERMINOLOGY_CATEGORIES = [
+  { id:'legal',     name:'Legal & Registration',  icon:'⚖️',  soft:'#EFF4F0', line:'#C9DCCC', ink:'#2F6644' },
+  { id:'financial', name:'Financial & Loans',     icon:'🏦',  soft:'#EDF2FA', line:'#C7D6EC', ink:'#2C5282' },
+  { id:'pricing',   name:'Pricing & Rates',       icon:'💰',  soft:'#FBF3E4', line:'#EAD9B0', ink:'#7A5A23' },
+  { id:'physical',  name:'Physical & Area',       icon:'📐',  soft:'#F1EEF8', line:'#D5CCE8', ink:'#4F3D7E' },
+  { id:'buyer',     name:'Buyer Journey',         icon:'🤝',  soft:'#EFF6F6', line:'#BFDDE0', ink:'#1F5F66' },
+  { id:'govt',      name:'Government & RERA',     icon:'🏛️',  soft:'#F4F1EA', line:'#DCD3BE', ink:'#5A5236' },
+  { id:'tax',       name:'Tax & Charges',         icon:'🧾',  soft:'#F8EFEA', line:'#E7CFC2', ink:'#8A4A2B' },
+  { id:'other',     name:'General',               icon:'✨',  soft:'#F0F4F1', line:'#D8E0DA', ink:'#3E5A48' },
+];
+function tmCat(id){ return TERMINOLOGY_CATEGORIES.find(c => c.id === id) || TERMINOLOGY_CATEGORIES[7]; }
+const DEFAULT_TERMINOLOGY = [
+  { cat:'govt', kind:'term', term:'RERA', hi:'रेरा', meaning:'Real Estate (Regulation & Development) Act, 2016 — India ka central real estate law. Har bade project (500+ sq m ya 8+ units) ka state RERA mein register hona zaroori hai. Buyer ko milta hai: escrow mein 70% paisa, advertisement mein carpet area hi batana, delay par interest/compensation ka adhikar, aur poori project detail RERA portal par public.' },
+  { cat:'govt', kind:'calc', term:'RERA carpet area', hi:'कार्पेट एरिया', meaning:'RERA ki official definition: deewaron ke andar ka net usable area + internal partition walls. Balcony, verandah, external walls EXCLUDE. Advertisement mein yahi batana legal compulsion hai — isliye carpet rate hi asli rate hai.', calc:'Carpet area = net usable floor area + internal partition walls', example:'Bedroom 110 + Living 160 + Kitchen 70 sq ft (+ walls) → total ≈ 380 sq ft carpet' },
+  { cat:'physical', kind:'term', term:'Built-up area', hi:'बिल्ट-अप एरिया', meaning:'Carpet area + walls (internal + external) + balcony ka ~50% hissa. Builder quotes mein carpet se 10–20% zyada dikhta hai. Carpet se aage ek aur level hota hai — super built-up — jo pricing ka pura game hai.' },
+  { cat:'physical', kind:'calc', term:'Super built-up & loading', hi:'सुपर बिल्ट-अप / लोडिंग', meaning:'Carpet ke upar common areas (lobby, lift, corridors, amenities) ka loading jodkar banaya sale area — isipe builder pricing karta hai. Isliye hamesha ₹/sq ft CARPET mein compare karein, super built-up mein nahi.', regions:'Nationwide · NCR 25–35% · Mumbai/Bangalore premium towers 40–55%', calc:'Super built-up = Carpet × (1 + loading%)\nLoading% = (Super built-up − Carpet) ÷ Carpet × 100', example:'Carpet 1,000 sq ft + loading 35% → super built-up 1,350 sq ft. ₹10,000/sq ft quote = carpet rate ₹13,500/sq ft' },
+  { cat:'physical', kind:'calc', term:'FSI / FAR', hi:'एफ़एसआई / एफ़एआर', meaning:'Floor Space Index / Floor Area Ratio — plot par kitna total construction allowed hai. FSI 2.0 ka matlab: 1,000 sq m plot par 2,000 sq m total built-up (sab floors milakar). Premium FSI aur TDR jodkar builders aur bhi bana lete hain.', regions:'FSI (MH, KA) · FAR (North India) — concept same, naam alag', calc:'FSI = Total built-up of all floors ÷ Plot area\nMax constructible = Plot area × FSI', example:'2,000 sq yd plot, FSI 2 → max 4,000 sq yd built-up' },
+  { cat:'physical', kind:'term', term:'TDR (Transferable Development Rights)', hi:'टीडीआर', meaning:'Ek plot ke unused FSI ko doosre plot par transfer karne ka right (certificate ke roop mein). Developers extra floors ke liye TDR khareedte hain. Mumbai mein proper TDR market hai — zone-wise rates hoti hain.', regions:'MH (sabse pehle) · Delhi · KA' },
+  { cat:'legal', kind:'term', term:'Sale deed vs Agreement to sell', hi:'रजिस्ट्री/बिक्री-पत्र vs समझौता', meaning:'Agreement to sell = future promise (token ke saath, possession aaj nahi, naam transfer nahi). Sale deed = final registered transfer — asli ownership isi se hoti hai. 90% litigation isi confusion se shuru hoti hai; agreement par kabhi possession mat lein.' },
+  { cat:'legal', kind:'term', term:'Mutation (Dakhil-Kharij)', hi:'दाखिल-खारिज / म्यूटेशन', meaning:'Sale deed ke baad revenue records mein naye malik ka naam darj karne ki prakriya. Na karvaya to property tax record purane malik ke naam rahega. Yaad rakhein: mutation sirf revenue record update hai — ownership title sale deed hi prove karta hai.', regions:'UP/Bihar: Dakhil-Kharij · RJ/HR: Mutation · KA: Khata transfer · TN/AP: Patta transfer' },
+  { cat:'legal', kind:'term', term:'Khata / A-Khata / B-Khata', hi:'खाता', meaning:'Karnataka ka municipal property record. A-Khata = fully legal, tax paid, authority-approved — bank loan easily. B-Khata = improved/semi-legal (revenue land) — banks usually refuse, resale mushkil, regularization fees lagti hain.', regions:'Karnataka specific (BBMP/BDA)' },
+  { cat:'legal', kind:'term', term:'Patta / Chitta', hi:'पट्टा / चिट्टा', meaning:'Tamil Nadu land records: Patta = government ka ownership record (maalik ka naam), Chitta = land ki classification/holding detail. Ab dono merged — TN eServices se Patta-Chitta online milta hai.', regions:'Tamil Nadu (AP/TS mein similar patta)' },
+  { cat:'legal', kind:'term', term:'7/12 extract (Satbara)', hi:'सात-बारा उतारा', meaning:'Maharashtra/Gujarat ka revenue record (Form 7 = kisht/tax detail, Form 12 = crop). Zamin verify karne ka pehla document — ownership, kisht, boundary sab isme.', regions:'MH / GJ' },
+  { cat:'legal', kind:'term', term:'Jamabandi / Fard', hi:'जमाबन्दी / फर्द', meaning:'Rajasthan/HR/Punjab ka records-of-rights (RoR) — gaon ki ownership ledger, har 4–5 saal mein settlement se update. Tehsil office ya bhulekh portal se Fard copy milti hai.', regions:'RJ (apna khata) · HR (jamabandi) · PB (fard)' },
+  { cat:'legal', kind:'term', term:'Power of Attorney (POA / GPA)', hi:'विशेष अधिकार पत्र', meaning:'Malik kisi aur ko sign, manage ya sell ke liye authority deta hai. Registered POA practical hai, lekin Supreme Court ne GPA ko ownership transfer nahi mana. Sirf registered sale deed/transfer deed se ownership badalti hai; POA-based purchase high-risk hai.' },
+  { cat:'legal', kind:'term', term:'Leasehold vs Freehold', hi:'लीज़होल्ड vs फ्रीहोल्ड', meaning:'Freehold = permanent ownership — khul ke sell/loan. Leasehold = authority (DDA/JDA/Govt) se 99 saal ka lease — renewal fees + authority permission chahiye. Delhi ka purana stock kaafi leasehold; conversion charges se freehold ho jata hai.', regions:'DDA/JDA leasehold common · most societies now freehold' },
+  { cat:'legal', kind:'calc', term:'Stamp duty + Registration fee', hi:'स्टाम्प ड्यूटी / रजिस्ट्रेशन फीस', meaning:'State sarkar ka transfer tax — sabse bada up-front cost (price ke 4–10%). Mahila mallik ko concession, first-home rebate, joint rates — sab state-specific. Registration fee usually 1% (cap varies).', regions:'KA 5.6% · RJ 6% · UP 7% · MH 6–7% · TN 7% · DL 6% M/4% F — indicative, badal sakti hain', calc:'Stamp duty = MAX(agreement value, circle-rate value) × state %\nRegistration = agreement value × 1% (state cap tak)', example:'₹80L RJ deal @6% → ₹4.8L stamp + ₹1L reg ≈ ₹5.8L up-front tax' },
+  { cat:'legal', kind:'term', term:'Circle rate / Guideline value / Ready Reckoner', hi:'सर्कल रेट / गाइडलाइन / रेडी रेकनर', meaning:'Sarkar ki minimum value — isse neeche registry nahi hoti. Naam state-wise: UP/DL circle rate, KA/TN guideline value, MH ready reckoner, RJ rate list. Deal value isse upar ho to deal par duty, warna circle par — aur cash component ka game shuru.', regions:'UP/DL circle · KA/TN guideline · MH ready reckoner · RJ rate list' },
+  { cat:'financial', kind:'calc', term:'EMI (Equated Monthly Instalment)', hi:'ईएमआई / किस्त', meaning:'Loan ka fixed monthly payment — interest + principal ka mix, reducing-balance method. Shuruat ka tenure zyada interest bharta hai, aakhir mein principal.', calc:'EMI = P × r × (1+r)ⁿ ÷ ((1+r)ⁿ − 1)\nr = annual rate ÷ 12 (decimal) · n = total months', example:'₹50L @9% (0.75% monthly), 240 months → EMI ≈ ₹44,986 · total interest ≈ ₹58L (principal se zyada!)' },
+  { cat:'financial', kind:'term', term:'LTV (Loan-to-Value)', hi:'एलटीवी', meaning:'Property value vs loan ratio. RBI cap: ≤₹30L → 90% LTV; ₹30–75L → 80%; >₹75L → 75%. Matlab ₹80L home par max ₹60L loan — baki ₹20L+ down payment (stamp duty, brokerage alag se).', calc:'LTV % = Loan amount ÷ Property value × 100' },
+  { cat:'financial', kind:'term', term:'Pre-EMI & Moratorium', hi:'प्री-ईएमआई / मोरटोरियम', meaning:'Under-construction loan mein builder/bank pehle sirf interest mangta hai (pre-EMI). Moratorium = possession tak full EMI ki chhutti. Interest band nahi hota — loan balance badhta rehta hai.' },
+  { cat:'financial', kind:'calc', term:'Rental yield', hi:'किराया यील्ड', meaning:'Kire se milne wali saalana return. Gross yield upar se dekhne mein acchi lagti hai — maintenance, property tax, vacancy ghatane ke baad hi NET yield asli investment decision.', calc:'Gross yield % = Monthly rent × 12 ÷ Property price × 100\nNet yield % = (Annual rent − expenses) ÷ price × 100', example:'₹60L flat, ₹18,000/mo → gross 3.6%. Indian residential 2.5–4% · commercial 6–9%' },
+  { cat:'financial', kind:'calc', term:'Capital appreciation & CAGR', hi:'पूंजी वृद्धि / CAGR', meaning:'Property value ki saal-dar-saal growth. Simple total % growth misleading hota hai — CAGR fair average deta hai. Inflation minus karo to real return pata chalega.', calc:'CAGR % = ((End ÷ Start)^(1/years) − 1) × 100', example:'₹40L (2015) → ₹80L (2025) = (2)^(0.1)−1 ≈ 7.2% CAGR' },
+  { cat:'financial', kind:'term', term:'Booking amount / Token money', hi:'बुकिंग राशी / टोकन', meaning:'Unit hold karne ka advance (usually 1–5% ya builder-fixed). Payment se pehle REFUND terms likhit mein lein — loan reject, possession delay, approval fail jaise cases. Oral assurance kaam nahi aata.' },
+  { cat:'pricing', kind:'term', term:'BSP (Basic Sale Price)', hi:'बीएसपी', meaning:'Unit ki base price — koi remaining charges nahi. On-top: PLC, EDC/IDC, parking, club membership, IFMS, GST, stamp duty — final cost BSP se 20–35% zyada ho sakta hai. Total cost sheet ALL-IN par banayein, BSP par nahi.' },
+  { cat:'pricing', kind:'term', term:'PLC (Preferential Location Charges)', hi:'पीएलसी', meaning:'Corner unit, park-facing, high floor jaise positives ka premium — usually ₹50–300/sq ft ya flat amount. Client ko saaf batain ki yeh premium value hai ya builder ka upsell — resale premium kitna milega, wahi asli sawaal hai.' },
+  { cat:'pricing', kind:'term', term:'EDC / IDC', hi:'ईडीसी / आईडीसी', meaning:'External Development Charges (roads, water, drainage — authority level) aur Internal Development Charges (society ke andar ka infra). Builder ko ye sarkar ko dena hota hai — pass-through buyer ko hota hai. Per sq yd ya sq ft slab.' },
+  { cat:'tax', kind:'calc', term:'GST on property', hi:'जीएसटी', meaning:'Sirf UNDER-CONSTRUCTION property par GST. Affordable: 1%; non-affordable: 5% WITHOUT ITC, jisme land value (1/3) deduct hota hai. Ready + CC-received property par GST NAHI. Ready resale par bhi nahi.', regions:'Affordable: carpet ≤60 sq m (metro)/≤90 (other), ₹45L cap', calc:'GST = Agreement value × 5% × ⅔ (land exclude, non-affordable)\nAffordable: Agreement value × 1%', example:'₹80L non-affordable → taxable ₹53.3L → GST ≈ ₹2.67L' },
+  { cat:'tax', kind:'calc', term:'TDS on purchase — Sec 194-IA', hi:'टीडीएस 1%', meaning:'Resident seller ko ₹50L+ purchase par buyer khud 1% TDS kaat kar sarkar ko jama karta hai (Form 26QB, 30 din ke andar). Certificate (Form 16B) seller ko — seller tax credit lega. NRI seller ke liye section alag hai — deal se pehle CA check.', calc:'TDS = Sale consideration × 1% (only if ≥ ₹50L)', example:'₹90L deal → ₹90,000 TDS via Form 26QB' },
+  { cat:'tax', kind:'calc', term:'Capital gains on sale', hi:'पूंजीगत लाभ', meaning:'≤2 saal holding = SHORT term — slab rate par tax. >2 saal = LONG term (12.5% without indexation, ya 20% with indexation — budget se change hota rehta hai). Section 54/54EC reinvestment se exemption possible.', calc:'Indexed cost = Purchase × (CII sale ÷ CII buy)\nLTCG = Sale price − indexed cost − expenses', example:'2018 ₹50L (CII 280) → 2026 ₹1Cr (CII ~363): indexed ≈ ₹64.8L → gain ₹35.2L' },
+  { cat:'buyer', kind:'term', term:'Occupancy Certificate (OC) & CC', hi:'ओसी / रहने का प्रमाण', meaning:'CC (Completion Certificate) = construction approved plan ke mutabik. OC = ab isme rehna aur utilities lena legal hai. OC KE BINA LEGAL POSSESSION NAHI — utilities, society formation, resale sab OC maangte hain. Builder ka excuse "aap reh to rahe ho" — red flag.' },
+  { cat:'buyer', kind:'term', term:'Allotment letter', hi:'आबंटन पत्र', meaning:'Builder ya authority (DDA/JDA/MHADA/HUDA) ka unit allot karne ka written letter — unit no., price, payment schedule. RERA mein allotment ke 30 din ke andar registered agreement force hota hai; group-housing allotment letter pehla legal evidence hota hai.' },
+  { cat:'buyer', kind:'term', term:'Possession letter', hi:'पॉज़ेशन लैटर', meaning:'Builder possession dene ka letter — keys handover date. OC ke bina possession legally complete nahi. RERA delay compensation: promised possession date vs actual — possession letter isko trigger karta hai.' },
+  { cat:'buyer', kind:'term', term:'CLP (Construction Linked Plan)', hi:'सीएलपी / माइलस्टोन प्लान', meaning:'Construction milestones (foundation, slab, brickwork) ke saath payment schedule. Builder ko cashflow sahi milta hai. Down-payment plan (90/10) mein discount milta hai — lekin risk pehle hi laga dete ho; staggered best hai client ke najar se.' },
+  { cat:'buyer', kind:'term', term:'Resale & nomination / transfer', hi:'रीसेल / नॉमिनेशन', meaning:'Under-construction unit dusre buyer ko assign karna = nomination/transfer. Builder transfer fee (₹25–500/sq ft) le sakta hai, RERA ne roka nahi. Ready resale par value actual market + negotiation par decide hoti hai.' },
+  { cat:'physical', kind:'term', term:'Setbacks & ground coverage', hi:'सेटबैक / ग्राउंड कवरेज', meaning:'Plot kinare se wall tak minimum distance (light/air/fire rules Ki bye-laws). Ground coverage % = plot par building footprint ka max share. Kam setback = zyada floor area lekin ventilation/light issues.' },
+  { cat:'physical', kind:'term', term:'Facing & Vastu premium', hi:'फेसिंग / वास्तु', meaning:'North/East facing, corner, park-facing unit ko market premium milta hai (typical 3–10%). Client ki Vastu priorities — entrance direction, kitchen/toilet placement, staircase — early final karein; yahi resale par bhi affect karti hain.' },
+  { cat:'financial', kind:'term', term:'IFMS / Corpus / Sinking fund', hi:'मेंटिनेंस फंड', meaning:'Builder ke one-time deposits: IFMS (interest-free maintenance security), corpus fund, sinking fund. Society ko unka honest-use ka haq hota hai — head-wise RECEIPT lein, written breakdown ke saath.' },
+  { cat:'financial', kind:'term', term:'CAM (Common Area Maintenance)', hi:'सीएएम', meaning:'Lobby, lifts, security, garden ki monthly fee (per sq ft). Residential mein maintenance charge hai; commercial lease mein rent + CAM alag alag chal sakta hai. Lease mein escalation clause saaf likhein.' },
+  { cat:'tax', kind:'term', term:'Home loan tax benefits — 80C & 24(b)', hi:'टैक्स बचत', meaning:'Principal: Section 80C ₹1.5L limit (other 80C items ke saath shared). Interest: Section 24(b) — self-occupied ₹2L/year; let-out property interest full deduct (loss set-off ₹2L cap). New regime mein rules alag hain — current year ka CA se confirm karein.' },
+  { cat:'tax', kind:'term', term:'Property tax', hi:'गृह कर / संपत्ति कर', meaning:'Municipal annual tax — unit area value × usage × age × location factors. Jaipur (JMC) digital property tax portal hai; self-assessment model chalta hai. Time par payment par rebate mil sakta hai; delay par interest/penalty lagta hai.' },
+  { cat:'govt', kind:'term', term:'JDA (Jaipur Development Authority)', hi:'जेडीए', meaning:'Jaipur ki planning authority — master plan, approved layouts/schemes, ring road zones, land reservation. Plot khareedne se pehle JDA approved/regularized status check karein, aur Revenue se khasra/ownership verify karein.' },
+  { cat:'govt', kind:'term', term:'RERA agent registration', hi:'एजेंट रजिस्ट्रेशन', meaning:'Property selling karne wale middlemen ko state RERA mein register hona compulsory — agent card, ID, project-wise authorization. Non-registered selling par har din ₹10k fine (state varies). Kisi agent se deal — pehle state RERA agent list mein check karein.' },
+  { cat:'other', kind:'term', term:'2BHK / 3BHK / 2.5BHK', hi:'बीएचके', meaning:'Bedrooms-Hall-Kitchen count. 2.5 BHK marketing mein extra study/utility/pooja room hota hai (half bedroom). Asli comparison carpet sq ft + actual room sizes karein — BHK count se zyada dimensions matter karti hain.' },
+  { cat:'other', kind:'term', term:'Villa vs Builder floor vs Apartment', hi:'विला / बिल्डर फ्लोर / अपार्टमेंट', meaning:'Villa = independent unit with land share + own roof rights (premium). Builder floor = ek plot par independent floors (stilt parking culture — NCR/Delhi). Apartment = society tower with amenities. Trio: budget, independence, society-level services — teeno mein trade-off.' },
+  { cat:'other', kind:'term', term:'Saleable vs usable rate', hi:'सेलेबल रेट vs असली रेट', meaning:'Builders quote super built-up (saleable) rate. Aapka usable carpet rate = quote × (1 + loading). RERA mein builder se carpet breakdown written mein lein — brochure sirf saleable area batata hai.' },
+  { cat:'govt', kind:'term', term:'State-wise document set', hi:'देश भर के दस्तावेज़', meaning:'North India (UP/DL/HR/PB/RJ): registry + mutation/Jamabandi + approved layout. South (KA/TN/AP/TS/KL): Khata/Patta system — registry ho lekin khata transfer na hua to kaam adhura. MH: Satbara + 7/12 + index-II. Har state ka document set alag hota hai.' },
+];
 let db = normalizeDb(load());
 function load(){
   try{
@@ -5640,6 +5984,39 @@ function load(){
   }catch(e){ return seed(); }
 }
 function normalizeDb(d){
+  if(!Array.isArray(d.terminology)){
+    d.terminology = DEFAULT_TERMINOLOGY.map((t, i) => ({
+      id: uid(), built: true, createdAt: Date.now() + i, ...t
+    }));
+  }
+  if(+d.terminologySeedVersion !== 2){
+    const custom = d.terminology.filter(t => t && !t.built);
+    const prevByTerm = new Map();
+    d.terminology.filter(t => t && t.built && t.term).forEach(t => prevByTerm.set(t.term, t));
+    d.terminology = [
+      ...DEFAULT_TERMINOLOGY.map((t, i) => {
+        const old = prevByTerm.get(t.term);
+        return { id: old && old.id ? old.id : uid(), built: true, createdAt: old && old.createdAt ? old.createdAt : Date.now() + i, updatedAt: old && old.updatedAt ? old.updatedAt : Date.now() + i, ...t };
+      }),
+      ...custom
+    ];
+    d.terminologySeedVersion = 2;
+  }
+  d.terminology = d.terminology.filter(t => t && String(t.term || '').trim()).map((t, i) => ({
+    id: t.id || uid(),
+    built: !!t.built,
+    term: String(t.term).trim(),
+    hi: t.hi == null ? '' : String(t.hi).trim(),
+    cat: tmCat(t.cat).id,
+    kind: t.kind === 'calc' ? 'calc' : 'term',
+    meaning: t.meaning == null ? '' : String(t.meaning).trim(),
+    calc: t.calc == null ? '' : String(t.calc).trim(),
+    example: t.example == null ? '' : String(t.example).trim(),
+    regions: t.regions == null ? '' : String(t.regions).trim(),
+    createdAt: t.createdAt || Date.now() + i,
+    updatedAt: t.updatedAt || t.createdAt || Date.now() + i
+  }));
+  if(!d.terminology.length) d.terminology = DEFAULT_TERMINOLOGY.map((t, i) => ({ id: uid(), built: true, createdAt: Date.now() + i, ...t }));
   if(!Array.isArray(d.clients)) d.clients = [];
   if(!Array.isArray(d.advisors)) d.advisors = [];
   if(!Array.isArray(d.resale)) d.resale = [];
@@ -15321,6 +15698,7 @@ function quickActionList(){
     { kind:'Go', label:'Day Plan', sub:'Tasks, focus timer aur aaj ka plan', icon:'◷', color:'linear-gradient(135deg,#7CAC5A,#E7B84B)', keys:'today task timer', run:() => go('dayplan') },
     { kind:'Go', label:'News', sub:'Market updates, links aur editorial notes', icon:'✎', color:'linear-gradient(135deg,#4C8FD6,#7B67C6)', keys:'feed updates', run:() => go('news') },
     { kind:'Go', label:'Links', sub:'RERA, JDA, portals aur apni websites', icon:'↗', color:'linear-gradient(135deg,#2F8F7A,#7CAC5A)', keys:'websites bookmarks', run:() => go('links') },
+    { kind:'Go', label:'Terminology', sub:'Real estate terms, meanings aur calculations', icon:'Σ', color:'linear-gradient(135deg,#E7B84B,#4C8FD6)', keys:'glossary terms learn formula tax rera learning', run:() => go('terminology') },
     { kind:'Go', label:'Advisory', sub:'Client brief, shortlist aur presentation', icon:'★', color:'linear-gradient(135deg,#E7B84B,#C95C85)', keys:'present shortlist', run:() => go('advisory') },
     { kind:'Go', label:'Templates', sub:'WhatsApp, developer aur advisor messages', icon:'✉', color:'linear-gradient(135deg,#DF6A51,#7B67C6)', keys:'message copy', run:() => go('templates') },
     { kind:'Go', label:'Health', sub:'Storage, backup, sync aur quality', icon:'♥', color:'linear-gradient(135deg,#2F8F7A,#4C8FD6)', keys:'backup sync storage', run:() => go('health') }
@@ -15335,6 +15713,7 @@ function quickActionList(){
       { kind:'Add', label:'New booking', sub:'Booking, payment aur commission', icon:'+', color:'linear-gradient(135deg,#E7B84B,#2F8F7A)', keys:'add create payment', run:() => openBooking(null) },
       { kind:'Add', label:'New news note', sub:'Link preview ya editorial update', icon:'+', color:'linear-gradient(135deg,#4C8FD6,#2F8F7A)', keys:'add create update', run:() => openNews(null) },
       { kind:'Add', label:'New website link', sub:'RERA, portal ya reference URL', icon:'+', color:'linear-gradient(135deg,#2F8F7A,#4C8FD6)', keys:'add create url', run:() => openLink(null) },
+      { kind:'Add', label:'New terminology term', sub:'Term, meaning, formula aur state note', icon:'+', color:'linear-gradient(135deg,#E7B84B,#4C8FD6)', keys:'add create glossary meaning formula', run:() => { go('terminology'); setTimeout(openTerminology, 80); } },
       { kind:'Add', label:'New template', sub:'Ready-to-copy message', icon:'+', color:'linear-gradient(135deg,#DF6A51,#7B67C6)', keys:'add create message', run:() => openTemplate() },
       { kind:'Add', label:'Quick task', sub:'Aaj ke day plan me task jodein', icon:'+', color:'linear-gradient(135deg,#7CAC5A,#E7B84B)', keys:'add create todo', run:() => { go('dayplan'); setTimeout(() => { const el = $('#tTitle'); if(el) el.focus(); }, 350); } },
       { kind:'Edit', label:'Manage corridors', sub:'Corridor add / edit / delete', icon:'⚙', color:'linear-gradient(135deg,#A57B36,#7CAC5A)', keys:'edit roads add delete', run:() => { const el = $('#manageCorridorsBtn'); if(el) el.click(); } },
@@ -16232,6 +16611,135 @@ $('#listsSave').addEventListener('click', () => {
   toast('Dropdowns updated — har jagah apply ho gaya');
 });
 
+/* ---------- terminology ---------- */
+function renderTerminology(){
+  if(!$('#tmGrid')) return;
+  const q = ($('#tmSearch').value || '').trim().toLowerCase();
+  const catF = $('#tmCategoryFilter').value || '';
+  const kindF = $('#tmKindFilter').value || '';
+  const list = db.terminology.filter(t => {
+    if(catF && t.cat !== catF) return false;
+    if(kindF && t.kind !== kindF) return false;
+    if(!q) return true;
+    return [t.term, t.hi, t.meaning, t.calc, t.example, t.regions].filter(Boolean).join(' ').toLowerCase().includes(q);
+  });
+  const calcCount = db.terminology.filter(t => t.kind === 'calc').length;
+  const usedCats = new Set(db.terminology.map(t => t.cat)).size;
+  $('#tmStats').innerHTML = `
+    <div><div class="k">Total terms</div><div class="v">${db.terminology.length}</div></div>
+    <div><div class="k">Formulas / calculations</div><div class="v">${calcCount}</div></div>
+    <div><div class="k">Categories in use</div><div class="v">${usedCats}</div></div>
+    <div><div class="k">Matching search</div><div class="v">${list.length}</div></div>`;
+  $('#tmCount').textContent = `${list.length} of ${db.terminology.length}`;
+  const admin = isAdmin();
+  $('#tmGrid').innerHTML = list.length ? list.map(t => {
+    const c = tmCat(t.cat);
+    const style = `--cat-soft:${c.soft};--cat-line:${c.line};--cat-ink:${c.ink}`;
+    return `<article class="tm-card" style="${style}">
+      <div class="tm-top">
+        <div class="tm-ic">${c.icon}</div>
+        <div class="tm-head">
+          <b title="${esc(t.term)}">${esc(t.term)}</b>
+          ${t.hi ? `<i title="${esc(t.hi)}">${esc(t.hi)}</i>` : ''}
+        </div>
+        <div class="tm-cats">
+          <span class="tm-chip" title="${esc(c.name)}">${esc(c.name)}</span>
+          ${t.kind === 'calc' ? '<span class="tm-chip calc">∑ formula</span>' : ''}
+        </div>
+      </div>
+      <p class="tm-meaning">${esc(t.meaning)}</p>
+      ${t.calc ? `<div class="tm-formula">${esc(t.calc)}</div>` : ''}
+      ${t.example ? `<div class="tm-example">${esc(t.example)}</div>` : ''}
+      ${t.regions ? `<div class="tm-regions">🗺️ ${esc(t.regions)}</div>` : ''}
+      ${admin ? `<div class="tm-act">
+        <button type="button" data-tmedit="${t.id}">✎ Edit</button>
+        <button type="button" class="del" data-tmdel="${t.id}">✕ Delete</button>
+      </div>` : ''}
+    </article>`;
+  }).join('') : `<div class="links-board-empty tm-empty">${emptyBlock('Koi term nahi mili', q || catF || kindF ? 'Search/filter clear karke dekhein, ya naya term khud add karein.' : 'Shabdkosh khali hai — pehla term aap add karein.', admin ? '+ Add term' : '', 'addterm')}</div>`;
+  $$('#tmGrid [data-tmedit]').forEach(b => b.addEventListener('click', () => openTerminology(db.terminology.find(x => x.id === b.dataset.tmedit))));
+  $$('#tmGrid [data-tmdel]').forEach(b => b.addEventListener('click', () => deleteTerminology(b.dataset.tmdel)));
+  const seed = $('#tmGrid [data-addterm]');
+  if(seed) seed.addEventListener('click', () => openTerminology(null));
+}
+function openTerminology(t){
+  const modal = $('#terminologyModal');
+  if(!modal) return;
+  const editing = !!t;
+  $('#tmTitle').textContent = editing ? 'Edit term — ' + (t.term || '') : 'New term';
+  $('#tmTerm').value = t ? t.term : '';
+  $('#tmTermHi').value = t ? (t.hi || '') : '';
+  $('#tmKind').value = t ? t.kind : 'term';
+  $('#tmCategory').value = t ? t.cat : 'other';
+  $('#tmMeaning').value = t ? (t.meaning || '') : '';
+  $('#tmCalc').value = t ? (t.calc || '') : '';
+  $('#tmExample').value = t ? (t.example || '') : '';
+  $('#tmRegions').value = t ? (t.regions || '') : '';
+  $('#tmDelete').style.display = editing ? '' : 'none';
+  $('#tmDelete').dataset.tmDel = editing ? t.id : '';
+  $('#tmKind').dispatchEvent(new Event('change'));
+  showOverlay('terminologyModal');
+  setTimeout(() => $('#tmTerm').focus(), 60);
+}
+function saveTerminology(){
+  const term = ($('#tmTerm').value || '').trim();
+  const meaning = ($('#tmMeaning').value || '').trim();
+  if(!term) return toast('Term ka naam zaroori hai', true);
+  if(!meaning) return toast('Meaning likhna zaroori hai', true);
+  const kind = $('#tmKind').value === 'calc' ? 'calc' : 'term';
+  if(kind === 'calc' && !($('#tmCalc').value || '').trim()) return toast('Calculation type ka formula likhein', true);
+  const rec = {
+    term,
+    hi: ($('#tmTermHi').value || '').trim(),
+    cat: tmCat($('#tmCategory').value).id,
+    kind,
+    meaning,
+    calc: ($('#tmCalc').value || '').trim(),
+    example: ($('#tmExample').value || '').trim(),
+    regions: ($('#tmRegions').value || '').trim(),
+    updatedAt: Date.now()
+  };
+  const delId = $('#tmDelete').dataset.tmDel || '';
+  const existing = delId ? db.terminology.find(x => x.id === delId) : null;
+  if(existing){
+    Object.assign(existing, rec);
+    toast('Term updated');
+  } else {
+    db.terminology.push({ id: uid(), built: false, createdAt: Date.now(), ...rec });
+    toast('Term added — shabdkosh badh gaya');
+  }
+  save();
+  renderTerminology();
+  closeModal('terminologyModal');
+}
+function deleteTerminology(id){
+  if(!id) return;
+  const t = db.terminology.find(x => x.id === id);
+  if(!t) return;
+  if(!confirm(`"${t.term}" delete karna hai? Yeh wapas nahi aayega.`)) return;
+  db.terminology = db.terminology.filter(x => x.id !== id);
+  save();
+  renderTerminology();
+  toast('Term deleted');
+}
+function initTerminology(){
+  if(!$('#tmGrid')) return;
+  $('#tmCategoryFilter').innerHTML = '<option value="">All categories</option>' +
+    TERMINOLOGY_CATEGORIES.map(c => `<option value="${c.id}">${c.icon} ${esc(c.name)}</option>`).join('');
+  $('#tmCategory').innerHTML = TERMINOLOGY_CATEGORIES.map(c => `<option value="${c.id}">${c.icon} ${esc(c.name)}</option>`).join('');
+  $('#tmSearch').addEventListener('input', renderTerminology);
+  $('#tmCategoryFilter').addEventListener('change', renderTerminology);
+  $('#tmKindFilter').addEventListener('change', renderTerminology);
+  $('#tmKind').addEventListener('change', () => {
+    const calc = $('#tmKind').value === 'calc';
+    $('#tmCalc').closest('.field').style.display = calc ? '' : 'none';
+    $('#tmExample').closest('.field').style.display = calc ? '' : 'none';
+  });
+  $('#tmSave').addEventListener('click', saveTerminology);
+  $('#tmDelete').addEventListener('click', () => deleteTerminology($('#tmDelete').dataset.tmDel));
+  $('#addTermBtn').addEventListener('click', () => openTerminology(null));
+}
+
 /* ---------- render ---------- */
 function render(){
   fillFilterCorridor($('#filterCorridor').value);
@@ -16245,6 +16753,7 @@ function render(){
   if(currentView === 'dayplan') renderDayplan();
   if(currentView === 'news') renderNews();
   if(currentView === 'links') renderLinks();
+  if(currentView === 'terminology') renderTerminology();
   if(currentView === 'advisory'){ renderSavedBriefs(); renderAdvisoryResults(); }
   if(currentView === 'templates') renderTemplates();
   if(currentView === 'health'){ renderHealth(); renderSyncCard(); }
@@ -16258,6 +16767,7 @@ initAdvisory();
 initDayplan();
 initNews();
 initLinks();
+initTerminology();
 initCorridorManager();
 initTools();
 initMedia();
