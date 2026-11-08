@@ -1987,6 +1987,132 @@ nav button.on{background:linear-gradient(135deg,#fff 0%,#FFF7E7 100%);box-shadow
 .pulse-tag.ok{background:#EAF5EF;border-color:#D3E9DD;color:#2F6B54}
 .pulse-meter{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(46,45,32,.07)}
 .pulse-meter i{display:block;height:100%;width:0;background:var(--grad-warm);transition:width .55s cubic-bezier(.2,.8,.3,1)}
+/* ---------------- daily hero (Aaj) ---------------- */
+.today-hero{
+  position:relative;isolation:isolate;overflow:hidden;margin:0 0 16px;border-radius:26px;
+  display:grid;grid-template-columns:156px minmax(0,1fr) 300px;
+  color:#FFF9EC;border:1px solid rgba(255,255,255,.28);
+  background:linear-gradient(125deg,var(--th-bg1,#B2482A) 0%,var(--th-bg2,#D9832F) 62%,var(--th-bg1,#B2482A) 100%);
+  box-shadow:0 30px 70px -44px rgba(72,37,18,.85),inset 0 1px 0 rgba(255,255,255,.22);
+}
+.today-hero:before{content:"";position:absolute;right:-120px;top:-170px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),rgba(255,255,255,.08) 42%,transparent 68%);z-index:-1;pointer-events:none}
+.today-hero:after{content:"";position:absolute;left:26%;bottom:-200px;width:430px;height:430px;border-radius:50%;background:radial-gradient(circle,rgba(255,236,180,.22),transparent 66%);z-index:-1;pointer-events:none}
+.th-date{
+  position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:24px 14px;background:rgba(28,18,8,.16);border-right:1px solid rgba(255,255,255,.16);
+}
+.th-date:before{content:"";position:absolute;left:50%;top:18px;transform:translateX(-50%);width:34px;height:3px;border-radius:99px;background:var(--th-accent,#FFD98F);opacity:.85}
+.th-weekday{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--th-accent,#FFD98F)}
+.th-date b{font-family:'Fraunces',serif;font-size:58px;line-height:.95;font-weight:600;letter-spacing:-2px;margin:2px 0 2px;text-shadow:0 10px 26px rgba(0,0,0,.18)}
+.th-month{font-size:12.5px;font-weight:700;letter-spacing:.4px;opacity:.95}
+.th-weekday-en{font-size:9.5px;letter-spacing:1.6px;text-transform:uppercase;opacity:.66;margin-top:5px}
+.th-month-hi{font-size:10.5px;opacity:.8;margin-top:3px}
+.th-main{padding:20px 24px 18px;min-width:0;display:flex;flex-direction:column;gap:4px}
+.th-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:2px}
+.th-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);font-size:11px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;backdrop-filter:blur(4px)}
+.th-badge .th-emoji{font-size:15px;line-height:1}
+.th-today-chip{font-size:9.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--th-accent,#FFD98F);opacity:.95}
+.th-tools{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.th-tool{display:inline-flex;align-items:center;gap:5px;padding:6px 10px;border-radius:9px;font-size:11.5px;font-weight:700;color:#FFF9EC;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);transition:.18s}
+.th-tool:hover{background:rgba(255,255,255,.26);transform:translateY(-1px)}
+.th-tool.primary{background:rgba(255,255,255,.94);color:#6E2A1A;border-color:#fff}
+.th-tool.primary:hover{background:#fff}
+.th-main h3{font-family:'Fraunces',serif;font-size:29px;font-weight:600;letter-spacing:-.5px;line-height:1.08;margin-top:2px;text-shadow:0 8px 20px rgba(0,0,0,.14)}
+.th-name-en{font-size:12px;font-weight:800;letter-spacing:2.2px;text-transform:uppercase;color:var(--th-accent,#FFD98F);opacity:.95;margin-bottom:4px}
+.th-greet-hi{font-size:14px;line-height:1.55;font-weight:600;max-width:640px;opacity:.97}
+.th-greet-en{font-size:12px;line-height:1.5;opacity:.78;max-width:640px}
+.th-quote{position:relative;display:flex;align-items:flex-start;gap:8px;margin-top:9px;padding:9px 11px 9px 12px;border-radius:12px;background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.14);max-width:680px}
+.th-qmark{font-family:'Fraunces',serif;font-size:26px;line-height:.8;color:var(--th-accent,#FFD98F);opacity:.9;flex:none}
+.th-quote p{font-size:12.5px;line-height:1.5;font-style:italic;flex:1;min-width:0}
+.th-qby{font-size:9px;letter-spacing:.8px;text-transform:uppercase;opacity:.6;align-self:flex-end;white-space:nowrap}
+.th-qrefresh{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);font-size:14px;color:#FFF9EC;transition:.18s}
+.th-qrefresh:hover{background:rgba(255,255,255,.3);transform:rotate(-40deg)}
+.th-quote.swap p{animation:thQuoteSwap .42s cubic-bezier(.2,.8,.3,1)}
+@keyframes thQuoteSwap{0%{opacity:0;transform:translateY(5px)}100%{opacity:1;transform:none}}
+.th-upcoming{padding:16px 16px 14px;background:rgba(24,16,8,.14);border-left:1px solid rgba(255,255,255,.16);display:flex;flex-direction:column;min-width:0}
+.th-up-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:9px}
+.th-up-head span{font-size:10px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--th-accent,#FFD98F)}
+.th-up-head small{font-size:9px;opacity:.6;letter-spacing:.8px;text-transform:uppercase}
+.th-up-list{display:flex;flex-direction:column;gap:6px}
+.th-up-item{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:10px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);text-align:left;transition:.18s;color:inherit}
+.th-up-item:hover{background:rgba(255,255,255,.2);transform:translateX(2px)}
+.th-up-emoji{font-size:16px;line-height:1;flex:none}
+.th-up-copy{min-width:0;flex:1;display:flex;flex-direction:column;gap:1px}
+.th-up-copy b{font-size:11.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.th-up-copy span{font-size:9.5px;opacity:.68;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.th-up-days{flex:none;font-size:9px;font-weight:800;letter-spacing:.4px;padding:3px 6px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.2);white-space:nowrap}
+.th-up-empty{font-size:10.5px;opacity:.7;line-height:1.5;padding:6px 2px}
+.th-spark{position:absolute;pointer-events:none;opacity:.5;font-size:13px;animation:thFloat 5.5s ease-in-out infinite}
+@keyframes thFloat{0%,100%{transform:translateY(0) rotate(-6deg);opacity:.35}50%{transform:translateY(-7px) rotate(6deg);opacity:.75}}
+@media (max-width:1180px){
+  .today-hero{grid-template-columns:136px minmax(0,1fr) 262px}
+  .th-main{padding:18px 20px 16px}
+  .th-main h3{font-size:26px}
+}
+@media (max-width:980px){
+  .today-hero{grid-template-columns:130px minmax(0,1fr)}
+  .th-upcoming{grid-column:1/-1;border-left:none;border-top:1px solid rgba(255,255,255,.16);padding:12px 16px 14px}
+  .th-up-list{flex-direction:row;overflow-x:auto;gap:7px;padding-bottom:2px}
+  .th-up-item{min-width:186px;flex:none}
+  .th-up-head{margin-bottom:7px}
+}
+@media (max-width:640px){
+  .today-hero{grid-template-columns:1fr;border-radius:20px;margin-bottom:12px}
+  .th-date{flex-direction:row;justify-content:flex-start;gap:10px;padding:13px 16px;border-right:none;border-bottom:1px solid rgba(255,255,255,.16);text-align:left}
+  .th-date:before{display:none}
+  .th-date b{font-size:36px;margin:0;letter-spacing:-1px}
+  .th-weekday{font-size:11px;letter-spacing:1.4px}
+  .th-month{font-size:11.5px}
+  .th-weekday-en{display:none}
+  .th-month-hi{display:none}
+  .th-main{padding:14px 15px 16px}
+  .th-main h3{font-size:24px}
+  .th-greet-hi{font-size:13px}
+  .th-greet-en{font-size:11.5px}
+  .th-tools{width:100%;margin-left:0;order:3}
+  .th-tool{flex:1;justify-content:center;padding:8px 8px}
+  .th-upcoming{padding:12px 14px 14px}
+  .th-up-item{min-width:168px}
+  .th-qby{display:none}
+}
+
+/* ---------------- poster modal + festival manager ---------------- */
+.poster-tabs,.fm-tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.poster-tabs button,.fm-tabs button{padding:8px 13px;border-radius:9px;background:#fff;border:1px solid var(--line);font-size:12px;font-weight:700;color:var(--ink2);transition:.18s}
+.poster-tabs button.on,.fm-tabs button.on{background:var(--olive);border-color:var(--olive);color:#F6F2E7}
+.poster-stage{display:flex;align-items:center;justify-content:center;padding:14px;border-radius:16px;background:linear-gradient(135deg,#EEF2F0,#F8F5EC);border:1px solid var(--line);min-height:300px}
+.poster-stage canvas{max-width:100%;max-height:56vh;width:auto;height:auto;border-radius:12px;box-shadow:0 22px 54px -24px rgba(30,24,10,.5);display:none}
+.poster-stage canvas.on{display:block}
+.poster-hint{font-size:11.5px;color:var(--mut);margin-top:10px;line-height:1.5}
+.poster-badge-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.poster-badge-row span{font-size:10px;font-weight:700;padding:4px 8px;border-radius:999px;background:#F1F4F2;border:1px solid var(--line);color:var(--ink2)}
+.fm-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 11px;border-radius:11px;background:#F7FAF8;border:1px solid var(--line);margin-bottom:12px}
+.fm-toolbar small{font-size:10.5px;color:var(--mut);line-height:1.4;flex:1;min-width:170px}
+.fm-list{display:flex;flex-direction:column;gap:5px;max-height:250px;overflow:auto;padding-right:2px;margin-bottom:14px}
+.fm-row{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:10px;background:#fff;border:1px solid var(--line2)}
+.fm-row:hover{border-color:#D5DFD9;background:#FCFEFC}
+.fm-row .fm-emo{font-size:16px;width:22px;text-align:center;flex:none}
+.fm-row .fm-copy{min-width:0;flex:1}
+.fm-row .fm-copy b{display:block;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fm-row .fm-copy span{font-size:10px;color:var(--mut)}
+.fm-row .fm-actions{display:flex;gap:4px;flex:none}
+.fm-icon{width:27px;height:27px;border-radius:7px;display:grid;place-items:center;background:#F4F7F5;border:1px solid var(--line);font-size:12px;color:var(--ink2)}
+.fm-icon:hover{background:#fff;border-color:#C9D1CC}
+.fm-icon.del{color:var(--danger);background:#FBEDE8;border-color:#F0D8CE}
+.fm-form{border-top:1px solid var(--line);padding-top:13px}
+.fm-form .fm-form-title{font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--mut);margin-bottom:9px}
+.fm-form .grid2{margin-bottom:9px}
+.fm-form .field{margin-bottom:9px}
+.fm-form-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.fm-empty{font-size:11.5px;color:var(--mut);padding:12px;text-align:center}
+.fm-quote-row{display:flex;align-items:flex-start;gap:8px;padding:9px 10px;border-radius:10px;background:#fff;border:1px solid var(--line2)}
+.fm-quote-row p{flex:1;font-size:12px;line-height:1.45}
+.fm-quote-row span{font-size:9.5px;color:var(--mut);display:block;margin-top:2px}
+@media (max-width:640px){
+  .poster-stage{min-height:220px;padding:10px}
+  .poster-stage canvas{max-height:48vh}
+  .fm-list{max-height:210px}
+}
 #catStrip .cat-card{background:linear-gradient(180deg,#fff 0%,#FCFEFC 100%);transition:transform .2s,box-shadow .2s,border-color .2s}
 #catStrip .cat-card:before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.72) 48%,transparent 64%);transform:translateX(-125%);transition:transform .55s ease;pointer-events:none}
 #catStrip .cat-card:hover:before{transform:translateX(125%)}
@@ -2219,6 +2345,41 @@ body.locked>.quick-add-dock{visibility:hidden}
         <div class="istat"><b id="statValue">—</b><span>Price range</span></div>
       </div>
     </div>
+
+    <section class="today-hero" id="todayHero" aria-label="Aaj ka festival, motivation aur aane wale din">
+      <div class="th-date">
+        <span class="th-weekday" id="thWeekdayHi">रविवार</span>
+        <b id="thDay">08</b>
+        <span class="th-month" id="thMonth">November 2026</span>
+        <span class="th-weekday-en" id="thWeekdayEn">Sunday</span>
+        <span class="th-month-hi" id="thMonthHi">नवंबर</span>
+      </div>
+      <div class="th-main">
+        <div class="th-top">
+          <span class="th-badge"><span class="th-emoji" id="thEmoji">🪔</span><span id="thFestivalName">Diwali</span></span>
+          <span class="th-today-chip" id="thTodayChip">Aaj · Today</span>
+          <div class="th-tools">
+            <button type="button" class="th-tool" id="thRefreshQuote" title="Change the motivation line in this card only">↻ New motivation</button>
+            <button type="button" class="th-tool primary" id="thSharePoster">Share poster</button>
+            <button type="button" class="th-tool" id="thManage" style="display:none">⚙ Manage</button>
+          </div>
+        </div>
+        <h3 id="thFestivalHi">दीपावली</h3>
+        <div class="th-name-en" id="thFestivalEn">Diwali · Lakshmi Puja</div>
+        <p class="th-greet-hi" id="thGreetHi">दीपों की रोशनी, माँ लक्ष्मी की कृपा — आपका जीवन सदा उजालों से भरा रहे।</p>
+        <p class="th-greet-en" id="thGreetEn">Lights of diyas, grace of Maa Lakshmi — may your life always shine bright.</p>
+        <div class="th-quote" id="thQuoteBox">
+          <span class="th-qmark">“</span>
+          <p id="thQuote">…</p>
+          <span class="th-qby" id="thQuoteBy"></span>
+          <button type="button" class="th-qrefresh" id="thQuoteRefresh" title="Next motivation" aria-label="Next motivation">↻</button>
+        </div>
+      </div>
+      <aside class="th-upcoming" aria-label="Upcoming festivals">
+        <div class="th-up-head"><span>Coming up</span><small>next 3</small></div>
+        <div class="th-up-list" id="thUpcoming"></div>
+      </aside>
+    </section>
 
     <div class="pulse-strip" id="pulseStrip" aria-label="Aaj ka desk pulse">
       <button type="button" class="pulse-card pulse-task" data-goto="dayplan" title="Day plan kholein">
@@ -2989,6 +3150,91 @@ body.locked>.quick-add-dock{visibility:hidden}
 <div class="storage" id="storageMeter"></div>
 <button class="mob-add" id="mobAdd">+</button>
 <input type="file" id="excelFile" accept=".xlsx,.xls,.csv" style="display:none">
+
+<!-- ============ FESTIVAL POSTER ============ -->
+<div class="overlay" id="posterModal">
+  <div class="modal" style="width:min(760px,100%)">
+    <div class="modal-head">
+      <h3 id="posterTitle">Festival poster</h3>
+      <button class="xbtn" data-close="posterModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="poster-tabs">
+        <button type="button" data-poster-tab="status" class="on">WhatsApp status · 1080×1920</button>
+        <button type="button" data-poster-tab="square">Square post · 1080×1080</button>
+      </div>
+      <div class="poster-stage" id="posterStage">
+        <canvas id="posterStatus" width="1080" height="1920"></canvas>
+        <canvas id="posterSquare" width="1080" height="1080"></canvas>
+      </div>
+      <p class="poster-hint">Share directly to WhatsApp, Instagram or save the PNG. Poster text comes from the festival record — edit any line under <b>⚙ Manage</b>.</p>
+      <div class="poster-badge-row"><span>BCS · Business City Square</span><span>@ajaysharma.bcs</span><span>Jaipur</span></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="posterModal">Close</button>
+      <button class="btn ghost" id="posterDownload">Download PNG</button>
+      <button class="btn primary" id="posterShare">Share</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FESTIVALS & MOTIVATION MANAGER ============ -->
+<div class="overlay" id="festivalModal">
+  <div class="modal" style="width:min(820px,100%)">
+    <div class="modal-head">
+      <h3>Festivals &amp; daily motivation</h3>
+      <button class="xbtn" data-close="festivalModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="fm-tabs">
+        <button type="button" data-fm-tab="festivals" class="on">Festival calendar</button>
+        <button type="button" data-fm-tab="quotes">Motivation lines</button>
+      </div>
+      <div class="pane on" data-fmpane="festivals">
+        <div class="fm-toolbar">
+          <button type="button" class="btn ghost sm" id="fmRefreshOnline">↻ Refresh festival dates online</button>
+          <small id="fmRefreshNote">Offline calendar works forever. Refresh checks the hosted list and updates only rows you have not edited.</small>
+        </div>
+        <div class="fm-list" id="fmFestivalList"></div>
+        <form class="fm-form" id="fmFestivalForm">
+          <div class="fm-form-title" id="fmFormTitle">Add a festival</div>
+          <input type="hidden" id="fmId">
+          <div class="grid2">
+            <div class="field"><label>Date *</label><input type="date" id="fmDate" required></div>
+            <div class="field"><label>English name *</label><input id="fmName" placeholder="e.g. Diwali" required></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Hindi name</label><input id="fmHi" placeholder="दीपावली"></div>
+            <div class="field"><label>Emoji</label><input id="fmEmoji" maxlength="6" placeholder="🪔"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Theme</label><select id="fmTheme"></select></div>
+            <div class="field"><label>Small note</label><input id="fmNote" placeholder="Lakshmi Puja · Festival of Lights"></div>
+          </div>
+          <div class="field"><label>Hindi greeting</label><textarea id="fmGreetHi" rows="2" placeholder="दीपों की रोशनी…"></textarea></div>
+          <div class="field"><label>English greeting</label><textarea id="fmGreetEn" rows="2" placeholder="May your life shine bright…"></textarea></div>
+          <div class="fm-form-actions">
+            <button type="button" class="btn ghost sm" id="fmCancel">Clear</button>
+            <button type="submit" class="btn primary sm">Save festival</button>
+          </div>
+        </form>
+      </div>
+      <div class="pane" data-fmpane="quotes">
+        <div class="fm-list" id="fmQuoteList"></div>
+        <form class="fm-form" id="fmQuoteForm">
+          <div class="fm-form-title" id="fmQuoteFormTitle">Add a motivation line</div>
+          <input type="hidden" id="fqId">
+          <div class="field"><label>Motivation *</label><textarea id="fqText" rows="2" required placeholder="Small daily steps build big results."></textarea></div>
+          <div class="field"><label>Credit (optional)</label><input id="fqBy" placeholder="BCS Desk"></div>
+          <div class="fm-form-actions">
+            <button type="button" class="btn ghost sm" id="fqCancel">Clear</button>
+            <button type="submit" class="btn primary sm">Save line</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ============ PROJECT DETAIL ============ -->
 <div class="overlay" id="detailModal">
@@ -3911,6 +4157,130 @@ const DEFAULT_CHECKLIST = [
   'Loan / finance requirement discussed',
   'Registry / agreement process explained'
 ];
+/* ---------- daily hero: festivals + motivation (seeded, fully editable) ----------
+   Dates verified from Drik Panchang for New Delhi (2026–2027).
+   Every record is editable in the app; online refresh only touches unedited rows. */
+const DEFAULT_FESTIVALS = [
+  // 2026
+  ['f-2026-newyear','2026-01-01','New Year','नव वर्ष','New Year','🎉','marigold','A fresh start','नया साल नई उम्मीदें — यह साल आपके सपनों को नई ऊँचाई दे।','A new year, new hopes — may this year take your dreams higher.'],
+  ['f-2026-makar','2026-01-14','Makar Sankranti','मकर संक्रांति','Makar Sankranti','🌾','saffron','Harvest of light','सूर्य की नई करण, खेतों की सुनहरी बहार — आपका हर प्रयास फलित हो।','New sunlight, golden harvests — may every effort bear fruit.'],
+  ['f-2026-vasant','2026-01-23','Vasant Panchami','वसंत पंचमी','Vasant Panchami','🌸','marigold','Spring of knowledge','माँ सरस्वती का आशीर्वाद — ज्ञान, कला और नई शुरुआत के साथ।','Blessings of Saraswati — for knowledge, art and new beginnings.'],
+  ['f-2026-republic','2026-01-26','Republic Day','गणतंत्र दिवस','Republic Day','🇮🇳','national','Jai Hind','संविधान की शक्ति, देश की एकता — गर्व से भरा गणतंत्र दिवस।','The strength of our Constitution, the unity of our nation — proud Republic Day.'],
+  ['f-2026-shivratri','2026-02-15','Maha Shivaratri','महाशिवरात्रि','Maha Shivaratri','🔱','royal','Night of devotion','ॐ नमः शिवाय — महादेव का आशीर्वाद सदा आपके साथ रहे।','May the blessings of Mahadev always be with you.'],
+  ['f-2026-holi','2026-03-04','Holi','होली','Holi','🎨','holi','Festival of colours','रंगों की होली आपके जीवन में सुख, उमंग और नई ऊर्जा भरे।','May Holi fill your life with colour, joy and fresh energy.'],
+  ['f-2026-navratri','2026-03-19','Chaitra Navratri','चैत्र नवरात्रि','Chaitra Navratri','🪷','red','Nine nights of Shakti','माँ दुर्गा की नौ रातें — हर दिन शक्ति, शांति और समृद्धि का वरदान।','Nine nights of Maa Durga — a blessing of strength, peace and prosperity.'],
+  ['f-2026-ramanavami','2026-03-26','Rama Navami','राम नवमी','Rama Navami','🏹','saffron','Birth of Shri Ram','जय श्री राम — सत्य और धर्म का मार्ग सदा आपका साथ दे।','Jai Shri Ram — may the path of truth and dharma always guide you.'],
+  ['f-2026-hanuman','2026-04-02','Hanuman Jayanti','हनुमान जयंती','Hanuman Jayanti','🐒','saffron','Strength & devotion','बजरंगबली की कृपा — संकट हरें, बल और भरोसा बढ़ाएँ।','Blessings of Bajrangbali — remove obstacles, add strength and faith.'],
+  ['f-2026-baisakhi','2026-04-14','Baisakhi / Solar New Year','बैसाखी','Baisakhi','🌾','harvest','New harvest','नई फसल, नया जोश — बैसाखी की हार्दिक शुभकामनाएँ।','New harvest, new spirit — warm wishes for Baisakhi.'],
+  ['f-2026-akshaya','2026-04-19','Akshaya Tritiya','अक्षय तृतीया','Akshaya Tritiya','✨','gold','Ever-growing fortune','अक्षय तृतीया — आपकी मेहनत और निवेश सदा बढ़ते रहें।','Akshaya Tritiya — may your effort and investments grow endlessly.'],
+  ['f-2026-buddha','2026-05-01','Buddha Purnima','बुद्ध पूर्णिमा','Buddha Purnima','🧘','gold','Peace within','करुणा और शांति का संदेश — भीतर की शांति बाहर उजाला बने।','A message of compassion and peace — inner calm becomes outer light.'],
+  ['f-2026-rath','2026-07-16','Jagannath Rathyatra','जगन्नाथ रथ यात्रा','Jagannath Rath Yatra','🛕','marigold','Chariot of blessings','जगन्नाथ स्वामी की यात्रा आपके जीवन में मंगल लाए।','May the journey of Lord Jagannath bring auspicious beginnings.'],
+  ['f-2026-guru','2026-07-29','Guru Purnima','गुरु पूर्णिमा','Guru Purnima','🙏','saffron','Gratitude to teachers','गुरु के आशीर्वाद से हर राह आसान हो — गुरु पूर्णिमा की शुभकामनाएँ।','With a guru blessing, every path gets easier — happy Guru Purnima.'],
+  ['f-2026-independence','2026-08-15','Independence Day','स्वतंत्रता दिवस','Independence Day','🇮🇳','national','Freedom & pride','आज़ादी की गूँज, देश पर गर्व — स्वतंत्रता दिवस की हार्दिक शुभकामनाएँ।','The echo of freedom, pride in our nation — warm Independence Day wishes.'],
+  ['f-2026-nag','2026-08-17','Nag Panchami','नाग पंचमी','Nag Panchami','🐍','green','Protection & prosperity','नाग देवता की कृपा — घर में सुख, शांति और समृद्धि बनी रहे।','Blessings of the Nag devtas — happiness, peace and prosperity at home.'],
+  ['f-2026-rakhi','2026-08-28','Raksha Bandhan','रक्षाबंधन','Raksha Bandhan','🧵','pink','Bond of protection','राखी का धागा — स्नेह, भरोसा और उम्रभर का साथ।','A thread of rakhi — love, trust and a lifetime of togetherness.'],
+  ['f-2026-janmashtami','2026-09-04','Krishna Janmashtami','कृष्ण जन्माष्टमी','Krishna Janmashtami','🦚','royal','Joy of Kanha','जय श्री कृष्ण — बांसुरी की धुन जैसी मिठास आपके जीवन में भर जाए।','Jai Shri Krishna — may your life fill with the sweetness of his flute.'],
+  ['f-2026-ganesh','2026-09-14','Ganesh Chaturthi','गणेश चतुर्थी','Ganesh Chaturthi','🐘','red','Bappa brings beginnings','गणपति बाप्पा मोरया — हर नई शुरुआत में विघ्न हरें, मंगल लाएँ।','Ganpati Bappa Morya — may every new beginning be blessed and obstacle-free.'],
+  ['f-2026-visarjan','2026-09-25','Anant Chaturdashi','अनंत चतुर्दशी','Anant Chaturdashi','🚩','teal','Bappa goes home','बाप्पा विदा होते हैं, आशीर्वाद छोड़ जाते हैं — गणपति बाप्पा मोरया।','Bappa returns home but leaves his blessings — Ganpati Bappa Morya.'],
+  ['f-2026-gandhi','2026-10-02','Gandhi Jayanti','गांधी जयंती','Gandhi Jayanti','🕊️','earth','Peace & truth','सत्य और अहिंसा का मार्ग — गांधी जयंती पर प्रणाम।','The path of truth and non-violence — respectful tributes on Gandhi Jayanti.'],
+  ['f-2026-navratri-sharad','2026-10-11','Sharad Navratri','शरद नवरात्रि','Sharad Navratri','🪷','red','Nine nights of devotion','माँ दुर्गा का आशीर्वाद — नौ रातें, नौ रूप, अनंत शक्ति।','Nine nights, nine forms, endless strength — blessings of Maa Durga.'],
+  ['f-2026-saraswati','2026-10-17','Saraswati Puja','सरस्वती पूजा','Saraswati Puja','🎓','gold','Wisdom & art','विद्या और कला की देवी — आपकी बुद्धि और रचनात्मकता को नमन।','Goddess of wisdom and art — may your intellect and creativity flourish.'],
+  ['f-2026-dussehra','2026-10-20','Dussehra','दशहरा','Dussehra','🏹','saffron','Victory of good','बुराई पर अच्छाई की जीत — विजयादशमी की हार्दिक शुभकामनाएँ।','The victory of good over evil — warm Dussehra wishes.'],
+  ['f-2026-sharadpurnima','2026-10-25','Sharad Purnima','शरद पूर्णिमा','Sharad Purnima','🌕','moon','Moonlit blessings','चाँदनी रात, खीर का स्वाद — शरद पूर्णिमा आपको शीतलता दे।','A moonlit night, a bowl of kheer — may Sharad Purnima cool your soul.'],
+  ['f-2026-karwa','2026-10-29','Karwa Chauth','करवा चौथ','Karwa Chauth','🌙','pink','Love & long life','करवा चौथ का व्रत — स्नेह, समर्पण और लंबी उम्र की कामना।','Karwa Chauth — a vow of love, devotion and long life together.'],
+  ['f-2026-dhanteras','2026-11-06','Dhanteras','धनतेरस','Dhanteras','🪙','gold','Wealth & health','धनतेरस — घर में समृद्धि, सेहत और सुखद नई शुरुआत आए।','Dhanteras — may prosperity, health and happy beginnings enter your home.'],
+  ['f-2026-diwali','2026-11-08','Diwali','दीपावली','Diwali','🪔','diwali','Lakshmi Puja · Festival of Lights','दीपों की रोशनी, माँ लक्ष्मी की कृपा — आपका जीवन सदा उजालों से भरा रहे।','Lights of diyas, grace of Maa Lakshmi — may your life always shine bright.'],
+  ['f-2026-govardhan','2026-11-10','Govardhan Puja','गोवर्धन पूजा','Govardhan Puja','🥁','green','Gratitude for abundance','गोवर्धन पूजा — प्रकृति और अन्नदाता के प्रति कृतज्ञता।','Govardhan Puja — gratitude for nature and all that sustains us.'],
+  ['f-2026-bhaidooj','2026-11-11','Bhaiya Dooj','भैया दूज','Bhaiya Dooj','🎁','marigold','Sisters & brothers','भाई-बहन का प्यार — सदा साथ, सदा सुरक्षित।','The love of siblings — always together, always protected.'],
+  ['f-2026-chhath','2026-11-15','Chhath Puja','छठ पूजा','Chhath Puja','🌅','saffron','Arghya to the Sun','छठ मइया की कृपा — सूर्य देव का आशीर्वाद और संतान सुख।','Blessings of Chhath Maiya — grace of Surya Dev and family wellbeing.'],
+  ['f-2026-tulsi','2026-11-21','Tulasi Vivah','तुलसी विवाह','Tulasi Vivah','🌿','green','Sacred union','तुलसी विवाह — घर में मंगल, शुद्धता और समृद्धि।','Tulasi Vivah — auspiciousness, purity and prosperity at home.'],
+  ['f-2026-kartik','2026-11-24','Kartika Purnima','कार्तिक पूर्णिमा','Kartika Purnima','🪔','moon','Devotion & light','कार्तिक पूर्णिमा — दीपदान और श्रद्धा का पवित्र दिन।','Kartika Purnima — a sacred day of light, offering and devotion.'],
+  // 2027
+  ['f-2027-newyear','2027-01-01','New Year','नव वर्ष','New Year','🎉','marigold','A fresh start','नया साल नई ऊर्जा — हर दिन एक नया अवसर।','A new year, new energy — every day is a fresh opportunity.'],
+  ['f-2027-makar','2027-01-15','Makar Sankranti','मकर संक्रांति','Makar Sankranti','🌾','saffron','Harvest of light','सूर्य की नई करण — आपके सभी प्रयासों में सफलता आए।','New sunlight — may all your efforts meet success.'],
+  ['f-2027-republic','2027-01-26','Republic Day','गणतंत्र दिवस','Republic Day','🇮🇳','national','Jai Hind','गणतंत्र दिवस — संविधान, एकता और गर्व का उत्सव।','Republic Day — a celebration of our Constitution, unity and pride.'],
+  ['f-2027-vasant','2027-02-11','Vasant Panchami','वसंत पंचमी','Vasant Panchami','🌸','marigold','Spring of knowledge','वसंत का स्वागत — ज्ञान और नई शुरुआत के रंग।','Welcome spring — the colours of knowledge and new beginnings.'],
+  ['f-2027-shivratri','2027-03-06','Maha Shivaratri','महाशिवरात्रि','Maha Shivaratri','🔱','royal','Night of devotion','ॐ नमः शिवाय — महादेव की कृपा सदा बनी रहे।','Om Namah Shivaya — may Mahadev grace always remain with you.'],
+  ['f-2027-holi','2027-03-22','Holi','होली','Holi','🎨','holi','Festival of colours','होली के रंग आपके जीवन में खुशियों की बहार लाएँ।','May the colours of Holi bring a spring of happiness to your life.'],
+  ['f-2027-navratri','2027-04-07','Chaitra Navratri','चैत्र नवरात्रि','Chaitra Navratri','🪷','red','Nine nights of Shakti','नवरात्रि के नौ दिन — शक्ति, शांति और समृद्धि के आशीर्वाद।','Nine days of Navratri — blessings of strength, peace and prosperity.'],
+  ['f-2027-baisakhi','2027-04-14','Baisakhi / Solar New Year','बैसाखी','Baisakhi','🌾','harvest','New harvest','बैसाखी की खुशबू — नई फसल और नए सपने।','The fragrance of Baisakhi — new harvests and new dreams.'],
+  ['f-2027-ramanavami','2027-04-15','Rama Navami','राम नवमी','Rama Navami','🏹','saffron','Birth of Shri Ram','जय श्री राम — धर्म और सत्य का मार्ग सदा प्रकाशित रहे।','Jai Shri Ram — may the path of dharma and truth always shine.'],
+  ['f-2027-hanuman','2027-04-20','Hanuman Jayanti','हनुमान जयंती','Hanuman Jayanti','🐒','saffron','Strength & devotion','बजरंगबली की कृपा — हर संकट से रक्षा।','Blessings of Bajrangbali — protection from every obstacle.'],
+  ['f-2027-akshaya','2027-05-09','Akshaya Tritiya','अक्षय तृतीया','Akshaya Tritiya','✨','gold','Ever-growing fortune','अक्षय तृतीया — समृद्धि और स्थायी विकास का आशीर्वाद।','Akshaya Tritiya — blessings of prosperity and lasting growth.'],
+  ['f-2027-buddha','2027-05-20','Buddha Purnima','बुद्ध पूर्णिमा','Buddha Purnima','🧘','gold','Peace within','बुद्ध पूर्णिमा — करुणा, शांति और जागरूकता।','Buddha Purnima — compassion, peace and awareness.'],
+  ['f-2027-rath','2027-07-05','Jagannath Rathyatra','जगन्नाथ रथ यात्रा','Jagannath Rath Yatra','🛕','marigold','Chariot of blessings','जगन्नाथ स्वामी की यात्रा आपके जीवन में मंगल लाए।','May the journey of Lord Jagannath bring auspicious beginnings.'],
+  ['f-2027-guru','2027-07-18','Guru Purnima','गुरु पूर्णिमा','Guru Purnima','🙏','saffron','Gratitude to teachers','गुरु पूर्णिमा — ज्ञान देने वाले हर गुरु को प्रणाम।','Guru Purnima — respectful gratitude to every teacher.'],
+  ['f-2027-independence','2027-08-15','Independence Day','स्वतंत्रता दिवस','Independence Day','🇮🇳','national','Freedom & pride','स्वतंत्रता दिवस — देश पर गर्व और एकता का संकल्प।','Independence Day — pride in our nation and a pledge of unity.'],
+  ['f-2027-rakhi','2027-08-17','Raksha Bandhan','रक्षाबंधन','Raksha Bandhan','🧵','pink','Bond of protection','राखी का प्यार — स्नेह और भरोसे का अनमोल धागा।','The love of rakhi — a precious thread of affection and trust.'],
+  ['f-2027-janmashtami','2027-08-25','Krishna Janmashtami','कृष्ण जन्माष्टमी','Krishna Janmashtami','🦚','royal','Joy of Kanha','जय श्री कृष्ण — आपका जीवन मधुरता और आनंद से भरे।','Jai Shri Krishna — may your life fill with sweetness and joy.'],
+  ['f-2027-ganesh','2027-09-04','Ganesh Chaturthi','गणेश चतुर्थी','Ganesh Chaturthi','🐘','red','Bappa brings beginnings','गणपति बाप्पा मोरया — नई शुरुआत में मंगलकामनाएँ।','Ganpati Bappa Morya — auspicious wishes for every new beginning.'],
+  ['f-2027-visarjan','2027-09-14','Anant Chaturdashi','अनंत चतुर्दशी','Anant Chaturdashi','🚩','teal','Bappa goes home','बाप्पा विदा — आशीर्वाद सदा बना रहे।','Bappa returns home — may his blessings always remain.'],
+  ['f-2027-navratri-sharad','2027-09-30','Sharad Navratri','शरद नवरात्रि','Sharad Navratri','🪷','red','Nine nights of devotion','माँ दुर्गा की नौ रातें — शक्ति और शांति का वरदान।','Nine nights of Maa Durga — a blessing of strength and peace.'],
+  ['f-2027-gandhi','2027-10-02','Gandhi Jayanti','गांधी जयंती','Gandhi Jayanti','🕊️','earth','Peace & truth','सत्य और अहिंसा — गांधी जयंती पर विनम्र प्रणाम।','Truth and non-violence — humble tributes on Gandhi Jayanti.'],
+  ['f-2027-saraswati','2027-10-07','Saraswati Puja','सरस्वती पूजा','Saraswati Puja','🎓','gold','Wisdom & art','माँ सरस्वती का आशीर्वाद — विद्या और कला में उत्कृष्टता।','Blessings of Maa Saraswati — excellence in wisdom and art.'],
+  ['f-2027-dussehra','2027-10-09','Dussehra','दशहरा','Dussehra','🏹','saffron','Victory of good','विजयादशमी — बुराई पर अच्छाई की जीत।','Vijayadashami — the victory of good over evil.'],
+  ['f-2027-sharadpurnima','2027-10-14','Sharad Purnima','शरद पूर्णिमा','Sharad Purnima','🌕','moon','Moonlit blessings','शरद पूर्णिमा की चाँदनी — जीवन में शीतलता और सुख।','The moonlight of Sharad Purnima — calm and happiness in life.'],
+  ['f-2027-karwa','2027-10-18','Karwa Chauth','करवा चौथ','Karwa Chauth','🌙','pink','Love & long life','करवा चौथ — स्नेह और समर्पण का पवित्र व्रत।','Karwa Chauth — a sacred vow of love and devotion.'],
+  ['f-2027-dhanteras','2027-10-27','Dhanteras','धनतेरस','Dhanteras','🪙','gold','Wealth & health','धनतेरस — घर में धन, स्वास्थ्य और खुशहाली।','Dhanteras — wealth, health and happiness at home.'],
+  ['f-2027-diwali','2027-10-29','Diwali','दीपावली','Diwali','🪔','diwali','Lakshmi Puja · Festival of Lights','दीयों की रोशनी से घर-आँगन जगमगाए — दीपावली की हार्दिक शुभकामनाएँ।','May diyas light up every corner — warm wishes for a bright Diwali.'],
+  ['f-2027-govardhan','2027-10-30','Govardhan Puja','गोवर्धन पूजा','Govardhan Puja','🥁','green','Gratitude for abundance','गोवर्धन पूजा — अन्न, प्रकृति और समृद्धि के लिए कृतज्ञता।','Govardhan Puja — gratitude for food, nature and abundance.'],
+  ['f-2027-bhaidooj','2027-10-31','Bhaiya Dooj','भैया दूज','Bhaiya Dooj','🎁','marigold','Sisters & brothers','भाई-बहन का स्नेह — हर मुश्किल में एक-दूसरे का साथ।','The bond of siblings — standing together through every challenge.'],
+  ['f-2027-chhath','2027-11-04','Chhath Puja','छठ पूजा','Chhath Puja','🌅','saffron','Arghya to the Sun','छठ पूजा — सूर्य देव को अर्घ्य और परिवार की सुख-समृद्धि।','Chhath Puja — offerings to Surya Dev and family wellbeing.'],
+  ['f-2027-tulsi','2027-11-11','Tulasi Vivah','तुलसी विवाह','Tulasi Vivah','🌿','green','Sacred union','तुलसी विवाह — घर में मंगल और शुद्धता का वास।','Tulasi Vivah — auspiciousness and purity in the home.'],
+  ['f-2027-kartik','2027-11-14','Kartika Purnima','कार्तिक पूर्णिमा','Kartika Purnima','🪔','moon','Devotion & light','कार्तिक पूर्णिमा — दीपदान और श्रद्धा का पावन अवसर।','Kartika Purnima — a sacred occasion for light and devotion.'],
+  // 2028 — fixed national days (Hindu dates added via online refresh / in-app edit)
+  ['f-2028-newyear','2028-01-01','New Year','नव वर्ष','New Year','🎉','marigold','A fresh start','नए साल की नई उम्मीदें — हर दिन बेहतर बनाएँ।','New hopes for a new year — make every day better.'],
+  ['f-2028-republic','2028-01-26','Republic Day','गणतंत्र दिवस','Republic Day','🇮🇳','national','Jai Hind','गणतंत्र दिवस — एकता और गर्व का उत्सव।','Republic Day — a celebration of unity and pride.'],
+  ['f-2028-independence','2028-08-15','Independence Day','स्वतंत्रता दिवस','Independence Day','🇮🇳','national','Freedom & pride','स्वतंत्रता दिवस — देश के लिए गर्व और संकल्प।','Independence Day — pride and resolve for our nation.'],
+  ['f-2028-gandhi','2028-10-02','Gandhi Jayanti','गांधी जयंती','Gandhi Jayanti','🕊️','earth','Peace & truth','सत्य और अहिंसा के मार्ग पर प्रणाम।','Tributes on the path of truth and non-violence.']
+].map(a => ({
+  id:a[0], date:a[1], name:a[2], hi:a[3], en:a[4], emoji:a[5], theme:a[6], note:a[7],
+  greetHi:a[8], greetEn:a[9], source:'seed', edited:false, createdAt:Date.now()
+}));
+
+const FESTIVAL_THEMES = {
+  saffron:  { bg1:'#B2482A', bg2:'#D9832F', accent:'#FFD98F' },
+  marigold: { bg1:'#A9641B', bg2:'#DFA43A', accent:'#FFF0C2' },
+  red:      { bg1:'#8E2333', bg2:'#C2453C', accent:'#FFD9A8' },
+  green:    { bg1:'#276B4F', bg2:'#4E9B5E', accent:'#E4F7C9' },
+  royal:    { bg1:'#2E2A63', bg2:'#5B4B9B', accent:'#F1D48A' },
+  teal:     { bg1:'#175E63', bg2:'#2E8C86', accent:'#CFF3E2' },
+  pink:     { bg1:'#8E2F5A', bg2:'#C95C85', accent:'#FFDCE8' },
+  violet:   { bg1:'#4A2D6B', bg2:'#8556B0', accent:'#F3DDFF' },
+  blue:     { bg1:'#1F4670', bg2:'#3E7FB5', accent:'#D9EEFF' },
+  gold:     { bg1:'#7A5318', bg2:'#B98A2E', accent:'#FFF0C2' },
+  peacock:  { bg1:'#0F5A5A', bg2:'#2E8C86', accent:'#F3D48A' },
+  earth:    { bg1:'#4C3A24', bg2:'#8A6A3E', accent:'#F6E6C4' },
+  national: { bg1:'#8A4A1C', bg2:'#2F7A4F', accent:'#FFE6A6' },
+  moon:     { bg1:'#283A66', bg2:'#4F6DA8', accent:'#FFEFC4' },
+  holi:     { bg1:'#7A2E6B', bg2:'#D96A4A', accent:'#CDEFB8' },
+  diwali:   { bg1:'#6E1F27', bg2:'#B6742A', accent:'#FFE7A3' }
+};
+const FESTIVAL_THEME_KEYS = Object.keys(FESTIVAL_THEMES);
+
+const DEFAULT_QUOTES = [
+  'Start before you feel ready. Clarity comes from motion.',
+  'Your network grows when your follow-up is on time.',
+  'Small daily steps build the portfolio you dream about.',
+  'Aaj ka ek sincere call kal ka bada deal ban sakta hai.',
+  'Consistency is the quiet engine behind every big name.',
+  'मेहनत इतनी खामोशी से करो कि कामयाबी शोर मचा दे।',
+  'Every no is data that brings you closer to the right yes.',
+  'Show up for people, and the business will show up for you.',
+  'Rate can be negotiated. Trust cannot. Build trust first.',
+  'The best time to send that festival wish is today.',
+  'Know your corridor, know your buyer, know your numbers.',
+  'A clear shortlist beats a long list of maybe.',
+  'Follow up like a professional, not like a reminder.',
+  'आज का दिन आपकी अगली बड़ी सफलता की शुरुआत है।',
+  'One good conversation is worth ten cold broadcasts.',
+  'Do the boring documentation well; it protects the big dream.',
+  'Your reputation is your real inventory.',
+  'Celebrate others sincerely. Goodwill compounds.',
+  'Finish one thing before starting three.',
+  'If the client trusts you, price stops being the only story.'
+].map((text, i) => ({ id:'q-seed-' + (i+1), text, by:'BCS Desk', source:'seed', edited:false, createdAt:Date.now() }));
+
 const DEFAULT_LINK_CATEGORIES = [
   { id:'lcat-gov',     name:'Government / RERA', color:'#7C8B6B' },
   { id:'lcat-jaipur',  name:'Jaipur local',      color:'#C4A24A' },
@@ -4540,6 +4910,46 @@ function normalizeDb(d){
     createdAt: v.createdAt || Date.now(),
     updatedAt: v.updatedAt || Date.now()
   }));
+  // Daily hero — festivals & motivation (editable, data-driven)
+  if(!Array.isArray(d.festivals)) d.festivals = DEFAULT_FESTIVALS.map(f => ({ ...f }));
+  d.festivals = d.festivals
+    .filter(f => f && /^\d{4}-\d{2}-\d{2}$/.test(String(f.date || '')) && (f.name || f.hi))
+    .map(f => ({
+      id: f.id || ('f-' + String(f.date).replace(/-/g,'') + '-' + uid()),
+      date: String(f.date),
+      name: String(f.name || f.en || f.hi || 'Festival').slice(0, 80),
+      hi: String(f.hi || '').slice(0, 80),
+      en: String(f.en || f.name || '').slice(0, 80),
+      emoji: String(f.emoji || '✨').slice(0, 6),
+      theme: FESTIVAL_THEMES[f.theme] ? f.theme : 'saffron',
+      note: String(f.note || '').slice(0, 120),
+      greetHi: String(f.greetHi || '').slice(0, 400),
+      greetEn: String(f.greetEn || '').slice(0, 400),
+      source: ['seed','online','custom'].includes(f.source) ? f.source : 'custom',
+      edited: !!f.edited,
+      createdAt: f.createdAt || Date.now(),
+      updatedAt: f.updatedAt || f.createdAt || Date.now()
+    }))
+    .sort((a,b) => a.date.localeCompare(b.date));
+  if(!Array.isArray(d.quotes)) d.quotes = DEFAULT_QUOTES.map(q => ({ ...q }));
+  d.quotes = d.quotes
+    .filter(q => q && String(q.text || '').trim())
+    .map(q => ({
+      id: q.id || ('q-' + uid()),
+      text: String(q.text).trim().slice(0, 280),
+      by: String(q.by || '').slice(0, 80),
+      source: ['seed','custom'].includes(q.source) ? q.source : 'custom',
+      edited: !!q.edited,
+      createdAt: q.createdAt || Date.now(),
+      updatedAt: q.updatedAt || q.createdAt || Date.now()
+    }));
+  if(!d.daily || typeof d.daily !== 'object') d.daily = {};
+  if(typeof d.daily.quoteOffset !== 'number' || !isFinite(d.daily.quoteOffset)) d.daily.quoteOffset = 0;
+  d.daily.quoteOffset = Math.max(0, Math.floor(d.daily.quoteOffset));
+  if(d.daily.festivalRefreshAt == null) d.daily.festivalRefreshAt = 0;
+  if(d.daily.festivalRefreshNote == null) d.daily.festivalRefreshNote = '';
+  if(!Array.isArray(d.daily.deletedFestivalIds)) d.daily.deletedFestivalIds = [];
+  d.daily.deletedFestivalIds = d.daily.deletedFestivalIds.filter(id => typeof id === 'string').slice(0, 300);
   if(!d.version || d.version < 11) d.version = 11;
   return d;
 }
@@ -5245,6 +5655,7 @@ function renderDashboard(){
   renderNewsMini();
   renderLinksMini();
   renderPulse();
+  renderDailyHero();
 }
 
 function renderPulse(){
@@ -5281,6 +5692,647 @@ function renderPulse(){
   const next = tasks.find(t => !t.done) || overdueTodos(today)[0] || null;
   if($('#pulseNext')) $('#pulseNext').textContent = next ? (next.title || 'Next task') : 'Add a task';
   if($('#pulseNextSub')) $('#pulseNextSub').textContent = next ? ((next.time ? next.time + ' · ' : '') + (next.priority && next.priority !== 'normal' ? next.priority + ' priority' : 'Next up')) : 'plan your day';
+}
+
+/* ================= daily hero: date, festival, motivation, posters ================= */
+const HINDI_WEEKDAYS = ['रविवार','सोमवार','मंगलवार','बुधवार','गुरुवार','शुक्रवार','शनिवार'];
+const HINDI_MONTHS = ['जनवरी','फरवरी','मार्च','अप्रैल','मई','जून','जुलाई','अगस्त','सितंबर','अक्टूबर','नवंबर','दिसंबर'];
+let posterFestival = null;
+let posterKind = 'status';
+
+function isoToDate(iso){
+  const d = new Date(String(iso || '') + 'T00:00:00');
+  return isNaN(d.getTime()) ? null : d;
+}
+function daysFromToday(iso){
+  const d = isoToDate(iso);
+  if(!d) return 0;
+  const t = isoToDate(todayISO());
+  return Math.round((d.getTime() - t.getTime()) / 86400000);
+}
+function shortFestDate(iso){
+  const d = isoToDate(iso);
+  if(!d) return iso;
+  const sameYear = d.getFullYear() === new Date().getFullYear();
+  return d.toLocaleDateString('en-IN', { day:'numeric', month:'short', ...(sameYear ? {} : { year:'numeric' }) });
+}
+function festivalById(id){
+  return (db.festivals || []).find(f => f.id === id) || null;
+}
+function festivalByDate(iso){
+  const list = (db.festivals || []).filter(f => f.date === iso);
+  if(!list.length) return null;
+  return list.find(f => f.greetHi || f.greetEn) || list[0];
+}
+function upcomingFestivals(limit, fromISO){
+  const from = fromISO || todayISO();
+  const seen = new Set();
+  return (db.festivals || [])
+    .filter(f => f.date > from)
+    .sort((a,b) => a.date.localeCompare(b.date))
+    .filter(f => { if(seen.has(f.date)) return false; seen.add(f.date); return true; })
+    .slice(0, limit || 3);
+}
+function virtualTodayFestival(){
+  const d = new Date();
+  const theme = ['saffron','gold','marigold','green','peacock','royal','pink'][d.getDay() % 7];
+  return {
+    id:'virtual-today', date:todayISO(), name:'Aaj ka din', hi:'आज का दिन', en:'Today',
+    emoji:'🌞', theme, note:'A fresh page · make it count',
+    greetHi:'आज का दिन शुभ हो — छोटे कदम, बड़े बदलाव।',
+    greetEn:'Make today count — small steps, big changes.',
+    source:'custom', edited:false
+  };
+}
+function dailyQuoteRecord(){
+  const quotes = (db.quotes && db.quotes.length) ? db.quotes : DEFAULT_QUOTES;
+  if(!quotes.length) return { text:'Aaj ka din shubh ho.', by:'' };
+  const d = isoToDate(todayISO()) || new Date();
+  const start = new Date(d.getFullYear(), 0, 1);
+  const doy = Math.floor((d.getTime() - start.getTime()) / 86400000);
+  const off = Number(db.daily && db.daily.quoteOffset) || 0;
+  const idx = ((doy + off) % quotes.length + quotes.length) % quotes.length;
+  return quotes[idx];
+}
+function cycleDailyQuote(){
+  if(!db.daily) db.daily = {};
+  db.daily.quoteOffset = (Number(db.daily.quoteOffset) || 0) + 1;
+  save();
+  renderDailyHero();
+  const box = $('#thQuoteBox');
+  if(box){ box.classList.remove('swap'); void box.offsetWidth; box.classList.add('swap'); }
+}
+
+function renderDailyHero(){
+  const hero = $('#todayHero');
+  if(!hero) return;
+  const now = new Date();
+  const iso = todayISO();
+  const fest = festivalByDate(iso) || virtualTodayFestival();
+  const pal = FESTIVAL_THEMES[fest.theme] || FESTIVAL_THEMES.saffron;
+  hero.style.setProperty('--th-bg1', pal.bg1);
+  hero.style.setProperty('--th-bg2', pal.bg2);
+  hero.style.setProperty('--th-accent', pal.accent);
+
+  if($('#thWeekdayHi')) $('#thWeekdayHi').textContent = HINDI_WEEKDAYS[now.getDay()];
+  if($('#thWeekdayEn')) $('#thWeekdayEn').textContent = now.toLocaleDateString('en-IN', { weekday:'long' });
+  if($('#thDay')) $('#thDay').textContent = String(now.getDate()).padStart(2, '0');
+  if($('#thMonth')) $('#thMonth').textContent = now.toLocaleDateString('en-IN', { month:'long', year:'numeric' });
+  if($('#thMonthHi')) $('#thMonthHi').textContent = HINDI_MONTHS[now.getMonth()];
+
+  if($('#thEmoji')) $('#thEmoji').textContent = fest.emoji || '✨';
+  if($('#thFestivalName')) $('#thFestivalName').textContent = fest.name || 'Aaj';
+  if($('#thTodayChip')) $('#thTodayChip').textContent = festivalByDate(iso) ? 'Aaj · Today' : 'Aaj · Today';
+  if($('#thFestivalHi')) $('#thFestivalHi').textContent = fest.hi || fest.name || 'आज का दिन';
+  if($('#thFestivalEn')) $('#thFestivalEn').textContent = [fest.en || fest.name, fest.note].filter(Boolean).join(' · ');
+  if($('#thGreetHi')) $('#thGreetHi').textContent = fest.greetHi || 'आज का दिन शुभ हो।';
+  if($('#thGreetEn')) $('#thGreetEn').textContent = fest.greetEn || 'Have a blessed day.';
+
+  const q = dailyQuoteRecord();
+  if($('#thQuote')) $('#thQuote').textContent = q.text || '';
+  if($('#thQuoteBy')) $('#thQuoteBy').textContent = q.by ? '— ' + q.by : '';
+
+  const manage = $('#thManage');
+  if(manage) manage.style.display = isAdmin() ? 'inline-flex' : 'none';
+
+  const up = $('#thUpcoming');
+  if(up){
+    const list = upcomingFestivals(3, iso);
+    up.innerHTML = list.length ? list.map(f => {
+      const diff = daysFromToday(f.date);
+      const when = diff === 1 ? 'tomorrow' : diff + ' days';
+      return `<button type="button" class="th-up-item" data-th-share="${esc(f.id)}" title="Poster banayein — ${esc(f.name)}">
+        <span class="th-up-emoji">${f.emoji || '✨'}</span>
+        <span class="th-up-copy"><b>${esc(f.name)}</b><span>${esc(shortFestDate(f.date))}${f.note ? ' · ' + esc(f.note) : ''}</span></span>
+        <span class="th-up-days">${when}</span>
+      </button>`;
+    }).join('') : `<div class="th-up-empty">${isAdmin() ? 'No upcoming dates in this list. Open ⚙ Manage to add the next year.' : 'More festival dates coming soon.'}</div>`;
+  }
+}
+
+/* ---------- poster generation ---------- */
+function roundRectPath(ctx, x, y, w, h, r){
+  const rr = Math.min(r, w/2, h/2);
+  ctx.beginPath();
+  ctx.moveTo(x + rr, y);
+  ctx.arcTo(x + w, y, x + w, y + h, rr);
+  ctx.arcTo(x + w, y + h, x, y + h, rr);
+  ctx.arcTo(x, y + h, x, y, rr);
+  ctx.arcTo(x, y, x + w, y, rr);
+  ctx.closePath();
+}
+function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight, maxLines){
+  const words = String(text || '').replace(/\s+/g, ' ').trim().split(' ').filter(Boolean);
+  const lines = [];
+  let line = '';
+  for(const word of words){
+    const test = line ? line + ' ' + word : word;
+    if(ctx.measureText(test).width > maxWidth && line){
+      lines.push(line);
+      line = word;
+      if(lines.length >= maxLines) break;
+    } else {
+      line = test;
+    }
+  }
+  if(line && lines.length < maxLines) lines.push(line);
+  lines.forEach((ln, i) => ctx.fillText(ln, x, y + i*lineHeight));
+  return y + Math.max(lines.length, 1) * lineHeight;
+}
+function drawPoster(canvas, kind, fest){
+  if(!canvas) return;
+  const W = canvas.width, H = canvas.height;
+  const ctx = canvas.getContext('2d');
+  const pal = FESTIVAL_THEMES[fest.theme] || FESTIVAL_THEMES.saffron;
+  const status = kind === 'status';
+  const M = status
+    ? { pad:110, frame:44, logo:126, logoX:74, logoY:84, brandX:226, brandY:136, subY:174,
+        emojiY:570, emojiSize:150, kickY:806, nameY:936, nameSize:96, noteY:1004,
+        greetY:1120, hiSize:48, hiLine:68, hiMax:3, enSize:34, enLine:48, enMax:4,
+        footY:1668, footSize:33, footSub:24, ring:214, ringGap:48, rings:3 }
+    : { pad:76, frame:30, logo:96, logoX:60, logoY:58, brandX:180, brandY:100, subY:130,
+        emojiY:330, emojiSize:112, kickY:462, nameY:556, nameSize:76, noteY:612,
+        greetY:696, hiSize:34, hiLine:46, hiMax:3, enSize:26, enLine:35, enMax:2,
+        footY:958, footSize:26, footSub:19, ring:150, ringGap:38, rings:3 };
+
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.clearRect(0,0,W,H);
+
+  const g = ctx.createLinearGradient(0, 0, W, H);
+  g.addColorStop(0, pal.bg1);
+  g.addColorStop(.58, pal.bg2);
+  g.addColorStop(1, pal.bg1);
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, W, H);
+
+  let rg = ctx.createRadialGradient(W*.84, H*.14, 0, W*.84, H*.14, W*.62);
+  rg.addColorStop(0, 'rgba(255,255,255,.30)');
+  rg.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = rg;
+  ctx.fillRect(0, 0, W, H);
+  rg = ctx.createRadialGradient(W*.10, H*.88, 0, W*.10, H*.88, W*.56);
+  rg.addColorStop(0, 'rgba(255,226,152,.24)');
+  rg.addColorStop(1, 'rgba(255,226,152,0)');
+  ctx.fillStyle = rg;
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.strokeStyle = 'rgba(255,255,255,.24)';
+  ctx.lineWidth = 3;
+  roundRectPath(ctx, M.frame, M.frame, W - M.frame*2, H - M.frame*2, status ? 40 : 30);
+  ctx.stroke();
+
+  // soft concentric rings behind the festival emoji
+  ctx.save();
+  ctx.globalAlpha = .10;
+  ctx.strokeStyle = '#FFFFFF';
+  ctx.lineWidth = 2;
+  for(let i=0;i<M.rings;i++){
+    ctx.beginPath();
+    ctx.arc(W/2, M.emojiY, M.ring + i*M.ringGap, 0, Math.PI*2);
+    ctx.stroke();
+  }
+  ctx.restore();
+
+  // corner sparkles
+  ctx.save();
+  ctx.globalAlpha = .34;
+  ctx.fillStyle = pal.accent;
+  ctx.font = '600 34px system-ui, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('✦', M.pad, H - M.pad - 4);
+  ctx.textAlign = 'right';
+  ctx.fillText('✦', W - M.pad, M.pad + 34);
+  ctx.restore();
+
+  // brand block
+  ctx.fillStyle = 'rgba(255,251,241,.96)';
+  roundRectPath(ctx, M.logoX, M.logoY, M.logo, M.logo, status ? 30 : 24);
+  ctx.fill();
+  ctx.fillStyle = pal.bg1;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.font = `700 ${Math.round(M.logo*.36)}px 'Fraunces', Georgia, serif`;
+  ctx.fillText('BCS', M.logoX + M.logo/2, M.logoY + M.logo/2 + 2);
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillStyle = 'rgba(255,251,241,.96)';
+  ctx.font = `800 ${status ? 29 : 23}px 'DM Sans', system-ui, sans-serif`;
+  ctx.fillText('BUSINESS CITY SQUARE', M.brandX, M.brandY);
+  ctx.fillStyle = 'rgba(255,251,241,.68)';
+  ctx.font = `600 ${status ? 21 : 17}px 'DM Sans', system-ui, sans-serif`;
+  ctx.fillText('JAIPUR PROPERTY INTELLIGENCE', M.brandX, M.subY);
+
+  // date, top right
+  ctx.textAlign = 'right';
+  ctx.fillStyle = 'rgba(255,251,241,.82)';
+  ctx.font = `600 ${status ? 26 : 20}px 'DM Sans', system-ui, sans-serif`;
+  ctx.fillText(fmtDate(fest.date || todayISO()), W - M.pad, M.brandY);
+
+  // emoji
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.font = `${M.emojiSize}px 'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif`;
+  ctx.fillText(fest.emoji || '✨', W/2, M.emojiY);
+  ctx.textBaseline = 'alphabetic';
+
+  // English kicker + Hindi name + note
+  ctx.textAlign = 'center';
+  ctx.fillStyle = pal.accent;
+  ctx.font = `800 ${status ? 30 : 24}px 'DM Sans', system-ui, sans-serif`;
+  ctx.fillText(String(fest.name || '').toUpperCase(), W/2, M.kickY);
+  ctx.fillStyle = 'rgba(255,251,241,.98)';
+  ctx.font = `600 ${M.nameSize}px 'Noto Sans Devanagari','Kohinoor Devanagari','Devanagari Sangam MN','Fraunces',serif`;
+  ctx.fillText(fest.hi || fest.name || '', W/2, M.nameY);
+  if(fest.note){
+    ctx.fillStyle = 'rgba(255,251,241,.72)';
+    ctx.font = `500 ${status ? 32 : 24}px 'Fraunces', Georgia, serif`;
+    ctx.fillText(fest.note, W/2, M.noteY);
+  }
+
+  // greetings
+  ctx.textAlign = 'left';
+  ctx.fillStyle = 'rgba(255,251,241,.97)';
+  ctx.font = `600 ${M.hiSize}px 'Noto Sans Devanagari','Kohinoor Devanagari','Devanagari Sangam MN',serif`;
+  let y = wrapCanvasText(ctx, fest.greetHi, M.pad, M.greetY, W - M.pad*2, M.hiLine, M.hiMax);
+  y += status ? 32 : 24;
+  ctx.fillStyle = 'rgba(255,251,241,.80)';
+  ctx.font = `400 ${M.enSize}px 'DM Sans', system-ui, sans-serif`;
+  wrapCanvasText(ctx, fest.greetEn, M.pad, y, W - M.pad*2, M.enLine, M.enMax);
+
+  // footer
+  ctx.fillStyle = 'rgba(255,255,255,.24)';
+  ctx.fillRect(M.pad, M.footY, W - M.pad*2, 2);
+  ctx.fillStyle = 'rgba(255,251,241,.98)';
+  ctx.font = `700 ${M.footSize}px 'DM Sans', system-ui, sans-serif`;
+  ctx.textAlign = 'left';
+  ctx.fillText('BCS · Business City Square', M.pad, M.footY + (status ? 62 : 46));
+  ctx.fillStyle = pal.accent;
+  ctx.textAlign = 'right';
+  ctx.fillText('@ajaysharma.bcs', W - M.pad, M.footY + (status ? 62 : 46));
+  ctx.fillStyle = 'rgba(255,251,241,.66)';
+  ctx.font = `500 ${M.footSub}px 'DM Sans', system-ui, sans-serif`;
+  ctx.textAlign = 'left';
+  ctx.fillText('Jaipur · Rajasthan', M.pad, M.footY + (status ? 112 : 82));
+  ctx.textAlign = 'right';
+  ctx.fillText('realestateajaysharma-jp.github.io/bcs-desk', W - M.pad, M.footY + (status ? 112 : 82));
+  ctx.textAlign = 'left';
+}
+function paintPoster(){
+  if(!posterFestival) return;
+  const f = posterFestival;
+  drawPoster($('#posterStatus'), 'status', f);
+  drawPoster($('#posterSquare'), 'square', f);
+}
+function openPosterFor(id){
+  let fest = id && id !== 'today' ? festivalById(id) : (festivalByDate(todayISO()) || virtualTodayFestival());
+  if(!fest) fest = virtualTodayFestival();
+  posterFestival = fest;
+  setPosterTab('status', true);
+  if($('#posterTitle')) $('#posterTitle').textContent = (fest.emoji || '✨') + ' ' + (fest.name || 'Festival') + ' poster';
+  showOverlay('posterModal');
+  paintPoster();
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(() => { if(posterFestival && posterFestival.id === fest.id) paintPoster(); }).catch(() => {});
+  }
+}
+function setPosterTab(kind, paint){
+  posterKind = kind === 'square' ? 'square' : 'status';
+  $$('[data-poster-tab]').forEach(b => b.classList.toggle('on', b.dataset.posterTab === posterKind));
+  const s = $('#posterStatus'), q = $('#posterSquare');
+  if(s) s.classList.toggle('on', posterKind === 'status');
+  if(q) q.classList.toggle('on', posterKind === 'square');
+  if(paint) paintPoster();
+}
+function activePosterCanvas(){
+  return posterKind === 'square' ? $('#posterSquare') : $('#posterStatus');
+}
+function posterFileName(){
+  const slug = String((posterFestival && posterFestival.name) || 'bcs').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'bcs';
+  return 'bcs-' + slug + '-' + posterKind + '-' + todayISO() + '.png';
+}
+function canvasToBlob(canvas){
+  return new Promise((resolve, reject) => {
+    if(!canvas) return reject(new Error('no canvas'));
+    canvas.toBlob(b => b ? resolve(b) : reject(new Error('poster failed')), 'image/png');
+  });
+}
+function downloadPoster(){
+  const canvas = activePosterCanvas();
+  if(!canvas) return;
+  canvasToBlob(canvas).then(blob => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = posterFileName();
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    toast('Poster downloaded — ' + (posterKind === 'square' ? 'square' : 'status'));
+  }).catch(() => toast('Poster could not be created — try again', true));
+}
+async function sharePosterNow(){
+  const canvas = activePosterCanvas();
+  if(!canvas || !posterFestival) return;
+  try{
+    const blob = await canvasToBlob(canvas);
+    const file = new File([blob], posterFileName(), { type:'image/png' });
+    if(navigator.canShare && navigator.canShare({ files:[file] })){
+      await navigator.share({
+        files:[file],
+        title:(posterFestival.name || 'BCS') + ' · BCS',
+        text:(posterFestival.greetEn || 'Greetings from BCS') + ' — BCS · @ajaysharma.bcs'
+      });
+      return;
+    }
+  }catch(e){
+    if(e && e.name === 'AbortError') return;
+  }
+  downloadPoster();
+}
+
+/* ---------- festival + quote manager ---------- */
+function renderFmThemeOptions(){
+  const sel = $('#fmTheme');
+  if(!sel || sel.options.length) return;
+  sel.innerHTML = FESTIVAL_THEME_KEYS.map(k => `<option value="${k}">${k.charAt(0).toUpperCase() + k.slice(1)}</option>`).join('');
+}
+function renderFmFestivals(){
+  const wrap = $('#fmFestivalList');
+  if(!wrap) return;
+  const list = [...(db.festivals || [])].sort((a,b) => a.date.localeCompare(b.date));
+  wrap.innerHTML = list.length ? list.map(f => `
+    <div class="fm-row">
+      <span class="fm-emo">${f.emoji || '✨'}</span>
+      <div class="fm-copy">
+        <b>${esc(f.name || f.hi || 'Festival')}${f.hi && f.hi !== f.name ? ' · ' + esc(f.hi) : ''}</b>
+        <span>${esc(fmtDate(f.date))} · ${esc(f.note || 'No note')}${f.edited ? ' · edited' : ''}</span>
+      </div>
+      <div class="fm-actions">
+        <button type="button" class="fm-icon" data-fm-edit="${esc(f.id)}" title="Edit">✎</button>
+        <button type="button" class="fm-icon del" data-fm-del="${esc(f.id)}" title="Delete">✕</button>
+      </div>
+    </div>`).join('') : `<div class="fm-empty">No festivals yet — add the first one below.</div>`;
+}
+function renderFmQuotes(){
+  const wrap = $('#fmQuoteList');
+  if(!wrap) return;
+  const list = db.quotes || [];
+  wrap.innerHTML = list.length ? list.map(q => `
+    <div class="fm-quote-row">
+      <p>${esc(q.text)}${q.by ? `<span>— ${esc(q.by)}</span>` : ''}</p>
+      <div class="fm-actions">
+        <button type="button" class="fm-icon" data-fq-edit="${esc(q.id)}" title="Edit">✎</button>
+        <button type="button" class="fm-icon del" data-fq-del="${esc(q.id)}" title="Delete">✕</button>
+      </div>
+    </div>`).join('') : `<div class="fm-empty">No motivation lines yet — add one below.</div>`;
+}
+function clearFestivalForm(){
+  if($('#fmId')) $('#fmId').value = '';
+  ['fmDate','fmName','fmHi','fmEmoji','fmNote','fmGreetHi','fmGreetEn'].forEach(id => { if($('#'+id)) $('#'+id).value = ''; });
+  if($('#fmTheme')) $('#fmTheme').value = 'saffron';
+  if($('#fmFormTitle')) $('#fmFormTitle').textContent = 'Add a festival';
+}
+function fillFestivalForm(f){
+  if(!f) return;
+  if($('#fmId')) $('#fmId').value = f.id;
+  if($('#fmDate')) $('#fmDate').value = f.date;
+  if($('#fmName')) $('#fmName').value = f.name || '';
+  if($('#fmHi')) $('#fmHi').value = f.hi || '';
+  if($('#fmEmoji')) $('#fmEmoji').value = f.emoji || '';
+  if($('#fmTheme')) $('#fmTheme').value = FESTIVAL_THEMES[f.theme] ? f.theme : 'saffron';
+  if($('#fmNote')) $('#fmNote').value = f.note || '';
+  if($('#fmGreetHi')) $('#fmGreetHi').value = f.greetHi || '';
+  if($('#fmGreetEn')) $('#fmGreetEn').value = f.greetEn || '';
+  if($('#fmFormTitle')) $('#fmFormTitle').textContent = 'Edit festival';
+  const form = $('#fmFestivalForm');
+  if(form) form.scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+function saveFestivalFromForm(e){
+  if(e) e.preventDefault();
+  if(!isAdmin()) return toast('Advisor login sirf view ke liye hai', true);
+  const date = ($('#fmDate') && $('#fmDate').value) || '';
+  const name = (($('#fmName') && $('#fmName').value) || '').trim();
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(date)) return toast('Festival date select karein', true);
+  if(!name) return toast('Festival ka naam likhein', true);
+  const id = ($('#fmId') && $('#fmId').value) || '';
+  const payload = {
+    date,
+    name,
+    hi: (($('#fmHi') && $('#fmHi').value) || '').trim(),
+    en: name,
+    emoji: (($('#fmEmoji') && $('#fmEmoji').value) || '✨').trim(),
+    theme: ($('#fmTheme') && $('#fmTheme').value) || 'saffron',
+    note: (($('#fmNote') && $('#fmNote').value) || '').trim(),
+    greetHi: (($('#fmGreetHi') && $('#fmGreetHi').value) || '').trim(),
+    greetEn: (($('#fmGreetEn') && $('#fmGreetEn').value) || '').trim()
+  };
+  const existing = id ? festivalById(id) : null;
+  if(existing){
+    Object.assign(existing, payload, { edited:true, updatedAt:Date.now() });
+  } else {
+    db.festivals.push({
+      id: 'f-' + date.replace(/-/g,'') + '-' + Date.now().toString(36),
+      ...payload,
+      source:'custom', edited:true, createdAt:Date.now(), updatedAt:Date.now()
+    });
+  }
+  db.festivals.sort((a,b) => a.date.localeCompare(b.date));
+  save();
+  clearFestivalForm();
+  renderFmFestivals();
+  renderDailyHero();
+  toast(existing ? 'Festival updated' : 'Festival added');
+}
+function deleteFestival(id){
+  const f = festivalById(id);
+  if(!f) return;
+  if(!confirm(`Delete "${f.name}" (${fmtDate(f.date)}) from the calendar?`)) return;
+  db.festivals = db.festivals.filter(x => x.id !== id);
+  if(!db.daily) db.daily = {};
+  if(!Array.isArray(db.daily.deletedFestivalIds)) db.daily.deletedFestivalIds = [];
+  if(!db.daily.deletedFestivalIds.includes(id)) db.daily.deletedFestivalIds.push(id);
+  save();
+  renderFmFestivals();
+  renderDailyHero();
+  toast('Festival deleted');
+}
+function clearQuoteForm(){
+  if($('#fqId')) $('#fqId').value = '';
+  if($('#fqText')) $('#fqText').value = '';
+  if($('#fqBy')) $('#fqBy').value = '';
+  if($('#fmQuoteFormTitle')) $('#fmQuoteFormTitle').textContent = 'Add a motivation line';
+}
+function fillQuoteForm(q){
+  if(!q) return;
+  if($('#fqId')) $('#fqId').value = q.id;
+  if($('#fqText')) $('#fqText').value = q.text || '';
+  if($('#fqBy')) $('#fqBy').value = q.by || '';
+  if($('#fmQuoteFormTitle')) $('#fmQuoteFormTitle').textContent = 'Edit motivation line';
+}
+function saveQuoteFromForm(e){
+  if(e) e.preventDefault();
+  if(!isAdmin()) return toast('Advisor login sirf view ke liye hai', true);
+  const text = (($('#fqText') && $('#fqText').value) || '').trim();
+  if(!text) return toast('Motivation line likhein', true);
+  const id = ($('#fqId') && $('#fqId').value) || '';
+  const q = id ? (db.quotes || []).find(x => x.id === id) : null;
+  if(q){
+    q.text = text.slice(0, 280);
+    q.by = (($('#fqBy') && $('#fqBy').value) || '').trim().slice(0, 80);
+    q.edited = true;
+    q.updatedAt = Date.now();
+  } else {
+    db.quotes.push({
+      id:'q-' + Date.now().toString(36),
+      text:text.slice(0, 280),
+      by:(($('#fqBy') && $('#fqBy').value) || '').trim().slice(0, 80),
+      source:'custom', edited:true, createdAt:Date.now(), updatedAt:Date.now()
+    });
+  }
+  save();
+  clearQuoteForm();
+  renderFmQuotes();
+  renderDailyHero();
+  toast(q ? 'Motivation updated' : 'Motivation added');
+}
+function deleteQuote(id){
+  if((db.quotes || []).length <= 1) return toast('Kam se kam ek motivation line chahiye', true);
+  const q = (db.quotes || []).find(x => x.id === id);
+  if(!q || !confirm('Delete this motivation line?')) return;
+  db.quotes = db.quotes.filter(x => x.id !== id);
+  save();
+  renderFmQuotes();
+  renderDailyHero();
+  toast('Motivation deleted');
+}
+function openFestivalManager(){
+  if(!isAdmin()) return toast('Advisor login sirf view ke liye hai', true);
+  renderFmThemeOptions();
+  renderFmFestivals();
+  renderFmQuotes();
+  clearFestivalForm();
+  clearQuoteForm();
+  const note = $('#fmRefreshNote');
+  if(note) note.textContent = (db.daily && db.daily.festivalRefreshNote)
+    ? db.daily.festivalRefreshNote
+    : 'Offline calendar works forever. Refresh checks the hosted list and updates only rows you have not edited.';
+  $$('[data-fm-tab]').forEach(b => b.classList.toggle('on', b.dataset.fmTab === 'festivals'));
+  $$('[data-fmpane]').forEach(p => p.classList.toggle('on', p.dataset.fmpane === 'festivals'));
+  showOverlay('festivalModal');
+}
+function remoteFestival(r){
+  if(!r || !/^\d{4}-\d{2}-\d{2}$/.test(String(r.date || '')) || !(r.name || r.hi)) return null;
+  return {
+    id: r.id || ('f-' + String(r.date).replace(/-/g,'') + '-' + String(r.name || r.hi).toLowerCase().replace(/[^a-z0-9]+/g,'-')),
+    date: String(r.date),
+    name: String(r.name || r.en || r.hi).slice(0, 80),
+    hi: String(r.hi || '').slice(0, 80),
+    en: String(r.en || r.name || '').slice(0, 80),
+    emoji: String(r.emoji || '✨').slice(0, 6),
+    theme: FESTIVAL_THEMES[r.theme] ? r.theme : 'saffron',
+    note: String(r.note || '').slice(0, 120),
+    greetHi: String(r.greetHi || '').slice(0, 400),
+    greetEn: String(r.greetEn || '').slice(0, 400),
+    source:'online', edited:false
+  };
+}
+async function refreshFestivalsOnline(){
+  const btn = $('#fmRefreshOnline');
+  const note = $('#fmRefreshNote');
+  if(btn){ btn.disabled = true; btn.textContent = 'Checking…'; }
+  const urls = [
+    'festivals.json',
+    'https://realestateajaysharma-jp.github.io/bcs-desk/festivals.json'
+  ];
+  let data = null;
+  for(const url of urls){
+    try{
+      const res = await fetch(url, { cache:'no-store' });
+      if(!res.ok) continue;
+      const json = await res.json();
+      if(json && Array.isArray(json.festivals) && json.festivals.length){ data = json; break; }
+    }catch(e){ /* file:// or offline — try next */ }
+  }
+  if(btn){ btn.disabled = false; btn.textContent = '↻ Refresh festival dates online'; }
+  if(!data){
+    if(note) note.textContent = 'Online list not reachable right now — the built-in offline calendar is still active.';
+    return toast('Online refresh unavailable — offline calendar is active', true);
+  }
+  let added = 0, updated = 0, kept = 0, skipped = 0;
+  const tombstones = new Set((db.daily && db.daily.deletedFestivalIds) || []);
+  data.festivals.forEach(raw => {
+    const r = remoteFestival(raw);
+    if(!r){ skipped++; return; }
+    if(tombstones.has(r.id)){ skipped++; return; }
+    const existing = db.festivals.find(f => f.id === r.id) || db.festivals.find(f => f.date === r.date && (f.name === r.name || (f.hi && f.hi === r.hi)));
+    if(!existing){
+      db.festivals.push({ ...r, createdAt:Date.now(), updatedAt:Date.now() });
+      added++;
+    } else if(!existing.edited){
+      Object.assign(existing, r, { id:existing.id, source:'online', updatedAt:Date.now() });
+      updated++;
+    } else {
+      kept++;
+    }
+  });
+  db.festivals.sort((a,b) => a.date.localeCompare(b.date));
+  if(!db.daily) db.daily = {};
+  db.daily.festivalRefreshAt = Date.now();
+  db.daily.festivalRefreshNote = `Updated ${new Date().toLocaleString('en-IN')} · ${added} new, ${updated} refreshed, ${kept} edited kept${skipped ? ', ' + skipped + ' skipped' : ''}`;
+  save();
+  renderFmFestivals();
+  renderDailyHero();
+  if(note) note.textContent = db.daily.festivalRefreshNote;
+  toast(`Festival calendar refreshed — ${added} new, ${updated} updated`);
+}
+function initDailyHero(){
+  if(!$('#todayHero')) return;
+  const refresh = () => cycleDailyQuote();
+  const a = $('#thRefreshQuote'); if(a) a.addEventListener('click', refresh);
+  const b = $('#thQuoteRefresh'); if(b) b.addEventListener('click', refresh);
+  const share = $('#thSharePoster'); if(share) share.addEventListener('click', () => openPosterFor('today'));
+  const manage = $('#thManage'); if(manage) manage.addEventListener('click', openFestivalManager);
+  const up = $('#thUpcoming');
+  if(up) up.addEventListener('click', e => {
+    const item = e.target.closest('[data-th-share]');
+    if(item) openPosterFor(item.dataset.thShare);
+  });
+  $$('[data-poster-tab]').forEach(t => t.addEventListener('click', () => setPosterTab(t.dataset.posterTab, true)));
+  const dl = $('#posterDownload'); if(dl) dl.addEventListener('click', downloadPoster);
+  const sh = $('#posterShare'); if(sh) sh.addEventListener('click', sharePosterNow);
+  $$('[data-fm-tab]').forEach(t => t.addEventListener('click', () => {
+    $$('[data-fm-tab]').forEach(x => x.classList.toggle('on', x === t));
+    $$('[data-fmpane]').forEach(p => p.classList.toggle('on', p.dataset.fmpane === t.dataset.fmTab));
+  }));
+  const ff = $('#fmFestivalForm'); if(ff) ff.addEventListener('submit', saveFestivalFromForm);
+  const fq = $('#fmQuoteForm'); if(fq) fq.addEventListener('submit', saveQuoteFromForm);
+  const fc = $('#fmCancel'); if(fc) fc.addEventListener('click', clearFestivalForm);
+  const qc = $('#fqCancel'); if(qc) qc.addEventListener('click', clearQuoteForm);
+  const ro = $('#fmRefreshOnline'); if(ro) ro.addEventListener('click', refreshFestivalsOnline);
+  const fl = $('#fmFestivalList');
+  if(fl) fl.addEventListener('click', e => {
+    const ed = e.target.closest('[data-fm-edit]');
+    if(ed) return fillFestivalForm(festivalById(ed.dataset.fmEdit));
+    const del = e.target.closest('[data-fm-del]');
+    if(del) deleteFestival(del.dataset.fmDel);
+  });
+  const ql = $('#fmQuoteList');
+  if(ql) ql.addEventListener('click', e => {
+    const ed = e.target.closest('[data-fq-edit]');
+    if(ed) return fillQuoteForm((db.quotes || []).find(x => x.id === ed.dataset.fqEdit));
+    const del = e.target.closest('[data-fq-del]');
+    if(del) deleteQuote(del.dataset.fqDel);
+  });
+  renderFmThemeOptions();
+  let lastDay = todayISO();
+  setInterval(() => {
+    const now = todayISO();
+    if(now !== lastDay){ lastDay = now; renderDailyHero(); }
+  }, 60000);
+  document.addEventListener('visibilitychange', () => {
+    if(document.visibilityState !== 'visible') return;
+    if(todayISO() !== lastDay){ lastDay = todayISO(); renderDailyHero(); }
+  });
 }
 
 const arrowIco = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14m0 0-5-5m5 5-5 5"/></svg>';
@@ -13126,6 +14178,7 @@ initMedia();
 initFeatureControls();
 initCloudSync();
 initExperience();
+initDailyHero();
 const hadLocalData = !!localStorage.getItem(LS_KEY);
 if(!hadLocalData && !window.indexedDB) save();
 applyRoleChrome();
