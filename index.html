@@ -2841,23 +2841,26 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
 .cor-table-toggle{display:flex;align-items:center;gap:8px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end;min-width:0}
 
 /* ---- 6. analytics ---- */
-.an-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
-.kpi{position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:14px 16px;box-shadow:var(--shadow)}
-.kpi:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--kc,#B18A3E)}
-.kpi .k{font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:var(--mut);font-weight:800;margin-bottom:3px}
-.kpi .v{font-family:'Fraunces',serif;font-size:25px;font-weight:600;letter-spacing:-.4px;color:var(--ink);line-height:1.1}
-.kpi .s{font-size:10px;color:var(--mut);font-weight:600;margin-top:2px}
-.an-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-.an-card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:16px 17px;box-shadow:var(--shadow);min-width:0}
-.an-card-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:12px}
-.an-card-head h4{font-family:'Fraunces',serif;font-size:16px;font-weight:600;letter-spacing:-.2px}
-.an-card-head span{font-size:10px;color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:.6px}
-.an-bars{display:flex;flex-direction:column;gap:8px}
-.an-bar{display:grid;grid-template-columns:108px minmax(0,1fr) 52px;gap:9px;align-items:center;cursor:pointer}
-.an-bar .an-lab{font-size:11px;font-weight:700;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.an-track{height:9px;border-radius:99px;background:#EEF2EF;overflow:hidden}
+.an-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.kpi{position:relative;overflow:hidden;background:#fff;border:1px solid rgba(229,234,232,.9);border-radius:18px;padding:16px 18px;box-shadow:0 14px 30px -22px rgba(46,45,32,.14);transition:transform .2s ease,box-shadow .2s ease}
+.kpi:hover{transform:translateY(-2px);box-shadow:0 18px 36px -22px rgba(46,45,32,.18)}
+.kpi:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--kc,#A57B36);border-radius:4px 0 0 4px}
+.kpi .k{font-size:9.5px;letter-spacing:1.1px;text-transform:uppercase;color:var(--mut);font-weight:800;margin-bottom:4px}
+.kpi .v{font-family:'Fraunces',serif;font-size:26px;font-weight:600;letter-spacing:-.5px;color:var(--ink);line-height:1.1}
+.kpi .s{font-size:10.5px;color:var(--mut);font-weight:600;margin-top:3px}
+.an-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.an-card{background:#fff;border:1px solid rgba(229,234,232,.9);border-radius:18px;padding:18px 18px;box-shadow:0 14px 30px -22px rgba(46,45,32,.12);min-width:0;transition:box-shadow .2s ease}
+.an-card:hover{box-shadow:0 18px 38px -24px rgba(46,45,32,.16)}
+.an-card-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line2)}
+.an-card-head h4{font-family:'Fraunces',serif;font-size:16.5px;font-weight:600;letter-spacing:-.2px;color:var(--ink)}
+.an-card-head span{font-size:10px;color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:.7px}
+.an-bars{display:flex;flex-direction:column;gap:9px}
+.an-bar{display:grid;grid-template-columns:112px minmax(0,1fr) 54px;gap:10px;align-items:center;cursor:pointer;padding:4px 6px;margin:0 -6px;border-radius:10px;transition:background .15s}
+.an-bar:hover{background:#F7FAF8}
+.an-bar .an-lab{font-size:11.5px;font-weight:600;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.an-track{height:10px;border-radius:99px;background:#EEF2EF;overflow:hidden}
 .an-fill{display:block;height:100%;border-radius:99px;transition:width .5s cubic-bezier(.2,.8,.3,1)}
-.an-bar .an-num{text-align:right;font-size:11px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.an-bar .an-num{text-align:right;font-size:11.5px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
 .an-donut-wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .an-donut{position:relative;width:146px;height:146px;border-radius:50%;flex:none}
 .an-donut:after{content:"";position:absolute;inset:19px;border-radius:50%;background:var(--panel);box-shadow:inset 0 0 0 1px var(--line2)}
@@ -2878,13 +2881,14 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
 .an-insight .ic{flex:none;font-size:14px;line-height:1.2}
 .an-insight b{color:var(--ink)}
 .an-table{width:100%;border-collapse:collapse;min-width:520px}
-.an-table th{text-align:left;font-size:9px;letter-spacing:.7px;text-transform:uppercase;color:var(--mut);font-weight:800;padding:8px 9px;border-bottom:1px solid var(--line);white-space:nowrap}
-.an-table td{padding:8px 9px;border-bottom:1px solid var(--line2);font-size:11.5px;color:var(--ink2);font-weight:600;white-space:nowrap}
+.an-table th{text-align:left;font-size:9.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--mut);font-weight:800;padding:10px 10px;border-bottom:1px solid var(--line);white-space:nowrap;background:#FAFBFA}
+.an-table td{padding:10px 10px;border-bottom:1px solid var(--line2);font-size:12px;color:var(--ink2);font-weight:600;white-space:nowrap}
+.an-table tbody tr:hover td{background:#FAFBFA}
 .an-table tr:last-child td{border-bottom:none}
 .an-table td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:800;color:var(--ink)}
 .an-table td.nm{color:var(--ink);font-weight:700;white-space:normal}
-.an-scroll{overflow:auto;max-width:100%;margin:0 -4px}
-.an-empty{padding:22px;text-align:center;color:#A9ADA3;font-size:12px;font-weight:600}
+.an-scroll{overflow:auto;max-width:100%;margin:0 -2px;border-radius:12px}
+.an-empty{padding:26px;text-align:center;color:var(--mut);font-size:13px;font-weight:600}
 
 /* ---- 7. v15 responsive ---- */
 @media (max-width:1180px){
