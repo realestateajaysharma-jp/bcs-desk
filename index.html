@@ -3863,6 +3863,53 @@ header{z-index:80 !important}
   .searchbox{min-width:0 !important; width:100% !important}
 }
 
+/* ==== BCS POLISH PACK v2 — Daily Brief + Smart Match + Offer Sheet + Rate Watch ==== */
+.brief-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+.brief-box{border:1px solid var(--line);background:#FCFDFC;border-radius:14px;padding:12px}
+.brief-box h5{font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:var(--mut);margin-bottom:7px;display:flex;gap:6px;align-items:center}
+.brief-box p{font-size:12.5px;line-height:1.55;color:var(--ink2);margin:3px 0}
+.brief-box b{color:var(--ink)}
+.brief-item{display:flex;gap:8px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line)}
+.brief-item:last-child{border-bottom:none}
+.brief-item .dot{flex:none;margin-top:5px}
+.brief-item small{display:block;color:var(--mut);font-size:11px;margin-top:1px}
+.smart-row{display:flex;gap:10px;align-items:center;border:1px solid var(--line);background:#FCFDFC;border-radius:12px;padding:10px 11px;margin-top:8px;text-align:left;width:100%}
+.smart-row:hover{border-color:var(--gold)}
+.smart-score{flex:none;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--panel);border:3px solid #4F8A63;font-family:'Fraunces',serif;font-weight:700;font-size:18px}
+.smart-score.mid{border-color:#C49A3E}.smart-score.low{border-color:#C24646}
+.smart-main{flex:1;min-width:0}
+.smart-main b{font-size:13.5px;line-height:1.3;display:block}
+.smart-main small{display:block;color:var(--mut);font-size:11.5px;margin-top:2px;line-height:1.45}
+.smart-why{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
+.smart-why span{font-size:10px;font-weight:800;border:1px solid var(--line);background:#F1F4F2;color:var(--ink2);border-radius:999px;padding:3px 8px}
+.offer-sheet{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.offer-head{background:linear-gradient(135deg,#3A3928,#5a5840);color:#F6F2E7;padding:16px 18px}
+.offer-head h4{font-family:'Fraunces',serif;font-size:20px;line-height:1.15;margin-top:4px}
+.offer-head p{font-size:12px;color:#D8D5C4;margin-top:4px}
+.offer-table{width:100%;border-collapse:collapse;min-width:0}
+.offer-table td{padding:9px 12px;border-bottom:1px solid var(--line2);font-size:12.5px}
+.offer-table td:last-child{text-align:right;font-weight:700;color:var(--ink);white-space:nowrap}
+.offer-table tr.total td{background:#FBF6E8;font-size:13.5px;border-bottom:none}
+.rate-chip{flex:none;font-size:10px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;border-radius:999px;padding:4px 9px;border:1px solid}
+.rate-chip.down{color:#2F6644;background:#E4F3EC;border-color:#BFD8C8}
+.rate-chip.up{color:#8F4F31;background:#FBEDE8;border-color:#F0D8CE}
+.rate-chip.hot{color:#7A5A10;background:#FBF3DC;border-color:#E6D4A5}
+@media (max-width:760px){.brief-grid{grid-template-columns:1fr}}
+body[data-theme="dark"] .brief-box,body[data-theme="dark"] .smart-row{background:#1B201B;border-color:var(--line);color:var(--ink)}
+body[data-theme="dark"] .brief-box p{color:var(--ink2)}
+body[data-theme="dark"] .smart-why span{background:#26302A;color:#EDEBD9;border-color:#3A4438}
+body[data-theme="dark"] .offer-sheet{background:var(--panel);border-color:var(--line)}
+body[data-theme="dark"] .offer-table td{border-color:var(--line2)}
+body[data-theme="dark"] .offer-table tr.total td{background:#2B2A1D}
+@media print{
+  body{background:#fff !important}
+  header,.tooldock,.toolpop,.toast,nav,.hbtns{display:none !important}
+  .overlay{display:block !important;position:static !important;padding:0 !important}
+  .modal{box-shadow:none !important;max-height:none !important;width:100% !important}
+  #briefModal .modal-foot,#offerModal .modal-foot,#weeklyModal .modal-foot{display:none !important}
+  main{padding:0 !important}
+}
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -3998,6 +4045,7 @@ header{z-index:80 !important}
         <div class="intro-cta hero-actions">
           <button class="btn primary" data-goto="advisory">Start client advisory →</button>
           <button class="btn gold" id="heroAddProjectBtn" type="button">+ Add project</button>
+          <button class="btn ghost" id="dailyBriefBtn" type="button">☀️ Daily brief</button>
           <button class="btn ghost" id="heroRoadBtn" type="button">Top road hub ◉</button>
           <button class="btn ghost" data-goto="advisors" type="button">Advisors</button>
           <button class="btn ghost" data-goto="dayplan" type="button">Day plan</button>
@@ -5307,6 +5355,7 @@ header{z-index:80 !important}
     </div>
     <div class="modal-foot">
       <button class="btn ghost" data-close="costModal">Close</button>
+      <button class="btn ghost" id="cbOffer">📄 Offer sheet</button>
       <button class="btn ghost" id="cbCopy">Copy quote</button>
       <button class="btn primary" id="cbShare">Share WhatsApp</button>
     </div>
@@ -5409,6 +5458,34 @@ header{z-index:80 !important}
       <button class="btn ghost" id="weeklyCopy">Copy text</button>
       <button class="btn ghost" id="weeklyPrint">Print / PDF</button>
       <button class="btn primary" id="weeklyShare">Share WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DAILY BRIEF (auto command center) ============ -->
+<div class="overlay" id="briefModal">
+  <div class="modal" style="width:min(760px,100%)">
+    <div class="modal-head"><h3 id="briefTitle">Daily brief</h3><button class="xbtn" data-close="briefModal">✕</button></div>
+    <div class="modal-body" id="briefBody"></div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="briefModal">Close</button>
+      <button class="btn ghost" id="briefCopy">Copy brief</button>
+      <button class="btn ghost" id="briefPrint">Print / PDF</button>
+      <button class="btn primary" id="briefShare">Share WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ OFFER SHEET (branded 1-click) ============ -->
+<div class="overlay" id="offerModal">
+  <div class="modal" style="width:min(680px,100%)">
+    <div class="modal-head"><h3 id="offerTitle">Offer sheet</h3><button class="xbtn" data-close="offerModal">✕</button></div>
+    <div class="modal-body" id="offerBody"></div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="offerModal">Close</button>
+      <button class="btn ghost" id="offerCopy">Copy text</button>
+      <button class="btn ghost" id="offerPrint">Print / PDF</button>
+      <button class="btn primary" id="offerShare">Share WhatsApp</button>
     </div>
   </div>
 </div>
@@ -8476,6 +8553,8 @@ function renderDashboard(){
   const topRoad = roadCounts[0];
   const addProjectBtn = $('#heroAddProjectBtn');
   if(addProjectBtn) addProjectBtn.onclick = () => openProject(null, $('#filterCorridor')?.value || (topRoad ? topRoad.c.id : 'agra'));
+  const briefBtn = $('#dailyBriefBtn');
+  if(briefBtn) briefBtn.onclick = () => (typeof openDailyBrief === 'function' ? openDailyBrief() : null);
   const roadBtn = $('#heroRoadBtn');
   if(roadBtn) roadBtn.onclick = () => { if(topRoad) openRoadHub(topRoad.c.id); };
 
@@ -8790,8 +8869,10 @@ function renderNextQueue(){
   const wrap = $('#nextQueue');
   if(!wrap) return;
   const items = nextBestActions();
+  const rates = typeof rateAlerts === 'function' ? rateAlerts() : [];
   wrap.innerHTML = `<div class="panel-head"><h4>Action list</h4><span class="n-badge">${items.length}</span></div>` +
-    (items.length ? `<div class="queue-list">${items.map(i => `<button type="button" class="queue-row" data-queue="${i.kind}:${i.id}"><span class="queue-ic">${i.kind === 'booking' ? '₹' : i.kind === 'client' ? '☎' : i.kind === 'advisor' ? '♟' : i.kind === 'task' ? '✓' : '!'}</span><span><b>${esc(i.title)}</b><small>${esc(i.sub)}</small></span><em>Open</em></button>`).join('')}</div>` : '<div class="empty-inline">Aaj ka queue clear hai — main ek bookable slot/client agenda add karo.</div>');
+    (items.length ? `<div class="queue-list">${items.map(i => `<button type="button" class="queue-row" data-queue="${i.kind}:${i.id}"><span class="queue-ic">${i.kind === 'booking' ? '₹' : i.kind === 'client' ? '☎' : i.kind === 'advisor' ? '♟' : i.kind === 'task' ? '✓' : '!'}</span><span><b>${esc(i.title)}</b><small>${esc(i.sub)}</small></span><em>Open</em></button>`).join('')}</div>` : '<div class="empty-inline">Aaj ka queue clear hai — main ek bookable slot/client agenda add karo.</div>') +
+    (rates.length ? `<div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)"><div style="display:flex;align-items:center;gap:8px"><b style="font-size:12px">📈 Rate watch</b><span class="n-badge">${rates.length}</span><span style="margin-left:auto;font-size:11px;color:var(--mut)">≥3% move</span></div><div style="display:grid;gap:6px;margin-top:7px">${rates.map(r => `<button type="button" class="queue-row" data-rate="${r.project.id}"><span class="rate-chip ${r.kind}">${r.delta > 0 ? '+' : ''}${r.delta}%</span><span><b>${esc(r.project.name)}</b><small>${esc(fmtPrice(r.prev.price / 100000) || r.prev.price)} → ${esc(fmtPrice(r.last.price / 100000) || r.last.price)} · ${esc(fmtDate(r.last.date))}</small></span><em>Open</em></button>`).join('')}</div></div>` : '');
   $$('#nextQueue [data-queue]').forEach(btn => btn.addEventListener('click', () => {
     const [kind, id] = btn.dataset.queue.split(':');
     if(kind === 'client') openClientProfile(id);
@@ -8801,6 +8882,7 @@ function renderNextQueue(){
     else if(kind === 'doc') openDoc(id);
     else if(kind === 'mark') openMonthMark(null);
   }));
+  $$('#nextQueue [data-rate]').forEach(btn => btn.addEventListener('click', () => openDetail(btn.dataset.rate)));
   const add = $('#queueAddTask');
   if(add) add.onclick = () => go('dayplan');
   const weekly = $('#weeklyBtn');
@@ -8922,6 +9004,32 @@ function quoteText(){
   const out = $('#cbOut')?.innerText || '';
   return ['*BCS Quotation*', p ? p.name : '', out, '', 'BCS · Business City Square · @ajaysharma.bcs'].join('\n');
 }
+
+/* ===== wiring: Cost / Dossier / Weekly / Brief / Offer (fixes dead buttons + new pack) ===== */
+(function wireSharePack(){
+  const shareWa = title => text => {
+    if(navigator.share){ navigator.share({ title, text }).catch(() => {}); } else { window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank'); }
+  };
+  const bind = (id, fn) => { const el = $(id); if(el) el.addEventListener('click', fn); };
+  bind('#cbOffer', () => { if(typeof openOfferSheet === 'function') openOfferSheet(); });
+  bind('#cbCopy', async () => { const ok = await copyText(quoteText()); toast(ok ? 'Quote copied ✓' : 'Copy failed', !ok); });
+  bind('#cbShare', () => shareWa('BCS Quotation')(quoteText()));
+  bind('#dossierCopy', async () => { const ok = await copyText(dossierText()); toast(ok ? 'Dossier copied ✓' : 'Copy failed', !ok); });
+  bind('#dossierShare', () => shareDossier());
+  bind('#dossierPrint', () => window.print());
+  bind('#weeklyCopy', async () => { const t = typeof weeklyReport === 'function' ? weeklyReport().text : ''; const ok = await copyText(t); toast(ok ? 'Report copied ✓' : 'Copy failed', !ok); });
+  bind('#weeklyShare', () => { const t = typeof weeklyReport === 'function' ? weeklyReport().text : ''; shareWa('BCS Weekly Report')(t); });
+  bind('#weeklyPrint', () => window.print());
+  bind('#briefCopy', async () => { const ok = await copyText(briefText()); toast(ok ? 'Brief copied ✓' : 'Copy failed', !ok); });
+  bind('#briefShare', () => shareWa('BCS Daily Brief')(briefText()));
+  bind('#briefPrint', () => window.print());
+  bind('#offerCopy', async () => { const ok = await copyText(offerText()); toast(ok ? 'Offer copied ✓' : 'Copy failed', !ok); });
+  bind('#offerShare', () => shareWa('BCS Offer Sheet')(offerText()));
+  bind('#offerPrint', () => window.print());
+  ['#cbArea','#cbRate','#cbPlc','#cbEdc','#cbOther','#cbDiscount','#cbStampPct','#cbRegPct','#cbBrokerPct'].forEach(id => { const el = $(id); if(el) el.addEventListener('input', () => { calcQuotation(); }); });
+  const sel = $('#cbProject'); if(sel) sel.addEventListener('change', () => calcQuotation());
+  const gst = $('#cbGstType'); if(gst) gst.addEventListener('change', () => calcQuotation());
+})();
 function openVisit(id, presetClientId, presetProjectId, presetAdvisorId){
   const v = id ? (db.visits || []).find(x => x.id === id) : null;
   if(id && !v) return;
@@ -9105,6 +9213,167 @@ function openWeekly(){
   $('#weeklyTitle').textContent = `Weekly report — ${fmtDate(rep.start)} to ${fmtDate(rep.end)}`;
   $('#weeklyBody').innerHTML = rep.html;
   showOverlay('weeklyModal');
+}
+
+/* ---------- POLISH PACK: Daily Brief + Smart Match + Offer Sheet + Rate Watch ---------- */
+function rateAlerts(){
+  const out = [];
+  scopedProjects().forEach(p => {
+    const h = [...(p.priceHistory || [])].filter(r => r.date && r.price != null).sort((a,b) => (a.date||'').localeCompare(b.date||''));
+    if(h.length < 2) return;
+    const last = h[h.length - 1], prev = h[h.length - 2];
+    const oldPrice = Number(prev.price) || 0, newPrice = Number(last.price) || 0;
+    if(!oldPrice || !newPrice) return;
+    const delta = Math.round((newPrice - oldPrice) / oldPrice * 1000) / 10;
+    if(Math.abs(delta) >= 3){
+      out.push({ project: p, delta, last, prev, kind: delta <= -3 ? 'down' : delta >= 5 ? 'up' : 'hot' });
+    }
+  });
+  return out.sort((a,b) => Math.abs(b.delta) - Math.abs(a.delta)).slice(0, 3);
+}
+function clientBudgetMid(c){
+  const min = number(c.budgetMin), max = number(c.budgetMax);
+  if(min == null && max == null) return null;
+  if(min != null && max != null) return (min + max) / 2;
+  return min != null ? min : max;
+}
+function clientFitScore(c, p){
+  if(!c || !p) return { score: 0, why: [] };
+  const reasons = [];
+  let s = 0;
+  const budget = clientBudgetMid(c);
+  const mid = (number(p.priceMin) != null || number(p.priceMax) != null)
+    ? ((number(p.priceMin) || number(p.priceMax)) + (number(p.priceMax) || number(p.priceMin))) / 2 : null;
+  if(budget == null || mid == null){ s += 10; reasons.push('Budget flexible'); }
+  else if(mid <= budget * 1.1){ s += 35; reasons.push('Budget fit'); }
+  else if(mid <= budget * 1.25){ s += 20; reasons.push('Budget near'); }
+  else if(mid <= budget * 1.4){ s += 8; reasons.push('Budget stretched'); }
+  else { s += 0; reasons.push('Budget over'); }
+  const cors = c.corridors || [];
+  if(!cors.length){ s += 15; reasons.push('Any corridor'); }
+  else if(cors.includes(p.corridor)){ s += 25; reasons.push('Preferred corridor'); }
+  else { s += 5; reasons.push('Corridor extra'); }
+  const types = c.types || [];
+  if(!types.length){ s += 10; reasons.push('Any type'); }
+  else if(types.includes(p.types)){ s += 15; reasons.push('Type match'); }
+  else { s += 2; }
+  if(c.timeline === 'ready' && p.timeline === 'ready'){ s += 10; reasons.push('Ready timeline'); }
+  const hs = typeof propertyHealth === 'function' ? propertyHealth(p).score : 70;
+  s += Math.round(hs * 0.15);
+  if(hs >= 75 && !reasons.includes('Type match')) reasons.push('High property health');
+  return { score: Math.min(100, s), why: reasons.slice(0, 4) };
+}
+function smartMatchForClient(c){
+  if(!c) return [];
+  const already = new Set(c.projectIds || []);
+  const pool = scopedProjects();
+  const scored = pool.map(p => {
+    const fit = clientFitScore(c, p);
+    if(already.has(p.id)) fit.score += 12;
+    return { p, fit };
+  }).sort((a,b) => b.fit.score - a.fit.score);
+  return scored.slice(0, 3);
+}
+function dailyBriefData(){
+  const today = todayISO();
+  const visits = (db.visits || []).filter(v => v.date === today);
+  const dueClients = scopedClients().filter(cl => cl.nextFollowUp && cl.nextFollowUp <= today && !['booked','lost'].includes(cl.clientStatus || 'new')).sort((a,b) => (a.nextFollowUp||'').localeCompare(b.nextFollowUp||''));
+  const bookingsToday = scopedBookings().filter(b => b.bookingDate === today);
+  const dueBookings = scopedBookings().filter(b => b.stage !== 'cancelled' && (bookingPending(b) || 0) > 0).sort((a,b) => (a.bookingDate|| today).localeCompare(b.bookingDate|| today)).slice(0, 4);
+  const docs = (db.documents || []).filter(d => d.expiry && d.expiry >= today && d.expiry <= addISO(today, 15)).slice(0, 4);
+  const rates = rateAlerts();
+  const fest = upcomingFestivals(3, today);
+  return { today, visits, dueClients, bookingsToday, dueBookings, docs, rates, fest };
+}
+function briefText(){
+  const d = dailyBriefData();
+  const lines = [
+    '*BCS Daily Brief*', fmtDate(d.today), '',
+    `Visits today: ${d.visits.length}${d.visits.length ? ' — ' + d.visits.map(v => { const p = scopedProjects().find(x => x.id === v.projectId); const c = db.clients.find(x => x.id === v.clientId); return ((c && (c.name || c.phone)) || 'Client') + ' @ ' + (p ? p.name : 'site'); }).join(', ') : ''}`,
+    `Follow-ups due: ${d.dueClients.length}${d.dueClients.length ? ' — ' + d.dueClients.map(c => c.name || c.phone || 'client').join(', ') : ''}`,
+    `Bookings today: ${d.bookingsToday.length}${d.bookingsToday.length ? ' — ' + d.bookingsToday.map(b => { const p = bookingProject(b); const c = bookingClient(b); return ((c && (c.name || c.phone)) || 'Client') + ' @ ' + (p ? p.name : 'project'); }).join(', ') : ''}`,
+    `Pending collection: ${d.dueBookings.length}${d.dueBookings.length ? ' — ' + d.dueBookings.map(b => fmtPrice(bookingPending(b)) + ' (' + ((bookingClient(b) || {}).name || 'booking') + ')').join(', ') : ''}`,
+    `Docs expiring (15d): ${d.docs.length}${d.docs.length ? ' — ' + d.docs.map(x => (x.name || 'doc') + ' ' + fmtDate(x.expiry)).join(', ') : ''}`,
+    `Rate watch: ${d.rates.length ? d.rates.map(r => r.project.name + ' ' + (r.delta > 0 ? '+' : '') + r.delta + '%').join(', ') : 'no major move'}`,
+    `Festivals coming: ${d.fest.length ? d.fest.map(f => f.name + ' ' + fmtDate(f.date)).join(', ') : 'none'}`,
+    '', 'BCS · Business City Square · @ajaysharma.bcs'
+  ];
+  return lines.join('\n');
+}
+function openDailyBrief(){
+  const d = dailyBriefData();
+  const wx = ($('#jaipurWeather')?.textContent || '').replace(/\s+/g,' ').trim().slice(0, 120);
+  $('#briefTitle').textContent = `☀️ Daily brief — ${fmtDate(d.today)}`;
+  $('#briefBody').innerHTML = `
+    <p class="lock-hint" style="margin-top:0">Subah kholte hi din set — visits, money, docs, rate watch. ${wx ? '<b>' + esc(wx) + '</b>' : ''}</p>
+    <div class="brief-grid">
+      <div class="brief-box"><h5>📍 Visits today (${d.visits.length})</h5>${d.visits.length ? d.visits.map(v => { const p = scopedProjects().find(x => x.id === v.projectId); const c = db.clients.find(x => x.id === v.clientId); const a = v.advisorId ? advisor(v.advisorId) : null; return '<div class="brief-item"><span class="dot" style="background:#2F8F6B"></span><span><b>' + esc((c && (c.name || c.phone)) || 'Client') + '</b> @ ' + esc(p ? p.name : 'site') + '<small>' + esc(v.time || '') + ' · ' + esc(v.outcome || '') + (a ? ' · ' + esc(a.name) : '') + '</small></span></div>'; }).join('') : '<p>No visit scheduled.</p>'}</div>
+      <div class="brief-box"><h5>☎️ Follow-ups due (${d.dueClients.length})</h5>${d.dueClients.length ? d.dueClients.slice(0,5).map(c => '<div class="brief-item"><span class="dot" style="background:#F2994A"></span><span><b>' + esc(c.name || c.phone || 'Client') + '</b><small>' + esc(followupInfo(c.nextFollowUp).label) + ' · ' + esc(budgetText(c)) + '</small></span></div>').join('') : '<p>Queue clear.</p>'}</div>
+      <div class="brief-box"><h5>₹ Money (${d.bookingsToday.length} bookings today)</h5>${d.dueBookings.length ? d.dueBookings.map(b => '<div class="brief-item"><span class="dot" style="background:#C24646"></span><span><b>' + esc(fmtPrice(bookingPending(b))) + '</b> pending — ' + esc((bookingClient(b) || {}).name || 'booking') + '<small>' + esc(bookingProject(b) ? bookingProject(b).name : '') + '</small></span></div>').join('') : '<p>Collection clear.</p>'}${d.bookingsToday.length ? '<p style="margin-top:6px">Today: ' + d.bookingsToday.map(b => { const p = bookingProject(b); const c = bookingClient(b); return esc((c && (c.name || c.phone)) || 'booking') + ' @ ' + esc(p ? p.name : ''); }).join(', ') + '</p>' : ''}</div>
+      <div class="brief-box"><h5>📈 Rate watch (${d.rates.length})</h5>${d.rates.length ? d.rates.map(r => '<div class="brief-item"><span class="rate-chip ' + r.kind + '">' + (r.delta > 0 ? '+' : '') + r.delta + '%</span><span><b>' + esc(r.project.name) + '</b><small>' + esc(fmtPrice(r.prev.price / 100000) || r.prev.price) + ' → ' + esc(fmtPrice(r.last.price / 100000) || r.last.price) + ' · ' + esc(fmtDate(r.last.date)) + '</small></span></div>').join('') : '<p>No major price move.</p>'}${d.docs.length ? '<p style="margin-top:6px">Docs (15d): ' + d.docs.map(x => esc(x.name || 'doc') + ' ' + esc(fmtDate(x.expiry))).join(', ') + '</p>' : ''}</div>
+    </div>`;
+  showOverlay('briefModal');
+}
+function openOfferSheet(){
+  const sel = $('#cbProject');
+  const p = scopedProjects().find(x => x.id === sel.value);
+  const client = $('#cbClient') ? scopedClients().find(c => c.id === $('#cbClient').value) : null;
+  if(!p) return toast('Project select karo', true);
+  calcQuotation();
+  const area = +($('#cbArea')?.value || 0) || 0;
+  const rate = +($('#cbRate')?.value || 0) || 0;
+  const plc = +($('#cbPlc')?.value || 0) || 0;
+  const edc = +($('#cbEdc')?.value || 0) || 0;
+  const other = +($('#cbOther')?.value || 0) || 0;
+  const disc = +($('#cbDiscount')?.value || 0) || 0;
+  const base = area * rate;
+  const subtotal = base + area * plc + area * edc + other;
+  const gstType = $('#cbGstType')?.value || 'standard';
+  const gst = gstType === 'affordable' ? subtotal * .01 : gstType === 'standard' ? subtotal * .05 * (2/3) : 0;
+  const agreement = subtotal + gst;
+  const stamp = agreement * ((+($('#cbStampPct')?.value || 6)) / 100);
+  const reg = agreement * ((+($('#cbRegPct')?.value || 1)) / 100);
+  const broker = agreement * ((+($('#cbBrokerPct')?.value || 1)) / 100);
+  const total = agreement + stamp + reg + broker - disc;
+  const d = dev(p.developerId);
+  const c = corridor(p.corridor);
+  const rows = [
+    ['Saleable area', area.toLocaleString('en-IN') + ' sq ft'],
+    ['Rate', '₹ ' + rate.toLocaleString('en-IN') + ' / sq ft'],
+    ['Base', fmtPrice(base / 100000) || '—'],
+    ['PLC', fmtPrice(area * plc / 100000) || '—'],
+    ['EDC/IDC', fmtPrice(area * edc / 100000) || '—'],
+    ['Other charges', fmtPrice(other / 100000) || '—'],
+    ['GST', fmtPrice(gst / 100000) || '—'],
+    ['Stamp + registration', fmtPrice((stamp + reg) / 100000) || '—'],
+    ['Brokerage', fmtPrice(broker / 100000) || '—'],
+    disc ? ['Discount', '− ' + fmtPrice(disc / 100000)] : null,
+    ['Total payable', fmtPrice(total / 100000) || '—']
+  ].filter(Boolean);
+  $('#offerTitle').textContent = 'Offer sheet — ' + (p.name || '');
+  $('#offerBody').innerHTML = `
+    <div class="offer-sheet">
+      <div class="offer-head">
+        <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><span style="letter-spacing:1.2px;font-size:11px;font-weight:900">BCS · BUSINESS CITY SQUARE</span><span style="font-size:11px;opacity:.85">@ajaysharma.bcs</span></div>
+        <h4>${esc(p.name)}</h4>
+        <p>${esc((p.location || c.name + ', Jaipur'))} · ${esc(c.name)} · ${esc(statusLabel[p.status] || '')}${client ? ' · Prepared for ' + esc(client.name || client.phone || 'client') : ''}</p>
+      </div>
+      <table class="offer-table"><tbody>
+        ${rows.map((r,i) => '<tr class="' + (i === rows.length - 1 ? 'total' : '') + '"><td>' + esc(r[0]) + '</td><td>' + esc(r[1]) + '</td></tr>').join('')}
+      </tbody></table>
+      <div style="padding:12px 14px;display:grid;gap:6px">
+        <p style="font-size:12px;color:var(--ink2);line-height:1.55"><b>Developer:</b> ${d ? esc(d.name) + (d.phone ? ' · ' + esc(d.phone) : '') : '—'} · <b>RERA:</b> ${esc(p.rera || 'not recorded')} · <b>Approval:</b> ${esc(approvalLabel(p, true) || '—')}</p>
+        <p style="font-size:11.5px;color:var(--mut);line-height:1.55">Indicative sheet — final agreement by developer. BCS · Business City Square · Jaipur. Validity: 7 days.</p>
+      </div>
+    </div>`;
+  $('#offerBody').dataset.projectId = p.id;
+  showOverlay('offerModal');
+}
+function offerText(){
+  const p = scopedProjects().find(x => x.id === $('#offerBody')?.dataset.projectId);
+  if(!p) return '';
+  const out = ($('#offerBody')?.innerText || '').replace(/\n{2,}/g,'\n').trim();
+  return ['*BCS Offer Sheet*', p.name, out, '', 'BCS · Business City Square · @ajaysharma.bcs'].filter(Boolean).join('\n');
 }
 function openTeamBoard(){
   const advisors = visibleAdvisors().map(a => {
@@ -11368,6 +11637,8 @@ function initClientControls(){
     if(st) return setClientStatus(clientProfileId, st.dataset.cstatus);
     const p = e.target.closest('[data-cproj]');
     if(p) return openDetail(p.dataset.cproj);
+    const sm = e.target.closest('[data-smart]');
+    if(sm) return openDetail(sm.dataset.smart);
     const a = e.target.closest('[data-cadvisor]');
     if(a) return openAdvisorProfile(a.dataset.cadvisor);
     const bk = e.target.closest('[data-bookingopen]');
@@ -11838,6 +12109,23 @@ function renderClientProfile(){
           <div class="when">${new Date(h.at || Date.now()).toLocaleString('en-IN', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' })} · by ${esc(h.byName || h.byRole || 'admin')}</div>
         </div>`).join('')}</div>` : `<div class="empty-inline">Abhi tak koi transfer nahi hua. Client profile se <b>Transfer / return</b> dabayein — har handover yahan save rahega.</div>`}
     </div>
+    ${(() => {
+      const top = typeof smartMatchForClient === 'function' ? smartMatchForClient(c) : [];
+      if(!top.length) return '';
+      return `<div class="profile-sec"><h5>Smart match — top 3 for this client</h5>
+        <p style="font-size:11.5px;color:var(--mut);line-height:1.5;margin-bottom:4px">Budget · corridor · type · health-score se auto-ranked. Click karo, project khulega. Detail mein Offer Sheet banega.</p>
+        ${top.map(x => {
+          const p = x.p, fit = x.fit;
+          const hs = typeof propertyHealth === 'function' ? propertyHealth(p) : { score: 70 };
+          const cls = fit.score >= 75 ? '' : fit.score >= 55 ? 'mid' : 'low';
+          return `<button type="button" class="smart-row" data-smart="${p.id}">
+            <span class="smart-score ${cls}">${fit.score}</span>
+            <span class="smart-main"><b>${esc(p.name)}</b><small>${esc(corridor(p.corridor).name)} · ${esc(priceRange(p))} · Health ${hs.score}/100</small>
+            <span class="smart-why">${(fit.why || []).map(w => '<span>' + esc(w) + '</span>').join('')}</span></span>
+            <em style="font-style:normal;font-size:11px;font-weight:900;color:var(--gold)">Open ›</em>
+          </button>`;
+        }).join('')}</div>`;
+    })()}
     <div class="profile-sec">
       <h5>Suggested projects <span class="n">${projects.length}</span></h5>
       ${groups.length ? groups.map(g => `<div class="dev-group">
