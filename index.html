@@ -3689,6 +3689,179 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
 @media (prefers-reduced-motion:reduce){
   *,*:before,*:after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
 }
+/* ==== READABILITY & ANTI-OVERLAP PATCH v1 — every letter visible, nothing overlapping ==== */
+:root{
+  --mut:#5E665A !important;
+  --ink2:#43463D !important;
+}
+::placeholder{color:#8A8E84 !important}
+body{text-rendering:optimizeLegibility; overflow-wrap:anywhere; word-break:break-word}
+img{max-width:100%; height:auto}
+*{-webkit-tap-highlight-color:transparent}
+
+/* --- Base floors: no microscopic invisible text --- */
+.eyebrow,.brand p,.istat span,.tile span,.col-head .n,.cor-count,.cor-mini div,.pcard .dev,
+.dev-row .sub,.dev-row .cnt,.present-brief .lab,.present-pgrid .lab,.unit-stat .k,.price-metrics .k,
+.quality-ring span,.qc-row .qname small,.qc-row .qweight,.health-card .lab,.cmp-table th,.tpl-scope,
+.tpl-placeholders button,.dev-card .meta-row .k,.dev-profile-stats .k,.team-stats .k,.dev-group h5 .n,
+.profile-block .lab,.pick-list .pick-group,.status-pill,.pipeline-stats .k,.resale-card .ask small,
+.news-stats .k,.news-cover .nf small,.ideas-stats .k,.brief-stats span,.review-line .lab,.lock-admin .lock-secure,
+.links-stats .k,.link-cat-count,.links-mini small,.booking-card .bk-amounts .k,.adv-thumb .band,.adv-match,.adv-status,.present-ptag{font-size:10px !important; line-height:1.4 !important; letter-spacing:.5px !important}
+.cal-chip,.mark-type,.cal-inds i{font-size:10px !important; line-height:1.35 !important}
+.pcard .badge,.pcard .tag,.pcard .rera,.pcard .ttl{font-size:10.5px !important; line-height:1.4 !important}
+.pcard .ttl{font-size:12.5px !important}
+.show-status,.show-feat,.show-kicker{font-size:10.5px !important; line-height:1.4 !important}
+.show-loc{font-size:12.5px !important}
+.show-price small{font-size:10.5px !important}
+.cat-count,.cat-low span{font-size:11.5px !important}
+.th-watermark,.dlf-cal-band,.mini-day span,.mini-day i,.hub-count span,.sat-row span,.sen-metrics span,
+.tm-formula::before,.tm-example::before,.tax-action::before{font-size:10px !important; line-height:1.4 !important; letter-spacing:.7px !important}
+.th-watermark{color:var(--mut) !important; font-weight:800 !important}
+.dlf-cal-band{letter-spacing:1.6px !important}
+.health-bars>div{font-size:10px !important; line-height:1.4 !important}
+.health-score span{font-size:10px !important}
+.health-score b{font-size:24px !important; line-height:1 !important}
+.queue-row small,.hub-row-main small,.cor-price small,.mark-copy small{font-size:11px !important; line-height:1.4 !important}
+.queue-row b,.hub-row-main b{font-size:12.5px !important; line-height:1.35 !important}
+.dock-btn i,.mp-app span,.mp-brand span,.station span,.media-mini span,.music-now span{font-size:10px !important; line-height:1.4 !important}
+.resale-only-tag,.returned-chip,.dev-badge,.unit-badge,.price-badge,.grade-pill,.idea-status,.idea-priority,
+.chk-detail-item .chk-custom-tag,.live-chip .lc-mini,.live-meta span,.live-source-links a span,.yt-meta span,
+.news-cat,.news-type,.sol-name,.adv-slab-rate small,.advisor-pipeline button small,.pq-time,.drow-lab small,
+.drow-lab .lunch,.cf-view .cf-lab,.fld-hint,.lst-pane-hint,.lst-row .lst-tag,.cf-item>label .cf-type{font-size:10px !important; line-height:1.4 !important}
+
+/* --- Category cards: stop circle overlapping count/title --- */
+.cat-card{padding:20px 22px !important; min-height:148px !important; display:flex !important; flex-direction:column !important}
+.cat-card:after{width:90px !important; height:90px !important; right:-22px !important; top:-22px !important; opacity:.35 !important; z-index:0 !important; pointer-events:none !important}
+.cat-count{top:16px !important; right:16px !important; z-index:2 !important; background:var(--sage) !important; border:1px solid var(--line) !important; box-shadow:0 2px 8px rgba(46,45,32,.08) !important; font-size:11.5px !important; padding:5px 11px !important}
+.cat-card h3{padding-right:72px !important; line-height:1.2 !important; overflow-wrap:anywhere !important; z-index:2 !important}
+.cat-card p{max-width:none !important; color:var(--ink2) !important; z-index:2 !important}
+.cat-card .cat-low{margin-top:auto !important; padding-top:12px !important; flex-wrap:wrap !important; z-index:2 !important}
+.cat-ic{flex:none !important}
+
+/* --- Showcase cards: gradient/bokeh never over text, badges never collide --- */
+.show-card:after{pointer-events:none !important; z-index:1 !important}
+.show-media{ z-index:0 !important}
+.show-fallback{ z-index:0 !important}
+.show-fallback span{font-size:72px !important; color:rgba(246,242,231,.05) !important; z-index:0 !important; pointer-events:none !important}
+.show-body{ z-index:3 !important; text-shadow:0 1px 2px rgba(0,0,0,.35) !important; gap:0 !important}
+.show-body h3{max-width:none !important; text-wrap:balance !important; padding-right:0 !important}
+.show-status{ z-index:4 !important; max-width:62% !important; white-space:normal !important; line-height:1.35 !important; padding:6px 12px !important; box-shadow:0 4px 14px rgba(0,0,0,.22) !important}
+.show-status.ongoing{background:rgba(46,64,42,.94) !important; color:#EDF4E6 !important; border-color:rgba(255,255,255,.35) !important}
+.show-status.upcoming{background:rgba(124,98,30,.94) !important; color:#FFF4D6 !important; border-color:rgba(255,255,255,.35) !important}
+.show-status.completed{background:rgba(62,66,62,.94) !important; color:#F0F1EA !important; border-color:rgba(255,255,255,.35) !important}
+.show-feat{font-size:10.5px !important; line-height:1.4 !important}
+.show-foot{flex-wrap:wrap !important; gap:10px !important}
+.show-price{flex:1 1 140px !important; min-width:0 !important}
+.show-card .show-star{ z-index:5 !important; width:34px !important; height:34px !important; font-size:15px !important}
+.show-card.soldout .show-star{ top:16px !important; right:56px !important}
+.soldout-stamp{ top:58px !important; right:16px !important; z-index:4 !important; background:rgba(255,250,246,.97) !important; color:#8E3A1F !important; max-width:calc(100% - 32px) !important; white-space:nowrap !important; overflow:hidden !important; text-overflow:ellipsis !important}
+.pcard .badge{ z-index:3 !important; box-shadow:0 3px 10px rgba(0,0,0,.18) !important}
+.pcard .fav{ z-index:4 !important}
+.adv-thumb .band{ z-index:3 !important; max-width:calc(100% - 14px) !important; white-space:normal !important}
+
+/* --- Dashboard header: no clipped/overlapping text --- */
+.dash-card-header .dl-greet,.dash-card-header .dl-line,.dash-card-header .dl-sub{white-space:normal !important; overflow-wrap:anywhere !important; line-height:1.35 !important}
+.dash-card-header .dl-line{overflow:visible !important}
+.dash-card-header .dl-date,.dash-card-header .dl-quote,.dash-card-header .dl-time,.dash-card-header .dl-month,.dash-card-header .dl-festival{min-width:0 !important; overflow-wrap:anywhere !important}
+.dash-card-header .dl-quote p{overflow-wrap:anywhere !important}
+.dl-weather{font-size:11px !important; line-height:1.5 !important; padding-top:8px !important}
+.wx-mark{font-size:11px !important; line-height:1.4 !important; padding:5px 9px !important}
+.mini-day{min-height:44px !important}
+.mini-day b{font-size:14px !important}
+.mini-day span,.mini-day i{font-size:10px !important}
+.dl-quicklink,.dl-mini-btn{font-size:11px !important; line-height:1.4 !important; padding:7px 12px !important}
+.dash-card-header .dlf-cal{overflow:hidden !important}
+
+/* --- Panels & tables: never clip, never overlap --- */
+.panel{overflow:hidden !important}
+.panel-head{flex-wrap:wrap !important; gap:8px !important}
+.panel-head h4{overflow-wrap:anywhere !important; line-height:1.3 !important}
+.vt-table{font-size:12.5px !important; line-height:1.5 !important}
+.vt-table th{white-space:normal !important}
+.vt-table td{overflow-wrap:anywhere !important}
+.cmp-table th,.vt-table th{font-size:10.5px !important}
+.queue-list{grid-template-columns:repeat(auto-fill,minmax(280px,1fr)) !important}
+.queue-row b,.hub-row-main b,.sen-row b,.dev-row .nm{white-space:normal !important; overflow:visible !important; text-overflow:clip !important; overflow-wrap:anywhere !important}
+.queue-row em{white-space:nowrap !important; flex:none !important}
+.queue-row small,.hub-row-main small,.sen-row small,.dev-row .sub{overflow-wrap:anywhere !important}
+.dossier-box p,.dossier-box ul,.dossier-box h5{overflow-wrap:anywhere !important}
+.modal{max-height:92vh !important; display:flex !important; flex-direction:column !important}
+.modal-body{overflow:auto !important; overflow-wrap:anywhere !important}
+.modal-head,.modal-foot{flex-wrap:wrap !important; flex:none !important}
+.toast{font-size:13px !important; line-height:1.4 !important; max-width:min(92vw,420px) !important; overflow-wrap:anywhere !important}
+.field label,.cf-item>label{font-size:11px !important; line-height:1.4 !important}
+
+/* --- Calendar month: date + dots + chips never collide --- */
+.cal-cell{padding:9px 9px 8px !important}
+.cal-cell b{margin-right:14px !important; font-size:18px !important}
+.cal-inds{top:9px !important; right:8px !important; display:flex !important; gap:3px !important}
+.cal-inds i{width:8px !important; height:8px !important}
+.cal-chip{max-width:100% !important; white-space:normal !important; overflow-wrap:anywhere !important; text-align:left !important}
+.mark-copy b{font-size:12.5px !important; line-height:1.35 !important}
+.mark-copy small{font-size:11px !important}
+.health-score-card{flex-wrap:wrap !important}
+.health-bars{grid-template-columns:repeat(5,minmax(0,1fr)) !important}
+@media (max-width:760px){.health-bars{grid-template-columns:1fr 1fr !important}}
+.hub-stats{grid-template-columns:repeat(auto-fill,minmax(110px,1fr)) !important}
+.sen-metrics{grid-template-columns:repeat(auto-fill,minmax(130px,1fr)) !important}
+.pulse-card,.fest-card,.tm-card,.tax-card{overflow-wrap:anywhere !important}
+.tax-card h4,.tm-card h4,.advisor-card h4{line-height:1.3 !important; overflow-wrap:anywhere !important}
+
+/* --- Inputs & buttons always legible --- */
+input,select,textarea{font-size:14px !important; line-height:1.45 !important}
+.btn{font-size:13px !important; line-height:1.35 !important}
+.btn.sm{font-size:12.5px !important}
+.nav button, nav button{font-size:13px !important}
+.searchbox input{font-size:14px !important}
+
+/* --- Dark mode: exhaustive legibility (no light-on-light) --- */
+body[data-theme="dark"]{ --mut:#B8BFB2 !important; --ink2:#E6E4D8 !important; }
+body[data-theme="dark"] ::placeholder{color:#9AA091 !important}
+body[data-theme="dark"] :is(.pcard,.dev-card,.tile,.cor-card,.cat-card,.show-card,.panel,.modal,.sen-metrics>div,.hub-count,.hub-row,.sen-row){color:var(--ink) !important}
+body[data-theme="dark"] :is(.pcard .tag,.present-ptag,.tpl-scope,.tpl-placeholders button,.present-amen span,.dev-card .chip,.adv-match,.idea-status,.cf-view .cf-val .cf-pill,.partner-meta span,.readiness-chip,.status-pill,.tm-chip,.status-chip){background:#26302A !important; color:#EDEBD9 !important; border-color:#3A4438 !important}
+body[data-theme="dark"] :is(.pcard .badge,.news-cat,.price-badge,.resale-only-tag,.returned-chip){background:rgba(38,48,42,.94) !important; color:#F2F0E5 !important; border-color:#4A5546 !important}
+body[data-theme="dark"] :is(.dev-row .cnt,.cor-count,.cat-count,.col-adv){background:#26302A !important; color:#EDEBD9 !important; border-color:#3A4438 !important}
+body[data-theme="dark"] :is(.vt-table th,.cmp-table th,.active-adv-table th){background:#20261F !important; color:#C9CDC0 !important}
+body[data-theme="dark"] :is(.vt-table td,.cmp-table td,.active-adv-table td){color:var(--ink2) !important}
+body[data-theme="dark"] .show-body{color:#F6F2E7 !important; text-shadow:0 1px 3px rgba(0,0,0,.5) !important}
+body[data-theme="dark"] .show-status{box-shadow:0 4px 14px rgba(0,0,0,.4) !important}
+body[data-theme="dark"] .soldout-stamp{background:rgba(255,250,246,.97) !important; color:#8E3A1F !important}
+body[data-theme="dark"] .th-watermark, body[data-theme="dark"] .dl-sub, body[data-theme="dark"] .dl-quote .th-qby{color:var(--mut) !important}
+body[data-theme="dark"] .cal-cell b{color:var(--ink) !important}
+body[data-theme="dark"] .queue-row b, body[data-theme="dark"] .hub-row-main b{color:var(--ink) !important}
+body[data-theme="dark"] .queue-row small, body[data-theme="dark"] .hub-row-main small{color:var(--mut) !important}
+body[data-theme="dark"] .dossier-box p, body[data-theme="dark"] .dossier-box ul{color:var(--ink2) !important}
+body[data-theme="dark"] .health-score{background:var(--panel) !important; color:var(--ink) !important}
+body[data-theme="dark"] .health-bars em{background:linear-gradient(90deg,var(--gold),#9ED6B0) !important}
+body[data-theme="dark"] .intro h2 em, body[data-theme="dark"] .adv-title em{color:var(--gold) !important}
+body[data-theme="dark"] .cor-hub{background:#2B2A1D !important; color:#E7C46E !important; border-color:#4A4430 !important}
+body[data-theme="dark"] .cf-empty{color:#E7C46E !important; background:#2B2A1D !important; border-color:#4A4430 !important}
+
+/* --- Motion & stacking sanity --- */
+.overlay{z-index:100 !important}
+.modal{z-index:101 !important}
+.toast{z-index:120 !important}
+.tooldock{z-index:90 !important}
+.toolpop{z-index:95 !important}
+header{z-index:80 !important}
+.nav{z-index:81 !important}
+
+/* --- Small screens: absolutely no overlap --- */
+@media (max-width:640px){
+  .cat-card h3{padding-right:0 !important; font-size:18px !important}
+  .cat-count{position:static !important; align-self:flex-start !important; margin-bottom:10px !important}
+  .cat-card{padding:16px 16px !important}
+  .show-status{max-width:calc(100% - 60px) !important}
+  .show-card .show-star{width:32px !important; height:32px !important}
+  .show-body h3{font-size:20px !important}
+  .show-foot{gap:8px !important}
+  .viewbtn{padding:8px 14px !important; font-size:12px !important}
+  .queue-list{grid-template-columns:1fr !important}
+  .dossier-grid,.readiness-check,.cf-grid,.cf-view{grid-template-columns:1fr !important}
+  .hwrap{padding:12px 16px !important}
+  .brand h1{white-space:normal !important; font-size:17px !important}
+  .searchbox{min-width:0 !important; width:100% !important}
+}
 
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
