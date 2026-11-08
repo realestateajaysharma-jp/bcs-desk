@@ -2336,6 +2336,12 @@ body.locked>.quick-add-dock{visibility:hidden}
   padding:0;
 }
 .dash-card-header .dl-quote .th-qrefresh:hover{background:#d0e2d6;transform:rotate(-30deg)}
+.dash-card-header .dl-quote{flex-wrap:wrap}
+.dl-weather{flex:1 1 100%;display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin-top:4px;padding-top:8px;border-top:1px dashed rgba(165,123,54,.28);color:var(--mut);font-size:10.5px;font-weight:650}
+.wx-mark{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:var(--ink2);font-weight:750}
+.wx-temp{font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--ink)}
+.wx-sep{opacity:.6}
+.wx-day{display:inline-flex;align-items:center;gap:3px}
 .dash-card-header .dl-date{flex-wrap:wrap;row-gap:8px}
 .dash-card-header .miniweek{flex:1 1 100%;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;padding-top:4px}
 .mini-day{display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 2px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink2);transition:.18s}
@@ -3415,6 +3421,39 @@ select{
 }
 @media (max-width:1080px){ .senior-grid{grid-template-columns:1fr 1fr} .senior-panel:last-child{grid-column:1/-1} }
 @media (max-width:640px){ .senior-grid{grid-template-columns:1fr} .sen-metrics{grid-template-columns:1fr 1fr} .fest-quote{flex-basis:260px} .fest-card{flex-basis:175px} }
+.queue-panel{padding:13px 15px}
+.queue-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.queue-row{display:flex;align-items:center;gap:10px;text-align:left;border:1px solid var(--line);background:#fff;border-radius:13px;padding:9px 11px;transition:.18s;width:100%}
+.queue-row:hover{border-color:var(--gold);background:#FFFDF4;transform:translateY(-1px)}
+.queue-ic{width:32px;height:32px;flex:none;display:grid;place-items:center;border-radius:10px;background:var(--sage);color:var(--sage-ink);font-weight:900}
+.queue-row span{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.queue-row b{font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.queue-row small{font-size:10.5px;color:var(--mut)}
+.queue-row em{font-style:normal;font-size:9px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;color:var(--gold)}
+.dossier-modal{width:min(760px,100%)}
+.dossier-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:12px}
+.dossier-head h4{font-family:'Fraunces',serif;font-size:22px;line-height:1.15;margin:5px 0 5px}
+.dossier-head p{font-size:12px;color:var(--mut)}
+.dossier-badge{flex:none;font-size:10px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;color:#2F6644;background:#E4F3EC;border:1px solid #BFD8C8;border-radius:999px;padding:6px 10px}
+.dossier-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dossier-box{border:1px solid var(--line);background:#FCFDFC;border-radius:14px;padding:12px}
+.dossier-box h5{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mut);margin-bottom:7px}
+.dossier-box p{font-size:12px;line-height:1.45;margin:4px 0;color:var(--ink2)}
+.dossier-box ul{padding-left:16px;color:var(--ink2);font-size:12px;line-height:1.5}
+.dossier-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.cost-body{display:flex;flex-direction:column;gap:10px}
+.cost-out{border:1px solid var(--line);border-radius:14px;background:#FCFDFC;padding:10px 12px;display:flex;flex-direction:column;gap:5px}
+.cost-row{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:var(--ink2)}
+.cost-total{display:flex;justify-content:space-between;border-top:1px dashed var(--line);padding-top:8px;margin-top:3px;font-size:14px;color:var(--ink)}
+.readiness-check{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.readiness-check label{display:flex;align-items:center;gap:7px;font-size:12px;background:#FCFDFC;border:1px solid var(--line);border-radius:10px;padding:7px 10px;cursor:pointer}
+.readiness-check input{accent-color:var(--olive)}
+.readiness-list{display:flex;flex-wrap:wrap;gap:6px}
+.readiness-chip{font-size:10.5px;font-weight:800;border:1px solid var(--line);border-radius:999px;padding:5px 9px;color:var(--mut);background:#FAFBFA}
+.readiness-chip.done{color:#2F6644;background:#E4F3EC;border-color:#BFD8C8}
+.progress-mini{display:block;height:5px;border-radius:999px;background:var(--line2);overflow:hidden;margin-top:4px}
+.progress-mini i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--sage-ink))}
+@media (max-width:760px){ .queue-list{grid-template-columns:1fr} .dossier-grid{grid-template-columns:1fr} }
 .road-chip{display:inline-flex;align-items:center;gap:6px;cursor:pointer;transition:.18s}
 .road-chip:hover{border-color:var(--gold);background:#FFF8EA;transform:translateY(-1px)}
 .cor-hub{margin-top:12px;font-size:11px;font-weight:800;color:var(--gold);border:1px solid rgba(165,123,54,.25);background:#FFFBEF;border-radius:999px;padding:5px 11px;transition:.18s}
@@ -3504,6 +3543,12 @@ body[data-theme="dark"] .advisor-pipeline button.on{background:#D8C99A;border-co
 body[data-theme="dark"] .active-adv-table-wrap,body[data-theme="dark"] .active-adv-table,body[data-theme="dark"] .active-adv-table th,body[data-theme="dark"] .active-adv-table td{background:var(--panel);border-color:var(--line);color:var(--ink2)}
 body[data-theme="dark"] .active-adv-table .aa-open{background:#26301F;border-color:var(--line);color:var(--ink)}
 body[data-theme="dark"] .lock{background:linear-gradient(145deg,#141813,#2B2D22)}
+body[data-theme="dark"] .queue-row,body[data-theme="dark"] .dossier-box,body[data-theme="dark"] .cost-out{background:#1B201B;border-color:var(--line);color:var(--ink)}
+body[data-theme="dark"] .readiness-check label{background:#1B201B;border-color:var(--line);color:var(--ink2)}
+body[data-theme="dark"] .readiness-chip{background:#222A22;border-color:var(--line);color:var(--mut)}
+body[data-theme="dark"] .readiness-chip.done{background:#17301F;color:#A7E0C0;border-color:#245A3A}
+body[data-theme="dark"] .wx-mark{background:#222A22;border-color:var(--line);color:var(--ink2)}
+body[data-theme="dark"] .wx-temp{color:var(--ink)}
 body[data-theme="dark"] .dl-quicklink,body[data-theme="dark"] .dl-mini-btn{background:#1B201B;border-color:var(--line);color:#E7C46E}
 body[data-theme="dark"] .mini-day{background:#1B201B;border-color:var(--line);color:var(--ink2)}
 body[data-theme="dark"] .mini-day.fest{background:#2B2A1D}
@@ -3775,6 +3820,7 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
           <span class="th-qby" id="thQuoteBy"></span>
           <button type="button" class="th-qrefresh" id="thQuoteCopy" title="Copy motivation" aria-label="Copy motivation">⧉</button>
           <button type="button" class="th-qrefresh" id="thQuoteRefresh" title="Next motivation" aria-label="Next motivation">↻</button>
+          <div class="dl-weather" id="jaipurWeather" aria-live="polite"><span class="wx-mark">Jaipur weather loading…</span></div>
         </div>
         <div class="dl-cell dl-time" aria-label="Local time">
           <b class="dl-clock"><span id="dlClock">10:48</span><i id="dlSeconds">:32</i></b>
@@ -3872,6 +3918,13 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
       <div class="panel senior-panel" id="seniorPulse"></div>
       <div class="panel senior-panel" id="seniorAttention"></div>
     </div>
+
+    <div class="sec-head queue-head">
+      <h3>Next-best-action queue</h3>
+      <span class="sub">Subah kholte hi kaam shuru — sabse urgent pehle</span>
+      <button class="btn ghost sm" id="queueAddTask" style="margin-left:auto">+ Task</button>
+    </div>
+    <div class="panel queue-panel" id="nextQueue"></div>
 
     <div class="sec-head fest-head">
       <h3>Month festivals & creatives</h3>
@@ -4923,6 +4976,148 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
   </div>
 </div>
 
+<!-- ============ PROPERTY DOSSIER ============ -->
+<div class="overlay" id="dossierModal">
+  <div class="modal dossier-modal">
+    <div class="modal-head">
+      <h3 id="dossierTitle">Property dossier</h3>
+      <button class="xbtn" data-close="dossierModal">✕</button>
+    </div>
+    <div class="modal-body" id="dossierBody"></div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="dossierModal">Close</button>
+      <button class="btn ghost" id="dossierCopy">Copy text</button>
+      <button class="btn ghost" id="dossierPrint">Print / PDF</button>
+      <button class="btn primary" id="dossierShare">Share WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ COST & QUOTATION BUILDER ============ -->
+<div class="overlay" id="costModal">
+  <div class="modal" style="width:min(760px,100%)">
+    <div class="modal-head"><h3>Cost & quotation builder</h3><button class="xbtn" data-close="costModal">✕</button></div>
+    <div class="modal-body cost-body">
+      <div class="grid2">
+        <div class="field"><label>Project</label><select id="cbProject"></select></div>
+        <div class="field"><label>Client</label><select id="cbClient"></select></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Saleable area (sq ft)</label><input id="cbArea" type="number" min="0" value="1000"></div>
+        <div class="field"><label>Rate (₹ / sq ft)</label><input id="cbRate" type="number" min="0"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>PLC (₹ / sq ft)</label><input id="cbPlc" type="number" min="0" value="0"></div>
+        <div class="field"><label>EDC/IDC (₹ / sq ft)</label><input id="cbEdc" type="number" min="0" value="0"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Other charges (₹ flat)</label><input id="cbOther" type="number" min="0" value="0"></div>
+        <div class="field"><label>Discount (₹)</label><input id="cbDiscount" type="number" min="0" value="0"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>GST type</label><select id="cbGstType"><option value="none">Ready / no GST</option><option value="affordable">Affordable 1%</option><option value="standard" selected>Non-affordable 5%</option></select></div>
+        <div class="field"><label>Stamp duty (%)</label><input id="cbStampPct" type="number" min="0" value="6"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Registration (%)</label><input id="cbRegPct" type="number" min="0" value="1"></div>
+        <div class="field"><label>Brokerage (%)</label><input id="cbBrokerPct" type="number" min="0" value="1"></div>
+      </div>
+      <div class="cost-out" id="cbOut"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="costModal">Close</button>
+      <button class="btn ghost" id="cbCopy">Copy quote</button>
+      <button class="btn primary" id="cbShare">Share WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SITE VISIT LOG ============ -->
+<div class="overlay" id="visitModal">
+  <div class="modal" style="width:min(640px,100%)">
+    <div class="modal-head"><h3 id="visitTitle">Site visit</h3><button class="xbtn" data-close="visitModal">✕</button></div>
+    <div class="modal-body">
+      <div class="grid2">
+        <div class="field"><label>Date</label><input type="date" id="vDate"></div>
+        <div class="field"><label>Time</label><input type="time" id="vTime"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Client</label><select id="vClient"></select></div>
+        <div class="field"><label>Project</label><select id="vProject"></select></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Advisor</label><select id="vAdvisor"></select></div>
+        <div class="field"><label>Outcome</label><select id="vOutcome"><option value="hot">Hot / ready</option><option value="warm">Warm</option><option value="cold">Cold</option><option value="no-show">No-show</option><option value="booked">Booked</option></select></div>
+      </div>
+      <div class="field"><label>Feedback</label><textarea id="vFeedback" rows="3"></textarea></div>
+      <div class="grid2">
+        <div class="field"><label>Next step</label><input id="vNext" placeholder="Call / proposal / token"></div>
+        <div class="field"><label>Next step date</label><input type="date" id="vNextDate"></div>
+      </div>
+      <input type="hidden" id="vId">
+    </div>
+    <div class="modal-foot">
+      <button class="btn danger" id="vDelete" style="margin-right:auto">Delete</button>
+      <button class="btn ghost" data-close="visitModal">Cancel</button>
+      <button class="btn primary" id="vSave">Save visit</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DOCUMENT VAULT ============ -->
+<div class="overlay" id="docModal">
+  <div class="modal" style="width:min(680px,100%)">
+    <div class="modal-head"><h3 id="docTitle">Document</h3><button class="xbtn" data-close="docModal">✕</button></div>
+    <div class="modal-body">
+      <div class="field"><label>Project</label><select id="docProject"></select></div>
+      <div class="grid2">
+        <div class="field"><label>Document name</label><input id="docName" placeholder="RERA certificate / JDA approval / OC"></div>
+        <div class="field"><label>Type</label><select id="docType"><option value="rera">RERA certificate</option><option value="approval">Approval</option><option value="oc">OC / CC</option><option value="title">Title deed</option><option value="layout">Layout plan</option><option value="id">Photo ID / KYC</option><option value="other">Other</option></select></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Status</label><select id="docStatus"><option value="pending">Pending / review</option><option value="verified">Verified</option><option value="expired">Expired</option><option value="missing">Missing</option></select></div>
+        <div class="field"><label>Expiry / valid till</label><input type="date" id="docExpiry"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Reference no.</label><input id="docRef" placeholder="RERA no / file no"></div>
+        <div class="field"><label>Note</label><input id="docNote" placeholder="Authority / verified by"></div>
+      </div>
+      <input type="hidden" id="docId">
+    </div>
+    <div class="modal-foot">
+      <button class="btn danger" id="docDelete" style="margin-right:auto">Delete</button>
+      <button class="btn ghost" data-close="docModal">Cancel</button>
+      <button class="btn primary" id="docSave">Save document</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ LEAD CAPTURE MINI-FORM ============ -->
+<div class="overlay" id="leadModal">
+  <div class="modal" style="width:min(560px,100%)">
+    <div class="modal-head"><h3>Lead capture — mini form</h3><button class="xbtn" data-close="leadModal">✕</button></div>
+    <div class="modal-body">
+      <p class="lock-hint" style="margin-top:0">QR / visiting card / Instagram link se yahi form khulega. Submit karte hi client desk me save ho jayega.</p>
+      <div class="field"><label>Name *</label><input id="leadName" placeholder="Client name"></div>
+      <div class="field"><label>Mobile *</label><input id="leadPhone" placeholder="+91 …"></div>
+      <div class="grid2">
+        <div class="field"><label>Budget min (₹ lakh)</label><input id="leadMin" type="number" min="0"></div>
+        <div class="field"><label>Budget max (₹ lakh)</label><input id="leadMax" type="number" min="0"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Corridor</label><select id="leadCorridor"></select></div>
+        <div class="field"><label>Timeline</label><select id="leadTimeline"><option value="ready">Ready to move</option><option value="6m">Within 6 months</option><option value="12m">Within 1 year</option><option value="24m">Within 2 years</option><option value="flex">Flexible</option></select></div>
+      </div>
+      <div class="field"><label>Requirement</label><textarea id="leadReq" rows="3" placeholder="2/3 BHK, plots, commercial…"></textarea></div>
+      <input type="hidden" id="leadAdvisor">
+    </div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="leadModal">Cancel</button>
+      <button class="btn primary" id="leadSave">Save lead</button>
+    </div>
+  </div>
+</div>
+
 <!-- ============ PROJECT DETAIL ============ -->
 <div class="overlay" id="detailModal">
   <div class="modal">
@@ -4933,6 +5128,10 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
       <button class="btn danger sm" id="detailDelete">Delete</button>
       <button class="btn ghost sm" id="detailFeature" title="Dashboard par promote karein">☆ Feature</button>
       <button class="btn ghost sm" id="detailCompare" title="Is project ko compare karein">⚖ Compare</button>
+      <button class="btn ghost sm" id="detailDossier" title="One-click property dossier">📄 Dossier</button>
+      <button class="btn ghost sm" id="detailCost" title="Cost & quotation">₹ Cost</button>
+      <button class="btn ghost sm" id="detailVisit" title="Log site visit">📍 Visit</button>
+      <button class="btn ghost sm" id="detailDoc" title="Add document">📁 Doc</button>
       <div class="sp"></div>
       <button class="btn ghost" data-close="detailModal">Close</button>
       <button class="btn primary" id="detailEdit">Edit details</button>
@@ -5530,6 +5729,13 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
         <input class="pick-search" id="cProjectSearch" placeholder="Search project or developer…">
         <div class="pick-list" id="cProjects"></div>
       </div>
+      <div class="field"><label>Readiness checklist — buyer documents</label><div class="readiness-check">
+        <label><input type="checkbox" id="cReadyKyc"> KYC complete</label>
+        <label><input type="checkbox" id="cReadyIncome"> Income proof</label>
+        <label><input type="checkbox" id="cReadyBank"> Bank pre-approval</label>
+        <label><input type="checkbox" id="cReadyCibil"> CIBIL readiness</label>
+        <label><input type="checkbox" id="cReadyAgreement"> Agreement checklist</label>
+      </div></div>
       <div class="field"><label>Internal notes</label><textarea id="cNotes" placeholder="Meeting notes, negotiation, family details…"></textarea></div>
       <div class="field"><label>My custom fields <button type="button" class="quick-add-btn" data-cfmanage="client">⚙ Manage</button></label><div id="cCustomFields"></div></div>
     </div>
@@ -6560,8 +6766,11 @@ function normalizeDb(d){
   if(!Array.isArray(d.advisors)) d.advisors = [];
   if(!Array.isArray(d.resale)) d.resale = [];
   if(!Array.isArray(d.bookings)) d.bookings = [];
+  if(!Array.isArray(d.visits)) d.visits = [];
+  if(!Array.isArray(d.documents)) d.documents = [];
   if(!Array.isArray(d.news)) d.news = [];
   if(!Array.isArray(d.todos)) d.todos = [];
+  if(!Array.isArray(d.monthMarks)) d.monthMarks = [];
   if(typeof d.sticky !== 'string') d.sticky = '';
   if(!Array.isArray(d.corridors) || !d.corridors.length){
     d.corridors = DEFAULT_CORRIDORS.map(c => ({ ...c }));
@@ -6749,6 +6958,38 @@ function normalizeDb(d){
     if(b.notes == null) b.notes = '';
     if(b.createdAt == null) b.createdAt = Date.now();
     if(b.updatedAt == null) b.updatedAt = b.createdAt;
+  });
+  d.visits = d.visits.filter(v => v && String(v.id || '')).map((v, i) => ({
+    id: v.id || uid(),
+    date: /^\d{4}-\d{2}-\d{2}$/.test(String(v.date || '')) ? String(v.date) : todayISO(),
+    time: String(v.time || '').trim().slice(0, 20),
+    clientId: clientIds.has(v.clientId) ? v.clientId : '',
+    projectId: projectIds.has(v.projectId) ? v.projectId : '',
+    advisorId: advisorIds.has(v.advisorId) ? v.advisorId : '',
+    outcome: ['hot','warm','cold','no-show','booked'].includes(v.outcome) ? v.outcome : 'warm',
+    feedback: String(v.feedback || '').trim().slice(0, 800),
+    next: String(v.next || '').trim().slice(0, 800),
+    nextDate: /^\d{4}-\d{2}-\d{2}$/.test(String(v.nextDate || '')) ? String(v.nextDate) : '',
+    createdAt: v.createdAt || Date.now() + i,
+    updatedAt: v.updatedAt || v.createdAt || Date.now() + i
+  })).slice(0, 1000);
+  const DOC_TYPES = ['rera','approval','oc','title','layout','id','other'];
+  d.documents = d.documents.filter(x => x && String(x.id || '')).map((x, i) => ({
+    id: x.id || uid(),
+    projectId: projectIds.has(x.projectId) ? x.projectId : '',
+    name: String(x.name || '').trim().slice(0, 160),
+    type: DOC_TYPES.includes(x.type) ? x.type : 'other',
+    status: ['verified','pending','expired','missing'].includes(x.status) ? x.status : 'pending',
+    expiry: /^\d{4}-\d{2}-\d{2}$/.test(String(x.expiry || '')) ? String(x.expiry) : '',
+    ref: String(x.ref || '').trim().slice(0, 160),
+    note: String(x.note || '').trim().slice(0, 500),
+    createdAt: x.createdAt || Date.now() + i,
+    updatedAt: x.updatedAt || x.createdAt || Date.now() + i
+  })).filter(x => x.name || x.projectId).slice(0, 1000);
+  d.clients.forEach(c => {
+    const keys = ['kyc','income','bankPreapproval','cibil','agreement'];
+    if(!c.readiness || typeof c.readiness !== 'object' || Array.isArray(c.readiness)) c.readiness = {};
+    keys.forEach(k => { c.readiness[k] = !!c.readiness[k]; });
   });
   d.news.forEach(n => {
     if(n.id == null) n.id = uid();
@@ -7917,6 +8158,7 @@ function renderDashboard(){
   renderLinksMini();
   renderPulse();
   renderSeniorDesk();
+  renderNextQueue();
   renderDailyHero();
 }
 
@@ -8079,6 +8321,266 @@ function initMonthCalendar(){
   });
 }
 
+/* ---------- next-best actions, dossier, cost builder, visit log, docs, comps, lead form, team board ---------- */
+function urgencyRank(date){
+  if(!date) return 99;
+  const d = (isoToDate(date) - isoToDate(todayISO())) / 86400000;
+  return d < 0 ? 0 : d === 0 ? 1 : d <= 3 ? 2 : d <= 7 ? 3 : 4;
+}
+function nextBestActions(){
+  const items = [];
+  const today = todayISO();
+  (db.todos || []).filter(t => !t.done).forEach(t => items.push({ kind:'task', id:t.id, title:t.title || 'Task', sub:(t.date || '') + (t.time ? ' · ' + t.time : '') + (t.date < today ? ' · overdue' : ''), date:t.date, priority: urgencyRank(t.date) === 0 ? 0 : 2 }));
+  scopedClients().filter(c => c.nextFollowUp && !['booked','lost'].includes(c.clientStatus || 'new')).forEach(c => items.push({ kind:'client', id:c.id, title:c.name || c.phone || 'Client', sub:'Follow up · ' + followupInfo(c.nextFollowUp).label, date:c.nextFollowUp, priority: urgencyRank(c.nextFollowUp) }));
+  visibleAdvisors().filter(a => a.nextFollowUp && a.status !== 'inactive').forEach(a => items.push({ kind:'advisor', id:a.id, title:a.name || 'Advisor', sub:'Advisor follow-up · ' + followupInfo(a.nextFollowUp).label, date:a.nextFollowUp, priority: urgencyRank(a.nextFollowUp) }));
+  scopedBookings().forEach(b => {
+    const pend = bookingPending(b) || 0;
+    if(b.stage !== 'cancelled' && pend > 0) items.push({ kind:'booking', id:b.id, title:(bookingClient(b)?.name || 'Booking'), sub:'Pending collection · ' + fmtPrice(pend), date:b.bookingDate || today, priority: urgencyRank(b.bookingDate || today) === 0 ? 0 : 3 });
+  });
+  (db.documents || []).filter(d => d.expiry && d.expiry >= today && d.expiry <= addISO(today, 45)).forEach(d => items.push({ kind:'doc', id:d.id, title:d.name || 'Document', sub:'Expiry ' + fmtDate(d.expiry) + ' · ' + (d.status || 'pending'), date:d.expiry, priority:2 }));
+  (db.monthMarks || []).filter(m => m.date >= today).forEach(m => items.push({ kind:'mark', id:m.id, title:m.label, sub:(MONTH_MARK_TYPES[m.type]?.label || 'Label') + ' · ' + fmtDate(m.date), date:m.date, priority: urgencyRank(m.date) }));
+  return items.sort((a,b) => a.priority - b.priority || (a.date || '').localeCompare(b.date || '')).slice(0, 8);
+}
+function renderNextQueue(){
+  const wrap = $('#nextQueue');
+  if(!wrap) return;
+  const items = nextBestActions();
+  wrap.innerHTML = `<div class="panel-head"><h4>Action list</h4><span class="n-badge">${items.length}</span></div>` +
+    (items.length ? `<div class="queue-list">${items.map(i => `<button type="button" class="queue-row" data-queue="${i.kind}:${i.id}"><span class="queue-ic">${i.kind === 'booking' ? '₹' : i.kind === 'client' ? '☎' : i.kind === 'advisor' ? '♟' : i.kind === 'task' ? '✓' : '!'}</span><span><b>${esc(i.title)}</b><small>${esc(i.sub)}</small></span><em>Open</em></button>`).join('')}</div>` : '<div class="empty-inline">Aaj ka queue clear hai — main ek bookable slot/client agenda add karo.</div>');
+  $$('#nextQueue [data-queue]').forEach(btn => btn.addEventListener('click', () => {
+    const [kind, id] = btn.dataset.queue.split(':');
+    if(kind === 'client') openClientProfile(id);
+    else if(kind === 'advisor') openAdvisorProfile(id);
+    else if(kind === 'booking') openBooking(id);
+    else if(kind === 'task') go('dayplan');
+    else if(kind === 'doc') openDoc(id);
+    else if(kind === 'mark') openMonthMark(null);
+  }));
+  const add = $('#queueAddTask');
+  if(add) add.onclick = () => go('dayplan');
+}
+function openDossier(p){
+  if(!p) return;
+  const d = dev(p.developerId);
+  const c = corridor(p.corridor);
+  const docs = (db.documents || []).filter(x => x.projectId === p.id);
+  const docsRisk = docs.filter(x => x.status === 'expired' || x.status === 'missing');
+  const advisors = advisorsForProject(p.id);
+  const clients = clientsForProject(p.id);
+  const issues = [];
+  if(!p.rera) issues.push('RERA number missing');
+  if(!p.approval) issues.push('Approval not recorded');
+  if(!d) issues.push('Developer not linked');
+  if(!p.priceMin && !p.priceMax) issues.push('Price missing');
+  if(docsRisk.length) issues.push(docsRisk.length + ' document alert(s)');
+  const body = `
+    <div class="dossier-head">
+      <div><div class="eyebrow">BCS PROPERTY DOSSIER</div><h4>${esc(p.name)}</h4><p>${esc(p.location || c.name + ', Jaipur')} · ${esc(c.name)} · ${statusLabel[p.status] || ''}</p></div>
+      <div class="dossier-badge">${p.rera ? 'RERA ✓' : 'RERA ⚠️'}</div>
+    </div>
+    <div class="dossier-grid">
+      <div class="dossier-box"><h5>Commercial</h5><p><b>${priceRange(p)}</b></p><p>${esc(p.sizes || 'Sizes not recorded')}</p><p>${esc(rateText(p) || 'Rate not recorded')}</p><p>${esc(p.timeline ? timelineLabel(p.timeline) : 'Timeline not recorded')}</p></div>
+      <div class="dossier-box"><h5>Legal / approvals</h5><p>${esc(approvalLabel(p, true) || 'Approval missing')}</p><p>${esc(p.approval || 'Approval note missing')}</p><p>RERA: ${esc(p.rera || 'not recorded')}</p><p>${docs.length ? docs.length + ' document(s) vaulted' : 'No documents in vault yet'}</p></div>
+      <div class="dossier-box"><h5>Stakeholders</h5><p><b>${d ? esc(d.name) : 'No developer'}</b>${d && d.phone ? ' · ' + esc(d.phone) : ''}</p><p>Advisors: ${advisors.length ? advisors.map(a => esc(a.name)).join(', ') : 'none'}</p><p>Clients: ${clients.length ? clients.map(x => esc(x.name || x.phone || 'Client')).join(', ') : 'none'}</p></div>
+      <div class="dossier-box"><h5>Risk / attention</h5>${issues.length ? `<ul>${issues.map(i => `<li>${esc(i)}</li>`).join('')}</ul>` : '<p>No red flags in current records.</p>'}</div>
+    </div>
+    <div class="dossier-actions">
+      <button type="button" class="btn ghost sm" data-dossier-cost="${p.id}">₹ Cost builder</button>
+      <button type="button" class="btn ghost sm" data-dossier-visit="${p.id}">📍 Log visit</button>
+      <button type="button" class="btn ghost sm" data-dossier-doc="${p.id}">📁 Document</button>
+      <button type="button" class="btn ghost sm" data-dossier-project="${p.id}">Open project</button>
+    </div>`;
+  $('#dossierTitle').textContent = 'Property dossier — ' + (p.name || '');
+  $('#dossierBody').innerHTML = body;
+  $('#dossierBody').dataset.projectId = p.id;
+  showOverlay('dossierModal');
+  $$('#dossierBody [data-dossier-cost]').forEach(b => b.addEventListener('click', () => openCostBuilder(b.dataset.dossierCost)));
+  $$('#dossierBody [data-dossier-visit]').forEach(b => b.addEventListener('click', () => openVisit(null, null, b.dataset.dossierVisit)));
+  $$('#dossierBody [data-dossier-doc]').forEach(b => b.addEventListener('click', () => openDoc(null, b.dataset.dossierDoc)));
+  $$('#dossierBody [data-dossier-project]').forEach(b => b.addEventListener('click', () => { closeModal('dossierModal'); openDetail(b.dataset.dossierProject); }));
+}
+function dossierText(){
+  const p = db.projects.find(x => x.id === $('#dossierBody')?.dataset.projectId);
+  if(!p) return '';
+  const d = dev(p.developerId), c = corridor(p.corridor);
+  const docs = (db.documents || []).filter(x => x.projectId === p.id);
+  return ['*BCS Property Dossier*', p.name, `${(p.location || c.name)} · ${c.name} · ${statusLabel[p.status] || ''}`,
+    `Price: ${priceRange(p)} · ${rateText(p) || ''}`, `Sizes: ${p.sizes || '—'}`, `RERA: ${p.rera || 'not recorded'}`,
+    `Approval: ${approvalLabel(p, true) || '—'} ${p.approval ? '· ' + p.approval : ''}`,
+    `Developer: ${d ? (d.name + (d.phone ? ' · ' + d.phone : '')) : 'not linked'}`,
+    `Advisors: ${advisorsForProject(p.id).map(a => a.name).join(', ') || 'none'}`,
+    `Clients: ${clientsForProject(p.id).map(x => x.name || x.phone || 'Client').join(', ') || 'none'}`,
+    `Documents: ${docs.length ? docs.map(x => x.name + ' (' + x.status + ')').join('; ') : 'none'}`,
+    '', 'BCS · Business City Square · @ajaysharma.bcs'].join('\n');
+}
+function shareDossier(){
+  const text = dossierText();
+  if(!text) return;
+  const p = db.projects.find(x => x.id === $('#dossierBody')?.dataset.projectId);
+  if(navigator.share){ navigator.share({ title:(p?.name || 'Property') + ' · BCS', text }).catch(() => {}); }
+  else window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+}
+function openCostBuilder(projectId, clientId){
+  const sel = $('#cbProject');
+  sel.innerHTML = scopedProjects().map(p => `<option value="${p.id}">${esc(p.name)}</option>`).join('');
+  const csel = $('#cbClient');
+  csel.innerHTML = '<option value="">— no client —</option>' + scopedClients().map(c => `<option value="${c.id}">${esc(c.name || c.phone || 'Client')}</option>`).join('');
+  if(projectId) sel.value = projectId;
+  if(clientId) csel.value = clientId;
+  const p = scopedProjects().find(x => x.id === sel.value);
+  if(p){
+    $('#cbRate').value = p.pricePerUnit || '';
+    $('#cbArea').value = 1000;
+    if(p.pricePerUnit == null && p.priceMin != null && p.sizes){
+      const m = String(p.sizes).match(/(\d+(?:\.\d+)?)\s*(sq ft|sq yd)/i);
+      if(m){ $('#cbArea').value = +m[1] * (/sq yd/i.test(m[2]) ? 9 : 1); $('#cbRate').value = p.priceMin * 100000 / +$('#cbArea').value; }
+    }
+  }
+  calcQuotation();
+  showOverlay('costModal');
+}
+function calcQuotation(){
+  const num = id => +($(id)?.value || 0) || 0;
+  const area = num('#cbArea'), rate = num('#cbRate');
+  const base = area * rate;
+  const plc = area * num('#cbPlc');
+  const edc = area * num('#cbEdc');
+  const other = num('#cbOther');
+  const subtotal = base + plc + edc + other;
+  const gstType = $('#cbGstType')?.value || 'none';
+  const gst = gstType === 'affordable' ? subtotal * .01 : gstType === 'standard' ? subtotal * .05 * (2/3) : 0;
+  const agreement = subtotal + gst;
+  const stamp = agreement * (num('#cbStampPct') / 100);
+  const reg = agreement * (num('#cbRegPct') / 100);
+  const broker = agreement * (num('#cbBrokerPct') / 100);
+  const total = agreement + stamp + reg + broker - num('#cbDiscount');
+  const r = .0075, n = 240;
+  const emi = agreement ? agreement * r * Math.pow(1+r, n) / (Math.pow(1+r, n) - 1) : 0;
+  $('#cbOut').innerHTML = `
+    <div class="cost-row"><span>Base (area × rate)</span><b>${fmtPrice(base / 100000) || '—'}</b></div>
+    <div class="cost-row"><span>PLC + EDC/IDC</span><b>${fmtPrice((plc + edc) / 100000) || '—'}</b></div>
+    ${other ? `<div class="cost-row"><span>Other charges</span><b>${fmtPrice(other / 100000)}</b></div>` : ''}
+    <div class="cost-row"><span>GST (${gstType === 'affordable' ? '1%' : gstType === 'standard' ? '5% × 2/3' : 'none'})</span><b>${fmtPrice(gst / 100000) || '—'}</b></div>
+    <div class="cost-row"><span>Stamp + registration</span><b>${fmtPrice((stamp + reg) / 100000) || '—'}</b></div>
+    <div class="cost-row"><span>Brokerage</span><b>${fmtPrice(broker / 100000) || '—'}</b></div>
+    ${num('#cbDiscount') ? `<div class="cost-row"><span>Discount</span><b>− ${fmtPrice(num('#cbDiscount') / 100000)}</b></div>` : ''}
+    <div class="cost-total"><span>Total payable</span><b>${fmtPrice(total / 100000) || '—'}</b></div>
+    <div class="cost-row"><span>Indicative EMI @9% / 20y</span><b>${Number.isFinite(emi) && emi ? fmtPrice(emi / 100000) : '—'}</b></div>
+  `;
+}
+function quoteText(){
+  const p = scopedProjects().find(x => x.id === $('#cbProject')?.value);
+  const out = $('#cbOut')?.innerText || '';
+  return ['*BCS Quotation*', p ? p.name : '', out, '', 'BCS · Business City Square · @ajaysharma.bcs'].join('\n');
+}
+function openVisit(id, presetClientId, presetProjectId, presetAdvisorId){
+  const v = id ? (db.visits || []).find(x => x.id === id) : null;
+  if(id && !v) return;
+  $('#visitTitle').textContent = id ? 'Edit site visit' : 'Log site visit';
+  $('#vId').value = v ? v.id : '';
+  $('#vDate').value = v?.date || todayISO();
+  $('#vTime').value = v?.time || '';
+  $('#vClient').innerHTML = '<option value="">— select client —</option>' + scopedClients().map(c => `<option value="${c.id}">${esc(c.name || c.phone || 'Client')}</option>`).join('');
+  $('#vProject').innerHTML = '<option value="">— select project —</option>' + scopedProjects().map(p => `<option value="${p.id}">${esc(p.name)}</option>`).join('');
+  $('#vAdvisor').innerHTML = '<option value="">— select advisor —</option>' + visibleAdvisors().map(a => `<option value="${a.id}">${esc(a.name)}</option>`).join('');
+  $('#vClient').value = v?.clientId || presetClientId || '';
+  $('#vProject').value = v?.projectId || presetProjectId || '';
+  $('#vAdvisor').value = v?.advisorId || presetAdvisorId || (isAdmin() ? '' : (currentAdvisor()?.id || ''));
+  $('#vOutcome').value = v?.outcome || 'warm';
+  $('#vFeedback').value = v?.feedback || '';
+  $('#vNext').value = v?.next || '';
+  $('#vNextDate').value = v?.nextDate || '';
+  $('#vDelete').style.display = id && isAdmin() ? 'inline-flex' : 'none';
+  showOverlay('visitModal');
+}
+function saveVisit(){
+  if(!isAdmin()) return toast('Advisor login se log nahi hota', true);
+  const clientId = $('#vClient').value, projectId = $('#vProject').value, advisorId = $('#vAdvisor').value;
+  if(!clientId || !projectId) return toast('Client aur project select karein', true);
+  const rec = { date:$('#vDate').value || todayISO(), time:$('#vTime').value.trim(), clientId, projectId, advisorId, outcome:$('#vOutcome').value, feedback:$('#vFeedback').value.trim(), next:$('#vNext').value.trim(), nextDate:$('#vNextDate').value || '', updatedAt:Date.now() };
+  const id = $('#vId').value;
+  if(id){
+    const v = db.visits.find(x => x.id === id); if(v) Object.assign(v, rec);
+    toast('Visit updated');
+  } else {
+    db.visits.push({ id: uid(), createdAt: Date.now(), ...rec });
+    toast('Site visit logged');
+  }
+  save(); closeModal('visitModal'); render();
+}
+function openDoc(id, presetProjectId){
+  const d = id ? (db.documents || []).find(x => x.id === id) : null;
+  if(id && !d) return;
+  $('#docTitle').textContent = id ? 'Edit document' : 'Add document';
+  $('#docProject').innerHTML = '<option value="">— no project —</option>' + scopedProjects().map(p => `<option value="${p.id}">${esc(p.name)}</option>`).join('');
+  $('#docId').value = d?.id || '';
+  $('#docProject').value = d?.projectId || presetProjectId || '';
+  $('#docName').value = d?.name || '';
+  $('#docType').value = d?.type || 'other';
+  $('#docStatus').value = d?.status || 'pending';
+  $('#docExpiry').value = d?.expiry || '';
+  $('#docRef').value = d?.ref || '';
+  $('#docNote').value = d?.note || '';
+  $('#docDelete').style.display = id && isAdmin() ? 'inline-flex' : 'none';
+  showOverlay('docModal');
+}
+function saveDoc(){
+  if(!isAdmin()) return toast('Advisor login se edit nahi hota', true);
+  const name = $('#docName').value.trim();
+  if(!name) return toast('Document ka naam likhein', true);
+  const rec = { projectId:$('#docProject').value || '', name, type:$('#docType').value, status:$('#docStatus').value, expiry:$('#docExpiry').value || '', ref:$('#docRef').value.trim(), note:$('#docNote').value.trim(), updatedAt:Date.now() };
+  const id = $('#docId').value;
+  if(id){
+    const d = db.documents.find(x => x.id === id); if(d) Object.assign(d, rec);
+    toast('Document updated');
+  } else {
+    db.documents.push({ id: uid(), createdAt: Date.now(), ...rec });
+    toast('Document saved to vault');
+  }
+  save(); closeModal('docModal'); render();
+}
+function openLead(presetAdvisorId){
+  $('#leadName').value = ''; $('#leadPhone').value = ''; $('#leadMin').value = ''; $('#leadMax').value = '';
+  $('#leadCorridor').innerHTML = '<option value="">Any corridor</option>' + db.corridors.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('');
+  $('#leadReq').value = '';
+  $('#leadAdvisor').value = presetAdvisorId || (isAdmin() ? '' : (currentAdvisor()?.id || ''));
+  showOverlay('leadModal');
+}
+function saveLead(){
+  const name = $('#leadName').value.trim(), phone = $('#leadPhone').value.trim();
+  if(!name) return toast('Name likhein', true);
+  if(phone && phone.replace(/\D/g,'').length < 10) return toast('Mobile number sahi likhein', true);
+  const rec = { id:uid(), name, phone, email:'', advisorId:$('#leadAdvisor').value || '', clientStatus:'new', corridors: $('#leadCorridor').value ? [$('#leadCorridor').value] : [], projectIds:[], types:[], budgetMin: $('#leadMin').value ? +$('#leadMin').value : null, budgetMax: $('#leadMax').value ? +$('#leadMax').value : null, timeline: $('#leadTimeline').value, requirement: $('#leadReq').value.trim(), notes:'Lead captured via QR/form', nextFollowUp:'', lastContact:'', transferHistory:[], custom:{}, readiness:{kyc:false,income:false,bankPreapproval:false,cibil:false,agreement:false}, createdAt:Date.now(), updatedAt:Date.now() };
+  db.clients.push(rec);
+  save(); closeModal('leadModal'); render(); toast('Lead saved — client desk ready');
+}
+function openTeamBoard(){
+  const advisors = visibleAdvisors().map(a => {
+    const visits = (db.visits || []).filter(v => v.advisorId === a.id).length;
+    const clients = clientsForAdvisor(a);
+    const booked = clients.filter(c => c.clientStatus === 'booked').length;
+    const bookings = bookingsForAdvisor(a);
+    const collected = bookings.reduce((n,b) => n + (Number(b.received) || 0), 0);
+    const conv = clients.length ? Math.round(booked / clients.length * 100) : 0;
+    const target = (+a.teamSize || 1) * 3;
+    const progress = Math.min(100, Math.round(visits / Math.max(1, target) * 100));
+    return { a, clients, booked, conv, collected, visits, progress };
+  }).sort((x,y) => y.collected - x.collected).slice(0,12);
+  const html = advisors.length ? `<div class="mini-list">${advisors.map(x => `
+    <button type="button" class="mini-row" data-team-open="${x.a.id}">
+      <span><b>${esc(x.a.name)}</b><small>${esc(x.a.groupName || 'Independent')} · ${x.clients.length} clients · ${x.booked} booked</small></span>
+      <span class="mini-right"><b>${x.conv}% conv</b><small>${fmtPrice(x.collected / 100000) || '—'} coll.</small></span>
+      <span class="progress-mini"><i style="width:${x.progress}%"></i></span>
+    </button>`).join('')}</div>` : '<div class="empty-inline">Koi advisor nahi.</div>';
+  let wrap = $('#teamBoardModal .modal-body');
+  if(!wrap){
+    document.body.insertAdjacentHTML('beforeend', `<div class="overlay" id="teamBoardModal"><div class="modal"><div class="modal-head"><h3>Team performance board</h3><button class="xbtn" data-close="teamBoardModal">✕</button></div><div class="modal-body"></div></div></div>`);
+    wrap = $('#teamBoardModal .modal-body');
+  }
+  wrap.innerHTML = html;
+  showOverlay('teamBoardModal');
+  $$('#teamBoardModal [data-team-open]').forEach(b => b.addEventListener('click', () => { closeModal('teamBoardModal'); openAdvisorProfile(b.dataset.teamOpen); }));
+}
 function renderSeniorDesk(){
   if(!$('#seniorPriorities')) return;
   const today = todayISO();
@@ -9136,6 +9638,67 @@ async function refreshFestivalsOnline(){
   if(note) note.textContent = db.daily.festivalRefreshNote;
   toast(`Festival calendar refreshed — ${added} new, ${updated} updated`);
 }
+/* ---------- Jaipur weather (Open-Meteo, keyless) ---------- */
+function wxCodeInfo(code){
+  const c = +code;
+  if(c === 0) return ['☀','Clear'];
+  if(c === 1) return ['⛅','Mostly clear'];
+  if(c === 2) return ['⛅','Partly cloudy'];
+  if(c === 3) return ['☁','Overcast'];
+  if([45,48].includes(c)) return ['🌫','Fog'];
+  if([51,53,55].includes(c)) return ['🌦','Drizzle'];
+  if([61,63,65].includes(c)) return ['🌧','Rain'];
+  if([71,73,75].includes(c)) return ['🌨','Snow'];
+  if([80,81,82].includes(c)) return ['🌦','Showers'];
+  if([95,96,99].includes(c)) return ['⛈','Thunder'];
+  return ['◐','Weather'];
+}
+function aqiInfo(v){
+  const n = +v;
+  if(isNaN(n)) return 'AQI —';
+  if(n <= 50) return 'Good';
+  if(n <= 100) return 'Moderate';
+  if(n <= 150) return 'USG';
+  if(n <= 200) return 'Unhealthy';
+  return 'Very unhealthy';
+}
+async function renderJaipurWeather(){
+  const wrap = $('#jaipurWeather');
+  if(!wrap) return;
+  try{
+    const params = new URLSearchParams({
+      latitude:'26.9124', longitude:'75.7873',
+      current:'temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m',
+      daily:'weather_code,temperature_2m_max,temperature_2m_min,wind_speed_10m_max',
+      timezone:'Asia/Kolkata', forecast_days:'3'
+    });
+    const res = await fetch('https://api.open-meteo.com/v1/forecast?' + params.toString(), { cache:'no-store' });
+    if(!res.ok) throw new Error('weather unavailable');
+    const data = await res.json();
+    const cur = data.current || {}, daily = data.daily || {};
+    const [icon, label] = wxCodeInfo(cur.weather_code);
+    let aqi = NaN;
+    try{
+      const ap = new URLSearchParams({ latitude:'26.9124', longitude:'75.7873', current:'us_aqi,pm2_5,pm10' });
+      const ar = await fetch('https://air-quality-api.open-meteo.com/v1/air-quality?' + ap.toString(), { cache:'no-store' });
+      if(ar.ok){ const ad = await ar.json(); aqi = ad.current?.us_aqi; }
+    }catch(e){}
+    const days = (daily.time || []).slice(0,3).map((d, i) => {
+      const [ic] = wxCodeInfo(daily.weather_code?.[i]);
+      const dt = isoToDate(d);
+      return `<span class="wx-day"><b>${dt ? dt.toLocaleDateString('en-IN',{weekday:'short'}) : ''}</b> ${ic} ${daily.temperature_2m_max?.[i] ?? ''}°/${daily.temperature_2m_min?.[i] ?? ''}° · ${daily.wind_speed_10m_max?.[i] ?? ''}km/h</span>`;
+    }).join('<span class="wx-sep">·</span>');
+    wrap.innerHTML = `
+      <span class="wx-mark"><span class="wx-temp">${cur.temperature_2m ?? '—'}°C</span> ${icon} ${esc(label)}</span>
+      <span class="wx-mark">💨 ${cur.wind_speed_10m ?? '—'} km/h</span>
+      <span class="wx-mark">💧 ${cur.relative_humidity_2m ?? '—'}%</span>
+      <span class="wx-mark">AQI ${isNaN(aqi) ? '—' : Math.round(aqi)} · ${esc(aqiInfo(aqi))}</span>
+      ${days}
+    `;
+  }catch(e){
+    wrap.innerHTML = '<span class="wx-mark">Jaipur weather offline — jaise hi network aaye refresh hoga</span>';
+  }
+}
 function initDailyHero(){
   if(!$('#todayHero') && !$('#dashHeadline')) return;
   const refresh = () => cycleDailyQuote();
@@ -9268,6 +9831,11 @@ function initDailyHero(){
     if(del) deleteQuote(del.dataset.fqDel);
   });
   renderFmThemeOptions();
+  renderJaipurWeather();
+  setInterval(renderJaipurWeather, 30 * 60 * 1000);
+  document.addEventListener('visibilitychange', () => {
+    if(document.visibilityState === 'visible') renderJaipurWeather();
+  });
   let lastDay = todayISO();
   setInterval(() => {
     const now = todayISO();
@@ -9763,12 +10331,18 @@ function initAdvisorControls(){
     if(rr) return openResaleView(rr.dataset.advresale);
     const bk = e.target.closest('[data-advbooking]');
     if(bk) return openBooking(bk.dataset.advbooking);
+    const vv = e.target.closest('[data-advvisit]');
+    if(vv) return openVisit(vv.dataset.advvisit);
+    const rc = e.target.closest('[data-advcclient]');
+    if(rc) return openClientProfile(rc.dataset.advcclient);
     const road = e.target.closest('[data-advroad]');
     if(road){ closeModal('advisorProfileModal'); setTimeout(() => openRoadHub(road.dataset.advroad), 40); return; }
     const snap = e.target.closest('[data-advaddclient]');
     if(snap){ const id = snap.dataset.advaddclient; closeModal('advisorProfileModal'); setTimeout(() => openClient(null, id), 60); return; }
     const sbook = e.target.closest('[data-advaddbooking]');
     if(sbook){ const id = sbook.dataset.advaddbooking; closeModal('advisorProfileModal'); setTimeout(() => openBooking(null, null, id), 60); return; }
+    const svisit = e.target.closest('[data-advaddvisit]');
+    if(svisit){ const id = svisit.dataset.advaddvisit; closeModal('advisorProfileModal'); setTimeout(() => openVisit(null, null, null, id), 60); return; }
     const sproj = e.target.closest('[data-advaddproject]');
     if(sproj){ const a = advisor(sproj.dataset.advaddproject); const roadId = a ? advisorRoadIds(a)[0] : ''; closeModal('advisorProfileModal'); setTimeout(() => openProject(null, roadId || undefined, null, [sproj.dataset.advaddproject]), 60); return; }
     const sresale = e.target.closest('[data-advaddresale]');
@@ -10044,6 +10618,7 @@ function renderAdvisorProfile(){
   const advDevelopers = developersForAdvisor(a);
   const advResale = resaleForAdvisor(a);
   const advBookings = bookingsForAdvisor(a);
+  const advVisits = (db.visits || []).filter(v => v.advisorId === a.id);
   const advRoads = advisorRoadIds(a);
   const bookingDeal = advBookings.reduce((n, b) => n + (Number(b.dealValue || b.bookingAmount) || 0), 0);
   const wa = waLink(a.phone);
@@ -10098,6 +10673,7 @@ function renderAdvisorProfile(){
     ${isAdmin() ? `<div class="profile-block"><div class="lab">Linked quick add</div><div class="adv-quick">
       <button type="button" class="btn primary sm" data-advaddclient="${a.id}">+ Client</button>
       <button type="button" class="btn ghost sm" data-advaddbooking="${a.id}">+ Booking</button>
+      <button type="button" class="btn ghost sm" data-advaddvisit="${a.id}">📍 Visit</button>
       <button type="button" class="btn ghost sm" data-advaddproject="${a.id}">+ Project</button>
       <button type="button" class="btn ghost sm" data-advaddresale="${a.id}">+ Resale</button>
     </div><div class="lock-hint">Forms isi advisor ko pre-selected rakhte hain — save karte hi sab jagah auto update.</div></div>` : ''}
@@ -10147,6 +10723,22 @@ function renderAdvisorProfile(){
           <span class="price">${number(b.received) ? esc(fmtPrice(b.received)) : (b.dealValue ? esc(fmtPrice(b.dealValue)) : '—')}</span>
         </button>`;
       }).join('')}</div>` : `<div class="empty-inline">No bookings linked yet.</div>`}
+    </div>
+    <div class="profile-sec">
+      <h5>Site visits & outcomes <span class="n">${advVisits.length}</span>${isAdmin() ? `<button class="btn ghost sm" type="button" data-advaddvisit="${a.id}" style="margin-left:auto">+ Log visit</button>` : ''}</h5>
+      ${advVisits.length ? `<div class="mini-list">${advVisits.sort((x,y) => (y.date || '').localeCompare(x.date || '')).map(v => {
+        const c = v.clientId ? db.clients.find(x => x.id === v.clientId) : null;
+        const p = v.projectId ? scopedProjects().find(x => x.id === v.projectId) : null;
+        return `<button data-advvisit="${v.id}" type="button"><span class="pdot" style="background:${v.outcome === 'hot' ? '#2F8F6B' : v.outcome === 'no-show' ? '#C24646' : '#C49A3E'}"></span><span style="min-width:0"><span class="nm">${esc(fmtDate(v.date))} · ${esc(c?.name || 'Client')}</span><span class="sub">${esc(p?.name || 'Project')} · ${esc(v.outcome)}${v.next ? ' · next: ' + esc(v.next) : ''}</span></span><span class="price">${esc(v.feedback || '')}</span></button>`;
+      }).join('')}</div>` : `<div class="empty-inline">No visits logged for this advisor.</div>`}
+    </div>
+    <div class="profile-sec">
+      <h5>Client readiness checklist <span class="n">${chain.length}</span></h5>
+      ${chain.length ? `<div class="mini-list">${chain.map(c => {
+        const ready = c.readiness || {};
+        const doneCount = ['kyc','income','bankPreapproval','cibil','agreement'].filter(k => ready[k]).length;
+        return `<button data-advcclient="${c.id}" type="button"><span class="pdot" style="background:${doneCount === 5 ? '#2F8F6B' : '#C49A3E'}"></span><span style="min-width:0"><span class="nm">${esc(c.name || c.phone || 'Client')}</span><span class="sub">KYC ${ready.kyc ? '✓' : '—'} · Income ${ready.income ? '✓' : '—'} · Bank ${ready.bankPreapproval ? '✓' : '—'} · CIBIL ${ready.cibil ? '✓' : '—'} · Agree ${ready.agreement ? '✓' : '—'}</span></span><span class="price">${doneCount}/5 ready</span></button>`;
+      }).join('')}</div>` : `<div class="empty-inline">No assigned clients for readiness check.</div>`}
     </div>`;
 }
 
@@ -10228,6 +10820,9 @@ function initClientControls(){
     if(a) return openAdvisorProfile(a.dataset.cadvisor);
     const bk = e.target.closest('[data-bookingopen]');
     if(bk) return openBooking(bk.dataset.bookingopen);
+    const v = e.target.closest('[data-cvisit]');
+    if(v) return openVisit(v.dataset.cvisit);
+    if(e.target.closest('[data-caddvisit]')) return openVisit(null, clientProfileId);
     if(e.target.closest('[data-addbookingclient]')) return openBooking(null, clientProfileId);
   });
 }
@@ -10499,6 +11094,12 @@ function openClient(id, presetAdvisorId){
   $('#cTimeline').value = c.timeline || '';
   $('#cRequirement').value = c.requirement || '';
   $('#cNotes').value = c.notes || '';
+  const ready = c.readiness || {};
+  $('#cReadyKyc').checked = !!ready.kyc;
+  $('#cReadyIncome').checked = !!ready.income;
+  $('#cReadyBank').checked = !!ready.bankPreapproval;
+  $('#cReadyCibil').checked = !!ready.cibil;
+  $('#cReadyAgreement').checked = !!ready.agreement;
   renderCustomFields('#cCustomFields', 'client', c.custom || {});
   const advisorOptions = isAdmin() ? db.advisors : [currentAdvisor()].filter(Boolean);
   $('#cAdvisor').innerHTML = '<option value="">— Admin desk / unassigned —</option>' +
@@ -10532,6 +11133,7 @@ function saveClient(){
     corridors: $$('#cCorridors input:checked').map(i => i.value),
     requirement: $('#cRequirement').value.trim(),
     notes: $('#cNotes').value.trim(),
+    readiness: { kyc:$('#cReadyKyc').checked, income:$('#cReadyIncome').checked, bankPreapproval:$('#cReadyBank').checked, cibil:$('#cReadyCibil').checked, agreement:$('#cReadyAgreement').checked },
     projectIds: readProjectPicker('#cProjects'),
     custom: cfPayload(editingClient, '#cCustomFields'),
     updatedAt: Date.now(),
@@ -10653,6 +11255,26 @@ function renderClientProfile(){
       <div class="profile-block"><div class="lab">Approval</div><div class="val">${esc(ap)}</div></div>
       <div class="profile-block"><div class="lab">Corridors</div><div class="corr-chips" style="margin-top:2px">${(c.corridors||[]).length ? corridorChips(c.corridors) : '<span class="mini-empty">Any corridor</span>'}</div></div>
       <div class="profile-block"><div class="lab">Next follow-up</div><div class="val">${esc(fu.label)}</div></div>
+    </div>
+    ${(() => {
+      const ready = c.readiness || {};
+      const done = ['kyc','income','bankPreApproval','cibil','agreement'].filter(k => ready[k]).length;
+      return `<div class="profile-sec">
+        <h5>Document readiness <span class="n">${done}/5</span></h5>
+        <div class="readiness-list">${[['kyc','KYC complete'],['income','Income proof'],['bankPreApproval','Bank pre-approval'],['cibil','CIBIL readiness'],['agreement','Agreement checklist']].map(([k,label]) => `<span class="readiness-chip ${ready[k] ? 'done' : ''}">${ready[k] ? '✓' : '○'} ${label}</span>`).join('')}</div>
+      </div>`;
+    })()}
+    <div class="profile-sec">
+      <h5>Site visits & outcomes <span class="n">${(db.visits || []).filter(v => v.clientId === c.id).length}</span>${isAdmin() ? `<button class="btn ghost sm" type="button" data-caddvisit="${c.id}" style="margin-left:auto">+ Log visit</button>` : ''}</h5>
+      ${(() => {
+        const visits = (db.visits || []).filter(v => v.clientId === c.id).sort((a,b) => (b.date || '').localeCompare(a.date || ''));
+        if(!visits.length) return '<div class="empty-inline">No site visits yet — visit feedback/outcome yahan save hoga.</div>';
+        return `<div class="mini-list">${visits.map(v => {
+          const p = v.projectId ? scopedProjects().find(x => x.id === v.projectId) : null;
+          const a = v.advisorId ? advisor(v.advisorId) : null;
+          return `<button data-cvisit="${v.id}" type="button"><span class="pdot" style="background:${v.outcome === 'hot' ? '#2F8F6B' : v.outcome === 'no-show' ? '#C24646' : '#C49A3E'}"></span><span style="min-width:0"><span class="nm">${esc(fmtDate(v.date))} · ${esc(p?.name || 'Project')}</span><span class="sub">${esc(v.outcome)}${a ? ' · ' + esc(a.name) : ''}${v.next ? ' · next: ' + esc(v.next) : ''}</span></span><span class="price">${esc(v.feedback || '')}</span></button>`;
+        }).join('')}</div>`;
+      })()}
     </div>
     ${c.notes ? `<div class="profile-block"><div class="lab">Internal notes</div><p>${esc(c.notes)}</p></div>` : ''}
     <div class="profile-sec">
@@ -11596,6 +12218,8 @@ const DETAIL_TABS = [
   { id:'map', label:'Map & distance', short:'Map' },
   { id:'inventory', label:'Inventory' },
   { id:'resale', label:'Resale', short:'Resale' },
+  { id:'documents', label:'Documents', short:'Docs' },
+  { id:'visits', label:'Visits', short:'Visits' },
 ];
 function mapSearchQuery(p){
   return [p.name, p.location, corridor(p.corridor).name, 'Jaipur'].filter(Boolean).join(', ');
@@ -11620,6 +12244,8 @@ function detailTabCount(p, id){
   if(id === 'quality') return 0;
   if(id === 'inventory') return unitList(p).length + (p.inventoryImages || []).length + (p.inventoryNotes ? 1 : 0);
   if(id === 'resale') return resaleForProject(p.id).length;
+  if(id === 'documents') return (db.documents || []).filter(d => d.projectId === p.id).length;
+  if(id === 'visits') return (db.visits || []).filter(v => v.projectId === p.id).length;
   return 0;
 }
 function prosConsHTML(p){
@@ -11692,6 +12318,7 @@ function renderDetail(){
       <div class="dprice-line">
         <div class="dprice"><small>Guide price</small>${priceRange(p)}</div>
         <div class="dchips">${feats.map(f => `<span class="dchip green">${esc(f)}</span>`).join('')}</div>
+        <div class="dchips dossier-quick">${['dossier','cost','visit','doc'].map(k => `<button type="button" class="dchip green" data-quick="${k}">📄 ${k === 'dossier' ? 'Dossier' : k === 'cost' ? 'Cost builder' : k === 'visit' ? 'Log visit' : 'Add document'}</button>`).join('')}</div>
       </div>
       ${p.soldOut ? `<div class="detail-soldout-note"><b>Primary inventory sold out.</b> ${esc(p.soldOutNote || 'Resale units, if any, are listed in the Resale tab.')}</div>` : ''}
       ${p.quickNote ? `<div class="qnote-block"><div class="lab">📌 Important note</div><p>${esc(p.quickNote)}</p></div>` : ''}
@@ -11797,6 +12424,28 @@ function renderDetail(){
     </div>`;
   }
 
+  if(detailTab === 'documents'){
+    const docs = (db.documents || []).filter(d => d.projectId === p.id);
+    const risk = docs.filter(d => d.status === 'expired' || d.status === 'missing');
+    body = `<div class="dsec">
+      <div class="dsec-head"><h4>Document vault</h4><span class="cnt">${docs.length}</span>${isAdmin() ? `<button class="btn ghost sm" type="button" data-docadd="${p.id}" style="margin-left:auto">+ Add document</button>` : ''}</div>
+      ${risk.length ? `<div class="transfer-warn">${risk.length} red-flag document(s) — expired ya missing records turant verify karo.</div>` : ''}
+      ${docs.length ? `<div class="mini-list">${docs.map(d => `<button type="button" class="dev-project-row" data-docedit="${d.id}"><span class="pdot" style="background:${d.status === 'verified' ? '#4F8A63' : d.status === 'expired' || d.status === 'missing' ? '#C24646' : '#C49A3E'}"></span><span style="min-width:0"><span class="nm">${esc(d.name)}</span><div class="sub">${esc(d.type)} · ${esc(d.status)}${d.expiry ? ' · exp ' + esc(fmtDate(d.expiry)) : ''}</div></span><span class="price">${esc(d.ref || '')}</span></button>`).join('')}</div>` : '<div class="dempty">No documents vaulted. RERA, approval, OC, title deed, layout plan yahan rakhkar expiry/status track karein.</div>'}
+    </div>`;
+  }
+
+  if(detailTab === 'visits'){
+    const visits = (db.visits || []).filter(v => v.projectId === p.id).sort((a,b) => (b.date || '').localeCompare(a.date || ''));
+    body = `<div class="dsec">
+      <div class="dsec-head"><h4>Site visits & outcomes</h4><span class="cnt">${visits.length}</span>${isAdmin() ? `<button class="btn ghost sm" type="button" data-visitadd="${p.id}" style="margin-left:auto">+ Log visit</button>` : ''}</div>
+      ${visits.length ? `<div class="mini-list">${visits.map(v => {
+        const c = v.clientId ? db.clients.find(x => x.id === v.clientId) : null;
+        const a = v.advisorId ? advisor(v.advisorId) : null;
+        return `<button type="button" class="dev-project-row" data-visedit="${v.id}"><span class="pdot" style="background:${v.outcome === 'hot' ? '#2F8F6B' : v.outcome === 'no-show' ? '#C24646' : '#C49A3E'}"></span><span style="min-width:0"><span class="nm">${esc(fmtDate(v.date))} · ${esc(c?.name || 'Client')}</span><div class="sub">${esc(v.outcome)}${a ? ' · ' + esc(a.name) : ''}${v.next ? ' · next: ' + esc(v.next) : ''}</div></span><span class="price">${esc(v.feedback || '')}</span></button>`;
+      }).join('')}</div>` : '<div class="dempty">No site visits yet — visit feedback aur outcome yahan log hoga.</div>'}
+    </div>`;
+  }
+
   if(detailTab === 'inventory'){
     const imgs = p.inventoryImages || [];
     body = `${inventoryUnitsHTML(p)}
@@ -11844,6 +12493,18 @@ function bindDetail(){
   $$('#detailBody [data-openclient]').forEach(el => el.addEventListener('click', () => openClientProfile(el.dataset.openclient)));
   $$('#detailBody [data-resviewid]').forEach(el => el.addEventListener('click', () => openResaleView(el.dataset.resviewid)));
   $$('#detailBody [data-addresaleproj]').forEach(el => el.addEventListener('click', () => openResale(null, el.dataset.addresaleproj)));
+  $$('#detailBody [data-quick]').forEach(el => el.addEventListener('click', () => {
+    const p = currentDetail();
+    if(!p) return;
+    if(el.dataset.quick === 'dossier') return openDossier(p);
+    if(el.dataset.quick === 'cost') return openCostBuilder(p.id);
+    if(el.dataset.quick === 'visit') return openVisit(null, null, p.id);
+    if(el.dataset.quick === 'doc') return openDoc(null, p.id);
+  }));
+  $$('#detailBody [data-docadd]').forEach(el => el.addEventListener('click', () => openDoc(null, el.dataset.docadd)));
+  $$('#detailBody [data-docedit]').forEach(el => el.addEventListener('click', () => openDoc(el.dataset.docedit)));
+  $$('#detailBody [data-visitadd]').forEach(el => el.addEventListener('click', () => openVisit(null, null, el.dataset.visitadd)));
+  $$('#detailBody [data-visedit]').forEach(el => el.addEventListener('click', () => openVisit(el.dataset.visedit)));
   $$('#detailBody [data-chk-toggle]').forEach(el => el.addEventListener('click', () => toggleProjectChecklistItem(detailId, el.dataset.chkToggle)));
   $$('#detailBody [data-chk-del]').forEach(el => el.addEventListener('click', () => deleteProjectChecklistItem(detailId, el.dataset.chkDel)));
   $$('#detailBody [data-chk-openproject]').forEach(el => el.addEventListener('click', () => { closeModal('detailModal'); openProject(el.dataset.chkOpenproject); setTimeout(() => setProjectTab('checklist'), 30); }));
@@ -11929,6 +12590,14 @@ $('#detailCompare').addEventListener('click', () => {
   closeModal('detailModal');
   openCompare(detailId);
 });
+$('#detailDossier').addEventListener('click', () => {
+  if(!detailId) return;
+  closeModal('detailModal');
+  openDossier(db.projects.find(x => x.id === detailId));
+});
+$('#detailCost').addEventListener('click', () => { if(detailId) openCostBuilder(detailId); });
+$('#detailVisit').addEventListener('click', () => { if(detailId) openVisit(null, null, detailId); });
+$('#detailDoc').addEventListener('click', () => { if(detailId) openDoc(null, detailId); });
 $('#detailDelete').addEventListener('click', () => {
   if(!isAdmin()) return toast('Advisor login se project delete nahi hota', true);
   const p = db.projects.find(x => x.id === detailId);
