@@ -2444,6 +2444,8 @@ body.locked>.quick-add-dock{visibility:hidden}
   font-family:'DM Sans',sans-serif;
 }
 .dl-bcs:hover{transform:translateY(-2px);filter:brightness(1.07);box-shadow:0 18px 36px -16px rgba(44,43,28,.6)}
+.bcs-visit-card{max-width:430px;flex:1 1 310px}
+.bcs-card-qr{display:grid;place-items:center;width:38px;height:38px;flex:none;border-radius:11px;background:rgba(246,242,231,.14);border:1px solid rgba(246,242,231,.35);color:#EED98F;font-size:10px;font-weight:900;letter-spacing:.6px}
 .dl-bcs .th-logo{
   width:44px;height:44px;border-radius:12px;
   display:grid;place-items:center;
@@ -3371,6 +3373,15 @@ body[data-theme="dark"] table,body[data-theme="dark"] th,body[data-theme="dark"]
 body[data-theme="dark"] .vt-table th{background:#20261F;color:var(--mut)}
 body[data-theme="dark"] .an-bar .an-track{background:#2B332B}
 body[data-theme="dark"] .status-pill,body[data-theme="dark"] .tm-chip,body[data-theme="dark"] .status-chip{background:rgba(229,190,98,.12);color:#F1D992}
+body[data-theme="dark"] .cal-cell{background:#1B201B;border-color:var(--line);color:var(--ink)}
+body[data-theme="dark"] .cal-cell.empty{background:rgba(27,32,27,.55)}
+body[data-theme="dark"] .cal-cell.today{background:linear-gradient(180deg,#2E3324,#1B201B)}
+body[data-theme="dark"] .mark-row{background:#1B201B;border-color:var(--line)}
+body[data-theme="dark"] .cal-chip{background:#222A22;border-color:var(--line);color:var(--ink2)}
+body[data-theme="dark"] .cal-chip.mark-leave{background:#332B16;color:#F1D992;border-color:#5A4A22}
+body[data-theme="dark"] .cal-chip.mark-booked{background:#17301F;color:#A7E0C0;border-color:#245A3A}
+body[data-theme="dark"] .cal-chip.mark-busy{background:#361A15;color:#F2A18D;border-color:#5A2B20}
+body[data-theme="dark"] .cal-chip.mark-custom{background:#241E3B;color:#C9D1FF;border-color:#3A2E6B}
 body[data-theme="dark"] .toast{background:#26301F;color:#E7DFC8}
 body[data-theme="dark"] .toast.err{background:#5A2B20;color:#F7C9B7}
 body[data-theme="dark"] :is(.team-stats,.links-stats,.pipeline-stats){background:var(--line);border-color:var(--line)}
@@ -3404,6 +3415,55 @@ body[data-theme="dark"] .lock h2 em{color:var(--gold)}
 body[data-theme="dark"] .modal-head,body[data-theme="dark"] .modal-foot{background:var(--panel);border-color:var(--line)}
 body[data-theme="dark"] .toolpop,body[data-theme="dark"] .toolpop *{color:var(--ink)}
 body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
+.bcs-card-body{display:grid;grid-template-columns:minmax(300px,430px) minmax(0,1fr);gap:18px}
+.bcs-card-preview-wrap{display:flex;flex-direction:column;gap:10px}
+#bcsCardCanvas{width:100%;height:auto;display:block;border-radius:22px;border:1px solid var(--line);box-shadow:0 18px 40px -22px rgba(46,45,32,.32);background:#171A14}
+.bcs-card-theme-row{display:flex;flex-wrap:wrap;gap:6px}
+.bc-theme-pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;color:var(--ink2);border-radius:999px;padding:5px 9px;font-size:10px;font-weight:800;text-transform:capitalize;transition:.18s}
+.bc-theme-pill i{width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--t1),var(--t2));border:1px solid var(--ta)}
+.bc-theme-pill.on{border-color:var(--ta);background:rgba(247,243,231,.55);color:var(--ink)}
+.bcs-card-form{display:flex;flex-direction:column;gap:11px}
+.bc-img-preview{display:none;max-width:68px;max-height:68px;border-radius:12px;border:1px solid var(--line);object-fit:cover}
+.bc-img-row{display:flex;align-items:center;gap:8px;margin-top:7px}
+.bc-link-row{display:flex;gap:6px;margin:6px 0}
+.bc-link-row input{flex:1;min-width:0}
+.bc-link-row input[data-bc-icon]{flex:0 0 46px;text-align:center}
+.bc-links-empty{font-size:11.5px;color:var(--mut);line-height:1.45;margin:6px 0 9px}
+.month-panel{padding:16px}
+.month-grid-head,.month-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.month-grid-head span{font-size:9px;font-weight:900;letter-spacing:.8px;text-transform:uppercase;color:var(--mut);text-align:center;padding:6px 0}
+.cal-cell{position:relative;min-height:88px;border:1px solid var(--line);background:#fff;border-radius:14px;padding:8px 8px 7px;text-align:left;display:flex;flex-direction:column;gap:5px;transition:.18s;overflow:hidden}
+.cal-cell:hover{border-color:var(--gold);transform:translateY(-1px);box-shadow:0 12px 24px -18px rgba(46,45,32,.24)}
+.cal-cell.empty{border-style:dashed;background:rgba(255,255,255,.45)}
+.cal-cell.today{border-color:var(--gold);background:linear-gradient(180deg,#FFF8EA,#fff);box-shadow:0 0 0 2px rgba(165,123,54,.12)}
+.cal-cell.fest{border-color:rgba(165,123,54,.42)}
+.cal-cell.marked{border-color:rgba(123,103,198,.4)}
+.cal-cell b{font-family:'Fraunces',serif;font-size:18px;line-height:1;color:var(--ink)}
+.cal-inds{position:absolute;right:8px;top:9px}
+.cal-inds i{display:block;width:8px;height:8px;border-radius:50%}
+.cal-chip{display:inline-flex;align-items:center;max-width:100%;font-size:8px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;color:var(--ink2);background:#F2F5F2;border:1px solid var(--line2);border-radius:999px;padding:2px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cal-chip.mark-leave{background:#FFF4DA;color:#8A6D1F;border-color:#E8D39A}
+.cal-chip.mark-booked{background:#E4F3EC;color:#2F6644;border-color:#BFD8C8}
+.cal-chip.mark-busy{background:#FBECEA;color:#A4452B;border-color:#F0D8CE}
+.cal-chip.mark-custom{background:#F1EDFB;color:#5A4AA8;border-color:#D8D0F5}
+.cal-chip.fest{background:#FFF8EA;color:#8A6D1F;border-color:#E8D39A}
+.cal-chip.task,.cal-chip.follow,.cal-chip.book{background:#EEF3FB;color:#3F66A8;border-color:#D2E0F5}
+.month-legend-row{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:12px}
+.month-legend{display:inline-flex;align-items:center;gap:5px;font-size:9.5px;font-weight:800;text-transform:uppercase;color:var(--mut)}
+.month-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.month-add-note{margin-left:auto;font-size:10.5px;color:var(--mut)}
+.mark-list{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}
+.mark-row{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px}
+.mark-type{font-size:8.5px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;border-radius:999px;padding:3px 8px;background:#F2F5F2;color:var(--ink2)}
+.mark-row.mark-leave .mark-type{background:#FFF4DA;color:#8A6D1F}
+.mark-row.mark-booked .mark-type{background:#E4F3EC;color:#2F6644}
+.mark-row.mark-busy .mark-type{background:#FBECEA;color:#A4452B}
+.mark-row.mark-custom .mark-type{background:#F1EDFB;color:#5A4AA8}
+.mark-copy{flex:1;min-width:0;display:flex;flex-direction:column}
+.mark-copy b{font-size:12.5px}
+.mark-copy small{font-size:10px;color:var(--mut)}
+.mark-date-line{font-size:12px;font-weight:800;color:var(--mut);margin-bottom:9px}
+@media (max-width:760px){.cal-cell{min-height:70px;padding:7px}.cal-cell b{font-size:15px}.cal-chip{font-size:7px}}
 @media (max-width:900px){
   .hwrap{padding:12px 16px}
   nav{order:3;width:100%}
@@ -3639,13 +3699,14 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
             <div class="th-up-head"><span>Coming up</span><small>tap a chip for poster</small></div>
             <div class="th-up-list" id="thUpcoming"></div>
           </div>
-          <button type="button" class="dl-bcs" id="thSharePoster" title="WhatsApp Share poster — 1080×1920 status">
+          <button type="button" class="dl-bcs bcs-visit-card" id="thSharePoster" title="Editable BCS visiting card — image, QR, phone, address">
             <span class="th-logo" aria-hidden="true">BCS</span>
             <span class="dl-bcs-copy">
-              <b class="dl-bcs-name">Business City Square</b>
-              <i class="dl-bcs-handle">@ajaysharma.bcs</i>
-              <em class="dl-bcs-cta">WhatsApp share · banao poster</em>
+              <b class="dl-bcs-name" id="bcsCardPerson">Ajay Sharma</b>
+              <i class="dl-bcs-handle" id="bcsCardTitle">Founder · Real Estate Advisor</i>
+              <em class="dl-bcs-cta" id="bcsCardMeta">@ajaysharma.bcs · Jaipur</em>
             </span>
+            <span class="bcs-card-qr">QR</span>
             <span class="dl-bcs-go" aria-hidden="true">↗</span>
           </button>
           <button type="button" class="dl-bcs-ghost" id="thRefreshQuote">↻<em>Naya<br>quote</em></button>
@@ -3694,6 +3755,17 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
       <button class="btn ghost sm" id="seniorFestManage" style="margin-left:auto">⚙ Manage festivals</button>
     </div>
     <div class="month-fest" id="monthFestivals"></div>
+
+    <div class="sec-head month-head">
+      <h3>Month tracker</h3>
+      <span class="sub">Poora month ek nazar mein — leave, booked, busy, festival, task ya apna label</span>
+      <div class="month-nav" style="margin-left:auto">
+        <button type="button" class="btn ghost sm" id="monthPrev">‹ Prev</button>
+        <button type="button" class="btn ghost sm" id="monthTodayBtn">Today</button>
+        <button type="button" class="btn ghost sm" id="monthNext">Next ›</button>
+      </div>
+    </div>
+    <div class="panel month-panel" id="monthPanel"></div>
 
     <div class="sec-head">
       <h3>Road corridors</h3>
@@ -4579,6 +4651,91 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
       <button class="btn ghost" data-close="posterModal">Close</button>
       <button class="btn ghost" id="posterDownload">Download PNG</button>
       <button class="btn primary" id="posterShare">Share</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ BCS VISITING CARD STUDIO ============ -->
+<div class="overlay" id="bcsCardModal">
+  <div class="modal" style="width:min(920px,100%)">
+    <div class="modal-head">
+      <h3>BCS visiting card — editable & shareable</h3>
+      <button class="xbtn" data-close="bcsCardModal">✕</button>
+    </div>
+    <div class="modal-body bcs-card-body">
+      <div class="bcs-card-preview-wrap">
+        <canvas id="bcsCardCanvas" width="1080" height="1080" aria-label="BCS visiting card preview"></canvas>
+        <div class="bcs-card-theme-row" id="bcsCardThemes"></div>
+        <p class="poster-hint">Live preview yahi hai. Save ke baad hero ka BCS card aur sab share copies auto-update hongi.</p>
+      </div>
+      <div class="bcs-card-form">
+        <div class="grid2">
+          <div class="field"><label>Brand name</label><input id="bcName" placeholder="Business City Square"></div>
+          <div class="field"><label>Person name</label><input id="bcPerson" placeholder="Ajay Sharma"></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label>Title / role</label><input id="bcTitle" placeholder="Founder · Real Estate Advisor"></div>
+          <div class="field"><label>Tagline</label><input id="bcTagline" placeholder="Ek hi trusted desk"></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label>Phone</label><input id="bcPhone" placeholder="+91 …"></div>
+          <div class="field"><label>WhatsApp</label><input id="bcWhatsapp" placeholder="+91 …"></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label>Email</label><input id="bcEmail" placeholder="hello@bcs.in"></div>
+          <div class="field"><label>Instagram</label><input id="bcInsta" placeholder="@ajaysharma.bcs"></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label>Website</label><input id="bcWebsite" placeholder="realestateajaysharma-jp.github.io/bcs-desk"></div>
+          <div class="field"><label>City</label><input id="bcCity" placeholder="Jaipur, Rajasthan"></div>
+        </div>
+        <div class="field"><label>Address</label><textarea id="bcAddress" rows="2" placeholder="Office / shop address, landmark…"></textarea></div>
+        <div class="grid2">
+          <div class="field"><label>Profile / logo image</label><input type="file" id="bcPhoto" accept="image/*"><div class="bc-img-row"><img id="bcPhotoPrev" class="bc-img-preview" alt=""><button type="button" class="btn ghost xs" id="bcPhotoRemove">Remove</button></div></div>
+          <div class="field"><label>QR image</label><input type="file" id="bcQrFile" accept="image/*"><div class="bc-img-row"><img id="bcQrPrev" class="bc-img-preview" alt=""><button type="button" class="btn ghost xs" id="bcQrRemove">Remove</button></div></div>
+        </div>
+        <div class="field"><label>QR text / link (fallback line)</label><input id="bcQrText" placeholder="https://wa.me/91…"></div>
+        <div class="field"><label>Custom links — add / delete</label><div id="bcLinks"></div><button type="button" class="btn ghost sm" id="bcAddLink">+ Add link</button></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn danger" id="bcReset" style="margin-right:auto">Reset card</button>
+      <button class="btn ghost" data-close="bcsCardModal">Cancel</button>
+      <button class="btn ghost" id="bcDownload">Download PNG</button>
+      <button class="btn primary" id="bcShare">Share</button>
+      <button class="btn gold" id="bcSave">Save card</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MONTH MARK EDITOR ============ -->
+<div class="overlay" id="markModal">
+  <div class="modal" style="width:min(640px,100%)">
+    <div class="modal-head">
+      <h3 id="markTitle">Month mark</h3>
+      <button class="xbtn" data-close="markModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="mark-date-line" id="markDateLine"></div>
+      <div id="markList" class="mark-list"></div>
+      <form class="fm-form" id="markForm">
+        <input type="hidden" id="markId">
+        <div class="grid2">
+          <div class="field"><label>Date</label><input type="date" id="markDate" required></div>
+          <div class="field"><label>Type</label><select id="markType">
+            <option value="leave">Leave</option>
+            <option value="booked">Booked</option>
+            <option value="busy">Busy</option>
+            <option value="custom">Label</option>
+          </select></div>
+        </div>
+        <div class="field"><label>Label *</label><input id="markLabel" placeholder="e.g. Family leave · site visit · booked closing"></div>
+        <div class="field"><label>Note (optional)</label><textarea id="markNote" rows="2"></textarea></div>
+        <div class="fm-form-actions">
+          <button type="button" class="btn ghost sm" id="markCancel">Clear</button>
+          <button type="submit" class="btn primary sm">Save mark</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -5776,6 +5933,40 @@ const FESTIVAL_THEMES = {
 };
 const FESTIVAL_THEME_KEYS = Object.keys(FESTIVAL_THEMES);
 
+/* ---------- BCS visiting card (editable brand card) ---------- */
+const DEFAULT_BCS_CARD = {
+  brand:'Business City Square',
+  person:'Ajay Sharma',
+  title:'Founder · Real Estate Advisor',
+  phone:'',
+  whatsapp:'',
+  email:'',
+  insta:'@ajaysharma.bcs',
+  website:'realestateajaysharma-jp.github.io/bcs-desk',
+  address:'',
+  city:'Jaipur, Rajasthan',
+  tagline:'Prices, approvals aur people — ek hi trusted desk.',
+  theme:'olive',
+  photo:'',
+  qrImage:'',
+  qrText:'',
+  links:[],
+  updatedAt:0
+};
+const BCS_CARD_THEMES = {
+  olive:{ bg1:'#2A2B1B', bg2:'#4A4020', accent:'#E5BE62', ink:'#F7F3E7', mut:'rgba(247,243,231,.72)' },
+  emerald:{ bg1:'#173F31', bg2:'#2F7A55', accent:'#A7E0C0', ink:'#F3FFF7', mut:'rgba(243,255,247,.74)' },
+  indigo:{ bg1:'#23254F', bg2:'#4F5BCB', accent:'#C9D1FF', ink:'#F4F6FF', mut:'rgba(244,246,255,.74)' },
+  rose:{ bg1:'#4B2436', bg2:'#8B3B58', accent:'#FFC2D4', ink:'#FFF3F7', mut:'rgba(255,243,247,.74)' },
+  midnight:{ bg1:'#11151F', bg2:'#242E45', accent:'#8EC5FF', ink:'#F4F7FF', mut:'rgba(244,247,255,.74)' }
+};
+const MONTH_MARK_TYPES = {
+  leave:{ label:'Leave', color:'#C99A2B', bg:'#FFF4DA' },
+  booked:{ label:'Booked', color:'#2F8F6B', bg:'#E4F3EC' },
+  busy:{ label:'Busy', color:'#C24646', bg:'#FBECEA' },
+  custom:{ label:'Label', color:'#7B67C6', bg:'#F1EDFB' }
+};
+
 const DEFAULT_QUOTES = [
   'Start before you feel ready. Clarity comes from motion.',
   'Your network grows when your follow-up is on time.',
@@ -6581,6 +6772,32 @@ function normalizeDb(d){
   if(d.daily.festivalRefreshNote == null) d.daily.festivalRefreshNote = '';
   if(!Array.isArray(d.daily.deletedFestivalIds)) d.daily.deletedFestivalIds = [];
   d.daily.deletedFestivalIds = d.daily.deletedFestivalIds.filter(id => typeof id === 'string').slice(0, 300);
+  if(!d.daily.bcsCard || typeof d.daily.bcsCard !== 'object' || Array.isArray(d.daily.bcsCard)) d.daily.bcsCard = { ...DEFAULT_BCS_CARD, links: [] };
+  const bc = d.daily.bcsCard;
+  ['brand','person','title','phone','whatsapp','email','insta','website','address','city','tagline','theme','photo','qrImage','qrText'].forEach(k => {
+    if(bc[k] == null) bc[k] = DEFAULT_BCS_CARD[k] || '';
+    bc[k] = String(bc[k]);
+  });
+  if(!BCS_CARD_THEMES[bc.theme]) bc.theme = 'olive';
+  if(!Array.isArray(bc.links)) bc.links = [];
+  bc.links = bc.links.filter(l => l && String(l.label || '').trim()).map((l, i) => ({
+    id: l.id || uid(),
+    label: String(l.label || '').trim().slice(0, 60),
+    value: String(l.value || '').trim().slice(0, 180),
+    icon: String(l.icon || '✉').slice(0, 6) || '✉',
+    order: Number.isFinite(+l.order) ? +l.order : i
+  })).sort((a,b) => a.order - b.order).slice(0, 8);
+  bc.updatedAt = bc.updatedAt || 0;
+  if(!Array.isArray(d.monthMarks)) d.monthMarks = [];
+  d.monthMarks = d.monthMarks.filter(m => m && /^\d{4}-\d{2}-\d{2}$/.test(String(m.date || '')) && String(m.label || '').trim()).map((m, i) => ({
+    id: m.id || uid(),
+    date: String(m.date),
+    type: MONTH_MARK_TYPES[m.type] ? m.type : 'custom',
+    label: String(m.label || '').trim().slice(0, 90),
+    note: String(m.note || '').trim().slice(0, 300),
+    createdAt: m.createdAt || Date.now() + i,
+    updatedAt: m.updatedAt || m.createdAt || Date.now() + i
+  })).slice(0, 1000);
   // v14 — user-defined custom fields + per-record values + saved view preferences
   if(!Array.isArray(d.customFields)) d.customFields = [];
   d.customFields = d.customFields
@@ -7577,7 +7794,163 @@ function renderDashboard(){
   renderDailyHero();
 }
 
-/* ---------- senior command center + month festival creative strip ---------- */
+/* ---------- month tracker: personal calendar with leave / booked / labels ---------- */
+let monthCursor = (() => { const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), 1); })();
+function calendarISO(d){
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function renderMonthCalendar(){
+  const panel = $('#monthPanel');
+  if(!panel) return;
+  const y = monthCursor.getFullYear(), m = monthCursor.getMonth();
+  const title = new Date(y, m + 1, 0).toLocaleDateString('en-IN', { month:'long', year:'numeric' });
+  const first = new Date(y, m, 1);
+  const startBlank = (first.getDay() + 6) % 7; // Monday start
+  const days = new Date(y, m + 1, 0).getDate();
+  const marksByDate = new Map();
+  (db.monthMarks || []).forEach(mark => {
+    if(!marksByDate.has(mark.date)) marksByDate.set(mark.date, []);
+    marksByDate.get(mark.date).push(mark);
+  });
+  const taskByDate = new Map();
+  (db.todos || []).forEach(t => {
+    if(!t.date) return;
+    if(!taskByDate.has(t.date)) taskByDate.set(t.date, []);
+    taskByDate.get(t.date).push(t);
+  });
+  const followByDate = new Map();
+  scopedClients().forEach(c => {
+    if(!c.nextFollowUp) return;
+    if(!followByDate.has(c.nextFollowUp)) followByDate.set(c.nextFollowUp, []);
+    followByDate.get(c.nextFollowUp).push(c);
+  });
+  const bookingByDate = new Map();
+  scopedBookings().forEach(b => {
+    if(!b.bookingDate) return;
+    if(!bookingByDate.has(b.bookingDate)) bookingByDate.set(b.bookingDate, []);
+    bookingByDate.get(b.bookingDate).push(b);
+  });
+  const header = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d => `<span>${d}</span>`).join('');
+  const cells = [];
+  for(let i = 0; i < startBlank; i++) cells.push('<span class="cal-cell empty"></span>');
+  for(let d = 1; d <= days; d++){
+    const date = new Date(y, m, d);
+    const iso = calendarISO(date);
+    const marks = marksByDate.get(iso) || [];
+    const tasks = taskByDate.get(iso) || [];
+    const follows = followByDate.get(iso) || [];
+    const bookings = bookingByDate.get(iso) || [];
+    const fest = festivalByDate(iso);
+    const isToday = iso === todayISO();
+    const chips = [
+      ...marks.map(mark => `<span class="cal-chip mark-${mark.type}" title="${esc(mark.label)}">${esc(MONTH_MARK_TYPES[mark.type]?.label || 'Label')}</span>`),
+      fest ? `<span class="cal-chip fest" title="${esc(fest.name || '')}">${esc(fest.emoji || '✨')}</span>` : '',
+      tasks.length ? `<span class="cal-chip task">Task ${tasks.length}</span>` : '',
+      follows.length ? `<span class="cal-chip follow">Follow ${follows.length}</span>` : '',
+      bookings.length ? `<span class="cal-chip book">${bookings.length} book</span>` : ''
+    ].filter(Boolean).join('');
+    cells.push(`<button type="button" class="cal-cell ${isToday ? 'today' : ''} ${fest ? 'fest' : ''} ${marks.length ? 'marked' : ''}" data-caldate="${iso}" title="${esc(fest?.name || '')}">
+      <b>${d}</b>
+      <span class="cal-inds">${marks.length ? `<i style="background:${MONTH_MARK_TYPES[marks[0].type]?.color || '#7B67C6'}"></i>` : ''}</span>
+      ${chips}
+    </button>`);
+  }
+  const legend = Object.keys(MONTH_MARK_TYPES).map(k => `<span class="month-legend"><i style="background:${MONTH_MARK_TYPES[k].color}"></i>${MONTH_MARK_TYPES[k].label}</span>`).join('') +
+    '<span class="month-legend"><i style="background:var(--gold)"></i>Festival</span><span class="month-legend"><i style="background:#4C8FD6"></i>Task / follow-up / booking</span>';
+  panel.innerHTML = `
+    <div class="panel-head"><h4>${title}</h4><span class="month-count">${(db.monthMarks || []).length} saved marks</span></div>
+    <div class="month-grid-head">${header}</div>
+    <div class="month-grid">${cells.join('')}</div>
+    <div class="month-legend-row">${legend}<span class="month-add-note">Date par click karke label add/edit kar sakte ho.</span></div>
+  `;
+  $$('#monthPanel [data-caldate]').forEach(btn => btn.addEventListener('click', () => openMonthMark(btn.dataset.caldate)));
+  const prev = $('#monthPrev'), today = $('#monthTodayBtn'), next = $('#monthNext');
+  if(prev) prev.onclick = () => { monthCursor = new Date(y, m - 1, 1); renderMonthCalendar(); };
+  if(today) today.onclick = () => { const d = new Date(); monthCursor = new Date(d.getFullYear(), d.getMonth(), 1); renderMonthCalendar(); };
+  if(next) next.onclick = () => { monthCursor = new Date(y, m + 1, 1); renderMonthCalendar(); };
+}
+function renderMarkList(iso){
+  const wrap = $('#markList');
+  const line = $('#markDateLine');
+  if(line) line.textContent = fmtDate(iso) + ' — is din ke marks';
+  if(!wrap) return;
+  const marks = (db.monthMarks || []).filter(m => m.date === iso);
+  wrap.innerHTML = marks.length ? marks.map(m => `
+    <div class="mark-row mark-${m.type}">
+      <span class="mark-type">${esc(MONTH_MARK_TYPES[m.type]?.label || 'Label')}</span>
+      <span class="mark-copy"><b>${esc(m.label)}</b>${m.note ? `<small>${esc(m.note)}</small>` : ''}</span>
+      <button type="button" class="btn ghost xs" data-mark-edit="${m.id}">Edit</button>
+      <button type="button" class="btn danger xs" data-mark-del="${m.id}">Delete</button>
+    </div>`).join('') : '<div class="empty-inline">Is date par koi mark nahi — neeche se add karo.</div>';
+  $$('#markList [data-mark-edit]').forEach(b => b.addEventListener('click', () => fillMonthMark(b.dataset.markEdit)));
+  $$('#markList [data-mark-del]').forEach(b => b.addEventListener('click', () => deleteMonthMark(b.dataset.markDel)));
+}
+function openMonthMark(iso){
+  const d = iso ? isoToDate(iso) : null;
+  $('#markTitle').textContent = iso ? ('Marks — ' + fmtDate(iso)) : 'Month mark';
+  $('#markId').value = '';
+  $('#markDate').value = iso || todayISO();
+  $('#markType').value = 'custom';
+  $('#markLabel').value = '';
+  $('#markNote').value = '';
+  renderMarkList(iso || $('#markDate').value);
+  showOverlay('markModal');
+  setTimeout(() => $('#markLabel')?.focus(), 60);
+}
+function fillMonthMark(id){
+  const m = (db.monthMarks || []).find(x => x.id === id);
+  if(!m) return;
+  $('#markId').value = m.id;
+  $('#markDate').value = m.date;
+  $('#markType').value = m.type;
+  $('#markLabel').value = m.label;
+  $('#markNote').value = m.note || '';
+  renderMarkList(m.date);
+}
+function saveMonthMark(e){
+  if(e) e.preventDefault();
+  const label = $('#markLabel').value.trim();
+  const date = $('#markDate').value;
+  if(!label) return toast('Label likhein', true);
+  if(!date) return toast('Date chuniye', true);
+  const rec = { date, type: $('#markType').value, label, note: $('#markNote').value.trim(), updatedAt: Date.now() };
+  const id = $('#markId').value;
+  if(id){
+    const m = db.monthMarks.find(x => x.id === id);
+    if(m) Object.assign(m, rec);
+    toast('Mark updated');
+  } else {
+    db.monthMarks.push({ id: uid(), createdAt: Date.now(), ...rec });
+    toast('Month mark saved');
+  }
+  save();
+  renderMarkList(date);
+  renderMonthCalendar();
+  renderSeniorDesk();
+}
+function deleteMonthMark(id){
+  const m = (db.monthMarks || []).find(x => x.id === id);
+  if(!m) return;
+  if(!confirm(`"${m.label}" delete karein?`)) return;
+  db.monthMarks = db.monthMarks.filter(x => x.id !== id);
+  save();
+  renderMarkList(m.date);
+  renderMonthCalendar();
+  renderSeniorDesk();
+  toast('Mark deleted');
+}
+function initMonthCalendar(){
+  const form = $('#markForm');
+  if(form) form.addEventListener('submit', saveMonthMark);
+  const cancel = $('#markCancel');
+  if(cancel) cancel.addEventListener('click', () => {
+    $('#markId').value = '';
+    $('#markLabel').value = '';
+    $('#markNote').value = '';
+    renderMarkList($('#markDate').value);
+  });
+}
+
 function renderSeniorDesk(){
   if(!$('#seniorPriorities')) return;
   const today = todayISO();
@@ -7674,6 +8047,7 @@ function renderSeniorDesk(){
   $$('#monthFestivals [data-festposter]').forEach(b => b.addEventListener('click', () => openPosterFor(b.dataset.festposter)));
   const quoteBtn = $('#monthFestivals [data-festquote]');
   if(quoteBtn) quoteBtn.onclick = () => { cycleDailyQuote(); renderSeniorDesk(); };
+  renderMonthCalendar();
 }
 
 function renderPulse(){
@@ -7808,8 +8182,8 @@ function renderDailyHero(){
   const iso = todayISO();
   const fest = festivalByDate(iso) || virtualTodayFestival();
   const isFestDay = !!festivalByDate(iso);
-  const upcoming3 = upcomingFestivals(3, iso);
-  const nextFest = upcoming3[0] || null;
+  const upcoming = upcomingFestivals(4, iso);
+  const nextFest = upcoming[0] || null;
   const setText = (ids, val) => ids.forEach(id => { const el = $('#'+id); if(el) el.textContent = val; });
 
   setText(['thWeekdayHi','thCalWeek','thCalWeekMerged'], HINDI_WEEKDAYS[now.getDay()]);
@@ -7852,6 +8226,7 @@ function renderDailyHero(){
   const q = dailyQuoteRecord();
   if($('#thQuote')) $('#thQuote').textContent = q.text || '';
   if($('#thQuoteBy')) $('#thQuoteBy').textContent = q.by ? '— ' + q.by : '';
+  renderBcsHeroCard();
 
   const strip = $('#thWeekStrip');
   if(strip){
@@ -7871,7 +8246,7 @@ function renderDailyHero(){
 
   const up = $('#thUpcoming');
   if(up){
-    const list = upcomingFestivals(3, iso);
+    const list = upcomingFestivals(4, iso);
     up.innerHTML = list.length ? list.map(f => {
       const diff = daysFromToday(f.date);
       const when = diff === 1 ? 'tomorrow' : diff + ' days';
@@ -8061,6 +8436,236 @@ function paintPoster(){
   const s = $('#posterStatus'), q = $('#posterSquare');
   if(s) s.toBlob(b => { if(b) posterFiles.status = b; }, 'image/png');
   if(q) q.toBlob(b => { if(b) posterFiles.square = b; }, 'image/png');
+}
+/* ---------- BCS visiting card studio ---------- */
+let bcsTempPhoto = '';
+let bcsTempQr = '';
+function bcsCardData(){
+  if(!db.daily) db.daily = {};
+  if(!db.daily.bcsCard) db.daily.bcsCard = { ...DEFAULT_BCS_CARD, links: [] };
+  return db.daily.bcsCard;
+}
+function renderBcsHeroCard(){
+  const c = bcsCardData();
+  const set = (id, v) => { const el = $('#'+id); if(el) el.textContent = v || ''; };
+  set('bcsCardPerson', c.person || c.brand);
+  set('bcsCardTitle', c.title || '');
+  set('bcsCardMeta', [c.insta, c.city].filter(Boolean).join(' · ') || 'Jaipur');
+  const q = $('#bcsCardQrMini');
+  if(q) q.textContent = c.qrImage ? 'QR ↗' : 'QR +';
+}
+function openBcsCard(){
+  const c = bcsCardData();
+  bcsTempPhoto = c.photo || '';
+  bcsTempQr = c.qrImage || '';
+  if(!db.daily) db.daily = {};
+  const setVal = (id, v) => { const el = $('#'+id); if(el) el.value = v || ''; };
+  setVal('bcName', c.brand); setVal('bcPerson', c.person); setVal('bcTitle', c.title);
+  setVal('bcTagline', c.tagline); setVal('bcPhone', c.phone); setVal('bcWhatsapp', c.whatsapp);
+  setVal('bcEmail', c.email); setVal('bcInsta', c.insta); setVal('bcWebsite', c.website);
+  setVal('bcCity', c.city); setVal('bcAddress', c.address); setVal('bcQrText', c.qrText);
+  const photo = $('#bcPhoto'), qr = $('#bcQrFile');
+  if(photo) photo.value = '';
+  if(qr) qr.value = '';
+  renderBcsCardLinks(c.links || []);
+  renderBcsCardThemes(c.theme || 'olive');
+  updateBcsCardPreviews();
+  showOverlay('bcsCardModal');
+  paintBcsCard();
+}
+function readBcsCardForm(){
+  const val = id => ($('#'+id)?.value || '').trim();
+  const links = $$('#bcLinks .bc-link-row').map(row => ({
+    id: row.dataset.bcId || uid(),
+    label: row.querySelector('[data-bc-label]')?.value.trim() || '',
+    value: row.querySelector('[data-bc-value]')?.value.trim() || '',
+    icon: row.querySelector('[data-bc-icon]')?.value.trim() || '✉'
+  })).filter(l => l.label).slice(0,8);
+  return {
+    brand: val('bcName') || DEFAULT_BCS_CARD.brand,
+    person: val('bcPerson'),
+    title: val('bcTitle'),
+    tagline: val('bcTagline'),
+    phone: val('bcPhone'),
+    whatsapp: val('bcWhatsapp'),
+    email: val('bcEmail'),
+    insta: val('bcInsta'),
+    website: val('bcWebsite'),
+    city: val('bcCity'),
+    address: val('bcAddress'),
+    theme: document.body.dataset.bcTheme || 'olive',
+    photo: bcsTempPhoto || '',
+    qrImage: bcsTempQr || '',
+    qrText: val('bcQrText'),
+    links,
+    updatedAt: Date.now()
+  };
+}
+function renderBcsCardLinks(links){
+  const wrap = $('#bcLinks');
+  if(!wrap) return;
+  wrap.innerHTML = (links || []).map(l => `
+    <div class="bc-link-row" data-bc-id="${esc(l.id || uid())}">
+      <input data-bc-icon value="${esc(l.icon || '✉')}" maxlength="4" aria-label="Icon">
+      <input data-bc-label value="${esc(l.label || '')}" placeholder="Label">
+      <input data-bc-value value="${esc(l.value || '')}" placeholder="Value / link">
+      <button type="button" class="btn danger xs" data-bc-del>✕</button>
+    </div>`).join('') || '<div class="bc-links-empty">Koi custom link nahi — “Add link” se apna YouTube, Maps, profile ya portal jod do.</div>';
+  $$('#bcLinks [data-bc-del]').forEach(btn => btn.addEventListener('click', () => { btn.closest('.bc-link-row').remove(); paintBcsCard(); }));
+  $$('#bcLinks input').forEach(inp => inp.addEventListener('input', paintBcsCard));
+}
+function renderBcsCardThemes(active){
+  const wrap = $('#bcsCardThemes');
+  if(!wrap) return;
+  document.body.dataset.bcTheme = active || 'olive';
+  wrap.innerHTML = Object.keys(BCS_CARD_THEMES).map(k => {
+    const t = BCS_CARD_THEMES[k];
+    return `<button type="button" class="bc-theme-pill ${k === active ? 'on' : ''}" data-bc-theme="${k}" style="--t1:${t.bg1};--t2:${t.bg2};--ta:${t.accent}"><i></i>${k}</button>`;
+  }).join('');
+  $$('#bcsCardThemes [data-bc-theme]').forEach(btn => btn.addEventListener('click', () => {
+    document.body.dataset.bcTheme = btn.dataset.bcTheme;
+    renderBcsCardThemes(btn.dataset.bcTheme);
+    paintBcsCard();
+  }));
+}
+function updateBcsCardPreviews(){
+  const p = $('#bcPhotoPrev'), q = $('#bcQrPrev');
+  if(p){ p.src = bcsTempPhoto || ''; p.style.display = bcsTempPhoto ? 'block' : 'none'; }
+  if(q){ q.src = bcsTempQr || ''; q.style.display = bcsTempQr ? 'block' : 'none'; }
+}
+function loadBcsCardImage(src){
+  return new Promise((resolve, reject) => {
+    if(!src) return resolve(null);
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+async function paintBcsCard(fromSave){
+  const canvas = $('#bcsCardCanvas');
+  if(!canvas) return;
+  const c = readBcsCardForm();
+  let photo = null, qr = null;
+  try{ if(c.photo) photo = await loadBcsCardImage(c.photo); }catch(e){}
+  try{ if(c.qrImage) qr = await loadBcsCardImage(c.qrImage); }catch(e){}
+  drawBcsCard(canvas, c, photo, qr);
+  updateBcsCardPreviews();
+  if(fromSave){
+    db.daily.bcsCard = c;
+    save();
+    renderBcsHeroCard();
+    toast('BCS card saved — hero, poster aur share copies updated');
+  }
+}
+function drawBcsCard(canvas, c, photo, qr){
+  if(!canvas) return;
+  const W = canvas.width, H = canvas.height;
+  const ctx = canvas.getContext('2d');
+  const pal = BCS_CARD_THEMES[c.theme] || BCS_CARD_THEMES.olive;
+  const g = ctx.createLinearGradient(0, 0, W, H);
+  g.addColorStop(0, pal.bg1); g.addColorStop(.58, pal.bg2); g.addColorStop(1, pal.bg1);
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  let rg = ctx.createRadialGradient(W*.84, H*.12, 0, W*.84, H*.12, W*.6);
+  rg.addColorStop(0, 'rgba(255,255,255,.18)'); rg.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = rg; ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = pal.accent; ctx.lineWidth = 6;
+  roundRectPath(ctx, 42, 42, W - 84, H - 84, 46); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,.18)'; ctx.lineWidth = 2;
+  roundRectPath(ctx, 64, 64, W - 128, H - 128, 36); ctx.stroke();
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillStyle = pal.ink;
+  ctx.font = `700 ${Math.round(W*.082)}px 'Fraunces', Georgia, serif`;
+  ctx.fillText('BCS', W/2, 164);
+  ctx.fillStyle = pal.accent;
+  ctx.font = `800 ${Math.round(W*.022)}px 'DM Sans', system-ui, sans-serif`;
+  ctx.fillText(String(c.brand || 'Business City Square').toUpperCase(), W/2, 232);
+  if(photo){
+    ctx.save(); ctx.beginPath(); ctx.arc(W/2, 376, 112, 0, Math.PI*2); ctx.clip();
+    ctx.drawImage(photo, W/2 - 112, 376 - 112, 224, 224); ctx.restore();
+    ctx.strokeStyle = pal.accent; ctx.lineWidth = 6; ctx.beginPath(); ctx.arc(W/2, 376, 112, 0, Math.PI*2); ctx.stroke();
+  } else {
+    ctx.beginPath(); ctx.arc(W/2, 376, 112, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(255,255,255,.16)'; ctx.fill();
+    ctx.strokeStyle = pal.accent; ctx.lineWidth = 6; ctx.stroke();
+    ctx.fillStyle = pal.ink;
+    ctx.font = `700 ${Math.round(W*.075)}px 'Fraunces', Georgia, serif`;
+    ctx.fillText(String(c.person || 'BCS').trim().charAt(0).toUpperCase(), W/2, 384);
+  }
+  ctx.fillStyle = pal.ink;
+  ctx.font = `700 ${Math.round(W*.057)}px 'Fraunces', Georgia, serif`;
+  ctx.fillText(c.person || 'BCS Expert', W/2, 548);
+  ctx.fillStyle = pal.accent;
+  ctx.font = `800 ${Math.round(W*.021)}px 'DM Sans', system-ui, sans-serif`;
+  ctx.fillText(String(c.title || 'Real Estate Advisor').toUpperCase(), W/2, 596);
+  ctx.fillStyle = pal.mut;
+  ctx.font = `500 ${Math.round(W*.025)}px 'Fraunces', Georgia, serif`;
+  wrapCanvasText(ctx, c.tagline || '', W/2, 656, W - 190, 38, 2);
+  const rows = [
+    ['☏', c.phone], ['💬', c.whatsapp], ['✉', c.email], ['◎', c.insta], ['⌁', c.website]
+  ].filter(r => r[1]);
+  const listRows = [...rows, ...(c.links || []).map(l => [l.icon || '✉', `${l.label}: ${l.value}`])].filter(r => r[1]).slice(0,8);
+  const y0 = 716;
+  listRows.forEach((r, i) => {
+    const y = y0 + i * 52;
+    ctx.textAlign = 'left'; ctx.fillStyle = pal.accent;
+    ctx.font = `700 ${Math.round(W*.027)}px 'DM Sans', system-ui, sans-serif`;
+    ctx.fillText(r[0], 150, y);
+    ctx.textAlign = 'left'; ctx.fillStyle = pal.ink;
+    ctx.font = `600 ${Math.round(W*.026)}px 'DM Sans', system-ui, sans-serif`;
+    wrapCanvasText(ctx, String(r[1]), 204, y, 580, 38, 1);
+  });
+  if(c.address || c.city){
+    ctx.textAlign = 'center'; ctx.fillStyle = pal.mut;
+    ctx.font = `500 ${Math.round(W*.023)}px 'DM Sans', system-ui, sans-serif`;
+    wrapCanvasText(ctx, [c.address, c.city].filter(Boolean).join(' · '), W/2, 956, W - 240, 34, 2);
+  }
+  const qrSize = 220, qx = W - 330, qy = 610;
+  ctx.fillStyle = '#FFFFFF';
+  roundRectPath(ctx, qx, qy, qrSize, qrSize, 28); ctx.fill();
+  if(qr){
+    ctx.save(); roundRectPath(ctx, qx + 18, qy + 18, qrSize - 36, qrSize - 36, 18); ctx.clip();
+    ctx.drawImage(qr, qx + 18, qy + 18, qrSize - 36, qrSize - 36); ctx.restore();
+  } else {
+    ctx.fillStyle = '#171A14';
+    const txt = (c.qrText || c.whatsapp || c.website || 'SCAN ME') + '';
+    let seed = 0; for(let i = 0; i < txt.length; i++) seed = (seed * 31 + txt.charCodeAt(i)) >>> 0;
+    const cell = 16;
+    for(let r = 0; r < 9; r++) for(let col = 0; col < 9; col++){
+      seed = (seed * 1664525 + 1013904223) >>> 0;
+      if(seed % 3) ctx.fillRect(qx + 18 + col * cell, qy + 18 + r * cell, cell, cell);
+    }
+    ctx.fillRect(qx + 18, qy + 18, 48, 48); ctx.fillRect(qx + 18, qy + 18 + 84, 48, 48); ctx.fillRect(qx + 18 + 84, qy + 18, 48, 48);
+  }
+  ctx.fillStyle = pal.accent;
+  ctx.font = `800 ${Math.round(W*.018)}px 'DM Sans', system-ui, sans-serif`;
+  ctx.fillText('SCAN / SAVE', qx + qrSize/2, qy + qrSize + 30);
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+}
+function downloadBcsCard(){
+  const canvas = $('#bcsCardCanvas');
+  if(!canvas) return;
+  canvasToBlob(canvas).then(blob => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'bcs-visiting-card.png';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    toast('BCS card downloaded ✅');
+  }).catch(() => toast('Card download nahi ho paya', true));
+}
+async function shareBcsCard(){
+  const canvas = $('#bcsCardCanvas');
+  if(!canvas) return;
+  try{
+    const blob = await canvasToBlob(canvas);
+    const file = new File([blob], 'bcs-visiting-card.png', { type:'image/png' });
+    if(navigator.canShare && navigator.canShare({ files:[file] })){
+      await navigator.share({ files:[file], title:'BCS visiting card', text:'BCS · Business City Square · @ajaysharma.bcs' });
+      return;
+    }
+    downloadBcsCard();
+  }catch(e){ if(e && e.name !== 'AbortError') downloadBcsCard(); }
 }
 function openPosterFor(id){
   let fest = id && id !== 'today' ? festivalById(id) : (festivalByDate(todayISO()) || virtualTodayFestival());
@@ -8383,7 +8988,42 @@ function initDailyHero(){
     }
   };
   const qcopy = $('#thQuoteCopy'); if(qcopy) qcopy.addEventListener('click', () => copyText($('#thQuote')?.textContent || '', 'Motivation copied ✓'));
-  const share = $('#thSharePoster'); if(share) share.addEventListener('click', () => openPosterFor('today'));
+  const share = $('#thSharePoster'); if(share) share.addEventListener('click', openBcsCard);
+  const bcSave = $('#bcSave'); if(bcSave) bcSave.addEventListener('click', () => paintBcsCard(true));
+  const bcDownload = $('#bcDownload'); if(bcDownload) bcDownload.addEventListener('click', downloadBcsCard);
+  const bcShare = $('#bcShare'); if(bcShare) bcShare.addEventListener('click', shareBcsCard);
+  const bcReset = $('#bcReset'); if(bcReset) bcReset.addEventListener('click', () => {
+    if(!confirm('BCS card default par reset ho jayega. Continue?')) return;
+    db.daily.bcsCard = { ...DEFAULT_BCS_CARD, links: [] };
+    save(); openBcsCard(); renderBcsHeroCard(); toast('BCS card reset');
+  });
+  const bcAddLink = $('#bcAddLink'); if(bcAddLink) bcAddLink.addEventListener('click', () => {
+    const wrap = $('#bcLinks');
+    if(!wrap) return;
+    if(wrap.querySelector('.bc-links-empty')) wrap.innerHTML = '';
+    const row = document.createElement('div');
+    row.className = 'bc-link-row'; row.dataset.bcId = uid();
+    row.innerHTML = `<input data-bc-icon value="✉" maxlength="4" aria-label="Icon"><input data-bc-label placeholder="Label"><input data-bc-value placeholder="Value / link"><button type="button" class="btn danger xs" data-bc-del>✕</button>`;
+    wrap.appendChild(row);
+    row.querySelector('[data-bc-del]').addEventListener('click', () => { row.remove(); paintBcsCard(); });
+    row.querySelectorAll('input').forEach(inp => inp.addEventListener('input', paintBcsCard));
+    paintBcsCard();
+  });
+  const bcPhoto = $('#bcPhoto'); if(bcPhoto) bcPhoto.addEventListener('change', async () => {
+    const f = bcPhoto.files && bcPhoto.files[0];
+    if(!f) return;
+    bcsTempPhoto = await fileToImage(f, 700, .8);
+    updateBcsCardPreviews(); paintBcsCard();
+  });
+  const bcQr = $('#bcQrFile'); if(bcQr) bcQr.addEventListener('change', async () => {
+    const f = bcQr.files && bcQr.files[0];
+    if(!f) return;
+    bcsTempQr = await fileToImage(f, 420, .9);
+    updateBcsCardPreviews(); paintBcsCard();
+  });
+  const bcPhotoRemove = $('#bcPhotoRemove'); if(bcPhotoRemove) bcPhotoRemove.addEventListener('click', () => { bcsTempPhoto = ''; if(bcPhoto) bcPhoto.value = ''; updateBcsCardPreviews(); paintBcsCard(); });
+  const bcQrRemove = $('#bcQrRemove'); if(bcQrRemove) bcQrRemove.addEventListener('click', () => { bcsTempQr = ''; if(bcQr) bcQr.value = ''; updateBcsCardPreviews(); paintBcsCard(); });
+  $$('#bcsCardModal input, #bcsCardModal textarea, #bcsCardModal select').forEach(inp => inp.addEventListener('input', paintBcsCard));
   const nextPoster = $('#thNextPoster'); if(nextPoster) nextPoster.addEventListener('click', () => {
     const next = upcomingFestivals(1)[0];
     openPosterFor(next ? next.id : 'today');
@@ -17462,6 +18102,7 @@ function render(){
 initTypeControls();
 initAdvisorControls();
 initRoadHub();
+initMonthCalendar();
 initClientControls();
 initResale();
 initAdvisory();
