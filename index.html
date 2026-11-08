@@ -3167,7 +3167,7 @@ body.locked>.quick-add-dock{visibility:hidden}
         <canvas id="posterStatus" width="1080" height="1920"></canvas>
         <canvas id="posterSquare" width="1080" height="1080"></canvas>
       </div>
-      <p class="poster-hint">Share directly to WhatsApp, Instagram or save the PNG. Poster text comes from the festival record — edit any line under <b>⚙ Manage</b>.</p>
+      <p class="poster-hint">Share directly to WhatsApp, Instagram or save the PNG. On iPhone the Share sheet also offers <b>Save Image</b>. Poster text comes from the festival record — edit any line under <b>⚙ Manage</b>.</p>
       <div class="poster-badge-row"><span>BCS · Business City Square</span><span>@ajaysharma.bcs</span><span>Jaipur</span></div>
     </div>
     <div class="modal-foot">
@@ -5699,6 +5699,7 @@ const HINDI_WEEKDAYS = ['रविवार','सोमवार','मंगल�
 const HINDI_MONTHS = ['जनवरी','फरवरी','मार्च','अप्रैल','मई','जून','जुलाई','अगस्त','सितंबर','अक्टूबर','नवंबर','दिसंबर'];
 let posterFestival = null;
 let posterKind = 'status';
+const posterFiles = {};
 
 function isoToDate(iso){
   const d = new Date(String(iso || '') + 'T00:00:00');
@@ -5982,11 +5983,17 @@ function paintPoster(){
   const f = posterFestival;
   drawPoster($('#posterStatus'), 'status', f);
   drawPoster($('#posterSquare'), 'square', f);
+  // Pre-encode PNGs so the share sheet opens directly inside the tap gesture
+  // (important on iPhone, where awaiting before navigator.share can lose it).
+  const s = $('#posterStatus'), q = $('#posterSquare');
+  if(s) s.toBlob(b => { if(b) posterFiles.status = b; }, 'image/png');
+  if(q) q.toBlob(b => { if(b) posterFiles.square = b; }, 'image/png');
 }
 function openPosterFor(id){
   let fest = id && id !== 'today' ? festivalById(id) : (festivalByDate(todayISO()) || virtualTodayFestival());
   if(!fest) fest = virtualTodayFestival();
   posterFestival = fest;
+  Object.keys(posterFiles).forEach(k => delete posterFiles[k]);
   setPosterTab('status', true);
   if($('#posterTitle')) $('#posterTitle').textContent = (fest.emoji || '✨') + ' ' + (fest.name || 'Festival') + ' poster';
   showOverlay('posterModal');
@@ -6033,8 +6040,9 @@ function downloadPoster(){
 async function sharePosterNow(){
   const canvas = activePosterCanvas();
   if(!canvas || !posterFestival) return;
+  let blob = posterFiles[posterKind];
   try{
-    const blob = await canvasToBlob(canvas);
+    if(!blob) blob = await canvasToBlob(canvas);
     const file = new File([blob], posterFileName(), { type:'image/png' });
     if(navigator.canShare && navigator.canShare({ files:[file] })){
       await navigator.share({
