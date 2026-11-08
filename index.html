@@ -5184,15 +5184,11 @@ body[data-theme="dark"] .calc-body .field input,body[data-theme="dark"] .calc-bo
   <section class="view" id="view-pulse">
     <div class="adv-head">
       <div>
-        <div class="eyebrow">BCS · market intelligence · Aurum + Square Yards + 2bigha + PropertyWala</div>
-        <h2 class="adv-title">Jaipur market,<br><em>charon sources, ek tab.</em></h2>
-        <p class="adv-sub">Aurum Pulse + Square Yards + 2bigha (plots map) + PropertyWala (search + news) — ek hi jagah compare aur reuse karo. Apartments ke liye Pulse/SY/PW, plots ke liye 2bigha. BCS apne project ka rate inke median se match karke Trust Sheet me lagata hai. <b>Vaishali, Mansarovar, Jagatpura, Ajmer Road</b> — verified listings + developer pipeline + live news ek sath.</p>
+        <div class="eyebrow">BCS · market intelligence · BCS internal summary</div>
+        <h2 class="adv-title">Jaipur market,<br><em>stable BCS summary.</em></h2>
+        <p class="adv-sub">Koi external live website load nahi hogi — taaki site fast, stable aur bina block ke chale. Upar jo Jaipur summary aur rates hain, wahi kaafi hain. BCS apne hi data se chalega.</p>
       </div>
       <div class="adv-head-actions">
-        <button class="btn ghost" id="pulseOpen">↗ Aurum</button>
-        <button class="btn ghost" id="pulseSyOpen">↗ Square Yards</button>
-        <button class="btn ghost" id="pulse2bOpen">↗ 2bigha map</button>
-        <button class="btn ghost" id="pulsePwOpen">↗ PropertyWala</button>
         <button class="btn primary" id="pulseShare">Share WhatsApp</button>
       </div>
     </div>
@@ -5219,21 +5215,9 @@ body[data-theme="dark"] .calc-body .field input,body[data-theme="dark"] .calc-bo
         <div class="brief-box"><h5>🧭 When to use which</h5><p><b>Flats:</b> Pulse + SY + PW · <b>Plots:</b> 2bigha + PW plots · <b>News/Policy:</b> PW News + BCS News.</p></div>
       </div>
       <div style="margin-top:12px">
-        <div class="seg" id="pulseTabs" style="display:inline-flex;flex-wrap:wrap">
-          <button data-pulse-src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" class="on">Aurum Pulse</button>
-          <button data-pulse-src="https://www.squareyards.com/jaipur-real-estate">Square Yards</button>
-          <button data-pulse-src="https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77">2bigha — Plots map</button>
-          <button data-pulse-src="https://www.propertywala.com/jaipur_rajasthan/">PropertyWala — Jaipur</button>
-        </div>
-        <iframe id="pulseFrame" src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum + Square Yards + 2bigha + PropertyWala" style="width:100%;height:560px;border:1px solid var(--line);border-radius:14px;background:#fff" loading="lazy"></iframe>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center">
-          <a class="btn ghost sm" href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">↗ Aurum</a>
-          <a class="btn ghost sm" href="https://www.squareyards.com/jaipur-real-estate" target="_blank" rel="noopener">↗ Square Yards</a>
-          <a class="btn ghost sm" href="https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77" target="_blank" rel="noopener">↗ 2bigha map</a>
-          <a class="btn ghost sm" href="https://www.propertywala.com/jaipur_rajasthan/" target="_blank" rel="noopener">↗ PropertyWala Jaipur</a>
-          <a class="btn ghost sm" href="https://www.propertywala.com/news/" target="_blank" rel="noopener">PW News</a>
-          <span style="font-size:11px;color:var(--mut)">Sources: Aurum (PropTiger) · Square Yards · 2bigha · PropertyWala · Nov 2026 · Verify karke use karo.</span>
-        </div>
+        <div class="panel-head"><h4>External live websites off</h4><span class="n-badge">Stable mode</span></div>
+        <p style="font-size:12.5px;line-height:1.65;color:var(--ink2)">Aurum Pulse, Square Yards, 2bigha aur PropertyWala ke live iframes hata diye gaye hain taaki site hamesha fast aur bina block ke chalti rahe. Upar jo Jaipur summary aur rates hain, wohi kaafi hain — BTS desk apne hi data se chalega.</p>
+        <p style="font-size:11.5px;color:var(--mut);line-height:1.6;margin-top:6px">Note: Ye tab ab sirf BCS ke internal market summary ke liye hai. Koi external website load nahi hogi, isliye koi block/slow issue nahi ayega.</p>
       </div>
     </div>
   </section>
@@ -15718,6 +15702,11 @@ async function fetchLiveFeedRss(rss){
   return normalized;
 }
 async function fetchLiveNews(sourceId, queryOverride){
+  liveState.items = [];
+  liveState.error = 'Live feed off (stability mode) — BCS News tab me apne saved updates dekhein. Koi external fetch nahi hoga.';
+  liveState.loading = false;
+  renderLiveNews();
+  return;
   const src = NEWS_SOURCES.find(s => s.id === sourceId) || NEWS_SOURCES[0];
   const q = String(queryOverride || src.query || 'Jaipur real estate').trim();
   liveState.sourceId = src.id;
