@@ -6741,7 +6741,7 @@ body[data-theme="dark"] .calc-body .field input,body[data-theme="dark"] .calc-bo
     <div class="modal-head"><h3 id="partnerTitle">Add partner</h3><button class="xbtn" data-close="partnerModal">✕</button></div>
     <div class="modal-body">
       <div class="grid2">
-        <div class="field"><label>Partner name *</label><input id="pName" placeholder="e.g. Sharma Home Loans"></div>
+        <div class="field"><label>Partner name *</label><input id="ptName" placeholder="e.g. Sharma Home Loans"></div>
         <div class="field"><label>Type</label><select id="pType"><option value="bank">Bank / home loan</option><option value="ca">CA / tax</option><option value="legal">Legal</option><option value="interiors">Interiors</option><option value="contractor">Contractor</option><option value="rent">Rent / rental</option><option value="vendor">Vendor</option><option value="other">Other</option></select></div>
       </div>
       <div class="grid2">
@@ -6753,13 +6753,13 @@ body[data-theme="dark"] .calc-body .field input,body[data-theme="dark"] .calc-bo
         <div class="field"><label>Referral fee (₹)</label><input id="pReferral" type="number" min="0" placeholder="0"></div>
       </div>
       <div class="field"><label>Commission (%)</label><input id="pCommission" type="number" min="0" step="0.05" placeholder="e.g. 1.5"></div>
-      <div class="field"><label>Notes</label><textarea id="pNotes" rows="3" placeholder="Speciality, response time, areas served…"></textarea></div>
+      <div class="field"><label>Notes</label><textarea id="ptNotes" rows="3" placeholder="Speciality, response time, areas served…"></textarea></div>
       <input type="hidden" id="pId">
     </div>
     <div class="modal-foot">
-      <button class="btn danger" id="pDelete" style="margin-right:auto">Delete</button>
+      <button class="btn danger" id="ptDelete" style="margin-right:auto">Delete</button>
       <button class="btn ghost" data-close="partnerModal">Cancel</button>
-      <button class="btn primary" id="pSave">Save partner</button>
+      <button class="btn primary" id="ptSave">Save partner</button>
     </div>
   </div>
 </div>
@@ -20854,22 +20854,22 @@ function openPartner(p){
   if(!isAdmin()) return toast('Advisor login se edit nahi hota', true);
   $('#partnerTitle').textContent = p ? 'Edit partner — ' + (p.name || '') : 'Add partner';
   $('#pId').value = p?.id || '';
-  $('#pName').value = p?.name || '';
+  $('#ptName').value = p?.name || '';
   $('#pType').value = p?.type || 'other';
   $('#pPhone').value = p?.phone || '';
   $('#pEmail').value = p?.email || '';
   $('#pCity').value = p?.city || '';
-  $('#pNotes').value = p?.notes || '';
+  $('#ptNotes').value = p?.notes || '';
   $('#pReferral').value = p?.referralFee ?? '';
   $('#pCommission').value = p?.commissionPct ?? '';
-  $('#pDelete').style.display = p ? '' : 'none';
+  $('#ptDelete').style.display = p ? '' : 'none';
   showOverlay('partnerModal');
 }
 function savePartner(){
   if(!isAdmin()) return toast('Advisor login se edit nahi hota', true);
-  const name = $('#pName').value.trim();
+  const name = $('#ptName').value.trim();
   if(!name) return toast('Partner name likhein', true);
-  const rec = { name, type: $('#pType').value, phone: $('#pPhone').value.trim(), email: $('#pEmail').value.trim(), city: $('#pCity').value.trim(), referralFee: number($('#pReferral').value) ?? 0, commissionPct: number($('#pCommission').value) ?? 0, notes: $('#pNotes').value.trim(), updatedAt: Date.now() };
+  const rec = { name, type: $('#pType').value, phone: $('#pPhone').value.trim(), email: $('#pEmail').value.trim(), city: $('#pCity').value.trim(), referralFee: number($('#pReferral').value) ?? 0, commissionPct: number($('#pCommission').value) ?? 0, notes: $('#ptNotes').value.trim(), updatedAt: Date.now() };
   const id = $('#pId').value;
   if(id){
     const p = db.partners.find(x => x.id === id);
@@ -20895,8 +20895,8 @@ function initPartners(){
   $('#partnerSearch').addEventListener('input', renderPartners);
   $('#partnerTypeFilter').addEventListener('change', renderPartners);
   $('#addPartnerBtn').addEventListener('click', () => openPartner(null));
-  $('#pSave').addEventListener('click', savePartner);
-  $('#pDelete').addEventListener('click', () => deletePartner($('#pId').value));
+  $('#ptSave').addEventListener('click', savePartner);
+  $('#ptDelete').addEventListener('click', () => deletePartner($('#pId').value));
 }
 
 /* ---------- render ---------- */
