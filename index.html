@@ -8171,8 +8171,31 @@ function save(){
 function storageMeter(){
   try{
     const kb = ((localStorage.getItem(LS_KEY)||'').length/1024).toFixed(0);
-    $('#storageMeter').textContent = `Saved locally · ${kb} KB of ~5 MB`;
+    const el=$('#storageMeter'); if(!el) return;
+    if(navigator.storage && navigator.storage.estimate){
+      navigator.storage.estimate().then(est => {
+        const used = Math.round((est.usage||0)/1024/1024);
+        const quota = est.quota ? Math.round(est.quota/1024/1024) : 0;
+        el.textContent = `Saved locally · ${kb} KB + IDB · ${used} MB used / ${quota ? quota+' MB' : 'unlimited'} · Mac full storage`;
+      }).catch(() => { el.textContent = `Saved locally · ${kb} KB`; });
+    } else {
+      el.textContent = `Saved locally · ${kb} KB`;
+    }
   }catch(e){}
+}
+async function requestFullStorage(){
+  try{
+    let msg='';
+    if(navigator.storage && navigator.storage.persist){
+      const p = await navigator.storage.persist().catch(()=>false);
+      msg = p ? 'Persist ON ✓' : 'Persist check needed';
+    }
+    const est = navigator.storage?.estimate ? await navigator.storage.estimate() : null;
+    if(est) msg += ` · Quota ~${Math.round((est.quota||0)/1024/1024)} MB · Used ~${Math.round((est.usage||0)/1024/1024)} MB`;
+    toast('Full Local storage ' + (msg || 'ready'));
+    renderHealth();
+    return msg;
+  }catch(e){ toast('Storage full check nahi hua', true); return ''; }
 }
 
 /* ---------- helpers ---------- */
@@ -18936,14 +18959,16 @@ function renderHealth(){
       </div>
     </div>
     <div class="dsec">
-      <div class="dsec-head"><h4>Storage safety</h4><span class="hint">Text ~5 MB; full photos browser database me (1 GB+). Backup me photos bhi aati hain.</span></div>
-      <div class="health-card" style="max-width:520px">
-        <div class="lab">Text database (localStorage)</div>
-        <div class="big">${usage.kb} KB <span style="font-size:13px;color:var(--mut)">/ ~5120 KB</span></div>
+      <div class="dsec-head"><h4>Storage safety — Full Local Mode (Mac unlimited)</h4><span class="cnt">IDB + localStorage</span></div>
+      <div class="health-card" style="max-width:640px">
+        <div class="lab">Text database (localStorage) + Full photos (browser DB)</div>
+        <div class="big">${usage.kb} KB <span style="font-size:13px;color:var(--mut)">text + IDB photos ${usage.imgCount} · ~${usage.imgMb.toFixed(1)} MB</span></div>
         <div style="height:9px;background:#EEF2EF;border-radius:999px;overflow:hidden;margin-top:9px"><i style="display:block;height:100%;width:${Math.max(2, usage.pct).toFixed(0)}%;background:${usage.pct > 85 ? '#B5623F' : usage.pct > 65 ? '#C49A3E' : '#6E9B7C'};border-radius:999px"></i></div>
-        <p id="idbStatsLine" style="margin-top:4px;color:var(--mut)">Photos in browser database: checking…</p>
-        <p>${usage.pct > 85 ? 'Text storage almost full — photos compress karein ya backup lekar photos hata dein.' : 'Space theek hai. Backup regularly lein.'}</p>
-        <div class="conn-actions" style="margin-top:10px">
+        <p id="idbStatsLine" style="margin-top:8px;color:var(--mut)">Checking browser DB & quota…</p>
+        <p id="persistLine" style="margin-top:4px;color:var(--mut)">Persist (Mac keeps data forever): checking…</p>
+        <p style="margin-top:6px;font-size:11px;color:var(--mut);line-height:1.6">Full Local Mode: text DB mirror har save pe browser DB me jata hai, badi photos auto IDB me shift hoti hain (1 GB+). Chrome/Safari me site storage ko persist pe rakho toh Mac saaf karke bhi data safe rahega. Koi cloud limit nahi, koi server nahi — bilkul offline free forever.</p>
+        <div class="conn-actions" style="margin-top:10px;flex-wrap:wrap">
+          <button class="btn primary sm" id="healthPersistBtn">♾️ Enable Unlimited Local</button>
           <button class="btn ghost sm" id="healthCompressBtn2">Compress all images</button>
           <button class="btn ghost sm" id="healthOffloadBtn">Move full images to IDB</button>
           <button class="btn ghost sm" id="healthBackupBtn2">Download JSON backup</button>
@@ -18990,6 +19015,14 @@ function renderHealth(){
   });
   const restoreBtn = $('#healthRestoreBtn');
   if(restoreBtn) restoreBtn.addEventListener('click', restoreFromIdb);
+  const persistBtn = $('#healthPersistBtn');
+  if(persistBtn) persistBtn.addEventListener('click', () => { requestFullStorage(); });
+  if(navigator.storage && navigator.storage.persisted){
+    navigator.storage.persisted().then(p => {
+      const el = $('#persistLine');
+      if(el) el.textContent = p ? 'Persist ON — Mac data kabhi auto-delete nahi marega' : 'Persist OFF — upar "Enable Unlimited" dabao';
+    }).catch(()=>{});
+  }
   idbStats().then(s => {
     const el = $('#idbStatsLine');
     if(el) el.textContent = `Full photos in browser DB: ${s.count} · ~${s.mb.toFixed(1)} MB · JSON backup me include hoti hain`;
@@ -20912,6 +20945,7 @@ if(!hadLocalData && !window.indexedDB) save();
 applyRoleChrome();
 render();
 mirrorToIdb();
+if(navigator.storage && navigator.storage.persist){ navigator.storage.persist().catch(()=>{}); }
 restoreFromIdbIfEmpty().then(restored => { if(!restored && !hadLocalData) save(); });
 scheduleProactiveOffload(5000);
 document.addEventListener('visibilitychange', () => {
