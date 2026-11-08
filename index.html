@@ -4088,6 +4088,83 @@ body[data-theme="dark"] table td{color:var(--ink2)}
     <p class="lock-note">Privacy view, not encryption — data stays on this device. Admin password 5794 · advisor password 1111.</p>
   </div>
 </div>
+<script>
+/* BCS resilient login fallback — agar main script crash ho jaaye toh bhi desk khule */
+(function(){
+  var ROLE='admin';
+  var AUTH='bcs_auth_v1';
+  function $(s){ return document.querySelector(s); }
+  function $$(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); }
+  function showErr(m){
+    var e=$('#lockErr'); if(e){ e.textContent=m; e.style.display='block'; }
+    var c=$('#lockCard'); if(c){ c.classList.remove('shake'); void c.offsetWidth; c.classList.add('shake'); }
+  }
+  function setRole(r){
+    ROLE = r==='advisor' ? 'advisor':'admin';
+    $$('#lockRoles button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-lockrole')===ROLE); });
+    $('#lockAdminBlock').classList.toggle('on', ROLE==='admin');
+    $('#lockAdvisorBlock').classList.toggle('on', ROLE==='advisor');
+    $('#lockSubmit').textContent = ROLE==='admin' ? 'Unlock admin desk →' : 'Enter advisor view →';
+    var e=$('#lockErr'); if(e) e.textContent='';
+  }
+  function advisorList(){
+    try{
+      var raw=localStorage.getItem('bcs_db_v1');
+      if(!raw) return [];
+      var db=JSON.parse(raw);
+      return (db.advisors||[]).filter(function(a){ return a.status!=='inactive'; });
+    }catch(e){ return []; }
+  }
+  function fillAdvisor(){
+    var sel=$('#lockAdvisor'); if(!sel) return;
+    var list=advisorList();
+    if(!list.length){ sel.innerHTML='<option value="">No active advisor</option>'; return; }
+    sel.innerHTML=list.map(function(a){
+      return '<option value="'+a.id+'">'+(a.name||'Advisor')+'</option>';
+    }).join('');
+  }
+  function unlock(){
+    try{ sessionStorage.setItem(AUTH, JSON.stringify({ role: ROLE, advisorId: ROLE==='advisor' ? ($('#lockAdvisor')?.value || '') : undefined })); }catch(e){}
+    try{
+      if(typeof window.go==='function'){ window.go('dashboard'); }
+      if(typeof window.render==='function'){ window.render(); }
+      if(typeof window.toast==='function'){ window.toast(ROLE==='admin' ? 'Welcome back, Ajay' : 'Welcome'); }
+    }catch(e){}
+    var ls=$('#lockScreen'); if(ls) ls.classList.remove('on');
+    document.body.classList.remove('locked');
+  }
+  function onSubmit(ev){
+    ev.preventDefault();
+    if(window.__bcsLockWired){ return; }
+    if(ROLE==='admin'){
+      var v=($('#lockPass')||{}).value || '';
+      if(String(v).trim()==='5794'){ unlock(); }
+      else { showErr('Galat password — dobara try karein.'); }
+      return;
+    }
+    var v2=($('#lockAdvisorPass')||{}).value || '';
+    if(String(v2).trim()!=='1111'){ showErr('Galat advisor password — common password 1111 hai.'); return; }
+    var id=($('#lockAdvisor')||{}).value || '';
+    if(!id){ showErr('Ek active advisor select karo.'); return; }
+    unlock();
+  }
+  function arm(){
+    var form=$('#lockForm'); if(!form) return;
+    $$('#lockRoles button').forEach(function(b){ b.addEventListener('click', function(){ setRole(b.getAttribute('data-lockrole')); if(ROLE==='advisor') fillAdvisor(); }); });
+    form.addEventListener('submit', onSubmit);
+    fillAdvisor();
+    /* agar 1.2s me main script ne wire nahi kiya toh yahi fallback official login hai */
+    setTimeout(function(){
+      if(!window.__bcsLockWired){
+        window.__bcsLockWired=true;
+      } else {
+        /* main wired hai — double handler avoid */
+      }
+    }, 1200);
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', arm); } else { arm(); }
+})();
+</script>
 
 <header>
   <div class="hwrap">
@@ -16725,6 +16802,7 @@ $('#lockRoles').addEventListener('click', e => {
   const b = e.target.closest('[data-lockrole]');
   if(b) setLockRole(b.dataset.lockrole);
 });
+window.__bcsLockWired = true;
 $('#lockForm').addEventListener('submit', e => {
   e.preventDefault();
   if(lockRole === 'admin'){
