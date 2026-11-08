@@ -4052,6 +4052,7 @@ body[data-theme="dark"] .calc-body .field input,body[data-theme="dark"] .calc-bo
       <button data-view="terminology">Terminology</button>
       <button data-view="tax">Tax & Advice</button>
       <button data-view="calc">Calculators</button>
+      <button data-view="pulse">Market Pulse</button>
       <button data-view="advisory">Advisory</button>
       <button data-view="templates">Templates</button>
       <button data-view="health">Health</button>
@@ -5135,8 +5136,64 @@ body[data-theme="dark"] .calc-body .field input,body[data-theme="dark"] .calc-bo
           <div class="calc-src">RERA section 31 / rules: bank MCLR + 2% interest. Exact SBI MCLR at delay date confirm karein.</div>
         </div>
       </div>
+      <div class="calc-card" id="calcCirclePro">
+        <div class="calc-head"><span class="calc-ic">🏷️</span><div><h4>Circle Rate Calculator — Jaipur</h4><small>Collector rate se circle value</small></div><span class="calc-up">Jaipur</span></div>
+        <div class="calc-body">
+          <div class="field"><label>Locality</label><select id="crLocality">
+            <option value="vaishali">Vaishali Nagar</option><option value="mansarovar" selected>Mansarovar</option><option value="ajmer">Ajmer Road</option><option value="tonk">Tonk Road</option><option value="jagatpura">Jagatpura</option><option value="malviya">Malviya Nagar</option><option value="banipark">Bani Park / C-Scheme</option><option value="pratap">Pratap Nagar</option><option value="sikar">Sikar Road</option>
+          </select></div>
+          <div class="grid2">
+            <div class="field"><label>Property type</label><select id="crType"><option value="residential">Residential</option><option value="commercial">Commercial</option><option value="plot">Plot</option></select></div>
+            <div class="field"><label>Area (sq yd)</label><input id="crArea" type="number" min="0" value="240"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Circle rate (₹ / sq yd) — editable</label><input id="crRate" type="number" min="0" value="4500"></div>
+            <div class="field"><label>&nbsp;</label><button class="btn ghost sm" id="crLoad" style="width:100%">Load locality default</button></div>
+          </div>
+          <div class="calc-out" id="crOut"></div>
+          <div class="calc-src">Indicative Jaipur circle rates — latest Collector notification confirm karo. Registry duty max(market, circle) pe lagti hai. Aurum Circle Rate tool style: City → Locality → Type → instantly value.</div>
+        </div>
+      </div>
     </div>
     <p class="lock-hint" style="margin-top:14px">Rates har notification pe badal sakte hain — upar <b>Rates Studio</b> me ek jagah update karo. Final legal/tax advice ke liye CA/advocate se confirm karein.</p>
+  </section>
+
+  <section class="view" id="view-pulse">
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · market intelligence · powered by Aurum Pulse</div>
+        <h2 class="adv-title">Jaipur market,<br><em>live data se seekho.</em></h2>
+        <p class="adv-sub">Aurum PropTech Pulse ka Jaipur overview — 969 projects, corridors ke hisaab se demand, aur PropTiger sourced price intelligence. BCS desk ka apna data yahan compare aur reuse kar sakte ho. Sabse niche correlation: <b>Vaishali (mature), Mansarovar (mid), Jagatpura (new stock), Ajmer Road (new launches)</b> — demo se live tak ek nazar.</p>
+      </div>
+      <div class="adv-head-actions">
+        <button class="btn ghost" id="pulseOpen">↗ Open full page</button>
+        <button class="btn primary" id="pulseShare">Share WhatsApp</button>
+      </div>
+    </div>
+    <div class="links-stats">
+      <div><div class="k">Total projects</div><div class="v">969</div></div>
+      <div><div class="k">Newly launched</div><div class="v">348</div></div>
+      <div><div class="k">Under construction</div><div class="v">15</div></div>
+      <div><div class="k">Jaipur avg ₹/sqft</div><div class="v">₹5,223</div></div>
+    </div>
+    <div class="panel" style="margin-top:12px">
+      <div class="panel-head"><h4>Jaipur — at a glance (Aurum Pulse summary)</h4><span class="n-badge">Q4 2026</span></div>
+      <div class="brief-grid">
+        <div class="brief-box"><h5>🏘️ Localities</h5><p><b>Vaishali Nagar</b> — mature homes, schools, shopping. <b>Mansarovar</b> — mid-segment, wide roads, strong resale. <b>Jagatpura</b> — new stock, airport + Mahindra SEZ. <b>Ajmer Road</b> — largest new-launch pipeline. <b>Tonk Road</b> — airport corridor access.</p></div>
+        <div class="brief-box"><h5>📈 Price signal</h5><p>Jaipur avg ~₹5,223/sq ft (Q4 2026, Pulse) vs ~₹4,915 district avg (Q1 2026) — location-sensitive market. Premium pockets (C-Scheme, Bani Park) alag, growth corridors (Ajmer, Jagatpura) alag price karte hain.</p></div>
+        <div class="brief-box"><h5>🏗️ Infrastructure driver</h5><p>Metro + road upgrades (Delhi-Mumbai Expressway belt) push Mansarovar / Vaishali / Ajmer. Mahindra World City + airport belt support Jagatpura + Tonk. End-users: Mansarovar/Vaishali/Malviya. Investors: Jagatpura/Ajmer/Pratap.</p></div>
+        <div class="brief-box"><h5>🔗 How BCS uses this</h5><p>Market Pulse corridors = aap ke BCS corridors. Pulse rate ko apne project price se compare karo — Trust sheet me location score + price prediction ke saath jod do.</p></div>
+      </div>
+      <div style="margin-top:12px">
+        <iframe id="pulseFrame" src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Aurum Pulse — Jaipur overview" style="width:100%;height:520px;border:1px solid var(--line);border-radius:14px;background:#fff" loading="lazy"></iframe>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center">
+          <a class="btn ghost sm" href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">↗ Open in new tab</a>
+          <a class="btn ghost sm" href="https://www.aurumproptech.in/pulse/glossary" target="_blank" rel="noopener">Glossary — Aurum</a>
+          <a class="btn ghost sm" href="https://www.aurumproptech.in/pulse/tools/circleRateCalculator" target="_blank" rel="noopener">Circle Rate tool — Aurum</a>
+          <span style="font-size:11px;color:var(--mut)">Data: Aurum PropTech Pulse (PropTiger sourced) · BCS me independent verify karke use karo.</span>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="view" id="view-templates">
@@ -7469,6 +7526,16 @@ const DEFAULT_TERMINOLOGY = [
   { cat:'other', kind:'term', term:'Villa vs Builder floor vs Apartment', hi:'विला / बिल्डर फ्लोर / अपार्टमेंट', meaning:'Villa = independent unit with land share + own roof rights (premium). Builder floor = ek plot par independent floors (stilt parking culture — NCR/Delhi). Apartment = society tower with amenities. Trio: budget, independence, society-level services — teeno mein trade-off.' },
   { cat:'other', kind:'term', term:'Saleable vs usable rate', hi:'सेलेबल रेट vs असली रेट', meaning:'Builders quote super built-up (saleable) rate. Aapka usable carpet rate = quote × (1 + loading). RERA mein builder se carpet breakdown written mein lein — brochure sirf saleable area batata hai.' },
   { cat:'govt', kind:'term', term:'State-wise document set', hi:'देश भर के दस्तावेज़', meaning:'North India (UP/DL/HR/PB/RJ): registry + mutation/Jamabandi + approved layout. South (KA/TN/AP/TS/KL): Khata/Patta system — registry ho lekin khata transfer na hua to kaam adhura. MH: Satbara + 7/12 + index-II. Har state ka document set alag hota hai.' },
+  { cat:'legal', kind:'term', term:'Agreement to Sell', hi:'बिक्री समझौता', meaning:'Seller se buyer ko future date par ownership dene ka written promise. Isme advance/token, payment schedule, loan approval aur completion date clear likhi hoti hai. Ownership tabhi transfer hoti hai jab final sale deed register hoti hai — agreement sirf commitment hai.', regions:'Aurum Pulse glossary se curated' },
+  { cat:'legal', kind:'term', term:'Approved Building Plan', hi:'स्वीकृत भवन योजना', meaning:'Authority (JDA/Municipality) dwara approved map — kya, kahan aur kitna ban sakta hai. Bina approved plan ke construction illegal mana ja sakta hai; plan number + approval letter check karo.' },
+  { cat:'pricing', kind:'term', term:'AVM — Automated Valuation Model', hi:'एवीएम', meaning:'Algorithm se market value ka auto estimate — location, size, transactions, trend se. Zillow/PropTiger jaise platforms use karte hain. Indicative hota hai; site visit + latest circle rate se verify karo.' },
+  { cat:'physical', kind:'term', term:'Area Statement', hi:'क्षेत्र विवरण', meaning:'Floor-wise area breakdown — carpet, walls, balcony, common area — jo approval aur RERA filing me use hota hai. Brochure wala area vs area statement kabhi kabhi match nahi karta.' },
+  { cat:'financial', kind:'term', term:'Assignment of Lease', hi:'लीज़ असाइनमेंट', meaning:'Tenant apni tenancy/lease kisi aur ko transfer karta hai — owner ki permission aur new lease agreement se. Commercial deals me common; assignment fee check karo.' },
+  { cat:'pricing', kind:'term', term:'Assessed Value', hi:'निर्धारित मूल्य', meaning:'Sarkar/tax authority ke record me darj value — property tax aur stamp duty ke liye baseline. Circle rate se alag ho sakta hai; registry me higher of two lagta hai.' },
+  { cat:'legal', kind:'term', term:'Apartment Owners Association', hi:'अपार्टमेंट मालिक संघ', meaning:'Apartment owners ka legal association jo common areas, maintenance, by-laws aur society handover handle karta hai.' },
+  { cat:'financial', kind:'term', term:'Asset Turnover Ratio', hi:'एसेेट टर्नओवर', meaning:'Revenue ÷ Assets — portfolio assets se kitni efficiently earning ho rahi hai. Developer ke liye high ratio = efficient execution ka signal.' },
+  { cat:'physical', kind:'term', term:'Ancillary Retail Space', hi:'सहायक retail जगह', meaning:'Main project ke andar choti shop/kiosk jaisi retail — footfall badhati hai, rent premium deti hai. Commercial project ke tenant mix ka part.' },
+  { cat:'govt', kind:'term', term:'Area Development Scheme', hi:'क्षेत्र विकास योजना', meaning:'Authority dwara area me colony/layout develop karne ki approved scheme — JDA schemes Jaipur me classic example. Approved scheme ka plot JDA letter se verify karo.' },
 ];
 let db = normalizeDb(load());
 function load(){
@@ -7491,7 +7558,7 @@ function normalizeDb(d){
       id: uid(), built: true, createdAt: Date.now() + i, ...t
     }));
   }
-  if(+d.terminologySeedVersion !== 2){
+  if(+d.terminologySeedVersion !== 3){
     const custom = d.terminology.filter(t => t && !t.built);
     const prevByTerm = new Map();
     d.terminology.filter(t => t && t.built && t.term).forEach(t => prevByTerm.set(t.term, t));
@@ -7502,7 +7569,7 @@ function normalizeDb(d){
       }),
       ...custom
     ];
-    d.terminologySeedVersion = 2;
+    d.terminologySeedVersion = 3;
   }
   d.terminology = d.terminology.filter(t => t && String(t.term || '').trim()).map((t, i) => ({
     id: t.id || uid(),
@@ -9461,6 +9528,27 @@ function quoteText(){
       <div class="calc-row"><span>Delay period</span><b>${mo} months</b></div>
       <div class="calc-total"><span>Compensation due</span><b>₹ ${inr(interest)}</b></div>`;
   }
+  const JAIPUR_CIRCLE = { vaishali:8200, mansarovar:4500, ajmer:5200, tonk:5800, jagatpura:4800, malviya:7000, banipark:14500, pratap:3800, sikar:3200 };
+  function circleProCalc(){
+    const out = $('#crOut'); if(!out) return;
+    const area = parseAmt('#crArea'), rate = parseAmt('#crRate');
+    const cip = rate * area;
+    const stamp = cip * num('#rgStamp') / 100, reg = cip * num('#rgReg') / 100;
+    out.innerHTML = `
+      <div class="calc-row"><span>Circle rate</span><b>₹ ${inr(rate)} / sq yd</b></div>
+      <div class="calc-row"><span>Area</span><b>${inr(area)} sq yd</b></div>
+      <div class="calc-row"><span>Circle value</span><b>₹ ${inr(cip)}</b></div>
+      <div class="calc-row"><span>Stamp @${num('#rgStamp')}% + Reg @${num('#rgReg')}%</span><b>₹ ${inr(stamp + reg)}</b></div>
+      <div class="calc-total"><span>Registry basis (circle)</span><b>₹ ${inr(cip + stamp + reg)}</b></div>`;
+  }
+  function loadCircleDefault(){
+    const loc = $('#crLocality')?.value || 'mansarovar';
+    const base = JAIPUR_CIRCLE[loc] || 4500;
+    const typ = $('#crType')?.value || 'residential';
+    const mult = typ === 'commercial' ? 1.6 : typ === 'plot' ? 0.85 : 1;
+    if($('#crRate')) $('#crRate').value = Math.round(base * mult);
+    circleProCalc();
+  }
   /* Rates Studio — master source */
   const RAT_KEY = 'bcs_rates_v1';
   const MAP = { rtStamp:'#rgStamp', rtReg:'#rgReg', rtSur:'#rgSur', rtMclr:'#emRate', rtFee:'#emFee', rtBroker:'#cmPct', rtTds:'#cmTds', rtGstB:'#cmGst', rtGrowth:'#rnGrowth' };
@@ -9502,16 +9590,22 @@ function quoteText(){
     applyRatesToCalcs(); runAll(); toast('Rates reset');
   }
   function calcShareAll(){
-    const parts = ['#bkOut','#ccOut','#emOut','#rgOut','#gstOut','#cmOut','#rnOut','#arOut','#afOut','#ppOut','#spOut','#roOut','#dlOut'].map(id => $(id)?.innerText?.replace(/\s+/g,' ').trim()).filter(Boolean);
+    const parts = ['#bkOut','#ccOut','#crOut','#emOut','#rgOut','#gstOut','#cmOut','#rnOut','#arOut','#afOut','#ppOut','#spOut','#roOut','#dlOut'].map(id => $(id)?.innerText?.replace(/\s+/g,' ').trim()).filter(Boolean);
     const text = ['*BCS Calculator Summary*', '', parts.join('\n'), '', 'BCS · Business City Square · @ajaysharma.bcs'].join('\n');
     if(navigator.share){ navigator.share({ title: 'BCS Calculators', text }).catch(() => {}); } else { window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank'); }
   }
-  const fns = [bankCalc, circleCalc, emiCalc, regCalc, gstCalc, commCalc, rentCalc, areaCalc, affordCalc, prepayCalc, sipCalc, rentOwnCalc, delayCalc];
+  const fns = [bankCalc, circleCalc, circleProCalc, emiCalc, regCalc, gstCalc, commCalc, rentCalc, areaCalc, affordCalc, prepayCalc, sipCalc, rentOwnCalc, delayCalc];
   function runAll(){ fns.forEach(f => { try{ f(); }catch(e){} }); renderCalcStats(); }
-  const ids = ['#bkAmt','#ccMarket','#ccCircle','#emAmt','#emRate','#emYears','#emFee','#rgAmt','#rgStamp','#rgReg','#rgSur','#gstAmt','#gstType','#cmAmt','#cmPct','#cmTds','#cmGst','#rnVal','#rnRent','#rnGrowth','#rnVac','#arVal','#arFrom','#afInc','#afRate','#afYears','#afFoir','#ppLoan','#ppAmt','#ppRate','#ppYears','#spAmt','#spYrs','#spRet','#spInf','#roRent','#roVal','#roRate','#roApp','#dlPaid','#dlMonths','#dlMclr'];
+  const ids = ['#bkAmt','#ccMarket','#ccCircle','#crLocality','#crType','#crArea','#crRate','#emAmt','#emRate','#emYears','#emFee','#rgAmt','#rgStamp','#rgReg','#rgSur','#gstAmt','#gstType','#cmAmt','#cmPct','#cmTds','#cmGst','#rnVal','#rnRent','#rnGrowth','#rnVac','#arVal','#arFrom','#afInc','#afRate','#afYears','#afFoir','#ppLoan','#ppAmt','#ppRate','#ppYears','#spAmt','#spYrs','#spRet','#spInf','#roRent','#roVal','#roRate','#roApp','#dlPaid','#dlMonths','#dlMclr'];
   ids.forEach(id => { const el = $(id); if(el){ el.addEventListener('input', runAll); el.addEventListener('change', runAll); } });
+  $('#crLoad')?.addEventListener('click', loadCircleDefault);
   $('#rtSave')?.addEventListener('click', saveRates);
   $('#rtReset')?.addEventListener('click', resetRates);
+  $('#pulseOpen')?.addEventListener('click', () => window.open('https://www.aurumproptech.in/pulse/properties/jaipur/overview', '_blank', 'noopener'));
+  $('#pulseShare')?.addEventListener('click', () => {
+    const txt = '*BCS Market Pulse — Jaipur*' + '\n' + '969 projects (348 new launches) · Avg ₹5,223/sq ft (Q4 2026)\n' + 'Vaishali mature · Mansarovar mid · Jagatpura new stock · Ajmer Rd new launches\n' + 'Full overview: https://www.aurumproptech.in/pulse/properties/jaipur/overview\n' + 'Glossary: https://www.aurumproptech.in/pulse/glossary — 10 naye terms BCS Terminology me bhi added\n' + 'BCS · Business City Square · @ajaysharma.bcs';
+    if(navigator.share){ navigator.share({ title: 'BCS Market Pulse — Jaipur', text: txt }).catch(() => {}); } else { window.open('https://wa.me/?text=' + encodeURIComponent(txt), '_blank'); }
+  });
   $('#calcPrintAll')?.addEventListener('click', () => window.print());
   $('#calcShareAll')?.addEventListener('click', calcShareAll);
   loadRates();
