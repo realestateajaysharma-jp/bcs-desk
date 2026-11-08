@@ -3236,6 +3236,121 @@ select{
 .tm-formula{border-radius:12px}
 .tm-example{border-radius:12px}
 .tm-card .tm-act button{border-radius:999px}
+.senior-grid{display:grid;grid-template-columns:1.15fr .95fr .95fr;gap:14px;margin:0 0 8px}
+.senior-panel{min-height:220px}
+.n-badge{font-size:10px;font-weight:800;background:var(--sage);color:var(--sage-ink);border-radius:999px;padding:4px 9px}
+.n-badge.warn{background:#FBEDE8;color:var(--danger)}
+.sen-row{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px;margin:6px 0;transition:.18s}
+.sen-row:hover{border-color:rgba(165,123,54,.45);transform:translateY(-1px);background:#FFFCF3}
+.sen-row span{display:flex;flex-direction:column;min-width:0;gap:1px}
+.sen-row b{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sen-row small{font-size:10px;color:var(--mut)}
+.sen-row em{font-style:normal;font-size:9px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--gold);flex:none}
+.sen-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.sen-metrics>div{background:linear-gradient(180deg,#fff,#F8FBF9);border:1px solid var(--line);border-radius:13px;padding:10px 11px}
+.sen-metrics b{display:block;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--ink)}
+.sen-metrics span{font-size:9px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--mut)}
+.month-fest{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:thin}
+.fest-quote{flex:0 0 300px;border:1px solid rgba(165,123,54,.3);background:linear-gradient(135deg,#FFF9EB,#F7F3E7);border-radius:16px;padding:13px 15px;display:flex;flex-direction:column;gap:6px}
+.fest-quote span{font-size:9px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold)}
+.fest-quote b{font-family:'Fraunces',serif;font-size:16px;line-height:1.35;color:var(--ink)}
+.fest-quote small{font-size:10.5px;color:var(--mut)}
+.fest-quote .btn{align-self:flex-start;margin-top:auto}
+.fest-card{flex:0 0 190px;display:grid;grid-template-columns:34px 42px 1fr;column-gap:9px;align-items:center;text-align:left;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;transition:.18s}
+.fest-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 12px 26px -20px rgba(46,45,32,.3)}
+.fest-emoji{font-size:23px;line-height:1}
+.fest-date b{display:block;font-family:'Fraunces',serif;font-size:20px;line-height:1}
+.fest-date small{font-size:8.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--mut)}
+.fest-copy{display:flex;flex-direction:column;min-width:0;gap:2px}
+.fest-copy b{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fest-copy small{font-size:10px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fest-days{grid-column:3;justify-self:start;font-size:9px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--gold);background:#FFF4DA;border:1px solid rgba(165,123,54,.22);border-radius:999px;padding:3px 8px;margin-top:3px}
+.linkbtn{font-size:11px;font-weight:800;color:var(--gold);border:1px solid var(--line);background:#fff;padding:4px 9px;border-radius:999px;transition:.18s}
+.linkbtn:hover{border-color:var(--gold);background:#FFF8EA;transform:translateY(-1px)}
+@media (max-width:1080px){ .senior-grid{grid-template-columns:1fr 1fr} .senior-panel:last-child{grid-column:1/-1} }
+@media (max-width:640px){ .senior-grid{grid-template-columns:1fr} .sen-metrics{grid-template-columns:1fr 1fr} .fest-quote{flex-basis:260px} .fest-card{flex-basis:175px} }
+.road-chip{display:inline-flex;align-items:center;gap:6px;cursor:pointer;transition:.18s}
+.road-chip:hover{border-color:var(--gold);background:#FFF8EA;transform:translateY(-1px)}
+.cor-hub{margin-top:12px;font-size:11px;font-weight:800;color:var(--gold);border:1px solid rgba(165,123,54,.25);background:#FFFBEF;border-radius:999px;padding:5px 11px;transition:.18s}
+.cor-hub:hover{background:var(--gold);color:#fff;transform:translateY(-1px)}
+.col-adv{font-size:9px;font-weight:800;color:var(--sage-ink);background:rgba(223,233,227,.78);border:1px solid rgba(65,86,63,.14);border-radius:999px;padding:3px 7px;white-space:nowrap}
+.col-hub{width:24px;height:24px;border-radius:999px;display:grid;place-items:center;font-size:14px;color:var(--gold);background:#fff;border:1px solid var(--line);transition:.18s;flex:none}
+.col-hub:hover{border-color:var(--gold);background:#FFF4DA;transform:translateY(-1px)}
+.hub-stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:14px 0 8px}
+.hub-count{background:linear-gradient(180deg,#fff,#F7FAF8);border:1px solid var(--line);border-radius:14px;padding:10px 8px;text-align:center;transition:.18s}
+.hub-count:hover{border-color:var(--gold);transform:translateY(-1px)}
+.hub-count b{display:block;font-size:19px;line-height:1}
+.hub-count span{font-size:8.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--mut)}
+.hub-row{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 11px;transition:.18s}
+.hub-row:hover{border-color:rgba(165,123,54,.5);background:#FFFCF3;transform:translateY(-1px)}
+.hub-row-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.hub-row-main b{font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hub-row-main small{font-size:10px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hub-row-right{font-size:10.5px;font-weight:800;color:var(--gold);white-space:nowrap}
+.hub-actions{border:1px dashed rgba(165,123,54,.35);background:#FFFDF5;border-radius:14px}
+.cov-card{cursor:pointer}
+.cov-proj{color:inherit;text-align:left;padding:0;border-radius:4px}
+.cov-proj:hover{color:var(--gold);text-decoration:underline}
+.cov-hub{margin-top:8px;font-size:9.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--gold)}
+/* ---------- dark mode (clear, readable, deep ink surfaces) ---------- */
+body[data-theme="dark"]{
+  --bg:#101310;
+  --panel:#1B201B;
+  --ink:#F2F0E5;
+  --ink2:#DBDACD;
+  --mut:#A7ACA0;
+  --line:#303830;
+  --line2:#262D26;
+  --olive:#D8C99A;
+  --sage:#26342A;
+  --sage-ink:#CDEBD7;
+  --mint:#17312A;
+  --sand:#2B2C24;
+  --gold:#E5BE62;
+  --gold-soft:#342F20;
+  --danger:#E8876E;
+  --shadow:0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.3);
+  --shadow-lg:0 24px 60px -28px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+body[data-theme="dark"]{background:radial-gradient(900px 500px at 8% -10%,rgba(229,190,98,.07),transparent 60%),radial-gradient(900px 560px at 100% -6%,rgba(65,132,88,.08),transparent 62%),var(--bg)}
+body[data-theme="dark"] header{background:rgba(16,19,16,.88);border-color:rgba(48,56,48,.9);box-shadow:0 16px 34px -24px rgba(0,0,0,.8)}
+body[data-theme="dark"] .logo{background:linear-gradient(135deg,#22271F,#3D3520);color:#F6F2E7}
+body[data-theme="dark"] nav{background:rgba(27,32,27,.94);border-color:rgba(48,56,48,.9)}
+body[data-theme="dark"] nav button{color:var(--mut)}
+body[data-theme="dark"] nav button:hover{background:rgba(255,255,255,.06);color:var(--ink)}
+body[data-theme="dark"] .searchbox,body[data-theme="dark"] .icon-btn,body[data-theme="dark"] .btn.ghost{background:rgba(27,32,27,.92);border-color:rgba(48,56,48,.95);color:var(--ink)}
+body[data-theme="dark"] .btn.primary{background:linear-gradient(135deg,#E7C46E,#B8892E);color:#171A14;border-color:rgba(229,190,98,.35)}
+body[data-theme="dark"] .btn.gold{background:linear-gradient(135deg,#E7C46E,#B8892E);color:#171A14}
+body[data-theme="dark"] .btn.danger{background:#3B241D;border-color:rgba(232,135,110,.35);color:#F2A18D}
+body[data-theme="dark"] :is(.panel,.dash-card,.cat-card,.cor-card,.pulse-card,.advisor-card,.tm-card,.an-card,.link-item,.tpl-card,.cov-card,.sen-metrics>div,.hub-count,.hub-row,.sen-row,.fest-card,.booking-card,.client-card,.dev-kcard,.kb-card,.news-card,.proj-card,.pcard,.detail-body,.modal,.toolpop,.field input,.field select,.field textarea,input,select,textarea){background:var(--panel);border-color:var(--line);color:var(--ink)}
+body[data-theme="dark"] :is(.dash-card-header,.dl-date,.dl-time,.dl-festival,.dl-merged-bottom,.fest-quote,.hub-actions,.team-stats>div,.an-card,.dsec,.dnotes,.dcell,.ddev,.qnote-block,.pc-grid,.profile-block,.profile-sec,.corr-chips,.mini-list button,.dev-project-row,.booking-mini-row,.tpl-toolbar,.toolbar){background:rgba(27,32,27,.86);border-color:var(--line);color:var(--ink)}
+body[data-theme="dark"] .overlay{background:rgba(0,0,0,.66)}
+body[data-theme="dark"] .xbtn,body[data-theme="dark"] .seg button,body[data-theme="dark"] .seg{background:rgba(27,32,27,.9);border-color:var(--line);color:var(--ink2)}
+body[data-theme="dark"] .seg button.on{background:#D8C99A;color:#171A14}
+body[data-theme="dark"] ::placeholder{color:#7E8478}
+body[data-theme="dark"] .show-fallback{background:radial-gradient(120% 90% at 85% 10%, rgba(229,190,98,.18), transparent 55%),radial-gradient(100% 100% at 10% 100%, rgba(116,92,36,.28), transparent 60%),linear-gradient(140deg,#2E362D 0%,#1F251D 55%,#141A14 100%)}
+body[data-theme="dark"] .tooldock,body[data-theme="dark"] .dock-btn{background:rgba(27,32,27,.94);border-color:var(--line)}
+body[data-theme="dark"] table,body[data-theme="dark"] th,body[data-theme="dark"] td{border-color:var(--line)}
+body[data-theme="dark"] .vt-table th{background:#20261F;color:var(--mut)}
+body[data-theme="dark"] .an-bar .an-track{background:#2B332B}
+body[data-theme="dark"] .status-pill,body[data-theme="dark"] .tm-chip,body[data-theme="dark"] .status-chip{background:rgba(229,190,98,.12);color:#F1D992}
+body[data-theme="dark"] .lock{background:linear-gradient(145deg,#141813,#2B2D22)}
+body[data-theme="dark"] .intro{background:linear-gradient(120deg,#1B201B,#242923);border-color:rgba(48,56,48,.95);box-shadow:0 24px 60px -42px rgba(0,0,0,.8)}
+body[data-theme="dark"] .intro h2,body[data-theme="dark"] .intro-cta span{color:var(--ink)}
+body[data-theme="dark"] .intro p,body[data-theme="dark"] .eyebrow,body[data-theme="dark"] .istat span{color:var(--mut)}
+body[data-theme="dark"] .intro .eyebrow:before{background:var(--gold)}
+body[data-theme="dark"] .istat{background:rgba(27,32,27,.92);border-color:var(--line);color:var(--ink)}
+body[data-theme="dark"] .role-chip{background:#20261F;border-color:var(--line);color:var(--ink)}
+body[data-theme="dark"] .role-chip span{color:var(--mut)}
+body[data-theme="dark"] nav button.on{background:linear-gradient(135deg,#E7C46E,#B8892E);color:#171A14;box-shadow:0 8px 18px -10px rgba(0,0,0,.55)}
+body[data-theme="dark"] nav button.on::after{background:#171A14}
+body[data-theme="dark"] .lock-card{background:var(--panel);border-color:var(--line);color:var(--ink)}
+body[data-theme="dark"] .lock-note,body[data-theme="dark"] .lock-sub,body[data-theme="dark"] .lock-kicker,body[data-theme="dark"] .lock h2{color:var(--mut)}
+body[data-theme="dark"] .lock h2 em{color:var(--gold)}
+body[data-theme="dark"] .modal-head,body[data-theme="dark"] .modal-foot{background:var(--panel);border-color:var(--line)}
+body[data-theme="dark"] .toolpop,body[data-theme="dark"] .toolpop *{color:var(--ink)}
+body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
 @media (max-width:900px){
   .hwrap{padding:12px 16px}
   nav{order:3;width:100%}
@@ -3365,6 +3480,9 @@ select{
       <button class="icon-btn" id="accentBtn" title="Change desk accent — colour mood" aria-label="Change desk accent">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3a9 9 0 1 0 0 18c1.7 0 2.2-1 1.5-2.2-.5-.8-.2-1.8.8-1.8H17a4 4 0 0 0 4-4 9 9 0 0 0-9-10Z"/><circle cx="7.5" cy="11" r="1.1" fill="currentColor" stroke="none"/><circle cx="10" cy="7.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="7.5" r="1.1" fill="currentColor" stroke="none"/></svg>
       </button>
+      <button class="icon-btn" id="themeBtn" title="Dark / light mode" aria-label="Toggle dark mode">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.6 14.3A9.4 9.4 0 0 1 9.7 3.4a9.4 9.4 0 1 0 10.9 10.9Z"/><path d="M17.5 4.5l.5 1.4 1.4.5-1.4.5-.5 1.4-.5-1.4-1.4-.5 1.4-.5.5-1.4Z"/></svg>
+      </button>
       <span class="role-chip" id="roleChip"></span>
       <button class="icon-btn" id="lockBtn" title="Lock desk — Ajay Sharma" aria-label="Lock desk">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
@@ -3488,6 +3606,23 @@ select{
         <span class="pulse-copy"><b id="pulseNext">Add a task</b><span id="pulseNextSub">plan your day</span></span>
       </button>
     </div
+
+    <div class="sec-head senior-head">
+      <h3>Senior command center</h3>
+      <span class="sub">Aaj ka supervision panel — follow-up, pipeline aur attention items ek nazar mein</span>
+    </div>
+    <div class="senior-grid">
+      <div class="panel senior-panel" id="seniorPriorities"></div>
+      <div class="panel senior-panel" id="seniorPulse"></div>
+      <div class="panel senior-panel" id="seniorAttention"></div>
+    </div>
+
+    <div class="sec-head fest-head">
+      <h3>Month festivals & creatives</h3>
+      <span class="sub">Har card click karo — WhatsApp poster ready. Manage se date/greet/quote badlo.</span>
+      <button class="btn ghost sm" id="seniorFestManage" style="margin-left:auto">⚙ Manage festivals</button>
+    </div>
+    <div class="month-fest" id="monthFestivals"></div>
 
     <div class="sec-head">
       <h3>Road corridors</h3>
@@ -4977,6 +5112,22 @@ select{
       <button class="btn danger" id="advProfileDelete" style="margin-right:auto">Delete</button>
       <button class="btn ghost" data-close="advisorProfileModal">Close</button>
       <button class="btn primary" id="advProfileEdit">Edit advisor</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ROAD HUB (corridor network) ============ -->
+<div class="overlay profile-modal" id="roadHubModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Road hub</h3>
+      <button class="xbtn" data-close="roadHubModal">✕</button>
+    </div>
+    <div class="modal-body" id="roadHubBody"></div>
+    <div class="modal-foot" id="roadHubFoot">
+      <button class="btn ghost" id="roadHubAdvisors">Advisors on this road</button>
+      <button class="btn ghost" data-close="roadHubModal">Close</button>
+      <button class="btn primary" id="roadHubProjects">Open projects</button>
     </div>
   </div>
 </div>
@@ -6810,6 +6961,184 @@ function advisorsForDeveloper(id){
   return (isAdmin() ? db.advisors : [currentAdvisor()].filter(Boolean))
     .filter(a => (a.projectIds || []).some(pid => ids.has(pid)));
 }
+/* ---------- fully linked network helpers ---------- */
+const visibleAdvisors = () => isAdmin() ? db.advisors : [currentAdvisor()].filter(Boolean);
+function advisorRoadIds(a){
+  if(!a) return [];
+  const ids = new Set(a.corridors || []);
+  projectsForAdvisor(a).forEach(p => { if(p.corridor) ids.add(p.corridor); });
+  return [...ids];
+}
+function advisorsForRoad(roadId, activeOnly = false){
+  return visibleAdvisors().filter(a => {
+    if(activeOnly && a.status !== 'active') return false;
+    if((a.corridors || []).includes(roadId)) return true;
+    return (a.projectIds || []).some(pid => {
+      const p = scopedProjects().find(x => x.id === pid);
+      return p && p.corridor === roadId;
+    });
+  });
+}
+const clientsForAdvisor = a => a ? chainClientsForAdvisor(a) : [];
+function bookingsForAdvisor(a){
+  if(!a) return [];
+  const projects = new Set(a.projectIds || []);
+  return scopedBookings().filter(b =>
+    b.advisorId === a.id ||
+    (bookingClient(b) && bookingClient(b).advisorId === a.id) ||
+    (b.projectId && projects.has(b.projectId))
+  );
+}
+function developersForAdvisor(a){
+  if(!a) return [];
+  const seen = new Set();
+  const out = [];
+  projectsForAdvisor(a).forEach(p => {
+    if(!p.developerId || seen.has(p.developerId)) return;
+    seen.add(p.developerId);
+    const d = scopedDevelopers().find(x => x.id === p.developerId);
+    if(d) out.push(d);
+  });
+  return out;
+}
+function resaleForAdvisor(a){
+  if(!a) return [];
+  const projects = new Set(a.projectIds || []);
+  return scopedResale().filter(r => r.advisorId === a.id || (r.projectId && projects.has(r.projectId)));
+}
+function clientsForRoad(roadId){
+  const projects = new Set(scopedProjects().filter(p => p.corridor === roadId).map(p => p.id));
+  return scopedClients().filter(c =>
+    (c.corridors || []).includes(roadId) ||
+    (c.projectIds || []).some(pid => projects.has(pid)) ||
+    (c.advisorId && advisorsForRoad(roadId).some(a => a.id === c.advisorId))
+  );
+}
+function developersForRoad(roadId){
+  const seen = new Set();
+  const out = [];
+  scopedProjects().filter(p => p.corridor === roadId).forEach(p => {
+    if(!p.developerId || seen.has(p.developerId)) return;
+    seen.add(p.developerId);
+    const d = scopedDevelopers().find(x => x.id === p.developerId);
+    if(d) out.push(d);
+  });
+  return out;
+}
+function resaleForRoad(roadId){
+  return scopedResale().filter(r => {
+    const p = r.projectId ? db.projects.find(x => x.id === r.projectId) : null;
+    return r.corridor === roadId || (p && p.corridor === roadId);
+  });
+}
+function bookingsForRoad(roadId){
+  return scopedBookings().filter(b => ((bookingProject(b) || {}).corridor === roadId));
+}
+function openConnected(kind, id){
+  if(!id) return;
+  if(kind === 'project') return openDetail(id);
+  if(kind === 'developer') return openDeveloperProfile(id);
+  if(kind === 'advisor') return openAdvisorProfile(id);
+  if(kind === 'client') return openClientProfile(id);
+  if(kind === 'resale') return openResaleView(id);
+  if(kind === 'booking') return openBooking(id);
+}
+/* ---------- road hub: one-click network for a corridor ---------- */
+let roadHubId = null;
+function openRoadHub(id){
+  if(!db.corridors.some(c => c.id === id)) return;
+  roadHubId = id;
+  renderRoadHub();
+  showOverlay('roadHubModal');
+}
+function renderRoadHub(){
+  const c = db.corridors.find(x => x.id === roadHubId);
+  if(!c || !$('#roadHubBody')) return;
+  const ps = scopedProjects().filter(p => p.corridor === c.id);
+  const advs = advisorsForRoad(c.id);
+  const devs = developersForRoad(c.id);
+  const cls = clientsForRoad(c.id);
+  const resale = resaleForRoad(c.id);
+  const bookings = bookingsForRoad(c.id);
+  const strong = advs.filter(a => a.status === 'active');
+  const countBtn = (kind, list, label) => `<button type="button" class="hub-count" data-hubscroll="${kind}"><b>${list.length}</b><span>${label}</span></button>`;
+  const row = (kind, id, title, sub, right = '') => `<button type="button" class="hub-row" data-hubopen="${kind}:${id}">
+    <span class="hub-row-main"><b>${esc(title)}</b><small>${esc(sub)}</small></span>${right ? `<span class="hub-row-right">${esc(right)}</span>` : '<span class="hub-row-right">Open →</span>'}
+  </button>`;
+  const clientsRows = cls.map(cl => {
+    const linkedAdvisor = cl.advisorId ? advisor(cl.advisorId) : null;
+    return row('client', cl.id, cl.name || cl.phone || 'Client', `${budgetText(cl)} \u00b7 ${clientStatusLabel(cl.clientStatus)}`, linkedAdvisor ? linkedAdvisor.name : 'Admin desk');
+  }).join('');
+  const bookingsRows = bookings.map(b => {
+    const client = bookingClient(b);
+    const project = bookingProject(b);
+    const deal = Number(b.dealValue || b.bookingAmount || 0);
+    return row('booking', b.id, `${client ? (client.name || client.phone || 'Client') : 'Client'} \u00b7 ${project ? project.name : ''}`, `${bookingStageLabel(b.stage)} \u00b7 ${b.bookingDate ? fmtDate(b.bookingDate) : ''}`, '\u20b9' + deal.toLocaleString('en-IN'));
+  }).join('');
+  const section = (kind, title, list, rows, empty) => `<div class="profile-sec"><h5>${title} <span class="n">${list.length}</span></h5>
+    ${rows.length ? `<div class="mini-list">${rows}</div>` : `<div class="empty-inline">${empty}</div>`}
+  </div>`;
+  $('#roadHubBody').innerHTML = `
+    <div class="profile-hero">
+      <span class="cor-dot" style="background:${c.color};width:12px;height:12px;border-radius:50%;flex:none"></span>
+      <div style="min-width:0">
+        <h4>${esc(c.name)}</h4>
+        <div class="role">Linked projects, advisors, developers, clients, resale and bookings</div>
+      </div>
+      <div class="pill-wrap"><span class="status-pill status-booked">${advs.length} advisor${advs.length === 1 ? '' : 's'}</span></div>
+    </div>
+    <div class="hub-stats">
+      ${countBtn('projects', ps, 'Projects')}
+      ${countBtn('advisors', advs, 'Advisors')}
+      ${countBtn('developers', devs, 'Developers')}
+      ${countBtn('clients', cls, 'Clients')}
+      ${countBtn('resale', resale, 'Resale')}
+      ${countBtn('bookings', bookings, 'Bookings')}
+    </div>
+    ${isAdmin() ? `<div class="profile-block hub-actions"><div class="lab">Quick add on this road</div><div class="adv-quick">
+      <button type="button" class="btn primary sm" data-hubaddproject="${c.id}">+ Project</button>
+      <button type="button" class="btn ghost sm" data-hubaddadvisor="${c.id}">+ Advisor</button>
+      <button type="button" class="btn ghost sm" data-hubmanage="${c.id}">Manage roads</button>
+    </div></div>` : ''}
+    <div class="profile-sec" data-hubsec="advisors"><h5>Advisors working this road <span class="n">${advs.length}</span></h5>
+      ${advs.length ? `<div class="mini-list">${advs.map(a => row('advisor', a.id, a.name, `${(a.corridors || []).map(id => corridor(id).name).filter(Boolean).join(', ') || 'Assigned via project'}${a.phone ? ' · ' + a.phone : ''}`, `${advisorStatusMeta(a.status).short} · ${(a.projectIds || []).filter(pid => ps.some(p => p.id === pid)).length} proj here`)).join('')}</div>`
+        : `<div class="empty-inline">Is road par abhi koi advisor map nahi. Advisor edit karke <b>${esc(c.name)}</b> select karein ya project assign karein.</div>`}
+    </div>
+    ${section('projects', 'Projects on this road', ps, ps.map(p => row('project', p.id, p.name, `${typeLabel(p.types)} · ${statusLabel[p.status] || ''}${dev(p.developerId) ? ' · ' + dev(p.developerId).name : ''}`, priceRange(p))).join(''), 'Is road par abhi koi project nahi.')}
+    ${section('developers', 'Developers with projects here', devs, devs.map(d => row('developer', d.id, d.name, `${d.ownerName || 'Owner not set'}${d.phone ? ' · ' + d.phone : ''}`, `${projectsForDeveloper(d.id).filter(p => p.corridor === c.id).length} proj`)).join(''), 'Is road par koi developer linked nahi.')}
+    ${section('clients', 'Clients interested on this road', cls, clientsRows, 'Is road ka koi client linked nahi.')}
+    ${section('resale', 'Resale inventory on this road', resale, resale.map(r => row('resale', r.id, resaleName(r), `${r.unit || 'Unit'} · ${r.size || ''} · ${resaleStatusLabel(r.status)}`, r.price != null ? fmtPrice(r.price) : 'Ask on call')).join(''), 'Is road par koi resale unit nahi.')}
+    ${section('bookings', 'Bookings on this road', bookings, bookingsRows, 'Is road par abhi koi booking nahi.')}
+  `;
+  const footAdvisors = $('#roadHubAdvisors');
+  if(footAdvisors) footAdvisors.onclick = () => { advisorCorridorFilter = roadHubId; go('advisors'); };
+  const footProjects = $('#roadHubProjects');
+  if(footProjects) footProjects.onclick = () => { $('#filterCorridor').value = roadHubId; go('projects'); };
+}
+function initRoadHub(){
+  const body = $('#roadHubBody');
+  if(!body) return;
+  body.addEventListener('click', e => {
+    const count = e.target.closest('[data-hubscroll]');
+    if(count){
+      const sec = body.querySelector(`[data-hubsec="${count.dataset.hubscroll}"]`);
+      if(sec) sec.scrollIntoView({ behavior:'smooth', block:'start' });
+      return;
+    }
+    const addProject = e.target.closest('[data-hubaddproject]');
+    if(addProject){ closeModal('roadHubModal'); openProject(null, addProject.dataset.hubaddproject); return; }
+    const addAdvisor = e.target.closest('[data-hubaddadvisor]');
+    if(addAdvisor){ closeModal('roadHubModal'); openAdvisor(null, 'prospect', [addAdvisor.dataset.hubaddadvisor]); return; }
+    const manage = e.target.closest('[data-hubmanage]');
+    if(manage){ closeModal('roadHubModal'); openCorridorManager(); return; }
+    const item = e.target.closest('[data-hubopen]');
+    if(item){
+      const [kind, id] = item.dataset.hubopen.split(':');
+      closeModal('roadHubModal');
+      setTimeout(() => openConnected(kind, id), 40);
+    }
+  });
+}
 
 /* ---------- resale helpers ---------- */
 const resaleStatus = id => RESALE_STATUSES.find(s => s.id === id) || RESALE_STATUSES[0];
@@ -7050,9 +7379,11 @@ function renderDashboard(){
     $('#corridorGrid').style.display = 'block';
     $('#corridorGrid').className = 'corridor-table';
     $('#corridorGrid').innerHTML = corridorTableHTML(projects);
-    $$('#corridorGrid [data-corridor]').forEach(row => row.addEventListener('click', () => {
+    $$('#corridorGrid [data-corridor]').forEach(row => row.addEventListener('click', e => {
+      if(e.target.closest('[data-hubroad]')) return;
       activeCategory = null; $('#filterCorridor').value = row.dataset.corridor; go('projects');
     }));
+    $$('#corridorGrid [data-hubroad]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openRoadHub(b.dataset.hubroad); }));
   } else {
     $('#corridorGrid').style.display = '';
     $('#corridorGrid').className = 'corridor-grid';
@@ -7069,18 +7400,23 @@ function renderDashboard(){
           <span class="cor-count">${ps.length} project${ps.length===1?'':'s'}</span>
         </div>
         <div class="cor-price">${price}<small>${ps.length ? 'start / top' : ''}</small></div>
-        <div class="cor-meta"><span><b>${devs}</b> developer${devs===1?'':'s'}</span><span><b>${ps.filter(p=>p.rera).length}</b> RERA</span></div>
+        <div class="cor-meta"><span><b>${devs}</b> developer${devs===1?'':'s'}</span><span><b>${advisorsForRoad(c.id).length}</b> advisor${advisorsForRoad(c.id).length===1?'':'s'}</span><span><b>${ps.filter(p=>p.rera).length}</b> RERA</span></div>
         <div class="cor-mini">
           <div><span class="dot ongoing"></span>${cnt('ongoing')} ongoing</div>
           <div><span class="dot upcoming"></span>${cnt('upcoming')} upcoming</div>
           <div><span class="dot completed"></span>${cnt('completed')} completed</div>
         </div>
+        <button type="button" class="cor-hub" data-hubroad="${c.id}">Road hub →</button>
       </div>`;
     }).join('');
     $$('#corridorGrid .cor-card').forEach(card => card.addEventListener('click', () => {
       activeCategory = null;
       $('#filterCorridor').value = card.dataset.corridor;
       go('projects');
+    }));
+    $$('#corridorGrid [data-hubroad]').forEach(btn => btn.addEventListener('click', e => {
+      e.stopPropagation();
+      openRoadHub(btn.dataset.hubroad);
     }));
   }
 
@@ -7124,7 +7460,107 @@ function renderDashboard(){
   renderNewsMini();
   renderLinksMini();
   renderPulse();
+  renderSeniorDesk();
   renderDailyHero();
+}
+
+/* ---------- senior command center + month festival creative strip ---------- */
+function renderSeniorDesk(){
+  if(!$('#seniorPriorities')) return;
+  const today = todayISO();
+  const clients = scopedClients();
+  const tasks = (db.todos || []).filter(t => t.date === today && !t.done).sort((a,b) => (a.time || '').localeCompare(b.time || ''));
+  const overdueTasks = (db.todos || []).filter(t => t.date && t.date < today && !t.done).slice(0, 3);
+  const dueClients = clients.filter(c => c.nextFollowUp && c.nextFollowUp <= today && !['booked','lost'].includes(c.clientStatus || 'new'))
+    .sort((a,b) => (a.nextFollowUp || '').localeCompare(b.nextFollowUp || '')).slice(0, 5);
+  const advisors = visibleAdvisors();
+  const dueAdvisors = advisors.filter(a => a.nextFollowUp && a.nextFollowUp <= today && a.status !== 'inactive')
+    .sort((a,b) => (a.nextFollowUp || '').localeCompare(b.nextFollowUp || '')).slice(0, 4);
+  const projects = scopedProjects();
+  const devs = scopedDevelopers();
+  const bookings = scopedBookings();
+  const activeBookings = bookings.filter(b => b.stage !== 'cancelled');
+  const guideValue = projects.reduce((n,p) => {
+    const a = Number(p.priceMin), b = Number(p.priceMax);
+    const mid = !isNaN(a) && !isNaN(b) ? (a + b) / 2 : (!isNaN(a) ? a : (!isNaN(b) ? b : 0));
+    return n + (mid || 0);
+  }, 0);
+  const received = activeBookings.reduce((n,b) => n + (Number(b.received) || 0), 0);
+  const pending = activeBookings.reduce((n,b) => n + (bookingPending(b) || 0), 0);
+  const commission = activeBookings.reduce((n,b) => n + (bookingCommission(b) || 0), 0);
+  const resale = scopedResale().filter(r => r.status === 'available');
+  const lowQuality = projects.map(p => ({ p, score: qualityScore(p).score })).filter(x => x.score < 65).sort((a,b) => a.score - b.score).slice(0, 4);
+  const priorityItems = [
+    ...tasks.slice(0,2).map(t => ({ title:t.title || 'Task', sub:(t.time ? t.time + ' · ' : '' ) + (t.priority || 'normal'), kind:'dayplan' })),
+    ...overdueTasks.slice(0,1).map(t => ({ title:t.title || 'Overdue task', sub:'Overdue · ' + fmtDate(t.date), kind:'dayplan' })),
+    ...dueClients.slice(0,3).map(c => ({ title:c.name || c.phone || 'Client', sub:'Client · ' + followupInfo(c.nextFollowUp).label, click:'senclient', id:c.id })),
+    ...dueAdvisors.slice(0,2).map(a => ({ title:a.name || 'Advisor', sub:'Advisor · ' + followupInfo(a.nextFollowUp).label, click:'senadvisor', id:a.id }))
+  ].slice(0, 7);
+  const attention = [
+    ...projects.filter(p => !p.developerId).slice(0,2).map(p => ({ title:p.name, sub:'No developer linked', click:'senproj', id:p.id })),
+    ...projects.filter(p => !p.rera).slice(0,2).map(p => ({ title:p.name, sub:'RERA not recorded', click:'senproj', id:p.id })),
+    ...projects.filter(p => p.priceMin == null && p.priceMax == null).slice(0,2).map(p => ({ title:p.name, sub:'No price recorded', click:'senproj', id:p.id })),
+    ...lowQuality.slice(0,2).map(x => ({ title:x.p.name, sub:'Data quality ' + x.score + '/100 — verify', click:'senproj', id:x.p.id })),
+    ...clients.filter(c => !c.advisorId).slice(0,2).map(c => ({ title:c.name || c.phone || 'Client', sub:'Unassigned client', click:'senclient', id:c.id }))
+  ].slice(0, 7);
+  const action = item => item.click === 'senclient'
+    ? `<button type="button" class="sen-row" data-senclient="${item.id}"><span><b>${esc(item.title)}</b><small>${esc(item.sub)}</small></span><em>Open</em></button>`
+    : item.click === 'senadvisor'
+      ? `<button type="button" class="sen-row" data-senadvisor="${item.id}"><span><b>${esc(item.title)}</b><small>${esc(item.sub)}</small></span><em>Open</em></button>`
+      : item.click === 'senproj'
+        ? `<button type="button" class="sen-row" data-senproj="${item.id}"><span><b>${esc(item.title)}</b><small>${esc(item.sub)}</small></span><em>Open</em></button>`
+        : `<button type="button" class="sen-row" data-goto="${item.kind}"><span><b>${esc(item.title)}</b><small>${esc(item.sub)}</small></span><em>Open</em></button>`;
+  $('#seniorPriorities').innerHTML = `
+    <div class="panel-head"><h4>Today's priorities</h4><span class="n-badge">${priorityItems.length}</span></div>
+    ${priorityItems.length ? priorityItems.map(action).join('') : '<div class="empty-inline">Aaj ka queue clear hai — main ek bookable slot/client agenda add karo.</div>'}
+  `;
+  $('#seniorPulse').innerHTML = `
+    <div class="panel-head"><h4>Business pulse</h4><button type="button" class="linkbtn" data-goto="analytics">Analytics →</button></div>
+    <div class="sen-metrics">
+      <div><b>${guideValue ? fmtPrice(guideValue) : '—'}</b><span>Guide pipeline</span></div>
+      <div><b>${activeBookings.length}</b><span>Active bookings</span></div>
+      <div><b>${received ? fmtPrice(received) : '—'}</b><span>Collected</span></div>
+      <div><b>${pending ? fmtPrice(pending) : '—'}</b><span>Pending</span></div>
+      <div><b>${resale.length}</b><span>Resale available</span></div>
+      <div><b>${advisors.filter(a => a.status === 'active').length}/${advisors.length}</b><span>Active advisors</span></div>
+      <div><b>${devs.length}</b><span>Developers</span></div>
+      <div><b>${commission ? fmtPrice(commission) : '—'}</b><span>Commission due</span></div>
+    </div>
+  `;
+  $('#seniorAttention').innerHTML = `
+    <div class="panel-head"><h4>Needs attention</h4><span class="n-badge warn">${attention.length}</span></div>
+    ${attention.length ? attention.map(action).join('') : '<div class="empty-inline">No critical attention items — data quality pipeline clean hai.</div>'}
+  `;
+  const now = new Date();
+  const y = now.getFullYear(), m = now.getMonth();
+  const first = new Date(y, m, 1), last = new Date(y, m + 1, 0);
+  const startISO = `${y}-${String(m + 1).padStart(2,'0')}-01`;
+  const endISO = `${y}-${String(m + 1).padStart(2,'0')}-${String(last.getDate()).padStart(2,'0')}`;
+  const monthList = (db.festivals || []).filter(f => f.date >= startISO && f.date <= endISO).sort((a,b) => a.date.localeCompare(b.date));
+  const after = upcomingFestivals(45).filter(f => f.date > endISO).slice(0, 8);
+  const list = [...monthList, ...after].slice(0, 18);
+  const q = dailyQuoteRecord();
+  $('#monthFestivals').innerHTML = `<div class="fest-quote"><span>Quote of the day</span><b>“${esc(q.text || '')}”</b>${q.by ? `<small>— ${esc(q.by)}</small>` : ''}<button type="button" class="btn ghost sm" data-festquote="1">↻ Next quote</button></div>` +
+    (list.length ? list.map(f => {
+      const d = isoToDate(f.date);
+      const days = daysFromToday(f.date);
+      const label = days < 0 ? 'Passed' : days === 0 ? 'Today' : days === 1 ? 'Tomorrow' : days + ' days';
+      return `<button type="button" class="fest-card" data-festposter="${f.id}" title="Open poster">
+        <span class="fest-emoji">${esc(f.emoji || '✨')}</span>
+        <span class="fest-date"><b>${d ? String(d.getDate()).padStart(2,'0') : '--'}</b><small>${d ? d.toLocaleDateString('en-IN',{weekday:'short', month:'short'}) : ''}</small></span>
+        <span class="fest-copy"><b>${esc(f.name || f.hi || 'Festival')}</b><small>${esc(f.hi || f.en || f.note || '')}</small></span>
+        <span class="fest-days">${label}</span>
+      </button>`;
+    }).join('') : '<div class="empty-inline">Is month ke liye festival dates abhi list mein nahi hain.</div>');
+  const manage = $('#seniorFestManage');
+  if(manage) manage.onclick = () => openFestivalManager();
+  $$('#seniorPriorities [data-senclient]').forEach(b => b.addEventListener('click', () => openClientProfile(b.dataset.senclient)));
+  $$('#seniorPriorities [data-senadvisor]').forEach(b => b.addEventListener('click', () => openAdvisorProfile(b.dataset.senadvisor)));
+  $$('#seniorAttention [data-senclient]').forEach(b => b.addEventListener('click', () => openClientProfile(b.dataset.senclient)));
+  $$('#seniorAttention [data-senproj]').forEach(b => b.addEventListener('click', () => openDetail(b.dataset.senproj)));
+  $$('#monthFestivals [data-festposter]').forEach(b => b.addEventListener('click', () => openPosterFor(b.dataset.festposter)));
+  const quoteBtn = $('#monthFestivals [data-festquote]');
+  if(quoteBtn) quoteBtn.onclick = () => { cycleDailyQuote(); renderSeniorDesk(); };
 }
 
 function renderPulse(){
@@ -7972,6 +8408,8 @@ function renderProjects(){
         <span class="cor-dot" style="background:${c.color}"></span>
         <span class="ttl">${c.name}</span>
         <span class="n">${ps.length}</span>
+        <span class="col-adv" title="${advisorsForRoad(c.id).length} advisor${advisorsForRoad(c.id).length === 1 ? '' : 's'} on this road">${advisorsForRoad(c.id).length} adv</span>
+        <button class="col-hub" data-hubroad="${c.id}" title="Open road hub">⇢</button>
         <button class="add" data-addcor="${c.id}" title="Add project here">+</button>
       </div>
       ${ps.map(projectCard).join('') || `<div style="font-size:11px;color:#A3ACA5;text-align:center;padding:20px 6px">Drop a project here</div>`}
@@ -7979,6 +8417,7 @@ function renderProjects(){
   }).join('');
   bindProjectOpen(); bindDnD();
   $$('#board [data-addcor]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openProject(null, b.dataset.addcor); }));
+  $$('#board [data-hubroad]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openRoadHub(b.dataset.hubroad); }));
 }
 function projectCard(p){
   const d = dev(p.developerId);
@@ -8329,6 +8768,22 @@ function initAdvisorControls(){
     if(p) return openDetail(p.dataset.advproj);
     const c = e.target.closest('[data-advclient]');
     if(c) return openClientProfile(c.dataset.advclient);
+    const d = e.target.closest('[data-advdev]');
+    if(d) return openDeveloperProfile(d.dataset.advdev);
+    const rr = e.target.closest('[data-advresale]');
+    if(rr) return openResaleView(rr.dataset.advresale);
+    const bk = e.target.closest('[data-advbooking]');
+    if(bk) return openBooking(bk.dataset.advbooking);
+    const road = e.target.closest('[data-advroad]');
+    if(road){ closeModal('advisorProfileModal'); setTimeout(() => openRoadHub(road.dataset.advroad), 40); return; }
+    const snap = e.target.closest('[data-advaddclient]');
+    if(snap){ const id = snap.dataset.advaddclient; closeModal('advisorProfileModal'); setTimeout(() => openClient(null, id), 60); return; }
+    const sbook = e.target.closest('[data-advaddbooking]');
+    if(sbook){ const id = sbook.dataset.advaddbooking; closeModal('advisorProfileModal'); setTimeout(() => openBooking(null, null, id), 60); return; }
+    const sproj = e.target.closest('[data-advaddproject]');
+    if(sproj){ const a = advisor(sproj.dataset.advaddproject); const roadId = a ? advisorRoadIds(a)[0] : ''; closeModal('advisorProfileModal'); setTimeout(() => openProject(null, roadId || undefined, null, [sproj.dataset.advaddproject]), 60); return; }
+    const sresale = e.target.closest('[data-advaddresale]');
+    if(sresale){ const a = advisor(sresale.dataset.advaddresale); const firstProject = a ? projectsForAdvisor(a)[0] : null; closeModal('advisorProfileModal'); setTimeout(() => openResale(null, firstProject ? firstProject.id : null, sresale.dataset.advaddresale), 60); return; }
     const st = e.target.closest('[data-advsetstatus]');
     if(st){
       const a = advisor(advisorProfileId);
@@ -8438,18 +8893,23 @@ function renderAdvisors(){
   const cov = $('#advisorCoverage');
   if(cov){
     cov.innerHTML = `<h4>Coverage map <span>Road → active advisor → project</span></h4>
-      <div class="sub">Sirf active BCS advisors dikh rahe hain. Kis road par kaun kaam kar raha hai aur uske paas kaunse projects hain — ek nazar mein.</div>
+      <div class="sub">Koi bhi road dabao — us road ka poora network khulega: advisors, projects, developers, clients, resale aur bookings.</div>
       <div class="coverage-grid">${db.corridors.map(c => {
         const cps = scopedProjects().filter(p => p.corridor === c.id);
-        const advs = activeTeam.filter(a => (a.corridors || []).includes(c.id) || projectsForAdvisor(a).some(p => p.corridor === c.id));
-        return `<div class="cov-card">
-          <div class="nm"><span class="dot" style="background:${c.color}"></span>${esc(c.name)}<span style="margin-left:auto;font-size:9.5px;color:var(--mut);font-weight:600">${cps.length} proj</span></div>
+        const advs = advisorsForRoad(c.id, true);
+        const devs = developersForRoad(c.id);
+        const cls = clientsForRoad(c.id);
+        return `<div class="cov-card" data-covroad="${c.id}" title="Open ${esc(c.name)} road hub">
+          <div class="nm"><span class="dot" style="background:${c.color}"></span>${esc(c.name)}<span style="margin-left:auto;font-size:9.5px;color:var(--mut);font-weight:600">${cps.length} proj · ${advs.length} adv · ${devs.length} dev · ${cls.length} cli</span></div>
           ${advs.length ? `<div class="cov-adv">${advs.map(a => `<button type="button" data-covadv="${a.id}">${esc(a.name)}</button>`).join('')}</div>`
             : `<div class="cov-empty">No active advisor mapped</div>`}
-          <div class="cov-meta">${cps.length ? cps.slice(0,2).map(p => esc(p.name)).join(' · ') + (cps.length > 2 ? ` +${cps.length - 2}` : '') : 'No projects yet'}</div>
+          <div class="cov-meta">${cps.length ? cps.slice(0,3).map(p => `<button type="button" class="cov-proj" data-covproj="${p.id}">${esc(p.name)}</button>`).join(' · ') + (cps.length > 3 ? ` +${cps.length - 3}` : '') : 'No projects yet'}</div>
+          <div class="cov-hub">Open road hub →</div>
         </div>`;
       }).join('')}</div>`;
-    $$('#advisorCoverage [data-covadv]').forEach(b => b.addEventListener('click', () => openAdvisorProfile(b.dataset.covadv)));
+    $$('#advisorCoverage [data-covadv]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openAdvisorProfile(b.dataset.covadv); }));
+    $$('#advisorCoverage [data-covproj]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openDetail(b.dataset.covproj); }));
+    $$('#advisorCoverage [data-covroad]').forEach(card => card.addEventListener('click', () => openRoadHub(card.dataset.covroad)));
   }
 
   $('#advisorGrid').innerHTML = list.length ? list.map(a => {
@@ -8470,18 +8930,20 @@ function renderAdvisors(){
         </div>
       </div>
       <div class="adv-group">${a.groupName ? `<span class="gname">👥 ${esc(a.groupName)}</span>` : ''}${+a.teamSize ? `<span>${esc(a.teamSize)} team</span>` : ''}${advisorStatusPill(a)}</div>
-      <div class="corr-chips">${(a.corridors||[]).length ? corridorChips(a.corridors) : `<span class="corridor-chip">No corridor set</span>`}</div>
+      <div class="corr-chips">${advisorRoadIds(a).length ? advisorRoadIds(a).map(id => { const c = corridor(id); return `<button type="button" class="corridor-chip road-chip" data-advcroad="${id}" title="Open ${esc(c.name)} road hub"><span class="cor-dot" style="background:${c.color}"></span>${esc(c.name)}</button>`; }).join('') : `<span class="corridor-chip">No corridor set</span>`}</div>
       ${rate ? `<div class="adv-slab-rate"><span>₹${rate.toLocaleString('en-IN')} <small>/ sq yd slab</small></span>${a.commissionPct ? `<small>${esc(a.commissionPct)}% comm.</small>` : ''}</div>` : ''}
       ${a.slab ? `<div class="slab">${esc(a.slab)}</div>` : ''}
       ${a.nextFollowUp ? `<div class="adv-follow">📞 <b>${esc(fmtDate(a.nextFollowUp))}</b><span class="${fu.cls}">${esc(fu.label)}</span></div>` : ''}
       <div class="rowfoot">
-        <b>${ps.length}</b> project${ps.length === 1 ? '' : 's'}
+        <b>${ps.length}</b> project${ps.length === 1 ? '' : 's'} · ${clientsForAdvisor(a).length} clients · ${developersForAdvisor(a).length} developers
         <span style="margin-left:auto">${a.status === 'active' ? '<span class="status-pill status-booked">BCS active</span>' : advisorStatusPill(a)}</span>
       </div>
     </article>`;
   }).join('') : `<div style="grid-column:1/-1">${emptyBlock(team.length ? 'No advisors match this filter' : 'No advisors yet', team.length ? 'Status, group ya corridor filter badal kar dekh lein.' : 'Apna Jaipur advisor network yahan build karein — group, mobile, slab aur daily follow-up ke saath.','Add advisor','addadvisor')}</div>`;
 
   $$('#advisorGrid [data-advopen]').forEach(card => card.addEventListener('click', e => {
+    const road = e.target.closest('[data-advcroad]');
+    if(road){ e.stopPropagation(); openRoadHub(road.dataset.advcroad); return; }
     if(e.target.closest('[data-advedit]')){ openAdvisor(card.dataset.advopen); return; }
     if(e.target.closest('[data-advdel]')) return;
     openAdvisorProfile(card.dataset.advopen);
@@ -8489,10 +8951,10 @@ function renderAdvisors(){
   $$('#advisorGrid [data-advdel]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); deleteAdvisor(b.dataset.advdel); }));
 }
 
-function openAdvisor(id, presetStatus){
+function openAdvisor(id, presetStatus, presetCorridors){
   if(!isAdmin()) return toast('Advisor login sirf view ke liye hai — admin se edit karwayein', true);
   editingAdvisor = id ? advisor(id) : null;
-  const a = editingAdvisor || { corridors:[], projectIds:[], status: presetStatus || 'prospect' };
+  const a = editingAdvisor || { corridors: Array.isArray(presetCorridors) ? [...presetCorridors] : [], projectIds:[], status: presetStatus || 'prospect' };
   $('#amTitle').textContent = id ? 'Edit advisor' : (presetStatus === 'active' ? 'Add active BCS advisor' : 'Add advisor / prospect');
   $('#aDelete').style.display = id ? 'inline-flex' : 'none';
   $('#aName').value = a.name || '';
@@ -8570,6 +9032,8 @@ function deleteAdvisor(id){
   db.clients.forEach(c => {
     if(c.advisorId === id) logTransfer(c, '', 'Advisor removed — client returned to admin desk', 'admin', ADMIN_NAME);
   });
+  db.bookings.forEach(b => { if(b.advisorId === id) b.advisorId = ''; });
+  db.resale.forEach(r => { if(r.advisorId === id) r.advisorId = ''; });
   if(advisorProfileId === id){ advisorProfileId = null; closeModal('advisorProfileModal'); }
   closeModal('advisorModal');
   save(); render(); toast('Advisor deleted');
@@ -8588,6 +9052,11 @@ function renderAdvisorProfile(){
   const ps = projectsForAdvisor(a);
   const groups = db.corridors.map(c => ({ c, list: ps.filter(p => p.corridor === c.id) })).filter(g => g.list.length);
   const chain = chainClientsForAdvisor(a);
+  const advDevelopers = developersForAdvisor(a);
+  const advResale = resaleForAdvisor(a);
+  const advBookings = bookingsForAdvisor(a);
+  const advRoads = advisorRoadIds(a);
+  const bookingDeal = advBookings.reduce((n, b) => n + (Number(b.dealValue || b.bookingAmount) || 0), 0);
   const wa = waLink(a.phone);
   const rate = +a.slabPerSqYd || 0;
   const meta = advisorStatusMeta(a.status);
@@ -8624,20 +9093,30 @@ function renderAdvisorProfile(){
     </div>
     <div class="team-stats">
       <div><div class="k">Projects</div><div class="v">${ps.length}</div></div>
-      <div><div class="k">Corridors</div><div class="v">${(a.corridors||[]).length}</div></div>
+      <div><div class="k">Developers</div><div class="v">${advDevelopers.length}</div></div>
+      <div><div class="k">Resale</div><div class="v">${advResale.length}</div></div>
+      <div><div class="k">Bookings</div><div class="v">${advBookings.length}</div></div>
+      <div><div class="k">Corridors</div><div class="v">${advRoads.length}</div></div>
       <div><div class="k">Client leads</div><div class="v">${chain.length}</div></div>
       <div><div class="k">Project value</div><div class="v" style="font-size:11.5px">${esc(priceRangeOf(ps))}</div></div>
+      <div><div class="k">Booking deals</div><div class="v" style="font-size:11.5px">${bookingDeal ? esc(fmtPrice(bookingDeal)) : '—'}</div></div>
     </div>
     <div class="profile-block">
       <div class="lab">Slab / payment terms</div>
       <p>${esc(a.slab || 'Not recorded — edit the advisor to add booking/registry slab or visit fees.')}</p>
     </div>
     ${a.notes ? `<div class="profile-block"><div class="lab">How to use this advisor</div><p>${esc(a.notes)}</p></div>` : ''}
-    <div class="profile-block"><div class="lab">Roads handled</div><div class="corr-chips" style="margin-top:2px">${(a.corridors||[]).length ? corridorChips(a.corridors) : '<span class="mini-empty">No corridor selected.</span>'}</div></div>
+    ${isAdmin() ? `<div class="profile-block"><div class="lab">Linked quick add</div><div class="adv-quick">
+      <button type="button" class="btn primary sm" data-advaddclient="${a.id}">+ Client</button>
+      <button type="button" class="btn ghost sm" data-advaddbooking="${a.id}">+ Booking</button>
+      <button type="button" class="btn ghost sm" data-advaddproject="${a.id}">+ Project</button>
+      <button type="button" class="btn ghost sm" data-advaddresale="${a.id}">+ Resale</button>
+    </div><div class="lock-hint">Forms isi advisor ko pre-selected rakhte hain — save karte hi sab jagah auto update.</div></div>` : ''}
+    <div class="profile-block"><div class="lab">Roads handled · click for road hub</div><div class="corr-chips" style="margin-top:2px">${advRoads.length ? advRoads.map(id => { const c = corridor(id); return `<button type="button" class="corridor-chip road-chip" data-advroad="${id}" title="Open ${esc(c.name)} road hub"><span class="cor-dot" style="background:${c.color}"></span>${esc(c.name)}</button>`; }).join('') : '<span class="mini-empty">No corridor selected.</span>'}</div></div>
     <div class="profile-sec">
       <h5>Projects handled <span class="n">${ps.length}</span></h5>
       ${groups.length ? groups.map(g => `<div class="dev-group">
-        <h5><span class="dot" style="background:${g.c.color}"></span>${esc(g.c.name)}<span class="n">${g.list.length}</span></h5>
+        <h5><span class="dot" style="background:${g.c.color}"></span>${esc(g.c.name)}<span class="n">${g.list.length}</span><button type="button" class="linkbtn" data-advroad="${g.c.id}" style="margin-left:auto">Road hub</button></h5>
         ${g.list.map(p => `<button class="dev-project-row" data-advproj="${p.id}" type="button">
           <span class="pdot" style="background:${g.c.color}"></span>
           <span style="min-width:0"><span class="nm">${esc(p.name)}</span><div class="sub">${esc(typeLabel(p.types))} · ${esc(statusLabel[p.status]||'')}${dev(p.developerId) ? ' · ' + esc(dev(p.developerId).name) : ''}</div></span>
@@ -8652,6 +9131,33 @@ function renderAdvisorProfile(){
         <span style="min-width:0"><span class="nm">${esc(c.name || c.phone || 'Client')}</span><span class="sub">${esc(budgetText(c))}</span></span>
         ${statusPill(c.clientStatus)}
       </button>`).join('')}</div>` : `<div class="empty-inline">No client is assigned to this advisor yet.</div>`}
+    </div>
+    <div class="profile-sec">
+      <h5>Developers on advisor projects <span class="n">${advDevelopers.length}</span></h5>
+      ${advDevelopers.length ? `<div class="mini-list">${advDevelopers.map(d => `<button data-advdev="${d.id}" type="button">
+        ${avatarHTML(d)}
+        <span style="min-width:0"><span class="nm">${esc(d.name)}</span><span class="sub">${esc(d.ownerName || 'Owner not set')}${d.phone ? ' · ' + d.phone : ''}</span></span>
+        <span class="price">${projectsForDeveloper(d.id).filter(p => ps.some(x => x.id === p.id)).length} proj</span>
+      </button>`).join('')}</div>` : `<div class="empty-inline">No developer linked yet — project assign karte hi developer apne aap yahan aayega.</div>`}
+    </div>
+    <div class="profile-sec">
+      <h5>Resale inventory <span class="n">${advResale.length}</span></h5>
+      ${advResale.length ? `<div class="mini-list">${advResale.map(r => `<button data-advresale="${r.id}" type="button">
+        <span class="pdot" style="background:${r.status === 'available' ? '#4F8A63' : r.status === 'hold' ? '#C49A3E' : '#A8A79E'}"></span>
+        <span style="min-width:0"><span class="nm">${esc(resaleName(r))}</span><span class="sub">${esc(r.unit || 'Unit')} · ${esc(r.size || '')} · ${esc(resaleStatusLabel(r.status))}</span></span>
+        <span class="price">${r.price != null ? esc(fmtPrice(r.price)) : 'Ask on call'}</span>
+      </button>`).join('')}</div>` : `<div class="empty-inline">No resale units linked yet.</div>`}
+    </div>
+    <div class="profile-sec">
+      <h5>Bookings &amp; payments <span class="n">${advBookings.length}</span></h5>
+      ${advBookings.length ? `<div class="mini-list">${advBookings.map(b => {
+        const c = bookingClient(b), p = bookingProject(b);
+        return `<button data-advbooking="${b.id}" type="button">
+          <span class="pdot" style="background:#4F8A63"></span>
+          <span style="min-width:0"><span class="nm">${esc(c ? (c.name || c.phone || 'Client') : 'Client')}</span><span class="sub">${esc(p ? p.name : 'Project not linked')} · ${esc(bookingStageLabel(b.stage))}${b.bookingDate ? ' · ' + esc(fmtDate(b.bookingDate)) : ''}</span></span>
+          <span class="price">${number(b.received) ? esc(fmtPrice(b.received)) : (b.dealValue ? esc(fmtPrice(b.dealValue)) : '—')}</span>
+        </button>`;
+      }).join('')}</div>` : `<div class="empty-inline">No bookings linked yet.</div>`}
     </div>`;
 }
 
@@ -8906,12 +9412,12 @@ function renderBookingMini(){
     : '<div class="booking-mini-empty">Abhi koi booking nahi. Clients → Bookings &amp; payments se pehli booking add karein.</div>';
   $$('#bookingMini [data-bookingopen]').forEach(r => r.addEventListener('click', () => openBooking(r.dataset.bookingopen)));
 }
-function openBooking(id, presetClientId){
+function openBooking(id, presetClientId, presetAdvisorId){
   if(id && !scopedBookings().some(b => b.id === id)) return toast('Ye booking aapko assigned nahi hai', true);
   editingBooking = id ? db.bookings.find(b => b.id === id) : null;
   const b = editingBooking || {
     clientId: presetClientId || '', projectId:'', dealValue:'', bookingAmount:'', received:'',
-    commissionPct:'', stage:'booked', bookingDate: todayISO(), notes:'', advisorId:''
+    commissionPct:'', stage:'booked', bookingDate: todayISO(), notes:'', advisorId: presetAdvisorId || ''
   };
   $('#bmTitle').textContent = id ? 'Edit booking' : 'Add booking';
   $('#bDelete').style.display = id ? 'inline-flex' : 'none';
@@ -8984,12 +9490,12 @@ function deleteBooking(id){
   toast('Booking deleted');
 }
 
-function openClient(id){
+function openClient(id, presetAdvisorId){
   if(id && !scopedClients().some(c => c.id === id)) return toast('Ye client aapko assigned nahi hai', true);
   editingClient = id ? db.clients.find(c => c.id === id) : null;
   const c = editingClient || {
     clientStatus:'new', types:[], corridors:[], projectIds:[], budgetMin:'', budgetMax:'',
-    timeline:'', requirement:'', notes:'', nextFollowUp:'', lastContact:'', email:'', advisorId:''
+    timeline:'', requirement:'', notes:'', nextFollowUp:'', lastContact:'', email:'', advisorId: presetAdvisorId || ''
   };
   $('#cmTitle').textContent = id ? 'Edit client' : 'Add client';
   $('#cDelete').style.display = id ? 'inline-flex' : 'none';
@@ -9318,10 +9824,10 @@ function renderResale(){
   }));
 }
 
-function openResale(id, presetProjectId){
+function openResale(id, presetProjectId, presetAdvisorId){
   if(id && !scopedResale().some(r => r.id === id)) return toast('Ye resale unit aapko assigned nahi hai', true);
   editingResale = id ? db.resale.find(r => r.id === id) : null;
-  const r = editingResale || { status:'available', corridor:'', type:'', projectId:presetProjectId || '' };
+  const r = editingResale || { status:'available', corridor:'', type:'', projectId:presetProjectId || '', advisorId: presetAdvisorId || '' };
   $('#rmTitle').textContent = id ? 'Edit resale unit' : 'Add resale unit';
   $('#rDelete').style.display = id && isAdmin() ? 'inline-flex' : 'none';
 
@@ -10654,7 +11160,7 @@ async function addInventoryFiles(files){
   ['dragleave','drop'].forEach(ev => invWrap.addEventListener(ev, e => { e.preventDefault(); invWrap.classList.remove('over'); }));
   invWrap.addEventListener('drop', e => addInventoryFiles(e.dataTransfer.files));
 }
-function openProject(id, presetCorridor, presetDevId){
+function openProject(id, presetCorridor, presetDevId, presetAdvisorIds){
   if(!isAdmin()) return toast('Advisor login sirf view ke liye hai — admin se edit karwayein', true);
   editingProject = id ? db.projects.find(p => p.id === id) : null;
   const p = editingProject || {
@@ -10702,7 +11208,7 @@ function openProject(id, presetCorridor, presetDevId){
   renderConnRows(p.connectivity || []);
   tempInventoryImages = [...(p.inventoryImages || [])];
   renderInvThumbs();
-  tempProjectAdvisors = id ? advisorsForProject(id).map(a => a.id) : [];
+  tempProjectAdvisors = id ? advisorsForProject(id).map(a => a.id) : [...new Set(Array.isArray(presetAdvisorIds) ? presetAdvisorIds : presetAdvisorIds ? [presetAdvisorIds] : [])];
   renderProjectAdvisorPicker(tempProjectAdvisors);
   renderProjectChecklistEditor(id ? p : { checklist: db.defaultChecklist.map(label => ({ id:uid(), label, done:false, doneAt:null, custom:false })) });
   renderCustomFields('#pCustomFields', 'project', p.custom || {});
@@ -15666,6 +16172,21 @@ function cycleAccent(){
   applyAccent(next.id);
   toast('Desk accent · ' + next.label);
 }
+const THEME_KEY = 'bcs_theme_v1';
+function applyTheme(theme){
+  const next = theme === 'dark' ? 'dark' : 'light';
+  document.documentElement.dataset.theme = next;
+  document.body.dataset.theme = next;
+  document.documentElement.style.colorScheme = next === 'dark' ? 'dark' : 'light';
+  try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
+  const btn = $('#themeBtn');
+  if(btn){ btn.title = next === 'dark' ? 'Switch to light mode — abhi dark hai' : 'Switch to dark mode'; btn.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false'); }
+}
+function cycleTheme(){
+  const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  toast(next === 'dark' ? 'Dark mode on — sab saaf readable hai' : 'Light mode on');
+}
 function celebrate(){
   try{ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; }catch(e){}
   const layer = document.createElement('div');
@@ -15723,6 +16244,7 @@ function quickActionList(){
   }
   list.push(
     { kind:'Look', label:'Change accent', sub:'Saffron → Emerald → Indigo → Rose', icon:'✦', color:'linear-gradient(135deg,#7B67C6,#C95C85)', keys:'colour color theme', run:() => cycleAccent() },
+    { kind:'Look', label:'Dark / light mode', sub:'Dark mode toggle — saved per device', icon:'☾', color:'linear-gradient(135deg,#26324D,#7A6B4F)', keys:'dark mode night theme', run:() => cycleTheme() },
     { kind:'Data', label:'Lock desk', sub:'Session band karein', icon:'⌑', color:'linear-gradient(135deg,#3A3928,#7A6B4F)', keys:'logout lock', run:() => { const el = $('#lockBtn'); if(el) el.click(); } }
   );
   return list;
@@ -15811,9 +16333,14 @@ function initExperience(){
   let savedAccent = 'saffron';
   try{ savedAccent = localStorage.getItem(ACCENT_KEY) || 'saffron'; }catch(e){}
   applyAccent(savedAccent);
+  let savedTheme = 'light';
+  try{ savedTheme = localStorage.getItem(THEME_KEY) || 'light'; }catch(e){}
+  applyTheme(savedTheme);
 
   const accentBtn = $('#accentBtn');
   if(accentBtn) accentBtn.addEventListener('click', cycleAccent);
+  const themeBtn = $('#themeBtn');
+  if(themeBtn) themeBtn.addEventListener('click', cycleTheme);
   const trigger = $('#qaTrigger');
   if(trigger) trigger.addEventListener('click', openQuickActions);
   const dock = $('#quickAddDock');
@@ -16154,19 +16681,22 @@ function corridorTableHTML(projects){
     const price = pr.length ? fmtPrice(Math.min(...pr)) + ' – ' + fmtPrice(Math.max(...pr)) : '—';
     const cnt = st => ps.filter(p => p.status === st).length;
     const bks = (db.bookings || []).filter(b => ((bookingProject(b) || {}).corridor === c.id)).length;
-    return { c, ps, devs, price, cnt, bks };
+    const advs = advisorsForRoad(c.id).length;
+    return { c, ps, devs, price, cnt, bks, advs };
   }).sort((a, b) => b.ps.length - a.ps.length);
   return `<div class="vt-table-wrap"><table class="vt-table">
-    <thead><tr><th>Corridor</th><th>Projects</th><th>Developers</th><th>Price band</th><th>Ongoing</th><th>Upcoming</th><th>Completed</th><th>Bookings</th></tr></thead>
+    <thead><tr><th>Corridor</th><th>Projects</th><th>Advisors</th><th>Developers</th><th>Price band</th><th>Ongoing</th><th>Upcoming</th><th>Completed</th><th>Bookings</th><th></th></tr></thead>
     <tbody>${rows.map(r => `<tr data-corridor="${r.c.id}">
       <td class="cell-main"><b><span class="vt-dot" style="background:${r.c.color}"></span>${esc(r.c.name)}</b></td>
       <td class="cell-num">${r.ps.length}</td>
+      <td class="cell-num">${r.advs}</td>
       <td class="cell-num">${r.devs}</td>
       <td class="cell-num">${esc(r.price)}</td>
       <td><span class="vt-pill green">${r.cnt('ongoing')}</span></td>
       <td><span class="vt-pill gold">${r.cnt('upcoming')}</span></td>
       <td><span class="vt-pill blue">${r.cnt('completed')}</span></td>
       <td class="cell-num">${r.bks}</td>
+      <td><button type="button" class="btn ghost sm" data-hubroad="${r.c.id}">Road hub</button></td>
     </tr>`).join('')}</tbody></table></div>`;
 }
 
@@ -16761,6 +17291,7 @@ function render(){
 }
 initTypeControls();
 initAdvisorControls();
+initRoadHub();
 initClientControls();
 initResale();
 initAdvisory();
