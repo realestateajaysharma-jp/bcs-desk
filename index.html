@@ -950,6 +950,7 @@ body.advisor-mode #exportCsvBtn,
 body.advisor-mode #addDevBtn,
 body.advisor-mode #addAdvisorBtn,
 body.advisor-mode #addTermBtn,
+body.advisor-mode #addTaxBtn,
 body.advisor-mode #addResaleBtn,
 body.advisor-mode #detailEdit,
 body.advisor-mode #detailDelete,
@@ -3089,9 +3090,29 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
 .tm-card .tm-act button:hover{border-color:rgba(165,123,54,.4);color:var(--gold);background:#FFFBEA}
 .tm-card .tm-act .del{color:var(--danger);background:#FBEDE8;border-color:#F0D8CE}
 .tm-empty{grid-column:1/-1}
-@media (max-width:560px){
-  .tm-grid{grid-template-columns:1fr}
-}
+.tax-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(315px,1fr));gap:13px}
+.tax-card{background:#fff;border:1px solid rgba(229,234,232,.9);border-radius:16px;padding:15px 16px;box-shadow:0 12px 26px -20px rgba(46,45,32,.16);display:flex;flex-direction:column;gap:8px;transition:box-shadow .2s ease,transform .2s ease}
+.tax-card:hover{transform:translateY(-2px);box-shadow:0 18px 34px -22px rgba(46,45,32,.22);border-color:rgba(165,123,54,.25)}
+.tax-top{display:flex;align-items:flex-start;gap:9px}
+.tax-ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:18px;flex:none;background:var(--cat-soft,#F0F4F1);border:1px solid var(--cat-line,var(--line2))}
+.tax-title{flex:1;min-width:0}
+.tax-title b{display:block;font-family:'Fraunces',serif;font-size:15px;line-height:1.28}
+.tax-chip{font-size:8px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--cat-ink,#3E5A48);background:var(--cat-soft,#F0F4F1);border:1px solid var(--cat-line,var(--line2));border-radius:999px;padding:3px 8px;white-space:nowrap}
+.tax-body{font-size:12.5px;line-height:1.55;color:var(--ink2);margin:0}
+.tax-action{background:linear-gradient(135deg,#FFFDF4,#FFF8E2);border:1px dashed #E3CE8F;border-radius:12px;padding:9px 11px;font-size:12px;line-height:1.5;color:#7A5A23}
+.tax-action::before{content:'Client line';display:block;font-size:8px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#A8853B;margin-bottom:3px}
+.tax-meta{display:flex;flex-wrap:wrap;gap:5px;align-items:center;font-size:10px;color:var(--mut)}
+.tax-src{display:inline-flex;align-items:center;gap:4px;color:var(--sage-ink);font-weight:800;text-decoration:none}
+.tax-src:hover{text-decoration:underline}
+.tax-act{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px}
+.tax-act button{flex:none;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:#FCFDFC;font-size:10.5px;font-weight:800;color:var(--ink2);cursor:pointer;transition:.15s}
+.tax-act button:hover{border-color:rgba(165,123,54,.45);color:var(--gold);background:#FFF8EA}
+.tax-act button.del{color:var(--danger);background:#FBEDE8;border-color:#F0D8CE}
+.tax-disclaimer{font-size:10px;color:var(--mut);line-height:1.45}
+body[data-theme="dark"] .tax-card{background:var(--panel);border-color:var(--line);color:var(--ink)}
+body[data-theme="dark"] .tax-action{background:#2E3324;border-color:#6B5A2E;color:#F1D992}
+body[data-theme="dark"] .tax-act button{background:#20261F;border-color:var(--line);color:var(--ink2)}
+
 /* ---- 7. v15 responsive ---- */
 @media (max-width:1180px){
   .an-kpis{grid-template-columns:repeat(2,1fr)}
@@ -3722,6 +3743,7 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
       <button data-view="news">News</button>
       <button data-view="links">Links</button>
       <button data-view="terminology">Terminology</button>
+      <button data-view="tax">Tax & Advice</button>
       <button data-view="advisory">Advisory</button>
       <button data-view="templates">Templates</button>
       <button data-view="health">Health</button>
@@ -4529,6 +4551,36 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
     </div>
 
     <div class="tm-grid" id="tmGrid"></div>
+  </section>
+
+  <section class="view" id="view-tax">
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · tax & advice desk</div>
+        <h2 class="adv-title">Tax advice, CA wisdom —<br><em>client-ready knowledge.</em></h2>
+        <p class="adv-sub">Tax saving tips & tricks, CA knowledge, expert advice, interesting facts, myths vs reality aur updates — har card me source + useful link joda hai. WhatsApp par copy/share karke client ko turant samjho. <b>Tax rules har Budget/financial year me badal sakte hain — exact case ke liye verified CA se confirm karein.</b></p>
+      </div>
+      <div class="adv-head-actions">
+        <button class="btn primary" id="addTaxBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+          Add knowledge
+        </button>
+      </div>
+    </div>
+
+    <div class="links-stats" id="taxStats"></div>
+
+    <div class="toolbar links-toolbar">
+      <div class="adv-search links-search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="taxSearch" placeholder="Search tax tip, fact, myth, source…">
+      </div>
+      <select id="taxCategoryFilter"><option value="">All categories</option></select>
+      <div class="spacer"></div>
+      <span class="links-toolbar-note" id="taxCount"></span>
+    </div>
+
+    <div class="tax-grid" id="taxGrid"></div>
   </section>
 
   <section class="view" id="view-templates">
@@ -5937,6 +5989,33 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
   </div>
 </div>
 
+<!-- ============ TAX & ADVICE EDITOR ============ -->
+<div class="overlay" id="taxModal">
+  <div class="modal" style="width:min(680px,100%)">
+    <div class="modal-head"><h3 id="taxTitle">New knowledge card</h3><button class="xbtn" data-close="taxModal">✕</button></div>
+    <div class="modal-body">
+      <div class="grid2">
+        <div class="field"><label>Title *</label><input id="taxName" placeholder="e.g. Home loan tax benefit — section 24(b)"></div>
+        <div class="field"><label>Category</label><select id="taxCategory"></select></div>
+      </div>
+      <div class="field"><label>Explanation / practical meaning *</label><textarea id="taxBody" rows="5" placeholder="Simple Hindi/English me gyaan, kya farak padta hai…"></textarea></div>
+      <div class="field"><label>Client-friendly line (WhatsApp share ke liye)</label><textarea id="taxAction" rows="3" placeholder="Client ko ek line me sammaniya advice…"></textarea></div>
+      <div class="grid2">
+        <div class="field"><label>Source name *</label><input id="taxSource" placeholder="CBDT / India Code / State portal"></div>
+        <div class="field"><label>Source link *</label><input id="taxUrl" inputmode="url" placeholder="https://…"></div>
+      </div>
+      <div class="field"><label>Tags (comma)</label><input id="taxTags" placeholder="GST, capital gains, Jaipur, RERA"></div>
+      <div class="field"><label>Updated date</label><input type="date" id="taxUpdated"></div>
+      <div class="lock-hint">Source link official ya bharosemand rahe. Tax rules har saal badalte hain — article par date rakho, CA se verify karvane ki note do.</div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn danger" id="taxDelete" style="margin-right:auto">Delete</button>
+      <button class="btn ghost" data-close="taxModal">Cancel</button>
+      <button class="btn primary" id="taxSave">Save knowledge</button>
+    </div>
+  </div>
+</div>
+
 <!-- ============ LINK CATEGORY EDITOR ============ -->
 <div class="overlay" id="linkCatModal">
   <div class="modal" style="width:min(460px,100%)">
@@ -6666,6 +6745,37 @@ const TERMINOLOGY_CATEGORIES = [
   { id:'other',     name:'General',               icon:'✨',  soft:'#F0F4F1', line:'#D8E0DA', ink:'#3E5A48' },
 ];
 function tmCat(id){ return TERMINOLOGY_CATEGORIES.find(c => c.id === id) || TERMINOLOGY_CATEGORIES[7]; }
+/* ---------- tax & advice knowledge hub ---------- */
+const TAX_CATEGORIES = [
+  { id:'saving', name:'Tax Saving', icon:'💰', soft:'#EFF4F0', line:'#C9DCCC', ink:'#2F6644' },
+  { id:'ca', name:'CA Knowledge', icon:'🧮', soft:'#EDF2FA', line:'#C7D6EC', ink:'#2C5282' },
+  { id:'advice', name:'Expert Advice', icon:'🎯', soft:'#EFF6F6', line:'#BFDDE0', ink:'#1F5F66' },
+  { id:'facts', name:'Interesting Facts', icon:'💡', soft:'#FBF3E4', line:'#EAD9B0', ink:'#7A5A23' },
+  { id:'myths', name:'Myths vs Reality', icon:'🧪', soft:'#F8EFEA', line:'#E7CFC2', ink:'#8A4A2B' },
+  { id:'updates', name:'Updates & Alerts', icon:'🔔', soft:'#F1EEF8', line:'#D5CCE8', ink:'#4F3D7E' }
+];
+function taxCat(id){ return TAX_CATEGORIES.find(c => c.id === id) || TAX_CATEGORIES[0]; }
+const DEFAULT_TAX_ARTICLES = [
+  { cat:'saving', title:'Home loan tax benefit: principal 80C + interest 24(b)', body:'Principal repayment Section 80C me ₹1.5 lakh limit ke andar other 80C items ke saath count hota hai. Interest u/s 24(b) self-occupied home ke liye purane regime me ₹2 lakh/year tak; let-out property ka interest claim alag rules se hota hai, loss set-off ki limit lagti hai. New regime me rules alag hain — har financial year ka CA se confirm karna zaroori hai.', action:'Home loan ka principal aur interest dono alag sections me count hote hain. Aapki regime aur FY ke liye CA se exact benefit nikala ja sakta hai.', source:'Income Tax Department', url:'https://www.incometax.gov.in/iec/foportal/', tags:['home loan','80C','24(b)','new regime'], updated:'2026-11-08' },
+  { cat:'saving', title:'Joint ownership: dono co-owner apna share claim kar sakte hain', body:'Agar do co-owners hain aur dono apna hissa pay kar rahe hain, to dono apne-अपने share ke hisaab se principal aur interest claim kar sakte hain. Sirf registration me naam hona kaafi nahi — payment/bank proof aur loan documents sabke naam par consistent rakhna chahiye.', action:'Joint home loan me dono co-owners apna hissa claim kar sakte hain — payment proof dono ke naam par rakho.', source:'Income Tax Department', url:'https://www.incometax.gov.in/iec/foportal/help/individual/tax-calculator', tags:['joint loan','co-owner','interest'], updated:'2026-11-08' },
+  { cat:'saving', title:'Capital gains: holding period aur indexation samjho', body:'Immovable property ko 24 mahine se zyada hold karne par long-term ka logic lagta hai. Indexation se purchase cost mehngai se adjust hota hai. Lekin acquisitions after 23 July 2024 aur Finance Act ke badlaav me rates/indexation rules badle hain — old/new property ko alag se CA se verify karna chahiye.', action:'Property bechne ki planning se pehle indexation aur holding period CA se verify kara lo — rate case-to-case badal sakta hai.', source:'CBDT / Income Tax', url:'https://www.incometax.gov.in/iec/foportal/', tags:['capital gains','indexation','holding period'], updated:'2026-11-08' },
+  { cat:'saving', title:'Section 54 / 54EC: reinvestment relief ke conditions', body:'Section 54 me doosri residential property me reinvestment par capital gains relief ke specific conditions, timing aur limits hain. Section 54EC me NHAI/REC bonds ka alag framework hai. Names, holding, consideration aur due dates CA se exact case me verify karna padta hai.', action:'Property bechkar doosri property ya approved bond me invest karne par relief options hote hain — timing aur limits CA se confirm karo.', source:'CBDT / Income Tax', url:'https://www.incometax.gov.in/iec/foportal/help/individual/tax-calculator', tags:['54','54EC','reinvestment'], updated:'2026-11-08' },
+  { cat:'ca', title:'TDS on property purchase: Section 194-IA', body:'Resident seller ko ₹50 lakh ya usse zyada ki immovable property purchase par buyer ko 1% TDS kaatkar sarkar me jama karna hota hai. Form 26QB se payment, seller ko Form 16B certificate milta hai. NRI seller ke liye alag section/rates lagte hain; deal se pehle CA verify karein.', action:'₹50L+ ki purchase par buyer 1% TDS jama karega — Form 26QB aur Form 16B dono samay par lein.', source:'CBDT', url:'https://www.incometax.gov.in/iec/foportal/', tags:['TDS','194-IA','26QB','NRI'], updated:'2026-11-08' },
+  { cat:'ca', title:'Advance tax aur capital gains timing', body:'Capital gains par advance tax installments apply ho sakte hain. Sale ka date, consideration receipt, indexation/cost aur exemptions sab CA ke saath plan karna chahiye. Advance tax miss hone par interest lag sakta hai.', action:'Property bechne se pehle advance tax calendar CA ke saath bana lo — interest se bachoge.', source:'CBDT', url:'https://www.incometax.gov.in/iec/foportal/', tags:['advance tax','capital gains'], updated:'2026-11-08' },
+  { cat:'ca', title:'Gift, ancestral property aur clubbing', body:'Gift ko kisi relative se mila property gifted deemed income rules se judti hai. Ancestral property, HUF, inheritance aur clubbing rules family structure aur dates par depend karte hain. बिना legal/CA review ke gifting formula assume mat karo.', action:'Family property gift/inheritance me clubbing aur cost basis CA se verify karwao.', source:'CBDT', url:'https://www.incometax.gov.in/iec/foportal/', tags:['gift','HUF','clubbing'], updated:'2026-11-08' },
+  { cat:'advice', title:'Token refund clause likhit me lo', body:'Booking/token par sirf verbal assurance mat lo. Written clause me refund conditions, loan rejection, approval fail, possession delay aur cancellation charges clear likho. WhatsApp screenshot se behtar registered agreement hai.', action:'Token dene se pehle refund clause likhit me lo — oral assurance kabhi kaam nahi aata.', source:'RERA Project Registration', url:'https://maharera.maha.gov.in/', tags:['token','refund','agreement'], updated:'2026-11-08' },
+  { cat:'advice', title:'Possession delay interest: MCLR + 2% ka rule', body:'RERA delay par buyer ko interest/compensation ka right milta hai; promoter ko prescribed formula se interest dena padta hai. Delay notices, promised date aur payment receipts ko timeline me rakho.', action:'Possession delay par RERA interest ka right hota hai — promised date aur payment proof ready rakho.', source:'India Code · RERA', url:'https://www.indiacode.nic.in/bitstream/123456789/2079/1/AA2016-16.pdf', tags:['RERA','delay','interest'], updated:'2026-11-08' },
+  { cat:'advice', title:'Title verification: registry, mutation aur patta/khata', body:'North India me registry + mutation/jamabandi, South me khata/patta, Maharashtra me Satbara/7-12 — har state ka document set alag hai. Kharidne se pehle title chain, encumbrance, tax arrears aur approved layout verify karo.', action:'Har state ka record alag hota hai — title verification ke liye complete document set mangwao.', source:'State revenue / registration portals', url:'https://www.indiacode.nic.in/', tags:['title','mutation','khata','patta'], updated:'2026-11-08' },
+  { cat:'facts', title:'RERA escrow: 70% paisa project account me', body:'RERA ke tahat promoters ko project ka kam se kam 70% collection alag escrow account me rakhna hota hai. Yeh paisa approved plan ke hisaab se hi use hota hai — buyer protection ka core yahi hai.', action:'RERA-registered project me 70% paisa escrow account me locked hota hai.', source:'India Code · RERA', url:'https://www.indiacode.nic.in/bitstream/123456789/2079/1/AA2016-16.pdf', tags:['RERA','escrow','70%'], updated:'2026-11-08' },
+  { cat:'facts', title:'Registry circle rate se neeche nahi ho sakti', body:'Stamp duty aur registration ke liye sarkar ki minimum value (circle rate / guideline value / ready reckoner) chalti hai. Actual deal value kam ho to bhi registry us minimum value par hoti hai.', action:'Registry hamesha sarkari minimum value se kam nahi hoti — budget circle rate par banao.', source:'State registration portals', url:'https://www.indiacode.nic.in/', tags:['stamp duty','circle rate','registration'], updated:'2026-11-08' },
+  { cat:'facts', title:'GST sirf under-construction par; ready property par nahi', body:'Under-construction property par GST lagta hai; ready + OC/CC wali property par GST nahi lagta. Affordable aur non-affordable rates alag hain; land component ka treatment CA se confirm karo.', action:'Ready-to-move property par GST nahi lagta; under-construction par rate aur calculation CA se confirm karo.', source:'CBIC', url:'https://cbic.gov.in/', tags:['GST','under construction','ready property'], updated:'2026-11-08' },
+  { cat:'myths', title:'Myth: POA se property ownership transfer ho jaati hai', body:'Reality: Power of Attorney sirf authority deta hai; ownership transfer registered sale deed se hi hoti hai. POA purchase me banks, societies aur resale me practical risk hota hai.', action:'POA se ownership transfer nahi hoti — registered sale deed hi safe hai.', source:'India Code · Judiciary', url:'https://www.indiacode.nic.in/', tags:['POA','GPA','ownership'], updated:'2026-11-08' },
+  { cat:'myths', title:'Myth: RERA registration optional hai', body:'Reality: Certain size/unit thresholds par project registration compulsory hai. Advertised carpet area, escrow aur buyer rights RERA se linked hain.', action:'RERA registration optional nahi hai — project ka registration status zaroor check karo.', source:'India Code · RERA', url:'https://www.indiacode.nic.in/bitstream/123456789/2079/1/AA2016-16.pdf', tags:['RERA','registration'], updated:'2026-11-08' },
+  { cat:'myths', title:'Myth: stamp duty har state me same hai', body:'Reality: Stamp duty/registration har state me alag rate, exemptions, caps aur women/joint concessions ke saath hoti hai. Jaipur ke liye Rajasthan rules lagte hain.', action:'Stamp duty state-wise hoti hai — Jaipur ke liye Rajasthan rate sheet confirm karo.', source:'Government of Rajasthan', url:'https://www.rajasthan.gov.in/', tags:['stamp duty','state'], updated:'2026-11-08' },
+  { cat:'myths', title:'Myth: token sirf verbal par hold ho jaata hai', body:'Reality: booking hold ke liye written receipt aur refund terms zaroori hain. Builder verbal hold ko generally enforce nahi karta.', action:'Token ke badle likhit receipt/refund terms lo — hold bhi likhit me hi valid hai.', source:'RERA Project Registration', url:'https://maharera.maha.gov.in/', tags:['token','refund'], updated:'2026-11-08' },
+  { cat:'updates', title:'Daily update check: CBDT + Budget + RBI portals', body:'Tax rules, notifications, portal notices aur circulars official portals par aate hain. Sunne me aayi news ko pehle CBDT/Finance Ministry/RBI source se cross-check karo, fir client ko bhejo.', action:'News sunne ke baad official portal se verify karo — phir client ko bhejo.', source:'CBDT · Finance Ministry · RBI', url:'https://www.incometax.gov.in/iec/foportal/', tags:['updates','CBDT','Budget','RBI'], updated:'2026-11-08' },
+  { cat:'updates', title:'CA alert: Budget se pehle checklist ready rakho', body:'Finance Bill aane ke baad rates, deductions, exemptions aur transitional provisions badal sakte hain. CA ke saath current-year checklist bana lo; advisory se pehle document snapshot le lo.', action:'Budget se pehle current-year tax checklist CA se confirm karlo.', source:'Ministry of Finance', url:'https://www.indiabudget.gov.in/', tags:['budget','CA','alert'], updated:'2026-11-08' }
+];
 const DEFAULT_TERMINOLOGY = [
   { cat:'govt', kind:'term', term:'RERA', hi:'रेरा', meaning:'Real Estate (Regulation & Development) Act, 2016 — India ka central real estate law. Har bade project (500+ sq m ya 8+ units) ka state RERA mein register hona zaroori hai. Buyer ko milta hai: escrow mein 70% paisa, advertisement mein carpet area hi batana, delay par interest/compensation ka adhikar, aur poori project detail RERA portal par public.' },
   { cat:'govt', kind:'calc', term:'RERA carpet area', hi:'कार्पेट एरिया', meaning:'RERA ki official definition: deewaron ke andar ka net usable area + internal partition walls. Balcony, verandah, external walls EXCLUDE. Advertisement mein yahi batana legal compulsion hai — isliye carpet rate hi asli rate hai.', calc:'Carpet area = net usable floor area + internal partition walls', example:'Bedroom 110 + Living 160 + Kitchen 70 sq ft (+ walls) → total ≈ 380 sq ft carpet' },
@@ -6762,6 +6872,24 @@ function normalizeDb(d){
     updatedAt: t.updatedAt || t.createdAt || Date.now() + i
   }));
   if(!d.terminology.length) d.terminology = DEFAULT_TERMINOLOGY.map((t, i) => ({ id: uid(), built: true, createdAt: Date.now() + i, ...t }));
+  if(!Array.isArray(d.taxArticles)){
+    d.taxArticles = DEFAULT_TAX_ARTICLES.map((t, i) => ({ id: uid(), built: true, createdAt: Date.now() + i, updatedAt: Date.now() + i, ...t }));
+  }
+  d.taxArticles = d.taxArticles.filter(t => t && String(t.title || '').trim() && String(t.body || '').trim()).map(t => ({
+    id: t.id || uid(),
+    built: !!t.built,
+    cat: taxCat(t.cat).id,
+    title: String(t.title || '').trim().slice(0, 160),
+    body: String(t.body || '').trim().slice(0, 2500),
+    action: String(t.action || '').trim().slice(0, 800),
+    source: String(t.source || '').trim().slice(0, 160),
+    url: String(t.url || '').trim().slice(0, 500),
+    tags: Array.isArray(t.tags) ? t.tags.map(x => String(x).trim()).filter(Boolean).slice(0, 12) : String(t.tags || '').split(',').map(x => x.trim()).filter(Boolean).slice(0, 12),
+    updated: t.updated || todayISO(),
+    createdAt: t.createdAt || Date.now(),
+    updatedAt: t.updatedAt || t.createdAt || Date.now()
+  }));
+  if(!d.taxArticles.length) d.taxArticles = DEFAULT_TAX_ARTICLES.map((t, i) => ({ id: uid(), built: true, createdAt: Date.now() + i, updatedAt: Date.now() + i, ...t }));
   if(!Array.isArray(d.clients)) d.clients = [];
   if(!Array.isArray(d.advisors)) d.advisors = [];
   if(!Array.isArray(d.resale)) d.resale = [];
@@ -17878,6 +18006,7 @@ function quickActionList(){
     { kind:'Go', label:'News', sub:'Market updates, links aur editorial notes', icon:'✎', color:'linear-gradient(135deg,#4C8FD6,#7B67C6)', keys:'feed updates', run:() => go('news') },
     { kind:'Go', label:'Links', sub:'RERA, JDA, portals aur apni websites', icon:'↗', color:'linear-gradient(135deg,#2F8F7A,#7CAC5A)', keys:'websites bookmarks', run:() => go('links') },
     { kind:'Go', label:'Terminology', sub:'Real estate terms, meanings aur calculations', icon:'Σ', color:'linear-gradient(135deg,#E7B84B,#4C8FD6)', keys:'glossary terms learn formula tax rera learning', run:() => go('terminology') },
+    { kind:'Go', label:'Tax & Advice', sub:'Tax saving, CA knowledge, facts, myths, sources', icon:'🧾', color:'linear-gradient(135deg,#7B67C6,#2F8F6B)', keys:'tax advice ca knowledge facts myths source share', run:() => go('tax') },
     { kind:'Go', label:'Advisory', sub:'Client brief, shortlist aur presentation', icon:'★', color:'linear-gradient(135deg,#E7B84B,#C95C85)', keys:'present shortlist', run:() => go('advisory') },
     { kind:'Go', label:'Templates', sub:'WhatsApp, developer aur advisor messages', icon:'✉', color:'linear-gradient(135deg,#DF6A51,#7B67C6)', keys:'message copy', run:() => go('templates') },
     { kind:'Go', label:'Health', sub:'Storage, backup, sync aur quality', icon:'♥', color:'linear-gradient(135deg,#2F8F7A,#4C8FD6)', keys:'backup sync storage', run:() => go('health') }
@@ -18928,6 +19057,119 @@ function initTerminology(){
   $('#addTermBtn').addEventListener('click', () => openTerminology(null));
 }
 
+/* ---------- tax & advice knowledge hub ---------- */
+function taxShareText(t){
+  return ['*BCS Tax & Advice*', t.title, '', t.body, t.action ? `\nClient-friendly: ${t.action}` : '', `\nSource: ${t.source || '—'}`, t.url || '', '', '— BCS · Business City Square · @ajaysharma.bcs'].join('\n');
+}
+async function shareTaxArticle(id){
+  const t = db.taxArticles.find(x => x.id === id);
+  if(!t) return;
+  const text = taxShareText(t);
+  if(navigator.share){
+    try{ await navigator.share({ title:t.title + ' · BCS Tax & Advice', text }); return; }catch(e){ if(e && e.name === 'AbortError') return; }
+  }
+  window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+}
+function renderTax(){
+  if(!$('#taxGrid')) return;
+  const q = ($('#taxSearch').value || '').trim().toLowerCase();
+  const catF = $('#taxCategoryFilter').value || '';
+  const list = db.taxArticles.filter(t => {
+    if(catF && t.cat !== catF) return false;
+    if(!q) return true;
+    return [t.title, t.body, t.action, t.source, t.url, (t.tags || []).join(' ')].join(' ').toLowerCase().includes(q);
+  });
+  const sources = new Set(db.taxArticles.map(t => t.url).filter(Boolean)).size;
+  const usedCats = new Set(db.taxArticles.map(t => t.cat)).size;
+  $('#taxStats').innerHTML = `
+    <div><div class="k">Knowledge cards</div><div class="v">${db.taxArticles.length}</div></div>
+    <div><div class="k">Categories</div><div class="v">${usedCats}</div></div>
+    <div><div class="k">Official sources</div><div class="v">${sources}</div></div>
+    <div><div class="k">Matching card</div><div class="v">${list.length}</div></div>`;
+  $('#taxCount').textContent = `${list.length} of ${db.taxArticles.length}`;
+  const admin = isAdmin();
+  $('#taxGrid').innerHTML = list.length ? list.map(t => {
+    const c = taxCat(t.cat);
+    const style = `--cat-soft:${c.soft};--cat-line:${c.line};--cat-ink:${c.ink}`;
+    return `<article class="tax-card" style="${style}">
+      <div class="tax-top"><div class="tax-ic">${c.icon}</div><div class="tax-title"><b>${esc(t.title)}</b></div><span class="tax-chip">${esc(c.name)}</span></div>
+      <p class="tax-body">${esc(t.body)}</p>
+      ${t.action ? `<div class="tax-action">${esc(t.action)}</div>` : ''}
+      <div class="tax-meta">
+        ${t.source ? `<a class="tax-src" href="${esc(t.url || '#')}" target="_blank" rel="noopener">↗ ${esc(t.source)}</a>` : ''}
+        ${t.updated ? `<span>Updated ${esc(fmtDate(t.updated))}</span>` : ''}
+        ${(t.tags || []).slice(0,4).map(x => `<span class="tax-chip">${esc(x)}</span>`).join('')}
+      </div>
+      <div class="tax-act">
+        <button type="button" data-taxshare="${t.id}">Share WhatsApp</button>
+        <button type="button" data-taxcopy="${t.id}">Copy</button>
+        <button type="button" data-taxopen="${t.id}">Open source</button>
+        ${admin ? `<button type="button" data-taxedit="${t.id}">✎ Edit</button><button type="button" class="del" data-taxdel="${t.id}">✕ Delete</button>` : ''}
+      </div>
+    </article>`;
+  }).join('') : `<div class="links-board-empty tm-empty">${emptyBlock('Koi knowledge card nahi mila', q || catF ? 'Search/filter clear karke dekhein, ya naya card add karein.' : 'Tax hub khali hai — pehla card aap add karein.', admin ? '+ Add knowledge' : '', 'addtax')}</div>`;
+  $$('#taxGrid [data-taxshare]').forEach(b => b.addEventListener('click', () => shareTaxArticle(b.dataset.taxshare)));
+  $$('#taxGrid [data-taxcopy]').forEach(b => b.addEventListener('click', () => copyText(taxShareText(db.taxArticles.find(x => x.id === b.dataset.taxcopy))).then(ok => toast(ok ? 'Tax card copied ✓' : 'Copy failed — try again', !ok))));
+  $$('#taxGrid [data-taxopen]').forEach(b => b.addEventListener('click', () => {
+    const t = db.taxArticles.find(x => x.id === b.dataset.taxopen);
+    if(t?.url) window.open(t.url, '_blank', 'noopener');
+  }));
+  $$('#taxGrid [data-taxedit]').forEach(b => b.addEventListener('click', () => openTax(db.taxArticles.find(x => x.id === b.dataset.taxedit))));
+  $$('#taxGrid [data-taxdel]').forEach(b => b.addEventListener('click', () => deleteTax(b.dataset.taxdel)));
+  const seedBtn = $('#taxGrid [data-addtax]');
+  if(seedBtn) seedBtn.addEventListener('click', () => openTax(null));
+}
+function openTax(t){
+  if(!isAdmin()) return toast('Advisor login se edit nahi hota', true);
+  $('#taxTitle').textContent = t ? 'Edit knowledge — ' + (t.title || '') : 'New knowledge card';
+  $('#taxName').value = t?.title || '';
+  $('#taxCategory').value = t?.cat || 'saving';
+  $('#taxBody').value = t?.body || '';
+  $('#taxAction').value = t?.action || '';
+  $('#taxSource').value = t?.source || '';
+  $('#taxUrl').value = t?.url || '';
+  $('#taxTags').value = (t?.tags || []).join(', ');
+  $('#taxUpdated').value = t?.updated || todayISO();
+  $('#taxDelete').style.display = t ? '' : 'none';
+  $('#taxDelete').dataset.taxDel = t?.id || '';
+  showOverlay('taxModal');
+  setTimeout(() => $('#taxName').focus(), 60);
+}
+function saveTax(){
+  if(!isAdmin()) return toast('Advisor login se edit nahi hota', true);
+  const title = $('#taxName').value.trim();
+  const body = $('#taxBody').value.trim();
+  const source = $('#taxSource').value.trim();
+  const url = $('#taxUrl').value.trim();
+  if(!title) return toast('Title likhein', true);
+  if(!body) return toast('Explanation likhein', true);
+  if(!source || !/^https?:\/\//i.test(url)) return toast('Official source + link (https://…) zaroori hai', true);
+  const rec = { title, cat: taxCat($('#taxCategory').value).id, body, action: $('#taxAction').value.trim(), source, url, tags: $('#taxTags').value.split(',').map(x => x.trim()).filter(Boolean).slice(0,12), updated: $('#taxUpdated').value || todayISO(), updatedAt: Date.now() };
+  const delId = $('#taxDelete').dataset.taxDel || '';
+  const existing = delId ? db.taxArticles.find(x => x.id === delId) : null;
+  if(existing){ Object.assign(existing, rec); toast('Knowledge updated'); }
+  else { db.taxArticles.push({ id: uid(), built:false, createdAt: Date.now(), ...rec }); toast('Knowledge saved — hub updated'); }
+  save(); renderTax(); closeModal('taxModal');
+}
+function deleteTax(id){
+  if(!id) return;
+  const t = db.taxArticles.find(x => x.id === id);
+  if(!t) return;
+  if(!confirm(`"${t.title}" delete karein?`)) return;
+  db.taxArticles = db.taxArticles.filter(x => x.id !== id);
+  save(); renderTax(); toast('Knowledge deleted');
+}
+function initTax(){
+  if(!$('#taxGrid')) return;
+  $('#taxCategoryFilter').innerHTML = '<option value="">All categories</option>' + TAX_CATEGORIES.map(c => `<option value="${c.id}">${c.icon} ${esc(c.name)}</option>`).join('');
+  $('#taxCategory').innerHTML = TAX_CATEGORIES.map(c => `<option value="${c.id}">${c.icon} ${esc(c.name)}</option>`).join('');
+  $('#taxSearch').addEventListener('input', renderTax);
+  $('#taxCategoryFilter').addEventListener('change', renderTax);
+  $('#taxSave').addEventListener('click', saveTax);
+  $('#taxDelete').addEventListener('click', () => deleteTax($('#taxDelete').dataset.taxDel));
+  $('#addTaxBtn').addEventListener('click', () => openTax(null));
+}
+
 /* ---------- render ---------- */
 function render(){
   fillFilterCorridor($('#filterCorridor').value);
@@ -18942,6 +19184,7 @@ function render(){
   if(currentView === 'news') renderNews();
   if(currentView === 'links') renderLinks();
   if(currentView === 'terminology') renderTerminology();
+  if(currentView === 'tax') renderTax();
   if(currentView === 'advisory'){ renderSavedBriefs(); renderAdvisoryResults(); }
   if(currentView === 'templates') renderTemplates();
   if(currentView === 'health'){ renderHealth(); renderSyncCard(); }
@@ -18958,6 +19201,7 @@ initDayplan();
 initNews();
 initLinks();
 initTerminology();
+initTax();
 initCorridorManager();
 initTools();
 initMedia();
