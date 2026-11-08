@@ -3142,6 +3142,7 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
     <!-- v15: dashboard card grid — header (date/time/quote) + festival + upcoming + status -->
     <div class="dash-grid">
       <!-- Header Card: Date + Time + Quote (full width) -->
+      <!-- Unified Header Card: Date + Motivation + Festival + WhatsApp (full width) -->
       <div class="dash-card dash-card-header" id="dashHeadline">
         <div class="dl-cell dl-date">
           <b id="thDay">08</b>
@@ -3165,27 +3166,26 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
             <span class="dl-next" id="dlNext">Diwali · aaj hi hai</span>
           </div>
         </div>
-      </div>
-
-      <!-- Festival Card -->
-      <div class="dash-card dash-card-festival" id="todayHero">
-        <div class="th-cal" aria-hidden="true">
-          <div class="th-cal-band" id="thCalMonth">NOVEMBER</div>
-          <div class="th-cal-body">
-            <b class="th-cal-day" id="thCalDay">08</b>
-            <span class="th-cal-week" id="thCalWeek">रविवार</span>
-            <span class="th-cal-year" id="thCalYear">Sunday · 2026</span>
+        <!-- Festival integrated below the quote/time -->
+        <div class="dl-cell dl-festival" style="grid-column:1/-1; margin-top:12px; padding-top:12px; border-top:1px solid var(--line);">
+          <div class="dlf-cal" aria-hidden="true">
+            <div class="dlf-cal-band" id="thCalMonthMerged">NOVEMBER</div>
+            <div class="dlf-cal-body">
+              <b class="dlf-cal-day" id="thCalDayMerged">08</b>
+              <span class="dlf-cal-week" id="thCalWeekMerged">रविवार</span>
+              <span class="dlf-cal-year" id="thCalYearMerged">Sunday · 2026</span>
+            </div>
           </div>
-        </div>
-        <div class="th-main">
-          <div class="th-top">
-            <span class="th-badge"><span class="th-emoji" id="thEmoji">🪔</span><span id="thFestivalName">Diwali</span></span>
-            <span class="th-today-chip" id="thTodayChip">Aaj · Today</span>
+          <div class="dlf-main">
+            <div class="dlf-top">
+              <span class="dlf-badge"><span class="dlf-emoji" id="thEmojiMerged">🪔</span><span id="thFestivalNameMerged">Diwali</span></span>
+              <span class="dlf-today-chip" id="thTodayChipMerged">Aaj · Today</span>
+            </div>
+            <h3 id="thFestivalHiMerged">दीपावली</h3>
+            <div class="dlf-name-en" id="thFestivalEnMerged">Diwali · Lakshmi Puja</div>
+            <p class="dlf-greet-hi" id="thGreetHiMerged">दीपों की रोशनी, माँ लक्ष्मी की कृपा — आपका जीवन सदा उजालों से भरा रहे।</p>
+            <p class="dlf-greet-en" id="thGreetEnMerged">Lights of diyas, grace of Maa Lakshmi — may your life always shine bright.</p>
           </div>
-          <h3 id="thFestivalHi">दीपावली</h3>
-          <div class="th-name-en" id="thFestivalEn">Diwali · Lakshmi Puja</div>
-          <p class="th-greet-hi" id="thGreetHi">दीपों की रोशनी, माँ लक्ष्मी की कृपा — आपका जीवन सदा उजालों से भरा रहे।</p>
-          <p class="th-greet-en" id="thGreetEn">Lights of diyas, grace of Maa Lakshmi — may your life always shine bright.</p>
         </div>
       </div>
 
