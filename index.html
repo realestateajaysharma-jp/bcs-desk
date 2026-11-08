@@ -2126,211 +2126,236 @@ body.locked>.quick-add-dock{visibility:hidden}
 .dash-grid{
   display:grid;
   grid-template-columns:1fr;
-  gap:12px;
-  margin:0 0 24px;
+  gap:16px;
+  margin:0 0 28px;
 }
 @media (min-width:768px){
   .dash-grid{grid-template-columns:repeat(2,1fr)}
 }
-@media (min-width:1024px){
-  .dash-grid{grid-template-columns:repeat(3,1fr)}
-}
 
-/* Card base style - elegant with subtle accent bar */
+/* Card base style - premium, clean */
 .dash-card{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:20px;
-  box-shadow:0 25px 50px -20px rgba(52,60,40,.25), 0 0 0 1px rgba(255,255,255,.08);
-  padding:24px;
-  transition:all .25s cubic-bezier(.4,0,.2,1);
+  background:#fff;
+  border:1px solid rgba(229,234,232,.9);
+  border-radius:22px;
+  box-shadow:0 18px 40px -24px rgba(46,45,32,.18), 0 1px 0 rgba(255,255,255,.8) inset;
+  padding:22px;
+  transition:box-shadow .25s ease, transform .25s ease, border-color .25s ease;
   position:relative;
   overflow:hidden;
-  backdrop-filter:blur(10px);
 }
-.dash-card::before{
-  content:'';
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:3px;
-  background:linear-gradient(90deg,var(--olive),var(--gold),var(--olive));
-  opacity:0;
-  transition:opacity .3s;
+.dash-card:hover{
+  border-color:rgba(165,123,54,.25);
+  box-shadow:0 24px 50px -26px rgba(46,45,32,.22);
 }
-.dash-card:hover::before{opacity:1}
-.dash-card:hover{border-color:var(--olive);box-shadow:0 35px 60px -20px rgba(52,60,40,.35)}
-.dash-card:active{transform:translateY(1px) scale(.98);transition:transform .1s}
 
-/* Specific card column arrangements */
+/* Card column arrangements - header full width, then upcoming + status side by side */
 .dash-card-header{grid-column:1/-1}
-.dash-card-festival{grid-column:1/-1}
-@media (min-width:768px){
-  .dash-card-festival{grid-column:1/-1}
-}
-@media (min-width:1024px){
-  .dash-card-festival{grid-column:span 2}
-}
 .dash-card-upcoming,.dash-card-status{grid-column:1/-1}
 @media (min-width:768px){
+  .dash-grid{grid-template-columns:repeat(2,1fr)}
   .dash-card-upcoming,.dash-card-status{grid-column:span 1}
 }
 
-/* ============ Header Card: Date + Time + Quote ============ */
-.dash-card-header .dl-cell{display:flex;align-items:center;min-width:0;gap:8px}
+/* ============ Unified Header Card: Date + Motivation + Time + Festival ============ */
+.dash-card-header{
+  display:grid;
+  grid-template-columns: minmax(150px, auto) 1fr minmax(170px, auto);
+  grid-template-rows: auto auto;
+  gap: 0;
+  align-items: stretch;
+  padding: 0;
+  overflow: hidden;
+  border-color: rgba(165,123,54,.18);
+  box-shadow:0 22px 50px -28px rgba(46,45,32,.2), 0 0 0 1px rgba(165,123,54,.06);
+}
+.dash-card-header::after{
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:4px;
+  background:linear-gradient(90deg, var(--olive) 0%, var(--gold) 50%, var(--olive) 100%);
+  pointer-events:none;
+}
+.dash-card-header .dl-cell{display:flex;align-items:center;min-width:0;gap:10px}
 .dash-card-header .dl-date{
-  flex:1;
-  gap:12px;
-  padding:12px 16px;
-  border-radius:16px 0 0 16px;
-  border-right:2px solid var(--line);
-  background:linear-gradient(135deg,rgba(52,60,40,.08),rgba(52,60,40,.03));
+  grid-column: 1;
+  grid-row: 1;
+  gap:14px;
+  padding:18px 20px;
+  border-right:1px solid var(--line);
+  background:linear-gradient(135deg, rgba(58,57,40,.06), rgba(58,57,40,.02));
   min-width:0;
 }
 .dash-card-header .dl-date>b{
   font-family:'Fraunces',serif;
-  font-size:38px;
-  line-height:.94;
+  font-size:42px;
+  line-height:.9;
   font-weight:600;
-  letter-spacing:-1.5px;
-  color:var(--ink);
-  text-shadow:0 2px 4px rgba(0,0,0,.1);
+  letter-spacing:-2px;
+  color:var(--olive);
 }
-.dash-card-header .dl-date>span{
-  font-size:12px;
-  color:var(--mut);
-  letter-spacing:1px;
-}
-.dash-card-header .dl-meta{
-  display:flex;
-  flex-direction:column;
-  gap:1px;
-  min-width:0;
-}
+.dash-card-header .dl-meta{display:flex;flex-direction:column;gap:2px;min-width:0}
 .dash-card-header .dl-hi{
-  font-size:9px;
+  font-size:10px;
   font-weight:800;
   letter-spacing:2px;
-  color:var(--mut);
+  color:var(--gold);
   text-transform:uppercase;
 }
-.dash-card-header .dl-line{
-  font-size:14px;
-  font-weight:700;
-  color:var(--ink);
-  white-space:nowrap;
-}
-.dash-card-header .dl-sub{
-  font-size:10px;
-  opacity:.55;
-  font-weight:600;
-  letter-spacing:.3px;
-  color:var(--mut);
-  white-space:nowrap;
-}
+.dash-card-header .dl-line{font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap}
+.dash-card-header .dl-sub{font-size:10px;color:var(--mut);font-weight:600;white-space:nowrap}
 
-/* Quote box with olive accent */
+/* Quote - center column, row 1 */
 .dash-card-header .dl-quote{
-  align-self:center;
-  padding:14px 20px;
-  margin:0 -20px;
-  background:rgba(255,255,255,.03);
-  border-left:3px solid var(--olive);
-  border-radius:0 16px 16px 0;
+  grid-column: 2;
+  grid-row: 1;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:16px 20px;
+  margin:0;
+  background:transparent;
+  border:none;
+  border-left:1px solid var(--line);
+  border-right:1px solid var(--line);
   min-width:0;
+  position:relative;
 }
 .dash-card-header .dl-quote p{
   color:var(--ink);
   font-size:13.5px;
   line-height:1.55;
-  -webkit-line-clamp:3;
-  display:-webkit-box;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
   font-style:italic;
+  flex:1;
+  min-width:0;
+  margin:0;
 }
 .dash-card-header .dl-quote .th-qmark{
   color:var(--olive);
-  opacity:.9;
-  font-size:26px;
+  opacity:.35;
+  font-size:28px;
   line-height:1;
-  float:right;
-  margin-left:8px;
+  flex:none;
+  font-family:'Fraunces',serif;
+  align-self:flex-start;
+  margin-top:-2px;
 }
 .dash-card-header .dl-quote .th-qby{
   color:var(--mut);
-  opacity:1;
-  align-self:flex-end;
-  font-size:11px;
+  font-size:10px;
   font-weight:600;
-  letter-spacing:1px;
+  letter-spacing:.5px;
+  white-space:nowrap;
+  align-self:flex-end;
 }
 .dash-card-header .dl-quote .th-qrefresh{
-  background:rgba(52,60,40,.1);
-  border:1px solid var(--line);
-  color:var(--ink);
-  padding:6px 12px;
-  border-radius:20px;
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:.8px;
-  text-transform:uppercase;
+  background:var(--sage);
+  border:1px solid #c8d9ce;
+  color:var(--sage-ink);
+  width:32px;
+  height:32px;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  font-size:14px;
   transition:.2s;
   cursor:pointer;
-  margin-left:8px;
+  flex:none;
+  padding:0;
 }
-.dash-card-header .dl-quote .th-qrefresh:hover{
-  background:rgba(52,60,40,.2);
-  transform:rotate(-20deg);
-}
+.dash-card-header .dl-quote .th-qrefresh:hover{background:#d0e2d6;transform:rotate(-30deg)}
 
-/* Time column */
+/* Time - right column, row 1 */
 .dash-card-header .dl-time{
+  grid-column: 3;
+  grid-row: 1;
   gap:12px;
-  padding:12px 16px;
-  border-radius:0 16px 16px 0;
-  border-left:2px solid var(--line);
-  background:linear-gradient(135deg,rgba(52,60,40,.08),rgba(52,60,40,.03));
+  padding:18px 20px;
+  background:linear-gradient(135deg, rgba(58,57,40,.06), rgba(58,57,40,.02));
   justify-content:flex-end;
   text-align:right;
   min-width:0;
 }
 .dash-card-header .dl-clock{
   font-family:'Fraunces',serif;
-  font-size:36px;
+  font-size:34px;
   line-height:1;
   font-weight:600;
   letter-spacing:-1px;
   font-variant-numeric:tabular-nums;
   color:var(--ink);
 }
-.dash-card-header .dl-clock i{
-  font-style:normal;
-  font-size:22px;
-  color:var(--gold);
+.dash-card-header .dl-clock i{font-style:normal;font-size:20px;color:var(--gold)}
+.dash-card-header .dl-timemeta{display:flex;flex-direction:column;gap:2px;align-items:flex-end}
+.dash-card-header .dl-zone{font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--mut);font-weight:800;white-space:nowrap}
+.dash-card-header .dl-zone b{color:var(--olive)}
+.dash-card-header .dl-detail{font-size:11px;color:var(--mut);font-weight:600;white-space:nowrap}
+.dash-card-header .dl-next{font-size:9px;letter-spacing:.6px;color:var(--gold);font-weight:700;white-space:nowrap}
+
+/* Festival row - spans all columns, row 2 */
+.dash-card-header .dl-festival{
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display:grid !important;
+  grid-template-columns: 110px 1fr;
+  gap:18px;
+  align-items:start;
+  padding:18px 20px !important;
+  margin-top:0 !important;
+  border-top:1px solid var(--line) !important;
+  background:linear-gradient(180deg, rgba(223,233,227,.35), rgba(243,232,211,.15));
 }
-.dash-card-header .dl-timemeta{
+.dlf-cal{
   display:flex;
   flex-direction:column;
-  gap:2px;
-  align-items:flex-end;
+  border-radius:14px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 6px 18px -8px rgba(46,45,32,.18);
+  border:1px solid var(--line);
 }
-.dash-card-header .dl-zone{
+.dlf-cal-band{
+  background:linear-gradient(135deg,var(--olive),#5a5840);
+  color:#F6F2E6;
+  text-align:center;
   font-size:9px;
-  letter-spacing:1.6px;
-  text-transform:uppercase;
-  color:var(--mut);
   font-weight:800;
-  white-space:nowrap;
+  letter-spacing:2.5px;
+  padding:7px 4px;
+  text-transform:uppercase;
 }
-.dash-card-header .dl-zone b{color:var(--ink)}
-.dash-card-header .dl-detail{
-  font-size:11px;
-  opacity:.7;
+.dlf-cal-body{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:10px 6px 12px;
+  background:linear-gradient(180deg,#FDFCF8,#F5F1E8);
+}
+.dlf-cal-day{
+  font-family:'Fraunces',serif;
+  font-size:38px;
+  line-height:1;
   font-weight:600;
-  white-space:nowrap;
+  color:var(--olive);
+  letter-spacing:-1.5px;
 }
+.dlf-cal-week{font-size:11px;font-weight:800;color:var(--gold);margin-top:2px}
+.dlf-cal-year{font-size:8px;color:var(--mut);font-weight:700;letter-spacing:1.2px;margin-top:2px;text-transform:uppercase}
+.dlf-main{min-width:0;display:flex;flex-direction:column;gap:4px}
+.dlf-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:2px}
+.dlf-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:5px 12px;border-radius:999px;
+  background:rgba(223,233,227,.9);border:1px solid #b8d4c3;
+  font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--sage-ink);
+}
+.dlf-emoji{font-size:15px;line-height:1}
+.dlf-today-chip{font-size:9px;font-weight:800;letter-spacing:1.4px;color:var(--gold);text-transform:uppercase}
+.dlf-main h3{font-family:'Fraunces',serif;font-size:24px;font-weight:600;letter-spacing:-.4px;line-height:1.1;color:var(--ink);margin:0}
+.dlf-name-en{font-size:9.5px;font-weight:800;letter-spacing:2.2px;text-transform:uppercase;color:var(--gold);opacity:.9}
+.dlf-greet-hi{font-size:13px;line-height:1.55;font-weight:600;color:var(--ink);margin:4px 0 0;max-width:640px}
+.dlf-greet-en{font-size:11px;line-height:1.45;color:var(--mut);margin:0;max-width:600px}
 
 /* ============ Festival Card ============ */
 .dash-card-festival{
@@ -2660,90 +2685,27 @@ body.locked>.quick-add-dock{visibility:hidden}
   width:100%;
   margin-top:auto;
 
-/* ============ Responsive ============ */
-@media (max-width:768px){
-  .dash-card-header .dl-cell{flex-direction:column;align-items:flex-start;gap:6px}
-  .dash-card-header .dl-date{border-right:none;border-bottom:1px solid var(--line);padding:10px 14px}
-  .dash-card-header .dl-date>b{font-size:32px}
-  .dash-card-header .dl-time{border-left:none;border-top:1px solid var(--line);padding:10px 14px;justify-content:flex-start;text-align:left}
+/* ============ Responsive - Unified Header ============ */
+@media (max-width:900px){
+  .dash-card-header{grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto;}
+  .dash-card-header .dl-date{grid-column:1; grid-row:1; border-right:none; border-bottom:1px solid var(--line);}
+  .dash-card-header .dl-time{grid-column:2; grid-row:1; border-left:1px solid var(--line); justify-content:flex-end;}
+  .dash-card-header .dl-quote{grid-column:1/-1; grid-row:2; border-left:none; border-right:none; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .dash-card-header .dl-festival{grid-column:1/-1; grid-row:3;}
+}
+@media (max-width:640px){
+  .dash-card-header{grid-template-columns: 1fr; grid-template-rows: auto auto auto auto;}
+  .dash-card-header .dl-date{grid-column:1; grid-row:1; border-bottom:1px solid var(--line);}
+  .dash-card-header .dl-quote{grid-column:1; grid-row:2; border-top:none;}
+  .dash-card-header .dl-time{grid-column:1; grid-row:3; border-left:none; border-top:1px solid var(--line); justify-content:flex-start; text-align:left;}
   .dash-card-header .dl-timemeta{align-items:flex-start}
-  .dash-card-festival{grid-template-columns:1fr}
-  .dash-card-festival .th-cal{transform:none;margin:0 0 12px}
-  .dash-card-upcoming .th-up-item{padding:8px 10px}
-}
-
-@media (max-width:560px){
-  .dash-card-header .dl-quote .th-qby{display:none}
-  .dash-card-header .dl-clock{font-size:28px}
-}
-.dash-card-header .dl-quote .th-qby{color:var(--mut);opacity:1;align-self:center}
-.dash-card-header .dl-quote .th-qrefresh{background:rgba(0,0,0,.06);border-color:var(--line);color:var(--ink);transition:.18s;cursor:pointer}
-.dash-card-header .dl-quote .th-qrefresh:hover{background:rgba(0,0,0,.1);transform:rotate(-40deg)}
-.dash-card-header .dl-time{gap:12px;padding:11px 18px 12px;border-left:1px solid var(--line);background:var(--panel);justify-content:flex-end;text-align:right}
-.dash-card-header .dl-clock{font-family:'Fraunces',serif;font-size:37px;line-height:1;font-weight:600;letter-spacing:-1px;font-variant-numeric:tabular-nums;color:var(--ink)}
-.dash-card-header .dl-clock i{font-style:normal;font-size:21px;color:var(--gold)}
-.dash-card-header .dl-timemeta{display:flex;flex-direction:column;gap:2px;align-items:flex-end}
-.dash-card-header .dl-zone{font-size:9.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--mut);font-weight:800;white-space:nowrap}
-.dash-card-header .dl-zone b{color:var(--ink)}
-.dash-card-header .dl-detail{font-size:11px;opacity:.8;font-weight:600;white-space:nowrap}
-.dash-card-header .dl-next{font-size:9px;letter-spacing:.8px;color:var(--mut);font-weight:800;white-space:nowrap}
-/* festival card internal */
-.dash-card-festival{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px;align-items:start}
-.dash-card-festival .th-cal{position:relative;align-self:start;margin:0;width:96px;display:flex;flex-direction:column;border-radius:var(--r);overflow:hidden;background:var(--panel);box-shadow:0 4px 12px -4px rgba(46,45,32,.1);transform:rotate(-1.1deg)}
-.dash-card-festival .th-cal-band{background:var(--olive);color:#F6F2E6;text-align:center;font-size:9.5px;font-weight:800;letter-spacing:2.6px;padding:7px 4px;text-transform:uppercase}
-.dash-card-festival .th-cal-body{display:flex;flex-direction:column;align-items:center;padding:10px 6px 12px;background:linear-gradient(180deg,#FBFAF5,#F1EFE6)}
-.dash-card-festival .th-cal-day{font-family:'Fraunces',serif;font-size:42px;line-height:1;font-weight:600;color:var(--olive);letter-spacing:-2px}
-.dash-card-festival .th-cal-week{font-size:12px;font-weight:800;color:#B18A3E;margin-top:4px}
-.dash-card-festival .th-cal-year{font-size:8px;color:#8E8C7C;font-weight:700;letter-spacing:1.6px;margin-top:3px;text-transform:uppercase}
-.dash-card-festival .th-main{padding:0;min-width:0;display:flex;flex-direction:column;gap:3px}
-.dash-card-festival .th-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:1px}
-.dash-card-festival .th-badge{display:inline-flex;align-items:center;gap:7px;padding:4px 11px;border-radius:999px;background:var(--sage);border:1px solid #D3E9DD;font-size:9.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--sage-ink)}
-.dash-card-festival .th-badge .th-emoji{font-size:14px;line-height:1}
-.dash-card-festival .th-today-chip{font-size:8.5px;font-weight:800;letter-spacing:1.6px;color:var(--gold);text-transform:uppercase}
-.dash-card-festival .th-main h3{font-family:'Fraunces',serif;font-size:24px;font-weight:600;letter-spacing:-.5px;line-height:1.05;color:var(--ink);margin-top:2px}
-.dash-card-festival .th-name-en{font-size:9.5px;font-weight:800;letter-spacing:2.4px;text-transform:uppercase;color:var(--gold);opacity:.95;margin-bottom:3px}
-.dash-card-festival .th-greet-hi{font-size:12px;line-height:1.5;font-weight:600;color:var(--ink);opacity:.92;max-width:560px}
-.dash-card-festival .th-greet-en{font-size:10px;line-height:1.45;color:var(--mut);opacity:.8;max-width:520px}
-/* upcoming card */
-.dash-card-upcoming .th-up-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:10px}
-.dash-card-upcoming .th-up-head span{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
-.dash-card-upcoming .th-up-head small{font-size:8px;opacity:.55;letter-spacing:1px;text-transform:uppercase;color:var(--mut)}
-.dash-card-upcoming .th-up-list{display:flex;flex-direction:column;gap:7px}
-.dash-card-upcoming .th-up-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:11px;background:var(--bg);border:1px solid var(--line);text-align:left;transition:.16s;cursor:pointer;width:100%}
-.dash-card-upcoming .th-up-item:hover{background:#fff;border-color:var(--gold);transform:translateY(-1px)}
-.dash-card-upcoming .th-up-emoji{font-size:16px;line-height:1;flex:none}
-.dash-card-upcoming .th-up-copy{min-width:0;flex:1;display:flex;flex-direction:column;gap:1px}
-.dash-card-upcoming .th-up-copy b{font-size:11.5px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dash-card-upcoming .th-up-copy span{font-size:9.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dash-card-upcoming .th-up-days{flex:none;font-size:8.5px;font-weight:800;padding:3px 8px;border-radius:99px;background:var(--gold-soft);border:1px solid #EEDDB3;color:#7A5A23;white-space:nowrap}
-.dash-card-upcoming .th-up-empty{font-size:11px;color:var(--mut);line-height:1.5;padding:8px 0}
-/* status card */
-.dash-card-status{display:flex;flex-direction:column;gap:10px}
-.dash-card-status .th-brand{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:0;text-align:center;background:transparent;border:none}
-.dash-card-status .th-logo{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:700;font-size:15px;letter-spacing:1.2px;color:#fff;background:linear-gradient(150deg,var(--gold) 0%,#8C6628 100%);box-shadow:0 8px 20px -8px rgba(165,123,54,.4)}
-.dash-card-status .th-brand-name{font-family:'Fraunces',serif;font-size:14px;color:var(--ink);line-height:1.2;font-weight:600}
-.dash-card-status .th-brand-sub{font-size:8px;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold);font-weight:800;opacity:.9}
-.dash-card-status .th-handle{font-size:11px;color:var(--mut);font-weight:600}
-.dash-card-status .th-brand-actions{display:flex;flex-direction:column;gap:6px;width:100%;margin-top:6px}
-.dash-card-status .th-tool{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 12px;border-radius:9px;font-size:11.5px;font-weight:700;color:var(--ink);background:var(--bg);border:1px solid var(--line);transition:.18s;cursor:pointer;width:100%}
-.dash-card-status .th-tool:hover{background:#fff;border-color:var(--gold);color:var(--gold)}
-.dash-card-status .th-tool.primary{background:var(--olive);color:#F6F2E7;border-color:var(--olive)}
-.dash-card-status .th-tool.primary:hover{background:#252417;color:#F6F2E7}
-.dash-card-status .th-tool.ghost{background:transparent;border-color:var(--line)}
-.dash-card-status .th-watermark{font-size:7.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--mut);font-weight:700;padding-top:8px;border-top:1px solid var(--line);width:100%;margin-top:auto}
-/* responsive */
-@media (max-width:768px){
-  .dash-card-header .dl-cell{flex-direction:column;align-items:flex-start;gap:6px}
-  .dash-card-header .dl-date{border-right:none;border-bottom:1px solid var(--line);padding:10px 14px}
   .dash-card-header .dl-date>b{font-size:34px}
-  .dash-card-header .dl-time{border-left:none;border-top:1px solid var(--line);padding:10px 14px;justify-content:flex-start;text-align:left}
-  .dash-card-header .dl-timemeta{align-items:flex-start}
-  .dash-card-festival{grid-template-columns:1fr}
-  .dash-card-festival .th-cal{transform:none;margin:0 0 10px}
-}
-@media (max-width:560px){
+  .dash-card-header .dl-clock{font-size:28px}
   .dash-card-header .dl-quote .th-qby{display:none}
-  .dash-card-header .dl-clock{font-size:30px}
+  .dash-card-header .dl-festival{grid-column:1; grid-row:4; grid-template-columns:1fr; text-align:center;}
+  .dlf-cal{max-width:120px; margin:0 auto;}
+  .dlf-top{justify-content:center}
+  .dlf-greet-hi,.dlf-greet-en{max-width:none}
 }
 
 /* ---- 1. dayline: date (left) · motivation (centre) · live time (right) ---- */\n.dayline{\n  position:relative;isolation:isolate;overflow:hidden;display:grid;\n  grid-template-columns:minmax(0,auto) minmax(0,1fr) minmax(0,auto);align-items:stretch;\n  margin:0 0 16px;border-radius:20px;color:#FFF9EC;\n  border:1px solid rgba(255,255,255,.28);\n  background:linear-gradient(120deg,var(--th-bg1,#B2482A) 0%,var(--th-bg2,#D9832F) 70%,var(--th-bg1,#B2482A) 100%);\n  box-shadow:0 22px 50px -40px rgba(72,37,18,.9),inset 0 1px 0 rgba(255,255,255,.2);\n}\n.dayline:before{content:\"\";position:absolute;right:-90px;top:-150px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.3),transparent 68%);z-index:-1;pointer-events:none}\n.dl-cell{display:flex;align-items:center;min-width:0}\n.dl-date{gap:12px;padding:11px 18px 12px;border-right:1px solid rgba(255,255,255,.16);background:rgba(28,18,8,.16);min-width:0}\n.dl-date>b{font-family:'Fraunces',serif;font-size:40px;line-height:.92;font-weight:600;letter-spacing:-1.6px;color:#FFF9EC;text-shadow:0 6px 18px rgba(0,0,0,.35)}\n.dl-meta{display:flex;flex-direction:column;gap:2px;min-width:0}\n.dl-hi{font-size:10px;font-weight:800;letter-spacing:2.2px;color:var(--th-accent,#FFD98F);text-transform:uppercase;opacity:.95}\n.dl-line{font-size:13px;font-weight:700;color:#FFF9EC;white-space:nowrap}\n.dl-sub{font-size:10px;opacity:.62;font-weight:600;letter-spacing:.3px;white-space:nowrap}\n.dl-quote{justify-content:center;padding:10px 18px!important;margin:0!important;max-width:none!important;min-width:0;background:transparent!important;border:none!important;border-radius:0!important}\n.dl-quote p{color:#FFF9EC;font-size:13px;line-height:1.5;-webkit-line-clamp:2;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}\n.dl-quote .th-qmark{color:var(--th-accent,#FFD98F);opacity:.95;font-size:23px}\n.dl-quote .th-qby{color:rgba(246,242,231,.55);opacity:1;align-self:center}\n.dl-quote .th-qrefresh{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.22);color:var(--ink);transition:.18s;cursor:pointer}\n.dl-quote .th-qrefresh:hover{background:rgba(255,255,255,.28);transform:rotate(-40deg)}\n.dl-time{gap:12px;padding:11px 18px 12px;border-left:1px solid rgba(255,255,255,.16);background:rgba(28,18,8,.16);justify-content:flex-end;text-align:right}\n.dl-clock{font-family:'Fraunces',serif;font-size:37px;line-height:1;font-weight:600;letter-spacing:-1px;font-variant-numeric:tabular-nums;color:#FFF9EC}\n.dl-clock i{font-style:normal;font-size:21px;color:var(--th-accent,#FFD98F)}\n.dl-timemeta{display:flex;flex-direction:column;gap:2px;align-items:flex-end}\n.dl-zone{font-size:9.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--th-accent,#FFD98F);font-weight:800;white-space:nowrap}\n.dl-zone b{color:#FFF9EC}\n.dl-detail{font-size:11px;opacity:.8;font-weight:600;white-space:nowrap;color:#FFF9EC}\n.dl-next{font-size:9px;letter-spacing:.8px;color:var(--th-accent,#FFD98F);font-weight:800;white-space:nowrap}\n\n/* ---- shared: quote + tools (used by dayline centre & brand rail) ---- */\n.th-quote{position:relative;display:flex;align-items:flex-start;gap:10px;padding:9px 11px 9px 12px;border-radius:var(--r);background:var(--panel);border:1px solid var(--line);max-width:680px;margin-top:9px}\n.th-qmark{font-family:'Fraunces',serif;font-size:25px;line-height:.82;color:var(--olive);opacity:.9;flex:none}\n.th-quote p{font-size:12.5px;line-height:1.5;font-style:italic;flex:1;min-width:0;color:inherit}\n.th-qby{font-size:9px;letter-spacing:.8px;text-transform:uppercase;color:rgba(246,242,231,.55);opacity:1;align-self:flex-end;white-space:nowrap}\n.th-qrefresh{flex:none;width:26px;height:26px;border-radius:var(--r);display:grid;place-items:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);font-size:14px;color:var(--ink);transition:.18s;cursor:pointer}\n.th-qrefresh:hover{background:rgba(255,255,255,.28);transform:rotate(-40deg)}\n.th-quote.swap p{animation:thQuoteSwap .42s cubic-bezier(.2,.8,.3,1)}\n@keyframes thQuoteSwap{0%{opacity:0;transform:translateY(5px)}100%{opacity:1;transform:none}}\n.th-tool{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:6px 12px;border-radius:var(--r);font-size:11.5px;font-weight:700;color:var(--ink);background:rgba(246,242,231,.12);border:1px solid rgba(255,255,255,.22);transition:.18s;cursor:pointer}\n.th-tool:hover{background:rgba(246,242,231,.22)}\n.th-tool.primary{background:var(--olive);color:#F6F2E7;border-color:var(--olive)}\n.th-tool.primary:hover{background:#fff}\n.th-tool.ghost{background:transparent;border-color:rgba(255,255,255,.3)}\n\n/* ---- 2. greeting creative (calendar poster card) + desk pulse ---- */\n.dash-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(268px,330px);gap:14px;margin:0 0 20px;align-items:stretch}\n.today-hero{\n  position:relative;isolation:isolate;overflow:hidden;margin:0;height:100%;\n  display:grid;grid-template-columns:112px minmax(0,1fr) 168px;\n  color:#FFF9EC;border:1px solid rgba(255,255,255,.28);\n  border-radius:26px;\n  background:linear-gradient(125deg,var(--th-bg1,#B2482A) 0%,var(--th-bg2,#D9832F) 62%,var(--th-bg1,#B2482A) 100%);\n  box-shadow:0 30px 70px -44px rgba(72,37,18,.85),inset 0 1px 0 rgba(255,255,255,.22);\n}\n.today-hero:before{content:\"\";position:absolute;right:-120px;top:-170px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),rgba(255,255,255,.08) 42%,transparent 68%);z-index:-1;pointer-events:none}\n/* calendar page */\n.th-cal{position:relative;align-self:center;margin-left:14px;width:96px;display:flex;flex-direction:column;border-radius:15px;overflow:hidden;background:#F6F2E7;box-shadow:0 18px 34px -16px rgba(0,0,0,.6),inset 0 0 0 1px rgba(46,45,32,.08);transform:rotate(-1.1deg)}\n.th-cal-band{background:#2E2D20;color:#E9D8A6;text-align:center;font-size:9.5px;font-weight:800;letter-spacing:2.6px;padding:7px 4px;text-transform:uppercase}\n.th-cal-body{display:flex;flex-direction:column;align-items:center;padding:10px 6px 12px;background:linear-gradient(180deg,#FBFAF5,#F1EFE6)}\n.th-cal-day{font-family:'Fraunces',serif;font-size:42px;line-height:1;font-weight:600;color:#2E2D20;letter-spacing:-2px}\n.th-cal-week{font-size:12px;font-weight:800;color:#B18A3E;margin-top:4px}\n.th-cal-year{font-size:8px;color:#8E8C7C;font-weight:700;letter-spacing:1.6px;margin-top:3px;text-transform:uppercase}\n/* centre creative */\n.th-main{padding:15px 4px 13px 16px;min-width:0;display:flex;flex-direction:column;gap:3px}\n.th-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:1px}\n.th-badge{display:inline-flex;align-items:center;gap:7px;padding:4px 11px;border-radius:999px;background:rgba(246,242,231,.1);border:1px solid rgba(246,242,231,.22);font-size:9.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#F6F2E7}\n.th-badge .th-emoji{font-size:14px;line-height:1}\n.th-today-chip{font-size:8.5px;font-weight:800;letter-spacing:1.6px;color:#C49A3E;text-transform:uppercase}\n.th-main h3{font-family:'Fraunces',serif;font-size:29px;font-weight:600;letter-spacing:-.5px;line-height:1.05;color:#F6F2E7;text-shadow:0 6px 18px rgba(0,0,0,.4);margin-top:2px}\n.th-name-en{font-size:9.5px;font-weight:800;letter-spacing:2.4px;text-transform:uppercase;color:#C49A3E;opacity:.95;margin-bottom:3px}\n.th-greet-hi{font-size:12px;line-height:1.5;font-weight:600;color:#F6F2E7;opacity:.92;max-width:560px}\n.th-greet-en{font-size:10px;line-height:1.45;color:#EDE9DC;opacity:.64;max-width:520px}\n.th-upcoming{margin-top:auto;padding-top:9px;border-top:1px solid rgba(246,242,231,.14)}\n.th-up-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:6px}\n.th-up-head span{font-size:8.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#C49A3E}\n.th-up-head small{font-size:8px;opacity:.55;letter-spacing:1px;text-transform:uppercase;color:#F6F2E7}\n.th-up-list{display:flex;gap:7px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}\n.th-up-list::-webkit-scrollbar{display:none}\n.th-up-item{flex:none;display:flex;align-items:center;gap:7px;padding:6px 9px;border-radius:11px;background:rgba(246,242,231,.07);border:1px solid rgba(246,242,231,.13);text-align:left;transition:.16s;color:inherit;cursor:pointer}\n.th-up-item:hover{background:rgba(246,242,231,.14);transform:translateY(-1px)}\n.th-up-emoji{font-size:15px;line-height:1}\n.th-up-copy{min-width:0;display:flex;flex-direction:column;gap:1px}\n.th-up-copy b{font-size:10.5px;color:#F6F2E7;white-space:nowrap;max-width:130px;overflow:hidden;text-overflow:ellipsis}\n.th-up-copy span{font-size:8.5px;color:#EDE9DC;opacity:.55;white-space:nowrap}\n.th-up-days{flex:none;font-size:8px;font-weight:800;padding:2px 6px;border-radius:99px;background:rgba(196,154,62,.18);border:1px solid rgba(196,154,62,.4);color:#E9D8A6;white-space:nowrap}\n.th-up-empty{font-size:10px;color:#EDE9DC;opacity:.65;line-height:1.5}\n/* brand rail */\n.th-brand{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:14px 14px 11px;border-left:1px solid rgba(246,242,231,.14);background:rgba(0,0,0,.18);text-align:center}\n.th-logo{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;letter-spacing:1.6px;color:#2E2D20;background:linear-gradient(150deg,#E9D8A6 0%,#C49A3E 58%,#8C6628 100%);box-shadow:0 14px 30px -12px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.6)}\n.th-brand-name{font-family:'Fraunces',serif;font-size:13.5px;color:#F6F2E7;line-height:1.2}\n.th-brand-sub{font-size:7px;letter-spacing:2.1px;text-transform:uppercase;color:#C49A3E;font-weight:800;opacity:.95}\n.th-handle{font-size:11px;color:#F6F2E7;opacity:.85;font-weight:700}\n.th-brand-actions{display:flex;flex-direction:column;gap:6px;width:100%;margin-top:9px}\n.th-brand-actions .th-tool{justify-content:center;font-size:10.5px;padding:8px 8px}\n.th-watermark{margin-top:auto;font-size:7px;letter-spacing:2.2px;text-transform:uppercase;color:rgba(246,242,231,.38);font-weight:800;padding-top:9px;border-top:1px solid rgba(246,242,231,.12);width:100%}
@@ -3167,7 +3129,7 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
           </div>
         </div>
         <!-- Festival integrated below the quote/time -->
-        <div class="dl-cell dl-festival" style="grid-column:1/-1; margin-top:12px; padding-top:12px; border-top:1px solid var(--line);">
+        <div class="dl-cell dl-festival">
           <div class="dlf-cal" aria-hidden="true">
             <div class="dlf-cal-band" id="thCalMonthMerged">NOVEMBER</div>
             <div class="dlf-cal-body">
@@ -6837,26 +6799,26 @@ function tickClock(){
   const m = $('#dlMeridiem'); if(m) m.textContent = meridiem;
 }
 function renderDailyHero(){
-  const hero = $('#todayHero');
-  if(!hero) return;
+  // Support both old (#todayHero) and new merged (#dashHeadline) layouts
+  if(!$('#todayHero') && !$('#dashHeadline')) return;
   const now = new Date();
   const iso = todayISO();
   const fest = festivalByDate(iso) || virtualTodayFestival();
   const isFestDay = !!festivalByDate(iso);
   const upcoming3 = upcomingFestivals(3, iso);
   const nextFest = upcoming3[0] || null;
+  const setText = (ids, val) => ids.forEach(id => { const el = $('#'+id); if(el) el.textContent = val; });
 
-  if($('#thWeekdayHi')) $('#thWeekdayHi').textContent = HINDI_WEEKDAYS[now.getDay()];
-  if($('#thWeekdayEn')) $('#thWeekdayEn').textContent = now.toLocaleDateString('en-IN', { weekday:'long' });
-  if($('#thDay')) $('#thDay').textContent = String(now.getDate()).padStart(2, '0');
-  if($('#thMonth')) $('#thMonth').textContent = now.toLocaleDateString('en-IN', { month:'long', year:'numeric' });
-  if($('#thMonthHi')) $('#thMonthHi').textContent = HINDI_MONTHS[now.getMonth()] + ' · ' + now.getFullYear();
-  // calendar creative block
-  if($('#thCalMonth')) $('#thCalMonth').textContent = now.toLocaleDateString('en-IN', { month:'long' }).toUpperCase();
-  if($('#thCalDay')) $('#thCalDay').textContent = String(now.getDate()).padStart(2, '0');
-  if($('#thCalWeek')) $('#thCalWeek').textContent = HINDI_WEEKDAYS[now.getDay()];
-  if($('#thCalYear')) $('#thCalYear').textContent = now.toLocaleDateString('en-IN', { weekday:'long' }) + ' · ' + now.getFullYear();
-  // right: time details
+  setText(['thWeekdayHi','thCalWeek','thCalWeekMerged'], HINDI_WEEKDAYS[now.getDay()]);
+  setText(['thWeekdayEn'], now.toLocaleDateString('en-IN', { weekday:'long' }));
+  setText(['thDay','thCalDay','thCalDayMerged'], String(now.getDate()).padStart(2, '0'));
+  setText(['thMonth'], now.toLocaleDateString('en-IN', { month:'long', year:'numeric' }));
+  setText(['thMonthHi'], HINDI_MONTHS[now.getMonth()] + ' · ' + now.getFullYear());
+  const monthUpper = now.toLocaleDateString('en-IN', { month:'long' }).toUpperCase();
+  setText(['thCalMonth','thCalMonthMerged'], monthUpper);
+  const yearStr = now.toLocaleDateString('en-IN', { weekday:'long' }) + ' · ' + now.getFullYear();
+  setText(['thCalYear','thCalYearMerged'], yearStr);
+
   const det = $('#dlDetail');
   if(det) det.textContent = now.toLocaleDateString('en-IN', { weekday:'short', day:'2-digit', month:'short' }) + ' · Week ' + dlWeekNumber(now);
   const dlNext = $('#dlNext');
@@ -6869,13 +6831,13 @@ function renderDailyHero(){
   }
   tickClock();
 
-  if($('#thEmoji')) $('#thEmoji').textContent = fest.emoji || '✨';
-  if($('#thFestivalName')) $('#thFestivalName').textContent = fest.name || 'Aaj';
-  if($('#thTodayChip')) $('#thTodayChip').textContent = isFestDay ? 'Aaj · Today' : 'Aaj · Today';
-  if($('#thFestivalHi')) $('#thFestivalHi').textContent = fest.hi || fest.name || 'आज का दिन';
-  if($('#thFestivalEn')) $('#thFestivalEn').textContent = [fest.en || fest.name, fest.note].filter(Boolean).join(' · ');
-  if($('#thGreetHi')) $('#thGreetHi').textContent = fest.greetHi || 'आज का दिन शुभ हो।';
-  if($('#thGreetEn')) $('#thGreetEn').textContent = fest.greetEn || 'Have a blessed day.';
+  setText(['thEmoji','thEmojiMerged'], fest.emoji || '✨');
+  setText(['thFestivalName','thFestivalNameMerged'], fest.name || 'Aaj');
+  setText(['thTodayChip','thTodayChipMerged'], isFestDay ? 'Aaj · Today' : 'Aaj · Today');
+  setText(['thFestivalHi','thFestivalHiMerged'], fest.hi || fest.name || 'आज का दिन');
+  setText(['thFestivalEn','thFestivalEnMerged'], [fest.en || fest.name, fest.note].filter(Boolean).join(' · '));
+  setText(['thGreetHi','thGreetHiMerged'], fest.greetHi || 'आज का दिन शुभ हो।');
+  setText(['thGreetEn','thGreetEnMerged'], fest.greetEn || 'Have a blessed day.');
 
   const q = dailyQuoteRecord();
   if($('#thQuote')) $('#thQuote').textContent = q.text || '';
