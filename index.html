@@ -2295,9 +2295,8 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
 
 /* ---- 7. v15 responsive ---- */
 @media (max-width:1180px){
-  .dash-split{grid-template-columns:minmax(0,1fr) 290px}
   .today-hero{grid-template-columns:100px minmax(0,1fr)}
-  .th-brand{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;gap:12px;border-left:none;border-top:1px solid rgba(246,242,231,.14);padding:9px 16px}
+  .th-brand{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;gap:12px;border-left:none;border-top:1px solid var(--line);padding:9px 16px}
   .th-logo{width:40px;height:40px;border-radius:11px;font-size:12.5px}
   .th-brand-name{display:none}
   .th-brand-sub{display:none}
@@ -2307,11 +2306,10 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
 }
 @media (max-width:980px){
   .dayline{grid-template-columns:auto minmax(0,1fr)}
-  .dl-time{grid-column:1/-1;justify-content:space-between;gap:16px;border-left:none;border-top:1px solid rgba(246,242,231,.12);text-align:left;padding:9px 18px}
+  .dl-time{grid-column:1/-1;justify-content:space-between;gap:16px;border-left:none;border-top:1px solid var(--line);text-align:left;padding:9px 18px}
   .dl-timemeta{align-items:flex-start}
-  .dash-split{grid-template-columns:1fr}
-  .dash-split .pulse-strip{grid-template-columns:repeat(4,1fr)}
-  .dash-split .pulse-card{padding:11px}
+  .pulse-strip{grid-template-columns:repeat(4,1fr)}
+  .pulse-card{padding:11px}
   .an-grid{grid-template-columns:1fr}
   .cf-grid{grid-template-columns:1fr}
 }
@@ -2323,7 +2321,7 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
   .toolpop{left:54px;right:auto;top:50%;bottom:auto;transform:translateY(-50%);width:min(310px,calc(100vw - 66px));max-height:calc(100vh - 48px);overflow-y:auto;overscroll-behavior:contain}
   main{padding-bottom:126px!important}
   .dayline{grid-template-columns:1fr;border-radius:16px}
-  .dl-date{border-right:none;border-bottom:1px solid rgba(246,242,231,.12);padding:10px 14px;gap:10px}
+  .dl-date{border-right:none;border-bottom:1px solid var(--line);padding:10px 14px;gap:10px}
   .dl-date>b{font-size:34px}
   .dl-line{font-size:12px}
   .dl-quote{padding:8px 14px!important;justify-content:flex-start}
@@ -2339,9 +2337,9 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
   .th-cal-year{margin-top:0}
   .th-main{padding:13px 16px 14px}
   .th-main h3{font-size:24px}
-  .th-brand{padding:10px 14px}
+  .th-brand{padding:10px 14px;border-left:none;border-top:1px solid var(--line)}
   .th-brand-actions{flex:1;justify-content:flex-end}
-  .dash-split .pulse-strip{grid-template-columns:1fr 1fr}
+  .pulse-strip{grid-template-columns:1fr 1fr}
   .an-insights{grid-template-columns:1fr}
   .fld-row{grid-template-columns:1fr auto auto}
   .fld-row .fld-main{grid-column:1/-1}
@@ -2520,7 +2518,7 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
       </div>
     </div>
 
-    <!-- v15: dayline (date · motivation · live time) → greeting creative + desk pulse → corridors → type cards -->
+    <!-- v15: dayline (date · motivation · live time) → greeting creative → pulse strip → corridors → type cards -->
     <div class="dayline" id="dashHeadline" aria-label="Aaj ka din — date, motivation aur time">
       <div class="dl-cell dl-date">
         <b id="thDay">08</b>
@@ -2546,69 +2544,67 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
       </div>
     </div>
 
-    <div class="dash-split">
-      <section class="today-hero" id="todayHero" aria-label="Aaj ka festival — ek calendar poster jaisi creative, WhatsApp-shareable">
-        <div class="th-cal" aria-hidden="true">
-          <div class="th-cal-band" id="thCalMonth">NOVEMBER</div>
-          <div class="th-cal-body">
-            <b class="th-cal-day" id="thCalDay">08</b>
-            <span class="th-cal-week" id="thCalWeek">रविवार</span>
-            <span class="th-cal-year" id="thCalYear">Sunday · 2026</span>
-          </div>
+    <section class="today-hero" id="todayHero" aria-label="Aaj ka festival — ek calendar poster jaisi creative, WhatsApp-shareable">
+      <div class="th-cal" aria-hidden="true">
+        <div class="th-cal-band" id="thCalMonth">NOVEMBER</div>
+        <div class="th-cal-body">
+          <b class="th-cal-day" id="thCalDay">08</b>
+          <span class="th-cal-week" id="thCalWeek">रविवार</span>
+          <span class="th-cal-year" id="thCalYear">Sunday · 2026</span>
         </div>
-
-        <div class="th-main">
-          <div class="th-top">
-            <span class="th-badge"><span class="th-emoji" id="thEmoji">🪔</span><span id="thFestivalName">Diwali</span></span>
-            <span class="th-today-chip" id="thTodayChip">Aaj · Today</span>
-          </div>
-          <h3 id="thFestivalHi">दीपावली</h3>
-          <div class="th-name-en" id="thFestivalEn">Diwali · Lakshmi Puja</div>
-          <p class="th-greet-hi" id="thGreetHi">दीपों की रोशनी, माँ लक्ष्मी की कृपा — आपका जीवन सदा उजालों से भरा रहे।</p>
-          <p class="th-greet-en" id="thGreetEn">Lights of diyas, grace of Maa Lakshmi — may your life always shine bright.</p>
-          <div class="th-upcoming" aria-label="Upcoming festivals">
-            <div class="th-up-head"><span>Coming up</span><small>next 3</small></div>
-            <div class="th-up-list" id="thUpcoming"></div>
-          </div>
-        </div>
-
-        <aside class="th-brand">
-          <div class="th-logo" aria-hidden="true">BCS</div>
-          <b class="th-brand-name">Business City Square</b>
-          <span class="th-brand-sub">Jaipur Property Intelligence</span>
-          <span class="th-handle">@ajaysharma.bcs</span>
-          <div class="th-brand-actions">
-            <button type="button" class="th-tool primary" id="thSharePoster" title="WhatsApp Share poster — 1080×1920 status">WhatsApp share</button>
-            <button type="button" class="th-tool" id="thRefreshQuote" title="Change the motivation line in this card only">↻ New motivation</button>
-            <button type="button" class="th-tool ghost" id="thManage" style="display:none">⚙ Manage</button>
-          </div>
-          <span class="th-watermark">BCS · Business City Square · Jaipur</span>
-        </aside>
-      </section>
-
-      <div class="pulse-strip" id="pulseStrip" aria-label="Aaj ka desk pulse">
-        <button type="button" class="pulse-card pulse-task" data-goto="dayplan" title="Day plan kholein">
-          <span class="pulse-ic">◷</span>
-          <span class="pulse-copy"><b id="pulseTasks">0</b><span id="pulseTaskSub">Tasks today</span></span>
-          <span class="pulse-tag ok" id="pulseTaskTag">Plan</span>
-          <span class="pulse-meter"><i id="pulseTaskBar"></i></span>
-        </button>
-        <button type="button" class="pulse-card pulse-follow" data-goto="clients" title="Client follow-ups kholein">
-          <span class="pulse-ic">☎</span>
-          <span class="pulse-copy"><b id="pulseFollow">0</b><span id="pulseFollowSub">Follow-ups due</span></span>
-          <span class="pulse-tag ok" id="pulseFollowTag">All clear</span>
-        </button>
-        <button type="button" class="pulse-card pulse-new" data-goto="projects" title="Naye projects dekhein">
-          <span class="pulse-ic">✦</span>
-          <span class="pulse-copy"><b id="pulseNew">0</b><span id="pulseNewSub">New this week</span></span>
-          <span class="pulse-tag" id="pulseNewTag">Pipeline</span>
-        </button>
-        <button type="button" class="pulse-card pulse-focus" data-goto="dayplan" title="Aaj ka next task">
-          <span class="pulse-ic">▶</span>
-          <span class="pulse-copy"><b id="pulseNext">Add a task</b><span id="pulseNextSub">plan your day</span></span>
-        </button>
       </div>
-    </div>
+
+      <div class="th-main">
+        <div class="th-top">
+          <span class="th-badge"><span class="th-emoji" id="thEmoji">🪔</span><span id="thFestivalName">Diwali</span></span>
+          <span class="th-today-chip" id="thTodayChip">Aaj · Today</span>
+        </div>
+        <h3 id="thFestivalHi">दीपावली</h3>
+        <div class="th-name-en" id="thFestivalEn">Diwali · Lakshmi Puja</div>
+        <p class="th-greet-hi" id="thGreetHi">दीपों की रोशनी, माँ लक्ष्मी की कृपा — आपका जीवन सदा उजालों से भरा रहे।</p>
+        <p class="th-greet-en" id="thGreetEn">Lights of diyas, grace of Maa Lakshmi — may your life always shine bright.</p>
+        <div class="th-upcoming" aria-label="Upcoming festivals">
+          <div class="th-up-head"><span>Coming up</span><small>next 3</small></div>
+          <div class="th-up-list" id="thUpcoming"></div>
+        </div>
+      </div>
+
+      <aside class="th-brand">
+        <div class="th-logo" aria-hidden="true">BCS</div>
+        <b class="th-brand-name">Business City Square</b>
+        <span class="th-brand-sub">Jaipur Property Intelligence</span>
+        <span class="th-handle">@ajaysharma.bcs</span>
+        <div class="th-brand-actions">
+          <button type="button" class="th-tool primary" id="thSharePoster" title="WhatsApp Share poster — 1080×1920 status">WhatsApp share</button>
+          <button type="button" class="th-tool" id="thRefreshQuote" title="Change the motivation line in this card only">↻ New motivation</button>
+          <button type="button" class="th-tool ghost" id="thManage" style="display:none">⚙ Manage</button>
+        </div>
+        <span class="th-watermark">BCS · Business City Square · Jaipur</span>
+      </aside>
+    </section>
+
+    <div class="pulse-strip" id="pulseStrip" aria-label="Aaj ka desk pulse">
+      <button type="button" class="pulse-card pulse-task" data-goto="dayplan" title="Day plan kholein">
+        <span class="pulse-ic">◷</span>
+        <span class="pulse-copy"><b id="pulseTasks">0</b><span id="pulseTaskSub">Tasks today</span></span>
+        <span class="pulse-tag ok" id="pulseTaskTag">Plan</span>
+        <span class="pulse-meter"><i id="pulseTaskBar"></i></span>
+      </button>
+      <button type="button" class="pulse-card pulse-follow" data-goto="clients" title="Client follow-ups kholein">
+        <span class="pulse-ic">☎</span>
+        <span class="pulse-copy"><b id="pulseFollow">0</b><span id="pulseFollowSub">Follow-ups due</span></span>
+        <span class="pulse-tag ok" id="pulseFollowTag">All clear</span>
+      </button>
+      <button type="button" class="pulse-card pulse-new" data-goto="projects" title="Naye projects dekhein">
+        <span class="pulse-ic">✦</span>
+        <span class="pulse-copy"><b id="pulseNew">0</b><span id="pulseNewSub">New this week</span></span>
+        <span class="pulse-tag" id="pulseNewTag">Pipeline</span>
+      </button>
+      <button type="button" class="pulse-card pulse-focus" data-goto="dayplan" title="Aaj ka next task">
+        <span class="pulse-ic">▶</span>
+        <span class="pulse-copy"><b id="pulseNext">Add a task</b><span id="pulseNextSub">plan your day</span></span>
+      </button>
+    </div
 
     <div class="sec-head">
       <h3>Road corridors</h3>
