@@ -4153,14 +4153,7 @@ body[data-theme="dark"] table td{color:var(--ink2)}
     $$('#lockRoles button').forEach(function(b){ b.addEventListener('click', function(){ setRole(b.getAttribute('data-lockrole')); if(ROLE==='advisor') fillAdvisor(); }); });
     form.addEventListener('submit', onSubmit);
     fillAdvisor();
-    /* agar 1.2s me main script ne wire nahi kiya toh yahi fallback official login hai */
-    setTimeout(function(){
-      if(!window.__bcsLockWired){
-        window.__bcsLockWired=true;
-      } else {
-        /* main wired hai — double handler avoid */
-      }
-    }, 1200);
+    /* main bundle 1s me kabhi bhi wired ho sakta hai — hum sirf tab kaam karenge jab main na aaye */
   }
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', arm); } else { arm(); }
 })();
@@ -9829,8 +9822,8 @@ function quoteText(){
   }));
   $('#calcPrintAll')?.addEventListener('click', () => window.print());
   $('#calcShareAll')?.addEventListener('click', calcShareAll);
-  loadRates();
-  runAll();
+  try{ loadRates(); }catch(e){}
+  try{ runAll(); }catch(e){}
   /* go-live: footer live date + nav counts */
   (function liveFoot(){
     const el = $('#liveFootDate');
