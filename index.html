@@ -1987,94 +1987,8 @@ nav button.on{background:linear-gradient(135deg,#fff 0%,#FFF7E7 100%);box-shadow
 .pulse-tag.ok{background:#EAF5EF;border-color:#D3E9DD;color:#2F6B54}
 .pulse-meter{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(46,45,32,.07)}
 .pulse-meter i{display:block;height:100%;width:0;background:var(--grad-warm);transition:width .55s cubic-bezier(.2,.8,.3,1)}
-/* ---------------- daily hero (Aaj) ---------------- */
-.today-hero{
-  position:relative;isolation:isolate;overflow:hidden;margin:0 0 16px;border-radius:26px;
-  display:grid;grid-template-columns:156px minmax(0,1fr) 300px;
-  color:#FFF9EC;border:1px solid rgba(255,255,255,.28);
-  background:linear-gradient(125deg,var(--th-bg1,#B2482A) 0%,var(--th-bg2,#D9832F) 62%,var(--th-bg1,#B2482A) 100%);
-  box-shadow:0 30px 70px -44px rgba(72,37,18,.85),inset 0 1px 0 rgba(255,255,255,.22);
-}
-.today-hero:before{content:"";position:absolute;right:-120px;top:-170px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),rgba(255,255,255,.08) 42%,transparent 68%);z-index:-1;pointer-events:none}
-.today-hero:after{content:"";position:absolute;left:26%;bottom:-200px;width:430px;height:430px;border-radius:50%;background:radial-gradient(circle,rgba(255,236,180,.22),transparent 66%);z-index:-1;pointer-events:none}
-.th-date{
-  position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
-  padding:24px 14px;background:rgba(28,18,8,.16);border-right:1px solid rgba(255,255,255,.16);
-}
-.th-date:before{content:"";position:absolute;left:50%;top:18px;transform:translateX(-50%);width:34px;height:3px;border-radius:99px;background:var(--th-accent,#FFD98F);opacity:.85}
-.th-weekday{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--th-accent,#FFD98F)}
-.th-date b{font-family:'Fraunces',serif;font-size:58px;line-height:.95;font-weight:600;letter-spacing:-2px;margin:2px 0 2px;text-shadow:0 10px 26px rgba(0,0,0,.18)}
-.th-month{font-size:12.5px;font-weight:700;letter-spacing:.4px;opacity:.95}
-.th-weekday-en{font-size:9.5px;letter-spacing:1.6px;text-transform:uppercase;opacity:.66;margin-top:5px}
-.th-month-hi{font-size:10.5px;opacity:.8;margin-top:3px}
-.th-main{padding:20px 24px 18px;min-width:0;display:flex;flex-direction:column;gap:4px}
-.th-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:2px}
-.th-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);font-size:11px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;backdrop-filter:blur(4px)}
-.th-badge .th-emoji{font-size:15px;line-height:1}
-.th-today-chip{font-size:9.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--th-accent,#FFD98F);opacity:.95}
-.th-tools{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
-.th-tool{display:inline-flex;align-items:center;gap:5px;padding:6px 10px;border-radius:9px;font-size:11.5px;font-weight:700;color:#FFF9EC;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);transition:.18s}
-.th-tool:hover{background:rgba(255,255,255,.26);transform:translateY(-1px)}
-.th-tool.primary{background:rgba(255,255,255,.94);color:#6E2A1A;border-color:#fff}
-.th-tool.primary:hover{background:#fff}
-.th-main h3{font-family:'Fraunces',serif;font-size:29px;font-weight:600;letter-spacing:-.5px;line-height:1.08;margin-top:2px;text-shadow:0 8px 20px rgba(0,0,0,.14)}
-.th-name-en{font-size:12px;font-weight:800;letter-spacing:2.2px;text-transform:uppercase;color:var(--th-accent,#FFD98F);opacity:.95;margin-bottom:4px}
-.th-greet-hi{font-size:14px;line-height:1.55;font-weight:600;max-width:640px;opacity:.97}
-.th-greet-en{font-size:12px;line-height:1.5;opacity:.78;max-width:640px}
-.th-quote{position:relative;display:flex;align-items:flex-start;gap:8px;margin-top:9px;padding:9px 11px 9px 12px;border-radius:12px;background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.14);max-width:680px}
-.th-qmark{font-family:'Fraunces',serif;font-size:26px;line-height:.8;color:var(--th-accent,#FFD98F);opacity:.9;flex:none}
-.th-quote p{font-size:12.5px;line-height:1.5;font-style:italic;flex:1;min-width:0}
-.th-qby{font-size:9px;letter-spacing:.8px;text-transform:uppercase;opacity:.6;align-self:flex-end;white-space:nowrap}
-.th-qrefresh{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);font-size:14px;color:#FFF9EC;transition:.18s}
-.th-qrefresh:hover{background:rgba(255,255,255,.3);transform:rotate(-40deg)}
-.th-quote.swap p{animation:thQuoteSwap .42s cubic-bezier(.2,.8,.3,1)}
-@keyframes thQuoteSwap{0%{opacity:0;transform:translateY(5px)}100%{opacity:1;transform:none}}
-.th-upcoming{padding:16px 16px 14px;background:rgba(24,16,8,.14);border-left:1px solid rgba(255,255,255,.16);display:flex;flex-direction:column;min-width:0}
-.th-up-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:9px}
-.th-up-head span{font-size:10px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--th-accent,#FFD98F)}
-.th-up-head small{font-size:9px;opacity:.6;letter-spacing:.8px;text-transform:uppercase}
-.th-up-list{display:flex;flex-direction:column;gap:6px}
-.th-up-item{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:10px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);text-align:left;transition:.18s;color:inherit}
-.th-up-item:hover{background:rgba(255,255,255,.2);transform:translateX(2px)}
-.th-up-emoji{font-size:16px;line-height:1;flex:none}
-.th-up-copy{min-width:0;flex:1;display:flex;flex-direction:column;gap:1px}
-.th-up-copy b{font-size:11.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.th-up-copy span{font-size:9.5px;opacity:.68;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.th-up-days{flex:none;font-size:9px;font-weight:800;letter-spacing:.4px;padding:3px 6px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.2);white-space:nowrap}
-.th-up-empty{font-size:10.5px;opacity:.7;line-height:1.5;padding:6px 2px}
-.th-spark{position:absolute;pointer-events:none;opacity:.5;font-size:13px;animation:thFloat 5.5s ease-in-out infinite}
-@keyframes thFloat{0%,100%{transform:translateY(0) rotate(-6deg);opacity:.35}50%{transform:translateY(-7px) rotate(6deg);opacity:.75}}
-@media (max-width:1180px){
-  .today-hero{grid-template-columns:136px minmax(0,1fr) 262px}
-  .th-main{padding:18px 20px 16px}
-  .th-main h3{font-size:26px}
-}
-@media (max-width:980px){
-  .today-hero{grid-template-columns:130px minmax(0,1fr)}
-  .th-upcoming{grid-column:1/-1;border-left:none;border-top:1px solid rgba(255,255,255,.16);padding:12px 16px 14px}
-  .th-up-list{flex-direction:row;overflow-x:auto;gap:7px;padding-bottom:2px}
-  .th-up-item{min-width:186px;flex:none}
-  .th-up-head{margin-bottom:7px}
-}
-@media (max-width:640px){
-  .today-hero{grid-template-columns:1fr;border-radius:20px;margin-bottom:12px}
-  .th-date{flex-direction:row;justify-content:flex-start;gap:10px;padding:13px 16px;border-right:none;border-bottom:1px solid rgba(255,255,255,.16);text-align:left}
-  .th-date:before{display:none}
-  .th-date b{font-size:36px;margin:0;letter-spacing:-1px}
-  .th-weekday{font-size:11px;letter-spacing:1.4px}
-  .th-month{font-size:11.5px}
-  .th-weekday-en{display:none}
-  .th-month-hi{display:none}
-  .th-main{padding:14px 15px 16px}
-  .th-main h3{font-size:24px}
-  .th-greet-hi{font-size:13px}
-  .th-greet-en{font-size:11.5px}
-  .th-tools{width:100%;margin-left:0;order:3}
-  .th-tool{flex:1;justify-content:center;padding:8px 8px}
-  .th-upcoming{padding:12px 14px 14px}
-  .th-up-item{min-width:168px}
-  .th-qby{display:none}
-}
+/* ---------------- shared: quote + tools (dl-quote inherits) ---------------- */
+
 
 /* ---------------- poster modal + festival manager ---------------- */
 .poster-tabs,.fm-tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
@@ -2208,48 +2122,7 @@ body.locked>.quick-add-dock{visibility:hidden}
    v14 — dashboard split · custom fields · kanban/list · analytics
    ================================================================== */
 
-/* ---- 1. dashboard dayline: date + motivation first ---- */
-.dash-headline{
-  position:relative;isolation:isolate;overflow:hidden;display:grid;
-  grid-template-columns:196px minmax(0,1fr) auto;align-items:stretch;
-  margin:0 0 14px;border-radius:20px;color:#FFF9EC;
-  border:1px solid rgba(255,255,255,.28);
-  background:linear-gradient(120deg,var(--th-bg1,#B2482A) 0%,var(--th-bg2,#D9832F) 70%,var(--th-bg1,#B2482A) 100%);
-  box-shadow:0 22px 50px -40px rgba(72,37,18,.9),inset 0 1px 0 rgba(255,255,255,.2);
-}
-.dash-headline:before{content:"";position:absolute;right:-90px;top:-150px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.3),transparent 68%);z-index:-1;pointer-events:none}
-.dhl-date{display:flex;flex-direction:column;justify-content:center;gap:3px;padding:13px 18px;background:rgba(28,18,8,.16);border-right:1px solid rgba(255,255,255,.16);min-width:0}
-.dhl-hi{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--th-accent,#FFD98F);opacity:.95}
-.dhl-dayrow{display:flex;align-items:center;gap:10px;min-width:0}
-.dhl-dayrow>b{font-family:'Fraunces',serif;font-size:42px;line-height:.9;font-weight:600;letter-spacing:-1.5px;text-shadow:0 8px 20px rgba(0,0,0,.16)}
-.dhl-meta{display:flex;flex-direction:column;gap:1px;min-width:0}
-.dhl-meta>span:first-child{font-size:12px;font-weight:800;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dhl-en{font-size:10px;opacity:.72;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dhl-quote{margin:0!important;max-width:none!important;border-radius:0!important;background:transparent!important;border:none!important;align-items:center!important;padding:12px 16px!important;min-width:0}
-.dhl-quote p{font-size:13px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.dhl-quote .th-qby{align-self:center}
-.dhl-tools{display:flex;flex-direction:column;justify-content:center;gap:5px;padding:10px 12px;border-left:1px solid rgba(255,255,255,.16);min-width:132px}
-.dhl-tools .th-tool{justify-content:center;font-size:10.5px;padding:5px 9px}
-
-/* ---- 2. today hero + desk pulse sit side by side ---- */
-.dash-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(286px,344px);gap:14px;margin:0 0 22px;align-items:stretch}
-.dash-split .today-hero{grid-template-columns:minmax(0,1fr) 246px;margin:0;height:100%}
-.dash-split .th-main{padding:16px 18px 15px;gap:3px}
-.dash-split .th-main h3{font-size:26px}
-.dash-split .th-greet-hi{font-size:13px;line-height:1.5}
-.dash-split .th-greet-en{font-size:11.5px;line-height:1.45}
-.dash-split .th-upcoming{padding:13px 13px 12px}
-.dash-split .th-up-item{padding:6px 7px}
-.dash-split .th-up-copy b{font-size:11px}
-.dash-split .th-up-days{font-size:8px;padding:2px 5px}
-.dash-split .pulse-strip{grid-template-columns:1fr 1fr;grid-auto-rows:1fr;margin:0;gap:9px;height:100%}
-.dash-split .pulse-card{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:5px;padding:11px 12px 15px;border-radius:14px}
-.dash-split .pulse-card .pulse-ic{width:30px;height:30px;border-radius:9px;font-size:13px}
-.dash-split .pulse-copy{width:100%;gap:1px}
-.dash-split .pulse-copy b{font-size:17px;white-space:normal;line-height:1.15}
-.dash-split .pulse-copy span{white-space:normal;font-size:8.5px;letter-spacing:.6px;line-height:1.25}
-.dash-split .pulse-tag{position:absolute;top:9px;right:9px;font-size:8px;padding:3px 6px;letter-spacing:.2px}
-
+/* ---- 1. dayline: date (left) · motivation (centre) · live time (right) ---- */\n.dayline{\n  position:relative;isolation:isolate;overflow:hidden;display:grid;\n  grid-template-columns:minmax(0,auto) minmax(0,1fr) minmax(0,auto);align-items:stretch;\n  margin:0 0 16px;border-radius:var(--r);color:var(--ink);\n  border:1px solid var(--line);\n  background:var(--panel);\n  box-shadow:var(--shadow);\n}\n.dayline:after{content:\"\";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,var(--olive) 30%,var(--olive) 70%,transparent)}\n.dl-cell{display:flex;align-items:center;min-width:0}\n.dl-date{gap:12px;padding:11px 18px 12px;border-right:1px solid var(--line);background:var(--panel);min-width:0}\n.dl-date>b{font-family:'Fraunces',serif;font-size:40px;line-height:.92;font-weight:600;letter-spacing:-1.6px;color:var(--ink);text-shadow:none}\n.dl-meta{display:flex;flex-direction:column;gap:2px;min-width:0}\n.dl-hi{font-size:10px;font-weight:800;letter-spacing:2.2px;color:var(--mut);text-transform:uppercase}\n.dl-line{font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap}\n.dl-sub{font-size:10px;opacity:.62;font-weight:600;letter-spacing:.3px;white-space:nowrap}\n.dl-quote{justify-content:center;padding:10px 18px!important;margin:0!important;max-width:none!important;min-width:0;background:transparent!important;border:none!important;border-radius:0!important}\n.dl-quote p{color:var(--ink);font-size:13px;line-height:1.5;-webkit-line-clamp:2;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}\n.dl-quote .th-qmark{color:var(--olive);opacity:.95;font-size:23px}\n.dl-quote .th-qby{color:rgba(246,242,231,.55);opacity:1;align-self:center}\n.dl-quote .th-qrefresh{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.22);color:var(--ink);transition:.18s;cursor:pointer}\n.dl-quote .th-qrefresh:hover{background:rgba(255,255,255,.28);transform:rotate(-40deg)}\n.dl-time{gap:12px;padding:11px 18px 12px;border-left:1px solid var(--line);background:var(--panel);justify-content:flex-end;text-align:right}\n.dl-clock{font-family:'Fraunces',serif;font-size:37px;line-height:1;font-weight:600;letter-spacing:-1px;font-variant-numeric:tabular-nums;color:var(--ink)}\n.dl-clock i{font-style:normal;font-size:21px;color:var(--olive)}\n.dl-timemeta{display:flex;flex-direction:column;gap:2px;align-items:flex-end}\n.dl-zone{font-size:9.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--mut);font-weight:800;white-space:nowrap}\n.dl-zone b{color:var(--ink)}\n.dl-detail{font-size:11px;opacity:.8;font-weight:600;white-space:nowrap}\n.dl-next{font-size:9px;letter-spacing:.8px;color:var(--mut);font-weight:800;white-space:nowrap}\n\n/* ---- shared: quote + tools (used by dayline centre & brand rail) ---- */\n.th-quote{position:relative;display:flex;align-items:flex-start;gap:10px;padding:9px 11px 9px 12px;border-radius:var(--r);background:var(--panel);border:1px solid var(--line);max-width:680px;margin-top:9px}\n.th-qmark{font-family:'Fraunces',serif;font-size:25px;line-height:.82;color:var(--olive);opacity:.9;flex:none}\n.th-quote p{font-size:12.5px;line-height:1.5;font-style:italic;flex:1;min-width:0;color:inherit}\n.th-qby{font-size:9px;letter-spacing:.8px;text-transform:uppercase;color:rgba(246,242,231,.55);opacity:1;align-self:flex-end;white-space:nowrap}\n.th-qrefresh{flex:none;width:26px;height:26px;border-radius:var(--r);display:grid;place-items:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);font-size:14px;color:var(--ink);transition:.18s;cursor:pointer}\n.th-qrefresh:hover{background:rgba(255,255,255,.28);transform:rotate(-40deg)}\n.th-quote.swap p{animation:thQuoteSwap .42s cubic-bezier(.2,.8,.3,1)}\n@keyframes thQuoteSwap{0%{opacity:0;transform:translateY(5px)}100%{opacity:1;transform:none}}\n.th-tool{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:6px 12px;border-radius:var(--r);font-size:11.5px;font-weight:700;color:var(--ink);background:rgba(246,242,231,.12);border:1px solid rgba(255,255,255,.22);transition:.18s;cursor:pointer}\n.th-tool:hover{background:rgba(246,242,231,.22)}\n.th-tool.primary{background:var(--olive);color:#F6F2E7;border-color:var(--olive)}\n.th-tool.primary:hover{background:#fff}\n.th-tool.ghost{background:transparent;border-color:rgba(255,255,255,.3)}\n\n/* ---- 2. greeting creative (calendar poster card) + desk pulse ---- */\n.dash-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(268px,330px);gap:14px;margin:0 0 20px;align-items:stretch}\n.today-hero{\n  position:relative;isolation:isolate;overflow:hidden;margin:0;height:100%;\n  display:grid;grid-template-columns:112px minmax(0,1fr) 168px;\n  color:var(--ink);border:1px solid var(--line);\n  border-radius:var(--r);\n  background:var(--panel);\n  box-shadow:var(--shadow);\n}\n.today-hero:before{content:\"\";position:absolute;right:-110px;top:-160px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(233,216,166,.2),transparent 68%);z-index:-1;pointer-events:none}\n/* calendar page */\n.th-cal{position:relative;align-self:center;margin-left:14px;width:96px;display:flex;flex-direction:column;border-radius:var(--r);overflow:hidden;background:var(--panel);box-shadow:0 18px 34px -16px rgba(0,0,0,.6),inset 0 0 0 1px rgba(46,45,32,.08);transform:rotate(-1.1deg)}\n.th-cal-band{background:var(--olive);color:#F6F2E6;text-align:center;font-size:9.5px;font-weight:800;letter-spacing:2.6px;padding:7px 4px;text-transform:uppercase}\n.th-cal-body{display:flex;flex-direction:column;align-items:center;padding:10px 6px 12px;background:linear-gradient(180deg,#FBFAF5,#F1EFE6)}\n.th-cal-day{font-family:'Fraunces',serif;font-size:42px;line-height:1;font-weight:600;color:var(--olive);letter-spacing:-2px}\n.th-cal-week{font-size:12px;font-weight:800;color:#B18A3E;margin-top:4px}\n.th-cal-year{font-size:8px;color:#8E8C7C;font-weight:700;letter-spacing:1.6px;margin-top:3px;text-transform:uppercase}\n/* centre creative */\n.th-main{padding:15px 4px 13px 16px;min-width:0;display:flex;flex-direction:column;gap:3px}\n.th-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:1px}\n.th-badge{display:inline-flex;align-items:center;gap:7px;padding:4px 11px;border-radius:999px;background:rgba(246,242,231,.1);border:1px solid rgba(246,242,231,.22);font-size:9.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink)}\n.th-badge .th-emoji{font-size:14px;line-height:1}\n.th-today-chip{font-size:8.5px;font-weight:800;letter-spacing:1.6px;color:var(--olive);text-transform:uppercase}\n.th-main h3{font-family:'Fraunces',serif;font-size:29px;font-weight:600;letter-spacing:-.5px;line-height:1.05;color:var(--ink);text-shadow:none;margin-top:2px}\n.th-name-en{font-size:9.5px;font-weight:800;letter-spacing:2.4px;text-transform:uppercase;color:var(--olive);opacity:.95;margin-bottom:3px}\n.th-greet-hi{font-size:12px;line-height:1.5;font-weight:600;color:var(--ink);opacity:.92;max-width:560px}\n.th-greet-en{font-size:10px;line-height:1.45;color:#EDE9DC;opacity:.64;max-width:520px}\n.th-upcoming{margin-top:auto;padding-top:9px;border-top:1px solid var(--line)}\n.th-up-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:6px}\n.th-up-head span{font-size:8.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--olive)}\n.th-up-head small{font-size:8px;opacity:.55;letter-spacing:1px;text-transform:uppercase;color:var(--ink)}\n.th-up-list{display:flex;gap:7px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}\n.th-up-list::-webkit-scrollbar{display:none}\n.th-up-item{flex:none;display:flex;align-items:center;gap:7px;padding:6px 9px;border-radius:11px;background:rgba(246,242,231,.07);border:1px solid rgba(246,242,231,.13);text-align:left;transition:.16s;color:inherit;cursor:pointer}\n.th-up-item:hover{background:rgba(246,242,231,.14);transform:translateY(-1px)}\n.th-up-emoji{font-size:15px;line-height:1}\n.th-up-copy{min-width:0;display:flex;flex-direction:column;gap:1px}\n.th-up-copy b{font-size:10.5px;color:var(--ink);white-space:nowrap;max-width:130px;overflow:hidden;text-overflow:ellipsis}\n.th-up-copy span{font-size:8.5px;color:#EDE9DC;opacity:.55;white-space:nowrap}\n.th-up-days{flex:none;font-size:8px;font-weight:800;padding:2px 6px;border-radius:99px;background:rgba(196,154,62,.18);border:1px solid rgba(196,154,62,.4);color:#E9D8A6;white-space:nowrap}\n.th-up-empty{font-size:10px;color:#EDE9DC;opacity:.65;line-height:1.5}\n/* brand rail */\n.th-brand{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:14px 14px 11px;border-left:1px solid var(--line);background:var(--panel);text-align:center}\n.th-logo{width:58px;height:58px;border-radius:var(--r);display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;letter-spacing:1.6px;color:var(--olive);background:var(--panel);box-shadow:0 14px 30px -12px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.6)}\n.th-brand-name{font-family:'Fraunces',serif;font-size:13.5px;color:var(--ink);line-height:1.2}\n.th-brand-sub{font-size:7px;letter-spacing:2.1px;text-transform:uppercase;color:var(--olive);font-weight:800;opacity:.95}\n.th-handle{font-size:11px;color:var(--ink);opacity:.85;font-weight:700}\n.th-brand-actions{display:flex;flex-direction:column;gap:6px;width:100%;margin-top:9px}\n.th-brand-actions .th-tool{justify-content:center;font-size:10.5px;padding:8px 8px}\n.th-watermark{margin-top:auto;font-size:7px;letter-spacing:2.2px;text-transform:uppercase;color:rgba(246,242,231,.38);font-weight:800;padding-top:9px;border-top:1px solid var(--line);width:100%}
 /* ---- 3. vertical, scroll-safe tool dock (slim left rail; content never under it) ---- */
 body.locked>.tooldock,body.locked>.toolpop{visibility:hidden}
 @media (min-width:821px){
@@ -2262,7 +2135,7 @@ body.locked>.tooldock,body.locked>.toolpop{visibility:hidden}
 .dock-btn i{font-size:7.5px}
 
 /* ---- 4. custom fields ---- */
-body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advisor-mode #devFieldsBtn,body.advisor-mode #fieldsBtn{display:none!important}
+body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advisor-mode #devFieldsBtn,body.advisor-mode #fieldsBtn,body.advisor-mode #listsBtn{display:none!important}
 .cf-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
 .cf-item{min-width:0;display:flex;flex-direction:column;gap:5px}
 .cf-item.cf-full{grid-column:1/-1}
@@ -2301,6 +2174,40 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
 .fld-entity-tabs button{padding:6px 11px;border-radius:8px;border:1px solid var(--line);background:#FCFDFC;font-size:11.5px;font-weight:700;color:var(--ink2)}
 .fld-entity-tabs button.on{background:var(--olive);color:#F6F2E7;border-color:var(--olive)}
 .fld-hint{font-size:10.5px;color:var(--mut);line-height:1.5;margin-bottom:10px}
+
+/* ---- v15: lists & dropdowns manager ---- */
+.lst-wrap{display:grid;grid-template-columns:190px minmax(0,1fr);gap:14px;min-height:300px}
+.lst-picker{display:flex;flex-direction:column;gap:5px;max-height:420px;overflow-y:auto;padding-right:2px}
+.lst-picker button{display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left;padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:#FCFDFC;font-size:12px;font-weight:700;color:var(--ink2);transition:.15s}
+.lst-picker button:hover{background:#fff;border-color:#C9D6CF}
+.lst-picker button.on{background:var(--olive);color:#F6F2E7;border-color:var(--olive)}
+.lst-picker .lst-count{font-size:9px;font-weight:800;padding:2px 7px;border-radius:99px;background:rgba(0,0,0,.07);white-space:nowrap}
+.lst-picker button.on .lst-count{background:rgba(255,255,255,.18)}
+.lst-pane{display:flex;flex-direction:column;min-width:0}
+.lst-pane-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:9px}
+.lst-pane-head b{font-size:13.5px;color:var(--ink)}
+.lst-pane-hint{font-size:9.5px;color:var(--mut);font-weight:700;letter-spacing:.4px;text-transform:uppercase}
+.lst-list{display:flex;flex-direction:column;gap:7px;max-height:340px;overflow-y:auto;margin-bottom:12px}
+.lst-row{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto auto;gap:7px;align-items:center;padding:8px 9px;border:1px solid var(--line);border-radius:10px;background:#FCFDFC}
+.lst-row.off{opacity:.52;background:#F7F8F7}
+.lst-row .lst-move{display:flex;flex-direction:column;gap:3px}
+.lst-row .lst-move button{width:22px;height:18px;border:1px solid var(--line);background:#fff;border-radius:6px;font-size:9px;color:var(--ink2);line-height:1;display:grid;place-items:center;padding:0}
+.lst-row .lst-move button:disabled{opacity:.35;cursor:default}
+.lst-row .lst-tag{font-size:8px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#8A7A48;background:#FBF3DC;border:1px solid #EEDDB3;border-radius:6px;padding:3px 6px;white-space:nowrap}
+.lst-row .lst-tag.custom{color:#2F6B54;background:#EAF5EF;border-color:#D3E9DD}
+.lst-row input[type=text]{width:100%;padding:8px 9px;border:1px solid var(--line);border-radius:8px;background:#fff;font-family:'DM Sans',sans-serif;font-size:12.5px;outline:none}
+.lst-row input[type=text]:focus{border-color:#A9C4B5;box-shadow:0 0 0 3px rgba(65,86,63,.08)}
+.lst-row .lst-hide{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;color:var(--ink2);cursor:pointer;white-space:nowrap;padding:4px 6px;border-radius:7px;border:1px solid var(--line);background:#fff}
+.lst-row .lst-hide input{accent-color:var(--danger);width:14px;height:14px}
+.lst-row .lst-del{width:28px;height:28px;border-radius:7px;border:1px solid #F0D8CE;background:#FBEDE8;color:var(--danger);font-size:11px}
+.lst-row .lst-del:disabled{opacity:.32;cursor:default;background:#fff;color:var(--mut);border-color:var(--line)}
+@media (max-width:760px){
+  .lst-wrap{grid-template-columns:1fr}
+  .lst-picker{flex-direction:row;overflow-x:auto;max-height:none;padding-bottom:4px}
+  .lst-picker button{flex:0 0 auto}
+  .lst-row{grid-template-columns:auto minmax(0,1fr) auto auto}
+  .lst-row .lst-tag{display:none}
+}
 
 /* ---- 5. kanban / list / table views ---- */
 .view-switch{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -2386,19 +2293,22 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
 .an-scroll{overflow:auto;max-width:100%;margin:0 -4px}
 .an-empty{padding:22px;text-align:center;color:#A9ADA3;font-size:12px;font-weight:600}
 
-/* ---- 7. v14 responsive ---- */
+/* ---- 7. v15 responsive ---- */
 @media (max-width:1180px){
-  .dash-split{grid-template-columns:minmax(0,1fr) 300px}
-  .dash-split .today-hero{grid-template-columns:minmax(0,1fr)}
-  .dash-split .th-upcoming{grid-column:1/-1;border-left:none;border-top:1px solid rgba(255,255,255,.16);padding:11px 14px 12px}
-  .dash-split .th-up-list{flex-direction:row;overflow-x:auto;gap:7px;padding-bottom:2px}
-  .dash-split .th-up-item{min-width:180px;flex:none}
+  .dash-split{grid-template-columns:minmax(0,1fr) 290px}
+  .today-hero{grid-template-columns:100px minmax(0,1fr)}
+  .th-brand{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;gap:12px;border-left:none;border-top:1px solid rgba(246,242,231,.14);padding:9px 16px}
+  .th-logo{width:40px;height:40px;border-radius:11px;font-size:12.5px}
+  .th-brand-name{display:none}
+  .th-brand-sub{display:none}
+  .th-brand-actions{flex-direction:row;width:auto;margin-top:0}
+  .th-watermark{display:none}
   .an-kpis{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:980px){
-  .dash-headline{grid-template-columns:170px minmax(0,1fr)}
-  .dhl-tools{grid-column:1/-1;flex-direction:row;border-left:none;border-top:1px solid rgba(255,255,255,.16);padding:8px 12px}
-  .dhl-tools .th-tool{flex:1}
+  .dayline{grid-template-columns:auto minmax(0,1fr)}
+  .dl-time{grid-column:1/-1;justify-content:space-between;gap:16px;border-left:none;border-top:1px solid rgba(246,242,231,.12);text-align:left;padding:9px 18px}
+  .dl-timemeta{align-items:flex-start}
   .dash-split{grid-template-columns:1fr}
   .dash-split .pulse-strip{grid-template-columns:repeat(4,1fr)}
   .dash-split .pulse-card{padding:11px}
@@ -2412,15 +2322,26 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
   .dock-btn{width:40px;height:42px}
   .toolpop{left:54px;right:auto;top:50%;bottom:auto;transform:translateY(-50%);width:min(310px,calc(100vw - 66px));max-height:calc(100vh - 48px);overflow-y:auto;overscroll-behavior:contain}
   main{padding-bottom:126px!important}
-  .dash-headline{grid-template-columns:1fr;border-radius:16px}
-  .dhl-date{flex-direction:row;align-items:center;gap:12px;padding:11px 14px;border-right:none;border-bottom:1px solid rgba(255,255,255,.16)}
-  .dhl-dayrow>b{font-size:36px}
-  .dhl-quote{padding:10px 14px!important}
-  .dhl-quote p{font-size:12px}
-  .dhl-tools{border-top:1px solid rgba(255,255,255,.14)}
-  .dhl-tools .th-tool{font-size:10px;padding:6px}
+  .dayline{grid-template-columns:1fr;border-radius:16px}
+  .dl-date{border-right:none;border-bottom:1px solid rgba(246,242,231,.12);padding:10px 14px;gap:10px}
+  .dl-date>b{font-size:34px}
+  .dl-line{font-size:12px}
+  .dl-quote{padding:8px 14px!important;justify-content:flex-start}
+  .dl-quote p{font-size:12px}
+  .dl-time{padding:8px 14px}
+  .dl-clock{font-size:30px}
+  .today-hero{grid-template-columns:1fr;border-radius:20px}
+  .th-cal{flex-direction:row;align-self:auto;width:auto;margin:12px 14px 0;transform:none}
+  .th-cal-band{display:flex;align-items:center;justify-content:center;width:56px;padding:0}
+  .th-cal-body{flex-direction:row;align-items:baseline;gap:10px;padding:10px 14px;flex:1}
+  .th-cal-day{font-size:36px}
+  .th-cal-week{margin-top:0}
+  .th-cal-year{margin-top:0}
+  .th-main{padding:13px 16px 14px}
+  .th-main h3{font-size:24px}
+  .th-brand{padding:10px 14px}
+  .th-brand-actions{flex:1;justify-content:flex-end}
   .dash-split .pulse-strip{grid-template-columns:1fr 1fr}
-  .dash-split .th-main h3{font-size:23px}
   .an-insights{grid-template-columns:1fr}
   .fld-row{grid-template-columns:1fr auto auto}
   .fld-row .fld-main{grid-column:1/-1}
@@ -2428,8 +2349,10 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
   .vt-table{min-width:560px}
 }
 @media (max-width:560px){
-  .dhl-quote .th-qby{display:none}
-  .dhl-tools .th-tool.primary{order:-1}
+  .dl-quote .th-qby{display:none}
+  .dl-clock{font-size:26px}
+  .th-cal{display:none}
+  .th-brand-actions .th-tool{font-size:10px;padding:7px 6px}
   .an-kpis{grid-template-columns:1fr 1fr;gap:9px}
   .kpi .v{font-size:21px}
   .kpi{padding:11px 12px}
@@ -2439,6 +2362,21 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
   .dev-kanban{grid-template-columns:1fr}
   .cf-view{grid-template-columns:1fr}
 }
+/* ---------- v15 visual polish ---------- */
+.intro{position:relative}
+.intro:after{content:"";position:absolute;right:-8px;top:-8px;width:min(40%,430px);height:115%;background-image:radial-gradient(circle,rgba(46,45,32,.17) 1.15px,transparent 1.4px);background-size:17px 17px;-webkit-mask-image:radial-gradient(68% 80% at 72% 28%,#000 42%,transparent 76%);mask-image:radial-gradient(68% 80% at 72% 28%,#000 42%,transparent 76%);pointer-events:none;z-index:0}
+.intro>*{position:relative;z-index:1}
+.intro .eyebrow{display:flex;align-items:center;gap:9px}
+.intro .eyebrow:before{content:"";width:26px;height:2px;border-radius:2px;background:var(--gold)}
+.sec-head h3{display:flex;align-items:center;gap:10px}
+.sec-head h3:before{content:"";width:4px;height:19px;border-radius:2px;background:linear-gradient(180deg,var(--gold),#8C6628)}
+.cor-card{transition:transform .18s,box-shadow .18s,border-color .18s}
+.cor-card:hover{transform:translateY(-3px);border-color:#D8C58E;box-shadow:0 18px 44px -22px rgba(120,86,20,.38)}
+.cat-card:hover{border-color:#D8C58E;box-shadow:0 18px 44px -24px rgba(120,86,20,.34)}
+.pulse-card:hover{transform:translateY(-2px);border-color:#D8C58E;box-shadow:0 16px 36px -22px rgba(120,86,20,.4)}
+.istat b{transition:color .2s}
+.istat:hover b{color:var(--gold)}
+.show-card:hover{border-color:#D8C58E}
 @media (prefers-reduced-motion:reduce){
   *,*:before,*:after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
 }
@@ -2582,33 +2520,43 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
       </div>
     </div>
 
-    <!-- v14: date + motivation first, then festival card & desk pulse side by side -->
-    <div class="dash-headline" id="dashHeadline" aria-label="Aaj ka din aur motivation">
-      <div class="dhl-date">
-        <span class="dhl-hi" id="thWeekdayHi">रविवार</span>
-        <div class="dhl-dayrow">
-          <b id="thDay">08</b>
-          <div class="dhl-meta">
-            <span id="thMonth">November 2026</span>
-            <span class="dhl-en"><span id="thWeekdayEn">Sunday</span> · <span id="thMonthHi">नवंबर</span></span>
-          </div>
+    <!-- v15: dayline (date · motivation · live time) → greeting creative + desk pulse → corridors → type cards -->
+    <div class="dayline" id="dashHeadline" aria-label="Aaj ka din — date, motivation aur time">
+      <div class="dl-cell dl-date">
+        <b id="thDay">08</b>
+        <div class="dl-meta">
+          <span class="dl-hi" id="thWeekdayHi">रविवार</span>
+          <span class="dl-line"><span id="thWeekdayEn">Sunday</span> · <span id="thMonth">November 2026</span></span>
+          <span class="dl-sub" id="thMonthHi">नवंबर · 2026</span>
         </div>
       </div>
-      <div class="th-quote dhl-quote" id="thQuoteBox">
+      <div class="th-quote dl-quote" id="thQuoteBox" aria-label="Today's motivation">
         <span class="th-qmark">“</span>
         <p id="thQuote">…</p>
         <span class="th-qby" id="thQuoteBy"></span>
         <button type="button" class="th-qrefresh" id="thQuoteRefresh" title="Next motivation" aria-label="Next motivation">↻</button>
       </div>
-      <div class="dhl-tools">
-        <button type="button" class="th-tool primary" id="thSharePoster" title="Festival poster banayein">Share poster</button>
-        <button type="button" class="th-tool" id="thRefreshQuote" title="Change the motivation line in this card only">↻ New motivation</button>
-        <button type="button" class="th-tool" id="thManage" style="display:none">⚙ Manage</button>
+      <div class="dl-cell dl-time" aria-label="Local time">
+        <b class="dl-clock"><span id="dlClock">10:48</span><i id="dlSeconds">:32</i></b>
+        <div class="dl-timemeta">
+          <span class="dl-zone"><b id="dlMeridiem">AM</b> · IST · Jaipur</span>
+          <span class="dl-detail" id="dlDetail">Sunday, 08 November</span>
+          <span class="dl-next" id="dlNext">Diwali · aaj hi hai</span>
+        </div>
       </div>
     </div>
 
     <div class="dash-split">
-      <section class="today-hero" id="todayHero" aria-label="Aaj ka festival aur aane wale din">
+      <section class="today-hero" id="todayHero" aria-label="Aaj ka festival — ek calendar poster jaisi creative, WhatsApp-shareable">
+        <div class="th-cal" aria-hidden="true">
+          <div class="th-cal-band" id="thCalMonth">NOVEMBER</div>
+          <div class="th-cal-body">
+            <b class="th-cal-day" id="thCalDay">08</b>
+            <span class="th-cal-week" id="thCalWeek">रविवार</span>
+            <span class="th-cal-year" id="thCalYear">Sunday · 2026</span>
+          </div>
+        </div>
+
         <div class="th-main">
           <div class="th-top">
             <span class="th-badge"><span class="th-emoji" id="thEmoji">🪔</span><span id="thFestivalName">Diwali</span></span>
@@ -2618,10 +2566,23 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
           <div class="th-name-en" id="thFestivalEn">Diwali · Lakshmi Puja</div>
           <p class="th-greet-hi" id="thGreetHi">दीपों की रोशनी, माँ लक्ष्मी की कृपा — आपका जीवन सदा उजालों से भरा रहे।</p>
           <p class="th-greet-en" id="thGreetEn">Lights of diyas, grace of Maa Lakshmi — may your life always shine bright.</p>
+          <div class="th-upcoming" aria-label="Upcoming festivals">
+            <div class="th-up-head"><span>Coming up</span><small>next 3</small></div>
+            <div class="th-up-list" id="thUpcoming"></div>
+          </div>
         </div>
-        <aside class="th-upcoming" aria-label="Upcoming festivals">
-          <div class="th-up-head"><span>Coming up</span><small>next 3</small></div>
-          <div class="th-up-list" id="thUpcoming"></div>
+
+        <aside class="th-brand">
+          <div class="th-logo" aria-hidden="true">BCS</div>
+          <b class="th-brand-name">Business City Square</b>
+          <span class="th-brand-sub">Jaipur Property Intelligence</span>
+          <span class="th-handle">@ajaysharma.bcs</span>
+          <div class="th-brand-actions">
+            <button type="button" class="th-tool primary" id="thSharePoster" title="WhatsApp Share poster — 1080×1920 status">WhatsApp share</button>
+            <button type="button" class="th-tool" id="thRefreshQuote" title="Change the motivation line in this card only">↻ New motivation</button>
+            <button type="button" class="th-tool ghost" id="thManage" style="display:none">⚙ Manage</button>
+          </div>
+          <span class="th-watermark">BCS · Business City Square · Jaipur</span>
         </aside>
       </section>
 
@@ -2649,8 +2610,6 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
       </div>
     </div>
 
-    <div class="cat-strip" id="catStrip"></div>
-
     <div class="sec-head">
       <h3>Road corridors</h3>
       <span class="sub">Click a corridor to open its board</span>
@@ -2663,6 +2622,8 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
       </div>
     </div>
     <div class="corridor-grid" id="corridorGrid"></div>
+
+    <div class="cat-strip" id="catStrip"></div>
 
     <div class="sec-head">
       <h3>Featured projects</h3>
@@ -3313,6 +3274,7 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
   <button class="dock-btn" id="stickyBtn" title="Sticky note — koi bhi scratch, auto-save"><span>📌</span><i>Sticky</i></button>
   <button class="dock-btn" id="calcBtn" title="Quick calculator"><span>🧮</span><i>Calc</i></button>
   <button class="dock-btn" id="fieldsBtn" title="Custom fields — apne columns banayein"><span>⚙</span><i>Fields</i></button>
+  <button class="dock-btn" id="listsBtn" title="Dropdowns &amp; lists — har option add / edit / delete karein"><span>📋</span><i>Lists</i></button>
 </div>
 <div class="toolpop" id="stickyPop">
   <div class="tp-head"><b>📌 Sticky note</b><button class="xbtn sm" data-toolclose="stickyPop">✕</button></div>
@@ -4450,6 +4412,34 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
   </div>
 </div>
 
+<!-- ============ LISTS / DROPDOWNS MANAGER ============ -->
+<div class="overlay" id="listsModal">
+  <div class="modal" style="width:min(860px,100%)">
+    <div class="modal-head">
+      <h3>Dropdowns &amp; lists — full freedom</h3>
+      <button class="xbtn" data-close="listsModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="fld-hint">Har dropdown / list ko add, rename, hide, reorder ya delete kar sakte hain. “Built-in” items ko delete nahi kar sakte, lekin “Hide” karke kahi bhi chhupa sakte hain — data safe rehta hai. Naye items har form, filter, list table aur analytics me turant dikhne lagte hain.</div>
+      <div class="lst-wrap">
+        <div class="lst-picker" id="listsPicker" role="tablist" aria-label="Which list"></div>
+        <div class="lst-pane">
+          <div class="lst-pane-head"><b id="listsPaneTitle">List</b><span id="listsPaneHint" class="lst-pane-hint"></span></div>
+          <div class="lst-list" id="listsRows"></div>
+          <div class="conn-actions">
+            <input id="lstNewLabel" placeholder="Naya option — jaise ‘Premium', ‘Sale pending'…" style="flex:1;min-width:180px" autocomplete="off">
+            <button type="button" class="btn primary sm" id="lstAdd">+ Add option</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="listsModal">Cancel</button>
+      <button class="btn primary" id="listsSave">Save changes</button>
+    </div>
+  </div>
+</div>
+
 <!-- ============ CLIENT TRANSFER ============ -->
 <div class="overlay" id="transferModal">
   <div class="modal" style="width:min(520px,100%)">
@@ -4656,7 +4646,7 @@ const STARTER_LINKS = [
   { id:'lstarter-housing', name:'Housing.com',                 url:'https://housing.com/',                  categoryId:'lcat-portals', note:'Project research' },
   { id:'lstarter-calc',    name:'Google Calculator',           url:'https://www.google.com/search?q=calculator', categoryId:'lcat-tools', note:'Quick sq yd / rate maths' },
 ];
-const BOOKING_STAGES = [
+const DEFAULT_BOOKING_STAGES = [
   { id:'booked',    label:'Booked' },
   { id:'agreement', label:'Agreement' },
   { id:'payment',   label:'Payment in progress' },
@@ -4665,7 +4655,7 @@ const BOOKING_STAGES = [
   { id:'hold',      label:'On hold' },
   { id:'cancelled', label:'Cancelled' },
 ];
-const NEWS_CATEGORIES = [
+const DEFAULT_NEWS_CATEGORIES = [
   { id:'market',        label:'Market & rates' },
   { id:'policy',        label:'Policy / RERA' },
   { id:'infrastructure',label:'Infrastructure' },
@@ -4673,7 +4663,7 @@ const NEWS_CATEGORIES = [
   { id:'advisory',      label:'Advisory note' },
   { id:'other',         label:'Other' },
 ];
-const ADVISOR_STATUSES = [
+const DEFAULT_ADVISOR_STATUSES = [
   { id:'prospect',  label:'Prospect / to call', short:'Prospect', cls:'status-new' },
   { id:'contacted', label:'Contacted',          short:'Contacted', cls:'status-contacted' },
   { id:'meeting',   label:'Meeting / discussion', short:'Meeting', cls:'status-visit' },
@@ -4682,7 +4672,7 @@ const ADVISOR_STATUSES = [
   { id:'inactive',  label:'Inactive / paused',   short:'Inactive', cls:'status-lost' },
 ];
 const CORRIDOR_COLORS = ['#B4673F','#4E7C62','#9A7B3F','#54779E','#8A6480','#5F8452','#7A6B4F','#3F7C7A','#A0555F','#6B7F3F'];
-const TYPES = [
+const DEFAULT_TYPES = [
   { id:'flat',        label:'Flat / Apartment',          short:'Flat' },
   { id:'studio',      label:'Studio Apartment',          short:'Studio' },
   { id:'plot',        label:'Plot / Open Land',          short:'Plot' },
@@ -4692,7 +4682,7 @@ const TYPES = [
   { id:'farmhouse',   label:'Farmhouse',                 short:'Farmhouse' },
   { id:'agriculture', label:'Agriculture Land',          short:'Agriculture' },
 ];
-const TYPE_CARDS = [
+const DEFAULT_TYPE_CARDS = [
   { types:['flat'], key:'flat', title:'Flats & Apartments',
     desc:'Ready and under-construction flats across the city — 2, 3 and 4 BHK, with possession and per-sq-ft pricing on record.',
     icon:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16"/><path d="M15 9h4a1 1 0 0 1 1 1v11"/><path d="M2 21h20"/><path d="M7.5 8h2M7.5 12h2M7.5 16h2M11.5 8h.5M11.5 12h.5M11.5 16h.5"/></svg>' },
@@ -4715,29 +4705,29 @@ const TYPE_CARDS = [
     desc:'Agricultural land and farmhouse holdings on the city’s green edge — NA status, access road and water source first.',
     icon:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18"/><path d="M5 21V10l7-6 7 6v11"/><path d="M12 21v-5"/><path d="M9 8.5c1.5 1.5 4.5 1.5 6 0"/></svg>' },
 ];
-const APPROVAL_TYPES = [
+const DEFAULT_APPROVAL_TYPES = [
   { id:'jda',         label:'JDA / RERA approved',                       short:'JDA / RERA' },
   { id:'sdm',         label:'SDM / Nagarpalika / Collector approved',     short:'SDM / Nagarpalika' },
   { id:'society',     label:'Society approved',                           short:'Society' },
   { id:'agriculture', label:'Agriculture land',                           short:'Agriculture' },
   { id:'other',       label:'Other / remarks',                            short:'Other' },
 ];
-const PLOT_USES = [
+const DEFAULT_PLOT_USES = [
   { id:'residential', label:'Residential plot' },
   { id:'commercial',  label:'Commercial plot' },
   { id:'mixed',       label:'Mix-use plot' },
 ];
-const RATE_UNITS = [
+const DEFAULT_RATE_UNITS = [
   { id:'sqft', label:'Per sq ft', short:'sq ft' },
   { id:'sqyd', label:'Per sq yard', short:'sq yd' },
 ];
-const COMMON_AMENITIES = [
+const DEFAULT_COMMON_AMENITIES = [
   'Gated community','Boundary wall','Wide internal roads','Street lights','Park / garden','Kids play area',
   'Clubhouse','Swimming pool','Gym','Jogging track','Temple','School nearby','Market nearby','Hospital nearby',
   '24x7 security','CCTV','Power backup','Lift','Covered parking','Water supply','Sewer line','Gas pipeline',
   'Rainwater harvesting','Commercial complex'
 ];
-const CONNECTION_SUGGESTIONS = [
+const DEFAULT_CONNECTION_SUGGESTIONS = [
   'Ring Road','Jaipur Airport','Railway Station','Metro station','School','College','Hospital',
   'Market','Bus stand','Highway','Industrial area','Temple'
 ];
@@ -4745,7 +4735,7 @@ const ADMIN_NAME = 'Ajay Sharma';
 const ADMIN_PASSWORD = '5794';
 const ADVISOR_PASSWORD = '1111';
 const AUTH_KEY = 'bcs_auth_v1';
-const CLIENT_STATUSES = [
+const DEFAULT_CLIENT_STATUSES = [
   { id:'new',         label:'New lead' },
   { id:'contacted',   label:'Contacted' },
   { id:'visit',       label:'Site visit' },
@@ -4754,7 +4744,7 @@ const CLIENT_STATUSES = [
   { id:'booked',      label:'Booked' },
   { id:'lost',        label:'Lost / on hold' },
 ];
-const RESALE_STATUSES = [
+const DEFAULT_RESALE_STATUSES = [
   { id:'available', label:'Available' },
   { id:'hold',      label:'On hold' },
   { id:'sold',      label:'Sold' },
@@ -4778,14 +4768,18 @@ const CF_TYPES = [
 ];
 const CF_TYPE_LABEL = Object.fromEntries(CF_TYPES.map(t => [t.id, t.label]));
 const CF_ENTITY_LABEL = Object.fromEntries(CF_ENTITIES.map(e => [e.id, e.label]));
-const TIMELINES = [
+const DEFAULT_TIMELINES = [
   { id:'ready', label:'Ready to move', rank:0 },
   { id:'6m', label:'Within 6 months', rank:1 },
   { id:'12m', label:'6–12 months', rank:2 },
   { id:'24m', label:'1–2 years', rank:3 },
   { id:'24plus', label:'2+ years', rank:4 },
 ];
-const STATUSES = ['ongoing','upcoming','completed'];
+const DEFAULT_STATUSES = [
+  { id:'ongoing',   label:'Ongoing',  pill:'green' },
+  { id:'upcoming',  label:'Upcoming', pill:'gold' },
+  { id:'completed', label:'Completed', pill:'blue' },
+];
 const uid = () => (crypto.randomUUID ? crypto.randomUUID() : 'id-'+Date.now()+'-'+Math.random().toString(36).slice(2));
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -4793,13 +4787,12 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 
 /* ---------- state ---------- */
 /* ---------- unit-level inventory ---------- */
-const UNIT_STATUSES = [
+const DEFAULT_UNIT_STATUSES = [
   { id:'available', label:'Available', color:'#4F8A63' },
   { id:'hold',      label:'Hold',      color:'#C49A3E' },
   { id:'booked',    label:'Booked',    color:'#54779E' },
   { id:'sold',      label:'Sold',      color:'#8A9790' }
 ];
-const UNIT_STATUS_LABEL = Object.fromEntries(UNIT_STATUSES.map(s => [s.id, s.label]));
 const unitStatusMeta = id => UNIT_STATUSES.find(s => s.id === id) || UNIT_STATUSES[0];
 const unitList = p => Array.isArray(p && p.units) ? p.units : [];
 function unitCounts(p){
@@ -4909,13 +4902,12 @@ function qualityGrade(score){
 }
 
 /* ---------- templates library ---------- */
-const TEMPLATE_SCOPES = [
+const DEFAULT_TEMPLATE_SCOPES = [
   { id:'general',   label:'General',   icon:'✉' },
   { id:'developer', label:'Developer', icon:'🏗' },
   { id:'project',   label:'Project',   icon:'🏡' },
   { id:'advisor',   label:'Advisor',   icon:'🤝' }
 ];
-const TEMPLATE_SCOPE_LABEL = Object.fromEntries(TEMPLATE_SCOPES.map(s => [s.id, s.label]));
 const TEMPLATE_PLACEHOLDERS = [
   ['{developer}','Developer name'], ['{owner}','Owner name'], ['{developerPhone}','Developer phone'],
   ['{project}','Project name'], ['{corridor}','Corridor'], ['{location}','Location'],
@@ -5019,7 +5011,7 @@ function normalizeDb(d){
   d.templates = d.templates.filter(t => t && String(t.name || '').trim()).map(t => ({
     id: t.id || uid(),
     name: String(t.name).trim(),
-    scope: TEMPLATE_SCOPES.some(s => s.id === t.scope) ? t.scope : 'general',
+    scope: DEFAULT_TEMPLATE_SCOPES.some(s => s.id === t.scope) ? t.scope : 'general',
     refId: t.refId == null ? '' : String(t.refId),
     category: t.category == null ? '' : String(t.category).trim(),
     content: t.content == null ? '' : String(t.content),
@@ -5050,7 +5042,7 @@ function normalizeDb(d){
     if(r.ownerPhone == null) r.ownerPhone = '';
     if(!clientIds.has(r.clientId)) r.clientId = '';
     if(!advisorIds.has(r.advisorId)) r.advisorId = '';
-    if(!RESALE_STATUSES.some(s => s.id === r.status)) r.status = 'available';
+    if(!DEFAULT_RESALE_STATUSES.some(s => s.id === r.status)) r.status = 'available';
     if(r.notes == null) r.notes = '';
     if(r.createdAt == null) r.createdAt = Date.now();
     if(r.updatedAt == null) r.updatedAt = r.createdAt;
@@ -5073,7 +5065,7 @@ function normalizeDb(d){
     if(a.city == null) a.city = 'Jaipur';
     if(a.nextFollowUp == null) a.nextFollowUp = '';
     if(a.lastContact == null) a.lastContact = '';
-    if(!ADVISOR_STATUSES.some(s => s.id === a.status)) a.status = a.active === false ? 'inactive' : 'active';
+    if(!DEFAULT_ADVISOR_STATUSES.some(s => s.id === a.status)) a.status = a.active === false ? 'inactive' : 'active';
     a.active = a.status === 'active';
   });
   d.clients.forEach(c => {
@@ -5081,7 +5073,7 @@ function normalizeDb(d){
     if(!Array.isArray(c.corridors)) c.corridors = [];
     if(!Array.isArray(c.projectIds)) c.projectIds = [];
     c.projectIds = c.projectIds.filter(id => projectIds.has(id));
-    if(!CLIENT_STATUSES.some(s => s.id === c.clientStatus)) c.clientStatus = 'new';
+    if(!DEFAULT_CLIENT_STATUSES.some(s => s.id === c.clientStatus)) c.clientStatus = 'new';
     if(c.requirement == null) c.requirement = '';
     if(c.email == null) c.email = '';
     if(c.advisorId == null) c.advisorId = '';
@@ -5134,7 +5126,7 @@ function normalizeDb(d){
         size: u.size == null ? '' : String(u.size).trim(),
         price: nv(u.price),
         rate: nv(u.rate),
-        status: UNIT_STATUSES.some(s => s.id === u.status) ? u.status : 'available',
+        status: DEFAULT_UNIT_STATUSES.some(s => s.id === u.status) ? u.status : 'available',
         buyerName: u.buyerName == null ? '' : String(u.buyerName).trim(),
         buyerPhone: u.buyerPhone == null ? '' : String(u.buyerPhone).trim(),
         notes: u.notes == null ? '' : String(u.notes),
@@ -5358,6 +5350,31 @@ function normalizeDb(d){
   if(!['board','gallery','list'].includes(d.ui.projectsMode)) d.ui.projectsMode = 'board';
   if(!['cards','list','kanban'].includes(d.ui.devViewMode)) d.ui.devViewMode = 'cards';
   if(!['cards','table'].includes(d.ui.corrViewMode)) d.ui.corrViewMode = 'cards';
+  // v15 — user-manageable option lists (rename / hide / reorder / add)
+  if(!d.lists || typeof d.lists !== 'object' || Array.isArray(d.lists)) d.lists = {};
+  ['types','statuses','plotUses','timelines','approvalTypes','rateUnits','unitStatuses','clientStatuses','advisorStatuses','resaleStatuses','bookingStages','newsCategories','videoStatuses','amenities','connections','templateScopes'].forEach(key => {
+    const st = d.lists[key];
+    if(!st || typeof st !== 'object' || Array.isArray(st)){ d.lists[key] = { hidden:[], labels:{}, order:[], custom:[] }; return; }
+    if(!Array.isArray(st.hidden)) st.hidden = [];
+    st.hidden = st.hidden.map(x => String(x)).filter(Boolean);
+    if(!st.labels || typeof st.labels !== 'object' || Array.isArray(st.labels)) st.labels = {};
+    else Object.keys(st.labels).forEach(k => { st.labels[k] = String(st.labels[k]).slice(0, 120); });
+    if(!Array.isArray(st.order)) st.order = [];
+    st.order = st.order.map(x => String(x));
+    if(!Array.isArray(st.custom)) st.custom = [];
+    st.custom = st.custom.filter(c => c && (c.id || c.label)).map(c => {
+      const item = typeof c === 'string' ? { id:c, label:c } : Object.assign({}, c);
+      return {
+        id: String(item.id || ('c' + Math.random().toString(36).slice(2, 9))),
+        label: String(item.label || '').trim().slice(0, 120),
+        short: item.short ? String(item.short).slice(0, 40) : undefined,
+        rank: Number.isFinite(+item.rank) ? +item.rank : undefined,
+        color: item.color ? String(item.color) : undefined,
+        cls: item.cls ? String(item.cls) : undefined,
+        icon: item.icon ? String(item.icon) : undefined,
+      };
+    }).filter(c => c.label);
+  });
   if(!d.version || d.version < 11) d.version = 11;
   return d;
 }
@@ -5614,7 +5631,6 @@ function initCorridorManager(){
     if(del) return deleteCorridor(del.dataset.corrDel);
   });
 }
-const statusLabel = { ongoing:'Ongoing', upcoming:'Upcoming', completed:'Completed' };
 // Developer desk buckets: sold out (inventory closed) is shown as its own bucket,
 // so the four counts add up to the total instead of double-counting.
 const DEV_BUCKETS = [
@@ -5623,7 +5639,6 @@ const DEV_BUCKETS = [
   { id:'completed', label:'Completed' },
   { id:'soldout',   label:'Sold out' }
 ];
-const DEV_BUCKET_LABEL = { ongoing:'Ongoing', upcoming:'Upcoming', completed:'Completed', soldout:'Sold out' };
 const devBucket = p => !p ? 'upcoming' : (p.soldOut ? 'soldout' : (['ongoing','upcoming','completed'].includes(p.status) ? p.status : 'upcoming'));
 const devBucketCounts = ps => {
   const out = { ongoing:0, upcoming:0, completed:0, soldout:0, all: ps.length };
@@ -5631,7 +5646,6 @@ const devBucketCounts = ps => {
   return out;
 };
 
-const typeName = Object.fromEntries(TYPES.map(t => [t.id, t.short]));
 const typeLabel = arr => (arr&&arr.length) ? arr.map(t => typeName[t]||t).join(' · ') : 'Property';
 const timeline = id => TIMELINES.find(t => t.id === id);
 const timelineLabel = id => (timeline(id) || {}).label || 'Not specified';
@@ -6178,32 +6192,61 @@ function cycleDailyQuote(){
   if(box){ box.classList.remove('swap'); void box.offsetWidth; box.classList.add('swap'); }
 }
 
+function dlWeekNumber(d){
+  const tmp = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  const dayNum = (tmp.getUTCDay() + 6) % 7;
+  tmp.setUTCDate(tmp.getUTCDate() - dayNum + 3);
+  const firstThursday = tmp.valueOf();
+  tmp.setUTCMonth(0, 1);
+  if(tmp.getUTCDay() !== 4) tmp.setUTCMonth(0, 1 + ((4 - tmp.getUTCDay()) + 7) % 7);
+  return 1 + Math.round((firstThursday - tmp) / 604800000);
+}
+function tickClock(){
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  let h = now.getHours();
+  const meridiem = h >= 12 ? 'PM' : 'AM';
+  h = h % 12 || 12;
+  const c = $('#dlClock'); if(c) c.textContent = pad(h) + ':' + pad(now.getMinutes());
+  const s = $('#dlSeconds'); if(s) s.textContent = ':' + pad(now.getSeconds());
+  const m = $('#dlMeridiem'); if(m) m.textContent = meridiem;
+}
 function renderDailyHero(){
   const hero = $('#todayHero');
   if(!hero) return;
   const now = new Date();
   const iso = todayISO();
   const fest = festivalByDate(iso) || virtualTodayFestival();
-  const pal = FESTIVAL_THEMES[fest.theme] || FESTIVAL_THEMES.saffron;
-  hero.style.setProperty('--th-bg1', pal.bg1);
-  hero.style.setProperty('--th-bg2', pal.bg2);
-  hero.style.setProperty('--th-accent', pal.accent);
-  const dhl = $('#dashHeadline');
-  if(dhl){
-    dhl.style.setProperty('--th-bg1', pal.bg1);
-    dhl.style.setProperty('--th-bg2', pal.bg2);
-    dhl.style.setProperty('--th-accent', pal.accent);
-  }
+  const isFestDay = !!festivalByDate(iso);
+  const upcoming3 = upcomingFestivals(3, iso);
+  const nextFest = upcoming3[0] || null;
 
   if($('#thWeekdayHi')) $('#thWeekdayHi').textContent = HINDI_WEEKDAYS[now.getDay()];
   if($('#thWeekdayEn')) $('#thWeekdayEn').textContent = now.toLocaleDateString('en-IN', { weekday:'long' });
   if($('#thDay')) $('#thDay').textContent = String(now.getDate()).padStart(2, '0');
   if($('#thMonth')) $('#thMonth').textContent = now.toLocaleDateString('en-IN', { month:'long', year:'numeric' });
-  if($('#thMonthHi')) $('#thMonthHi').textContent = HINDI_MONTHS[now.getMonth()];
+  if($('#thMonthHi')) $('#thMonthHi').textContent = HINDI_MONTHS[now.getMonth()] + ' · ' + now.getFullYear();
+  // calendar creative block
+  if($('#thCalMonth')) $('#thCalMonth').textContent = now.toLocaleDateString('en-IN', { month:'long' }).toUpperCase();
+  if($('#thCalDay')) $('#thCalDay').textContent = String(now.getDate()).padStart(2, '0');
+  if($('#thCalWeek')) $('#thCalWeek').textContent = HINDI_WEEKDAYS[now.getDay()];
+  if($('#thCalYear')) $('#thCalYear').textContent = now.toLocaleDateString('en-IN', { weekday:'long' }) + ' · ' + now.getFullYear();
+  // right: time details
+  const det = $('#dlDetail');
+  if(det) det.textContent = now.toLocaleDateString('en-IN', { weekday:'short', day:'2-digit', month:'short' }) + ' · Week ' + dlWeekNumber(now);
+  const dlNext = $('#dlNext');
+  if(dlNext){
+    if(isFestDay) dlNext.textContent = (fest.name || 'Aaj') + ' · aaj hi hai';
+    else if(nextFest){
+      const days = daysFromToday(nextFest.date);
+      dlNext.textContent = nextFest.name + (days === 1 ? ' · kal' : ' · in ' + days + ' days');
+    } else dlNext.textContent = 'Jaipur · IST';
+  }
+  tickClock();
 
   if($('#thEmoji')) $('#thEmoji').textContent = fest.emoji || '✨';
   if($('#thFestivalName')) $('#thFestivalName').textContent = fest.name || 'Aaj';
-  if($('#thTodayChip')) $('#thTodayChip').textContent = festivalByDate(iso) ? 'Aaj · Today' : 'Aaj · Today';
+  if($('#thTodayChip')) $('#thTodayChip').textContent = isFestDay ? 'Aaj · Today' : 'Aaj · Today';
   if($('#thFestivalHi')) $('#thFestivalHi').textContent = fest.hi || fest.name || 'आज का दिन';
   if($('#thFestivalEn')) $('#thFestivalEn').textContent = [fest.en || fest.name, fest.note].filter(Boolean).join(' · ');
   if($('#thGreetHi')) $('#thGreetHi').textContent = fest.greetHi || 'आज का दिन शुभ हो।';
@@ -6757,6 +6800,8 @@ function initDailyHero(){
     const now = todayISO();
     if(now !== lastDay){ lastDay = now; renderDailyHero(); }
   }, 60000);
+  setInterval(() => { tickClock(); }, 1000);
+  tickClock();
   document.addEventListener('visibilitychange', () => {
     if(document.visibilityState !== 'visible') return;
     if(todayISO() !== lastDay){ lastDay = todayISO(); renderDailyHero(); }
@@ -8426,25 +8471,71 @@ function emptyBrief(){
   return { name:'', phone:'', budgetMin:null, budgetMax:null, timeline:'', status:'',
            types:[], corridors:[], approvalType:'', reraOnly:false, approvedOnly:false, notes:'' };
 }
+/* ---------- v15: rebuild every list-driven select/chip (used at boot AND after editing lists) ---------- */
+function refillListSelects(){
+  const refill = (sel, html) => {
+    const el = $(sel);
+    if(!el) return;
+    const cur = el.value;
+    el.innerHTML = html;
+    if([...el.options].some(o => o.value === cur)) el.value = cur;
+  };
+  const opt = (v, l) => `<option value="${esc(v)}">${esc(l)}</option>`;
+  refill('#filterStatus', '<option value="">All status</option>' + STATUSES.map(s => opt(s.id, s.label)).join(''));
+  refill('#filterType', '<option value="">All types</option>' + TYPES.map(t => opt(t.id, t.label)).join(''));
+  refill('#filterApproval', '<option value="">All approvals</option>' + APPROVAL_TYPES.map(a => opt(a.id, a.label)).join(''));
+  refill('#pApprovalType', '<option value="">Not recorded</option>' + APPROVAL_TYPES.map(a => opt(a.id, a.label)).join(''));
+  refill('#pRateUnit', '<option value="">Not specified</option>' + RATE_UNITS.map(u => opt(u.id, u.label)).join(''));
+  refill('#pPlotUse', '<option value="">Not applicable</option>' + PLOT_USES.map(u => opt(u.id, u.label)).join(''));
+  refill('#pStatus', STATUSES.map(s => opt(s.id, s.label)).join(''));
+  refill('#pTimeline', '<option value="">Not specified</option>' + TIMELINES.map(t => opt(t.id, t.label)).join(''));
+  refill('#cStatus', CLIENT_STATUSES.map(s => opt(s.id, s.label)).join(''));
+  refill('#bStage', BOOKING_STAGES.map(s => opt(s.id, s.label)).join(''));
+  const aStatus = $('#aStatus');
+  if(aStatus){
+    const cur = aStatus.value;
+    aStatus.innerHTML = ADVISOR_STATUSES.map(s => opt(s.id, s.label)).join('');
+    if([...aStatus.options].some(o => o.value === cur)) aStatus.value = cur;
+  }
+  const aStatusFilter = $('#advisorState');
+  if(aStatusFilter){
+    const cur = aStatusFilter.value;
+    aStatusFilter.innerHTML = '<option value="">All statuses</option>' + ADVISOR_STATUSES.map(s => opt(s.id, s.label)).join('');
+    if([...aStatusFilter.options].some(o => o.value === cur)) aStatusFilter.value = cur;
+  }
+  refill('#rStatus', RESALE_STATUSES.map(s => opt(s.id, s.label)).join(''));
+  refill('#nCategory', NEWS_CATEGORIES.map(c => opt(c.id, c.label)).join(''));
+  refill('#newsCategoryFilter', '<option value="">All categories</option>' + NEWS_CATEGORIES.map(c => opt(c.id, c.label)).join(''));
+  // #ideasFilter is rebuilt by renderVideos() on the video ideas screen
+  // WhatsApp template scope selects (two of them)
+  [['#tplScopeFilter', '<option value="">All scopes</option>'], ['#tplScope', '']].forEach(([sel, pre]) => {
+    const el = $(sel);
+    if(!el) return;
+    const cur = el.value;
+    el.innerHTML = pre + TEMPLATE_SCOPES.map(s => opt(s.id, s.label)).join('');
+    if([...el.options].some(o => o.value === cur)) el.value = cur;
+  });
+  // connection suggestion quick-picks
+  refill('#dConnQuick', '<option value="">Quick add a location…</option>' + CONNECTION_SUGGESTIONS.map(c => opt(c, c)).join(''));
+  refill('#pConnQuick', '<option value="">Quick add a connectivity…</option>' + CONNECTION_SUGGESTIONS.map(c => opt(c, c)).join(''));
+}
+function refillListChips(){
+  const pTypes = $('#pTypes');
+  if(pTypes){
+    const checked = [...pTypes.querySelectorAll('input:checked')].map(i => i.value);
+    pTypes.innerHTML = TYPES.map(t =>
+      `<label><input type="checkbox" value="${esc(t.id)}"${checked.includes(t.id) ? ' checked' : ''}><span>${esc(t.label)}</span></label>`).join('');
+  }
+  const amen = $('#pAmenityChips');
+  if(amen){
+    const checked = [...amen.querySelectorAll('input:checked')].map(i => i.value);
+    amen.innerHTML = COMMON_AMENITIES.map(a =>
+      `<label><input type="checkbox" value="${esc(a)}"${checked.includes(a) ? ' checked' : ''}><span>${esc(a)}</span></label>`).join('');
+  }
+}
 function initTypeControls(){
-  $('#filterType').innerHTML = '<option value="">All types</option>' +
-    TYPES.map(t => `<option value="${t.id}">${t.label}</option>`).join('');
-  $('#filterApproval').innerHTML = '<option value="">All approvals</option>' +
-    APPROVAL_TYPES.map(a => `<option value="${a.id}">${a.label}</option>`).join('');
-
-  $('#pTypes').innerHTML = TYPES.map(t =>
-    `<label><input type="checkbox" value="${t.id}"><span>${t.label}</span></label>`).join('');
-  $('#pAmenityChips').innerHTML = COMMON_AMENITIES.map(a =>
-    `<label><input type="checkbox" value="${esc(a)}"><span>${esc(a)}</span></label>`).join('');
-  $('#pRateUnit').innerHTML = '<option value="">Not specified</option>' +
-    RATE_UNITS.map(u => `<option value="${u.id}">${u.label}</option>`).join('');
-  $('#pPlotUse').innerHTML = '<option value="">Not applicable</option>' +
-    PLOT_USES.map(u => `<option value="${u.id}">${u.label}</option>`).join('');
-  $('#pApprovalType').innerHTML = '<option value="">Not recorded</option>' +
-    APPROVAL_TYPES.map(a => `<option value="${a.id}">${a.label}</option>`).join('');
-  $('#pConnQuick').innerHTML = '<option value="">Quick add a location…</option>' +
-    CONNECTION_SUGGESTIONS.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
-
+  refillListSelects();
+  refillListChips();
   $$('#pFormTabs [data-ptab]').forEach(btn =>
     btn.addEventListener('click', () => setProjectTab(btn.dataset.ptab)));
 }
@@ -10016,7 +10107,7 @@ function buildWorkbookData(withData){
     ['7. Unit Inventory aur Price History export-only hain — readymade record ke liye. Units app ke Inventory tab se edit karein.'],
     [''],
     ['Options:'],
-    ['Status — ' + STATUSES.map(x => statusLabel[x]).join(', ')],
+    ['Status — ' + STATUSES.map(x => x.label).join(', ')],
     ['Property types — ' + TYPES.map(t => t.label).join(', ')],
     ['Approval types — ' + APPROVAL_TYPES.map(a => a.label).join(', ')],
     ['Plot use — ' + PLOT_USES.map(p => p.label).join(', ')],
@@ -10284,7 +10375,7 @@ async function importWorkbookFile(file){
       }
       const cor = ensureCorridorByName(xv(row,'Corridor'));
       if(cor) p.corridor = cor.id;
-      const st = findOptionId(STATUSES.map(s => ({ id:s, label:statusLabel[s] })), xv(row,'Status'));
+      const st = findOptionId(STATUSES, xv(row,'Status'));
       if(st) p.status = st;
       const typeVals = xList(xv(row,'Property types'));
       if(typeVals.length) p.types = typeVals.map(v => findOptionId(TYPES, v)).filter(Boolean);
@@ -10533,13 +10624,121 @@ const NEWS_SOURCES = [
   { id:'realtyfirst',  label:'Realty First',     query:'site:realtyfirstmag.com', url:'https://realtyfirstmag.com' },
   { id:'national',     label:'India market',     query:'India real estate market when:7d', url:'https://realty.economictimes.indiatimes.com' }
 ];
-const VIDEO_STATUSES = [
+const DEFAULT_VIDEO_STATUSES = [
   { id:'idea',   label:'Idea' },
   { id:'script', label:'Script ready' },
   { id:'filmed', label:'Filmed' },
   { id:'posted', label:'Posted' }
 ];
-const VIDEO_STATUS_ORDER = ['idea','script','filmed','posted'];
+
+/* ---------- v15: user-manageable option lists (every dropdown everywhere) ---------- */
+const LIST_DEFS = [
+  { key:'types',          title:'Property types',            hint:'Types shown in pickers, filters, cards, analytics and CSV', kind:'types' },
+  { key:'statuses',       title:'Project statuses',          hint:'Ongoing / Upcoming / Completed …', kind:'statuses' },
+  { key:'plotUses',       title:'Plot use',                  hint:'Options in the Plot use dropdown' },
+  { key:'timelines',      title:'Possession / completion',   hint:'Ready, 6 months, 1–2 years …', kind:'timelines' },
+  { key:'approvalTypes',  title:'Approval types',            hint:'JDA / RERA, SDM, Society, Agriculture …', kind:'short' },
+  { key:'rateUnits',      title:'Rate units',                hint:'Per sq ft / per sq yard …', kind:'short' },
+  { key:'unitStatuses',   title:'Unit statuses',             hint:'Inventory: Available / Hold / Booked / Sold …', kind:'color' },
+  { key:'clientStatuses', title:'Client pipeline stages',    hint:'New lead → … → Booked …', kind:'cls' },
+  { key:'advisorStatuses',title:'Advisor pipeline stages',   hint:'Prospect → … → Active …', kind:'cls' },
+  { key:'resaleStatuses', title:'Resale statuses',           hint:'Available / On hold / Sold …' },
+  { key:'bookingStages',  title:'Booking stages',            hint:'Booked → Agreement → …' },
+  { key:'newsCategories', title:'News categories',           hint:'Market, policy, infrastructure …' },
+  { key:'videoStatuses',  title:'Video idea statuses',       hint:'Idea → Script → Filmed → Posted' },
+  { key:'amenities',      title:'Amenities suggestions',     hint:'Chips shown as suggestions when adding amenities', kind:'strings' },
+  { key:'connections',    title:'Nearby / connectivity',     hint:'Connectivity suggestions in project editor', kind:'strings' },
+  { key:'templateScopes', title:'WhatsApp template scopes',  hint:'General, Developer, Project, Advisor …', kind:'icon' },
+];
+const LIST_KEYS = LIST_DEFS.map(d => d.key);
+const DEFAULT_LIST_OF = {
+  types: DEFAULT_TYPES, statuses: DEFAULT_STATUSES, plotUses: DEFAULT_PLOT_USES,
+  timelines: DEFAULT_TIMELINES, approvalTypes: DEFAULT_APPROVAL_TYPES, rateUnits: DEFAULT_RATE_UNITS,
+  unitStatuses: DEFAULT_UNIT_STATUSES, clientStatuses: DEFAULT_CLIENT_STATUSES,
+  advisorStatuses: DEFAULT_ADVISOR_STATUSES, resaleStatuses: DEFAULT_RESALE_STATUSES,
+  bookingStages: DEFAULT_BOOKING_STAGES, newsCategories: DEFAULT_NEWS_CATEGORIES,
+  videoStatuses: DEFAULT_VIDEO_STATUSES, amenities: DEFAULT_COMMON_AMENITIES,
+  connections: DEFAULT_CONNECTION_SUGGESTIONS, templateScopes: DEFAULT_TEMPLATE_SCOPES,
+};
+function listStateOf(key){
+  const all = (typeof db !== 'undefined' && db.lists) || {};
+  const st = all[key];
+  return (st && typeof st === 'object' && !Array.isArray(st)) ? st : { hidden:[], labels:{}, order:[], custom:[] };
+}
+function resolveList(key, defaults){
+  const st = listStateOf(key);
+  const hidden = new Set(Array.isArray(st.hidden) ? st.hidden : []);
+  const labels = (st.labels && typeof st.labels === 'object') ? st.labels : {};
+  const order = Array.isArray(st.order) ? st.order : [];
+  const idx = new Map(order.map((id, i) => [id, i]));
+  const norm = x => {
+    const item = (typeof x === 'string') ? { id: x, label: x } : Object.assign({}, x);
+    if(labels[item.id] != null) item.label = String(labels[item.id]);
+    return item;
+  };
+  const merged = defaults.map(norm).filter(x => !hidden.has(x.id));
+  const custom = Array.isArray(st.custom) ? st.custom : [];
+  custom.forEach(c => {
+    const item = norm(c);
+    if(!item.id || !item.label) return;
+    if(!merged.some(m => m.id === item.id)) merged.push(item);
+  });
+  merged.sort((a, b) => (idx.has(a.id) ? idx.get(a.id) : 1e9 + merged.indexOf(a)) - (idx.has(b.id) ? idx.get(b.id) : 1e9 + merged.indexOf(b)));
+  return merged;
+}
+function buildTypeCards(types, renamed){
+  const cards = [];
+  const tagIcon = '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3H11L21 13a2 2 0 0 1 0 2.8l-5.2 5.2a2 2 0 0 1-2.8 0L3 11Z"/><circle cx="7.5" cy="7.5" r="1"/></svg>';
+  DEFAULT_TYPE_CARDS.forEach(c => {
+    const firstId = c.types.find(id => types.some(t => t.id === id));
+    if(!firstId) return;                    // every type in the card hidden → hide the card
+    const t = types.find(x => x.id === firstId);
+    const title = (renamed && c.types.some(id => renamed.has(id))) ? t.label : c.title;
+    cards.push(Object.assign({}, c, { title }));
+  });
+  types.forEach(t => {
+    if(DEFAULT_TYPE_CARDS.some(c => c.types.includes(t.id))) return;
+    cards.push({ types:[t.id], key:t.id, title:t.label, desc:'Aapki custom property type — details yahan add hote rahenge.', icon:tagIcon });
+  });
+  return cards;
+}
+let VIDEO_STATUS_ORDER = [];
+let TYPES = DEFAULT_TYPES, STATUSES = DEFAULT_STATUSES, PLOT_USES = DEFAULT_PLOT_USES;
+let TIMELINES = DEFAULT_TIMELINES, APPROVAL_TYPES = DEFAULT_APPROVAL_TYPES, RATE_UNITS = DEFAULT_RATE_UNITS;
+let UNIT_STATUSES = DEFAULT_UNIT_STATUSES, CLIENT_STATUSES = DEFAULT_CLIENT_STATUSES;
+let RESALE_STATUSES = DEFAULT_RESALE_STATUSES, ADVISOR_STATUSES = DEFAULT_ADVISOR_STATUSES;
+let BOOKING_STAGES = DEFAULT_BOOKING_STAGES, NEWS_CATEGORIES = DEFAULT_NEWS_CATEGORIES;
+let VIDEO_STATUSES = DEFAULT_VIDEO_STATUSES, TEMPLATE_SCOPES = DEFAULT_TEMPLATE_SCOPES;
+let COMMON_AMENITIES = [...DEFAULT_COMMON_AMENITIES], CONNECTION_SUGGESTIONS = [...DEFAULT_CONNECTION_SUGGESTIONS];
+let TYPE_CARDS = DEFAULT_TYPE_CARDS, statusLabel = {}, DEV_BUCKET_LABEL = {};
+let typeName = {}, UNIT_STATUS_LABEL = {}, TEMPLATE_SCOPE_LABEL = {};
+function resolveAllLists(){
+  TYPES = resolveList('types', DEFAULT_TYPES);
+  STATUSES = resolveList('statuses', DEFAULT_STATUSES);
+  PLOT_USES = resolveList('plotUses', DEFAULT_PLOT_USES);
+  TIMELINES = resolveList('timelines', DEFAULT_TIMELINES);
+  APPROVAL_TYPES = resolveList('approvalTypes', DEFAULT_APPROVAL_TYPES);
+  RATE_UNITS = resolveList('rateUnits', DEFAULT_RATE_UNITS);
+  UNIT_STATUSES = resolveList('unitStatuses', DEFAULT_UNIT_STATUSES);
+  CLIENT_STATUSES = resolveList('clientStatuses', DEFAULT_CLIENT_STATUSES);
+  RESALE_STATUSES = resolveList('resaleStatuses', DEFAULT_RESALE_STATUSES);
+  ADVISOR_STATUSES = resolveList('advisorStatuses', DEFAULT_ADVISOR_STATUSES);
+  BOOKING_STAGES = resolveList('bookingStages', DEFAULT_BOOKING_STAGES);
+  NEWS_CATEGORIES = resolveList('newsCategories', DEFAULT_NEWS_CATEGORIES);
+  VIDEO_STATUSES = resolveList('videoStatuses', DEFAULT_VIDEO_STATUSES);
+  VIDEO_STATUS_ORDER = VIDEO_STATUSES.map(s => s.id);
+  COMMON_AMENITIES = resolveList('amenities', DEFAULT_COMMON_AMENITIES).map(x => x.label);
+  CONNECTION_SUGGESTIONS = resolveList('connections', DEFAULT_CONNECTION_SUGGESTIONS).map(x => x.label);
+  TEMPLATE_SCOPES = resolveList('templateScopes', DEFAULT_TEMPLATE_SCOPES);
+  typeName = Object.fromEntries(TYPES.map(t => [t.id, t.short || t.label]));
+  UNIT_STATUS_LABEL = Object.fromEntries(UNIT_STATUSES.map(s => [s.id, s.label]));
+  TEMPLATE_SCOPE_LABEL = Object.fromEntries(TEMPLATE_SCOPES.map(s => [s.id, s.label]));
+  statusLabel = Object.fromEntries(STATUSES.map(s => [s.id, s.label]));
+  DEV_BUCKET_LABEL = Object.assign(Object.fromEntries(STATUSES.map(s => [s.id, s.label])), { soldout:'Sold out' });
+  TYPE_CARDS = buildTypeCards(TYPES);
+}
+resolveAllLists();
+
 const liveCache = new Map();
 const liveState = { sourceId:'jaipur', query:'', items:[], loading:false, error:'', fetchedAt:0, started:false };
 let newsMode = 'feed';
@@ -11544,6 +11743,8 @@ function applyRoleChrome(){
   if(mob) mob.style.display = admin ? '' : 'none';
   const fieldsBtn = $('#fieldsBtn');
   if(fieldsBtn) fieldsBtn.style.display = admin ? '' : 'none';
+  const listsBtn = $('#listsBtn');
+  if(listsBtn) listsBtn.style.display = admin ? '' : 'none';
   populateLockAdvisors();
 }
 
@@ -15197,6 +15398,167 @@ $('#fldSave').addEventListener('click', () => {
   render();
   if($('#detailModal').classList.contains('on') && detailId) renderDetail();
   toast('Custom fields saved');
+});
+
+/* ---------- v15: lists & dropdowns manager ---------- */
+let listManagerKey = 'types';
+let listManagerDraft = null;
+function openListManager(key){
+  if(!isAdmin()) return toast('Advisor login lists edit nahi kar sakta — admin se change karwayein', true);
+  listManagerKey = LIST_DEFS.some(d => d.key === key) ? key : 'types';
+  const defaults = (DEFAULT_LIST_OF[listManagerKey] || []).map(x => (typeof x === 'string' ? { id:x, label:x } : Object.assign({}, x)));
+  const resolved = resolveList(listManagerKey, defaults);
+  const defIds = new Set(defaults.map(d => d.id));
+  const st = listStateOf(listManagerKey);
+  const hiddenSet = new Set(st.hidden || []);
+  listManagerDraft = resolved.map(item => {
+    const def = defaults.find(d => d.id === item.id) || item;
+    return Object.assign({ builtin: defIds.has(item.id) }, def, { label: item.label, hidden: hiddenSet.has(item.id) });
+  });
+  // keep hidden built-ins visible (dimmed) so the user can bring them back
+  defaults.forEach(d => {
+    if(hiddenSet.has(d.id)) listManagerDraft.push(Object.assign({ builtin: true, hidden: true }, d));
+  });
+  // order rows: visible first (ordered), hidden at the end
+  const vis = listManagerDraft.filter(i => !i.hidden);
+  const hid = listManagerDraft.filter(i => i.hidden);
+  listManagerDraft = vis.concat(hid);
+  $('#lstNewLabel').value = '';
+  renderListManager();
+  showOverlay('listsModal');
+}
+function syncListManager(){
+  $$('#listsRows .lst-row').forEach(row => {
+    const item = (listManagerDraft || []).find(i => i.id === row.dataset.lstid);
+    if(!item) return;
+    const label = row.querySelector('[data-lstfield="label"]');
+    const hide = row.querySelector('[data-lstfield="hidden"]');
+    if(label) item.label = label.value.trim();
+    item.hidden = hide ? hide.checked : false;
+  });
+}
+function renderListManager(){
+  const def = LIST_DEFS.find(d => d.key === listManagerKey);
+  $('#listsPicker').innerHTML = LIST_DEFS.map(d => {
+    const defaults = (DEFAULT_LIST_OF[d.key] || []);
+    const n = (listManagerKey === d.key && listManagerDraft)
+      ? listManagerDraft.filter(i => !i.hidden).length
+      : resolveList(d.key, defaults.map(x => (typeof x === 'string' ? { id:x, label:x } : x))).length;
+    return `<button type="button" role="tab" class="${d.key === listManagerKey ? 'on' : ''}" data-lstkey="${d.key}"><span>${esc(d.title)}</span><span class="lst-count">${n}</span></button>`;
+  }).join('');
+  $('#listsPaneTitle').textContent = def ? def.title : 'List';
+  $('#listsPaneHint').textContent = def ? def.hint : '';
+  const rows = listManagerDraft || [];
+  $('#listsRows').innerHTML = rows.length ? rows.map((item, i) => `
+    <div class="lst-row ${item.hidden ? 'off' : ''}" data-lstid="${esc(item.id)}">
+      <div class="lst-move">
+        <button type="button" data-lstmove="up" ${i === 0 ? 'disabled' : ''} aria-label="Upar">↑</button>
+        <button type="button" data-lstmove="down" ${i === rows.length - 1 ? 'disabled' : ''} aria-label="Neeche">↓</button>
+      </div>
+      <input type="text" data-lstfield="label" value="${esc(item.label)}" placeholder="Option ka naam…">
+      <span class="lst-tag ${item.builtin ? '' : 'custom'}">${item.builtin ? 'Built-in' : 'Custom'}</span>
+      <label class="lst-hide" title="${item.hidden ? 'Wapas dikhao' : 'Dropdown se chhupayein — data safe rehta hai'}"><input type="checkbox" data-lstfield="hidden" ${item.hidden ? 'checked' : ''}>${item.hidden ? 'Hidden' : 'Hide'}</label>
+      <button type="button" class="lst-del" data-lstdel="1" ${item.builtin ? 'disabled title="Built-in — hide se chhupayein"' : 'title="Delete option"'}>✕</button>
+    </div>`).join('') : `<div class="cf-empty"><span>Is list me koi option nahi hai. Neeche se add karein.</span></div>`;
+}
+function refreshListConsumers(){
+  resolveAllLists();
+  refillListSelects();
+  refillListChips();
+  render();
+  if($('#detailModal') && $('#detailModal').classList.contains('on') && typeof detailId !== 'undefined' && detailId) renderDetail();
+  if($('#developerProfileModal') && $('#developerProfileModal').classList.contains('on')) { try{ renderDeveloperProfile(); }catch(e){} }
+}
+function foldListDraft(key){
+  const defaults = (DEFAULT_LIST_OF[key] || []).map(x => (typeof x === 'string' ? { id:x, label:x } : Object.assign({}, x)));
+  const defIds = new Set(defaults.map(d => d.id));
+  const st = { hidden: [], labels: {}, order: [], custom: [] };
+  const visible = [];
+  (listManagerDraft || []).forEach(item => {
+    if(item.hidden){ if(defIds.has(item.id)) st.hidden.push(item.id); return; }
+    if(defIds.has(item.id)){
+      const orig = defaults.find(d => d.id === item.id);
+      if(orig && item.label !== orig.label) st.labels[item.id] = item.label;
+      visible.push(item);
+    } else {
+      st.custom.push({
+        id: item.id, label: item.label,
+        short: item.short, rank: item.rank, color: item.color, cls: item.cls, icon: item.icon
+      });
+      visible.push(item);
+    }
+  });
+  defaults.forEach(d => { if(!visible.some(v => v.id === d.id) && !st.hidden.includes(d.id)) st.hidden.push(d.id); });
+  st.order = visible.map(v => v.id);
+  db.lists[key] = st;
+}
+$('#listsBtn').addEventListener('click', () => openListManager());
+$('#listsPicker').addEventListener('click', e => {
+  const b = e.target.closest('[data-lstkey]');
+  if(!b) return;
+  syncListManager();
+  openListManager(b.dataset.lstkey);
+});
+$('#listsRows').addEventListener('change', e => {
+  if(e.target.matches('[data-lstfield="hidden"]')){
+    syncListManager();
+    renderListManager();
+  }
+});
+$('#listsRows').addEventListener('click', e => {
+  const row = e.target.closest('[data-lstid]');
+  if(!row) return;
+  const idx = (listManagerDraft || []).findIndex(i => i.id === row.dataset.lstid);
+  if(idx < 0) return;
+  if(e.target.closest('[data-lstdel]')){
+    syncListManager();
+    if(listManagerDraft[idx].builtin) return;
+    listManagerDraft.splice(idx, 1);
+    renderListManager();
+    return;
+  }
+  const mv = e.target.closest('[data-lstmove]');
+  if(mv){
+    syncListManager();
+    const dir = mv.dataset.lstmove === 'up' ? -1 : 1;
+    const j = idx + dir;
+    if(j < 0 || j >= listManagerDraft.length) return;
+    const tmp = listManagerDraft[idx];
+    listManagerDraft[idx] = listManagerDraft[j];
+    listManagerDraft[j] = tmp;
+    renderListManager();
+  }
+});
+$('#lstAdd').addEventListener('click', () => {
+  const label = $('#lstNewLabel').value.trim();
+  if(!label) return toast('Option ka naam likhein', true);
+  syncListManager();
+  const def = LIST_DEFS.find(d => d.key === listManagerKey);
+  const id = 'c' + Math.random().toString(36).slice(2, 10);
+  const item = { id, label, builtin: false, hidden: false };
+  if(def && def.kind === 'short') item.short = label;
+  if(def && def.kind === 'color') item.color = '#54779E';
+  if(def && def.kind === 'cls') item.cls = '';
+  if(def && def.kind === 'icon') item.icon = '✉';
+  if(def && def.kind === 'timelines'){ const maxRank = listManagerDraft.reduce((n, i) => Math.max(n, +i.rank || 0), 0); item.rank = maxRank + 1; }
+  if(def && def.kind === 'statuses') item.pill = 'gold';
+  // keep new custom items before any trailing hidden built-ins
+  const lastVisible = (() => { for(let i = listManagerDraft.length - 1; i >= 0; i--){ if(!listManagerDraft[i].hidden) return i; } return -1; })();
+  listManagerDraft.splice(lastVisible + 1, 0, item);
+  $('#lstNewLabel').value = '';
+  renderListManager();
+});
+$('#listsSave').addEventListener('click', () => {
+  syncListManager();
+  if(!listManagerDraft) return closeModal('listsModal');
+  const blank = listManagerDraft.find(i => !i.label);
+  if(blank) return toast('Har option ka naam zaroori hai', true);
+  foldListDraft(listManagerKey);
+  if(!db.lists) db.lists = {};
+  save();
+  refreshListConsumers();
+  closeModal('listsModal');
+  toast('Dropdowns updated — har jagah apply ho gaya');
 });
 
 /* ---------- render ---------- */
