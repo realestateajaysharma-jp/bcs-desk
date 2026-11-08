@@ -2122,12 +2122,12 @@ body.locked>.quick-add-dock{visibility:hidden}
    v14 — dashboard split · custom fields · kanban/list · analytics
    ================================================================== */
 
-/* ---- dashboard card grid (modern card layout) ---- */
+/* ---- beautiful dashboard card grid ---- */
 .dash-grid{
   display:grid;
   grid-template-columns:1fr;
-  gap:16px;
-  margin:0 0 20px;
+  gap:12px;
+  margin:0 0 24px;
 }
 @media (min-width:768px){
   .dash-grid{grid-template-columns:repeat(2,1fr)}
@@ -2135,17 +2135,35 @@ body.locked>.quick-add-dock{visibility:hidden}
 @media (min-width:1024px){
   .dash-grid{grid-template-columns:repeat(3,1fr)}
 }
+
+/* Card base style - elegant with subtle accent bar */
 .dash-card{
   background:var(--panel);
   border:1px solid var(--line);
-  border-radius:var(--r);
-  box-shadow:var(--shadow);
-  padding:20px;
-  transition:box-shadow .2s,transform .2s;
+  border-radius:20px;
+  box-shadow:0 25px 50px -20px rgba(52,60,40,.25), 0 0 0 1px rgba(255,255,255,.08);
+  padding:24px;
+  transition:all .25s cubic-bezier(.4,0,.2,1);
   position:relative;
   overflow:hidden;
+  backdrop-filter:blur(10px);
 }
-.dash-card:hover{box-shadow:0 8px 24px -8px rgba(46,45,32,.12);transform:translateY(-1px)}
+.dash-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:3px;
+  background:linear-gradient(90deg,var(--olive),var(--gold),var(--olive));
+  opacity:0;
+  transition:opacity .3s;
+}
+.dash-card:hover::before{opacity:1}
+.dash-card:hover{border-color:var(--olive);box-shadow:0 35px 60px -20px rgba(52,60,40,.35)}
+.dash-card:active{transform:translateY(1px) scale(.98);transition:transform .1s}
+
+/* Specific card column arrangements */
 .dash-card-header{grid-column:1/-1}
 .dash-card-festival{grid-column:1/-1}
 @media (min-width:768px){
@@ -2158,17 +2176,506 @@ body.locked>.quick-add-dock{visibility:hidden}
 @media (min-width:768px){
   .dash-card-upcoming,.dash-card-status{grid-column:span 1}
 }
-/* header card internal layout */
-.dash-card-header .dl-cell{display:flex;align-items:center;min-width:0}
-.dash-card-header .dl-date{gap:12px;padding:11px 18px 12px;border-right:1px solid var(--line);background:var(--panel);min-width:0}
-.dash-card-header .dl-date>b{font-family:'Fraunces',serif;font-size:40px;line-height:.92;font-weight:600;letter-spacing:-1.6px;color:var(--ink);text-shadow:none}
-.dash-card-header .dl-meta{display:flex;flex-direction:column;gap:2px;min-width:0}
-.dash-card-header .dl-hi{font-size:10px;font-weight:800;letter-spacing:2.2px;color:var(--mut);text-transform:uppercase}
-.dash-card-header .dl-line{font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap}
-.dash-card-header .dl-sub{font-size:10px;opacity:.62;font-weight:600;letter-spacing:.3px;white-space:nowrap}
-.dash-card-header .dl-quote{justify-content:center;padding:10px 18px!important;margin:0!important;max-width:none!important;min-width:0;background:transparent!important;border:none!important;border-radius:0!important}
-.dash-card-header .dl-quote p{color:var(--ink);font-size:13px;line-height:1.5;-webkit-line-clamp:2;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
-.dash-card-header .dl-quote .th-qmark{color:var(--olive);opacity:.95;font-size:23px}
+
+/* ============ Header Card: Date + Time + Quote ============ */
+.dash-card-header .dl-cell{display:flex;align-items:center;min-width:0;gap:8px}
+.dash-card-header .dl-date{
+  flex:1;
+  gap:12px;
+  padding:12px 16px;
+  border-radius:16px 0 0 16px;
+  border-right:2px solid var(--line);
+  background:linear-gradient(135deg,rgba(52,60,40,.08),rgba(52,60,40,.03));
+  min-width:0;
+}
+.dash-card-header .dl-date>b{
+  font-family:'Fraunces',serif;
+  font-size:38px;
+  line-height:.94;
+  font-weight:600;
+  letter-spacing:-1.5px;
+  color:var(--ink);
+  text-shadow:0 2px 4px rgba(0,0,0,.1);
+}
+.dash-card-header .dl-date>span{
+  font-size:12px;
+  color:var(--mut);
+  letter-spacing:1px;
+}
+.dash-card-header .dl-meta{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  min-width:0;
+}
+.dash-card-header .dl-hi{
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:2px;
+  color:var(--mut);
+  text-transform:uppercase;
+}
+.dash-card-header .dl-line{
+  font-size:14px;
+  font-weight:700;
+  color:var(--ink);
+  white-space:nowrap;
+}
+.dash-card-header .dl-sub{
+  font-size:10px;
+  opacity:.55;
+  font-weight:600;
+  letter-spacing:.3px;
+  color:var(--mut);
+  white-space:nowrap;
+}
+
+/* Quote box with olive accent */
+.dash-card-header .dl-quote{
+  align-self:center;
+  padding:14px 20px;
+  margin:0 -20px;
+  background:rgba(255,255,255,.03);
+  border-left:3px solid var(--olive);
+  border-radius:0 16px 16px 0;
+  min-width:0;
+}
+.dash-card-header .dl-quote p{
+  color:var(--ink);
+  font-size:13.5px;
+  line-height:1.55;
+  -webkit-line-clamp:3;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  font-style:italic;
+}
+.dash-card-header .dl-quote .th-qmark{
+  color:var(--olive);
+  opacity:.9;
+  font-size:26px;
+  line-height:1;
+  float:right;
+  margin-left:8px;
+}
+.dash-card-header .dl-quote .th-qby{
+  color:var(--mut);
+  opacity:1;
+  align-self:flex-end;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:1px;
+}
+.dash-card-header .dl-quote .th-qrefresh{
+  background:rgba(52,60,40,.1);
+  border:1px solid var(--line);
+  color:var(--ink);
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  transition:.2s;
+  cursor:pointer;
+  margin-left:8px;
+}
+.dash-card-header .dl-quote .th-qrefresh:hover{
+  background:rgba(52,60,40,.2);
+  transform:rotate(-20deg);
+}
+
+/* Time column */
+.dash-card-header .dl-time{
+  gap:12px;
+  padding:12px 16px;
+  border-radius:0 16px 16px 0;
+  border-left:2px solid var(--line);
+  background:linear-gradient(135deg,rgba(52,60,40,.08),rgba(52,60,40,.03));
+  justify-content:flex-end;
+  text-align:right;
+  min-width:0;
+}
+.dash-card-header .dl-clock{
+  font-family:'Fraunces',serif;
+  font-size:36px;
+  line-height:1;
+  font-weight:600;
+  letter-spacing:-1px;
+  font-variant-numeric:tabular-nums;
+  color:var(--ink);
+}
+.dash-card-header .dl-clock i{
+  font-style:normal;
+  font-size:22px;
+  color:var(--gold);
+}
+.dash-card-header .dl-timemeta{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  align-items:flex-end;
+}
+.dash-card-header .dl-zone{
+  font-size:9px;
+  letter-spacing:1.6px;
+  text-transform:uppercase;
+  color:var(--mut);
+  font-weight:800;
+  white-space:nowrap;
+}
+.dash-card-header .dl-zone b{color:var(--ink)}
+.dash-card-header .dl-detail{
+  font-size:11px;
+  opacity:.7;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+/* ============ Festival Card ============ */
+.dash-card-festival{
+  display:grid;
+  grid-template-columns:104px 1fr;
+  gap:20px;
+  align-items:start;
+}
+@media (max-width:768px){
+  .dash-card-festival{grid-template-columns:1fr}
+}
+.dash-card-festival .th-cal{
+  position:relative;
+  width:100%;
+  flex-shrink:0;
+}
+.dash-card-festival .th-cal-band{
+  background:linear-gradient(135deg,var(--olive),#8C6628);
+  color:#F6F2E6;
+  text-align:center;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:3px;
+  padding:8px 4px;
+  text-transform:uppercase;
+}
+.dash-card-festival .th-cal-body{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:18px 10px 12px;
+  background:linear-gradient(180deg,#FBFAF5,#F8F6F2);
+}
+.dash-card-festival .th-cal-day{
+  font-family:'Fraunces',serif;
+  font-size:44px;
+  line-height:1;
+  font-weight:600;
+  color:var(--olive);
+  letter-spacing:-2px;
+}
+.dash-card-festival .th-cal-week{
+  font-size:11px;
+  font-weight:800;
+  color:#B18A3E;
+  letter-spacing:2px;
+  margin-top:4px;
+  text-transform:uppercase;
+}
+.dash-card-festival .th-cal-year{
+  font-size:8px;
+  color:#8E8C7C;
+  font-weight:700;
+  letter-spacing:1.5px;
+  margin-top:3px;
+  text-transform:uppercase;
+}
+.dash-card-festival .th-main{
+  padding:0;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.dash-card-festival .th-top{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:4px;
+}
+.dash-card-festival .th-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:5px 12px;
+  border-radius:999px;
+  background:rgba(223,233,227,.8);
+  border:1px solid var(--sage);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--sage-ink);
+  backdrop-filter:blur(4px);
+}
+.dash-card-festival .th-badge .th-emoji{
+  font-size:16px;
+  line-height:1;
+}
+.dash-card-festival .th-today-chip{
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1.5px;
+  color:var(--gold);
+  text-transform:uppercase;
+}
+.dash-card-festival .th-main h3{
+  font-family:'Fraunces',serif;
+  font-size:22px;
+  font-weight:600;
+  letter-spacing:-.3px;
+  line-height:1.1;
+  color:var(--ink);
+  margin-top:2px;
+}
+.dash-card-festival .th-name-en{
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:var(--gold);
+  opacity:.9;
+  margin-bottom:2px;
+}
+.dash-card-festival .th-greet-hi{
+  font-size:12px;
+  line-height:1.55;
+  font-weight:600;
+  color:var(--ink);
+  opacity:.92;
+  max-width:520px;
+}
+.dash-card-festival .th-greet-en{
+  font-size:10px;
+  line-height:1.45;
+  color:var(--mut);
+  opacity:.75;
+  max-width:480px;
+}
+
+/* ============ Upcoming Events Card ============ */
+.dash-card-upcoming .th-up-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--line);
+}
+.dash-card-upcoming .th-up-head span{
+  font-size:9.5px;
+  font-weight:800;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:var(--olive);
+}
+.dash-card-upcoming .th-up-head small{
+  font-size:7.5px;
+  opacity:.45;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--mut);
+}
+.dash-card-upcoming .th-up-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.dash-card-upcoming .th-up-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:14px;
+  background:rgba(255,255,255,.5);
+  border:1px solid var(--line);
+  text-align:left;
+  transition:all .2s ease;
+  cursor:pointer;
+}
+.dash-card-upcoming .th-up-item:hover{
+  background:rgba(255,255,255,.8);
+  border-color:var(--gold);
+  transform:translateX(4px);
+}
+.dash-card-upcoming .th-up-emoji{
+  font-size:15px;
+  line-height:1;
+  flex:none;
+  color:var(--gold);
+}
+.dash-card-upcoming .th-up-copy{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+}
+.dash-card-upcoming .th-up-copy b{
+  font-size:12px;
+  color:var(--ink);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.dash-card-upcoming .th-up-copy span{
+  font-size:9.5px;
+  color:var(--mut);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.dash-card-upcoming .th-up-days{
+  flex:none;
+  font-size:8px;
+  font-weight:800;
+  padding:3px 6px;
+  border-radius:99px;
+  background:linear-gradient(135deg,#FFF9E5,#FFF0C7);
+  border:1px solid #EEDBB3;
+  color:#7A5A23;
+  white-space:nowrap;
+}
+.dash-card-upcoming .th-up-empty{
+  font-size:11px;
+  color:var(--mut);
+  line-height:1.5;
+  padding:8px 0;
+
+/* ============ Status / Advisory Card ============ */
+.dash-card-status{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.dash-card-status .th-brand{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:0;
+  text-align:center;
+  background:transparent;
+  border:none;
+}
+.dash-card-status .th-logo{
+  width:52px;
+  height:52px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:16px;
+  letter-spacing:1.5px;
+  color:#fff;
+  background:linear-gradient(145deg,var(--olive),#2C2B1C);
+  box-shadow:0 10px 25px -10px rgba(44,43,28,.5);
+  transition:transform .2s;
+}
+.dash-card-status .th-logo:hover{transform:scale(1.05)}
+.dash-card-status .th-brand-name{
+  font-family:'Fraunces',serif;
+  font-size:14px;
+  color:var(--ink);
+  line-height:1.2;
+  font-weight:600;
+}
+.dash-card-status .th-brand-sub{
+  font-size:8px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:800;
+  opacity:.9;
+}
+.dash-card-status .th-handle{
+  font-size:11px;
+  color:var(--mut);
+  font-weight:600;
+}
+.dash-card-status .th-brand-actions{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  width:100%;
+  margin-top:10px;
+}
+.dash-card-status .th-tool{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 16px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:700;
+  color:var(--ink);
+  background:var(--bg);
+  border:1px solid var(--line);
+  transition:.2s;
+  cursor:pointer;
+  width:100%;
+}
+.dash-card-status .th-tool:hover{
+  background:#fff;
+  border-color:var(--gold);
+  color:var(--gold);
+}
+.dash-card-status .th-tool.primary{
+  background:linear-gradient(135deg,var(--olive),#2C2B1C);
+  color:#F6F2E7;
+  border-color:var(--olive);
+}
+.dash-card-status .th-tool.primary:hover{
+  background:#252417;
+  color:#F6F2E7;
+}
+.dash-card-status .th-tool.ghost{
+  background:transparent;
+  border-color:var(--line);
+}
+.dash-card-status .th-tool.ghost:hover{
+  color:var(--mut);
+}
+.dash-card-status .th-watermark{
+  font-size:7px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--mut);
+  font-weight:700;
+  padding-top:10px;
+  border-top:1px solid var(--line);
+  width:100%;
+  margin-top:auto;
+
+/* ============ Responsive ============ */
+@media (max-width:768px){
+  .dash-card-header .dl-cell{flex-direction:column;align-items:flex-start;gap:6px}
+  .dash-card-header .dl-date{border-right:none;border-bottom:1px solid var(--line);padding:10px 14px}
+  .dash-card-header .dl-date>b{font-size:32px}
+  .dash-card-header .dl-time{border-left:none;border-top:1px solid var(--line);padding:10px 14px;justify-content:flex-start;text-align:left}
+  .dash-card-header .dl-timemeta{align-items:flex-start}
+  .dash-card-festival{grid-template-columns:1fr}
+  .dash-card-festival .th-cal{transform:none;margin:0 0 12px}
+  .dash-card-upcoming .th-up-item{padding:8px 10px}
+}
+
+@media (max-width:560px){
+  .dash-card-header .dl-quote .th-qby{display:none}
+  .dash-card-header .dl-clock{font-size:28px}
+}
 .dash-card-header .dl-quote .th-qby{color:var(--mut);opacity:1;align-self:center}
 .dash-card-header .dl-quote .th-qrefresh{background:rgba(0,0,0,.06);border-color:var(--line);color:var(--ink);transition:.18s;cursor:pointer}
 .dash-card-header .dl-quote .th-qrefresh:hover{background:rgba(0,0,0,.1);transform:rotate(-40deg)}
