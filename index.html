@@ -3901,6 +3901,26 @@ body[data-theme="dark"] .smart-why span{background:#26302A;color:#EDEBD9;border-
 body[data-theme="dark"] .offer-sheet{background:var(--panel);border-color:var(--line)}
 body[data-theme="dark"] .offer-table td{border-color:var(--line2)}
 body[data-theme="dark"] .offer-table tr.total td{background:#2B2A1D}
+
+/* ==== BCS CALCULATORS PACK — separate page, FY 2026-27, editable slabs ==== */
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px;margin-top:14px}
+.calc-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;min-width:0}
+.calc-head{display:flex;gap:11px;align-items:center;padding:14px 15px;border-bottom:1px solid var(--line2);background:linear-gradient(135deg,rgba(58,57,40,.04),rgba(165,123,54,.04))}
+.calc-ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--sage);color:var(--sage-ink);font-size:18px;flex:none}
+.calc-head h4{font-family:'Fraunces',serif;font-size:16px;line-height:1.2}
+.calc-head small{display:block;color:var(--mut);font-size:11.5px;margin-top:2px}
+.calc-up{margin-left:auto;flex:none;font-size:10px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:#7A5A10;background:#FBF3DC;border:1px solid #E6D4A5;border-radius:999px;padding:4px 9px}
+.calc-body{padding:13px 15px 14px}
+.calc-out{border:1px solid var(--line);background:#FCFDFC;border-radius:13px;padding:11px 12px;display:flex;flex-direction:column;gap:5px;margin-top:11px}
+.calc-row{display:flex;justify-content:space-between;gap:12px;font-size:12.5px;color:var(--ink2)}
+.calc-row b{color:var(--ink);font-variant-numeric:tabular-nums}
+.calc-total{display:flex;justify-content:space-between;gap:12px;border-top:1px dashed var(--line);padding-top:8px;margin-top:3px;font-size:13.5px;color:var(--ink)}
+.calc-src{font-size:11px;color:var(--mut);line-height:1.55;margin-top:9px}
+@media (max-width:640px){.calc-grid{grid-template-columns:1fr}}
+body[data-theme="dark"] .calc-card{background:var(--panel);border-color:var(--line);color:var(--ink)}
+body[data-theme="dark"] .calc-head{background:rgba(27,32,27,.6)}
+body[data-theme="dark"] .calc-out{background:#1B201B;border-color:var(--line)}
+body[data-theme="dark"] .calc-up{background:#2B2A1D;color:#E7C46E;border-color:#4A4430}
 @media print{
   body{background:#fff !important}
   header,.tooldock,.toolpop,.toast,nav,.hbtns{display:none !important}
@@ -3993,6 +4013,7 @@ body[data-theme="dark"] .offer-table tr.total td{background:#2B2A1D}
       <button data-view="links">Links</button>
       <button data-view="terminology">Terminology</button>
       <button data-view="tax">Tax & Advice</button>
+      <button data-view="calc">Calculators</button>
       <button data-view="advisory">Advisory</button>
       <button data-view="templates">Templates</button>
       <button data-view="health">Health</button>
@@ -4858,6 +4879,136 @@ body[data-theme="dark"] .offer-table tr.total td{background:#2B2A1D}
     </div>
 
     <div class="tax-grid" id="taxGrid"></div>
+  </section>
+
+  <section class="view" id="view-calc">
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · calculator desk</div>
+        <h2 class="adv-title">Har calculation,<br><em>hamesha updated.</em></h2>
+        <p class="adv-sub">Rajasthan registration, EMI, GST, brokerage, rent yield, plot area — sab ek jagah. Rates FY 2026-27 ke liye editable hain — naye slab aa jayein toh yahin update kar lo, har calculation turant sahi hogi. Sources ke saath, client ko turant share karo.</p>
+      </div>
+      <div class="adv-head-actions">
+        <button class="btn ghost" id="calcPrintAll">Print / PDF</button>
+        <button class="btn primary" id="calcShareAll">Share WhatsApp</button>
+      </div>
+    </div>
+    <div class="links-stats" id="calcStats"></div>
+    <div class="calc-grid">
+      <div class="calc-card" id="calcEmi">
+        <div class="calc-head"><span class="calc-ic">🏦</span><div><h4>Home Loan EMI</h4><small>MCLR + bank rate se EMI, total interest</small></div><span class="calc-up">FY 2026-27</span></div>
+        <div class="calc-body">
+          <div class="grid2">
+            <div class="field"><label>Loan amount (₹)</label><input id="emAmt" type="number" min="0" value="5000000"></div>
+            <div class="field"><label>Interest rate (% p.a.)</label><input id="emRate" type="number" min="0" step="0.05" value="8.6"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Tenure (years)</label><input id="emYears" type="number" min="1" max="30" value="20"></div>
+            <div class="field"><label>Processing fee (%)</label><input id="emFee" type="number" min="0" step="0.05" value="0.5"></div>
+          </div>
+          <div class="calc-out" id="emOut"></div>
+          <div class="calc-src">Rate budget/MCLR ke basis pe — bank offer confirm karein. Source: BCS bank matrix.</div>
+        </div>
+      </div>
+      <div class="calc-card" id="calcReg">
+        <div class="calc-head"><span class="calc-ic">📜</span><div><h4>Rajasthan Registration</h4><small>Stamp duty + registration + surcharge</small></div><span class="calc-up">FY 2026-27</span></div>
+        <div class="calc-body">
+          <div class="grid2">
+            <div class="field"><label>Agreement value (₹)</label><input id="rgAmt" type="number" min="0" value="5000000"></div>
+            <div class="field"><label>Stamp duty (%)</label><input id="rgStamp" type="number" min="0" step="0.1" value="6"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Registration (%)</label><input id="rgReg" type="number" min="0" step="0.1" value="1"></div>
+            <div class="field"><label>Surcharge (%)</label><input id="rgSur" type="number" min="0" step="0.1" value="0"></div>
+          </div>
+          <div class="calc-out" id="rgOut"></div>
+          <div class="calc-src">Rajasthan Rajeval demo deed / JDA — Jaipur MC stamp 6% + reg 1%. Municipal surcharge alag lag sakta hai — latest notification confirm karein.</div>
+        </div>
+      </div>
+      <div class="calc-card" id="calcGst">
+        <div class="calc-head"><span class="calc-ic">🧾</span><div><h4>GST on Property</h4><small>Affordable 1% / Non-affordable 5%</small></div><span class="calc-up">FY 2026-27</span></div>
+        <div class="calc-body">
+          <div class="grid2">
+            <div class="field"><label>Sale value (₹)</label><input id="gstAmt" type="number" min="0" value="5000000"></div>
+            <div class="field"><label>Category</label><select id="gstType"><option value="affordable">Affordable (≤ ₹45L)</option><option value="standard" selected>Non-affordable (&gt; ₹45L)</option><option value="ready">Ready-to-move (0%)</option></select></div>
+          </div>
+          <div class="calc-out" id="gstOut"></div>
+          <div class="calc-src">1/3 land abatement lagta hai. Effective: 1% / 5% × 2/3. Actual bill developer agreement se confirm karein.</div>
+        </div>
+      </div>
+      <div class="calc-card" id="calcComm">
+        <div class="calc-head"><span class="calc-ic">💰</span><div><h4>Brokerage + TDS</h4><small>Commission, TDS 5% (194-IB), net</small></div><span class="calc-up">FY 2026-27</span></div>
+        <div class="calc-body">
+          <div class="grid2">
+            <div class="field"><label>Deal value (₹)</label><input id="cmAmt" type="number" min="0" value="5000000"></div>
+            <div class="field"><label>Commission (%)</label><input id="cmPct" type="number" min="0" step="0.1" value="2"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>TDS (%)</label><input id="cmTds" type="number" min="0" step="0.1" value="5"></div>
+            <div class="field"><label>GST on brokerage (%)</label><input id="cmGst" type="number" min="0" step="0.1" value="18"></div>
+          </div>
+          <div class="calc-out" id="cmOut"></div>
+          <div class="calc-src">Commission pe TDS 194-IB 5% + GST 18% as per invoice. PAN/Form 16A ke liye CA se confirm karein.</div>
+        </div>
+      </div>
+      <div class="calc-card" id="calcRent">
+        <div class="calc-head"><span class="calc-ic">📈</span><div><h4>Rental Yield + Payback</h4><small>Monthly rent se yield aur payback</small></div></div>
+        <div class="calc-body">
+          <div class="grid2">
+            <div class="field"><label>Property value (₹)</label><input id="rnVal" type="number" min="0" value="6000000"></div>
+            <div class="field"><label>Monthly rent (₹)</label><input id="rnRent" type="number" min="0" value="30000"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Annual growth (%)</label><input id="rnGrowth" type="number" min="0" step="0.1" value="5"></div>
+            <div class="field"><label>Vacancy (months/year)</label><input id="rnVac" type="number" min="0" max="12" value="1"></div>
+          </div>
+          <div class="calc-out" id="rnOut"></div>
+          <div class="calc-src">Yield = (Rent × (12 − vacancy)) / Value. BCS corridor rent comps se rent validate karein.</div>
+        </div>
+      </div>
+      <div class="calc-card" id="calcArea">
+        <div class="calc-head"><span class="calc-ic">📐</span><div><h4>Plot Area Converter</h4><small>sq ft ↔ sq yd ↔ bigha ↔ kanal ↔ acre</small></div></div>
+        <div class="calc-body">
+          <div class="grid2">
+            <div class="field"><label>Value</label><input id="arVal" type="number" min="0" value="2400"></div>
+            <div class="field"><label>From unit</label><select id="arFrom"><option value="sqft">sq ft</option><option value="sqyd" selected>sq yd</option><option value="bigha">bigha (Raj)</option><option value="kanal">kanal</option><option value="acre">acre</option></select></div>
+          </div>
+          <div class="calc-out" id="arOut"></div>
+          <div class="calc-src">Rajasthan bigha = 2529 sq yd (pakka), kanal = 505.33 sq yd (kaccha alag). Registry document ka unit dekho.</div>
+        </div>
+      </div>
+      <div class="calc-card" id="calcAfford">
+        <div class="calc-head"><span class="calc-ic">🧮</span><div><h4>Affordability (FOIR)</h4><small>Monthly income se max loan</small></div></div>
+        <div class="calc-body">
+          <div class="grid2">
+            <div class="field"><label>Monthly income (₹)</label><input id="afInc" type="number" min="0" value="100000"></div>
+            <div class="field"><label>Rate (% p.a.)</label><input id="afRate" type="number" min="0" step="0.05" value="8.6"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Tenure (years)</label><input id="afYears" type="number" min="1" max="30" value="20"></div>
+            <div class="field"><label>FOIR (%)</label><input id="afFoir" type="number" min="10" max="60" value="40"></div>
+          </div>
+          <div class="calc-out" id="afOut"></div>
+          <div class="calc-src">Rule of thumb: EMI ≤ FOIR% of monthly income. Existing EMI ghatakar recompute karein.</div>
+        </div>
+      </div>
+      <div class="calc-card" id="calcPrepay">
+        <div class="calc-head"><span class="calc-ic">⏱️</span><div><h4>Prepayment + Saving</h4><small>Lump-sum prepay se kitna bacha</small></div></div>
+        <div class="calc-body">
+          <div class="grid2">
+            <div class="field"><label>Loan (₹)</label><input id="ppLoan" type="number" min="0" value="5000000"></div>
+            <div class="field"><label>Prepay (₹)</label><input id="ppAmt" type="number" min="0" value="1000000"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Rate (% p.a.)</label><input id="ppRate" type="number" min="0" step="0.05" value="8.6"></div>
+            <div class="field"><label>Remaining tenure (yrs)</label><input id="ppYears" type="number" min="1" max="30" value="15"></div>
+          </div>
+          <div class="calc-out" id="ppOut"></div>
+          <div class="calc-src">Prepay charges floating rate pe generally nil — bank letter confirm karein. Tenure vs EMI kam ka option dekho.</div>
+        </div>
+      </div>
+    </div>
+    <p class="lock-hint" style="margin-top:14px">Rates har notification pe badal sakte hain — har calculator me slab input hai taaki admin turant update kar sake. Final legal/tax advice ke liye CA/advocate se confirm karein.</p>
   </section>
 
   <section class="view" id="view-templates">
@@ -9029,6 +9180,117 @@ function quoteText(){
   ['#cbArea','#cbRate','#cbPlc','#cbEdc','#cbOther','#cbDiscount','#cbStampPct','#cbRegPct','#cbBrokerPct'].forEach(id => { const el = $(id); if(el) el.addEventListener('input', () => { calcQuotation(); }); });
   const sel = $('#cbProject'); if(sel) sel.addEventListener('change', () => calcQuotation());
   const gst = $('#cbGstType'); if(gst) gst.addEventListener('change', () => calcQuotation());
+})();
+
+/* ===== Calculators Pack — FY 2026-27 slabs, editable inputs, live share ===== */
+(function initCalculators(){
+  const num = id => { const v = Number($(id)?.value); return isFinite(v) ? v : 0; };
+  const inr = v => (Math.round(v)).toLocaleString('en-IN');
+  const parseAmt = id => num(id);
+  function emiCalc(){
+    const P = parseAmt('#emAmt'), r = num('#emRate') / 1200, n = Math.max(1, Math.round(num('#emYears') * 12));
+    const fee = P * num('#emFee') / 100;
+    const emi = (P && r) ? P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1) : (P ? P / n : 0);
+    const total = emi * n + fee, interest = total - P - fee;
+    $('#emOut').innerHTML = `
+      <div class="calc-row"><span>Monthly EMI</span><b>₹ ${inr(emi)}</b></div>
+      <div class="calc-row"><span>Processing fee</span><b>₹ ${inr(fee)}</b></div>
+      <div class="calc-row"><span>Total interest (${n} months)</span><b>₹ ${inr(interest)}</b></div>
+      <div class="calc-total"><span>Total payable</span><b>₹ ${inr(total)}</b></div>`;
+  }
+  function regCalc(){
+    const amt = parseAmt('#rgAmt'), stamp = amt * num('#rgStamp') / 100, reg = amt * num('#rgReg') / 100, sur = amt * num('#rgSur') / 100;
+    const total = amt + stamp + reg + sur;
+    $('#rgOut').innerHTML = `
+      <div class="calc-row"><span>Stamp duty</span><b>₹ ${inr(stamp)}</b></div>
+      <div class="calc-row"><span>Registration</span><b>₹ ${inr(reg)}</b></div>
+      <div class="calc-row"><span>Surcharge</span><b>₹ ${inr(sur)}</b></div>
+      <div class="calc-total"><span>Registration total (with value)</span><b>₹ ${inr(total)}</b></div>`;
+  }
+  function gstCalc(){
+    const amt = parseAmt('#gstAmt'), t = $('#gstType')?.value || 'standard';
+    const eff = t === 'affordable' ? 0.01 : t === 'standard' ? 0.05 * (2/3) : 0;
+    const base = amt / (1 + eff), gst = amt - base;
+    $('#gstOut').innerHTML = `
+      <div class="calc-row"><span>Effective GST ${t === 'ready' ? '(0%)' : t === 'affordable' ? '1%' : '5% × 2/3 = 3.33%'}</span><b>₹ ${inr(gst)}</b></div>
+      <div class="calc-row"><span>Base value</span><b>₹ ${inr(base)}</b></div>
+      <div class="calc-total"><span>Sale value (incl. GST)</span><b>₹ ${inr(amt)}</b></div>`;
+  }
+  function commCalc(){
+    const amt = parseAmt('#cmAmt'), pct = num('#cmPct'), tds = num('#cmTds'), gstp = num('#cmGst');
+    const gross = amt * pct / 100, gst = gross * gstp / 100, tdsAmt = gross * tds / 100, net = gross - tdsAmt;
+    $('#cmOut').innerHTML = `
+      <div class="calc-row"><span>Gross commission</span><b>₹ ${inr(gross)}</b></div>
+      <div class="calc-row"><span>TDS (${tds}%)</span><b>− ₹ ${inr(tdsAmt)}</b></div>
+      <div class="calc-row"><span>GST (${gstp}%)</span><b>₹ ${inr(gst)}</b></div>
+      <div class="calc-total"><span>Net receivable</span><b>₹ ${inr(net)}</b></div>`;
+  }
+  function rentCalc(){
+    const val = parseAmt('#rnVal'), rent = parseAmt('#rnRent'), growth = num('#rnGrowth') / 100, vac = num('#rnVac');
+    const annual = rent * (12 - vac), yld = val ? annual / val * 100 : 0, payback = yld ? 100 / yld : 0;
+    const y1 = annual * (1 + growth);
+    $('#rnOut').innerHTML = `
+      <div class="calc-row"><span>Annual rent (after vacancy)</span><b>₹ ${inr(annual)}</b></div>
+      <div class="calc-row"><span>Rental yield</span><b>${yld.toFixed(2)}%</b></div>
+      <div class="calc-row"><span>Payback period</span><b>${payback ? payback.toFixed(1) + ' yrs' : '—'}</b></div>
+      <div class="calc-total"><span>Year-2 rent @ ${num('#rnGrowth')}% growth</span><b>₹ ${inr(y1)}</b></div>`;
+  }
+  function areaCalc(){
+    const v = parseAmt('#arVal'), from = $('#arFrom')?.value || 'sqyd';
+    const SQFT = { sqft: 1, sqyd: 9, kanal: 5045.3, bigha: 27225, acre: 43560 };
+    // Rajasthan pakka bigha = 2529 sq yd = 22761 sq ft; kanal pakka = 505.33 sq yd = 4548 sq ft. Use pakka for bigha/kanal.
+    const FACT = { sqft: 1, sqyd: 9, kanal: 505.33 * 9, bigha: 2529 * 9, acre: 43560 };
+    const sqft = v * FACT[from];
+    $('#arOut').innerHTML = `
+      <div class="calc-row"><span>Sq ft</span><b>${inr(sqft)}</b></div>
+      <div class="calc-row"><span>Sq yd</span><b>${(sqft / 9).toLocaleString('en-IN', { maximumFractionDigits: 2 })}</b></div>
+      <div class="calc-row"><span>Bigha (Raj, pakka)</span><b>${(sqft / (2529 * 9)).toFixed(3)}</b></div>
+      <div class="calc-row"><span>Kanal (pakka)</span><b>${(sqft / (505.33 * 9)).toFixed(2)}</b></div>
+      <div class="calc-total"><span>Acre</span><b>${(sqft / 43560).toFixed(4)}</b></div>`;
+  }
+  function affordCalc(){
+    const inc = parseAmt('#afInc'), r = num('#afRate') / 1200, n = Math.max(1, Math.round(num('#afYears') * 12)), foir = num('#afFoir') / 100;
+    const maxEmi = inc * foir;
+    const loan = (r && maxEmi) ? maxEmi * (Math.pow(1 + r, n) - 1) / (r * Math.pow(1 + r, n)) : 0;
+    $('#afOut').innerHTML = `
+      <div class="calc-row"><span>Max EMI (FOIR)</span><b>₹ ${inr(maxEmi)}</b></div>
+      <div class="calc-row"><span>Max loan @ ${num('#afRate')}%</span><b>₹ ${inr(loan)}</b></div>
+      <div class="calc-total"><span>Down-payment est. (20%)</span><b>₹ ${inr(loan * 0.25)}</b></div>`;
+  }
+  function prepayCalc(){
+    const P = parseAmt('#ppLoan'), pre = parseAmt('#ppAmt'), r = num('#ppRate') / 1200, n = Math.max(1, Math.round(num('#ppYears') * 12));
+    const emi = (P && r) ? P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1) : (P ? P / n : 0);
+    const P2 = Math.max(0, P - pre);
+    const emi2 = (P2 && r) ? P2 * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1) : (P2 ? P2 / n : 0);
+    const saveTotal = (emi - emi2) * n;
+    $('#ppOut').innerHTML = `
+      <div class="calc-row"><span>EMI ab</span><b>₹ ${inr(emi)}</b></div>
+      <div class="calc-row"><span>EMI after prepay</span><b>₹ ${inr(emi2)}</b></div>
+      <div class="calc-row"><span>Monthly saving</span><b>₹ ${inr(emi - emi2)}</b></div>
+      <div class="calc-total"><span>Total saving (${n} months)</span><b>₹ ${inr(saveTotal)}</b></div>`;
+  }
+  function renderCalcStats(){
+    const wrap = $('#calcStats');
+    if(!wrap) return;
+    wrap.innerHTML = `
+      <div><div class="k">Calculators</div><div class="v">8</div></div>
+      <div><div class="k">Stamp + Reg</div><div class="v">7.0%</div></div>
+      <div><div class="k">GST</div><div class="v">1% / 5%</div></div>
+      <div><div class="k">Bigha (Raj)</div><div class="v">2529 yd²</div></div>`;
+  }
+  function calcShareAll(){
+    const parts = ['#emOut','#rgOut','#gstOut','#cmOut','#rnOut','#arOut','#afOut','#ppOut'].map(id => $(id)?.innerText?.replace(/\s+/g,' ').trim()).filter(Boolean);
+    const text = ['*BCS Calculator Summary*', '', parts.join('\n'), '', 'BCS · Business City Square · @ajaysharma.bcs'].join('\n');
+    if(navigator.share){ navigator.share({ title: 'BCS Calculators', text }).catch(() => {}); } else { window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank'); }
+  }
+  const fns = [emiCalc, regCalc, gstCalc, commCalc, rentCalc, areaCalc, affordCalc, prepayCalc];
+  function runAll(){ fns.forEach(f => { try{ f(); }catch(e){} }); }
+  const ids = ['#emAmt','#emRate','#emYears','#emFee','#rgAmt','#rgStamp','#rgReg','#rgSur','#gstAmt','#gstType','#cmAmt','#cmPct','#cmTds','#cmGst','#rnVal','#rnRent','#rnGrowth','#rnVac','#arVal','#arFrom','#afInc','#afRate','#afYears','#afFoir','#ppLoan','#ppAmt','#ppRate','#ppYears'];
+  ids.forEach(id => { const el = $(id); if(el){ el.addEventListener('input', runAll); el.addEventListener('change', runAll); } });
+  $('#calcPrintAll')?.addEventListener('click', () => window.print());
+  $('#calcShareAll')?.addEventListener('click', calcShareAll);
+  renderCalcStats();
+  runAll();
 })();
 function openVisit(id, presetClientId, presetProjectId, presetAdvisorId){
   const v = id ? (db.visits || []).find(x => x.id === id) : null;
