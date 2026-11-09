@@ -6713,6 +6713,67 @@ body[data-theme="dark"] .modal,body[data-theme="dark"] .lock-card,body[data-them
 
 
 
+/* ============================================================
+   BCS v63 — Date rectangle banner + Motivation banner
+   ============================================================ */
+.dlf-cal{
+  width:100% !important;
+  height:72px !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:14px !important;
+  padding:10px 16px !important;
+  border-radius:16px !important;
+  overflow:hidden !important;
+}
+.dlf-cal-band{
+  flex:none !important;
+  padding:10px 12px !important;
+  border-radius:12px !important;
+  font-size:12px !important;
+  letter-spacing:.14em !important;
+  writing-mode:horizontal-tb !important;
+}
+.dlf-cal-body{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  gap:12px !important;
+  flex:1 !important;
+  padding:0 !important;
+  background:transparent !important;
+  min-width:0 !important;
+}
+.dlf-cal-day{font-size:40px !important;line-height:1 !important}
+.dlf-cal-week{font-size:13px !important}
+.dlf-cal-year{display:block !important;font-size:11px !important;color:var(--mut) !important;font-weight:600 !important}
+.dash-card-header .dl-date{gap:12px !important}
+.dash-card-header .dl-quote{
+  padding:18px 20px !important;
+  border-radius:16px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  min-height:120px !important;
+}
+.dash-card-header .dl-quote p{
+  font-size:17px !important;
+  line-height:1.5 !important;
+  text-wrap:balance !important;
+  flex:1 !important;
+}
+.dash-card-header .dl-quote .th-qrefresh{
+  border-radius:999px !important;
+  padding:0 14px !important;
+  height:36px !important;
+  width:auto !important;
+  gap:6px !important;
+}
+.dash-card-header .dl-quote .th-qrefresh:first-of-type{margin-left:auto !important}
+.dash-card-header .dl-weather{margin-top:10px !important}
+
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -24459,6 +24520,38 @@ document.addEventListener('visibilitychange', () => {
       mo2.observe(el, {childList:true});
     });
   }catch(e){}
+})();
+
+
+/* BCS Motivation unlimited refresh — banner rotate jisme quote kabhi rukega nahi */
+(function(){
+  "use strict";
+  try{
+    const box = document.getElementById("thQuoteBox");
+    const tag = document.createElement("span");
+    tag.className = "motive-banner-label";
+    tag.textContent = "Unlimited motivation • refresh karte raho";
+    tag.style.cssText = "font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:700;margin-bottom:8px;display:block";
+    if(box && !box.querySelector(".motive-banner-label")) box.prepend(tag);
+    let lastAuto = Date.now();
+    function autoRefresh(){
+      const now = Date.now();
+      if(now - lastAuto < 6000) return;
+      lastAuto = now;
+      try{ const b = document.getElementById("thQuoteRefresh"); if(b) b.click(); }catch(e){}
+    }
+    setInterval(autoRefresh, 12000);
+    document.addEventListener("click", function(e){
+      const b = e.target.closest("#thQuoteRefresh");
+      if(!b) return;
+      try{
+        const q = document.getElementById("thQuote");
+        if(q) q.style.transition = "none";
+        requestAnimationFrame(()=>{ q.style.opacity="0"; q.style.transform="translateY(4px)"; });
+        setTimeout(()=>{ q.style.opacity="1"; q.style.transform="translateY(0)"; q.style.transition="opacity .4s ease, transform .4s ease"; }, 120);
+      }catch(err){}
+    }, true);
+  }catch(e){ console.warn("[BCS motive]", e); }
 })();
 
 /* ---------- PWA: offline shell + persistent storage ---------- */
