@@ -22953,25 +22953,31 @@ function renderHealth(){
   ['#healthBackupBtn2'].forEach(sel => { const el = $(sel); if(el) el.addEventListener('click', () => $('#exportBtn').click()); });
   const shareBtn = $('#healthShareBtn');
   if(shareBtn){
-    if(!(navigator.canShare && navigator.canShare({ files: [new File(['{}'], 'x.json', { type: 'application/json' })] }))){
-      shareBtn.style.display = 'none';
-    } else {
-      shareBtn.addEventListener('click', async () => {
-        try{
-          const copy = JSON.parse(JSON.stringify(db));
-          let media = {};
-          try{ media = await collectBackupMedia(copy); }catch(e){}
-          const count = Object.keys(media).length;
-          const payload = count ? Object.assign({}, copy, { __media: media, __backupAt: Date.now() }) : copy;
-          const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-          const file = new File([blob], `bcs-backup-${todayISO()}.json`, { type: 'application/json' });
-          await navigator.share({ files: [file], title: 'BCS Desk backup', text: 'BCS Desk backup file' });
-        }catch(e){
-          if(e && e.name === 'AbortError') return;
-          toast('Share not available — use Download JSON backup', true);
-        }
-      });
-    }
+    const canShareFiles = !!(navigator.canShare && navigator.canShare({ files: [new File(['{}'], 'x.json', { type: 'application/json' })] }));
+    if(!canShareFiles) shareBtn.title = 'Is browser me Web Share nahi hai — tap karne par backup download hoga, AirDrop se iPhone par bhej sakte hain';
+    shareBtn.addEventListener('click', async () => {
+      if(!canShareFiles){
+        try{ await downloadBackup(); }catch(e){}
+        toast('Backup download ho gaya — AirDrop/Share se iPhone par bhejein', true);
+        return;
+      }
+      try{
+        const copy = JSON.parse(JSON.stringify(db));
+        let media = {};
+        try{ media = await collectBackupMedia(copy); }catch(e){}
+        const count = Object.keys(media).length;
+        const payload = count ? Object.assign({}, copy, { __media: media, __backupAt: Date.now() }) : copy;
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+        const file = new File([blob], `bcs-backup-${todayISO()}.json`, { type: 'application/json' });
+        await navigator.share({ files: [file], title: 'BCS Desk backup', text: 'BCS Desk backup file' });
+        try{ localStorage.setItem('bcs_last_backup', String(Date.now())); }catch(e2){}
+        try{ renderHealth(); }catch(e2){}
+      }catch(e){
+        if(e && e.name === 'AbortError') return;
+        try{ await downloadBackup(); }catch(e2){}
+        toast('Share not available — backup download ho gaya', true);
+      }
+    });
   }
   
   if(shareBtn){
@@ -23369,8 +23375,8 @@ function renderSyncCard(){
         <label class="sync-check"><input type="checkbox" id="syncAuto"> Auto-sync — har change cloud par turant save</label>
         <div class="conn-actions" style="margin-top:14px">
           <button class="btn ghost sm" id="syncConnectBtn">Connect / Create</button>
-          <button class="btn ghost sm" id="syncPushBtn">Push now</button>
-          <button class="btn ghost sm" id="syncPullBtn">Pull now</button>
+          <button class="btn ghost sm" id="syncPushBtn">⇪ Push to iPhone/Mac</button>
+          <button class="btn ghost sm" id="syncPullBtn">⇩ Pull from Mac/iPhone</button>
           <button class="btn ghost sm" id="syncDisconnectBtn">Disconnect</button>
         </div>
         <div class="sync-help">
