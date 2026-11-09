@@ -20678,7 +20678,7 @@ function renderTicker(){
     if(!track) return;
     const items = (liveState.items || []).slice(0, 8);
     let marketStat = 'Jaipur median ₹4,800 / sq ft <b>▲ 1.8%</b> • ';
-    try{ const snap = (typeof mktLoadSnapshot === 'function') ? mktLoadSnapshot() : null; if(snap){ const parts = []; if(snap.rty){ const dv = (snap.rty.change || 0); parts.push('NIFTY REALTY ₹' + Number(snap.rty.price || 0).toFixed(2) + (dv >= 0 ? ' <b>▲</b>' : ' <b>▼</b>') + ' ' + Math.abs(dv).toFixed(2) + '%'); } if(snap.nifty){ parts.push('NIFTY 50 ₹' + Number(snap.nifty.price || 0).toFixed(2)); } if(snap.usdInr){ parts.push('USD/INR ₹' + Number(snap.usdInr).toFixed(2)); } if(snap.goldUsd && snap.usdInr){ const gold10 = snap.goldUsd * snap.usdInr * (10/31.1035); parts.push('Gold ₹' + Math.round(gold10).toLocaleString('en-IN') + '/10g'); } marketStat = parts.join(' • ') + ' • '; } }catch(e){}
+    try{ const snap = (typeof mktLoadSnapshot === 'function') ? mktLoadSnapshot() : null; if(snap && snap.usdInr){ const parts = ['USD/INR ₹' + Number(snap.usdInr).toFixed(2)]; if(snap.goldUsd){ parts.push('Gold ₹' + mktInrRaw(snap.goldUsd * snap.usdInr * (10/31.1035), 0) + '/10g'); } if(snap.silverUsd){ parts.push('Silver ₹' + mktInrRaw(snap.silverUsd * snap.usdInr * 32.1507, 0) + '/kg'); } if(snap.btcUsd){ parts.push('BTC ₹' + mktInrRaw(snap.btcUsd * snap.usdInr, 0)); } marketStat = parts.join(' • ') + ' • '; } }catch(e){}
     const stats = marketStat + 'JDA ₹575 Cr works • Metro Phase-2 DPR • RHB 4 schemes • Ashiana ₹1,000 Cr plan • 15.76% surge 2025 • Hawa Mahal • Amber • ';
     const headlines = items.length ? items.map(function(it){
       return '<a class="ticker-item" href="' + esc(it.link || '#') + '" target="_blank" rel="noopener noreferrer" title="Open news">↗ ' + esc(it.title || '') + '</a>';
@@ -26600,7 +26600,7 @@ function initTopStrip(){
 try{ initWatchChannels(); initPodcasts(); initTopStrip(); }catch(e){ console.warn('[BCS init]', e); }
 
 /* ============================================================
-   BCS Market Engine v82 — internet live data, all time fresh
+   BCS Market Engine v83 — live internet data, zero-key, CORS-friendly
    ============================================================ */
 const MKT_KEY = 'bcs_market_v1';
 const MKT_REFRESH_MS = 15 * 60 * 1000;
@@ -26614,50 +26614,41 @@ function mktTimeAgo(ts){
   if(d < 86400) return Math.floor(d / 3600) + 'h ago';
   return Math.floor(d / 86400) + 'd ago';
 }
-async function bcsFetchChart(sym){
-  try{
-    const r = await fetchWithTimeout('https://query1.finance.yahoo.com/v8/finance/chart/' + encodeURIComponent(sym) + '?interval=1d&range=1d', { cache:'no-store' }, 9000);
-    if(!r.ok) throw new Error('HTTP ' + r.status);
-    const j = await r.json();
-    const m = j && j.chart && j.chart.result && j.chart.result[0] && j.chart.result[0].meta;
-    if(!m || m.regularMarketPrice == null) throw new Error('no data');
-    return { price: m.regularMarketPrice, change: m.regularMarketChangePercent, prevClose: m.chartPreviousClose, high: m.regularMarketDayHigh, low: m.regularMarketDayLow };
-  }catch(e){ return null; }
-}
 async function bcsFetchJson(url){
-  try{ const r = await fetchWithTimeout(url, { cache:'no-store' }, 8000); if(!r.ok) throw new Error('HTTP ' + r.status); return await r.json(); }catch(e){ return null; }
+  try{ const r = await fetchWithTimeout(url, { cache:'no-store' }, 9000); if(!r.ok) throw new Error('HTTP ' + r.status); return await r.json(); }catch(e){ return null; }
 }
 function mktGoldPer10g(goldUsdPerOz, usdInr){ if(!goldUsdPerOz || !usdInr) return null; return goldUsdPerOz * usdInr * (10 / 31.1035); }
 function mktSilverPerKg(silverUsdPerOz, usdInr){ if(!silverUsdPerOz || !usdInr) return null; return silverUsdPerOz * usdInr * (1000 / 31.1035); }
 function mktFmt(n, sym, dec){ if(n == null || isNaN(n)) return '—'; return sym + Number(n).toLocaleString('en-IN', { maximumFractionDigits: dec == null ? 2 : dec, minimumFractionDigits: dec == null ? 2 : dec }); }
-function mktDelta(pct){ const p = pct == null ? NaN : Number(pct); if(isNaN(p)) return { cls:'flat', txt:'—' }; const sign = p >= 0 ? '▲' : '▼'; return { cls: p >= 0 ? 'up' : 'down', txt: sign + ' ' + Math.abs(p).toFixed(2) + '%' }; }
+function mktInrRaw(n, dec){ if(n == null || isNaN(n)) return '—'; return '₹' + Number(n).toLocaleString('en-IN', { maximumFractionDigits: dec == null ? 0 : dec, minimumFractionDigits: dec == null ? 0 : dec }); }
 function renderLiveMarket(snapshot){
   const row = $('#liveMarketRow'); const upd = $('#liveMarketUpdated');
   if(upd && snapshot) upd.textContent = 'Updated ' + mktTimeAgo(snapshot.at);
   if(!row) return;
   const s = snapshot || mktLoadSnapshot();
   const usdInr = s && (typeof s.usdInr === 'number' ? s.usdInr : null);
-  const rty = s && s.rty; const nifty = s && s.nifty;
   const gold10 = mktGoldPer10g(s && s.goldUsd, usdInr);
   const silver1kg = mktSilverPerKg(s && s.silverUsd, usdInr);
+  const btcInr = s && s.btcUsd && usdInr ? s.btcUsd * usdInr : null;
+  const ethInr = s && s.ethUsd && usdInr ? s.ethUsd * usdInr : null;
   const cards = [
-    nifty ? { label:'NIFTY 50', val: mktFmt(nifty.price, '₹', 2), delta: mktDelta(nifty.change), sub: 'NSE broad market' } : { label:'NIFTY 50', val:'—', delta:{cls:'flat',txt:'unavailable'}, sub:'Retry with ↻ button' },
-    rty ? { label:'NIFTY REALTY', val: mktFmt(rty.price, '₹', 2), delta: mktDelta(rty.change), sub: 'Realty sector index' } : { label:'NIFTY REALTY', val:'—', delta:{cls:'flat',txt:'unavailable'}, sub:'Retry with ↻ button' },
-    usdInr != null ? { label:'USD / INR', val: mktFmt(usdInr, '₹', 2), delta:{ cls:'flat', txt:'Live rate' }, sub:'Open ExchangeRate-API' } : { label:'USD / INR', val:'—', delta:{cls:'flat',txt:'offline'}, sub:'—' },
-    gold10 != null ? { label:'Gold / 10g', val: mktFmt(gold10, '₹', 0), delta:{cls:'flat',txt:'24K pure'}, sub:'gold-api · live spot' } : { label:'Gold / 10g', val:'—', delta:{cls:'flat',txt:'offline'}, sub:'—' },
-    silver1kg != null ? { label:'Silver / kg', val: mktFmt(silver1kg, '₹', 0), delta:{cls:'flat',txt:'999 fine'}, sub:'gold-api · live spot' } : { label:'Silver / kg', val:'—', delta:{cls:'flat',txt:'offline'}, sub:'—' }
+    usdInr != null ? { label:'USD / INR', val: mktFmt(usdInr, '₹', 2), delta:{ cls:'flat', txt:'Spot rate' }, sub:'open.er-api.com' } : { label:'USD / INR', val:'—', delta:{cls:'flat',txt:'offline'}, sub:'fallback failed' },
+    gold10 != null ? { label:'Gold / 10g', val: mktInrRaw(gold10, 0), delta:{cls:'flat',txt:'24K 999'}, sub:'gold-api spot · live' } : { label:'Gold / 10g', val:'—', delta:{cls:'flat',txt:'offline'}, sub:'—' },
+    silver1kg != null ? { label:'Silver / kg', val: mktInrRaw(silver1kg, 0), delta:{cls:'flat',txt:'999 fine'}, sub:'gold-api spot · live' } : { label:'Silver / kg', val:'—', delta:{cls:'flat',txt:'offline'}, sub:'—' },
+    btcInr != null ? { label:'Bitcoin', val: mktInrRaw(btcInr, 0), delta:{cls:'flat',txt:'BTC/INR'}, sub:'gold-api spot · live' } : { label:'Bitcoin', val:'—', delta:{cls:'flat',txt:'offline'}, sub:'—' },
+    ethInr != null ? { label:'Ethereum', val: mktInrRaw(ethInr, 0), delta:{cls:'flat',txt:'ETH/INR'}, sub:'gold-api spot · live' } : { label:'Ethereum', val:'—', delta:{cls:'flat',txt:'offline'}, sub:'—' }
   ];
   row.innerHTML = cards.map(c => `<div class="lm-card"><span class="lm-label">${esc(c.label)}</span><span class="lm-val">${esc(c.val)}</span><span class="lm-delta ${c.delta.cls}">${esc(c.delta.txt)}</span><span class="lm-sub">${esc(c.sub)}</span></div>`).join('');
 }
 async function bcsRefreshMarket(silent){
-  const [rty, nifty, usd, xau, xag] = await Promise.all([
-    bcsFetchChart('^CNXREALTY'),
-    bcsFetchChart('^NSEI'),
+  const [usd, xau, xag, btc, eth] = await Promise.all([
     bcsFetchJson('https://open.er-api.com/v6/latest/USD'),
     bcsFetchJson('https://api.gold-api.com/price/XAU'),
-    bcsFetchJson('https://api.gold-api.com/price/XAG')
+    bcsFetchJson('https://api.gold-api.com/price/XAG'),
+    bcsFetchJson('https://api.gold-api.com/price/BTC'),
+    bcsFetchJson('https://api.gold-api.com/price/ETH')
   ]);
-  const snapshot = { at: Date.now(), rty, nifty, usdInr: usd && usd.rates && usd.rates.INR ? Number(usd.rates.INR) : null, goldUsd: xau && xau.price ? Number(xau.price) : null, silverUsd: xag && xag.price ? Number(xag.price) : null };
+  const snapshot = { at: Date.now(), usdInr: usd && usd.rates && usd.rates.INR ? Number(usd.rates.INR) : null, goldUsd: xau && xau.price ? Number(xau.price) : null, silverUsd: xag && xag.price ? Number(xag.price) : null, btcUsd: btc && btc.price ? Number(btc.price) : null, ethUsd: eth && eth.price ? Number(eth.price) : null };
   mktSaveSnapshot(snapshot);
   renderLiveMarket(snapshot);
   try{ renderDataStatus(); }catch(e){}
@@ -26679,14 +26670,14 @@ function renderDataStatus(){
   const wxAt = window.__bcsWeatherAt || 0;
   const syncAt = (function(){ try{ const c = JSON.parse(localStorage.getItem('bcs_sync_v1') || '{}'); return Math.max(c.lastPush || 0, c.lastPull || 0); }catch(e){ return 0; } })();
   const rows = [
-    { name:'Live market (Nifty / Realty / Gold / FX)', note:'Yahoo Finance + gold-api + open.er-api.com — refreshed auto every 15 min', at: market && market.at, label: market ? 'LIVE' : 'NOT FETCHED YET' },
+    { name:'Live market (FX / Gold / Silver / Crypto)', note:'open.er-api.com + gold-api.com — CORS-friendly, free, no-key — refreshed every 15 min', at: market && market.at, label: market ? 'LIVE' : 'NOT FETCHED YET' },
     { name:'Jaipur weather & AQI', note:'Open-Meteo — refreshes hourly', at: wxAt, label: wxAt ? 'LIVE' : 'OFFLINE' },
-    { name:'Live news feed (Google + ET Now)', note:'Google News proxy — refreshes every 15 min while app is visible', at: newsAt, label: newsAt ? 'LIVE' : 'NOT FETCHED' },
+    { name:'Live news feed (Google + ET Now)', note:'CORS proxy chain — refreshes every 15 min while app is visible', at: newsAt, label: newsAt ? 'LIVE' : 'NOT FETCHED' },
     { name:'Cloud sync (Gist)', note:'GitHub Gist — every change pushes automatically when online', at: syncAt, label: syncAt ? 'SYNCED' : 'NOT SET' }
   ];
   wrap.innerHTML = `
     <div class="ds-card" style="margin-bottom:14px">
-      <h4>Data status — sab cheezein kitni fresh hain <button type="button" class="btn ghost sm" id="dsRefreshAll">↻ Refresh all</button></h4>
+      <h4>Data status — sab cheeztaz kitni fresh hain <button type="button" class="btn ghost sm" id="dsRefreshAll">↻ Refresh all</button></h4>
       <div class="ds-rows">${rows.map(r => `<div class="ds-row ${r.at && Date.now() - r.at < 30*60*1000 ? '' : 'stale'}"><span class="ds-dot"></span><span class="ds-name">${esc(r.name)}</span><span class="ds-note">${esc(r.note)}</span><span class="ds-updated">${r.at ? mktTimeAgo(r.at) : 'never'} · ${esc(r.label)}</span></div>`).join('')}</div>
     </div>`;
   const btn = $('#dsRefreshAll');
