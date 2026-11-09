@@ -5819,283 +5819,6 @@ body[data-theme="dark"] .hero-life{background:#1C1C1E !important}
 
 
 
-/* ============================================================
-   BCS Design Tokens (single source) — v51 UI/UX polish
-   Colors WCAG AA, spacing 4/8/12/16/24/32, radius/shadows/type
-   ============================================================ */
-:root{
-  --c-bg:#F5F5F7; --c-surface:#FFFFFF; --c-surface-2:#FFFFFF;
-  --c-ink:#1D1D1F; --c-ink-2:#424245; --c-mut:#5B6270;
-  --c-line:rgba(0,0,0,.09); --c-line-2:rgba(0,0,0,.06);
-  --c-acc:#A57B36; --c-acc-deep:#3A3928; --c-acc-soft:#F3E8D3;
-  --c-ok:#2F6644; --c-ok-soft:#E4F3EC; --c-warn:#8A6D1F; --c-warn-soft:#FFF4DA; --c-bad:#A4452B; --c-bad-soft:#FBECEA;
-  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-6:24px; --sp-8:32px;
-  --r-sm:10px; --r-md:14px; --r-lg:18px; --r-xl:22px;
-  --sh-sm:0 1px 2px rgba(0,0,0,.05); --sh-md:0 8px 24px -12px rgba(0,0,0,.12); --sh-lg:0 20px 44px -18px rgba(0,0,0,.16);
-  --t-xs:11px; --t-sm:12.5px; --t-md:14px; --t-lg:17px; --t-xl:22px; --t-2xl:30px;
-  --sans:'DM Sans',-apple-system,'Segoe UI',sans-serif; --serif:'Fraunces',Georgia,serif;
-}
-body[data-theme="dark"]{
-  --c-bg:#000000; --c-surface:#1C1C1E; --c-surface-2:#1C1C1E;
-  --c-ink:#F5F5F7; --c-ink-2:#E8E8ED; --c-mut:#C9CCD3;
-  --c-line:rgba(255,255,255,.13); --c-line-2:rgba(255,255,255,.09);
-  --c-acc:#E5BE62; --c-acc-deep:#D8C99A; --c-acc-soft:#342F20;
-  --c-ok:#A7E0C0; --c-ok-soft:#17301F; --c-warn:#F1D992; --c-warn-soft:#2B2C24; --c-bad:#F2A18D; --c-bad-soft:#361A15;
-  --sh-sm:0 1px 2px rgba(0,0,0,.5); --sh-md:0 8px 24px -12px rgba(0,0,0,.55); --sh-lg:0 20px 44px -18px rgba(0,0,0,.65);
-}
-body{font-family:var(--sans) !important;letter-spacing:-.01em}
-h1,h2,h3,.adv-title,.sec-head h3,.panel-head h4,.an-card-head h4{font-family:var(--serif) !important;letter-spacing:-.025em}
-/* --- 1. Contrast AA (secondary #5B6270 / #C9CCD3) --- */
-body{color:var(--c-ink) !important;background:var(--c-bg) !important}
-.sub,.adv-sub,.intro p,.hint,.note,.mut,.k,.s,.an-lab,.an-sub,.qnote,.gen-note{color:var(--c-mut) !important}
-body[data-theme="dark"] .sub,body[data-theme="dark"] .adv-sub,body[data-theme="dark"] .intro p,body[data-theme="dark"] .hint,body[data-theme="dark"] .note,body[data-theme="dark"] .mut,body[data-theme="dark"] .k,body[data-theme="dark"] .s{color:var(--c-mut) !important}
-.hero-ticker{background:#122019 !important;border-color:rgba(255,255,255,.14) !important}
-.ticker-track{font-size:12.5px !important}
-.ticker-track a{color:#F5F5F7 !important;font-weight:650 !important}
-.ticker-live{color:#E7C46E !important}
-.hero-road-row b,.hero-road-row small,.cor-meta span,.cat-low span{color:var(--c-ink-2) !important}
-body[data-theme="dark"] .hero-road-row b,body[data-theme="dark"] .cor-meta span,body[data-theme="dark"] .cat-low span{color:var(--c-ink-2) !important}
-.show-card .show-price,.show-card .show-body b{color:#1D1D1F !important}
-.show-card .show-media{position:relative}
-.show-card .show-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.18));pointer-events:none}
-.show-card .show-loc,.show-card .show-type{color:#1D1D1F !important;background:rgba(255,255,255,.92) !important}
-body[data-theme="dark"] .show-card .show-price,body[data-theme="dark"] .show-card .show-body b{color:#F5F5F7 !important}
-body[data-theme="dark"] .show-card .show-loc,body[data-theme="dark"] .show-card .show-type{background:rgba(28,28,30,.94) !important;color:#F5F5F7 !important}
-/* --- 2. Text wrapping: never wrap year/price; stat equal height --- */
-.yt, .price-range, .istat b, .hero-stat b, .kpi .v, .an-num, .pulse-copy b, .dl-clock, .wx-temp{white-space:nowrap !important;font-variant-numeric:tabular-nums !important}
-.price-range,.hero-stat b,.kpi .v{font-size:clamp(18px,1.6vw,26px) !important}
-.intro-stats,.stat-grid,.an-kpis,.kpi-wrap{display:grid !important;align-items:stretch !important}
-.istat,.hero-stat,.kpi{height:100% !important;display:flex !important;flex-direction:column !important;justify-content:center !important}
-.hero-life .intro-stats{grid-template-columns:repeat(5,1fr) !important}
-@media (max-width:1100px){.hero-life .intro-stats{grid-template-columns:repeat(2,1fr) !important}}
-@media (max-width:560px){.hero-life .intro-stats{grid-template-columns:1fr 1fr !important}}
-/* --- 3. Header strip 12-col, calendar 36px+ --- */
-.dash-card-header{display:grid !important;grid-template-columns:repeat(12,1fr) !important;grid-template-rows:auto auto auto !important}
-.dash-card-header .dl-date{grid-column:1/4 !important;grid-row:1 !important;flex-direction:column !important;align-items:stretch !important;padding:16px !important;gap:10px !important}
-.dash-card-header .dl-quote{grid-column:4/9 !important;grid-row:1 !important;padding:16px 20px !important}
-.dash-card-header .dl-time{grid-column:9/11 !important;grid-row:1 !important;padding:16px 14px !important}
-.dash-card-header .dl-month{grid-column:11/13 !important;grid-row:1 !important;padding:16px 14px !important}
-.dash-card-header .dl-festival{grid-column:1/13 !important;grid-row:2 !important}
-.dl-merged-bottom{grid-column:1/13 !important;grid-row:3 !important}
-.dash-card-header .dl-date .dlf-cal{width:88px !important}
-.dash-card-header .dl-greet{font-size:18px !important;white-space:normal !important;line-height:1.25 !important;overflow-wrap:anywhere !important}
-.dash-card-header .dl-line,.dash-card-header .dl-sub{white-space:normal !important;line-height:1.4 !important;overflow:visible !important;text-overflow:clip !important}
-.dash-card-header .miniweek{height:54px !important;flex:none !important;margin-top:10px !important}
-.mini-month-day{min-height:36px !important;height:36px !important}
-.cal-cell{min-height:72px !important}
-.cal-cell b{font-size:16px !important}
-.cal-agenda{top:150px !important}
-@media (max-width:1250px){
-  .dash-card-header .dl-date{grid-column:1/5 !important}.dash-card-header .dl-quote{grid-column:5/11 !important}.dash-card-header .dl-time{grid-column:11/13 !important}.dash-card-header .dl-month{grid-column:1/13 !important;grid-row:2 !important}.dash-card-header .dl-festival{grid-column:1/13 !important;grid-row:3 !important}.dl-merged-bottom{grid-column:1/13 !important;grid-row:4 !important}
-}
-@media (max-width:700px){
-  .dash-card-header .dl-date,.dash-card-header .dl-quote,.dash-card-header .dl-time,.dash-card-header .dl-month,.dash-card-header .dl-festival,.dl-merged-bottom{grid-column:1/13 !important}
-  .mini-month-day{min-height:34px !important;height:34px !important}
-}
-/* --- 4. Floating: dock small collapsible, toast auto, page padding --- */
-main{padding-bottom:128px !important}
-.tooldock{left:50% !important;transform:translateX(-50%) !important;bottom:12px !important;gap:6px !important;padding:6px 8px !important;border-radius:999px !important;max-width:92vw !important}
-.dock-btn{min-width:58px !important;height:48px !important;border-radius:14px !important}
-.dock-btn span{font-size:17px !important}
-.dock-btn i{font-size:9.5px !important}
-.dock-min{font-weight:800 !important}
-.tooldock.collapsed .dock-btn:not(.dock-min){display:none !important}
-.toast{bottom:76px !important;max-width:min(92vw,440px) !important;text-align:center !important;z-index:240 !important}
-.storage{display:none !important}
-/* --- 5. Icons: single Lucide size 18px (hide stray glyphs) --- */
-.nav-ic,.pulse-ic,.cat-ic,.live-badge,.agenda-ic,.empty .ic,.qnote-ic,.an-insight .ic{font-size:18px !important;width:18px !important;height:18px !important}
-.sec-head h3 .nav-ic,.sec-head h3::before{display:none !important}
-.nav-ic{width:18px !important;height:18px !important;display:inline-grid !important;place-items:center !important;font-style:normal !important}
-.empty .ic{font-size:22px !important;width:52px !important;height:52px !important}
-/* --- 6. Hierarchy: Hero -> Queue -> Featured -> Latest ; Today collapsed teaser --- */
-#view-dashboard{display:flex !important;flex-direction:column !important}
-.hero-life{order:1 !important}
-.dashCard-teaser{order:2 !important}
-#dashHeadline{order:12 !important;margin:18px 0 !important;border-radius:20px !important}
-#dashHeadline .dl-festival,#dashHeadline .dl-merged-bottom{padding-top:12px !important;padding-bottom:12px !important}
-.pulse-strip{order:3 !important}
-.cmd-bar{order:4 !important}
-.senior-head{order:5 !important}.senior-grid{order:6 !important}
-.queue-head{order:7 !important}.queue-panel{order:8 !important}
-.journey-head{order:9 !important}.journey-panel{order:10 !important}
-.fest-head{order:13 !important}.month-fest{order:14 !important}
-.month-head{order:15 !important}.month-panel{order:16 !important}
-.types-head{order:18 !important}#catStrip{order:19 !important}
-.feat-sec{order:17 !important}
-#featuredGrid{order:20 !important}
-.two-col{order:21 !important}
-.sec-head h3{font-size:var(--t-xl) !important}
-.sec-head .sub{font-size:var(--t-sm) !important}
-.sec-head .btn,.sec-head .seg{margin-left:auto !important}
-.dash-grid .dash-card-header .dl-date .miniweek{height:52px !important}
-/* --- 7. Empty states --- */
-.empty,.empty-inline,.adv-empty,.an-empty,.inv-empty,.live-empty,.emptyBlock,.mini-empty,.unit-empty{
-  display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:center !important;text-align:center !important;gap:8px !important;padding:28px 18px !important;
-}
-.empty h4,.empty-inline h4{font-size:15px !important;margin:4px 0 0 !important}
-.empty p,.empty-inline{font-size:12.5px !important;line-height:1.55 !important;color:var(--c-mut) !important;max-width:360px !important;margin:0 auto !important}
-.empty .btn,.empty-inline .btn{margin-top:8px !important;min-height:40px !important}
-/* --- 8. Featured equal height 3-col --- */
-.show-grid{display:grid !important;grid-template-columns:repeat(3,1fr) !important;gap:16px !important;align-items:stretch !important}
-.show-card{display:flex !important;flex-direction:column !important;height:100% !important;border-radius:18px !important}
-.show-card .show-body{flex:1 !important;display:flex !important;flex-direction:column !important;gap:8px !important}
-.show-card .show-price{font-size:20px !important;font-weight:750 !important;letter-spacing:-.02em !important;white-space:nowrap !important}
-.show-card .show-badge{font-size:10px !important;font-weight:800 !important;letter-spacing:.1em !important;text-transform:uppercase !important;padding:5px 9px !important;border-radius:999px !important}
-.show-card .show-badge.completed{background:var(--c-ok-soft) !important;color:var(--c-ok) !important}
-.show-card .show-badge.upcoming{background:var(--c-warn-soft) !important;color:var(--c-warn) !important}
-.show-card .show-badge.ongoing{background:color-mix(in srgb, var(--acc) 10%, transparent) !important;color:var(--c-acc-deep) !important}
-body[data-theme="dark"] .show-card .show-badge.ongoing{color:var(--c-acc) !important}
-.show-card .show-foot{margin-top:auto !important;padding-top:10px !important;border-top:1px solid var(--hair) !important;display:flex !important;gap:8px !important}
-.show-card .show-foot .btn{flex:1 !important;min-height:42px !important;border-radius:999px !important}
-@media (max-width:1100px){.show-grid{grid-template-columns:repeat(2,1fr) !important}}
-@media (max-width:640px){.show-grid{grid-template-columns:1fr !important}}
-/* --- 9. Nav 44px targets --- */
-#nav button{min-height:44px !important;padding:8px 14px !important}
-.nav-more-panel button{min-height:44px !important}
-.hbtns .btn{min-height:44px !important}
-.hbtns .icon-btn{width:44px !important;height:44px !important}
-#nav button.on{background:var(--acc-deep) !important;color:#fff !important;box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--acc) 35%, transparent) !important}
-#nav button:focus-visible,.hbtns button:focus-visible,.btn:focus-visible{outline:2px solid color-mix(in srgb, var(--acc) 55%, transparent) !important;outline-offset:2px !important}
-.nav-more-panel button.on{box-shadow:inset 0 0 0 1.5px color-mix(in srgb, var(--acc) 45%, transparent) !important}
-/* --- 10. Responsive no horizontal scroll --- */
-html,body{overflow-x:hidden !important}
-img,iframe,video,table,.show-grid,.month-grid,.month-grid-head,.an-table-wrap,.table-wrap{max-width:100% !important}
-.an-scroll,.table-wrap,.cmp-wrap{overflow-x:auto !important;max-width:100% !important}
-.cal-wrap{grid-template-columns:minmax(0,1fr) 320px !important}
-@media (max-width:1100px){.cal-wrap{grid-template-columns:minmax(0,1fr) !important}}
-@media (max-width:1024px){.dash-card-header{grid-template-columns:repeat(6,1fr) !important}.dash-card-header .dl-date{grid-column:1/4 !important}.dash-card-header .dl-quote{grid-column:4/10 !important}.dash-card-header .dl-time{grid-column:10/13 !important}.dash-card-header .dl-month{grid-column:1/13 !important;grid-row:2 !important}}
-@media (max-width:768px){.dash-card-header{grid-template-columns:repeat(4,1fr) !important}.dash-card-header .dl-date{grid-column:1/5 !important}.dash-card-header .dl-quote{grid-column:1/5 !important;grid-row:2 !important}.dash-card-header .dl-time{grid-column:1/3 !important;grid-row:3 !important}.dash-card-header .dl-month{grid-column:3/5 !important;grid-row:3 !important}.dash-card-header .dl-festival{grid-column:1/5 !important;grid-row:4 !important}.dl-merged-bottom{grid-column:1/5 !important;grid-row:5 !important}main{padding:18px 14px 120px !important}}
-@media (max-width:390px){.dash-card-header .dl-date,.dash-card-header .dl-quote,.dash-card-header .dl-time,.dash-card-header .dl-month{grid-column:1/13 !important}.mini-month-day{min-height:32px !important;height:32px !important;font-size:11px !important}.cal-cell{min-height:64px !important}}
-
-
-/* BCS v52 — Header/hero wrap fix (no break, no overlap) */
-.hwrap-top{grid-template-columns:auto minmax(0,1fr) auto !important}
-.brand{flex:none !important}
-.brand > div:last-child{min-width:0 !important;flex:none !important}
-.brand h1{white-space:nowrap !important;font-size:19px !important}
-.brand p{white-space:nowrap !important}
-.searchbox{justify-self:center !important;max-width:520px !important;width:100% !important}
-.searchbox input{white-space:nowrap !important;text-overflow:ellipsis !important;overflow:hidden !important}
-.hbtns{flex:none !important;flex-wrap:nowrap !important}
-.hbtns .btn{white-space:nowrap !important;flex:none !important}
-.hero-life .intro-stats{grid-template-columns:repeat(5,minmax(0,1fr)) !important}
-.hero-life .hero-stat b{font-size:clamp(17px,1.45vw,26px) !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important}
-.hero-life .hero-stat span{white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important}
-.hero-life h2{font-size:clamp(32px,3.6vw,48px) !important}
-.hero-life p{max-width:560px !important}
-@media (max-width:1100px){.hwrap-top{grid-template-columns:auto 1fr auto !important}.hero-life .intro-stats{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
-@media (max-width:720px){.hwrap-top{grid-template-columns:auto 1fr !important}.hbtns{display:none !important}.searchbox{max-width:none !important}.hero-life .intro-stats{grid-template-columns:1fr 1fr !important}}
-
-
-/* BCS v53 — Header grid + weather + dock (no overlap) */
-.hwrap-top{display:grid !important;grid-template-columns:280px minmax(0,1fr) auto !important;gap:16px !important;align-items:center !important}
-.brand > div:last-child{white-space:nowrap !important}
-.brand h1{font-size:19px !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important;max-width:260px !important}
-.brand p{font-size:10px !important;white-space:nowrap !important}
-.searchbox{justify-self:center !important;width:100% !important;max-width:520px !important}
-.searchbox input{white-space:nowrap !important}
-.hbtns{flex-wrap:nowrap !important}
-.hbtns .btn{white-space:nowrap !important;flex:none !important;font-size:12.5px !important}
-.hbtns .lbl{display:inline !important}
-.mob-add{display:none !important}
-.media-dock,.media-mini{display:none !important}
-.tooldock{height:auto !important;padding:6px 8px !important}
-.dock-btn{min-width:56px !important;height:52px !important}
-.dash-card-header .dl-meta{gap:2px !important}
-.dash-card-header .dl-line{font-size:13px !important}
-.dash-card-header .dl-sub{font-size:11px !important}
-
-
-/* BCS v54 — Header fit for 1247px MacBook (no overlap) */
-.hwrap-top{grid-template-columns:250px minmax(0,1fr) auto !important}
-.brand h1{max-width:240px !important}
-.searchbox{max-width:400px !important}
-.hbtns{gap:7px !important}
-.hbtns .btn{padding:0 13px !important;font-size:12.5px !important}
-@media (min-width:1280px){.hbtns .lbl{display:inline !important}}
-@media (max-width:1400px){
-  .hbtns .lbl{display:none !important}
-  .brand p{display:none !important}
-  .brand h1{font-size:17px !important}
-  .searchbox{max-width:340px !important}
-  #exportBtn,#importBtn{padding:0 10px !important}
-}
-@media (max-width:1100px){
-  #exportBtn,#importBtn{display:none !important}
-  .searchbox{max-width:none !important}
-}
-.hero-life .hero-stat b{font-size:clamp(16px,1.3vw,22px) !important}
-.hero-life .intro-stats{gap:9px !important}
-
-
-/* BCS v55 — Header flex (no overlap) + Date meta stacked (no vertical Hindi) */
-.hwrap-top{display:flex !important;grid-template-columns:none !important;flex-wrap:nowrap !important;gap:16px !important;align-items:center !important}
-.hwrap-top .spacer{display:none !important}
-.brand{flex:none !important}
-.searchbox{flex:1 1 auto !important;justify-self:center !important;margin:0 auto !important;max-width:520px !important}
-.hbtns{flex:none !important}
-.dash-card-header .dl-date > .dl-meta{flex-direction:column !important;align-items:flex-start !important;gap:4px !important;min-width:0 !important}
-.dash-card-header .dl-hi{white-space:nowrap !important}
-.dash-card-header .dl-line{white-space:normal !important}
-.dash-card-header .dl-sub{white-space:normal !important}
-@media (max-width:1400px){.brand p{display:none !important;}}
-@media (max-width:1100px){.hwrap-top{flex-wrap:wrap !important}.searchbox{order:3 !important;flex-basis:100% !important;max-width:none !important}.hbtns{order:2 !important}}
-
-
-/* BCS v56 — Header single-row fit (1247px MacBook) */
-.hwrap-top{gap:12px !important}
-.brand h1{max-width:230px !important;font-size:18px !important}
-.brand p{font-size:9px !important}
-.searchbox{max-width:340px !important;min-width:160px !important}
-.hbtns{gap:6px !important}
-.role-chip{max-width:150px !important;overflow:hidden !important;text-overflow:ellipsis !important;white-space:nowrap !important}
-#roleChip{font-size:11px !important}
-@media (max-width:1350px){
-  .role-chip{max-width:110px !important}
-  #roleChip{max-width:110px !important;overflow:hidden !important;text-overflow:ellipsis !important}
-}
-@media (max-width:1250px){
-  .brand h1{max-width:190px !important;font-size:17px !important}
-  .searchbox{max-width:260px !important}
-  #addProjectTop .lbl{display:none !important}
-  #addProjectTop{width:40px !important;padding:0 !important;justify-content:center !important}
-}
-
-
-/* ============================================================
-   BCS v57 — Warm minimal (vibe wapas, clutter nahi)
-   Flat clean structure + Jaipur warmth + Music/YouTube visible
-   ============================================================ */
-body{background:linear-gradient(180deg,#FAF7F0,#F5F5F7) !important}
-body[data-theme="dark"]{background:#000000 !important}
-body::before{content:none !important}
-body::after{content:"" !important;position:fixed !important;inset:0 !important;pointer-events:none !important;z-index:0 !important;
-  background-image:radial-gradient(rgba(165,123,54,.07) 1px, transparent 1px) !important;background-size:26px 26px !important;opacity:.5 !important;
-  mask-image:radial-gradient(80% 60% at 50% 0%, black, transparent 80%) !important}
-header,main{position:relative !important;z-index:1 !important}
-.hero-life{background:linear-gradient(158deg,#1E3328 0%,#263B33 42%,#4A3A1E 78%,#6E5B24 100%) !important;border:1px solid rgba(231,196,110,.22) !important}
-.hero-life h2 em{color:#E7C46E !important;background:none !important;-webkit-text-fill-color:#E7C46E !important;animation:none !important}
-.hero-life .eyebrow{color:#E7C46E !important}
-.hero-life .eyebrow::before{content:"🪔" !important;width:auto !important;height:auto !important;background:none !important}
-.hero-life .hero-stat{background:rgba(246,242,231,.08) !important;border:1px solid rgba(246,242,231,.16) !important}
-.hero-life .hero-stat b{color:#FFF8E1 !important}
-.hero-life .hero-stat span{color:rgba(246,242,231,.72) !important}
-.hero-life .hero-actions .btn.primary{background:linear-gradient(135deg,#F3D27A,#C99A3E) !important;color:#1E210F !important}
-.hero-ticker{background:linear-gradient(90deg, rgba(18,32,25,.96), rgba(38,59,51,.92)) !important;border:1px solid rgba(231,196,110,.28) !important;border-radius:999px !important}
-.ticker-track a{color:rgba(246,242,231,.92) !important}
-.ticker-live{color:#E7C46E !important}
-/* sound/music visible: labeled pill next to theme */
-#soundBtn{width:auto !important;min-width:86px !important;padding:0 12px !important;border-radius:999px !important}
-#soundBtn .sound-lbl{font-size:11px !important;font-weight:750 !important;letter-spacing:.04em !important}
-#soundBtn[aria-pressed="false"]{opacity:.55 !important}
-/* news watch gold edge */
-.yt-chips a{border-color:color-mix(in srgb, var(--acc) 22%, var(--hair)) !important}
-.yt-chips a:hover{border-color:var(--acc) !important}
-.yt-player-wrap{border:1px solid var(--hair) !important;box-shadow:var(--sh-lg) !important}
-.news-modes button[data-news-mode="videos"].on{background:var(--acc-deep) !important;color:#fff !important;border-color:transparent !important}
-.card-shine,.panel::after{display:none !important}
-
-
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -6245,7 +5968,7 @@ header,main{position:relative !important;z-index:1 !important}
       <button class="icon-btn" id="themeBtn" title="Dark / light mode" aria-label="Toggle dark mode">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.6 14.3A9.4 9.4 0 0 1 9.7 3.4a9.4 9.4 0 1 0 10.9 10.9Z"/><path d="M17.5 4.5l.5 1.4 1.4.5-1.4.5-.5 1.4-.5-1.4-1.4-.5 1.4-.5.5-1.4Z"/></svg>
       </button>
-      <button class="icon-btn" id="soundBtn" title="Music / Sound on off" aria-label="Toggle music sound" aria-pressed="true"><span id="soundIco" style="font-size:15px;line-height:1">🔊</span><span class="sound-lbl" id="soundLbl">Music</span></button>
+      <button class="icon-btn" id="soundBtn" title="Sound on / off" aria-label="Toggle sound" aria-pressed="true"><span id="soundIco" style="font-size:15px;line-height:1">🔊</span></button>
       <span class="role-chip" id="roleChip"></span>
       <button class="icon-btn" id="lockBtn" title="Lock desk — Ajay Sharma" aria-label="Lock desk">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
@@ -7599,7 +7322,6 @@ header,main{position:relative !important;z-index:1 !important}
   <button class="dock-btn" id="calcBtn" title="Quick calculator"><span>🧮</span><i>Calc</i></button>
   <button class="dock-btn" id="fieldsBtn" title="Custom fields — apne columns banayein"><span>⚙</span><i>Fields</i></button>
   <button class="dock-btn" id="listsBtn" title="Dropdowns &amp; lists — har option add / edit / delete karein"><span>📋</span><i>Lists</i></button>
-  <button class="dock-btn dock-min" id="dockToggle" title="Dock chhota karo" aria-label="Collapse dock" aria-expanded="true"><span>—</span></button>
 </div>
 <div class="toolpop" id="stickyPop">
   <div class="tp-head"><b>📌 Sticky note</b><button class="xbtn sm" data-toolclose="stickyPop">✕</button></div>
@@ -10838,7 +10560,7 @@ function toast(msg, err){
   t.textContent = msg;
   t.className = 'toast on' + (err ? ' err' : '');
   clearTimeout(t._to);
-  t._to = setTimeout(() => t.className = 'toast', 4000);
+  t._to = setTimeout(() => t.className = 'toast', 2600);
   try{ bcsSound(err ? 'error' : 'success'); }catch(e){}
 }
 const initial = name => (name||'?').trim().charAt(0).toUpperCase();
@@ -23548,9 +23270,6 @@ if(!hadLocalData && !window.indexedDB) save();
 applyRoleChrome();
 render();
 try{ document.body.classList.add('booted'); }catch(e){}
-setTimeout(function(){ try{ const w = document.getElementById('jaipurWeather'); if(w && w.textContent.includes('loading…')) w.innerHTML = '<span class="wx-mark">Jaipur weather offline — refresh karein</span>'; }catch(e){} }, 9000);
-/* BCS: dock collapse (UI only) */
-try{ const dt = $('#dockToggle'); if(dt) dt.addEventListener('click', () => { const d = $('#toolDock'); if(d){ d.classList.toggle('collapsed'); const ex = d.classList.contains('collapsed'); dt.setAttribute('aria-expanded', ex ? 'false' : 'true'); dt.querySelector('span').textContent = ex ? '＋' : '—'; } }); }catch(e){}
 /* BCS: storage pill auto-hide (show briefly, then whisper) */
 try{
   var _stT = null;
