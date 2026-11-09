@@ -7662,6 +7662,73 @@ nav button.on{
 
 
 
+
+/* ============================================================
+   BCS v81 — Watch Channels + Podcasts & Library
+   ============================================================ */
+.wc-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:14px 0 10px}
+.wc-head h4{font-family:'Fraunces',serif;font-size:17px;font-weight:650;letter-spacing:-.01em}
+.wc-filter{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}
+.wc-filter button{height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--hair);background:var(--panel);color:var(--ink2);font-size:11.5px;font-weight:700;cursor:pointer;transition:.18s}
+.wc-filter button:hover{border-color:var(--acc);color:var(--ink)}
+.wc-filter button.on{background:var(--acc-deep);border-color:var(--acc-deep);color:#fff}
+.wc-manage{margin-bottom:12px}
+.wc-manage-row{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--hair);border-radius:12px;background:var(--panel);margin-bottom:8px}
+.wc-manage-row b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wc-manage-row .wc-actions{display:flex;gap:4px;flex:none}
+.wc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.wc-card{position:relative;display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--hair);border-radius:16px;background:var(--panel);box-shadow:var(--sh-sm);transition:transform .2s, box-shadow .25s, border-color .2s}
+.wc-card:hover{transform:translateY(-2px);box-shadow:var(--sh-md);border-color:color-mix(in oklab, var(--acc) 30%, var(--hair))}
+.wc-avatar{flex:none;width:54px;height:54px;border-radius:15px;display:grid;place-items:center;color:#fff;font-family:'Fraunces',serif;font-weight:700;font-size:19px;letter-spacing:.02em;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.wc-body{min-width:0;flex:1}
+.wc-name{font-size:13.5px;font-weight:800;letter-spacing:-.005em;line-height:1.25}
+.wc-meta{display:flex;gap:6px;align-items:center;margin:4px 0 6px}
+.wc-cat{display:inline-flex;align-items:center;height:18px;padding:0 8px;border-radius:999px;background:color-mix(in oklab, var(--gold-soft, #F3E8D3) 60%, var(--panel));border:1px solid var(--hair);font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-deep, #8A6A2E)}
+.wc-desc{font-size:11.5px;color:var(--mut);line-height:1.45;min-height:34px}
+.wc-actions{display:flex;gap:6px;margin-top:9px}
+.wc-btn{flex:1;height:30px;border-radius:9px;font-size:11px;font-weight:800;border:1px solid var(--hair);background:var(--panel);color:var(--ink);cursor:pointer;transition:.18s}
+.wc-btn:hover{transform:translateY(-1px)}
+.wc-btn.watch{background:var(--acc-deep);border-color:var(--acc-deep);color:#fff}
+.wc-btn.open{color:var(--ink2)}
+.wc-btn.tiny{flex:0 0 auto;min-width:30px;padding:0 8px;font-size:11px}
+.wc-card-foot{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.wc-badge{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 8px;border-radius:999px;background:color-mix(in oklab, var(--sage, #DFE9E3) 55%, var(--panel));border:1px solid color-mix(in oklab, var(--sage-ink, #41563F) 26%, transparent);color:var(--sage-ink, #41563F);font-size:9.5px;font-weight:800;letter-spacing:.06em}
+.watch-modal-note{font-size:11px;color:var(--mut);margin-top:8px}
+.player-frame-wrap{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#16160F;border:1px solid var(--hair)}
+.player-frame-wrap iframe{width:100%!important;height:100%!important;border:0!important;display:block!important}
+.watch-error{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;aspect-ratio:16/9;text-align:center;padding:20px;color:#F6F2E7;background:linear-gradient(145deg,#2b2a1d,#141410 70%);border-radius:16px}
+.wc-empty{border:1.5px dashed var(--hair);border-radius:16px;padding:26px 18px;text-align:center;color:var(--mut);font-size:12.5px}
+
+/* Podcasts & Library */
+.pod-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0 18px}
+@media (max-width:900px){.pod-cards{grid-template-columns:1fr}}
+.pod-card{display:flex;flex-direction:column;gap:10px;padding:18px;border:1px solid var(--hair);border-radius:20px;background:var(--panel);box-shadow:var(--sh-sm);transition:transform .22s, box-shadow .25s}
+.pod-card:hover{transform:translateY(-3px);box-shadow:var(--sh-lg)}
+.pod-card .pod-ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:26px}
+.pod-card h4{font-family:'Fraunces',serif;font-size:17px;font-weight:650;letter-spacing:-.01em}
+.pod-card p{font-size:12px;color:var(--mut);line-height:1.5}
+.pod-note{font-size:10.5px;color:var(--mut);border-top:1px dashed var(--hair);padding-top:8px;line-height:1.5}
+.pod-foot{margin-top:auto}
+.pod-open{width:100%;height:38px;border-radius:12px;font-weight:800;font-size:12.5px;border:1px solid var(--hair);background:var(--panel);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;transition:.18s}
+.pod-open:hover{transform:translateY(-1px);border-color:var(--gold)}
+.pod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.pod-item{padding:12px;border:1px solid var(--hair);border-radius:16px;background:var(--panel);box-shadow:var(--sh-sm);display:flex;flex-direction:column;gap:6px}
+.pod-item b{font-size:13px;line-height:1.3}
+.pod-item a{color:var(--gold-deep, #8A6A2E);font-size:11px;word-break:break-word}
+.pod-item p{font-size:11px;color:var(--mut);line-height:1.45}
+.pod-item-actions{display:flex;gap:6px;margin-top:4px}
+
+/* ET Realty videos + Top headlines strips */
+.et-strip,.top-strip{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 10px;margin:12px 0;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.et-strip::-webkit-scrollbar,.top-strip::-webkit-scrollbar{height:6px}
+.et-strip::-webkit-scrollbar-thumb,.top-strip::-webkit-scrollbar-thumb{background:var(--hair);border-radius:999px}
+.et-card,.top-head{flex:0 0 300px;border:1px solid var(--hair);border-radius:14px;background:var(--panel);padding:12px;display:flex;flex-direction:column;gap:6px}
+.et-card b,.top-head b{font-size:12.5px;line-height:1.35}
+.top-head{display:flex;flex-direction:column;gap:6px}
+.top-head .th-src{display:flex;align-items:center;gap:6px;font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.top-head .th-src i{width:18px;height:18px;border-radius:6px;display:grid;place-items:center;font-style:normal;font-size:9px;background:var(--acc);color:#fff}
+.top-head p{font-size:11px;color:var(--mut);line-height:1.4}
+.top-head a:last-child{align-self:flex-start;font-size:10.5px;font-weight:800;color:var(--gold-deep,#8A6A2E);text-decoration:none;margin-top:auto;padding-top:4px}
 /* ============================================================
    BCS NAV v80 — Modern navigation bar polish
    ============================================================ */
@@ -8178,6 +8245,7 @@ try{
           <button type="button" data-view="terminology"><span class="nav-ic" aria-hidden="true">Aa</span>Terminology</button>
           <button type="button" data-view="links"><span class="nav-ic" aria-hidden="true">⛓</span>Links</button>
           <button type="button" data-view="templates"><span class="nav-ic" aria-hidden="true">▤</span>Templates</button>
+          <button type="button" data-view="podcasts"><span class="nav-ic" aria-hidden="true">🎙</span>Podcasts</button>
           <button type="button" data-view="health"><span class="nav-ic" aria-hidden="true">♥</span>Health</button>
         </div>
       </div>
@@ -8942,12 +9010,17 @@ try{
           <a class="btn ghost" href="https://www.youtube.com/results?search_query=Jaipur+real+estate" target="_blank" rel="noopener">YouTube search ↗</a>
         </div>
       </div>
-      <div class="yt-chips" id="ytChips">
-        <a href="https://www.youtube.com/results?search_query=PropertyWala+Jaipur" target="_blank" rel="noopener">PropertyWala</a>
-        <a href="https://www.youtube.com/results?search_query=Square+Yards+Jaipur" target="_blank" rel="noopener">Square Yards</a>
-        <a href="https://www.youtube.com/results?search_query=Housing.com+Jaipur" target="_blank" rel="noopener">Housing</a>
-        <a href="https://www.youtube.com/results?search_query=ET+Realty+Jaipur" target="_blank" rel="noopener">ET Realty</a>
+      <div class="wc-head">
+        <div><h4>Channels — verified and curated</h4><p class="yt-note" style="margin:2px 0 0">Tap “Watch here” — videos bhejo yahin playlist mein, bina tab change karein.</p></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button type="button" class="btn ghost sm" id="wcManageBtn" title="Edit, delete or reorder channels">⚙ Manage channels</button>
+          <button type="button" class="btn primary sm" id="wcAddBtn">+ Add channel</button>
+        </div>
       </div>
+      <div class="wc-filter" id="wcFilter" role="tablist" aria-label="Channel categories"></div>
+      <div class="wc-manage" id="wcManage" hidden></div>
+      <div class="wc-grid" id="wcGrid"></div>
+      <div class="wc-empty" id="wcEmpty" hidden>Is category me channel nahi hai — “Add channel” se apna channel ya source add karo.</div>
       <div class="yt-player-wrap">
         <iframe id="ytPlayer" title="BCS video player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="display:none"></iframe>
         <div class="yt-empty" id="ytEmpty"><b>▶ Video yahan chalega</b><span>YouTube link paste karo neeche, ya channel chip se YouTube kholo</span></div>
@@ -8958,6 +9031,48 @@ try{
       </form>
       <p class="yt-note">Player me youtube-nocookie embed chalta hai — koi tracking nahi. Channel links naya tab kholte hain.</p>
     </div>
+<div class="overlay" id="watchChannelModal" role="dialog" aria-modal="true" aria-labelledby="wcModalTitle">
+  <div class="modal" style="width:min(560px,100%)">
+    <div class="modal-head"><h3 id="wcModalTitle">New channel</h3><button class="xbtn" data-close="watchChannelModal">✕</button></div>
+    <div class="modal-body">
+      <div class="field"><label>Channel name *</label><input id="wcName" placeholder="e.g. PropertyWala"></div>
+      <div class="field"><label>Channel URL or @handle *</label><input id="wcUrl" placeholder="@PropertyWala · /channel/UC… · youtube.com/watch/…" autocomplete="off" spellcheck="false"></div>
+      <div class="grid2">
+        <div class="field"><label>Channel ID (if auto-detect fails)</label><input id="wcChannelId" placeholder="UC… 22 characters" autocomplete="off" spellcheck="false"></div>
+        <div class="field"><label>Category</label><select id="wcCategory"></select></div>
+      </div>
+      <div class="field"><label>Or create a new category</label><input id="wcNewCat" placeholder="e.g. Rajasthan Developers"></div>
+      <div class="field"><label>Short description</label><input id="wcDesc" placeholder="e.g. Jaipur property news with market insight"></div>
+      <div class="field"><label>Note (private)</label><input id="wcNote" placeholder="e.g. Good for resale comparisons"></div>
+      <div class="watch-modal-note">Handle auto-detect needs internet access; agar fail ho jaye to channel ID paste kar dijiye — seedha card mein "Youtube par kholein" pe chalega, embed isi ID se bana jayega.</div>
+    </div>
+    <div class="modal-foot"><button class="btn ghost" data-close="watchChannelModal">Cancel</button><button class="btn primary" id="wcSaveBtn">Save channel</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="watchPlayerModal" role="dialog" aria-modal="true" aria-labelledby="wpModalTitle">
+  <div class="modal" style="width:min(960px,100%)">
+    <div class="modal-head"><h3 id="wpModalTitle">Watch</h3><button class="xbtn" data-close="watchPlayerModal" aria-label="Close player">✕</button></div>
+    <div class="modal-body">
+      <div class="player-frame-wrap" id="wpFrameWrap"><iframe id="wpFrame" title="Channel player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="display:none;opacity:0"></iframe></div>
+      <div class="watch-modal-note" id="wpNote">Latest uploads from the channel — bina YouTube tab kholein.</div>
+    </div>
+    <div class="modal-foot"><a class="btn ghost" id="wpOpenYT" href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">↗ Open on YouTube</a><button class="btn primary" data-close="watchPlayerModal">Close</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="podcastModal" role="dialog" aria-modal="true" aria-labelledby="podModalTitle">
+  <div class="modal" style="width:min(520px,100%)">
+    <div class="modal-head"><h3 id="podModalTitle">Add podcast</h3><button class="xbtn" data-close="podcastModal">✕</button></div>
+    <div class="modal-body">
+      <div class="field"><label>Podcast name *</label><input id="podName" placeholder="e.g. The Real Estate Podcast"></div>
+      <div class="field"><label>Link (Apple Podcasts / Spotify / YouTube / RSS)</label><input id="podUrl" placeholder="https://…" autocomplete="off" spellcheck="false"></div>
+      <div class="field"><label>Category</label><input id="podCat" placeholder="e.g. India market / Global / Wealth"></div>
+      <div class="field"><label>Note</label><input id="podNote" placeholder="e.g. Best for Jaipur deal talk"></div>
+    </div>
+    <div class="modal-foot"><button class="btn ghost" data-close="podcastModal">Cancel</button><button class="btn primary" id="podSaveBtn">Save podcast</button></div>
+  </div>
+</div>
 
     <div class="news-mode-pane" id="newsPaneIdeas">
       <div class="live-hero ideas-hero">
@@ -9391,6 +9506,23 @@ try{
           <a class="btn ghost sm" href="https://www.propertywala.com/news/" target="_blank" rel="noopener">PW News</a>
           <span style="font-size:11px;color:var(--mut)">Sources: Aurum (PropTiger) · Square Yards · 2bigha · PropertyWala · Nov 2026 · Verify karke use karo.</span>
         </div>
+        <div style="margin-top:18px;border-top:1px solid var(--hair);padding-top:16px">
+          <div class="wc-head" style="margin:0 0 10px">
+            <div><h4>Top headlines — live from ET Now &amp; Moneycontrol</h4><p class="yt-note" style="margin:2px 0 0">Headline + link only. Full article original source par kholti hai (copyright respect — no re-hosted content).</p></div>
+            <button type="button" class="btn ghost sm" id="topStripRefresh">↻ Refresh</button>
+          </div>
+          <div class="top-strip" id="topStrip"><span class="sr-only">Loading headlines…</span><div class="sk-card" style="min-width:300px;height:110px"><div class="sk sk-line w55"></div><div class="sk sk-line w100"></div><div class="sk sk-line w85"></div><div class="sk sk-line w35"></div></div></div>
+        </div>
+        <div style="margin-top:14px">
+          <div class="wc-head" style="margin:0 0 10px">
+            <div><h4>Latest from ET Realty — videos</h4><p class="yt-note" style="margin:2px 0 0">Source: ET Realty (video hub) — fire hote hi latest videos aayenge.</p></div>
+          </div>
+          <div class="et-strip" aria-label="ET Realty videos">
+            <div class="et-card"><b>ET Realty Video Hub</b><p>Market leaders se interviews, ground reports aur launch analysis — sab ek jagah. Koi RSS/feed nahi, isi liye seedha page kholo.</p><a class="btn primary sm" href="https://realty.economictimes.indiatimes.com/videos" target="_blank" rel="noopener noreferrer">Watch on ET Realty ↗</a></div>
+            <div class="et-card"><b>Subscribe-source videos (YouTube)</b><p>Aurum/PropTiger aur ET partners ke latest Jaipur videos — bina tab badle:</p><div style="display:flex;gap:6px;flex-wrap:wrap"><a class="btn ghost sm" href="https://www.youtube.com/results?search_query=ET%20Realty%20Jaipur" target="_blank" rel="noopener noreferrer">ET Realty Jaipur</a><a class="btn ghost sm" href="https://www.youtube.com/results?search_query=Aurum%20Pulse%20Jaipur" target="_blank" rel="noopener noreferrer">Aurum Pulse</a><a class="btn ghost sm" href="https://www.youtube.com/results?search_query=Square+Yards+Jaipur" target="_blank" rel="noopener noreferrer">Square Yards</a></div></div>
+            <div class="et-card"><b>Market videos at a glance</b><p>Track updates from the top three sources — aur yahi data My feed / live Jaipur tab me saved ho sakta hai.</p><a class="btn ghost sm" href="https://www.propertywala.com/news/" target="_blank" rel="noopener noreferrer">PropertyWala News ↗</a></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -9422,6 +9554,46 @@ try{
     </div>
 
     <div class="tpl-grid" id="tplGrid"></div>
+  </section>
+
+  <section class="view" id="view-podcasts">
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · listen &amp; read desk</div>
+        <h2 class="adv-title">Podcasts &amp; Library,<br><em>knowledge without the noise.</em></h2>
+        <p class="adv-sub">Play Podcast, Libby aur Kanopy — real estate, business aur storytelling ke 3 premium sources. Card kholne ke liye library card chahiye; yahin apne favorite podcasts bhi save kar sakte hain.</p>
+      </div>
+    </div>
+    <div class="pod-cards">
+      <div class="pod-card">
+        <div class="pod-ic" style="background:linear-gradient(140deg,#1D3A5F,#3E6CA8);color:#F5D78E">🎙️</div>
+        <h4>Play Podcast</h4>
+        <p>Real estate, startup aur finance ke original shows — sunasni aur deep-dive, free.</p>
+        <div class="pod-note">Free · Ad-supported · No signup · Browser me chalta hai</div>
+        <div class="pod-foot"><a class="pod-open" href="https://www.playpodcast.net/" target="_blank" rel="noopener noreferrer">Open Play Podcast →</a></div>
+      </div>
+      <div class="pod-card">
+        <div class="pod-ic" style="background:linear-gradient(140deg,#F5B301,#D98A00);color:#3B2E00">📚</div>
+        <h4>Libby by OverDrive</h4>
+        <p>10 crore+ ebooks, audiobooks aur magazines — library card se free borrow karke padho/suno, offline bhi.</p>
+        <div class="pod-note">Needs: <b>Public library card</b> (free) · Borrow limit + waitlist system</div>
+        <div class="pod-foot"><a class="pod-open" href="https://libbyapp.com" target="_blank" rel="noopener noreferrer">Open Libby →</a></div>
+      </div>
+      <div class="pod-card">
+        <div class="pod-ic" style="background:linear-gradient(140deg,#1F1F1F,#4A3BA6);color:#F1E8FF">🎬</div>
+        <h4>Kanopy</h4>
+        <p>30,000+ films, documentaries aur world cinema — library/university card se 100% free streaming.</p>
+        <div class="pod-note">Needs: <b>Library ya university login</b> · Monthly play credits per library</div>
+        <div class="pod-foot"><a class="pod-open" href="https://www.kanopy.com/en" target="_blank" rel="noopener noreferrer">Open Kanopy →</a></div>
+      </div>
+    </div>
+    <div class="sec-head">
+      <h3>My real-estate podcasts</h3>
+      <span class="sub">Apna playlist add/edit/delete karo — sab neeche saved hai</span>
+      <button class="btn primary sm" id="podcastAddBtn" style="margin-left:auto">+ Add podcast</button>
+    </div>
+    <div class="pod-grid" id="podGrid"></div>
+    <div class="wc-empty" id="podEmpty" hidden>Koi podcast abhi save nahi hai — “Add podcast” se apna playlist upload karo.</div>
   </section>
 
   <section class="view" id="view-health">
@@ -12311,6 +12483,48 @@ function normalizeDb(d){
   if(!['board','gallery','list'].includes(d.ui.projectsMode)) d.ui.projectsMode = 'board';
   if(!['cards','list','kanban'].includes(d.ui.devViewMode)) d.ui.devViewMode = 'cards';
   if(!['cards','table'].includes(d.ui.corrViewMode)) d.ui.corrViewMode = 'cards';
+  if(!d.watch || typeof d.watch !== 'object' || Array.isArray(d.watch)) d.watch = {};
+  if(!Array.isArray(d.watch.channels)) d.watch.channels = [];
+  if(!Array.isArray(d.watch.categories) || !d.watch.categories.length) d.watch.categories = WATCH_DEFAULT_CATS.map(c => ({ id:c.id, label:c.label }));
+  const usedCatIds = new Set(d.watch.categories.map(c => c.id));
+  d.watch.channels = d.watch.channels
+    .filter(c => c && (c.channelId || c.handle))
+    .map(c => ({
+      id: c.id || ('wch_' + uid()),
+      name: String(c.name || 'Channel').slice(0, 80),
+      category: usedCatIds.has(c.category) ? c.category : 'india',
+      desc: String(c.desc || '').slice(0, 140),
+      note: String(c.note || '').slice(0, 140),
+      channelId: String(c.channelId || '').trim(),
+      handle: String(c.handle || '').trim(),
+      order: Number(c.order || 0) || 0,
+      addedAt: c.addedAt || Date.now(),
+      custom: !!c.custom
+    }))
+    .filter(c => !c.channelId || /^UC[A-Za-z0-9_-]{22}$/.test(c.channelId));
+  d.watch.categories = d.watch.categories
+    .map(c => ({ id: String(c.id || '').slice(0, 40), label: String(c.label || 'Category').slice(0, 48) }))
+    .filter(c => c.id);
+  if(!d.watch.seededV1){
+    d.watch.seededV1 = true;
+    if(!d.watch.channels.length) d.watch.channels = WATCH_DEFAULT_CHANNELS.map(c => ({ id:c.id, name:c.name, category:c.category, desc:c.desc, note:'', channelId:c.channelId, handle:c.handle, order:0, addedAt:Date.now(), custom:false }));
+  }
+  d.watch.channels.sort((a, b) => (a.order || 0) - (b.order || 0));
+
+  if(!d.podcasts || typeof d.podcasts !== 'object' || Array.isArray(d.podcasts)) d.podcasts = {};
+  if(!Array.isArray(d.podcasts.items)) d.podcasts.items = [];
+  d.podcasts.items = d.podcasts.items
+    .filter(it => it && it.name)
+    .map(it => ({
+      id: it.id || ('pod_' + uid()),
+      name: String(it.name || 'Podcast').slice(0, 120),
+      url: /^https?:\/\//i.test(String(it.url || '')) ? String(it.url) : 'https://' + String(it.url || '').replace(/^\/*/, ''),
+      category: String(it.category || 'General').slice(0, 40),
+      note: String(it.note || '').slice(0, 160),
+      addedAt: it.addedAt || Date.now(),
+      custom: true
+    }))
+    .slice(0, 60);
   // v15 — user-manageable option lists (rename / hide / reorder / add)
   if(!d.lists || typeof d.lists !== 'object' || Array.isArray(d.lists)) d.lists = {};
   ['types','statuses','plotUses','timelines','approvalTypes','rateUnits','unitStatuses','clientStatuses','advisorStatuses','resaleStatuses','bookingStages','newsCategories','videoStatuses','amenities','connections','templateScopes'].forEach(key => {
@@ -13172,7 +13386,7 @@ function showOverlay(id){
   el.style.zIndex = overlayZ;
   el.classList.add('on');
 }
-var BCS_MORE_SET = ['advisors','partners','resale','analytics','tax','terminology','links','templates','health'];
+var BCS_MORE_SET = ['advisors','partners','resale','analytics','tax','terminology','links','templates','podcasts','health'];
 function bcsNavMoreSync(){
   try{
     const mb = $('#navMoreBtn');
@@ -20090,7 +20304,9 @@ const NEWS_SOURCES = [
   { id:'propertywala', label:'PropertyWala',     query:'PropertyWala Jaipur property', url:'https://propertywala.com/news' },
   { id:'synergy',      label:'Synergy Infracon', query:'Synergy Infracon Jaipur', url:'https://synergyinfracon.com/news/locality/jaipur' },
   { id:'patrika',      label:'Patrika Jaipur',   query:'Patrika Jaipur JDA property registry', url:'https://www.patrika.com/jaipur-news' },
-  { id:'etrealty',     label:'ET Realty',        query:'ET Realty Jaipur Rajasthan real estate', url:'https://realty.economictimes.indiatimes.com' },
+  { id:'etnow',        label:'ET Now Real Estate', feed:'https://www.etnownews.com/feeds/gns-etn-real-estate.xml', url:'https://www.etnownews.com/real-estate' },
+  { id:'moneycontrol', label:'Moneycontrol Property', feed:'https://www.moneycontrol.com/rss/latestnews.xml', url:'https://www.moneycontrol.com/real-estate-property/' },
+  { id:'etrealty',     label:'ET Realty',        feed:'', url:'https://realty.economictimes.indiatimes.com/videos' },
   { id:'fortune',      label:'Fortune India',    query:'Fortune India real estate property news', url:'https://www.fortuneindia.com/real-estate' },
   { id:'construction', label:'Construction World', query:'Construction World real estate infrastructure', url:'https://www.constructionworld.in' },
   { id:'realtyfirst',  label:'Realty First',     query:'Realty First magazine real estate', url:'https://realtyfirstmag.com' },
@@ -20132,6 +20348,49 @@ const DEFAULT_LIST_OF = {
   videoStatuses: DEFAULT_VIDEO_STATUSES, amenities: DEFAULT_COMMON_AMENITIES,
   connections: DEFAULT_CONNECTION_SUGGESTIONS, templateScopes: DEFAULT_TEMPLATE_SCOPES,
 };
+
+/* ---------- v12: watch channels + custom podcasts (persisted in bcs_db_v1) ---------- */
+const WATCH_DEFAULT_CATS = [
+  { id:'india',    label:'India Real Estate' },
+  { id:'us',       label:'US Housing Market' },
+  { id:'invest',   label:'Investing & Wealth' },
+  { id:'global',   label:'Commercial & Global' },
+  { id:'builders', label:'Builders & Developers' },
+  { id:'buying',   label:'Home Buying Tips' }
+];
+const WATCH_DEFAULT_CHANNELS = [
+  { id:'wch_propertywala', name:'PropertyWala',     category:'india',    desc:'Jaipur & India property news, listings and market insight', channelId:'UCsXSqflmZcyBx6n_RoUolLQ', handle:'@PropertyWala' },
+  { id:'wch_squareyards',  name:'Square Yards',     category:'india',    desc:'Property news, price trends and market guides across India', channelId:'UC5rLGvbJuo6RAW1W8H3vz9A', handle:'@Square_Yards' },
+  { id:'wch_housing',      name:'Housing.com',      category:'buying',   desc:'Home buying guides, RERA explainer aur market updates', channelId:'UCNqBY4bm_Lbr7RokOFAS8Qw', handle:'@Housing-com' },
+  { id:'wch_99acres',      name:'99acres',          category:'india',    desc:'Real estate listings, market analysis and locality guides', channelId:'UCZclXYJ5oI-d36J3wbpHhbA', handle:'@99acres' },
+  { id:'wch_magicbricks',  name:'Magicbricks',      category:'india',    desc:'Property news, buying guidance aur locality analysis', channelId:'UCRtEWt48CRchY1X_5CWSrPw', handle:'@magicbricks' },
+  { id:'wch_proptiger',    name:'PropTiger',        category:'india',    desc:'Research-backed property investment insights and guides', channelId:'UCI0LhVGqyP4SYHd59G3URcA', handle:'@propTiger' },
+  { id:'wch_rkproperty',   name:'RK Property News', category:'india',    desc:'Property news, regulatory updates and launch coverage', channelId:'UCu4e_30KcwVyVStx-ZRqijA', handle:'@RKPropertyNews' },
+  { id:'wch_blsvlogs',     name:'BLS Homes Jaipur', category:'builders', desc:'Jaipur homes, tours aur builder stories from BLS Homes', channelId:'UCcbu-tj5P1FPij_Swn_nZkQ', handle:'@BlsVlogs' },
+  { id:'wch_harrydutt',    name:'Harry Dutt',       category:'india',    desc:'Jaipur real estate commentary, market analysis and trends', channelId:'UCRDhRjuQARbLlMpViNQijoA', handle:'@HarryDutt' },
+  { id:'wch_meetkevin',    name:'Meet Kevin',       category:'us',       desc:'US real estate investing — cash flow, analysis aur market', channelId:'UCPk6nJE8pBZPLCW2DAvaZOA', handle:'@MeetKevin' },
+  { id:'wch_graham',       name:'Graham Stephan',   category:'us',       desc:'US housing market, investing myths aur wealth-building', channelId:'UCa-ckhlKL98F8YXKQ-BALiw', handle:'@GrahamStephan' },
+  { id:'wch_biggerpockets',name:'BiggerPockets',    category:'invest',   desc:'Real estate investing education, podcasts and community', channelId:'UCxDXuLvtjJ9Est8PrG3i2VA', handle:'@BiggerPockets' },
+  { id:'wch_cnbc',         name:'CNBC',             category:'global',   desc:'Global markets, real estate and investment coverage', channelId:'UCH5_L3ytGbBziX0CLuYdQ1Q', handle:'@CNBC' }
+];
+const WATCH_SEED_VERSION = 1;
+function parseChannelFromUrl(raw){
+  const text = String(raw || '').trim();
+  if(!text) return { ok:false, error:'Channel URL ya @handle likho' };
+  const direct = text.match(/UC[A-Za-z0-9_-]{22}/);
+  if(direct) return { ok:true, channelId:direct[0], handle:'' };
+  if(/^@[A-Za-z0-9._-]{3,60}$/.test(text)) return { ok:true, channelId:'', handle:text };
+  const at = text.match(/youtube\.com\/@([A-Za-z0-9._-]{3,60})/i);
+  if(at) return { ok:true, channelId:'', handle:'@' + at[1] };
+  const custom = text.match(/youtube\.com\/c\/([A-Za-z0-9._-]{3,80})/i);
+  if(custom) return { ok:true, channelId:'', handle:'/c/' + custom[1] };
+  const user = text.match(/youtube\.com\/user\/([A-Za-z0-9._-]{3,80})/i);
+  if(user) return { ok:true, channelId:'', handle:'/user/' + user[1] };
+  const video = text.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{11})/i);
+  if(video) return { ok:true, channelId:'', handle:'', videoId:video[1] };
+  return { ok:false, error:'URL samajh nahi aayi — @handle, /channel/UC…, /c/… ya video link paste karo' };
+}
+
 function listStateOf(key){
   const all = (typeof db !== 'undefined' && db.lists) || {};
   const st = all[key];
@@ -20338,13 +20597,16 @@ async function fetchLiveFeedRss(rss){
 }
 async function fetchLiveNews(sourceId, queryOverride){
   const src = NEWS_SOURCES.find(s => s.id === sourceId) || NEWS_SOURCES[0];
-  const q = String(queryOverride || src.query || 'Jaipur real estate').trim();
+  const q = String(queryOverride || src.query || '').trim();
   liveState.sourceId = src.id;
   liveState.query = q;
   liveState.loading = true;
   liveState.error = '';
   renderLiveNews();
-  const rss = 'https://news.google.com/rss/search?q=' + encodeURIComponent(q) + '&hl=en-IN&gl=IN&ceid=IN:en';
+  const hasDirectFeed = !!src.feed;
+  let rss;
+  if(hasDirectFeed) rss = src.feed;
+  else rss = 'https://news.google.com/rss/search?q=' + encodeURIComponent(q || 'Jaipur real estate') + '&hl=en-IN&gl=IN&ceid=IN:en';
   try{
     const items = await fetchLiveFeedRss(rss);
     liveState.items = items;
@@ -25644,6 +25906,9 @@ initDayplan();
 initNews();
 initLinks();
 initTerminology();
+initWatchChannels();
+initPodcasts();
+initTopStrip();
 initTax();
 initPartners();
 initCorridorManager();
@@ -25957,6 +26222,327 @@ try{
     }
   }, true);
 })();
+
+
+/* ============================================================
+   BCS v80 — Watch Channels + Podcasts + Top headlines strip
+   ============================================================ */
+function bcsLoad(){ try{ return db; }catch(e){ return null; } }
+function watchChanns(){ try{ return (db.watch && db.watch.channels) || []; }catch(e){ return []; } }
+function watchCats(){ try{ return (db.watch && db.watch.categories) || []; }catch(e){ return []; } }
+function watchCatLabel(id){ const c = watchCats().find(c => c.id === id); return c ? c.label : id; }
+const BCS_AVATAR_COLORS = [['#3A3928','#F6F2E7'],['#54779E','#F5EFDA'],['#2F8F6B','#F4F7EF'],['#B4673F','#FDEFE0'],['#8A6480','#F3EAF7'],['#6B7F3F','#F1F7E3']];
+function bcsAvatarColor(name){
+  let h = 0; const t = String(name || 'BCS');
+  for(let i = 0; i < t.length; i++) h = (h * 31 + t.charCodeAt(i)) >>> 0;
+  return BCS_AVATAR_COLORS[h % BCS_AVATAR_COLORS.length];
+}
+function bcsInitials(name){
+  const parts = String(name || '?').trim().split(/\s+/).slice(0, 2);
+  return parts.map(w => (w[0] || '').toUpperCase()).join('') || '?';
+}
+function watchUploadsList(id){
+  const m = String(id || '').match(/^UC([A-Za-z0-9_-]{22})/);
+  return m ? 'UU' + m[1] : '';
+}
+function watchChannelEmbed(id){
+  const list = watchUploadsList(id);
+  return list ? 'https://www.youtube-nocookie.com/embed/videoseries?list=' + list + '&rel=0&modestbranding=1' : '';
+}
+function watchChannelPage(c){
+  if(c.channelId) return 'https://www.youtube.com/channel/' + c.channelId;
+  if(c.handle && /^@/.test(c.handle)) return 'https://www.youtube.com/' + c.handle;
+  if(c.handle) return 'https://www.youtube.com/' + c.handle;
+  return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(c.name || 'indian real estate');
+}
+function watchEmbed(c){
+  return c && c.channelId ? watchChannelEmbed(c.channelId) : '';
+}
+let watchActiveCat = 'all';
+let watchManageMode = false;
+function renderWatchFilter(){
+  const el = $('#wcFilter'); if(!el) return;
+  const cats = watchCats();
+  el.innerHTML = `<button type="button" data-wcf="all" class="${watchActiveCat === 'all' ? 'on' : ''}">All channels · ${watchChanns().length}</button>` +
+    cats.map(c => `<button type="button" data-wcf="${esc(c.id)}" class="${watchActiveCat === c.id ? 'on' : ''}">${esc(c.label)} · ${watchChanns().filter(x => x.category === c.id).length}</button>`).join('');
+  $$('#wcFilter [data-wcf]').forEach(b => b.addEventListener('click', () => { watchActiveCat = b.dataset.wcf; renderWatchFilter(); renderWatchGrid(); }));
+}
+function renderWatchGrid(){
+  const grid = $('#wcGrid'), empty = $('#wcEmpty'); if(!grid) return;
+  let list = watchChanns();
+  if(watchActiveCat !== 'all') list = list.filter(c => c.category === watchActiveCat);
+  if(!list.length){ grid.innerHTML = ''; if(empty) empty.hidden = false; return; }
+  if(empty) empty.hidden = true;
+  grid.innerHTML = list.map(c => {
+    const [bg, fg] = bcsAvatarColor(c.name);
+    const embed = watchEmbed(c);
+    return `<div class="wc-card" data-wch="${esc(c.id)}">
+      <div class="wc-avatar" style="background:${bg};color:${fg}">${esc(bcsInitials(c.name))}</div>
+      <div class="wc-body">
+        <div class="wc-name">${esc(c.name)}</div>
+        <div class="wc-meta"><span class="wc-cat">${esc(watchCatLabel(c.category))}</span><span class="wc-badge">${c.channelId ? '✓ Embeds in-site' : 'Link-only'}</span></div>
+        <div class="wc-desc">${esc(c.desc || c.note || 'Real estate channel — verified')}</div>
+        <div class="wc-actions">
+          <button type="button" class="wc-btn watch" data-watch="${esc(c.id)}" ${embed ? '' : 'disabled title="Is channel ka embed available nahi hai — YouTube kholein"'}>▶ Watch here</button>
+          <a class="wc-btn open" href="${esc(watchChannelPage(c))}" target="_blank" rel="noopener noreferrer">↗ YouTube</a>
+          <button type="button" class="wc-btn tiny" data-edit-ch="${esc(c.id)}" title="Edit">✎</button>
+          <button type="button" class="wc-btn tiny" data-del-ch="${esc(c.id)}" title="Delete">✕</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  $$('#wcGrid [data-watch]').forEach(b => b.addEventListener('click', () => openWatchPlayer(b.dataset.watch)));
+  $$('#wcGrid [data-edit-ch]').forEach(b => b.addEventListener('click', () => openWatchChannelModal(b.dataset.editCh)));
+  $$('#wcGrid [data-del-ch]').forEach(b => b.addEventListener('click', () => deleteWatchChannel(b.dataset.delCh)));
+}
+function openWatchPlayer(id){
+  const c = watchChanns().find(x => x.id === id); if(!c) return toast('Channel nahi mila', true);
+  const embed = watchEmbed(c);
+  const title = $('#wpModalTitle'); if(title) title.textContent = 'Watch · ' + c.name;
+  const frame = $('#wpFrame'), wrap = $('#wpFrameWrap');
+  const note = $('#wpNote'); const open = $('#wpOpenYT');
+  if(open) open.href = watchChannelPage(c);
+  if(note) note.textContent = c.channelId ? 'Latest uploads — ' + c.name + '. Bina YouTube tab kholein.' : 'Embed available nahi hai — YouTube link neeche diya gaya hai.';
+  if(wrap){ wrap.innerHTML = ''; }
+  const err = embed ? null : 'Embed unavailable';
+  if(err){
+    if(wrap) wrap.innerHTML = '<div class="watch-error"><b>Embed nahi chalega</b><span>Is channel ki embedding unavailable hai — “Open on YouTube” use karein.</span><a class="btn primary" href="' + esc(watchChannelPage(c)) + '" target="_blank" rel="noopener noreferrer">↗ Open on YouTube</a></div>';
+  } else {
+    if(frame){ frame.src = embed; frame.style.display = 'block'; frame.style.opacity = '1'; }
+    else if(wrap){ const iframe = document.createElement('iframe'); iframe.id = 'wpFrame'; iframe.title = 'Channel player'; iframe.loading = 'lazy'; iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'; iframe.allowFullscreen = true; iframe.referrerPolicy = 'strict-origin-when-cross-origin'; iframe.src = embed; iframe.style.cssText = 'width:100%;height:100%;border:0;display:block'; wrap.appendChild(iframe); }
+  }
+  try{ bcsSound('click'); }catch(e){}
+  showOverlay('watchPlayerModal');
+}
+function closeWatchPlayer(){
+  const frame = $('#wpFrame');
+  if(frame){ frame.src = 'about:blank'; }
+  closeModal('watchPlayerModal');
+}
+document.addEventListener('click', e => {
+  if(e.target.closest('[data-close="watchPlayerModal"]') || (e.target.classList && e.target.classList.contains('overlay') && e.target.id === 'watchPlayerModal')){
+    const frame = $('#wpFrame');
+    if(frame) frame.src = 'about:blank';
+  }
+}, true);
+function openWatchChannelModal(id){
+  const editing = id ? watchChanns().find(c => c.id === id) : null;
+  window.__wcEditingId = editing ? editing.id : null;
+  $('#wcModalTitle').textContent = editing ? 'Edit channel' : 'Add channel';
+  $('#wcName').value = editing ? (editing.name || '') : '';
+  $('#wcUrl').value = editing ? (editing.channelId || editing.handle || '') : '';
+  $('#wcChannelId').value = editing ? (editing.channelId || '') : '';
+  $('#wcDesc').value = editing ? (editing.desc || '') : '';
+  $('#wcNote').value = editing ? (editing.note || '') : '';
+  $('#wcNewCat').value = '';
+  const cats = watchCats();
+  const sel = $('#wcCategory');
+  sel.innerHTML = cats.map(c => `<option value="${esc(c.id)}"${editing && editing.category === c.id ? ' selected' : ''}>${esc(c.label)}</option>`).join('');
+  showOverlay('watchChannelModal');
+  setTimeout(() => { try{ $('#wcUrl').focus(); }catch(e){} }, 60);
+}
+function wcSaveChannel(){
+  const editId = window.__wcEditingId || null;
+  const name = ($('#wcName').value || '').trim();
+  const url = ($('#wcUrl').value || '').trim();
+  const manualId = ($('#wcChannelId').value || '').trim();
+  const desc = ($('#wcDesc').value || '').trim();
+  const note = ($('#wcNote').value || '').trim();
+  if(!name) return toast('Channel ka name likho', true);
+  const parsed = parseChannelFromUrl(url);
+  let channelId = '', handle = '';
+  if(parsed.ok){
+    if(parsed.channelId) channelId = parsed.channelId;
+    if(parsed.handle) handle = parsed.handle;
+  } else if(!manualId && !editId){
+    return toast(parsed.error || 'URL samajh nahi aayi', true);
+  }
+  if(!channelId && /^UC[A-Za-z0-9_-]{22}$/.test(manualId)) channelId = manualId;
+  if(!channelId && !handle && !editId) return toast('Ek valid URL ya Channel ID paste karo', true);
+  const newCat = ($('#wcNewCat').value || '').trim();
+  let catId = $('#wcCategory').value || (watchCats()[0] && watchCats()[0].id) || 'india';
+  if(newCat){
+    const id = 'cat_' + Date.now().toString(36);
+    if(!db.watch) db.watch = { channels: [], categories: [] };
+    if(!Array.isArray(db.watch.categories)) db.watch.categories = [];
+    if(!db.watch.categories.find(c => c.label.toLowerCase() === newCat.toLowerCase())){
+      db.watch.categories.push({ id, label: newCat.slice(0, 40) });
+      catId = id;
+    } else {
+      catId = db.watch.categories.find(c => c.label.toLowerCase() === newCat.toLowerCase()).id;
+    }
+  }
+  if(!db.watch) db.watch = { channels: [], categories: [] };
+  if(!Array.isArray(db.watch.channels)) db.watch.channels = [];
+  const dup = db.watch.channels.find(c => c.id !== editId && ((channelId && c.channelId === channelId) || (handle && c.handle === handle)));
+  if(dup) return toast('Duplicate channel mil gaya — “' + dup.name + '” pehle se saved hai', true);
+  if(editId){
+    const editing = db.watch.channels.find(c => c.id === editId);
+    if(editing){
+      editing.name = name.slice(0, 80);
+      editing.desc = desc.slice(0, 140);
+      editing.note = note.slice(0, 140);
+      editing.category = catId;
+      if(channelId) editing.channelId = channelId;
+      if(handle) editing.handle = handle;
+      editing.custom = true;
+      save();
+      window.__wcEditingId = null;
+      closeModal('watchChannelModal');
+      renderWatchFilter(); renderWatchGrid();
+      toast('Channel updated');
+      return;
+    }
+  }
+  db.watch.channels.push({
+    id: 'wch_' + Date.now().toString(36),
+    name: name.slice(0, 80),
+    category: catId,
+    desc: desc.slice(0, 140),
+    note: note.slice(0, 140),
+    channelId,
+    handle,
+    order: db.watch.channels.length,
+    addedAt: Date.now(),
+    custom: true
+  });
+  save();
+  closeModal('watchChannelModal');
+  window.__wcEditingId = null;
+  renderWatchFilter();
+  renderWatchGrid();
+  try{ bcsSound('success'); }catch(e){}
+  toast('Channel added to ' + watchCatLabel(catId));
+}
+function deleteWatchChannel(id){
+  if(!confirm('Channel remove karna hai?')) return;
+  if(!db.watch || !Array.isArray(db.watch.channels)) return;
+  db.watch.channels = db.watch.channels.filter(c => c.id !== id);
+  save();
+  renderWatchFilter(); renderWatchGrid();
+  toast('Channel removed');
+}
+function renderWatchManage(){
+  const el = $('#wcManage'); if(!el) return;
+  const cats = watchCats();
+  const chans = watchChanns();
+  el.innerHTML = `
+    <div style="font-size:12px;font-weight:800;color:var(--mut);margin:0 0 8px">Reorder / delete channels</div>
+    ${chans.map((c, i) => `<div class="wc-manage-row"><b title="${esc(c.name)}">${esc(c.name)}</b>
+      <div class="wc-actions">
+        <button type="button" class="wc-btn tiny" data-mv-up="${esc(c.id)}" ${i === 0 ? 'disabled' : ''}>↑</button>
+        <button type="button" class="wc-btn tiny" data-mv-dn="${esc(c.id)}" ${i === chans.length - 1 ? 'disabled' : ''}>↓</button>
+        <button type="button" class="wc-btn tiny" data-del-ch="${esc(c.id)}">✕</button>
+      </div>
+    </div>`).join('')}
+    <div style="font-size:12px;font-weight:800;color:var(--mut);margin:14px 0 8px">Categories — rename / delete</div>
+    ${cats.map(c => `<div class="wc-manage-row"><b>${esc(c.label)}</b><div class="wc-actions"><button type="button" class="wc-btn tiny" data-rename-cat="${esc(c.id)}">✎</button><button type="button" class="wc-btn tiny" data-del-cat="${esc(c.id)}">✕</button></div></div>`).join('')}`;
+  $$('#wcManage [data-mv-up]').forEach(b => b.addEventListener('click', () => moveWatchChannel(b.dataset.mvUp, -1)));
+  $$('#wcManage [data-mv-dn]').forEach(b => b.addEventListener('click', () => moveWatchChannel(b.dataset.mvDn, +1)));
+  $$('#wcManage [data-del-ch]').forEach(b => b.addEventListener('click', () => deleteWatchChannel(b.dataset.delCh)));
+  $$('#wcManage [data-rename-cat]').forEach(b => b.addEventListener('click', () => {
+    const cat = watchCats().find(c => c.id === b.dataset.renameCat); if(!cat) return;
+    const label = (prompt('Naya category name', cat.label) || '').trim(); if(!label) return;
+    cat.label = label.slice(0, 40); save(); renderWatchManage(); renderWatchFilter(); renderWatchGrid(); toast('Category renamed');
+  }));
+  $$('#wcManage [data-del-cat]').forEach(b => b.addEventListener('click', () => {
+    if(!confirm('Category delete karna hai? Is category ke channels “India Real Estate” me shift ho jayenge.')) return;
+    const id = b.dataset.delCat;
+    if(!db.watch) return;
+    db.watch.channels = (db.watch.channels || []).map(c => c.category === id ? { ...c, category: 'india' } : c);
+    db.watch.categories = (db.watch.categories || []).filter(c => c.id !== id);
+    save(); renderWatchManage(); renderWatchFilter(); renderWatchGrid(); toast('Category deleted');
+  }));
+}
+function moveWatchChannel(id, dir){
+  if(!db.watch || !Array.isArray(db.watch.channels)) return;
+  const list = [...db.watch.channels].sort((a, b) => (a.order || 0) - (b.order || 0));
+  const idx = list.findIndex(c => c.id === id); if(idx < 0) return;
+  const j = idx + dir; if(j < 0 || j >= list.length) return;
+  const a = list[idx], b = list[j];
+  const tmp = a.order || 0; a.order = b.order || 0; b.order = tmp;
+  db.watch.channels = list;
+  save();
+  renderWatchManage(); renderWatchGrid();
+}
+function openWatchManage(){
+  watchManageMode = !watchManageMode;
+  const el = $('#wcManage'); if(el){ el.hidden = !watchManageMode; if(watchManageMode) renderWatchManage(); }
+  const btn = $('#wcManageBtn'); if(btn){ btn.textContent = watchManageMode ? '✓ Done' : '⚙ Manage channels'; }
+}
+function initWatchChannels(){
+  try{
+    const add = $('#wcAddBtn'); if(add) add.addEventListener('click', () => openWatchChannelModal(null));
+    const manage = $('#wcManageBtn'); if(manage) manage.addEventListener('click', openWatchManage);
+    const save = $('#wcSaveBtn'); if(save) save.addEventListener('click', wcSaveChannel);
+    if(!$('#watchChannelModal')) return;
+    // edit flow: since wcSaveChannel already supports first-arg edit-id via editing marker, add hidden marker set in openWatchChannelModal
+    renderWatchFilter(); renderWatchGrid();
+  }catch(e){ console.warn('[BCS watch] init failed', e); }
+}
+
+/* Podcasts & Library */
+function podcastsList(){ try{ return (db.podcasts && db.podcasts.items) || []; }catch(e){ return []; } }
+function renderPodcasts(){
+  const grid = $('#podGrid'), empty = $('#podEmpty'); if(!grid) return;
+  const list = podcastsList();
+  if(!list.length){ grid.innerHTML = ''; if(empty) empty.hidden = false; return; }
+  if(empty) empty.hidden = true;
+  grid.innerHTML = list.map(it => `<div class="pod-item"><b>${esc(it.name)}</b><p>${it.note ? esc(it.note) : esc(it.category)}</p><a href="${esc(it.url)}" target="_blank" rel="noopener noreferrer">${esc(it.url.replace(/^https?:\/\//, '').slice(0, 60))}</a><div class="pod-item-actions"><button type="button" class="wc-btn tiny" data-pod-del="${esc(it.id)}" title="Remove">✕</button></div></div>`).join('');
+  $$('#podGrid [data-pod-del]').forEach(b => b.addEventListener('click', () => {
+    if(!confirm('Podcast remove karna hai?')) return;
+    if(!db.podcasts) return;
+    db.podcasts.items = (db.podcasts.items || []).filter(p => p.id !== b.dataset.podDel);
+    save(); renderPodcasts(); toast('Podcast removed');
+  }));
+}
+function openPodcastModal(editingId){
+  const modal = $('#podcastModal'); if(!modal) return;
+  $('#podName').value = ''; $('#podUrl').value = ''; $('#podCat').value = ''; $('#podNote').value = '';
+  if(editingId){ const it = podcastsList().find(p => p.id === editingId); if(it){ $('#podName').value = it.name; $('#podUrl').value = it.url; $('#podCat').value = it.category; $('#podNote').value = it.note || ''; } }
+  showOverlay('podcastModal');
+  setTimeout(() => { try{ $('#podName').focus(); }catch(e){} }, 60);
+}
+function savePodcast(){
+  const name = ($('#podName').value || '').trim(); const url = ($('#podUrl').value || '').trim();
+  const cat = ($('#podCat').value || '').trim() || 'General'; const note = ($('#podNote').value || '').trim();
+  if(!name) return toast('Podcast ka name likho', true);
+  if(!url || !/^https?:\/\//i.test(url)) return toast('Link http(s):// se shuru hona chahiye', true);
+  if(!db.podcasts) db.podcasts = { items: [] };
+  if(!Array.isArray(db.podcasts.items)) db.podcasts.items = [];
+  const dup = db.podcasts.items.find(p => p.url === url);
+  if(dup) return toast('Ye podcast pehle se saved hai', true);
+  db.podcasts.items.unshift({ id: 'pod_' + Date.now().toString(36), name: name.slice(0, 120), url, category: cat.slice(0, 40), note: note.slice(0, 160), addedAt: Date.now(), custom: true });
+  save();
+  closeModal('podcastModal');
+  renderPodcasts();
+  toast('Podcast saved');
+}
+function initPodcasts(){
+  try{
+    const add = $('#podcastAddBtn'); if(add) add.addEventListener('click', () => openPodcastModal(null));
+    const sv = $('#podSaveBtn'); if(sv) sv.addEventListener('click', savePodcast);
+    renderPodcasts();
+  }catch(e){ console.warn('[BCS podcasts] init failed', e); }
+}
+
+/* Top headlines strip — ET Now direct RSS + Moneycontrol best effort */
+async function renderTopStrip(){
+  const strip = $('#topStrip'); if(!strip) return;
+  strip.innerHTML = '<span class="sr-only">Loading headlines…</span><div class="sk-card" style="min-width:300px;height:110px"><div class="sk sk-line w55"></div><div class="sk sk-line w100"></div><div class="sk sk-line w85"></div><div class="sk sk-line w35"></div></div>';
+function initTopStrip(){
+  try{ const b = $('#topStripRefresh'); if(b) b.addEventListener('click', () => renderTopStrip()); }catch(e){}
+  try{ renderTopStrip(); }catch(e){ console.warn('[BCS strip]', e); }
+}
+  try{
+    const src = NEWS_SOURCES.find(s => s.id === 'etnow');
+    const items = src ? await fetchLiveFeedRss(src.feed) : [];
+    if(!items.length){ strip.innerHTML = '<div class="top-head"><span class="th-src"><i>ET</i>ET NOW</span><b>Feed abhi nahi mila</b><p>ET Now ka RSS temporarily down hai — source desk se direct khol sakte hain.</p><a href="https://www.etnownews.com/real-estate" target="_blank" rel="noopener noreferrer">Open ET Now ↗</a></div>'; return; }
+    strip.innerHTML = items.slice(0, 12).map(it => `<div class="top-head"><span class="th-src"><i>ET</i>ET NOW · ${esc(it.dateLabel || '')}</span><b>${esc(it.title || '')}</b><p>${esc((it.summary || '').slice(0, 120))}</p><a href="${esc(it.link)}" target="_blank" rel="noopener noreferrer">Read on ET Now ↗</a></div>`).join('');
+  }catch(e){
+    strip.innerHTML = '<div class="top-head"><span class="th-src"><i>ET</i>ET NOW</span><b>Fetch failed</b><p>Network ya proxy slow hai — retry karo.</p><a href="https://www.etnownews.com/real-estate" target="_blank" rel="noopener noreferrer">Open ET Now ↗</a></div>';
+  }
+}
 
 /* ---------- PWA: offline shell + persistent storage ---------- */
 if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
