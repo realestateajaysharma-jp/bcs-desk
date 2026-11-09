@@ -6562,6 +6562,11 @@ body[data-theme="dark"] .cal-chip{color:var(--c-ink) !important}
 .media-pop{z-index:85 !important}
 
 
+/* BCS v66 — Price nowrap + hint once (no clutter) */
+.hero-life .hero-stat b{font-size:clamp(18px,1.4vw,24px) !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important}
+#kbdHint{opacity:0 !important;transition:none !important}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -6719,10 +6724,7 @@ try{
       overlays.forEach(function(o){ o.classList.remove('on'); });
     }
   });
-  window.addEventListener('mousemove', function(){
-    kb.style.opacity = '1';
-    setTimeout(function(){ kb.style.opacity = '0'; }, 3000);
-  });
+  void 0;
   setTimeout(function(){ kb.style.opacity = '1'; setTimeout(function(){ kb.style.opacity = '0'; }, 3000); }, 2000);
 
   /* Empty state icons (CSS-only fallback via content) */
