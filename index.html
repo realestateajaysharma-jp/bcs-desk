@@ -6028,6 +6028,20 @@ img,iframe,video,table,.show-grid,.month-grid,.month-grid-head,.an-table-wrap,.t
 .hero-life .intro-stats{gap:9px !important}
 
 
+/* BCS v55 — Header flex (no overlap) + Date meta stacked (no vertical Hindi) */
+.hwrap-top{display:flex !important;grid-template-columns:none !important;flex-wrap:nowrap !important;gap:16px !important;align-items:center !important}
+.hwrap-top .spacer{display:none !important}
+.brand{flex:none !important}
+.searchbox{flex:1 1 auto !important;justify-self:center !important;margin:0 auto !important;max-width:520px !important}
+.hbtns{flex:none !important}
+.dash-card-header .dl-date > .dl-meta{flex-direction:column !important;align-items:flex-start !important;gap:4px !important;min-width:0 !important}
+.dash-card-header .dl-hi{white-space:nowrap !important}
+.dash-card-header .dl-line{white-space:normal !important}
+.dash-card-header .dl-sub{white-space:normal !important}
+@media (max-width:1400px){.brand p{display:none !important;}}
+@media (max-width:1100px){.hwrap-top{flex-wrap:wrap !important}.searchbox{order:3 !important;flex-basis:100% !important;max-width:none !important}.hbtns{order:2 !important}}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
