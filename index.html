@@ -5249,6 +5249,69 @@ body[data-theme="dark"] .cmd-label{color:var(--acc) !important}
 }
 
 
+/* ============================================================
+   BCS Design System v16 — Live ticker + Today structure
+   No overlap, no scattered, visually rich dashboard
+   ============================================================ */
+.ticker-viewport{cursor:grab}
+.ticker-track a{text-decoration:none !important;color:inherit !important;display:inline-flex !important;align-items:center !important;gap:5px !important;padding:0 6px !important;border-radius:8px !important;transition:background .2s,color .2s !important}
+.ticker-track a:hover{color:#E7C46E !important;background:rgba(231,196,110,.12) !important;text-decoration:underline !important;text-underline-offset:3px !important}
+.ticker-track .tick-sep{opacity:.55;margin:0 2px}
+.ticker-live i{animation:bcsNavPulse 2s ease-in-out infinite}
+/* --- Today card RESTRUCTURED (fix overlap + vertical pills) --- */
+.dash-card-header{grid-template-columns:minmax(0,320px) minmax(0,1fr) minmax(0,300px) minmax(0,292px) !important}
+.dash-card-header .dl-date{flex-direction:column !important;align-items:stretch !important;justify-content:flex-start !important;gap:10px !important;padding:18px 20px 14px !important}
+.dash-card-header .dl-date > .dlf-cal,.dash-card-header .dl-meta{flex-direction:row !important}
+.dash-card-header .dl-date .dlf-cal{width:84px !important}
+.dash-card-header .dl-meta{flex:1 !important;min-width:0 !important;gap:3px !important;justify-content:center !important}
+.dash-card-header .dl-greet{font-size:19px !important;line-height:1.2 !important;white-space:normal !important}
+.dash-card-header .dl-hi{margin-top:5px !important}
+.dash-card-header .dl-line{font-size:13px !important;white-space:normal !important;line-height:1.45 !important}
+.dash-card-header .dl-sub{font-size:11px !important;white-space:normal !important}
+.dash-card-header .miniweek{display:grid !important;grid-template-columns:repeat(7,minmax(0,1fr)) !important;gap:5px !important;margin-top:10px !important;padding-top:10px !important;border-top:1px dashed var(--hair) !important;align-items:start !important}
+.mini-day{min-height:48px !important;max-height:52px !important;padding:5px 2px !important;justify-content:center !important}
+.mini-day b{font-size:13px !important}
+.mini-day span{font-size:7.5px !important}
+.mini-day i{font-size:9px !important}
+.dash-card-header .dl-quote{flex-direction:column !important;justify-content:flex-start !important;gap:10px !important;padding:18px 22px 14px !important}
+.dash-card-header .dl-quote p{font-size:16px !important;line-height:1.55 !important;flex:1 !important;min-height:44px !important}
+.dash-card-header .dl-quote .th-qmark{font-size:32px !important}
+.dash-card-header .dl-weather{border-top:1px dashed var(--hair) !important;padding-top:11px !important;margin-top:0 !important;flex:none !important}
+.wx-mark{white-space:nowrap !important}
+.dash-card-header .dl-time{justify-content:flex-start !important;padding:18px 14px 14px !important}
+.dash-card-header .dl-clock{font-size:44px !important}
+.dash-card-header .dl-timemeta{align-items:center !important;gap:4px !important}
+.dash-card-header .dl-detail{white-space:normal !important;text-align:center !important;font-size:12px !important}
+.dash-card-header .dl-next{white-space:normal !important;text-align:center !important;line-height:1.4 !important}
+.dl-quicklink{margin-top:10px !important}
+.dash-card-header .dl-month{justify-content:flex-start !important;padding:18px 14px 12px !important}
+.mini-month-day{height:27px !important}
+.dash-card-header .dl-festival{padding:20px 24px 18px !important}
+.dash-card-header .dlf-main h3{font-size:26px !important}
+.dlf-greets{grid-template-columns:1fr 1fr !important}
+.dl-merged-bottom{padding:16px 24px 18px !important}
+/* --- Dashboard visual richness (no nonsense gaps) --- */
+.pulse-strip{gap:12px !important;margin:18px 0 !important}
+.pulse-card{border-radius:20px !important;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.86)) !important}
+body[data-theme="dark"] .pulse-card{background:linear-gradient(180deg,#232326,#1C1C1E) !important}
+.pulse-copy b{font-size:30px !important}
+.senior-grid{gap:14px !important}
+.senior-panel{padding:20px 20px !important}
+.queue-panel,.journey-panel,.month-panel,.excel-panel{padding:20px 22px !important}
+.sec-head{margin:36px 0 14px !important}
+@media (max-width:1250px){
+  .dash-card-header{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}
+}
+@media (max-width:700px){
+  .dash-card-header{grid-template-columns:minmax(0,1fr) !important}
+  .dash-card-header .dl-date,.dash-card-header .dl-quote,.dash-card-header .dl-time,.dash-card-header .dl-month{grid-column:1 !important}
+  .dash-card-header .dl-clock{font-size:40px !important}
+}
+@media (prefers-reduced-motion:reduce){
+  .ticker-track{animation:none !important}
+}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -17363,7 +17426,25 @@ function setLiveDot(state){
     if(dot && state) dot.dataset.state = state;
   }catch(e){}
 }
+function renderTicker(){
+  try{
+    const track = document.querySelector('.ticker-track');
+    if(!track) return;
+    const items = (liveState.items || []).slice(0, 8);
+    const stats = 'Jaipur median ₹4,800 / sq ft <b>▲ 1.8%</b> • JDA ₹575 Cr works • Metro Phase-2 DPR • RHB 4 schemes • Ashiana ₹1,000 Cr plan • 15.76% surge 2025 • Hawa Mahal • Amber • ';
+    const headlines = items.length ? items.map(function(it){
+      return '<a class="ticker-item" href="' + esc(it.link || '#') + '" target="_blank" rel="noopener noreferrer" title="Open news">↗ ' + esc(it.title || '') + '</a>';
+    }).join(' <span class="tick-sep">•</span> ') + ' <span class="tick-sep">•</span> ' : '';
+    const html = '<span>' + stats + headlines + '</span><span>' + stats + headlines + '</span>';
+    track.innerHTML = html;
+    try{
+      const live = document.querySelector('.ticker-live');
+      if(live) live.innerHTML = '<i></i>' + (liveState.loading ? 'FETCHING' : liveState.error && !items.length ? 'RETRY' : 'LIVE');
+    }catch(e){}
+  }catch(e){}
+}
 function renderLiveNews(){
+  try{ renderTicker(); }catch(e){}
   if(!$('#liveGrid')) return;
   const src = NEWS_SOURCES.find(s => s.id === liveState.sourceId) || NEWS_SOURCES[0];
   if($('#liveSources')) $('#liveSources').innerHTML = NEWS_SOURCES.map(s => `<button type="button" class="live-chip ${s.id === liveState.sourceId ? 'on' : ''}" data-live-source="${s.id}">${s.id === 'jaipur' ? '★ ' : ''}${esc(s.label)}</button>`).join('');
