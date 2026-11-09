@@ -3969,6 +3969,115 @@ body[data-theme="dark"] .calc-body .field input,body[data-theme="dark"] .calc-bo
 }
 
 
+/* ============================================================
+   BCS Design System v2 — Motion + Glassmorphism + Polish
+   (additive layer — no layout breaking, dark + light safe)
+   ============================================================ */
+:root{
+  --motion:.22s cubic-bezier(.22,.9,.3,1);
+  --motion-fast:.15s cubic-bezier(.22,.9,.3,1);
+  --ring:0 0 0 3px rgba(165,123,54,.28);
+  --ring-soft:0 0 0 3px rgba(165,123,54,.16);
+  --glass:rgba(255,255,255,.74);
+  --glass-line:rgba(229,234,232,.9);
+  --lift:0 10px 28px -14px rgba(46,45,32,.20),0 2px 6px rgba(46,45,32,.07);
+  --lift-lg:0 24px 56px -22px rgba(46,45,32,.30),0 4px 14px rgba(46,45,32,.08);
+  --radius-card:18px;
+}
+body[data-theme="dark"]{
+  --glass:rgba(26,32,26,.74);
+  --glass-line:rgba(255,255,255,.09);
+  --lift:0 12px 30px -14px rgba(0,0,0,.62);
+  --lift-lg:0 24px 56px -20px rgba(0,0,0,.72);
+}
+html{scroll-behavior:smooth}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::selection{background:rgba(165,123,54,.22)}
+
+/* --- glass surfaces --- */
+header{background:var(--glass);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border-bottom:1px solid var(--glass-line);box-shadow:0 1px 0 rgba(46,45,32,.04),0 10px 30px -18px rgba(46,45,32,.18)}
+nav{background:rgba(233,238,236,.66);backdrop-filter:blur(10px) saturate(1.3);-webkit-backdrop-filter:blur(10px) saturate(1.3);border:1px solid rgba(255,255,255,.5);box-shadow:inset 0 0 0 1px rgba(229,234,232,.55),0 2px 8px rgba(46,45,32,.05)}
+body[data-theme="dark"] nav{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.09);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.panel,.dash-card,.an-card,.tm-card,.cat-card,.cor-card,.pulse-card,.link-item,.tpl-card,.calc-card,.health-card,.live-card,.trust-badge,.loc-score,.pred-line,.circle-compare>div,.seg,.field input,.field select,.field textarea,.searchbox,.toast{border-radius:var(--radius-card);border:1px solid var(--glass-line);box-shadow:var(--lift);background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.88));backdrop-filter:blur(6px) saturate(1.2);-webkit-backdrop-filter:blur(6px) saturate(1.2);transition:transform var(--motion),box-shadow var(--motion),border-color var(--motion),background var(--motion)}
+.panel::before{display:none !important}
+.panel:hover,.dash-card:hover,.an-card:hover,.cat-card:hover,.cor-card:hover,.pulse-card:hover,.link-item:hover,.tpl-card:hover{transform:translateY(-2px);box-shadow:var(--lift-lg);border-color:rgba(165,123,54,.28)}
+.overlay{background:rgba(24,30,24,.52);backdrop-filter:blur(6px) saturate(1.1);-webkit-backdrop-filter:blur(6px) saturate(1.1)}
+.modal{background:linear-gradient(180deg,var(--panel),var(--panel));border:1px solid var(--glass-line);border-radius:22px;box-shadow:0 40px 90px -24px rgba(20,30,25,.55),0 8px 24px rgba(20,30,25,.18);overflow:hidden;animation:bcsModalIn .32s cubic-bezier(.22,.9,.3,1) both;transform-origin:center top}
+.modal-head{border-bottom:1px solid var(--line2);background:linear-gradient(180deg,rgba(255,255,255,.6),transparent)}
+.modal-foot{border-top:1px solid var(--line2);background:rgba(251,252,251,.7);backdrop-filter:blur(8px)}
+body[data-theme="dark"] .modal-head,body[data-theme="dark"] .modal-foot{background:rgba(255,255,255,.03)}
+@keyframes bcsModalIn{from{opacity:0;transform:translateY(14px) scale(.975)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes bcsFadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bcsFade{from{opacity:0}to{opacity:1}}
+
+/* --- view entrance (staggered, non-blocking) --- */
+.view.on{animation:bcsFadeUp .45s cubic-bezier(.22,.9,.3,1) both}
+.view.on>*:nth-child(1){animation:bcsFadeUp .5s .02s both}
+.view.on>*:nth-child(2){animation:bcsFadeUp .5s .07s both}
+.view.on>*:nth-child(3){animation:bcsFadeUp .5s .12s both}
+.view.on>*:nth-child(4){animation:bcsFadeUp .5s .17s both}
+.view.on>*:nth-child(5){animation:bcsFadeUp .5s .22s both}
+.view.on>*:nth-child(n+6){animation:bcsFadeUp .5s .27s both}
+.overlay.on{animation:bcsFade .22s ease both}
+.overlay.on .modal{animation:bcsModalIn .32s cubic-bezier(.22,.9,.3,1) both}
+
+/* --- interactive micro-states --- */
+.btn,nav button,.viewbtn,.icon-btn,.btn.primary,.btn.gold,.loc-ring,a,button{transition:transform var(--motion-fast),box-shadow var(--motion-fast),background var(--motion-fast),color var(--motion-fast),border-color var(--motion-fast),opacity var(--motion-fast)}
+.btn:hover,nav button:hover,.viewbtn:hover{transform:translateY(-1px);box-shadow:var(--lift)}
+.btn:active,nav button:active,.viewbtn:active,.icon-btn:active{transform:translateY(0) scale(.975);box-shadow:0 1px 4px rgba(46,45,32,.12)}
+.btn.primary:hover{background:#252417;box-shadow:0 10px 22px -12px rgba(58,57,40,.55)}
+.btn.gold:hover{box-shadow:0 10px 22px -12px rgba(165,123,54,.55)}
+.btn.ghost:hover{border-color:#C9D1CC;background:#FBFDFC;box-shadow:var(--lift)}
+nav button{position:relative}
+nav button.on{box-shadow:0 2px 8px rgba(46,45,32,.12),inset 0 0 0 1px rgba(231,184,75,.28)}
+nav button.on::after{content:"";position:absolute;left:50%;bottom:5px;width:16px;height:2px;border-radius:2px;background:var(--gold);transform:translateX(-50%);opacity:.9}
+.icon-btn:hover{border-color:#C9D1CC;box-shadow:var(--lift);transform:translateY(-1px)}
+.icon-btn:active{transform:scale(.94)}
+.icon-btn svg{transition:transform var(--motion-fast),opacity var(--motion-fast)}
+.icon-btn:hover svg{opacity:.9}
+a{text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:2px}
+
+/* --- focus-visible (keyboard + a11y) --- */
+.btn:focus-visible,nav button:focus-visible,.viewbtn:focus-visible,.icon-btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible,.live-chip:focus-visible,.seg button:focus-visible,.cat-card:focus-visible,.cor-card:focus-visible{outline:none !important;box-shadow:var(--ring) !important;ring:var(--ring);border-color:rgba(165,123,54,.5) !important}
+input:focus,select:focus,textarea:focus{outline:none;border-color:rgba(165,123,54,.45) !important;box-shadow:var(--ring-soft) !important;transition:border-color var(--motion-fast),box-shadow var(--motion-fast)}
+.lock-input input:focus{box-shadow:var(--ring) !important;border-color:rgba(165,123,54,.6) !important}
+
+/* --- skeleton loaders (async content) --- */
+.live-skeleton{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.sk-card{border:1px solid var(--glass-line);border-radius:16px;padding:16px;background:var(--panel);box-shadow:var(--lift)}
+.sk-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.sk{display:block;border-radius:8px;background:linear-gradient(100deg,#ECEFEC 40%,#F7F9F7 50%,#ECEFEC 60%);background-size:200% 100%;animation:skShimmer 1.4s infinite linear}
+body[data-theme="dark"] .sk{background:linear-gradient(100deg,#232B23 40%,#2E382E 50%,#232B23 60%);background-size:200% 100%}
+.sk-badge{width:34px;height:34px;border-radius:50%}
+.sk-line{height:13px}
+.sk-line.w35{width:35%}.sk-line.w55{width:55%}.sk-line.w60{width:60%}.sk-line.w85{width:85%}.sk-line.w100{width:100%}
+.sk-card .sk-line{margin-top:8px}
+@keyframes skShimmer{from{background-position:200% 0}to{background-position:-200% 0}}
+.live-loading{display:flex;align-items:center;gap:8px;color:var(--mut)}
+.live-status[aria-busy="true"]{opacity:.7}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* --- toast + segmented --- */
+.toast{border-radius:14px;box-shadow:var(--lift-lg);border:1px solid var(--glass-line);animation:bcsFadeUp .3s cubic-bezier(.22,.9,.3,1) both}
+.seg button{transition:all var(--motion-fast)}
+.seg button.on{box-shadow:0 2px 8px rgba(46,45,32,.12)}
+
+/* --- reduced motion --- */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+  html{scroll-behavior:auto}
+}
+/* dark polish safety */
+body[data-theme="dark"] .panel,body[data-theme="dark"] .dash-card,body[data-theme="dark"] .an-card,body[data-theme="dark"] .tm-card,body[data-theme="dark"] .cat-card,body[data-theme="dark"] .cor-card,body[data-theme="dark"] .pulse-card,body[data-theme="dark"] .link-item,body[data-theme="dark"] .tpl-card,body[data-theme="dark"] .calc-card,body[data-theme="dark"] .health-card,body[data-theme="dark"] .live-card{background:linear-gradient(180deg,#232A21,#1B201B);border-color:var(--glass-line);color:var(--ink)}
+body[data-theme="dark"] .searchbox{background:#232A21;border-color:var(--glass-line)}
+@media (max-width:820px){
+  .panel,.dash-card,.an-card{border-radius:16px}
+  .modal{border-radius:20px}
+  .live-skeleton{grid-template-columns:1fr}
+}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -7002,6 +7111,30 @@ body[data-theme="dark"] .calc-body .field input,body[data-theme="dark"] .calc-bo
 /* =========================================================
    BCS — local-first. All data in localStorage (bcs_db_v1).
    ========================================================= */
+/* ---------- BCS error boundary (console-safe, never crashes boot) ---------- */
+window.__bcsErrors = window.__bcsErrors || [];
+(function(){
+  function _bcsLog(kind, msg, extra){
+    try{ window.__bcsErrors.push({t: Date.now(), kind: String(kind), msg: String(msg).slice(0,300)}); if(window.__bcsErrors.length > 80) window.__bcsErrors.shift(); }catch(e){}
+    try{ console.error('[BCS] ' + kind + ':', msg, extra || ''); }catch(e){}
+  }
+  window.addEventListener('error', function(ev){
+    try{
+      var m = ev.message || 'script error';
+      if(m && String(m).indexOf('Script error') === 0) return; // cross-origin iframe noise
+      _bcsLog('window.onerror', m, (ev.filename || '') + ':' + (ev.lineno || ''));
+    }catch(e){}
+  }, true);
+  window.addEventListener('unhandledrejection', function(ev){
+    try{
+      var r = ev.reason;
+      var m = (r && r.message) ? r.message : String(r);
+      if(m && (m.indexOf('indexedDB') > -1 || m.indexOf('QuotaExceeded') > -1 || m.indexOf('AbortError') > -1)){ ev.preventDefault(); return; }
+      _bcsLog('unhandledrejection', m, (r && r.stack) ? String(r.stack).slice(0,400) : '');
+    }catch(e){}
+    try{ ev.preventDefault(); }catch(e){}
+  }, true);
+})();
 const LS_KEY = 'bcs_db_v1';
 const DEFAULT_CORRIDORS = [
   { id:'agra',  name:'Agra Road',  color:'#B4673F' },
@@ -9617,7 +9750,7 @@ function quoteText(){
   function bankCalc(){
     const out = $('#bkOut'); if(!out) return;
     const amt = parseAmt('#bkAmt');
-    out.innerHTML = bankCompareHTML(amt);
+    try{ out.innerHTML = bankCompareHTML(amt); }catch(e){ out.innerHTML = '<div class="live-empty">💳 Bank offers load ho rahe hain… amount dobara type karein.</div>'; }
   }
   function circleCalc(){
     const out = $('#ccOut'); if(!out) return;
@@ -14652,7 +14785,7 @@ function openDeveloper(id){
   showOverlay('developerModal');
   setTimeout(() => $('#dName').focus(), 80);
 }
-function closeModal(id){ $('#' + id).classList.remove('on'); }
+function closeModal(id){ try{ const el = $('#' + id); if(el) el.classList.remove('on'); }catch(e){} }
 function setPreview(sel, src){
   const img = $(sel);
   if(src){ img.src = src; img.classList.add('show'); } else { img.removeAttribute('src'); img.classList.remove('show'); }
@@ -15818,9 +15951,10 @@ async function fetchLiveNews(sourceId, queryOverride){
 function renderLiveNews(){
   if(!$('#liveGrid')) return;
   const src = NEWS_SOURCES.find(s => s.id === liveState.sourceId) || NEWS_SOURCES[0];
-  $('#liveSources').innerHTML = NEWS_SOURCES.map(s => `<button type="button" class="live-chip ${s.id === liveState.sourceId ? 'on' : ''}" data-live-source="${s.id}">${s.id === 'jaipur' ? '★ ' : ''}${esc(s.label)}</button>`).join('');
+  if($('#liveSources')) $('#liveSources').innerHTML = NEWS_SOURCES.map(s => `<button type="button" class="live-chip ${s.id === liveState.sourceId ? 'on' : ''}" data-live-source="${s.id}">${s.id === 'jaipur' ? '★ ' : ''}${esc(s.label)}</button>`).join('');
   const status = $('#liveStatus');
-  if(liveState.loading){
+  if(!status){ /* live tab not mounted — no-op */ }
+  else if(liveState.loading){
     status.className = 'live-status';
     status.innerHTML = '📡 Live headlines fetch ho rahe hain…';
   } else if(liveState.error){
@@ -15835,7 +15969,7 @@ function renderLiveNews(){
   }
   if($('#liveUpdated')) $('#liveUpdated').textContent = liveState.fetchedAt ? 'Updated ' + new Date(liveState.fetchedAt).toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' }) : 'Not fetched yet';
   if(liveState.loading){
-    $('#liveGrid').innerHTML = '<div class="live-loading">📡 Google News se Jaipur real estate headlines aa rahe hain…</div>';
+    $('#liveGrid').innerHTML = '<span class="sr-only">Loading headlines…</span><div class="live-skeleton" aria-busy="true" aria-live="polite">' + Array.from({length:6}, function(){ return '<div class="sk-card"><div class="sk-row"><div class="sk sk-badge"></div><div class="sk sk-line w55"></div></div><div class="sk sk-line w100"></div><div class="sk sk-line w85"></div><div class="sk sk-line w35"></div></div>'; }).join('') + '</div>';
   } else if(liveState.error && !liveState.items.length){
     $('#liveGrid').innerHTML = `<div class="live-empty"><b>Live feed off right now</b>${esc(liveState.error)}<br><br>“Source desk” links se PropertyWala, Patrika, ET Realty etc. direct khol lein.</div>`;
   } else if(!liveState.items.length){
@@ -15861,7 +15995,7 @@ function renderLiveNews(){
     }).join('');
   }
   const manual = NEWS_SOURCES.filter(s => s.url && s.id !== 'jaipur' && s.id !== 'national');
-  $('#liveSourceLinks').innerHTML = manual.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.label)}<span>↗</span></a>`).join('') +
+  if($('#liveSourceLinks')) $('#liveSourceLinks').innerHTML = manual.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.label)}<span>↗</span></a>`).join('') +
     `<a href="https://news.google.com/search?q=Jaipur%20real%20estate&hl=en-IN&gl=IN&ceid=IN:en" target="_blank" rel="noopener noreferrer">Google News Jaipur<span>↗</span></a>`;
 }
 function saveLiveToFeed(idx){
@@ -16005,7 +16139,7 @@ function setNewsMode(mode){
   $$('#newsModes [data-news-mode]').forEach(b => b.classList.toggle('on', b.dataset.newsMode === newsMode));
   const map = { feed:'#newsPaneFeed', live:'#newsPaneLive', ideas:'#newsPaneIdeas' };
   Object.entries(map).forEach(([key, sel]) => { const el = $(sel); if(el) el.classList.toggle('on', key === newsMode); });
-  if(newsMode === 'live' && !liveState.started){ liveState.started = true; fetchLiveNews(liveState.sourceId); }
+  if(newsMode === 'live' && !liveState.started){ liveState.started = true; fetchLiveNews(liveState.sourceId).catch(function(){}); }
   if(newsMode === 'ideas') renderVideoIdeas();
 }
 
@@ -16337,14 +16471,14 @@ function initNews(){
   /* live Jaipur desk */
   if($('#liveSources')) $('#liveSources').addEventListener('click', e => {
     const b = e.target.closest('[data-live-source]');
-    if(b) fetchLiveNews(b.dataset.liveSource);
+    if(b) fetchLiveNews(b.dataset.liveSource).catch(function(){});
   });
-  if($('#liveRefreshBtn')) $('#liveRefreshBtn').addEventListener('click', () => fetchLiveNews(liveState.sourceId || 'jaipur', liveState.query || ''));
+  if($('#liveRefreshBtn')) $('#liveRefreshBtn').addEventListener('click', () => fetchLiveNews(liveState.sourceId || 'jaipur', liveState.query || '').catch(function(){}));
   if($('#liveSearchForm')) $('#liveSearchForm').addEventListener('submit', e => {
     e.preventDefault();
     const q = ($('#liveQuery').value || '').trim();
     if(!q) return toast('Search keyword likhein', true);
-    fetchLiveNews(liveState.sourceId || 'jaipur', q);
+    fetchLiveNews(liveState.sourceId || 'jaipur', q).catch(function(){});
   });
   if($('#liveGrid')) $('#liveGrid').addEventListener('click', e => {
     const saveBtn = e.target.closest('[data-live-save]');
@@ -18791,8 +18925,7 @@ async function openImageSrc(thumb, key){
     try{ const full = await idbGet(key); if(full) src = full; }catch(e){}
   }
   if(!src) return;
-  $('#imgModalImg').src = src;
-  $('#imgModal').classList.add('on');
+  try{ const mimg = $('#imgModalImg'); if(mimg) mimg.src = src; const m = $('#imgModal'); if(m) m.classList.add('on'); }catch(e){}
 }
 async function offloadImages(){
   let moved = 0;
@@ -20996,9 +21129,10 @@ const hadLocalData = !!localStorage.getItem(LS_KEY);
 if(!hadLocalData && !window.indexedDB) save();
 applyRoleChrome();
 render();
+try{ document.body.classList.add('booted'); }catch(e){}
 mirrorToIdb();
 if(navigator.storage && navigator.storage.persist){ navigator.storage.persist().catch(()=>{}); }
-restoreFromIdbIfEmpty().then(restored => { if(!restored && !hadLocalData) save(); });
+restoreFromIdbIfEmpty().then(restored => { if(!restored && !hadLocalData) save(); }).catch(function(){});
 scheduleProactiveOffload(5000);
 document.addEventListener('visibilitychange', () => {
   if(document.visibilityState === 'visible') scheduleProactiveOffload(2500);
