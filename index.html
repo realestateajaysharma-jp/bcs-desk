@@ -6774,6 +6774,59 @@ body[data-theme="dark"] .modal,body[data-theme="dark"] .lock-card,body[data-them
 
 
 
+/* ============================================================
+   BCS v65 — Date banner fix + Hero tidy + Google Calendar views
+   ============================================================ */
+.dlf-cal{
+  width:100% !important;height:auto !important;min-height:64px !important;
+  display:flex !important;flex-direction:row !important;align-items:center !important;
+  gap:12px !important;padding:10px 14px !important;border-radius:14px !important;
+}
+.dlf-cal-band{
+  flex:none !important;min-width:92px !important;padding:10px 10px !important;
+  font-size:11px !important;letter-spacing:.16em !important;text-align:center !important;
+  white-space:normal !important;overflow:visible !important;text-overflow:clip !important;
+}
+.dlf-cal-body{
+  flex:1 !important;flex-direction:row !important;align-items:center !important;
+  justify-content:flex-start !important;gap:12px !important;padding:0 !important;background:transparent !important;
+  min-width:0 !important;text-align:left !important;
+}
+.dlf-cal-day{font-size:34px !important;line-height:1 !important;flex:none !important}
+.dlf-cal-week{font-size:12px !important;white-space:nowrap !important}
+.dlf-cal-year{display:block !important;font-size:11px !important;white-space:normal !important}
+.dash-card-header .dl-date{flex-direction:column !important;align-items:stretch !important;gap:10px !important}
+.dash-card-header .dl-meta{flex-direction:column !important;align-items:flex-start !important}
+.dash-card-header .dl-greet{font-size:19px !important}
+.dash-card-header .dl-line{white-space:normal !important;line-height:1.4 !important}
+.dash-card-header .dl-sub{white-space:normal !important}
+.dash-card-header .dl-quote p{font-size:16px !important;line-height:1.55 !important;min-height:48px !important}
+.dash-card-header .dl-clock{font-size:42px !important}
+.mini-month-day{min-height:36px !important;height:36px !important}
+/* Google Calendar views */
+.month-nav{display:flex !important;gap:6px !important;align-items:center !important;flex-wrap:wrap !important}
+.cal-view-seg{display:inline-flex !important;padding:3px !important;border-radius:999px !important;background:color-mix(in srgb, var(--acc) 8%, transparent) !important;border:1px solid var(--hair) !important}
+.cal-view-seg button{padding:6px 12px !important;border-radius:999px !important;font-size:12px !important;font-weight:700 !important;color:var(--ink2) !important}
+.cal-view-seg button.on{background:var(--acc-deep) !important;color:#fff !important}
+.week-grid{display:grid !important;grid-template-columns:repeat(7,minmax(0,1fr)) !important;gap:6px !important}
+.week-col{border:1px solid var(--hair) !important;border-radius:12px !important;padding:10px 8px !important;min-height:170px !important;background:rgba(255,255,255,.55) !important;cursor:pointer !important;text-align:left !important;display:flex !important;flex-direction:column !important;gap:7px !important}
+body[data-theme="dark"] .week-col{background:rgba(255,255,255,.04) !important}
+.week-col.today{border-color:var(--acc) !important;box-shadow:inset 0 0 0 1.5px var(--acc) !important}
+.week-col.sel{box-shadow:inset 0 0 0 2px var(--acc) !important}
+.week-col .wd{font-size:10px !important;font-weight:800 !important;letter-spacing:.1em !important;text-transform:uppercase !important;color:var(--mut) !important;text-align:center !important}
+.week-col .wdnum{font-family:'Fraunces',serif !important;font-size:22px !important;font-weight:700 !important;text-align:center !important}
+.week-col.today .wdnum{width:30px !important;height:30px !important;border-radius:50% !important;background:var(--acc-deep) !important;color:#fff !important;display:grid !important;place-items:center !important;margin:0 auto !important;font-size:15px !important}
+.week-col .cal-chip{white-space:normal !important;line-height:1.3 !important;font-size:8.5px !important}
+.schedule-list{display:flex !important;flex-direction:column !important;gap:10px !important}
+.schedule-day{border:1px solid var(--hair) !important;border-radius:14px !important;padding:12px 14px !important;background:rgba(255,255,255,.55) !important;cursor:pointer !important}
+body[data-theme="dark"] .schedule-day{background:rgba(255,255,255,.04) !important}
+.schedule-day:hover{border-color:var(--acc) !important}
+.schedule-day h4{font-size:13px !important;margin-bottom:6px !important}
+.schedule-day .cal-chip{margin-right:5px !important;margin-bottom:4px !important}
+@media (max-width:1100px){.week-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
+@media (max-width:640px){.week-grid{grid-template-columns:1fr !important}.week-col{min-height:0 !important}.dlf-cal{flex-wrap:wrap !important}}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -7150,6 +7203,29 @@ try{
       </div>
     </div>
 
+    <div class="sec-head fest-head">
+      <h3>Month festivals & creatives</h3>
+      <span class="sub">Har card click karo — WhatsApp poster ready. Manage se date/greet/quote badlo.</span>
+      <button class="btn ghost sm" id="seniorFestManage" style="margin-left:auto">⚙ Manage festivals</button>
+    </div>
+    <div class="month-fest" id="monthFestivals"></div>
+
+    <div class="sec-head month-head">
+      <h3>Calendar</h3>
+      <span class="sub">Poora month ek nazar mein — leave, booked, busy, festival, task ya apna label</span>
+      <div class="month-nav" style="margin-left:auto">
+        <div class="seg" id="calViewToggle" style="display:inline-flex">
+          <button type="button" data-calview="month" class="on">Month</button>
+          <button type="button" data-calview="week">Week</button>
+          <button type="button" data-calview="schedule">Schedule</button>
+        </div>
+        <button type="button" class="btn ghost sm" id="monthPrev">‹ Prev</button>
+        <button type="button" class="btn ghost sm" id="monthTodayBtn">Today</button>
+        <button type="button" class="btn ghost sm" id="monthNext">Next ›</button>
+      </div>
+    </div>
+    <div class="panel month-panel" id="monthPanel"></div>
+
     <section class="command-hub" aria-label="Command Hub — sab relevant ek jagah">
       <div class="hub-head">
         <div><div class="eyebrow">★ COMMAND HUB</div><h3>Priority + Pipeline + Execute — ek jagah</h3><p>Tasks, follow-ups, journey — sab relevant yahan, separate nahi.</p></div>
@@ -7210,24 +7286,6 @@ try{
     </div>
     <div class="panel journey-panel" id="journeyPanel"></div>
     </section><!-- /command-hub -->
-
-    <div class="sec-head fest-head">
-      <h3>Month festivals & creatives</h3>
-      <span class="sub">Har card click karo — WhatsApp poster ready. Manage se date/greet/quote badlo.</span>
-      <button class="btn ghost sm" id="seniorFestManage" style="margin-left:auto">⚙ Manage festivals</button>
-    </div>
-    <div class="month-fest" id="monthFestivals"></div>
-
-    <div class="sec-head month-head">
-      <h3>Month tracker</h3>
-      <span class="sub">Poora month ek nazar mein — leave, booked, busy, festival, task ya apna label</span>
-      <div class="month-nav" style="margin-left:auto">
-        <button type="button" class="btn ghost sm" id="monthPrev">‹ Prev</button>
-        <button type="button" class="btn ghost sm" id="monthTodayBtn">Today</button>
-        <button type="button" class="btn ghost sm" id="monthNext">Next ›</button>
-      </div>
-    </div>
-    <div class="panel month-panel" id="monthPanel"></div>
 
     <div class="sec-head">
       <h3>Road corridors</h3>
@@ -12238,11 +12296,87 @@ let monthCursor = (() => { const d = new Date(); return new Date(d.getFullYear()
 function calendarISO(d){
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
+let __calView = 'month';
+function calDateMaps(){
+  const marksByDate = new Map();
+  (db.monthMarks || []).forEach(mark => { if(!marksByDate.has(mark.date)) marksByDate.set(mark.date, []); marksByDate.get(mark.date).push(mark); });
+  const taskByDate = new Map();
+  (db.todos || []).forEach(t => { if(!t.date) return; if(!taskByDate.has(t.date)) taskByDate.set(t.date, []); taskByDate.get(t.date).push(t); });
+  const followByDate = new Map();
+  scopedClients().forEach(c => { if(!c.nextFollowUp) return; if(!followByDate.has(c.nextFollowUp)) followByDate.set(c.nextFollowUp, []); followByDate.get(c.nextFollowUp).push(c); });
+  const bookingByDate = new Map();
+  scopedBookings().forEach(b => { if(!b.bookingDate) return; if(!bookingByDate.has(b.bookingDate)) bookingByDate.set(b.bookingDate, []); bookingByDate.get(b.bookingDate).push(b); });
+  return { marksByDate, taskByDate, followByDate, bookingByDate };
+}
+function calChipsFor(iso, maps){
+  const marks = maps.marksByDate.get(iso) || [];
+  const tasks = maps.taskByDate.get(iso) || [];
+  const follows = maps.followByDate.get(iso) || [];
+  const bookings = maps.bookingByDate.get(iso) || [];
+  const fest = festivalByDate(iso);
+  return [
+    ...marks.map(mark => `<span class="cal-chip mark-${mark.type}" title="${esc(mark.label)}">${esc(MONTH_MARK_TYPES[mark.type]?.label || 'Label')}</span>`),
+    fest ? `<span class="cal-chip fest" title="${esc(fest.name || '')}">${esc(fest.emoji || '✨')} ${esc(fest.name || '')}</span>` : '',
+    ...tasks.map(t => `<span class="cal-chip task">☑ ${esc((t.title || 'Task').slice(0, 28))}</span>`),
+    ...follows.map(c => `<span class="cal-chip follow">📞 ${esc(c.name || c.phone || 'Client')}</span>`),
+    ...bookings.map(b => `<span class="cal-chip book">🏠 ${esc(bookingClient(b)?.name || 'Booking')}</span>`)
+  ].filter(Boolean).join('');
+}
+function renderWeekCalendar(panel, title, maps){
+  const cur = new Date(monthCursor);
+  const day = (cur.getDay() + 6) % 7;
+  const monday = new Date(cur.getFullYear(), cur.getMonth(), cur.getDate() - day);
+  const header = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  let cols = '';
+  for(let i = 0; i < 7; i++){
+    const d = new Date(monday); d.setDate(monday.getDate() + i);
+    const iso = calendarISO(d);
+    const isToday = iso === todayISO();
+    const isSel = iso === window.__selDate;
+    cols += `<button type="button" class="week-col ${isToday ? 'today' : ''} ${isSel ? 'sel' : ''}" data-caldate="${iso}"><span class="wd">${header[i]}</span><span class="wdnum">${d.getDate()}</span>${calChipsFor(iso, maps) || '<span class="cal-chip" style="opacity:.6">—</span>'}</button>`;
+  }
+  panel.innerHTML = `
+    <div class="cal-wrap">
+      <div class="cal-main">
+        <div class="panel-head"><h4>${title} · Week</h4><span class="month-count">Google-style Week</span></div>
+        <div class="week-grid">${cols}</div>
+        <div class="month-legend-row"><span class="month-add-note">Date click → side agenda yahin update hoga.</span></div>
+      </div>
+      <aside class="cal-agenda" id="calAgendaWeek"></aside>
+    </div>`;
+}
+function renderScheduleCalendar(panel, title, maps){
+  const days = [];
+  const start = new Date(monthCursor);
+  for(let i = 0; i < 21; i++){
+    const d = new Date(start); d.setDate(start.getDate() + i);
+    const iso = calendarISO(d);
+    const chips = calChipsFor(iso, maps);
+    const fest = festivalByDate(iso);
+    if(chips || fest){
+      days.push(`<div class="schedule-day" data-caldate="${iso}" tabindex="0" role="button"><h4>📅 ${esc(fmtDate(iso))}${fest ? ' · ' + esc(fest.name) : ''}</h4>${chips || '<span class="cal-chip">—</span>'}</div>`);
+    }
+  }
+  panel.innerHTML = `
+    <div class="cal-wrap">
+      <div class="cal-main">
+        <div class="panel-head"><h4>${title} · Schedule (21 days)</h4><span class="month-count">${days.length} din me kuch hai</span></div>
+        <div class="schedule-list">${days.join('') || '<div class="empty-inline">Agla 21 din khaali — date select karke label/task add karo.</div>'}</div>
+      </div>
+      <aside class="cal-agenda" id="calAgendaSched"></aside>
+    </div>`;
+}
 function renderMonthCalendar(){
   const panel = $('#monthPanel');
   if(!panel) return;
   const y = monthCursor.getFullYear(), m = monthCursor.getMonth();
   const title = new Date(y, m + 1, 0).toLocaleDateString('en-IN', { month:'long', year:'numeric' });
+  if(!window.__selDate) window.__selDate = todayISO();
+  try{
+    const maps0 = calDateMaps();
+    if(__calView === 'week'){ renderWeekCalendar(panel, title, maps0); bindCalAgenda(panel); return; }
+    if(__calView === 'schedule'){ renderScheduleCalendar(panel, title, maps0); bindCalAgenda(panel); return; }
+  }catch(e){}
   const first = new Date(y, m, 1);
   const startBlank = (first.getDay() + 6) % 7; // Monday start
   const days = new Date(y, m + 1, 0).getDate();
@@ -12349,10 +12483,73 @@ function renderMonthCalendar(){
   });
   if(calLbl) calLbl.addEventListener('click', () => openMonthMark(window.__selDate));
   if(calEdit) calEdit.addEventListener('click', () => openMonthMark(window.__selDate));
+  $$('#calViewToggle button').forEach(b => {
+    b.classList.toggle('on', b.dataset.calview === __calView);
+    b.onclick = () => { __calView = b.dataset.calview; try{ bcsSound('click'); }catch(e){} renderMonthCalendar(); };
+  });
   const prev = $('#monthPrev'), today = $('#monthTodayBtn'), next = $('#monthNext');
-  if(prev) prev.onclick = () => { monthCursor = new Date(y, m - 1, 1); renderMonthCalendar(); };
-  if(today) today.onclick = () => { const d = new Date(); monthCursor = new Date(d.getFullYear(), d.getMonth(), 1); renderMonthCalendar(); };
-  if(next) next.onclick = () => { monthCursor = new Date(y, m + 1, 1); renderMonthCalendar(); };
+  if(prev) prev.onclick = () => {
+    if(__calView === 'month'){ monthCursor = new Date(y, m - 1, 1); }
+    else { const d = new Date(monthCursor); d.setDate(d.getDate() - 7); monthCursor = d; window.__selDate = calendarISO(d); }
+    renderMonthCalendar();
+  };
+  if(today) today.onclick = () => {
+    const d = new Date();
+    monthCursor = new Date(d.getFullYear(), d.getMonth(), 1);
+    window.__selDate = todayISO();
+    renderMonthCalendar();
+  };
+  if(next) next.onclick = () => {
+    if(__calView === 'month'){ monthCursor = new Date(y, m + 1, 1); }
+    else { const d = new Date(monthCursor); d.setDate(d.getDate() + 7); monthCursor = d; window.__selDate = calendarISO(d); }
+    renderMonthCalendar();
+  };
+}
+function bindCalAgenda(panel){
+  try{
+    const ag = panel.querySelector('#calAgenda') || panel.querySelector('#calAgendaWeek') || panel.querySelector('#calAgendaSched');
+    if(!ag) return;
+    ag.innerHTML = `
+      <h4>📅 ${esc(fmtDate(window.__selDate))}</h4>
+      <div class="cal-date-line">Aaj kya kya hai — is date ke marks, task, follow-up, booking yahin</div>
+      <div class="agenda-list" id="calAgendaList"></div>
+      <div class="cal-todo">
+        <input id="calTodoInput" placeholder="To-do likho… e.g. Site visit 4pm">
+        <button type="button" class="btn primary sm" id="calTodoAdd">+ Add</button>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <button type="button" class="btn ghost sm" id="calAddLabel">🏷️ Add label</button>
+        <button type="button" class="btn ghost sm" id="calEditLabels">Edit labels</button>
+      </div>`;
+    const iso = window.__selDate;
+    const maps = calDateMaps();
+    const tasks = maps.taskByDate.get(iso) || [];
+    const follows = maps.followByDate.get(iso) || [];
+    const bookings = maps.bookingByDate.get(iso) || [];
+    const fest = festivalByDate(iso);
+    const marks = (db.monthMarks || []).filter(mm => mm.date === iso);
+    const rows = [
+      fest ? `<div class="agenda-row"><span class="agenda-ic">🪔</span><span><b>${esc(fest.name || '')}</b><small>Festival</small></span></div>` : '',
+      ...marks.map(mm => `<div class="agenda-row"><span class="agenda-ic">🏷️</span><span><b>${esc(mm.label || '')}</b><small>${esc(MONTH_MARK_TYPES[mm.type]?.label || 'Label')}${mm.note ? ' · ' + esc(mm.note) : ''}</small></span><button type="button" class="btn ghost xs" data-agenda-edit="${mm.id}">Edit</button></div>`),
+      ...tasks.map(t => `<div class="agenda-row"><span class="agenda-ic">☑</span><span><b>${esc(t.title || 'Task')}</b><small>${t.done ? 'Done' : 'Task pending'}</small></span></div>`),
+      ...follows.map(c => `<div class="agenda-row"><span class="agenda-ic">📞</span><span><b>${esc(c.name || c.phone || 'Client')}</b><small>Follow-up due</small></span></div>`),
+      ...bookings.map(b => `<div class="agenda-row"><span class="agenda-ic">🏠</span><span><b>${esc(bookingClient(b)?.name || 'Booking')}</b><small>Booking · ${esc(b.stage || '')}</small></span></div>`)
+    ].join('');
+    const listEl = ag.querySelector('#calAgendaList');
+    if(listEl) listEl.innerHTML = rows || '<div class="empty-inline">Is din kuch nahi — label ya task add karo.</div>';
+    $$('#calAgenda [data-agenda-edit]').forEach(b => b.addEventListener('click', () => fillMonthMark(b.dataset.agendaEdit)));
+    const calAdd = $('#calTodoAdd'), calInp = $('#calTodoInput'), calLbl = $('#calAddLabel'), calEdit = $('#calEditLabels');
+    if(calAdd) calAdd.addEventListener('click', () => {
+      const t = (calInp && calInp.value || '').trim();
+      if(!t) return toast('Task likho pehle', true);
+      if(!db.todos) db.todos = [];
+      db.todos.push({ id: uid(), title: t, date: window.__selDate, done:false, createdAt: Date.now(), updatedAt: Date.now() });
+      save(); renderMonthCalendar(); toast('To-do add ho gaya ✓');
+      try{ bcsSound('success'); }catch(e){}
+    });
+    if(calLbl) calLbl.addEventListener('click', () => openMonthMark(window.__selDate));
+    if(calEdit) calEdit.addEventListener('click', () => openMonthMark(window.__selDate));
+  }catch(e){}
 }
 function renderMarkList(iso){
   const wrap = $('#markList');
