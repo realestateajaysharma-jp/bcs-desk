@@ -11576,6 +11576,7 @@ function countUp(el, target, suf){
 }
 function toast(msg, err){
   const t = $('#toast');
+  if(!t) return;
   t.textContent = msg;
   t.className = 'toast on' + (err ? ' err' : '');
   clearTimeout(t._to);
@@ -18150,7 +18151,7 @@ async function downloadBackup(){
   toast(count ? `Backup downloaded · ${count} full photos included` : 'Backup downloaded');
   celebrate();
 }
-$('#exportBtn').addEventListener('click', () => downloadBackup());
+$('#exportBtn').addEventListener('click', () => downloadBackup().catch(() => toast('Backup failed — dobara try karein', true)));
 $('#importBtn').addEventListener('click', () => $('#importFile').click());
 $('#exportCsvBtn').addEventListener('click', exportCSV);
 $('#importFile').addEventListener('change', e => {
