@@ -11943,6 +11943,50 @@ const DEFAULT_TERMINOLOGY = [
   { cat:'physical', kind:'term', term:'Ancillary Retail Space', hi:'सहायक retail जगह', meaning:'Main project ke andar choti shop/kiosk jaisi retail — footfall badhati hai, rent premium deti hai. Commercial project ke tenant mix ka part.' },
   { cat:'govt', kind:'term', term:'Area Development Scheme', hi:'क्षेत्र विकास योजना', meaning:'Authority dwara area me colony/layout develop karne ki approved scheme — JDA schemes Jaipur me classic example. Approved scheme ka plot JDA letter se verify karo.' },
 ];
+/* ---------- v12: watch channels + custom podcasts (persisted in bcs_db_v1) ---------- */
+const WATCH_DEFAULT_CATS = [
+  { id:'india',    label:'India Real Estate' },
+  { id:'us',       label:'US Housing Market' },
+  { id:'invest',   label:'Investing & Wealth' },
+  { id:'global',   label:'Commercial & Global' },
+  { id:'builders', label:'Builders & Developers' },
+  { id:'buying',   label:'Home Buying Tips' }
+];
+const WATCH_DEFAULT_CHANNELS = [
+  { id:'wch_propertywala', name:'PropertyWala',     category:'india',    desc:'Jaipur & India property news, listings and market insight', channelId:'UCsXSqflmZcyBx6n_RoUolLQ', handle:'@PropertyWala' },
+  { id:'wch_squareyards',  name:'Square Yards',     category:'india',    desc:'Property news, price trends and market guides across India', channelId:'UC5rLGvbJuo6RAW1W8H3vz9A', handle:'@Square_Yards' },
+  { id:'wch_housing',      name:'Housing.com',      category:'buying',   desc:'Home buying guides, RERA explainer aur market updates', channelId:'UCNqBY4bm_Lbr7RokOFAS8Qw', handle:'@Housing-com' },
+  { id:'wch_99acres',      name:'99acres',          category:'india',    desc:'Real estate listings, market analysis and locality guides', channelId:'UCZclXYJ5oI-d36J3wbpHhbA', handle:'@99acres' },
+  { id:'wch_magicbricks',  name:'Magicbricks',      category:'india',    desc:'Property news, buying guidance aur locality analysis', channelId:'UCRtEWt48CRchY1X_5CWSrPw', handle:'@magicbricks' },
+  { id:'wch_proptiger',    name:'PropTiger',        category:'india',    desc:'Research-backed property investment insights and guides', channelId:'UCI0LhVGqyP4SYHd59G3URcA', handle:'@propTiger' },
+  { id:'wch_rkproperty',   name:'RK Property News', category:'india',    desc:'Property news, regulatory updates and launch coverage', channelId:'UCu4e_30KcwVyVStx-ZRqijA', handle:'@RKPropertyNews' },
+  { id:'wch_blsvlogs',     name:'BLS Homes Jaipur', category:'builders', desc:'Jaipur homes, tours aur builder stories from BLS Homes', channelId:'UCcbu-tj5P1FPij_Swn_nZkQ', handle:'@BlsVlogs' },
+  { id:'wch_harrydutt',    name:'Harry Dutt',       category:'india',    desc:'Jaipur real estate commentary, market analysis and trends', channelId:'UCRDhRjuQARbLlMpViNQijoA', handle:'@HarryDutt' },
+  { id:'wch_meetkevin',    name:'Meet Kevin',       category:'us',       desc:'US real estate investing — cash flow, analysis aur market', channelId:'UCPk6nJE8pBZPLCW2DAvaZOA', handle:'@MeetKevin' },
+  { id:'wch_graham',       name:'Graham Stephan',   category:'us',       desc:'US housing market, investing myths aur wealth-building', channelId:'UCa-ckhlKL98F8YXKQ-BALiw', handle:'@GrahamStephan' },
+  { id:'wch_biggerpockets',name:'BiggerPockets',    category:'invest',   desc:'Real estate investing education, podcasts and community', channelId:'UCxDXuLvtjJ9Est8PrG3i2VA', handle:'@BiggerPockets' },
+  { id:'wch_cnbc',         name:'CNBC',             category:'global',   desc:'Global markets, real estate and investment coverage', channelId:'UCH5_L3ytGbBziX0CLuYdQ1Q', handle:'@CNBC' }
+];
+const WATCH_SEED_VERSION = 1;
+function parseChannelFromUrl(raw){
+  const text = String(raw || '').trim();
+  if(!text) return { ok:false, error:'Channel URL ya @handle likho' };
+  const direct = text.match(/UC[A-Za-z0-9_-]{22}/);
+  if(direct) return { ok:true, channelId:direct[0], handle:'' };
+  if(/^@[A-Za-z0-9._-]{3,60}$/.test(text)) return { ok:true, channelId:'', handle:text };
+  const at = text.match(/youtube\.com\/@([A-Za-z0-9._-]{3,60})/i);
+  if(at) return { ok:true, channelId:'', handle:'@' + at[1] };
+  const custom = text.match(/youtube\.com\/c\/([A-Za-z0-9._-]{3,80})/i);
+  if(custom) return { ok:true, channelId:'', handle:'/c/' + custom[1] };
+  const user = text.match(/youtube\.com\/user\/([A-Za-z0-9._-]{3,80})/i);
+  if(user) return { ok:true, channelId:'', handle:'/user/' + user[1] };
+  const video = text.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{11})/i);
+  if(video) return { ok:true, channelId:'', handle:'', videoId:video[1] };
+  return { ok:false, error:'URL samajh nahi aayi — @handle, /channel/UC…, /c/… ya video link paste karo' };
+}
+
+
+
 let db = normalizeDb(load());
 function load(){
   try{
@@ -20348,48 +20392,6 @@ const DEFAULT_LIST_OF = {
   videoStatuses: DEFAULT_VIDEO_STATUSES, amenities: DEFAULT_COMMON_AMENITIES,
   connections: DEFAULT_CONNECTION_SUGGESTIONS, templateScopes: DEFAULT_TEMPLATE_SCOPES,
 };
-
-/* ---------- v12: watch channels + custom podcasts (persisted in bcs_db_v1) ---------- */
-const WATCH_DEFAULT_CATS = [
-  { id:'india',    label:'India Real Estate' },
-  { id:'us',       label:'US Housing Market' },
-  { id:'invest',   label:'Investing & Wealth' },
-  { id:'global',   label:'Commercial & Global' },
-  { id:'builders', label:'Builders & Developers' },
-  { id:'buying',   label:'Home Buying Tips' }
-];
-const WATCH_DEFAULT_CHANNELS = [
-  { id:'wch_propertywala', name:'PropertyWala',     category:'india',    desc:'Jaipur & India property news, listings and market insight', channelId:'UCsXSqflmZcyBx6n_RoUolLQ', handle:'@PropertyWala' },
-  { id:'wch_squareyards',  name:'Square Yards',     category:'india',    desc:'Property news, price trends and market guides across India', channelId:'UC5rLGvbJuo6RAW1W8H3vz9A', handle:'@Square_Yards' },
-  { id:'wch_housing',      name:'Housing.com',      category:'buying',   desc:'Home buying guides, RERA explainer aur market updates', channelId:'UCNqBY4bm_Lbr7RokOFAS8Qw', handle:'@Housing-com' },
-  { id:'wch_99acres',      name:'99acres',          category:'india',    desc:'Real estate listings, market analysis and locality guides', channelId:'UCZclXYJ5oI-d36J3wbpHhbA', handle:'@99acres' },
-  { id:'wch_magicbricks',  name:'Magicbricks',      category:'india',    desc:'Property news, buying guidance aur locality analysis', channelId:'UCRtEWt48CRchY1X_5CWSrPw', handle:'@magicbricks' },
-  { id:'wch_proptiger',    name:'PropTiger',        category:'india',    desc:'Research-backed property investment insights and guides', channelId:'UCI0LhVGqyP4SYHd59G3URcA', handle:'@propTiger' },
-  { id:'wch_rkproperty',   name:'RK Property News', category:'india',    desc:'Property news, regulatory updates and launch coverage', channelId:'UCu4e_30KcwVyVStx-ZRqijA', handle:'@RKPropertyNews' },
-  { id:'wch_blsvlogs',     name:'BLS Homes Jaipur', category:'builders', desc:'Jaipur homes, tours aur builder stories from BLS Homes', channelId:'UCcbu-tj5P1FPij_Swn_nZkQ', handle:'@BlsVlogs' },
-  { id:'wch_harrydutt',    name:'Harry Dutt',       category:'india',    desc:'Jaipur real estate commentary, market analysis and trends', channelId:'UCRDhRjuQARbLlMpViNQijoA', handle:'@HarryDutt' },
-  { id:'wch_meetkevin',    name:'Meet Kevin',       category:'us',       desc:'US real estate investing — cash flow, analysis aur market', channelId:'UCPk6nJE8pBZPLCW2DAvaZOA', handle:'@MeetKevin' },
-  { id:'wch_graham',       name:'Graham Stephan',   category:'us',       desc:'US housing market, investing myths aur wealth-building', channelId:'UCa-ckhlKL98F8YXKQ-BALiw', handle:'@GrahamStephan' },
-  { id:'wch_biggerpockets',name:'BiggerPockets',    category:'invest',   desc:'Real estate investing education, podcasts and community', channelId:'UCxDXuLvtjJ9Est8PrG3i2VA', handle:'@BiggerPockets' },
-  { id:'wch_cnbc',         name:'CNBC',             category:'global',   desc:'Global markets, real estate and investment coverage', channelId:'UCH5_L3ytGbBziX0CLuYdQ1Q', handle:'@CNBC' }
-];
-const WATCH_SEED_VERSION = 1;
-function parseChannelFromUrl(raw){
-  const text = String(raw || '').trim();
-  if(!text) return { ok:false, error:'Channel URL ya @handle likho' };
-  const direct = text.match(/UC[A-Za-z0-9_-]{22}/);
-  if(direct) return { ok:true, channelId:direct[0], handle:'' };
-  if(/^@[A-Za-z0-9._-]{3,60}$/.test(text)) return { ok:true, channelId:'', handle:text };
-  const at = text.match(/youtube\.com\/@([A-Za-z0-9._-]{3,60})/i);
-  if(at) return { ok:true, channelId:'', handle:'@' + at[1] };
-  const custom = text.match(/youtube\.com\/c\/([A-Za-z0-9._-]{3,80})/i);
-  if(custom) return { ok:true, channelId:'', handle:'/c/' + custom[1] };
-  const user = text.match(/youtube\.com\/user\/([A-Za-z0-9._-]{3,80})/i);
-  if(user) return { ok:true, channelId:'', handle:'/user/' + user[1] };
-  const video = text.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{11})/i);
-  if(video) return { ok:true, channelId:'', handle:'', videoId:video[1] };
-  return { ok:false, error:'URL samajh nahi aayi — @handle, /channel/UC…, /c/… ya video link paste karo' };
-}
 
 function listStateOf(key){
   const all = (typeof db !== 'undefined' && db.lists) || {};
