@@ -5573,6 +5573,82 @@ body[data-theme="dark"] .toast{background:#F5F5F7 !important;color:#1D1D1F !impo
 @media (prefers-reduced-motion:reduce){.ticker-track{animation:none !important}}
 
 
+/* ============================================================
+   BCS Design System v22 — Ticker 1-line, Today compact,
+   No-collapse, Calendar side-agenda, Navbar no-overlap
+   ============================================================ */
+/* live ticker: pehle wala 1-line marquee (clickable) */
+.hero-ticker{background:linear-gradient(90deg, rgba(18,32,25,.94), rgba(38,59,51,.9)) !important;border:1px solid rgba(231,196,110,.28) !important;border-radius:999px !important}
+.ticker-viewport{cursor:grab}
+.ticker-track{animation:bcsTick 42s linear infinite !important;flex-wrap:nowrap !important;white-space:nowrap !important;padding:0 !important;font-size:12.5px !important}
+.ticker-track > span{display:inline-flex !important;align-items:center !important;white-space:nowrap !important;padding:0 10px 0 0 !important}
+.ticker-track a{color:rgba(246,242,231,.92) !important;text-decoration:none !important;padding:11px 8px !important}
+.ticker-track a:hover{color:#E7C46E !important;background:rgba(231,196,110,.12) !important;text-decoration:underline !important}
+.ticker-live{height:44px !important}
+/* today compact: ek aligned card, kam space */
+.dash-card-header{grid-template-columns:minmax(0,300px) minmax(0,1fr) minmax(0,280px) minmax(0,272px) !important}
+.dash-card-header .dl-date,.dash-card-header .dl-quote,.dash-card-header .dl-time,.dash-card-header .dl-month{padding:14px 16px 12px !important}
+.dash-card-header .dl-date::before,.dash-card-header .dl-quote::before,.dash-card-header .dl-time::before,.dash-card-header .dl-month::before{margin-bottom:8px !important;padding-bottom:7px !important}
+.dash-card-header .dlf-cal-day{font-size:34px !important}
+.dash-card-header .dl-greet{font-size:17px !important}
+.dash-card-header .dl-quote p{font-size:14px !important;min-height:36px !important}
+.dash-card-header .dl-clock{font-size:40px !important}
+.dash-card-header .miniweek{height:52px !important}
+.mini-day{min-height:48px !important;height:48px !important}
+.dash-card-header .dl-festival{padding:14px 20px 14px !important}
+.dash-card-header .dlf-main h3{font-size:23px !important}
+.dlf-greets{gap:10px !important;margin-top:10px !important}
+.dlf-greet-hi,.dlf-greet-en{padding:10px 13px !important;font-size:12px !important}
+.dl-merged-bottom{padding:12px 20px 14px !important;gap:12px !important}
+.dl-upcoming .th-up-item{height:34px !important;font-size:11px !important}
+/* no collapse UI */
+.sec-chev{display:none !important}
+.sec-head{cursor:default !important}
+.sec-head.collapsed + *{display:block !important}
+.sec-head.collapsed + * + *{display:block !important}
+/* calendar side agenda */
+.month-panel{padding:18px 18px !important}
+.cal-wrap{display:grid !important;grid-template-columns:minmax(0,1fr) 320px !important;gap:16px !important;align-items:start !important}
+.cal-main{min-width:0 !important}
+.cal-agenda{position:sticky !important;top:120px !important;border:1px solid var(--hair) !important;border-radius:16px !important;padding:15px !important;background:color-mix(in srgb, var(--acc) 4%, transparent) !important}
+.cal-agenda h4{font-size:13px !important;font-weight:750 !important;margin-bottom:3px !important}
+.cal-agenda .cal-date-line{font-size:11px !important;color:var(--mut) !important;margin-bottom:10px !important}
+.cal-agenda .agenda-list{max-height:300px !important;overflow:auto !important;margin-bottom:12px !important}
+.cal-todo{display:flex !important;gap:8px !important;margin-top:12px !important}
+.cal-todo input{flex:1 !important;min-width:0 !important;height:38px !important;border-radius:11px !important;border:1px solid var(--hair) !important;background:var(--panel) !important;color:var(--ink) !important;padding:0 11px !important;font-size:12.5px !important}
+.cal-agenda .agenda-row{border-radius:12px !important}
+.cal-cell{cursor:pointer !important}
+.cal-cell.sel{box-shadow:inset 0 0 0 2px var(--acc) !important;border-color:var(--acc) !important}
+.month-count{font-size:10.5px !important;font-weight:800 !important;color:var(--mut) !important}
+@media (max-width:1100px){.cal-wrap{grid-template-columns:minmax(0,1fr) !important}.cal-agenda{position:static !important}}
+/* videos desk */
+.yt-chips{display:flex !important;gap:8px !important;flex-wrap:wrap !important;margin:12px 0 !important}
+.yt-chips a{font-size:12px !important;font-weight:700 !important;padding:8px 14px !important;border-radius:999px !important;border:1px solid var(--hair) !important;background:var(--panel) !important;color:var(--ink2) !important;text-decoration:none !important}
+.yt-chips a:hover{border-color:var(--acc) !important;color:var(--ink) !important;transform:translateY(-1px) !important}
+.yt-player-wrap{position:relative;border-radius:20px !important;overflow:hidden !important;border:1px solid var(--hair) !important;background:linear-gradient(135deg,var(--acc-deep),var(--acc)) !important;aspect-ratio:16/8.2 !important;margin-bottom:12px !important}
+.yt-player-wrap iframe{width:100% !important;height:100% !important;border:0 !important;display:block !important}
+.yt-empty{position:absolute !important;inset:0 !important;display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:center !important;gap:8px !important;color:#F6F2E7 !important;text-align:center !important;padding:20px !important}
+.yt-empty b{font-family:'Fraunces',serif !important;font-size:22px !important}
+.yt-empty span{font-size:12.5px !important;opacity:.8 !important}
+.yt-form{display:flex !important;gap:8px !important}
+.yt-form input{flex:1 !important;min-width:0 !important;height:42px !important;border-radius:999px !important;border:1px solid var(--hair) !important;background:var(--panel) !important;color:var(--ink) !important;padding:0 16px !important;font-size:13px !important}
+.yt-note{font-size:11px !important;color:var(--mut) !important;margin-top:9px !important}
+/* storage auto-hide (show briefly, then whisper) */
+.storage{transition:opacity .6s !important}
+.storage.hide{opacity:0 !important;pointer-events:none !important}
+@media (max-width:1100px){.dash-card-header{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}
+@media (prefers-reduced-motion:reduce){.ticker-track{animation:none !important}}
+
+
+/* navbar no-overlap (compact still scrolls under, never over) */
+header{display:block !important}
+main{padding-top:20px !important}
+header.compact .hwrap-top{flex-wrap:nowrap !important}
+header.compact .searchbox{max-width:380px !important}
+header.compact .hbtns{flex:none !important}
+.hwrap-nav #nav{max-width:100% !important}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -6449,6 +6525,7 @@ body[data-theme="dark"] .toast{background:#F5F5F7 !important;color:#1D1D1F !impo
       <button type="button" class="on" data-news-mode="feed">📰 My feed <span class="nm-count" id="newsFeedCount">0</span></button>
       <button type="button" data-news-mode="live">📡 Live Jaipur <span class="live-dot"></span></button>
       <button type="button" data-news-mode="ideas">💡 Video ideas <span class="nm-count" id="newsIdeaCount">0</span></button>
+      <button type="button" data-news-mode="videos">▶ Watch</button>
     </div>
 
     <div class="news-mode-pane on" id="newsPaneFeed">
@@ -6496,6 +6573,34 @@ body[data-theme="dark"] .toast{background:#F5F5F7 !important;color:#1D1D1F !impo
         <div class="live-source-head"><b>Source desk</b><span>Direct browse — fetch fail ho to bhi updated rahein</span></div>
         <div class="live-source-links" id="liveSourceLinks"></div>
       </div>
+    </div>
+
+    <div class="news-mode-pane" id="newsPaneVideos">
+      <div class="live-hero">
+        <div>
+          <div class="eyebrow">BCS · watch desk</div>
+          <h3>Jaipur real estate,<br><em>on video.</em></h3>
+          <p>Channels kholo, video paste karo, yahin dekho — PropertyWala, Square Yards, Housing, ET Realty.</p>
+        </div>
+        <div class="live-hero-actions">
+          <a class="btn ghost" href="https://www.youtube.com/results?search_query=Jaipur+real+estate" target="_blank" rel="noopener">YouTube search ↗</a>
+        </div>
+      </div>
+      <div class="yt-chips" id="ytChips">
+        <a href="https://www.youtube.com/results?search_query=PropertyWala+Jaipur" target="_blank" rel="noopener">PropertyWala</a>
+        <a href="https://www.youtube.com/results?search_query=Square+Yards+Jaipur" target="_blank" rel="noopener">Square Yards</a>
+        <a href="https://www.youtube.com/results?search_query=Housing.com+Jaipur" target="_blank" rel="noopener">Housing</a>
+        <a href="https://www.youtube.com/results?search_query=ET+Realty+Jaipur" target="_blank" rel="noopener">ET Realty</a>
+      </div>
+      <div class="yt-player-wrap">
+        <iframe id="ytPlayer" title="BCS video player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="display:none"></iframe>
+        <div class="yt-empty" id="ytEmpty"><b>▶ Video yahan chalega</b><span>YouTube link paste karo neeche, ya channel chip se YouTube kholo</span></div>
+      </div>
+      <form class="yt-form" id="ytWForm">
+        <input id="ytWUrl" placeholder="YouTube link paste karo… e.g. https://youtu.be/xxxx" aria-label="YouTube link">
+        <button type="submit" class="btn primary">Play ▶</button>
+      </form>
+      <p class="yt-note">Player me youtube-nocookie embed chalta hai — koi tracking nahi. Channel links naya tab kholte hain.</p>
     </div>
 
     <div class="news-mode-pane" id="newsPaneIdeas">
@@ -11001,13 +11106,59 @@ function renderMonthCalendar(){
   }
   const legend = Object.keys(MONTH_MARK_TYPES).map(k => `<span class="month-legend"><i style="background:${MONTH_MARK_TYPES[k].color}"></i>${MONTH_MARK_TYPES[k].label}</span>`).join('') +
     '<span class="month-legend"><i style="background:var(--gold)"></i>Festival</span><span class="month-legend"><i style="background:#4C8FD6"></i>Task / follow-up / booking</span>';
+  if(!window.__selDate) window.__selDate = todayISO();
+  const selTasks = ((db.todos || []).filter(t => t.date === window.__selDate) || []);
+  const selFollows = scopedClients().filter(c => c.nextFollowUp === window.__selDate);
+  const selBookings = scopedBookings().filter(b => b.bookingDate === window.__selDate);
+  const selFest = festivalByDate(window.__selDate);
+  const selMarks = (db.monthMarks || []).filter(m => m.date === window.__selDate);
+  const agendaRows = [
+    selFest ? `<div class="agenda-row"><span class="agenda-ic">🪔</span><span><b>${esc(selFest.name || '')}</b><small>Festival</small></span></div>` : '',
+    ...selMarks.map(m => `<div class="agenda-row"><span class="agenda-ic">🏷️</span><span><b>${esc(m.label || '')}</b><small>${esc(MONTH_MARK_TYPES[m.type]?.label || 'Label')}${m.note ? ' · ' + esc(m.note) : ''}</small></span><button type="button" class="btn ghost xs" data-agenda-edit="${m.id}">Edit</button></div>`),
+    ...selTasks.map(t => `<div class="agenda-row"><span class="agenda-ic">☑</span><span><b>${esc(t.title || 'Task')}</b><small>${t.done ? 'Done' : 'Task pending'}</small></span></div>`),
+    ...selFollows.map(c => `<div class="agenda-row"><span class="agenda-ic">📞</span><span><b>${esc(c.name || c.phone || 'Client')}</b><small>Follow-up due</small></span></div>`),
+    ...selBookings.map(b => `<div class="agenda-row"><span class="agenda-ic">🏠</span><span><b>${esc(bookingClient(b)?.name || 'Booking')}</b><small>Booking · ${esc(b.stage || '')}</small></span></div>`)
+  ].join('');
   panel.innerHTML = `
-    <div class="panel-head"><h4>${title}</h4><span class="month-count">${(db.monthMarks || []).length} saved marks</span></div>
-    <div class="month-grid-head">${header}</div>
-    <div class="month-grid">${cells.join('')}</div>
-    <div class="month-legend-row">${legend}<span class="month-add-note">Date par click karke label add/edit kar sakte ho.</span></div>
+    <div class="cal-wrap">
+      <div class="cal-main">
+        <div class="panel-head"><h4>${title}</h4><span class="month-count">${(db.monthMarks || []).length} saved marks</span></div>
+        <div class="month-grid-head">${header}</div>
+        <div class="month-grid">${cells.join('')}</div>
+        <div class="month-legend-row">${legend}<span class="month-add-note">Date par click karke label add/edit kar sakte ho.</span></div>
+      </div>
+      <aside class="cal-agenda" id="calAgenda">
+        <h4>📅 ${esc(fmtDate(window.__selDate))}</h4>
+        <div class="cal-date-line">Aaj kya kya hai — is date ke marks, task, follow-up, booking yahin</div>
+        ${agendaRows || '<div class="empty-inline">Is din kuch nahi — label ya task add karo.</div>'}
+        <div class="cal-todo">
+          <input id="calTodoInput" placeholder="To-do likho… e.g. Site visit 4pm">
+          <button type="button" class="btn primary sm" id="calTodoAdd">+ Add</button>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <button type="button" class="btn ghost sm" id="calAddLabel">🏷️ Add label</button>
+          <button type="button" class="btn ghost sm" id="calEditLabels">Edit labels</button>
+        </div>
+      </aside>
+    </div>
   `;
-  $$('#monthPanel [data-caldate]').forEach(btn => btn.addEventListener('click', () => openMonthMark(btn.dataset.caldate)));
+  $$('#monthPanel [data-caldate]').forEach(btn => btn.addEventListener('click', () => {
+    window.__selDate = btn.dataset.caldate;
+    renderMonthCalendar();
+    const ag = $('#calAgenda'); if(ag) ag.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  }));
+  $$('#calAgenda [data-agenda-edit]').forEach(b => b.addEventListener('click', () => fillMonthMark(b.dataset.agendaEdit)));
+  const calAdd = $('#calTodoAdd'), calInp = $('#calTodoInput'), calLbl = $('#calAddLabel'), calEdit = $('#calEditLabels');
+  if(calAdd) calAdd.addEventListener('click', () => {
+    const t = (calInp && calInp.value || '').trim();
+    if(!t) return toast('Task likho pehle', true);
+    if(!db.todos) db.todos = [];
+    db.todos.push({ id: uid(), title: t, date: window.__selDate, done:false, createdAt: Date.now(), updatedAt: Date.now() });
+    save(); renderMonthCalendar(); toast('To-do add ho gaya ✓');
+    try{ bcsSound('success'); }catch(e){}
+  });
+  if(calLbl) calLbl.addEventListener('click', () => openMonthMark(window.__selDate));
+  if(calEdit) calEdit.addEventListener('click', () => openMonthMark(window.__selDate));
   const prev = $('#monthPrev'), today = $('#monthTodayBtn'), next = $('#monthNext');
   if(prev) prev.onclick = () => { monthCursor = new Date(y, m - 1, 1); renderMonthCalendar(); };
   if(today) today.onclick = () => { const d = new Date(); monthCursor = new Date(d.getFullYear(), d.getMonth(), 1); renderMonthCalendar(); };
@@ -17927,9 +18078,9 @@ function renderVideoIdeas(){
     : `<div class="live-empty" style="grid-column:1/-1"><b>${all.length ? 'Is filter me koi idea nahi' : 'Pehla video idea add karein'}</b>${all.length ? 'Doosra status filter try karein.' : 'Live Jaipur desk se news card par “💡 Idea” dabayein — headline, source aur link auto-fill ho jayenge.'}<br><br><button type="button" class="btn primary sm" data-idea-new>＋ New video idea</button></div>`;
 }
 function setNewsMode(mode){
-  newsMode = ['feed','live','ideas'].includes(mode) ? mode : 'feed';
+  newsMode = ['feed','live','ideas','videos'].includes(mode) ? mode : 'feed';
   $$('#newsModes [data-news-mode]').forEach(b => b.classList.toggle('on', b.dataset.newsMode === newsMode));
-  const map = { feed:'#newsPaneFeed', live:'#newsPaneLive', ideas:'#newsPaneIdeas' };
+  const map = { feed:'#newsPaneFeed', live:'#newsPaneLive', ideas:'#newsPaneIdeas', videos:'#newsPaneVideos' };
   Object.entries(map).forEach(([key, sel]) => { const el = $(sel); if(el) el.classList.toggle('on', key === newsMode); });
   if(newsMode === 'live' && !liveState.started){ liveState.started = true; fetchLiveNews(liveState.sourceId).catch(function(){}); }
   if(newsMode === 'live' && liveState.fetchedAt && Date.now() - liveState.fetchedAt > 15 * 60000){ fetchLiveNews(liveState.sourceId).catch(function(){}); }
@@ -22949,9 +23100,52 @@ if(!hadLocalData && !window.indexedDB) save();
 applyRoleChrome();
 render();
 try{ document.body.classList.add('booted'); }catch(e){}
-/* BCS dashboard: collapsible sections (click title to focus) */
+/* BCS: storage pill auto-hide (show briefly, then whisper) */
 try{
-  function bcsArmCollapsible(){
+  var _stT = null;
+  function _bcsStorageHide(){
+    var el = document.querySelector('.storage');
+    if(!el || el.classList.contains('hide')) return;
+    _stT = setTimeout(function(){ el.classList.add('hide'); }, 5000);
+  }
+  function _bcsStorageShow(){
+    var el = document.querySelector('.storage');
+    if(!el) return;
+    el.classList.remove('hide');
+    if(_stT) clearTimeout(_stT);
+    _bcsStorageHide();
+  }
+  window.addEventListener('scroll', _bcsStorageHide, { passive:true, once:false });
+  document.querySelector('.storage') && document.querySelector('.storage').addEventListener('mouseenter', _bcsStorageShow);
+  document.querySelector('.storage') && document.querySelector('.storage').addEventListener('focus', _bcsStorageShow);
+  _bcsStorageHide();
+  try{ var _origSM = storageMeter; storageMeter = function(){ _origSM(); _bcsStorageShow(); }; }catch(e){}
+}catch(e){}
+/* BCS: YouTube play (parse url -> nocookie embed) */
+try{
+  function bcsYtId(url){
+    try{
+      var u = String(url || '');
+      var m = u.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
+      return m ? m[1] : '';
+    }catch(e){ return ''; }
+  }
+  var ytf = document.getElementById('ytWForm');
+  if(ytf) ytf.addEventListener('submit', function(e){
+    e.preventDefault();
+    var u = (document.getElementById('ytWUrl') || {}).value || '';
+    var id = bcsYtId(u);
+    var f = document.getElementById('ytPlayer'), em = document.getElementById('ytEmpty');
+    if(!id){ try{ toast('Sahi YouTube link paste karo', true); }catch(err){} return; }
+    if(f){ f.style.display = 'block'; f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0&modestbranding=1'; }
+    if(em) em.style.display = 'none';
+    try{ bcsSound('success'); }catch(err){}
+  });
+}catch(e){}
+/* BCS dashboard: collapsible sections (DISABLED v46 — no collapse, clean) */
+try{
+  function bcsArmCollapsible(){ return; }
+  if(false){
     document.querySelectorAll('#view-dashboard .sec-head').forEach(function(h){
       if(h.dataset.armed) return;
       h.dataset.armed = '1';
