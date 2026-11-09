@@ -8484,7 +8484,7 @@ body[data-theme="dark"] .dash-card-header::after{opacity:.65 !important}
 }
 .bp-plan-copy{display:flex !important; flex-direction:column !important; align-items:center !important; line-height:1 !important}
 .bp-plan-copy b{font-size:9px !important; font-weight:850 !important; color:var(--ink) !important; font-variant-numeric:tabular-nums !important}
-.bp-plan-copy i{display:none !important}
+.bp-plan-copy i{display:block !important;font-size:7px !important;font-weight:800 !important;letter-spacing:.05em !important;color:var(--mut) !important;text-transform:uppercase !important;margin-top:1px !important;white-space:nowrap !important;max-width:60px;overflow:hidden;text-overflow:ellipsis}
 
 /* ════════ ROW 2 — aaj ka din · coming up · BCS actions ════════ */
 .dash-card-header .dl-festival{
@@ -14463,6 +14463,7 @@ function renderDashboard(){
   if(roadBtn) roadBtn.onclick = () => { if(topRoad) openRoadHub(topRoad.c.id); };
 
   // category strip
+  try{ const cc = $('#catStripCount'); if(cc) cc.textContent = TYPE_CARDS.length + ' types'; }catch(e){}
   $('#catStrip').innerHTML = TYPE_CARDS.map(tc => {
     const ps = projects.filter(p => (p.types||[]).some(t => tc.types.includes(t)));
     const pr = ps.flatMap(p => [p.priceMin,p.priceMax]).filter(v => v!=null && v!=='' && !isNaN(v)).map(Number);
@@ -14837,7 +14838,10 @@ function bindCalAgenda(panel){
     const listEl = ag.querySelector('#calAgendaList');
     if(listEl) listEl.innerHTML = rows || '<div class="empty-inline">Is din kuch nahi — label ya task add karo.</div>';
     $$('#calAgenda [data-agenda-edit]').forEach(b => b.addEventListener('click', () => fillMonthMark(b.dataset.agendaEdit)));
-    const calAdd = $('#calTodoAdd'), calInp = $('#calTodoInput'), calLbl = $('#calAddLabel'), calEdit = $('#calEditLabels');
+    const calAdd = ag.querySelector('#calTodoAddSched') || ag.querySelector('#calTodoAdd');
+    const calInp = ag.querySelector('#calTodoInputSched') || ag.querySelector('#calTodoInput');
+    const calLbl = ag.querySelector('#calAddLabelSched') || ag.querySelector('#calAddLabel');
+    const calEdit = ag.querySelector('#calEditLabelsSched') || ag.querySelector('#calEditLabels');
     if(calAdd) calAdd.addEventListener('click', () => {
       const t = (calInp && calInp.value || '').trim();
       if(!t) return toast('Task likho pehle', true);
@@ -15423,6 +15427,21 @@ function saveVisit(){
     toast('Site visit logged');
   }
   save(); closeModal('visitModal'); render();
+}
+
+function deleteVisit(){
+  if(!isAdmin()) return toast('Advisor login se delete nahi hota', true);
+  const id = $('#vId').value; if(!id) return;
+  if(!confirm('Ye site visit delete karni hai?')) return;
+  db.visits = (db.visits || []).filter(v => v.id !== id);
+  save(); closeModal('visitModal'); render(); toast('Visit deleted');
+}
+function deleteDoc(){
+  if(!isAdmin()) return toast('Advisor login se delete nahi hota', true);
+  const id = $('#docId').value; if(!id) return;
+  if(!confirm('Ye document delete karna hai?')) return;
+  db.documents = (db.documents || []).filter(d => d.id !== id);
+  save(); closeModal('docModal'); render(); toast('Document deleted');
 }
 function openDoc(id, presetProjectId){
   const d = id ? (db.documents || []).find(x => x.id === id) : null;
@@ -20579,6 +20598,12 @@ function openNewProject(){ openProject(null, $('#filterCorridor').value || 'agra
 $('#addProjectTop').addEventListener('click', openNewProject);
 $('#mobAdd').addEventListener('click', () => openQuickActions());
 $('#addDevBtn').addEventListener('click', () => openDeveloper(null));
+const addDev2 = $('#addDevBtn2'); if(addDev2) addDev2.addEventListener('click', () => openDeveloper(null));
+const vSaveB = $('#vSave'); if(vSaveB) vSaveB.addEventListener('click', () => { try{ saveVisit(); }catch(e){} });
+const vDelB = $('#vDelete'); if(vDelB) vDelB.addEventListener('click', () => { try{ deleteVisit(); }catch(e){} });
+const docSaveB = $('#docSave'); if(docSaveB) docSaveB.addEventListener('click', () => { try{ saveDoc(); }catch(e){} });
+const docDelB = $('#docDelete'); if(docDelB) docDelB.addEventListener('click', () => { try{ deleteDoc(); }catch(e){} });
+const leadSaveB = $('#leadSave'); if(leadSaveB) leadSaveB.addEventListener('click', () => { try{ saveLead(); }catch(e){} });
 document.body.addEventListener('click', e => {
   const f = e.target.closest('[data-fav]');
   if(f){ e.stopPropagation(); toggleFeature(f.dataset.fav); return; }
@@ -27663,6 +27688,8 @@ function renderBannerPlan(){
     if(txt) txt.textContent = total ? (done + '/' + total) : '0';
     const wrap = document.getElementById('bpPlanBtn');
     if(wrap) wrap.title = total ? ('Day plan — ' + done + '/' + total + ' done aaj · kholein') : 'Day plan kholein aur pehla task add karein';
+    const sub = document.getElementById('bpPlanSub');
+    if(sub) sub.textContent = total ? ((total - done) + ' pending') : 'add plan';
   }catch(e){}
 }
 document.addEventListener('click', e => {
