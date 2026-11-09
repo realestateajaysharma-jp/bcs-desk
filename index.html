@@ -9623,7 +9623,7 @@ try{
         </div>
         <div class="pulse-frame-wrap">
           <div class="pulse-loader" id="pulseLoader"><b>Market Pulse loading…</b><span>Source site khul rahi hai — agar blank rahe to neeche “Open” use karo (koi sites framing block karti hain).</span><div class="sk sk-line w85" style="height:14px"></div><div class="sk sk-line w60" style="height:10px"></div></div>
-          <iframe id="pulseFrame" src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum + Square Yards + 2bigha + PropertyWala" loading="lazy" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" style="opacity:0.35"></iframe>
+          <iframe id="pulseFrame" src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum + Square Yards + 2bigha + PropertyWala" loading="eager" referrerpolicy="no-referrer-when-downgrade" style="opacity:1;width:100%;height:100%;border:0;display:block"></iframe>
         </div>
         <div class="pulse-fallback" id="pulseFallback"><span>Frame blank hai? Source site framing block kar rahi ho sakti hai — </span><a href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">Open in new tab ↗</a><span>· Stats upar BCS summary me hain, data loss nahi.</span></div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center">
@@ -11079,7 +11079,7 @@ try{
     <div class="nread-bar" id="nReadBar"></div>
     <div class="nread-site" id="nReadSite">
       <div class="nread-site-note" id="nReadSiteNote">Live website preview · agar page blank dikhe to “Open original” dabayein.</div>
-      <iframe id="nReadFrame" title="News website preview" referrerpolicy="no-referrer" sandbox="allow-scripts allow-popups allow-forms allow-popups-to-escape-sandbox"></iframe>
+      <iframe id="nReadFrame" title="News website preview" referrerpolicy="no-referrer"></iframe>
       <div class="nread-text" id="nReadText" style="display:none"></div>
     </div>
     <div class="nread-editorial" id="nReadEditorial"></div>
@@ -26840,7 +26840,7 @@ try{
         <p style="color:var(--mut);max-width:420px">Is publisher ne iframe embedding block kar rakha hai (CSP frame-ancestors / X-Frame-Options). Neeche direct link se original website par padhiye — bilkul vhi content, free.</p>
         <a class="btn primary" id="embedDeckFallbackLink" href="https://google.com" target="_blank" rel="noopener noreferrer" style="height:42px;padding:0 22px">↗ Open original site</a>
       </div>
-      <iframe id="embedDeckIframe" title="In-app view" loading="lazy" sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox" referrerpolicy="no-referrer-when-downgrade" style="flex:1;width:100%;border:0;display:block" sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+      <iframe id="embedDeckIframe" title="In-app view" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="flex:1;width:100%;height:100%;border:0;display:block"></iframe>
     </div>
   </div>
 </div>
