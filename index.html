@@ -8478,6 +8478,7 @@ body[data-theme="dark"] .dash-card-header::after{opacity:.65 !important}
 .bp-ring-bg{stroke:var(--line2) !important; stroke-width:4 !important; fill:none !important}
 .bp-ring-fg{
   stroke:var(--gold) !important; stroke-width:4 !important; fill:none !important; stroke-linecap:round !important;
+  stroke-dasharray:97.4 !important; stroke-dashoffset:97.4 !important;
   transition:stroke-dashoffset .6s ease !important;
   filter:drop-shadow(0 0 3px color-mix(in oklab, var(--gold) 75%, transparent)) !important;
 }
@@ -8539,9 +8540,10 @@ body[data-theme="dark"] .dash-card-header::after{opacity:.65 !important}
 .dash-card-header .th-up-head small{display:none !important}
 .dash-card-header .th-up-list{display:flex !important; gap:5px !important; flex-wrap:nowrap !important; overflow:hidden !important; min-width:0 !important}
 .dash-card-header .th-up-item{
-  height:22px !important; padding:0 9px !important; font-size:8.5px !important; border-radius:999px !important;
+  height:22px !important; padding:0 9px !important; font-size:8px !important; border-radius:999px !important;
   line-height:22px !important; white-space:nowrap !important; flex:0 0 auto !important; font-weight:700 !important;
   border:1px solid var(--hair) !important; background:color-mix(in oklab, var(--panel) 78%, var(--olive) 22%) !important;
+  max-width:180px !important; overflow:hidden !important; text-overflow:ellipsis !important;
 }
 .dash-card-header .dl-bcs{
   min-height:34px !important; border-radius:11px !important; padding:0 12px 0 9px !important;
