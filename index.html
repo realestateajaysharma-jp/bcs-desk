@@ -22172,51 +22172,47 @@ function parseRssXml(text){
 async function fetchLiveFeedRss(rss){
   const cached = liveCache.get(rss);
   if(cached && Date.now() - cached.at < 5 * 60000) return cached.items;
-  let items = null, lastErr = null;
+  let lastErr = null;
   async function tryText(url, ms){
     const res = await fetchWithTimeout(url, { cache:'no-store' }, ms);
     if(!res.ok) throw new Error(url.slice(0, 60) + ' ' + res.status);
     return await res.text();
   }
-  // 1) rss2json (fast JSON, 8s)
-  try{
+  // Race every proxy in parallel — first successful fetch wins (fastest path)
+  const attempts = [];
+  attempts.push((async () => {
     const res = await fetchWithTimeout('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rss), { cache:'no-store' }, 6000);
     if(!res.ok) throw new Error('rss2json ' + res.status);
     const j = await res.json();
-    if(j.status === 'ok' && Array.isArray(j.items) && j.items.length) items = j.items;
-    else throw new Error('rss2json empty');
-  }catch(e){ lastErr = e; }
-  // 2) allorigins raw → XML
-  if(!items){
-    try{
-      const text = await tryText('https://api.allorigins.win/raw?url=' + encodeURIComponent(rss), 7000);
-      const parsed = parseRssXml(text);
-      if(parsed && parsed.length) items = parsed;
-    }catch(e){ lastErr = e; }
-  }
-  // 3) allorigins get → JSON wrapper
-  if(!items){
-    try{
-      const res = await fetchWithTimeout('https://api.allorigins.win/get?url=' + encodeURIComponent(rss), { cache:'no-store' }, 7000);
-      if(res.ok){ const j = await res.json(); const parsed = j && j.contents ? parseRssXml(j.contents) : null; if(parsed && parsed.length) items = parsed; }
-    }catch(e){ lastErr = e; }
-  }
-  // 4) codetabs proxy → XML
-  if(!items){
-    try{
-      const text = await tryText('https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(rss), 10000);
-      const parsed = parseRssXml(text);
-      if(parsed && parsed.length) items = parsed;
-    }catch(e){ lastErr = e; }
-  }
-  // 5) direct RSS (works on some networks / localhost proxy)
-  if(!items){
-    try{
-      const text = await tryText(rss, 7000);
-      const parsed = parseRssXml(text);
-      if(parsed && parsed.length) items = parsed;
-    }catch(e){ lastErr = e; }
-  }
+    if(j.status === 'ok' && Array.isArray(j.items) && j.items.length) return j.items;
+    throw new Error('rss2json empty');
+  })());
+  attempts.push((async () => {
+    const text = await tryText('https://api.allorigins.win/raw?url=' + encodeURIComponent(rss), 7000);
+    const parsed = parseRssXml(text);
+    if(parsed && parsed.length) return parsed;
+    throw new Error('allorigins raw empty');
+  })());
+  attempts.push((async () => {
+    const res = await fetchWithTimeout('https://api.allorigins.win/get?url=' + encodeURIComponent(rss), { cache:'no-store' }, 7000);
+    if(res.ok){ const j = await res.json(); const parsed = j && j.contents ? parseRssXml(j.contents) : null; if(parsed && parsed.length) return parsed; }
+    throw new Error('allorigins get empty');
+  })());
+  attempts.push((async () => {
+    const text = await tryText('https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(rss), 8000);
+    const parsed = parseRssXml(text);
+    if(parsed && parsed.length) return parsed;
+    throw new Error('codetabs empty');
+  })());
+  attempts.push((async () => {
+    const text = await tryText(rss, 6000);
+    const parsed = parseRssXml(text);
+    if(parsed && parsed.length) return parsed;
+    throw new Error('direct empty');
+  })());
+  let items = null;
+  try{ items = await Promise.any(attempts); }
+  catch(e){ lastErr = e; }
   if(!items) throw lastErr || new Error('Live feed unavailable');
   const seen = new Set();
   const normalized = items.map(function(it){ return normalizeLiveItem(it, 'Google News'); })
