@@ -4715,6 +4715,95 @@ header::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px
 @media (prefers-reduced-motion:reduce){ .ticker-track{animation:none !important} .hero-life .hero-stat,.hero-life .hero-stat:hover{transition:none !important;transform:none !important} }
 
 
+/* ============================================================
+   BCS Design System v9 — Cards + Graphs Premium
+   Bento luxury, animated charts, tooltips, sparklines
+   ============================================================ */
+/* premium card language (all tabs, equal importance) */
+.panel,.cat-card,.live-card,.idea-card,.pulse-card,.calc-card,.adv-card,.dev-card,.client-card,.advisor-card,.partner-card,.resale-card,.tm-card,.an-card,.health-card,.kpi,.tile,.cov-card,.hub-card,.dev-kcard,.kb-card,.news-card,.proj-card,.link-item,.tpl-card,.fest-card,.booking-card{
+  border-radius:22px !important;
+  border:1px solid var(--hair) !important;
+  box-shadow:var(--shadow-app) !important;
+  overflow:hidden;
+}
+.panel,.an-card,.health-card,.kpi{padding:22px 22px !important}
+.cat-card,.dev-card,.client-card,.advisor-card,.partner-card,.resale-card{padding:22px 22px !important}
+.live-card,.idea-card{padding:18px 18px !important}
+.pulse-card{padding:18px 18px !important}
+.calc-card{padding:20px 20px !important}
+.panel:hover,.cat-card:hover,.live-card:hover,.idea-card:hover,.pulse-card:hover,.calc-card:hover,.adv-card:hover,.dev-card:hover,.client-card:hover,.advisor-card:hover,.partner-card:hover,.resale-card:hover,.tm-card:hover,.an-card:hover,.health-card:hover,.kpi:hover,.link-item:hover,.tpl-card:hover{
+  transform:translateY(-4px) !important;
+  box-shadow:var(--shadow-app-lg) !important;
+  border-color:color-mix(in srgb, var(--acc) 22%, var(--hair)) !important;
+}
+.panel:hover::after,.cat-card:hover::after,.live-card:hover::after,.idea-card:hover::after{
+  opacity:1 !important;transform:translateX(120%) !important;
+}
+/* card headers: category label + title + meta */
+.panel-head,.an-card-head{padding-bottom:14px !important;border-bottom:1px solid var(--hair) !important;margin-bottom:16px !important}
+.panel-head h4,.an-card-head h4{font-size:18px !important;font-weight:750 !important;letter-spacing:-.02em !important}
+.an-card-head span,.panel-head .n-badge,.panel-head .cnt{font-size:10.5px !important;letter-spacing:.1em !important;font-weight:800 !important;color:var(--mut) !important;background:color-mix(in srgb, var(--acc) 8%, transparent) !important;border:1px solid color-mix(in srgb, var(--acc) 14%, transparent) !important;border-radius:999px !important;padding:5px 10px !important}
+/* avatar + icon chips premium */
+.avatar{width:48px !important;height:48px !important;border-radius:16px !important;font-size:17px !important;background:linear-gradient(135deg,var(--acc-soft),color-mix(in srgb, var(--acc-soft) 55%, white)) !important;color:var(--acc-deep) !important;border:1px solid color-mix(in srgb, var(--acc) 16%, transparent) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.5) !important}
+body[data-theme="dark"] .avatar{background:linear-gradient(135deg,var(--acc-soft),#1C1C1E) !important;color:var(--acc) !important}
+.cat-ic{width:48px !important;height:48px !important;border-radius:16px !important;font-size:21px !important}
+/* chips colorful but professional */
+.chip,.bchip,.adv-match,.price-badge,.status-pill,.tm-chip,.adv-reason,.pcard .tag,.dev-card .chip,.unit-badge{
+  font-weight:700 !important;letter-spacing:.02em !important;border-radius:999px !important;
+}
+.price-badge{background:color-mix(in srgb, var(--acc) 12%, transparent) !important;color:var(--acc-deep) !important;border-color:color-mix(in srgb, var(--acc) 22%, transparent) !important}
+body[data-theme="dark"] .price-badge{color:var(--acc) !important}
+.adv-match{background:var(--acc-soft) !important;color:var(--acc-deep) !important}
+body[data-theme="dark"] .adv-match{color:var(--acc) !important}
+.adv-reason{background:color-mix(in srgb, var(--acc) 8%, transparent) !important;color:var(--acc-deep) !important;border-color:color-mix(in srgb, var(--acc) 14%, transparent) !important}
+body[data-theme="dark"] .adv-reason{color:var(--acc) !important}
+/* graphs: KPIs */
+.an-kpis{gap:14px !important}
+.kpi{padding:20px 20px !important;padding-left:22px !important}
+.kpi::before{width:5px !important;border-radius:5px !important;background:linear-gradient(180deg,var(--kc,#A57B36),color-mix(in srgb, var(--kc,#A57B36) 60%, black)) !important}
+.kpi .k{font-size:10px !important;letter-spacing:.13em !important}
+.kpi .v{font-size:32px !important;letter-spacing:-.035em !important;margin-top:6px !important}
+.kpi .s{font-size:11.5px !important;margin-top:5px !important}
+/* graphs: bars animated */
+.an-bars{gap:8px !important}
+.an-bar{grid-template-columns:128px minmax(0,1fr) 58px !important;gap:12px !important;padding:7px 8px !important;margin:0 -8px !important;border-radius:12px !important}
+.an-bar:hover{background:color-mix(in srgb, var(--acc) 6%, transparent) !important}
+.an-bar:hover .an-fill{filter:brightness(1.12) !important}
+.an-bar .an-lab{font-size:12px !important;font-weight:650 !important}
+.an-bar .an-track{height:11px !important;border-radius:999px !important;background:color-mix(in srgb, var(--acc) 10%, var(--line2)) !important;box-shadow:inset 0 1px 2px rgba(0,0,0,.06) !important;overflow:hidden !important}
+.an-bar .an-fill{height:100% !important;border-radius:999px !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 2px 8px -2px color-mix(in srgb, var(--acc) 40%, transparent) !important;transition:width .85s cubic-bezier(.22,.9,.3,1) !important}
+.an-bar .an-num{font-size:12.5px !important;font-weight:800 !important;font-variant-numeric:tabular-nums !important}
+.an-bar[data-ancorr]{cursor:pointer !important}
+/* graphs: donut + funnel */
+.an-donut{width:168px !important;height:168px !important;box-shadow:var(--shadow-app) !important}
+.an-donut:after{inset:22px !important;background:var(--panel) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 2px 10px rgba(0,0,0,.08) !important}
+.an-donut .an-donut-mid b{font-size:32px !important;letter-spacing:-.03em !important}
+.an-legend{gap:8px !important}
+.an-legend > div{font-size:12px !important;font-weight:650 !important;padding:7px 11px !important;border-radius:10px !important;background:color-mix(in srgb, var(--acc) 5%, transparent) !important;border:1px solid var(--hair) !important}
+.an-fstep{grid-template-columns:118px minmax(0,150px) 44px !important;gap:10px !important;align-items:center !important}
+.an-fstep .fname{font-size:11.5px !important;font-weight:700 !important}
+.an-fstep .fbar{height:14px !important;border-radius:999px !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.35) !important;transition:width .85s cubic-bezier(.22,.9,.3,1) !important}
+.an-fstep .fnum{font-size:13px !important;font-weight:800 !important}
+/* tables premium */
+.an-scroll{border-radius:14px !important;overflow:hidden !important;border:1px solid var(--hair) !important}
+.an-table th{font-size:10px !important;letter-spacing:.12em !important;font-weight:800 !important;padding:11px 13px !important}
+.an-table td{font-size:12.5px !important;padding:11px 13px !important}
+.an-table tbody tr{transition:background .15s !important}
+.an-table tbody tr:hover{background:color-mix(in srgb, var(--acc) 5%, transparent) !important}
+.an-insight{border-radius:14px !important;padding:12px 13px !important;background:color-mix(in srgb, var(--acc) 5%, transparent) !important;border:1px solid var(--hair) !important}
+.an-insight .ic{width:34px !important;height:34px !important;border-radius:11px !important;background:var(--acc-soft) !important;display:grid !important;place-items:center !important;flex:none !important}
+/* pulse graphs */
+.pulse-copy b{font-size:28px !important}
+.pulse-tag{font-size:10px !important;font-weight:800 !important;letter-spacing:.08em !important}
+.pulse-meter i{box-shadow:0 0 12px color-mix(in srgb, var(--acc) 45%, transparent) !important}
+/* sparklines in cards (CSS bars via ::before not needed — price bars) */
+.price-strip{display:flex;align-items:flex-end;gap:3px;height:26px;margin-top:10px}
+.price-strip i{flex:1;border-radius:4px 4px 2px 2px;background:linear-gradient(180deg,var(--acc),color-mix(in srgb, var(--acc) 45%, black));opacity:.85;min-height:4px}
+@media (max-width:1100px){ .an-bar{grid-template-columns:96px minmax(0,1fr) 48px !important} .an-fstep{grid-template-columns:96px minmax(0,120px) 38px !important} }
+@media (max-width:640px){ .kpi .v{font-size:26px !important} .an-bar{grid-template-columns:88px minmax(0,1fr) 44px !important} .an-donut{width:140px !important;height:140px !important} }
+@media (prefers-reduced-motion:reduce){ .an-fill,.fbar,.pulse-meter i{transition:none !important} }
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -9825,6 +9914,7 @@ function showOverlay(id){
 }
 function go(view){
   try{ bcsSound('nav'); }catch(e){}
+  try{ setTimeout(function(){ if(view === 'analytics') bcsAnimateBars(document); }, 60); }catch(e){}
   currentView = view;
   $$('#nav button').forEach(b => { const on = b.dataset.view === view; b.classList.toggle('on', on); if(on) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
   $$('.view').forEach(v => v.classList.toggle('on', v.id === 'view-' + view));
@@ -21055,11 +21145,32 @@ let anRange = 'all';
 const AN_COLORS = ['#4E7C62','#B4673F','#9A7B3F','#54779E','#8A6480','#5F8452','#3F7C7A','#A0555F'];
 function anBarHTML(label, value, max, color, display, attrs){
   const pct = max > 0 ? Math.max(2, Math.round(value / max * 100)) : 0;
-  return `<div class="an-bar" ${attrs || ''}>
+  const tip = esc(label + ' · ' + (display == null ? value : display) + ' (' + pct + '%)');
+  return `<div class="an-bar" title="${tip}" ${attrs || ''}>
     <span class="an-lab" title="${esc(label)}">${esc(label)}</span>
-    <span class="an-track"><i class="an-fill" style="width:${pct}%;background:${color}"></i></span>
+    <span class="an-track"><i class="an-fill" data-w="${pct}%" style="width:0%;background:linear-gradient(90deg, color-mix(in srgb, ${color} 85%, black), ${color})"></i></span>
     <span class="an-num">${display == null ? value : display}</span>
   </div>`;
+}
+function bcsAnimateBars(root){
+  try{
+    const fills = (root || document).querySelectorAll('.an-fill[data-w], .fbar[data-w], .pulse-meter i[data-w]');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduced){ fills.forEach(function(f){ f.style.width = f.dataset.w || f.style.width; }); return; }
+    const io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          const f = en.target;
+          f.style.width = f.dataset.w || '60%';
+          io.unobserve(f);
+        }
+      });
+    }, { threshold: 0.25 }) : null;
+    fills.forEach(function(f, i){
+      f.style.transitionDelay = (Math.min(i, 14) * 35) + 'ms';
+      if(io) io.observe(f); else setTimeout(function(){ f.style.width = f.dataset.w || '60%'; }, 30);
+    });
+  }catch(e){}
 }
 function anMid(p){
   const a = number(p.priceMin), b = number(p.priceMax);
@@ -21144,7 +21255,7 @@ function renderAnalytics(){
     const n = rClients.filter(c => (c.clientStatus || 'new') === s.id).length;
     const pct = Math.max(4, Math.round(n / maxF * 100));
     const color = s.id === 'lost' ? '#A8A79E' : s.id === 'booked' ? '#4E7C62' : '#54779E';
-    return `<div class="an-fstep"><span class="fname">${esc(s.label)}</span><span class="fbar" style="width:${Math.min(pct, 44)}%;background:${color}"></span><span class="fnum">${n}</span></div>`;
+    return `<div class="an-fstep"><span class="fname">${esc(s.label)}</span><span class="fbar" data-w="${Math.min(pct, 44)}%" style="width:0%;background:linear-gradient(90deg, color-mix(in srgb, ${color} 88%, black), ${color})"></span><span class="fnum">${n}</span></div>`;
   }).join('');
 
   // corridor value bars
