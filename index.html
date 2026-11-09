@@ -7729,6 +7729,44 @@ nav button.on{
 .top-head .th-src i{width:18px;height:18px;border-radius:6px;display:grid;place-items:center;font-style:normal;font-size:9px;background:var(--acc);color:#fff}
 .top-head p{font-size:11px;color:var(--mut);line-height:1.4}
 .top-head a:last-child{align-self:flex-start;font-size:10.5px;font-weight:800;color:var(--gold-deep,#8A6A2E);text-decoration:none;margin-top:auto;padding-top:4px}
+
+/* Live market strip */
+.live-market-wrap{border:1px solid var(--hair);border-radius:16px;background:linear-gradient(160deg,color-mix(in oklab, var(--panel) 92%, var(--gold-soft, #F3E8D3)), var(--panel));padding:14px;margin-bottom:14px;box-shadow:var(--sh-sm);position:relative;overflow:hidden}
+.live-market-wrap::before{content:"";position:absolute;top:-30px;right:-30px;width:140px;height:140px;background:radial-gradient(circle, color-mix(in oklab, var(--gold) 16%, transparent), transparent 70%);pointer-events:none}
+.lm-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.lm-live{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;background:color-mix(in oklab, var(--danger, #A4452B) 12%, transparent);color:var(--danger, #A4452B);border:1px solid color-mix(in oklab, var(--danger, #A4452B) 35%, transparent);font-size:10.5px;font-weight:800;letter-spacing:.14em}
+.lm-live i{width:7px;height:7px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 3px rgba(34,197,94,.22);animation:bcsNavPulse 1.6s ease-in-out infinite}
+.lm-updated{flex:1;font-size:11px;color:var(--mut)}
+.lm-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.lm-row::-webkit-scrollbar{height:5px}
+.lm-row::-webkit-scrollbar-thumb{background:var(--hair);border-radius:999px}
+.lm-card{flex:0 0 164px;border:1px solid var(--hair);border-radius:14px;background:var(--panel);padding:11px;display:flex;flex-direction:column;gap:4px;min-height:128px;transition:transform .2s, box-shadow .2s}
+.lm-card:hover{transform:translateY(-2px);box-shadow:var(--sh-md)}
+.lm-label{font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.lm-val{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
+.lm-delta{font-size:11px;font-weight:800;margin-top:auto;display:inline-flex;align-items:center;gap:4px}
+.lm-delta.up{color:#2F8F6B}
+.lm-delta.down{color:#A4452B}
+.lm-delta.flat{color:var(--mut)}
+.lm-sub{font-size:9.5px;color:var(--mut)}
+body[data-theme="dark"] .lm-card{background:#1C1C1E;border-color:rgba(255,255,255,.12)}
+body[data-theme="dark"] .lm-card:hover{background:#242426}
+body[data-theme="dark"] .lm-val{color:#F5F5F7}
+
+/* Data status card */
+.ds-card{border:1px solid var(--hair);border-radius:16px;padding:14px;background:var(--panel);box-shadow:var(--sh-sm)}
+.ds-card h4{font-family:'Fraunces',serif;font-size:16px;margin:0 0 10px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ds-rows{display:flex;flex-direction:column;gap:6px}
+.ds-row{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;background:color-mix(in oklab, var(--panel) 55%, var(--sand, #F4EEE2));border:1px solid var(--hair)}
+.ds-row .ds-dot{flex:none;width:9px;height:9px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 3px rgba(34,197,94,.15)}
+.ds-row.stale .ds-dot{background:#C96A2E;box-shadow:0 0 0 3px rgba(201,106,46,.18)}
+.ds-row .ds-name{flex:1;min-width:0;font-size:12px;font-weight:700;color:var(--ink)}
+.ds-row .ds-note{font-size:10.5px;color:var(--mut);flex:2;min-width:0}
+.ds-row .ds-updated{font-size:10px;color:var(--mut);flex:none;white-space:nowrap;font-variant-numeric:tabular-nums}
+body[data-theme="dark"] .ds-card{background:#1C1C1E;border-color:rgba(255,255,255,.12)}
+body[data-theme="dark"] .ds-row{background:#232326;border-color:rgba(255,255,255,.08)}
+body[data-theme="dark"] .ds-row .ds-name{color:#F5F5F7}
+@media (max-width:720px){.ds-row .ds-note{display:none}.ds-row{flex-wrap:wrap}.ds-row .ds-updated{flex-basis:100%;text-align:right;margin-top:2px}}
 /* ============================================================
    BCS NAV v80 — Modern navigation bar polish
    ============================================================ */
@@ -9452,7 +9490,10 @@ try{
   <section class="view" id="view-pulse">
     <div class="adv-head">
       <div>
-        <div class="eyebrow">BCS · market intelligence · Aurum + Square Yards + 2bigha + PropertyWala</div>
+        <div class="live-market-wrap" id="liveMarketStrip" role="status" aria-live="polite">
+          <div class="lm-head"><span class="lm-live"><i></i>LIVE MARKET</span><span class="lm-updated" id="liveMarketUpdated">Updated just now</span><button type="button" class="btn ghost sm" id="liveMarketRefresh" title="Refresh market data">↻</button></div>
+          <div class="lm-row" id="liveMarketRow"></div>
+        </div> Aurum + Square Yards + 2bigha + PropertyWala</div>
         <h2 class="adv-title">Jaipur market,<br><em>charon sources, ek tab.</em></h2>
         <p class="adv-sub">Aurum Pulse + Square Yards + 2bigha (plots map) + PropertyWala (search + news) — ek hi jagah compare aur reuse karo. Apartments ke liye Pulse/SY/PW, plots ke liye 2bigha. BCS apne project ka rate inke median se match karke Trust Sheet me lagata hai. <b>Vaishali, Mansarovar, Jagatpura, Ajmer Road</b> — verified listings + developer pipeline + live news ek sath.</p>
       </div>
@@ -9610,6 +9651,7 @@ try{
       </div>
     </div>
     <div id="healthBody"></div>
+    <div id="dataStatusWrap"></div>
     <div id="syncWrap"></div>
   </section>
 
@@ -15994,6 +16036,7 @@ async function renderJaipurWeather(){
       const dt = isoToDate(d);
       return `<span class="wx-day"><b>${dt ? dt.toLocaleDateString('en-IN',{weekday:'short'}) : ''}</b> ${ic} ${daily.temperature_2m_max?.[i] ?? ''}°/${daily.temperature_2m_min?.[i] ?? ''}° · ${daily.wind_speed_10m_max?.[i] ?? ''}km/h</span>`;
     }).join('<span class="wx-sep">·</span>');
+    window.__bcsWeatherAt = Date.now();
     wrap.innerHTML = `
       <span class="wx-mark"><span class="wx-temp">${cur.temperature_2m ?? '—'}°C</span> ${icon} ${esc(label)}</span>
       <span class="wx-mark">💨 ${cur.wind_speed_10m ?? '—'} km/h</span>
@@ -20634,7 +20677,9 @@ function renderTicker(){
     const track = document.querySelector('.ticker-track');
     if(!track) return;
     const items = (liveState.items || []).slice(0, 8);
-    const stats = 'Jaipur median ₹4,800 / sq ft <b>▲ 1.8%</b> • JDA ₹575 Cr works • Metro Phase-2 DPR • RHB 4 schemes • Ashiana ₹1,000 Cr plan • 15.76% surge 2025 • Hawa Mahal • Amber • ';
+    let marketStat = 'Jaipur median ₹4,800 / sq ft <b>▲ 1.8%</b> • ';
+    try{ const snap = (typeof mktLoadSnapshot === 'function') ? mktLoadSnapshot() : null; if(snap){ const parts = []; if(snap.rty){ const dv = (snap.rty.change || 0); parts.push('NIFTY REALTY ₹' + Number(snap.rty.price || 0).toFixed(2) + (dv >= 0 ? ' <b>▲</b>' : ' <b>▼</b>') + ' ' + Math.abs(dv).toFixed(2) + '%'); } if(snap.nifty){ parts.push('NIFTY 50 ₹' + Number(snap.nifty.price || 0).toFixed(2)); } if(snap.usdInr){ parts.push('USD/INR ₹' + Number(snap.usdInr).toFixed(2)); } if(snap.goldUsd && snap.usdInr){ const gold10 = snap.goldUsd * snap.usdInr * (10/31.1035); parts.push('Gold ₹' + Math.round(gold10).toLocaleString('en-IN') + '/10g'); } marketStat = parts.join(' • ') + ' • '; } }catch(e){}
+    const stats = marketStat + 'JDA ₹575 Cr works • Metro Phase-2 DPR • RHB 4 schemes • Ashiana ₹1,000 Cr plan • 15.76% surge 2025 • Hawa Mahal • Amber • ';
     const headlines = items.length ? items.map(function(it){
       return '<a class="ticker-item" href="' + esc(it.link || '#') + '" target="_blank" rel="noopener noreferrer" title="Open news">↗ ' + esc(it.title || '') + '</a>';
     }).join(' <span class="tick-sep">•</span> ') + ' <span class="tick-sep">•</span> ' : '';
@@ -25894,7 +25939,7 @@ function render(){
   if(currentView === 'partners') renderPartners();
   if(currentView === 'advisory'){ renderSavedBriefs(); renderAdvisoryResults(); }
   if(currentView === 'templates') renderTemplates();
-  if(currentView === 'health'){ renderHealth(); renderSyncCard(); }
+  if(currentView === 'health'){ renderHealth(); renderSyncCard(); try{ renderDataStatus(); }catch(e){} }
   storageMeter();
 }
 initTypeControls();
@@ -26553,6 +26598,110 @@ function initTopStrip(){
 
 
 try{ initWatchChannels(); initPodcasts(); initTopStrip(); }catch(e){ console.warn('[BCS init]', e); }
+
+/* ============================================================
+   BCS Market Engine v82 — internet live data, all time fresh
+   ============================================================ */
+const MKT_KEY = 'bcs_market_v1';
+const MKT_REFRESH_MS = 15 * 60 * 1000;
+function mktLoadSnapshot(){ try{ const raw = localStorage.getItem(MKT_KEY); return raw ? JSON.parse(raw) : null; }catch(e){ return null; } }
+function mktSaveSnapshot(s){ try{ localStorage.setItem(MKT_KEY, JSON.stringify(s)); }catch(e){} }
+function mktTimeAgo(ts){
+  if(!ts) return 'never';
+  const d = Math.max(0, Math.floor((Date.now() - ts) / 1000));
+  if(d < 60) return 'just now';
+  if(d < 3600) return Math.floor(d / 60) + 'm ago';
+  if(d < 86400) return Math.floor(d / 3600) + 'h ago';
+  return Math.floor(d / 86400) + 'd ago';
+}
+async function bcsFetchChart(sym){
+  try{
+    const r = await fetchWithTimeout('https://query1.finance.yahoo.com/v8/finance/chart/' + encodeURIComponent(sym) + '?interval=1d&range=1d', { cache:'no-store' }, 9000);
+    if(!r.ok) throw new Error('HTTP ' + r.status);
+    const j = await r.json();
+    const m = j && j.chart && j.chart.result && j.chart.result[0] && j.chart.result[0].meta;
+    if(!m || m.regularMarketPrice == null) throw new Error('no data');
+    return { price: m.regularMarketPrice, change: m.regularMarketChangePercent, prevClose: m.chartPreviousClose, high: m.regularMarketDayHigh, low: m.regularMarketDayLow };
+  }catch(e){ return null; }
+}
+async function bcsFetchJson(url){
+  try{ const r = await fetchWithTimeout(url, { cache:'no-store' }, 8000); if(!r.ok) throw new Error('HTTP ' + r.status); return await r.json(); }catch(e){ return null; }
+}
+function mktGoldPer10g(goldUsdPerOz, usdInr){ if(!goldUsdPerOz || !usdInr) return null; return goldUsdPerOz * usdInr * (10 / 31.1035); }
+function mktSilverPerKg(silverUsdPerOz, usdInr){ if(!silverUsdPerOz || !usdInr) return null; return silverUsdPerOz * usdInr * (1000 / 31.1035); }
+function mktFmt(n, sym, dec){ if(n == null || isNaN(n)) return '—'; return sym + Number(n).toLocaleString('en-IN', { maximumFractionDigits: dec == null ? 2 : dec, minimumFractionDigits: dec == null ? 2 : dec }); }
+function mktDelta(pct){ const p = pct == null ? NaN : Number(pct); if(isNaN(p)) return { cls:'flat', txt:'—' }; const sign = p >= 0 ? '▲' : '▼'; return { cls: p >= 0 ? 'up' : 'down', txt: sign + ' ' + Math.abs(p).toFixed(2) + '%' }; }
+function renderLiveMarket(snapshot){
+  const row = $('#liveMarketRow'); const upd = $('#liveMarketUpdated');
+  if(upd && snapshot) upd.textContent = 'Updated ' + mktTimeAgo(snapshot.at);
+  if(!row) return;
+  const s = snapshot || mktLoadSnapshot();
+  const usdInr = s && (typeof s.usdInr === 'number' ? s.usdInr : null);
+  const rty = s && s.rty; const nifty = s && s.nifty;
+  const gold10 = mktGoldPer10g(s && s.goldUsd, usdInr);
+  const silver1kg = mktSilverPerKg(s && s.silverUsd, usdInr);
+  const cards = [
+    nifty ? { label:'NIFTY 50', val: mktFmt(nifty.price, '₹', 2), delta: mktDelta(nifty.change), sub: 'NSE broad market' } : { label:'NIFTY 50', val:'—', delta:{cls:'flat',txt:'unavailable'}, sub:'Retry with ↻ button' },
+    rty ? { label:'NIFTY REALTY', val: mktFmt(rty.price, '₹', 2), delta: mktDelta(rty.change), sub: 'Realty sector index' } : { label:'NIFTY REALTY', val:'—', delta:{cls:'flat',txt:'unavailable'}, sub:'Retry with ↻ button' },
+    usdInr != null ? { label:'USD / INR', val: mktFmt(usdInr, '₹', 2), delta:{ cls:'flat', txt:'Live rate' }, sub:'Open ExchangeRate-API' } : { label:'USD / INR', val:'—', delta:{cls:'flat',txt:'offline'}, sub:'—' },
+    gold10 != null ? { label:'Gold / 10g', val: mktFmt(gold10, '₹', 0), delta:{cls:'flat',txt:'24K pure'}, sub:'gold-api · live spot' } : { label:'Gold / 10g', val:'—', delta:{cls:'flat',txt:'offline'}, sub:'—' },
+    silver1kg != null ? { label:'Silver / kg', val: mktFmt(silver1kg, '₹', 0), delta:{cls:'flat',txt:'999 fine'}, sub:'gold-api · live spot' } : { label:'Silver / kg', val:'—', delta:{cls:'flat',txt:'offline'}, sub:'—' }
+  ];
+  row.innerHTML = cards.map(c => `<div class="lm-card"><span class="lm-label">${esc(c.label)}</span><span class="lm-val">${esc(c.val)}</span><span class="lm-delta ${c.delta.cls}">${esc(c.delta.txt)}</span><span class="lm-sub">${esc(c.sub)}</span></div>`).join('');
+}
+async function bcsRefreshMarket(silent){
+  const [rty, nifty, usd, xau, xag] = await Promise.all([
+    bcsFetchChart('^CNXREALTY'),
+    bcsFetchChart('^NSEI'),
+    bcsFetchJson('https://open.er-api.com/v6/latest/USD'),
+    bcsFetchJson('https://api.gold-api.com/price/XAU'),
+    bcsFetchJson('https://api.gold-api.com/price/XAG')
+  ]);
+  const snapshot = { at: Date.now(), rty, nifty, usdInr: usd && usd.rates && usd.rates.INR ? Number(usd.rates.INR) : null, goldUsd: xau && xau.price ? Number(xau.price) : null, silverUsd: xag && xag.price ? Number(xag.price) : null };
+  mktSaveSnapshot(snapshot);
+  renderLiveMarket(snapshot);
+  try{ renderDataStatus(); }catch(e){}
+  if(!silent) toast('Market refreshed');
+  return snapshot;
+}
+function initMarketStrip(){
+  try{
+    const b = $('#liveMarketRefresh'); if(b) b.addEventListener('click', () => bcsRefreshMarket(false));
+    const cached = mktLoadSnapshot();
+    if(cached) renderLiveMarket(cached);
+    bcsRefreshMarket(true);
+  }catch(e){ console.warn('[BCS mkt]', e); }
+}
+function renderDataStatus(){
+  const wrap = $('#dataStatusWrap'); if(!wrap) return;
+  const market = mktLoadSnapshot();
+  const newsAt = (typeof liveState !== 'undefined' && liveState && liveState.fetchedAt) ? liveState.fetchedAt : 0;
+  const wxAt = window.__bcsWeatherAt || 0;
+  const syncAt = (function(){ try{ const c = JSON.parse(localStorage.getItem('bcs_sync_v1') || '{}'); return Math.max(c.lastPush || 0, c.lastPull || 0); }catch(e){ return 0; } })();
+  const rows = [
+    { name:'Live market (Nifty / Realty / Gold / FX)', note:'Yahoo Finance + gold-api + open.er-api.com — refreshed auto every 15 min', at: market && market.at, label: market ? 'LIVE' : 'NOT FETCHED YET' },
+    { name:'Jaipur weather & AQI', note:'Open-Meteo — refreshes hourly', at: wxAt, label: wxAt ? 'LIVE' : 'OFFLINE' },
+    { name:'Live news feed (Google + ET Now)', note:'Google News proxy — refreshes every 15 min while app is visible', at: newsAt, label: newsAt ? 'LIVE' : 'NOT FETCHED' },
+    { name:'Cloud sync (Gist)', note:'GitHub Gist — every change pushes automatically when online', at: syncAt, label: syncAt ? 'SYNCED' : 'NOT SET' }
+  ];
+  wrap.innerHTML = `
+    <div class="ds-card" style="margin-bottom:14px">
+      <h4>Data status — sab cheezein kitni fresh hain <button type="button" class="btn ghost sm" id="dsRefreshAll">↻ Refresh all</button></h4>
+      <div class="ds-rows">${rows.map(r => `<div class="ds-row ${r.at && Date.now() - r.at < 30*60*1000 ? '' : 'stale'}"><span class="ds-dot"></span><span class="ds-name">${esc(r.name)}</span><span class="ds-note">${esc(r.note)}</span><span class="ds-updated">${r.at ? mktTimeAgo(r.at) : 'never'} · ${esc(r.label)}</span></div>`).join('')}</div>
+    </div>`;
+  const btn = $('#dsRefreshAll');
+  if(btn) btn.addEventListener('click', () => { bcsRefreshMarket(true); try{ renderJaipurWeather(); }catch(e){} try{ fetchLiveNews('jaipur'); }catch(e){} toast('Sab refresh kar rahe hain'); });
+}
+/* Boot + auto-refresh wiring */
+initMarketStrip();
+
+document.addEventListener('visibilitychange', () => {
+  if(document.visibilityState !== 'visible') return;
+  try{ bcsRefreshMarket(true); }catch(e){}
+  try{ if(typeof renderDataStatus === 'function') renderDataStatus(); }catch(e){}
+});
+setInterval(() => { try{ bcsRefreshMarket(true); }catch(e){} }, MKT_REFRESH_MS);
+
 /* ---------- PWA: offline shell + persistent storage ---------- */
 if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
   window.addEventListener('load', () => {
