@@ -5818,6 +5818,31 @@ body[data-theme="dark"] .hero-life{background:#1C1C1E !important}
 }
 
 
+/* ============================================================
+   BCS Design System v53 — 3 Pillars (Developers/Projects/Advisors)
+   Whole desk revolves around backbone → products → money
+   ============================================================ */
+#nav .pillar{position:relative;border:1px solid color-mix(in srgb, var(--acc) 18%, var(--hair)) !important}
+#nav .pillar .nav-tag{
+  font-style:normal !important;font-size:8px !important;font-weight:800 !important;letter-spacing:.1em !important;text-transform:uppercase !important;
+  padding:2px 6px !important;border-radius:999px !important;margin-left:2px !important;
+  background:color-mix(in srgb, var(--acc) 12%, transparent) !important;color:var(--acc-deep) !important;
+  border:1px solid color-mix(in srgb, var(--acc) 18%, transparent) !important;
+}
+body[data-theme="dark"] #nav .pillar .nav-tag{color:var(--acc) !important}
+#nav .pillar-bb .nav-ic{background:color-mix(in srgb, #2F8F6B 14%, transparent) !important;color:#2F6644 !important}
+#nav .pillar-product .nav-ic{background:color-mix(in srgb, var(--acc) 14%, transparent) !important;color:var(--acc-deep) !important}
+#nav .pillar-money .nav-ic{background:color-mix(in srgb, #54779E 14%, transparent) !important;color:#3F66A8 !important}
+body[data-theme="dark"] #nav .pillar-bb .nav-ic{color:#5BD6A8 !important}
+body[data-theme="dark"] #nav .pillar-money .nav-ic{color:#9AB8FF !important}
+#nav .pillar.on{border-color:var(--acc) !important}
+.hero-life .pillar-stat{border-color:rgba(231,196,110,.4) !important;background:rgba(231,196,110,.10) !important}
+.hero-life .pillar-stat span{color:#F1D992 !important;font-size:10px !important}
+.nav-more-panel{grid-template-columns:repeat(4,minmax(0,1fr)) !important;min-width:640px !important}
+@media (max-width:1100px){.nav-more-panel{min-width:0 !important;grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
+@media (max-width:640px){.nav-more-panel{grid-template-columns:1fr 1fr !important}}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -5977,9 +6002,10 @@ body[data-theme="dark"] .hero-life{background:#1C1C1E !important}
   <div class="hwrap hwrap-nav">
     <nav id="nav" role="navigation" aria-label="BCS desk pages">
       <button type="button" data-view="dashboard" class="on" aria-current="page"><span class="nav-ic" aria-hidden="true">⌂</span>Dashboard</button>
+      <button type="button" data-view="projects" class="pillar pillar-product"><span class="nav-ic" aria-hidden="true">▣</span>Projects<i class="nav-tag">Products</i></button>
+      <button type="button" data-view="developers" class="pillar pillar-bb"><span class="nav-ic" aria-hidden="true">◈</span>Developers<i class="nav-tag">Backbone</i></button>
+      <button type="button" data-view="advisors" class="pillar pillar-money"><span class="nav-ic" aria-hidden="true">◎</span>Advisors<i class="nav-tag">Money</i></button>
       <button type="button" data-view="advisory"><span class="nav-ic" aria-hidden="true">✦</span>Advisory</button>
-      <button type="button" data-view="projects"><span class="nav-ic" aria-hidden="true">▣</span>Projects</button>
-      <button type="button" data-view="developers"><span class="nav-ic" aria-hidden="true">◈</span>Developers</button>
       <button type="button" data-view="clients"><span class="nav-ic" aria-hidden="true">◐</span>Clients</button>
       <button type="button" data-view="dayplan"><span class="nav-ic" aria-hidden="true">◷</span>Day Plan</button>
       <button type="button" data-view="pulse"><span class="nav-ic" aria-hidden="true">↗</span>Market Pulse<span class="nav-dot gold" aria-hidden="true"></span></button>
@@ -5988,7 +6014,6 @@ body[data-theme="dark"] .hero-life{background:#1C1C1E !important}
       <div class="nav-more-wrap">
         <button type="button" id="navMoreBtn" aria-haspopup="true" aria-expanded="false"><span class="nav-ic" aria-hidden="true">▤</span>More<span class="nav-chev" aria-hidden="true">▾</span></button>
         <div class="nav-more-panel" id="navMorePanel" hidden>
-          <button type="button" data-view="advisors"><span class="nav-ic" aria-hidden="true">◎</span>Advisors</button>
           <button type="button" data-view="partners"><span class="nav-ic" aria-hidden="true">◉</span>Partners</button>
           <button type="button" data-view="resale"><span class="nav-ic" aria-hidden="true">⇌</span>Resale</button>
           <button type="button" data-view="analytics"><span class="nav-ic" aria-hidden="true">▥</span>Analytics</button>
@@ -6011,7 +6036,7 @@ body[data-theme="dark"] .hero-life{background:#1C1C1E !important}
       <div class="intro-main">
         <div class="eyebrow" id="dashEyebrow">BCS · Jaipur portfolio</div>
         <h2>Every developer, every plot,<br><em>one clear view.</em></h2>
-        <p>Prices, approvals, people aur payments — ek hi control room. Jo change save hota hai, wahi sab pages mein live reflect hota hai.</p>
+        <p><b>Developers backbone · Projects products · Advisors money machines</b> — baaki sab complementary. Jo change save hota hai, wahi live reflect hota hai.</p>
         <button type="button" id="heroFocusLine" class="hero-focus" aria-live="polite"><span class="hero-focus-dot"></span><span>Today ka focus load ho raha hai…</span></button>
         <div class="intro-cta hero-actions">
           <button class="btn primary" data-goto="advisory">Start client advisory →</button>
@@ -6025,9 +6050,9 @@ body[data-theme="dark"] .hero-life{background:#1C1C1E !important}
       </div>
       <div class="intro-right">
         <div class="intro-stats">
-          <button type="button" class="istat hero-stat" data-goto="developers" title="Open developers"><b id="statDevs">0</b><span>Developers</span></button>
-          <button type="button" class="istat hero-stat" data-goto="projects" title="Open projects"><b id="statProjects">0</b><span>Projects</span></button>
-          <button type="button" class="istat hero-stat" data-goto="advisors" title="Open advisors"><b id="statAdvisors">0</b><span>Active advisors</span></button>
+          <button type="button" class="istat hero-stat pillar-stat" data-goto="developers" title="Open developers — backbone"><b id="statDevs">0</b><span>Developers · backbone</span></button>
+          <button type="button" class="istat hero-stat pillar-stat" data-goto="projects" title="Open projects — products"><b id="statProjects">0</b><span>Projects · products</span></button>
+          <button type="button" class="istat hero-stat pillar-stat" data-goto="advisors" title="Open advisors — money machines"><b id="statAdvisors">0</b><span>Advisors · money</span></button>
           <button type="button" class="istat hero-stat" data-goto="clients" title="Open clients"><b id="statClients">0</b><span>Clients</span></button>
           <button type="button" class="istat hero-stat" data-goto="analytics" title="Open analytics"><b id="statValue">—</b><span>Price range</span></button>
         </div>
@@ -10984,7 +11009,7 @@ function showOverlay(id){
   el.style.zIndex = overlayZ;
   el.classList.add('on');
 }
-var BCS_MORE_SET = ['advisors','partners','resale','analytics','tax','terminology','links','templates','health'];
+var BCS_MORE_SET = ['partners','resale','analytics','tax','terminology','links','templates','health'];
 function bcsNavMoreSync(){
   try{
     const mb = $('#navMoreBtn');
