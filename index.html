@@ -7257,19 +7257,6 @@ body[data-theme="dark"] .cal-chip.task{color:#F5F5F7 !important}
    ============================================================ */
 
 /* ---------- 1. Scroll progress bar ---------- */
-.scrollbar-progress{
-  position:fixed !important;
-  top:0 !important;
-  left:0 !important;
-  height:3px !important;
-  width:0% !important;
-  background:linear-gradient(90deg, var(--gold), #F3D27A 40%, var(--gold-deep)) !important;
-  z-index:9999 !important;
-  pointer-events:none !important;
-  box-shadow:0 1px 6px rgba(165,123,54,.45) !important;
-  transition:width .12s linear !important;
-}
-
 /* ---------- 2. View entrance animation ---------- */
 .view{position:relative !important}
 .view.on{animation:bcsViewEnter .45s cubic-bezier(.22,1,.36,1) both !important}
@@ -7416,7 +7403,7 @@ body[data-theme="dark"] .panel-head h4{color:#F5F5F7 !important}
 
 /* ---------- 16. Print stylesheet ---------- */
 @media print{
-  nav,header,.tooldock,.toast,.scrollbar-progress,.hero-ticker{display:none !important}
+  nav,header,.tooldock,.toast,#scrollProg,.hero-ticker{display:none !important}
   main{padding:0 !important}
   .panel,.dash-card,.calc-card{break-inside:avoid !important; box-shadow:none !important; border:1px solid #E5EAE8 !important}
 }
@@ -7425,7 +7412,7 @@ body[data-theme="dark"] .panel-head h4{color:#F5F5F7 !important}
 @media (prefers-reduced-motion: reduce){
   .btn.primary::after,.btn.gold::after{display:none !important}
   .view.on{animation:none !important}
-  .scrollbar-progress{transition:none !important}
+  #scrollProg{transition:none !important}
 }
 
 /* ---------- 18. Smooth section scroll anchoring ---------- */
@@ -7658,7 +7645,7 @@ nav button.on{
 
 /* ---------- 13. Print-friendly ---------- */
 @media print{
-  .ripple,.confetti-layer,.scrollbar-progress{display:none !important}
+  .ripple,.confetti-layer,#scrollProg{display:none !important}
   .view{animation:none !important}
 }
 
@@ -7945,6 +7932,10 @@ body[data-theme="dark"] .mini-day.today span,.mini-day.today i{color:rgba(29,27,
 /* ============================================================ */
 
 
+/* BCS v79 — put native scroll bar above header */
+#scrollProg{z-index:9999 !important; top:0 !important; height:3px !important}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -7963,7 +7954,6 @@ body[data-theme="dark"] .mini-day.today span,.mini-day.today i{color:rgba(29,27,
 </style>
 </head>
 <body class="locked">
-  <div class="scrollbar-progress" id="scrollProgress" aria-hidden="true"></div>
 
 <div class="lock on" id="lockScreen">
   <div class="lock-card" id="lockCard">
@@ -9390,7 +9380,7 @@ try{
         </div>
         <div class="pulse-frame-wrap">
           <div class="pulse-loader" id="pulseLoader"><b>Market Pulse loading…</b><span>Source site khul rahi hai — agar blank rahe to neeche “Open” use karo (koi sites framing block karti hain).</span><div class="sk sk-line w85" style="height:14px"></div><div class="sk sk-line w60" style="height:10px"></div></div>
-          <iframe id="pulseFrame" src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum + Square Yards + 2bigha + PropertyWala" loading="lazy" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox" style="opacity:0.35"></iframe>
+          <iframe id="pulseFrame" src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum + Square Yards + 2bigha + PropertyWala" loading="lazy" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" style="opacity:0.35"></iframe>
         </div>
         <div class="pulse-fallback" id="pulseFallback"><span>Frame blank hai? Source site framing block kar rahi ho sakti hai — </span><a href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">Open in new tab ↗</a><span>· Stats upar BCS summary me hain, data loss nahi.</span></div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center">
@@ -10788,7 +10778,7 @@ try{
     <div class="nread-bar" id="nReadBar"></div>
     <div class="nread-site" id="nReadSite">
       <div class="nread-site-note" id="nReadSiteNote">Live website preview · agar page blank dikhe to “Open original” dabayein.</div>
-      <iframe id="nReadFrame" title="News website preview" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"></iframe>
+      <iframe id="nReadFrame" title="News website preview" referrerpolicy="no-referrer" sandbox="allow-scripts allow-popups allow-forms allow-popups-to-escape-sandbox"></iframe>
       <div class="nread-text" id="nReadText" style="display:none"></div>
     </div>
     <div class="nread-editorial" id="nReadEditorial"></div>
@@ -25933,23 +25923,6 @@ try{
   if(qv && document.querySelector('#view-' + qv)) go(qv);
 }catch(e){}
 
-/* BCS v76 — Scroll progress bar */
-(function(){
-  "use strict";
-  var bar = document.getElementById('scrollProgress');
-  if(!bar) return;
-  var raf = null;
-  function update(){
-    var doc = document.documentElement;
-    var max = Math.max(1, doc.scrollHeight - doc.clientHeight);
-    var pct = (doc.scrollTop || window.scrollY || 0) / max * 100;
-    bar.style.width = pct + '%';
-    raf = null;
-  }
-  window.addEventListener('scroll', function(){ if(!raf) raf = requestAnimationFrame(update); }, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-})();
 
 
 /* BCS v79 — Ripple click feedback + confetti flash on key actions */
