@@ -7767,6 +7767,13 @@ body[data-theme="dark"] .ds-card{background:#1C1C1E;border-color:rgba(255,255,25
 body[data-theme="dark"] .ds-row{background:#232326;border-color:rgba(255,255,255,.08)}
 body[data-theme="dark"] .ds-row .ds-name{color:#F5F5F7}
 @media (max-width:720px){.ds-row .ds-note{display:none}.ds-row{flex-wrap:wrap}.ds-row .ds-updated{flex-basis:100%;text-align:right;margin-top:2px}}
+
+.embed-deck-wrap{background:linear-gradient(145deg,#1B201B,#0F110F 70%);color:#F6F2E7;background:radial-gradient(120% 120% at 20% 6%,#1F281F,#0F110F 74%)!important;color:#F6F2E7}
+
+.live-read-btn{display:inline-flex;align-items:center;gap:4px;font-weight:800;color:var(--gold-deep, #8A6A2E);font-size:11px;border:0;background:none;padding:6px 0;cursor:pointer;letter-spacing:-.005em;transition:.18s}
+.live-read-btn:hover{color:var(--ink);transform:translateY(-1px)}
+body[data-theme="dark"] .live-read-btn{color:#E7C46E}
+body[data-theme="dark"] .live-read-btn:hover{color:#F5F5F7}
 /* ============================================================
    BCS NAV v80 — Modern navigation bar polish
    ============================================================ */
@@ -9069,6 +9076,24 @@ try{
       </form>
       <p class="yt-note">Player me youtube-nocookie embed chalta hai — koi tracking nahi. Channel links naya tab kholte hain.</p>
     </div>
+<div class="overlay" id="embedDeckModal" role="dialog" aria-modal="true" aria-labelledby="embedDeckTitle">
+  <div class="modal" style="width:min(1200px,100%);height:min(82vh,900px)">
+    <div class="modal-head" style="gap:12px">
+      <button type="button" class="xbtn" data-close="embedDeckModal" aria-label="Close">✕</button>
+      <h3 id="embedDeckTitle" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">In-app view</h3>
+      <a class="btn ghost sm" id="embedDeckOpen" href="https://google.com" target="_blank" rel="noopener noreferrer">↗ Open original</a>
+    </div>
+    <div class="modal-body" style="padding:0;display:flex;flex-direction:column;height:100%">
+      <div class="embed-deck-wrap" id="embedDeckFallback" hidden style="display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:36px 22px;text-align:center">
+        <b style="font-size:18px">Site embed block kar raha hai</b>
+        <p style="color:var(--mut);max-width:420px">Is publisher ne iframe embedding block kar rakha hai (CSP frame-ancestors / X-Frame-Options). Neeche direct link se original website par padhiye — bilkul vhi content, free.</p>
+        <a class="btn primary" id="embedDeckFallbackLink" href="https://google.com" target="_blank" rel="noopener noreferrer" style="height:42px;padding:0 22px">↗ Open original site</a>
+      </div>
+      <iframe id="embedDeckIframe" title="In-app view" loading="lazy" sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox" referrerpolicy="no-referrer-when-downgrade" style="flex:1;width:100%;border:0;display:block" sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+    </div>
+  </div>
+</div>
+
 <div class="overlay" id="watchChannelModal" role="dialog" aria-modal="true" aria-labelledby="wcModalTitle">
   <div class="modal" style="width:min(560px,100%)">
     <div class="modal-head"><h3 id="wcModalTitle">New channel</h3><button class="xbtn" data-close="watchChannelModal">✕</button></div>
@@ -9559,9 +9584,9 @@ try{
             <div><h4>Latest from ET Realty — videos</h4><p class="yt-note" style="margin:2px 0 0">Source: ET Realty (video hub) — fire hote hi latest videos aayenge.</p></div>
           </div>
           <div class="et-strip" aria-label="ET Realty videos">
-            <div class="et-card"><b>ET Realty Video Hub</b><p>Market leaders se interviews, ground reports aur launch analysis — sab ek jagah. Koi RSS/feed nahi, isi liye seedha page kholo.</p><a class="btn primary sm" href="https://realty.economictimes.indiatimes.com/videos" target="_blank" rel="noopener noreferrer">Watch on ET Realty ↗</a></div>
+            <div class="et-card"><b>ET Realty Video Hub</b><p>Market leaders se interviews, ground reports aur launch analysis — sab ek jagah. Bina tab change, yahin dekho.</p><button type="button" class="btn primary sm" data-embed="https://realty.economictimes.indiatimes.com/videos" data-embed-title="ET Realty — Video Hub">Watch in-app ↗</button></div>
             <div class="et-card"><b>Subscribe-source videos (YouTube)</b><p>Aurum/PropTiger aur ET partners ke latest Jaipur videos — bina tab badle:</p><div style="display:flex;gap:6px;flex-wrap:wrap"><a class="btn ghost sm" href="https://www.youtube.com/results?search_query=ET%20Realty%20Jaipur" target="_blank" rel="noopener noreferrer">ET Realty Jaipur</a><a class="btn ghost sm" href="https://www.youtube.com/results?search_query=Aurum%20Pulse%20Jaipur" target="_blank" rel="noopener noreferrer">Aurum Pulse</a><a class="btn ghost sm" href="https://www.youtube.com/results?search_query=Square+Yards+Jaipur" target="_blank" rel="noopener noreferrer">Square Yards</a></div></div>
-            <div class="et-card"><b>Market videos at a glance</b><p>Track updates from the top three sources — aur yahi data My feed / live Jaipur tab me saved ho sakta hai.</p><a class="btn ghost sm" href="https://www.propertywala.com/news/" target="_blank" rel="noopener noreferrer">PropertyWala News ↗</a></div>
+            <div class="et-card"><b>Market videos at a glance</b><p>Track updates from the top three sources — aur yahi data My feed / live Jaipur tab me saved ho sakta hai.</p><button type="button" class="btn ghost sm" data-embed="https://www.propertywala.com/news/" data-embed-title="PropertyWala News">Read in-app ↗</button></div>
           </div>
         </div>
       </div>
@@ -9611,21 +9636,21 @@ try{
         <h4>Play Podcast</h4>
         <p>Real estate, startup aur finance ke original shows — sunasni aur deep-dive, free.</p>
         <div class="pod-note">Free · Ad-supported · No signup · Browser me chalta hai</div>
-        <div class="pod-foot"><a class="pod-open" href="https://www.playpodcast.net/" target="_blank" rel="noopener noreferrer">Open Play Podcast →</a></div>
+        <div class="pod-foot"><button class="pod-open" type="button" data-embed="https://www.playpodcast.net/" data-embed-title="Play Podcast">Listen Play Podcast in-app →</button></div>
       </div>
       <div class="pod-card">
         <div class="pod-ic" style="background:linear-gradient(140deg,#F5B301,#D98A00);color:#3B2E00">📚</div>
         <h4>Libby by OverDrive</h4>
         <p>10 crore+ ebooks, audiobooks aur magazines — library card se free borrow karke padho/suno, offline bhi.</p>
         <div class="pod-note">Needs: <b>Public library card</b> (free) · Borrow limit + waitlist system</div>
-        <div class="pod-foot"><a class="pod-open" href="https://libbyapp.com" target="_blank" rel="noopener noreferrer">Open Libby →</a></div>
+        <div class="pod-foot"><button class="pod-open" type="button" data-embed="https://libbyapp.com" data-embed-title="Libby — 10 crore+ ebooks &amp; audiobooks">Open Libby in-app →</button></div>
       </div>
       <div class="pod-card">
         <div class="pod-ic" style="background:linear-gradient(140deg,#1F1F1F,#4A3BA6);color:#F1E8FF">🎬</div>
         <h4>Kanopy</h4>
         <p>30,000+ films, documentaries aur world cinema — library/university card se 100% free streaming.</p>
         <div class="pod-note">Needs: <b>Library ya university login</b> · Monthly play credits per library</div>
-        <div class="pod-foot"><a class="pod-open" href="https://www.kanopy.com/en" target="_blank" rel="noopener noreferrer">Open Kanopy →</a></div>
+        <div class="pod-foot"><a class="pod-open" href="https://www.kanopy.com/en" target="_blank" rel="noopener noreferrer">Open Kanopy ↗ <span style="font-size:10px;opacity:.75;font-weight:600">(their site blocks embed)</span></a></div>
       </div>
     </div>
     <div class="sec-head">
@@ -20735,7 +20760,7 @@ function renderLiveNews(){
         <h4>${esc(item.title)}</h4>
         ${item.summary ? `<p>${esc(item.summary)}</p>` : ''}
         <div class="live-foot">
-          <a href="${esc(item.link)}" target="_blank" rel="noopener noreferrer">Read story ↗</a>
+          <button type="button" class="live-read-btn" data-read-url="${esc(item.link)}">Read in-app ↗</button>
           <span class="live-acts">
             <button type="button" class="${saved ? 'saved' : ''}" data-live-save="${i}">${saved ? '✓ Saved' : '＋ Save'}</button>
             <button type="button" class="idea" data-live-idea="${i}">💡 Idea</button>
@@ -26269,6 +26294,38 @@ try{
 
 
 /* ============================================================
+   BCS v84 — Embed Deck: open ANY compatible site inside our app
+   ============================================================ */
+function bcsOpenInApp(title, url){
+  try{
+    const modal = document.getElementById('embedDeckModal');
+    const frame = document.getElementById('embedDeckIframe');
+    const fb = document.getElementById('embedDeckFallback');
+    const fbLink = document.getElementById('embedDeckFallbackLink');
+    const titleEl = document.getElementById('embedDeckTitle');
+    const openEl = document.getElementById('embedDeckOpen');
+    if(!modal) return;
+    if(titleEl) titleEl.textContent = title || 'In-app view';
+    if(openEl) openEl.href = url;
+    if(fbLink) fbLink.href = url;
+    if(frame){ frame.src = url; frame.style.display = 'block'; }
+    if(fb) fb.hidden = true;
+    showOverlay('embedDeckModal');
+    frame.onload = function(){ try{ frame.dataset.loaded = '1'; }catch(e){} };
+  }catch(err){
+    // embed modal unavailable — fall back to new tab
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
+}
+document.addEventListener('click', function(e){
+  const b = e.target.closest('[data-embed]');
+  if(b){ e.preventDefault(); bcsOpenInApp(b.dataset.embedTitle || b.textContent.trim(), b.dataset.embed); }
+}, true);
+document.addEventListener('click', function(e){
+  const b = e.target.closest('[data-read-url]');
+  if(b){ e.preventDefault(); bcsOpenInApp((b.dataset.readUrl && (b.dataset.readUrl.replace(/^https?:\/\//, '').split('/')[0])) || 'Article', b.dataset.readUrl); }
+}, true);
+/* ============================================================
    BCS v80 — Watch Channels + Podcasts + Top headlines strip
    ============================================================ */
 function bcsLoad(){ try{ return db; }catch(e){ return null; } }
@@ -26590,7 +26647,7 @@ function initTopStrip(){
     const src = NEWS_SOURCES.find(s => s.id === 'etnow');
     const items = src ? await fetchLiveFeedRss(src.feed) : [];
     if(!items.length){ strip.innerHTML = '<div class="top-head"><span class="th-src"><i>ET</i>ET NOW</span><b>Feed abhi nahi mila</b><p>ET Now ka RSS temporarily down hai — source desk se direct khol sakte hain.</p><a href="https://www.etnownews.com/real-estate" target="_blank" rel="noopener noreferrer">Open ET Now ↗</a></div>'; return; }
-    strip.innerHTML = items.slice(0, 12).map(it => `<div class="top-head"><span class="th-src"><i>ET</i>ET NOW · ${esc(it.dateLabel || '')}</span><b>${esc(it.title || '')}</b><p>${esc((it.summary || '').slice(0, 120))}</p><a href="${esc(it.link)}" target="_blank" rel="noopener noreferrer">Read on ET Now ↗</a></div>`).join('');
+    strip.innerHTML = items.slice(0, 12).map(it => `<div class="top-head"><span class="th-src"><i>ET</i>ET NOW · ${esc(it.dateLabel || '')}</span><b>${esc(it.title || '')}</b><p>${esc((it.summary || '').slice(0, 120))}</p><button type="button" class="live-read-btn" data-read-url="${esc(it.link)}" style="margin-top:4px">Read in-app ↗</button></div>`).join('');
   }catch(e){
     strip.innerHTML = '<div class="top-head"><span class="th-src"><i>ET</i>ET NOW</span><b>Fetch failed</b><p>Network ya proxy slow hai — retry karo.</p><a href="https://www.etnownews.com/real-estate" target="_blank" rel="noopener noreferrer">Open ET Now ↗</a></div>';
   }
