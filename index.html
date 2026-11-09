@@ -8288,15 +8288,15 @@ body[data-theme="dark"] .dash-card-header .dl-quicklink{background:#D9B45E !impo
   padding:8px 12px !important;align-items:center !important;
   border-bottom:1px solid var(--line) !important;
 }
-.dash-card-header .dlf-cal{
+.dash-card-header .dl-date .dlf-cal{
   flex:0 0 50px !important;width:50px !important;height:50px !important;min-height:50px !important;max-width:none !important;
   border-radius:12px !important;padding:0 !important;gap:0 !important;overflow:hidden !important;
   display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:center !important;
   background:linear-gradient(160deg, var(--olive) 0%, var(--olive) 75%, #4A432B 100%) !important;
   border:0 !important;flex:0 0 auto !important;
 }
-.dash-card-header .dlf-cal-band,.dash-card-header .dlf-cal-week,.dash-card-header .dlf-cal-year{display:none !important}
-.dash-card-header .dlf-cal-day{font-size:21px !important;line-height:1 !important;color:#F6F2E7 !important;font-weight:850 !important;letter-spacing:-.04em !important}
+.dash-card-header .dl-date .dlf-cal-band,.dash-card-header .dl-date .dlf-cal-week,.dash-card-header .dl-date .dlf-cal-year{display:none !important}
+.dash-card-header .dl-date .dlf-cal-day{font-size:21px !important;line-height:1 !important;color:#F6F2E7 !important;font-weight:850 !important;letter-spacing:-.04em !important}
 .dash-card-header .dl-meta{
   flex-direction:column !important;align-items:flex-start !important;justify-content:center !important;
   gap:2px !important;min-width:0 !important;flex:0 0 auto !important;
@@ -8309,12 +8309,13 @@ body[data-theme="dark"] .dash-card-header .dl-quicklink{background:#D9B45E !impo
 .dash-card-header .miniweek{display:none !important}
 
 .dash-card-header .dl-quote{
-  flex:1 1 auto !important;flex-direction:row !important;align-items:center !important;justify-content:center !important;
+  flex:1 1 auto !important;flex-direction:row !important;align-items:center !important;justify-content:center !important;min-height:0 !important;
   text-align:center !important;padding:0 12px !important;gap:8px !important;min-width:0 !important;
   border-right:1px solid var(--line) !important;border-left:1px solid var(--line) !important;
 }
 .dash-card-header .dl-quote .th-qmark{font-size:14px !important;color:var(--gold) !important;flex:none !important;align-self:flex-start !important;line-height:1 !important;margin-top:1px !important}
 .dash-card-header .dl-quote p{
+  min-height:0 !important;
   font-size:13px !important;line-height:1.3 !important;font-family:'DM Sans',sans-serif !important;font-weight:600 !important;
   margin:0 !important;flex:0 1 auto !important;-webkit-line-clamp:2 !important;display:-webkit-box !important;
   -webkit-box-orient:vertical !important;overflow:hidden !important;min-width:0 !important;text-wrap:balance !important;
@@ -8324,6 +8325,7 @@ body[data-theme="dark"] .dash-card-header .dl-quicklink{background:#D9B45E !impo
 .dash-card-header .th-qrefresh:hover{background:color-mix(in oklab, var(--gold) 14%, transparent) !important;color:var(--gold-deep) !important;border-color:var(--gold) !important}
 
 .dash-card-header .dl-weather{
+  margin:0 !important;
   flex:none !important;flex-direction:row !important;flex-wrap:wrap !important;gap:4px !important;justify-content:flex-end !important;
   max-width:280px !important;align-content:flex-start !important;
 }
@@ -8414,8 +8416,8 @@ body[data-theme="dark"] .dash-card-header .dl-mini-btn{background:rgba(255,255,2
   .dash-card-header .dlf-name-en{display:none !important}
 }
 @media (max-width:640px){
-  .dash-card-header .dlf-cal{width:44px !important;height:44px !important}
-  .dash-card-header .dlf-cal-day{font-size:18px !important}
+  .dash-card-header .dl-date .dlf-cal{width:44px !important;height:44px !important}
+  .dash-card-header .dl-date .dlf-cal-day{font-size:18px !important}
   .dash-card-header .dl-greet{font-size:12px !important}
   .dash-card-header .dl-line{font-size:8.5px !important;max-width:130px !important}
   .dash-card-header .dl-quote p{font-size:11.5px !important}
