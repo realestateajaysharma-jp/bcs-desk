@@ -28368,7 +28368,7 @@ try{
       document.body.appendChild(el);
       el.querySelector('#mpPlay').addEventListener('click', toggleMiniPlay);
       el.querySelector('#mpExpand').addEventListener('click', expandMiniPlayer);
-      el.querySelector('#mpClose').addEventListener('click', () => closeMiniPlayer(true));
+      el.querySelector('#mpClose').addEventListener('click', () => window.closeMiniPlayer(true));
     }catch(e){}
   }
   function pauseMedia(frame){
