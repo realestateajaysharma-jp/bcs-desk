@@ -4848,6 +4848,104 @@ main{max-width:100% !important;margin-left:0 !important;margin-right:0 !importan
 @media (min-width:1700px){.pulse-strip{grid-template-columns:repeat(4,1fr) !important}}
 
 
+/* ============================================================
+   BCS Design System v11 — Motion tuning + Dark/Light QA sweep
+   Page transitions, scroll reveals, unified readability
+   ============================================================ */
+html{scroll-padding-top:150px;scroll-behavior:smooth}
+/* --- motion: page transitions (vertical, no side slide) --- */
+.view{will-change:opacity,transform}
+.view.on{animation:bcsViewIn .5s var(--ease, cubic-bezier(.28,.84,.42,1)) both !important}
+@keyframes bcsViewIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.view.on > *:nth-child(1){animation:bcsFadeUp .55s .02s var(--ease, cubic-bezier(.28,.84,.42,1)) both}
+.view.on > *:nth-child(2){animation:bcsFadeUp .55s .07s var(--ease, cubic-bezier(.28,.84,.42,1)) both}
+.view.on > *:nth-child(3){animation:bcsFadeUp .55s .12s var(--ease, cubic-bezier(.28,.84,.42,1)) both}
+.view.on > *:nth-child(4){animation:bcsFadeUp .55s .17s var(--ease, cubic-bezier(.28,.84,.42,1)) both}
+.view.on > *:nth-child(5){animation:bcsFadeUp .55s .22s var(--ease, cubic-bezier(.28,.84,.42,1)) both}
+.view.on > *:nth-child(n+6){animation:bcsFadeUp .55s .27s var(--ease, cubic-bezier(.28,.84,.42,1)) both}
+/* scroll reveals (JS adds .inview, graceful if no JS) */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease, cubic-bezier(.28,.84,.42,1)),transform .6s var(--ease, cubic-bezier(.28,.84,.42,1))}
+.reveal.inview{opacity:1;transform:translateY(0)}
+/* unified micro-interactions */
+.btn,.icon-btn,#nav button,.viewbtn,.dtab,.seg button,.live-chip,.shortbtn,.dl-mini-btn,.dl-quicklink,.side-btn,.toolpop,button{
+  transition:transform .18s var(--ease, cubic-bezier(.28,.84,.42,1)),box-shadow .2s,background .2s,border-color .2s,color .2s,opacity .2s !important;
+}
+.btn:hover,.icon-btn:hover,#nav button:hover,.viewbtn:hover,.shortbtn:hover{transform:translateY(-1px)}
+.btn:active,.icon-btn:active,#nav button:active,.viewbtn:active,.dtab:active{transform:translateY(0) scale(.975)}
+.panel,.cat-card,.live-card,.idea-card,.pulse-card,.calc-card,.adv-card,.dev-card,.client-card,.advisor-card,.partner-card,.resale-card,.tm-card,.an-card,.health-card,.kpi,.tile,.cov-card,.link-item,.tpl-card,.fest-card,.booking-card,.dev-kcard,.kb-card,.news-card,.proj-card{
+  transition:transform .28s var(--ease, cubic-bezier(.28,.84,.42,1)),box-shadow .3s,border-color .25s,background .25s !important;
+}
+.overlay{transition:background .3s !important}
+.overlay.on .modal{animation:bcsModalSpring .38s cubic-bezier(.22,1.2,.36,1) both !important}
+@keyframes bcsModalSpring{from{opacity:0;transform:translateY(22px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+.toast{transition:transform .3s var(--ease, cubic-bezier(.28,.84,.42,1)),opacity .25s !important}
+input,select,textarea{transition:border-color .18s,box-shadow .18s,background .18s !important}
+a{transition:color .15s,opacity .15s !important}
+/* focus is never invisible */
+:focus-visible{outline:2px solid color-mix(in srgb, var(--acc) 55%, transparent) !important;outline-offset:2px !important;box-shadow:0 0 0 4px color-mix(in srgb, var(--acc) 16%, transparent) !important;border-radius:8px}
+::placeholder{opacity:1 !important}
+/* ---------- QA SWEEP: every surface readable in both themes ---------- */
+body[data-theme="light"] :is(.kpi,.adv-card,.pcard,.dcell,.ddev,.present-sheet,.present-actions,.form-tabs,.detail-tabs,.cor-count,.dev-row .cnt,.viewbtn,.pc,.amen-chip,.conn-row input,.conn-actions select,.unit-chip,.dchip,.dl-quicklink,.dl-mini-btn,.dl-month-head button,.bchip,.shortbtn,.cor-card,.tile,.link-item,.tpl-card,.fest-card,.booking-card,.client-card,.dev-kcard,.kb-card,.news-card,.proj-card,.hub-row,.sen-row,.cov-card){
+  background:var(--panel) !important;border-color:var(--line) !important;color:var(--ink) !important;
+}
+body[data-theme="light"] :is(.cor-count,.dev-row .cnt,.pcard .tag,.dev-card .chip,.bchip,.shortbtn,.present-ptag,.dchip,.amen-chip,.unit-chip,.dtab .n,.cor-count){
+  background:color-mix(in srgb, var(--acc) 8%, white) !important;color:var(--ink2) !important;border-color:var(--line) !important;
+}
+body[data-theme="light"] :is(.present-sheet,.dcell,.ddev,.pc,.form-tabs,.detail-tabs,.adv-card,.pcard){background:#FFFFFF !important}
+body[data-theme="dark"] :is(
+  .kpi,.adv-card,.pcard,.dcell,.ddev,.present-sheet,.present-actions,.form-tabs,.detail-tabs,
+  .cor-count,.dev-row .cnt,.viewbtn,.pc,.amen-chip,.conn-row input,.conn-actions select,.unit-chip,.dchip,
+  .dl-quicklink,.dl-mini-btn,.dl-month-head button,.bchip,.shortbtn,.cor-card,.tile,.link-item,.tpl-card,
+  .fest-card,.booking-card,.client-card,.dev-kcard,.kb-card,.news-card,.proj-card,.hub-row,.sen-row,.cov-card,
+  .cat-card,.dev-card,.an-card,.panel,.dash-card,.modal,.lock-card,.toolpop,.qa-pop,.toast
+){background:var(--panel) !important;border-color:var(--line) !important;color:var(--ink) !important}
+body[data-theme="dark"] :is(.cor-count,.dev-row .cnt,.pcard .tag,.dev-card .chip,.bchip,.shortbtn,.present-ptag,.dchip,.amen-chip,.unit-chip,.dtab .n,.pcard .badge){
+  background:color-mix(in srgb, var(--acc) 14%, #1C1C1E) !important;color:var(--ink) !important;border-color:var(--line) !important;
+}
+body[data-theme="dark"] :is(.dl-quicklink,.dl-mini-btn,.dl-month-head button,.viewbtn,.shortbtn){
+  background:color-mix(in srgb, var(--acc) 12%, #1C1C1E) !important;color:var(--acc) !important;border-color:color-mix(in srgb, var(--acc) 28%, transparent) !important;
+}
+body[data-theme="dark"] :is(.dl-date,.dl-time,.dl-festival,.dl-merged-bottom,.dl-quote,.dl-weather,.miniweek,.mini-month-day,.cal-cell,.mark-row,.cal-chip,.cal-chip.mark-leave,.cal-chip.mark-booked,.cal-chip.mark-busy,.cal-chip.mark-custom){
+  background:rgba(28,28,30,.9) !important;border-color:var(--line) !important;color:var(--ink) !important;
+}
+body[data-theme="dark"] :is(.dlf-badge,.dlf-today-chip,.wx-mark,.wx-day,.th-quote,.dl-greet,.dl-hi,.dl-line,.dl-sub,.dl-zone,.dl-detail,.dl-next){
+  color:var(--mut) !important;background:transparent !important;border-color:transparent !important;
+}
+body[data-theme="dark"] :is(.dl-clock,.dlf-greet-hi,.dlf-greet-en,.panel-head h4,.an-card-head h4,.sec-head h3){
+  color:var(--ink) !important;
+}
+body[data-theme="dark"] table th{background:#232326 !important;color:var(--mut) !important}
+body[data-theme="dark"] table td{color:var(--ink) !important}
+body[data-theme="dark"] .an-table tbody tr:hover{background:rgba(255,255,255,.05) !important}
+body[data-theme="dark"] input,body[data-theme="dark"] select,body[data-theme="dark"] textarea{background:#1C1C1E !important;color:var(--ink) !important;border-color:var(--line) !important}
+body[data-theme="dark"] .seg button.on{background:var(--acc) !important;color:#0E110E !important;border-color:var(--acc) !important}
+body[data-theme="dark"] .lock{background:radial-gradient(800px 500px at 50% -10%, rgba(229,190,98,.1), transparent 60%), #000000 !important}
+body[data-theme="dark"] .lock-card{background:linear-gradient(180deg,#232326,#1C1C1E) !important;border-color:rgba(255,255,255,.1) !important;color:var(--ink) !important}
+body[data-theme="dark"] .lock-hint{color:var(--mut) !important}
+body[data-theme="dark"] .lock-note{color:var(--mut) !important}
+body[data-theme="dark"] .toast{background:rgba(28,28,30,.92) !important;color:var(--ink) !important;border-color:var(--line) !important}
+body[data-theme="dark"] .tooldock{background:rgba(28,28,30,.92) !important;border-color:var(--line) !important}
+body[data-theme="dark"] .dock-btn{color:var(--ink) !important}
+body[data-theme="dark"] ::placeholder{color:#9A9AA0 !important}
+body[data-theme="light"] ::placeholder{color:#8E8E93 !important}
+body[data-theme="light"] :is(.adv-empty,.inv-empty,.live-empty,.an-empty,.qnote-block,.tpl-toolbar,.mini-empty,.unit-empty){
+  background:#FFFFFF !important;color:var(--mut) !important;border-color:var(--line) !important;
+}
+body[data-theme="dark"] :is(.adv-empty,.inv-empty,.live-empty,.an-empty,.qnote-block,.tpl-toolbar,.mini-empty,.unit-empty){
+  background:rgba(28,28,30,.9) !important;color:#C7C7CC !important;border-color:var(--line) !important;
+}
+/* light muted contrast (small text) */
+body[data-theme="light"]{--mut:#636366}
+body[data-theme="dark"]{--mut:#AEAEB2}
+a{text-underline-offset:2px}
+button:disabled{opacity:.5 !important}
+@media (prefers-reduced-motion:reduce){
+  .view.on,.view.on > *, .reveal, .overlay.on .modal{animation:none !important}
+  .reveal{opacity:1 !important;transform:none !important}
+  html{scroll-behavior:auto !important}
+}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -22069,6 +22167,24 @@ if(!hadLocalData && !window.indexedDB) save();
 applyRoleChrome();
 render();
 try{ document.body.classList.add('booted'); }catch(e){}
+/* BCS motion: scroll reveals (graceful, reduced-motion safe) */
+try{
+  var _reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!_reduced && 'IntersectionObserver' in window){
+    var _revIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('inview'); _revIO.unobserve(en.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+    function _armReveals(){
+      document.querySelectorAll('.sec-head, .cat-card, .an-card, .kpi, .live-card, .idea-card, .pulse-card, .panel, .calc-card, .adv-card, .senior-grid > *, .senior-panel').forEach(function(el){
+        if(!el.classList.contains('reveal')){ el.classList.add('reveal'); }
+        if(el.classList.contains('inview')) return;
+        _revIO.observe(el);
+      });
+    }
+    _armReveals();
+    new MutationObserver(function(){ _armReveals(); }).observe(document.body, { childList:true, subtree:true });
+  }
+}catch(e){}
 /* BCS scroll progress (Apple hairline) */
 try{
   var _prog = document.getElementById('scrollProg');
