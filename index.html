@@ -7055,6 +7055,203 @@ body[data-theme="dark"] .schedule-day{background:rgba(255,255,255,.04) !importan
 /* ============================================================ */
 
 
+/* BCS v74 — Health: iPhone sync guide + gold share button */
+.btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold-deep)) !important;color:#fff !important;border:1px solid transparent !important;box-shadow:0 10px 22px -12px color-mix(in oklab, var(--gold-deep) 55%, transparent) !important}
+.btn.gold:hover{transform:translateY(-1px) !important;box-shadow:0 14px 28px -12px color-mix(in oklab, var(--gold-deep) 65%, transparent) !important}
+.ios-sync-guide{margin-top:18px !important;max-width:100% !important}
+.ios-sync-guide .guide-grid{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:12px !important;margin-top:12px !important}
+@media (max-width:900px){.ios-sync-guide .guide-grid{grid-template-columns:1fr !important}}
+.guide-step{background:color-mix(in oklab, var(--gold-soft, #F3E8D3) 35%, var(--panel)) !important;border:1px solid var(--hair) !important;border-radius:16px !important;padding:14px 14px 12px !important;display:flex !important;flex-direction:column !important;gap:6px !important}
+.guide-step .guide-num{width:26px;height:26px;border-radius:999px;background:var(--gold) !important;color:#fff !important;font-size:12px;font-weight:800;display:grid;place-items:center}
+.guide-step b{font-size:13px !important}
+.guide-step p{font-size:11.5px !important;color:var(--mut) !important;line-height:1.5 !important;margin:0 !important}
+@media (max-width:720px){.ios-sync-guide .guide-grid{grid-template-columns:1fr !important}}
+
+
+
+
+/* ============================================================
+   BCS v74 — Dashboard overhaul: layout bugs + design refresh
+   Fixes horizontal overflow (header, ticker), tightens vertical
+   rhythm, unifies panels, richer hero, clean section headers.
+   ============================================================ */
+
+/* ---------- 1. Global safety: zero horizontal overflow ---------- */
+html, body{max-width:100vw !important; overflow-x:hidden !important}
+main{max-width:1440px !important; margin:0 auto !important; width:100% !important}
+img, canvas, svg, iframe, video{max-width:100% !important}
+
+/* ---------- 2. Header: buttons wrap instead of overflowing ---------- */
+.hwrap-top{max-width:1440px !important; margin:0 auto !important; flex-wrap:wrap !important; row-gap:8px !important}
+.hbtns{display:flex !important; flex-wrap:wrap !important; justify-content:flex-end !important; align-items:center !important; gap:6px !important; max-width:100% !important; flex:0 1 auto !important}
+.hbtns .btn{white-space:nowrap !important; min-height:36px !important; padding:7px 12px !important; font-size:.82rem !important; border-radius:11px !important}
+.role-chip{white-space:nowrap !important; overflow:hidden !important; text-overflow:ellipsis !important; max-width:190px !important}
+@media (max-width:1280px){
+  .hbtns .lbl{display:none !important}            /* icon-only backup/restore buttons */
+  .hbtns .btn{padding:8px 10px !important}
+  .role-chip{display:none !important}              /* drop the admin chip — nav shows context */
+}
+@media (max-width:1100px){
+  .searchbox{order:3 !important; flex:1 1 100% !important; max-width:100% !important; margin-top:2px !important}
+  .brand{min-width:0 !important}
+  .brand p{display:none !important}
+}
+
+/* ---------- 3. Ticker: full-width fade, never clipped ---------- */
+.hero-ticker{width:100% !important; max-width:100% !important; overflow:hidden !important; position:relative !important; z-index:1 !important}
+.ticker-viewport{flex:1 1 auto !important; min-width:0 !important; overflow:hidden !important}
+.ticker-track{mask-image:linear-gradient(90deg,transparent,black 6%,black 94%,transparent) !important; -webkit-mask-image:linear-gradient(90deg,transparent,black 6%,black 94%,transparent) !important}
+
+/* ---------- 4. Hero: tighter, richer, better balance ---------- */
+.hero-life{
+  border-radius:30px !important;
+  padding:34px 38px 30px !important;
+  background:linear-gradient(150deg,#16251E 0%,#1C2F26 38%,#2F3A20 78%,#4A3A1E 100%) !important;
+  border:1px solid rgba(231,196,110,.24) !important;
+  box-shadow:0 30px 60px -30px rgba(14,26,20,.55), inset 0 1px 0 rgba(255,255,255,.07) !important;
+}
+body[data-theme="dark"] .hero-life{background:linear-gradient(150deg,#101511 0%,#151C16 45%,#1B1F14 78%,#24200F 100%) !important}
+.hero-life h2{
+  font-size:clamp(30px,3.6vw,48px) !important;
+  line-height:1.03 !important;
+  letter-spacing:-.032em !important;
+  text-wrap:balance !important;
+  text-shadow:0 2px 30px rgba(0,0,0,.35) !important;
+}
+.hero-life h2 em{
+  font-style:italic !important;
+  background:linear-gradient(95deg,#F3D98A 0%,#E7C46E 35%,#C99A3E 70%,#A57B36 100%) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  color:transparent !important;
+}
+.hero-life p{font-size:.95rem !important; line-height:1.6 !important; color:rgba(246,242,231,.82) !important; max-width:52ch !important}
+.eyebrow{color:#E7C46E !important; letter-spacing:.18em !important; font-weight:800 !important; font-size:.68rem !important; text-transform:uppercase !important}
+.hero-focus{max-width:640px !important; background:rgba(255,255,255,.08) !important; border-color:rgba(231,196,110,.25) !important; border-radius:14px !important; backdrop-filter:blur(6px) !important; -webkit-backdrop-filter:blur(6px) !important}
+.intro-stats{display:flex !important; gap:10px !important; flex-wrap:wrap !important}
+.hero-stat{
+  flex:1 1 130px !important; min-width:0 !important;
+  background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.05)) !important;
+  border:1px solid rgba(231,196,110,.22) !important;
+  border-radius:16px !important; padding:16px 16px 12px !important; text-align:left !important;
+  transition:transform .25s var(--bcs-ease,cubic-bezier(.22,1,.36,1)) !important;
+}
+.hero-stat:hover{transform:translateY(-2px) !important; background:rgba(255,255,255,.13) !important}
+.hero-stat b{font-size:clamp(1.4rem,2.2vw,1.9rem) !important; color:#FFF4D6 !important; letter-spacing:-.02em !important; white-space:nowrap !important}
+.hero-stat span{color:rgba(231,196,110,.75) !important; font-size:.66rem !important; letter-spacing:.16em !important}
+.hero-actions{gap:10px !important}
+.hero-actions .btn{min-height:38px !important}
+
+/* ---------- 5. Today unified card: polish ---------- */
+.dash-card{border-radius:22px !important; overflow:hidden !important}
+.dash-card-header{border-radius:26px !important}
+.dash-card-header .dl-month::before,
+.dl-festival::before{margin-bottom:8px !important}
+.miniweek{background:transparent !important}
+.dlf-cal-band{box-shadow:inset 0 0 0 1px rgba(0,0,0,.06), 0 2px 8px -4px rgba(0,0,0,.25) !important}
+
+/* ---------- 6. Section headers: clean, consistent ---------- */
+.sec-head{max-width:100% !important; margin:30px 4px 12px !important; gap:12px !important}
+.sec-head h3{
+  font-family:'Fraunces',serif !important;
+  font-size:clamp(1.15rem,1.9vw,1.45rem) !important;
+  font-weight:700 !important;
+  letter-spacing:-.015em !important;
+  color:var(--ink) !important;
+  display:flex !important; align-items:center !important; gap:10px !important;
+}
+body[data-theme="dark"] .sec-head h3{color:var(--c-ink, #F5F5F7) !important}
+.sec-head .sub{font-size:.78rem !important; line-height:1.5 !important}
+.sec-count,
+.cnt{font-variant-numeric:tabular-nums !important}
+
+/* ---------- 7. Panels: unified radius, shadow, padding ---------- */
+.panel, .queue-panel, .journey-panel, .month-panel, .excel-panel, .senior-panel, .pulse-card{
+  border-radius:20px !important;
+}
+.panel:hover, .queue-panel:hover, .senior-panel:hover{border-color:color-mix(in oklab, var(--gold) 30%, var(--line)) !important}
+@media (max-width:1100px){
+  .senior-grid{grid-template-columns:1fr !important}
+  .an-grid{grid-template-columns:1fr !important}
+  .health-grid{grid-template-columns:1fr !important}
+  .ios-sync-guide .guide-grid{grid-template-columns:1fr !important}
+}
+@media (max-width:720px){
+  .panel, .queue-panel, .journey-panel, .month-panel, .excel-panel{padding:14px 12px !important}
+  .sec-head{margin:22px 2px 10px !important}
+  .hero-life{padding:24px 20px !important; border-radius:22px !important}
+}
+
+/* ---------- 8. Command hub: calmer header, better chips ---------- */
+.hub-head{border-bottom:1px solid var(--hair) !important; padding-bottom:12px !important; margin-bottom:14px !important}
+.hub-head h3{font-size:clamp(1.15rem,2vw,1.45rem) !important; letter-spacing:-.02em !important}
+.eyebrow{margin-bottom:4px !important}
+.pulse-card{min-height:96px !important; padding:14px 16px !important; border-radius:18px !important; transition:transform .25s var(--bcs-ease,cubic-bezier(.22,1,.36,1)) !important}
+.pulse-card:hover{transform:translateY(-3px) !important}
+.cmd-bar{border-radius:14px !important}
+
+/* ---------- 9. Two-col & grid helpers ---------- */
+.two-col{display:grid !important; grid-template-columns:1fr 1fr !important; gap:18px !important}
+@media (max-width:980px){.two-col{grid-template-columns:1fr !important}}
+
+/* ---------- 10. Dashboard bottom spacing: no tooldock overlap ---------- */
+#view-dashboard{padding-bottom:40px !important}
+
+/* ---------- 11. Featured project cards: richer ---------- */
+.show-card{border-radius:22px !important}
+.show-card:hover{transform:translateY(-4px) !important; box-shadow:0 26px 50px -24px rgba(46,45,32,.3) !important}
+
+/* ---------- 12. Corridor cards: stronger affordance ---------- */
+.corridor-grid{display:grid !important; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)) !important; gap:14px !important}
+.cor-card{border-radius:20px !important; padding:16px !important; transition:transform .25s var(--bcs-ease,cubic-bezier(.22,1,.36,1)) !important}
+.cor-card:hover{transform:translateY(-3px) !important}
+/* ============================================================ */
+
+
+
+/* ============================================================
+   BCS v75 — Festival cards + upcoming chips: contrast & layout
+   (dark-theme text was near-white on white chips = invisible)
+   ============================================================ */
+
+/* 1) Upcoming festival chips — guaranteed readable in BOTH themes */
+.th-up-item{background:#FFFFFF !important;color:#1D1D1F !important;border-color:rgba(0,0,0,.12) !important}
+.th-up-item b{color:#1D1D1F !important}
+.th-up-item small{color:#6E6E73 !important}
+.th-up-item:hover{background:#FFFBEA !important;border-color:rgba(165,123,54,.45) !important}
+body[data-theme="dark"] .th-up-item{background:#1C1C1E !important;color:#F5F5F7 !important;border-color:rgba(255,255,255,.15) !important}
+body[data-theme="dark"] .th-up-item b{color:#F5F5F7 !important}
+body[data-theme="dark"] .th-up-item small{color:#C9CCD3 !important}
+body[data-theme="dark"] .th-up-item:hover{background:#242426 !important;border-color:rgba(231,196,110,.35) !important}
+
+/* 2) Festival cards — grid can't squeeze badge to nothing */
+.fest-card{
+  flex:0 0 200px !important;
+  grid-template-columns:30px 40px minmax(0,1fr) !important;
+  column-gap:9px !important;
+  background:#FFFFFF !important;
+  border-color:var(--hair) !important;
+}
+.fest-card .fest-copy{min-width:0 !important;overflow:hidden !important}
+.fest-card .fest-copy b,
+.fest-card .fest-copy small,
+.fest-card .fest-days{display:block !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important}
+.fest-card .fest-days{justify-self:start !important;max-width:100% !important}
+body[data-theme="dark"] .fest-card{background:#1C1C1E !important;border-color:rgba(255,255,255,.12) !important}
+body[data-theme="dark"] .fest-card .fest-copy b{color:#F5F5F7 !important}
+body[data-theme="dark"] .fest-card .fest-copy small{color:#C9CCD3 !important}
+body[data-theme="dark"] .fest-days{background:rgba(231,196,110,.14) !important;color:#E7C46E !important;border-color:rgba(231,196,110,.3) !important}
+
+/* 3) Calendar chips (month view) — same invisible-text guard */
+body[data-theme="dark"] .cal-chip{background:#1C1C1E !important}
+body[data-theme="dark"] .cal-chip.task,
+body[data-theme="dark"] .cal-chip.follow,
+body[data-theme="dark"] .cal-chip.book,
+body[data-theme="dark"] .cal-chip.fest,
+body[data-theme="dark"] .cal-chip.task{color:#F5F5F7 !important}
+/* ============================================================ */
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -18573,8 +18770,10 @@ async function downloadBackup(){
   const d = new Date();
   a.download = `bcs-backup-${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}.json`;
   a.click(); URL.revokeObjectURL(a.href);
+  try{ localStorage.setItem('bcs_last_backup', String(Date.now())); }catch(e){}
   toast(count ? `Backup downloaded · ${count} full photos included` : 'Backup downloaded');
   celebrate();
+  try{ renderHealth(); }catch(e){}
 }
 $('#exportBtn').addEventListener('click', () => downloadBackup().catch(() => toast('Backup failed — dobara try karein', true)));
 $('#importBtn').addEventListener('click', () => $('#importFile').click());
@@ -22727,6 +22926,7 @@ function renderHealth(){
         <div style="height:9px;background:#EEF2EF;border-radius:999px;overflow:hidden;margin-top:9px"><i style="display:block;height:100%;width:${Math.max(2, usage.pct).toFixed(0)}%;background:${usage.pct > 85 ? '#B5623F' : usage.pct > 65 ? '#C49A3E' : '#6E9B7C'};border-radius:999px"></i></div>
         <p id="idbStatsLine" style="margin-top:8px;color:var(--mut)">Checking browser DB & quota…</p>
         <p id="persistLine" style="margin-top:4px;color:var(--mut)">Persist (Mac keeps data forever): checking…</p>
+        <p id="lastBackupLine" style="margin-top:4px;color:var(--mut)">Last backup: checking…</p>
         <p style="margin-top:6px;font-size:11px;color:var(--mut);line-height:1.6">Full Local Mode: text DB mirror har save pe browser DB me jata hai, badi photos auto IDB me shift hoti hain (1 GB+). Chrome/Safari me site storage ko persist pe rakho toh Mac saaf karke bhi data safe rahega. Koi cloud limit nahi, koi server nahi — bilkul offline free forever.</p>
         <div class="conn-actions" style="margin-top:10px;flex-wrap:wrap">
           <button class="btn primary sm" id="healthPersistBtn">♾️ Enable Unlimited Local</button>
@@ -22734,9 +22934,17 @@ function renderHealth(){
           <button class="btn ghost sm" id="healthOffloadBtn">Move full images to IDB</button>
           <button class="btn ghost sm" id="healthBackupBtn2">Download JSON backup</button>
           <button class="btn ghost sm" id="healthShareBtn">Share backup</button>
-          
+          <button class="btn gold sm" id="healthShareBtn">⇪ Share backup to iPhone</button>
           <button class="btn ghost sm" id="healthRestoreBtn">Restore from browser DB</button>
         </div>
+      </div>
+    </div>
+    <div class="dsec ios-sync-guide">
+      <div class="dsec-head"><h4>iPhone par sync — 3 simple steps</h4><span class="hint">One-time setup · bas token paste karna hai</span></div>
+      <div class="guide-grid">
+        <div class="guide-step"><span class="guide-num">1</span><b>Mac par cloud connect karein</b><p>Yahin neeche "Cloud sync" card me GitHub token paste karke <b>Connect / Create</b> dabayein — ek private gist create hoga.</p></div>
+        <div class="guide-step"><span class="guide-num">2</span><b>iPhone par same site kholein</b><p><a href="https://realestateajaysharma-jp.github.io/bcs-desk/" target="_blank" rel="noopener">realestateajaysharma-jp.github.io/bcs-desk/</a> iPhone Safari me kholein → Safari ke Share button se <b>Add to Home Screen</b> (PWA ban jayega).</p></div>
+        <div class="guide-step"><span class="guide-num">3</span><b>iPhone par token paste karein</b><p>iPhone ke <b>Health tab → Cloud sync</b> me wahi token paste karke <b>Connect / Create</b> dabayein → <b>Push now</b> / <b>Pull now</b> se data dono devices me sync hoga. Ya backup file <b>⇪ Share</b> se AirDrop karke import kar sakte hain.</p></div>
       </div>
     </div>`;
   $$('#healthBody [data-healthdetail]').forEach(b => b.addEventListener('click', () => openDetail(b.dataset.healthdetail)));
@@ -22780,6 +22988,8 @@ function renderHealth(){
           const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
           const file = new File([blob], `bcs-backup-${todayISO()}.json`, { type: 'application/json' });
           await navigator.share({ files: [file], title: 'BCS Desk backup', text: 'BCS Desk backup file' });
+          try{ localStorage.setItem('bcs_last_backup', String(Date.now())); }catch(e){}
+          try{ renderHealth(); }catch(e){}
         }catch(e){
           if(e && e.name === 'AbortError') return;
           toast('Share not available — use Download JSON backup', true);
@@ -22801,6 +23011,13 @@ function renderHealth(){
   if(restoreBtn) restoreBtn.addEventListener('click', restoreFromIdb);
   const persistBtn = $('#healthPersistBtn');
   if(persistBtn) persistBtn.addEventListener('click', () => { requestFullStorage(); });
+  const lastBak = (function(){ try{ return Number(localStorage.getItem('bcs_last_backup')) || 0; }catch(e){ return 0; } })();
+  const lbEl = $('#lastBackupLine');
+  if(lbEl){
+    lbEl.textContent = lastBak
+      ? 'Last backup: ' + new Date(lastBak).toLocaleString('en-IN', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' })
+      : 'Last backup: abhi tak nahi — upar "Download JSON backup" ya "⇪ Share backup" dabao';
+  }
   if(navigator.storage && navigator.storage.persisted){
     navigator.storage.persisted().then(p => {
       const el = $('#persistLine');
