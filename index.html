@@ -9411,8 +9411,8 @@ main{position:relative; z-index:1}
 }
 .mp-min:hover{background:color-mix(in oklab, var(--gold) 16%, transparent) !important; border-color:color-mix(in oklab, var(--gold) 55%, var(--line)) !important; color:var(--gold-deep) !important; transform:translateY(-1px) !important}
 
-/* ---------- Mini player dock ---------- */
-#miniPlayer{
+/* ---------- Video dock (minimized embed/watch player) ---------- */
+#videoDock{
   position:fixed; right:22px; bottom:22px; z-index:95;
   display:flex; align-items:center; gap:10px;
   padding:10px 12px; border-radius:16px; max-width:min(430px, calc(100vw - 44px));
@@ -9420,23 +9420,23 @@ main{position:relative; z-index:1}
   border:1px solid color-mix(in oklab, var(--gold) 42%, var(--line));
   box-shadow:var(--mod-shadow-lg), 0 0 26px -8px color-mix(in oklab, var(--gold) 45%, transparent);
   backdrop-filter:blur(14px) saturate(1.3); -webkit-backdrop-filter:blur(14px) saturate(1.3);
-  animation:mpIn .26s var(--ease) both;
+  animation:vdIn .26s var(--ease) both;
 }
-#miniPlayer[hidden]{display:none}
-@keyframes mpIn{0%{opacity:0; transform:translateY(16px) scale(.96)}100%{opacity:1; transform:none}}
-.mp-btn{
+#videoDock[hidden]{display:none}
+@keyframes vdIn{0%{opacity:0; transform:translateY(16px) scale(.96)}100%{opacity:1; transform:none}}
+.vd-btn{
   width:38px; height:38px; border-radius:12px; display:grid; place-items:center; flex:none;
   background:linear-gradient(140deg, var(--gold) 0%, var(--gold-deep) 100%); color:#fff; border:0; cursor:pointer;
   font-size:15px; font-weight:800; transition:transform .16s var(--ease), filter .16s;
 }
-.mp-btn:hover{transform:translateY(-2px); filter:brightness(1.1)}
-.mp-btn.ghost{background:color-mix(in oklab, var(--panel) 72%, var(--olive) 12%); border:1px solid var(--line); color:var(--ink2)}
-.mp-btn.ghost:hover{color:var(--gold-deep); border-color:color-mix(in oklab, var(--gold) 50%, var(--line))}
-.mp-meta{display:flex; flex-direction:column; min-width:0; gap:1px; flex:1 1 auto}
-.mp-meta b{font-size:11px; font-weight:800; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:220px; letter-spacing:-.005em}
-.mp-meta span{font-size:8.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--mut); font-weight:750; display:flex; align-items:center; gap:6px}
-.mp-live{display:inline-flex; align-items:center; gap:5px; font-size:8px; font-weight:850; letter-spacing:.14em; color:#4E9E63}
-.mp-live::before{content:""; width:5px; height:5px; border-radius:50%; background:#4E9E63; box-shadow:0 0 6px #4E9E63; animation:livePulse 1.6s ease-in-out infinite}
+.vd-btn:hover{transform:translateY(-2px); filter:brightness(1.1)}
+.vd-btn.ghost{background:color-mix(in oklab, var(--panel) 72%, var(--olive) 12%); border:1px solid var(--line); color:var(--ink2)}
+.vd-btn.ghost:hover{color:var(--gold-deep); border-color:color-mix(in oklab, var(--gold) 50%, var(--line))}
+.vd-meta{display:flex; flex-direction:column; min-width:0; gap:1px; flex:1 1 auto}
+.vd-meta b{font-size:11px; font-weight:800; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:220px; letter-spacing:-.005em}
+.vd-meta span{font-size:8.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--mut); font-weight:750; display:flex; align-items:center; gap:6px}
+.vd-live{display:inline-flex; align-items:center; gap:5px; font-size:8px; font-weight:850; letter-spacing:.14em; color:#4E9E63}
+.vd-live::before{content:""; width:5px; height:5px; border-radius:50%; background:#4E9E63; box-shadow:0 0 6px #4E9E63; animation:livePulse 1.6s ease-in-out infinite}
 
 /* ---------- Toast above everything ---------- */
 #toast{z-index:9000 !important}
@@ -28305,8 +28305,8 @@ try{
       if(pop && !pop.hidden){ pop.hidden = true; return; }
       const more = document.getElementById('navMorePanel');
       if(more && !more.hidden){ more.hidden = true; return; }
-      const mini = document.getElementById('miniPlayer');
-      if(mini && !mini.hidden){ try{ closeMiniPlayer(true); }catch(_){} return; }
+      const vdock = document.getElementById('videoDock');
+      if(vdock && !vdock.hidden){ try{ window.closeVideoDock(true); }catch(_){} return; }
       const open = document.querySelector('.overlay.on');
       if(open){ try{ closeModal(open.id); }catch(_){ open.classList.remove('on'); } return; }
     }catch(err){}
@@ -28351,24 +28351,25 @@ try{
     }
   }catch(e){}
 
-  /* ---------- Mini player dock ---------- */
-  let mpState = null; // {modalId, frame, playing, title}
-  function buildMiniPlayer(){
+  /* ---------- Video dock (minimized embed/watch player) ---------- */
+  let vdState = null; // {modalId, frame, playing, title}
+  function buildVideoDock(){
     try{
+      if(document.getElementById('videoDock')) return;
       const el = document.createElement('div');
-      el.id = 'miniPlayer';
+      el.id = 'videoDock';
       el.hidden = true;
       el.setAttribute('role', 'region');
-      el.setAttribute('aria-label', 'Mini player');
+      el.setAttribute('aria-label', 'Mini video player');
       el.innerHTML =
-        '<button type="button" class="mp-btn" id="mpPlay" aria-label="Play / pause">⏸</button>' +
-        '<div class="mp-meta"><b id="mpTitle">Now playing</b><span id="mpSub"><span class="mp-live">playing</span></span></div>' +
-        '<button type="button" class="mp-btn ghost" id="mpExpand" aria-label="Expand player" title="Expand player">⤢</button>' +
-        '<button type="button" class="mp-btn ghost" id="mpClose" aria-label="Close player" title="Close player">✕</button>';
+        '<button type="button" class="vd-btn" id="vdPlay" aria-label="Play / pause">⏸</button>' +
+        '<div class="vd-meta"><b id="vdTitle">Now playing</b><span id="vdSub"><span class="vd-live">playing</span></span></div>' +
+        '<button type="button" class="vd-btn ghost" id="vdExpand" aria-label="Expand player" title="Expand player">⤢</button>' +
+        '<button type="button" class="vd-btn ghost" id="vdClose" aria-label="Close player" title="Close player">✕</button>';
       document.body.appendChild(el);
-      el.querySelector('#mpPlay').addEventListener('click', toggleMiniPlay);
-      el.querySelector('#mpExpand').addEventListener('click', expandMiniPlayer);
-      el.querySelector('#mpClose').addEventListener('click', () => window.closeMiniPlayer(true));
+      el.querySelector('#vdPlay').addEventListener('click', toggleVideoPlay);
+      el.querySelector('#vdExpand').addEventListener('click', expandVideoDock);
+      el.querySelector('#vdClose').addEventListener('click', () => closeVideoDock(true));
     }catch(e){}
   }
   function pauseMedia(frame){
@@ -28391,79 +28392,76 @@ try{
       }
     }catch(e){}
   }
-  window.minimizePlayer = function(modalId){
+  window.minimizeVideoPlayer = function(modalId){
     try{
       const modal = document.getElementById(modalId); if(!modal) return;
       const frame = modal.querySelector('iframe');
       const titleEl = modal.querySelector('.modal-head h3');
       const title = (titleEl && titleEl.textContent || 'Now playing').trim();
-      mpState = { modalId, frame, playing:true, title };
+      vdState = { modalId, frame, playing:false, title };
       modal.classList.remove('on'); // hide overlay (keep iframe alive for resume)
-      const mp = document.getElementById('miniPlayer');
-      if(mp){
-        document.getElementById('mpTitle').textContent = title;
-        document.getElementById('mpSub').innerHTML = '<span class="mp-live">playing</span>';
-        mp.querySelector('#mpPlay').textContent = '⏸';
-        mp.hidden = false;
+      const dock = document.getElementById('videoDock');
+      if(dock){
+        document.getElementById('vdTitle').textContent = title;
+        document.getElementById('vdSub').innerHTML = '<span>paused · docked</span>';
+        dock.querySelector('#vdPlay').textContent = '▶';
+        dock.hidden = false;
       }
       pauseMedia(frame);
-      mpState.playing = false;
-      if(mp){ mp.querySelector('#mpSub').innerHTML = '<span>paused · docked</span>'; mp.querySelector('#mpPlay').textContent = '▶'; }
       try{ bcsSound('click'); }catch(_){}
     }catch(e){}
   };
-  function toggleMiniPlay(){
+  function toggleVideoPlay(){
     try{
-      if(!mpState || !mpState.frame) return;
-      const mp = document.getElementById('miniPlayer'); if(!mp) return;
-      if(mpState.playing){
-        pauseMedia(mpState.frame);
-        mpState.playing = false;
-        mp.querySelector('#mpPlay').textContent = '▶';
-        mp.querySelector('#mpSub').innerHTML = '<span>paused · docked</span>';
+      if(!vdState || !vdState.frame) return;
+      const dock = document.getElementById('videoDock'); if(!dock) return;
+      if(vdState.playing){
+        pauseMedia(vdState.frame);
+        vdState.playing = false;
+        dock.querySelector('#vdPlay').textContent = '▶';
+        dock.querySelector('#vdSub').innerHTML = '<span>paused · docked</span>';
       }else{
-        playMedia(mpState.frame);
-        mpState.playing = true;
-        mp.querySelector('#mpPlay').textContent = '⏸';
-        mp.querySelector('#mpSub').innerHTML = '<span class="mp-live">playing</span>';
+        playMedia(vdState.frame);
+        vdState.playing = true;
+        dock.querySelector('#vdPlay').textContent = '⏸';
+        dock.querySelector('#vdSub').innerHTML = '<span class="vd-live">playing</span>';
       }
       try{ bcsSound('click'); }catch(_){}
     }catch(e){}
   }
-  function expandMiniPlayer(){
+  function expandVideoDock(){
     try{
-      if(!mpState) return;
-      const modal = document.getElementById(mpState.modalId);
-      const mp = document.getElementById('miniPlayer');
-      if(mp) mp.hidden = true;
+      if(!vdState) return;
+      const modal = document.getElementById(vdState.modalId);
+      const dock = document.getElementById('videoDock');
+      if(dock) dock.hidden = true;
       if(modal) modal.classList.add('on');
-      if(mpState.playing && mpState.frame) playMedia(mpState.frame);
+      if(vdState.playing && vdState.frame) playMedia(vdState.frame);
       try{ bcsSound('click'); }catch(_){}
     }catch(e){}
   }
-  window.closeMiniPlayer = function(full){
+  window.closeVideoDock = function(full){
     try{
-      const mp = document.getElementById('miniPlayer');
-      if(mp) mp.hidden = true;
-      if(mpState){
-        pauseMedia(mpState.frame);
-        if(full !== false && mpState.modalId){
-          const modal = document.getElementById(mpState.modalId);
+      const dock = document.getElementById('videoDock');
+      if(dock) dock.hidden = true;
+      if(vdState){
+        pauseMedia(vdState.frame);
+        if(full !== false && vdState.modalId){
+          const modal = document.getElementById(vdState.modalId);
           if(modal){
             modal.classList.remove('on');
             const frame = modal.querySelector('iframe');
-            if(frame && mpState.modalId === 'watchPlayerModal'){ try{ frame.src = 'about:blank'; }catch(_){} }
+            if(frame && vdState.modalId === 'watchPlayerModal'){ try{ frame.src = 'about:blank'; }catch(_){} }
           }
         }
       }
-      mpState = null;
+      vdState = null;
       try{ bcsSound('click'); }catch(_){}
     }catch(e){}
   };
-  function initPlayerDock(){
+  function initVideoDock(){
     try{
-      buildMiniPlayer();
-      // inject minimize buttons into player modal heads
+      buildVideoDock();
       ['embedDeckModal','watchPlayerModal'].forEach(id => {
         const modal = document.getElementById(id); if(!modal) return;
         const head = modal.querySelector('.modal-head'); if(!head) return;
@@ -28474,12 +28472,12 @@ try{
         min.title = 'Minimize player — dock me rahega, video pause ho jayega';
         min.setAttribute('aria-label', 'Minimize player');
         min.textContent = '–';
-        min.addEventListener('click', () => window.minimizePlayer(id));
+        min.addEventListener('click', () => window.minimizeVideoPlayer(id));
         head.insertBefore(min, head.firstChild);
       });
     }catch(e){}
   }
-  initPlayerDock();
+  initVideoDock();
 })();
 
 /* ---------- PWA: offline shell + persistent storage ---------- */
