@@ -5968,6 +5968,25 @@ img,iframe,video,table,.show-grid,.month-grid,.month-grid-head,.an-table-wrap,.t
 @media (max-width:390px){.dash-card-header .dl-date,.dash-card-header .dl-quote,.dash-card-header .dl-time,.dash-card-header .dl-month{grid-column:1/13 !important}.mini-month-day{min-height:32px !important;height:32px !important;font-size:11px !important}.cal-cell{min-height:64px !important}}
 
 
+/* BCS v52 — Header/hero wrap fix (no break, no overlap) */
+.hwrap-top{grid-template-columns:auto minmax(0,1fr) auto !important}
+.brand{flex:none !important}
+.brand > div:last-child{min-width:0 !important;flex:none !important}
+.brand h1{white-space:nowrap !important;font-size:19px !important}
+.brand p{white-space:nowrap !important}
+.searchbox{justify-self:center !important;max-width:520px !important;width:100% !important}
+.searchbox input{white-space:nowrap !important;text-overflow:ellipsis !important;overflow:hidden !important}
+.hbtns{flex:none !important;flex-wrap:nowrap !important}
+.hbtns .btn{white-space:nowrap !important;flex:none !important}
+.hero-life .intro-stats{grid-template-columns:repeat(5,minmax(0,1fr)) !important}
+.hero-life .hero-stat b{font-size:clamp(17px,1.45vw,26px) !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important}
+.hero-life .hero-stat span{white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important}
+.hero-life h2{font-size:clamp(32px,3.6vw,48px) !important}
+.hero-life p{max-width:560px !important}
+@media (max-width:1100px){.hwrap-top{grid-template-columns:auto 1fr auto !important}.hero-life .intro-stats{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
+@media (max-width:720px){.hwrap-top{grid-template-columns:auto 1fr !important}.hbtns{display:none !important}.searchbox{max-width:none !important}.hero-life .intro-stats{grid-template-columns:1fr 1fr !important}}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
