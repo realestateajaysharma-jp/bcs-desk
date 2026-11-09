@@ -5649,6 +5649,95 @@ header.compact .hbtns{flex:none !important}
 .hwrap-nav #nav{max-width:100% !important}
 
 
+/* ============================================================
+   BCS Design System Clean v50 — Fresh shell (single truth)
+   Flat + hairline + interactive cards, no energy waste, Mac-first
+   ============================================================ */
+:root{
+  --bg:#F5F5F7; --panel:#FFFFFF; --ink:#1D1D1F; --ink2:#424245; --mut:#6E6E73;
+  --line:rgba(0,0,0,.08); --hair:rgba(0,0,0,.07); --line2:rgba(0,0,0,.06);
+  --r:16px; --radius-app:20px;
+  --sh-sm:0 1px 2px rgba(0,0,0,.04); --sh-md:0 8px 24px -12px rgba(0,0,0,.12); --sh-lg:0 20px 44px -18px rgba(0,0,0,.18);
+  --ease:cubic-bezier(.32,.72,.32,1);
+}
+body[data-theme="dark"]{
+  --bg:#000000; --panel:#1C1C1E; --ink:#F5F5F7; --ink2:#E8E8ED; --mut:#AEAEB2;
+  --line:rgba(255,255,255,.12); --hair:rgba(255,255,255,.09); --line2:rgba(255,255,255,.08);
+  --sh-sm:0 1px 2px rgba(0,0,0,.5); --sh-md:0 8px 24px -12px rgba(0,0,0,.5); --sh-lg:0 20px 44px -18px rgba(0,0,0,.65);
+}
+html,body{overflow-x:hidden !important}
+body{font-feature-settings:"ss01";letter-spacing:-.01em}
+header{position:sticky !important;top:0 !important;z-index:160 !important;background:color-mix(in srgb, var(--panel) 88%, transparent) !important;backdrop-filter:blur(18px) saturate(1.5) !important;border-bottom:1px solid var(--hair) !important;box-shadow:none !important}
+header.scrolled{box-shadow:0 12px 32px -18px rgba(0,0,0,.22) !important}
+header::before{height:2px !important}
+header::after{display:none !important}
+.hwrap{max-width:100% !important;margin:0 !important;padding:10px 28px !important}
+.hwrap-top{grid-template-columns:auto minmax(240px,560px) auto !important;padding:10px 0 0 !important;gap:16px !important}
+.hwrap-nav{padding:8px 0 10px !important}
+.hwrap-nav #nav{background:color-mix(in srgb, var(--panel) 96%, transparent) !important;border:1px solid var(--hair) !important;box-shadow:var(--sh-sm) !important;gap:4px !important;padding:4px !important}
+#nav button{border-radius:999px !important;min-height:36px !important}
+#nav button.on{background:var(--acc-deep) !important;color:#fff !important;box-shadow:none !important}
+#nav button:hover{background:color-mix(in srgb, var(--acc) 8%, transparent) !important}
+main{max-width:100% !important;margin:0 !important;padding:28px 28px 140px !important}
+@media (max-width:1100px){.hwrap,main{padding-left:18px !important;padding-right:18px !important}}
+/* interactive modern cards (not static) */
+.panel,.cat-card,.live-card,.idea-card,.pulse-card,.calc-card,.adv-card,.dev-card,.client-card,.advisor-card,.partner-card,.resale-card,.tm-card,.an-card,.health-card,.kpi,.tile,.cov-card,.link-item,.tpl-card,.fest-card,.booking-card,.cor-card,.senior-panel,.queue-panel,.journey-panel,.month-panel,.excel-panel,.morning-brief,.weekly-review,.day-follow,.day-idea{
+  background:var(--panel) !important;border:1px solid var(--hair) !important;box-shadow:var(--sh-sm) !important;border-radius:20px !important;
+  transition:transform .22s var(--ease),box-shadow .25s,border-color .2s !important;
+}
+@media (hover:hover){
+  .panel:hover,.cat-card:hover,.live-card:hover,.idea-card:hover,.pulse-card:hover,.adv-card:hover,.dev-card:hover,.client-card:hover,.advisor-card:hover,.partner-card:hover,.resale-card:hover,.an-card:hover,.kpi:hover,.cor-card:hover,.tile:hover,.cov-card:hover,.link-item:hover,.tpl-card:hover,.fest-card:hover,.booking-card:hover{
+    transform:translateY(-3px) !important;box-shadow:var(--sh-lg) !important;border-color:color-mix(in srgb, var(--acc) 28%, var(--hair)) !important;
+  }
+}
+.panel:active,.cat-card:active,.adv-card:active,.dev-card:active{transform:translateY(-1px) scale(.995) !important}
+.btn{transition:transform .16s var(--ease),box-shadow .2s,background .2s,border-color .2s !important}
+.btn:hover{transform:translateY(-1px) !important}
+.btn:active{transform:scale(.98) !important}
+.icon-btn,.dtab,.seg button,.live-chip,.shortbtn,.viewbtn{transition:all .16s var(--ease) !important}
+.icon-btn:hover,#nav button:hover{transform:translateY(-1px) !important}
+.icon-btn:active{transform:scale(.94) !important}
+/* graphs fast (no lag) */
+.an-bar .an-fill,.an-fstep .fbar,.pulse-meter i{transition:width .55s var(--ease) !important}
+.an-bar:hover{background:color-mix(in srgb, var(--acc) 5%, transparent) !important}
+.an-bar:hover .an-fill{filter:brightness(1.08) !important}
+.an-kpis,.team-stats,.pipeline-stats,.links-stats{margin-bottom:18px !important}
+.kpi{padding:16px 18px !important}
+.kpi .v{font-size:28px !important}
+.an-bar .an-track{height:10px !important}
+.an-table th{font-size:10px !important;padding:11px 13px !important}
+.an-table td{font-size:12.5px !important;padding:10px 13px !important}
+/* forms clean */
+.field input,.field select,.field textarea,input,select,textarea{background:var(--panel) !important;color:var(--ink) !important;border:1px solid var(--hair) !important;border-radius:12px !important;min-height:42px !important}
+input:focus,select:focus,textarea:focus{border-color:var(--acc) !important;box-shadow:0 0 0 3px color-mix(in srgb, var(--acc) 18%, transparent) !important;outline:none !important}
+.f-label select{background:var(--panel) !important;color:var(--ink) !important}
+.toolbar{background:var(--panel) !important;border:1px solid var(--hair) !important}
+.lock-card,.modal,.toolpop,.qa-pop,.toast{background:var(--panel) !important;color:var(--ink) !important;border:1px solid var(--hair) !important}
+body[data-theme="dark"] .lock-card{background:#1C1C1E !important}
+body[data-theme="dark"] table th{background:#232326 !important;color:var(--mut) !important}
+body[data-theme="dark"] ::placeholder{color:#9A9AA0 !important}
+body[data-theme="light"] ::placeholder{color:#8E8E93 !important}
+a{transition:color .15s,opacity .15s !important}
+:focus-visible{outline:2px solid color-mix(in srgb, var(--acc) 55%, transparent) !important;outline-offset:2px !important;box-shadow:0 0 0 4px color-mix(in srgb, var(--acc) 16%, transparent) !important}
+/* hero + today + hub calmer (no unused space) */
+.hero-life{border-radius:24px !important;padding:36px 40px !important}
+.hero-life h2{font-size:44px !important}
+.dash-card-header{border-radius:24px !important;grid-template-columns:minmax(0,300px) minmax(0,1fr) minmax(0,280px) minmax(0,292px) !important}
+.dash-card-header .dl-date,.dash-card-header .dl-quote,.dash-card-header .dl-time,.dash-card-header .dl-month{padding:16px 18px 14px !important}
+.dash-card-header .dlf-greets{grid-template-columns:1fr 1fr !important}
+.command-hub{background:transparent !important;border:0 !important;box-shadow:none !important;padding:0 !important;margin:0 !important}
+.hub-head{border-bottom:1px solid var(--hair) !important}
+.hub-badge{box-shadow:none !important}
+.pulse-card{min-height:112px !important}
+.crop,.crop img,.show-media img,.pcard .thumb img{transition:transform .4s var(--ease) !important}
+@media (hover:hover){.pulse-card:hover .pulse-ic,.cat-card:hover .cat-ic,.adv-card:hover .adv-thumb{transform:scale(1.06) !important}
+.adv-card:hover .adv-thumb img,.pcard:hover .thumb img{transform:scale(1.05) !important}}
+@media (prefers-reduced-motion:reduce){
+  .panel,.cat-card,.btn,.icon-btn,#nav button{transition:none !important;transform:none !important}
+  .an-bar .an-fill,.an-fstep .fbar{transition:none !important}
+}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
