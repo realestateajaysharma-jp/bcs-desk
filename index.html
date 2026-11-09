@@ -4092,6 +4092,106 @@ body[data-theme="dark"] .file-note a.ghost{background:#232A21;color:#ECE8D8}
 @media (max-width:640px){.file-note{flex-direction:column}.file-note .fn-actions{width:100%}}
 
 
+/* ============================================================
+   BCS Design System v3 — Modern nav (all pages visible) +
+   Perfect alignment + Live status + Pulse loader
+   (additive, builder-anchors untouched)
+   ============================================================ */
+header{box-shadow:0 10px 30px -18px rgba(46,45,32,.18)}
+.hwrap-top{padding-bottom:8px;align-items:center}
+.hwrap-nav{padding-top:2px;padding-bottom:13px}
+.hwrap-nav #nav{flex:1 1 100%;flex-wrap:wrap;gap:4px;padding:6px;border-radius:16px;max-width:100%;overflow:visible}
+.hwrap-nav #nav::-webkit-scrollbar{display:none}
+#nav .nav-ic{font-size:12px;line-height:1;opacity:.75;width:17px;height:17px;display:inline-grid;place-items:center;flex:none}
+#nav button{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:11px;font-size:12.5px;font-weight:650;color:var(--ink2);transition:transform var(--motion-fast, .15s),background var(--motion-fast, .15s),box-shadow var(--motion-fast, .15s),color var(--motion-fast, .15s)}
+#nav button:hover{background:rgba(255,255,255,.6);color:var(--ink);transform:translateY(-1px)}
+#nav button.on{background:linear-gradient(135deg,#fff 0%,#FFF7E7 100%);color:var(--ink);box-shadow:0 2px 8px rgba(46,45,32,.12),inset 0 0 0 1px rgba(231,184,75,.3)}
+#nav button.on .nav-ic{opacity:1;color:var(--gold)}
+#nav button.on::after{bottom:3px;width:14px;height:2px}
+.nav-sep{width:1px;align-self:stretch;margin:4px 4px;background:linear-gradient(180deg,transparent,rgba(46,45,32,.14),transparent);flex:none}
+body[data-theme="dark"] .nav-sep{background:linear-gradient(180deg,transparent,rgba(255,255,255,.14),transparent)}
+body[data-theme="dark"] #nav button:hover{background:rgba(255,255,255,.07)}
+.hwrap-top .searchbox{min-width:230px}
+.hwrap-top .spacer{flex:1}
+@media (max-width:1180px){
+  .hwrap-top{gap:12px}
+  .hwrap-top .searchbox{min-width:0;flex:1 1 200px}
+}
+@media (max-width:900px){
+  .hwrap{padding:10px 16px}
+  .hwrap-top{padding-bottom:6px}
+  .hwrap-nav{padding-top:0}
+  .hwrap-nav #nav{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none}
+  #nav button{scroll-snap-align:start;flex:0 0 auto;padding:7px 11px}
+  .nav-sep{display:none}
+}
+/* --- alignment system: no bhut-space, equal rhythm --- */
+main{padding:22px 28px 90px}
+.intro{margin-bottom:16px;align-items:flex-end}
+.cat-strip{gap:14px;margin-bottom:18px}
+.dash-grid{gap:14px}
+.senior-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:stretch}
+@media (max-width:1000px){.senior-grid{grid-template-columns:1fr}}
+.sec-head{margin:22px 2px 12px}
+.sec-head h3{font-size:16px}
+.panel{padding:18px 20px}
+.panel-head{min-height:40px;margin-bottom:12px}
+.panel-head h4{line-height:1.3}
+.adv-head{display:flex;gap:16px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;margin-bottom:14px}
+.adv-title{font-family:'Fraunces',serif;font-size:27px;font-weight:600;letter-spacing:-.4px;line-height:1.15;margin-top:6px}
+.adv-title em{font-style:italic;color:var(--gold)}
+.adv-sub{color:var(--mut);font-size:13px;line-height:1.6;max-width:820px;margin-top:8px}
+.adv-head-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.brief-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;align-items:stretch}
+.brief-box{padding:14px 15px;display:flex;flex-direction:column}
+.brief-box p{line-height:1.6}
+.links-stats{grid-template-columns:repeat(4,1fr);gap:1px;margin-bottom:14px}
+.links-stats div{padding:12px 14px;display:flex;flex-direction:column;justify-content:center}
+.live-grid{gap:14px}
+.live-card{display:flex;flex-direction:column;height:100%}
+.live-card h4{flex:1}
+.live-foot{margin-top:auto;padding-top:10px}
+.ideas-grid{gap:12px}
+.idea-card{height:100%}
+.cat-card{padding:18px 20px}
+.cat-card:after{width:110px;height:110px;right:-24px;top:-24px}
+.cat-card h3{font-size:20px}
+.cat-card p{max-width:none}
+.pulse-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+@media (max-width:980px){.pulse-strip{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.pulse-strip{grid-template-columns:1fr}}
+.pulse-card{display:flex;flex-direction:column;justify-content:space-between;min-height:96px}
+.toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.news-grid{gap:14px}
+.tmpl-grid,.proj-grid,.dev-grid,.client-grid,.advisor-grid,.partner-grid,.resale-grid,.link-board-grid{display:grid;gap:14px;align-items:stretch}
+.calc-grid{gap:14px}
+.health-grid{gap:14px}
+@media (max-width:640px){main{padding:16px 14px 80px}.panel{padding:15px 16px}.adv-title{font-size:24px}}
+/* --- live status states --- */
+.live-status[data-state="ok"]{color:#3E6B4F}
+.live-status[data-state="err"]{color:var(--danger)}
+.live-dot[data-state="ok"]{background:#2F8F6B;box-shadow:0 0 0 3px rgba(47,143,107,.18);animation:none}
+.live-dot[data-state="err"]{background:#C24646;box-shadow:0 0 0 3px rgba(194,70,70,.16);animation:none}
+.live-dot[data-state="load"]{background:#C79A2E}
+.live-empty .btn{margin-top:10px}
+.live-sources{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.live-source-desk{margin-top:14px}
+.live-source-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.live-source-links{display:flex;gap:8px;flex-wrap:wrap}
+.live-source-links a{display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:12px;font-weight:700;color:var(--ink2)}
+.live-source-links a:hover{border-color:#C9D1CC;background:#FBFDFC;color:var(--ink)}
+/* --- pulse frame loader + fallback --- */
+.pulse-frame-wrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--glass-line, var(--line));background:#fff;box-shadow:var(--lift)}
+.pulse-frame-wrap iframe{display:block;width:100%;height:560px;border:0;background:#fff}
+.pulse-loader{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:linear-gradient(180deg,#FBFCFB,#F1F4F1);color:var(--mut);font-size:13px;transition:opacity .3s}
+.pulse-loader.hide{opacity:0;pointer-events:none}
+.pulse-loader .sk{width:70%;max-width:420px}
+body[data-theme="dark"] .pulse-loader{background:linear-gradient(180deg,#232A21,#1B201B)}
+.pulse-fallback{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px;font-size:11.5px;color:var(--mut)}
+.pulse-fallback a{font-weight:700}
+@media (max-width:640px){.pulse-frame-wrap iframe{height:460px}}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -4204,7 +4304,7 @@ body[data-theme="dark"] .file-note a.ghost{background:#232A21;color:#ECE8D8}
 </script>
 
 <header>
-  <div class="hwrap">
+  <div class="hwrap hwrap-top">
     <div class="brand">
       <div class="logo">BCS</div>
       <div>
@@ -4212,26 +4312,7 @@ body[data-theme="dark"] .file-note a.ghost{background:#232A21;color:#ECE8D8}
         <p>Jaipur Property Intelligence</p>
       </div>
     </div>
-    <nav id="nav">
-      <button data-view="dashboard" class="on">Dashboard</button>
-      <button data-view="analytics">Analytics</button>
-      <button data-view="projects">Projects</button>
-      <button data-view="resale">Resale</button>
-      <button data-view="developers">Developers</button>
-      <button data-view="advisors">Advisors</button>
-      <button data-view="partners">Partners</button>
-      <button data-view="clients">Clients</button>
-      <button data-view="dayplan">Day Plan</button>
-      <button data-view="news">News</button>
-      <button data-view="links">Links</button>
-      <button data-view="terminology">Terminology</button>
-      <button data-view="tax">Tax & Advice</button>
-      <button data-view="calc">Calculators</button>
-      <button data-view="pulse">Market Pulse</button>
-      <button data-view="advisory">Advisory</button>
-      <button data-view="templates">Templates</button>
-      <button data-view="health">Health</button>
-    </nav>
+    
     <div class="spacer"></div>
     <div class="searchbox">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -4265,6 +4346,31 @@ body[data-theme="dark"] .file-note a.ghost{background:#232A21;color:#ECE8D8}
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
       </button>
     </div>
+  </div>
+  <div class="hwrap hwrap-nav">
+    <nav id="nav" role="navigation" aria-label="BCS desk pages">
+      <button type="button" data-view="dashboard" class="on" aria-current="page"><span class="nav-ic" aria-hidden="true">⌂</span>Dashboard</button>
+      <button type="button" data-view="analytics"><span class="nav-ic" aria-hidden="true">▥</span>Analytics</button>
+      <button type="button" data-view="projects"><span class="nav-ic" aria-hidden="true">▣</span>Projects</button>
+      <button type="button" data-view="resale"><span class="nav-ic" aria-hidden="true">⇌</span>Resale</button>
+      <button type="button" data-view="developers"><span class="nav-ic" aria-hidden="true">◈</span>Developers</button>
+      <span class="nav-sep" aria-hidden="true"></span>
+      <button type="button" data-view="advisors"><span class="nav-ic" aria-hidden="true">◎</span>Advisors</button>
+      <button type="button" data-view="partners"><span class="nav-ic" aria-hidden="true">◉</span>Partners</button>
+      <button type="button" data-view="clients"><span class="nav-ic" aria-hidden="true">◐</span>Clients</button>
+      <button type="button" data-view="dayplan"><span class="nav-ic" aria-hidden="true">◷</span>Day Plan</button>
+      <span class="nav-sep" aria-hidden="true"></span>
+      <button type="button" data-view="news"><span class="nav-ic" aria-hidden="true">📰</span>News</button>
+      <button type="button" data-view="links"><span class="nav-ic" aria-hidden="true">⛓</span>Links</button>
+      <button type="button" data-view="terminology"><span class="nav-ic" aria-hidden="true">Aa</span>Terminology</button>
+      <button type="button" data-view="tax"><span class="nav-ic" aria-hidden="true">₹</span>Tax &amp; Advice</button>
+      <button type="button" data-view="calc"><span class="nav-ic" aria-hidden="true">⌘</span>Calculators</button>
+      <button type="button" data-view="pulse"><span class="nav-ic" aria-hidden="true">↗</span>Market Pulse</button>
+      <span class="nav-sep" aria-hidden="true"></span>
+      <button type="button" data-view="advisory"><span class="nav-ic" aria-hidden="true">✦</span>Advisory</button>
+      <button type="button" data-view="templates"><span class="nav-ic" aria-hidden="true">▤</span>Templates</button>
+      <button type="button" data-view="health"><span class="nav-ic" aria-hidden="true">♥</span>Health</button>
+    </nav>
   </div>
 </header>
 
@@ -5400,7 +5506,11 @@ body[data-theme="dark"] .file-note a.ghost{background:#232A21;color:#ECE8D8}
           <button data-pulse-src="https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77">2bigha — Plots map</button>
           <button data-pulse-src="https://www.propertywala.com/jaipur_rajasthan/">PropertyWala — Jaipur</button>
         </div>
-        <iframe id="pulseFrame" src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum + Square Yards + 2bigha + PropertyWala" style="width:100%;height:560px;border:1px solid var(--line);border-radius:14px;background:#fff" loading="lazy"></iframe>
+        <div class="pulse-frame-wrap">
+          <div class="pulse-loader" id="pulseLoader"><b>Market Pulse loading…</b><span>Source site khul rahi hai — agar blank rahe to neeche “Open” use karo (koi sites framing block karti hain).</span><div class="sk sk-line w85" style="height:14px"></div><div class="sk sk-line w60" style="height:10px"></div></div>
+          <iframe id="pulseFrame" src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum + Square Yards + 2bigha + PropertyWala" loading="lazy" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox" style="opacity:0.35"></iframe>
+        </div>
+        <div class="pulse-fallback" id="pulseFallback"><span>Frame blank hai? Source site framing block kar rahi ho sakti hai — </span><a href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">Open in new tab ↗</a><span>· Stats upar BCS summary me hain, data loss nahi.</span></div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center">
           <a class="btn ghost sm" href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">↗ Aurum</a>
           <a class="btn ghost sm" href="https://www.squareyards.com/jaipur-real-estate" target="_blank" rel="noopener">↗ Square Yards</a>
@@ -9122,15 +9232,12 @@ function showOverlay(id){
 }
 function go(view){
   currentView = view;
-  $$('#nav button').forEach(b => b.classList.toggle('on', b.dataset.view === view));
+  $$('#nav button').forEach(b => { const on = b.dataset.view === view; b.classList.toggle('on', on); if(on) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
   $$('.view').forEach(v => v.classList.toggle('on', v.id === 'view-' + view));
   render();
   window.scrollTo({top:0, behavior:'smooth'});
 }
-$('#nav').addEventListener('click', e => {
-  const b = e.target.closest('button[data-view]');
-  if(b) go(b.dataset.view);
-});
+try{ const _nav = $('#nav'); if(_nav) _nav.addEventListener('click', e => { const b = e.target.closest('button[data-view]'); if(b) go(b.dataset.view); }); }catch(e){}
 document.body.addEventListener('click', e => {
   const g = e.target.closest('[data-goto]');
   if(g) go(g.dataset.goto);
@@ -9900,11 +10007,25 @@ function quoteText(){
     const txt = '*BCS Market Pulse — Jaipur* (Aurum + Square Yards + 2bigha + PropertyWala)\n' + 'Pulse: 969 projects · SY: 1,066 listings · PW: 6 featured Jaipur projects\n' + 'News: JDA ₹575 Cr works · RHB 4 schemes · Ashiana ₹1,000 Cr land plan\n' + 'Aurum: https://www.aurumproptech.in/pulse/properties/jaipur/overview\n' + 'SY: https://www.squareyards.com/jaipur-real-estate\n' + '2bigha: https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.98&lng=75.59&zoom=7.77\n' + 'PW: https://www.propertywala.com/jaipur_rajasthan/\n' + 'News: https://www.propertywala.com/news/\n' + 'BCS · Business City Square · @ajaysharma.bcs';
     if(navigator.share){ navigator.share({ title: 'BCS Market Pulse — Jaipur', text: txt }).catch(() => {}); } else { window.open('https://wa.me/?text=' + encodeURIComponent(txt), '_blank'); }
   });
+  function bcsPulseLoad(url){
+    const f = $('#pulseFrame');
+    const loader = $('#pulseLoader');
+    const fb = $('#pulseFallback');
+    if(loader) loader.classList.remove('hide');
+    if(fb) fb.style.display = 'none';
+    if(f){
+      f.style.opacity = '0';
+      f.src = url;
+      const done = function(){ if(loader) loader.classList.add('hide'); f.style.opacity = '1'; };
+      f.onload = done;
+      setTimeout(function(){ if(loader && !loader.classList.contains('hide')){ f.style.opacity = '1'; } }, 9000);
+    }
+  }
   $$('#pulseTabs button').forEach(b => b.addEventListener('click', () => {
     $$('#pulseTabs button').forEach(x => x.classList.toggle('on', x === b));
-    const f = $('#pulseFrame');
-    if(f) f.src = b.dataset.pulseSrc;
+    bcsPulseLoad(b.dataset.pulseSrc);
   }));
+  try{ const _pf = $('#pulseFrame'); if(_pf){ _pf.addEventListener('load', function(){ const l = $('#pulseLoader'); if(l) l.classList.add('hide'); _pf.style.opacity = '1'; }); } }catch(e){}
   $('#calcPrintAll')?.addEventListener('click', () => window.print());
   $('#calcShareAll')?.addEventListener('click', calcShareAll);
   try{ loadRates(); }catch(e){}
@@ -11301,7 +11422,7 @@ async function refreshFestivalsOnline(){
   let data = null;
   for(const url of urls){
     try{
-      const res = await fetch(url, { cache:'no-store' });
+      const res = await fetchWithTimeout(url, { cache:'no-store' }, 8000);
       if(!res.ok) continue;
       const json = await res.json();
       if(json && Array.isArray(json.festivals) && json.festivals.length){ data = json; break; }
@@ -11373,7 +11494,7 @@ async function renderJaipurWeather(){
       daily:'weather_code,temperature_2m_max,temperature_2m_min,wind_speed_10m_max',
       timezone:'Asia/Kolkata', forecast_days:'3'
     });
-    const res = await fetch('https://api.open-meteo.com/v1/forecast?' + params.toString(), { cache:'no-store' });
+    const res = await fetchWithTimeout('https://api.open-meteo.com/v1/forecast?' + params.toString(), { cache:'no-store' }, 10000);
     if(!res.ok) throw new Error('weather unavailable');
     const data = await res.json();
     const cur = data.current || {}, daily = data.daily || {};
@@ -11381,7 +11502,7 @@ async function renderJaipurWeather(){
     let aqi = NaN;
     try{
       const ap = new URLSearchParams({ latitude:'26.9124', longitude:'75.7873', current:'us_aqi,pm2_5,pm10' });
-      const ar = await fetch('https://air-quality-api.open-meteo.com/v1/air-quality?' + ap.toString(), { cache:'no-store' });
+      const ar = await fetchWithTimeout('https://air-quality-api.open-meteo.com/v1/air-quality?' + ap.toString(), { cache:'no-store' }, 8000);
       if(ar.ok){ const ad = await ar.json(); aqi = ad.current?.us_aqi; }
     }catch(e){}
     const days = (daily.time || []).slice(0,3).map((d, i) => {
@@ -15726,15 +15847,15 @@ function newsCardHTML(n){
 }
 /* ---------- live Jaipur news desk + Instagram video ideas ---------- */
 const NEWS_SOURCES = [
-  { id:'jaipur',       label:'All Jaipur',       query:'Jaipur real estate OR property OR JDA OR RERA when:30d', url:'https://news.google.com/search?q=Jaipur%20real%20estate&hl=en-IN&gl=IN&ceid=IN:en' },
-  { id:'propertywala', label:'PropertyWala',     query:'site:propertywala.com', url:'https://propertywala.com/news' },
-  { id:'synergy',      label:'Synergy Infracon', query:'site:synergyinfracon.com', url:'https://synergyinfracon.com/news/locality/jaipur' },
-  { id:'patrika',      label:'Patrika Jaipur',   query:'site:patrika.com Jaipur property OR JDA OR registry', url:'https://www.patrika.com/jaipur-news' },
-  { id:'etrealty',     label:'ET Realty',        query:'site:realty.economictimes.indiatimes.com Jaipur OR Rajasthan', url:'https://realty.economictimes.indiatimes.com' },
-  { id:'fortune',      label:'Fortune India',    query:'site:fortuneindia.com real estate', url:'https://www.fortuneindia.com/real-estate' },
-  { id:'construction', label:'Construction World', query:'site:constructionworld.in real estate OR infrastructure', url:'https://www.constructionworld.in' },
-  { id:'realtyfirst',  label:'Realty First',     query:'site:realtyfirstmag.com', url:'https://realtyfirstmag.com' },
-  { id:'national',     label:'India market',     query:'India real estate market when:7d', url:'https://realty.economictimes.indiatimes.com' }
+  { id:'jaipur',       label:'All Jaipur',       query:'Jaipur real estate JDA RERA property', url:'https://news.google.com/search?q=Jaipur%20real%20estate&hl=en-IN&gl=IN&ceid=IN:en' },
+  { id:'propertywala', label:'PropertyWala',     query:'PropertyWala Jaipur property', url:'https://propertywala.com/news' },
+  { id:'synergy',      label:'Synergy Infracon', query:'Synergy Infracon Jaipur', url:'https://synergyinfracon.com/news/locality/jaipur' },
+  { id:'patrika',      label:'Patrika Jaipur',   query:'Patrika Jaipur JDA property registry', url:'https://www.patrika.com/jaipur-news' },
+  { id:'etrealty',     label:'ET Realty',        query:'ET Realty Jaipur Rajasthan real estate', url:'https://realty.economictimes.indiatimes.com' },
+  { id:'fortune',      label:'Fortune India',    query:'Fortune India real estate property news', url:'https://www.fortuneindia.com/real-estate' },
+  { id:'construction', label:'Construction World', query:'Construction World real estate infrastructure', url:'https://www.constructionworld.in' },
+  { id:'realtyfirst',  label:'Realty First',     query:'Realty First magazine real estate', url:'https://realtyfirstmag.com' },
+  { id:'national',     label:'India market',     query:'India real estate market property', url:'https://realty.economictimes.indiatimes.com' }
 ];
 const DEFAULT_VIDEO_STATUSES = [
   { id:'idea',   label:'Idea' },
@@ -15899,43 +16020,88 @@ function normalizeLiveItem(it, fallbackSource){
     dateLabel: ok ? dt.toLocaleDateString('en-IN', { day:'numeric', month:'short' }) : 'Recent'
   };
 }
+async function fetchWithTimeout(url, opts, ms){
+  const o = Object.assign({}, opts || {});
+  const ctrl = new AbortController();
+  o.signal = ctrl.signal;
+  const t = setTimeout(function(){ try{ ctrl.abort(); }catch(e){} }, ms || 12000);
+  try{ return await fetch(url, o); } finally{ clearTimeout(t); }
+}
+function parseRssXml(text){
+  const doc = new DOMParser().parseFromString(text, 'text/xml');
+  const nodes = Array.from(doc.querySelectorAll('item'));
+  if(!nodes.length) return null;
+  return nodes.map(function(el){
+    return {
+      title: (el.querySelector('title') || {}).textContent || '',
+      link: (el.querySelector('link') || {}).textContent || '',
+      pubDate: (el.querySelector('pubDate') || {}).textContent || '',
+      description: (el.querySelector('description') || {}).textContent || '',
+      source: (el.querySelector('source') || {}).textContent || ''
+    };
+  });
+}
 async function fetchLiveFeedRss(rss){
   const cached = liveCache.get(rss);
-  if(cached && Date.now() - cached.at < 10 * 60000) return cached.items;
+  if(cached && Date.now() - cached.at < 5 * 60000) return cached.items;
   let items = null, lastErr = null;
+  async function tryText(url, ms){
+    const res = await fetchWithTimeout(url, { cache:'no-store' }, ms);
+    if(!res.ok) throw new Error(url.slice(0, 60) + ' ' + res.status);
+    return await res.text();
+  }
+  // 1) rss2json (fast JSON, 8s)
   try{
-    const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rss));
+    const res = await fetchWithTimeout('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rss), { cache:'no-store' }, 8000);
     if(!res.ok) throw new Error('rss2json ' + res.status);
     const j = await res.json();
-    if(j.status !== 'ok' || !Array.isArray(j.items)) throw new Error('rss2json unavailable');
-    items = j.items;
+    if(j.status === 'ok' && Array.isArray(j.items) && j.items.length) items = j.items;
+    else throw new Error('rss2json empty');
   }catch(e){ lastErr = e; }
+  // 2) allorigins raw → XML
   if(!items){
-    const proxies = [
-      'https://api.allorigins.win/raw?url=',
-      'https://api.codetabs.com/v1/proxy?quest='
-    ];
-    for(const proxy of proxies){
-      try{
-        const res = await fetch(proxy + encodeURIComponent(rss));
-        if(!res.ok) continue;
-        const text = await res.text();
-        const doc = new DOMParser().parseFromString(text, 'text/xml');
-        const nodes = [...doc.querySelectorAll('item')];
-        if(!nodes.length) continue;
-        items = nodes.map(el => ({
-          title: el.querySelector('title')?.textContent || '',
-          link: el.querySelector('link')?.textContent || '',
-          pubDate: el.querySelector('pubDate')?.textContent || '',
-          description: el.querySelector('description')?.textContent || '',
-          source: el.querySelector('source')?.textContent || ''
-        }));
-        break;
-      }catch(e){ lastErr = e; }
-    }
+    try{
+      const text = await tryText('https://api.allorigins.win/raw?url=' + encodeURIComponent(rss), 10000);
+      const parsed = parseRssXml(text);
+      if(parsed && parsed.length) items = parsed;
+    }catch(e){ lastErr = e; }
+  }
+  // 3) allorigins get → JSON wrapper
+  if(!items){
+    try{
+      const res = await fetchWithTimeout('https://api.allorigins.win/get?url=' + encodeURIComponent(rss), { cache:'no-store' }, 10000);
+      if(res.ok){ const j = await res.json(); const parsed = j && j.contents ? parseRssXml(j.contents) : null; if(parsed && parsed.length) items = parsed; }
+    }catch(e){ lastErr = e; }
+  }
+  // 4) codetabs proxy → XML
+  if(!items){
+    try{
+      const text = await tryText('https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(rss), 10000);
+      const parsed = parseRssXml(text);
+      if(parsed && parsed.length) items = parsed;
+    }catch(e){ lastErr = e; }
+  }
+  // 5) corsproxy.io → XML (last public fallback)
+  if(!items){
+    try{
+      const text = await tryText('https://corsproxy.io/?url=' + encodeURIComponent(rss), 10000);
+      const parsed = parseRssXml(text);
+      if(parsed && parsed.length) items = parsed;
+    }catch(e){ lastErr = e; }
+  }
+  // 6) direct RSS (works on some networks / localhost proxy)
+  if(!items){
+    try{
+      const text = await tryText(rss, 7000);
+      const parsed = parseRssXml(text);
+      if(parsed && parsed.length) items = parsed;
+    }catch(e){ lastErr = e; }
   }
   if(!items) throw lastErr || new Error('Live feed unavailable');
-  const normalized = items.map(it => normalizeLiveItem(it, 'Google News')).filter(it => it.title && it.link).slice(0, 30);
+  const seen = new Set();
+  const normalized = items.map(function(it){ return normalizeLiveItem(it, 'Google News'); })
+    .filter(function(it){ if(!it.title || !it.link) return false; if(seen.has(it.link)) return false; seen.add(it.link); return true; })
+    .slice(0, 30);
   liveCache.set(rss, { at: Date.now(), items: normalized });
   return normalized;
 }
@@ -15952,15 +16118,21 @@ async function fetchLiveNews(sourceId, queryOverride){
     const items = await fetchLiveFeedRss(rss);
     liveState.items = items;
     liveState.fetchedAt = Date.now();
-    if(!items.length) liveState.error = 'Is source/search par abhi koi fresh headline nahi mila — “All Jaipur” ya doosra keyword try karein.';
+    if(!items.length) liveState.error = 'Is source par abhi koi fresh headline nahi mila — “All Jaipur” try karein ya keyword badlein.';
   }catch(err){
-    liveState.items = [];
-    liveState.error = 'Live fetch nahi hua — internet ya proxy block check karein. Neeche “Source desk” se websites direct khul sakti hain.';
+    liveState.items = liveState.items || [];
+    liveState.error = 'Live fetch nahi hua — network ya proxy slow hai, retry karein. Purana cache aur “Source desk” links neeche available hain.';
     console.warn('BCS live news fetch failed', err);
   }finally{
     liveState.loading = false;
     renderLiveNews();
   }
+}
+function setLiveDot(state){
+  try{
+    const dot = document.querySelector('[data-news-mode="live"] .live-dot');
+    if(dot && state) dot.dataset.state = state;
+  }catch(e){}
 }
 function renderLiveNews(){
   if(!$('#liveGrid')) return;
@@ -15970,12 +16142,18 @@ function renderLiveNews(){
   if(!status){ /* live tab not mounted — no-op */ }
   else if(liveState.loading){
     status.className = 'live-status';
+    status.dataset.state = 'load';
     status.innerHTML = '📡 Live headlines fetch ho rahe hain…';
+    setLiveDot('load');
   } else if(liveState.error){
     status.className = 'live-status err';
-    status.innerHTML = esc(liveState.error);
+    status.dataset.state = 'err';
+    status.innerHTML = esc(liveState.error) + ' <button type="button" class="btn ghost sm" data-live-retry style="margin-left:8px">↻ Retry</button>';
+    setLiveDot(liveState.items.length ? 'ok' : 'err');
   } else if(liveState.items.length){
     status.className = 'live-status';
+    status.dataset.state = 'ok';
+    setLiveDot('ok');
     status.innerHTML = `<b>${liveState.items.length} headlines</b> · ${esc(src.label)}${liveState.query ? ' · “' + esc(liveState.query) + '”' : ''} · updated ${liveState.fetchedAt ? new Date(liveState.fetchedAt).toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' }) : '—'}`;
   } else {
     status.className = 'live-status';
@@ -15985,7 +16163,7 @@ function renderLiveNews(){
   if(liveState.loading){
     $('#liveGrid').innerHTML = '<span class="sr-only">Loading headlines…</span><div class="live-skeleton" aria-busy="true" aria-live="polite">' + Array.from({length:6}, function(){ return '<div class="sk-card"><div class="sk-row"><div class="sk sk-badge"></div><div class="sk sk-line w55"></div></div><div class="sk sk-line w100"></div><div class="sk sk-line w85"></div><div class="sk sk-line w35"></div></div>'; }).join('') + '</div>';
   } else if(liveState.error && !liveState.items.length){
-    $('#liveGrid').innerHTML = `<div class="live-empty"><b>Live feed off right now</b>${esc(liveState.error)}<br><br>“Source desk” links se PropertyWala, Patrika, ET Realty etc. direct khol lein.</div>`;
+    $('#liveGrid').innerHTML = `<div class="live-empty"><b>Live feed off right now</b>${esc(liveState.error)}<br><br><button type="button" class="btn primary sm" data-live-retry>↻ Retry fetch</button><br><br>“Source desk” links se PropertyWala, Patrika, ET Realty etc. direct khol lein.</div>`;
   } else if(!liveState.items.length){
     $('#liveGrid').innerHTML = `<div class="live-empty"><b>Live desk ready</b>“Fetch latest” dabayein — Jaipur property, JDA/RERA aur market headlines yahan cards me aayenge.</div>`;
   } else {
@@ -16154,6 +16332,7 @@ function setNewsMode(mode){
   const map = { feed:'#newsPaneFeed', live:'#newsPaneLive', ideas:'#newsPaneIdeas' };
   Object.entries(map).forEach(([key, sel]) => { const el = $(sel); if(el) el.classList.toggle('on', key === newsMode); });
   if(newsMode === 'live' && !liveState.started){ liveState.started = true; fetchLiveNews(liveState.sourceId).catch(function(){}); }
+  if(newsMode === 'live' && liveState.fetchedAt && Date.now() - liveState.fetchedAt > 15 * 60000){ fetchLiveNews(liveState.sourceId).catch(function(){}); }
   if(newsMode === 'ideas') renderVideoIdeas();
 }
 
@@ -16494,7 +16673,10 @@ function initNews(){
     if(!q) return toast('Search keyword likhein', true);
     fetchLiveNews(liveState.sourceId || 'jaipur', q).catch(function(){});
   });
+  if($('#liveStatus')) $('#liveStatus').addEventListener('click', e => { if(e.target.closest('[data-live-retry]')) fetchLiveNews(liveState.sourceId || 'jaipur', liveState.query || '').catch(function(){}); });
   if($('#liveGrid')) $('#liveGrid').addEventListener('click', e => {
+    const retryBtn = e.target.closest('[data-live-retry]');
+    if(retryBtn) return fetchLiveNews(liveState.sourceId || 'jaipur', liveState.query || '').catch(function(){});
     const saveBtn = e.target.closest('[data-live-save]');
     if(saveBtn) return saveLiveToFeed(+saveBtn.dataset.liveSave);
     const ideaBtn = e.target.closest('[data-live-idea]');
@@ -21144,6 +21326,17 @@ if(!hadLocalData && !window.indexedDB) save();
 applyRoleChrome();
 render();
 try{ document.body.classList.add('booted'); }catch(e){}
+/* BCS live feeds: background prefetch + 15-min refresh when Live visible */
+window.__bcsLiveTimer = window.__bcsLiveTimer || null;
+function bcsPrefetchLive(){
+  try{
+    if(liveState.started && liveState.fetchedAt && Date.now() - liveState.fetchedAt < 10 * 60000) return;
+    liveState.started = true;
+    fetchLiveNews(liveState.sourceId || 'jaipur').catch(function(){});
+  }catch(e){}
+}
+setTimeout(bcsPrefetchLive, 1800);
+setInterval(function(){ try{ if(newsMode === 'live' && document.visibilityState === 'visible' && navigator.onLine){ fetchLiveNews(liveState.sourceId || 'jaipur').catch(function(){}); } }catch(e){} }, 15 * 60000);
 /* ---------- BCS canonical: file:// notice + safe storage on local file ---------- */
 (function(){
   try{
