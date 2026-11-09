@@ -8127,6 +8127,159 @@ body[data-theme="dark"] .sec-head h3::before{box-shadow:0 1px 4px rgba(231,196,1
 /* ============================================================ */
 
 
+
+/* ============================================================
+   BCS v85 — Dashboard unified-header card: absolute center
+   (every cell horizontally + vertically balanced)
+   ============================================================ */
+
+/* Cell-level centering */
+.dash-card-header .dl-date,
+.dash-card-header .dl-quote,
+.dash-card-header .dl-time,
+.dash-card-header .dl-month,
+.dash-card-header .dl-festival,
+.dash-card-header .dl-merged-bottom{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+}
+
+/* DATE cell — calendar stack centered horizontally */
+.dash-card-header .dl-date{
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  gap:14px !important;
+  padding:16px 22px !important;
+  border-right:1px solid var(--line) !important;
+}
+.dash-card-header .dlf-cal{
+  width:100% !important;
+  max-width:360px !important;
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:14px !important;
+  margin:0 auto !important;
+}
+.dash-card-header .dlf-cal-body{
+  justify-content:center !important;
+  text-align:center !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  gap:2px !important;
+}
+.dash-card-header .dlf-cal-band{
+  writing-mode:horizontal-tb !important;
+  min-width:120px !important;
+  flex:0 0 120px !important;
+  width:120px !important;
+  padding:12px 10px !important;
+  font-size:11px !important;
+  letter-spacing:.14em !important;
+  text-align:center !important;
+}
+.dash-card-header .dl-meta{
+  align-items:center !important;
+  text-align:center !important;
+  width:100% !important;
+  max-width:360px !important;
+  gap:2px !important;
+}
+.dash-card-header .dl-greet{text-align:center !important;width:100% !important;font-size:19px !important}
+.dash-card-header .dl-hi,
+.dash-card-header .dl-line,
+.dash-card-header .dl-sub{text-align:center !important;width:100% !important}
+.dash-card-header .miniweek{display:grid !important;grid-template-columns:repeat(7, minmax(0, 1fr)) !important;gap:4px !important;justify-content:center !important;max-width:360px !important;width:100% !important;margin:0 auto !important}
+.dash-card-header .miniweek .mini-day{display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:center !important;text-align:center !important;gap:1px !important;padding:5px 2px !important;border-radius:10px !important}
+
+/* MOTIVE cell — centered cohesively */
+.dash-card-header .dl-quote{
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  padding:18px 22px !important;
+  gap:12px !important;
+}
+.dash-card-header .dl-quote p{text-align:center !important;font-size:clamp(15px, 1.35vw, 18px) !important}
+.dash-card-header .dl-weather{justify-content:center !important}
+
+/* NOW · LIVE cell — centered */
+.dash-card-header .dl-time{padding:16px 14px !important}
+.dash-card-header .dl-clock{font-size:clamp(2.4rem, 3.4vw, 3.4rem) !important;letter-spacing:-.02em !important;color:var(--ink) !important;line-height:1 !important}
+.dash-card-header .dl-clock i{font-size:.38em !important;font-style:normal !important;color:var(--gold-deep, #8A6A2E) !important;font-weight:600 !important;vertical-align:baseline !important;opacity:.85 !important}
+.dash-card-header .dl-timemeta{align-items:center !important;text-align:center !important;gap:2px !important}
+.dash-card-header .dl-zone{text-align:center !important;width:100% !important;font-size:10.5px !important;letter-spacing:.16em !important;text-transform:uppercase !important;color:var(--mut) !important;justify-content:center !important}
+.dash-card-header .dl-detail{text-align:center !important;width:100% !important;font-size:13px !important}
+.dash-card-header .dl-next{text-align:center !important;width:100% !important}
+.dash-card-header .dl-quicklink{justify-content:center !important;text-align:center !important}
+
+/* MONTH cell — fully centered */
+.dash-card-header .dl-month{text-align:center !important;padding:16px 14px !important;justify-content:center !important}
+.dash-card-header .dl-month-head{display:flex !important;flex-direction:column !important;gap:6px !important;align-items:center !important;justify-content:center !important;text-align:center !important}
+.dash-card-header .dl-month-head strong{font-size:.78rem !important;font-weight:750 !important;letter-spacing:1.1px !important;text-transform:uppercase !important;color:var(--mut) !important}
+.dash-card-header .dl-month-head button{justify-content:center !important;padding:4px 10px !important;border-radius:8px !important}
+.dash-card-header .mini-month-grid{justify-content:center !important}
+.dash-card-header .mini-month-legend{justify-content:center !important}
+
+/* AAJ KA DIN festival cell — centered */
+.dash-card-header .dl-festival{padding:18px 24px !important;justify-content:center !important;text-align:center !important}
+.dash-card-header .dlf-main{display:flex !important;flex-direction:column !important;align-items:center !important;text-align:center !important;gap:6px !important;max-width:880px !important;margin:0 auto !important}
+.dash-card-header .dlf-top{justify-content:center !important;gap:10px !important}
+.dash-card-header .dlf-greets{text-align:center !important}
+.dash-card-header .dlf-greet-hi, .dash-card-header .dlf-greet-en{text-align:center !important}
+.dash-card-header .dlf-actions{justify-content:center !important}
+
+/* COMING UP bottom bar — centered items */
+.dash-card-header .dl-merged-bottom{justify-content:center !important;padding:14px 22px !important}
+
+/* Uniform cell heights & equal paddings */
+.dash-card-header{
+  display:grid !important;
+  grid-template-columns:minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, .85fr) minmax(0, .92fr) !important;
+  grid-template-rows:auto auto auto !important;
+  min-height:340px !important;
+}
+.dash-card-header::after{top:0 !important}
+.dash-card-header .dl-festival{grid-column:1/-1 !important;grid-row:3 !important}
+.dash-card-header .dl-merged-bottom{grid-column:1/-1 !important;grid-row:4 !important}
+.dash-card-header .dl-date{grid-column:1 !important;grid-row:1 !important}
+.dash-card-header .dl-quote{grid-column:2 !important;grid-row:1 !important}
+.dash-card-header .dl-time{grid-column:3 !important;grid-row:1 !important}
+.dash-card-header .dl-month{grid-column:4 !important;grid-row:1 !important}
+
+/* Responsive: below 1250px switch to 2×2, ≤700 stack */
+@media (max-width:1280px){
+  .dash-card-header{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+    grid-template-rows:minmax(0,auto) minmax(0,auto) auto auto !important;
+    min-height:auto !important;
+    }
+  .dash-card-header .dl-date,.dash-card-header .dl-quote{grid-row:1 !important}
+  .dash-card-header .dl-date{grid-column:1 !important}
+  .dash-card-header .dl-quote{grid-column:2 !important}
+  .dash-card-header .dl-time,.dash-card-header .dl-month{grid-row:2 !important}
+  .dash-card-header .dl-time{grid-column:1 !important;border-right:1px solid var(--line) !important;border-bottom:1px solid var(--line) !important}
+  .dash-card-header .dl-month{grid-column:2 !important;border-bottom:1px solid var(--line) !important}
+  .dash-card-header .dl-festival{grid-column:1/-1 !important;grid-row:3 !important}
+  .dash-card-header .dl-merged-bottom{grid-row:4 !important}
+}
+@media (max-width:720px){
+  .dash-card-header{grid-template-columns:minmax(0,1fr) !important;grid-template-rows:auto !important;min-height:auto !important}
+  .dash-card-header .dl-date,.dash-card-header .dl-quote,.dash-card-header .dl-time,.dash-card-header .dl-month,.dash-card-header .dl-festival,.dash-card-header .dl-merged-bottom{grid-column:1 !important;grid-row:auto !important}
+  .dash-card-header .dl-quote{border-right:none !important;border-bottom:1px solid var(--line) !important}
+  .dash-card-header .dl-time{border-right:none !important}
+}
+
+/* ============================================================ */
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
