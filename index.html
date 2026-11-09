@@ -6523,6 +6523,45 @@ body[data-theme="light"] :is(.checks label,.bchip,.shortbtn,.present-ptag,.dtab 
 }
 
 
+/* ============================================================
+   BCS v65 — Dark mode max + panel auto-hide hygiene
+   Dark: #000 bg, #1C1C1E surfaces, #F5F5F7 text, #C9CCD3 mut
+   ============================================================ */
+body[data-theme="dark"]{
+  --bs-bg:#000000; --c-surface:#1C1C1E;
+  --c-ink:#F5F5F7; --c-ink2:#E8E8ED; --c-mut:#C9CCD3;
+  --c-line:rgba(255,255,255,.13); --c-line2:rgba(255,255,255,.09);
+}
+body[data-theme="dark"] :is(
+  .panel,.cat-card,.live-card,.idea-card,.pulse-card,.calc-card,.adv-card,.dev-card,.client-card,
+  .advisor-card,.partner-card,.resale-card,.tm-card,.an-card,.health-card,.kpi,.tile,.cov-card,
+  .hub-card,.dev-kcard,.kb-card,.news-card,.proj-card,.link-item,.tpl-card,.fest-card,.booking-card,
+  .cal-card,.show-card,.card,.sb-item,.pcard,.adv-briefbar,.present-sheet,.present-actions,
+  .form-tabs,.detail-tabs,.adv-search,.adv-toolbar select,.toolbar select,.adv-empty,.an-empty,
+  .inv-empty,.live-empty,.emptyBlock,.mini-empty,.unit-empty,.dcell,.ddev,.pc,.amen-chip,
+  .conn-row input,.conn-actions select,.unit-chip,.dchip,.bchip,.shortbtn,.present-ptag,
+  .cor-count,.dev-row .cnt,.viewbtn,.toolpop,.qa-pop,.modal,.lock-card,.toast,.tooldock,.dock-btn,
+  .searchbox,.icon-btn,.btn.ghost,.seg,.cor-card
+){background:var(--c-surface) !important;border-color:var(--c-line) !important;color:var(--c-ink) !important}
+body[data-theme="dark"] :is(.searchbox input,.adv-search input,.lock-input input,.sd-input){
+  background:transparent !important;color:var(--c-ink) !important}
+body[data-theme="dark"] ::placeholder{color:#C9CCD3 !important;opacity:1 !important}
+body[data-theme="dark"] table th{background:#232326 !important;color:var(--c-mut) !important}
+body[data-theme="dark"] table td{color:var(--c-ink) !important}
+body[data-theme="dark"] :is(.seg button.on,.live-chip.on,.shortbtn.on,.bchip){
+  background:color-mix(in srgb, var(--acc) 16%, #1C1C1E) !important;color:var(--c-ink) !important;border-color:color-mix(in srgb, var(--acc) 30%, transparent) !important}
+body[data-theme="dark"] .show-card .show-media::after{background:linear-gradient(180deg, transparent 50%, rgba(0,0,0,.28)) !important}
+body[data-theme="dark"] .empty-icon,body[data-theme="dark"] .avatar{background:color-mix(in srgb, var(--acc) 14%, #1C1C1E) !important;color:var(--acc) !important}
+body[data-theme="dark"] .cal-cell{background:#1C1C1E !important;color:var(--c-ink) !important}
+body[data-theme="dark"] .cal-chip{color:var(--c-ink) !important}
+/* panel never stays stuck above dock */
+.toolpop{bottom:auto !important;top:120px !important;left:18px !important;z-index:80 !important}
+.toolpop.on{animation:slideup .22s cubic-bezier(.2,.8,.3,1) !important}
+.toast{z-index:240 !important}
+.tooldock{z-index:90 !important}
+.media-pop{z-index:85 !important}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -11331,7 +11370,7 @@ function toast(msg, err){
   t.textContent = msg;
   t.className = 'toast on' + (err ? ' err' : '');
   clearTimeout(t._to);
-  t._to = setTimeout(() => t.className = 'toast', 2600);
+  t._to = setTimeout(() => t.className = 'toast', 2000);
   try{ bcsSound(err ? 'error' : 'success'); }catch(e){}
 }
 const initial = name => (name||'?').trim().charAt(0).toUpperCase();
@@ -20176,15 +20215,29 @@ function timerSync(){
 
 /* ---------- sticky + calculator tool dock ---------- */
 function initTools(){
+  let _toolHideT = null;
   const open = id => {
     const pop = $('#' + id);
     const was = pop.classList.contains('on');
     $$('.toolpop').forEach(p => p.classList.remove('on'));
     $$('.dock-btn').forEach(b => b.classList.remove('open'));
+    if(_toolHideT){ clearTimeout(_toolHideT); _toolHideT = null; }
     if(!was){
       pop.classList.add('on');
       (id === 'stickyPop' ? $('#stickyBtn') : $('#calcBtn')).classList.add('open');
       if(id === 'calcPop') setTimeout(() => $('#calcDisp').focus?.(), 50);
+      _toolHideT = setTimeout(() => {
+        try{
+          if(!pop.contains(document.activeElement) && !pop.matches(':hover')){
+            pop.classList.remove('on');
+            $$('.dock-btn').forEach(x => x.classList.remove('open'));
+          }
+        }catch(e){}
+      }, 2000);
+      [pop].forEach(function(p){
+        p.addEventListener('mouseenter', () => { if(_toolHideT){ clearTimeout(_toolHideT); _toolHideT = null; } });
+        p.addEventListener('focusin', () => { if(_toolHideT){ clearTimeout(_toolHideT); _toolHideT = null; } });
+      });
     }
   };
   $('#stickyBtn').addEventListener('click', () => open('stickyPop'));
