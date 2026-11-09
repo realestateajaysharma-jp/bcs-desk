@@ -5359,6 +5359,68 @@ body[data-theme="dark"] .hub-badge{color:var(--acc)}
 @media (max-width:1100px){.command-hub{padding:16px 14px 14px !important}.hub-head h3{font-size:20px !important}}
 
 
+/* ============================================================
+   BCS Design System v19 — Desktop premium + Today fix + Tab unify
+   MacBook-first, sticky nav already, every tab dashboard-like
+   ============================================================ */
+/* desktop breathing room */
+@media (min-width:1280px){
+  main{padding-top:32px !important}
+  .sec-head{margin:48px 0 18px !important}
+  .adv-head{margin-bottom:22px !important}
+  .adv-title{font-size:40px !important}
+  .panel,.an-card,.health-card{padding:24px 24px !important}
+  .calc-grid,.health-grid,.tmpl-grid{row-gap:16px !important}
+}
+/* tab dashboards unify (all KPI strips identical) */
+.team-stats,.pipeline-stats,.links-stats,.an-kpis,.tiles,.dayStats,#dayStats,#resaleStats,#devStats,.kpi-wrap{
+  display:grid !important;grid-template-columns:repeat(4,1fr) !important;gap:14px !important;margin-bottom:18px !important;
+}
+.links-stats > div,.team-stats > div,.pipeline-stats > div,.kpi.tiles,.tiles > .tile{
+  border-radius:20px !important;border:1px solid var(--hair) !important;padding:16px 18px !important;background:var(--panel) !important;box-shadow:var(--shadow-app) !important;
+}
+.links-stats .v,.team-stats .v,.pipeline-stats .v{font-size:28px !important;letter-spacing:-.03em !important}
+.team-stats,.pipeline-stats{margin-bottom:18px !important}
+@media (max-width:1100px){.team-stats,.pipeline-stats,.links-stats,.an-kpis,.tiles{grid-template-columns:repeat(2,1fr) !important}}
+@media (max-width:560px){.team-stats,.pipeline-stats,.links-stats,.an-kpis,.tiles{grid-template-columns:1fr 1fr !important}}
+/* --- Today card DEFINITIVE fix (no overlap, no tall pills) --- */
+.dash-card-header{align-items:start !important}
+.dash-card-header .dl-date,.dash-card-header .dl-quote,.dash-card-header .dl-time,.dash-card-header .dl-month{
+  min-height:0 !important;height:auto !important;
+}
+.dash-card-header .dl-date{flex-direction:column !important;justify-content:flex-start !important;align-items:stretch !important;padding:18px 20px 14px !important;gap:0 !important}
+.dash-card-header .dl-date .dlf-cal{width:84px !important;flex:none !important}
+.dash-card-header .dl-meta{flex-direction:column !important;align-items:flex-start !important;justify-content:center !important;gap:3px !important;min-height:78px !important}
+.dash-card-header .dl-greet{font-size:19px !important;line-height:1.25 !important;white-space:normal !important}
+.dash-card-header .dl-hi{margin-top:6px !important;white-space:nowrap !important}
+.dash-card-header .dl-line{white-space:normal !important}
+.dash-card-header .dl-sub{white-space:normal !important}
+.dash-card-header .miniweek{flex:none !important;height:56px !important;margin-top:12px !important;padding-top:10px !important;align-items:start !important}
+.mini-day{min-height:52px !important;height:52px !important}
+.dash-card-header .dl-quote{justify-content:flex-start !important}
+.dash-card-header .dl-quote p{white-space:normal !important}
+.dash-card-header .dl-weather{flex:none !important}
+.dash-card-header .dl-time{justify-content:flex-start !important;padding:18px 14px 14px !important}
+.dash-card-header .dl-clock{flex:none !important}
+.dash-card-header .dl-timemeta{flex:none !important}
+.dash-card-header .dl-month{justify-content:flex-start !important}
+.mini-month-day{height:27px !important}
+.dash-card-header .dl-festival{padding:20px 24px 18px !important}
+.dash-card-header .dlf-greets{grid-template-columns:1fr 1fr !important}
+@media (max-width:1250px){
+  .dash-card-header .dl-date{grid-column:1;grid-row:1}
+  .dash-card-header .dl-quote{grid-column:2;grid-row:1}
+  .dash-card-header .dl-time{grid-column:1;grid-row:2}
+  .dash-card-header .dl-month{grid-column:2;grid-row:2}
+}
+@media (max-width:700px){
+  .dash-card-header .dl-date,.dash-card-header .dl-quote,.dash-card-header .dl-time,.dash-card-header .dl-month{grid-column:1 !important}
+  .dash-card-header .dl-clock{font-size:42px !important}
+}
+/* sticky nav refinement: always on top, frosted, progress-friendly */
+header{position:sticky !important;top:0 !important;z-index:120 !important}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -5855,7 +5917,18 @@ body[data-theme="dark"] .hub-badge{color:var(--acc)}
 
   <!-- ============ DEVELOPERS ============ -->
   <section class="view" id="view-developers">
-    <div class="sec-head">
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · developer network</div>
+        <h2 class="adv-title">Builders who<br><em>deliver, not promise.</em></h2>
+        <p class="adv-sub">Har developer ek jagah — projects, RERA, price band aur status. Click karo, unke saare projects ek screen pe.</p>
+      </div>
+      <div class="adv-head-actions">
+        <button class="btn primary" id="addDevBtn2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg> Add developer</button>
+      </div>
+    </div>
+    <div class="links-stats" id="devStats"></div>
+    <div class="sec-head" style="margin-top:18px">
       <h3>Developers &amp; owners</h3>
       <div class="pill-wrap view-switch">
         <div class="seg" id="devViewToggle">
@@ -13266,6 +13339,17 @@ function renderDevBoard(){
 }
 
 function renderDevelopers(){
+  try{
+    const all = scopedDevelopers();
+    const ps = scopedProjects().length;
+    const rera = scopedProjects().filter(p => p.rera).length;
+    const withProj = all.filter(d => projectsForDeveloper(d.id).length).length;
+    if($('#devStats')) $('#devStats').innerHTML = `
+      <div><div class="k">Developers</div><div class="v">${all.length}</div></div>
+      <div><div class="k">With projects</div><div class="v">${withProj}</div></div>
+      <div><div class="k">Total projects</div><div class="v">${ps}</div></div>
+      <div><div class="k">RERA projects</div><div class="v">${rera}</div></div>`;
+  }catch(e){}
   const q = $('#globalSearch').value.trim().toLowerCase();
   let list = [...scopedDevelopers()].sort((a,b) => (a.name||'').localeCompare(b.name||''));
   if(q) list = list.filter(d => [d.name,d.ownerName,d.email,d.phone,d.notes,d.remarks].filter(Boolean).join(' ').toLowerCase().includes(q));
