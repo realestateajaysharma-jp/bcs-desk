@@ -4268,6 +4268,130 @@ body[data-theme="dark"] .hwrap-top .searchbox,body[data-theme="dark"] .hwrap-top
 }
 
 
+/* ============================================================
+   BCS Design System v5 — Structured nav + Full-width +
+   Dark/Light readability blanket + Sound/Visual FX
+   ============================================================ */
+/* full-width: use left/right space */
+.hwrap{max-width:1920px !important;padding:14px 40px !important}
+main{max-width:1920px !important;padding:24px 40px 90px !important}
+@media (min-width:1700px){.hwrap{padding-left:48px !important;padding-right:48px !important}main{padding-left:48px !important;padding-right:48px !important}}
+@media (max-width:1100px){.hwrap{padding:12px 20px !important}main{padding:20px 20px 80px !important}}
+@media (max-width:640px){.hwrap{padding:10px 14px !important}main{padding:16px 14px 80px !important}}
+/* structured top row: brand | search (center) | actions */
+.hwrap-top{display:grid !important;grid-template-columns:auto minmax(180px,380px) auto !important;justify-content:space-between !important;align-items:center !important;gap:16px !important;flex-wrap:nowrap !important}
+.hwrap-top .spacer{display:none !important}
+.hwrap-top .searchbox{justify-self:center !important;width:100% !important;min-width:0 !important}
+.hwrap-top .hbtns{justify-self:end !important}
+@media (max-width:1180px){
+  .hwrap-top{grid-template-columns:auto 1fr auto !important}
+}
+@media (max-width:980px){
+  .hwrap-top{grid-template-columns:auto 1fr auto !important;flex-wrap:wrap !important}
+  .hwrap-top .searchbox{order:3;grid-column:1/-1;justify-self:stretch}
+}
+/* structured nav bar: centered, balanced, equal pills */
+.hwrap-nav{padding-top:2px !important;padding-bottom:14px !important}
+.hwrap-nav #nav{
+  justify-content:center !important;align-items:center !important;gap:6px !important;
+  padding:8px 10px !important;border-radius:18px !important;
+}
+#nav button{min-height:38px !important;padding:8px 14px !important;font-size:12.5px !important;line-height:1 !important}
+#nav .nav-ic{width:23px !important;height:23px !important;font-size:12.5px !important}
+.nav-sep{width:1px !important;height:26px !important;margin:0 3px !important;align-self:center !important}
+@media (min-width:1500px){ .hwrap-nav #nav{flex-wrap:nowrap !important} }
+@media (max-width:980px){ .hwrap-nav #nav{justify-content:flex-start !important} }
+/* full-width grids use the space */
+.cat-strip{grid-template-columns:repeat(3,1fr) !important}
+@media (min-width:1400px){ .cat-strip{grid-template-columns:repeat(4,1fr) !important} }
+.senior-grid{grid-template-columns:repeat(3,1fr) !important}
+@media (min-width:1500px){ .senior-grid{grid-template-columns:repeat(4,1fr) !important} }
+.dash-grid{grid-template-columns:repeat(3,1fr) !important}
+@media (min-width:1500px){ .dash-grid{grid-template-columns:repeat(4,1fr) !important} }
+.brief-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) !important}
+.live-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr)) !important}
+.ideas-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr)) !important}
+/* light contrast boost */
+:root{--mut:#7A7F73;--ink2:#45463A}
+::placeholder{color:#8A8F83 !important}
+/* dark/long-tail readability blanket */
+body[data-theme="dark"] :is(
+  .toolbar select,.adv-search,.adv-toolbar select,.adv-briefbar,.adv-card,.adv-empty,
+  .pcard,.sb-item,.seg,.seg button,.viewbtn,.checks label,.dcell,.ddev,.form-tabs,
+  .field input,.field select,.field textarea,.lock-card,.lock-input input,.lock-select,
+  .kb-card,.news-card,.proj-card,.tmpl-chip,.link-item,.tile,.cor-card,.cov-card,
+  .hub-count,.hub-row,.sen-row,.fest-card,.booking-card,.client-card,.dev-kcard,
+  .dev-project-row,.tpl-toolbar,.live-card,.live-empty,.idea-card,.pulse-card,
+  .calc-card,.health-card,.dsec,.unit-row,.toast,.qa-pop,.toolpop,.modal-head,.modal-foot,
+  .lock-form-block,.live-source-links a,.live-chip
+){background:var(--panel) !important;border-color:var(--line) !important;color:var(--ink) !important}
+body[data-theme="dark"] :is(.live-card p,.live-empty,.idea-notes,.adv-sub,.intro p,.panel-head .link,.edu-line,.hint,.note){
+  color:var(--mut) !important}
+body[data-theme="dark"] :is(.field label,.tb-label,.lab,.k,.stat-label){color:var(--mut) !important}
+body[data-theme="dark"] a{color:#E5BE62 !important}
+body[data-theme="dark"] .live-foot a,body[data-theme="dark"] .pulse-fallback a{color:#E5BE62 !important}
+body[data-theme="dark"] ::placeholder{color:#8B9082 !important}
+body[data-theme="dark"] input,body[data-theme="dark"] select,body[data-theme="dark"] textarea{background:#12160F !important;color:var(--ink) !important;border-color:var(--line) !important}
+body[data-theme="dark"] .lock{background:radial-gradient(800px 500px at 50% -10%,rgba(229,190,98,.1),transparent 60%),#0E110E !important}
+body[data-theme="dark"] .lock-card{background:linear-gradient(180deg,#222822,#1B201B) !important;border-color:rgba(255,255,255,.1) !important}
+body[data-theme="dark"] table th{background:#20261F !important;color:var(--mut) !important}
+body[data-theme="dark"] table td{color:var(--ink) !important}
+body[data-theme="dark"] .status-pill,body[data-theme="dark"] .tm-chip,body[data-theme="dark"] .live-chip.on{background:#D8C99A !important;color:#171A14 !important}
+/* smooth theme transition */
+html,body,header,main,.panel,.modal,.lock-card{transition:background-color .3s ease,border-color .3s ease,color .2s ease}
+/* ambient visuals: aurora + dot grid (pointer-events none) */
+body::before,body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0}
+body::before{
+  background:
+    radial-gradient(700px 420px at 12% 8%, rgba(165,123,54,.10), transparent 62%),
+    radial-gradient(700px 420px at 88% 12%, rgba(78,124,98,.09), transparent 62%),
+    radial-gradient(600px 380px at 50% 108%, rgba(84,119,158,.09), transparent 62%);
+  animation:bcsAurora 22s ease-in-out infinite alternate;
+}
+body::after{
+  background-image:radial-gradient(rgba(46,45,32,.06) 1px, transparent 1px);
+  background-size:22px 22px;opacity:.5;mask-image:radial-gradient(80% 60% at 50% 0%, black, transparent 80%);
+}
+body[data-theme="dark"]::before{
+  background:
+    radial-gradient(700px 420px at 12% 8%, rgba(229,190,98,.08), transparent 62%),
+    radial-gradient(700px 420px at 88% 12%, rgba(65,132,88,.08), transparent 62%),
+    radial-gradient(600px 380px at 50% 108%, rgba(84,119,158,.07), transparent 62%);
+}
+body[data-theme="dark"]::after{background-image:radial-gradient(rgba(242,240,229,.05) 1px, transparent 1px)}
+@keyframes bcsAurora{from{background-position:0% 0%,100% 0%,50% 100%}to{background-position:8% 4%,92% 6%,42% 96%}}
+header,main,.lock{position:relative;z-index:1}
+/* card shine + hero gradient */
+.panel,.cat-card,.live-card,.idea-card{position:relative}
+.panel::after,.cat-card::after,.live-card::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%);
+  transform:translateX(-120%);transition:transform .6s ease,opacity .3s ease;
+}
+body[data-theme="dark"] .panel::after,body[data-theme="dark"] .cat-card::after,body[data-theme="dark"] .live-card::after{background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.12) 50%,transparent 60%)}
+.panel:hover::after,.cat-card:hover::after,.live-card:hover::after{opacity:1;transform:translateX(120%)}
+.intro h2 em,.adv-title em{
+  background:linear-gradient(95deg,var(--gold),#C99A3E,var(--gold));
+  background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:bcsGrad 4s ease-in-out infinite alternate;
+}
+@keyframes bcsGrad{from{background-position:0% 50%}to{background-position:100% 50%}}
+.btn.primary::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.28) 50%,transparent 60%);
+  transition:transform .5s ease,opacity .25s ease;transform:translateX(-120%);
+}
+.btn.primary{position:relative;overflow:hidden}
+.btn.primary:hover::after{opacity:1;transform:translateX(120%)}
+header.scrolled{box-shadow:0 18px 40px -22px rgba(46,45,32,.35)}
+body[data-theme="dark"] header.scrolled{box-shadow:0 18px 40px -22px rgba(0,0,0,.8)}
+#soundBtn.muted{opacity:.55}
+@media (prefers-reduced-motion:reduce){
+  body::before,body::after,.intro h2 em,.adv-title em{animation:none !important}
+  .panel::after,.cat-card::after,.live-card::after,.btn.primary::after{transition:none !important}
+}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -4417,6 +4541,7 @@ body[data-theme="dark"] .hwrap-top .searchbox,body[data-theme="dark"] .hwrap-top
       <button class="icon-btn" id="themeBtn" title="Dark / light mode" aria-label="Toggle dark mode">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.6 14.3A9.4 9.4 0 0 1 9.7 3.4a9.4 9.4 0 1 0 10.9 10.9Z"/><path d="M17.5 4.5l.5 1.4 1.4.5-1.4.5-.5 1.4-.5-1.4-1.4-.5 1.4-.5.5-1.4Z"/></svg>
       </button>
+      <button class="icon-btn" id="soundBtn" title="Sound on / off" aria-label="Toggle sound" aria-pressed="true"><span id="soundIco" style="font-size:15px;line-height:1">🔊</span></button>
       <span class="role-chip" id="roleChip"></span>
       <button class="icon-btn" id="lockBtn" title="Lock desk — Ajay Sharma" aria-label="Lock desk">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
@@ -8877,12 +9002,81 @@ function budgetText(b){
   if(a) return 'From ' + a;
   return 'Flexible';
 }
+/* ---------- BCS sound FX (WebAudio, muted-persisted, tiny volumes) ---------- */
+let _bcsAudioCtx = null, _bcsSoundOn = true, _bcsLastSnd = 0;
+try{ _bcsSoundOn = localStorage.getItem('bcs_sound_v1') !== 'off'; }catch(e){}
+function bcsAudio(){ try{ if(!_bcsAudioCtx){ const AC = window.AudioContext || window.webkitAudioContext; if(AC) _bcsAudioCtx = new AC(); } if(_bcsAudioCtx && _bcsAudioCtx.state === 'suspended') _bcsAudioCtx.resume().catch(()=>{}); return _bcsAudioCtx; }catch(e){ return null; } }
+function bcsTone(freq, dur, type, vol, delay){
+  try{
+    if(!_bcsSoundOn) return;
+    const now = Date.now(); if(now - _bcsLastSnd < 120) return; _bcsLastSnd = now;
+    const ctx = bcsAudio(); if(!ctx) return;
+    const t0 = ctx.currentTime + (delay || 0);
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = type || 'sine'; o.frequency.setValueAtTime(freq, t0);
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(vol || 0.07, t0 + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + (dur || 0.07));
+    o.connect(g); g.connect(ctx.destination);
+    o.start(t0); o.stop(t0 + (dur || 0.07) + 0.02);
+  }catch(e){}
+}
+function bcsSound(kind){
+  try{
+    if(kind === 'click') bcsTone(640, 0.045, 'sine', 0.045);
+    else if(kind === 'nav') { bcsTone(540, 0.05, 'sine', 0.05); }
+    else if(kind === 'success'){ bcsTone(880, 0.07, 'sine', 0.07, 0); bcsTone(1180, 0.09, 'sine', 0.06, 0.07); }
+    else if(kind === 'error'){ bcsTone(220, 0.14, 'triangle', 0.07); }
+    else if(kind === 'pop'){ bcsTone(760, 0.05, 'triangle', 0.05); }
+    else if(kind === 'theme'){ bcsTone(440, 0.08, 'sine', 0.05, 0); bcsTone(660, 0.08, 'sine', 0.045, 0.06); }
+  }catch(e){}
+}
+function bcsConfetti(){
+  try{
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const cv = document.createElement('canvas');
+    cv.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:999;opacity:1';
+    cv.width = innerWidth; cv.height = innerHeight;
+    document.body.appendChild(cv);
+    const x = cv.getContext('2d');
+    const cols = ['#E7C46E','#A57B36','#4E7C62','#54779E','#F2F0E5'];
+    const ps = Array.from({length:26}, function(){
+      return { x: innerWidth/2 + (Math.random()-0.5)*220, y: innerHeight*0.28, vx:(Math.random()-0.5)*7, vy: Math.random()*-6-2, g:0.22, s:3+Math.random()*5, c: cols[Math.floor(Math.random()*cols.length)], r: Math.random()*Math.PI, vr:(Math.random()-0.5)*0.3, life: 42+Math.random()*20 };
+    });
+    let fr = 0;
+    (function step(){
+      x.clearRect(0,0,cv.width,cv.height);
+      ps.forEach(function(p){
+        p.vy += p.g; p.x += p.vx; p.y += p.vy; p.r += p.vr; p.life--;
+        x.save(); x.translate(p.x,p.y); x.rotate(p.r); x.globalAlpha = Math.min(1, p.life/28);
+        x.fillStyle = p.c; x.fillRect(-p.s/2,-p.s/2,p.s,p.s*0.62); x.restore();
+      });
+      fr++;
+      if(fr < 70){ requestAnimationFrame(step); } else { cv.remove(); }
+    }());
+  }catch(e){}
+}
+function countUp(el, target, suf){
+  try{
+    if(!el) return;
+    const n = parseFloat(String(target).replace(/[^0-9.]/g,''));
+    if(!isFinite(n) || n <= 0){ el.textContent = target; return; }
+    const dur = 650, t0 = performance.now();
+    function tick(t){
+      const p = Math.min(1, (t - t0)/dur), e = 1 - Math.pow(1-p, 3);
+      el.textContent = Math.round(n * e) + (suf || '');
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }catch(e){}
+}
 function toast(msg, err){
   const t = $('#toast');
   t.textContent = msg;
   t.className = 'toast on' + (err ? ' err' : '');
   clearTimeout(t._to);
   t._to = setTimeout(() => t.className = 'toast', 2600);
+  try{ bcsSound(err ? 'error' : 'success'); }catch(e){}
 }
 const initial = name => (name||'?').trim().charAt(0).toUpperCase();
 function avatarHTML(d){
@@ -9307,6 +9501,7 @@ function showOverlay(id){
   el.classList.add('on');
 }
 function go(view){
+  try{ bcsSound('nav'); }catch(e){}
   currentView = view;
   $$('#nav button').forEach(b => { const on = b.dataset.view === view; b.classList.toggle('on', on); if(on) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
   $$('.view').forEach(v => v.classList.toggle('on', v.id === 'view-' + view));
@@ -20170,7 +20365,7 @@ function initExperience(){
   const accentBtn = $('#accentBtn');
   if(accentBtn) accentBtn.addEventListener('click', cycleAccent);
   const themeBtn = $('#themeBtn');
-  if(themeBtn) themeBtn.addEventListener('click', cycleTheme);
+  if(themeBtn) themeBtn.addEventListener('click', () => { cycleTheme(); try{ bcsSound('theme'); }catch(e){} });
   const trigger = $('#qaTrigger');
   if(trigger) trigger.addEventListener('click', openQuickActions);
   const dock = $('#quickAddDock');
@@ -21394,6 +21589,24 @@ if(!hadLocalData && !window.indexedDB) save();
 applyRoleChrome();
 render();
 try{ document.body.classList.add('booted'); }catch(e){}
+/* BCS sound toggle + header scroll + fun interactions */
+try{
+  const _sb = $('#soundBtn');
+  function _paintSound(){ const b = $('#soundBtn'); if(!b) return; const on = _bcsSoundOn; b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.classList.toggle('muted', !on); const ic = $('#soundIco'); if(ic) ic.textContent = on ? '🔊' : '🔇'; }
+  if(_sb){ _paintSound(); _sb.addEventListener('click', () => { _bcsSoundOn = !_bcsSoundOn; try{ localStorage.setItem('bcs_sound_v1', _bcsSoundOn ? 'on' : 'off'); }catch(e){} _paintSound(); if(_bcsSoundOn) bcsSound('success'); }); }
+  window.addEventListener('scroll', () => { try{ document.querySelector('header').classList.toggle('scrolled', scrollY > 6); }catch(e){} }, { passive:true });
+  const _unlockObs = setInterval(() => { try{ if(!document.body.classList.contains('locked')){ clearInterval(_unlockObs); bcsConfetti(); } }catch(e){ clearInterval(_unlockObs); } }, 600);
+  setTimeout(() => { try{ clearInterval(_unlockObs); }catch(e){} }, 60000);
+  document.addEventListener('click', (e) => {
+    try{
+      const b = e.target.closest && e.target.closest('.btn.primary, #nav button, .dtab, .live-chip, .seg button');
+      if(b && !_bcsSoundOn) return;
+      if(b && b.id !== 'soundBtn' && b.id !== 'themeBtn') bcsSound('click');
+      const st = document.querySelector('.istat b');
+      if(st && currentView === 'dashboard'){ const devs = $('#statDevs'); if(devs && !devs.dataset.cup){ devs.dataset.cup = '1'; countUp(devs, (window.db?.developers?.length || 0)); const pr = $('#statProjects'); if(pr && !pr.dataset.cup){ pr.dataset.cup = '1'; countUp(pr, (window.db?.projects?.length || 0)); } } }
+    }catch(e){}
+  }, true);
+}catch(e){}
 /* BCS live feeds: background prefetch + 15-min refresh when Live visible */
 window.__bcsLiveTimer = window.__bcsLiveTimer || null;
 function bcsPrefetchLive(){
