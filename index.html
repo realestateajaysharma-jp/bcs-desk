@@ -5312,6 +5312,27 @@ body[data-theme="dark"] .pulse-card{background:linear-gradient(180deg,#232326,#1
 }
 
 
+/* ============================================================
+   BCS Design System v17 — Sticky compact navbar on scroll
+   Fancy + useful: shrinks to nav row, shadow + progress, smooth
+   ============================================================ */
+header{transition:box-shadow .3s,background .3s}
+header.scrolled{box-shadow:0 18px 40px -18px rgba(0,0,0,.25) !important}
+header.compact .hwrap-top{padding-top:7px !important;padding-bottom:5px !important}
+header.compact .hwrap-nav{padding-top:0 !important;padding-bottom:9px !important}
+header.compact .brand .logo{height:36px !important;min-width:36px !important;font-size:12px !important;border-radius:11px !important}
+header.compact .brand h1{font-size:17px !important}
+header.compact .brand p{font-size:9px !important}
+header.compact .searchbox{height:36px !important}
+header.compact .hbtns .btn{height:34px !important;font-size:12px !important}
+header.compact .hbtns .icon-btn{width:34px !important;height:34px !important}
+header.compact #nav button{min-height:34px !important;padding:6px 12px !important;font-size:12px !important}
+header.compact #nav .nav-ic{width:20px !important;height:20px !important;font-size:11px !important}
+/* smooth shrink everywhere */
+.hwrap-top,.hwrap-nav,.brand .logo,.brand h1,.searchbox,.hbtns .btn,.hbtns .icon-btn,#nav button{transition:all .25s var(--ease, cubic-bezier(.28,.84,.42,1)) !important}
+@media (prefers-reduced-motion:reduce){header.compact .hwrap-top,header.compact .hwrap-nav{transition:none !important}}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -22727,7 +22748,7 @@ try{
   const _sb = $('#soundBtn');
   function _paintSound(){ const b = $('#soundBtn'); if(!b) return; const on = _bcsSoundOn; b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.classList.toggle('muted', !on); const ic = $('#soundIco'); if(ic) ic.textContent = on ? '🔊' : '🔇'; }
   if(_sb){ _paintSound(); _sb.addEventListener('click', () => { _bcsSoundOn = !_bcsSoundOn; try{ localStorage.setItem('bcs_sound_v1', _bcsSoundOn ? 'on' : 'off'); }catch(e){} _paintSound(); if(_bcsSoundOn) bcsSound('success'); }); }
-  window.addEventListener('scroll', () => { try{ document.querySelector('header').classList.toggle('scrolled', scrollY > 6); }catch(e){} }, { passive:true });
+  window.addEventListener('scroll', () => { try{ const h = document.querySelector('header'); h.classList.toggle('scrolled', scrollY > 6); h.classList.toggle('compact', scrollY > 140); }catch(e){} }, { passive:true });
   const _unlockObs = setInterval(() => { try{ if(!document.body.classList.contains('locked')){ clearInterval(_unlockObs); bcsConfetti(); } }catch(e){ clearInterval(_unlockObs); } }, 600);
   setTimeout(() => { try{ clearInterval(_unlockObs); }catch(e){} }, 60000);
   document.addEventListener('click', (e) => {
