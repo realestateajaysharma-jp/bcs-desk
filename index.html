@@ -8266,37 +8266,74 @@ body[data-theme="dark"] .dash-card-header .dl-quicklink{background:#D9B45E !impo
 
 
 
+
 /* ============================================================
-   BCS v90 — ONE unified horizontal banner · zero partitions
-   Row 1: [ date tile | greeting | motive quote (flex) | live clock ]
-   Row 2: [ AAJ KA DIN | coming-up pills (flex) | BCS identity | actions ]
+   BCS v91 — Rich interactive banner · skyline art · live market
+   Row 1: [cal tile | greeting | motive quote | weather | clock + day-plan ring]
+   Row 2: [AAJ KA DIN | coming up | BCS identity | quick tiles]
+   Row 3: [MARKET live rates strip → Rates Studio]
    ============================================================ */
 
 .dash-card-header{
+  position:relative !important;
   display:grid !important;
-  grid-template-columns:auto minmax(0,1fr) auto;
-  grid-template-rows:auto auto;
-  grid-template-areas:"date quote time" "festival bottom bottom";
+  grid-template-columns:auto minmax(0,1fr) auto auto !important;
+  grid-template-rows:auto auto auto !important;
+  grid-template-areas:
+    "date quote weather time"
+    "festival bottom bottom bottom"
+    "market market market market" !important;
   align-items:center !important;
-  column-gap:18px !important; row-gap:2px !important;
-  padding:10px 16px !important;
-  margin:0 0 10px 0 !important;
-  border-radius:16px !important;
+  column-gap:18px !important; row-gap:9px !important;
+  padding:13px 18px 12px !important;
+  margin:0 0 12px 0 !important;
+  border-radius:18px !important;
   overflow:hidden !important;
   height:auto !important; min-height:0 !important; max-height:none !important;
-  background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 90%, var(--olive) 10%) 0%, var(--panel) 85%) !important;
-  border:1px solid color-mix(in oklab, var(--hair) 60%, transparent) !important;
-  box-shadow:0 16px 38px -22px rgba(46,45,32,.4) !important;
+  background:
+    radial-gradient(560px 150px at 12% -30%, color-mix(in oklab, var(--gold) 15%, transparent), transparent 60%),
+    linear-gradient(160deg, color-mix(in oklab, var(--panel) 88%, var(--olive) 12%) 0%, var(--panel) 78%) !important;
+  border:1px solid color-mix(in oklab, var(--gold) 26%, var(--hair)) !important;
+  box-shadow:0 22px 46px -26px rgba(46,45,32,.45), inset 0 1px 0 rgba(255,255,255,.35) !important;
+  isolation:isolate !important;
 }
-.dash-card-header::before,.dash-card-header::after{display:none !important}
+/* Skyline silhouette artwork */
+.dash-card-header::before{
+  content:"" !important;
+  position:absolute !important; inset:0 !important; z-index:0 !important; pointer-events:none !important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 140' preserveAspectRatio='xMidYMax slice'%3E%3Cg fill='%23E7C46E'%3E%3Crect x='0' y='96' width='60' height='44'/%3E%3Crect x='50' y='60' width='46' height='80'/%3E%3Crect x='92' y='110' width='38' height='30'/%3E%3Crect x='128' y='40' width='52' height='100'/%3E%3Crect x='176' y='88' width='30' height='52'/%3E%3Crect x='205' y='70' width='66' height='70'/%3E%3Crect x='268' y='112' width='34' height='28'/%3E%3Crect x='300' y='52' width='44' height='88'/%3E%3Crect x='342' y='96' width='30' height='44'/%3E%3Crect x='372' y='30' width='60' height='110'/%3E%3Crect x='430' y='80' width='36' height='60'/%3E%3Crect x='464' y='104' width='28' height='36'/%3E%3Crect x='492' y='62' width='56' height='78'/%3E%3Crect x='548' y='100' width='34' height='40'/%3E%3Crect x='582' y='44' width='48' height='96'/%3E%3Crect x='628' y='84' width='40' height='56'/%3E%3Crect x='666' y='112' width='30' height='28'/%3E%3Crect x='694' y='36' width='58' height='104'/%3E%3Crect x='750' y='74' width='42' height='66'/%3E%3Crect x='790' y='96' width='36' height='44'/%3E%3Crect x='826' y='54' width='52' height='86'/%3E%3Crect x='876' y='104' width='30' height='36'/%3E%3Crect x='906' y='68' width='46' height='72'/%3E%3Crect x='950' y='112' width='36' height='28'/%3E%3Crect x='986' y='46' width='54' height='94'/%3E%3Crect x='1040' y='84' width='38' height='56'/%3E%3Crect x='1076' y='100' width='30' height='40'/%3E%3Crect x='1104' y='58' width='50' height='82'/%3E%3Crect x='1152' y='108' width='34' height='32'/%3E%3Crect x='1184' y='72' width='56' height='68'/%3E%3Crect x='1238' y='96' width='36' height='44'/%3E%3Crect x='1272' y='36' width='52' height='104'/%3E%3Crect x='1322' y='88' width='44' height='52'/%3E%3Crect x='1364' y='108' width='76' height='32'/%3E%3C/g%3E%3C/svg%3E") !important;
+  background-size:auto 150px !important;
+  background-position:bottom left !important;
+  background-repeat:repeat-x !important;
+  opacity:.055 !important;
+  -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 60%) !important;
+  mask-image:linear-gradient(180deg, transparent 0, #000 60%) !important;
+}
+/* Gold hairline crown */
+.dash-card-header::after{
+  content:"" !important;
+  position:absolute !important; top:0; left:18px; right:18px; height:2px !important; z-index:0 !important; pointer-events:none !important;
+  background:linear-gradient(90deg, transparent, var(--gold) 18%, #F6E3AC 50%, var(--gold) 82%, transparent) !important;
+  opacity:.85 !important;
+}
+body[data-theme="dark"] .dash-card-header{
+  background:
+    radial-gradient(560px 150px at 12% -30%, rgba(231,196,110,.16), transparent 60%),
+    linear-gradient(160deg, #23261C 0%, #1B1E15 78%) !important;
+  border-color:rgba(231,196,110,.22) !important;
+  box-shadow:0 22px 50px -24px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+body[data-theme="dark"] .dash-card-header::after{opacity:.65 !important}
+.dash-card-header > *{position:relative !important; z-index:1 !important}
 .dash-card-header .dl-month{display:none !important}
 
-/* Shared cell reset — no borders, no fills, no partitions */
+/* Shared cell reset */
 .dash-card-header .dl-date,
 .dash-card-header .dl-quote,
 .dash-card-header .dl-time,
 .dash-card-header .dl-festival,
-.dash-card-header .dl-merged-bottom{
+.dash-card-header .dl-merged-bottom,
+.dash-card-header .dl-market{
   grid-column:auto !important; grid-row:auto !important;
   display:flex !important; align-items:center !important;
   padding:0 !important; border:0 !important; background:transparent !important;
@@ -8304,130 +8341,187 @@ body[data-theme="dark"] .dash-card-header .dl-quicklink{background:#D9B45E !impo
   width:auto !important; max-width:none !important; min-width:0 !important;
 }
 
-/* ════════ ROW 1 — date · greeting · motive · clock ════════ */
+/* ════════ ROW 1 — date tile · greeting · motive · weather · clock+ring ════════ */
 .dash-card-header .dl-date{
   grid-area:date !important;
   flex:0 0 auto !important; flex-direction:row !important; align-items:center !important;
-  gap:11px !important; flex-wrap:nowrap !important;
+  gap:12px !important; flex-wrap:nowrap !important;
 }
 .dash-card-header .dl-date .dlf-cal{
-  flex:0 0 50px !important; width:50px !important; height:50px !important; min-height:50px !important; max-width:none !important;
-  border-radius:13px !important; padding:0 !important; gap:0 !important; overflow:hidden !important;
-  display:flex !important; flex-direction:column !important; align-items:center !important; justify-content:center !important;
-  background:linear-gradient(160deg, var(--olive) 0%, var(--olive) 75%, #46432A 100%) !important;
-  border:0 !important; box-shadow:0 8px 18px -10px rgba(58,57,40,.6) !important;
+  flex:0 0 56px !important; width:56px !important; height:56px !important; min-height:56px !important; max-width:none !important;
+  border-radius:14px !important; padding:0 !important; gap:0 !important; overflow:hidden !important;
+  display:flex !important; flex-direction:column !important; align-items:stretch !important; justify-content:stretch !important;
+  background:linear-gradient(165deg, #4A4630 0%, var(--olive) 55%, #2E2C1E 100%) !important;
+  border:1px solid rgba(231,196,110,.35) !important;
+  box-shadow:0 10px 22px -12px rgba(20,20,10,.65), inset 0 1px 0 rgba(255,255,255,.12) !important;
 }
-.dash-card-header .dl-date .dlf-cal-band,.dash-card-header .dl-date .dlf-cal-week,.dash-card-header .dl-date .dlf-cal-year{display:none !important}
-.dash-card-header .dl-date .dlf-cal-day{font-size:22px !important;line-height:1 !important;color:#F6F2E7 !important;font-weight:850 !important;letter-spacing:-.03em !important}
+.dash-card-header .dl-date .dlf-cal-band{
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  flex:0 0 auto !important; width:100% !important; height:15px !important;
+  font-size:8px !important; font-weight:850 !important; letter-spacing:.22em !important;
+  color:#1D1B12 !important; background:linear-gradient(90deg, #C9A54E, #E7C46E 40%, #F6E3AC 50%, #E7C46E 60%, #C9A54E) !important;
+  text-transform:uppercase !important; padding-left:.22em !important;
+}
+.dash-card-header .dl-date .dlf-cal-day{
+  flex:1 1 auto !important; display:flex !important; align-items:center !important; justify-content:center !important;
+  font-size:23px !important; line-height:1 !important; color:#F7F3E4 !important;
+  font-weight:850 !important; letter-spacing:-.03em !important; font-family:'Fraunces',serif !important;
+}
+.dash-card-header .dl-date .dlf-cal-week,.dash-card-header .dl-date .dlf-cal-year,.dash-card-header .dl-date .dlf-cal-body{display:none !important}
 .dash-card-header .dl-date .dl-meta{
   flex:0 1 auto !important; flex-direction:column !important; align-items:flex-start !important; justify-content:center !important;
   gap:1px !important; min-width:0 !important; width:auto !important; max-width:none !important;
 }
 .dash-card-header .dl-date .dl-greet{
-  font-size:17px !important; font-weight:800 !important; line-height:1.1 !important;
-  color:var(--ink) !important; white-space:nowrap !important; margin:0 !important; letter-spacing:-.01em !important;
+  font-size:19px !important; font-weight:800 !important; line-height:1.1 !important;
+  color:var(--ink) !important; white-space:nowrap !important; margin:0 !important; letter-spacing:-.015em !important;
   font-family:'Fraunces',serif !important;
 }
 .dash-card-header .dl-date .dl-hi{
-  display:block !important; font-size:8.5px !important; font-weight:800 !important; letter-spacing:.16em !important;
-  text-transform:uppercase !important; color:var(--gold-deep) !important; line-height:1 !important; margin:1px 0 2px !important;
+  display:flex !important; align-items:center !important; gap:6px !important;
+  font-size:8.5px !important; font-weight:850 !important; letter-spacing:.17em !important;
+  text-transform:uppercase !important; color:var(--gold-deep) !important; line-height:1 !important; margin:2px 0 2px !important;
 }
+.dash-card-header .dl-date .dl-hi::before{content:"" !important; display:inline-block !important; width:16px !important; height:2px !important; border-radius:2px !important; background:linear-gradient(90deg, var(--gold), transparent) !important}
 .dash-card-header .dl-date .dl-line{
-  display:flex !important; gap:4px !important; align-items:center !important;
+  display:flex !important; gap:5px !important; align-items:center !important;
   font-size:10.5px !important; font-weight:600 !important; color:var(--mut) !important;
   white-space:nowrap !important; overflow:hidden !important; text-overflow:ellipsis !important;
 }
 .dash-card-header .dl-date .dl-line b{font-weight:800 !important; color:var(--ink2) !important}
-.dash-card-header .dl-date .dl-line,.dash-card-header .dl-date .dl-sub{max-width:none !important}
 .dash-card-header .dl-date .dl-sub{display:none !important}
 .dash-card-header .dl-date .miniweek{display:none !important}
 
+/* Motive quote */
 .dash-card-header .dl-quote{
   grid-area:quote !important;
-  flex:1 1 auto !important; flex-direction:row !important; flex-wrap:wrap !important; align-content:center !important; align-items:center !important; justify-content:flex-start !important;
-  gap:8px 10px !important; row-gap:2px !important; min-width:0 !important;
+  flex:1 1 auto !important; flex-direction:row !important; flex-wrap:wrap !important; align-content:center !important;
+  align-items:center !important; justify-content:flex-start !important;
+  gap:7px 10px !important; row-gap:2px !important; min-width:0 !important;
 }
 .dash-card-header .dl-quote .motive-banner-label{
-  flex:0 0 100% !important; width:100% !important; display:block !important;
-  font-size:8px !important; letter-spacing:.16em !important; text-transform:uppercase !important;
-  color:var(--mut) !important; font-weight:800 !important; margin:0 !important; padding:0 !important;
-  white-space:nowrap !important; overflow:hidden !important; text-overflow:ellipsis !important;
-  line-height:1.2 !important;
+  flex:0 0 100% !important; width:100% !important; display:flex !important; align-items:center !important; gap:8px !important;
+  font-size:7.5px !important; letter-spacing:.2em !important; text-transform:uppercase !important;
+  color:var(--gold-deep) !important; font-weight:850 !important; margin:0 !important; padding:0 !important;
+  white-space:nowrap !important; overflow:hidden !important; line-height:1.2 !important;
 }
-.dash-card-header .dl-quote .th-qmark{font-size:18px !important; color:var(--gold) !important; flex:0 0 auto !important; line-height:1 !important; align-self:center !important}
+.dash-card-header .dl-quote .motive-banner-label::before{
+  content:"✦" !important; color:var(--gold) !important; font-size:8px !important;
+  text-shadow:0 0 6px color-mix(in oklab, var(--gold) 70%, transparent) !important;
+}
+.dash-card-header .dl-quote .th-qmark{
+  font-size:19px !important; color:var(--gold) !important; flex:0 0 auto !important;
+  line-height:1 !important; align-self:center !important; font-family:'Fraunces',serif !important; opacity:.9 !important;
+}
 .dash-card-header .dl-quote p{
-  font-size:14px !important; line-height:1.4 !important; font-family:'DM Sans',sans-serif !important; font-weight:600 !important;
   margin:0 !important; flex:1 1 0% !important; min-width:0 !important; min-height:0 !important;
-  font-size:13px !important; line-height:1.3 !important;
+  font-size:13.5px !important; line-height:1.32 !important; font-family:'DM Sans',sans-serif !important; font-weight:600 !important;
+  color:var(--ink) !important;
   display:-webkit-box !important; -webkit-box-orient:vertical !important; -webkit-line-clamp:2 !important;
   white-space:normal !important; overflow:hidden !important;
 }
 .dash-card-header .dl-quote .th-qby{display:none !important}
 .dash-card-header .dl-quote .th-qrefresh{
-  width:26px !important; height:26px !important; border-radius:999px !important; flex:0 0 auto !important;
-  font-size:12px !important; background:transparent !important; border:1px solid var(--hair) !important; color:var(--mut) !important;
-  transition:all .18s !important;
+  width:28px !important; height:28px !important; border-radius:999px !important; flex:0 0 auto !important;
+  font-size:13px !important; background:color-mix(in oklab, var(--panel) 75%, var(--olive) 25%) !important;
+  border:1px solid var(--hair) !important; color:var(--ink2) !important; transition:all .18s !important;
 }
-.dash-card-header .dl-quote .th-qrefresh:hover{border-color:var(--gold) !important; color:var(--gold-deep) !important}
+.dash-card-header .dl-quote .th-qrefresh:hover{border-color:var(--gold) !important; color:var(--gold-deep) !important; transform:translateY(-1px) !important}
+
+/* Weather — compact, graphical */
 .dash-card-header .dl-weather{
-  flex:0 0 auto !important; flex-direction:row !important; flex-wrap:wrap !important; gap:4px !important;
-  justify-content:flex-start !important; align-content:center !important; margin-left:6px !important;
-  max-width:230px !important;
+  grid-area:weather !important;
+  flex:0 0 auto !important; flex-direction:column !important; flex-wrap:nowrap !important;
+  align-items:flex-end !important; justify-content:center !important; gap:3px !important;
+  max-width:225px !important;
 }
 .dash-card-header .wx-mark{
-  font-size:9px !important; height:18px !important; line-height:18px !important; padding:0 7px !important; gap:3px !important;
-  border-radius:999px !important; white-space:nowrap !important;
-  background:color-mix(in oklab, var(--gold-soft,#F3E8D3) 40%, var(--panel)) !important; border:1px solid var(--hair) !important;
+  font-size:9px !important; height:19px !important; line-height:19px !important; padding:0 8px !important; gap:4px !important;
+  border-radius:999px !important; white-space:nowrap !important; font-weight:700 !important;
+  background:color-mix(in oklab, var(--gold-soft,#F3E8D3) 45%, var(--panel)) !important; border:1px solid var(--hair) !important;
+  color:var(--ink2) !important;
 }
-.dash-card-header .wx-day{display:none !important}
+.dash-card-header .wx-day,.dash-card-header .wx-sep{display:none !important}
 
+/* Clock + day-plan ring */
 .dash-card-header .dl-time{
   grid-area:time !important;
   flex:0 0 auto !important; flex-direction:row !important; align-items:center !important; justify-content:center !important;
-  gap:10px !important; position:static !important;
+  gap:14px !important; position:static !important;
 }
 .dash-card-header .dl-clock{
-  font-size:23px !important; font-weight:850 !important; letter-spacing:-.02em !important;
-  color:var(--ink) !important; line-height:1 !important; white-space:nowrap !important;
-  font-family:'Fraunces',serif !important;
+  display:flex !important; flex-direction:column !important; align-items:flex-end !important;
+  font-family:'Fraunces',serif !important; line-height:1 !important;
 }
-.dash-card-header .dl-clock i{font-size:9.5px !important; color:var(--gold-deep) !important; margin-left:2px !important}
+.dash-card-header .dl-clock span{
+  font-size:26px !important; font-weight:850 !important; letter-spacing:-.02em !important; color:var(--ink) !important;
+  font-variant-numeric:tabular-nums !important;
+}
+.dash-card-header .dl-clock i{
+  font-size:8px !important; font-weight:800 !important; letter-spacing:.18em !important; color:var(--gold-deep) !important;
+  text-transform:uppercase !important; font-style:normal !important; margin-top:3px !important;
+}
 .dash-card-header .dl-timemeta{display:none !important}
 .dash-card-header .dl-quicklink{display:none !important}
+
+/* Day-plan SVG progress ring (interactive → day plan) */
+.bp-plan{
+  display:flex !important; flex-direction:column !important; align-items:center !important; justify-content:center !important;
+  gap:1px !important; width:62px !important; height:62px !important; border-radius:16px !important;
+  background:color-mix(in oklab, var(--panel) 70%, var(--olive) 30%) !important;
+  border:1px solid var(--hair) !important; cursor:pointer !important;
+  transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease !important;
+  color:var(--ink) !important;
+}
+.bp-plan:hover{transform:translateY(-2px) !important; border-color:var(--gold) !important; box-shadow:0 12px 24px -14px rgba(46,45,32,.5) !important}
+.bp-ring{width:34px !important; height:34px !important; transform:rotate(-90deg) !important}
+.bp-ring-bg{stroke:var(--line2) !important; stroke-width:4 !important; fill:none !important}
+.bp-ring-fg{
+  stroke:var(--gold) !important; stroke-width:4 !important; fill:none !important; stroke-linecap:round !important;
+  transition:stroke-dashoffset .6s ease !important;
+  filter:drop-shadow(0 0 3px color-mix(in oklab, var(--gold) 75%, transparent)) !important;
+}
+.bp-plan-copy{display:flex !important; flex-direction:column !important; align-items:center !important; line-height:1 !important}
+.bp-plan-copy b{font-size:9px !important; font-weight:850 !important; color:var(--ink) !important; font-variant-numeric:tabular-nums !important}
+.bp-plan-copy i{display:none !important}
 
 /* ════════ ROW 2 — aaj ka din · coming up · BCS actions ════════ */
 .dash-card-header .dl-festival{
   grid-area:festival !important;
   flex:0 1 auto !important; flex-direction:row !important; align-items:center !important; flex-wrap:nowrap !important;
-  gap:8px !important; min-width:0 !important; overflow:hidden !important;
+  gap:9px !important; min-width:0 !important; overflow:hidden !important;
 }
 .dash-card-header .dlf-top{display:flex !important; align-items:center !important; gap:6px !important; flex:0 0 auto !important}
 .dash-card-header .dlf-badge{
-  display:flex !important; align-items:center !important; gap:5px !important; height:22px !important; padding:0 10px !important;
-  border-radius:999px !important; background:var(--olive) !important; color:#F6F2E7 !important;
-  font-size:10px !important; font-weight:800 !important; letter-spacing:.05em !important;
-  border:1px solid rgba(255,255,255,.14) !important; white-space:nowrap !important;
+  display:flex !important; align-items:center !important; gap:6px !important; height:24px !important; padding:0 12px !important;
+  border-radius:999px !important;
+  background:linear-gradient(150deg, #4A4630 0%, var(--olive) 100%) !important;
+  color:#F6F2E7 !important; font-size:10px !important; font-weight:800 !important; letter-spacing:.06em !important;
+  border:1px solid rgba(231,196,110,.4) !important; white-space:nowrap !important;
+  box-shadow:0 4px 12px -6px rgba(58,57,40,.5) !important;
 }
 .dash-card-header .dlf-emoji{font-size:13px !important}
 .dash-card-header .dlf-today-chip{display:none !important}
 .dash-card-header .dlf-main{
-  flex:0 1 auto !important; flex-direction:row !important; align-items:center !important; gap:7px !important;
+  flex:0 1 auto !important; flex-direction:row !important; align-items:center !important; gap:8px !important;
   min-width:0 !important; overflow:hidden !important;
 }
 .dash-card-header .dlf-main h3{
-  font-size:13.5px !important; font-weight:800 !important; margin:0 !important; letter-spacing:-.01em !important;
-  max-width:190px !important; white-space:nowrap !important; overflow:hidden !important; text-overflow:ellipsis !important;
+  font-size:14px !important; font-weight:800 !important; margin:0 !important; letter-spacing:-.01em !important;
+  max-width:170px !important; white-space:nowrap !important; overflow:hidden !important; text-overflow:ellipsis !important;
+  font-family:'Fraunces',serif !important; color:var(--ink) !important;
 }
 .dash-card-header .dlf-name-en{display:none !important}
 .dash-card-header .dlf-greets{display:none !important}
 .dash-card-header .dlf-actions{display:flex !important; gap:4px !important; flex:0 0 auto !important; align-items:center !important}
 .dash-card-header .dl-mini-btn{
-  height:20px !important; padding:0 8px !important; font-size:8px !important; border-radius:999px !important;
-  line-height:20px !important; white-space:nowrap !important; font-weight:700 !important;
-  background:color-mix(in oklab, var(--panel) 88%, var(--olive) 12%) !important;
-  border:1px solid var(--hair) !important; color:var(--ink) !important;
+  height:22px !important; padding:0 10px !important; font-size:8px !important; border-radius:999px !important;
+  line-height:22px !important; white-space:nowrap !important; font-weight:750 !important; letter-spacing:.02em !important;
+  background:linear-gradient(180deg, color-mix(in oklab, var(--gold) 32%, var(--panel)), color-mix(in oklab, var(--gold) 20%, var(--panel))) !important;
+  border:1px solid color-mix(in oklab, var(--gold) 55%, var(--hair)) !important; color:var(--gold-deep) !important;
+  transition:all .16s !important;
 }
-.dash-card-header .dl-mini-btn:hover{border-color:var(--gold) !important; color:var(--gold-deep) !important}
+.dash-card-header .dl-mini-btn:hover{border-color:var(--gold) !important; transform:translateY(-1px) !important; box-shadow:0 6px 14px -8px rgba(165,123,54,.5) !important}
 
 .dash-card-header .dl-merged-bottom{
   grid-area:bottom !important;
@@ -8438,85 +8532,134 @@ body[data-theme="dark"] .dash-card-header .dl-quicklink{background:#D9B45E !impo
   display:flex !important; align-items:center !important; gap:6px !important;
   flex:1 1 auto !important; min-width:0 !important; overflow:hidden !important;
 }
-.dash-card-header .th-up-head{display:flex !important; align-items:baseline !important; gap:0 !important; margin:0 !important; flex:0 0 auto !important}
 .dash-card-header .th-up-head span{
-  font-size:8px !important; white-space:nowrap !important; letter-spacing:.12em !important;
-  text-transform:uppercase !important; color:var(--mut) !important; font-weight:800 !important;
+  font-size:7.5px !important; white-space:nowrap !important; letter-spacing:.15em !important;
+  text-transform:uppercase !important; color:var(--mut) !important; font-weight:850 !important;
 }
 .dash-card-header .th-up-head small{display:none !important}
-.dash-card-header .th-up-list{
-  display:flex !important; gap:4px !important; flex-wrap:nowrap !important;
-  overflow:hidden !important; min-width:0 !important;
-}
+.dash-card-header .th-up-list{display:flex !important; gap:5px !important; flex-wrap:nowrap !important; overflow:hidden !important; min-width:0 !important}
 .dash-card-header .th-up-item{
-  height:20px !important; padding:0 8px !important; font-size:8.5px !important; border-radius:999px !important;
-  line-height:20px !important; white-space:nowrap !important; flex:0 0 auto !important;
+  height:22px !important; padding:0 9px !important; font-size:8.5px !important; border-radius:999px !important;
+  line-height:22px !important; white-space:nowrap !important; flex:0 0 auto !important; font-weight:700 !important;
+  border:1px solid var(--hair) !important; background:color-mix(in oklab, var(--panel) 78%, var(--olive) 22%) !important;
 }
 .dash-card-header .dl-bcs{
-  min-height:32px !important; border-radius:10px !important; padding:0 10px 0 8px !important;
-  display:flex !important; align-items:center !important; gap:7px !important;
-  flex:0 0 auto !important; border:1px solid var(--hair) !important;
+  min-height:34px !important; border-radius:11px !important; padding:0 12px 0 9px !important;
+  display:flex !important; align-items:center !important; gap:8px !important; flex:0 0 auto !important;
+  border:1px solid var(--hair) !important; background:color-mix(in oklab, var(--panel) 75%, var(--olive) 25%) !important;
+  transition:border-color .18s, transform .18s !important;
 }
-.dash-card-header .th-logo{width:22px !important; height:22px !important; font-size:9px !important; border-radius:6px !important}
-.dash-card-header #bcsCardPerson{font-size:9.5px !important; font-weight:800 !important; white-space:nowrap !important}
+.dash-card-header .dl-bcs:hover{border-color:var(--gold) !important; transform:translateY(-1px) !important}
+.dash-card-header .th-logo{width:24px !important; height:24px !important; font-size:9.5px !important; border-radius:7px !important}
+.dash-card-header #bcsCardPerson{font-size:10px !important; font-weight:800 !important; white-space:nowrap !important}
 .dash-card-header #bcsCardTitle,.dash-card-header #bcsCardMeta{display:none !important}
+.bcs-card-qr{width:24px !important; height:24px !important; font-size:6px !important; border-radius:5px !important; display:flex !important; align-items:center !important; justify-content:center !important; font-weight:850 !important; letter-spacing:.1em !important}
+.dash-card-header .dl-bcs-go{font-size:12px !important; color:var(--mut) !important}
 .dash-card-header .dl-bcs-ghost{
-  min-height:30px !important; border-radius:9px !important; padding:0 10px !important;
-  display:flex !important; flex-direction:row !important; align-items:center !important; gap:5px !important;
-  flex:0 0 auto !important;
+  min-height:34px !important; width:40px !important; border-radius:11px !important; padding:0 !important;
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  flex:0 0 auto !important; font-size:15px !important; color:var(--ink) !important;
+  background:color-mix(in oklab, var(--panel) 72%, var(--olive) 28%) !important;
+  border:1px solid var(--hair) !important; transition:all .17s !important;
 }
+.dash-card-header .dl-bcs-ghost:hover{border-color:var(--gold) !important; color:var(--gold-deep) !important; transform:translateY(-1px) !important}
 .dash-card-header .dl-bcs-ghost em{display:none !important}
-.dash-card-header .dl-bcs-ghost{font-size:14px !important; color:var(--ink) !important; background:color-mix(in oklab, var(--panel) 88%, var(--olive) 12%) !important; border:1px solid var(--hair) !important}
+body[data-theme="dark"] .dash-card-header .dl-bcs-ghost{background:rgba(255,255,255,.06) !important; border-color:rgba(255,255,255,.14) !important; color:#E8E4D4 !important}
+body[data-theme="dark"] .dash-card-header .dl-bcs-ghost:hover{background:rgba(255,255,255,.11) !important; border-color:var(--gold) !important}
 
-body[data-theme="dark"] .dash-card-header .dl-bcs-ghost{
-  background:rgba(255,255,255,.06) !important;
-  color:var(--ink) !important;
-  border-color:rgba(255,255,255,.13) !important;
+/* ════════ ROW 3 — MARKET live strip ════════ */
+.dash-card-header .dl-market{
+  grid-area:market !important;
+  flex:0 0 auto !important; flex-direction:row !important; flex-wrap:nowrap !important;
+  align-items:center !important; gap:8px !important; min-width:0 !important;
+  border-top:1px solid color-mix(in oklab, var(--gold) 22%, var(--hair)) !important;
+  padding-top:8px !important; overflow:hidden !important;
 }
-body[data-theme="dark"] .dash-card-header .dl-bcs-ghost:hover{background:rgba(255,255,255,.12) !important;border-color:var(--gold) !important}
+.bm-label{
+  display:flex !important; align-items:center !important; gap:6px !important; flex:0 0 auto !important;
+  font-size:8px !important; font-weight:850 !important; letter-spacing:.18em !important; color:var(--gold-deep) !important;
+  text-transform:uppercase !important;
+}
+.bm-label i{display:flex !important; align-items:center !important; gap:4px !important; font-style:normal !important; color:#4E7C5B !important; background:rgba(78,124,91,.12) !important; border:1px solid rgba(78,124,91,.3) !important; border-radius:999px !important; padding:1px 7px !important; letter-spacing:.12em !important; font-size:7px !important}
+.bm-label i::before{content:"" !important; width:5px !important; height:5px !important; border-radius:50% !important; background:#4E9E63 !important; box-shadow:0 0 6px #4E9E63 !important; animation:bmPulse 1.6s ease-in-out infinite !important}
+@keyframes bmPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.75)}}
+.bm-chip{
+  display:flex !important; align-items:center !important; gap:7px !important; flex:0 0 auto !important;
+  height:24px !important; padding:0 9px !important; border-radius:8px !important; cursor:pointer !important;
+  background:color-mix(in oklab, var(--panel) 70%, var(--olive) 30%) !important;
+  border:1px solid var(--hair) !important; transition:all .16s !important;
+}
+.bm-chip:hover{border-color:var(--gold) !important; transform:translateY(-1px) !important; box-shadow:0 6px 14px -9px rgba(46,45,32,.55) !important}
+.bm-chip span{font-size:7px !important; font-weight:800 !important; letter-spacing:.1em !important; color:var(--mut) !important; text-transform:uppercase !important}
+.bm-chip b{font-size:10.5px !important; font-weight:800 !important; color:var(--ink) !important; font-variant-numeric:tabular-nums !important; letter-spacing:-.01em !important}
+.bm-upd{flex:1 1 auto !important; min-width:0 !important; text-align:right !important; font-size:7px !important; color:var(--mut) !important; white-space:nowrap !important; overflow:hidden !important; text-overflow:ellipsis !important}
+.bm-rates{
+  display:flex !important; align-items:center !important; gap:5px !important; flex:0 0 auto !important;
+  height:24px !important; padding:0 11px !important; border-radius:999px !important; cursor:pointer !important;
+  background:var(--olive) !important; color:#F6F2E7 !important; border:1px solid rgba(231,196,110,.45) !important;
+  font-size:8px !important; font-weight:850 !important; letter-spacing:.08em !important; text-transform:uppercase !important;
+  transition:all .18s !important; white-space:nowrap !important;
+}
+.bm-rates i{font-style:normal !important; color:#E7C46E !important}
+.bm-rates:hover{filter:brightness(1.18) !important; transform:translateY(-1px) !important}
+.bm-skel{font-size:9px !important; color:var(--mut) !important}
 
 /* ════════ Responsive ════════ */
-@media (max-width:1280px){
+@media (min-width:1500px){
+  .dash-card-header{padding:15px 22px 13px !important; column-gap:24px !important}
+  .dash-card-header .dl-date .dl-greet{font-size:21px !important}
+  .dash-card-header .dl-clock span{font-size:30px !important}
+  .dash-card-header .dl-quote p{font-size:14.5px !important}
+}
+@media (max-width:1400px){
   .dash-card-header .dl-weather{display:none !important}
-  .dash-card-header .dl-date .dl-line{max-width:170px !important}
-  .dash-card-header .dl-mini-btn:nth-child(1),.dash-card-header .dl-mini-btn:nth-child(2){display:none !important}
+  .dash-card-header{grid-template-columns:auto minmax(0,1fr) auto !important; grid-template-areas:"date quote time" "festival bottom bottom" "market market market" !important}
+  .dash-card-header .dlf-main h3{max-width:150px !important}
+}
+@media (max-width:1280px){
+  .bm-upd{display:none !important}
   .dash-card-header .th-up-head{display:none !important}
-  .dash-card-header .th-up-item:nth-child(n+2){display:none !important}
-  .dash-card-header .th-up-item{max-width:230px !important; overflow:hidden !important; text-overflow:ellipsis !important}
+  .dash-card-header .th-up-item:nth-child(n+3){display:none !important}
   .dash-card-header .dl-bcs-ghost{display:none !important}
-  .dash-card-header .dlf-name-en{display:none !important}
+  .dash-card-header .dl-mini-btn:nth-child(1),.dash-card-header .dl-mini-btn:nth-child(2){display:none !important}
 }
 @media (max-width:1060px){
-  .dash-card-header .dl-greet{font-size:15px !important}
-  .dash-card-header .dl-clock{font-size:20px !important}
-  .dash-card-header .th-up-item{font-size:7.5px !important;padding:0 6px !important}
-  .dash-card-header .dlf-main h3{max-width:150px !important}
+  .dash-card-header .dl-greet{font-size:16px !important}
+  .dash-card-header .dl-clock span{font-size:22px !important}
+  .bp-plan{display:none !important}
+  .bm-chip span{display:none !important}
+  .bm-chip{height:22px !important; padding:0 8px !important; gap:0 !important}
+  .dlf-main h3{max-width:130px !important}
 }
 @media (max-width:900px){
   .dash-card-header{
     grid-template-columns:1fr !important;
-    grid-template-areas:"date" "quote" "time" "festival" "bottom" !important;
-    row-gap:6px !important; padding:12px 14px !important;
+    grid-template-areas:"date" "quote" "time" "festival" "bottom" "market" !important;
+    row-gap:8px !important; padding:12px 14px !important;
   }
-  .dash-card-header .dl-time{justify-content:flex-start !important; gap:10px !important}
-  .dash-card-header .dl-quote{flex-direction:column !important; align-items:flex-start !important; gap:4px !important}
+  .dash-card-header .dl-time{justify-content:flex-start !important; gap:12px !important}
+  .dash-card-header .dl-quote p{white-space:normal !important; -webkit-line-clamp:2 !important}
   .dash-card-header .dl-merged-bottom{flex-wrap:wrap !important; justify-content:flex-start !important; row-gap:6px !important}
   .dash-card-header .th-up-list{flex-wrap:wrap !important}
+  .dash-card-header .th-up-item:nth-child(n+3){display:inline-flex !important}
   .dash-card-header .dl-mini-btn{display:inline-flex !important}
-  .dash-card-header .dlf-actions{margin-left:0 !important}
   .dash-card-header .dl-festival{flex-wrap:wrap !important}
-  .dash-card-header .dlf-main h3{max-width:none !important}
+  .dash-card-header .dl-market{flex-wrap:wrap !important; row-gap:6px !important}
+  .dash-card-header .bm-rates{margin-left:auto !important}
 }
 @media (max-width:620px){
-  .dash-card-header .dl-date .dlf-cal{width:44px !important;height:44px !important;min-height:44px !important;flex-basis:44px !important}
+  .dash-card-header .dl-date .dlf-cal{width:48px !important;height:48px !important;min-height:48px !important;flex-basis:48px !important}
   .dash-card-header .dl-date .dlf-cal-day{font-size:19px !important}
   .dash-card-header .dl-greet{font-size:14px !important}
   .dash-card-header .dl-date .dl-line{font-size:9px !important}
-  .dash-card-header .dl-quote p{font-size:12.5px !important}
-  .dash-card-header .dl-clock{font-size:18px !important}
-  .dash-card-header .th-up-item{font-size:7px !important;height:17px !important;line-height:17px !important;padding:0 6px !important}
+  .dash-card-header .dl-quote p{font-size:12px !important}
+  .dash-card-header .dl-clock span{font-size:19px !important}
+  .dash-card-header .th-up-item{font-size:7.5px !important;height:18px !important;line-height:18px !important}
+  .dlf-badge{font-size:8.5px !important;height:20px !important;padding:0 9px !important}
+  .dlf-main h3{font-size:12px !important}
 }
-@media (prefers-reduced-motion:reduce){.dash-card-header *{transition:none !important}}
+@media (prefers-reduced-motion:reduce){.dash-card-header *{transition:none !important; animation:none !important}}
+
 /* ============================================================ */
 
 
@@ -8807,15 +8950,12 @@ try{
     <div class="dash-grid">
       <!-- Header Card: Date + Time + Quote (full width) -->
       <!-- Unified Header Card: Date + Motivation + Festival + WhatsApp (full width) -->
-      <div class="dash-card dash-card-header" id="dashHeadline" style="background:rgba(255,255,255,.6);backdrop-filter:blur(12px);border:1px solid color-mix(in srgb, var(--hair) 30%, transparent);border-radius:16px;padding:12px;margin:8px">
+      <div class="dash-card dash-card-header" id="dashHeadline">
         <div class="dl-cell dl-date">
-          <div class="dlf-cal" aria-hidden="true" style="width:100%;min-height:72px;display:flex;flex-direction:row;align-items:center;gap:12px;padding:10px 14px;border-radius:14px;background:color-mix(in srgb, var(--acc) 5%, transparent);overflow:hidden">
-            <div class="dlf-cal-band" id="thCalMonthMerged">NOVEMBER</div>
-            <div class="dlf-cal-body">
-              <b class="dlf-cal-day" id="thCalDayMerged">08</b>
-              <span class="dlf-cal-week" id="thCalWeekMerged">रविवार</span>
-              <span class="dlf-cal-year" id="thCalYearMerged">Sunday · 2026</span>
-            </div>
+          <div class="dlf-cal" aria-hidden="true">
+            <span class="dlf-cal-band" id="thCalMonthMerged">NOV</span>
+            <b class="dlf-cal-day" id="thCalDayMerged">09</b>
+            <span class="dlf-cal-week" id="thCalWeekMerged">सोमवार</span>
           </div>
           <div class="dl-meta">
             <span class="dl-greet" id="thGreetTick">शुभ प्रभात</span>
@@ -8835,6 +8975,13 @@ try{
         </div>
         <div class="dl-cell dl-time" aria-label="Local time">
           <b class="dl-clock"><span id="dlClock">10:48</span><i id="dlSeconds">:32</i></b>
+          <button type="button" class="bp-plan" id="bpPlanBtn" title="Day plan kholein" aria-label="Day plan kholein — aaj ke tasks aur progress">
+            <svg viewBox="0 0 36 36" class="bp-ring" aria-hidden="true">
+              <circle class="bp-ring-bg" cx="18" cy="18" r="15.5" pathLength="97.4"></circle>
+              <circle class="bp-ring-fg" id="bpPlanFg" cx="18" cy="18" r="15.5" pathLength="97.4"></circle>
+            </svg>
+            <span class="bp-plan-copy"><b id="bpPlanTxt">–</b><i id="bpPlanSub">aaj ka plan</i></span>
+          </button>
           <div class="dl-timemeta">
             <span class="dl-zone"><b id="dlMeridiem">AM</b> · IST · Jaipur</span>
             <span class="dl-detail" id="dlDetail">Sunday, 08 November</span>
@@ -8894,6 +9041,7 @@ try{
           <button type="button" class="dl-bcs-ghost" id="thRoadHubBtn">⌁<em>Road<br>hub</em></button>
           <button type="button" class="dl-bcs-ghost" id="thManage" style="display:none">⚙<em>Manage<br>lists</em></button>
         </div>
+        <div class="dl-market" id="bannerMarket" aria-label="Live market rates — tap to open Rates Studio"><span class="bm-label">MARKET<i>live</i></span><span class="bm-skel">Loading rates…</span></div>
       </div>
     </div>
 
@@ -15650,7 +15798,8 @@ function renderDailyHero(){
   setText(['thMonth'], now.toLocaleDateString('en-IN', { month:'long', year:'numeric' }));
   setText(['thMonthHi'], HINDI_MONTHS[now.getMonth()] + ' · ' + now.getFullYear());
   const monthUpper = now.toLocaleDateString('en-IN', { month:'long' }).toUpperCase();
-  setText(['thCalMonth','thCalMonthMerged'], monthUpper);
+  setText(['thCalMonth'], monthUpper);
+  setText(['thCalMonthMerged'], monthUpper.slice(0, 3));
   const yearStr = now.toLocaleDateString('en-IN', { weekday:'long' }) + ' · ' + now.getFullYear();
   setText(['thCalYear','thCalYearMerged'], yearStr);
 
@@ -27191,6 +27340,58 @@ document.addEventListener('visibilitychange', () => {
   try{ if(typeof renderDataStatus === 'function') renderDataStatus(); }catch(e){}
 });
 setInterval(() => { try{ bcsRefreshMarket(true); }catch(e){} }, MKT_REFRESH_MS);
+
+
+
+/* ============================================================
+   BCS v91 — Banner interactivity: live market chips + day-plan ring
+   ============================================================ */
+function renderBannerMarket(){
+  try{
+    const row = document.getElementById('bannerMarket'); if(!row) return;
+    const snap = (typeof mktLoadSnapshot === 'function') ? mktLoadSnapshot() : null;
+    const usd = snap && snap.usdInr;
+    const gold10 = snap && snap.goldUsd && usd ? snap.goldUsd * usd * (10/31.1035) : null;
+    const silKg  = snap && snap.silverUsd && usd ? snap.silverUsd * usd * (1000/31.1035) : null;
+    const btcInr = snap && snap.btcUsd && usd ? snap.btcUsd * usd : null;
+    const fmt = (n, d) => Number(n).toLocaleString('en-IN', { maximumFractionDigits: d, minimumFractionDigits: d });
+    const chips = [
+      ['USD / INR', usd != null ? '₹' + fmt(usd, 2) : '—'],
+      ['Gold / 10g', gold10 != null ? '₹' + fmt(gold10, 0) : '—'],
+      ['Silver / kg', silKg != null ? '₹' + fmt(silKg, 0) : '—'],
+      ['BTC / INR', btcInr != null ? '₹' + fmt(btcInr, 0) : '—']
+    ];
+    row.innerHTML =
+      '<span class="bm-label">MARKET<i>live</i></span>' +
+      chips.map(c => `<button type="button" class="bm-chip" data-rates title="${'Rates Studio kholein — FX · Gold · Silver · BTC · calculators'}"><span>${c[0]}</span><b>${c[1]}</b></button>`).join('') +
+      `<span class="bm-upd">${snap && snap.at ? 'Updated ' + (typeof mktTimeAgo === 'function' ? mktTimeAgo(snap.at) : 'just now') : 'Rates fetch ho raha hai…'}</span>` +
+      '<button type="button" class="bm-rates" data-rates>Rates Studio <i>→</i></button>';
+    row.querySelectorAll('[data-rates]').forEach(el => el.addEventListener('click', () => { try{ go('calc'); }catch(e){} }));
+  }catch(e){}
+}
+function renderBannerPlan(){
+  try{
+    const fg = document.getElementById('bpPlanFg'); if(!fg) return;
+    const list = (typeof dayTodos === 'function' && typeof todayISO === 'function') ? dayTodos(todayISO()) : [];
+    const total = list.length;
+    const done = list.filter(t => t.done).length;
+    const pct = total ? done / total : 0;
+    const C = 97.4; // pathLength matches svg attr
+    fg.style.strokeDashoffset = String(Math.max(0, Math.min(C, C * (1 - pct))));
+    const txt = document.getElementById('bpPlanTxt');
+    if(txt) txt.textContent = total ? (done + '/' + total) : '0';
+    const wrap = document.getElementById('bpPlanBtn');
+    if(wrap) wrap.title = total ? ('Day plan — ' + done + '/' + total + ' done aaj · kholein') : 'Day plan kholein aur pehla task add karein';
+  }catch(e){}
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('#bpPlanBtn');
+  if(b){ e.preventDefault(); try{ go('dayplan'); }catch(_){} }
+}, true);
+renderBannerMarket();
+renderBannerPlan();
+setTimeout(() => { renderBannerMarket(); renderBannerPlan(); }, 1500);
+setInterval(() => { try{ renderBannerMarket(); renderBannerPlan(); }catch(e){} }, 60000);
 
 /* ---------- PWA: offline shell + persistent storage ---------- */
 if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
