@@ -9444,6 +9444,124 @@ main{position:relative; z-index:1}
 /* ============================================================ */
 
 
+/* ============================================================
+   BCS v96 — Overlap fixes · Dock alignment · Cards · Jaipur art
+   ============================================================ */
+
+/* ---------- 1) Header never overlaps content ---------- */
+html{scroll-padding-top:18px}
+header{position:relative !important; top:auto !important; z-index:40 !important}
+main{padding-bottom:96px !important}
+
+/* ---------- 2) Tool dock + calculator popup — centered & aligned ---------- */
+.tooldock{
+  left:50% !important; right:auto !important; transform:translateX(-50%) !important;
+  bottom:14px !important; z-index:90 !important; gap:8px !important; padding:9px 11px !important;
+  border-radius:18px !important;
+}
+.dock-btn{width:56px !important; height:56px !important}
+.toolpop{
+  left:50% !important; right:auto !important; transform:translateX(-50%) !important;
+  bottom:84px !important; width:min(330px, calc(100vw - 24px)) !important; z-index:96 !important;
+  max-height:calc(100vh - 120px) !important; overflow-y:auto !important; overscroll-behavior:contain;
+  border-radius:18px !important;
+}
+@media (max-width:820px){
+  .tooldock{left:50% !important; transform:translateX(-50%) !important; bottom:10px !important; gap:6px !important}
+  .dock-btn{width:48px !important; height:48px !important}
+  .toolpop{left:50% !important; transform:translateX(-50%) !important; bottom:72px !important}
+}
+/* dock buttons equal rhythm */
+.tooldock .dock-btn i{font-style:normal !important}
+
+/* ---------- 3) Watch channel cards — grid, nothing cropped ---------- */
+.wc-card{
+  display:grid !important; grid-template-columns:auto minmax(0,1fr);
+  grid-template-areas:"avatar body" "actions actions";
+  gap:10px 12px !important; align-items:start !important;
+}
+.wc-avatar{grid-area:avatar !important}
+.wc-body{grid-area:body !important; min-width:0 !important}
+.wc-actions{grid-area:actions !important; flex-wrap:wrap !important; gap:5px !important; width:100% !important}
+.wc-name{white-space:nowrap !important; overflow:hidden !important; text-overflow:ellipsis !important; max-width:100% !important}
+.wc-meta{flex-wrap:wrap !important}
+.wc-desc{display:-webkit-box !important; -webkit-line-clamp:2 !important; -webkit-box-orient:vertical !important; overflow:hidden !important}
+.wc-btn{height:26px !important; font-size:10px !important; padding:0 10px !important; border-radius:8px !important}
+.wc-btn.tiny{width:26px !important; padding:0 !important}
+
+/* ---------- 4) Market Pulse embed — full height, usable ---------- */
+.pulse-frame-wrap{height:clamp(480px, 68vh, 780px) !important}
+.pulse-frame-wrap iframe{height:100% !important; min-height:0 !important}
+.pulse-refresh{
+  display:inline-flex !important; align-items:center !important; gap:6px !important;
+  height:30px !important; padding:0 12px !important; border-radius:999px !important; cursor:pointer !important;
+  font-size:10px !important; font-weight:800 !important; letter-spacing:.06em !important; text-transform:uppercase !important;
+  background:color-mix(in oklab, var(--panel) 78%, var(--olive) 10%) !important;
+  border:1px solid var(--line) !important; color:var(--ink2) !important;
+  transition:all .16s var(--ease) !important;
+}
+.pulse-refresh:hover{border-color:var(--gold) !important; color:var(--gold-deep) !important; transform:translateY(-1px) !important}
+
+/* ---------- 5) Animated logo + brand ---------- */
+.logo{
+  background:linear-gradient(135deg,#26261A 0%,#3A3928 38%,#8A6A2E 68%,#C9A54E 100%) !important;
+  background-size:220% auto !important;
+  animation:logoShift 5.5s ease-in-out infinite alternate !important;
+}
+@keyframes logoShift{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+.logo::after{
+  content:"" !important; position:absolute !important; top:0 !important; left:-60% !important; width:45% !important; height:100% !important;
+  background:linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent) !important;
+  transform:skewX(-22deg) !important; animation:logoSweep 3.4s ease-in-out infinite !important; pointer-events:none !important;
+}
+@keyframes logoSweep{0%{left:-60%}55%,100%{left:130%}}
+.brand h1{
+  background:linear-gradient(95deg, var(--ink) 25%, color-mix(in oklab, var(--pg, var(--gold)) 70%, var(--ink)) 50%, var(--ink) 75%) !important;
+  background-size:200% auto !important;
+  -webkit-background-clip:text !important; background-clip:text !important; color:transparent !important;
+  animation:brandShift 6s ease-in-out infinite alternate !important;
+}
+@keyframes brandShift{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+.brand p{color:color-mix(in oklab, var(--pg, var(--gold-deep)) 75%, var(--mut)) !important}
+
+/* ---------- 6) Header + nav tinted per page (works with every palette) ---------- */
+body[data-page] header{
+  background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 80%, var(--pg) 20%) 0%, color-mix(in oklab, var(--panel) 94%, var(--pg) 6%) 100%) !important;
+  border-bottom-color:color-mix(in oklab, var(--pg) 26%, var(--line)) !important;
+}
+body[data-theme="dark"][data-page] header{
+  background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 86%, var(--pg) 14%) 0%, color-mix(in oklab, var(--panel) 96%, var(--pg) 4%) 100%) !important;
+  border-bottom-color:color-mix(in oklab, var(--pg) 30%, var(--line)) !important;
+}
+body[data-page] #nav{
+  background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 88%, var(--pg) 12%) 0%, color-mix(in oklab, var(--panel) 78%, var(--pg) 6%) 100%) !important;
+  border-color:color-mix(in oklab, var(--pg) 22%, var(--line)) !important;
+}
+body[data-page] #nav button.on{
+  background:linear-gradient(135deg, color-mix(in oklab, var(--pg) 78%, var(--olive)) 0%, var(--pg) 100%) !important;
+}
+body[data-theme="dark"][data-page] #nav button.on{
+  background:linear-gradient(135deg, color-mix(in oklab, var(--pg) 60%, var(--gold)) 0%, var(--pg) 100%) !important;
+  color:#14120C !important;
+}
+
+/* ---------- 7) Jaipur skyline backdrop (tinted by page/palette) ---------- */
+.jaipur-bg{
+  position:fixed; left:0; right:0; bottom:0; height:190px; z-index:0; pointer-events:none;
+  background:var(--pg, var(--gold));
+  opacity:.14;
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 220' preserveAspectRatio='xMidYMax slice'%3E%3Cg fill='%23000'%3E%3Crect x='60' y='150' width='180' height='70'/%3E%3Crect x='80' y='126' width='140' height='24'/%3E%3Crect x='100' y='106' width='100' height='20'/%3E%3Crect x='120' y='90' width='60' height='16'/%3E%3Ccircle cx='150' cy='82' r='11'/%3E%3Ccircle cx='196' cy='82' r='11'/%3E%3Crect x='280' y='160' width='120' height='60'/%3E%3Crect x='300' y='140' width='80' height='20'/%3E%3Crect x='440' y='150' width='120' height='70'/%3E%3Crect x='560' y='140' width='220' height='80'/%3E%3Cpath d='M560 140 a110 62 0 0 1 220 0 Z'/%3E%3Crect x='666' y='60' width='5' height='18'/%3E%3Ccircle cx='668.5' cy='55' r='6'/%3E%3Crect x='880' y='80' width='16' height='140'/%3E%3Ccircle cx='888' cy='72' r='11'/%3E%3Crect x='886.5' y='54' width='3' height='10'/%3E%3Crect x='940' y='160' width='70' height='60'/%3E%3Crect x='1030' y='110' width='70' height='110'/%3E%3Crect x='1120' y='140' width='90' height='80'/%3E%3Crect x='1230' y='90' width='60' height='130'/%3E%3Crect x='1257' y='70' width='4' height='22'/%3E%3Crect x='1320' y='150' width='80' height='70'/%3E%3Ccircle cx='1360' cy='142' r='13'/%3E%3C/g%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 220' preserveAspectRatio='xMidYMax slice'%3E%3Cg fill='%23000'%3E%3Crect x='60' y='150' width='180' height='70'/%3E%3Crect x='80' y='126' width='140' height='24'/%3E%3Crect x='100' y='106' width='100' height='20'/%3E%3Crect x='120' y='90' width='60' height='16'/%3E%3Ccircle cx='150' cy='82' r='11'/%3E%3Ccircle cx='196' cy='82' r='11'/%3E%3Crect x='280' y='160' width='120' height='60'/%3E%3Crect x='300' y='140' width='80' height='20'/%3E%3Crect x='440' y='150' width='120' height='70'/%3E%3Crect x='560' y='140' width='220' height='80'/%3E%3Cpath d='M560 140 a110 62 0 0 1 220 0 Z'/%3E%3Crect x='666' y='60' width='5' height='18'/%3E%3Ccircle cx='668.5' cy='55' r='6'/%3E%3Crect x='880' y='80' width='16' height='140'/%3E%3Ccircle cx='888' cy='72' r='11'/%3E%3Crect x='886.5' y='54' width='3' height='10'/%3E%3Crect x='940' y='160' width='70' height='60'/%3E%3Crect x='1030' y='110' width='70' height='110'/%3E%3Crect x='1120' y='140' width='90' height='80'/%3E%3Crect x='1230' y='90' width='60' height='130'/%3E%3Crect x='1257' y='70' width='4' height='22'/%3E%3Crect x='1320' y='150' width='80' height='70'/%3E%3Ccircle cx='1360' cy='142' r='13'/%3E%3C/g%3E%3C/svg%3E");
+  -webkit-mask-size:auto 100%; mask-size:auto 100%;
+  -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+  -webkit-mask-position:bottom center; mask-position:bottom center;
+}
+body[data-theme="dark"] .jaipur-bg{opacity:.12}
+@media (prefers-reduced-motion:reduce){.logo,.logo::after,.brand h1{animation:none !important}}
+
+/* ============================================================ */
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -22062,7 +22180,7 @@ async function fetchLiveFeedRss(rss){
   }
   // 1) rss2json (fast JSON, 8s)
   try{
-    const res = await fetchWithTimeout('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rss), { cache:'no-store' }, 12000);
+    const res = await fetchWithTimeout('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rss), { cache:'no-store' }, 6000);
     if(!res.ok) throw new Error('rss2json ' + res.status);
     const j = await res.json();
     if(j.status === 'ok' && Array.isArray(j.items) && j.items.length) items = j.items;
@@ -22071,7 +22189,7 @@ async function fetchLiveFeedRss(rss){
   // 2) allorigins raw → XML
   if(!items){
     try{
-      const text = await tryText('https://api.allorigins.win/raw?url=' + encodeURIComponent(rss), 10000);
+      const text = await tryText('https://api.allorigins.win/raw?url=' + encodeURIComponent(rss), 7000);
       const parsed = parseRssXml(text);
       if(parsed && parsed.length) items = parsed;
     }catch(e){ lastErr = e; }
@@ -22079,7 +22197,7 @@ async function fetchLiveFeedRss(rss){
   // 3) allorigins get → JSON wrapper
   if(!items){
     try{
-      const res = await fetchWithTimeout('https://api.allorigins.win/get?url=' + encodeURIComponent(rss), { cache:'no-store' }, 10000);
+      const res = await fetchWithTimeout('https://api.allorigins.win/get?url=' + encodeURIComponent(rss), { cache:'no-store' }, 7000);
       if(res.ok){ const j = await res.json(); const parsed = j && j.contents ? parseRssXml(j.contents) : null; if(parsed && parsed.length) items = parsed; }
     }catch(e){ lastErr = e; }
   }
@@ -28088,13 +28206,20 @@ async function renderTopStrip(){
   const strip = $('#topStrip'); if(!strip) return;
   strip.innerHTML = '<span class="sr-only">Loading headlines…</span><div class="sk-card" style="min-width:300px;height:110px"><div class="sk sk-line w55"></div><div class="sk sk-line w100"></div><div class="sk sk-line w85"></div><div class="sk sk-line w35"></div></div>';
 function initTopStrip(){
-  try{ const b = $('#topStripRefresh'); if(b) b.addEventListener('click', () => renderTopStrip()); }catch(e){}
+  try{ const b = $('#topStripRefresh'); if(b) b.addEventListener('click', () => { try{ liveCache.clear(); }catch(e){} renderTopStrip(); toast('Headlines refresh ho rahi hain…'); }); }catch(e){}
   try{ renderTopStrip(); }catch(e){ console.warn('[BCS strip]', e); }
 }
   try{
     const src = NEWS_SOURCES.find(s => s.id === 'etnow');
-    const items = src ? await fetchLiveFeedRss(src.feed) : [];
-    if(!items.length){ strip.innerHTML = '<div class="top-head"><span class="th-src"><i>ET</i>ET NOW</span><b>Feed abhi nahi mila</b><p>ET Now ka RSS temporarily down hai — source desk se direct khol sakte hain.</p><a href="https://www.etnownews.com/real-estate" target="_blank" rel="noopener noreferrer">Open ET Now ↗</a></div>'; return; }
+    let items = src ? await fetchLiveFeedRss(src.feed) : [];
+    if(!items || !items.length){
+      // fallback: Google News RSS for ET Now real estate
+      try{
+        const g = await fetchLiveFeedRss('https://news.google.com/rss/search?q=ET%20Now%20real%20estate&hl=en-IN&gl=IN&ceid=IN:en');
+        if(g && g.length) items = g;
+      }catch(e2){}
+    }
+    if(!items || !items.length){ strip.innerHTML = '<div class="top-head"><span class="th-src"><i>ET</i>ET NOW</span><b>Feed abhi nahi mila</b><p>ET Now ka RSS temporarily down hai — neeche Refresh dabayein ya source desk se direct khol sakte hain.</p><a href="https://www.etnownews.com/real-estate" target="_blank" rel="noopener noreferrer">Open ET Now ↗</a></div>'; return; }
     strip.innerHTML = items.slice(0, 12).map(it => `<div class="top-head"><span class="th-src"><i>ET</i>ET NOW · ${esc(it.dateLabel || '')}</span><b>${esc(it.title || '')}</b><p>${esc((it.summary || '').slice(0, 120))}</p><button type="button" class="live-read-btn" data-read-url="${esc(it.link)}" style="margin-top:4px">Read in-app ↗</button></div>`).join('');
   }catch(e){
     strip.innerHTML = '<div class="top-head"><span class="th-src"><i>ET</i>ET NOW</span><b>Fetch failed</b><p>Network ya proxy slow hai — retry karo.</p><a href="https://www.etnownews.com/real-estate" target="_blank" rel="noopener noreferrer">Open ET Now ↗</a></div>';
@@ -28478,6 +28603,49 @@ try{
     }catch(e){}
   }
   initVideoDock();
+})();
+
+
+
+/* ============================================================
+   BCS v96 — Jaipur backdrop layer + Pulse frame refresh
+   ============================================================ */
+(function(){
+  "use strict";
+  /* Jaipur skyline fixed backdrop (tinted per page/palette via --pg) */
+  try{
+    const bg = document.createElement('div');
+    bg.className = 'jaipur-bg';
+    bg.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bg);
+  }catch(e){}
+
+  /* Market Pulse — reload button + cache-bust on tab switch */
+  try{
+    const tabs = document.getElementById('pulseTabs');
+    const frame = document.getElementById('pulseFrame');
+    if(tabs && frame){
+      if(!document.getElementById('pulseRefresh')){
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'pulse-refresh';
+        btn.id = 'pulseRefresh';
+        btn.title = 'Frame refresh karein';
+        btn.innerHTML = '↻ Refresh';
+        btn.addEventListener('click', () => {
+          try{
+            const src = frame.getAttribute('src') || frame.src;
+            frame.style.opacity = '0.35';
+            frame.src = src.split('&_r=')[0] + '&_r=' + Date.now();
+            setTimeout(() => { frame.style.opacity = '1'; }, 700);
+            try{ bcsSound('click'); }catch(e){}
+            toast('Market Pulse frame refresh ho raha hai…');
+          }catch(e){}
+        });
+        tabs.appendChild(btn);
+      }
+    }
+  }catch(e){}
 })();
 
 /* ---------- PWA: offline shell + persistent storage ---------- */
