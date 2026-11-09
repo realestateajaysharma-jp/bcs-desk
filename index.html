@@ -1965,7 +1965,6 @@ body[data-accent="rose"]{
   --gold:#C0527C; --gold-soft:#F8E2EC; --sage:#F6E1EA; --sage-ink:#8B3B5D;
   --olive:#422A35; --sand:#FBEAF1; --mint:#FCE5EF; --rose:#C0527C;
 }
-header:before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--coral),var(--sun),var(--teal),var(--sky),var(--violet),var(--rose));opacity:.85}
 header{background:rgba(249,251,250,.78)}
 .logo{background:linear-gradient(135deg,#26261A 0%,#3A3928 44%,#8A6A2E 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18),0 6px 16px -8px rgba(58,57,40,.6)}
 .brand h1{letter-spacing:-.35px}
@@ -5518,7 +5517,7 @@ body::before,body::after{content:none !important}
 body{background:var(--bg) !important}
 header{background:rgba(251,251,253,.88) !important;backdrop-filter:blur(16px) saturate(1.4) !important;border-bottom:1px solid var(--hair) !important}
 body[data-theme="dark"] header{background:rgba(28,28,30,.88) !important}
-header::before{background:var(--acc) !important;opacity:.9 !important}
+header::before{height:2px !important;background:linear-gradient(90deg,var(--acc-deep) 0%,var(--acc) 30%,var(--gold) 55%,var(--acc) 75%,var(--acc-deep) 100%) !important;opacity:.8 !important}
 header::after{display:none !important}
 main{padding:28px 28px 120px !important}
 @media (min-width:1700px){.hwrap,main{padding-left:36px !important;padding-right:36px !important}}
@@ -5758,7 +5757,7 @@ a{transition:color .15s,opacity .15s !important}
    ============================================================ */
 /* header flat + sticky compact (no overlap) */
 header{background:color-mix(in srgb, var(--panel) 90%, transparent) !important;backdrop-filter:blur(18px) saturate(1.5) !important;-webkit-backdrop-filter:blur(18px) saturate(1.5) !important;border-bottom:1px solid var(--hair) !important}
-header::before{height:2px !important;background:var(--acc) !important;opacity:.85 !important}
+header::before{height:2px !important;background:linear-gradient(90deg,var(--acc-deep) 0%,var(--acc) 28%,var(--gold) 50%,var(--acc) 72%,var(--acc-deep) 100%) !important;opacity:.85 !important}
 .hwrap-top{min-height:62px !important}
 .hwrap-nav{padding-bottom:11px !important}
 #nav button{border-radius:999px !important}
@@ -7514,6 +7513,56 @@ main{max-width:100% !important; width:100% !important; margin:0 !important; padd
 
 /* Dark glass top offset matches header padding */
 body{overflow-x:hidden !important}
+
+/* ============================================================ */
+
+
+
+/* ============================================================
+   BCS v78 — FINAL VERSE: typography, selection, shadows
+   ============================================================ */
+
+/* Crisper text rendering */
+html body{-webkit-font-smoothing:antialiased !important;-moz-osx-font-smoothing:grayscale !important;text-rendering:optimizeLegibility !important}
+
+/* Designed text selection — gold on dark ink */
+::selection{background:color-mix(in oklab, var(--gold) 55%, #F6F2E7) !important;color:var(--olive, #3A3928) !important}
+body[data-theme="dark"] ::selection{background:color-mix(in oklab, var(--gold) 40%, #1C1C1E) !important;color:#F6F2E7 !important}
+
+/* Anchored sections keep clear of the sticky header */
+[id]{scroll-margin-top:110px !important}
+
+/* Refined elevation — softer, layered, more sophisticated */
+.panel,.dash-card,.cat-card,.cor-card,.show-card,.pulse-card,.queue-panel{
+  box-shadow:0 1px 2px rgba(46,45,32,.05), 0 18px 36px -28px rgba(46,45,32,.16) !important;
+}
+
+/* Smoother interactive transitions everywhere */
+.btn,.icon-btn,.link,.quick-actions .btn,.seg button{
+  transition:transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .25s cubic-bezier(.34,1.56,.64,1), background .25s, border-color .25s !important;
+}
+
+/* Panel head titles slightly more refined */
+.panel-head h4,.sec-head h3{text-wrap:balance !important;letter-spacing:-.012em !important}
+
+/* Input placeholder polish */
+::placeholder{font-weight:400 !important;letter-spacing:.01em !important}
+
+/* Focus ring — slightly tighter, more editorial */
+:focus-visible{outline-width:2px !important;outline-offset:3px !important}
+
+/* Live dot pulse — a touch softer */
+.ticker-live i{box-shadow:0 0 0 3px rgba(74,222,128,.16) !important;animation:bcsNavPulse 2.4s ease-in-out infinite !important}
+
+/* Card hover shadow — deeper, more dramatic lift */
+.panel:hover,.dash-card:hover,.cat-card:hover{
+  box-shadow:0 2px 3px rgba(46,45,32,.06), 0 26px 54px -30px rgba(46,45,32,.28) !important;
+}
+
+/* Nav active — subtle inner highlight */
+nav button.on{
+  box-shadow:0 10px 22px -12px rgba(58,57,40,.5), inset 0 1px 0 rgba(255,255,255,.28) !important;
+}
 
 /* ============================================================ */
 
