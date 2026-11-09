@@ -6567,6 +6567,13 @@ body[data-theme="dark"] .cal-chip{color:var(--c-ink) !important}
 #kbdHint{opacity:0 !important;transition:none !important}
 
 
+/* BCS v67 — Toast/dot fix: animation only on .on, nothing stuck */
+.toast{animation:none !important;opacity:0 !important;visibility:hidden !important;pointer-events:none !important}
+.toast.on{animation:bcsFadeUp .3s cubic-bezier(.22,.9,.3,1) both !important;opacity:1 !important;visibility:visible !important;pointer-events:auto !important}
+#toast{transform:translateX(-50%) translateY(10px) !important}
+#toast.on{transform:translateX(-50%) translateY(0) !important}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -11372,7 +11379,7 @@ function toast(msg, err){
   t.textContent = msg;
   t.className = 'toast on' + (err ? ' err' : '');
   clearTimeout(t._to);
-  t._to = setTimeout(() => t.className = 'toast', 2000);
+    t._to = setTimeout(() => { t.className = 'toast'; try{ t.textContent = ''; }catch(e){} }, 2000);
   try{ bcsSound(err ? 'error' : 'success'); }catch(e){}
 }
 const initial = name => (name||'?').trim().charAt(0).toUpperCase();
