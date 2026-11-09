@@ -16052,7 +16052,7 @@ async function fetchLiveFeedRss(rss){
   }
   // 1) rss2json (fast JSON, 8s)
   try{
-    const res = await fetchWithTimeout('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rss), { cache:'no-store' }, 8000);
+    const res = await fetchWithTimeout('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rss), { cache:'no-store' }, 12000);
     if(!res.ok) throw new Error('rss2json ' + res.status);
     const j = await res.json();
     if(j.status === 'ok' && Array.isArray(j.items) && j.items.length) items = j.items;
@@ -16081,15 +16081,7 @@ async function fetchLiveFeedRss(rss){
       if(parsed && parsed.length) items = parsed;
     }catch(e){ lastErr = e; }
   }
-  // 5) corsproxy.io → XML (last public fallback)
-  if(!items){
-    try{
-      const text = await tryText('https://corsproxy.io/?url=' + encodeURIComponent(rss), 10000);
-      const parsed = parseRssXml(text);
-      if(parsed && parsed.length) items = parsed;
-    }catch(e){ lastErr = e; }
-  }
-  // 6) direct RSS (works on some networks / localhost proxy)
+  // 5) direct RSS (works on some networks / localhost proxy)
   if(!items){
     try{
       const text = await tryText(rss, 7000);
