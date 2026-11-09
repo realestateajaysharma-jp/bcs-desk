@@ -28317,7 +28317,7 @@ try{
     document.addEventListener('click', e => {
       const t = e.target.closest && e.target.closest('button, .viewbtn, .chip, .bchip, .seg button, .dtab, .toolpop button, .side-btn, .shortbtn');
       if(!t) return;
-      if(t.matches('.btn.primary, #nav button, .dtab, .seg button, .live-chip, #soundBtn, #themeBtn')) return; // already sounded elsewhere
+      if(t.matches('.btn.primary, #nav button, .dtab, .seg button, .live-chip, #soundBtn, #themeBtn, .accent-swatch, .vd-btn, .mp-min')) return; // already sounded elsewhere
       try{ bcsSound('click'); }catch(_){}
     }, true);
     document.addEventListener('change', e => {
