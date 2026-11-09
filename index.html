@@ -6062,6 +6062,40 @@ img,iframe,video,table,.show-grid,.month-grid,.month-grid-head,.an-table-wrap,.t
 }
 
 
+/* ============================================================
+   BCS v57 — Warm minimal (vibe wapas, clutter nahi)
+   Flat clean structure + Jaipur warmth + Music/YouTube visible
+   ============================================================ */
+body{background:linear-gradient(180deg,#FAF7F0,#F5F5F7) !important}
+body[data-theme="dark"]{background:#000000 !important}
+body::before{content:none !important}
+body::after{content:"" !important;position:fixed !important;inset:0 !important;pointer-events:none !important;z-index:0 !important;
+  background-image:radial-gradient(rgba(165,123,54,.07) 1px, transparent 1px) !important;background-size:26px 26px !important;opacity:.5 !important;
+  mask-image:radial-gradient(80% 60% at 50% 0%, black, transparent 80%) !important}
+header,main{position:relative !important;z-index:1 !important}
+.hero-life{background:linear-gradient(158deg,#1E3328 0%,#263B33 42%,#4A3A1E 78%,#6E5B24 100%) !important;border:1px solid rgba(231,196,110,.22) !important}
+.hero-life h2 em{color:#E7C46E !important;background:none !important;-webkit-text-fill-color:#E7C46E !important;animation:none !important}
+.hero-life .eyebrow{color:#E7C46E !important}
+.hero-life .eyebrow::before{content:"🪔" !important;width:auto !important;height:auto !important;background:none !important}
+.hero-life .hero-stat{background:rgba(246,242,231,.08) !important;border:1px solid rgba(246,242,231,.16) !important}
+.hero-life .hero-stat b{color:#FFF8E1 !important}
+.hero-life .hero-stat span{color:rgba(246,242,231,.72) !important}
+.hero-life .hero-actions .btn.primary{background:linear-gradient(135deg,#F3D27A,#C99A3E) !important;color:#1E210F !important}
+.hero-ticker{background:linear-gradient(90deg, rgba(18,32,25,.96), rgba(38,59,51,.92)) !important;border:1px solid rgba(231,196,110,.28) !important;border-radius:999px !important}
+.ticker-track a{color:rgba(246,242,231,.92) !important}
+.ticker-live{color:#E7C46E !important}
+/* sound/music visible: labeled pill next to theme */
+#soundBtn{width:auto !important;min-width:86px !important;padding:0 12px !important;border-radius:999px !important}
+#soundBtn .sound-lbl{font-size:11px !important;font-weight:750 !important;letter-spacing:.04em !important}
+#soundBtn[aria-pressed="false"]{opacity:.55 !important}
+/* news watch gold edge */
+.yt-chips a{border-color:color-mix(in srgb, var(--acc) 22%, var(--hair)) !important}
+.yt-chips a:hover{border-color:var(--acc) !important}
+.yt-player-wrap{border:1px solid var(--hair) !important;box-shadow:var(--sh-lg) !important}
+.news-modes button[data-news-mode="videos"].on{background:var(--acc-deep) !important;color:#fff !important;border-color:transparent !important}
+.card-shine,.panel::after{display:none !important}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -6211,7 +6245,7 @@ img,iframe,video,table,.show-grid,.month-grid,.month-grid-head,.an-table-wrap,.t
       <button class="icon-btn" id="themeBtn" title="Dark / light mode" aria-label="Toggle dark mode">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.6 14.3A9.4 9.4 0 0 1 9.7 3.4a9.4 9.4 0 1 0 10.9 10.9Z"/><path d="M17.5 4.5l.5 1.4 1.4.5-1.4.5-.5 1.4-.5-1.4-1.4-.5 1.4-.5.5-1.4Z"/></svg>
       </button>
-      <button class="icon-btn" id="soundBtn" title="Sound on / off" aria-label="Toggle sound" aria-pressed="true"><span id="soundIco" style="font-size:15px;line-height:1">🔊</span></button>
+      <button class="icon-btn" id="soundBtn" title="Music / Sound on off" aria-label="Toggle music sound" aria-pressed="true"><span id="soundIco" style="font-size:15px;line-height:1">🔊</span><span class="sound-lbl" id="soundLbl">Music</span></button>
       <span class="role-chip" id="roleChip"></span>
       <button class="icon-btn" id="lockBtn" title="Lock desk — Ajay Sharma" aria-label="Lock desk">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
