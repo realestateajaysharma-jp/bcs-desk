@@ -9155,23 +9155,6 @@ try{
       </form>
       <p class="yt-note">Player me youtube-nocookie embed chalta hai — koi tracking nahi. Channel links naya tab kholte hain.</p>
     </div>
-<div class="overlay" id="embedDeckModal" role="dialog" aria-modal="true" aria-labelledby="embedDeckTitle">
-  <div class="modal" style="width:min(1200px,100%);height:min(82vh,900px)">
-    <div class="modal-head" style="gap:12px">
-      <button type="button" class="xbtn" data-close="embedDeckModal" aria-label="Close">✕</button>
-      <h3 id="embedDeckTitle" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">In-app view</h3>
-      <a class="btn ghost sm" id="embedDeckOpen" href="https://google.com" target="_blank" rel="noopener noreferrer">↗ Open original</a>
-    </div>
-    <div class="modal-body" style="padding:0;display:flex;flex-direction:column;height:100%">
-      <div class="embed-deck-wrap" id="embedDeckFallback" hidden style="display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:36px 22px;text-align:center">
-        <b style="font-size:18px">Site embed block kar raha hai</b>
-        <p style="color:var(--mut);max-width:420px">Is publisher ne iframe embedding block kar rakha hai (CSP frame-ancestors / X-Frame-Options). Neeche direct link se original website par padhiye — bilkul vhi content, free.</p>
-        <a class="btn primary" id="embedDeckFallbackLink" href="https://google.com" target="_blank" rel="noopener noreferrer" style="height:42px;padding:0 22px">↗ Open original site</a>
-      </div>
-      <iframe id="embedDeckIframe" title="In-app view" loading="lazy" sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox" referrerpolicy="no-referrer-when-downgrade" style="flex:1;width:100%;border:0;display:block" sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
-    </div>
-  </div>
-</div>
 
 <div class="overlay" id="watchChannelModal" role="dialog" aria-modal="true" aria-labelledby="wcModalTitle">
   <div class="modal" style="width:min(560px,100%)">
@@ -26843,5 +26826,24 @@ try{
   if(qv && document.querySelector('#view-' + qv)) go(qv);
 }catch(e){}
 </script>
+
+<div class="overlay" id="embedDeckModal" role="dialog" aria-modal="true" aria-labelledby="embedDeckTitle">
+  <div class="modal" style="width:min(1200px,100%);height:min(82vh,900px)">
+    <div class="modal-head" style="gap:12px">
+      <button type="button" class="xbtn" data-close="embedDeckModal" aria-label="Close">✕</button>
+      <h3 id="embedDeckTitle" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">In-app view</h3>
+      <a class="btn ghost sm" id="embedDeckOpen" href="https://google.com" target="_blank" rel="noopener noreferrer">↗ Open original</a>
+    </div>
+    <div class="modal-body" style="padding:0;display:flex;flex-direction:column;height:100%">
+      <div class="embed-deck-wrap" id="embedDeckFallback" hidden style="display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:36px 22px;text-align:center">
+        <b style="font-size:18px">Site embed block kar raha hai</b>
+        <p style="color:var(--mut);max-width:420px">Is publisher ne iframe embedding block kar rakha hai (CSP frame-ancestors / X-Frame-Options). Neeche direct link se original website par padhiye — bilkul vhi content, free.</p>
+        <a class="btn primary" id="embedDeckFallbackLink" href="https://google.com" target="_blank" rel="noopener noreferrer" style="height:42px;padding:0 22px">↗ Open original site</a>
+      </div>
+      <iframe id="embedDeckIframe" title="In-app view" loading="lazy" sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox" referrerpolicy="no-referrer-when-downgrade" style="flex:1;width:100%;border:0;display:block" sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
