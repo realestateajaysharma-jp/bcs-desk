@@ -5421,6 +5421,68 @@ body[data-theme="dark"] .hub-badge{color:var(--acc)}
 header{position:sticky !important;top:0 !important;z-index:120 !important}
 
 
+/* ============================================================
+   BCS Design System v20 — Jaipur Real Estate Unique
+   Pink City vibe, Hawa Mahal skyline, RE details everywhere
+   ============================================================ */
+body{
+  background:
+    radial-gradient(1100px 520px at 50% -8%, rgba(231,180,75,.10), transparent 60%),
+    radial-gradient(800px 460px at 96% 12%, rgba(47,143,107,.08), transparent 62%),
+    var(--bg) !important;
+}
+body::after{
+  background-image:
+    radial-gradient(rgba(165,123,54,.10) 1.1px, transparent 1.1px),
+    radial-gradient(rgba(47,143,107,.07) 1px, transparent 1px) !important;
+  background-size:26px 26px, 52px 52px !important;
+  background-position:0 0, 13px 13px !important;
+}
+.hero-skyline{position:absolute;left:0;right:0;bottom:0;height:96px;z-index:0;pointer-events:none;opacity:.95}
+.hero-skyline svg{width:100%;height:100%;display:block}
+.hero-life > *{position:relative;z-index:1}
+.hero-life .eyebrow{display:inline-flex !important;align-items:center !important;gap:8px !important}
+.hero-life .eyebrow::before{content:"🪔" !important;width:auto !important;height:auto !important;background:none !important;font-size:12px !important}
+.hero-life h2{font-size:58px !important}
+.hero-life h2 em{position:relative}
+.hero-life .hero-focus b{color:#E7C46E !important}
+.hero-cta-note{letter-spacing:.08em !important;text-transform:uppercase !important;font-size:10.5px !important}
+.hero-stat b{font-variant-numeric:tabular-nums !important}
+.hero-stat span{letter-spacing:.14em !important}
+/* RE details: chips tell the story */
+.pcard .tag,.dev-card .chip,.adv-reason,.bchip,.cor-count{
+  font-variant-numeric:tabular-nums !important;
+}
+.pcard .rera,.dev-card .chip.rera-chip{color:#2F8F6B !important;border-color:#BFD8C8 !important;background:#E4F3EC !important}
+.pcard .tags .tag:nth-child(1){background:color-mix(in srgb, var(--acc) 10%, transparent) !important;color:var(--acc-deep) !important}
+.cor-card .cor-meta span{font-variant-numeric:tabular-nums !important}
+.cat-card p{max-width:none !important}
+.cat-card .cat-low{gap:10px !important}
+.cat-card .cat-low span{font-size:11px !important;font-weight:700 !important}
+.adv-facts b{font-variant-numeric:tabular-nums !important}
+.adv-card-foot .shortbtn{border-radius:999px !important;height:32px !important}
+/* RE patterns: type + corridor never merge */
+#catStrip .cat-card{border-top:3px solid var(--acc) !important}
+.cor-card{border-left:4px solid var(--cor, var(--acc)) !important}
+.cor-card:hover{box-shadow:0 18px 38px -20px color-mix(in srgb, var(--cor, var(--acc)) 30%, transparent), var(--shadow-app) !important}
+/* Jaipur empty states (emoji-led, friendly) */
+.empty .ic{font-size:28px !important;width:56px !important;height:56px !important;border-radius:18px !important;background:linear-gradient(135deg,var(--acc-soft),color-mix(in srgb, var(--acc-soft) 55%, white)) !important;display:grid !important;place-items:center !important;margin:0 auto 12px !important;border:1px solid color-mix(in srgb, var(--acc) 16%, transparent) !important}
+.empty h4{font-size:16px !important;letter-spacing:-.01em !important}
+.empty p{font-size:12.5px !important;line-height:1.6 !important;max-width:360px !important;margin:6px auto 14px !important}
+.empty-inline{font-size:12.5px !important;line-height:1.6 !important;text-align:center !important}
+/* toolbar like a real-estate portal (labelled pills) */
+.toolbar .seg{border-radius:999px !important}
+.toolbar .seg button.on{box-shadow:0 6px 16px -8px color-mix(in srgb, var(--acc) 45%, transparent) !important}
+/* Pulse as market tape */
+.pulse-card .pulse-ic{font-size:17px !important}
+.pulse-tag{font-variant-numeric:tabular-nums !important}
+/* Live ticker Jaipur landmarks */
+.ticker-track a::before{content:"↗" !important;color:#E7C46E !important;font-size:11px !important}
+@media (max-width:1100px){.hero-life h2{font-size:44px !important}.hero-skyline{height:72px !important}}
+@media (max-width:640px){.hero-life h2{font-size:34px !important}.hero-skyline{height:60px !important}}
+@media (prefers-reduced-motion:reduce){.hero-skyline{opacity:.6}}
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -5538,7 +5600,7 @@ header{position:sticky !important;top:0 !important;z-index:120 !important}
       <div class="logo">BCS</div>
       <div>
         <h1>Business City Square</h1>
-        <p>Jaipur Property Intelligence</p>
+        <p>Pink City • Property Intelligence</p>
       </div>
     </div>
     
@@ -5610,6 +5672,7 @@ header{position:sticky !important;top:0 !important;z-index:120 !important}
   <!-- ============ DASHBOARD ============ -->
   <section class="view on" id="view-dashboard">
     <div class="intro hero-life">
+      <div class="hero-skyline" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 120 V82 Q40 62 80 82 V120 Z M80 120 V55 Q120 30 160 55 V120 Z M160 120 V75 Q200 52 240 75 V120 Z M300 120 V48 Q340 22 380 48 V120 Z M380 120 V68 Q420 46 460 68 V120 Z M520 120 V58 Q560 34 600 58 V120 Z M700 120 V42 Q760 12 820 42 V120 Z M820 120 V66 Q860 46 900 66 V120 Z M1020 120 V52 Q1060 28 1100 52 V120 Z M1180 120 V70 Q1220 50 1260 70 V120 Z M1340 120 V60 Q1380 38 1420 60 V120 Z" fill="rgba(246,242,231,0.10)"/><path d="M0 120 V96 Q360 84 720 96 T1440 96 V120 Z" fill="rgba(10,18,13,0.35)"/></svg></div>
       <div class="intro-main">
         <div class="eyebrow" id="dashEyebrow">BCS · Jaipur portfolio</div>
         <h2>Every developer, every plot,<br><em>one clear view.</em></h2>
