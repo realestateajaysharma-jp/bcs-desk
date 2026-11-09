@@ -7029,6 +7029,32 @@ body[data-theme="dark"] .schedule-day{background:rgba(255,255,255,.04) !importan
 /* ============================================================ */
 
 
+
+/* ============================================================
+   BCS v73 — Beat the .dl-date > .dl-meta row rule with same
+   specificity so the greeting stacks vertically again
+   ============================================================ */
+.dash-card-header .dl-date > .dl-meta,
+.dash-card-header .dl-date .dl-meta{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:stretch !important;
+  justify-content:center !important;
+  gap:2px !important;
+  min-width:0 !important;
+  width:100% !important;
+  min-height:0 !important;
+  padding:10px 0 2px !important;
+}
+.dash-card-header .dl-date > .dl-meta .dl-greet,
+.dash-card-header .dl-greet{display:block !important;width:100% !important;font-size:17px !important;line-height:1.3 !important;white-space:normal !important;word-break:normal !important;overflow-wrap:normal !important}
+.dash-card-header .dl-date > .dl-meta .dl-hi,
+.dash-card-header .dl-hi{display:block !important;width:100% !important;font-size:11px !important;letter-spacing:.14em !important;white-space:nowrap !important}
+.dash-card-header .dl-date > .dl-meta .dl-line,
+.dash-card-header .dl-date > .dl-meta .dl-sub{display:block !important;width:100% !important;white-space:normal !important;line-height:1.4 !important}
+/* ============================================================ */
+
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
