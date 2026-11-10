@@ -10820,22 +10820,23 @@ body[data-theme="dark"] main{ padding-bottom:110px !important; }
 body[data-theme="dark"] .view{ min-height:auto !important; overflow:visible !important; }
 
 /* ============================================================
-   BCS v128 — TODAY BANNER COMPLETE REDESIGN
-   Dark · Big date/motivation/time · Small icon buttons
-   Coming up x3 · each with its own space · modern & aligned
+   BCS v129 — TODAY BANNER HORIZONTAL / COMPACT
+   Date | Motivation | Time all on ONE horizontal line each
+   No vertical stacking · sleek · compact · dark mode
+   Coming up x3 · each with its own space
    ============================================================ */
 
-/* Main card — 3 equal columns, clean grid */
+/* Main card — single horizontal row + rows below */
 .dash-card-header{
   display:grid !important;
-  grid-template-columns:1fr 1fr 1fr !important;
+  grid-template-columns:1fr !important;
   grid-template-rows:auto auto auto auto auto !important;
   gap:0 !important;
   align-items:start !important;
-  border-radius:24px !important;
+  border-radius:22px !important;
   border:1px solid rgba(255,255,255,.1) !important;
-  box-shadow:0 34px 76px -30px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06) !important;
-  background:linear-gradient(180deg, rgba(31,38,31,.94), rgba(16,19,16,.86)) !important;
+  box-shadow:0 30px 70px -28px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06) !important;
+  background:linear-gradient(180deg, rgba(31,38,31,.96), rgba(16,19,16,.88)) !important;
   overflow:hidden !important;
   position:relative !important;
   min-height:auto !important;
@@ -10844,321 +10845,209 @@ body[data-theme="dark"] .view{ min-height:auto !important; overflow:visible !imp
   content:'' !important;
   position:absolute !important;
   top:0 !important; left:0 !important; right:0 !important;
-  height:6px !important;
+  height:5px !important;
   background:linear-gradient(90deg,var(--gold)0%,var(--olive)35%,var(--olive)65%,var(--gold)100%) !important;
   pointer-events:none !important;
 }
 
-/* Top row container */
-.tb-top{
-  display:grid !important;
-  grid-template-columns:1fr 1fr 1fr !important;
-  gap:0 !important;
-  align-items:start !important;
+/* ===== ROW 1: Date | Motivation | Time — ALL HORIZONTAL ===== */
+.tb-row{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:16px !important;
+  padding:16px 24px !important;
   border-bottom:1px solid rgba(255,255,255,.06) !important;
 }
 
-/* Each column */
-.tb-col{
-  padding:22px 26px 20px !important;
-  border-right:1px solid rgba(255,255,255,.06) !important;
+/* --- DATE section (single horizontal line) --- */
+.tb-sec.date{
   display:flex !important;
-  flex-direction:column !important;
-  gap:14px !important;
+  align-items:center !important;
+  gap:12px !important;
   min-width:0 !important;
 }
-.tb-col:last-child{border-right:none !important;}
-
-/* Section label */
-.tb-label{
-  font-size:9px !important;
-  letter-spacing:0.24em !important;
-  text-transform:uppercase !important;
-  font-weight:900 !important;
-  color:var(--gold) !important;
-  opacity:0.8 !important;
-  margin-bottom:2px !important;
-}
-
-/* ===== DATE COLUMN ===== */
-.tb-date{
-  background:linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.01)) !important;
-  border-right:none !important;
-}
-.tb-date-main{
-  display:flex !important;
-  align-items:baseline !important;
-  gap:10px !important;
-  margin-top:6px !important;
-}
 .tb-month{
-  font-size:11px !important;
-  letter-spacing:0.3em !important;
+  font-size:10px !important;
+  letter-spacing:0.28em !important;
   text-transform:uppercase !important;
   color:var(--gold) !important;
   font-weight:900 !important;
+  flex:none !important;
 }
 .tb-day{
-  font-size:64px !important;
+  font-size:52px !important;
   letter-spacing:-0.06em !important;
   color:#F6F2E7 !important;
   line-height:1 !important;
   font-variant-numeric:tabular-nums !important;
+  flex:none !important;
 }
 .tb-week{
-  font-size:14px !important;
+  font-size:11px !important;
   color:var(--ink2) !important;
   font-weight:700 !important;
-  margin-top:4px !important;
-}
-.tb-date-meta{
-  display:flex !important;
-  flex-direction:column !important;
-  gap:6px !important;
-  margin-top:10px !important;
+  flex:none !important;
 }
 .tb-greet{
-  font-size:18px !important;
-  line-height:1.25 !important;
+  font-size:12.5px !important;
+  line-height:1.3 !important;
   color:#F2F0E5 !important;
-  font-weight:700 !important;
-  letter-spacing:-0.02em !important;
-}
-.tb-date-line{
-  font-size:13.5px !important;
-  line-height:1.4 !important;
-  color:var(--ink2) !important;
   font-weight:600 !important;
-}
-.tb-date-hi{
-  font-size:11px !important;
-  color:var(--mut) !important;
-  font-weight:600 !important;
-  text-transform:uppercase !important;
-  letter-spacing:0.16em !important;
+  letter-spacing:-0.01em !important;
+  white-space:normal !important;
+  min-width:0 !important;
+  flex:1 !important;
 }
 
-/* Weekday strip */
-.tb-weekstrip{
-  display:grid !important;
-  grid-template-columns:repeat(7,minmax(0,1fr)) !important;
-  gap:6px !important;
-  margin-top:14px !important;
-  padding-top:12px !important;
-  border-top:1px solid rgba(255,255,255,.08) !important;
-}
-.tb-weekstrip .mini-day{
+/* --- MOTIVATION section (single horizontal line, centered) --- */
+.tb-sec.motive{
   display:flex !important;
-  flex-direction:column !important;
-  align-items:center !important;
-  gap:2px !important;
-  padding:7px 2px !important;
-  border-radius:11px !important;
-  background:rgba(255,255,255,.04) !important;
-  border:1px solid rgba(255,255,255,.06) !important;
-  color:var(--ink2) !important;
-  cursor:pointer !important;
-  transition:all .18s !important;
-}
-.tb-weekstrip .mini-day span{font-size:8px !important;font-weight:800 !important;letter-spacing:0.5px !important;color:var(--mut) !important;}
-.tb-weekstrip .mini-day b{font-size:13px !important;line-height:1 !important;}
-.tb-weekstrip .mini-day i{font-style:normal !important;font-size:10px !important;line-height:1 !important;color:var(--mut) !important;}
-.tb-weekstrip .mini-day.today{background:linear-gradient(135deg,var(--olive),#2C2B1C) !important;color:#F6F2E7 !important;border-color:transparent !important;}
-.tb-weekstrip .mini-day.today span,.tb-weekstrip .mini-day.today i{color:rgba(246,242,231,.75) !important;}
-.tb-weekstrip .mini-day.fest{border-color:rgba(165,123,54,.55) !important;background:#2B2A1D !important;color:var(--ink) !important;}
-
-/* ===== MOTIVATION COLUMN ===== */
-.tb-motive{
-  background:transparent !important;
-  border-right:1px solid rgba(255,255,255,.06) !important;
+  align:center !important;
   justify-content:center !important;
+  gap:10px !important;
+  text-align:center !important;
+  min-width:0 !important;
+  flex:1 !important;
 }
 .tb-quote-box{
   display:flex !important;
-  flex-direction:column !important;
-  gap:14px !important;
-  text-align:center !important;
+  align-items:center !important;
+  gap:8px !important;
+  margin:0 !important;
 }
 .tb-quote-mark{
-  font-size:56px !important;
+  font-size:28px !important;
   color:var(--gold) !important;
-  opacity:0.75 !important;
-  align-self:center !important;
+  opacity:0.8 !important;
   line-height:1 !important;
-  margin-top:-10px !important;
+  flex:none !important;
 }
 .tb-quote-box p{
-  font-size:20px !important;
-  line-height:1.75 !important;
+  font-size:15px !important;
+  line-height:1.45 !important;
   color:#F2F0E5 !important;
   font-weight:600 !important;
   font-style:italic !important;
   margin:0 !important;
-  flex:1 !important;
+  min-width:0 !important;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:normal;
 }
 .tb-quote-by{
-  font-size:10px !important;
+  font-size:9px !important;
   color:var(--mut) !important;
   font-weight:700 !important;
-  letter-spacing:0.6px !important;
+  letter-spacing:0.5px !important;
   text-transform:uppercase !important;
-  align-self:center !important;
-}
-
-/* Small icon buttons — refresh / copy */
-.tb-quote-actions{
-  display:flex !important;
-  gap:10px !important;
-  justify-content:center !important;
-  margin-top:8px !important;
-}
-.tb-icon-btn{
-  width:44px !important;
-  height:44px !important;
-  border-radius:12px !important;
-  display:grid !important;
-  place-items:center !important;
-  background:rgba(255,255,255,.08) !important;
-  border:1px solid rgba(165,123,54,.28) !important;
-  color:#F2F0E5 !important;
-  font-size:18px !important;
-  cursor:pointer !important;
-  transition:all .18s !important;
   flex:none !important;
+  white-space:nowrap;
 }
-.tb-icon-btn:hover{
-  background:rgba(165,123,54,.18) !important;
-  transform:rotate(-18deg) scale(1.08) !important;
-  border-color:var(--gold) !important;
-  color:#F6F2E7 !important;
-}
-.tb-icon-btn:active{transform:scale(0.92) !important;}
 
-/* Weather */
-.tb-weather{
-  margin-top:14px !important;
+/* --- TIME section (single horizontal line) --- */
+.tb-sec.time{
   display:flex !important;
   align-items:center !important;
-  justify-content:center !important;
-  gap:6px !important;
-  font-size:10.5px !important;
-  font-weight:650 !important;
-  color:var(--mut) !important;
-}
-
-/* ===== TIME COLUMN ===== */
-.tb-time{
-  background:linear-gradient(135deg, rgba(255,255,255,.03), rgba(255,255,255,.005)) !important;
-  border-right:none !important;
-  align-items:center !important;
-  text-align:center !important;
+  gap:10px !important;
+  text-align:right !important;
+  min-width:0 !important;
 }
 .tb-clock-box{
   display:flex !important;
-  flex-direction:column !important;
   align-items:center !important;
-  gap:2px !important;
+  gap:4px !important;
+  flex:none !important;
 }
 .dl-clock{
-  font-size:64px !important;
+  font-size:46px !important;
   letter-spacing:-0.06em !important;
   color:#F6F2E7 !important;
   line-height:1 !important;
   font-variant-numeric:tabular-nums !important;
 }
 .dl-clock i{
-  font-size:28px !important;
+  font-size:22px !important;
   color:var(--gold) !important;
   font-style:normal !important;
 }
 .tb-meridiem{
-  font-size:12px !important;
-  letter-spacing:2px !important;
+  font-size:10px !important;
+  letter-spacing:1.5px !important;
   color:var(--gold) !important;
   font-weight:800 !important;
   text-transform:uppercase !important;
-  margin-top:2px !important;
-}
-.tb-time-meta{
-  display:flex !important;
-  flex-direction:column !important;
-  gap:4px !important;
-  align-items:center !important;
-  margin-top:10px !important;
-}
-.tb-zone{
-  font-size:10px !important;
-  letter-spacing:1.6px !important;
-  color:var(--mut) !important;
-  font-weight:800 !important;
-  text-transform:uppercase !important;
+  flex:none !important;
 }
 .tb-next{
-  font-size:10px !important;
+  font-size:9px !important;
   font-weight:800 !important;
   color:#E5BE62 !important;
   background:rgba(229,190,98,.14) !important;
   border:1px solid rgba(229,190,98,.28) !important;
   border-radius:999px !important;
-  padding:4px 14px !important;
+  padding:2px 10px !important;
   white-space:normal !important;
   text-align:center !important;
-  line-height:1.35 !important;
+  line-height:1.3 !important;
+  flex:none !important;
 }
+
+/* Row 1b: small icon actions (right side, compact) */
+.tb-actions{
+  display:flex !important;
+  gap:8px !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+  padding:10px 24px !important;
+  border-bottom:1px solid rgba(255,255,255,.06) !important;
+}
+.tb-icon-btn{
+  width:38px !important;
+  height:38px !important;
+  border-radius:10px !important;
+  display:grid !important;
+  place-items:center !important;
+  background:rgba(255,255,255,.07) !important;
+  border:1px solid rgba(165,123,54,.24) !important;
+  color:#F2F0E5 !important;
+  font-size:16px !important;
+  cursor:pointer !important;
+  transition:all .18s !important;
+  flex:none !important;
+}
+.tb-icon-btn:hover{
+  background:rgba(165,123,54,.16) !important;
+  transform:rotate(-15deg) scale(1.06) !important;
+  border-color:var(--gold) !important;
+  color:#F6F2E7 !important;
+}
+.tb-icon-btn:active{transform:scale(0.92) !important;}
 .tb-quicklink{
-  width:100% !important;
-  justify-content:center !important;
-  height:44px !important;
-  font-size:12px !important;
-  border-radius:12px !important;
-  margin-top:10px !important;
-  background:rgba(255,255,255,.06) !important;
+  height:36px !important;
+  padding:0 12px !important;
+  border-radius:10px !important;
+  font-size:11px !important;
   border:1px solid rgba(255,255,255,.08) !important;
   color:var(--gold) !important;
   font-weight:800 !important;
-  letter-spacing:0.5px !important;
+  background:rgba(255,255,255,.05) !important;
   transition:all .18s !important;
 }
 .tb-quicklink:hover{
-  background:rgba(255,255,255,.12) !important;
+  background:rgba(255,255,255,.1) !important;
   border-color:var(--gold) !important;
   color:#F6F2E7 !important;
   transform:translateY(-1px) !important;
 }
 
-/* Day plan small icon button */
-.tb-dayplan{
-  margin-top:10px !important;
-  display:flex !important;
-  justify-content:center !important;
-}
-.tb-dayplan .tb-icon-btn{
-  width:48px !important;
-  height:48px !important;
-  font-size:20px !important;
-}
-.tb-plan-copy{
-  display:none !important;
-}
-
-/* ===== FESTIVAL ROW ===== */
+/* ===== ROW 2: FESTIVAL — full width, compact horizontal ===== */
 .tb-festival{
   grid-column:1/-1 !important;
   grid-row:3 !important;
-  padding:18px 26px 19px !important;
+  padding:14px 24px !important;
   border-top:1px solid rgba(255,255,255,.08) !important;
-  background:linear-gradient(90deg, rgba(165,123,54,.14) 0%, rgba(229,190,98,.1) 52%, rgba(165,123,54,.08) 100%) !important;
-  display:flex !important;
-  align-items:flex-start !important;
-}
-.tb-fest-inner{
-  flex:1 !important;
-  display:flex !important;
-  flex-direction:column !important;
-  gap:10px !important;
-  min-width:0 !important;
-}
-.tb-fest-top{
+  background:linear-gradient(90deg, rgba(165,123,54,.12) 0%, rgba(229,190,98,.09) 52%, rgba(165,123,54,.07) 100%) !important;
   display:flex !important;
   align-items:center !important;
   gap:12px !important;
@@ -11166,85 +11055,89 @@ body[data-theme="dark"] .view{ min-height:auto !important; overflow:visible !imp
 }
 .tb-fest-emoji{font-size:20px !important;line-height:1 !important;flex:none !important;}
 .tb-fest-name{font-size:11px !important;font-weight:800 !important;letter-spacing:2px !important;text-transform:uppercase !important;color:var(--gold) !important;flex:none !important;}
-.tb-fest-chip{font-size:9px !important;font-weight:800 !important;letter-spacing:1px !important;color:#E5BE62 !important;background:rgba(229,190,98,.12) !important;border:1px solid rgba(229,190,98,.25) !important;border-radius:999px !important;padding:3px 10px !important;margin-left:auto !important;white-space:nowrap !important;}
+.tb-fest-chip{font-size:8.5px !important;font-weight:800 !important;letter-spacing:1px !important;color:#E5BE62 !important;background:rgba(229,190,98,.12) !important;border:1px solid rgba(229,190,98,.25) !important;border-radius:999px !important;padding:2px 9px !important;margin-left:auto !important;white-space:nowrap !important;}
 .tb-festival h3{
   font-family:'Fraunces',serif !important;
-  font-size:32px !important;
-  letter-spacing:-0.03em !important;
+  font-size:26px !important;
+  letter-spacing:-0.02em !important;
   color:#F2F0E5 !important;
   font-weight:600 !important;
-  line-height:1.1 !important;
+  line-height:1.15 !important;
   margin:0 !important;
+  flex:none !important;
 }
 .tb-fest-en{
-  font-size:11px !important;
-  letter-spacing:2.4px !important;
+  font-size:10px !important;
+  letter-spacing:2px !important;
   color:var(--gold) !important;
   font-weight:800 !important;
   text-transform:uppercase !important;
-  margin-top:2px !important;
+  flex:none !important;
 }
 .tb-fest-greets{
   display:flex !important;
-  gap:20px !important;
-  align-items:baseline !important;
+  gap:16px !important;
+  align-items:center !important;
   flex-wrap:wrap !important;
-  margin-top:6px !important;
+  margin-left:auto !important;
+  min-width:0 !important;
 }
 .tb-greet-hi{
-  font-size:14px !important;
-  line-height:1.6 !important;
+  font-size:12.5px !important;
+  line-height:1.45 !important;
   color:#F2F0E5 !important;
   font-weight:600 !important;
   margin:0 !important;
-  max-width:520px !important;
+  max-width:360px !important;
+  white-space:normal !important;
 }
 .tb-greet-en{
-  font-size:13px !important;
-  line-height:1.55 !important;
+  font-size:11.5px !important;
+  line-height:1.45 !important;
   color:var(--mut) !important;
   font-style:italic !important;
   margin:0 !important;
-  max-width:480px !important;
+  max-width:300px !important;
+  white-space:normal !important;
 }
 .tb-fest-actions{
   display:flex !important;
-  gap:8px !important;
-  margin-top:10px !important;
+  gap:7px !important;
+  margin-left:12px !important;
   flex-wrap:wrap !important;
 }
 .tb-fest-btn{
   display:inline-flex !important;
   align-items:center !important;
-  gap:6px !important;
-  padding:7px 14px !important;
+  gap:5px !important;
+  padding:6px 12px !important;
   border-radius:10px !important;
-  border:1px solid rgba(165,123,54,.28) !important;
+  border:1px solid rgba(165,123,54,.26) !important;
   background:rgba(255,255,255,.05) !important;
   color:#F2F0E5 !important;
-  font-size:10.5px !important;
+  font-size:10px !important;
   font-weight:800 !important;
   cursor:pointer !important;
   transition:all .18s !important;
   white-space:nowrap !important;
 }
 .tb-fest-btn:hover{
-  background:rgba(255,255,255,.12) !important;
+  background:rgba(255,255,255,.11) !important;
   border-color:var(--gold) !important;
   color:#F6F2E7 !important;
   transform:translateY(-1px) !important;
 }
 
-/* ===== BOTTOM ROW — Coming up x3 | BCS | icon buttons ===== */
+/* ===== ROW 3: Coming up x3 | BCS | icon buttons ===== */
 .tb-bottom{
   grid-column:1/-1 !important;
   grid-row:4 !important;
-  padding:16px 26px 18px !important;
+  padding:13px 24px 15px !important;
   border-top:1px solid rgba(255,255,255,.08) !important;
-  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01)) !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.008)) !important;
   display:flex !important;
   align-items:flex-start !important;
-  gap:16px !important;
+  gap:14px !important;
   flex-wrap:nowrap !important;
   min-width:0 !important;
 }
@@ -11253,24 +11146,24 @@ body[data-theme="dark"] .view{ min-height:auto !important; overflow:visible !imp
   min-width:0 !important;
   display:flex !important;
   flex-direction:column !important;
-  gap:10px !important;
+  gap:8px !important;
 }
 .tb-up-head{
   display:flex !important;
   align-items:baseline !important;
-  gap:8px !important;
+  gap:6px !important;
   margin-bottom:2px !important;
 }
 .tb-up-head span{
   font-size:9px !important;
   font-weight:800 !important;
-  letter-spacing:2.2px !important;
+  letter-spacing:2px !important;
   text-transform:uppercase !important;
   color:var(--gold) !important;
 }
 .tb-up-head small{
-  font-size:7.5px !important;
-  letter-spacing:0.8px !important;
+  font-size:7px !important;
+  letter-spacing:0.6px !important;
   text-transform:uppercase !important;
   color:var(--mut) !important;
   opacity:0.7 !important;
@@ -11279,22 +11172,22 @@ body[data-theme="dark"] .view{ min-height:auto !important; overflow:visible !imp
 .tb-up-list{
   display:grid !important;
   grid-template-columns:repeat(3,1fr) !important;
-  gap:12px !important;
+  gap:10px !important;
 }
 .tb-up-item{
   display:flex !important;
   flex-direction:column !important;
   align-items:flex-start !important;
-  gap:7px !important;
-  padding:13px 15px !important;
-  border-radius:18px !important;
-  background:rgba(255,255,255,.05) !important;
-  border:1px solid rgba(255,255,255,.08) !important;
+  gap:6px !important;
+  padding:11px 13px !important;
+  border-radius:16px !important;
+  background:rgba(255,255,255,.045) !important;
+  border:1px solid rgba(255,255,255,.07) !important;
   text-align:left !important;
   cursor:pointer !important;
   height:auto !important;
-  min-height:110px !important;
-  transition:all 0.28s cubic-bezier(0.22,1,0.36,1) !important;
+  min-height:96px !important;
+  transition:all 0.26s cubic-bezier(0.22,1,0.36,1) !important;
   position:relative !important;
   overflow:hidden !important;
 }
@@ -11302,76 +11195,76 @@ body[data-theme="dark"] .view{ min-height:auto !important; overflow:visible !imp
   content:'' !important;
   position:absolute !important;
   inset:0 !important;
-  background:linear-gradient(135deg,rgba(165,123,54,.14),transparent 60%) !important;
+  background:linear-gradient(135deg,rgba(165,123,54,.12),transparent 60%) !important;
   opacity:0 !important;
-  transition:opacity .28s ease !important;
+  transition:opacity .26s ease !important;
   pointer-events:none !important;
 }
 .tb-up-item:hover{
-  border-color:rgba(165,123,54,.4) !important;
-  background:rgba(255,255,255,.09) !important;
-  box-shadow:0 14px 32px -18px rgba(120,84,10,.35) !important;
-  transform:translateY(-5px) !important;
+  border-color:rgba(165,123,54,.38) !important;
+  background:rgba(255,255,255,.08) !important;
+  box-shadow:0 12px 28px -16px rgba(120,84,10,.32) !important;
+  transform:translateY(-4px) !important;
 }
 .tb-up-item:hover::before{opacity:1 !important;}
-.tb-up-emoji{font-size:24px !important;line-height:1 !important;flex:none !important;}
-.tb-up-copy{display:flex !important;flex-direction:column !important;gap:4px !important;min-width:0 !important;}
+.tb-up-emoji{font-size:20px !important;line-height:1 !important;flex:none !important;}
+.tb-up-copy{display:flex !important;flex-direction:column !important;gap:3px !important;min-width:0 !important;}
 .tb-up-copy b{
-  font-size:14px !important;
+  font-size:12.5px !important;
   color:#F2F0E5 !important;
   font-weight:700 !important;
   white-space:normal !important;
-  line-height:1.3 !important;
+  line-height:1.25 !important;
 }
 .tb-up-copy span{
-  font-size:11px !important;
+  font-size:10px !important;
   color:var(--mut) !important;
   white-space:normal !important;
-  line-height:1.4 !important;
+  line-height:1.3 !important;
 }
 .tb-up-days{
-  font-size:9px !important;
+  font-size:8.5px !important;
   font-weight:800 !important;
-  padding:3px 11px !important;
+  padding:2px 9px !important;
   border-radius:999px !important;
   background:rgba(229,190,98,.16) !important;
-  border:1px solid rgba(229,190,98,.28) !important;
+  border:1px solid rgba(229,190,98,.26) !important;
   color:#E5BE62 !important;
   white-space:nowrap !important;
   flex:none !important;
   align-self:flex-start !important;
 }
 
-/* BCS share card */
+/* BCS share card — compact */
 .tb-bcs{
   flex:0 0 auto !important;
-  padding:11px 18px 11px 14px !important;
-  border-radius:18px !important;
-  min-width:260px !important;
-  max-width:380px !important;
+  padding:9px 16px 9px 12px !important;
+  border-radius:16px !important;
+  min-width:220px !important;
+  max-width:320px !important;
   background:linear-gradient(135deg,var(--olive),#2C2B1C) !important;
   color:#F6F2E7 !important;
   border:none !important;
-  box-shadow:0 14px 30px -16px rgba(44,43,28,.55), inset 0 1px 0 rgba(255,255,255,.14) !important;
+  box-shadow:0 12px 26px -14px rgba(44,43,28,.52), inset 0 1px 0 rgba(255,255,255,.13) !important;
   display:flex !important;
   align-items:center !important;
-  gap:14px !important;
+  gap:12px !important;
   cursor:pointer !important;
   transition:all .2s !important;
 }
 .tb-bcs:hover{
   transform:translateY(-2px) !important;
-  filter:brightness(1.08) !important;
+  filter:brightness(1.07) !important;
 }
 .tb-bcs-logo{
-  width:44px !important;
-  height:44px !important;
-  border-radius:12px !important;
+  width:38px !important;
+  height:38px !important;
+  border-radius:11px !important;
   display:grid !important;
   place-items:center !important;
   font-family:'Fraunces',serif !important;
   font-weight:700 !important;
-  font-size:15px !important;
+  font-size:14px !important;
   color:#F6F2E7 !important;
   background:rgba(246,242,231,.14) !important;
   border:1px solid rgba(246,242,231,.35) !important;
@@ -11380,46 +11273,46 @@ body[data-theme="dark"] .view{ min-height:auto !important; overflow:visible !imp
 .tb-bcs-copy{display:flex !important;flex-direction:column !important;gap:1px !important;min-width:0 !important;}
 .tb-bcs .tb-bcs-name{
   font-family:'Fraunces',serif !important;
-  font-size:14px !important;
+  font-size:12.5px !important;
   font-weight:600 !important;
   color:#fff !important;
-  letter-spacing:-0.2px !important;
+  letter-spacing:-0.1px !important;
   white-space:normal !important;
-  line-height:1.25 !important;
+  line-height:1.2 !important;
 }
 .tb-bcs .tb-bcs-handle{
   font-style:normal !important;
-  font-size:10.5px !important;
+  font-size:9.5px !important;
   font-weight:600 !important;
-  color:rgba(246,242,231,.72) !important;
+  color:rgba(246,242,231,.7) !important;
   white-space:normal !important;
 }
 .tb-bcs .tb-bcs-cta{
   font-style:normal !important;
-  font-size:8.5px !important;
+  font-size:8px !important;
   font-weight:800 !important;
-  letter-spacing:1.6px !important;
+  letter-spacing:1.4px !important;
   text-transform:uppercase !important;
   color:#EED98F !important;
   white-space:normal !important;
-  margin-top:2px !important;
+  margin-top:1px !important;
 }
 .tb-bcs-qr{
   display:grid !important;
   place-items:center !important;
-  width:40px !important;
-  height:40px !important;
-  border-radius:11px !important;
+  width:36px !important;
+  height:36px !important;
+  border-radius:10px !important;
   background:rgba(246,242,231,.14) !important;
   border:1px solid rgba(246,242,231,.35) !important;
   color:#EED98F !important;
-  font-size:10px !important;
+  font-size:9px !important;
   font-weight:900 !important;
-  letter-spacing:0.6px !important;
+  letter-spacing:0.5px !important;
   flex:none !important;
 }
 .tb-bcs-go{
-  font-size:19px !important;
+  font-size:17px !important;
   color:#EED98F !important;
   line-height:1 !important;
   flex:none !important;
@@ -11430,142 +11323,122 @@ body[data-theme="dark"] .view{ min-height:auto !important; overflow:visible !imp
 /* Icon buttons — refresh, road hub, manage */
 .tb-icons{
   display:flex !important;
-  gap:10px !important;
+  gap:8px !important;
   flex:none !important;
   align-items:flex-start !important;
 }
 .tb-icons .tb-icon-btn{
-  width:48px !important;
-  height:48px !important;
-  border-radius:14px !important;
-  font-size:20px !important;
-  background:rgba(255,255,255,.06) !important;
-  border:1px solid rgba(255,255,255,.08) !important;
+  width:40px !important;
+  height:40px !important;
+  border-radius:11px !important;
+  font-size:18px !important;
+  background:rgba(255,255,255,.05) !important;
+  border:1px solid rgba(255,255,255,.06) !important;
   color:#F2F0E5 !important;
 }
 
-/* ===== MARKET STRIP ===== */
+/* ===== ROW 4: MARKET STRIP ===== */
 .tb-market{
   grid-column:1/-1 !important;
   grid-row:5 !important;
-  padding:10px 26px !important;
+  padding:9px 24px !important;
   border-top:1px solid rgba(255,255,255,.06) !important;
-  background:rgba(27,32,27,.6) !important;
+  background:rgba(27,32,27,.55) !important;
   display:flex !important;
   align-items:center !important;
   gap:10px !important;
 }
 .tb-market-label{
-  font-size:9px !important;
+  font-size:8.5px !important;
   font-weight:900 !important;
-  letter-spacing:2px !important;
+  letter-spacing:1.8px !important;
   text-transform:uppercase !important;
   color:var(--gold) !important;
   flex:none !important;
 }
 .tb-market-label i{font-style:normal !important;opacity:0.7 !important;font-weight:600 !important;}
 .tb-market-val{
-  font-size:12px !important;
+  font-size:11.5px !important;
   font-weight:700 !important;
   color:var(--ink2) !important;
   flex:none !important;
 }
 
-/* ===== MOBILE — stacked, everything full width ===== */
+/* ===== MOBILE — compact horizontal, full width ===== */
 @media (max-width:900px){
-  .dash-card-header{
-    grid-template-columns:1fr !important;
-    grid-template-rows:auto auto auto auto auto !important;
+  .tb-row{
+    padding:14px 20px !important;
+    gap:14px !important;
   }
-  .tb-top{
-    grid-template-columns:1fr !important;
-    border-bottom:none !important;
-  }
-  .tb-col{
-    border-right:none !important;
-    border-bottom:1px solid rgba(255,255,255,.06) !important;
-    padding:18px 20px !important;
-  }
-  .tb-col:last-child{border-bottom:none !important;}
-  .tb-day{font-size:48px !important;}
-  .dl-clock{font-size:48px !important;}
+  .tb-day{font-size:42px !important;}
+  .dl-clock{font-size:38px !important;}
+  .tb-greet{font-size:12px !important;}
+  .tb-quote-box p{font-size:14px !important;}
+  .tb-festival h3{font-size:22px !important;}
   .tb-up-list{grid-template-columns:repeat(3,1fr) !important;}
   .tb-bcs{min-width:auto !important;max-width:none !important;flex:1 1 100% !important;}
-  .tb-icons{flex-wrap:wrap !important;justify-content:center !important;margin-top:10px !important;}
-  .tb-fest-actions{justify-content:center !important;}
+  .tb-icons{flex-wrap:wrap !important;justify-content:center !important;}
+  .tb-actions{padding:8px 20px !important;gap:7px !important;}
+  .tb-actions .tb-icon-btn{width:36px !important;height:36px !important;font-size:15px !important;}
+  .tb-actions .tb-quicklink{height:34px !important;font-size:10.5px !important;}
 }
 
 /* ===== DARK MODE OVERRIDES ===== */
 body[data-theme="dark"] .dash-card-header{
-  background:linear-gradient(180deg, rgba(31,38,31,.94), rgba(16,19,16,.86)) !important;
+  background:linear-gradient(180deg, rgba(31,38,31,.96), rgba(16,19,16,.88)) !important;
   border-color:rgba(255,255,255,.1) !important;
 }
-body[data-theme="dark"] .tb-col{
-  background:rgba(27,32,27,.4) !important;
-  border-color:rgba(255,255,255,.06) !important;
-}
-body[data-theme="dark"] .tb-date{
-  background:linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.01)) !important;
-}
-body[data-theme="dark"] .tb-time{
-  background:linear-gradient(135deg, rgba(255,255,255,.03), rgba(255,255,255,.005)) !important;
-}
+body[data-theme="dark"] .tb-sec.date{background:transparent !important;}
+body[data-theme="dark"] .tb-sec.motive{background:transparent !important;}
+body[data-theme="dark"] .tb-sec.time{background:transparent !important;}
+body[data-theme="dark"] .tb-row{border-color:rgba(255,255,255,.06) !important;}
+body[data-theme="dark"] .tb-actions{border-color:rgba(255,255,255,.06) !important;}
 body[data-theme="dark"] .tb-festival{
-  background:linear-gradient(90deg, rgba(165,123,54,.14) 0%, rgba(229,190,98,.1) 52%, rgba(165,123,54,.08) 100%) !important;
+  background:linear-gradient(90deg, rgba(165,123,54,.12) 0%, rgba(229,190,98,.09) 52%, rgba(165,123,54,.07) 100%) !important;
 }
 body[data-theme="dark"] .tb-bottom{
-  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01)) !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.008)) !important;
 }
 body[data-theme="dark"] .tb-up-item{
-  background:rgba(255,255,255,.05) !important;
-  border-color:rgba(255,255,255,.08) !important;
+  background:rgba(255,255,255,.045) !important;
+  border-color:rgba(255,255,255,.07) !important;
 }
 body[data-theme="dark"] .tb-up-item:hover{
-  background:rgba(255,255,255,.09) !important;
-  border-color:rgba(165,123,54,.4) !important;
+  background:rgba(255,255,255,.08) !important;
+  border-color:rgba(165,123,54,.38) !important;
 }
 body[data-theme="dark"] .tb-icon-btn{
-  background:rgba(255,255,255,.08) !important;
-  border-color:rgba(165,123,54,.28) !important;
+  background:rgba(255,255,255,.07) !important;
+  border-color:rgba(165,123,54,.24) !important;
   color:#F2F0E5 !important;
 }
 body[data-theme="dark"] .tb-icon-btn:hover{
-  background:rgba(165,123,54,.18) !important;
+  background:rgba(165,123,54,.16) !important;
   border-color:var(--gold) !important;
   color:#F6F2E7 !important;
 }
 body[data-theme="dark"] .tb-quicklink{
-  background:rgba(255,255,255,.06) !important;
+  background:rgba(255,255,255,.05) !important;
   border-color:rgba(255,255,255,.08) !important;
   color:var(--gold) !important;
 }
 body[data-theme="dark"] .tb-quicklink:hover{
-  background:rgba(255,255,255,.12) !important;
+  background:rgba(255,255,255,.1) !important;
   border-color:var(--gold) !important;
   color:#F6F2E7 !important;
 }
-body[data-theme="dark"] .tb-icons .tb-icon-btn{
-  background:rgba(255,255,255,.06) !important;
-  border-color:rgba(255,255,255,.08) !important;
-  color:#F2F0E5 !important;
-}
 body[data-theme="dark"] .tb-market{
-  background:rgba(27,32,27,.6) !important;
+  background:rgba(27,32,27,.55) !important;
   border-color:rgba(255,255,255,.06) !important;
 }
 body[data-theme="dark"] .tb-market-val{color:var(--ink2) !important;}
-body[data-theme="dark"] .tb-weekstrip .mini-day{
-  background:rgba(255,255,255,.04) !important;
-  border-color:rgba(255,255,255,.06) !important;
-  color:var(--ink2) !important;
-}
 body[data-theme="dark"] .tb-fest-btn{
   background:rgba(255,255,255,.05) !important;
-  border-color:rgba(165,123,54,.28) !important;
+  border-color:rgba(165,123,54,.26) !important;
   color:#F2F0E5 !important;
 }
 body[data-theme="dark"] .tb-fest-btn:hover{
-  background:rgba(255,255,255,.12) !important;
+  background:rgba(255,255,255,.11) !important;
   border-color:var(--gold) !important;
   color:#F6F2E7 !important;
 }
@@ -11904,116 +11777,95 @@ try{
            Coming up x3 | BCS card | small icon buttons
            Market strip
            ========================================================= -->
-      <div class="dash-card dash-card-header" id="dashHeadline">
-        <!-- TOP ROW: three equal columns -->
-        <div class="tb-top">
-          <!-- DATE COLUMN — big date, greeting, weekday strip -->
-          <div class="tb-col tb-date">
-            <div class="tb-label">DATE</div>
-            <div class="tb-date-main">
-              <span class="tb-month" id="thCalMonthMerged">NOV</span>
-              <b class="tb-day" id="thCalDayMerged">10</b>
-              <span class="tb-week" id="thCalWeekMerged">मंगलवार</span>
-            </div>
-            <div class="tb-date-meta">
-              <span class="tb-greet" id="thGreetTick">शुभ प्रभात · Good Morning</span>
-              <span class="tb-date-line"><span id="thWeekdayEn">Tuesday</span> · <span id="thMonth">November 2026</span></span>
-              <span class="tb-date-hi" id="thMonthHi">नवंबर · 2026</span>
-            </div>
-            <div class="tb-weekstrip" id="thWeekStrip" aria-label="7-day mini calendar"></div>
-          </div>
+       <div class="dash-card dash-card-header" id="dashHeadline">
+         <!-- ROW 1: Date | Motivation | Time — all horizontal, no vertical stacking -->
+         <div class="tb-row">
+           <!-- DATE — single horizontal line -->
+           <div class="tb-sec date">
+             <span class="tb-month" id="thCalMonthMerged">NOV</span>
+             <b class="tb-day" id="thCalDayMerged">10</b>
+             <span class="tb-week" id="thCalWeekMerged">मंगलवार</span>
+             <span class="tb-greet" id="thGreetTick">शुभ प्रभात · Good Morning</span>
+           </div>
 
-          <!-- MOTIVATION COLUMN — big quote, small icon buttons -->
-          <div class="tb-col tb-motive">
-            <div class="tb-label">MOTIVATION</div>
-            <div class="tb-quote-box" id="thQuoteBox" aria-label="Today's motivation">
-              <span class="tb-quote-mark">“</span>
-              <p id="thQuote">Every no is data that brings you closer to the right yes.</p>
-              <span class="tb-quote-by" id="thQuoteBy">— Real Estate Wisdom</span>
-            </div>
-            <div class="tb-quote-actions">
-              <button type="button" class="tb-icon-btn" id="thQuoteCopy" title="Copy motivation" aria-label="Copy motivation">⧉</button>
-              <button type="button" class="tb-icon-btn" id="thQuoteRefresh" title="Next motivation" aria-label="Next motivation">↻</button>
-            </div>
-            <div class="tb-weather" id="jaipurWeather" aria-live="polite"><span class="wx-mark">Jaipur weather</span></div>
-          </div>
+           <!-- MOTIVATION — single horizontal line, centered -->
+           <div class="tb-sec motive" id="thQuoteBox" aria-label="Today's motivation">
+             <span class="tb-quote-mark">“</span>
+             <p id="thQuote">Every no is data that brings you closer to the right yes.</p>
+             <span class="tb-quote-by" id="thQuoteBy">— Real Estate Wisdom</span>
+           </div>
 
-          <!-- TIME COLUMN — big live clock, small dayplan -->
-          <div class="tb-col tb-time">
-            <div class="tb-label">NOW · LIVE</div>
-            <div class="tb-clock-box">
-              <b class="dl-clock"><span id="dlClock">10:24</span><i id="dlSeconds">:03</i></b>
-              <span class="tb-meridiem" id="dlMeridiem">AM</span>
-            </div>
-            <div class="tb-time-meta">
-              <span class="tb-zone" id="dlDetail">IST · Jaipur</span>
-              <span class="tb-next" id="dlNext">Tue, 10 Nov · Week 46</span>
-            </div>
-            <button type="button" class="tb-quicklink" id="thAddTaskBtn">+ Add task</button>
-            <div class="tb-dayplan">
-              <button type="button" class="tb-icon-btn" id="bpPlanBtn" title="Day plan kholein" aria-label="Day plan kholein">
-                <svg viewBox="0 0 36 36" class="bp-ring" aria-hidden="true">
-                  <circle class="bp-ring-bg" cx="18" cy="18" r="15.5" pathLength="97.4"></circle>
-                  <circle class="bp-ring-fg" id="bpPlanFg" cx="18" cy="18" r="15.5" pathLength="97.4"></circle>
-                </svg>
-                <span class="tb-plan-copy"><b id="bpPlanTxt">–</b><i id="bpPlanSub">plan</i></span>
-              </button>
-            </div>
-          </div>
-        </div>
+           <!-- TIME — single horizontal line -->
+           <div class="tb-sec time">
+             <div class="tb-clock-box">
+               <b class="dl-clock"><span id="dlClock">10:24</span><i id="dlSeconds">:03</i></b>
+               <span class="tb-meridiem" id="dlMeridiem">AM</span>
+             </div>
+             <span class="tb-next" id="dlNext">Tue, 10 Nov · Week 46</span>
+           </div>
+         </div>
 
-        <!-- FESTIVAL ROW — full width -->
-        <div class="tb-festival">
-          <div class="tb-fest-inner">
-            <div class="tb-fest-top">
-              <span class="tb-fest-emoji" id="thEmojiMerged">🪔</span>
-              <span class="tb-fest-name" id="thFestivalNameMerged">Diwali</span>
-              <span class="tb-fest-chip" id="thTodayChipMerged">Aaj · Today</span>
-            </div>
-            <h3 id="thFestivalHiMerged">दीपावली</h3>
-            <div class="tb-fest-en" id="thFestivalEnMerged">Diwali · Lakshmi Puja</div>
-            <div class="tb-fest-greets">
-              <p class="tb-greet-hi" id="thGreetHiMerged">दीपों की रोशनी, माँ लक्ष्मी की कृपा — आपका जीवन सदा उजालों से भरा रहे।</p>
-              <p class="tb-greet-en" id="thGreetEnMerged">Lights of diyas, grace of Maa Lakshmi — may your life always shine bright.</p>
-            </div>
-            <div class="tb-fest-actions">
-              <button type="button" class="tb-fest-btn" id="thCopyHi">Copy Hindi greet</button>
-              <button type="button" class="tb-fest-btn" id="thCopyEn">Copy English greet</button>
-              <button type="button" class="tb-fest-btn" id="thNextPoster">Next poster →</button>
-              <button type="button" class="tb-fest-btn" id="thThemePrev">Theme</button>
-            </div>
-          </div>
-        </div>
+         <!-- ROW 1b: small icon actions (compact) -->
+         <div class="tb-actions">
+           <button type="button" class="tb-icon-btn" id="thQuoteCopy" title="Copy motivation" aria-label="Copy motivation">⧉</button>
+           <button type="button" class="tb-icon-btn" id="thQuoteRefresh" title="Next motivation" aria-label="Next motivation">↻</button>
+           <button type="button" class="tb-icon-btn" id="bpPlanBtn" title="Day plan" aria-label="Day plan kholein">
+             <svg viewBox="0 0 36 36" class="bp-ring" aria-hidden="true">
+               <circle class="bp-ring-bg" cx="18" cy="18" r="15.5" pathLength="97.4"></circle>
+               <circle class="bp-ring-fg" id="bpPlanFg" cx="18" cy="18" r="15.5" pathLength="97.4"></circle>
+             </svg>
+           </button>
+           <button type="button" class="tb-quicklink" id="thAddTaskBtn">+ Add task</button>
+         </div>
 
-        <!-- BOTTOM ROW: Coming up (3 items) | BCS card | small icon buttons -->
-        <div class="tb-bottom">
-          <div class="tb-upcoming">
-            <div class="tb-up-head"><span>Coming up</span><small>tap for poster</small></div>
-            <div class="tb-up-list" id="thUpcoming"></div>
-          </div>
-          <button type="button" class="tb-bcs" id="thSharePoster" title="Editable BCS visiting card — image, QR, phone, address">
-            <span class="tb-bcs-logo">BCS</span>
-            <span class="tb-bcs-copy">
-              <b class="tb-bcs-name" id="bcsCardPerson">Ajay Sharma</b>
-              <i class="tb-bcs-handle" id="bcsCardTitle">Founder · Real Estate Advisor</i>
-              <em class="tb-bcs-cta" id="bcsCardMeta">@ajaysharma.bcs · Jaipur</em>
-            </span>
-            <span class="tb-bcs-qr">QR</span>
-            <span class="tb-bcs-go">↗</span>
-          </button>
-          <div class="tb-icons">
-            <button type="button" class="tb-icon-btn" id="thRefreshQuote" title="Refresh quote" aria-label="Refresh quote">↻</button>
-            <button type="button" class="tb-icon-btn" id="thRoadHubBtn" title="Road hub" aria-label="Road hub">⌁</button>
-            <button type="button" class="tb-icon-btn" id="thManage" title="Manage lists" aria-label="Manage lists" style="display:none">⚙</button>
-          </div>
-        </div>
+         <!-- ROW 2: FESTIVAL — full width, compact horizontal -->
+         <div class="tb-festival">
+           <span class="tb-fest-emoji" id="thEmojiMerged">🪔</span>
+           <span class="tb-fest-name" id="thFestivalNameMerged">Diwali</span>
+           <span class="tb-fest-chip" id="thTodayChipMerged">Aaj · Today</span>
+           <h3 id="thFestivalHiMerged">दीपावली</h3>
+           <div class="tb-fest-en" id="thFestivalEnMerged">Diwali · Lakshmi Puja</div>
+           <div class="tb-fest-greets">
+             <p class="tb-greet-hi" id="thGreetHiMerged">दीपों की रोशनी, माँ लक्ष्मी की कृपा — आपका जीवन सदा उजालों से भरा रहे।</p>
+             <p class="tb-greet-en" id="thGreetEnMerged">Lights of diyas, grace of Maa Lakshmi — may your life always shine bright.</p>
+           </div>
+           <div class="tb-fest-actions">
+             <button type="button" class="tb-fest-btn" id="thCopyHi">Copy Hindi greet</button>
+             <button type="button" class="tb-fest-btn" id="thCopyEn">Copy English greet</button>
+             <button type="button" class="tb-fest-btn" id="thNextPoster">Next poster →</button>
+             <button type="button" class="tb-fest-btn" id="thThemePrev">Theme</button>
+           </div>
+         </div>
 
-        <!-- MARKET STRIP -->
-        <div class="tb-market" id="bannerMarket" aria-label="Live market rates — tap to open Rates Studio">
-          <span class="tb-market-label">MARKET<i>live</i></span>
-          <span class="tb-market-val">Loading rates…</span>
-        </div>
-      </div>
+         <!-- ROW 3: Coming up x3 | BCS card | small icon buttons -->
+         <div class="tb-bottom">
+           <div class="tb-upcoming">
+             <div class="tb-up-head"><span>Coming up</span><small>tap for poster</small></div>
+             <div class="tb-up-list" id="thUpcoming"></div>
+           </div>
+           <button type="button" class="tb-bcs" id="thSharePoster" title="Editable BCS visiting card — image, QR, phone, address">
+             <span class="tb-bcs-logo">BCS</span>
+             <span class="tb-bcs-copy">
+               <b class="tb-bcs-name" id="bcsCardPerson">Ajay Sharma</b>
+               <i class="tb-bcs-handle" id="bcsCardTitle">Founder · Real Estate Advisor</i>
+               <em class="tb-bcs-cta" id="bcsCardMeta">@ajaysharma.bcs · Jaipur</em>
+             </span>
+             <span class="tb-bcs-qr">QR</span>
+             <span class="tb-bcs-go">↗</span>
+           </button>
+           <div class="tb-icons">
+             <button type="button" class="tb-icon-btn" id="thRefreshQuote" title="Refresh quote" aria-label="Refresh quote">↻</button>
+             <button type="button" class="tb-icon-btn" id="thRoadHubBtn" title="Road hub" aria-label="Road hub">⌁</button>
+             <button type="button" class="tb-icon-btn" id="thManage" title="Manage lists" aria-label="Manage lists" style="display:none">⚙</button>
+           </div>
+         </div>
+
+         <!-- ROW 4: MARKET STRIP -->
+         <div class="tb-market" id="bannerMarket" aria-label="Live market rates — tap to open Rates Studio">
+           <span class="tb-market-label">MARKET<i>live</i></span>
+           <span class="tb-market-val">Loading rates…</span>
+         </div>
+       </div>
     </div>
 
     <div class="sec-head fest-head">
