@@ -10394,9 +10394,9 @@ body[data-theme="dark"] #pagesFab{background:linear-gradient(160deg,#2A2E27,#1B1
    Small icon buttons · 3D motion · light/dark parity
    ============================================================ */
 
-/* --- Light mode as default on first load (before JS applies saved theme) --- */
-body:not([data-theme]){ background:#F7F4EF !important; color:#2E2D20 !important; }
-body:not([data-theme]) header{background:rgba(255,255,255,.82) !important;border-bottom:1px solid rgba(229,234,232,.6) !important;box-shadow:0 4px 20px -4px rgba(46,45,32,.06) !important;backdrop-filter:blur(20px) saturate(1.2) !important;-webkit-backdrop-filter:blur(20px) saturate(1.2) !important}
+/* Dark mode as default on first load (before JS applies saved theme) */
+body:not([data-theme]){ background:#101310; color:#F2F0E5; }
+body:not([data-theme]) header{background:rgba(16,19,16,.88);border-color:rgba(48,56,48,.9);}
 
 /* --- Today banner: 4-column grid — Date | Motivation | Live Time | Month --- */
 .dash-card-header{
@@ -11622,342 +11622,6 @@ body[data-theme="dark"] #nav button.on .nav-ic{color:#171A14 !important;opacity:
   #nav .nav-lbl{font-size:10px !important;}
 }
 
-/* ============================================================
-   BCS v133 — MODERN 3D DESIGN SYSTEM
-   Light mode ready · Color palettes · 3D depth · Hover effects
-   Premium typography · Glassmorphism · Animated gradients
-   Applies to all 19 pages
-   ============================================================ */
-
-/* ---- LIGHT MODE BASE (lively, happening) ---- */
-body:not([data-theme="dark"]){ background:#F7F4EF !important; color:#2E2D20 !important; }
-body:not([data-theme="dark"]) header{background:rgba(255,255,255,.82) !important;border-bottom:1px solid rgba(229,234,232,.6) !important;box-shadow:0 4px 20px -4px rgba(46,45,32,.06) !important;backdrop-filter:blur(20px) saturate(1.2) !important;-webkit-backdrop-filter:blur(20px) saturate(1.2) !important}
-body:not([data-theme="dark"]) .brand h1{color:#2E2D20 !important}
-body:not([data-theme="dark"]) .brand p{color:#7A776A !important}
-body:not([data-theme="dark"]) .logo{background:linear-gradient(135deg,#FFFFFF,#F3F4F2) !important;color:#A57B36 !important;border:1px solid rgba(165,123,54,.18) !important;box-shadow:0 8px 24px -8px rgba(165,123,54,.12) !important}
-body:not([data-theme="dark"]) main{background:#F7F4EF !important}
-body:not([data-theme="dark"]) .view{background:transparent !important}
-body:not([data-theme="dark"]) .eyebrow{color:#A57B36 !important}
-body:not([data-theme="dark"]) h1,body:not([data-theme="dark"]) h2,body:not([data-theme="dark"]) h3{color:#2E2D20 !important}
-body:not([data-theme="dark"]) p{color:#5A574A !important}
-body:not([data-theme="dark"]) .mut,body:not([data-theme="dark"]) .ink2{color:#8A877A !important}
-body:not([data-theme="dark"]) .searchbox{background:#FFFFFF !important;border:1px solid rgba(229,234,232,.8) !important;color:#2E2D20 !important;box-shadow:0 4px 16px -4px rgba(46,45,32,.05) !important}
-body:not([data-theme="dark"]) .searchbox input{color:#2E2D20 !important;background:transparent !important}
-body:not([data-theme="dark"]) .searchbox svg{opacity:.55 !important}
-body:not([data-theme="dark"]) .btn{background:#FFFFFF !important;border:1px solid rgba(165,123,54,.18) !important;color:#2E2D20 !important;box-shadow:0 4px 14px -6px rgba(165,123,54,.12) !important}
-body:not([data-theme="dark"]) .btn:hover{background:#FFFFFF !important;border-color:#A57B36 !important;color:#A57B36 !important;transform:translateY(-2px) !important;box-shadow:0 10px 24px -10px rgba(165,123,54,.2) !important}
-body:not([data-theme="dark"]) .btn.primary{background:linear-gradient(135deg,#A57B36,#3A3928) !important;color:#FFFFFF !important}
-body:not([data-theme="dark"]) .btn.primary:hover{filter:brightness(1.08) !important;transform:translateY(-2px) scale(1.01) !important;box-shadow:0 12px 28px -10px rgba(165,123,54,.35) !important}
-body:not([data-theme="dark"]) .btn.gold{background:linear-gradient(135deg,#E5BE62,#A57B36) !important;color:#2E2D20 !important}
-body:not([data-theme="dark"]) .btn.gold:hover{transform:translateY(-2px) scale(1.01) !important;box-shadow:0 12px 28px -10px rgba(229,190,98,.35) !important}
-body:not([data-theme="dark"]) .btn.ghost{background:#FFFFFF !important;border:1px solid rgba(229,234,232,.8) !important;color:#5A574A !important}
-body:not([data-theme="dark"]) .btn.ghost:hover{background:#F7F4EF !important;border-color:#A57B36 !important;color:#A57B36 !important}
-body:not([data-theme="dark"]) .icon-btn{background:#FFFFFF !important;border:1px solid rgba(229,234,232,.8) !important;color:#2E2D20 !important;box-shadow:0 4px 14px -6px rgba(46,45,32,.06) !important}
-body:not([data-theme="dark"]) .icon-btn:hover{background:#FFFFFF !important;border-color:#A57B36 !important;color:#A57B36 !important;transform:translateY(-2px) rotate(-2deg) !important;box-shadow:0 8px 20px -8px rgba(165,123,54,.18) !important}
-
-/* ---- COLOR PALETTE SYSTEM ---- */
-body[data-palette="saffron"]{--pg:#A57B36;--pg-deep:#3A3928;--pg-soft:#F3E8D3;--pg-tint:rgba(165,123,54,.08)}
-body[data-palette="emerald"]{--pg:#2F8F6B;--pg-deep:#263B33;--pg-soft:#DDF3EA;--pg-tint:rgba(47,143,107,.08)}
-body[data-palette="indigo"]{--pg:#5C6ED0;--pg-deep:#2A3158;--pg-soft:#E4E7FB;--pg-tint:rgba(92,110,208,.09)}
-body[data-palette="rose"]{--pg:#C0527C;--pg-deep:#422A35;--pg-soft:#F8E2EC;--pg-tint:rgba(192,82,124,.08)}
-body[data-palette="ocean"]{--pg:#2A9DB8;--pg-deep:#1F3F4D;--pg-soft:#DDF2F7;--pg-tint:rgba(42,157,184,.09)}
-body[data-palette="saffron"] .logo{background:linear-gradient(135deg,#A57B36,#3A3928) !important}
-body[data-palette="emerald"] .logo{background:linear-gradient(135deg,#2F8F6B,#263B33) !important}
-body[data-palette="indigo"] .logo{background:linear-gradient(135deg,#5C6ED0,#2A3158) !important}
-body[data-palette="rose"] .logo{background:linear-gradient(135deg,#C0527C,#422A35) !important}
-body[data-palette="ocean"] .logo{background:linear-gradient(135deg,#2A9DB8,#1F3F4D) !important}
-body[data-palette] .btn.primary{background:linear-gradient(135deg,var(--pg-deep),var(--pg)) !important}
-body[data-palette] #nav button.on{background:linear-gradient(135deg,var(--pg-deep),var(--pg)) !important}
-
-/* ---- GLASSMORPHISM HEADER ---- */
-.hwrap-top{background:color-mix(in srgb, white 70%, transparent) !important;backdrop-filter:blur(24px) saturate(1.3) !important;-webkit-backdrop-filter:blur(24px) saturate(1.3) !important;border-bottom:1px solid rgba(255,255,255,.5) !important;position:relative !important}
-.hwrap-top::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,0)) !important}
-body[data-theme="dark"] .hwrap-top{background:color-mix(in srgb, #0B0E0A 85%, transparent) !important;border-color:rgba(255,255,255,.1) !important}
-
-/* ---- 3D NAV BUTTONS ---- */
-#nav button{
-  position:relative !important;
-  border-radius:16px !important;
-  background:rgba(255,255,255,.55) !important;
-  border:1px solid rgba(255,255,255,.4) !important;
-  box-shadow:0 6px 20px -8px rgba(46,45,32,.08), inset 0 1px 0 rgba(255,255,255,.7) !important;
-  transition:all 0.35s cubic-bezier(.23,1,.32,1) !important;
-  transform-style:preserve-3d !important;
-}
-#nav button:hover{
-  transform:translateY(-4px) rotateX(-4deg) scale(1.03) !important;
-  border-color:rgba(165,123,54,.35) !important;
-  box-shadow:0 14px 36px -12px rgba(165,123,54,.25), inset 0 1px 0 rgba(255,255,255,.8) !important;
-}
-#nav button:active{
-  transform:translateY(0) rotateX(0) scale(0.95) !important;
-  box-shadow:0 4px 12px -6px rgba(46,45,32,.08) !important;
-}
-#nav button.on{
-  background:linear-gradient(135deg,#A57B36,#3A3928) !important;
-  border-color:#A57B36 !important;
-  color:#FFFFFF !important;
-  box-shadow:0 8px 24px -8px rgba(165,123,54,.4) !important;
-  transform:translateY(-2px) rotateX(-2deg) !important;
-}
-#nav button.on .nav-ic{color:#FFFFFF !important;opacity:1 !important}
-#nav button.on::after{background:#FFFFFF !important;opacity:1 !important}
-body[data-theme="dark"] #nav button{
-  background:rgba(255,255,255,.07) !important;
-  border:1px solid rgba(255,255,255,.08) !important;
-  box-shadow:0 6px 20px -8px rgba(0,0,0,.4) !important;
-}
-body[data-theme="dark"] #nav button:hover{
-  background:rgba(255,255,255,.14) !important;
-  border-color:rgba(165,123,54,.45) !important;
-  box-shadow:0 14px 36px -12px rgba(165,123,54,.3) !important;
-}
-body[data-theme="dark"] #nav button.on{
-  background:linear-gradient(135deg,#E5BE62,#B8892E) !important;
-  border-color:#E5BE62 !important;
-  color:#0E110E !important;
-  box-shadow:0 8px 24px -8px rgba(229,190,98,.45) !important;
-}
-
-/* ---- MORE NAV ROW ---- */
-.hwrap-more{padding:0 32px !important;background:color-mix(in srgb, white 50%, transparent) !important;backdrop-filter:blur(20px) !important;-webkit-backdrop-filter:blur(20px) !important;border-bottom:1px solid rgba(229,234,232,.4) !important}
-.hwrap-more .more-head{display:flex;align-items:center;gap:8px;padding:10px 0 !important;font-size:11px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#8A877A}
-body[data-theme="dark"] .hwrap-more .more-head{color:#A7ACA0}
-.hwrap-more .more-ic{font-size:13px}
-.hwrap-more #navMore{
-  display:flex !important;
-  flex-wrap:nowrap !important;
-  gap:8px !important;
-  padding:0 0 14px 0 !important;
-  overflow-x:auto !important;
-  scroll-snap-type:x mandatory !important;
-  scrollbar-width:none !important;
-  max-width:100% !important;
-}
-.hwrap-more #navMore::-webkit-scrollbar{display:none !important}
-#navMore button{
-  display:flex !important;
-  flex-direction:column !important;
-  align-items:center !important;
-  gap:5px !important;
-  padding:12px 10px !important;
-  height:78px !important;
-  min-width:74px !important;
-  border-radius:18px !important;
-  border:1px solid rgba(255,255,255,.4) !important;
-  background:rgba(255,255,255,.45) !important;
-  color:#5A574A !important;
-  font-size:10px !important;
-  font-weight:700 !important;
-  letter-spacing:0.3px !important;
-  text-align:center !important;
-  line-height:1.15 !important;
-  cursor:pointer !important;
-  transition:all 0.35s cubic-bezier(.23,1,.32,1) !important;
-  transform-style:preserve-3d !important;
-  scroll-snap-align:center !important;
-  flex:0 0 auto !important;
-  position:relative !important;
-}
-#navMore button .nav-ic{font-size:20px !important;line-height:1 !important;flex:none !important;opacity:.85 !important}
-#navMore button:hover{
-  background:rgba(255,255,255,.7) !important;
-  border-color:rgba(165,123,54,.35) !important;
-  color:#A57B36 !important;
-  transform:translateY(-5px) rotateX(-6deg) scale(1.04) !important;
-  box-shadow:0 16px 40px -14px rgba(165,123,54,.25) !important;
-}
-#navMore button:active{
-  transform:translateY(0) scale(0.94) !important;
-}
-#navMore button.on{
-  background:linear-gradient(135deg,#A57B36,#3A3928) !important;
-  color:#FFFFFF !important;
-  border-color:#A57B36 !important;
-  box-shadow:0 10px 28px -10px rgba(165,123,54,.45) !important;
-  transform:translateY(-3px) rotateX(-3deg) !important;
-}
-#navMore button.on .nav-ic{color:#FFFFFF !important;opacity:1 !important}
-body[data-theme="dark"] .hwrap-more{background:color-mix(in srgb, #0B0E0A 75%, transparent) !important;border-color:rgba(255,255,255,.08) !important}
-body[data-theme="dark"] #navMore button{background:rgba(255,255,255,.06) !important;border:1px solid rgba(255,255,255,.08) !important;color:#A7ACA0 !important;box-shadow:0 6px 20px -8px rgba(0,0,0,.4) !important}
-body[data-theme="dark"] #navMore button:hover{background:rgba(255,255,255,.11) !important;border-color:rgba(165,123,54,.4) !important;color:#E5BE62 !important;box-shadow:0 16px 40px -14px rgba(229,190,98,.3) !important}
-body[data-theme="dark"] #navMore button.on{background:linear-gradient(135deg,#E5BE62,#B8892E) !important;color:#0E110E !important;border-color:#E5BE62 !important;box-shadow:0 10px 28px -10px rgba(229,190,98,.45) !important}
-
-/* ---- 3D CARDS EVERYWHERE ---- */
-.cat-card,.cor-card,.dash-card,.panel,.modal,.pcard,.adv-card,.dev-card,.client-card,.fest-card,.booking-card,.news-card,.proj-card,.kb-card,.cov-card,.hub-card,.tile,.link-item,.tpl-card,.advisor-card,.partner-card,.resale-card,.dcell,.ddev,.show-card,.card,.sb-item,.calc-card,.health-card,.an-card,.tm-card,.hub-row,.sen-row,.cal-card{
-  border-radius:20px !important;
-  background:linear-gradient(180deg, rgba(255,255,255,.6), rgba(255,255,255,.3)) !important;
-  border:1px solid rgba(255,255,255,.5) !important;
-  box-shadow:0 8px 28px -12px rgba(46,45,32,.08), inset 0 1px 0 rgba(255,255,255,.6) !important;
-  transition:all 0.4s cubic-bezier(.23,1,.32,1) !important;
-  transform-style:preserve-3d !important;
-  position:relative !important;
-  overflow:hidden !important;
-}
-.cat-card::before,.cor-card::before,.dash-card::before,.panel::before,.modal::before,.pcard::before,.adv-card::before,.dev-card::before,.client-card::before,.fest-card::before,.booking-card::before,.news-card::before,.proj-card::before,.kb-card::before,.cov-card::before,.hub-card::before,.tile::before,.link-item::before,.tpl-card::before,.advisor-card::before,.partner-card::before,.resale-card::before,.dcell::before,.ddev::before,.show-card::before,.card::before,.sb-item::before,.calc-card::before,.health-card::before,.an-card::before,.tm-card::before,.hub-row::before,.sen-row::before,.cal-card::before{
-  content:"" !important;position:absolute !important;inset:0 !important;border-radius:20px !important;
-  background:linear-gradient(135deg, rgba(255,255,255,.7), rgba(255,255,255,0)) !important;opacity:0 !important;transition:opacity .3s ease !important;pointer-events:none !important;
-}
-.cat-card:hover::before,.cor-card:hover::before,.dash-card:hover::before,.panel:hover::before,.modal:hover::before,.pcard:hover::before,.adv-card:hover::before,.dev-card:hover::before,.client-card:hover::before,.fest-card:hover::before,.booking-card:hover::before,.news-card:hover::before,.proj-card:hover::before,.kb-card:hover::before,.cov-card:hover::before,.hub-card:hover::before,.tile:hover::before,.link-item:hover::before,.tpl-card:hover::before,.advisor-card:hover::before,.partner-card:hover::before,.resale-card:hover::before,.dcell:hover::before,.ddev:hover::before,.show-card:hover::before,.card:hover::before,.sb-item:hover::before,.calc-card:hover::before,.health-card:hover::before,.an-card:hover::before,.tm-card:hover::before,.hub-row:hover::before,.sen-row:hover::before,.cal-card:hover::before{
-  opacity:1 !important;
-}
-.cat-card:hover,.cor-card:hover,.dash-card:hover,.panel:hover,.modal:hover,.pcard:hover,.adv-card:hover,.dev-card:hover,.client-card:hover,.fest-card:hover,.booking-card:hover,.news-card:hover,.proj-card:hover,.kb-card:hover,.cov-card:hover,.hub-card:hover,.tile:hover,.link-item:hover,.tpl-card:hover,.advisor-card:hover,.partner-card:hover,.resale-card:hover,.dcell:hover,.ddev:hover,.show-card:hover,.card:hover,.sb-item:hover,.calc-card:hover,.health-card:hover,.an-card:hover,.tm-card:hover,.hub-row:hover,.sen-row:hover,.cal-card:hover{
-  transform:translateY(-6px) rotateX(-5deg) scale(1.02) !important;
-  box-shadow:0 24px 56px -18px rgba(46,45,32,.14), inset 0 1px 0 rgba(255,255,255,.8) !important;
-  border-color:rgba(165,123,54,.25) !important;
-}
-body[data-theme="dark"] .cat-card,body[data-theme="dark"] .cor-card,body[data-theme="dark"] .dash-card,body[data-theme="dark"] .panel,body[data-theme="dark"] .modal,body[data-theme="dark"] .pcard,body[data-theme="dark"] .adv-card,body[data-theme="dark"] .dev-card,body[data-theme="dark"] .client-card,body[data-theme="dark"] .fest-card,body[data-theme="dark"] .booking-card,body[data-theme="dark"] .news-card,body[data-theme="dark"] .proj-card,body[data-theme="dark"] .kb-card,body[data-theme="dark"] .cov-card,body[data-theme="dark"] .hub-card,body[data-theme="dark"] .tile,body[data-theme="dark"] .link-item,body[data-theme="dark"] .tpl-card,body[data-theme="dark"] .advisor-card,body[data-theme="dark"] .partner-card,body[data-theme="dark"] .resale-card,body[data-theme="dark"] .dcell,body[data-theme="dark"] .ddev,body[data-theme="dark"] .show-card,body[data-theme="dark"] .card,body[data-theme="dark"] .sb-item,body[data-theme="dark"] .calc-card,body[data-theme="dark"] .health-card,body[data-theme="dark"] .an-card,body[data-theme="dark"] .tm-card,body[data-theme="dark"] .hub-row,body[data-theme="dark"] .sen-row,body[data-theme="dark"] .cal-card{
-  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.01)) !important;
-  border:1px solid rgba(255,255,255,.08) !important;
-  box-shadow:0 8px 28px -12px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05) !important;
-}
-body[data-theme="dark"] .cat-card:hover,body[data-theme="dark"] .cor-card:hover,body[data-theme="dark"] .dash-card:hover,body[data-theme="dark"] .panel:hover,body[data-theme="dark"] .modal:hover,body[data-theme="dark"] .pcard:hover,body[data-theme="dark"] .adv-card:hover,body[data-theme="dark"] .dev-card:hover,body[data-theme="dark"] .client-card:hover,body[data-theme="dark"] .fest-card:hover,body[data-theme="dark"] .booking-card:hover,body[data-theme="dark"] .news-card:hover,body[data-theme="dark"] .proj-card:hover,body[data-theme="dark"] .kb-card:hover,body[data-theme="dark"] .cov-card:hover,body[data-theme="dark"] .hub-card:hover,body[data-theme="dark"] .tile:hover,body[data-theme="dark"] .link-item:hover,body[data-theme="dark"] .tpl-card:hover,body[data-theme="dark"] .advisor-card:hover,body[data-theme="dark"] .partner-card:hover,body[data-theme="dark"] .resale-card:hover,body[data-theme="dark"] .dcell:hover,body[data-theme="dark"] .ddev:hover,body[data-theme="dark"] .show-card:hover,body[data-theme="dark"] .card:hover,body[data-theme="dark"] .sb-item:hover,body[data-theme="dark"] .calc-card:hover,body[data-theme="dark"] .health-card:hover,body[data-theme="dark"] .an-card:hover,body[data-theme="dark"] .tm-card:hover,body[data-theme="dark"] .hub-row:hover,body[data-theme="dark"] .sen-row:hover,body[data-theme="dark"] .cal-card:hover{
-  transform:translateY(-6px) rotateX(-5deg) scale(1.02) !important;
-  box-shadow:0 24px 56px -18px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.06) !important;
-  border-color:rgba(165,123,54,.3) !important;
-}
-
-/* ---- 3D BUTTONS ---- */
-.btn{
-  position:relative !important;
-  border-radius:14px !important;
-  transform-style:preserve-3d !important;
-  transition:all 0.35s cubic-bezier(.23,1,.32,1) !important;
-  box-shadow:0 6px 18px -8px rgba(46,45,32,.08), inset 0 1px 0 rgba(255,255,255,.5) !important;
-}
-.btn:hover{
-  transform:translateY(-3px) rotateX(-4deg) scale(1.02) !important;
-  box-shadow:0 12px 30px -10px rgba(46,45,32,.12) !important;
-}
-.btn:active{
-  transform:translateY(0) scale(0.96) !important;
-  box-shadow:0 4px 12px -6px rgba(46,45,32,.08) !important;
-}
-.btn.primary{
-  background:linear-gradient(135deg,#A57B36,#3A3928) !important;
-  color:#FFFFFF !important;
-  border:none !important;
-  box-shadow:0 8px 22px -8px rgba(165,123,54,.35) !important;
-}
-.btn.primary:hover{
-  transform:translateY(-3px) scale(1.02) !important;
-  box-shadow:0 14px 34px -12px rgba(165,123,54,.45) !important;
-}
-.btn.gold{
-  background:linear-gradient(135deg,#E5BE62,#A57B36) !important;
-  color:#2E2D20 !important;
-}
-.btn.ghost{
-  background:#FFFFFF !important;
-  border:1px solid rgba(229,234,232,.8) !important;
-  box-shadow:0 4px 14px -6px rgba(46,45,32,.06) !important;
-}
-body[data-theme="dark"] .btn{box-shadow:0 6px 18px -8px rgba(0,0,0,.25) !important}
-body[data-theme="dark"] .btn:hover{box-shadow:0 12px 30px -10px rgba(0,0,0,.4) !important}
-body[data-theme="dark"] .btn.primary{box-shadow:0 8px 22px -8px rgba(229,190,98,.35) !important}
-
-/* ---- 3D ICON BUTTONS ---- */
-.icon-btn{
-  position:relative !important;
-  border-radius:14px !important;
-  box-shadow:0 4px 14px -6px rgba(46,45,32,.06), inset 0 1px 0 rgba(255,255,255,.5) !important;
-  transition:all 0.35s cubic-bezier(.23,1,.32,1) !important;
-  transform-style:preserve-3d !important;
-}
-.icon-btn:hover{
-  transform:translateY(-3px) rotate(-4deg) scale(1.05) !important;
-  box-shadow:0 10px 26px -10px rgba(165,123,54,.2) !important;
-}
-.icon-btn:active{transform:translateY(0) scale(0.93) !important;}
-body[data-theme="dark"] .icon-btn{box-shadow:0 4px 14px -6px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.05) !important}
-
-/* ---- PALETTE POPOVER ---- */
-#palettePop{position:fixed;top:70px;right:20px;z-index:200;width:210px;background:#FFFFFF;border:1px solid rgba(229,234,232,.6);border-radius:16px;box-shadow:0 20px 50px -14px rgba(46,45,32,.18);backdrop-filter:blur(20px);padding:10px;display:none;flex-direction:column;gap:8px;animation:popIn .25s cubic-bezier(.23,1,.32,1) both}
-body[data-theme="dark"] #palettePop{background:#1B201B !important;border-color:rgba(255,255,255,.1) !important;box-shadow:0 20px 50px -14px rgba(0,0,0,.6) !important}
-@keyframes popIn{from{opacity:0;transform:translateY(-10px) scale(.95)}to{opacity:1;transform:none}}
-.palette-swatch{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:12px;cursor:pointer;transition:all .2s;border:1px solid transparent}
-.palette-swatch:hover{background:rgba(165,123,54,.06);border-color:rgba(165,123,54,.25);transform:translateX(4px)}
-.palette-swatch .sw-ic{width:24px;height:24px;border-radius:8px;display:grid;place-items:center;border:1px solid rgba(0,0,0,.08)}
-.palette-swatch .sw-name{font-size:11px;font-weight:700;color:#2E2D20}
-.palette-swatch .sw-dot{width:10px;height:10px;border-radius:50%;flex:none}
-body[data-theme="dark"] .palette-swatch .sw-name{color:#F2F0E5}
-.palette-swatch.active{border-color:var(--pg);background:color-mix(in srgb, var(--pg) 12%, transparent)}
-.palette-swatch.saffron .sw-dot{background:#A57B36}
-.palette-swatch.emerald .sw-dot{background:#2F8F6B}
-.palette-swatch.indigo .sw-dot{background:#5C6ED0}
-.palette-swatch.rose .sw-dot{background:#C0527C}
-.palette-swatch.ocean .sw-dot{background:#2A9DB8}
-
-/* ---- ANIMATED GRADIENT TEXT & ELEMENTS ---- */
-.gradient-text{background:linear-gradient(135deg,#A57B36,#3A3928,#A57B36) !important;-webkit-background-clip:text !important;background-clip:text !important;color:transparent !important;background-size:200% auto !important;animation:gradMove 4s linear infinite !important}
-@keyframes gradMove{0%{background-position:200% center}100%{background-position:-200% center}}
-body[data-theme="dark"] .gradient-text{background:linear-gradient(135deg,#E5BE62,#B8892E,#E5BE62) !important;-webkit-background-clip:text !important;background-clip:text !important;color:transparent !important;background-size:200% auto !important;animation:gradMove 4s linear infinite !important}
-
-/* ---- AMBIENT GLOW ON ALL PAGES ---- */
-.view{position:relative !important;overflow:hidden !important}
-.view::before{
-  content:"" !important;position:absolute !important;inset:-20% -20% -20% -20% !important;z-index:-1 !important;
-  background:radial-gradient(800px 500px at 25% 25%, rgba(165,123,54,.08), transparent 50%), radial-gradient(600px 400px at 80% 80%, rgba(65,132,88,.06), transparent 50%) !important;
-  pointer-events:none !important;
-}
-body[data-theme="dark"] .view::before{background:radial-gradient(800px 500px at 25% 25%, rgba(165,123,54,.06), transparent 50%), radial-gradient(600px 400px at 80% 80%, rgba(65,132,88,.04), transparent 50%) !important}
-
-/* ---- MODERN TYPOGRAPHY ---- */
-h1{font-family:'Fraunces',serif !important;font-size:clamp(2rem,3vw,3rem) !important;font-weight:700 !important;letter-spacing:-0.03em !important}
-h2{font-family:'Fraunces',serif !important;font-size:clamp(1.5rem,2.5vw,2.2rem) !important;font-weight:600 !important;letter-spacing:-0.02em !important}
-h3{font-family:'Fraunces',serif !important;font-size:clamp(1.25rem,2vw,1.75rem) !important;font-weight:600 !important;letter-spacing:-0.01em !important}
-.eyebrow{font-size:11px !important;letter-spacing:0.3em !important;font-weight:800 !important;text-transform:uppercase !important}
-.nav-lbl{font-size:13px !important;font-weight:700 !important;letter-spacing:0.2px !important}
-
-/* ---- TABLES & INPUTS MODERN ---- */
-table{background:rgba(255,255,255,.5) !important;border-radius:16px !important;overflow:hidden !important;border:1px solid rgba(255,255,255,.5) !important;box-shadow:0 8px 28px -12px rgba(46,45,32,.08) !important}
-th,td{color:#2E2D20 !important;border-color:rgba(229,234,232,.6) !important}
-input,select,textarea{background:#FFFFFF !important;border:1px solid rgba(229,234,232,.6) !important;border-radius:12px !important;color:#2E2D20 !important;padding:10px 14px !important;box-shadow:inset 0 2px 6px -4px rgba(46,45,32,.04) !important;transition:all .25s ease}
-input:focus,select:focus,textarea:focus{border-color:#A57B36 !important;box-shadow:0 0 0 3px rgba(165,123,54,.15), inset 0 2px 6px -4px rgba(46,45,32,.04) !important;outline:none !important}
-body[data-theme="dark"] table{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important}
-body[data-theme="dark"] th,body[data-theme="dark"] td{color:#F2F0E5 !important;border-color:rgba(255,255,255,.08) !important}
-body[data-theme="dark"] input,body[data-theme="dark"] select,body[data-theme="dark"] textarea{background:#141813 !important;border-color:rgba(255,255,255,.1) !important;color:#F2F0E5 !important}
-body[data-theme="dark"] input:focus,body[data-theme="dark"] select:focus,body[data-theme="dark"] textarea:focus{border-color:#E5BE62 !important;box-shadow:0 0 0 3px rgba(229,190,98,.15) !important}
-
-/* ---- LIGHT MODE CARD SPECIFICS ---- */
-body:not([data-theme="dark"]) .cat-card,body:not([data-theme="dark"]) .cor-card,body:not([data-theme="dark"]) .dash-card,body:not([data-theme="dark"]) .panel,body:not([data-theme="dark"]) .modal,body:not([data-theme="dark"]) .pcard,body:not([data-theme="dark"]) .adv-card,body:not([data-theme="dark"]) .dev-card,body:not([data-theme="dark"]) .client-card,body:not([data-theme="dark"]) .fest-card,body:not([data-theme="dark"]) .booking-card,body:not([data-theme="dark"]) .news-card,body:not([data-theme="dark"]) .proj-card,body:not([data-theme="dark"]) .kb-card,body:not([data-theme="dark"]) .cov-card,body:not([data-theme="dark"]) .hub-card,body:not([data-theme="dark"]) .tile,body:not([data-theme="dark"]) .link-item,body:not([data-theme="dark"]) .tpl-card,body:not([data-theme="dark"]) .advisor-card,body:not([data-theme="dark"]) .partner-card,body:not([data-theme="dark"]) .resale-card,body:not([data-theme="dark"]) .dcell,body:not([data-theme="dark"]) .ddev,body:not([data-theme="dark"]) .show-card,body:not([data-theme="dark"]) .card,body:not([data-theme="dark"]) .sb-item,body:not([data-theme="dark"]) .calc-card,body:not([data-theme="dark"]) .health-card,body:not([data-theme="dark"]) .an-card,body:not([data-theme="dark"]) .tm-card,body:not([data-theme="dark"]) .hub-row,body:not([data-theme="dark"]) .sen-row,body:not([data-theme="dark"]) .cal-card{
-  background:linear-gradient(180deg,#FFFFFF,#F7F4EF) !important;
-  border-color:rgba(229,234,232,.6) !important;
-  color:#2E2D20 !important;
-}
-
-/* ---- DARK MODE CARD SPECIFICS (override for light pages in dark mode) ---- */
-body[data-theme="dark"] .cat-card,body[data-theme="dark"] .cor-card,body[data-theme="dark"] .dash-card,body[data-theme="dark"] .panel,body[data-theme="dark"] .modal,body[data-theme="dark"] .pcard,body[data-theme="dark"] .adv-card,body[data-theme="dark"] .dev-card,body[data-theme="dark"] .client-card,body[data-theme="dark"] .fest-card,body[data-theme="dark"] .booking-card,body[data-theme="dark"] .news-card,body[data-theme="dark"] .proj-card,body[data-theme="dark"] .kb-card,body[data-theme="dark"] .cov-card,body[data-theme="dark"] .hub-card,body[data-theme="dark"] .tile,body[data-theme="dark"] .link-item,body[data-theme="dark"] .tpl-card,body[data-theme="dark"] .advisor-card,body[data-theme="dark"] .partner-card,body[data-theme="dark"] .resale-card,body[data-theme="dark"] .dcell,body[data-theme="dark"] .ddev,body[data-theme="dark"] .show-card,body[data-theme="dark"] .card,body[data-theme="dark"] .sb-item,body[data-theme="dark"] .calc-card,body[data-theme="dark"] .health-card,body[data-theme="dark"] .an-card,body[data-theme="dark"] .tm-card,body[data-theme="dark"] .hub-row,body[data-theme="dark"] .sen-row,body[data-theme="dark"] .cal-card{
-  background:linear-gradient(180deg,#1B201B,#141813) !important;
-  border-color:rgba(255,255,255,.06) !important;
-  color:#F2F0E5 !important;
-}
-
-/* ---- HERO SECTION 3D ---- */
-.intro{position:relative !important;overflow:hidden !important}
-.intro h2{text-shadow:0 4px 20px rgba(0,0,0,.04) !important}
-.intro-cta{display:flex !important;gap:12px !important;flex-wrap:wrap !important}
-.hero-focus{position:relative !important;overflow:hidden !important;border-radius:50px !important;background:linear-gradient(135deg,#A57B36,#3A3928) !important;color:#FFFFFF !important;box-shadow:0 8px 24px -8px rgba(165,123,54,.35) !important}
-.hero-focus:hover{transform:translateY(-2px) scale(1.02) !important;box-shadow:0 14px 36px -12px rgba(165,123,54,.45) !important}
-body[data-theme="dark"] .hero-focus{background:linear-gradient(135deg,#E5BE62,#B8892E) !important;color:#0E110E !important}
-
-/* ---- TOAST 3D ---- */
-.toast{position:fixed !important;bottom:100px !important;left:50% !important;transform:translateX(-50%) !important;z-index:9999 !important;border-radius:14px !important;padding:12px 24px !important;box-shadow:0 16px 48px -16px rgba(46,45,32,.18) !important;border:1px solid rgba(255,255,255,.7) !important;backdrop-filter:blur(20px) !important;transform-style:preserve-3d !important;animation:toastIn .4s cubic-bezier(.23,1,.32,1) both}
-@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(20px) rotateX(10deg)}to{opacity:1;transform:translateX(-50%) translateY(0) rotateX(0)}}
-body[data-theme="dark"] .toast{background:#141813 !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important;box-shadow:0 16px 48px -16px rgba(0,0,0,.6) !important}
-
-/* ---- SCROLLBAR MODERN ---- */
-::-webkit-scrollbar{width:8px;height:8px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:rgba(165,123,54,.25);border-radius:999px}
-::-webkit-scrollbar-thumb:hover{background:#A57B36}
-body[data-theme="dark"] ::-webkit-scrollbar-thumb{background:rgba(229,190,98,.25)}
-body[data-theme="dark"] ::-webkit-scrollbar-thumb:hover{background:#E5BE62}
-
-/* ---- PAGE TRANSITION FADE ---- */
-.view{animation:viewFade .5s cubic-bezier(.23,1,.32,1) both}
-@keyframes viewFade{from{opacity:0;transform:translateY(10px) rotateX(8deg)}to{opacity:1;transform:none}}
-
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -12161,7 +11825,6 @@ try{
 </script>
 
 <header>
-  <!-- TOP ROW: Brand + Search + Theme + Color + Icons -->
   <div class="hwrap hwrap-top">
     <div class="brand">
       <div class="logo">BCS</div>
@@ -12171,27 +11834,41 @@ try{
       </div>
     </div>
     
-    <!-- SEARCH BAR moved to top row -->
-    <div class="searchbox top-search">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <div class="spacer"></div>
+    <div class="searchbox">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input id="globalSearch" placeholder="Search projects, developers, advisors, clients…">
     </div>
-    <div class="hbtns top-actions">
-      <button class="icon-btn" id="themeBtn" title="Dark / light mode" aria-label="Toggle theme">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.6 14.3A9.4 9.4 0 0 1 9.7 3.4a9.4 9.4 0 1 0 10.9 10.9Z"/><path d="M17.5 4.5l.5 1.4 1.4.5-1.4.5-.5 1.4-.5-1.4-1.4-.5 1.4-.5.5-1.4Z"/></svg>
+    <div class="hbtns">
+      <button class="btn ghost" id="exportBtn" title="Backup all data as JSON">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+        <span class="lbl">Backup</span>
       </button>
-      <button class="icon-btn palette-btn" id="paletteBtn" title="Change desk colour palette" aria-label="Colour palette">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3a9 9 0 1 0 0 18c1.7 0 2.2-1 1.5-2.2-.5-.8-.2-1.8.8-1.8H17a4 4 0 0 0 4-4 9 9 0 0 0-9-10Z"/><circle cx="7.5" cy="11" r="1.1" fill="currentColor" stroke="none"/><circle cx="10" cy="7.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="7.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+      <button class="btn ghost" id="importBtn" title="Restore from JSON backup">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 0 4 4m-4-4L8 7"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+        <span class="lbl">Restore</span>
       </button>
-      <button class="icon-btn" id="soundBtn" title="Sound on / off" aria-label="Toggle sound" aria-pressed="true"><span id="soundIco" style="font-size:16px;line-height:1">🔊</span></button>
+      <button class="btn primary" id="addProjectTop">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+        <span class="lbl">Add project</span>
+      </button>
+      <button class="icon-btn qa-trigger" id="qaTrigger" title="Quick actions &amp; search (⌘K)" aria-label="Quick actions">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.7 4.8L18.5 9.5l-4.8 1.7L12 16l-1.7-4.8L5.5 9.5l4.8-1.7L12 3Z"/><path d="m18 15 .8 2.2L21 18l-2.2.8L18 21l-.8-2.2L15 18l2.2-.8L18 15Z"/></svg>
+        <kbd>⌘K</kbd>
+      </button>
+      <button class="icon-btn" id="accentBtn" title="Desk palette — colour mood badlein" aria-label="Change desk palette">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3a9 9 0 1 0 0 18c1.7 0 2.2-1 1.5-2.2-.5-.8-.2-1.8.8-1.8H17a4 4 0 0 0 4-4 9 9 0 0 0-9-10Z"/><circle cx="7.5" cy="11" r="1.1" fill="currentColor" stroke="none"/><circle cx="10" cy="7.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="7.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </button>
+      <button class="icon-btn" id="themeBtn" title="Dark / light mode" aria-label="Toggle dark mode">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.6 14.3A9.4 9.4 0 0 1 9.7 3.4a9.4 9.4 0 1 0 10.9 10.9Z"/><path d="M17.5 4.5l.5 1.4 1.4.5-1.4.5-.5 1.4-.5-1.4-1.4-.5 1.4-.5.5-1.4Z"/></svg>
+      </button>
+      <button class="icon-btn" id="soundBtn" title="Sound on / off" aria-label="Toggle sound" aria-pressed="true"><span id="soundIco" style="font-size:15px;line-height:1">🔊</span></button>
       <span class="role-chip" id="roleChip"></span>
       <button class="icon-btn" id="lockBtn" title="Lock desk — Ajay Sharma" aria-label="Lock desk">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
       </button>
     </div>
   </div>
-
-  <!-- NAV ROW: Main 9 pages with labels in one sleek row -->
   <div class="hwrap hwrap-nav">
     <nav id="nav" role="navigation" aria-label="BCS desk pages">
       <button type="button" data-view="dashboard" class="on" aria-current="page" aria-label="Dashboard"><span class="nav-ic" aria-hidden="true">⌂</span><span class="nav-lbl">Dashboard</span></button>
@@ -12203,23 +11880,6 @@ try{
       <button type="button" data-view="pulse" aria-label="Market Pulse"><span class="nav-ic" aria-hidden="true">↗</span><span class="nav-lbl">Market Pulse</span><span class="nav-dot gold" aria-hidden="true"></span></button>
       <button type="button" data-view="news" aria-label="News"><span class="nav-ic" aria-hidden="true">📰</span><span class="nav-lbl">News</span><span class="nav-dot" aria-hidden="true"></span></button>
       <button type="button" data-view="calc" aria-label="Calculators"><span class="nav-ic" aria-hidden="true">⌘</span><span class="nav-lbl">Calculators</span></button>
-    </nav>
-  </div>
-
-  <!-- MORE ROW: All remaining pages below nav -->
-  <div class="hwrap hwrap-more">
-    <div class="more-head"><span class="more-ic">⟡</span><span>More Pages</span></div>
-    <nav id="navMore" role="navigation" aria-label="More BCS desk pages">
-      <button type="button" data-view="advisors" aria-label="Advisors"><span class="nav-ic">◎</span><span class="nav-lbl">Advisors</span></button>
-      <button type="button" data-view="partners" aria-label="Partners"><span class="nav-ic">◉</span><span class="nav-lbl">Partners</span></button>
-      <button type="button" data-view="resale" aria-label="Resale"><span class="nav-ic">⇌</span><span class="nav-lbl">Resale</span></button>
-      <button type="button" data-view="analytics" aria-label="Analytics"><span class="nav-ic">▥</span><span class="nav-lbl">Analytics</span></button>
-      <button type="button" data-view="tax" aria-label="Tax & Advice"><span class="nav-ic">₹</span><span class="nav-lbl">Tax &amp; Advice</span></button>
-      <button type="button" data-view="terminology" aria-label="Terminology"><span class="nav-ic">Aa</span><span class="nav-lbl">Terminology</span></button>
-      <button type="button" data-view="links" aria-label="Links"><span class="nav-ic">⛓</span><span class="nav-lbl">Links</span></button>
-      <button type="button" data-view="templates" aria-label="Templates"><span class="nav-ic">▤</span><span class="nav-lbl">Templates</span></button>
-      <button type="button" data-view="podcasts" aria-label="Podcasts"><span class="nav-ic">🎙</span><span class="nav-lbl">Podcasts</span></button>
-      <button type="button" data-view="health" aria-label="Health"><span class="nav-ic">♥</span><span class="nav-lbl">Health</span></button>
     </nav>
   </div>
 </header>
@@ -24884,41 +24544,17 @@ function setNewsMode(mode){
 
 function renderNews(){
   const grid = $('#newsGrid'); if(!grid) return;
-  /* Merge fresh live headlines into the feed (not yet saved to db.news) */
-  const liveItems = (liveState.items || []).filter(function(it){
-    return it.link && !db.news.some(n => n.url === it.link);
-  });
-  const liveAsNews = liveItems.map(function(it){
-    return {
-      id: 'live-' + uid(),
-      title: it.title,
-      url: it.link,
-      source: it.source || 'Live',
-      siteName: it.source || 'Live',
-      previewImage: '',
-      category: liveCategoryFor(it.title),
-      date: it.dateISO || todayISO(),
-      summary: it.summary || '',
-      body: '',
-      pinned: false,
-      createdAt: it.createdAt || Date.now(),
-      updatedAt: Date.now(),
-      _live: true
-    };
-  });
   const total = db.news.length;
-  const shownTotal = total + liveAsNews.length;
-  if($('#newsFeedCount')) $('#newsFeedCount').textContent = shownTotal;
+  if($('#newsFeedCount')) $('#newsFeedCount').textContent = total;
   const links = db.news.filter(n => safeNewsUrl(n.url)).length;
   const pinned = db.news.filter(n => n.pinned).length;
   const thisWeek = db.news.filter(n => n.date && n.date >= addISO(todayISO(), -6)).length;
-  const liveThisWeek = liveAsNews.filter(n => n.date && n.date >= addISO(todayISO(), -6)).length;
   $('#newsStats').innerHTML = `
-    <div><div class="k">Total updates</div><div class="v">${shownTotal}<small>${liveAsNews.length} live today</small></div></div>
+    <div><div class="k">Total updates</div><div class="v">${total}<small>saved in your feed</small></div></div>
     <div><div class="k">With full link</div><div class="v">${links}<small>website preview available</small></div></div>
     <div><div class="k">Editorial notes</div><div class="v">${db.news.filter(n => n.body).length}<small>your own writing</small></div></div>
-    <div><div class="k">This week</div><div class="v">${thisWeek + liveThisWeek}<small>${pinned} pinned</small></div></div>`;
-  let list = [...db.news, ...liveAsNews];
+    <div><div class="k">This week</div><div class="v">${thisWeek}<small>${pinned} pinned</small></div></div>`;
+  let list = [...db.news];
   const q = ($('#newsSearch').value || '').trim().toLowerCase();
   if(q) list = list.filter(n => [n.title,n.source,n.siteName,n.summary,n.body,n.url,newsDomain(n.url),newsCategoryLabel(n.category)]
     .filter(Boolean).join(' ').toLowerCase().includes(q));
@@ -24931,37 +24567,11 @@ function renderNews(){
     return (b.updatedAt || b.createdAt || 0) - (a.updatedAt || a.createdAt || 0);
   });
   const pinnedFirst = [...list.filter(n => n.pinned), ...list.filter(n => !n.pinned)];
-  if($('#newsToolbarNote')) $('#newsToolbarNote').textContent = shownTotal ? `${pinnedFirst.length} of ${shownTotal} shown` : '';
-  grid.innerHTML = pinnedFirst.length ? pinnedFirst.map(function(n){
-    if(n._live){
-      const domain = newsDomain(n.url);
-      const sum = n.summary || '';
-      return `<article class="news-card live-card-marker" data-newsread="${n.id}" title="Open live headline">
-        <div class="news-cover">
-          <div class="news-cover-nolive"><span>${esc(newsInitial(n))}</span></div>
-          <span class="news-cat">${esc(newsCategoryLabel(n.category))}</span>
-          <span class="news-type">Live</span>
-          <button type="button" class="news-pin" data-newspin="${n.id}" title="Save to My feed">＋ Save</button>
-        </div>
-        <div class="news-body">
-          <div class="news-meta"><span class="src">${esc(n.source)}</span><span class="dot"></span><span>${esc(fmtDate(n.date))}</span></div>
-          <h4>${esc(n.title || 'Untitled update')}</h4>
-          ${sum ? `<div class="sum">${esc(sum)}</div>` : ''}
-          <div class="news-foot">
-            <span class="open">${domain || 'Live'} ↗</span>
-            <span class="acts">
-              <button type="button" data-live-save-url="${esc(n.url)}" title="Save to My feed">＋ Save</button>
-              <button type="button" class="del" data-newsdel="${n.id}" title="Dismiss">✕</button>
-            </span>
-          </div>
-        </div>
-      </article>`;
-    }
-    return newsCardHTML(n);
-  }).join('')
-    : emptyBlock(shownTotal ? 'No matches' : 'No news yet',
-        shownTotal ? 'Search ya category filter badal kar dekh lein.' : 'Live headlines load ho rahe hain — thodi der mein Jaipur property news yahan dikhegi.',
-        shownTotal ? '' : 'Add news', 'addnews');
+  if($('#newsToolbarNote')) $('#newsToolbarNote').textContent = total ? `${pinnedFirst.length} of ${total} shown` : '';
+  grid.innerHTML = pinnedFirst.length ? pinnedFirst.map(newsCardHTML).join('')
+    : emptyBlock(total ? 'No matches' : 'No news yet',
+        total ? 'Search ya category filter badal kar dekh lein.' : 'Koi news link paste karein — full website preview ke saath save hoga. Ya apni editorial note likhein taaki desk updated rahe.',
+        total ? '' : 'Add news', 'addnews');
 }
 function renderLinksMini(){
   const el = $('#linksMini'); if(!el) return;
@@ -28596,7 +28206,7 @@ function toggleAccentPop(force){
 }
 document.addEventListener('click', e => {
   const pop = $('#accentPop');
-  if(pop && !pop.hidden && !e.target.closest('#accentPop') && !e.target.closest('#paletteBtn')) pop.hidden = true;
+  if(pop && !pop.hidden && !e.target.closest('#accentPop') && !e.target.closest('#accentBtn')) pop.hidden = true;
 }, true);
 document.addEventListener('keydown', e => {
   if(e.key === 'Escape'){ const pop = $('#accentPop'); if(pop && !pop.hidden) pop.hidden = true; }
@@ -28764,11 +28374,11 @@ function initExperience(){
   try{ savedAccent = localStorage.getItem(ACCENT_KEY) || 'emerald'; }catch(e){}
   applyAccent(savedAccent);
   let savedTheme = 'light';
-  try{ savedTheme = localStorage.getItem(THEME_KEY) || 'light'; }catch(e){}
+  try{ savedTheme = localStorage.getItem(THEME_KEY) || 'dark'; }catch(e){}
   applyTheme(savedTheme);
 
-  const paletteBtn = $('#paletteBtn');
-  if(paletteBtn) paletteBtn.addEventListener('click', () => toggleAccentPop());
+  const accentBtn = $('#accentBtn');
+  if(accentBtn) accentBtn.addEventListener('click', () => toggleAccentPop());
   const themeBtn = $('#themeBtn');
   if(themeBtn) themeBtn.addEventListener('click', () => { cycleTheme(); try{ bcsSound('theme'); }catch(e){} });
   const trigger = $('#qaTrigger');
@@ -30161,50 +29771,17 @@ try{
     }catch(e){}
   }, true);
 }catch(e){}
-/* BCS live feeds: background prefetch + 10-min auto refresh (always-on, any view) */
+/* BCS live feeds: background prefetch + 15-min refresh when Live visible */
 window.__bcsLiveTimer = window.__bcsLiveTimer || null;
 function bcsPrefetchLive(){
   try{
     if(liveState.started && liveState.fetchedAt && Date.now() - liveState.fetchedAt < 10 * 60000) return;
     liveState.started = true;
-    fetchLiveNews(liveState.sourceId || 'jaipur').then(function(){
-      /* Auto-save fresh live headlines into My feed so news page shows today's news */
-      try{
-        const items = liveState.items || [];
-        const existingUrls = new Set(db.news.map(n => n.url).filter(Boolean));
-        let saved = 0;
-        items.forEach(function(it){
-          if(!it.link || existingUrls.has(it.link)) return;
-          db.news.push({
-            id: uid(),
-            title: it.title,
-            url: it.link,
-            source: it.source || 'Google News',
-            siteName: it.source || 'Google News',
-            previewImage: '',
-            category: liveCategoryFor(it.title),
-            date: it.dateISO || todayISO(),
-            summary: it.summary || '',
-            body: '',
-            pinned: false,
-            createdAt: Date.now(),
-            updatedAt: Date.now()
-          });
-          existingUrls.add(it.link);
-          saved++;
-        });
-        if(saved){
-          save();
-          renderNews();
-          renderNewsMini();
-          if(currentView === 'dashboard') renderDashboard();
-        }
-      }catch(e){ console.warn('BCS auto-save live news failed', e); }
-    }).catch(function(){});
+    fetchLiveNews(liveState.sourceId || 'jaipur').catch(function(){});
   }catch(e){}
 }
-setTimeout(bcsPrefetchLive, 1200);
-setInterval(function(){ try{ if(navigator.onLine){ fetchLiveNews(liveState.sourceId || 'jaipur').catch(function(){}); } }catch(e){} }, 10 * 60000);
+setTimeout(bcsPrefetchLive, 1800);
+setInterval(function(){ try{ if(newsMode === 'live' && document.visibilityState === 'visible' && navigator.onLine){ fetchLiveNews(liveState.sourceId || 'jaipur').catch(function(){}); } }catch(e){} }, 15 * 60000);
 /* ---------- BCS canonical: file:// notice + safe storage on local file ---------- */
 (function(){
   try{
