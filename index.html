@@ -9704,7 +9704,7 @@ header .hwrap-nav #nav{backdrop-filter:none !important; -webkit-backdrop-filter:
     gap:6px !important; padding:10px !important; border-radius:20px !important;
     width:min(560px, calc(100vw - 24px)) !important;
     min-width:0 !important; max-width:calc(100vw - 24px) !important;
-    max-height:calc(100vh - 96px) !important; overflow:auto !important;
+    max-height:var(--mp-max, calc(100vh - 96px)) !important; overflow:auto !important;
     z-index:320 !important;
   }
 }
@@ -9716,7 +9716,7 @@ header .hwrap-nav #nav{backdrop-filter:none !important; -webkit-backdrop-filter:
     grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
     gap:6px !important; padding:10px !important; border-radius:20px !important;
     width:auto !important; min-width:0 !important; max-width:none !important;
-    max-height:calc(100vh - 150px) !important; overflow:auto !important;
+    max-height:var(--mp-max, calc(100dvh - 150px)) !important; overflow:auto !important;
     z-index:620 !important;
   }
   #navMorePanel .nav-urls{grid-column:1 / -1 !important; grid-template-columns:1fr !important}
@@ -9951,6 +9951,450 @@ body[data-theme="dark"] .bcs-scene .sc-sky.back{opacity:.14}
 
 /* ---------- 6. Remaining sticky offsets (header is no longer sticky) ---------- */
 .cal-agenda{top:16px !important}
+
+/* ================================================================
+   BCS v125 — experience pass
+   All-pages panel · animated morning brief · podcast studio
+   multi-note dock · calculator framing · 3D + motion polish
+   ================================================================ */
+
+/* ---------- 1. ALL PAGES — one-click command panel ---------- */
+#navMorePanel .nav-more-head{
+  grid-column:1 / -1; display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:2px 4px 7px;
+}
+#navMorePanel .nav-more-head b{font-family:'Fraunces',serif;font-size:15.5px;font-weight:650;letter-spacing:-.015em;color:var(--ink)}
+#navMorePanel .nav-more-head span{font-size:9px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+.nav-page-search{
+  grid-column:1 / -1; width:100%; height:38px; padding:0 12px;
+  border:1px solid var(--hair); border-radius:12px;
+  background:color-mix(in oklab, var(--panel) 86%, var(--pg,var(--acc)) 7%);
+  color:var(--ink); outline:none;
+  font:650 12.5px/1 'DM Sans', sans-serif;
+  transition:border-color .18s, box-shadow .18s, background .18s;
+}
+.nav-page-search::placeholder{color:var(--mut);font-weight:600}
+.nav-page-search:focus{
+  border-color:color-mix(in oklab, var(--pg,var(--acc)) 52%, var(--line));
+  box-shadow:0 0 0 3px color-mix(in oklab, var(--pg,var(--acc)) 15%, transparent);
+  background:var(--panel);
+}
+#navMorePanel [data-view]{
+  display:flex !important; align-items:center !important; justify-content:flex-start !important;
+  min-height:40px; padding:8px 11px !important; border-radius:12px !important;
+  border:1px solid transparent !important; background:transparent !important;
+  color:var(--ink2) !important; text-align:left !important; font-weight:700 !important;
+  transition:transform .16s var(--ease,ease), background .16s, border-color .16s, color .16s !important;
+}
+#navMorePanel [data-view]:hover{
+  transform:translateY(-1px) scale(1.012) !important;
+  background:color-mix(in oklab, var(--pg,var(--acc)) 10%, transparent) !important;
+  border-color:color-mix(in oklab, var(--pg,var(--acc)) 22%, transparent) !important;
+  color:var(--ink) !important;
+}
+#navMorePanel [data-view].on{
+  background:linear-gradient(135deg, color-mix(in oklab, var(--pg,var(--acc)) 84%, var(--ink)), var(--pg,var(--acc))) !important;
+  color:#fff !important;
+  box-shadow:0 10px 20px -14px color-mix(in oklab, var(--pg,var(--acc)) 70%, transparent) !important;
+}
+#navMorePanel [data-view].on .nav-ic{color:#fff !important;opacity:1 !important}
+#navMorePanel [data-view][hidden]{display:none !important}
+#navMorePanel .nav-urls{margin-top:6px}
+@media (max-width:999px){
+  #navMorePanel{max-height:var(--mp-max, calc(100dvh - 132px)) !important}
+  #navMorePanel [data-view]{min-height:38px;font-size:11.5px !important}
+}
+
+/* ---------- 2. MORNING BRIEF — living, aligned, animated ---------- */
+.morning-brief{
+  position:relative; overflow:hidden; isolation:isolate;
+  padding:16px 17px !important;
+  background:linear-gradient(145deg,
+      color-mix(in oklab, var(--panel) 84%, #F2C14E 16%) 0%,
+      color-mix(in oklab, var(--panel) 96%, var(--pg,var(--acc)) 4%) 48%,
+      var(--panel) 100%) !important;
+  border:1px solid color-mix(in oklab, var(--gold, #A57B36) 26%, var(--hair)) !important;
+}
+body[data-theme="dark"] .morning-brief{
+  background:linear-gradient(145deg, #24271F 0%, #191C17 56%, #131512 100%) !important;
+  border-color:rgba(231,196,110,.22) !important;
+}
+.morning-brief > *{position:relative; z-index:1}
+.morning-brief::before{
+  content:""; position:absolute; z-index:0; inset:-72% -34% auto -34%; height:230%;
+  background:
+    radial-gradient(38% 42% at 20% 32%, color-mix(in oklab, var(--gold, #C79A2E) 26%, transparent), transparent 70%),
+    radial-gradient(34% 38% at 78% 22%, color-mix(in oklab, var(--pg,var(--acc)) 22%, transparent), transparent 72%),
+    radial-gradient(30% 34% at 55% 86%, rgba(123,174,127,.18), transparent 70%);
+  filter:blur(9px); pointer-events:none;
+  animation:mbAurora 17s ease-in-out infinite alternate;
+}
+.morning-brief::after{
+  content:""; position:absolute; z-index:0; top:-35%; bottom:-35%; left:-50%; width:38%;
+  background:linear-gradient(100deg, transparent, rgba(255,255,255,.42), transparent);
+  transform:skewX(-18deg); pointer-events:none;
+  animation:mbSheen 8.5s ease-in-out infinite;
+}
+body[data-theme="dark"] .morning-brief::after{background:linear-gradient(100deg, transparent, rgba(255,255,255,.075), transparent)}
+@keyframes mbAurora{
+  0%{transform:translate3d(-5%,-3%,0) rotate(-2deg) scale(1)}
+  50%{transform:translate3d(3%,2%,0) rotate(2deg) scale(1.06)}
+  100%{transform:translate3d(6%,-1%,0) rotate(-1deg) scale(1.02)}
+}
+@keyframes mbSheen{0%,12%{transform:translateX(-30%) skewX(-18deg);opacity:0}22%{opacity:.9}44%,100%{transform:translateX(320%) skewX(-18deg);opacity:0}}
+
+.brief-head{align-items:center !important;gap:10px !important;margin-bottom:11px !important}
+.brief-head h4{display:flex;align-items:center;gap:9px;font-size:17px !important;line-height:1.15}
+.mb-sun{
+  display:inline-grid; place-items:center; flex:none;
+  width:27px; height:27px; border-radius:50%;
+  background:radial-gradient(circle at 32% 28%, #FFE9A3, #F4B73F 58%, #D98A00 100%);
+  color:#5A3B00; font-size:14px;
+  box-shadow:0 6px 14px -6px rgba(217,138,0,.72), inset 0 1px 0 rgba(255,255,255,.55);
+  animation:mbSun 5.5s ease-in-out infinite;
+}
+@keyframes mbSun{0%,100%{transform:rotate(-7deg) scale(1)}50%{transform:rotate(9deg) scale(1.08)}}
+.brief-head .brief-date{
+  position:relative; overflow:hidden; flex:none;
+  background:linear-gradient(135deg,#FBF1D6,#F5E1AF) !important;
+  color:#7A5C15 !important;
+  border:1px solid rgba(165,123,54,.24);
+  box-shadow:0 4px 12px -8px rgba(120,84,10,.55), inset 0 1px 0 rgba(255,255,255,.7);
+  animation:mbBadge 4s ease-in-out infinite;
+}
+.brief-head .brief-date::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(100deg, transparent 20%, rgba(255,255,255,.9) 50%, transparent 80%);
+  transform:translateX(-130%);
+  animation:mbBadgeShine 5.2s ease-in-out infinite;
+}
+body[data-theme="dark"] .brief-head .brief-date{
+  background:linear-gradient(135deg, rgba(231,196,110,.2), rgba(231,196,110,.1)) !important;
+  color:#EFD18B !important; border-color:rgba(231,196,110,.28);
+}
+@keyframes mbBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-1px)}}
+@keyframes mbBadgeShine{0%,26%{transform:translateX(-130%)}52%,100%{transform:translateX(130%)}}
+
+.brief-copy{font-size:11.7px !important;line-height:1.6 !important;margin-bottom:11px !important;animation:mbRise .55s cubic-bezier(.22,1,.36,1) both .06s}
+.brief-stats{gap:8px !important;margin-bottom:11px !important}
+.brief-stats div{
+  position:relative;
+  background:color-mix(in oklab, var(--panel) 76%, var(--pg,var(--acc)) 9%) !important;
+  border:1px solid color-mix(in oklab, var(--pg,var(--acc)) 18%, var(--line)) !important;
+  border-radius:11px !important; padding:9px 6px !important;
+  transition:transform .2s var(--ease,ease), box-shadow .2s, border-color .2s;
+  animation:mbPop .52s cubic-bezier(.22,1,.36,1) both;
+  animation-delay:calc(var(--i, 0) * 75ms + 90ms);
+}
+.brief-stats div:hover{
+  transform:translateY(-3px) perspective(520px) rotateX(7deg);
+  box-shadow:0 13px 22px -16px rgba(0,0,0,.42);
+  border-color:color-mix(in oklab, var(--pg,var(--acc)) 36%, var(--line)) !important;
+}
+.brief-stats b{display:block;font-size:16.5px !important;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.brief-stats span{font-size:8.6px !important;letter-spacing:.5px}
+body[data-theme="dark"] .brief-stats div{background:rgba(255,255,255,.045) !important;border-color:rgba(255,255,255,.09) !important}
+.brief-next{
+  position:relative; overflow:hidden;
+  animation:mbRise .55s cubic-bezier(.22,1,.36,1) both .38s;
+  border-radius:10px !important;
+  border-left:3px solid color-mix(in oklab, var(--gold, #C79A2E) 62%, transparent) !important;
+}
+.brief-next::after{
+  content:""; position:absolute; top:0; bottom:0; left:-40%; width:30%;
+  background:linear-gradient(100deg, transparent, rgba(255,255,255,.5), transparent);
+  transform:skewX(-18deg); animation:mbSheen 9s ease-in-out infinite 1.5s; pointer-events:none;
+}
+body[data-theme="dark"] .brief-next{background:rgba(231,196,110,.07) !important;border-color:rgba(231,196,110,.28) !important;color:#DDD6BE !important}
+@keyframes mbRise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes mbPop{from{opacity:0;transform:translateY(10px) scale(.94)}to{opacity:1;transform:none}}
+
+/* ---------- 3. PODCAST & LIBRARY — in-page live site studio ---------- */
+.pod-studio{
+  position:relative; margin:16px 0 18px; overflow:hidden;
+  border:1px solid color-mix(in oklab, var(--pg,var(--acc)) 26%, var(--hair));
+  border-radius:22px;
+  background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 94%, var(--pg,var(--acc)) 6%), var(--panel));
+  box-shadow:0 26px 60px -34px rgba(18,28,22,.55), inset 0 1px 0 rgba(255,255,255,.5);
+  animation:psIn .5s cubic-bezier(.22,1,.36,1) both;
+}
+body[data-theme="dark"] .pod-studio{
+  background:linear-gradient(180deg,#21241E,#161915);
+  border-color:rgba(231,196,110,.2);
+  box-shadow:0 30px 70px -38px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.06);
+}
+@keyframes psIn{from{opacity:0;transform:translateY(12px) scale(.995)}to{opacity:1;transform:none}}
+.ps-top{
+  display:flex; align-items:center; gap:10px; justify-content:space-between; flex-wrap:wrap;
+  padding:10px 12px; border-bottom:1px solid var(--hair);
+  background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 78%, var(--pg,var(--acc)) 9%), color-mix(in oklab, var(--panel) 92%, transparent));
+}
+body[data-theme="dark"] .ps-top{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));border-color:rgba(255,255,255,.08)}
+.ps-tabs{display:flex;align-items:center;gap:4px;flex-wrap:wrap;min-width:0}
+.ps-tab{
+  height:36px; padding:0 12px; border-radius:999px; border:1px solid transparent;
+  background:transparent; color:var(--ink2); cursor:pointer;
+  font:800 12px/1 'DM Sans',sans-serif; letter-spacing:-.01em;
+  display:inline-flex; align-items:center; gap:7px;
+  transition:background .18s, color .18s, box-shadow .2s, transform .16s, border-color .18s;
+}
+.ps-tab span{font-size:14px;line-height:1}
+.ps-tab:hover{background:color-mix(in oklab, var(--pg,var(--acc)) 11%, transparent);color:var(--ink);transform:translateY(-1px)}
+.ps-tab.on{
+  background:linear-gradient(135deg, color-mix(in oklab, var(--pg,var(--acc)) 84%, var(--ink)), var(--pg,var(--acc)));
+  color:#fff; border-color:transparent;
+  box-shadow:0 10px 22px -14px color-mix(in oklab, var(--pg,var(--acc)) 78%, transparent), inset 0 1px 0 rgba(255,255,255,.25);
+}
+.ps-tools{display:flex;align-items:center;gap:5px;margin-left:auto}
+.ps-ico{
+  width:34px;height:34px;border-radius:10px;border:1px solid var(--hair);
+  background:color-mix(in oklab, var(--panel) 90%, transparent);color:var(--ink2);
+  cursor:pointer;font-size:15px;line-height:1;display:grid;place-items:center;
+  transition:transform .16s, border-color .16s, color .16s, background .16s;
+}
+.ps-ico:hover{transform:translateY(-1px);border-color:color-mix(in oklab,var(--pg,var(--acc)) 40%,var(--line));color:var(--ink);background:var(--panel)}
+.ps-open{
+  height:34px; padding:0 12px; border-radius:10px;
+  display:inline-flex; align-items:center; gap:5px;
+  border:1px solid color-mix(in oklab,var(--pg,var(--acc)) 32%,var(--hair));
+  background:color-mix(in oklab,var(--pg,var(--acc)) 10%, var(--panel));
+  color:var(--ink); font:800 11.5px/1 'DM Sans',sans-serif; text-decoration:none;
+  transition:transform .16s, box-shadow .16s, background .16s;
+}
+.ps-open:hover{transform:translateY(-1px);background:color-mix(in oklab,var(--pg,var(--acc)) 16%, var(--panel));box-shadow:0 8px 18px -12px rgba(0,0,0,.4)}
+.ps-stage{position:relative;height:clamp(620px, 78vh, 1000px);background:#0E100E}
+.ps-stage iframe{width:100%;height:100%;border:0;display:block;background:#fff}
+.ps-stage:fullscreen{height:100vh;width:100vw;background:#0E100E}
+.ps-stage:fullscreen iframe{height:100vh}
+.ps-loading{
+  position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;gap:10px;
+  background:radial-gradient(120% 120% at 30% 10%,#232A21,#0E100E 72%);
+  color:#F6F2E7;font-size:12.5px;font-weight:700;letter-spacing:.01em;
+  opacity:0;visibility:hidden;transition:opacity .3s, visibility .3s;
+}
+.ps-loading.on{opacity:1;visibility:visible}
+.ps-spin{
+  width:18px;height:18px;border-radius:50%;flex:none;
+  border:2px solid rgba(255,255,255,.2);border-top-color:#E7C46E;
+  animation:psSpin .8s linear infinite;
+}
+@keyframes psSpin{to{transform:rotate(360deg)}}
+.pod-studio.collapsed .ps-stage,.pod-studio.collapsed .ps-foot{display:none}
+.pod-studio.collapsed .ps-top{border-bottom:0}
+.ps-foot{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  padding:8px 14px;border-top:1px solid var(--hair);
+  font-size:10.5px;color:var(--mut);
+  background:color-mix(in oklab, var(--panel) 94%, var(--pg,var(--acc)) 4%);
+}
+body[data-theme="dark"] .ps-foot{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.07)}
+.ps-foot button{border:0;background:none;color:var(--gold-deep,#8A6A2E);cursor:pointer;padding:3px 0;font:800 10.5px 'DM Sans',sans-serif}
+.ps-foot button:hover{text-decoration:underline}
+body[data-theme="dark"] .ps-foot button{color:#E7C46E}
+@media (max-width:900px){.ps-stage{height:min(72vh,780px)}}
+@media (max-width:560px){
+  .ps-stage{height:min(68vh,640px)}
+  .ps-top{padding:8px}
+  .ps-tab{padding:0 9px;font-size:11px;height:34px}
+  .ps-tab span{font-size:13px}
+  .ps-open span{display:none}
+  .ps-open{padding:0 10px}
+}
+
+/* podcast cards get real depth */
+.pod-card{
+  position:relative;
+  transition:transform .3s cubic-bezier(.2,.8,.3,1), box-shadow .3s, border-color .25s;
+  will-change:transform;
+}
+.pod-card::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(140deg,rgba(255,255,255,.16),transparent 42%);
+  opacity:0;transition:opacity .3s;
+}
+.pod-card:hover{transform:perspective(900px) rotateX(2.2deg) rotateY(-2.2deg) translateY(-4px);border-color:color-mix(in oklab,var(--pg,var(--acc)) 34%,var(--hair))}
+.pod-card:hover::after{opacity:1}
+body[data-theme="dark"] .pod-card::after{background:linear-gradient(140deg,rgba(255,255,255,.07),transparent 44%)}
+
+/* ---------- 4. EMBED DECK — full-bleed site, reliable controls ---------- */
+#embedDeckModal{align-items:center !important;padding:12px !important}
+#embedDeckModal .embed-modal{
+  width:min(1280px, 100%) !important;
+  height:min(92vh, 1000px) !important;
+  max-height:calc(100vh - 24px) !important;
+  border-radius:20px !important;
+  background:#0E100E !important;
+}
+#embedDeckModal .embed-head{
+  padding:9px 12px !important; gap:8px !important;
+  background:linear-gradient(180deg,#1F241D,#151814) !important;
+  border-bottom:1px solid rgba(255,255,255,.08) !important;
+  color:#F6F2E7;
+}
+#embedDeckModal .embed-head h3{font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:800;letter-spacing:-.01em;color:#F6F2E7;flex:1;min-width:0}
+.em-ic{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;flex:none;background:rgba(231,196,110,.14);color:#E7C46E;font-size:13px}
+.em-tools{display:flex;align-items:center;gap:5px;flex:none}
+.em-btn{
+  min-width:32px;height:32px;padding:0 9px;border-radius:9px;
+  border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);
+  color:#EDEADF;display:inline-flex;align-items:center;justify-content:center;gap:5px;
+  font:800 11px/1 'DM Sans',sans-serif;text-decoration:none;cursor:pointer;
+  transition:background .16s, transform .16s, border-color .16s;
+}
+.em-btn:hover{background:rgba(255,255,255,.13);transform:translateY(-1px);border-color:rgba(231,196,110,.4)}
+#embedDeckModal .xbtn{width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,.07);color:#F6F2E7;border:1px solid rgba(255,255,255,.12)}
+#embedDeckModal .xbtn:hover{background:rgba(190,60,40,.85);color:#fff;border-color:transparent}
+#embedDeckModal .embed-body{padding:0 !important;position:relative;display:flex;flex:1;min-height:0;background:#0E100E}
+#embedDeckIframe{flex:1;width:100%;height:100%;border:0;display:block;background:#fff}
+.embed-load{
+  position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;gap:10px;
+  background:radial-gradient(120% 120% at 30% 10%,#232A21,#0E100E 72%);
+  color:#F6F2E7;font-size:12px;font-weight:700;
+  opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;
+}
+.embed-load.on{opacity:1;visibility:visible}
+@media (max-width:700px){
+  #embedDeckModal{padding:6px !important}
+  #embedDeckModal .embed-modal{width:100% !important;height:calc(100dvh - 12px) !important;max-height:calc(100dvh - 12px) !important;border-radius:14px !important}
+  #embedDeckModal .embed-head{padding:7px 8px !important}
+  #embedDeckModal .em-tools .em-open span{display:none}
+}
+
+/* ---------- 5. STICKY NOTES — many notes, one dock ---------- */
+#stickyPop{width:min(432px, calc(100vw - 20px)) !important;padding:14px !important}
+.tp-head-actions{display:flex;align-items:center;gap:6px}
+.snote-add{
+  height:28px;padding:0 10px;border-radius:999px;border:1px solid color-mix(in oklab,var(--pg,var(--acc)) 34%,var(--line));
+  background:color-mix(in oklab,var(--pg,var(--acc)) 10%,var(--panel));color:var(--ink);
+  font:800 10.5px/1 'DM Sans',sans-serif;cursor:pointer;
+  transition:transform .15s, background .15s;
+}
+.snote-add:hover{transform:translateY(-1px);background:color-mix(in oklab,var(--pg,var(--acc)) 18%,var(--panel))}
+.snote-count{
+  display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;margin-left:6px;
+  border-radius:999px;background:color-mix(in oklab,var(--gold,#C79A2E) 18%,transparent);
+  color:var(--gold-deep,#8A6A2E);font-size:9.5px;font-weight:900;vertical-align:middle;
+}
+.snote-list{display:flex;flex-direction:column;gap:9px;max-height:min(52vh,460px);overflow:auto;padding:2px 3px 2px 0;scrollbar-width:thin;overscroll-behavior:contain}
+.snote-list::-webkit-scrollbar{width:5px}
+.snote-list::-webkit-scrollbar-thumb{background:var(--hair);border-radius:999px}
+.snote{
+  position:relative;border:1px solid #E6D4A5;border-radius:13px;
+  background:linear-gradient(180deg,#FFFDF1,#FFF7DE);
+  padding:8px 9px 9px;box-shadow:0 6px 14px -12px rgba(120,84,10,.55);
+  animation:snoteIn .28s cubic-bezier(.22,1,.36,1) both;
+  transition:transform .18s, box-shadow .18s, border-color .18s;
+}
+.snote:hover{transform:translateY(-1px);box-shadow:0 12px 22px -16px rgba(120,84,10,.55);border-color:#DCC086}
+.snote:focus-within{border-color:#C79A2E;box-shadow:0 0 0 3px rgba(199,154,46,.14)}
+@keyframes snoteIn{from{opacity:0;transform:translateY(7px) scale(.985)}to{opacity:1;transform:none}}
+.snote-top{display:flex;align-items:center;gap:6px;margin-bottom:6px;min-height:20px}
+.snote-dot{width:8px;height:8px;border-radius:50%;flex:none;background:#E0B24A;box-shadow:0 0 0 3px rgba(224,178,74,.18)}
+.snote-top b{font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#8A6A2E}
+.snote-top time{margin-left:auto;font-size:9px;font-weight:700;color:#A08C5A;letter-spacing:.02em;white-space:nowrap}
+.snote-del{
+  width:21px;height:21px;border-radius:7px;border:0;flex:none;
+  background:rgba(164,69,43,.08);color:#A4452B;cursor:pointer;
+  font-size:10px;line-height:1;display:grid;place-items:center;
+  transition:background .15s, transform .15s;
+}
+.snote-del:hover{background:#A4452B;color:#fff;transform:scale(1.06)}
+.snote textarea{
+  display:block;width:100%;min-height:64px;padding:7px 8px;border:0;border-radius:9px;outline:none;resize:vertical;
+  background:rgba(255,255,255,.55);color:#4A4632;
+  font:500 12.5px/1.55 'DM Sans',sans-serif;
+}
+.snote textarea::placeholder{color:#B0A27A}
+body[data-theme="dark"] .snote{background:linear-gradient(180deg,rgba(231,196,110,.12),rgba(231,196,110,.055));border-color:rgba(231,196,110,.24)}
+body[data-theme="dark"] .snote textarea{background:rgba(0,0,0,.22);color:#F2EBD8}
+body[data-theme="dark"] .snote-top b{color:#E7C46E}
+body[data-theme="dark"] .snote-top time{color:#B7A678}
+body[data-theme="dark"] .snote-del{background:rgba(255,255,255,.07);color:#F0A48E}
+.snote-empty{
+  display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;
+  padding:18px 12px;border:1px dashed var(--hair);border-radius:12px;color:var(--mut);font-size:11.5px;line-height:1.5;
+}
+.snote-empty b{color:var(--ink);font-size:12.5px}
+#stickyPop .tp-foot{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#stickyPop .tp-foot span:last-child{opacity:.7;font-weight:600;letter-spacing:0;text-transform:none}
+
+/* ---------- 6. CALCULATOR — properly framed keypad ---------- */
+#calcPop{width:min(350px, calc(100vw - 20px)) !important;padding:14px !important}
+#calcPop .tp-head{margin-bottom:10px !important}
+#calcPop .calc-disp{
+  font-size:26px !important;min-height:54px !important;padding:12px 14px !important;
+  border-radius:13px !important;
+  background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 84%, var(--pg,var(--acc)) 8%), var(--panel)) !important;
+  border:1px solid color-mix(in oklab, var(--pg,var(--acc)) 20%, var(--line)) !important;
+  box-shadow:inset 0 2px 10px rgba(0,0,0,.055), 0 1px 0 rgba(255,255,255,.55);
+  letter-spacing:-.02em;
+}
+body[data-theme="dark"] #calcPop .calc-disp{background:linear-gradient(180deg,#262A24,#1B1E1A) !important;box-shadow:inset 0 2px 12px rgba(0,0,0,.4)}
+#calcGrid{
+  display:grid !important;
+  grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+  gap:8px !important;margin:0 !important;width:100% !important;
+}
+#calcGrid button{
+  min-height:46px !important;width:100% !important;min-width:0 !important;padding:0 !important;
+  border-radius:12px !important;font-size:15.5px !important;line-height:1 !important;
+  box-shadow:0 2px 0 rgba(0,0,0,.045), inset 0 1px 0 rgba(255,255,255,.55);
+  transition:transform .1s, background .15s, box-shadow .15s, border-color .15s;
+}
+#calcGrid button:hover{border-color:color-mix(in oklab,var(--pg,var(--acc)) 32%,var(--line))}
+#calcGrid button:active{transform:scale(.93);box-shadow:inset 0 1px 4px rgba(0,0,0,.12)}
+body[data-theme="dark"] #calcGrid button{background:#242722;border-color:rgba(255,255,255,.1);color:#F3F0E7;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+body[data-theme="dark"] #calcGrid .cop{background:#2D3A30;color:#BFE3C9}
+body[data-theme="dark"] #calcGrid .cfn{background:#2A2E28;color:#D9D6C9}
+body[data-theme="dark"] #calcGrid .ceq{background:linear-gradient(135deg,#E7C46E,#C79A2E);color:#241C05}
+#calcPop .calc-quick{
+  display:grid !important;grid-template-columns:repeat(3, minmax(0,1fr)) !important;
+  gap:6px !important;margin-top:10px !important;flex-wrap:nowrap !important;
+}
+#calcPop .calc-quick button{
+  min-width:0 !important;width:100%;padding:8px 3px !important;
+  border-radius:9px !important;font-size:9.5px !important;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+body[data-theme="dark"] #calcPop .calc-quick button{background:rgba(231,196,110,.08);border-color:rgba(231,196,110,.3);color:#E7C46E}
+@keyframes calcPopAnim{0%{transform:scale(1)}42%{transform:scale(1.035)}100%{transform:scale(1)}}
+#calcPop .calc-disp.bcsCalcPop{animation:calcPopAnim .3s cubic-bezier(.22,1,.36,1)}
+
+/* ---------- 7. GLOBAL 3D / motion / sound affordances ---------- */
+#navMorePanel{transform-origin:top right}
+#navMorePanel:not([hidden]){animation:pagesIn .24s cubic-bezier(.22,1,.36,1) both}
+@keyframes pagesIn{from{opacity:0;transform:translateY(-7px) scale(.98)}to{opacity:1;transform:none}}
+.ps-tab:active,.ps-ico:active,.ps-open:active,.em-btn:active,.snote-add:active,.snote-del:active,#navMorePanel [data-view]:active{transform:scale(.94) !important}
+.pod-open{position:relative;overflow:hidden}
+.pod-open::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.42) 50%,transparent 78%);
+  transform:translateX(-130%);transition:transform .5s ease;
+}
+.pod-open:hover::after{transform:translateX(130%)}
+.brief-stats div,.pod-card,.pod-open,.dock-btn,.ps-tab,#navMorePanel [data-view]{-webkit-tap-highlight-color:transparent}
+#pagesFab{
+  position:fixed; right:18px; bottom:82px; z-index:88;
+  width:46px; height:46px; border-radius:50%;
+  border:1px solid color-mix(in oklab, var(--pg,var(--acc)) 34%, var(--hair));
+  background:linear-gradient(160deg, color-mix(in oklab, var(--panel) 86%, var(--pg,var(--acc)) 14%), var(--panel));
+  color:var(--ink); cursor:pointer;
+  display:none; place-items:center;
+  box-shadow:0 12px 26px -14px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.5);
+  font-size:18px; line-height:1;
+  transition:transform .16s, box-shadow .2s;
+}
+#pagesFab:hover{transform:translateY(-2px) rotate(-4deg)}
+#pagesFab:active{transform:scale(.93)}
+@media (max-width:999px){#pagesFab.on{display:grid}}
+body[data-theme="dark"] #pagesFab{background:linear-gradient(160deg,#2A2E27,#1B1E1A);border-color:rgba(231,196,110,.28);color:#E7C46E}
+.xbtn{transition:background .16s, transform .16s, color .16s}
+.xbtn:hover{transform:rotate(90deg)}
+@media (prefers-reduced-motion: reduce){
+  .morning-brief::before,.morning-brief::after,.brief-next::after,.mb-sun,.brief-head .brief-date,.brief-head .brief-date::after{animation:none !important}
+  .brief-stats div,.brief-copy,.brief-next,.pod-studio,.snote,.pod-card{animation:none !important;transition:none !important}
+  .pod-card:hover{transform:none}
+}
 
 
 /* ---------------- mobile / installed app ---------------- */
@@ -10212,8 +10656,19 @@ try{
       <button type="button" data-view="news"><span class="nav-ic" aria-hidden="true">📰</span>News<span class="nav-dot" aria-hidden="true"></span></button>
       <button type="button" data-view="calc"><span class="nav-ic" aria-hidden="true">⌘</span>Calculators</button>
       <div class="nav-more-wrap">
-        <button type="button" id="navMoreBtn" aria-haspopup="true" aria-expanded="false"><span class="nav-ic" aria-hidden="true">▤</span>More<span class="nav-chev" aria-hidden="true">▾</span></button>
+        <button type="button" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" title="All pages"><span class="nav-ic" aria-hidden="true">▦</span>All pages<span class="nav-chev" aria-hidden="true">▾</span></button>
         <div class="nav-more-panel" id="navMorePanel" hidden>
+          <div class="nav-more-head"><b>All 19 pages</b><span>one click away</span></div>
+          <input type="search" id="navPageSearch" class="nav-page-search" placeholder="Jump to a page…  /" aria-label="Search all pages" autocomplete="off" spellcheck="false">
+          <button type="button" data-view="dashboard"><span class="nav-ic" aria-hidden="true">⌂</span>Dashboard</button>
+          <button type="button" data-view="advisory"><span class="nav-ic" aria-hidden="true">✦</span>Advisory</button>
+          <button type="button" data-view="projects"><span class="nav-ic" aria-hidden="true">▣</span>Projects</button>
+          <button type="button" data-view="developers"><span class="nav-ic" aria-hidden="true">◈</span>Developers</button>
+          <button type="button" data-view="clients"><span class="nav-ic" aria-hidden="true">◐</span>Clients</button>
+          <button type="button" data-view="dayplan"><span class="nav-ic" aria-hidden="true">◷</span>Day Plan</button>
+          <button type="button" data-view="pulse"><span class="nav-ic" aria-hidden="true">↗</span>Market Pulse</button>
+          <button type="button" data-view="news"><span class="nav-ic" aria-hidden="true">📰</span>News</button>
+          <button type="button" data-view="calc"><span class="nav-ic" aria-hidden="true">⌘</span>Calculators</button>
           <button type="button" data-view="advisors"><span class="nav-ic" aria-hidden="true">◎</span>Advisors</button>
           <button type="button" data-view="partners"><span class="nav-ic" aria-hidden="true">◉</span>Partners</button>
           <button type="button" data-view="resale"><span class="nav-ic" aria-hidden="true">⇌</span>Resale</button>
@@ -11555,27 +12010,51 @@ try{
         <p class="adv-sub">Play Podcast, Libby aur Kanopy — real estate, business aur storytelling ke 3 premium sources. Card kholne ke liye library card chahiye; yahin apne favorite podcasts bhi save kar sakte hain.</p>
       </div>
     </div>
+    <div class="pod-studio" id="podStudio">
+      <div class="ps-top">
+        <div class="ps-tabs" role="tablist" aria-label="Podcast and library sources">
+          <button type="button" class="ps-tab on" role="tab" aria-selected="true" data-ps-site="playpodcast" data-ps-url="https://www.playpodcast.net/" data-ps-title="Play Podcast"><span>🎙️</span><b>Play Podcast</b></button>
+          <button type="button" class="ps-tab" role="tab" aria-selected="false" data-ps-site="libby" data-ps-url="https://libbyapp.com" data-ps-title="Libby"><span>📚</span><b>Libby</b></button>
+          <button type="button" class="ps-tab" role="tab" aria-selected="false" data-ps-site="kanopy" data-ps-url="https://www.kanopy.com/en" data-ps-title="Kanopy"><span>🎬</span><b>Kanopy</b></button>
+        </div>
+        <div class="ps-tools">
+          <button type="button" class="ps-ico" data-ps-act="reload" title="Reload this site" aria-label="Reload this site">↻</button>
+          <button type="button" class="ps-ico" data-ps-act="full" title="Fullscreen player" aria-label="Fullscreen player">⛶</button>
+          <button type="button" class="ps-ico" data-ps-act="collapse" title="Minimise player" aria-label="Minimise player">−</button>
+          <button type="button" class="ps-ico" data-ps-act="close" title="Close player" aria-label="Close player">✕</button>
+          <a class="ps-open" id="psOpen" href="https://www.playpodcast.net/" target="_blank" rel="noopener noreferrer" title="Open in a new tab">↗ <span>Open</span></a>
+        </div>
+      </div>
+      <div class="ps-stage" id="psStage">
+        <div class="ps-loading" id="psLoading"><span class="ps-spin"></span><span>Loading <b id="psLoadingName">Play Podcast</b>…</span></div>
+        <iframe id="podFrame" title="Play Podcast in-app" src="https://www.playpodcast.net/" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="ps-foot">
+        <span id="psHint">Live site frame — player, search aur pages yahin chalenge. Space bachane ke liye frame full-bleed hai.</span>
+        <span><button type="button" data-ps-act="openw">New window ↗</button></span>
+      </div>
+    </div>
     <div class="pod-cards">
       <div class="pod-card">
         <div class="pod-ic" style="background:linear-gradient(140deg,#1D3A5F,#3E6CA8);color:#F5D78E">🎙️</div>
         <h4>Play Podcast</h4>
-        <p>Real estate, startup aur finance ke original shows — sunasni aur deep-dive, free.</p>
+        <p>Real estate, startup aur finance ke original shows — sunna aur deep-dive, free.</p>
         <div class="pod-note">Free · Ad-supported · No signup · Browser me chalta hai</div>
-        <div class="pod-foot"><button class="pod-open" type="button" data-embed="https://www.playpodcast.net/" data-embed-title="Play Podcast">Listen Play Podcast in-app →</button></div>
+        <div class="pod-foot"><button class="pod-open" type="button" data-ps-jump="playpodcast">Play in the frame above ↑</button></div>
       </div>
       <div class="pod-card">
         <div class="pod-ic" style="background:linear-gradient(140deg,#F5B301,#D98A00);color:#3B2E00">📚</div>
         <h4>Libby by OverDrive</h4>
         <p>10 crore+ ebooks, audiobooks aur magazines — library card se free borrow karke padho/suno, offline bhi.</p>
         <div class="pod-note">Needs: <b>Public library card</b> (free) · Borrow limit + waitlist system</div>
-        <div class="pod-foot"><button class="pod-open" type="button" data-embed="https://libbyapp.com" data-embed-title="Libby — 10 crore+ ebooks &amp; audiobooks">Open Libby in-app →</button></div>
+        <div class="pod-foot"><button class="pod-open" type="button" data-ps-jump="libby">Open Libby in the frame ↑</button></div>
       </div>
       <div class="pod-card">
         <div class="pod-ic" style="background:linear-gradient(140deg,#1F1F1F,#4A3BA6);color:#F1E8FF">🎬</div>
         <h4>Kanopy</h4>
         <p>30,000+ films, documentaries aur world cinema — library/university card se 100% free streaming.</p>
         <div class="pod-note">Needs: <b>Library ya university login</b> · Monthly play credits per library</div>
-        <div class="pod-foot"><a class="pod-open" href="https://www.kanopy.com/en" target="_blank" rel="noopener noreferrer">Open Kanopy ↗ <span style="font-size:10px;opacity:.75;font-weight:600">(their site blocks embed)</span></a></div>
+        <div class="pod-foot"><a class="pod-open" href="https://www.kanopy.com/en" target="_blank" rel="noopener noreferrer">Open Kanopy ↗</a></div>
       </div>
     </div>
     <div class="sec-head">
@@ -11674,9 +12153,12 @@ try{
   <button class="dock-btn" id="listsBtn" data-tip="Dropdown lists" aria-label="Dropdown lists"><span class="dock-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg></span><i>Lists</i></button>
 </div>
 <div class="toolpop" id="stickyPop">
-  <div class="tp-head"><b>📌 Sticky note</b><button class="xbtn sm" data-toolclose="stickyPop">✕</button></div>
-  <textarea id="stickyText" placeholder="Koi bhi scratch — rate, plate number, wish list… Yahan likhte hi auto-save ho jaata hai (backup me bhi aayega)."></textarea>
-  <div class="tp-foot"><span id="stickySaved">Saved</span></div>
+  <div class="tp-head">
+    <b>📌 Sticky notes <span class="snote-count" id="snoteCount">0</span></b>
+    <span class="tp-head-actions"><button class="snote-add" id="snoteAdd" type="button" title="Add another note">＋ Add note</button><button class="xbtn sm" data-toolclose="stickyPop" aria-label="Close sticky notes">✕</button></span>
+  </div>
+  <div class="snote-list" id="stickyList"></div>
+  <div class="tp-foot"><span id="stickySaved">Saved</span><span>auto-save · backup included</span></div>
 </div>
 <div class="toolpop" id="calcPop">
   <div class="tp-head"><b>🧮 Calculator</b><button class="xbtn sm" data-toolclose="calcPop">✕</button></div>
@@ -15457,7 +15939,7 @@ try{
       const b = e.target.closest('button[data-view]');
       if(b) go(b.dataset.view);
     });
-    document.addEventListener('click', e => { if(!e.target.closest('.nav-more-wrap')) bcsNavMoreClose(); });
+    document.addEventListener('click', e => { if(!e.target.closest('.nav-more-wrap,#pagesFab')) bcsNavMoreClose(); });
     document.addEventListener('keydown', e => { if(e.key === 'Escape') bcsNavMoreClose(); });
   }
 }catch(e){}
@@ -23676,20 +24158,24 @@ function initDayplan(){
   $('#dtReset').addEventListener('click', resetDayTimer);
   setInterval(timerTick, 1000);
 
-  // sticky note (day panel + tool pop sync)
-  ['#stickyNote','#stickyText'].forEach(sel => {
-    const ta = $(sel);
-    if(!ta) return;
-    ta.value = db.sticky || '';
+  // quick note (day panel) — note #1 shared with the multi-note dock
+  const quickNote = $('#stickyNote');
+  if(quickNote){
+    quickNote.value = db.sticky || '';
     let deb;
-    ta.addEventListener('input', () => {
-      db.sticky = ta.value;
-      ['#stickyNote','#stickyText'].forEach(o => { if(o !== sel) $(o).value = ta.value; });
-      $('#stickySaved').textContent = 'Saving…';
+    quickNote.addEventListener('input', () => {
+      try{
+        if(typeof bcsStickyNotes === 'function'){
+          const n = bcsStickyNotes()[0];
+          if(n){ n.text = quickNote.value; n.updatedAt = Date.now(); }
+        }
+      }catch(e){}
+      db.sticky = quickNote.value;
+      const sv = $('#stickySaved'); if(sv) sv.textContent = 'Saving…';
       clearTimeout(deb);
-      deb = setTimeout(() => { save(); $('#stickySaved').textContent = 'Saved ✓'; }, 500);
+      deb = setTimeout(() => { save(); const sv2 = $('#stickySaved'); if(sv2) sv2.textContent = 'Saved ✓'; }, 500);
     });
-  });
+  }
 }
 
 function dayTodos(iso){
@@ -23815,13 +24301,13 @@ function renderMorningBrief(){
         ? `Next: <b>${esc(topAdv.name)}</b> ko BCS slab par join karne ke liye call`
         : 'Aaj ka plan clear hai — naya task, client follow-up ya advisor call add karein.';
   $('#morningBrief').innerHTML = `
-    <div class="brief-head"><h4>☀ ${greet}, Ajay</h4><span class="brief-date">${esc(fmtDate(dayCursor))}</span></div>
+    <div class="brief-head"><h4><span class="mb-sun" aria-hidden="true">☀</span>${greet}, Ajay</h4><span class="brief-date">${esc(fmtDate(dayCursor))}</span></div>
     <div class="brief-copy">Aaj ${list.length} task${list.length === 1 ? '' : 's'} hain${high ? `, <b>${high} high priority</b>` : ''}${followDue.length ? ` aur <b>${followDue.length} client follow-up due</b>` : ''}${advFollowDue.length ? ` · <b>${advFollowDue.length} advisor call due</b>` : ''}. ${done ? `${done} task already done — momentum banaye rakhein.` : 'Pehla task abhi shuru karein.'}</div>
     <div class="brief-stats">
-      <div><b>${list.length - done}</b><span>Left</span></div>
-      <div><b style="color:${high ? '#A4452B' : 'var(--ink)'}">${high}</b><span>High</span></div>
-      <div><b style="color:${over ? '#C79A2E' : 'var(--ink)'}">${over}</b><span>Overdue</span></div>
-      <div><b style="color:${followDue.length ? '#A4452B' : 'var(--ink)'}">${followDue.length}</b><span>Follow-up</span></div>
+      <div class="mb-stat" style="--i:0"><b>${list.length - done}</b><span>Left</span></div>
+      <div class="mb-stat" style="--i:1"><b style="color:${high ? '#A4452B' : 'var(--ink)'}">${high}</b><span>High</span></div>
+      <div class="mb-stat" style="--i:2"><b style="color:${over ? '#C79A2E' : 'var(--ink)'}">${over}</b><span>Overdue</span></div>
+      <div class="mb-stat" style="--i:3"><b style="color:${followDue.length ? '#A4452B' : 'var(--ink)'}">${followDue.length}</b><span>Follow-up</span></div>
     </div>
     <div class="brief-next">🎯 ${nextLine}${pending ? `<br><b>Collections:</b> ${fmtPrice(pending)} pending hai — clients ke bookings check karein.` : ''}</div>`;
 }
@@ -24014,29 +24500,16 @@ function timerSync(){
 
 /* ---------- sticky + calculator tool dock ---------- */
 function initTools(){
-  let _toolHideT = null;
   const open = id => {
     const pop = $('#' + id);
     const was = pop.classList.contains('on');
     $$('.toolpop').forEach(p => p.classList.remove('on'));
     $$('.dock-btn').forEach(b => b.classList.remove('open'));
-    if(_toolHideT){ clearTimeout(_toolHideT); _toolHideT = null; }
     if(!was){
       pop.classList.add('on');
       (id === 'stickyPop' ? $('#stickyBtn') : $('#calcBtn')).classList.add('open');
       if(id === 'calcPop') setTimeout(() => $('#calcDisp').focus?.(), 50);
-      _toolHideT = setTimeout(() => {
-        try{
-          if(!pop.contains(document.activeElement) && !pop.matches(':hover')){
-            pop.classList.remove('on');
-            $$('.dock-btn').forEach(x => x.classList.remove('open'));
-          }
-        }catch(e){}
-      }, 2000);
-      [pop].forEach(function(p){
-        p.addEventListener('mouseenter', () => { if(_toolHideT){ clearTimeout(_toolHideT); _toolHideT = null; } });
-        p.addEventListener('focusin', () => { if(_toolHideT){ clearTimeout(_toolHideT); _toolHideT = null; } });
-      });
+      if(id === 'stickyPop' && typeof bcsRenderStickyNotes === 'function') bcsRenderStickyNotes();
     }
   };
   $('#stickyBtn').addEventListener('click', () => open('stickyPop'));
@@ -28253,18 +28726,15 @@ function bcsOpenInApp(title, url){
   try{
     const modal = document.getElementById('embedDeckModal');
     const frame = document.getElementById('embedDeckIframe');
-    const fb = document.getElementById('embedDeckFallback');
-    const fbLink = document.getElementById('embedDeckFallbackLink');
     const titleEl = document.getElementById('embedDeckTitle');
     const openEl = document.getElementById('embedDeckOpen');
-    if(!modal) return;
+    if(!modal){ window.open(url, '_blank', 'noopener,noreferrer'); return; }
     if(titleEl) titleEl.textContent = title || 'In-app view';
     if(openEl) openEl.href = url;
-    if(fbLink) fbLink.href = url;
-    if(frame){ frame.src = url; frame.style.display = 'block'; }
-    if(fb) fb.hidden = true;
     showOverlay('embedDeckModal');
-    frame.onload = function(){ try{ frame.dataset.loaded = '1'; }catch(e){} };
+    if(typeof window.bcsEmbedLoadUrl === 'function') window.bcsEmbedLoadUrl(url);
+    else if(frame){ frame.src = url; }
+    try{ bcsSound('pop'); }catch(e){}
   }catch(err){
     // embed modal unavailable — fall back to new tab
     window.open(url, '_blank', 'noopener,noreferrer');
@@ -29099,24 +29569,32 @@ try{
     if(moreBtn && morePanel){
       function placeMore(){
         const hdNow = document.querySelector('header');
-        const hbNow = hdNow ? hdNow.getBoundingClientRect() : { bottom: 0 };
-        morePanel.style.setProperty('--mp-top', Math.round(hbNow.bottom + 8) + 'px');
-        if(window.innerWidth < 1000){
+        const hr = hdNow ? hdNow.getBoundingClientRect() : { top:0, bottom:0, left:0 };
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        const vw = window.innerWidth || document.documentElement.clientWidth;
+        // Header has backdrop-filter, so this fixed panel is positioned inside the
+        // header's box. Convert the desired viewport point into header-local units.
+        // If the page is scrolled and the header has left the viewport, pin the
+        // panel to the top of the screen instead of off-screen above it.
+        let vTop = Math.round(hr.bottom + 8);
+        if(vTop < 10 || vTop > vh * 0.5) vTop = 10;
+        morePanel.style.setProperty('--mp-top', Math.round(vTop - hr.top) + 'px');
+        morePanel.style.setProperty('--mp-max', Math.max(240, vh - vTop - 14) + 'px');
+        if(vw < 1000){
           morePanel.style.removeProperty('--mp-left');
           return;
         }
         const r = moreBtn.getBoundingClientRect();
-        const hd = document.querySelector('header');
-        const hb = hd ? hd.getBoundingClientRect() : { bottom: 0 };
-        const w = Math.min(560, window.innerWidth - 24);
-        const left = Math.max(12, Math.min(r.left, window.innerWidth - w - 12));
-        const top = Math.max(Math.round(hb.bottom + 8), Math.round(r.bottom + 10));
-        morePanel.style.setProperty('--mp-left', Math.round(left) + 'px');
-        morePanel.style.setProperty('--mp-top', top + 'px');
+        const w = Math.min(560, vw - 24);
+        const vLeft = Math.max(12, Math.min(r.left, vw - w - 12));
+        morePanel.style.setProperty('--mp-left', Math.round(vLeft - hr.left) + 'px');
       }
       moreBtn.addEventListener('click', function(){ setTimeout(placeMore, 0); });
+      window.bcsPlaceMore = placeMore;
       window.addEventListener('resize', placeMore);
-      window.addEventListener('scroll', function(){ if(window.innerWidth >= 1000) placeMore(); }, { passive:true });
+      window.addEventListener('scroll', function(){
+        if(!morePanel.hidden) placeMore();
+      }, { passive:true });
     }
   }catch(e){}
 
@@ -29272,6 +29750,451 @@ try{
   }catch(e){}
 })();
 
+</script>
+
+<div class="overlay" id="embedDeckModal" role="dialog" aria-modal="true" aria-labelledby="embedDeckTitle">
+  <div class="modal embed-modal">
+    <div class="modal-head embed-head">
+      <span class="em-ic" aria-hidden="true">◈</span>
+      <h3 id="embedDeckTitle">In-app view</h3>
+      <div class="em-tools">
+        <button type="button" class="em-btn" data-em-act="reload" title="Reload site" aria-label="Reload site">↻</button>
+        <button type="button" class="em-btn" data-em-act="full" title="Fullscreen" aria-label="Fullscreen">⛶</button>
+        <a class="em-btn em-open" id="embedDeckOpen" href="https://google.com" target="_blank" rel="noopener noreferrer" title="Open original in a new tab">↗ <span>Open</span></a>
+        <button type="button" class="xbtn" data-close="embedDeckModal" aria-label="Close">✕</button>
+      </div>
+    </div>
+    <div class="modal-body embed-body">
+      <div class="embed-load" id="embedDeckLoad"><span class="ps-spin"></span>Loading site…</div>
+      <iframe id="embedDeckIframe" title="In-app view" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   BCS v125 — delegated close, multi-note dock, podcast studio,
+   all-pages search and small motion/sound hooks
+   ============================================================ */
+(function(){
+  'use strict';
+  var $ = function(sel, root){ return (root || document).querySelector(sel); };
+  var $$ = function(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
+  function sound(kind){ try{ if(typeof bcsSound === 'function') bcsSound(kind); }catch(e){} }
+
+  /* ---- 1. Reliable close for EVERY [data-close], including markup added late ---- */
+  document.addEventListener('click', function(e){
+    var c = e.target.closest ? e.target.closest('[data-close]') : null;
+    if(c){
+      e.preventDefault();
+      var id = c.getAttribute('data-close');
+      try{ if(typeof closeModal === 'function') closeModal(id); }catch(err){}
+      var el = document.getElementById(id);
+      if(el) el.classList.remove('on');
+      sound('click');
+      return;
+    }
+    var o = e.target;
+    if(o && o.classList && o.classList.contains('overlay') && o.classList.contains('on')){
+      o.classList.remove('on');
+    }
+  });
+
+  /* keep the embedded site's audio/video from playing behind a closed modal */
+  var embedModal = document.getElementById('embedDeckModal');
+  if(embedModal){
+    var embedFrame = document.getElementById('embedDeckIframe');
+    var embedLoad = document.getElementById('embedDeckLoad');
+    var embedUrl = '';
+
+    function embedSetLoading(on){
+      if(embedLoad) embedLoad.classList.toggle('on', !!on);
+    }
+    function embedLoadUrl(url){
+      embedUrl = url || '';
+      if(!embedFrame) return;
+      embedSetLoading(true);
+      embedFrame.src = 'about:blank';
+      setTimeout(function(){ try{ embedFrame.src = embedUrl; }catch(e){} }, 40);
+      clearTimeout(embedFrame._bcsT);
+      embedFrame._bcsT = setTimeout(function(){ embedSetLoading(false); }, 7000);
+    }
+    if(embedFrame){
+      embedFrame.addEventListener('load', function(){
+        if(embedFrame.src && embedFrame.src !== 'about:blank'){
+          clearTimeout(embedFrame._bcsT);
+          setTimeout(function(){ embedSetLoading(false); }, 420);
+        }
+      });
+    }
+    embedModal.addEventListener('click', function(e){
+      var act = e.target.closest ? e.target.closest('[data-em-act]') : null;
+      if(!act) return;
+      var a = act.getAttribute('data-em-act');
+      if(a === 'reload'){ if(embedUrl) embedLoadUrl(embedUrl); }
+      if(a === 'full'){
+        var stage = embedModal.querySelector('.embed-modal');
+        try{
+          if(document.fullscreenElement){ document.exitFullscreen(); }
+          else if(stage && stage.requestFullscreen){ stage.requestFullscreen(); }
+          else if(embedFrame && embedFrame.requestFullscreen){ embedFrame.requestFullscreen(); }
+        }catch(err){ window.open(embedUrl, '_blank', 'noopener'); }
+      }
+    });
+    /* stop network/audio when the modal closes */
+    var mo = new MutationObserver(function(){
+      if(!embedModal.classList.contains('on') && embedFrame && embedFrame.src && embedFrame.src !== 'about:blank'){
+        try{ embedFrame.src = 'about:blank'; }catch(e){}
+        embedSetLoading(false);
+      }
+    });
+    mo.observe(embedModal, { attributes:true, attributeFilter:['class'] });
+    window.bcsEmbedLoadUrl = embedLoadUrl;
+  }
+
+  /* ---- 2. Podcast / library in-page studio ---- */
+  var studio = document.getElementById('podStudio');
+  if(studio){
+    var frame = document.getElementById('podFrame');
+    var loading = document.getElementById('psLoading');
+    var loadingName = document.getElementById('psLoadingName');
+    var psOpen = document.getElementById('psOpen');
+    var psHint = document.getElementById('psHint');
+    var current = { site:'playpodcast', url:'https://www.playpodcast.net/', title:'Play Podcast' };
+
+    function psSetLoading(on){
+      if(loading) loading.classList.toggle('on', !!on);
+    }
+    function psLoad(site, opts){
+      opts = opts || {};
+      var tab = studio.querySelector('[data-ps-site="' + site + '"]');
+      if(!tab) return;
+      current = {
+        site: tab.getAttribute('data-ps-site'),
+        url: tab.getAttribute('data-ps-url'),
+        title: tab.getAttribute('data-ps-title')
+      };
+      $$('.ps-tab', studio).forEach(function(t){
+        var on = t === tab;
+        t.classList.toggle('on', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      studio.classList.remove('collapsed');
+      if(psOpen) psOpen.href = current.url;
+      if(loadingName) loadingName.textContent = current.title;
+      frame.title = current.title + ' in-app';
+      if(psHint){
+        psHint.textContent = current.site === 'kanopy'
+          ? 'Kanopy apni site par best chalta hai — frame blank lage to “New window ↗” use karein.'
+          : 'Live site frame — player, search aur pages yahin chalenge. Space bachane ke liye frame full-bleed hai.';
+      }
+      try{ localStorage.setItem('bcs_pod_site', current.site); }catch(e){}
+      psSetLoading(true);
+      frame.src = 'about:blank';
+      setTimeout(function(){ try{ frame.src = current.url; }catch(e){} }, 40);
+      clearTimeout(frame._bcsT);
+      frame._bcsT = setTimeout(function(){ psSetLoading(false); }, 8000);
+      if(!opts.silent) sound('pop');
+    }
+
+    frame.addEventListener('load', function(){
+      if(frame.src && frame.src !== 'about:blank'){
+        clearTimeout(frame._bcsT);
+        setTimeout(function(){ psSetLoading(false); }, 420);
+      }
+    });
+
+    studio.addEventListener('click', function(e){
+      var tab = e.target.closest ? e.target.closest('[data-ps-site]') : null;
+      if(tab){ e.preventDefault(); psLoad(tab.getAttribute('data-ps-site')); return; }
+      var jump = e.target.closest ? e.target.closest('[data-ps-jump]') : null;
+      if(jump){ e.preventDefault(); psLoad(jump.getAttribute('data-ps-jump')); studio.scrollIntoView({behavior:'smooth', block:'start'}); return; }
+      var act = e.target.closest ? e.target.closest('[data-ps-act]') : null;
+      if(!act) return;
+      var a = act.getAttribute('data-ps-act');
+      if(a === 'reload'){
+        psSetLoading(true);
+        frame.src = 'about:blank';
+        setTimeout(function(){ try{ frame.src = current.url; }catch(err){} }, 40);
+        clearTimeout(frame._bcsT);
+        frame._bcsT = setTimeout(function(){ psSetLoading(false); }, 7000);
+        sound('click');
+      }
+      if(a === 'full'){
+        var stage = document.getElementById('psStage');
+        try{
+          if(document.fullscreenElement){ document.exitFullscreen(); }
+          else if(stage && stage.requestFullscreen){ stage.requestFullscreen(); }
+          else if(frame.requestFullscreen){ frame.requestFullscreen(); }
+          else { window.open(current.url, '_blank', 'noopener'); }
+        }catch(err){ window.open(current.url, '_blank', 'noopener'); }
+        sound('click');
+      }
+      if(a === 'collapse'){
+        var collapsed = studio.classList.toggle('collapsed');
+        act.textContent = collapsed ? '+' : '−';
+        act.setAttribute('title', collapsed ? 'Expand player' : 'Minimise player');
+        act.setAttribute('aria-label', collapsed ? 'Expand player' : 'Minimise player');
+        sound('click');
+      }
+      if(a === 'close'){
+        studio.classList.add('collapsed');
+        sound('click');
+      }
+      if(a === 'openw'){
+        window.open(current.url, '_blank', 'noopener');
+        sound('click');
+      }
+    });
+
+    window.bcsPodLoad = psLoad;
+
+    var savedSite = 'playpodcast';
+    try{ savedSite = localStorage.getItem('bcs_pod_site') || 'playpodcast'; }catch(e){}
+    if(!studio.querySelector('[data-ps-site="' + savedSite + '"]')) savedSite = 'playpodcast';
+    if(psOpen) psOpen.href = current.url;
+
+    // load (including saved tab) only when the Podcasts view is actually opened
+    var podView = document.getElementById('view-podcasts');
+    var podBooted = false;
+    function maybeBootStudio(){
+      if(podBooted || !podView || !podView.classList.contains('on')) return;
+      podBooted = true;
+      psLoad(savedSite, { silent:true });
+    }
+    try{ new MutationObserver(maybeBootStudio).observe(podView, { attributes:true, attributeFilter:['class'] }); }catch(e){}
+    setTimeout(maybeBootStudio, 300);
+  }
+
+  /* podcast cards outside the studio act as one-click tab launchers */
+  document.addEventListener('click', function(e){
+    var jump = e.target.closest ? e.target.closest('[data-ps-jump]') : null;
+    if(!jump) return;
+    e.preventDefault();
+    if(typeof window.bcsPodLoad === 'function'){
+      window.bcsPodLoad(jump.getAttribute('data-ps-jump'));
+      if(studio) studio.scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+  });
+
+  /* ---- 3. Multi sticky notes (as many as you want) ---- */
+  function notes(){
+    try{
+      if(!Array.isArray(db.stickyNotes)){
+        db.stickyNotes = [];
+        if(db.sticky){
+          db.stickyNotes.push({ id:(typeof uid === 'function' ? uid() : 'n' + Date.now()), text: db.sticky, createdAt: Date.now(), updatedAt: Date.now() });
+        }
+      }
+      if(!db.stickyNotes.length){
+        db.stickyNotes.push({ id:(typeof uid === 'function' ? uid() : 'n' + Date.now()), text:'', createdAt: Date.now(), updatedAt: Date.now() });
+      }
+      return db.stickyNotes;
+    }catch(e){ return []; }
+  }
+  window.bcsStickyNotes = notes;
+
+  var saveT = null;
+  function saveSoon(){
+    var sv = document.getElementById('stickySaved');
+    if(sv) sv.textContent = 'Saving…';
+    clearTimeout(saveT);
+    saveT = setTimeout(function(){
+      try{ if(typeof save === 'function') save(); }catch(e){}
+      var sv2 = document.getElementById('stickySaved');
+      if(sv2) sv2.textContent = 'Saved ✓';
+    }, 450);
+  }
+
+  function fmtWhen(ts){
+    try{
+      var d = new Date(ts || Date.now());
+      return d.toLocaleDateString('en-IN', { day:'2-digit', month:'short' }) + ' · ' +
+        d.toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' });
+    }catch(e){ return ''; }
+  }
+
+  window.bcsRenderStickyNotes = function(){
+    var list = document.getElementById('stickyList');
+    if(!list) return;
+    var all = notes();
+    var count = document.getElementById('snoteCount');
+    if(count) count.textContent = all.length;
+    if(!all.length){
+      list.innerHTML = '<div class="snote-empty"><b>No notes yet</b><span>“＋ Add note” dabaiye — jitni chahein utni notes bana sakte hain.</span></div>';
+      return;
+    }
+    list.innerHTML = all.map(function(n, i){
+      var text = String(n.text || '');
+      text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      return '<div class="snote" data-note="' + n.id + '" style="--i:' + i + '">' +
+        '<div class="snote-top"><span class="snote-dot" aria-hidden="true"></span><b>Note ' + (i + 1) + '</b>' +
+        '<time>' + fmtWhen(n.updatedAt || n.createdAt) + '</time>' +
+        '<button type="button" class="snote-del" data-snote-del="' + n.id + '" title="Delete this note" aria-label="Delete note ' + (i + 1) + '">✕</button></div>' +
+        '<textarea data-snote-text="' + n.id + '" rows="3" placeholder="Rate, plate number, client wish-list, site note… auto-save.">' + text + '</textarea>' +
+        '</div>';
+    }).join('');
+  };
+
+  function syncQuickNote(){
+    var q = document.getElementById('stickyNote');
+    if(!q) return;
+    var first = notes()[0];
+    if(first && document.activeElement !== q) q.value = first.text || '';
+  }
+
+  document.addEventListener('input', function(e){
+    var ta = e.target.closest ? e.target.closest('[data-snote-text]') : null;
+    if(!ta) return;
+    var id = ta.getAttribute('data-snote-text');
+    var n = notes().filter(function(x){ return x.id === id; })[0];
+    if(!n) return;
+    n.text = ta.value;
+    n.updatedAt = Date.now();
+    if(notes()[0] && notes()[0].id === id) syncQuickNote();
+    saveSoon();
+  });
+
+  document.addEventListener('click', function(e){
+    var del = e.target.closest ? e.target.closest('[data-snote-del]') : null;
+    if(!del) return;
+    var id = del.getAttribute('data-snote-del');
+    var arr = notes();
+    var idx = arr.map(function(n){ return n.id; }).indexOf(id);
+    if(idx > -1){ arr.splice(idx, 1); }
+    if(!arr.length){ arr.push({ id:(typeof uid === 'function' ? uid() : 'n' + Date.now()), text:'', createdAt:Date.now(), updatedAt:Date.now() }); }
+    window.bcsRenderStickyNotes();
+    syncQuickNote();
+    saveSoon();
+    sound('click');
+  });
+
+  var addBtn = document.getElementById('snoteAdd');
+  if(addBtn){
+    addBtn.addEventListener('click', function(){
+      notes().push({ id:(typeof uid === 'function' ? uid() : 'n' + Date.now()), text:'', createdAt:Date.now(), updatedAt:Date.now() });
+      window.bcsRenderStickyNotes();
+      var list = document.getElementById('stickyList');
+      var last = list ? list.querySelector('.snote:last-child textarea') : null;
+      if(last){ try{ last.focus({ preventScroll:true }); }catch(e){ last.focus(); } }
+      saveSoon();
+      sound('pop');
+    });
+  }
+
+  // initial paint + quick-note sync
+  window.bcsRenderStickyNotes();
+  (function(){
+    var q = document.getElementById('stickyNote');
+    if(q){
+      var first = notes()[0];
+      if(first) q.value = first.text || '';
+    }
+  })();
+
+  /* ---- 4. All-pages panel: search + ⌘K ---- */
+  var morePanel = document.getElementById('navMorePanel');
+  var moreBtn = document.getElementById('navMoreBtn');
+  var pageSearch = document.getElementById('navPageSearch');
+  if(morePanel && moreBtn){
+    function filterPages(){
+      var q = pageSearch ? pageSearch.value.trim().toLowerCase() : '';
+      $$('#navMorePanel [data-view]').forEach(function(b){
+        b.hidden = !!q && (b.textContent || '').toLowerCase().indexOf(q) === -1;
+      });
+    }
+    if(pageSearch){
+      pageSearch.addEventListener('input', filterPages);
+      pageSearch.addEventListener('keydown', function(e){
+        if(e.key === 'Escape'){ pageSearch.value = ''; filterPages(); morePanel.hidden = true; moreBtn.setAttribute('aria-expanded','false'); moreBtn.focus(); }
+        if(e.key === 'Enter'){ var first = $$('#navMorePanel [data-view]').filter(function(b){ return !b.hidden; })[0]; if(first) first.click(); }
+      });
+    }
+    function togglePages(open, focusSearch){
+      var willOpen = typeof open === 'boolean' ? open : morePanel.hidden;
+      morePanel.hidden = !willOpen;
+      moreBtn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      if(willOpen && pageSearch){
+        pageSearch.value = '';
+        filterPages();
+        if(typeof window.bcsPlaceMore === 'function') setTimeout(function(){ try{ window.bcsPlaceMore(); }catch(e){} }, 0);
+        if(focusSearch) setTimeout(function(){ try{ pageSearch.focus({ preventScroll:true }); }catch(e){ pageSearch.focus(); } }, 60);
+      }
+    }
+    moreBtn.addEventListener('click', function(){
+      setTimeout(function(){
+        if(!morePanel.hidden){
+          if(pageSearch){
+            pageSearch.value = '';
+            filterPages();
+            // Desktop: jump straight into filtering. Mobile: keep the keyboard down.
+            if(window.innerWidth >= 1000){ try{ pageSearch.focus({ preventScroll:true }); }catch(e){} }
+          }
+        }
+      }, 80);
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === '/' && !e.metaKey && !e.ctrlKey && !e.altKey){
+        var t = e.target;
+        var typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable);
+        if(typing) return;
+        e.preventDefault();
+        togglePages(true, true);
+      }
+    });
+  }
+
+  /* ---- 4b. Mobile floating "all pages" launcher (visible after scrolling) ---- */
+  if(morePanel && moreBtn){
+    var fab = document.createElement('button');
+    fab.type = 'button';
+    fab.id = 'pagesFab';
+    fab.title = 'All pages';
+    fab.setAttribute('aria-label', 'Open all pages');
+    fab.innerHTML = '▦';
+    document.body.appendChild(fab);
+    fab.addEventListener('click', function(){
+      sound('click');
+      if(morePanel.hidden) moreBtn.click();
+    });
+    var fabSync = function(){
+      fab.classList.toggle('on', window.scrollY > 240 && window.innerWidth < 1000 && morePanel.hidden);
+    };
+    window.addEventListener('scroll', fabSync, { passive:true });
+    window.addEventListener('resize', fabSync);
+    try{ new MutationObserver(fabSync).observe(morePanel, { attributes:true, attributeFilter:['hidden'] }); }catch(e){}
+    fabSync();
+  }
+
+  /* ---- 5. Light sound + 3D tap hooks site-wide ---- */
+  document.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('.dock-btn,.xbtn,.ps-tab,.ps-ico,.pod-open,.snote-add,.snote-del,#navMorePanel [data-view],.em-btn') : null;
+    if(b) sound('click');
+  }, true);
+
+  // calculator keypad: tiny pop animation on result
+  var calcPop = document.getElementById('calcPop');
+  if(calcPop){
+    calcPop.addEventListener('click', function(e){
+      var b = e.target.closest ? e.target.closest('#calcGrid button') : null;
+      if(!b) return;
+      if(b.getAttribute('data-cc') === '='){
+        var d = document.getElementById('calcDisp');
+        if(d){ d.classList.remove('bcsCalcPop'); void d.offsetWidth; d.classList.add('bcsCalcPop'); }
+      }
+      sound('click');
+    });
+  }
+
+  // Esc: close every overlay + tool pop + pages panel (works even for late markup)
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Escape') return;
+    $$('.overlay.on').forEach(function(o){ o.classList.remove('on'); });
+    $$('.toolpop.on').forEach(function(p){ p.classList.remove('on'); });
+    $$('.dock-btn.open').forEach(function(x){ x.classList.remove('open'); });
+    if(morePanel && !morePanel.hidden){ morePanel.hidden = true; if(moreBtn) moreBtn.setAttribute('aria-expanded','false'); }
+  });
+})();
 /* ---------- PWA: offline shell + persistent storage ---------- */
 if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
   window.addEventListener('load', () => {
@@ -29286,24 +30209,6 @@ try{
   if(qv && document.querySelector('#view-' + qv)) go(qv);
 }catch(e){}
 </script>
-
-<div class="overlay" id="embedDeckModal" role="dialog" aria-modal="true" aria-labelledby="embedDeckTitle">
-  <div class="modal" style="width:min(1200px,100%);height:min(82vh,900px)">
-    <div class="modal-head" style="gap:12px">
-      <button type="button" class="xbtn" data-close="embedDeckModal" aria-label="Close">✕</button>
-      <h3 id="embedDeckTitle" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">In-app view</h3>
-      <a class="btn ghost sm" id="embedDeckOpen" href="https://google.com" target="_blank" rel="noopener noreferrer">↗ Open original</a>
-    </div>
-    <div class="modal-body" style="padding:0;display:flex;flex-direction:column;height:100%">
-      <div class="embed-deck-wrap" id="embedDeckFallback" hidden style="display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:36px 22px;text-align:center">
-        <b style="font-size:18px">Site embed block kar raha hai</b>
-        <p style="color:var(--mut);max-width:420px">Is publisher ne iframe embedding block kar rakha hai (CSP frame-ancestors / X-Frame-Options). Neeche direct link se original website par padhiye — bilkul vhi content, free.</p>
-        <a class="btn primary" id="embedDeckFallbackLink" href="https://google.com" target="_blank" rel="noopener noreferrer" style="height:42px;padding:0 22px">↗ Open original site</a>
-      </div>
-      <iframe id="embedDeckIframe" title="In-app view" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="flex:1;width:100%;height:100%;border:0;display:block"></iframe>
-    </div>
-  </div>
-</div>
 
 </body>
 </html>
