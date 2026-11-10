@@ -10955,6 +10955,10 @@ body[data-theme="dark"] .view{ min-height:auto !important; overflow:visible !imp
   color:#F6F2E7 !important;
   line-height:1 !important;
   font-variant-numeric:tabular-nums !important;
+  white-space:nowrap !important;
+  display:inline-flex !important;
+  align-items:baseline !important;
+  gap:2px !important;
 }
 .dl-clock i{
   font-size:20px !important;
@@ -11781,9 +11785,9 @@ body[data-theme="dark"] #nav button.on .nav-ic{color:#171A14 !important;opacity:
 
 /* More panel — glassmorphism dropdown with all 19 pages */
 #navMorePanel{
-  position:absolute !important;
-  top:calc(100% + 12px) !important;
-  right:0 !important;
+  position:fixed !important;
+  top:100px !important;
+  right:20px !important;
   width:340px !important;
   max-height:520px !important;
   overflow-y:auto !important;
@@ -11794,7 +11798,7 @@ body[data-theme="dark"] #nav button.on .nav-ic{color:#171A14 !important;opacity:
   backdrop-filter:blur(24px) saturate(1.4) !important;
   -webkit-backdrop-filter:blur(24px) saturate(1.4) !important;
   padding:16px !important;
-  z-index:200 !important;
+  z-index:9999 !important;
   display:flex !important;
   flex-direction:column !important;
   gap:4px !important;
@@ -12269,6 +12273,133 @@ body[data-theme="dark"] ::-webkit-scrollbar-track{background:rgba(0,0,0,.2)}
 body[data-theme="dark"] ::-webkit-scrollbar-thumb{background:#4A505C;border-radius:999px}
 body[data-theme="dark"] ::-webkit-scrollbar-thumb:hover{background:#6E766A}
 
+/* ============================================================
+   SEARCH ENGINE PANEL — multiple engines, save, browse
+   ============================================================ */
+.search-engine-btn{
+  position:relative !important;
+  transition:all .25s ease !important;
+}
+.search-engine-btn:hover{
+  transform:translateY(-2px) rotate(-4deg) !important;
+  border-color:rgba(165,123,54,.3) !important;
+  color:#A57B36 !important;
+}
+
+.search-engine-panel{
+  position:fixed !important;
+  top:70px !important;
+  left:50% !important;
+  transform:translateX(-50%) !important;
+  width:min(680px, calc(100vw - 24px)) !important;
+  max-height:min(80vh, 640px) !important;
+  overflow-y:auto !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.9)) !important;
+  border:1px solid rgba(255,255,255,.6) !important;
+  border-radius:20px !important;
+  box-shadow:0 28px 70px -20px rgba(46,45,32,.25), inset 0 1px 0 rgba(255,255,255,.8) !important;
+  backdrop-filter:blur(24px) saturate(1.4) !important;
+  -webkit-backdrop-filter:blur(24px) saturate(1.4) !important;
+  padding:20px !important;
+  z-index:9998 !important;
+  display:flex !important;
+  flex-direction:column !important;
+  gap:16px !important;
+  animation:sepIn .28s cubic-bezier(.22,1,.36,1) both !important;
+}
+@keyframes sepIn{from{opacity:0;transform:translateX(-50%) translateY(-12px) scale(.96)}to{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}
+.search-engine-panel[hidden]{display:none !important}
+
+.sep-head{display:flex;align-items:center;gap:12px;margin-bottom:2px}
+.sep-head b{font-size:18px;font-weight:800;letter-spacing:-.02em;color:#2E2D20}
+.sep-head .sep-sub{font-size:11px;color:#8A877A;font-weight:600;letter-spacing:.5px}
+.sep-close{margin-left:auto}
+
+.sep-search-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.sep-search-input{
+  flex:1;min-width:200px;display:flex;align-items:center;gap:8px;
+  background:#fff;border:1px solid rgba(229,234,232,.8);border-radius:12px;padding:10px 14px;
+}
+.sep-search-input svg{opacity:.45;flex:none}
+.sep-search-input input{border:none;outline:none;background:none;width:100%;font-size:14px;font-weight:600;color:#2E2D20}
+.sep-engine-select{
+  padding:10px 14px;border:1px solid rgba(229,234,232,.8);border-radius:12px;
+  background:#fff;font-size:13px;font-weight:600;color:#2E2D20;outline:none;cursor:pointer;
+  max-width:180px;
+}
+.sep-go{flex:none}
+
+.sep-engines{display:flex;flex-wrap:wrap;gap:8px}
+.sep-engine{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 14px;border-radius:999px;
+  background:rgba(255,255,255,.6);border:1px solid rgba(229,234,232,.6);
+  cursor:pointer;transition:all .2s ease;position:relative;
+}
+.sep-engine:hover{
+  background:rgba(165,123,54,.08);border-color:rgba(165,123,54,.25);
+  transform:translateY(-2px);box-shadow:0 6px 16px -8px rgba(165,123,54,.2);
+}
+.sep-engine.on{
+  background:linear-gradient(135deg,#A57B36,#3A3928);border-color:#A57B36;color:#fff;
+}
+.sep-engine .se-icon{
+  width:28px;height:28px;border-radius:8px;display:grid;place-items:center;flex:none;
+  font-size:13px;font-weight:800;
+}
+.sep-engine .se-name{font-size:12px;font-weight:700;color:#2E2D20;white-space:nowrap}
+.sep-engine.on .se-name{color:#fff}
+.sep-engine .se-del{
+  width:20px;height:20px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:rgba(0,0,0,.06);color:#8A877A;font-size:11px;cursor:pointer;
+  transition:all .15s ease;
+}
+.sep-engine .se-del:hover{background:#A4452B;color:#fff;transform:scale(1.1)}
+.sep-engine.on .se-del{background:rgba(255,255,255,.2);color:#fff}
+.sep-engine.on .se-del:hover{background:rgba(255,255,255,.35)}
+
+.sep-add-row{display:flex;gap:8px;flex-wrap:wrap;padding-top:12px;border-top:1px solid rgba(229,234,232,.6)}
+.sep-add-input{
+  flex:1;min-width:140px;padding:9px 12px;border:1px solid rgba(229,234,232,.8);border-radius:10px;
+  background:#fff;font-size:12.5px;font-weight:600;color:#2E2D20;outline:none;
+}
+.sep-add-input:focus{border-color:#A57B36;box-shadow:0 0 0 3px rgba(165,123,54,.1)}
+.sep-add-btn{flex:none}
+
+.sep-hint{font-size:10.5px;color:#8A877A;font-weight:600;line-height:1.5;margin:0}
+.sep-hint code{background:rgba(165,123,54,.1);color:#A57B36;padding:1px 5px;border-radius:4px;font-weight:700}
+
+/* Dark mode search engine panel */
+body[data-theme="dark"] .search-engine-panel{
+  background:linear-gradient(180deg, rgba(27,32,27,.97), rgba(20,23,19,.95)) !important;
+  border:1px solid rgba(255,255,255,.1) !important;
+  box-shadow:0 28px 70px -20px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+body[data-theme="dark"] .sep-head b{color:#F2F0E5 !important}
+body[data-theme="dark"] .sep-head .sep-sub{color:#A7ACA0 !important}
+body[data-theme="dark"] .sep-search-input{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.1) !important}
+body[data-theme="dark"] .sep-search-input input{color:#F2F0E5 !important}
+body[data-theme="dark"] .sep-search-input svg{opacity:.5 !important}
+body[data-theme="dark"] .sep-engine-select{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.1) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .sep-engine{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.08) !important}
+body[data-theme="dark"] .sep-engine:hover{background:rgba(229,190,98,.1) !important;border-color:rgba(229,190,98,.25) !important}
+body[data-theme="dark"] .sep-engine.on{background:linear-gradient(135deg,#E7C46E,#B8892E) !important;border-color:rgba(229,190,98,.5) !important}
+body[data-theme="dark"] .sep-engine .se-name{color:#F2F0E5 !important}
+body[data-theme="dark"] .sep-engine.on .se-name{color:#171A14 !important}
+body[data-theme="dark"] .sep-engine .se-del{background:rgba(255,255,255,.08) !important;color:#A7ACA0 !important}
+body[data-theme="dark"] .sep-engine .se-del:hover{background:#A4452B !important;color:#fff !important}
+body[data-theme="dark"] .sep-add-input{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.1) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .sep-add-input:focus{border-color:#E5BE62 !important;box-shadow:0 0 0 3px rgba(229,190,98,.12) !important}
+body[data-theme="dark"] .sep-add-row{border-color:rgba(255,255,255,.08) !important}
+body[data-theme="dark"] .sep-hint{color:#A7ACA0 !important}
+body[data-theme="dark"] .sep-hint code{background:rgba(229,190,98,.12) !important;color:#E5BE62 !important}
+
+@media (max-width:640px){
+  .search-engine-panel{top:60px !important;padding:16px !important;gap:12px !important}
+  .sep-search-row{flex-direction:column;align-items:stretch}
+  .sep-engine-select{max-width:none}
+}
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -12486,6 +12617,9 @@ try{
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input id="globalSearch" placeholder="Search projects, developers, advisors, clients…">
     </div>
+    <button class="icon-btn search-engine-btn" id="searchEngineBtn" title="Web search engines" aria-label="Search engines">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    </button>
     <div class="hbtns">
       <button class="btn ghost" id="exportBtn" title="Backup all data as JSON">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
@@ -12556,6 +12690,30 @@ try{
     </nav>
   </div>
 </header>
+
+<!-- Search Engine Panel -->
+<div class="search-engine-panel" id="searchEnginePanel" hidden>
+  <div class="sep-head">
+    <b>Web Search Engines</b>
+    <span class="sep-sub">search karo, browse karo</span>
+    <button type="button" class="xbtn sep-close" id="searchEngineClose" aria-label="Close search engines">✕</button>
+  </div>
+  <div class="sep-search-row">
+    <div class="sep-search-input">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="sepQuery" placeholder="Search the web…" autocomplete="off">
+    </div>
+    <select class="sep-engine-select" id="sepEngineSelect" aria-label="Choose search engine"></select>
+    <button type="button" class="btn primary sep-go" id="sepGo">Search ↗</button>
+  </div>
+  <div class="sep-engines" id="sepEngines"></div>
+  <div class="sep-add-row">
+    <input type="text" id="sepNewName" placeholder="Engine name — e.g. Google" class="sep-add-input">
+    <input type="url" id="sepNewUrl" placeholder="Search URL — e.g. https://google.com/search?q=" class="sep-add-input">
+    <button type="button" class="btn ghost sm sep-add-btn" id="sepAdd">＋ Add engine</button>
+  </div>
+  <p class="sep-hint">Tip: URL me <code>{q}</code> likhein — wahan aapka search query replace hoga.</p>
+</div>
 
 <div class="accent-pop" id="accentPop" hidden role="dialog" aria-label="Desk palette picker">
   <div class="accent-pop-head"><b>Desk palette</b><span>poori site re-tint</span></div>
@@ -31400,26 +31558,20 @@ try{
     const morePanel = document.getElementById('navMorePanel');
     if(moreBtn && morePanel){
       function placeMore(){
-        const hdNow = document.querySelector('header');
-        const hr = hdNow ? hdNow.getBoundingClientRect() : { top:0, bottom:0, left:0 };
-        const vh = window.innerHeight || document.documentElement.clientHeight;
+        const moreBtnEl = document.getElementById('navMoreBtn');
         const vw = window.innerWidth || document.documentElement.clientWidth;
-        // Header has backdrop-filter, so this fixed panel is positioned inside the
-        // header's box. Convert the desired viewport point into header-local units.
-        // If the page is scrolled and the header has left the viewport, pin the
-        // panel to the top of the screen instead of off-screen above it.
-        let vTop = Math.round(hr.bottom + 8);
-        if(vTop < 10 || vTop > vh * 0.5) vTop = 10;
-        morePanel.style.setProperty('--mp-top', Math.round(vTop - hr.top) + 'px');
-        morePanel.style.setProperty('--mp-max', Math.max(240, vh - vTop - 14) + 'px');
-        if(vw < 1000){
-          morePanel.style.removeProperty('--mp-left');
-          return;
-        }
-        const r = moreBtn.getBoundingClientRect();
-        const w = Math.min(560, vw - 24);
-        const vLeft = Math.max(12, Math.min(r.left, vw - w - 12));
-        morePanel.style.setProperty('--mp-left', Math.round(vLeft - hr.left) + 'px');
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        if(!moreBtnEl) return;
+        const r = moreBtnEl.getBoundingClientRect();
+        /* Position panel below the button, aligned to its right edge */
+        let top = r.bottom + 10;
+        let left = r.right - 340; /* panel width 340px */
+        if(left < 12) left = 12;
+        if(left + 340 > vw - 12) left = vw - 340 - 12;
+        if(top + 400 > vh) top = Math.max(12, r.top - 420);
+        morePanel.style.top = top + 'px';
+        morePanel.style.left = left + 'px';
+        morePanel.style.right = 'auto';
       }
       moreBtn.addEventListener('click', function(e){
         e.stopPropagation();
@@ -31593,6 +31745,165 @@ try{
     const newsBtn = document.querySelector('#nav [data-view="news"]');
     if(newsBtn) newsBtn.addEventListener('click', function(){ setTimeout(ensureStrip, 400); });
   }catch(e){}
+})();
+
+/* ============================================================
+   SEARCH ENGINE PANEL — multiple engines, save, browse
+   ============================================================ */
+(function(){
+  "use strict";
+  try{
+    var SEP_KEY = 'bcs_search_engines_v1';
+    var DEFAULT_ENGINES = [
+      { id:'google',    name:'Google',     url:'https://www.google.com/search?q={q}',           color:'#4285F4', icon:'G' },
+      { id:'gemini',    name:'Gemini',     url:'https://gemini.google.com/search?q={q}',        color:'#4285F4', icon:'✦' },
+      { id:'claude',    name:'Claude',     url:'https://claude.ai/search?q={q}',                color:'#D97757', icon:'C' },
+      { id:'perplexity',name:'Perplexity', url:'https://www.perplexity.ai/search?q={q}',        color:'#20808D', icon:'P' },
+      { id:'chatgpt',   name:'ChatGPT',    url:'https://chat.openai.com/search?q={q}',          color:'#10A37F', icon:'C' },
+      { id:'youtube',   name:'YouTube',    url:'https://www.youtube.com/results?search_query={q}', color:'#FF0000', icon:'▶' },
+      { id:'wikipedia', name:'Wikipedia',  url:'https://en.wikipedia.org/w/index.php?search={q}', color:'#000000', icon:'W' },
+      { id:'bing',      name:'Bing',       url:'https://www.bing.com/search?q={q}',             color:'#008073', icon:'B' }
+    ];
+    var engines = [];
+    try{
+      var saved = localStorage.getItem(SEP_KEY);
+      engines = saved ? JSON.parse(saved) : DEFAULT_ENGINES.slice();
+    }catch(e){ engines = DEFAULT_ENGINES.slice(); }
+    if(!Array.isArray(engines) || !engines.length) engines = DEFAULT_ENGINES.slice();
+
+    var panel = document.getElementById('searchEnginePanel');
+    var btn = document.getElementById('searchEngineBtn');
+    var closeBtn = document.getElementById('searchEngineClose');
+    var queryInput = document.getElementById('sepQuery');
+    var engineSelect = document.getElementById('sepEngineSelect');
+    var goBtn = document.getElementById('sepGo');
+    var enginesList = document.getElementById('sepEngines');
+    var addBtn = document.getElementById('sepAdd');
+    var newName = document.getElementById('sepNewName');
+    var newUrl = document.getElementById('sepNewUrl');
+
+    if(!panel || !btn) return;
+
+    var currentEngine = engines[0];
+
+    function save(){
+      try{ localStorage.setItem(SEP_KEY, JSON.stringify(engines)); }catch(e){}
+    }
+    function esc(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+    function uid(){ return 'se-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,7); }
+
+    function renderSelect(){
+      if(!engineSelect) return;
+      engineSelect.innerHTML = engines.map(function(e){
+        return '<option value="' + esc(e.id) + '"' + (currentEngine && e.id === currentEngine.id ? ' selected' : '') + '>' + esc(e.name) + '</option>';
+      }).join('');
+    }
+
+    function renderEngines(){
+      if(!enginesList) return;
+      enginesList.innerHTML = engines.map(function(e){
+        return '<div class="sep-engine' + (currentEngine && e.id === currentEngine.id ? ' on' : '') + '" data-se-id="' + esc(e.id) + '">' +
+          '<span class="se-icon" style="background:' + esc(e.color) + '18;color:' + esc(e.color) + '">' + esc(e.icon || e.name.charAt(0)) + '</span>' +
+          '<span class="se-name">' + esc(e.name) + '</span>' +
+          '<button type="button" class="se-del" data-se-del="' + esc(e.id) + '" title="Remove">✕</button>' +
+        '</div>';
+      }).join('');
+      /* Click to select engine */
+      enginesList.querySelectorAll('.sep-engine').forEach(function(el){
+        el.addEventListener('click', function(e){
+          if(e.target.closest('.se-del')) return;
+          var id = el.getAttribute('data-se-id');
+          currentEngine = engines.find(function(x){ return x.id === id; }) || engines[0];
+          renderEngines();
+          renderSelect();
+          if(queryInput) queryInput.focus();
+        });
+      });
+      /* Delete engine */
+      enginesList.querySelectorAll('.se-del').forEach(function(el){
+        el.addEventListener('click', function(e){
+          e.stopPropagation();
+          var id = el.getAttribute('data-se-del');
+          engines = engines.filter(function(x){ return x.id !== id; });
+          if(currentEngine && currentEngine.id === id) currentEngine = engines[0];
+          save();
+          renderEngines();
+          renderSelect();
+        });
+      });
+    }
+
+    function openPanel(){
+      panel.hidden = false;
+      renderEngines();
+      renderSelect();
+      if(queryInput) setTimeout(function(){ queryInput.focus(); }, 60);
+    }
+    function closePanel(){
+      panel.hidden = true;
+    }
+    function togglePanel(){
+      if(panel.hidden) openPanel(); else closePanel();
+    }
+
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      togglePanel();
+    });
+    if(closeBtn) closeBtn.addEventListener('click', closePanel);
+    document.addEventListener('click', function(e){
+      if(!panel.hidden && !e.target.closest('#searchEnginePanel') && !e.target.closest('#searchEngineBtn')) closePanel();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && !panel.hidden) closePanel();
+    });
+
+    if(engineSelect) engineSelect.addEventListener('change', function(){
+      var id = engineSelect.value;
+      currentEngine = engines.find(function(x){ return x.id === id; }) || engines[0];
+      renderEngines();
+    });
+
+    function doSearch(){
+      var q = (queryInput.value || '').trim();
+      if(!q) return;
+      var engine = currentEngine || engines[0];
+      if(!engine) return;
+      var url = engine.url.replace(/\{q\}/g, encodeURIComponent(q));
+      window.open(url, '_blank', 'noopener');
+      queryInput.value = '';
+    }
+    if(goBtn) goBtn.addEventListener('click', doSearch);
+    if(queryInput) queryInput.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){ e.preventDefault(); doSearch(); }
+    });
+
+    if(addBtn) addBtn.addEventListener('click', function(){
+      var name = (newName.value || '').trim();
+      var url = (newUrl.value || '').trim();
+      if(!name || !url){ toast('Engine name aur URL dono likhein', true); return; }
+      if(url.indexOf('{q}') === -1){ toast('URL me {q} likhein — wahan query replace hoga', true); return; }
+      var colors = ['#4285F4','#D97757','#20808D','#10A37F','#FF0000','#8B5CF6','#EC4899','#F59E0B','#10B981','#6366F1'];
+      var engine = {
+        id: uid(),
+        name: name,
+        url: url,
+        color: colors[engines.length % colors.length],
+        icon: name.charAt(0).toUpperCase()
+      };
+      engines.push(engine);
+      currentEngine = engine;
+      save();
+      renderEngines();
+      renderSelect();
+      newName.value = '';
+      newUrl.value = '';
+      toast('Search engine "' + name + '" add ho gaya');
+    });
+
+    renderEngines();
+    renderSelect();
+  }catch(e){ console.warn('[BCS search engines]', e); }
 })();
 
 </script>
