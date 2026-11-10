@@ -10396,6 +10396,240 @@ body[data-theme="dark"] #pagesFab{background:linear-gradient(160deg,#2A2E27,#1B1
   .pod-card:hover{transform:none}
 }
 
+/* ============================================================
+   BCS Design System v126 — Dark Mode + Today Banner Redesign
+   All pages dark by default · Today banner: big date/motivation/time
+   Coming up: exactly 3 items · each with its own space
+   Small icon buttons · 3D motion · light/dark parity
+   ============================================================ */
+
+/* Dark mode as default on first load (before JS applies saved theme) */
+body:not([data-theme]){ background:#101310; color:#F2F0E5; }
+body:not([data-theme]) header{background:rgba(16,19,16,.88);border-color:rgba(48,56,48,.9);}
+
+/* --- Today banner: 4-column grid — Date | Motivation | Live Time | Month --- */
+.dash-card-header{
+  display:grid !important;
+  grid-template-columns:minmax(270px,340px) minmax(0,1fr) minmax(210px,270px) minmax(260px,340px) !important;
+  grid-template-rows:auto auto auto !important;
+  gap:0 !important;
+  align-items:start !important;
+  border-radius:26px !important;
+  border:1px solid rgba(255,255,255,.1) !important;
+  box-shadow:0 34px 76px -30px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06) !important;
+  background:linear-gradient(180deg, rgba(31,38,31,.94), rgba(16,19,16,.86)) !important;
+  overflow:hidden !important;
+  position:relative !important;
+}
+.dash-card-header::after{
+  content:'' !important;
+  position:absolute !important;
+  top:0 !important; left:0 !important; right:0 !important;
+  height:6px !important;
+  background:linear-gradient(90deg,var(--gold)0%,var(--olive)35%,var(--olive)65%,var(--gold)100%) !important;
+  pointer-events:none !important;
+}
+
+/* DATE column — big day number + greeting */
+.dash-card-header .dl-date{
+  grid-column:1 !important; grid-row:1 !important;
+  padding:22px 26px 20px !important;
+  border-right:1px solid rgba(255,255,255,.08) !important;
+  background:linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.015)) !important;
+  display:flex !important;flex-direction:column !important;gap:14px !important;
+  min-width:0 !important;
+}
+.dash-card-header .dl-date .dlf-cal{
+  width:96px !important;flex:none !important;border-radius:18px !important;
+  background:#0E100E !important;border:1px solid rgba(165,123,54,.28) !important;
+  overflow:hidden !important;box-shadow:0 12px 28px -10px rgba(0,0,0,.45) !important;
+}
+.dash-card-header .dl-date .dlf-cal-band{font-size:9px !important;letter-spacing:0.24em !important;color:var(--gold) !important;font-weight:900 !important;text-transform:uppercase !important;}
+.dash-card-header .dl-date .dlf-cal-day{font-size:56px !important;letter-spacing:-0.05em !important;color:#F6F2E7 !important;line-height:1 !important;}
+.dash-card-header .dl-date .dlf-cal-week{font-size:12px !important;color:var(--ink2) !important;font-weight:700 !important;}
+.dash-card-header .dl-meta{flex-direction:column !important;align-items:flex-start !important;gap:9px !important;min-width:0 !important;}
+.dash-card-header .dl-greet{font-size:19px !important;line-height:1.25 !important;color:#F2F0E5 !important;font-weight:700 !important;letter-spacing:-0.02em !important;white-space:normal !important;}
+.dash-card-header .dl-hi{font-size:10px !important;letter-spacing:0.22em !important;color:var(--mut) !important;font-weight:800 !important;text-transform:uppercase !important;}
+.dash-card-header .dl-line{font-size:13.5px !important;line-height:1.4 !important;color:var(--ink2) !important;font-weight:600 !important;white-space:normal !important;}
+.dash-card-header .dl-sub{font-size:10.5px !important;color:var(--mut) !important;font-weight:600 !important;white-space:normal !important;}
+.dash-card-header .miniweek{margin-top:12px !important;padding-top:11px !important;border-top:1px solid rgba(255,255,255,.08) !important;display:grid !important;grid-template-columns:repeat(7,minmax(0,1fr)) !important;gap:6px !important;flex:none !important;}
+.dash-card-header .mini-day{padding:8px 2px !important;border-radius:11px !important;cursor:pointer !important;background:rgba(255,255,255,.04) !important;border:1px solid rgba(255,255,255,.06) !important;}
+
+/* MOTIVATION column — quote prominent */
+.dash-card-header .dl-quote{
+  grid-column:2 !important; grid-row:1 !important;
+  padding:24px 30px 20px !important;
+  border-left:1px solid rgba(255,255,255,.06) !important;
+  border-right:1px solid rgba(255,255,255,.06) !important;
+  display:flex !important;flex-direction:column !important;gap:18px !important;
+  min-width:0 !important;background:transparent !important;
+}
+.dash-card-header .dl-quote p{font-size:20px !important;line-height:1.75 !important;color:#F2F0E5 !important;font-weight:600 !important;font-style:italic !important;flex:1 !important;min-width:0 !important;margin:0 !important;}
+.dash-card-header .dl-quote .th-qmark{font-size:56px !important;color:var(--gold) !important;opacity:0.75 !important;flex:none !important;align-self:flex-start !important;margin-top:-8px !important;}
+.dash-card-header .dl-quote .th-qby{font-size:10px !important;color:var(--mut) !important;font-weight:700 !important;letter-spacing:0.6px !important;text-transform:uppercase !important;align-self:flex-end !important;flex:none !important;}
+
+/* Refresh / copy — small icons only */
+.dash-card-header .dl-quote .th-qrefresh{
+  width:40px !important;height:40px !important;border-radius:12px !important;font-size:18px !important;
+  background:rgba(255,255,255,.08) !important;border:1px solid rgba(165,123,54,.28) !important;color:#F2F0E5 !important;
+  display:grid !important;place-items:center !important;flex:none !important;align-self:flex-end !important;
+  margin-top:10px !important;box-shadow:0 8px 18px -10px rgba(0,0,0,.45) !important;transition:all .18s !important;
+}
+.dash-card-header .dl-quote .th-qrefresh:hover{
+  background:rgba(165,123,54,.18) !important;transform:rotate(-18deg) scale(1.08) !important;
+  border-color:var(--gold) !important;color:#F6F2E7 !important;
+}
+
+/* TIME column — live clock prominent */
+.dash-card-header .dl-time{
+  grid-column:3 !important; grid-row:1 !important;
+  padding:22px 18px 18px !important;
+  border-left:1px solid rgba(255,255,255,.06) !important;
+  background:linear-gradient(135deg, rgba(255,255,255,.035), rgba(255,255,255,.01)) !important;
+  display:flex !important;flex-direction:column !important;align-items:center !important;
+  justify-content:center !important;text-align:center !important;min-width:0 !important;gap:8px !important;
+}
+.dash-card-header .dl-clock{font-size:60px !important;letter-spacing:-0.05em !important;color:#F6F2E7 !important;line-height:1 !important;}
+.dash-card-header .dl-clock i{font-size:26px !important;color:var(--gold) !important;}
+.dash-card-header .dl-timemeta{display:flex !important;flex-direction:column !important;gap:5px !important;align-items:center !important;text-align:center !important;}
+.dash-card-header .dl-zone{font-size:10px !important;letter-spacing:2px !important;color:var(--mut) !important;font-weight:800 !important;text-transform:uppercase !important;}
+.dash-card-header .dl-zone b{color:var(--gold) !important;}
+.dash-card-header .dl-detail{font-size:13px !important;font-weight:700 !important;color:var(--ink2) !important;white-space:normal !important;text-align:center !important;line-height:1.4 !important;}
+.dash-card-header .dl-next{font-size:10px !important;font-weight:800 !important;color:#E5BE62 !important;background:rgba(229,190,98,.14) !important;border:1px solid rgba(229,190,98,.28) !important;border-radius:999px !important;padding:4px 14px !important;margin-top:10px !important;white-space:normal !important;text-align:center !important;line-height:1.35 !important;}
+
+/* MONTH column — compact calendar */
+.dash-card-header .dl-month{
+  grid-column:4 !important; grid-row:1 !important;
+  padding:20px 16px 16px !important;border-left:1px solid rgba(255,255,255,.06) !important;
+  background:rgba(27,32,27,.72) !important;
+  display:flex !important;flex-direction:column !important;align-items:flex-start !important;min-width:0 !important;
+}
+.dl-month-head{flex-direction:row !important;align-items:center !important;justify-content:space-between !important;gap:8px !important;margin-bottom:8px !important;}
+.dl-month-head strong{font-size:13px !important;color:#F2F0E5 !important;letter-spacing:0.4px !important;}
+.dl-month-head button{font-size:9px !important;padding:4px 10px !important;}
+.mini-month-head,.mini-month-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.mini-month-head span{text-align:center;font-size:8px;font-weight:900;letter-spacing:.5px;color:var(--mut)}
+.mini-month-day{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;height:25px;border-radius:8px;border:1px solid transparent;background:transparent;color:var(--ink2);font-size:10px;font-weight:750;transition:.16s;padding:0}
+.mini-month-day.today .mini-month-date{width:19px;height:19px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,var(--olive),#2C2B1C);color:#F6F2E7}
+
+/* FESTIVAL row — full width */
+.dash-card-header .dl-festival{
+  grid-column:1/-1 !important; grid-row:2 !important;
+  padding:18px 26px 19px !important;border-top:1px solid rgba(255,255,255,.08) !important;
+  background:linear-gradient(90deg, rgba(165,123,54,.14) 0%, rgba(229,190,98,.1) 52%, rgba(165,123,54,.08) 100%) !important;
+}
+.dash-card-header .dlf-main h3{font-size:30px !important;letter-spacing:-0.03em !important;color:#F2F0E5 !important;}
+.dlf-name-en{font-size:10px !important;letter-spacing:2.4px !important;color:var(--gold) !important;font-weight:800 !important;text-transform:uppercase !important;}
+.dlf-greet-hi{font-size:14px !important;line-height:1.6 !important;color:#F2F0E5 !important;font-weight:600 !important;}
+.dlf-greet-en{font-size:13px !important;line-height:1.55 !important;color:var(--mut) !important;font-style:italic !important;}
+
+/* MERGED BOTTOM — Coming up (3 items) + BCS + small icon buttons */
+.dl-merged-bottom{
+  grid-column:1/-1 !important; grid-row:3 !important;
+  padding:16px 26px 18px !important;border-top:1px solid rgba(255,255,255,.08) !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01)) !important;
+  display:flex !important;align-items:flex-start !important;gap:16px !important;flex-wrap:nowrap !important;min-width:0 !important;
+}
+
+/* Coming up — exactly 3 items, each with its own space */
+.dl-upcoming{flex:1 !important;min-width:0 !important;display:flex !important;flex-direction:column !important;gap:10px !important;}
+.dl-upcoming .th-up-head{display:flex !important;align-items:baseline !important;gap:8px !important;padding:0 !important;}
+.dl-upcoming .th-up-head span{font-size:9px !important;font-weight:800 !important;letter-spacing:2.2px !important;text-transform:uppercase !important;color:var(--gold) !important;}
+.dl-upcoming .th-up-head small{font-size:7.5px !important;letter-spacing:0.8px !important;text-transform:uppercase !important;color:var(--mut) !important;opacity:0.7 !important;white-space:nowrap !important;}
+.dl-upcoming .th-up-list{display:grid !important;grid-template-columns:repeat(3,1fr) !important;gap:12px !important;margin-top:2px !important;}
+.th-up-item{
+  display:flex !important;flex-direction:column !important;align-items:flex-start !important;gap:7px !important;
+  padding:13px 15px !important;border-radius:18px !important;background:rgba(255,255,255,.05) !important;
+  border:1px solid rgba(255,255,255,.08) !important;text-align:left !important;cursor:pointer !important;
+  height:auto !important;min-height:100px !important;
+  transition:all 0.28s cubic-bezier(0.22,1,0.36,1) !important;
+  position:relative !important;overflow:hidden !important;
+}
+.th-up-item::before{
+  content:'' !important;position:absolute !important;inset:0 !important;
+  background:linear-gradient(135deg,rgba(165,123,54,.14),transparent 60%) !important;opacity:0 !important;
+  transition:opacity .28s ease !important;pointer-events:none !important;
+}
+.th-up-item:hover{
+  border-color:rgba(165,123,54,.4) !important;
+  background:rgba(255,255,255,.09) !important;
+  box-shadow:0 14px 32px -18px rgba(120,84,10,.35) !important;
+  transform:translateY(-5px) !important;
+}
+.th-up-item:hover::before{opacity:1 !important;}
+.th-up-emoji{font-size:22px !important;line-height:1 !important;flex:none !important;}
+.th-up-copy{display:flex !important;flex-direction:column !important;gap:4px !important;min-width:0 !important;}
+.th-up-copy b{font-size:14px !important;color:#F2F0E5 !important;font-weight:700 !important;white-space:normal !important;line-height:1.3 !important;}
+.th-up-copy span{font-size:11px !important;color:var(--mut) !important;white-space:normal !important;line-height:1.4 !important;}
+.th-up-days{font-size:9px !important;font-weight:800 !important;padding:3px 11px !important;border-radius:999px !important;background:rgba(229,190,98,.16) !important;border:1px solid rgba(229,190,98,.28) !important;color:#E5BE62 !important;white-space:nowrap !important;flex:none !important;align-self:flex-start !important;}
+
+/* BCS share — compact card */
+.dl-bcs{flex:0 0 auto !important;padding:11px 18px 11px 14px !important;border-radius:18px !important;min-width:260px !important;max-width:380px !important;}
+.dl-bcs:hover{transform:translateY(-2px) !important;}
+.bcs-visit-card{flex:0 0 auto !important;min-width:260px !important;}
+.dl-bcs .th-logo{width:42px !important;height:42px !important;border-radius:12px !important;font-size:14px !important;}
+.dl-bcs-copy{min-width:0 !important;}
+.dl-bcs .dl-bcs-name{font-size:14px !important;white-space:normal !important;line-height:1.25 !important;}
+.dl-bcs .dl-bcs-handle{font-size:10.5px !important;white-space:normal !important;}
+.dl-bcs .dl-bcs-cta{font-size:8.5px !important;margin-top:2px !important;}
+.dl-bcs-go{font-size:19px !important;}
+
+/* Ghost buttons — compact icon buttons */
+.dl-bcs-ghost{
+  width:48px !important;min-height:48px !important;padding:9px 6px !important;border-radius:14px !important;
+  flex:none !important;font-size:18px !important;display:flex !important;flex-direction:column !important;
+  align-items:center !important;justify-content:center !important;gap:2px !important;
+}
+.dl-bcs-ghost em{font-size:6.5px !important;line-height:1.15 !important;letter-spacing:0.4px !important;text-align:center !important;}
+
+/* --- Mobile Today banner: stacked, everything full width --- */
+@media (max-width:900px){
+  .dash-card-header{
+    grid-template-columns:minmax(0,1fr) !important;
+    grid-template-rows:auto auto auto auto auto auto !important;
+  }
+  .dash-card-header .dl-date{grid-column:1 !important;grid-row:1 !important;border-right:none !important;border-bottom:1px solid rgba(255,255,255,.08) !important;}
+  .dash-card-header .dl-quote{grid-column:1 !important;grid-row:2 !important;border-left:none !important;border-right:none !important;border-bottom:1px solid rgba(255,255,255,.08) !important;}
+  .dash-card-header .dl-time{grid-column:1 !important;grid-row:3 !important;border-left:none !important;border-bottom:1px solid rgba(255,255,255,.08) !important;}
+  .dash-card-header .dl-month{grid-column:1 !important;grid-row:4 !important;border-left:none !important;border-bottom:1px solid rgba(255,255,255,.08) !important;}
+  .dash-card-header .dl-festival{grid-column:1 !important;grid-row:5 !important;}
+  .dl-merged-bottom{grid-column:1 !important;grid-row:6 !important;flex-direction:column !important;align-items:stretch !important;gap:14px !important;}
+  .dl-upcoming .th-up-list{grid-template-columns:repeat(3,1fr) !important;}
+  .dl-bcs{flex:1 1 100% !important;min-width:auto !important;max-width:none !important;}
+  .dl-bcs-ghost{width:48px !important;min-height:48px !important;flex:0 0 auto !important;}
+}
+
+/* --- Site-wide button polish: sane sizes, ≥44px tap targets --- */
+.btn{height:46px !important;min-height:46px !important;padding:0 20px !important;border-radius:13px !important;font-size:14px !important;}
+.btn.sm{height:38px !important;min-height:38px !important;padding:0 14px !important;border-radius:11px !important;font-size:13px !important;}
+.icon-btn{width:42px !important;height:42px !important;border-radius:12px !important;}
+.icon-btn svg{width:19px !important;height:19px !important;}
+.dl-bcs-ghost, .dl-mini-btn{height:46px !important;min-height:46px !important;border-radius:13px !important;}
+
+/* --- Site-wide card 3D depth + consistent radii --- */
+.cat-card,.cor-card,.dash-card,.panel,.modal{
+  border-radius:18px !important;
+  transition:transform 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s ease, border-color 0.28s ease !important;
+}
+.cat-card:hover,.cor-card:hover,.dash-card:hover{
+  transform:translateY(-4px) !important;
+  box-shadow:0 28px 56px -22px rgba(0,0,0,.4) !important;
+}
+
+/* --- Final flourish: ambient dashboard glow --- */
+#view-dashboard::before{
+  content:"";position:absolute;inset:-10% -10% -10% -10%;z-index:-1;
+  background:radial-gradient(700px 450px at 15% 15%, rgba(165,123,54,.1), transparent 50%),
+              radial-gradient(600px 350px at 85% 85%, rgba(65,132,88,.08), transparent 50%);
+  pointer-events:none;
+}
+#view-dashboard{position:relative;overflow:hidden;}
+
+/* --- Dark theme defaults for v126 banner elements --- */
+body[data-theme="dark"] .dl-merged-bottom{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01)) !important;}
+body[data-theme="dark"] .th-up-item:hover{background:rgba(255,255,255,.07) !important;border-color:rgba(165,123,54,.3) !important;}
+body[data-theme="dark"] .dl-quote{background:transparent !important;}
+
 
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
@@ -17611,7 +17845,7 @@ function renderDailyHero(){
   const iso = todayISO();
   const fest = festivalByDate(iso) || virtualTodayFestival();
   const isFestDay = !!festivalByDate(iso);
-  const upcoming = upcomingFestivals(4, iso);
+  const upcoming = upcomingFestivals(3, iso);
   const nextFest = upcoming[0] || null;
   const setText = (ids, val) => ids.forEach(id => { const el = $('#'+id); if(el) el.textContent = val; });
 
@@ -17713,7 +17947,7 @@ function renderDailyHero(){
 
   const up = $('#thUpcoming');
   if(up){
-    const list = upcomingFestivals(4, iso);
+    const list = upcomingFestivals(3, iso);
     up.innerHTML = list.length ? list.map(f => {
       const diff = daysFromToday(f.date);
       const when = diff === 1 ? 'tomorrow' : diff + ' days';
@@ -27180,7 +27414,7 @@ function initExperience(){
   try{ savedAccent = localStorage.getItem(ACCENT_KEY) || 'emerald'; }catch(e){}
   applyAccent(savedAccent);
   let savedTheme = 'light';
-  try{ savedTheme = localStorage.getItem(THEME_KEY) || 'light'; }catch(e){}
+  try{ savedTheme = localStorage.getItem(THEME_KEY) || 'dark'; }catch(e){}
   applyTheme(savedTheme);
 
   const accentBtn = $('#accentBtn');
