@@ -11336,8 +11336,8 @@ body[data-theme="dark"] .tb-fest-btn:hover{
    Labels hidden, icons centered · More arrow shows all pages
    ============================================================ */
 
-/* Hide text labels on nav buttons — icons only */
-#nav .nav-lbl{display:none !important}
+/* Show text labels on nav buttons (labels visible) */
+#nav .nav-lbl{display:inline !important}
 
 /* Icon-only nav buttons — centered, compact, pill-shaped */
 #nav button{
@@ -31421,7 +31421,20 @@ try{
         const vLeft = Math.max(12, Math.min(r.left, vw - w - 12));
         morePanel.style.setProperty('--mp-left', Math.round(vLeft - hr.left) + 'px');
       }
-      moreBtn.addEventListener('click', function(){ setTimeout(placeMore, 0); });
+      moreBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var isOpen = !morePanel.hidden;
+        if(isOpen){
+          morePanel.hidden = true;
+          moreBtn.setAttribute('aria-expanded','false');
+          moreBtn.classList.remove('on');
+        }else{
+          morePanel.hidden = false;
+          moreBtn.setAttribute('aria-expanded','true');
+          moreBtn.classList.add('on');
+          setTimeout(placeMore, 0);
+        }
+      });
       window.bcsPlaceMore = placeMore;
       window.addEventListener('resize', placeMore);
       window.addEventListener('scroll', function(){
