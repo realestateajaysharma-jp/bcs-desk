@@ -11449,11 +11449,177 @@ body[data-theme="dark"] #navMoreBtn:hover{
   background:rgba(255,255,255,.12) !important;
 }
 
-/* Mobile — keep icon-only, compact */
+/* ============================================================
+   MODERN NAV BAR — all pages in one sleek horizontal row
+   Glassmorphism container · pill buttons · glow states · scroll-snap
+   ============================================================ */
+
+.hwrap-nav{padding-top:0 !important;padding-bottom:16px !important}
+.hwrap-nav #nav{
+  display:flex !important;
+  flex-wrap:nowrap !important;
+  gap:8px !important;
+  padding:10px 14px !important;
+  border-radius:20px !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.38)) !important;
+  border:1px solid rgba(255,255,255,.5) !important;
+  backdrop-filter:blur(20px) saturate(1.4) !important;
+  -webkit-backdrop-filter:blur(20px) saturate(1.4) !important;
+  box-shadow:0 20px 40px -16px rgba(46,45,32,.18), inset 0 1px 0 rgba(255,255,255,.7) !important;
+  overflow-x:auto !important;
+  scroll-snap-type:x mandatory !important;
+  scrollbar-width:none !important;
+  max-width:100% !important;
+}
+.hwrap-nav #nav::-webkit-scrollbar{display:none !important}
+
+/* Each nav button — modern pill with icon + label */
+#nav button{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:7px !important;
+  padding:0 14px !important;
+  height:44px !important;
+  min-height:44px !important;
+  border-radius:14px !important;
+  border:1px solid transparent !important;
+  background:rgba(255,255,255,.35) !important;
+  color:var(--ink2) !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+  letter-spacing:0.2px !important;
+  white-space:nowrap !important;
+  cursor:pointer !important;
+  transition:all .28s cubic-bezier(.22,1,.36,1) !important;
+  scroll-snap-align:center !important;
+  flex:0 0 auto !important;
+  position:relative !important;
+  overflow:hidden !important;
+}
+#nav button::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  border-radius:14px !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.5), rgba(255,255,255,.05)) !important;
+  opacity:0 !important;
+  transition:opacity .2s ease !important;
+  pointer-events:none !important;
+}
+#nav button:hover::before{opacity:1 !important;}
+#nav button:hover{
+  border-color:rgba(165,123,54,.25) !important;
+  background:rgba(255,255,255,.55) !important;
+  color:var(--ink) !important;
+  transform:translateY(-3px) !important;
+  box-shadow:0 10px 24px -10px rgba(46,45,32,.15) !important;
+}
+#nav button:active{transform:translateY(0) scale(.96) !important}
+
+/* Active state — gold gradient with glow */
+#nav button.on{
+  background:linear-gradient(135deg, var(--gold) 0%, var(--olive) 100%) !important;
+  border-color:var(--gold) !important;
+  color:#171A14 !important;
+  box-shadow:0 8px 20px -6px rgba(165,123,54,.45) !important;
+  transform:translateY(-3px) !important;
+  color:#171A14 !important;
+}
+#nav button.on::after{
+  content:"" !important;
+  position:absolute !important;
+  bottom:-2px !important;
+  left:50% !important;
+  width:10px !important;
+  height:3px !important;
+  background:var(--gold) !important;
+  border-radius:2px !important;
+  transform:translateX(-50%) !important;
+  opacity:1 !important;
+}
+#nav button.on .nav-ic{color:#171A14 !important;opacity:1 !important}
+
+/* Icon */
+#nav .nav-ic{
+  font-size:16px !important;
+  width:20px !important;
+  height:20px !important;
+  line-height:1 !important;
+  display:grid !important;
+  place-items:center !important;
+  flex:none !important;
+  opacity:.85 !important;
+}
+/* Label */
+#nav .nav-lbl{
+  font-size:12px !important;
+  font-weight:700 !important;
+  letter-spacing:0.2px !important;
+  flex:none !important;
+  white-space:nowrap !important;
+}
+
+/* Notification dot */
+#nav .nav-dot{
+  width:6px !important;height:6px !important;border-radius:50% !important;
+  background:var(--gold) !important;box-shadow:0 0 6px var(--gold) !important;
+  flex:none !important;margin-left:2px !important;
+}
+#nav .nav-dot.gold{background:var(--gold) !important;box-shadow:0 0 8px var(--gold) !important;}
+#nav .nav-dot{background:#E5BE62 !important;box-shadow:0 0 6px #E5BE62 !important;}
+
+/* Dark theme — deep glass */
+body[data-theme="dark"] .hwrap-nav #nav{
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)) !important;
+  border:1px solid rgba(255,255,255,.12) !important;
+  box-shadow:0 20px 40px -16px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+body[data-theme="dark"] #nav button{
+  background:rgba(255,255,255,.06) !important;
+  border:1px solid rgba(255,255,255,.08) !important;
+  color:var(--mut) !important;
+}
+body[data-theme="dark"] #nav button:hover{
+  background:rgba(255,255,255,.12) !important;
+  border-color:rgba(165,123,54,.3) !important;
+  color:#F2F0E5 !important;
+  transform:translateY(-3px) !important;
+  box-shadow:0 10px 24px -10px rgba(165,123,54,.2) !important;
+}
+body[data-theme="dark"] #nav button.on{
+  background:linear-gradient(135deg,#E7C46E 0%,#B8892E 100%) !important;
+  border-color:rgba(229,190,98,.5) !important;
+  color:#171A14 !important;
+  box-shadow:0 10px 24px -8px rgba(229,190,98,.35) !important;
+}
+body[data-theme="dark"] #nav button.on .nav-ic{color:#171A14 !important;opacity:1 !important}
+
+/* Mobile — horizontal scroll with snap, compact pills */
 @media (max-width:820px){
-  #nav button{width:42px !important;height:42px !important;padding:7px 8px !important;border-radius:11px !important;}
-  #nav .nav-ic{font-size:16px !important;width:16px !important;height:16px !important;}
-  #navMoreBtn{width:auto !important;padding:7px 10px !important;border-radius:11px !important;}
+  .hwrap-nav #nav{
+    padding:8px 12px !important;
+    gap:6px !important;
+    border-radius:16px !important;
+  }
+  #nav button{
+    height:40px !important;
+    min-height:40px !important;
+    padding:0 12px !important;
+    border-radius:12px !important;
+    font-size:11px !important;
+  }
+  #nav .nav-ic{font-size:15px !important;width:18px !important;height:18px !important;}
+  #nav .nav-lbl{font-size:11px !important;}
+  #nav button.on::after{bottom:-2px !important;height:2.5px !important;}
+}
+
+/* Extra small — tighter */
+@media (max-width:480px){
+  .hwrap-nav #nav{padding:7px 10px !important;gap:5px !important;}
+  #nav button{height:38px !important;min-height:38px !important;padding:0 10px !important;border-radius:11px !important;}
+  #nav .nav-ic{font-size:14px !important;}
+  #nav .nav-lbl{font-size:10px !important;}
 }
 
 /* ---------------- mobile / installed app ---------------- */
@@ -11714,32 +11880,6 @@ try{
       <button type="button" data-view="pulse" aria-label="Market Pulse"><span class="nav-ic" aria-hidden="true">↗</span><span class="nav-lbl">Market Pulse</span><span class="nav-dot gold" aria-hidden="true"></span></button>
       <button type="button" data-view="news" aria-label="News"><span class="nav-ic" aria-hidden="true">📰</span><span class="nav-lbl">News</span><span class="nav-dot" aria-hidden="true"></span></button>
       <button type="button" data-view="calc" aria-label="Calculators"><span class="nav-ic" aria-hidden="true">⌘</span><span class="nav-lbl">Calculators</span></button>
-      <div class="nav-more-wrap">
-        <button type="button" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" title="All pages" aria-label="More pages"><span class="nav-ic" aria-hidden="true">▦</span><span class="nav-chev" aria-hidden="true">▾</span></button>
-        <div class="nav-more-panel" id="navMorePanel" hidden>
-          <div class="nav-more-head"><b>All 19 pages</b><span>one click away</span></div>
-          <input type="search" id="navPageSearch" class="nav-page-search" placeholder="Jump to a page…  /" aria-label="Search all pages" autocomplete="off" spellcheck="false">
-          <button type="button" data-view="dashboard"><span class="nav-ic" aria-hidden="true">⌂</span>Dashboard</button>
-          <button type="button" data-view="advisory"><span class="nav-ic" aria-hidden="true">✦</span>Advisory</button>
-          <button type="button" data-view="projects"><span class="nav-ic" aria-hidden="true">▣</span>Projects</button>
-          <button type="button" data-view="developers"><span class="nav-ic" aria-hidden="true">◈</span>Developers</button>
-          <button type="button" data-view="clients"><span class="nav-ic" aria-hidden="true">◐</span>Clients</button>
-          <button type="button" data-view="dayplan"><span class="nav-ic" aria-hidden="true">◷</span>Day Plan</button>
-          <button type="button" data-view="pulse"><span class="nav-ic" aria-hidden="true">↗</span>Market Pulse</button>
-          <button type="button" data-view="news"><span class="nav-ic" aria-hidden="true">📰</span>News</button>
-          <button type="button" data-view="calc"><span class="nav-ic" aria-hidden="true">⌘</span>Calculators</button>
-          <button type="button" data-view="advisors"><span class="nav-ic" aria-hidden="true">◎</span>Advisors</button>
-          <button type="button" data-view="partners"><span class="nav-ic" aria-hidden="true">◉</span>Partners</button>
-          <button type="button" data-view="resale"><span class="nav-ic" aria-hidden="true">⇌</span>Resale</button>
-          <button type="button" data-view="analytics"><span class="nav-ic" aria-hidden="true">▥</span>Analytics</button>
-          <button type="button" data-view="tax"><span class="nav-ic" aria-hidden="true">₹</span>Tax &amp; Advice</button>
-          <button type="button" data-view="terminology"><span class="nav-ic" aria-hidden="true">Aa</span>Terminology</button>
-          <button type="button" data-view="links"><span class="nav-ic" aria-hidden="true">⛓</span>Links</button>
-          <button type="button" data-view="templates"><span class="nav-ic" aria-hidden="true">▤</span>Templates</button>
-          <button type="button" data-view="podcasts"><span class="nav-ic" aria-hidden="true">🎙</span>Podcasts</button>
-          <button type="button" data-view="health"><span class="nav-ic" aria-hidden="true">♥</span>Health</button>
-        </div>
-      </div>
     </nav>
   </div>
 </header>
