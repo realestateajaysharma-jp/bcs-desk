@@ -11622,6 +11622,327 @@ body[data-theme="dark"] #nav button.on .nav-ic{color:#171A14 !important;opacity:
   #nav .nav-lbl{font-size:10px !important;}
 }
 
+/* ============================================================
+   MODERN LABELLED NAV BAR — separate row, More toggle
+   Main 9 pages with labels · More panel with all 19 pages
+   Glassmorphism · Sleek · Modern
+   ============================================================ */
+
+/* Nav container — glassmorphism row */
+.hwrap-nav{padding:8px 24px 12px !important}
+.hwrap-nav #nav{
+  display:flex !important;
+  flex-wrap:nowrap !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:8px !important;
+  padding:10px 14px !important;
+  border-radius:20px !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.38)) !important;
+  border:1px solid rgba(255,255,255,.5) !important;
+  backdrop-filter:blur(20px) saturate(1.4) !important;
+  -webkit-backdrop-filter:blur(20px) saturate(1.4) !important;
+  box-shadow:0 20px 40px -16px rgba(46,45,32,.18), inset 0 1px 0 rgba(255,255,255,.7) !important;
+  overflow-x:auto !important;
+  scroll-snap-type:x mandatory !important;
+  scrollbar-width:none !important;
+  max-width:100% !important;
+}
+.hwrap-nav #nav::-webkit-scrollbar{display:none !important}
+
+/* Each nav button — modern pill with icon + label */
+#nav button{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:8px !important;
+  padding:0 16px !important;
+  height:44px !important;
+  min-height:44px !important;
+  border-radius:14px !important;
+  border:1px solid transparent !important;
+  background:rgba(255,255,255,.35) !important;
+  color:#5A574A !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+  letter-spacing:0.2px !important;
+  white-space:nowrap !important;
+  cursor:pointer !important;
+  transition:all .28s cubic-bezier(.22,1,.36,1) !important;
+  scroll-snap-align:center !important;
+  flex:0 0 auto !important;
+  position:relative !important;
+}
+#nav button:hover{
+  border-color:rgba(165,123,54,.25) !important;
+  background:rgba(255,255,255,.55) !important;
+  color:#A57B36 !important;
+  transform:translateY(-2px) !important;
+  box-shadow:0 8px 20px -8px rgba(46,45,32,.12) !important;
+}
+#nav button:active{transform:translateY(0) scale(.96) !important}
+
+/* Active state — gold gradient with glow */
+#nav button.on{
+  background:linear-gradient(135deg, var(--gold) 0%, var(--olive) 100%) !important;
+  border-color:var(--gold) !important;
+  color:#FFFFFF !important;
+  box-shadow:0 6px 18px -6px rgba(165,123,54,.4) !important;
+  transform:translateY(-1px) !important;
+}
+#nav button.on .nav-ic{color:#FFFFFF !important;opacity:1 !important}
+#nav button.on::before{
+  content:"" !important;
+  position:absolute !important;
+  bottom:-2px !important;
+  left:50% !important;
+  width:10px !important;
+  height:2px !important;
+  background:var(--gold) !important;
+  border-radius:2px !important;
+  transform:translateX(-50%) !important;
+  opacity:1 !important;
+}
+
+/* Icon */
+#nav .nav-ic{
+  font-size:15px !important;
+  width:18px !important;
+  height:18px !important;
+  line-height:1 !important;
+  display:grid !important;
+  place-items:center !important;
+  flex:none !important;
+  opacity:.85 !important;
+}
+/* Label */
+#nav .nav-lbl{
+  font-size:13px !important;
+  font-weight:700 !important;
+  letter-spacing:0.2px !important;
+  flex:none !important;
+  white-space:nowrap !important;
+}
+
+/* Notification dot */
+#nav .nav-dot{
+  width:6px !important;height:6px !important;border-radius:50% !important;
+  background:var(--gold) !important;box-shadow:0 0 6px var(--gold) !important;
+  flex:none !important;margin-left:2px !important;
+}
+#nav .nav-dot.gold{background:var(--gold) !important;box-shadow:0 0 8px var(--gold) !important;}
+#nav .nav-dot{background:#E5BE62 !important;box-shadow:0 0 6px #E5BE62 !important;}
+
+/* More button — sleek toggle */
+.nav-more-wrap{position:relative !important;display:inline-flex !important;flex:none !important}
+#navMoreBtn{
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:6px !important;
+  padding:0 14px !important;
+  height:44px !important;
+  min-height:44px !important;
+  border-radius:14px !important;
+  border:1px solid transparent !important;
+  background:rgba(255,255,255,.35) !important;
+  color:#5A574A !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+  letter-spacing:0.2px !important;
+  cursor:pointer !important;
+  transition:all .28s cubic-bezier(.22,1,.36,1) !important;
+  position:relative !important;
+  flex:0 0 auto !important;
+}
+#navMoreBtn:hover{
+  border-color:rgba(165,123,54,.25) !important;
+  background:rgba(255,255,255,.55) !important;
+  color:#A57B36 !important;
+  transform:translateY(-2px) !important;
+  box-shadow:0 8px 20px -8px rgba(46,45,32,.12) !important;
+}
+#navMoreBtn .nav-ic{font-size:16px !important;opacity:.85 !important}
+#navMoreBtn .nav-lbl{font-size:13px !important;font-weight:700 !important}
+#navMoreBtn .nav-chev{
+  font-size:10px !important;
+  margin-left:2px !important;
+  opacity:.6 !important;
+  font-weight:700 !important;
+  transition:transform .2s ease !important;
+}
+#navMoreBtn[aria-expanded="true"] .nav-chev{transform:rotate(180deg) !important}
+#navMoreBtn.on{
+  background:linear-gradient(135deg, var(--gold) 0%, var(--olive) 100%) !important;
+  border-color:var(--gold) !important;
+  color:#FFFFFF !important;
+  box-shadow:0 6px 18px -6px rgba(165,123,54,.4) !important;
+}
+#navMoreBtn.on .nav-ic,#navMoreBtn.on .nav-chev{color:#FFFFFF !important;opacity:1 !important}
+
+/* More panel — glassmorphism dropdown with all 19 pages */
+#navMorePanel{
+  position:absolute !important;
+  top:calc(100% + 12px) !important;
+  right:0 !important;
+  width:340px !important;
+  max-height:520px !important;
+  overflow-y:auto !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.88)) !important;
+  border:1px solid rgba(255,255,255,.6) !important;
+  border-radius:20px !important;
+  box-shadow:0 24px 60px -20px rgba(46,45,32,.22), inset 0 1px 0 rgba(255,255,255,.8) !important;
+  backdrop-filter:blur(24px) saturate(1.4) !important;
+  -webkit-backdrop-filter:blur(24px) saturate(1.4) !important;
+  padding:16px !important;
+  z-index:200 !important;
+  display:flex !important;
+  flex-direction:column !important;
+  gap:4px !important;
+  animation:morePanelIn .25s cubic-bezier(.22,1,.36,1) both !important;
+}
+@keyframes morePanelIn{from{opacity:0;transform:translateY(-10px) scale(.95)}to{opacity:1;transform:none}}
+#navMorePanel[hidden]{display:none !important}
+#navMorePanel .nav-more-head{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  padding-bottom:12px !important;
+  margin-bottom:8px !important;
+  border-bottom:1px solid rgba(229,234,232,.6) !important;
+}
+#navMorePanel .nav-more-head b{font-size:14px !important;font-weight:800 !important;color:#2E2D20 !important;letter-spacing:-0.01em !important}
+#navMorePanel .nav-more-head span{font-size:10px !important;color:#8A877A !important;font-weight:600 !important;letter-spacing:0.5px !important}
+#navMorePanel .nav-page-search{
+  width:100% !important;
+  padding:10px 14px !important;
+  border-radius:12px !important;
+  border:1px solid rgba(229,234,232,.8) !important;
+  background:rgba(255,255,255,.8) !important;
+  color:#2E2D20 !important;
+  font-size:13px !important;
+  font-weight:600 !important;
+  margin-bottom:10px !important;
+  outline:none !important;
+  transition:all .2s ease !important;
+}
+#navMorePanel .nav-page-search:focus{
+  border-color:#A57B36 !important;
+  box-shadow:0 0 0 3px rgba(165,123,54,.12) !important;
+}
+#navMorePanel .nav-page-search::placeholder{color:#8A877A !important}
+#navMorePanel [data-view]{
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+  padding:10px 14px !important;
+  border-radius:12px !important;
+  border:1px solid transparent !important;
+  background:transparent !important;
+  color:#2E2D20 !important;
+  font-size:13px !important;
+  font-weight:600 !important;
+  text-align:left !important;
+  cursor:pointer !important;
+  transition:all .2s ease !important;
+  white-space:nowrap !important;
+}
+#navMorePanel [data-view]:hover{
+  background:rgba(165,123,54,.08) !important;
+  border-color:rgba(165,123,54,.2) !important;
+  color:#A57B36 !important;
+  transform:translateX(4px) !important;
+}
+#navMorePanel [data-view] .nav-ic{
+  font-size:16px !important;
+  width:20px !important;
+  height:20px !important;
+  display:grid !important;
+  place-items:center !important;
+  flex:none !important;
+  opacity:.8 !important;
+}
+
+/* Dark theme — deep glass nav */
+body[data-theme="dark"] .hwrap-nav #nav{
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)) !important;
+  border:1px solid rgba(255,255,255,.12) !important;
+  box-shadow:0 20px 40px -16px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+body[data-theme="dark"] #nav button{
+  background:rgba(255,255,255,.06) !important;
+  border:1px solid rgba(255,255,255,.08) !important;
+  color:#A7ACA0 !important;
+}
+body[data-theme="dark"] #nav button:hover{
+  background:rgba(255,255,255,.12) !important;
+  border-color:rgba(165,123,54,.3) !important;
+  color:#F2F0E5 !important;
+  box-shadow:0 8px 20px -8px rgba(165,123,54,.2) !important;
+}
+body[data-theme="dark"] #nav button.on{
+  background:linear-gradient(135deg,#E7C46E,#B8892E) !important;
+  border-color:rgba(229,190,98,.5) !important;
+  color:#171A14 !important;
+  box-shadow:0 6px 18px -6px rgba(229,190,98,.45) !important;
+}
+body[data-theme="dark"] #nav button.on .nav-ic{color:#171A14 !important}
+body[data-theme="dark"] #navMoreBtn{
+  background:rgba(255,255,255,.06) !important;
+  border:1px solid rgba(255,255,255,.08) !important;
+  color:#A7ACA0 !important;
+}
+body[data-theme="dark"] #navMoreBtn:hover{
+  background:rgba(255,255,255,.12) !important;
+  border-color:rgba(165,123,54,.3) !important;
+  color:#F2F0E5 !important;
+}
+body[data-theme="dark"] #navMoreBtn.on{
+  background:linear-gradient(135deg,#E7C46E,#B8892E) !important;
+  border-color:rgba(229,190,98,.5) !important;
+  color:#171A14 !important;
+}
+body[data-theme="dark"] #navMorePanel{
+  background:linear-gradient(180deg, rgba(27,32,27,.97), rgba(20,23,19,.95)) !important;
+  border:1px solid rgba(255,255,255,.1) !important;
+  box-shadow:0 24px 60px -20px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+body[data-theme="dark"] #navMorePanel .nav-more-head{border-color:rgba(255,255,255,.08) !important}
+body[data-theme="dark"] #navMorePanel .nav-more-head b{color:#F2F0E5 !important}
+body[data-theme="dark"] #navMorePanel .nav-more-head span{color:#A7ACA0 !important}
+body[data-theme="dark"] #navMorePanel .nav-page-search{
+  background:rgba(255,255,255,.06) !important;
+  border-color:rgba(255,255,255,.1) !important;
+  color:#F2F0E5 !important;
+}
+body[data-theme="dark"] #navMorePanel .nav-page-search:focus{border-color:#E5BE62 !important;box-shadow:0 0 0 3px rgba(229,190,98,.12) !important}
+body[data-theme="dark"] #navMorePanel .nav-page-search::placeholder{color:#A7ACA0 !important}
+body[data-theme="dark"] #navMorePanel [data-view]{color:#F2F0E5 !important}
+body[data-theme="dark"] #navMorePanel [data-view]:hover{
+  background:rgba(229,190,98,.1) !important;
+  border-color:rgba(229,190,98,.25) !important;
+  color:#E5BE62 !important;
+}
+
+/* Mobile — compact nav with scroll */
+@media (max-width:900px){
+  .hwrap-nav{padding:6px 12px 10px !important}
+  .hwrap-nav #nav{padding:8px 10px !important;gap:6px !important;border-radius:16px !important;justify-content:flex-start !important}
+  #nav button{height:40px !important;min-height:40px !important;padding:0 12px !important;border-radius:12px !important;font-size:12px !important;gap:6px !important}
+  #nav .nav-ic{font-size:14px !important;width:16px !important;height:16px !important}
+  #nav .nav-lbl{font-size:12px !important}
+  #navMoreBtn{height:40px !important;min-height:40px !important;padding:0 12px !important;border-radius:12px !important;font-size:12px !important}
+  #navMorePanel{width:min(340px, calc(100vw - 24px)) !important;right:auto !important;left:0 !important}
+}
+
+/* Extra small */
+@media (max-width:480px){
+  .hwrap-nav #nav{padding:7px 8px !important;gap:5px !important}
+  #nav button{height:38px !important;min-height:38px !important;padding:0 10px !important;border-radius:11px !important}
+  #nav .nav-ic{font-size:13px !important}
+  #nav .nav-lbl{font-size:11px !important}
+  #navMoreBtn{height:38px !important;min-height:38px !important;padding:0 10px !important;border-radius:11px !important}
+}
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -11880,6 +12201,32 @@ try{
       <button type="button" data-view="pulse" aria-label="Market Pulse"><span class="nav-ic" aria-hidden="true">↗</span><span class="nav-lbl">Market Pulse</span><span class="nav-dot gold" aria-hidden="true"></span></button>
       <button type="button" data-view="news" aria-label="News"><span class="nav-ic" aria-hidden="true">📰</span><span class="nav-lbl">News</span><span class="nav-dot" aria-hidden="true"></span></button>
       <button type="button" data-view="calc" aria-label="Calculators"><span class="nav-ic" aria-hidden="true">⌘</span><span class="nav-lbl">Calculators</span></button>
+      <div class="nav-more-wrap">
+        <button type="button" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" title="All pages" aria-label="More pages"><span class="nav-ic" aria-hidden="true">▦</span><span class="nav-lbl">More</span><span class="nav-chev" aria-hidden="true">▾</span></button>
+        <div class="nav-more-panel" id="navMorePanel" hidden>
+          <div class="nav-more-head"><b>All 19 pages</b><span>one click away</span></div>
+          <input type="search" id="navPageSearch" class="nav-page-search" placeholder="Jump to a page…  /" aria-label="Search all pages" autocomplete="off" spellcheck="false">
+          <button type="button" data-view="dashboard"><span class="nav-ic" aria-hidden="true">⌂</span>Dashboard</button>
+          <button type="button" data-view="advisory"><span class="nav-ic" aria-hidden="true">✦</span>Advisory</button>
+          <button type="button" data-view="projects"><span class="nav-ic" aria-hidden="true">▣</span>Projects</button>
+          <button type="button" data-view="developers"><span class="nav-ic" aria-hidden="true">◈</span>Developers</button>
+          <button type="button" data-view="clients"><span class="nav-ic" aria-hidden="true">◐</span>Clients</button>
+          <button type="button" data-view="dayplan"><span class="nav-ic" aria-hidden="true">◷</span>Day Plan</button>
+          <button type="button" data-view="pulse"><span class="nav-ic" aria-hidden="true">↗</span>Market Pulse</button>
+          <button type="button" data-view="news"><span class="nav-ic" aria-hidden="true">📰</span>News</button>
+          <button type="button" data-view="calc"><span class="nav-ic" aria-hidden="true">⌘</span>Calculators</button>
+          <button type="button" data-view="advisors"><span class="nav-ic" aria-hidden="true">◎</span>Advisors</button>
+          <button type="button" data-view="partners"><span class="nav-ic" aria-hidden="true">◉</span>Partners</button>
+          <button type="button" data-view="resale"><span class="nav-ic" aria-hidden="true">⇌</span>Resale</button>
+          <button type="button" data-view="analytics"><span class="nav-ic" aria-hidden="true">▥</span>Analytics</button>
+          <button type="button" data-view="tax"><span class="nav-ic" aria-hidden="true">₹</span>Tax &amp; Advice</button>
+          <button type="button" data-view="terminology"><span class="nav-ic" aria-hidden="true">Aa</span>Terminology</button>
+          <button type="button" data-view="links"><span class="nav-ic" aria-hidden="true">⛓</span>Links</button>
+          <button type="button" data-view="templates"><span class="nav-ic" aria-hidden="true">▤</span>Templates</button>
+          <button type="button" data-view="podcasts"><span class="nav-ic" aria-hidden="true">🎙</span>Podcasts</button>
+          <button type="button" data-view="health"><span class="nav-ic" aria-hidden="true">♥</span>Health</button>
+        </div>
+      </div>
     </nav>
   </div>
 </header>
