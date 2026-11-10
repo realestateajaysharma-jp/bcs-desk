@@ -10819,6 +10819,757 @@ body[data-theme="dark"] *:focus-visible{ outline:2.5px solid rgba(165,123,54,.55
 body[data-theme="dark"] main{ padding-bottom:110px !important; }
 body[data-theme="dark"] .view{ min-height:auto !important; overflow:visible !important; }
 
+/* ============================================================
+   BCS v128 — TODAY BANNER COMPLETE REDESIGN
+   Dark · Big date/motivation/time · Small icon buttons
+   Coming up x3 · each with its own space · modern & aligned
+   ============================================================ */
+
+/* Main card — 3 equal columns, clean grid */
+.dash-card-header{
+  display:grid !important;
+  grid-template-columns:1fr 1fr 1fr !important;
+  grid-template-rows:auto auto auto auto auto !important;
+  gap:0 !important;
+  align-items:start !important;
+  border-radius:24px !important;
+  border:1px solid rgba(255,255,255,.1) !important;
+  box-shadow:0 34px 76px -30px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06) !important;
+  background:linear-gradient(180deg, rgba(31,38,31,.94), rgba(16,19,16,.86)) !important;
+  overflow:hidden !important;
+  position:relative !important;
+  min-height:auto !important;
+}
+.dash-card-header::after{
+  content:'' !important;
+  position:absolute !important;
+  top:0 !important; left:0 !important; right:0 !important;
+  height:6px !important;
+  background:linear-gradient(90deg,var(--gold)0%,var(--olive)35%,var(--olive)65%,var(--gold)100%) !important;
+  pointer-events:none !important;
+}
+
+/* Top row container */
+.tb-top{
+  display:grid !important;
+  grid-template-columns:1fr 1fr 1fr !important;
+  gap:0 !important;
+  align-items:start !important;
+  border-bottom:1px solid rgba(255,255,255,.06) !important;
+}
+
+/* Each column */
+.tb-col{
+  padding:22px 26px 20px !important;
+  border-right:1px solid rgba(255,255,255,.06) !important;
+  display:flex !important;
+  flex-direction:column !important;
+  gap:14px !important;
+  min-width:0 !important;
+}
+.tb-col:last-child{border-right:none !important;}
+
+/* Section label */
+.tb-label{
+  font-size:9px !important;
+  letter-spacing:0.24em !important;
+  text-transform:uppercase !important;
+  font-weight:900 !important;
+  color:var(--gold) !important;
+  opacity:0.8 !important;
+  margin-bottom:2px !important;
+}
+
+/* ===== DATE COLUMN ===== */
+.tb-date{
+  background:linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.01)) !important;
+  border-right:none !important;
+}
+.tb-date-main{
+  display:flex !important;
+  align-items:baseline !important;
+  gap:10px !important;
+  margin-top:6px !important;
+}
+.tb-month{
+  font-size:11px !important;
+  letter-spacing:0.3em !important;
+  text-transform:uppercase !important;
+  color:var(--gold) !important;
+  font-weight:900 !important;
+}
+.tb-day{
+  font-size:64px !important;
+  letter-spacing:-0.06em !important;
+  color:#F6F2E7 !important;
+  line-height:1 !important;
+  font-variant-numeric:tabular-nums !important;
+}
+.tb-week{
+  font-size:14px !important;
+  color:var(--ink2) !important;
+  font-weight:700 !important;
+  margin-top:4px !important;
+}
+.tb-date-meta{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:6px !important;
+  margin-top:10px !important;
+}
+.tb-greet{
+  font-size:18px !important;
+  line-height:1.25 !important;
+  color:#F2F0E5 !important;
+  font-weight:700 !important;
+  letter-spacing:-0.02em !important;
+}
+.tb-date-line{
+  font-size:13.5px !important;
+  line-height:1.4 !important;
+  color:var(--ink2) !important;
+  font-weight:600 !important;
+}
+.tb-date-hi{
+  font-size:11px !important;
+  color:var(--mut) !important;
+  font-weight:600 !important;
+  text-transform:uppercase !important;
+  letter-spacing:0.16em !important;
+}
+
+/* Weekday strip */
+.tb-weekstrip{
+  display:grid !important;
+  grid-template-columns:repeat(7,minmax(0,1fr)) !important;
+  gap:6px !important;
+  margin-top:14px !important;
+  padding-top:12px !important;
+  border-top:1px solid rgba(255,255,255,.08) !important;
+}
+.tb-weekstrip .mini-day{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  gap:2px !important;
+  padding:7px 2px !important;
+  border-radius:11px !important;
+  background:rgba(255,255,255,.04) !important;
+  border:1px solid rgba(255,255,255,.06) !important;
+  color:var(--ink2) !important;
+  cursor:pointer !important;
+  transition:all .18s !important;
+}
+.tb-weekstrip .mini-day span{font-size:8px !important;font-weight:800 !important;letter-spacing:0.5px !important;color:var(--mut) !important;}
+.tb-weekstrip .mini-day b{font-size:13px !important;line-height:1 !important;}
+.tb-weekstrip .mini-day i{font-style:normal !important;font-size:10px !important;line-height:1 !important;color:var(--mut) !important;}
+.tb-weekstrip .mini-day.today{background:linear-gradient(135deg,var(--olive),#2C2B1C) !important;color:#F6F2E7 !important;border-color:transparent !important;}
+.tb-weekstrip .mini-day.today span,.tb-weekstrip .mini-day.today i{color:rgba(246,242,231,.75) !important;}
+.tb-weekstrip .mini-day.fest{border-color:rgba(165,123,54,.55) !important;background:#2B2A1D !important;color:var(--ink) !important;}
+
+/* ===== MOTIVATION COLUMN ===== */
+.tb-motive{
+  background:transparent !important;
+  border-right:1px solid rgba(255,255,255,.06) !important;
+  justify-content:center !important;
+}
+.tb-quote-box{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:14px !important;
+  text-align:center !important;
+}
+.tb-quote-mark{
+  font-size:56px !important;
+  color:var(--gold) !important;
+  opacity:0.75 !important;
+  align-self:center !important;
+  line-height:1 !important;
+  margin-top:-10px !important;
+}
+.tb-quote-box p{
+  font-size:20px !important;
+  line-height:1.75 !important;
+  color:#F2F0E5 !important;
+  font-weight:600 !important;
+  font-style:italic !important;
+  margin:0 !important;
+  flex:1 !important;
+}
+.tb-quote-by{
+  font-size:10px !important;
+  color:var(--mut) !important;
+  font-weight:700 !important;
+  letter-spacing:0.6px !important;
+  text-transform:uppercase !important;
+  align-self:center !important;
+}
+
+/* Small icon buttons — refresh / copy */
+.tb-quote-actions{
+  display:flex !important;
+  gap:10px !important;
+  justify-content:center !important;
+  margin-top:8px !important;
+}
+.tb-icon-btn{
+  width:44px !important;
+  height:44px !important;
+  border-radius:12px !important;
+  display:grid !important;
+  place-items:center !important;
+  background:rgba(255,255,255,.08) !important;
+  border:1px solid rgba(165,123,54,.28) !important;
+  color:#F2F0E5 !important;
+  font-size:18px !important;
+  cursor:pointer !important;
+  transition:all .18s !important;
+  flex:none !important;
+}
+.tb-icon-btn:hover{
+  background:rgba(165,123,54,.18) !important;
+  transform:rotate(-18deg) scale(1.08) !important;
+  border-color:var(--gold) !important;
+  color:#F6F2E7 !important;
+}
+.tb-icon-btn:active{transform:scale(0.92) !important;}
+
+/* Weather */
+.tb-weather{
+  margin-top:14px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:6px !important;
+  font-size:10.5px !important;
+  font-weight:650 !important;
+  color:var(--mut) !important;
+}
+
+/* ===== TIME COLUMN ===== */
+.tb-time{
+  background:linear-gradient(135deg, rgba(255,255,255,.03), rgba(255,255,255,.005)) !important;
+  border-right:none !important;
+  align-items:center !important;
+  text-align:center !important;
+}
+.tb-clock-box{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  gap:2px !important;
+}
+.dl-clock{
+  font-size:64px !important;
+  letter-spacing:-0.06em !important;
+  color:#F6F2E7 !important;
+  line-height:1 !important;
+  font-variant-numeric:tabular-nums !important;
+}
+.dl-clock i{
+  font-size:28px !important;
+  color:var(--gold) !important;
+  font-style:normal !important;
+}
+.tb-meridiem{
+  font-size:12px !important;
+  letter-spacing:2px !important;
+  color:var(--gold) !important;
+  font-weight:800 !important;
+  text-transform:uppercase !important;
+  margin-top:2px !important;
+}
+.tb-time-meta{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:4px !important;
+  align-items:center !important;
+  margin-top:10px !important;
+}
+.tb-zone{
+  font-size:10px !important;
+  letter-spacing:1.6px !important;
+  color:var(--mut) !important;
+  font-weight:800 !important;
+  text-transform:uppercase !important;
+}
+.tb-next{
+  font-size:10px !important;
+  font-weight:800 !important;
+  color:#E5BE62 !important;
+  background:rgba(229,190,98,.14) !important;
+  border:1px solid rgba(229,190,98,.28) !important;
+  border-radius:999px !important;
+  padding:4px 14px !important;
+  white-space:normal !important;
+  text-align:center !important;
+  line-height:1.35 !important;
+}
+.tb-quicklink{
+  width:100% !important;
+  justify-content:center !important;
+  height:44px !important;
+  font-size:12px !important;
+  border-radius:12px !important;
+  margin-top:10px !important;
+  background:rgba(255,255,255,.06) !important;
+  border:1px solid rgba(255,255,255,.08) !important;
+  color:var(--gold) !important;
+  font-weight:800 !important;
+  letter-spacing:0.5px !important;
+  transition:all .18s !important;
+}
+.tb-quicklink:hover{
+  background:rgba(255,255,255,.12) !important;
+  border-color:var(--gold) !important;
+  color:#F6F2E7 !important;
+  transform:translateY(-1px) !important;
+}
+
+/* Day plan small icon button */
+.tb-dayplan{
+  margin-top:10px !important;
+  display:flex !important;
+  justify-content:center !important;
+}
+.tb-dayplan .tb-icon-btn{
+  width:48px !important;
+  height:48px !important;
+  font-size:20px !important;
+}
+.tb-plan-copy{
+  display:none !important;
+}
+
+/* ===== FESTIVAL ROW ===== */
+.tb-festival{
+  grid-column:1/-1 !important;
+  grid-row:3 !important;
+  padding:18px 26px 19px !important;
+  border-top:1px solid rgba(255,255,255,.08) !important;
+  background:linear-gradient(90deg, rgba(165,123,54,.14) 0%, rgba(229,190,98,.1) 52%, rgba(165,123,54,.08) 100%) !important;
+  display:flex !important;
+  align-items:flex-start !important;
+}
+.tb-fest-inner{
+  flex:1 !important;
+  display:flex !important;
+  flex-direction:column !important;
+  gap:10px !important;
+  min-width:0 !important;
+}
+.tb-fest-top{
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+  flex-wrap:wrap !important;
+}
+.tb-fest-emoji{font-size:20px !important;line-height:1 !important;flex:none !important;}
+.tb-fest-name{font-size:11px !important;font-weight:800 !important;letter-spacing:2px !important;text-transform:uppercase !important;color:var(--gold) !important;flex:none !important;}
+.tb-fest-chip{font-size:9px !important;font-weight:800 !important;letter-spacing:1px !important;color:#E5BE62 !important;background:rgba(229,190,98,.12) !important;border:1px solid rgba(229,190,98,.25) !important;border-radius:999px !important;padding:3px 10px !important;margin-left:auto !important;white-space:nowrap !important;}
+.tb-festival h3{
+  font-family:'Fraunces',serif !important;
+  font-size:32px !important;
+  letter-spacing:-0.03em !important;
+  color:#F2F0E5 !important;
+  font-weight:600 !important;
+  line-height:1.1 !important;
+  margin:0 !important;
+}
+.tb-fest-en{
+  font-size:11px !important;
+  letter-spacing:2.4px !important;
+  color:var(--gold) !important;
+  font-weight:800 !important;
+  text-transform:uppercase !important;
+  margin-top:2px !important;
+}
+.tb-fest-greets{
+  display:flex !important;
+  gap:20px !important;
+  align-items:baseline !important;
+  flex-wrap:wrap !important;
+  margin-top:6px !important;
+}
+.tb-greet-hi{
+  font-size:14px !important;
+  line-height:1.6 !important;
+  color:#F2F0E5 !important;
+  font-weight:600 !important;
+  margin:0 !important;
+  max-width:520px !important;
+}
+.tb-greet-en{
+  font-size:13px !important;
+  line-height:1.55 !important;
+  color:var(--mut) !important;
+  font-style:italic !important;
+  margin:0 !important;
+  max-width:480px !important;
+}
+.tb-fest-actions{
+  display:flex !important;
+  gap:8px !important;
+  margin-top:10px !important;
+  flex-wrap:wrap !important;
+}
+.tb-fest-btn{
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:6px !important;
+  padding:7px 14px !important;
+  border-radius:10px !important;
+  border:1px solid rgba(165,123,54,.28) !important;
+  background:rgba(255,255,255,.05) !important;
+  color:#F2F0E5 !important;
+  font-size:10.5px !important;
+  font-weight:800 !important;
+  cursor:pointer !important;
+  transition:all .18s !important;
+  white-space:nowrap !important;
+}
+.tb-fest-btn:hover{
+  background:rgba(255,255,255,.12) !important;
+  border-color:var(--gold) !important;
+  color:#F6F2E7 !important;
+  transform:translateY(-1px) !important;
+}
+
+/* ===== BOTTOM ROW — Coming up x3 | BCS | icon buttons ===== */
+.tb-bottom{
+  grid-column:1/-1 !important;
+  grid-row:4 !important;
+  padding:16px 26px 18px !important;
+  border-top:1px solid rgba(255,255,255,.08) !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01)) !important;
+  display:flex !important;
+  align-items:flex-start !important;
+  gap:16px !important;
+  flex-wrap:nowrap !important;
+  min-width:0 !important;
+}
+.tb-upcoming{
+  flex:1 !important;
+  min-width:0 !important;
+  display:flex !important;
+  flex-direction:column !important;
+  gap:10px !important;
+}
+.tb-up-head{
+  display:flex !important;
+  align-items:baseline !important;
+  gap:8px !important;
+  margin-bottom:2px !important;
+}
+.tb-up-head span{
+  font-size:9px !important;
+  font-weight:800 !important;
+  letter-spacing:2.2px !important;
+  text-transform:uppercase !important;
+  color:var(--gold) !important;
+}
+.tb-up-head small{
+  font-size:7.5px !important;
+  letter-spacing:0.8px !important;
+  text-transform:uppercase !important;
+  color:var(--mut) !important;
+  opacity:0.7 !important;
+  white-space:nowrap !important;
+}
+.tb-up-list{
+  display:grid !important;
+  grid-template-columns:repeat(3,1fr) !important;
+  gap:12px !important;
+}
+.tb-up-item{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  gap:7px !important;
+  padding:13px 15px !important;
+  border-radius:18px !important;
+  background:rgba(255,255,255,.05) !important;
+  border:1px solid rgba(255,255,255,.08) !important;
+  text-align:left !important;
+  cursor:pointer !important;
+  height:auto !important;
+  min-height:110px !important;
+  transition:all 0.28s cubic-bezier(0.22,1,0.36,1) !important;
+  position:relative !important;
+  overflow:hidden !important;
+}
+.tb-up-item::before{
+  content:'' !important;
+  position:absolute !important;
+  inset:0 !important;
+  background:linear-gradient(135deg,rgba(165,123,54,.14),transparent 60%) !important;
+  opacity:0 !important;
+  transition:opacity .28s ease !important;
+  pointer-events:none !important;
+}
+.tb-up-item:hover{
+  border-color:rgba(165,123,54,.4) !important;
+  background:rgba(255,255,255,.09) !important;
+  box-shadow:0 14px 32px -18px rgba(120,84,10,.35) !important;
+  transform:translateY(-5px) !important;
+}
+.tb-up-item:hover::before{opacity:1 !important;}
+.tb-up-emoji{font-size:24px !important;line-height:1 !important;flex:none !important;}
+.tb-up-copy{display:flex !important;flex-direction:column !important;gap:4px !important;min-width:0 !important;}
+.tb-up-copy b{
+  font-size:14px !important;
+  color:#F2F0E5 !important;
+  font-weight:700 !important;
+  white-space:normal !important;
+  line-height:1.3 !important;
+}
+.tb-up-copy span{
+  font-size:11px !important;
+  color:var(--mut) !important;
+  white-space:normal !important;
+  line-height:1.4 !important;
+}
+.tb-up-days{
+  font-size:9px !important;
+  font-weight:800 !important;
+  padding:3px 11px !important;
+  border-radius:999px !important;
+  background:rgba(229,190,98,.16) !important;
+  border:1px solid rgba(229,190,98,.28) !important;
+  color:#E5BE62 !important;
+  white-space:nowrap !important;
+  flex:none !important;
+  align-self:flex-start !important;
+}
+
+/* BCS share card */
+.tb-bcs{
+  flex:0 0 auto !important;
+  padding:11px 18px 11px 14px !important;
+  border-radius:18px !important;
+  min-width:260px !important;
+  max-width:380px !important;
+  background:linear-gradient(135deg,var(--olive),#2C2B1C) !important;
+  color:#F6F2E7 !important;
+  border:none !important;
+  box-shadow:0 14px 30px -16px rgba(44,43,28,.55), inset 0 1px 0 rgba(255,255,255,.14) !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:14px !important;
+  cursor:pointer !important;
+  transition:all .2s !important;
+}
+.tb-bcs:hover{
+  transform:translateY(-2px) !important;
+  filter:brightness(1.08) !important;
+}
+.tb-bcs-logo{
+  width:44px !important;
+  height:44px !important;
+  border-radius:12px !important;
+  display:grid !important;
+  place-items:center !important;
+  font-family:'Fraunces',serif !important;
+  font-weight:700 !important;
+  font-size:15px !important;
+  color:#F6F2E7 !important;
+  background:rgba(246,242,231,.14) !important;
+  border:1px solid rgba(246,242,231,.35) !important;
+  flex:none !important;
+}
+.tb-bcs-copy{display:flex !important;flex-direction:column !important;gap:1px !important;min-width:0 !important;}
+.tb-bcs .tb-bcs-name{
+  font-family:'Fraunces',serif !important;
+  font-size:14px !important;
+  font-weight:600 !important;
+  color:#fff !important;
+  letter-spacing:-0.2px !important;
+  white-space:normal !important;
+  line-height:1.25 !important;
+}
+.tb-bcs .tb-bcs-handle{
+  font-style:normal !important;
+  font-size:10.5px !important;
+  font-weight:600 !important;
+  color:rgba(246,242,231,.72) !important;
+  white-space:normal !important;
+}
+.tb-bcs .tb-bcs-cta{
+  font-style:normal !important;
+  font-size:8.5px !important;
+  font-weight:800 !important;
+  letter-spacing:1.6px !important;
+  text-transform:uppercase !important;
+  color:#EED98F !important;
+  white-space:normal !important;
+  margin-top:2px !important;
+}
+.tb-bcs-qr{
+  display:grid !important;
+  place-items:center !important;
+  width:40px !important;
+  height:40px !important;
+  border-radius:11px !important;
+  background:rgba(246,242,231,.14) !important;
+  border:1px solid rgba(246,242,231,.35) !important;
+  color:#EED98F !important;
+  font-size:10px !important;
+  font-weight:900 !important;
+  letter-spacing:0.6px !important;
+  flex:none !important;
+}
+.tb-bcs-go{
+  font-size:19px !important;
+  color:#EED98F !important;
+  line-height:1 !important;
+  flex:none !important;
+  transition:transform .18s !important;
+}
+.tb-bcs:hover .tb-bcs-go{transform:translate(2px,-2px) !important;}
+
+/* Icon buttons — refresh, road hub, manage */
+.tb-icons{
+  display:flex !important;
+  gap:10px !important;
+  flex:none !important;
+  align-items:flex-start !important;
+}
+.tb-icons .tb-icon-btn{
+  width:48px !important;
+  height:48px !important;
+  border-radius:14px !important;
+  font-size:20px !important;
+  background:rgba(255,255,255,.06) !important;
+  border:1px solid rgba(255,255,255,.08) !important;
+  color:#F2F0E5 !important;
+}
+
+/* ===== MARKET STRIP ===== */
+.tb-market{
+  grid-column:1/-1 !important;
+  grid-row:5 !important;
+  padding:10px 26px !important;
+  border-top:1px solid rgba(255,255,255,.06) !important;
+  background:rgba(27,32,27,.6) !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:10px !important;
+}
+.tb-market-label{
+  font-size:9px !important;
+  font-weight:900 !important;
+  letter-spacing:2px !important;
+  text-transform:uppercase !important;
+  color:var(--gold) !important;
+  flex:none !important;
+}
+.tb-market-label i{font-style:normal !important;opacity:0.7 !important;font-weight:600 !important;}
+.tb-market-val{
+  font-size:12px !important;
+  font-weight:700 !important;
+  color:var(--ink2) !important;
+  flex:none !important;
+}
+
+/* ===== MOBILE — stacked, everything full width ===== */
+@media (max-width:900px){
+  .dash-card-header{
+    grid-template-columns:1fr !important;
+    grid-template-rows:auto auto auto auto auto !important;
+  }
+  .tb-top{
+    grid-template-columns:1fr !important;
+    border-bottom:none !important;
+  }
+  .tb-col{
+    border-right:none !important;
+    border-bottom:1px solid rgba(255,255,255,.06) !important;
+    padding:18px 20px !important;
+  }
+  .tb-col:last-child{border-bottom:none !important;}
+  .tb-day{font-size:48px !important;}
+  .dl-clock{font-size:48px !important;}
+  .tb-up-list{grid-template-columns:repeat(3,1fr) !important;}
+  .tb-bcs{min-width:auto !important;max-width:none !important;flex:1 1 100% !important;}
+  .tb-icons{flex-wrap:wrap !important;justify-content:center !important;margin-top:10px !important;}
+  .tb-fest-actions{justify-content:center !important;}
+}
+
+/* ===== DARK MODE OVERRIDES ===== */
+body[data-theme="dark"] .dash-card-header{
+  background:linear-gradient(180deg, rgba(31,38,31,.94), rgba(16,19,16,.86)) !important;
+  border-color:rgba(255,255,255,.1) !important;
+}
+body[data-theme="dark"] .tb-col{
+  background:rgba(27,32,27,.4) !important;
+  border-color:rgba(255,255,255,.06) !important;
+}
+body[data-theme="dark"] .tb-date{
+  background:linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.01)) !important;
+}
+body[data-theme="dark"] .tb-time{
+  background:linear-gradient(135deg, rgba(255,255,255,.03), rgba(255,255,255,.005)) !important;
+}
+body[data-theme="dark"] .tb-festival{
+  background:linear-gradient(90deg, rgba(165,123,54,.14) 0%, rgba(229,190,98,.1) 52%, rgba(165,123,54,.08) 100%) !important;
+}
+body[data-theme="dark"] .tb-bottom{
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01)) !important;
+}
+body[data-theme="dark"] .tb-up-item{
+  background:rgba(255,255,255,.05) !important;
+  border-color:rgba(255,255,255,.08) !important;
+}
+body[data-theme="dark"] .tb-up-item:hover{
+  background:rgba(255,255,255,.09) !important;
+  border-color:rgba(165,123,54,.4) !important;
+}
+body[data-theme="dark"] .tb-icon-btn{
+  background:rgba(255,255,255,.08) !important;
+  border-color:rgba(165,123,54,.28) !important;
+  color:#F2F0E5 !important;
+}
+body[data-theme="dark"] .tb-icon-btn:hover{
+  background:rgba(165,123,54,.18) !important;
+  border-color:var(--gold) !important;
+  color:#F6F2E7 !important;
+}
+body[data-theme="dark"] .tb-quicklink{
+  background:rgba(255,255,255,.06) !important;
+  border-color:rgba(255,255,255,.08) !important;
+  color:var(--gold) !important;
+}
+body[data-theme="dark"] .tb-quicklink:hover{
+  background:rgba(255,255,255,.12) !important;
+  border-color:var(--gold) !important;
+  color:#F6F2E7 !important;
+}
+body[data-theme="dark"] .tb-icons .tb-icon-btn{
+  background:rgba(255,255,255,.06) !important;
+  border-color:rgba(255,255,255,.08) !important;
+  color:#F2F0E5 !important;
+}
+body[data-theme="dark"] .tb-market{
+  background:rgba(27,32,27,.6) !important;
+  border-color:rgba(255,255,255,.06) !important;
+}
+body[data-theme="dark"] .tb-market-val{color:var(--ink2) !important;}
+body[data-theme="dark"] .tb-weekstrip .mini-day{
+  background:rgba(255,255,255,.04) !important;
+  border-color:rgba(255,255,255,.06) !important;
+  color:var(--ink2) !important;
+}
+body[data-theme="dark"] .tb-fest-btn{
+  background:rgba(255,255,255,.05) !important;
+  border-color:rgba(165,123,54,.28) !important;
+  color:#F2F0E5 !important;
+}
+body[data-theme="dark"] .tb-fest-btn:hover{
+  background:rgba(255,255,255,.12) !important;
+  border-color:var(--gold) !important;
+  color:#F6F2E7 !important;
+}
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
@@ -11147,100 +11898,121 @@ try{
 
     <!-- v15: dashboard card grid — header (date/time/quote) + festival + upcoming + status -->
     <div class="dash-grid">
-      <!-- Header Card: Date + Time + Quote (full width) -->
-      <!-- Unified Header Card: Date + Motivation + Festival + WhatsApp (full width) -->
+      <!-- ============ TODAY BANNER — COMPLETE REDESIGN ============
+           Date | Motivation | Time (big, prominent)
+           Festival row
+           Coming up x3 | BCS card | small icon buttons
+           Market strip
+           ========================================================= -->
       <div class="dash-card dash-card-header" id="dashHeadline">
-        <div class="dl-cell dl-date">
-          <div class="dlf-cal" aria-hidden="true">
-            <span class="dlf-cal-band" id="thCalMonthMerged">NOV</span>
-            <b class="dlf-cal-day" id="thCalDayMerged">09</b>
-            <span class="dlf-cal-week" id="thCalWeekMerged">सोमवार</span>
+        <!-- TOP ROW: three equal columns -->
+        <div class="tb-top">
+          <!-- DATE COLUMN — big date, greeting, weekday strip -->
+          <div class="tb-col tb-date">
+            <div class="tb-label">DATE</div>
+            <div class="tb-date-main">
+              <span class="tb-month" id="thCalMonthMerged">NOV</span>
+              <b class="tb-day" id="thCalDayMerged">10</b>
+              <span class="tb-week" id="thCalWeekMerged">मंगलवार</span>
+            </div>
+            <div class="tb-date-meta">
+              <span class="tb-greet" id="thGreetTick">शुभ प्रभात · Good Morning</span>
+              <span class="tb-date-line"><span id="thWeekdayEn">Tuesday</span> · <span id="thMonth">November 2026</span></span>
+              <span class="tb-date-hi" id="thMonthHi">नवंबर · 2026</span>
+            </div>
+            <div class="tb-weekstrip" id="thWeekStrip" aria-label="7-day mini calendar"></div>
           </div>
-          <div class="dl-meta">
-            <span class="dl-greet" id="thGreetTick">शुभ प्रभात</span>
-            <span class="dl-hi" id="thWeekdayHi">रविवार</span>
-            <span class="dl-line"><span id="thWeekdayEn">Sunday</span> · <span id="thMonth">November 2026</span></span>
-            <span class="dl-sub" id="thMonthHi">नवंबर · 2026</span>
+
+          <!-- MOTIVATION COLUMN — big quote, small icon buttons -->
+          <div class="tb-col tb-motive">
+            <div class="tb-label">MOTIVATION</div>
+            <div class="tb-quote-box" id="thQuoteBox" aria-label="Today's motivation">
+              <span class="tb-quote-mark">“</span>
+              <p id="thQuote">Every no is data that brings you closer to the right yes.</p>
+              <span class="tb-quote-by" id="thQuoteBy">— Real Estate Wisdom</span>
+            </div>
+            <div class="tb-quote-actions">
+              <button type="button" class="tb-icon-btn" id="thQuoteCopy" title="Copy motivation" aria-label="Copy motivation">⧉</button>
+              <button type="button" class="tb-icon-btn" id="thQuoteRefresh" title="Next motivation" aria-label="Next motivation">↻</button>
+            </div>
+            <div class="tb-weather" id="jaipurWeather" aria-live="polite"><span class="wx-mark">Jaipur weather</span></div>
           </div>
-          <div class="miniweek" id="thWeekStrip" aria-label="7-day mini calendar"></div>
+
+          <!-- TIME COLUMN — big live clock, small dayplan -->
+          <div class="tb-col tb-time">
+            <div class="tb-label">NOW · LIVE</div>
+            <div class="tb-clock-box">
+              <b class="dl-clock"><span id="dlClock">10:24</span><i id="dlSeconds">:03</i></b>
+              <span class="tb-meridiem" id="dlMeridiem">AM</span>
+            </div>
+            <div class="tb-time-meta">
+              <span class="tb-zone" id="dlDetail">IST · Jaipur</span>
+              <span class="tb-next" id="dlNext">Tue, 10 Nov · Week 46</span>
+            </div>
+            <button type="button" class="tb-quicklink" id="thAddTaskBtn">+ Add task</button>
+            <div class="tb-dayplan">
+              <button type="button" class="tb-icon-btn" id="bpPlanBtn" title="Day plan kholein" aria-label="Day plan kholein">
+                <svg viewBox="0 0 36 36" class="bp-ring" aria-hidden="true">
+                  <circle class="bp-ring-bg" cx="18" cy="18" r="15.5" pathLength="97.4"></circle>
+                  <circle class="bp-ring-fg" id="bpPlanFg" cx="18" cy="18" r="15.5" pathLength="97.4"></circle>
+                </svg>
+                <span class="tb-plan-copy"><b id="bpPlanTxt">–</b><i id="bpPlanSub">plan</i></span>
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="th-quote dl-quote" id="thQuoteBox" aria-label="Today's motivation">
-          <span class="th-qmark">“</span>
-          <p id="thQuote">…</p>
-          <span class="th-qby" id="thQuoteBy"></span>
-          <button type="button" class="th-qrefresh" id="thQuoteCopy" title="Copy motivation" aria-label="Copy motivation">⧉</button>
-          <button type="button" class="th-qrefresh" id="thQuoteRefresh" title="Next motivation" aria-label="Next motivation">↻</button>
-          <div class="dl-weather" id="jaipurWeather" aria-live="polite"><span class="wx-mark">Jaipur weather loading…</span></div>
-        </div>
-        <div class="dl-cell dl-time" aria-label="Local time">
-          <b class="dl-clock"><span id="dlClock">10:48</span><i id="dlSeconds">:32</i></b>
-          <button type="button" class="bp-plan" id="bpPlanBtn" title="Day plan kholein" aria-label="Day plan kholein — aaj ke tasks aur progress">
-            <svg viewBox="0 0 36 36" class="bp-ring" aria-hidden="true">
-              <circle class="bp-ring-bg" cx="18" cy="18" r="15.5" pathLength="97.4"></circle>
-              <circle class="bp-ring-fg" id="bpPlanFg" cx="18" cy="18" r="15.5" pathLength="97.4"></circle>
-            </svg>
-            <span class="bp-plan-copy"><b id="bpPlanTxt">–</b><i id="bpPlanSub">aaj ka plan</i></span>
-          </button>
-          <div class="dl-timemeta">
-            <span class="dl-zone"><b id="dlMeridiem">AM</b> · IST · Jaipur</span>
-            <span class="dl-detail" id="dlDetail">Sunday, 08 November</span>
-            <span class="dl-next" id="dlNext">Diwali · aaj hi hai</span>
-            <button type="button" class="dl-quicklink" id="thAddTaskBtn">+ Add task</button>
-          </div>
-        </div>
-        <aside class="dl-month" aria-label="Full month mini calendar">
-          <div class="dl-month-head"><strong id="thMonthMini">November 2026</strong><button type="button" id="thMonthToday">Today</button></div>
-          <div class="mini-month-head"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div>
-          <div class="mini-month-grid" id="thMonthGrid"></div>
-          <div class="mini-month-legend">
-            <span><i style="--c:#2F8F6B"></i>Client</span>
-            <span><i style="--c:#F2994A"></i>Festival</span>
-            <span><i style="--c:#C24646"></i>Leave</span>
-            <span><i style="--c:#3A7CA5"></i>Content</span>
-          </div>
-        </aside>
-        <!-- Festival row (calendar lives in the date cell above) -->
-        <div class="dl-cell dl-festival">
-          <div class="dlf-main">
-            <div class="dlf-top">
-              <span class="dlf-badge"><span class="dlf-emoji" id="thEmojiMerged">🪔</span><span id="thFestivalNameMerged">Diwali</span></span>
-              <span class="dlf-today-chip" id="thTodayChipMerged">Aaj · Today</span>
+
+        <!-- FESTIVAL ROW — full width -->
+        <div class="tb-festival">
+          <div class="tb-fest-inner">
+            <div class="tb-fest-top">
+              <span class="tb-fest-emoji" id="thEmojiMerged">🪔</span>
+              <span class="tb-fest-name" id="thFestivalNameMerged">Diwali</span>
+              <span class="tb-fest-chip" id="thTodayChipMerged">Aaj · Today</span>
             </div>
             <h3 id="thFestivalHiMerged">दीपावली</h3>
-            <div class="dlf-name-en" id="thFestivalEnMerged">Diwali · Lakshmi Puja</div>
-            <div class="dlf-greets">
-              <p class="dlf-greet-hi" id="thGreetHiMerged">दीपों की रोशनी, माँ लक्ष्मी की कृपा — आपका जीवन सदा उजालों से भरा रहे।</p>
-              <p class="dlf-greet-en" id="thGreetEnMerged">Lights of diyas, grace of Maa Lakshmi — may your life always shine bright.</p>
+            <div class="tb-fest-en" id="thFestivalEnMerged">Diwali · Lakshmi Puja</div>
+            <div class="tb-fest-greets">
+              <p class="tb-greet-hi" id="thGreetHiMerged">दीपों की रोशनी, माँ लक्ष्मी की कृपा — आपका जीवन सदा उजालों से भरा रहे।</p>
+              <p class="tb-greet-en" id="thGreetEnMerged">Lights of diyas, grace of Maa Lakshmi — may your life always shine bright.</p>
             </div>
-            <div class="dlf-actions">
-              <button type="button" class="dl-mini-btn" id="thCopyHi">Copy Hindi greet</button>
-              <button type="button" class="dl-mini-btn" id="thCopyEn">Copy English greet</button>
-              <button type="button" class="dl-mini-btn" id="thNextPoster">Next poster →</button>
-              <button type="button" class="dl-mini-btn" id="thThemePrev">Theme</button>
+            <div class="tb-fest-actions">
+              <button type="button" class="tb-fest-btn" id="thCopyHi">Copy Hindi greet</button>
+              <button type="button" class="tb-fest-btn" id="thCopyEn">Copy English greet</button>
+              <button type="button" class="tb-fest-btn" id="thNextPoster">Next poster →</button>
+              <button type="button" class="tb-fest-btn" id="thThemePrev">Theme</button>
             </div>
           </div>
         </div>
-        <!-- Merged: Upcoming chips + BCS actions -->
-        <div class="dl-merged-bottom">
-          <div class="dl-upcoming">
-            <div class="th-up-head"><span>Coming up</span><small>tap a chip for poster</small></div>
-            <div class="th-up-list" id="thUpcoming"></div>
+
+        <!-- BOTTOM ROW: Coming up (3 items) | BCS card | small icon buttons -->
+        <div class="tb-bottom">
+          <div class="tb-upcoming">
+            <div class="tb-up-head"><span>Coming up</span><small>tap for poster</small></div>
+            <div class="tb-up-list" id="thUpcoming"></div>
           </div>
-          <button type="button" class="dl-bcs bcs-visit-card" id="thSharePoster" title="Editable BCS visiting card — image, QR, phone, address">
-            <span class="th-logo" aria-hidden="true">BCS</span>
-            <span class="dl-bcs-copy">
-              <b class="dl-bcs-name" id="bcsCardPerson">Ajay Sharma</b>
-              <i class="dl-bcs-handle" id="bcsCardTitle">Founder · Real Estate Advisor</i>
-              <em class="dl-bcs-cta" id="bcsCardMeta">@ajaysharma.bcs · Jaipur</em>
+          <button type="button" class="tb-bcs" id="thSharePoster" title="Editable BCS visiting card — image, QR, phone, address">
+            <span class="tb-bcs-logo">BCS</span>
+            <span class="tb-bcs-copy">
+              <b class="tb-bcs-name" id="bcsCardPerson">Ajay Sharma</b>
+              <i class="tb-bcs-handle" id="bcsCardTitle">Founder · Real Estate Advisor</i>
+              <em class="tb-bcs-cta" id="bcsCardMeta">@ajaysharma.bcs · Jaipur</em>
             </span>
-            <span class="bcs-card-qr">QR</span>
-            <span class="dl-bcs-go" aria-hidden="true">↗</span>
+            <span class="tb-bcs-qr">QR</span>
+            <span class="tb-bcs-go">↗</span>
           </button>
-          <button type="button" class="dl-bcs-ghost" id="thRefreshQuote">↻<em>Naya<br>quote</em></button>
-          <button type="button" class="dl-bcs-ghost" id="thRoadHubBtn">⌁<em>Road<br>hub</em></button>
-          <button type="button" class="dl-bcs-ghost" id="thManage" style="display:none">⚙<em>Manage<br>lists</em></button>
+          <div class="tb-icons">
+            <button type="button" class="tb-icon-btn" id="thRefreshQuote" title="Refresh quote" aria-label="Refresh quote">↻</button>
+            <button type="button" class="tb-icon-btn" id="thRoadHubBtn" title="Road hub" aria-label="Road hub">⌁</button>
+            <button type="button" class="tb-icon-btn" id="thManage" title="Manage lists" aria-label="Manage lists" style="display:none">⚙</button>
+          </div>
         </div>
-        <div class="dl-market" id="bannerMarket" aria-label="Live market rates — tap to open Rates Studio"><span class="bm-label">MARKET<i>live</i></span><span class="bm-skel">Loading rates…</span></div>
+
+        <!-- MARKET STRIP -->
+        <div class="tb-market" id="bannerMarket" aria-label="Live market rates — tap to open Rates Studio">
+          <span class="tb-market-label">MARKET<i>live</i></span>
+          <span class="tb-market-val">Loading rates…</span>
+        </div>
       </div>
     </div>
 
