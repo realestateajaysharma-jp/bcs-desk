@@ -11943,6 +11943,332 @@ body[data-theme="dark"] #navMorePanel [data-view]:hover{
   #navMoreBtn{height:38px !important;min-height:38px !important;padding:0 10px !important;border-radius:11px !important}
 }
 
+/* ============================================================
+   BCS v136 — COMPLETE DARK MODE FIX (every page, every surface)
+   Overrides ALL hardcoded light backgrounds so nothing is
+   invisible in dark mode. Covers dashboard → health.
+   ============================================================ */
+
+/* --- Stat cards (Clients, Bookings, Teams, News, Pipeline) --- */
+body[data-theme="dark"] :is(.pipeline-stats,.booking-stats,.team-stats,.news-stats,.links-stats,.sen-metrics)>div{
+  background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important;
+}
+body[data-theme="dark"] :is(.pipeline-stats,.booking-stats,.team-stats,.news-stats,.links-stats,.sen-metrics)>div .k,
+body[data-theme="dark"] :is(.pipeline-stats,.booking-stats,.team-stats,.news-stats,.links-stats,.sen-metrics)>div .v{
+  color:#F2F0E5 !important;
+}
+body[data-theme="dark"] :is(.pipeline-stats,.booking-stats,.team-stats,.news-stats,.links-stats,.sen-metrics)>div .v small{
+  color:#A7ACA0 !important;
+}
+
+/* --- Client status bar pills / filter chips --- */
+body[data-theme="dark"] .client-status-bar .pick{
+  background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.1) !important;color:#C9CCD3 !important;
+}
+body[data-theme="dark"] .client-status-bar .pick.on{
+  background:linear-gradient(135deg,#E7C46E,#B8892E) !important;border-color:rgba(229,190,98,.5) !important;color:#171A14 !important;
+}
+body[data-theme="dark"] .client-status-bar .pick:hover{
+  background:rgba(255,255,255,.12) !important;
+}
+
+/* --- Pick list (dropdowns, multi-select) --- */
+body[data-theme="dark"] .pick-list{
+  background:#1B201B !important;border-color:rgba(255,255,255,.1) !important;
+}
+body[data-theme="dark"] .pick-list label{
+  background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important;
+}
+body[data-theme="dark"] .pick-list label:has(input:checked){
+  background:rgba(229,190,98,.15) !important;border-color:rgba(229,190,98,.3) !important;color:#E5BE62 !important;
+}
+body[data-theme="dark"] .pick-list .pick-group{color:#A7ACA0 !important}
+body[data-theme="dark"] .pick-search{
+  background:#141813 !important;border-color:rgba(255,255,255,.1) !important;color:#F2F0E5 !important;
+}
+body[data-theme="dark"] .pick-search:focus{border-color:#E5BE62 !important;box-shadow:0 0 0 2px rgba(229,190,98,.12) !important}
+
+/* --- Toolbar selects & inputs --- */
+body[data-theme="dark"] .toolbar select{
+  background:#141813 !important;border-color:rgba(255,255,255,.1) !important;color:#F2F0E5 !important;
+}
+
+/* --- Client card inner elements --- */
+body[data-theme="dark"] .client-card .req{
+  background:rgba(255,255,255,.04) !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important;
+}
+
+/* --- Chips & badges (all variants) --- */
+body[data-theme="dark"] :is(.bchip,.shortbtn,.dchip,.amen-chip,.unit-chip,.corridor-chip,.pcard .tag,.present-ptag,.price-badge,.price-badge.flat,.dev-card .chip,.dev-group h5 .n,.profile-sec h5 .n,.active-adv-table .aa-open,.frow .fdate,.news-foot .acts button,.xbtn,.booking-card .bk-actions button,.dev-card .card-actions button,.advisor-card .card-actions button,.resale-card .card-actions button,.news-pin,.chk-row .chk-del,.chk-row .chk-edit,.chk-detail-item .chk-tick,.day-idea textarea,#stickyText,.calc-quick button,.quick-add,.quick-add input,.mq-form input,.mp-hbtns button,.mp-app,.dev-status-strip button,.dev-status-btn,.task .tbtns button,.task-edit,.yt-item,.music-play,.station,.dock-btn,.profile-block,.profile-sec,.dcell,.dup-item,.sb-load,.frow){
+  background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.1) !important;color:#C9CCD3 !important;
+}
+body[data-theme="dark"] :is(.bchip,.shortbtn,.dchip,.amen-chip,.unit-chip,.corridor-chip,.pcard .tag,.present-ptag,.price-badge,.price-badge.flat,.dev-card .chip,.dev-group h5 .n,.profile-sec h5 .n,.active-adv-table .aa-open,.frow .fdate,.news-foot .acts button,.xbtn,.booking-card .bk-actions button,.dev-card .card-actions button,.advisor-card .card-actions button,.resale-card .card-actions button,.news-pin,.chk-row .chk-del,.chk-row .chk-edit,.chk-detail-item .chk-tick,.day-idea textarea,#stickyText,.calc-quick button,.quick-add,.quick-add input,.mq-form input,.mp-hbtns button,.mp-app,.dev-status-strip button,.dev-status-btn,.task .tbtns button,.task-edit,.yt-item,.music-play,.station,.dock-btn,.profile-block,.profile-sec,.dcell,.dup-item,.sb-load,.frow):hover{
+  background:rgba(255,255,255,.12) !important;border-color:rgba(255,255,255,.2) !important;color:#F2F0E5 !important;
+}
+
+/* --- Active/selected chips --- */
+body[data-theme="dark"] :is(.bchip.on,.shortbtn.on,.dchip.on,.amen-chip.on,.unit-chip.on,.seg button.on,.dtab.on,.viewbtn.on,.station.on,.pick.on){
+  background:linear-gradient(135deg,#E7C46E,#B8892E) !important;border-color:rgba(229,190,98,.5) !important;color:#171A14 !important;
+}
+body[data-theme="dark"] .dtab.on .n{background:rgba(0,0,0,.2) !important;color:#171A14 !important}
+body[data-theme="dark"] .dtab .n{background:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
+body[data-theme="dark"] .dtab:hover{background:rgba(255,255,255,.1) !important;color:#F2F0E5 !important}
+
+/* --- Segmented control --- */
+body[data-theme="dark"] .seg{background:rgba(255,255,255,.05) !important;border-color:rgba(255,255,255,.08) !important}
+body[data-theme="dark"] .seg button{color:#A7ACA0 !important}
+body[data-theme="dark"] .seg button.on{background:linear-gradient(135deg,#E7C46E,#B8892E) !important;color:#171A14 !important;box-shadow:0 4px 12px -4px rgba(229,190,98,.4) !important}
+body[data-theme="dark"] .seg button:hover{color:#F2F0E5 !important}
+
+/* --- Tabs (dtab) --- */
+body[data-theme="dark"] .dtab{color:#A7ACA0 !important}
+body[data-theme="dark"] .dtab.on{background:linear-gradient(135deg,#E7C46E,#B8892E) !important;color:#171A14 !important}
+
+/* --- View buttons --- */
+body[data-theme="dark"] .viewbtn{color:#A7ACA0 !important}
+body[data-theme="dark"] .viewbtn:hover{background:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .viewbtn.on{background:linear-gradient(135deg,#E7C46E,#B8892E) !important;color:#171A14 !important}
+
+/* --- Empty states --- */
+body[data-theme="dark"] :is(.adv-empty,.an-empty,.inv-empty,.live-empty,.emptyBlock,.mini-empty,.unit-empty,.empty,.empty-inline){
+  background:rgba(255,255,255,.04) !important;border-color:rgba(255,255,255,.1) !important;color:#A7ACA0 !important;
+}
+
+/* --- Presentation sheet / modal content --- */
+body[data-theme="dark"] .present-sheet{background:#141813 !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .wm-card{background:#1B201B !important;border-color:rgba(255,255,255,.1) !important}
+body[data-theme="dark"] .wm-frame{background:#141813 !important}
+
+/* --- Calc grid --- */
+body[data-theme="dark"] .calc-grid .cfn{background:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
+body[data-theme="dark"] .calc-grid .cfn:hover{background:rgba(255,255,255,.14) !important}
+body[data-theme="dark"] .calc-grid .cop{background:rgba(255,255,255,.06) !important;color:#C9CCD3 !important}
+body[data-theme="dark"] .calc-grid .ceq{background:linear-gradient(135deg,#E7C46E,#B8892E) !important;color:#171A14 !important}
+
+/* --- Music / video / podcast cards --- */
+body[data-theme="dark"] .station.on{background:rgba(229,190,98,.12) !important;border-color:rgba(229,190,98,.3) !important;color:#E5BE62 !important}
+body[data-theme="dark"] .yt-item.playing{background:rgba(229,190,98,.08) !important;border-color:rgba(229,190,98,.25) !important}
+
+/* --- Dock buttons --- */
+body[data-theme="dark"] .dock-btn.open{background:rgba(229,190,98,.15) !important;border-color:rgba(229,190,98,.3) !important;color:#E5BE62 !important}
+
+/* --- Lock screen roles --- */
+body[data-theme="dark"] .lock-roles button.on{background:linear-gradient(135deg,#E7C46E,#B8892E) !important;color:#171A14 !important;border-color:rgba(229,190,98,.5) !important}
+
+/* --- Switch toggle --- */
+body[data-theme="dark"] .switch .track:after{background:#F2F0E5 !important;box-shadow:0 1px 3px rgba(0,0,0,.3) !important}
+
+/* --- Profile hero / stats --- */
+body[data-theme="dark"] .profile-hero,.profile-stats,.profile-block{background:transparent !important}
+
+/* --- Command hub / pulse --- */
+body[data-theme="dark"] .pulse-card{background:rgba(255,255,255,.05) !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .pulse-card:hover{background:rgba(255,255,255,.1) !important;border-color:rgba(165,123,54,.25) !important}
+body[data-theme="dark"] .pulse-tag.ok{background:rgba(47,143,107,.15) !important;color:#5BD6A8 !important}
+body[data-theme="dark"] .hub-badge{background:rgba(47,143,107,.15) !important;color:#5BD6A8 !important}
+body[data-theme="dark"] .hub-count{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+
+/* --- Morning brief --- */
+body[data-theme="dark"] .morning-brief{background:linear-gradient(135deg,#1B201B,#141813) !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .brief-stats div{background:rgba(255,255,255,.05) !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .brief-stats b{color:#F2F0E5 !important}
+body[data-theme="dark"] .brief-stats span{color:#A7ACA0 !important}
+body[data-theme="dark"] .brief-copy{color:#C9CCD3 !important}
+body[data-theme="dark"] .brief-next{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
+
+/* --- Calendar cells --- */
+body[data-theme="dark"] .cal-cell{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .cal-cell.empty{background:rgba(255,255,255,.03) !important}
+body[data-theme="dark"] .cal-cell.today{background:linear-gradient(180deg,#2E3324,#1B201B) !important;border-color:rgba(229,190,98,.3) !important}
+body[data-theme="dark"] .mark-row{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important}
+body[data-theme="dark"] .cal-chip{background:#222A22 !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
+body[data-theme="dark"] .cal-chip.mark-leave{background:#332B16 !important;color:#F1D992 !important;border-color:#5A4A22 !important}
+body[data-theme="dark"] .cal-chip.mark-booked{background:#17301F !important;color:#A7E0C0 !important;border-color:#245A3A !important}
+body[data-theme="dark"] .cal-chip.mark-busy{background:#361A15 !important;color:#F2A18D !important;border-color:#5A2B20 !important}
+body[data-theme="dark"] .cal-chip.mark-custom{background:#241E3B !important;color:#C9D1FF !important;border-color:#3A2E6B !important}
+body[data-theme="dark"] .cal-chip.mark-content{background:#152A38 !important;color:#A9D3F2 !important;border-color:#274C67 !important}
+
+/* --- Mini month calendar --- */
+body[data-theme="dark"] .mini-month-day{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
+body[data-theme="dark"] .mini-month-day:hover{background:rgba(255,255,255,.1) !important}
+body[data-theme="dark"] .mini-month-day.today .mini-month-date{background:linear-gradient(135deg,#3E3520,#23251D) !important;color:#F7F3E7 !important}
+body[data-theme="dark"] .mini-month-day.fest .mini-month-date{color:#E5BE62 !important}
+body[data-theme="dark"] .mini-month-day.leave .mini-month-date{color:#F2A18D !important}
+body[data-theme="dark"] .mini-month-day.client .mini-month-date{color:#A7E0C0 !important}
+body[data-theme="dark"] .mini-month-day.content .mini-month-date{color:#A9D3F2 !important}
+body[data-theme="dark"] .mini-month-head span{color:#A7ACA0 !important}
+body[data-theme="dark"] .mini-month-legend{color:#A7ACA0 !important}
+
+/* --- Advisor pipeline --- */
+body[data-theme="dark"] .advisor-pipeline button{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#A7ACA0 !important}
+body[data-theme="dark"] .advisor-pipeline button:hover{background:#222A22 !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .advisor-pipeline button.on{background:linear-gradient(135deg,#E7C46E,#B8892E) !important;color:#171A14 !important;border-color:rgba(229,190,98,.5) !important}
+
+/* --- Active advisor table --- */
+body[data-theme="dark"] .active-adv-table-wrap,.active-adv-table,.active-adv-table th,.active-adv-table td{
+  background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important;
+}
+body[data-theme="dark"] .active-adv-table .aa-open{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
+
+/* --- Readiness check --- */
+body[data-theme="dark"] .readiness-check label{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
+body[data-theme="dark"] .readiness-chip{background:#222A22 !important;border-color:rgba(255,255,255,.08) !important;color:#A7ACA0 !important}
+body[data-theme="dark"] .readiness-chip.done{background:#17301F !important;color:#A7E0C0 !important;border-color:#245A3A !important}
+
+/* --- Queue / dossier / cost --- */
+body[data-theme="dark"] .queue-row,body[data-theme="dark"] .dossier-box,body[data-theme="dark"] .cost-out{
+  background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important;
+}
+
+/* --- News cards --- */
+body[data-theme="dark"] .news-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .news-card.pinned{border-color:rgba(229,190,98,.3) !important}
+body[data-theme="dark"] .news-card.pinned:before{background:linear-gradient(90deg,#E7C46E,#B8892E) !important}
+body[data-theme="dark"] .news-cover{background:linear-gradient(135deg,#2A2E27,#1B1E1A) !important}
+body[data-theme="dark"] .news-cover .nf{background:radial-gradient(circle at 74% 20%,rgba(229,190,98,.12),transparent 46%),linear-gradient(135deg,#2E3324,#1F251D) !important}
+body[data-theme="dark"] .news-cover .nf span{color:#F7F3E7 !important}
+body[data-theme="dark"] .news-cat{background:rgba(255,255,255,.9) !important;color:#2E2D20 !important}
+body[data-theme="dark"] .news-type{background:rgba(0,0,0,.6) !important;color:#F7F4EA !important}
+body[data-theme="dark"] .news-type.editorial{background:rgba(229,190,98,.85) !important;color:#171A14 !important}
+body[data-theme="dark"] .news-pin{background:rgba(255,255,255,.9) !important;color:#8A6D1F !important}
+body[data-theme="dark"] .news-pin.on{background:#E5BE62 !important;color:#171A14 !important}
+body[data-theme="dark"] .news-body h4{color:#F2F0E5 !important}
+body[data-theme="dark"] .news-body .sum{color:#C9CCD3 !important}
+body[data-theme="dark"] .news-body .ednote{background:rgba(229,190,98,.08) !important;color:#E5BE62 !important;border-color:rgba(229,190,98,.25) !important}
+body[data-theme="dark"] .news-meta{color:#A7ACA0 !important}
+body[data-theme="dark"] .news-meta .src{color:#5BD6A8 !important}
+body[data-theme="dark"] .news-foot{border-color:rgba(255,255,255,.08) !important;color:#A7ACA0 !important}
+body[data-theme="dark"] .news-foot .open{color:#5BD6A8 !important}
+
+/* --- Live cards --- */
+body[data-theme="dark"] .live-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .live-card h4{color:#F2F0E5 !important}
+body[data-theme="dark"] .live-card p{color:#C9CCD3 !important}
+body[data-theme="dark"] .live-badge{background:rgba(229,190,98,.15) !important;color:#E5BE62 !important}
+body[data-theme="dark"] .live-meta b{color:#F2F0E5 !important}
+body[data-theme="dark"] .live-meta span{color:#A7ACA0 !important}
+body[data-theme="dark"] .live-read-btn{background:rgba(229,190,98,.15) !important;color:#E5BE62 !important;border-color:rgba(229,190,98,.3) !important}
+body[data-theme="dark"] .live-acts button{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
+body[data-theme="dark"] .live-acts button.saved{background:rgba(47,143,107,.15) !important;color:#5BD6A8 !important;border-color:rgba(47,143,107,.3) !important}
+
+/* --- Live status --- */
+body[data-theme="dark"] .live-status{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
+body[data-theme="dark"] .live-status.err{background:#361A15 !important;color:#F2A18D !important;border-color:#5A2B20 !important}
+body[data-theme="dark"] .live-dot{background:#4ADE80 !important;box-shadow:0 0 0 4px rgba(74,222,128,.18) !important}
+body[data-theme="dark"] .live-dot[data-state="err"]{background:#F2A18D !important;box-shadow:0 0 0 4px rgba(242,161,141,.18) !important}
+body[data-theme="dark"] .live-dot[data-state="load"]{background:#E5BE62 !important;box-shadow:0 0 0 4px rgba(229,190,98,.18) !important}
+
+/* --- Live source chips --- */
+body[data-theme="dark"] .live-chip{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
+body[data-theme="dark"] .live-chip.on{background:rgba(229,190,98,.15) !important;border-color:rgba(229,190,98,.3) !important;color:#E5BE62 !important}
+
+/* --- Video ideas --- */
+body[data-theme="dark"] .idea-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .idea-card h4{color:#F2F0E5 !important}
+body[data-theme="dark"] .idea-card p{color:#C9CCD3 !important}
+body[data-theme="dark"] .idea-card .ic-status{color:#E5BE62 !important}
+
+/* --- Booking cards --- */
+body[data-theme="dark"] .booking-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .booking-card .bk-comm{background:rgba(229,190,98,.12) !important;color:#E5BE62 !important}
+
+/* --- Dev cards --- */
+body[data-theme="dark"] .dev-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .dev-card .dev-remark-preview{background:rgba(229,190,98,.08) !important;border-color:rgba(229,190,98,.2) !important;color:#E5BE62 !important}
+
+/* --- Status pills --- */
+body[data-theme="dark"] .status-pill,.status-chip{background:rgba(229,190,98,.12) !important;color:#F1D992 !important}
+body[data-theme="dark"] .show-status.upcoming{background:rgba(229,190,98,.85) !important;color:#171A14 !important}
+body[data-theme="dark"] .pcard .badge.upcoming{background:rgba(229,190,98,.9) !important;color:#171A14 !important}
+
+/* --- Corridor cards --- */
+body[data-theme="dark"] .cor-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .cor-card:hover{border-color:rgba(165,123,54,.25) !important}
+
+/* --- Category cards --- */
+body[data-theme="dark"] .cat-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .cat-card:hover{border-color:rgba(165,123,54,.25) !important}
+body[data-theme="dark"] .cat-count{background:rgba(229,190,98,.15) !important;color:#E5BE62 !important}
+
+/* --- Templates --- */
+body[data-theme="dark"] .tpl-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .tpl-toolbar{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important}
+
+/* --- Knowledge base --- */
+body[data-theme="dark"] .kb-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+
+/* --- Links page --- */
+body[data-theme="dark"] .link-item{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .links-stats{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.08) !important}
+body[data-theme="dark"] .links-stats>div{background:#1B201B !important;color:#F2F0E5 !important;border-color:rgba(255,255,255,.08) !important}
+
+/* --- Analytics --- */
+body[data-theme="dark"] .an-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .an-bar .an-track{background:#2B332B !important}
+
+/* --- Health --- */
+body[data-theme="dark"] .health-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+
+/* --- Podcast studio --- */
+body[data-theme="dark"] .pod-studio{background:#141813 !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .pod-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .ps-tab{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
+body[data-theme="dark"] .ps-tab.on{background:linear-gradient(135deg,#E7C46E,#B8892E) !important;color:#171A14 !important}
+body[data-theme="dark"] .ps-ico{background:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
+body[data-theme="dark"] .ps-open{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
+
+/* --- Terminology --- */
+body[data-theme="dark"] .term-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+
+/* --- Tax page --- */
+body[data-theme="dark"] .tax-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .tax-action{background:#2E3324 !important;border-color:#6B5A2E !important;color:#F1D992 !important}
+body[data-theme="dark"] .tax-act button{background:#20261F !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
+
+/* --- Resale --- */
+body[data-theme="dark"] .resale-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+
+/* --- Partner cards --- */
+body[data-theme="dark"] .partner-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .partner-act button{background:#20261F !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
+
+/* --- Projects --- */
+body[data-theme="dark"] .proj-card{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+
+/* --- Tables --- */
+body[data-theme="dark"] table{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important}
+body[data-theme="dark"] th{background:#20261F !important;color:#A7ACA0 !important;border-color:rgba(255,255,255,.08) !important}
+body[data-theme="dark"] td{background:transparent !important;color:#C9CCD3 !important;border-color:rgba(255,255,255,.08) !important}
+
+/* --- Overlays & modals --- */
+body[data-theme="dark"] .overlay{background:rgba(0,0,0,.72) !important}
+body[data-theme="dark"] .modal{background:#141813 !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .modal-head{background:transparent !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .modal-foot{background:transparent !important;border-color:rgba(255,255,255,.08) !important}
+
+/* --- Toasts --- */
+body[data-theme="dark"] .toast{background:#26301F !important;color:#E7DFC8 !important;border-left-color:#C9A227 !important}
+body[data-theme="dark"] .toast.err{background:#5A2B20 !important;color:#F7C9B7 !important}
+
+/* --- Tooltips --- */
+body[data-theme="dark"] .toolpop{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .qa-pop{background:#141813 !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+
+/* --- Media dock --- */
+body[data-theme="dark"] .media-dock,body[data-theme="dark"] .media-mini{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] .vd-btn{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
+body[data-theme="dark"] .vd-btn:hover{background:rgba(255,255,255,.12) !important}
+
+/* --- Embed deck --- */
+body[data-theme="dark"] .embed-modal{background:#141813 !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] #embedDeckModal{background:rgba(0,0,0,.7) !important}
+
+/* --- Scrollbars --- */
+body[data-theme="dark"] ::-webkit-scrollbar{width:8px;height:8px}
+body[data-theme="dark"] ::-webkit-scrollbar-track{background:rgba(0,0,0,.2)}
+body[data-theme="dark"] ::-webkit-scrollbar-thumb{background:#4A505C;border-radius:999px}
+body[data-theme="dark"] ::-webkit-scrollbar-thumb:hover{background:#6E766A}
+
 /* ---------------- mobile / installed app ---------------- */
 @media (max-width:820px){
   /* 16px prevents iOS auto-zoom when a field gets focus */
