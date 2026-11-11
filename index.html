@@ -14174,6 +14174,44 @@ html body[data-theme="dark"] .tb-bcs-logo{
   background:rgba(11,18,13,.45) !important;
   border-color:rgba(246,242,231,.3) !important;
 }
+/* ============================================================
+   NAV SCROLL + REORDER v152 · desktop nav = one scrollable row
+   ------------------------------------------------------------
+   · overflow-x:auto + nowrap + flex-shrink:0 → tabs never cram
+   · scrollbars hidden (wheel / touch / drag still scroll)
+   · trailing spacer so the LAST tab is fully reachable
+   · mobile tab bar (body.bcs-native) keeps its own grid layout
+   ============================================================ */
+html body:not(.bcs-native) .hwrap-nav #nav{
+  flex-wrap:nowrap !important;
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  white-space:nowrap !important;
+  justify-content:flex-start !important;
+  align-items:center !important;
+  scrollbar-width:none !important;
+  -ms-overflow-style:none !important;
+  overscroll-behavior-x:contain !important;
+  -webkit-overflow-scrolling:touch !important;
+  scroll-padding-inline:4px !important;
+}
+html body:not(.bcs-native) .hwrap-nav #nav::-webkit-scrollbar{
+  display:none !important;width:0 !important;height:0 !important;
+}
+html body:not(.bcs-native) .hwrap-nav #nav > *{flex:0 0 auto !important;flex-shrink:0 !important}
+html body:not(.bcs-native) .hwrap-nav #nav > button{
+  white-space:nowrap !important;flex-shrink:0 !important;
+  user-select:none !important;-webkit-user-select:none !important;
+}
+html body:not(.bcs-native) .hwrap-nav #nav::after{content:"";flex:0 0 8px;height:1px;flex-shrink:0 !important}
+/* drag-to-reorder affordances */
+html body:not(.bcs-native) .hwrap-nav #nav > button[data-view]{cursor:grab}
+html body:not(.bcs-native) .hwrap-nav #nav > button.nav-dragging{
+  opacity:.4;pointer-events:none;transform:scale(.96) !important;cursor:grabbing !important;
+}
+html body:not(.bcs-native) .hwrap-nav #nav > button.nav-drop-hint{
+  box-shadow:inset 0 0 0 2px var(--acc, #A57B36) !important;border-radius:12px !important;
+}
 </style>
 
 <style id="bcs-ops-css">
@@ -37815,6 +37853,116 @@ try{
 
 /* expose for render() + other modules */
 window.BCS_OPS = { renderInventory, renderPipeline, matchPlotsFor, openMatch, setStage, openDealEdit };
+})();
+</script>
+
+<script>
+/* =========================================================
+   BCS NAV · horizontal scroll + wheel→horizontal + drag reorder
+   ---------------------------------------------------------
+   · wheel over the nav scrolls it horizontally (only while there
+     is room — otherwise the page keeps scrolling normally)
+   · drag any tab onto another to change the sequence; order is
+     persisted in localStorage (bcs_nav_order_v1) and restored on
+     boot. The “More” pill always stays last.
+   · the phone tab bar (body.bcs-native) keeps its own layout.
+   ========================================================= */
+(function(){
+'use strict';
+const KEY = 'bcs_nav_order_v1';
+let nav = null, drag = null, suppressClick = false;
+
+const isMobile = () => document.body.classList.contains('bcs-native');
+const primaryButtons = () => $$('#nav > button[data-view]');
+
+/* ---------- order restore / persist ---------- */
+function applySaved(){
+  if(!nav || isMobile()) return;
+  let order = [];
+  try{ order = JSON.parse(localStorage.getItem(KEY) || '[]'); }catch(e){}
+  if(!Array.isArray(order) || !order.length) return;
+  const btns = primaryButtons();
+  const ids = btns.map(b => b.dataset.view);
+  const valid = order.length === ids.length && order.every(id => ids.includes(id));
+  if(!valid) return;                                /* page set changed → ignore stale order */
+  const map = new Map(btns.map(b => [b.dataset.view, b]));
+  const wrap = nav.querySelector('.nav-more-wrap');
+  order.forEach(id => { const b = map.get(id); if(b) nav.insertBefore(b, wrap); });
+}
+function persist(){
+  try{ localStorage.setItem(KEY, JSON.stringify(primaryButtons().map(b => b.dataset.view))); }catch(e){}
+}
+
+/* ---------- vertical wheel → horizontal scroll ---------- */
+function onWheel(e){
+  if(!nav || isMobile()) return;
+  const max = nav.scrollWidth - nav.clientWidth;
+  if(max <= 2) return;                              /* nothing to scroll → normal page scroll */
+  const d = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+  const goingRight = d > 0;
+  const canGo = goingRight ? nav.scrollLeft < max - 1 : nav.scrollLeft > 1;
+  if(!canGo) return;                                /* at the end → hand back to the page */
+  e.preventDefault();
+  nav.scrollLeft += d;
+}
+
+/* ---------- drag to reorder (pointer based — works with a mouse) ---------- */
+function onPointerDown(e){
+  if(!nav || isMobile() || e.button !== 0) return;
+  const btn = e.target.closest('#nav > button[data-view]');
+  if(!btn) return;
+  suppressClick = false;
+  drag = { btn, startX:e.clientX, startY:e.clientY, moved:false, over:null };
+}
+function onPointerMove(e){
+  if(!drag) return;
+  if(!drag.moved){
+    if(Math.abs(e.clientX - drag.startX) < 6 && Math.abs(e.clientY - drag.startY) < 6) return;
+    drag.moved = true; suppressClick = true;
+    drag.btn.classList.add('nav-dragging');
+  }
+  const el = document.elementFromPoint(e.clientX, e.clientY);
+  const over = (el && el.closest) ? el.closest('#nav > button[data-view]') : null;
+  $$('#nav > button.nav-drop-hint').forEach(b => { if(b !== drag.btn) b.classList.remove('nav-drop-hint'); });
+  if(over && over !== drag.btn){ over.classList.add('nav-drop-hint'); drag.over = over; }
+  else drag.over = null;
+  /* edge auto-scroll while dragging */
+  const r = nav.getBoundingClientRect();
+  if(e.clientX > r.right - 48) nav.scrollLeft += 14;
+  else if(e.clientX < r.left + 48) nav.scrollLeft -= 14;
+}
+function onPointerUp(e){
+  if(!drag) return;
+  const { btn, moved, over } = drag;
+  btn.classList.remove('nav-dragging');
+  $$('#nav > button.nav-drop-hint').forEach(b => b.classList.remove('nav-drop-hint'));
+  if(moved && over && over !== btn){
+    const r = over.getBoundingClientRect();
+    const before = e.clientX < r.left + r.width / 2;
+    if(before) nav.insertBefore(btn, over); else nav.insertBefore(btn, over.nextSibling);
+    const wrap = nav.querySelector('.nav-more-wrap');      /* More always stays last */
+    if(wrap) nav.appendChild(wrap);
+    persist();
+    try{ toast('Nav order saved'); }catch(err){}
+  }
+  drag = null;
+}
+
+function boot(){
+  nav = document.getElementById('nav'); if(!nav) return;
+  applySaved();
+  nav.addEventListener('wheel', onWheel, { passive:false });
+  nav.addEventListener('pointerdown', onPointerDown);
+  window.addEventListener('pointermove', onPointerMove, { passive:true });
+  window.addEventListener('pointerup', onPointerUp);
+  /* a finished drag must not also fire the tab's navigation click */
+  nav.addEventListener('click', e => {
+    if(suppressClick){ e.stopPropagation(); e.preventDefault(); suppressClick = false; }
+  }, true);
+}
+if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+else boot();
+window.BCS_NAVX = { applySaved, persist };
 })();
 </script>
 
