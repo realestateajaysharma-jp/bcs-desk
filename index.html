@@ -14267,8 +14267,18 @@ body[data-theme="dark"] .pst{filter:saturate(1.15) brightness(1.18)}
   display:grid;place-items:center;padding:0}
 .inv-plot:hover{transform:translateY(-2px);box-shadow:0 6px 14px -8px rgba(0,0,0,.35)}
 .inv-plot.sel{outline:2px solid var(--acc);outline-offset:1px}
-.inv-plot.pst-avail,.inv-plot.pst-token,.inv-plot.pst-hold,.inv-plot.pst-sold,.inv-plot.pst-resale,.inv-plot.pst-release{
-  color:#FFFDF6;border-color:transparent;font-weight:800}
+.inv-plot.pst-avail{background:var(--pst-avail) !important;color:#FFFDF6 !important;border-color:transparent !important}
+.inv-plot.pst-token{background:var(--pst-token) !important;color:#FFFDF6 !important;border-color:transparent !important}
+.inv-plot.pst-hold{background:var(--pst-hold) !important;color:#FFFDF6 !important;border-color:transparent !important}
+.inv-plot.pst-sold{background:var(--pst-sold) !important;color:#FFFDF6 !important;border-color:transparent !important}
+.inv-plot.pst-resale{background:var(--pst-resale) !important;color:#FFFDF6 !important;border-color:transparent !important}
+.inv-plot.pst-release{background:var(--pst-release) !important;color:#FFFDF6 !important;border-color:transparent !important}
+body[data-theme="dark"] .inv-plot.pst-avail{filter:brightness(1.12)}
+body[data-theme="dark"] .inv-plot.pst-token{filter:brightness(1.12)}
+body[data-theme="dark"] .inv-plot.pst-hold{filter:brightness(1.12)}
+body[data-theme="dark"] .inv-plot.pst-sold{filter:brightness(1.12)}
+body[data-theme="dark"] .inv-plot.pst-resale{filter:brightness(1.15)}
+body[data-theme="dark"] .inv-plot.pst-release{filter:brightness(1.12)}
 
 /* ---------- inventory table ---------- */
 .inv-table-panel{margin:0 2px 30px;padding:13px 15px}
@@ -14355,6 +14365,66 @@ body[data-theme="dark"] .pipe-col{background:color-mix(in srgb,var(--panel) 40%,
   .pipe-acts select{max-width:none !important;flex:1 1 100%}
   .inv-plot{width:40px;height:38px}
 }
+/* ============================================================
+   BCS OPS II · docket · visit planner · ledger · legal vault
+   investor resale · CSV — same tokens, additive only
+   ============================================================ */
+/* docket / text preview */
+.docket-preview{white-space:pre-wrap;font:12.5px/1.65 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:color-mix(in srgb,var(--acc) 5%,var(--panel));border:1px dashed var(--line);
+  border-radius:13px;padding:13px 14px;max-height:46vh;overflow:auto;color:var(--ink)}
+.docket-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+/* legal vault */
+.legal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.legal-grid .field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.legal-grid .field.full{grid-column:1/-1}
+.legal-grid label{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--mut)}
+.legal-grid :is(input,select){min-height:40px;font-size:16px}
+.legal-link{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;color:var(--pst-release);
+  text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.bank-row{display:grid;grid-template-columns:1.1fr 1fr auto;gap:8px;align-items:center;
+  padding:8px 10px;border:1px solid var(--line2);border-radius:11px;margin-bottom:7px;background:color-mix(in srgb,var(--acc) 4%,var(--panel))}
+.bank-row :is(input){min-height:36px;font-size:16px}
+@media (max-width:640px){.legal-grid{grid-template-columns:1fr}}
+/* ledger */
+.fin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-bottom:12px}
+.fin-grid .field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.fin-grid label{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--mut)}
+.fin-grid :is(input){min-height:40px;font-size:16px}
+.fin-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:9px;margin-bottom:13px}
+.fin-card{border:1px solid var(--line);border-radius:13px;padding:10px 12px;background:color-mix(in srgb,var(--acc) 4%,var(--panel))}
+.fin-card b{display:block;font-family:'Fraunces',serif;font-size:17px;letter-spacing:-.01em}
+.fin-card span{font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.fin-card.hot b{color:var(--pst-avail)}
+.fin-card.warn b{color:var(--pst-hold)}
+.ms-row{display:grid;grid-template-columns:1.2fr .9fr .9fr auto auto;gap:7px;align-items:center;
+  padding:9px 10px;border:1px solid var(--line2);border-radius:12px;margin-bottom:7px;background:var(--panel)}
+.ms-row :is(input,select){min-height:34px;font-size:16px}
+.ms-row .ms-lab{font-size:11.5px;font-weight:800;color:var(--ink)}
+.ms-status{font-size:10px;font-weight:800;letter-spacing:.06em;padding:3px 8px;border-radius:999px;border:1px solid;text-align:center}
+.ms-status.received{color:var(--pst-avail);border-color:color-mix(in srgb,var(--pst-avail) 40%,transparent);background:color-mix(in srgb,var(--pst-avail) 10%,transparent)}
+.ms-status.pending{color:var(--pst-hold);border-color:color-mix(in srgb,var(--pst-hold) 40%,transparent);background:color-mix(in srgb,var(--pst-hold) 10%,transparent)}
+.overdue-flag{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;color:var(--pst-sold);
+  background:color-mix(in srgb,var(--pst-sold) 9%,var(--panel));border:1px solid color-mix(in srgb,var(--pst-sold) 35%,transparent);
+  border-radius:11px;padding:8px 11px;margin-bottom:11px}
+.late-chip{display:inline-flex;align-items:center;font-size:9.5px;font-weight:800;color:var(--pst-sold);
+  border:1px solid color-mix(in srgb,var(--pst-sold) 40%,transparent);border-radius:999px;padding:1px 7px}
+/* visit planner */
+.visit-group{margin-bottom:14px}
+.visit-group-h{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink2);padding:4px 2px 8px}
+.visit-group-h i{width:9px;height:9px;border-radius:50%;background:var(--cor,#999)}
+.visit-stop{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;
+  border:1px solid var(--line);border-radius:13px;padding:9px 11px;margin-bottom:7px;background:var(--panel)}
+.visit-stop .seq{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--acc) 12%,var(--panel));
+  color:var(--acc-deep);font-weight:800;font-size:11.5px}
+.visit-stop b{font-size:12.5px;color:var(--ink);display:block}
+.visit-stop span{font-size:11px;color:var(--mut);display:block;margin-top:2px}
+.visit-stop .acts{display:flex;flex-direction:column;gap:3px}
+.visit-stop .acts button{min-width:26px;height:22px;border-radius:7px;border:1px solid var(--line);background:var(--panel);
+  cursor:pointer;font-size:10px;color:var(--ink2);line-height:1}
+.visit-stop .acts button:hover{background:color-mix(in srgb,var(--acc) 10%,var(--panel))}
+@media (max-width:640px){ .ms-row{grid-template-columns:1fr 1fr} .ms-row .ms-lab{grid-column:1/-1} .visit-stop{grid-template-columns:auto 1fr} .visit-stop .acts{flex-direction:row} }
 </style>
 </head>
 <body class="locked">
@@ -15341,6 +15411,7 @@ try{
           <b>Deal pipeline — requirement se registry tak</b>
           <span>Card ko stage par drag karein (ya niche select se stage badlein). Token/Registry par plot select hoga aur inventory automatic update hogi.</span>
         </div>
+        <button class="btn ghost sm" id="visitPlannerBtn" title="Site visit corridor dispatcher">🧭 Visit planner</button>
         <div class="pipe-legend" id="pipeLegend"></div>
       </div>
       <div class="pipe-grid" id="pipeBoard"></div>
@@ -15431,7 +15502,11 @@ try{
           <p class="adv-sub">Developer ki verbal list se range generate karo — "1 to 50 = 111 Gaj, 40 ft road" — status ek click me toggle, layout map ke upar matrix, aur payout apne aap.</p>
         </div>
         <div class="adv-head-actions">
+          <button class="btn ghost" id="invLegalBtn">⚖ Legal vault</button>
+          <button class="btn ghost" id="invDocketBtn">📄 Project docket</button>
           <button class="btn ghost" id="invMapBtn">🗺 Layout map</button>
+          <button class="btn ghost" id="invCsvBtn">📊 Inventory CSV</button>
+          <button class="btn ghost" id="invBackupBtn">⬇ Business backup</button>
           <button class="btn ghost" id="invPayoutBtn">₹ Payout log</button>
           <button class="btn primary" id="invRangeBtn">⚡ Generate range</button>
         </div>
@@ -16945,6 +17020,8 @@ try{
       <button class="btn ghost sm" id="detailCost" title="Cost & quotation">₹ Cost</button>
       <button class="btn ghost sm" id="detailVisit" title="Log site visit">📍 Visit</button>
       <button class="btn ghost sm" id="detailDoc" title="Add document">📁 Doc</button>
+      <button class="btn ghost sm" id="detailLegalBtn" title="Legal due-diligence vault">⚖ Legal</button>
+      <button class="btn ghost sm" id="detailDocketBtn" title="WhatsApp project docket">📄 Docket</button>
       <button class="btn ghost sm" id="detailShareBtn" title="Client ko share karne ke liye page banayein">🔗 Share</button>
       <div class="sp"></div>
       <button class="btn ghost" data-close="detailModal">Close</button>
@@ -18322,10 +18399,111 @@ try{
         <div class="field"><label>Budget up to (₹ lakh)</label><input id="deBudgetMax" type="number" min="0" step="1"></div>
         <div class="field"><label>Last follow-up</label><input id="deFollow" type="date"></div>
         <div class="field"><label>Next follow-up</label><input id="deNext" type="date"></div>
+        <div class="field"><label>Site visit date</label><input id="deVisit" type="date"></div>
+        <div class="field"><label>Visit time slot</label><input id="deSlot" placeholder="e.g. 11:00 AM – 12:30 PM"></div>
+        <div class="field"><label>Pickup point</label><input id="dePickup" placeholder="e.g. Office / Metro station"></div>
         <div class="field full"><label>Requirement notes</label><textarea id="deNotes" placeholder="Kya chahiye — location, size, budget, timeline…"></textarea></div>
       </div>
     </div>
     <div class="modal-foot"><button class="btn ghost" data-close="dealEditModal">Cancel</button><button class="btn primary" id="deSave">Save deal</button></div>
+  </div>
+</div>
+<!-- ============ OPS II MODALS · docket · route · ledger · legal vault ============ -->
+<div class="overlay" id="textShareModal">
+  <div class="modal">
+    <div class="modal-head"><h3 id="tsTitle">Share</h3><button class="xbtn" data-close="textShareModal">✕</button></div>
+    <div class="modal-body">
+      <div class="docket-preview" id="tsPreview"></div>
+      <div class="docket-actions">
+        <button class="btn ghost" id="tsCopy">📋 Copy to Clipboard</button>
+        <button class="btn primary" id="tsWhatsApp">🟢 Open in WhatsApp</button>
+      </div>
+    </div>
+    <div class="modal-foot"><button class="btn ghost" data-close="textShareModal">Close</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="legalModal">
+  <div class="modal">
+    <div class="modal-head"><h3 id="lgTitle">⚖ Legal vault</h3><button class="xbtn" data-close="legalModal">✕</button></div>
+    <div class="modal-body">
+      <div class="legal-grid">
+        <div class="field full"><label>90A Sanction — order no. / detail</label><input id="lgSanction" placeholder="e.g. 90A sanctioned vide order JDA/2024/…"></div>
+        <div class="field"><label>90A document link</label><input id="lgSanctionDoc" placeholder="https://drive.google.com/…"></div>
+        <div class="field"><label>JDA master layout link (PDF / image)</label><input id="lgLayout" placeholder="https://…"></div>
+        <div class="field"><label>RERA certificate no.</label><input id="lgReraCert" placeholder="RJ/P/2024/…"></div>
+        <div class="field"><label>RERA expiry date</label><input id="lgReraExp" type="date"></div>
+        <div class="field"><label>Revenue record / village</label><input id="lgRevenue" placeholder="e.g. Kalwar, Tehsil Sanganer"></div>
+        <div class="field"><label>Khasra numbers</label><input id="lgKhasra" placeholder="e.g. 121/1, 122, 145–150"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin:14px 0 8px">
+        <b style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)">Pre-approved banks (APF)</b>
+        <button class="btn ghost sm" id="lgAddBank" style="margin-left:auto">＋ Add bank</button>
+      </div>
+      <div id="lgBanks"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn ghost" id="lgSummary">📋 Copy legal summary</button>
+      <button class="btn primary" id="lgSave">Save vault</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="finModal">
+  <div class="modal">
+    <div class="modal-head"><h3 id="finTitle">💰 Deal financials</h3><button class="xbtn" data-close="finModal">✕</button></div>
+    <div class="modal-body">
+      <div class="fin-grid">
+        <div class="field"><label>Base developer rate (₹/Gaj)</label><input id="finBase" type="number" min="0" step="100"></div>
+        <div class="field"><label>Quoted / closed rate (₹/Gaj)</label><input id="finQuote" type="number" min="0" step="100"></div>
+      </div>
+      <div class="fin-cards">
+        <div class="fin-card"><b id="finValue">—</b><span>Deal value</span></div>
+        <div class="fin-card"><b id="finSpread">—</b><span>Gross spread</span></div>
+        <div class="fin-card"><b id="finComm">—</b><span>Dev. commission</span></div>
+        <div class="fin-card hot"><b id="finMargin">—</b><span>Your margin</span></div>
+      </div>
+      <div id="finOverdue"></div>
+      <div style="display:flex;align-items:center;gap:10px;margin:4px 0 8px">
+        <b style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)">Commission milestones</b>
+        <button class="btn ghost sm" id="finAddMs" style="margin-left:auto">＋ Add milestone</button>
+      </div>
+      <div id="finMilestones"></div>
+    </div>
+    <div class="modal-foot"><button class="btn ghost" data-close="finModal">Close</button><button class="btn primary" id="finSave">Save ledger</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="investorModal">
+  <div class="modal">
+    <div class="modal-head"><h3 id="ivTitle">🏦 Investor asset</h3><button class="xbtn" data-close="investorModal">✕</button></div>
+    <div class="modal-body">
+      <div class="ops-form">
+        <div class="field"><label>Investor name</label><input id="ivName" placeholder="e.g. Mahesh Jain"></div>
+        <div class="field"><label>Investor contact</label><input id="ivPhone" placeholder="+91 …"></div>
+        <div class="field"><label>Buying rate (₹/Gaj)</label><input id="ivBuy" type="number" min="0" step="100"></div>
+        <div class="field"><label>Purchase date</label><input id="ivBuyDate" type="date"></div>
+        <div class="field"><label>Target exit rate (₹/Gaj)</label><input id="ivExit" type="number" min="0" step="100"></div>
+        <div class="field"><label>Status</label><select id="ivStatus"></select></div>
+        <p class="ops-note" id="ivGain">—</p>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn ghost" id="ivRemove">Remove investor</button>
+      <button class="btn ghost" id="ivRelease">📤 Release to market</button>
+      <button class="btn primary" id="ivSave">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="visitModal">
+  <div class="modal">
+    <div class="modal-head"><h3>🧭 Visit planner — corridor dispatcher</h3><button class="xbtn" data-close="visitModal">✕</button></div>
+    <div class="modal-body">
+      <p class="ops-note" style="padding:0 2px 10px">Visits corridor ke hisaab se grouped hain. ▲▼ se stops ki order badlein — phir driver/team ko route dispatch karein.</p>
+      <div id="visitGroups"></div>
+    </div>
+    <div class="modal-foot"><button class="btn ghost" data-close="visitModal">Close</button><button class="btn primary" id="visitDispatch">📤 Dispatch route to WhatsApp</button></div>
   </div>
 </div>
 <div class="overlay" id="imgModal">
@@ -19134,14 +19312,44 @@ function normalizeDb(d){
     status: ['available','token','hold','sold','resale','release'].includes(p.status) ? p.status : 'release',
     clientId: p.clientId || '', clientName: String(p.clientName || ''), note: String(p.note || ''),
     payoutPaid: !!p.payoutPaid, payoutPaidAt: p.payoutPaidAt || null,
+    investor: (p.investor && typeof p.investor === 'object') ? {
+      name: String(p.investor.name || ''), phone: String(p.investor.phone || ''),
+      buyRate: p.investor.buyRate == null ? null : (+p.investor.buyRate || null),
+      buyDate: String(p.investor.buyDate || ''),
+      exitRate: p.investor.exitRate == null ? null : (+p.investor.exitRate || null)
+    } : { name:'', phone:'', buyRate:null, buyDate:'', exitRate:null },
+    ledger: (p.ledger && typeof p.ledger === 'object') ? {
+      quotedRateGaj: p.ledger.quotedRateGaj == null ? null : (+p.ledger.quotedRateGaj || null),
+      baseRateGaj: p.ledger.baseRateGaj == null ? null : (+p.ledger.baseRateGaj || null),
+      registryDate: String(p.ledger.registryDate || ''),
+      milestones: Array.isArray(p.ledger.milestones) ? p.ledger.milestones.map(m => ({
+        id: m.id || uid(), label: String(m.label || ''),
+        amount: m.amount == null ? null : (+m.amount || null),
+        date: String(m.date || ''),
+        status: m.status === 'received' ? 'received' : 'pending',
+        registry: !!m.registry
+      })) : []
+    } : { quotedRateGaj:null, baseRateGaj:null, registryDate:'', milestones:[] },
     createdAt: p.createdAt || Date.now(), updatedAt: p.updatedAt || p.createdAt || Date.now()
   }));
+  (Array.isArray(d.projects) ? d.projects : []).forEach(p => {
+    if(!p.legal || typeof p.legal !== 'object') p.legal = { sanction90A:'', sanctionDoc:'', layoutUrl:'', reraCert:'', reraExpiry:'', khasra:'', revenue:'', banks:[] };
+    if(!Array.isArray(p.legal.banks)) p.legal.banks = [];
+  });
+  (Array.isArray(d.plots) ? d.plots : []).forEach(pl => {
+    if(!pl.investor || typeof pl.investor !== 'object') pl.investor = { name:'', phone:'', buyRate:null, buyDate:'', exitRate:null };
+    if(!pl.ledger || typeof pl.ledger !== 'object') pl.ledger = { quotedRateGaj:null, baseRateGaj:null, registryDate:'', milestones:[] };
+    if(!Array.isArray(pl.ledger.milestones)) pl.ledger.milestones = [];
+  });
   (Array.isArray(d.clients) ? d.clients : []).forEach(c => {
     if(!c.stage || !['inbound','profiling','visit','token','closed'].includes(c.stage)) c.stage = 'inbound';
     if(c.corridorId == null) c.corridorId = (Array.isArray(c.corridors) && c.corridors[0]) || '';
     if(c.sizeGaj == null) c.sizeGaj = null;
     if(c.lastFollowUp == null) c.lastFollowUp = c.lastContact || '';
     if(c.dealPlotId == null) c.dealPlotId = '';
+    if(c.visitDate == null) c.visitDate = '';
+    if(c.visitSlot == null) c.visitSlot = '';
+    if(c.pickup == null) c.pickup = '';
   });
   if(!Array.isArray(d.terminology)){
     d.terminology = DEFAULT_TERMINOLOGY.map((t, i) => ({
@@ -25756,7 +25964,7 @@ function advCardHTML(r, showMatch){
       ${(r.resaleUnits || []).length ? `<div class="resale-playbook"><b>Resale available:</b> ${r.resaleUnits.slice(0, 2).map(x => esc([x.unit, x.size, x.price != null ? fmtPrice(x.price) : null].filter(Boolean).join(' · '))).join(' | ')}${r.resaleUnits.length > 2 ? ` +${r.resaleUnits.length - 2} more` : ''}</div>` : ''}
       <div class="adv-card-foot">
         <div class="adv-dev"><b>${esc(d ? d.name : 'No developer linked')}</b>${d && d.phone ? esc(d.phone) : d && d.email ? esc(d.email) : ''}</div>
-        <button class="shortbtn ${on ? 'on' : ''}" data-short="${p.id}">${on ? '✓ Shortlisted' : '+ Shortlist'}</button>
+        <button class="shortbtn" data-docketprojbtn="${p.id}" title="WhatsApp project docket">📄</button><button class="shortbtn ${on ? 'on' : ''}" data-short="${p.id}">${on ? '✓ Shortlisted' : '+ Shortlist'}</button>
       </div>
     </div>
   </article>`;
@@ -37432,7 +37640,7 @@ function renderInvBody(){
   const all = plotsOf(inv.pid);
   const stats = { total: all.length, value: 0 };
   PLOT_STATUSES.forEach(s => stats[s.id] = 0);
-  all.forEach(pl => { stats[pl.status] = (stats[pl.status] || 0) + 1; if(pl.status === 'available') stats.value += plotPrice(pl); });
+  all.forEach(pl => { stats[pl.status] = (stats[pl.status] || 0) + 1; if(pl.status === 'available' || pl.status === 'release') stats.value += plotPrice(pl); });
   $('#invStats').innerHTML = `
     <div class="inv-stat"><b>${all.length}</b><span>Total plots</span></div>` +
     PLOT_STATUSES.map(s => `<div class="inv-stat"><b><span class="dot" style="background:${s.color}"></span>${stats[s.id] || 0}</b><span>${s.label}</span></div>`).join('') +
@@ -37477,7 +37685,7 @@ function renderInvBody(){
         <td class="inv-price">${pr ? money(pr) : '—'}</td>
         <td><button type="button" class="pst pst-${pl.status}" data-plotcycle="${pl.id}" title="Click = next status"><i></i>${st.label}</button></td>
         <td class="inv-note" title="${esc(pl.note || '')}">${esc(pl.note || '—')}</td>
-        <td><span class="inv-rowbtns"><button type="button" class="btn ghost sm" data-plotedit="${pl.id}" title="Edit plot">✎</button></span></td>
+        <td><span class="inv-rowbtns">${pl.investor && pl.investor.name ? `<button type="button" class="btn ghost sm" data-plotinv="${pl.id}" title="Investor: ${esc(pl.investor.name)}">🏦</button>` : ''}${(pl.status === 'token' || pl.status === 'sold') ? `<button type="button" class="btn ghost sm" data-plotfin="${pl.id}" title="Financials & milestones">💰</button>` : ''}<button type="button" class="btn ghost sm" data-docketplot="${pl.id}" title="WhatsApp docket">📄</button><button type="button" class="btn ghost sm" data-plotedit="${pl.id}" title="Edit plot">✎</button></span></td>
       </tr>`;
     }).join('')}</tbody>`;
   $('#invSelCount').textContent = inv.sel.size + ' selected';
@@ -37634,6 +37842,7 @@ function pipeCard(c, st){
     </div>
     <div class="pipe-meta">
       <span>👤 ${esc(adv.name || 'Admin desk')}</span>
+      ${(window.BCS_OPS2 && window.BCS_OPS2.ledgerOverdueFor(c)) ? '<span class="late-chip">⚠ payout overdue</span>' : ''}
       ${dealPlot ? `<span>🏷 Plot ${esc(dealPlot.label || dealPlot.num)}</span>` : ''}
       ${d != null ? `<span class="${late ? 'late' : ''}">🕓 ${d === 0 ? 'today' : d + 'd ago'}${late ? ' · follow up!' : ''}</span>` : '<span>🕓 no follow-up yet</span>'}
     </div>
@@ -37697,6 +37906,7 @@ function openDealEdit(id){
   $('#deGaj').value = c.sizeGaj || '';
   $('#deBudgetMin').value = c.budgetMin ?? ''; $('#deBudgetMax').value = c.budgetMax ?? '';
   $('#deFollow').value = c.lastFollowUp || ''; $('#deNext').value = c.nextFollowUp || '';
+  $('#deVisit').value = c.visitDate || ''; $('#deSlot').value = c.visitSlot || ''; $('#dePickup').value = c.pickup || '';
   $('#deNotes').value = c.requirement || c.notes || '';
   showOverlay('dealEditModal');
 }
@@ -37709,6 +37919,8 @@ function saveDealEdit(){
   c.budgetMin = $('#deBudgetMin').value === '' ? null : +$('#deBudgetMin').value;
   c.budgetMax = $('#deBudgetMax').value === '' ? null : +$('#deBudgetMax').value;
   c.lastFollowUp = $('#deFollow').value || ''; c.nextFollowUp = $('#deNext').value || '';
+  c.visitDate = $('#deVisit').value || ''; c.visitSlot = $('#deSlot').value.trim(); c.pickup = $('#dePickup').value.trim();
+  if(!c.visitDate && c.visitSeq != null) delete c.visitSeq;
   c.notes = c.requirement = $('#deNotes').value.trim();
   c.updatedAt = Date.now();
   save();
@@ -37746,6 +37958,7 @@ function openMatch(id){
       <div class="info"><b>${esc(pr.name || '—')} · ${esc(corridorName(pr.corridor))}</b>
       <span>${p.sizeGaj || 0} Gaj (${(+p.sizeGaj || 0) * 9} sq ft) · ${p.roadFt ? p.roadFt + ' ft road · ' : ''}${p.facing || ''} · ${money(plotPrice(p))}</span></div>
       <div class="side"><span class="pst pst-${p.status}"><i></i>${st.label}</span>
+      <button type="button" class="btn ghost sm" data-docketplot="${p.id}" title="WhatsApp docket">📄</button>
       <button type="button" class="btn ghost sm" data-matchedal="${c.id}|${p.id}">Deal</button></div>
     </div>`;
   }).join('') : '<div class="inv-empty">Koi available plot match nahi hua — corridor/size/budget thoda relax karein ya naya range generate karein.</div>';
@@ -37852,7 +38065,529 @@ try{
 }catch(e){}
 
 /* expose for render() + other modules */
-window.BCS_OPS = { renderInventory, renderPipeline, matchPlotsFor, openMatch, setStage, openDealEdit };
+window.BCS_OPS = { renderInventory, renderPipeline, renderInvBody, matchPlotsFor, openMatch, setStage, openDealEdit,
+  projectOf, devOf, corridorName, plotsOf, plotPrice, pipelineClients, clientCorridorId, waLink, money, options, PST, PLOT_STATUSES, inv };
+})();
+</script>
+
+<script>
+/* =========================================================
+   BCS OPS II · docket · visit dispatcher · ledger · legal vault
+   investor resale · inventory CSV
+   ---------------------------------------------------------
+   Reuses: db.projects/.developers/.advisors/.clients/.plots,
+   save(), showOverlay/closeModal, fileToImage, downloadBackup.
+   Every entity here supports add / edit / delete.
+   ========================================================= */
+(function(){
+'use strict';
+const { projectOf, devOf, corridorName, plotsOf, plotPrice, pipelineClients, clientCorridorId,
+        waLink, money, options, PST, PLOT_STATUSES, renderInvBody, renderPipeline, inv } = window.BCS_OPS;
+
+/* ---------------- shared text-share modal (docket · route · legal summary) ---------------- */
+let shareText = '';
+function openTextModal(title, text){
+  shareText = text;
+  document.getElementById('tsTitle').textContent = title;
+  document.getElementById('tsPreview').textContent = text;
+  showOverlay('textShareModal');
+}
+async function copyText(text){
+  try{ await navigator.clipboard.writeText(text); toast('Copied to clipboard'); }
+  catch(e){
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); toast('Copied to clipboard'); }catch(e2){ toast('Copy nahi hua — text select karke copy karein', true); }
+    ta.remove();
+  }
+}
+function openWhatsApp(text){
+  window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank', 'noopener');
+}
+
+/* ---------------- legal vault (per project) ---------------- */
+let legalFor = null;
+function legalOf(p){
+  if(!p.legal) p.legal = { sanction90A:'', sanctionDoc:'', layoutUrl:'', reraCert:'', reraExpiry:'', khasra:'', revenue:'', banks:[] };
+  if(!Array.isArray(p.legal.banks)) p.legal.banks = [];
+  return p.legal;
+}
+function openLegal(pid){
+  const p = projectOf(pid); if(!p) return;
+  legalFor = pid;
+  const L = legalOf(p);
+  document.getElementById('lgTitle').textContent = '⚖ Legal vault — ' + (p.name || 'project');
+  document.getElementById('lgSanction').value = L.sanction90A || '';
+  document.getElementById('lgSanctionDoc').value = L.sanctionDoc || '';
+  document.getElementById('lgLayout').value = L.layoutUrl || '';
+  document.getElementById('lgReraCert').value = L.reraCert || (p.rera || '');
+  document.getElementById('lgReraExp').value = L.reraExpiry || '';
+  document.getElementById('lgRevenue').value = L.revenue || '';
+  document.getElementById('lgKhasra').value = L.khasra || '';
+  renderBanks();
+  showOverlay('legalModal');
+}
+function renderBanks(){
+  const p = projectOf(legalFor); if(!p) return;
+  const L = legalOf(p);
+  const wrap = document.getElementById('lgBanks');
+  wrap.innerHTML = L.banks.length ? L.banks.map((b,i) => `
+    <div class="bank-row">
+      <input data-bankname="${i}" value="${esc(b.name || '')}" placeholder="Bank — e.g. SBI">
+      <input data-bankapf="${i}" value="${esc(b.apf || '')}" placeholder="APF no.">
+      <button type="button" class="btn ghost sm" data-bankdel="${i}" title="Remove">✕</button>
+    </div>`).join('')
+  : '<div class="inv-empty" style="padding:12px">Koi bank add nahi hai — ＋ Add bank se SBI/HDFC/ICICI APF daalein.</div>';
+}
+function legalSummaryText(p){
+  const L = legalOf(p);
+  const banks = L.banks.filter(b => b.name).map(b => `${b.name}${b.apf ? ' (APF ' + b.apf + ')' : ''}`).join(', ');
+  const lines = [
+    '⚖ *LEGAL SUMMARY — ' + (p.name || '') + '*',
+    corridor(p.corridor) && corridor(p.corridor).name ? '📍 ' + corridor(p.corridor).name : '',
+    L.sanction90A ? '📜 *90A Sanction:* ' + L.sanction90A : (p.approval ? '📜 *Approval:* ' + p.approval : ''),
+    L.reraCert ? '✅ *RERA:* ' + L.reraCert + (L.reraExpiry ? ' (valid till ' + L.reraExpiry + ')' : '') : (p.rera ? '✅ *RERA:* ' + p.rera : ''),
+    L.khasra ? '🌾 *Khasra/Revenue:* ' + L.khasra + (L.revenue ? ' · ' + L.revenue : '') : '',
+    banks ? '🏦 *Pre-approved banks:* ' + banks : '',
+    L.sanctionDoc ? '📄 90A doc: ' + L.sanctionDoc : '',
+    L.layoutUrl ? '🗺 Master layout: ' + L.layoutUrl : ''
+  ].filter(Boolean);
+  lines.push('──────────────', '_BCS Desk · Jaipur — verified legal credentials_');
+  return lines.join('\n');
+}
+
+/* ---------------- plot / project docket (WhatsApp markdown) ---------------- */
+function plotDocketText(pl){
+  const p = projectOf(pl.projectId) || {};
+  const d = devOf(p);
+  const L = p.legal || {};
+  const banks = (L.banks || []).filter(b => b.name).map(b => b.name).join(', ');
+  const gaj = +pl.sizeGaj || 0;
+  const lines = [
+    '*🏠 BCS DESK — PLOT DOCKET*',
+    '━━━━━━━━━━━━━━━━━━',
+    '🏠 *Project:* ' + (p.name || '—'),
+    '📍 *Corridor:* ' + corridorName(p.corridor),
+    '🏗 *Developer:* ' + (d.name || '—'),
+    '━━━━━━━━━━━━━━━━━━',
+    '▫️ *Plot no:* ' + (pl.label || pl.num),
+    gaj ? '▫️ *Area:* ' + gaj + ' Gaj (' + (gaj*9).toLocaleString('en-IN') + ' Sq Ft)' : '',
+    pl.roadFt ? '▫️ *Road width:* ' + pl.roadFt + ' ft' : '',
+    pl.facing ? '▫️ *Facing:* ' + pl.facing : '',
+    pl.rateGaj ? '▫️ *Rate:* ' + money(pl.rateGaj) + '/Gaj' : '',
+    plotPrice(pl) ? '▫️ *Price:* ' + money(plotPrice(pl)) : '',
+    '▫️ *Status:* ' + PST(pl.status).label,
+    '━━━━━━━━━━━━━━━━━━',
+    L.sanction90A ? '⚖ *90A Sanction:* ' + L.sanction90A : (p.approval ? '⚖ *Approval:* ' + p.approval : ''),
+    (L.reraCert || p.rera) ? '✅ *RERA:* ' + (L.reraCert || p.rera) : '',
+    banks ? '🏦 *Banks:* ' + banks : '',
+    (p.mapUrl || L.layoutUrl) ? '🗺 *Layout plan:* ' + (L.layoutUrl || p.mapUrl) : '',
+    '━━━━━━━━━━━━━━━━━━',
+    '_BCS Desk · Jaipur — Pink City property intelligence_'
+  ].filter(Boolean);
+  return lines.join('\n');
+}
+function projectDocketText(p){
+  const d = devOf(p);
+  const L = legalOf(p);
+  const banks = (L.banks || []).filter(b => b.name).map(b => b.name).join(', ');
+  const plots = plotsOf(p.id);
+  const avail = plots.filter(x => x.status === 'available' || x.status === 'release');
+  const sizes = [...new Set(plots.map(x => x.sizeGaj).filter(Boolean))].join(', ');
+  const lines = [
+    '*🏠 BCS DESK — PROJECT DOCKET*',
+    '━━━━━━━━━━━━━━━━━━',
+    '🏠 *Project:* ' + (p.name || '—'),
+    '📍 *Corridor:* ' + corridorName(p.corridor),
+    '🏗 *Developer:* ' + (d.name || '—'),
+    p.location ? '📌 *Location:* ' + p.location : '',
+    priceRange(p) ? '💰 *Price:* ' + priceRange(p) : '',
+    sizes ? '📐 *Plot sizes:* ' + sizes + ' Gaj' : '',
+    plots.length ? '▦ *Inventory:* ' + avail.length + ' available / ' + plots.length + ' total' : '',
+    '━━━━━━━━━━━━━━━━━━',
+    (L.sanction90A || p.approval) ? '⚖ *Approval:* ' + (L.sanction90A || p.approval) : '',
+    (L.reraCert || p.rera) ? '✅ *RERA:* ' + (L.reraCert || p.rera) : '',
+    banks ? '🏦 *Banks:* ' + banks : '',
+    p.mapUrl ? '🗺 *Layout:* ' + p.mapUrl : '',
+    '━━━━━━━━━━━━━━━━━━',
+    '_BCS Desk · Jaipur — Pink City property intelligence_'
+  ].filter(Boolean);
+  return lines.join('\n');
+}
+
+/* ---------------- visit planner (corridor dispatcher) ---------------- */
+function visitClients(){
+  return pipelineClients().filter(c => c.visitDate).sort((a,b) => (a.visitSeq||0) - (b.visitSeq||0));
+}
+function openVisitPlanner(){
+  const list = visitClients();
+  const groups = {};
+  list.forEach(c => {
+    const key = clientCorridorId(c) ? corridorName(clientCorridorId(c)) : 'Corridor set nahi';
+    (groups[key] = groups[key] || []).push(c);
+  });
+  const wrap = document.getElementById('visitGroups');
+  wrap.innerHTML = list.length ? Object.entries(groups).map(([corr, stops]) => `
+    <div class="visit-group">
+      <div class="visit-group-h"><i style="background:var(--acc)"></i>${esc(corr)} · ${stops.length} stop${stops.length === 1 ? '' : 's'}</div>
+      ${stops.map((c, i) => {
+        const plot = c.dealPlotId ? (db.plots || []).find(x => x.id === c.dealPlotId) : null;
+        const proj = plot ? projectOf(plot.projectId) : (c.projectId ? projectOf(c.projectId) : null);
+        const wa = waLink(c.phone);
+        return `<div class="visit-stop">
+          <span class="seq">${i+1}</span>
+          <div>
+            <b>${esc(c.name || 'Client')}${c.visitSlot ? ' · ' + esc(c.visitSlot) : ''}</b>
+            <span>${c.phone ? esc(c.phone) + ' · ' : ''}${esc(c.pickup || 'Pickup: office')}${proj ? ' → ' + esc(proj.name) : ''}${plot ? ' (Plot ' + esc(plot.label || plot.num) + ')' : ''}</span>
+          </div>
+          <div class="acts">
+            <button type="button" data-visitup="${c.id}" title="Up">▲</button>
+            <button type="button" data-visitdown="${c.id}" title="Down">▼</button>
+            ${wa ? `<button type="button" class="btn ghost sm" data-visitwa="${c.id}" title="WhatsApp client">🟢</button>` : ''}
+          </div>
+        </div>`;
+      }).join('')}
+    </div>`).join('')
+  : '<div class="inv-empty">Koi visit schedule nahi — client card ✎ Open karke “Site visit date” bharo, yahan corridor-wise group ho jayega.</div>';
+  showOverlay('visitModal');
+}
+function moveStop(id, dir){
+  const list = visitClients();
+  const i = list.findIndex(c => c.id === id); if(i < 0) return;
+  const j = i + dir; if(j < 0 || j >= list.length) return;
+  const a = list[i], b = list[j];
+  const sa = a.visitSeq || (i + 1), sb = b.visitSeq || (j + 1);
+  a.visitSeq = sb; b.visitSeq = sa;
+  a.updatedAt = b.updatedAt = Date.now();
+  save(); openVisitPlanner();
+}
+function routeText(){
+  const list = visitClients();
+  const groups = {};
+  list.forEach(c => {
+    const key = clientCorridorId(c) ? corridorName(clientCorridorId(c)) : 'Corridor set nahi';
+    (groups[key] = groups[key] || []).push(c);
+  });
+  const out = ['*🧭 BCS DESK — SITE VISIT ROUTE*', '_' + todayISO() + '_', ''];
+  Object.entries(groups).forEach(([corr, stops]) => {
+    out.push('*📍 ' + corr.toUpperCase() + '*');
+    stops.forEach((c, i) => {
+      const plot = c.dealPlotId ? (db.plots || []).find(x => x.id === c.dealPlotId) : null;
+      const proj = plot ? projectOf(plot.projectId) : (c.projectId ? projectOf(c.projectId) : null);
+      out.push(`${i+1}. *${c.name || 'Client'}*${c.visitSlot ? ' (' + c.visitSlot + ')' : ''}`);
+      out.push(`   ☎ ${c.phone || '—'}${c.phone && waLink(c.phone) ? ' · ' + waLink(c.phone) : ''}`);
+      out.push(`   🚩 Pickup: ${c.pickup || 'office'}`);
+      out.push(`   🏠 ${proj ? proj.name : '—'}${plot ? ' — Plot ' + (plot.label || plot.num) : ''}`);
+    });
+    out.push('');
+  });
+  out.push('_Driver/team ke liye — BCS Desk route sheet_');
+  return out.join('\n');
+}
+
+/* ---------------- deal financials + milestones ---------------- */
+const DEFAULT_MILESTONES = () => ([
+  { id:uid(), label:'Token / Booking advance', amount:null, date:'', status:'pending' },
+  { id:uid(), label:'Agreement to sale — Tranche 1', amount:null, date:'', status:'pending' },
+  { id:uid(), label:'Final registry — Tranche 2', amount:null, date:'', status:'pending', registry:true }
+]);
+function ledgerOf(plot){
+  if(!plot.ledger) plot.ledger = { quotedRateGaj:null, registryDate:'', milestones:[] };
+  if(!Array.isArray(plot.ledger.milestones)) plot.ledger.milestones = [];
+  if(!plot.ledger.milestones.length && (plot.status === 'token' || plot.status === 'sold')) plot.ledger.milestones = DEFAULT_MILESTONES();
+  return plot.ledger;
+}
+let finFor = null;
+function openFinancials(pid){
+  const plot = (db.plots || []).find(x => x.id === pid); if(!plot) return;
+  finFor = pid;
+  const p = projectOf(plot.projectId) || {};
+  ledgerOf(plot);
+  document.getElementById('finTitle').textContent = '💰 Financials — Plot ' + (plot.label || plot.num) + ' · ' + (p.name || '');
+  document.getElementById('finBase').value = plot.ledger.baseRateGaj ?? plot.rateGaj ?? '';
+  document.getElementById('finQuote').value = plot.ledger.quotedRateGaj ?? '';
+  paintFinancials();
+  paintMilestones();
+  showOverlay('finModal');
+}
+function finNumbers(){
+  const plot = (db.plots || []).find(x => x.id === finFor); if(!plot) return null;
+  const gaj = +plot.sizeGaj || 0;
+  const base = +document.getElementById('finBase').value || 0;
+  const quote = +document.getElementById('finQuote').value || 0;
+  const p = projectOf(plot.projectId) || {};
+  const pct = +(devOf(p).commissionPct || 0);
+  const value = gaj * quote, baseValue = gaj * base;
+  const spread = Math.max(0, gaj * (quote - base));
+  const comm = Math.round(baseValue * pct / 100);
+  return { gaj, base, quote, pct, value, baseValue, spread, comm, margin: spread + comm };
+}
+function paintFinancials(){
+  const n = finNumbers(); if(!n) return;
+  document.getElementById('finValue').textContent = n.value ? money(n.value) : '—';
+  document.getElementById('finSpread').textContent = n.spread ? money(n.spread) : '—';
+  document.getElementById('finComm').textContent = n.comm ? money(n.comm) + ' (' + n.pct + '%)' : (n.pct ? '—' : 'set dev %');
+  document.getElementById('finMargin').textContent = n.margin ? money(n.margin) : '—';
+}
+function paintMilestones(){
+  const plot = (db.plots || []).find(x => x.id === finFor); if(!plot) return;
+  const L = ledgerOf(plot);
+  const wrap = document.getElementById('finMilestones');
+  wrap.innerHTML = L.milestones.map((m,i) => `
+    <div class="ms-row">
+      <input class="ms-lab" data-ms="label:${i}" value="${esc(m.label || '')}" placeholder="Milestone">
+      <input data-ms="amount:${i}" type="number" min="0" step="1000" value="${m.amount ?? ''}" placeholder="Amount ₹">
+      <input data-ms="date:${i}" type="date" value="${esc(m.date || '')}" title="Scheduled date">
+      <select data-ms="status:${i}">
+        <option value="pending"${m.status !== 'received' ? ' selected' : ''}>Pending</option>
+        <option value="received"${m.status === 'received' ? ' selected' : ''}>Received</option>
+      </select>
+      <button type="button" class="btn ghost sm" data-msdel="${i}" title="Delete">✕</button>
+    </div>`).join('');
+  /* overdue payout alert */
+  const today = todayISO();
+  const overdue = L.milestones.filter(m => m.status !== 'received' && m.date && m.date < today);
+  const reg = L.milestones.find(m => m.registry);
+  document.getElementById('finOverdue').innerHTML = overdue.length
+    ? `<div class="overdue-flag">⚠ ${overdue.length} payout overdue — ${esc(overdue[0].label)}${overdue[0].date ? ' (due ' + overdue[0].date + ')' : ''}</div>`
+    : (reg && reg.date && reg.status !== 'received' ? `<div class="overdue-flag" style="color:var(--pst-hold);border-color:color-mix(in srgb,var(--pst-hold) 35%,transparent);background:color-mix(in srgb,var(--pst-hold) 8%,var(--panel))">◔ Registry date ${reg.date} — tranche 2 abhi pending hai</div>` : '');
+}
+function collectMilestones(){
+  const plot = (db.plots || []).find(x => x.id === finFor); if(!plot) return;
+  const L = ledgerOf(plot);
+  L.milestones.forEach((m,i) => {
+    const g = k => { const el = document.querySelector(`[data-ms="${k}:${i}"]`); return el ? el.value : null; };
+    m.label = g('label') ?? m.label;
+    m.amount = g('amount') === '' || g('amount') == null ? null : +g('amount');
+    m.date = g('date') || '';
+    m.status = g('status') || 'pending';
+  });
+}
+function saveFinancials(){
+  const plot = (db.plots || []).find(x => x.id === finFor); if(!plot) return;
+  const L = ledgerOf(plot);
+  L.baseRateGaj = +document.getElementById('finBase').value || null;
+  L.quotedRateGaj = +document.getElementById('finQuote').value || null;
+  collectMilestones();
+  const reg = L.milestones.find(m => m.registry);
+  if(reg && reg.date) L.registryDate = reg.date;
+  plot.updatedAt = Date.now();
+  save(); paintFinancials(); paintMilestones(); renderInvBody();
+  try{ closeModal('finModal'); }catch(e){}
+  toast('Financial ledger saved');
+}
+function ledgerOverdueFor(client){
+  if(!client.dealPlotId) return false;
+  const plot = (db.plots || []).find(x => x.id === client.dealPlotId); if(!plot || !plot.ledger) return false;
+  const today = todayISO();
+  return (plot.ledger.milestones || []).some(m => m.status !== 'received' && m.date && m.date < today);
+}
+
+/* ---------------- investor asset ---------------- */
+let invPlotFor = null;
+function openInvestor(pid){
+  const plot = (db.plots || []).find(x => x.id === pid); if(!plot) return;
+  invPlotFor = pid;
+  const iv = plot.investor || {};
+  document.getElementById('ivTitle').textContent = '🏦 Investor — Plot ' + (plot.label || plot.num);
+  document.getElementById('ivName').value = iv.name || '';
+  document.getElementById('ivPhone').value = iv.phone || '';
+  document.getElementById('ivBuy').value = iv.buyRate ?? '';
+  document.getElementById('ivBuyDate').value = iv.buyDate || '';
+  document.getElementById('ivExit').value = iv.exitRate ?? '';
+  document.getElementById('ivStatus').innerHTML = options(PLOT_STATUSES.filter(s => ['token','sold','resale'].includes(s.id)), plot.status);
+  paintInvestorGain();
+  showOverlay('investorModal');
+}
+function paintInvestorGain(){
+  const plot = (db.plots || []).find(x => x.id === invPlotFor); if(!plot) return;
+  const buy = +document.getElementById('ivBuy').value || 0, exit = +document.getElementById('ivExit').value || 0;
+  const gaj = +plot.sizeGaj || 0;
+  const gain = (exit - buy) * gaj;
+  document.getElementById('ivGain').innerHTML = (buy && exit)
+    ? `Exit asking: <b>${money(exit * gaj)}</b> · capital gain: <b style="color:${gain >= 0 ? 'var(--pst-avail)' : 'var(--pst-sold)'}">${gain >= 0 ? '+' : ''}${money(gain)}</b> (${gaj} Gaj)`
+    : 'Buy + exit rate daalein — asking price aur capital gain yahan dikhega.';
+}
+function saveInvestor(){
+  const plot = (db.plots || []).find(x => x.id === invPlotFor); if(!plot) return;
+  plot.investor = {
+    name: document.getElementById('ivName').value.trim(),
+    phone: document.getElementById('ivPhone').value.trim(),
+    buyRate: +document.getElementById('ivBuy').value || null,
+    buyDate: document.getElementById('ivBuyDate').value || '',
+    exitRate: +document.getElementById('ivExit').value || null
+  };
+  plot.status = document.getElementById('ivStatus').value;
+  plot.updatedAt = Date.now();
+  save(); renderInvBody(); renderPipeline();
+  try{ closeModal('investorModal'); }catch(e){}
+  toast('Investor asset saved');
+}
+function releaseToMarket(pid){
+  const plot = (db.plots || []).find(x => x.id === pid); if(!plot) return;
+  plot.status = 'resale'; plot.updatedAt = Date.now();
+  save(); renderInvBody(); renderPipeline();
+  try{ closeModal('investorModal'); }catch(e){}
+  toast('📤 Released to market — status Investor Resale');
+}
+function removeInvestor(pid){
+  const plot = (db.plots || []).find(x => x.id === pid); if(!plot) return;
+  delete plot.investor;
+  if(plot.status === 'resale') plot.status = 'available';
+  plot.updatedAt = Date.now();
+  save(); renderInvBody();
+  try{ closeModal('investorModal'); }catch(e){}
+  toast('Investor removed');
+}
+
+/* ---------------- inventory CSV ---------------- */
+function exportInventoryCSV(){
+  const pid = inv.pid;
+  const plots = pid ? plotsOf(pid) : (db.plots || []);
+  if(!plots.length) return toast('Inventory khali hai — pehle range generate karein', true);
+  const rows = [['Plot no','Project','Corridor','Developer','Size (Gaj)','Area (Sq Ft)','Road (ft)','Facing','Rate (₹/Gaj)','Price (₹)','Status','Investor','Investor contact','Buy rate','Buy date','Exit rate','Asking price','Capital gain','Client','Note']];
+  plots.forEach(pl => {
+    const p = projectOf(pl.projectId) || {};
+    const iv = pl.investor || {};
+    const gain = (iv.buyRate && iv.exitRate) ? Math.round(((+iv.exitRate) - (+iv.buyRate)) * (+pl.sizeGaj || 0)) : '';
+    rows.push([
+      pl.label || pl.num, p.name || '', corridorName(p.corridor), devOf(p).name || '',
+      pl.sizeGaj || '', pl.sizeGaj ? (+pl.sizeGaj * 9) : '', pl.roadFt || '', pl.facing || '',
+      pl.rateGaj || '', plotPrice(pl) || '', PST(pl.status).label,
+      iv.name || '', iv.phone || '', iv.buyRate || '', iv.buyDate || '', iv.exitRate || '',
+      iv.exitRate ? Math.round(iv.exitRate * (+pl.sizeGaj || 0)) : '', gain,
+      pl.clientName || '', pl.note || ''
+    ]);
+  });
+  const csv = rows.map(r => r.map(v => { v = String(v ?? ''); return /[",\n]/.test(v) ? '"' + v.replace(/"/g,'""') + '"' : v; }).join(',')).join('\n');
+  const blob = new Blob(['\ufeff' + csv], { type:'text/csv;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `bcs-inventory-${todayISO()}.csv`;
+  a.click(); URL.revokeObjectURL(a.href);
+  toast('Inventory CSV downloaded · ' + (rows.length - 1) + ' plots');
+}
+
+/* ---------------- events ---------------- */
+function wire2(){
+  const on = (sel, ev, fn) => { const el = document.querySelector(sel); if(el) el.addEventListener(ev, fn); };
+  on('#tsCopy', 'click', () => copyText(shareText));
+  on('#tsWhatsApp', 'click', () => openWhatsApp(shareText));
+  on('#lgAddBank', 'click', () => { const p = projectOf(legalFor); if(!p) return; legalOf(p).banks.push({ name:'', apf:'' }); renderBanks(); });
+  on('#lgSave', 'click', () => {
+    const p = projectOf(legalFor); if(!p) return;
+    const L = legalOf(p);
+    L.sanction90A = document.getElementById('lgSanction').value.trim();
+    L.sanctionDoc = document.getElementById('lgSanctionDoc').value.trim();
+    L.layoutUrl = document.getElementById('lgLayout').value.trim();
+    L.reraCert = document.getElementById('lgReraCert').value.trim();
+    L.reraExpiry = document.getElementById('lgReraExp').value;
+    L.revenue = document.getElementById('lgRevenue').value.trim();
+    L.khasra = document.getElementById('lgKhasra').value.trim();
+    $$('#lgBanks .bank-row').forEach(row => {
+      const nameEl = row.querySelector('[data-bankname]'); if(!nameEl) return;
+      const b = L.banks[+nameEl.dataset.bankname]; if(!b) return;
+      b.name = nameEl.value.trim();
+      b.apf = (row.querySelector('[data-bankapf]') || {}).value ? row.querySelector('[data-bankapf]').value.trim() : (b.apf || '');
+    });
+    L.banks = L.banks.filter(b => (b.name || b.apf));
+    p.updatedAt = Date.now();
+    save(); renderInvBody();
+    try{ closeModal('legalModal'); }catch(e){}
+    toast('Legal vault saved');
+  });
+  on('#lgSummary', 'click', () => { const p = projectOf(legalFor); if(p) openTextModal('📋 Legal summary — ' + (p.name || ''), legalSummaryText(p)); });
+  on('#finBase', 'input', paintFinancials);
+  on('#finQuote', 'input', paintFinancials);
+  on('#finSave', 'click', saveFinancials);
+  on('#finAddMs', 'click', () => { const plot = (db.plots || []).find(x => x.id === finFor); if(!plot) return; collectMilestones(); ledgerOf(plot).milestones.push({ id:uid(), label:'', amount:null, date:'', status:'pending' }); paintMilestones(); });
+  on('#ivSave', 'click', saveInvestor);
+  on('#ivRelease', 'click', () => releaseToMarket(invPlotFor));
+  on('#ivRemove', 'click', () => removeInvestor(invPlotFor));
+  ['ivBuy','ivExit'].forEach(id => on('#' + id, 'input', paintInvestorGain));
+  /* banks / milestones / visits live editing (delegated) */
+  document.addEventListener('input', e => {
+    const bn = e.target.closest && e.target.closest('[data-bankname],[data-bankapf]');
+    if(bn){
+      const p = projectOf(legalFor); if(!p) return;
+      const i = +(bn.dataset.bankname ?? bn.dataset.bankapf);
+      const b = legalOf(p).banks[i]; if(!b) return;
+      if(bn.dataset.bankname !== undefined) b.name = bn.value; else b.apf = bn.value;
+      return;
+    }
+    const ms = e.target.closest && e.target.closest('[data-ms]');
+    if(ms){
+      const plot = (db.plots || []).find(x => x.id === finFor); if(!plot) return;
+      const [k, idx] = ms.dataset.ms.split(':');
+      const m = ledgerOf(plot).milestones[+idx]; if(!m) return;
+      if(k === 'label') m.label = ms.value;
+      else if(k === 'amount') m.amount = ms.value === '' ? null : +ms.value;
+      else if(k === 'date') m.date = ms.value;
+      else if(k === 'status'){ m.status = ms.value; paintMilestones(); }
+    }
+  });
+  document.addEventListener('click', e => {
+    const del = e.target.closest && e.target.closest('[data-bankdel],[data-msdel],[data-visitup],[data-visitdown],[data-visitwa],[data-docketplot],[data-docketproj],[data-plotinv],[data-plotfin]');
+    if(!del) return;
+    if(del.dataset.bankdel !== undefined){
+      const p = projectOf(legalFor); if(!p) return;
+      legalOf(p).banks.splice(+del.dataset.bankdel, 1); renderBanks(); return;
+    }
+    if(del.dataset.msdel !== undefined){
+      const plot = (db.plots || []).find(x => x.id === finFor); if(!plot) return;
+      collectMilestones(); ledgerOf(plot).milestones.splice(+del.dataset.msdel, 1); paintMilestones(); return;
+    }
+    if(del.dataset.visitup){ moveStop(del.dataset.visitup, -1); return; }
+    if(del.dataset.visitdown){ moveStop(del.dataset.visitdown, 1); return; }
+    if(del.dataset.visitwa){
+      const c = (db.clients || []).find(x => x.id === del.dataset.visitwa);
+      if(c && waLink(c.phone)) window.open(waLink(c.phone), '_blank', 'noopener');
+      return;
+    }
+    if(del.dataset.docketplot){
+      const pl = (db.plots || []).find(x => x.id === del.dataset.docketplot);
+      if(pl) openTextModal('📄 Plot docket — ' + (pl.label || pl.num), plotDocketText(pl));
+      return;
+    }
+    if(del.dataset.docketproj){
+      const p = projectOf(del.dataset.docketproj);
+      if(p) openTextModal('📄 Project docket — ' + (p.name || ''), projectDocketText(p));
+      return;
+    }
+    if(del.dataset.plotinv){ openInvestor(del.dataset.plotinv); return; }
+    if(del.dataset.plotfin){ openFinancials(del.dataset.plotfin); return; }
+  });
+  /* visit planner dispatch */
+  on('#visitDispatch', 'click', () => openTextModal('🧭 Dispatch route — driver / team', routeText()));
+  on('#visitPlannerBtn', 'click', openVisitPlanner);
+  on('#invCsvBtn', 'click', exportInventoryCSV);
+  on('#invBackupBtn', 'click', () => downloadBackup().catch(() => toast('Backup failed — dobara try karein', true)));
+  on('#invLegalBtn', 'click', () => { if(inv.pid) openLegal(inv.pid); });
+  on('#invDocketBtn', 'click', () => { if(inv.pid) openTextModal('📄 Project docket', projectDocketText(projectOf(inv.pid) || {})); });
+
+  /* project detail modal buttons */
+  on('#detailLegalBtn', 'click', () => { if(window.detailId) openLegal(window.detailId); });
+  on('#detailDocketBtn', 'click', () => {
+    const p = projectOf(window.detailId); if(!p) return;
+    openTextModal('📄 Project docket — ' + (p.name || ''), projectDocketText(p));
+  });
+  /* advisory card docket must not open the project detail modal */
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-docketprojbtn]');
+    if(!b) return;
+    e.stopPropagation(); e.preventDefault();
+    const p = projectOf(b.dataset.docketprojbtn);
+    if(p) openTextModal('📄 Project docket — ' + (p.name || ''), projectDocketText(p));
+  }, true);
+}
+
+if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire2);
+else wire2();
+
+window.BCS_OPS2 = { openDocketPlot: id => { const pl = (db.plots||[]).find(x=>x.id===id); if(pl) openTextModal('📄 Plot docket', plotDocketText(pl)); },
+                    openLegal, openFinancials, openInvestor, openVisitPlanner, exportInventoryCSV,
+                    ledgerOverdueFor, openTextModal };
 })();
 </script>
 
