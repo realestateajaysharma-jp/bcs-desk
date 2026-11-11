@@ -9379,6 +9379,7 @@ body[data-page="links"]{--pg:#2A9DB8}
 body[data-page="templates"]{--pg:#8A5A9E}
 body[data-page="podcasts"]{--pg:#7A5AC8}
 body[data-page="health"]{--pg:#4E9E63}
+body[data-page="inventory"]{--pg:#3A8FB8}
 
 /* themed page header */
 body[data-page] .adv-head{
@@ -14174,6 +14175,149 @@ html body[data-theme="dark"] .tb-bcs-logo{
   border-color:rgba(246,242,231,.3) !important;
 }
 </style>
+
+<style id="bcs-ops-css">
+/* ============================================================
+   BCS OPS · Plot Inventory Tracker + Advisory Deal Pipeline
+   Additive styles only — reuses the desk tokens & components.
+   ============================================================ */
+:root{
+  --pst-avail:#2F8F6B; --pst-token:#B98A1E; --pst-hold:#C06A2A;
+  --pst-sold:#B0452F;  --pst-resale:#7B67C6; --pst-release:#3A8FB8;
+}
+/* ---------- shared status chips ---------- */
+.pst{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;letter-spacing:.04em;
+  padding:3px 9px;border-radius:999px;border:1px solid;white-space:nowrap;cursor:pointer}
+.pst i{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
+.pst-avail{color:var(--pst-avail);background:color-mix(in srgb,var(--pst-avail) 12%,transparent);border-color:color-mix(in srgb,var(--pst-avail) 38%,transparent)}
+.pst-token{color:var(--pst-token);background:color-mix(in srgb,var(--pst-token) 13%,transparent);border-color:color-mix(in srgb,var(--pst-token) 40%,transparent)}
+.pst-hold{color:var(--pst-hold);background:color-mix(in srgb,var(--pst-hold) 13%,transparent);border-color:color-mix(in srgb,var(--pst-hold) 40%,transparent)}
+.pst-sold{color:var(--pst-sold);background:color-mix(in srgb,var(--pst-sold) 12%,transparent);border-color:color-mix(in srgb,var(--pst-sold) 40%,transparent)}
+.pst-resale{color:var(--pst-resale);background:color-mix(in srgb,var(--pst-resale) 13%,transparent);border-color:color-mix(in srgb,var(--pst-resale) 40%,transparent)}
+.pst-release{color:var(--pst-release);background:color-mix(in srgb,var(--pst-release) 13%,transparent);border-color:color-mix(in srgb,var(--pst-release) 40%,transparent)}
+body[data-theme="dark"] .pst{filter:saturate(1.15) brightness(1.18)}
+
+/* ---------- inventory toolbar / stats ---------- */
+.inv-toolbar{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;padding:13px 15px;margin:2px 2px 12px}
+.inv-toolbar .field{display:flex;flex-direction:column;gap:5px;min-width:170px}
+.inv-toolbar .field.grow{flex:1 1 220px;min-width:180px}
+.inv-toolbar label{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--mut)}
+.inv-toolbar :is(select,input){min-height:38px}
+.inv-bulk{display:flex;align-items:center;gap:8px;margin-left:auto;flex-wrap:wrap}
+.inv-count{font-size:11px;font-weight:800;color:var(--mut);letter-spacing:.04em}
+.inv-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:9px;margin:0 2px 12px}
+.inv-stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:11px 13px;box-shadow:var(--shadow)}
+.inv-stat b{display:block;font-family:'Fraunces',serif;font-size:21px;line-height:1.1;letter-spacing:-.02em}
+.inv-stat span{font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.inv-stat .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px}
+
+/* ---------- map + matrix ---------- */
+.inv-map-wrap{position:relative;margin:0 2px 12px;border-radius:18px;overflow:hidden;min-height:220px;background:#0E120F}
+.inv-map-wrap img{display:block;width:100%;max-height:460px;object-fit:contain;opacity:.45}
+.inv-map-tools{position:absolute;right:12px;bottom:12px;display:flex;align-items:center;gap:9px;
+  background:color-mix(in srgb,var(--panel) 88%,transparent);border:1px solid var(--line);
+  border-radius:12px;padding:7px 11px;backdrop-filter:blur(8px)}
+.inv-map-tools label{font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.inv-matrix-panel{margin:0 2px 12px;padding:13px 15px}
+.inv-matrix-head{display:flex;align-items:baseline;gap:10px;margin-bottom:11px;flex-wrap:wrap}
+.inv-matrix-head b{font-family:'Fraunces',serif;font-size:15.5px}
+.inv-matrix-head span{font-size:11px;color:var(--mut)}
+.inv-matrix{display:flex;flex-wrap:wrap;gap:5px;position:relative;min-height:40px}
+.inv-matrix.has-map{padding:8px;border-radius:12px;background-repeat:no-repeat;background-position:center;background-size:contain}
+.inv-plot{width:37px;height:34px;border-radius:8px;border:1px solid var(--line);background:var(--panel);
+  font-size:10.5px;font-weight:800;color:var(--ink2);cursor:pointer;transition:transform .12s, box-shadow .12s;
+  display:grid;place-items:center;padding:0}
+.inv-plot:hover{transform:translateY(-2px);box-shadow:0 6px 14px -8px rgba(0,0,0,.35)}
+.inv-plot.sel{outline:2px solid var(--acc);outline-offset:1px}
+.inv-plot.pst-avail,.inv-plot.pst-token,.inv-plot.pst-hold,.inv-plot.pst-sold,.inv-plot.pst-resale,.inv-plot.pst-release{
+  color:#FFFDF6;border-color:transparent;font-weight:800}
+
+/* ---------- inventory table ---------- */
+.inv-table-panel{margin:0 2px 30px;padding:13px 15px}
+.inv-table-head{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.inv-table-head b{font-family:'Fraunces',serif;font-size:15.5px}
+.inv-table-head span{font-size:11px;color:var(--mut)}
+.inv-table-wrap{overflow:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:13px}
+.inv-table{width:100%;border-collapse:collapse;min-width:860px}
+.inv-table th{font-size:9px;letter-spacing:.8px;text-transform:uppercase;color:var(--mut);font-weight:800;text-align:left;
+  padding:10px 11px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--panel) 92%,var(--sage, #DFE9E3) 8%);white-space:nowrap;position:sticky;top:0}
+.inv-table td{padding:8px 11px;border-bottom:1px solid var(--line2);font-size:12px;color:var(--ink2);vertical-align:middle;white-space:nowrap}
+.inv-table tr:last-child td{border-bottom:none}
+.inv-table tr:hover td{background:color-mix(in srgb,var(--acc) 4%,transparent)}
+.inv-table .num{font-weight:800;color:var(--ink);font-size:12.5px}
+.inv-table input[type="checkbox"]{width:16px;height:16px;accent-color:var(--acc)}
+.inv-price{font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
+.inv-note{max-width:180px;overflow:hidden;text-overflow:ellipsis}
+.inv-rowbtns{display:inline-flex;gap:4px}
+.inv-empty{padding:26px;text-align:center;color:var(--mut);font-size:12.5px}
+
+/* ---------- pipeline board ---------- */
+.pipe-wrap{margin:0 2px 16px;padding:14px 15px}
+.pipe-head{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.pipe-head b{font-family:'Fraunces',serif;font-size:16.5px;display:block}
+.pipe-head span{font-size:11.5px;color:var(--mut)}
+.pipe-legend{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.pipe-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+@media (max-width:1100px){.pipe-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.pipe-grid{grid-template-columns:1fr}}
+.pipe-col{background:color-mix(in srgb,var(--panel) 55%, var(--sage, #DFE9E3) 12%);border:1px solid var(--line);
+  border-radius:15px;padding:9px;min-height:130px;transition:border-color .15s, background .15s}
+body[data-theme="dark"] .pipe-col{background:color-mix(in srgb,var(--panel) 40%, #000 8%)}
+.pipe-col.over{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 8%,var(--panel))}
+.pipe-col-head{display:flex;align-items:center;gap:7px;padding:2px 4px 9px}
+.pipe-col-head i{width:8px;height:8px;border-radius:50%;flex:none}
+.pipe-col-head b{font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--ink2)}
+.pipe-col-head em{margin-left:auto;font-style:normal;font-size:10.5px;font-weight:800;color:var(--mut)}
+.pipe-cards{display:flex;flex-direction:column;gap:7px;min-height:40px}
+.pipe-card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:10px 11px;cursor:grab;
+  box-shadow:0 1px 2px rgba(0,0,0,.05);transition:transform .12s, box-shadow .15s}
+.pipe-card:active{cursor:grabbing}
+.pipe-card:hover{transform:translateY(-1px);box-shadow:0 8px 18px -12px rgba(0,0,0,.3)}
+.pipe-card.dragging{opacity:.45}
+.pipe-card-top{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.pipe-card-top b{font-size:12.5px;color:var(--ink);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pipe-card-top a{color:var(--pst-release);text-decoration:none;font-size:11px;flex:none}
+.pipe-facts{display:flex;flex-wrap:wrap;gap:4px 8px;font-size:10.5px;color:var(--ink2);margin-bottom:7px}
+.pipe-facts b{color:var(--ink);font-weight:800}
+.pipe-meta{font-size:10px;color:var(--mut);margin-bottom:7px;display:flex;gap:8px;flex-wrap:wrap}
+.pipe-meta .late{color:var(--pst-sold);font-weight:800}
+.pipe-acts{display:flex;gap:5px;flex-wrap:wrap}
+.pipe-acts .btn{min-height:28px;padding:0 9px;font-size:10.5px;border-radius:8px}
+.pipe-acts select{min-height:28px;font-size:10.5px;border-radius:8px;padding:0 6px;max-width:132px}
+.pipe-empty{font-size:11px;color:var(--mut);text-align:center;padding:14px 6px;border:1px dashed var(--line);border-radius:11px}
+
+/* ---------- ops modals ---------- */
+.ops-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;padding:2px}
+.ops-form .field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.ops-form .field.full{grid-column:1/-1}
+.ops-form label{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--mut)}
+.ops-form :is(input,select,textarea){min-height:40px;font-size:16px}
+.ops-form textarea{min-height:64px;resize:vertical}
+.ops-note{font-size:11px;color:var(--mut);grid-column:1/-1;line-height:1.5}
+.ops-list{max-height:min(56vh,520px);overflow:auto;border:1px solid var(--line);border-radius:13px}
+.ops-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line2)}
+.ops-row:last-child{border-bottom:none}
+.ops-row b{font-size:12.5px;color:var(--ink);display:block}
+.ops-row span{font-size:11px;color:var(--mut);display:block;margin-top:2px}
+.ops-row .side{display:flex;align-items:center;gap:8px}
+.ops-total{display:flex;justify-content:space-between;align-items:center;padding:11px 13px;margin-top:10px;
+  border:1px solid var(--line);border-radius:13px;background:color-mix(in srgb,var(--acc) 6%,var(--panel))}
+.ops-total b{font-family:'Fraunces',serif;font-size:17px}
+.match-hit{display:grid;grid-template-columns:auto 1fr auto;gap:11px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line2)}
+.match-hit:last-child{border-bottom:none}
+.match-hit .no{font-weight:800;color:var(--ink);font-size:13px;min-width:52px}
+.match-hit .info b{font-size:12.5px;color:var(--ink);display:block}
+.match-hit .info span{font-size:11px;color:var(--mut);display:block;margin-top:2px}
+@media (max-width:640px){
+  .ops-form{grid-template-columns:1fr}
+  .match-hit{grid-template-columns:1fr;gap:7px}
+  .pipe-grid{grid-template-columns:1fr}
+  .pipe-acts :is(.btn,select){min-height:36px !important}
+  .pipe-acts{gap:6px}
+  .pipe-acts select{max-width:none !important;flex:1 1 100%}
+  .inv-plot{width:40px;height:38px}
+}
+</style>
 </head>
 <body class="locked">
 
@@ -14429,7 +14573,7 @@ try{
       <div class="nav-more-wrap">
         <button type="button" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" title="All pages" aria-label="More pages"><span class="nav-ic" aria-hidden="true">▦</span><span class="nav-lbl">More</span><span class="nav-chev" aria-hidden="true">▾</span></button>
         <div class="nav-more-panel" id="navMorePanel" hidden>
-          <div class="nav-more-head"><b>All 21 pages</b><span>one click away</span></div>
+          <div class="nav-more-head"><b>All 22 pages</b><span>one click away</span></div>
           <input type="search" id="navPageSearch" class="nav-page-search" placeholder="Jump to a page…  /" aria-label="Search all pages" autocomplete="off" spellcheck="false">
           <button type="button" data-view="dashboard"><span class="nav-ic" aria-hidden="true">⌂</span>Dashboard</button>
           <button type="button" data-view="advisory"><span class="nav-ic" aria-hidden="true">✦</span>Advisory</button>
@@ -14440,6 +14584,7 @@ try{
           <button type="button" data-view="pulse"><span class="nav-ic" aria-hidden="true">↗</span>Market Pulse</button>
           <button type="button" data-view="news"><span class="nav-ic" aria-hidden="true">📰</span>News</button>
           <button type="button" data-view="calc"><span class="nav-ic" aria-hidden="true">⌘</span>Calculators</button>
+          <button type="button" data-view="inventory"><span class="nav-ic" aria-hidden="true">▦</span>Plot Inventory</button>
           <button type="button" data-view="advisors"><span class="nav-ic" aria-hidden="true">◎</span>Advisors</button>
           <button type="button" data-view="partners"><span class="nav-ic" aria-hidden="true">◉</span>Partners</button>
           <button type="button" data-view="resale"><span class="nav-ic" aria-hidden="true">⇌</span>Resale</button>
@@ -15151,6 +15296,21 @@ try{
 
     <div class="saved-briefs" id="savedBriefs"></div>
 
+    <!-- ============ DEAL PIPELINE · Client Requirements CRM (uses db.clients) ============ -->
+    <div class="pipe-wrap panel" id="pipeWrap">
+      <div class="pipe-head">
+        <div>
+          <b>Deal pipeline — requirement se registry tak</b>
+          <span>Card ko stage par drag karein (ya niche select se stage badlein). Token/Registry par plot select hoga aur inventory automatic update hogi.</span>
+        </div>
+        <div class="pipe-legend" id="pipeLegend"></div>
+      </div>
+      <div class="pipe-grid" id="pipeBoard"></div>
+    </div>
+
+    
+
+
     <div class="adv-layout">
       <aside class="adv-panel">
         <div class="adv-panel-head">
@@ -15224,6 +15384,56 @@ try{
       </div>
     </div>
   </section>
+<!-- ============ PLOT INVENTORY TRACKER ============ -->
+    <section class="view" id="view-inventory">
+      <div class="adv-head">
+        <div>
+          <div class="eyebrow">BCS · plot inventory tracker</div>
+          <h2 class="adv-title">Every plot, every status,<br><em>one ground sheet.</em></h2>
+          <p class="adv-sub">Developer ki verbal list se range generate karo — "1 to 50 = 111 Gaj, 40 ft road" — status ek click me toggle, layout map ke upar matrix, aur payout apne aap.</p>
+        </div>
+        <div class="adv-head-actions">
+          <button class="btn ghost" id="invMapBtn">🗺 Layout map</button>
+          <button class="btn ghost" id="invPayoutBtn">₹ Payout log</button>
+          <button class="btn primary" id="invRangeBtn">⚡ Generate range</button>
+        </div>
+      </div>
+
+      <div class="inv-toolbar panel">
+        <div class="field"><label>Project</label><select id="invProject"></select></div>
+        <div class="field"><label>Status filter</label><select id="invStatusFilter"></select></div>
+        <div class="field grow"><label>Search</label><input id="invSearch" placeholder="Plot no ya note…"></div>
+        <div class="inv-bulk">
+          <span class="inv-count" id="invSelCount">0 selected</span>
+          <select id="invBulkStatus"></select>
+          <button class="btn ghost sm" id="invBulkApply">Apply to selected</button>
+        </div>
+      </div>
+
+      <div class="inv-stats" id="invStats"></div>
+
+      <div class="inv-map-wrap panel" id="invMapWrap" hidden>
+        <img id="invMapImg" alt="Developer master layout">
+        <div class="inv-map-tools">
+          <label>Map opacity</label>
+          <input type="range" id="invMapOpacity" min="12" max="100" value="45">
+          <button class="btn ghost sm" id="invMapClear">Remove map</button>
+        </div>
+      </div>
+
+      <div class="panel inv-matrix-panel">
+        <div class="inv-matrix-head"><b>Plot status matrix</b><span>Plot par click = status cycle · layout map overlay ke saath</span><span id="invMatrixLegend" style="margin-left:auto"></span></div>
+        <div class="inv-matrix" id="invMatrix"></div>
+      </div>
+
+      <div class="panel inv-table-panel">
+        <div class="inv-table-head"><b>Inventory sheet</b><span id="invMeta"></span></div>
+        <div class="inv-table-wrap"><table class="inv-table" id="invTable"></table></div>
+      </div>
+
+      <input type="file" id="invMapFile" accept="image/*" hidden>
+    </section>
+  
 
   <!-- ============ NEWS & UPDATES ============ -->
   <section class="view" id="view-news">
@@ -17981,6 +18191,105 @@ try{
   </div>
 </div>
 
+<!-- ============ OPS MODALS · inventory + pipeline ============ -->
+<div class="overlay" id="plotRangeModal">
+  <div class="modal">
+    <div class="modal-head"><h3>⚡ Generate plot range</h3><button class="xbtn" data-close="plotRangeModal">✕</button></div>
+    <div class="modal-body">
+      <div class="ops-form">
+        <div class="field full"><label>Project</label><select id="prProject"></select></div>
+        <div class="field"><label>Plot from (number)</label><input id="prFrom" type="number" min="1" step="1" value="1"></div>
+        <div class="field"><label>Plot to (number)</label><input id="prTo" type="number" min="1" step="1" value="50"></div>
+        <div class="field"><label>Size (Gaj)</label><input id="prGaj" type="number" min="1" step="1" placeholder="e.g. 111"></div>
+        <div class="field"><label>Road width (ft)</label><input id="prRoad" type="number" min="0" step="1" placeholder="e.g. 40"></div>
+        <div class="field"><label>Facing</label><select id="prFacing"></select></div>
+        <div class="field"><label>Base rate (₹ / Gaj)</label><input id="prRate" type="number" min="0" step="100" placeholder="e.g. 32000"></div>
+        <div class="field full"><label>Note (optional — printed on every plot of this range)</label><input id="prRangeNote" placeholder="e.g. Corner block, park facing"></div>
+        <label class="switch full" style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink2)"><input type="checkbox" id="prSkip" checked><span>Skip plot numbers that already exist in this project</span></label>
+        <p class="ops-note">Har plot alag row banega — baad me kisi bhi plot ka size/rate alag edit kar sakte hain. Price = Gaj × Rate/Gaj, commission project ke developer record se aayegi.</p>
+      </div>
+    </div>
+    <div class="modal-foot"><button class="btn ghost" data-close="plotRangeModal">Cancel</button><button class="btn primary" id="prGenerate">Generate range</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="plotEditModal">
+  <div class="modal">
+    <div class="modal-head"><h3 id="peTitle">Edit plot</h3><button class="xbtn" data-close="plotEditModal">✕</button></div>
+    <div class="modal-body">
+      <div class="ops-form">
+        <div class="field"><label>Plot</label><input id="peNum" readonly></div>
+        <div class="field"><label>Status</label><select id="peStatus"></select></div>
+        <div class="field"><label>Size (Gaj)</label><input id="peGaj" type="number" min="1" step="1"></div>
+        <div class="field"><label>Road width (ft)</label><input id="peRoad" type="number" min="0" step="1"></div>
+        <div class="field"><label>Facing</label><select id="peFacing"></select></div>
+        <div class="field"><label>Rate (₹ / Gaj)</label><input id="peRate" type="number" min="0" step="100"></div>
+        <div class="field full"><label>Note</label><input id="peNote" placeholder="Corner, park facing, registry done by…"></div>
+      </div>
+    </div>
+    <div class="modal-foot"><button class="btn ghost" data-close="plotEditModal">Cancel</button><button class="btn primary" id="peSave">Save plot</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="plotPayoutModal">
+  <div class="modal">
+    <div class="modal-head"><h3>₹ Payout & margin log</h3><button class="xbtn" data-close="plotPayoutModal">✕</button></div>
+    <div class="modal-body">
+      <p class="ops-note" style="padding:0 2px 10px">Commission project ke developer record ki commission % se calculate hoti hai (sale value par). Paid mark karne se log me clear ho jata hai.</p>
+      <div class="ops-list" id="ppList"></div>
+      <div class="ops-total"><span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)">Total commission · unpaid</span><b id="ppTotal">₹0</b></div>
+    </div>
+    <div class="modal-foot"><button class="btn ghost" data-close="plotPayoutModal">Close</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="matchModal">
+  <div class="modal">
+    <div class="modal-head"><h3 id="mmTitle">Match inventory</h3><button class="xbtn" data-close="matchModal">✕</button></div>
+    <div class="modal-body">
+      <p class="ops-note" id="mmMeta" style="padding:0 2px 10px"></p>
+      <div class="ops-list" id="mmList"></div>
+    </div>
+    <div class="modal-foot"><button class="btn ghost" data-close="matchModal">Close</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="dealModal">
+  <div class="modal">
+    <div class="modal-head"><h3 id="dlTitle">Close deal — select plot</h3><button class="xbtn" data-close="dealModal">✕</button></div>
+    <div class="modal-body">
+      <p class="ops-note" id="dlMeta" style="padding:0 2px 10px"></p>
+      <div class="ops-form">
+        <div class="field full"><label>Plot (available inventory)</label><select id="dlPlot"></select></div>
+        <div class="field full"><label>Client name for registry (optional)</label><input id="dlClient" placeholder="Registry name"></div>
+        <p class="ops-note">Confirm karte hi plot ka status <b>Under Token</b> ya <b>Sold / Registered</b> ho jayega — inventory me manually kuch nahi karna.</p>
+      </div>
+    </div>
+    <div class="modal-foot"><button class="btn ghost" data-close="dealModal">Cancel</button><button class="btn primary" id="dlConfirm">Confirm & sync inventory</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="dealEditModal">
+  <div class="modal">
+    <div class="modal-head"><h3 id="deTitle">Deal details</h3><button class="xbtn" data-close="dealEditModal">✕</button></div>
+    <div class="modal-body">
+      <div class="ops-form">
+        <div class="field"><label>Client name</label><input id="deName"></div>
+        <div class="field"><label>Phone / WhatsApp</label><input id="dePhone" placeholder="+91 …"></div>
+        <div class="field"><label>Pipeline stage</label><select id="deStage"></select></div>
+        <div class="field"><label>Assigned advisor</label><select id="deAdvisor"></select></div>
+        <div class="field"><label>Target corridor</label><select id="deCorridor"></select></div>
+        <div class="field"><label>Plot size (Gaj)</label><input id="deGaj" type="number" min="0" step="11"></div>
+        <div class="field"><label>Budget from (₹ lakh)</label><input id="deBudgetMin" type="number" min="0" step="1"></div>
+        <div class="field"><label>Budget up to (₹ lakh)</label><input id="deBudgetMax" type="number" min="0" step="1"></div>
+        <div class="field"><label>Last follow-up</label><input id="deFollow" type="date"></div>
+        <div class="field"><label>Next follow-up</label><input id="deNext" type="date"></div>
+        <div class="field full"><label>Requirement notes</label><textarea id="deNotes" placeholder="Kya chahiye — location, size, budget, timeline…"></textarea></div>
+      </div>
+    </div>
+    <div class="modal-foot"><button class="btn ghost" data-close="dealEditModal">Cancel</button><button class="btn primary" id="deSave">Save deal</button></div>
+  </div>
+</div>
 <div class="overlay" id="imgModal">
   <button class="img-close" data-close="imgModal" aria-label="Close image">✕</button>
   <img id="imgModalImg" alt="">
@@ -18729,6 +19038,7 @@ function load(){
     if(!Array.isArray(parsed.developers)) parsed.developers = [];
     if(!Array.isArray(parsed.projects)) parsed.projects = [];
     if(!Array.isArray(parsed.clients)) parsed.clients = [];
+    if(!Array.isArray(parsed.plots)) parsed.plots = [];
     if(!Array.isArray(parsed.advisors)) parsed.advisors = [];
     if(!Array.isArray(parsed.resale)) parsed.resale = [];
     if(!Array.isArray(parsed.bookings)) parsed.bookings = [];
@@ -18777,6 +19087,24 @@ window.addEventListener('visibilitychange', () => {
   if(document.visibilityState === 'hidden') forceSave();
 });
 function normalizeDb(d){
+  /* ---- BCS OPS: plot inventory + advisory pipeline defaults ---- */
+  if(!Array.isArray(d.plots)) d.plots = [];
+  d.plots = d.plots.filter(p => p && p.projectId).map(p => ({
+    id: p.id || uid(), projectId: p.projectId, num: +p.num || 0, label: String(p.label || p.num || ''),
+    sizeGaj: p.sizeGaj == null ? null : (+p.sizeGaj || null), roadFt: p.roadFt == null ? null : (+p.roadFt || null),
+    facing: String(p.facing || ''), rateGaj: p.rateGaj == null ? null : (+p.rateGaj || null),
+    status: ['available','token','hold','sold','resale','release'].includes(p.status) ? p.status : 'release',
+    clientId: p.clientId || '', clientName: String(p.clientName || ''), note: String(p.note || ''),
+    payoutPaid: !!p.payoutPaid, payoutPaidAt: p.payoutPaidAt || null,
+    createdAt: p.createdAt || Date.now(), updatedAt: p.updatedAt || p.createdAt || Date.now()
+  }));
+  (Array.isArray(d.clients) ? d.clients : []).forEach(c => {
+    if(!c.stage || !['inbound','profiling','visit','token','closed'].includes(c.stage)) c.stage = 'inbound';
+    if(c.corridorId == null) c.corridorId = (Array.isArray(c.corridors) && c.corridors[0]) || '';
+    if(c.sizeGaj == null) c.sizeGaj = null;
+    if(c.lastFollowUp == null) c.lastFollowUp = c.lastContact || '';
+    if(c.dealPlotId == null) c.dealPlotId = '';
+  });
   if(!Array.isArray(d.terminology)){
     d.terminology = DEFAULT_TERMINOLOGY.map((t, i) => ({
       id: uid(), built: true, createdAt: Date.now() + i, ...t
@@ -34326,6 +34654,8 @@ function render(){
   if(currentView === 'tax') renderTax();
   if(currentView === 'partners') renderPartners();
   if(currentView === 'advisory'){ renderSavedBriefs(); renderAdvisoryResults(); }
+  if(currentView === 'inventory'){ try{ window.BCS_OPS.renderInventory(); }catch(e){} }
+  if(currentView === 'advisory' || currentView === 'clients'){ try{ window.BCS_OPS.renderPipeline(); }catch(e){} }
   if(currentView === 'templates') renderTemplates();
   if(currentView === 'health'){ renderHealth(); renderSyncCard(); try{ renderDataStatus(); }catch(e){} }
   if(currentView === 'social'){ try{ renderSocialDesk(); }catch(e){} }
@@ -36976,6 +37306,515 @@ try{
       try{ paintOnboarding(); }catch(e){}
     };
   }catch(err){ console.warn('[BCS motion]', err); }
+})();
+</script>
+
+<script>
+/* =========================================================
+   BCS OPS · Plot Inventory Tracker + Advisory Deal Pipeline
+   ---------------------------------------------------------
+   Purely additive module.
+   Reuses: db.projects, db.developers, db.advisors, db.clients
+   New collection: db.plots (created + repaired in load/normalize)
+   Persistence: the desk's existing save() → localStorage + IDB + cloud
+   ========================================================= */
+(function(){
+'use strict';
+
+/* ---------------- constants ---------------- */
+const PLOT_STATUSES = [
+  { id:'available', label:'Available',         color:'#2F8F6B' },
+  { id:'token',     label:'Under Token',       color:'#B98A1E' },
+  { id:'hold',      label:'Hold',              color:'#C06A2A' },
+  { id:'sold',      label:'Sold / Registered', color:'#B0452F' },
+  { id:'resale',    label:'Investor Resale',   color:'#7B67C6' },
+  { id:'release',   label:'New Release',       color:'#3A8FB8' }
+];
+const PST = id => PLOT_STATUSES.find(s => s.id === id) || PLOT_STATUSES[0];
+const PIPELINE = [
+  { id:'inbound',   label:'Inbound Lead',            color:'#3A8FB8' },
+  { id:'profiling', label:'Requirement Profiling',   color:'#7B67C6' },
+  { id:'visit',     label:'Site Visit Scheduled',    color:'#C9A227' },
+  { id:'token',     label:'Token / Negotiation',     color:'#C06A2A' },
+  { id:'closed',    label:'Registry / Closed',       color:'#2F8F6B' }
+];
+const STAGE = id => PIPELINE.find(s => s.id === id) || PIPELINE[0];
+const FACINGS = ['East','West','North','South','North-East','North-West','South-East','South-West','Mixed'];
+const DAYS_WARN = 10; // follow-up older than this gets flagged
+
+/* ---------------- state ---------------- */
+const inv = { pid:null, q:'', status:'', sel:new Set(), editing:null };
+const pipe = { dealFor:null, dealStage:'token', editFor:null, matchFor:null };
+
+/* ---------------- tiny helpers (desk globals reused) ---------------- */
+const plotPrice = p => Math.round((+p.sizeGaj || 0) * (+p.rateGaj || 0));
+const plotPriceL = p => plotPrice(p) / 100000;
+const projectOf = id => (db.projects || []).find(p => p.id === id);
+const plotsOf = pid => (db.plots || []).filter(p => p.projectId === pid).sort((a,b) => (+a.num||0) - (+b.num||0));
+const devOf = p => p ? (dev(p.developerId) || {}) : {};
+const corridorName = id => id ? (corridor(id).name || '—') : '—';
+const waLink = phone => { const d = String(phone || '').replace(/[^\d]/g,''); return d ? 'https://wa.me/' + (d.length === 10 ? '91' + d : d) : ''; };
+const daysSince = iso => { if(!iso) return null; const t = new Date(iso + 'T00:00:00').getTime(); return isNaN(t) ? null : Math.floor((Date.now() - t) / 86400000); };
+const todayISO = () => new Date().toISOString().slice(0,10);
+const money = v => '₹' + Math.round(+v || 0).toLocaleString('en-IN');
+const lakh = v => v == null || v === '' || isNaN(+v) ? '' : fmtPrice(+v);
+
+function options(list, cur, ph){ return (ph ? `<option value="">${esc(ph)}</option>` : '') + list.map(o => `<option value="${esc(o.id)}"${o.id === cur ? ' selected' : ''}>${esc(o.label || o.name)}</option>`).join(''); }
+
+/* ---------------- plot commission (developer record) ---------------- */
+function commissionOf(plot){
+  const p = projectOf(plot.projectId);
+  const pct = +(devOf(p).commissionPct || 0);
+  return { pct, amount: Math.round(plotPrice(plot) * pct / 100), dev: devOf(p).name || '—' };
+}
+
+/* ================================================================
+   FEATURE 1 · PLOT INVENTORY
+   ================================================================ */
+function renderInventory(){
+  const sel = $('#invProject'); if(!sel) return;
+  const projects = db.projects || [];
+  if(!inv.pid || !projectOf(inv.pid)) inv.pid = (projects[0] || {}).id || null;
+  sel.innerHTML = projects.map(p => `<option value="${esc(p.id)}"${p.id === inv.pid ? ' selected' : ''}>${esc(p.name)} · ${esc(corridorName(p.corridor))}</option>`).join('') || '<option value="">— koi project nahi —</option>';
+  $('#invStatusFilter').innerHTML = options(PLOT_STATUSES, inv.status, 'All statuses');
+  $('#invBulkStatus').innerHTML = options(PLOT_STATUSES, 'token');
+  renderInvBody();
+}
+function invPlots(){
+  let list = plotsOf(inv.pid);
+  if(inv.status) list = list.filter(p => p.status === inv.status);
+  if(inv.q){
+    const q = inv.q.toLowerCase();
+    list = list.filter(p => String(p.num).includes(q) || String(p.label || '').toLowerCase().includes(q) || String(p.note || '').toLowerCase().includes(q) || PST(p.status).label.toLowerCase().includes(q));
+  }
+  return list;
+}
+function renderInvBody(){
+  const p = projectOf(inv.pid);
+  const all = plotsOf(inv.pid);
+  const stats = { total: all.length, value: 0 };
+  PLOT_STATUSES.forEach(s => stats[s.id] = 0);
+  all.forEach(pl => { stats[pl.status] = (stats[pl.status] || 0) + 1; if(pl.status === 'available') stats.value += plotPrice(pl); });
+  $('#invStats').innerHTML = `
+    <div class="inv-stat"><b>${all.length}</b><span>Total plots</span></div>` +
+    PLOT_STATUSES.map(s => `<div class="inv-stat"><b><span class="dot" style="background:${s.color}"></span>${stats[s.id] || 0}</b><span>${s.label}</span></div>`).join('') +
+    `<div class="inv-stat"><b>${stats.value ? '₹' + (stats.value/10000000 >= 1 ? (stats.value/10000000).toFixed(1) + ' Cr' : Math.round(stats.value/100000) + ' L') : '—'}</b><span>Available value</span></div>`;
+
+  /* layout map */
+  const wrap = $('#invMapWrap'), img = $('#invMapImg');
+  if(p && p.layoutImage){ wrap.hidden = false; img.src = p.layoutImage; }
+  else wrap.hidden = true;
+
+  /* matrix */
+  const mx = $('#invMatrix');
+  mx.innerHTML = all.length ? all.map(pl => {
+    const st = PST(pl.status);
+    return `<button type="button" class="inv-plot pst-${pl.status}${inv.sel.has(pl.id) ? ' sel' : ''}" data-plotcycle="${pl.id}" title="Plot ${esc(pl.label || pl.num)} · ${st.label} · ${pl.sizeGaj || 0} Gaj · ${money(plotPrice(pl))}">${esc(pl.label || pl.num)}</button>`;
+  }).join('') : `<div class="inv-empty">Abhi koi plot nahi — <b>⚡ Generate range</b> se developer ki list daalein.</div>`;
+  $('#invMatrixLegend').innerHTML = PLOT_STATUSES.map(s => `<span class="pst pst-${s.id}" style="cursor:default"><i></i>${s.label}</span>`).join(' ');
+  if(p && p.layoutImage && !mx.classList.contains('has-map')){
+    mx.classList.add('has-map');
+    mx.style.backgroundImage = `url(${p.layoutImage})`;
+  } else if(!p || !p.layoutImage){ mx.classList.remove('has-map'); mx.style.backgroundImage = ''; }
+
+  /* table */
+  const list = invPlots();
+  $('#invMeta').textContent = `${list.length} of ${all.length} plots · ${p ? esc(p.name) : '—'}`;
+  $('#invTable').innerHTML = all.length === 0 ? '' : `
+    <thead><tr>
+      <th style="width:30px"></th><th>Plot</th><th>Gaj</th><th>Sq ft</th><th>Road</th><th>Facing</th>
+      <th>Rate/Gaj</th><th>Price</th><th>Status</th><th>Note</th><th></th>
+    </tr></thead>
+    <tbody>${list.map(pl => {
+      const st = PST(pl.status);
+      const pr = plotPrice(pl);
+      return `<tr>
+        <td><input type="checkbox" data-pick="${pl.id}"${inv.sel.has(pl.id) ? ' checked' : ''}></td>
+        <td class="num">${esc(pl.label || pl.num)}</td>
+        <td>${esc(pl.sizeGaj || '—')}</td>
+        <td>${pl.sizeGaj ? (+pl.sizeGaj * 9).toLocaleString('en-IN') : '—'}</td>
+        <td>${pl.roadFt ? esc(pl.roadFt) + ' ft' : '—'}</td>
+        <td>${esc(pl.facing || '—')}</td>
+        <td>${pl.rateGaj ? money(pl.rateGaj) : '—'}</td>
+        <td class="inv-price">${pr ? money(pr) : '—'}</td>
+        <td><button type="button" class="pst pst-${pl.status}" data-plotcycle="${pl.id}" title="Click = next status"><i></i>${st.label}</button></td>
+        <td class="inv-note" title="${esc(pl.note || '')}">${esc(pl.note || '—')}</td>
+        <td><span class="inv-rowbtns"><button type="button" class="btn ghost sm" data-plotedit="${pl.id}" title="Edit plot">✎</button></span></td>
+      </tr>`;
+    }).join('')}</tbody>`;
+  $('#invSelCount').textContent = inv.sel.size + ' selected';
+}
+
+/* ----- bulk range generator ----- */
+function openRangeModal(){
+  const sel = $('#prProject');
+  sel.innerHTML = (db.projects || []).map(p => `<option value="${esc(p.id)}"${p.id === inv.pid ? ' selected' : ''}>${esc(p.name)}</option>`).join('');
+  $('#prFacing').innerHTML = FACINGS.map(f => `<option>${f}</option>`).join('');
+  showOverlay('plotRangeModal');
+}
+function generateRange(){
+  const pid = $('#prProject').value, from = Math.round(+$('#prFrom').value), to = Math.round(+$('#prTo').value);
+  const gaj = Math.round(+$('#prGaj').value), road = Math.round(+$('#prRoad').value);
+  const facing = $('#prFacing').value, rate = Math.round(+$('#prRate').value), note = $('#prNote').value.trim();
+  const skip = $('#prSkip').checked;
+  if(!pid) return toast('Pehle project chunein', true);
+  if(!from || !to || to < from) return toast('Plot range sahi karein (From ≤ To)', true);
+  if(!gaj && !rate) return toast('Size (Gaj) ya rate — kuch to daalein', true);
+  const existing = new Set(plotsOf(pid).map(x => +x.num));
+  let made = 0, skipped = 0;
+  for(let n = from; n <= to; n++){
+    if(skip && existing.has(n)){ skipped++; continue; }
+    db.plots.push({ id:uid(), projectId:pid, num:n, label:String(n), sizeGaj:gaj || null, roadFt:road || null,
+      facing, rateGaj:rate || null, status:'release', note:note || '', createdAt:Date.now(), updatedAt:Date.now() });
+    made++;
+  }
+  inv.pid = pid; inv.sel.clear();
+  save(); renderInventory();
+  try{ closeModal('plotRangeModal'); }catch(e){ document.getElementById('plotRangeModal').classList.remove('on'); }
+  toast(`⚡ ${made} plots generated${skipped ? ` · ${skipped} skipped (already existed)` : ''}`);
+}
+
+/* ----- status cycle / bulk / edit ----- */
+function cyclePlot(id){
+  const pl = (db.plots || []).find(x => x.id === id); if(!pl) return;
+  const i = PLOT_STATUSES.findIndex(s => s.id === pl.status);
+  pl.status = PLOT_STATUSES[(i + 1) % PLOT_STATUSES.length].id;
+  pl.updatedAt = Date.now();
+  save(); renderInvBody(); renderPipeline();
+}
+function openPlotEdit(id){
+  const pl = (db.plots || []).find(x => x.id === id); if(!pl) return;
+  inv.editing = id;
+  $('#peTitle').textContent = 'Edit plot ' + (pl.label || pl.num);
+  $('#peNum').value = pl.label || pl.num;
+  $('#peStatus').innerHTML = options(PLOT_STATUSES, pl.status);
+  $('#peGaj').value = pl.sizeGaj || ''; $('#peRoad').value = pl.roadFt || '';
+  $('#peFacing').innerHTML = FACINGS.map(f => `<option${f === pl.facing ? ' selected' : ''}>${f}</option>`).join('');
+  $('#peRate').value = pl.rateGaj || ''; $('#peNote').value = pl.note || '';
+  showOverlay('plotEditModal');
+}
+function savePlotEdit(){
+  const pl = (db.plots || []).find(x => x.id === inv.editing); if(!pl) return;
+  pl.status = $('#peStatus').value; pl.sizeGaj = Math.round(+$('#peGaj').value) || null;
+  pl.roadFt = Math.round(+$('#peRoad').value) || null; pl.facing = $('#peFacing').value;
+  pl.rateGaj = Math.round(+$('#peRate').value) || null; pl.note = $('#peNote').value.trim();
+  pl.updatedAt = Date.now();
+  save(); renderInvBody(); renderPipeline();
+  try{ closeModal('plotEditModal'); }catch(e){ document.getElementById('plotEditModal').classList.remove('on'); }
+  toast('Plot updated');
+}
+function bulkApply(){
+  const st = $('#invBulkStatus').value; if(!st || !inv.sel.size) return toast('Pehle plots select karein', true);
+  (db.plots || []).forEach(pl => { if(inv.sel.has(pl.id)){ pl.status = st; pl.updatedAt = Date.now(); } });
+  inv.sel.clear(); save(); renderInvBody(); renderPipeline();
+  toast('Status applied to selected plots');
+}
+
+/* ----- layout map ----- */
+function pickMap(){ document.getElementById('invMapFile').click(); }
+function saveMap(file){
+  const p = projectOf(inv.pid); if(!p) return;
+  const done = dataUrl => {
+    if(!dataUrl) return toast('Map load nahi hui — dusri image try karein', true);
+    p.layoutImage = dataUrl; p.updatedAt = Date.now();
+    save(); renderInvBody(); toast('Layout map added — matrix ke peeche overlay ho gaya');
+  };
+  if(typeof fileToImage === 'function'){ fileToImage(file, 1600, 0.82).then(done).catch(() => done(null)); }
+  else {
+    const rd = new FileReader();
+    rd.onload = () => done(rd.result);
+    rd.readAsDataURL(file);
+  }
+}
+function clearMap(){
+  const p = projectOf(inv.pid); if(!p) return;
+  delete p.layoutImage; save(); renderInvBody(); toast('Map removed');
+}
+
+/* ----- payout log ----- */
+function openPayout(){
+  const sold = (db.plots || []).filter(p => p.status === 'sold');
+  const rows = sold.map(pl => {
+    const c = commissionOf(pl), p = projectOf(pl.projectId);
+    return `<div class="ops-row">
+      <div><b>Plot ${esc(pl.label || pl.num)} · ${esc(p ? p.name : '—')}</b>
+      <span>${esc(c.dev)} · ${pl.sizeGaj || 0} Gaj × ${money(pl.rateGaj || 0)} = ${money(plotPrice(pl))} · commission ${c.pct}% · ${pl.payoutPaid ? '✅ paid' : 'pending'}</span></div>
+      <div class="side"><b style="font-size:13px">${money(c.amount)}</b>
+      <button type="button" class="btn ghost sm" data-paypaid="${pl.id}">${pl.payoutPaid ? 'Undo' : 'Mark paid'}</button></div>
+    </div>`;
+  }).join('');
+  $('#ppList').innerHTML = sold.length ? rows : '<div class="inv-empty">Abhi koi Sold / Registered plot nahi — plot status "Sold" karte hi commission yahan aa jayegi.</div>';
+  const unpaid = sold.filter(pl => !pl.payoutPaid).reduce((a,pl) => a + commissionOf(pl).amount, 0);
+  $('#ppTotal').textContent = money(unpaid);
+  if(sold.length && sold.every(pl => !(commissionOf(pl).pct > 0))){
+    $('#ppList').insertAdjacentHTML('afterbegin', '<div class="ops-row" style="background:color-mix(in srgb, var(--pst-token) 8%, transparent)"><div><b>Commission 0% hai</b><span>Developers page me us developer record ki commission % bharo — yahan apne aap calculate hogi.</span></div><div class="side"></div></div>');
+  }
+  showOverlay('plotPayoutModal');
+}
+function togglePaid(id){
+  const pl = (db.plots || []).find(x => x.id === id); if(!pl) return;
+  pl.payoutPaid = !pl.payoutPaid; pl.payoutPaidAt = pl.payoutPaid ? Date.now() : null;
+  save(); openPayout();
+}
+
+/* ================================================================
+   FEATURE 2 · ADVISORY DEAL PIPELINE (db.clients)
+   ================================================================ */
+function pipelineClients(){
+  const list = (typeof scopedClients === 'function') ? scopedClients() : (db.clients || []);
+  return list.slice().sort((a,b) => (b.updatedAt || b.createdAt || 0) - (a.updatedAt || a.createdAt || 0));
+}
+function clientCorridorId(c){ return c.corridorId || (c.corridors || [])[0] || ''; }
+function advisorOf(c){ return c.advisorId ? (advisor(c.advisorId) || {}) : {}; }
+function renderPipeline(){
+  const board = $('#pipeBoard'); if(!board) return;
+  $('#pipeLegend').innerHTML = PIPELINE.map(s => `<span class="pst" style="cursor:default;color:${s.color};border-color:color-mix(in srgb, ${s.color} 40%, transparent);background:color-mix(in srgb, ${s.color} 10%, transparent)"><i></i>${s.label}</span>`).join(' ');
+  const clients = pipelineClients();
+  board.innerHTML = PIPELINE.map(st => {
+    const cards = clients.filter(c => (c.stage || 'inbound') === st.id);
+    return `<div class="pipe-col${pipe.dragOver === st.id ? ' over' : ''}" data-stage="${st.id}">
+      <div class="pipe-col-head"><i style="background:${st.color}"></i><b>${st.label}</b><em>${cards.length}</em></div>
+      <div class="pipe-cards" data-drop="${st.id}">
+        ${cards.length ? cards.map(c => pipeCard(c, st)).join('') : '<div class="pipe-empty">Yahan koi deal nahi — card drag karein</div>'}
+      </div>
+    </div>`;
+  }).join('');
+}
+function pipeCard(c, st){
+  const adv = advisorOf(c);
+  const corr = clientCorridorId(c) ? corridorName(clientCorridorId(c)) : '—';
+  const d = daysSince(c.lastFollowUp);
+  const late = d != null && d > DAYS_WARN;
+  const wa = waLink(c.phone);
+  const dealPlot = c.dealPlotId ? (db.plots || []).find(x => x.id === c.dealPlotId) : null;
+  return `<div class="pipe-card" draggable="true" data-card="${c.id}">
+    <div class="pipe-card-top"><b title="${esc(c.name || '')}">${esc(c.name || 'Client')}</b>${wa ? `<a href="${wa}" target="_blank" rel="noopener" title="WhatsApp">🟢</a>` : ''}</div>
+    <div class="pipe-facts">
+      <span>💰 <b>${esc(budgetText(c))}</b></span>
+      <span>📍 <b>${esc(corr)}</b></span>
+      ${c.sizeGaj ? `<span>📐 <b>${esc(c.sizeGaj)} Gaj</b></span>` : ''}
+    </div>
+    <div class="pipe-meta">
+      <span>👤 ${esc(adv.name || 'Admin desk')}</span>
+      ${dealPlot ? `<span>🏷 Plot ${esc(dealPlot.label || dealPlot.num)}</span>` : ''}
+      ${d != null ? `<span class="${late ? 'late' : ''}">🕓 ${d === 0 ? 'today' : d + 'd ago'}${late ? ' · follow up!' : ''}</span>` : '<span>🕓 no follow-up yet</span>'}
+    </div>
+    <div class="pipe-acts">
+      <button type="button" class="btn ghost" data-pipematch="${c.id}">🔗 Match</button>
+      <button type="button" class="btn ghost" data-pipeopen="${c.id}" title="Open in requirement form">✎ Open</button>
+      <button type="button" class="btn ghost" data-pipefollow="${c.id}" title="Follow-up done today">✓ Today</button>
+      <select data-pipestage="${c.id}" title="Stage badlein">${PIPELINE.map(s => `<option value="${s.id}"${s.id === st.id ? ' selected' : ''}>${s.label}</option>`).join('')}</select>
+    </div>
+  </div>`;
+}
+function setStage(id, stage, opts){
+  const c = (db.clients || []).find(x => x.id === id); if(!c) return;
+  stage = stage || 'inbound';
+  if((stage === 'token' || stage === 'closed') && !(opts && opts.silent)){
+    pipe.dealFor = id; pipe.dealStage = stage; openDealModal(); return;
+  }
+  c.stage = stage; c.updatedAt = Date.now();
+  save(); renderPipeline();
+  toast('Deal moved — ' + STAGE(stage).label);
+}
+function openDealModal(){
+  const c = (db.clients || []).find(x => x.id === pipe.dealFor); if(!c) return;
+  $('#dlTitle').textContent = (pipe.dealStage === 'closed' ? 'Registry / Closed — ' : 'Token / Negotiation — ') + (c.name || 'client');
+  $('#dlMeta').textContent = `Budget ${budgetText(c)} · ${clientCorridorId(c) ? corridorName(clientCorridorId(c)) : 'koi corridor set nahi'}${c.sizeGaj ? ' · ' + c.sizeGaj + ' Gaj' : ''} — matching available plots niche`;
+  const avail = (db.plots || []).filter(p => p.status === 'available' || p.status === 'release');
+  const corr = clientCorridorId(c);
+  avail.sort((a,b) => {
+    const pa = projectOf(a.projectId) || {}, pb = projectOf(b.projectId) || {};
+    const ma = (corr && pa.corridor === corr) ? 0 : 1, mb = (corr && pb.corridor === corr) ? 0 : 1;
+    return ma - mb || plotPrice(a) - plotPrice(b);
+  });
+  $('#dlPlot').innerHTML = avail.length ? avail.map(p => {
+    const pr = projectOf(p.projectId) || {};
+    return `<option value="${esc(p.id)}">Plot ${esc(p.label || p.num)} · ${esc(pr.name || '—')} · ${esc(corridorName(pr.corridor))} · ${p.sizeGaj || 0} Gaj · ${money(plotPrice(p))}</option>`;
+  }).join('') : '<option value="">— koi available plot nahi (Generate range se add karein) —</option>';
+  $('#dlClient').value = c.name || '';
+  showOverlay('dealModal');
+}
+function confirmDeal(){
+  const c = (db.clients || []).find(x => x.id === pipe.dealFor); if(!c) return;
+  const plotId = $('#dlPlot').value;
+  if(!plotId) return toast('Available plot nahi mila — pehle inventory generate karein', true);
+  const pl = (db.plots || []).find(x => x.id === plotId); if(!pl) return;
+  pl.status = pipe.dealStage === 'closed' ? 'sold' : 'token';
+  pl.clientId = c.id; pl.clientName = $('#dlClient').value.trim() || c.name || ''; pl.updatedAt = Date.now();
+  c.stage = pipe.dealStage; c.dealPlotId = pl.id; c.projectId = pl.projectId;
+  c.lastFollowUp = todayISO(); c.updatedAt = Date.now();
+  save(); renderPipeline(); if(currentView === 'inventory') renderInvBody();
+  try{ closeModal('dealModal'); }catch(e){ document.getElementById('dealModal').classList.remove('on'); }
+  toast(`Deal synced — Plot ${pl.label || pl.num} → ${PST(pl.status).label}`);
+}
+function openDealEdit(id){
+  const c = (db.clients || []).find(x => x.id === id); if(!c) return;
+  pipe.editFor = id;
+  $('#deTitle').textContent = 'Deal — ' + (c.name || 'client');
+  $('#deName').value = c.name || ''; $('#dePhone').value = c.phone || '';
+  $('#deStage').innerHTML = options(PIPELINE, c.stage || 'inbound');
+  $('#deAdvisor').innerHTML = options((db.advisors || []).map(a => ({ id:a.id, label:a.name || 'Advisor' })), c.advisorId || '', 'Admin desk');
+  $('#deCorridor').innerHTML = options((db.corridors || []).map(x => ({ id:x.id, label:x.name })), clientCorridorId(c), 'Any corridor');
+  $('#deGaj').value = c.sizeGaj || '';
+  $('#deBudgetMin').value = c.budgetMin ?? ''; $('#deBudgetMax').value = c.budgetMax ?? '';
+  $('#deFollow').value = c.lastFollowUp || ''; $('#deNext').value = c.nextFollowUp || '';
+  $('#deNotes').value = c.requirement || c.notes || '';
+  showOverlay('dealEditModal');
+}
+function saveDealEdit(){
+  const c = (db.clients || []).find(x => x.id === pipe.editFor); if(!c) return;
+  c.name = $('#deName').value.trim(); c.phone = $('#dePhone').value.trim();
+  const prevStage = c.stage || 'inbound', newStage = $('#deStage').value;
+  c.advisorId = $('#deAdvisor').value || ''; c.corridorId = $('#deCorridor').value || '';
+  c.sizeGaj = Math.round(+$('#deGaj').value) || null;
+  c.budgetMin = $('#deBudgetMin').value === '' ? null : +$('#deBudgetMin').value;
+  c.budgetMax = $('#deBudgetMax').value === '' ? null : +$('#deBudgetMax').value;
+  c.lastFollowUp = $('#deFollow').value || ''; c.nextFollowUp = $('#deNext').value || '';
+  c.notes = c.requirement = $('#deNotes').value.trim();
+  c.updatedAt = Date.now();
+  save();
+  try{ closeModal('dealEditModal'); }catch(e){ document.getElementById('dealEditModal').classList.remove('on'); }
+  renderPipeline(); renderSavedBriefs();
+  if(newStage !== prevStage && (newStage === 'token' || newStage === 'closed')){ setStage(c.id, newStage); }
+  else { toast('Deal saved'); }
+}
+function matchPlotsFor(c){
+  const corr = clientCorridorId(c);
+  const minL = +c.budgetMin || null, maxL = +c.budgetMax || null;
+  const gaj = +c.sizeGaj || null;
+  let list = (db.plots || []).filter(p => p.status === 'available' || p.status === 'release' || p.status === 'resale');
+  if(corr) list = list.filter(p => { const pr = projectOf(p.projectId); return pr && pr.corridor === corr; });
+  if(gaj) list = list.filter(p => +p.sizeGaj && Math.abs(+p.sizeGaj - gaj) / gaj <= 0.25);
+  list = list.filter(p => {
+    const pl = plotPriceL(p);
+    if(minL != null && pl < minL * 0.9) return false;
+    if(maxL != null && pl > maxL * 1.1) return false;
+    return true;
+  });
+  list.sort((a,b) => plotPrice(a) - plotPrice(b));
+  return list.slice(0, 40);
+}
+function openMatch(id){
+  const c = (db.clients || []).find(x => x.id === id); if(!c) return;
+  pipe.matchFor = id;
+  const list = matchPlotsFor(c);
+  $('#mmTitle').textContent = 'Match — ' + (c.name || 'client');
+  $('#mmMeta').textContent = `${budgetText(c)} · ${clientCorridorId(c) ? corridorName(clientCorridorId(c)) : 'koi corridor'}${c.sizeGaj ? ' · ' + c.sizeGaj + ' Gaj (±25%)' : ''} → ${list.length} available plot${list.length === 1 ? '' : 's'}`;
+  $('#mmList').innerHTML = list.length ? list.map(p => {
+    const pr = projectOf(p.projectId) || {}, st = PST(p.status);
+    return `<div class="match-hit">
+      <span class="no">${esc(p.label || p.num)}</span>
+      <div class="info"><b>${esc(pr.name || '—')} · ${esc(corridorName(pr.corridor))}</b>
+      <span>${p.sizeGaj || 0} Gaj (${(+p.sizeGaj || 0) * 9} sq ft) · ${p.roadFt ? p.roadFt + ' ft road · ' : ''}${p.facing || ''} · ${money(plotPrice(p))}</span></div>
+      <div class="side"><span class="pst pst-${p.status}"><i></i>${st.label}</span>
+      <button type="button" class="btn ghost sm" data-matchedal="${c.id}|${p.id}">Deal</button></div>
+    </div>`;
+  }).join('') : '<div class="inv-empty">Koi available plot match nahi hua — corridor/size/budget thoda relax karein ya naya range generate karein.</div>';
+  showOverlay('matchModal');
+}
+function followUpToday(id){
+  const c = (db.clients || []).find(x => x.id === id); if(!c) return;
+  c.lastFollowUp = todayISO(); c.updatedAt = Date.now();
+  save(); renderPipeline(); toast('Follow-up logged — ' + (c.name || 'client'));
+}
+
+/* ================================================================
+   EVENTS (delegated — survives re-renders)
+   ================================================================ */
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-plotcycle],[data-plotedit],[data-pick],[data-paypaid],[data-pipematch],[data-pipeopen],[data-pipefollow],[data-matchedal]');
+  if(!t) return;
+  if(t.dataset.plotcycle){ cyclePlot(t.dataset.plotcycle); return; }
+  if(t.dataset.plotedit){ openPlotEdit(t.dataset.plotedit); return; }
+  if(t.dataset.pick !== undefined){
+    const id = t.dataset.pick;
+    if(t.checked) inv.sel.add(id); else inv.sel.delete(id);
+    const cell = document.querySelector(`.inv-plot[data-plotcycle="${id}"]`); if(cell) cell.classList.toggle('sel', t.checked);
+    $('#invSelCount').textContent = inv.sel.size + ' selected';
+    return;
+  }
+  if(t.dataset.paypaid){ togglePaid(t.dataset.paypaid); return; }
+  if(t.dataset.pipematch){ openMatch(t.dataset.pipematch); return; }
+  if(t.dataset.pipeopen){
+    const b = t.dataset.pipeopen;
+    if(typeof loadBrief === 'function'){ loadBrief(b); window.scrollTo({ top:0, behavior:'smooth' }); }
+    return;
+  }
+  if(t.dataset.pipefollow){ followUpToday(t.dataset.pipefollow); return; }
+  if(t.dataset.matchedal){
+    const parts = t.dataset.matchedal.split('|');
+    pipe.dealFor = parts[0]; pipe.dealStage = 'token';
+    try{ closeModal('matchModal'); }catch(err){ document.getElementById('matchModal').classList.remove('on'); }
+    setTimeout(() => { openDealModal(); const s = document.getElementById('dlPlot'); if(s) s.value = parts[1]; }, 60);
+    return;
+  }
+});
+$('#invRangeBtn') && 0; /* wired below after DOM ready */
+
+function wire(){
+  const on = (sel, ev, fn) => { const el = document.querySelector(sel); if(el) el.addEventListener(ev, fn); };
+  on('#invRangeBtn', 'click', openRangeModal);
+  on('#prGenerate', 'click', generateRange);
+  on('#invProject', 'change', () => { inv.pid = $('#invProject').value; inv.sel.clear(); renderInvBody(); });
+  on('#invStatusFilter', 'change', () => { inv.status = $('#invStatusFilter').value; renderInvBody(); });
+  on('#invSearch', 'input', () => { inv.q = $('#invSearch').value.trim(); renderInvBody(); });
+  on('#invBulkApply', 'click', bulkApply);
+  on('#invMapBtn', 'click', pickMap);
+  on('#invMapFile', 'change', e => { const f = e.target.files && e.target.files[0]; if(f) saveMap(f); e.target.value = ''; });
+  on('#invMapClear', 'click', clearMap);
+  on('#invMapOpacity', 'input', () => { const img = document.querySelector('#invMapImg'); if(img) img.style.opacity = (+$('#invMapOpacity').value / 100).toFixed(2); });
+  on('#peSave', 'click', savePlotEdit);
+  on('#invPayoutBtn', 'click', openPayout);
+  on('#dlConfirm', 'click', confirmDeal);
+  on('#deSave', 'click', saveDealEdit);
+  /* pipeline drag & drop */
+  const board = document.getElementById('pipeBoard'); if(!board) return;
+  board.addEventListener('dragstart', e => {
+    const card = e.target.closest('.pipe-card'); if(!card) return;
+    card.classList.add('dragging');
+    try{ e.dataTransfer.setData('text/plain', card.dataset.card); }catch(err){}
+    e.dataTransfer.effectAllowed = 'move';
+  });
+  board.addEventListener('dragend', e => {
+    const card = e.target.closest('.pipe-card'); if(card) card.classList.remove('dragging');
+    $$('.pipe-col').forEach(c => c.classList.remove('over'));
+  });
+  board.addEventListener('dragover', e => {
+    const col = e.target.closest('.pipe-col'); if(!col) return;
+    e.preventDefault(); e.dataTransfer.dropEffect = 'move';
+    $$('.pipe-col').forEach(c => c.classList.toggle('over', c === col));
+  });
+  board.addEventListener('drop', e => {
+    const col = e.target.closest('.pipe-col'); if(!col) return;
+    e.preventDefault();
+    const id = e.dataTransfer.getData('text/plain'); if(!id) return;
+    setStage(id, col.dataset.stage);
+    $$('.pipe-col').forEach(c => c.classList.remove('over'));
+  });
+  board.addEventListener('change', e => {
+    const sel = e.target.closest('[data-pipestage]'); if(!sel) return;
+    setStage(sel.dataset.pipestage, sel.value);
+  });
+}
+if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire);
+else wire();
+
+/* keep the board/sheet in sync with every desk save() (briefs, deals, imports…) */
+try{
+  const __bcsOpsSave = save;
+  window.save = function(){
+    const r = __bcsOpsSave.apply(this, arguments);
+    try{
+      if(currentView === 'advisory' || currentView === 'clients') renderPipeline();
+      if(currentView === 'inventory') renderInventory();
+    }catch(e){}
+    return r;
+  };
+}catch(e){}
+
+/* expose for render() + other modules */
+window.BCS_OPS = { renderInventory, renderPipeline, matchPlotsFor, openMatch, setStage, openDealEdit };
 })();
 </script>
 
