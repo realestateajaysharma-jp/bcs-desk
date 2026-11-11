@@ -14030,6 +14030,149 @@ body.bcs-native :is(.pulse-fallback,.pulse-copy,.pulse-bar) :is(a,button){
   min-height:38px !important;display:inline-flex !important;align-items:center !important;
   padding-left:10px !important;padding-right:10px !important;border-radius:10px !important;
 }
+
+/* ============================================================
+   COLOR AUTHORITY v151 — final say, both themes
+   ------------------------------------------------------------
+   Fixes found by the deep audit (gradient-aware, both themes):
+     · desk-accent CTAs with white labels failed on light accents
+       (peach 1.9:1, emerald 3.99:1)  → deep-accent gradient ≥5.5:1
+     · .btn.gold in light was translucent with a white label
+     · ghost labels #6B6B74 on tinted surfaces
+     · accent chips (.hub-badge/.cmd-label/.sec-count/.on-count)
+       used raw --acc-deep (3.2:1 with peach)
+     · festival/quote/delta accents too light on cream & white
+     · dark leaks: .band chips, .pulse-frame-wrap, .show-status
+     · light leaks: .active-adv-table, .tb-market chips
+   ============================================================ */
+
+/* ---------- 1 · primary CTAs: deep accent, guaranteed label contrast ---------- */
+html body[data-theme="light"] .btn.primary,
+html body[data-theme="dark"] .btn.primary{
+  background:linear-gradient(135deg,
+    color-mix(in srgb, var(--pg, var(--acc)) 55%, #0B120D),
+    color-mix(in srgb, var(--pg, var(--acc)) 42%, #0B120D)) !important;
+  color:#FFFDF6 !important;
+  border-color:color-mix(in srgb, var(--pg, var(--acc)) 32%, transparent) !important;
+}
+html body[data-theme="light"] .btn.primary:hover,
+html body[data-theme="dark"] .btn.primary:hover{filter:brightness(1.09)}
+
+/* ---------- 2 · gold secondary: warm gold + espresso label (light) ---------- */
+html body[data-theme="light"] .btn.gold{
+  background:linear-gradient(180deg,#D9B25C,#C9A227) !important;
+  color:#241C06 !important;
+  border-color:#B8902A !important;
+  text-shadow:none !important;
+}
+html body[data-theme="light"] .btn.gold:hover{filter:brightness(1.05)}
+
+/* ---------- 3 · ghost buttons: ink label on any tinted surface (light) ---------- */
+html body[data-theme="light"] :is(.btn.ghost,.btn:not(.primary):not(.gold):not(.danger)){
+  color:#3F4A42 !important;
+}
+
+/* ---------- 4 · dashboard hero CTAs follow the same guarantees ---------- */
+html body[data-theme="light"] .hero-life .hero-actions .btn.primary{
+  background:linear-gradient(135deg,
+    color-mix(in srgb, var(--pg, var(--acc)) 55%, #0B120D),
+    color-mix(in srgb, var(--pg, var(--acc)) 42%, #0B120D)) !important;
+  color:#FFFDF6 !important;
+}
+html body[data-theme="light"] .hero-life .hero-actions .btn.gold{
+  background:linear-gradient(180deg,#D9B25C,#C9A227) !important;
+  color:#241C06 !important;border-color:#B8902A !important;
+}
+html body[data-theme="light"] .hero-life .hero-actions :is(.btn.ghost){
+  background:rgba(29,48,35,.05) !important;
+  color:#33413A !important;
+  border:1px solid rgba(29,48,35,.16) !important;
+}
+html body[data-theme="dark"] .hero-life .hero-actions .btn.primary{
+  background:linear-gradient(135deg,
+    color-mix(in srgb, var(--pg, var(--acc)) 55%, #000),
+    color-mix(in srgb, var(--pg, var(--acc)) 42%, #000)) !important;
+  color:#FFFDF6 !important;
+}
+
+/* ---------- 5 · podcast tabs: same deep-accent treatment (light) ---------- */
+html body[data-theme="light"] :is(.ps-tab.on,.ps-tab.on .nav-lbl){
+  background:linear-gradient(135deg,
+    color-mix(in srgb, var(--pg, var(--acc)) 55%, #0B120D),
+    color-mix(in srgb, var(--pg, var(--acc)) 42%, #0B120D)) !important;
+  color:#FFFDF6 !important;
+}
+
+/* ---------- 6 · accent chips & labels: deep enough on white (light) ---------- */
+html body[data-theme="light"] :is(.on-count,.hub-badge,.cmd-label,.sec-count,.sec-count b){
+  color:color-mix(in srgb, var(--acc-deep) 72%, #0B120D) !important;
+}
+html body[data-theme="light"] :is(.tb-fest-en,.dash-card-header .tb-fest-en){color:#7E5E1C !important}
+html body[data-theme="light"] .fest-quote > span{color:#7A5A14 !important}
+html body[data-theme="light"] :is(.hero-focus b,.hero-life .hero-focus b){color:#6E5320 !important}
+
+/* ---------- 7 · market deltas: readable on both surfaces ---------- */
+html body[data-theme="light"] :is(.lm-delta.up,.lm-delta.up i){color:#14614A !important}
+html body[data-theme="light"] :is(.lm-delta.down,.lm-delta.down i){color:#8F3419 !important}
+html body[data-theme="dark"] :is(.lm-delta.up,.lm-delta.up i){color:#43C08C !important}
+html body[data-theme="dark"] :is(.lm-delta.down,.lm-delta.down i){color:#FF9D7E !important}
+html body[data-theme="dark"] :is(.lm-delta.flat,.lm-delta.flat i){color:#B9C1B8 !important}
+
+/* ---------- 8 · dark-mode whitish leaks ---------- */
+html body[data-theme="dark"] :is(.adv-thumb .band,.band){
+  background:rgba(255,255,255,.10) !important;
+  color:#E8E6D9 !important;
+  border-color:rgba(255,255,255,.16) !important;
+}
+html body[data-theme="dark"] :is(.pulse-frame-wrap,#view-pulse .pulse-frame-wrap){
+  background:linear-gradient(180deg,#161A16,#101310) !important;
+  border-color:rgba(255,255,255,.12) !important;
+  color:#F2F0E5 !important;
+}
+html body[data-theme="dark"] .pulse-frame-wrap :is(span,b,small,div:not([class])){color:#D9DED7 !important}
+/* status chip always sits on the dark olive feature card */
+html body :is(.show-card .show-status){
+  color:#F6F2E7 !important;
+  text-shadow:0 1px 2px rgba(0,0,0,.35);
+}
+
+/* ---------- 9 · light-mode surface leaks ---------- */
+html body[data-theme="light"] :is(.active-adv-table,.active-adv-table-wrap){background:#FFFFFF !important}
+html body[data-theme="light"] .active-adv-table th{background:#FBFCFA !important;color:#5B6270 !important}
+html body[data-theme="light"] .active-adv-table td{color:#3C4A42 !important}
+/* chips inside the dark market strip stay dark glass in light mode too */
+html body[data-theme="light"] .tb-market :is(.bm-chip){
+  background:rgba(255,255,255,.10) !important;
+  border-color:rgba(255,255,255,.22) !important;
+}
+
+/* ---------- 10 · dark table header text keeps its contrast ---------- */
+html body[data-theme="dark"] .active-adv-table th{color:#C9CDC0 !important}
+
+/* ---------- pass 2 · page-scoped CTAs + visiting-card QR ---------- */
+html body[data-page][data-theme="light"] :is(.btn.primary),
+html body[data-page][data-theme="dark"] :is(.btn.primary){
+  background:linear-gradient(135deg,
+    color-mix(in srgb, var(--pg, var(--acc)) 55%, #0B120D),
+    color-mix(in srgb, var(--pg, var(--acc)) 42%, #0B120D)) !important;
+  color:#FFFDF6 !important;
+}
+html body .tb-bcs-qr{
+  background:rgba(11,18,13,.38) !important;
+  color:#FFF3CE !important;
+  border-color:rgba(255,243,206,.4) !important;
+}
+
+/* ---------- pass 3 · dark chips that sit on colourful thumbs ---------- */
+html body[data-theme="dark"] :is(.adv-thumb .band,.band){
+  background:rgba(15,20,16,.82) !important;
+  color:#E8E6D9 !important;
+  border-color:rgba(255,255,255,.18) !important;
+}
+html body[data-theme="dark"] .tb-bcs-logo{
+  background:rgba(11,18,13,.45) !important;
+  border-color:rgba(246,242,231,.3) !important;
+}
 </style>
 </head>
 <body class="locked">
