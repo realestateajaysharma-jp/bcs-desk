@@ -14212,6 +14212,24 @@ html body:not(.bcs-native) .hwrap-nav #nav > button.nav-dragging{
 html body:not(.bcs-native) .hwrap-nav #nav > button.nav-drop-hint{
   box-shadow:inset 0 0 0 2px var(--acc, #A57B36) !important;border-radius:12px !important;
 }
+
+/* More panel must escape the scrollable nav row (overflow clips absolute children) */
+html body:not(.bcs-native) #navMorePanel{
+  position:fixed !important;
+  right:auto !important; bottom:auto !important;
+  transform-origin:top right !important;
+}
+
+/* compact 12-tab row: fits ≈1250px, scrolls below that — never cramped */
+html body:not(.bcs-native) .hwrap-nav #nav > button{
+  padding:5px 8px !important;
+  font-size:11.5px !important;
+  gap:4px !important;
+}
+html body:not(.bcs-native) .hwrap-nav #nav > button .nav-ic{width:15px !important;height:15px !important;font-size:12px !important}
+html body:not(.bcs-native) .hwrap-nav #nav > button .nav-lbl{font-size:11.5px !important}
+html body:not(.bcs-native) .hwrap-nav #nav{gap:2px !important;padding:4px 5px !important}
+html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap > #navMoreBtn{padding:6px 9px !important}
 </style>
 
 <style id="bcs-ops-css">
@@ -14678,6 +14696,9 @@ try{
       <button type="button" data-view="pulse" aria-label="Market Pulse"><span class="nav-ic" aria-hidden="true">↗</span><span class="nav-lbl">Market Pulse</span><span class="nav-dot gold" aria-hidden="true"></span></button>
       <button type="button" data-view="news" aria-label="News"><span class="nav-ic" aria-hidden="true">📰</span><span class="nav-lbl">News</span><span class="nav-dot" aria-hidden="true"></span></button>
       <button type="button" data-view="calc" aria-label="Calculators"><span class="nav-ic" aria-hidden="true">⌘</span><span class="nav-lbl">Calculators</span></button>
+      <button type="button" data-view="inventory" aria-label="Plot Inventory"><span class="nav-ic" aria-hidden="true">▦</span><span class="nav-lbl">Inventory</span></button>
+      <button type="button" data-view="advisors" aria-label="Advisors"><span class="nav-ic" aria-hidden="true">◎</span><span class="nav-lbl">Advisors</span></button>
+      <button type="button" data-view="analytics" aria-label="Analytics"><span class="nav-ic" aria-hidden="true">▥</span><span class="nav-lbl">Analytics</span></button>
       <div class="nav-more-wrap">
         <button type="button" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" title="All pages" aria-label="More pages"><span class="nav-ic" aria-hidden="true">▦</span><span class="nav-lbl">More</span><span class="nav-chev" aria-hidden="true">▾</span></button>
         <div class="nav-more-panel" id="navMorePanel" hidden>
@@ -20803,7 +20824,7 @@ function showOverlay(id){
   el.style.setProperty('z-index', String(overlayZ), 'important');
   el.classList.add('on');
 }
-var BCS_MORE_SET = ['advisors','partners','resale','analytics','tax','terminology','links','templates','podcasts','health','social','sheets'];
+var BCS_MORE_SET = ['partners','resale','tax','terminology','links','templates','podcasts','health','social','sheets'];
 function bcsNavMoreSync(){
   try{
     const mb = $('#navMoreBtn');
@@ -20838,7 +20859,7 @@ try{
       const b = e.target.closest('button[data-view]');
       if(b) go(b.dataset.view);
     });
-    document.addEventListener('click', e => { if(!e.target.closest('.nav-more-wrap,#pagesFab')) bcsNavMoreClose(); });
+    document.addEventListener('click', e => { if(!e.target.closest('.nav-more-wrap,#navMorePanel,#pagesFab')) bcsNavMoreClose(); });
     document.addEventListener('keydown', e => { if(e.key === 'Escape') bcsNavMoreClose(); });
   }
 }catch(e){}
@@ -36223,6 +36244,9 @@ try{
     const morePanel = document.getElementById('navMorePanel');
     if(moreBtn && morePanel){
       function placeMore(){
+        /* delegated to the nav module's positioner (single authority —
+           the legacy maths here fought the scrollable-nav layout) */
+        if(window.BCS_NAVX && window.BCS_NAVX.positionMore){ window.BCS_NAVX.positionMore(); return; }
         const moreBtnEl = document.getElementById('navMoreBtn');
         const vw = window.innerWidth || document.documentElement.clientWidth;
         const vh = window.innerHeight || document.documentElement.clientHeight;
@@ -38605,7 +38629,7 @@ window.BCS_OPS2 = { openDocketPlot: id => { const pl = (db.plots||[]).find(x=>x.
 (function(){
 'use strict';
 const KEY = 'bcs_nav_order_v1';
-let nav = null, drag = null, suppressClick = false;
+let nav = null, drag = null, dragEndedAt = 0;
 
 const isMobile = () => document.body.classList.contains('bcs-native');
 const primaryButtons = () => $$('#nav > button[data-view]');
@@ -38618,11 +38642,12 @@ function applySaved(){
   if(!Array.isArray(order) || !order.length) return;
   const btns = primaryButtons();
   const ids = btns.map(b => b.dataset.view);
-  const valid = order.length === ids.length && order.every(id => ids.includes(id));
-  if(!valid) return;                                /* page set changed → ignore stale order */
+  const known = new Set(ids);
+  const seq = [...new Set(order.filter(id => known.has(id)))];
+  if(!seq.length) return;                           /* nothing recognisable → keep default */
   const map = new Map(btns.map(b => [b.dataset.view, b]));
   const wrap = nav.querySelector('.nav-more-wrap');
-  order.forEach(id => { const b = map.get(id); if(b) nav.insertBefore(b, wrap); });
+  seq.forEach(id => { const b = map.get(id); if(b) nav.insertBefore(b, wrap); });
 }
 function persist(){
   try{ localStorage.setItem(KEY, JSON.stringify(primaryButtons().map(b => b.dataset.view))); }catch(e){}
@@ -38646,14 +38671,13 @@ function onPointerDown(e){
   if(!nav || isMobile() || e.button !== 0) return;
   const btn = e.target.closest('#nav > button[data-view]');
   if(!btn) return;
-  suppressClick = false;
   drag = { btn, startX:e.clientX, startY:e.clientY, moved:false, over:null };
 }
 function onPointerMove(e){
   if(!drag) return;
   if(!drag.moved){
     if(Math.abs(e.clientX - drag.startX) < 6 && Math.abs(e.clientY - drag.startY) < 6) return;
-    drag.moved = true; suppressClick = true;
+    drag.moved = true;
     drag.btn.classList.add('nav-dragging');
   }
   const el = document.elementFromPoint(e.clientX, e.clientY);
@@ -38678,26 +38702,66 @@ function onPointerUp(e){
     const wrap = nav.querySelector('.nav-more-wrap');      /* More always stays last */
     if(wrap) nav.appendChild(wrap);
     persist();
+    dragEndedAt = Date.now();          /* suppress only the click that follows this drag */
     try{ toast('Nav order saved'); }catch(err){}
   }
   drag = null;
 }
 
+/* More dropdown: fixed positioning so the scrollable nav row can't clip it */
+function positionMorePanel(){
+  const panel = document.getElementById('navMorePanel');
+  const btn = document.getElementById('navMoreBtn');
+  if(!panel || !btn || panel.hidden || isMobile()) return;
+  /* fixed inside the header still gets clipped (blur/transform ancestors +
+     the nav's own overflow) — re-parent to <body> so it truly floats */
+  if(panel.parentNode !== document.body) document.body.appendChild(panel);
+  const r = btn.getBoundingClientRect();
+  const pw = Math.min(620, window.innerWidth - 24);
+  let left = Math.max(12, Math.min(r.right - pw, window.innerWidth - pw - 12));
+  let top = r.bottom + 10;
+  const approxH = panel.offsetHeight || 420;
+  if(top + Math.min(approxH, 320) > window.innerHeight - 12) top = Math.max(12, r.top - approxH - 10);
+  const st = panel.style;
+  st.setProperty('position','fixed','important');
+  st.setProperty('top', top + 'px','important');
+  st.setProperty('left', left + 'px','important');
+  st.setProperty('right','auto','important');
+  st.setProperty('bottom','auto','important');
+  st.setProperty('width', pw + 'px','important');
+  st.setProperty('max-height', (window.innerHeight - top - 12) + 'px','important');
+  st.setProperty('overflow-y','auto','important');
+}
 function boot(){
   nav = document.getElementById('nav'); if(!nav) return;
   applySaved();
   nav.addEventListener('wheel', onWheel, { passive:false });
+  document.addEventListener('click', e => {
+    if(e.target.closest('#navMoreBtn')) requestAnimationFrame(positionMorePanel);
+    const pv = e.target.closest && e.target.closest('#navMorePanel button[data-view]');
+    if(pv && pv.closest('#navMorePanel').parentNode === document.body){
+      e.stopPropagation();
+      if(typeof go === 'function') go(pv.dataset.view);
+      try{ bcsNavMoreClose(); }catch(err){}
+    }
+  });
+  window.addEventListener('resize', positionMorePanel);
+  window.addEventListener('scroll', positionMorePanel, { passive:true, capture:true });
+  nav.addEventListener('scroll', positionMorePanel, { passive:true });
   nav.addEventListener('pointerdown', onPointerDown);
   window.addEventListener('pointermove', onPointerMove, { passive:true });
   window.addEventListener('pointerup', onPointerUp);
-  /* a finished drag must not also fire the tab's navigation click */
+  /* a finished drag must not also fire the dropped-on tab's navigation click
+     (scoped to tabs only — the More button must keep working right after a drag) */
   nav.addEventListener('click', e => {
-    if(suppressClick){ e.stopPropagation(); e.preventDefault(); suppressClick = false; }
+    if(Date.now() - dragEndedAt < 350 && e.target.closest && e.target.closest('#nav > button[data-view]')){
+      e.stopPropagation(); e.preventDefault();
+    }
   }, true);
 }
 if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
 else boot();
-window.BCS_NAVX = { applySaved, persist };
+window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
 })();
 </script>
 
