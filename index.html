@@ -37976,13 +37976,21 @@ window.BCS_NAVX = { applySaved, persist };
 (function(){
   var TAB_VIEWS = ['dashboard','projects','clients','dayplan'];  // More fills the 5th slot
   var MQ  = window.matchMedia('(max-width:430px)');
-  var bar = null, home = null;
+  var bar = null, home = null, savedOrder = null;
 
   function nav(){ return document.getElementById('nav'); }
 
   function mount(){
     var n = nav(); if(!n || bar) return;
     home = n.parentNode;
+    savedOrder = Array.prototype.slice.call(n.children);   /* desktop tab sequence */
+    var dragOrder = null;
+    try{ dragOrder = JSON.parse(localStorage.getItem('bcs_nav_order_v1') || '[]'); }catch(e){}
+    if(Array.isArray(dragOrder) && dragOrder.length){
+      var byId = {}; savedOrder.forEach(function(c){ if(c.dataset && c.dataset.view) byId[c.dataset.view] = c; });
+      var seq = dragOrder.map(function(v){ return byId[v]; }).filter(Boolean);
+      if(seq.length === Object.keys(byId).length){ savedOrder = seq.concat(savedOrder.filter(function(c){ return seq.indexOf(c) === -1; })); }
+    }
     bar = document.createElement('div');
     bar.className = 'bcs-tabbar';
     bar.id = 'bcsTabBar';
@@ -38016,6 +38024,7 @@ window.BCS_NAVX = { applySaved, persist };
       var b = n.querySelector('button[data-view="' + v + '"]');
       if(b) b.classList.remove('bcs-tab');
     });
+    if(savedOrder){ savedOrder.forEach(function(c){ n.appendChild(c); }); savedOrder = null; }
     if(home) home.appendChild(n);
     document.body.classList.remove('bcs-native');
   }
