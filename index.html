@@ -8699,8 +8699,6 @@ body[data-theme="dark"] .dash-card-header::after{opacity:.65 !important}
   align-items:center !important; justify-content:flex-start !important;
   gap:7px 10px !important; row-gap:2px !important; min-width:0 !important;
 }
-  text-shadow:0 0 6px color-mix(in oklab, var(--gold) 70%, transparent) !important;
-}
 .dash-card-header .dl-quote .th-qmark{
   font-size:19px !important; color:var(--gold) !important; flex:0 0 auto !important;
   line-height:1 !important; align-self:center !important; font-family:'Fraunces',serif !important; opacity:.9 !important;
@@ -8709,6 +8707,7 @@ body[data-theme="dark"] .dash-card-header::after{opacity:.65 !important}
   margin:0 !important; flex:1 1 0% !important; min-width:0 !important; min-height:0 !important;
   font-size:13.5px !important; line-height:1.32 !important; font-family:'DM Sans',sans-serif !important; font-weight:600 !important;
   color:var(--ink) !important;
+  text-shadow:0 0 6px color-mix(in oklab, var(--gold) 70%, transparent) !important;
   display:-webkit-box !important; -webkit-box-orient:vertical !important; -webkit-line-clamp:2 !important;
   white-space:normal !important; overflow:hidden !important;
 }
@@ -12915,6 +12914,52 @@ body[data-theme="dark"] .live-source-desk{background:#1B201B !important;border-c
 body[data-theme="dark"][data-accent="indigo"]{--acc:#9AA8F0;--acc-deep:#2A3158;--acc-soft:#262A3E}
 body[data-theme="dark"][data-accent="rose"]{--acc:#E38BB0;--acc-deep:#422A35;--acc-soft:#3A2430}
 body[data-theme="dark"][data-accent="ocean"]{--acc:#6BC7DC;--acc-deep:#1F3F4D;--acc-soft:#17303A;--gold:#6BC7DC;--gold-soft:#17303A;--sage:#17303A;--sage-ink:#BFE9F4;--sand:#1B2C31;--mint:#17303A}
+
+/* ============================================================
+   BCS TABLET LAYER v160 — iPad Pro 9.7" (768×1024) + iPad Pro 13"/15" (1024×1366)
+   Desktop layout stays, plus touch ergonomics: no iOS focus zoom,
+   bigger tap targets, wider popovers, safe areas when installed.
+   ============================================================ */
+@media (pointer:coarse) and (min-width:600px){
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  input,select,textarea{font-size:16px !important}          /* 16px = no iOS focus zoom */
+  input,select,textarea,button,[role="button"],a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+  .btn{min-height:40px}
+  .btn.sm{min-height:34px}
+  #nav button{min-height:40px !important;padding:10px 15px !important;font-size:13px !important}
+  .dock-btn{width:58px;height:58px;border-radius:15px}
+  .dock-btn .sym{font-size:17px}
+  .toolpop{width:300px}
+  .yt-chip{padding:8px 14px}
+  .focus-chip{padding:10px 12px}
+  .station{padding:10px 12px}
+  .mp-app{padding:14px 10px}
+  ::-webkit-scrollbar{width:10px;height:10px}               /* visible scrollbar for touch scroll */
+  *{scrollbar-width:auto}
+  /* text selection handles + smooth momentum everywhere */
+  body{-webkit-overflow-scrolling:touch}
+}
+/* installed-app safe areas — iPad Home Screen app has its own status bar */
+@media (display-mode:standalone){
+  header{top:env(safe-area-inset-top,0px)}
+  #mediaPop,#calcPop,.toolpop,[data-pop]{bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+}
+/* iPad Pro 9.7 — portrait 768 / landscape 1024 */
+@media (min-width:740px) and (max-width:1080px) and (pointer:coarse){
+  main{padding:22px 22px 96px}
+  .hwrap{padding:12px 20px}
+  .media-pop{width:min(470px,calc(100vw - 24px))}
+  .media-pop.theater{width:min(1000px,94vw)}
+  .toolpop{width:290px}
+  .dash-grid{gap:14px}
+  .cat-strip{grid-template-columns:repeat(3,1fr)}
+}
+/* iPad Pro 13"/15" — portrait 1024/1035 / landscape 1366 */
+@media (min-width:1081px) and (max-width:1400px) and (pointer:coarse){
+  main{padding:26px 32px 96px}
+  .media-pop{width:440px}
+  #nav button{font-size:13.5px !important}
+}
 </style>
 <style id="bcs-final-layout-fix">
 /* ============================================================
