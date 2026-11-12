@@ -2929,7 +2929,7 @@ body.advisor-mode [data-cfmanage],body.advisor-mode #projectFieldsBtn,body.advis
 .cf-item{min-width:0;display:flex;flex-direction:column;gap:5px}
 .cf-item.cf-full{grid-column:1/-1}
 .cf-item>label{font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--mut);display:flex;align-items:center;gap:6px}
-.cf-item>label .cf-type{font-size:8px;font-weight:800;letter-spacing:.4px;padding:2px 5px;border-radius:99px;background:#F0F4F1;color:#6E7C71;border:1px solid var(--line2);text-transform:uppercase}
+.cf-item>label .cf-type{font-size:8px;font-weight:800;letter-spacing:.4px;padding:2px 5px;border-radius:99px;background:#F0F4F1;color:#4E5C51;border:1px solid var(--line2);text-transform:uppercase}
 .cf-item input[type=text],.cf-item input[type=number],.cf-item input[type=date],.cf-item select,.cf-item textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:#FCFDFC;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:.15s}
 .cf-item textarea{min-height:60px;resize:vertical}
 .cf-item input:focus,.cf-item select:focus,.cf-item textarea:focus{border-color:#A9C4B5;box-shadow:0 0 0 3px rgba(65,86,63,.08)}
@@ -3520,6 +3520,106 @@ select{
 .partner-act .del{color:var(--danger);background:#FBEDE8;border-color:#F0D8CE}
 body[data-theme="dark"] .partner-card{background:var(--panel);border-color:var(--line);color:var(--ink)}
 body[data-theme="dark"] .partner-act button{background:#20261F;border-color:var(--line);color:var(--ink2)}
+
+/* ---------- partner database v153 ---------- */
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:13px}
+.pt-sec{display:flex;align-items:center;gap:10px;margin:22px 0 12px;font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--gold-deep)}
+.pt-sec:first-child{margin-top:0}
+.pt-sec::after{content:'';flex:1;height:1px;background:var(--line)}
+.pt-add{display:flex;gap:7px;margin-top:8px}
+.pt-add input{flex:1;min-width:0}
+.pt-add .btn{flex:none;white-space:nowrap}
+.pt-linked{max-height:154px;overflow:auto;padding:8px;border:1px solid var(--line);border-radius:12px;background:#FCFDFC}
+.pt-linked:empty{display:none}
+.pt-meet-form{display:grid;grid-template-columns:148px 148px minmax(0,1fr) auto;gap:7px;align-items:center}
+.pt-meet-form input,.pt-meet-form select{padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:#FCFDFC;font-size:12px;min-width:0}
+.pt-meet-form .btn{white-space:nowrap}
+.pt-meet-list{display:flex;flex-direction:column;gap:7px;margin-top:9px}
+.pt-meet-row{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--line);border-radius:11px;background:#FCFDFC;padding:8px 10px;font-size:12px;color:var(--ink2)}
+.pt-meet-row .ptm-date{font-weight:800;color:var(--ink);white-space:nowrap;font-size:11px}
+.pt-meet-row .ptm-mode{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;border:1px solid var(--line);border-radius:999px;padding:3px 7px;background:var(--sage);color:var(--sage-ink);white-space:nowrap}
+.pt-meet-row .ptm-notes{flex:1;line-height:1.45;min-width:0;overflow-wrap:anywhere}
+.pt-meet-row button{flex:none;border:0;background:transparent;color:var(--danger);font-size:13px;font-weight:800;line-height:1;padding:2px 4px;border-radius:6px}
+.pt-meet-row button:hover{background:#FBEDE8}
+.pt-meet-empty{font-size:11.5px;color:var(--mut);padding:3px 0}
+.partner-toolbar{gap:8px}
+.partner-toolbar select{max-width:168px}
+.partner-card{display:flex;flex-direction:column;overflow:hidden}
+.partner-stage{margin-left:auto;font-size:9px;font-weight:800;letter-spacing:.55px;text-transform:uppercase;border-radius:999px;padding:4px 8px;border:1px solid var(--line);white-space:nowrap;flex:none}
+.partner-stage.sourced{color:#4B5563;background:#F1F3F4;border-color:#DDE2E3}
+.partner-stage.contacted{color:#8A5A14;background:#FCF2DE;border-color:#EBD6A8}
+.partner-stage.meeting{color:#5B4478;background:#F2ECFA;border-color:#DCCEEC}
+.partner-stage.discussing{color:#2E6A6B;background:#E4F2F1;border-color:#BFDCDA}
+.partner-stage.working{color:#2F6644;background:#E4F3EC;border-color:#BFD8C8}
+.partner-stage.paused{color:#8A4B44;background:#FBEDEA;border-color:#EBCFC8}
+.partner-contact{display:flex;flex-direction:column;gap:4px;font-size:11.5px;color:var(--ink2);margin-top:10px}
+.partner-contact span{display:flex;gap:6px;align-items:flex-start;overflow-wrap:anywhere;line-height:1.45}
+.partner-contact a{color:var(--sage-ink);text-decoration:none;font-weight:700}
+.partner-contact a:hover{text-decoration:underline}
+.partner-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.partner-chip{font-size:9.5px;font-weight:800;border:1px solid var(--line);border-radius:999px;padding:3px 8px;color:var(--ink2);background:#FAFBFA;white-space:nowrap}
+.partner-chip.seg{color:#3F5E4E;background:#EDF5F0;border-color:#CFE2D6}
+.partner-chip.corr{color:#6B5522;background:#FBF5E6;border-color:#EBDDBB}
+.partner-deal{font-size:11.5px;color:var(--ink2);line-height:1.55;margin-top:9px;padding:8px 10px;border-radius:10px;background:#FBFCFA;border-left:3px solid var(--gold);overflow-wrap:anywhere}
+.partner-deal b{display:block;font-size:9px;letter-spacing:.8px;text-transform:uppercase;color:var(--mut);margin-bottom:3px}
+.partner-src{font-size:10px;color:var(--mut);font-weight:700;margin-top:8px;overflow-wrap:anywhere}
+.partner-src a{color:var(--sage-ink)}
+.partner-follow{font-size:10.5px;font-weight:800;margin-top:8px;color:var(--ink2)}
+.partner-follow.over{color:var(--danger)}
+.partner-follow.due{color:#8A5A14}
+.partner-notes{font-size:11.5px;color:var(--mut);line-height:1.5;margin-top:8px;overflow-wrap:anywhere}
+.partner-act{margin-top:auto;padding-top:10px}
+.partner-act :is(button,a){padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:#FCFDFC;font-size:10.5px;font-weight:800;color:var(--ink2);text-decoration:none;line-height:1.2;display:inline-flex;align-items:center;gap:4px;cursor:pointer}
+.partner-act :is(button,a):hover{border-color:var(--gold);color:var(--gold)}
+.partner-act .del{color:var(--danger);background:#FBEDE8;border-color:#F0D8CE}
+.partner-cf{margin-top:9px;border-top:1px dashed var(--line);padding-top:8px}
+.partner-cf .cf-view{display:flex;flex-direction:column;gap:0;margin:0;padding:0;border:0;background:transparent}
+.partner-cf .cf-row{display:flex;justify-content:space-between;gap:10px;font-size:10.5px;padding:2px 0;min-width:0}
+.partner-cf .cf-lab{color:var(--mut);font-weight:700}
+.partner-cf .cf-val{color:var(--ink2);text-align:right;overflow-wrap:anywhere}
+.pt-import-note{background:color-mix(in srgb,var(--acc) 7%,var(--panel));border:1px solid color-mix(in srgb,var(--acc) 22%,transparent);border-radius:12px;padding:12px 14px;font-size:11.5px;color:var(--ink2);line-height:1.65;margin-bottom:15px}
+.pt-import-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.pt-file-btn{display:inline-flex;align-items:center;cursor:pointer;margin:0}
+.pt-import-preview-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:18px 0 9px;font-size:12px;color:var(--ink)}
+.pt-selectall{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink2)}
+.pt-import-tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.pt-import-table{width:100%;border-collapse:collapse;font-size:11.5px;min-width:780px}
+.pt-import-table th{padding:8px 9px;text-align:left;border-bottom:1px solid var(--line);background:#F5F8F6;font-size:9px;letter-spacing:.7px;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+.pt-import-table td{padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink2)}
+.pt-import-table tr:last-child td{border-bottom:0}
+.pt-import-table .pt-name{font-weight:700;color:var(--ink);min-width:130px}
+.pt-import-table .pt-dupe{display:inline-block;margin-left:5px;font-size:8.5px;font-weight:800;text-transform:uppercase;color:#8A5A14;background:#FCF2DE;border:1px solid #EBD6A8;border-radius:999px;padding:1px 5px}
+.pt-import-table input[type="checkbox"]{accent-color:var(--olive)}
+body[data-theme="dark"] .pt-linked,body[data-theme="dark"] .pt-meet-row,body[data-theme="dark"] .pt-meet-form input,body[data-theme="dark"] .pt-meet-form select{background:#1B201B;border-color:var(--line);color:var(--ink)}
+body[data-theme="dark"] .pt-meet-row button:hover{background:#33241F}
+body[data-theme="dark"] .partner-chip{background:#26302A;color:#EDEBD9;border-color:#3A4438}
+body[data-theme="dark"] .partner-chip.seg{background:#22322A;border-color:#33493D;color:#CFE6D8}
+body[data-theme="dark"] .partner-chip.corr{background:#302B1D;border-color:#4A4028;color:#EADBB4}
+body[data-theme="dark"] .partner-deal{background:#1B201B;color:var(--ink2)}
+body[data-theme="dark"] .partner-act :is(button,a){background:#20261F;border-color:var(--line);color:var(--ink2)}
+body[data-theme="dark"] .partner-act .del{background:#33241F;border-color:#4A322A;color:#F0A79A}
+body[data-theme="dark"] .partner-stage.sourced{background:#26302A;border-color:#3A4438;color:#D6DBD7}
+body[data-theme="dark"] .partner-stage.contacted{background:#332B1B;border-color:#4A3D25;color:#EBD3A2}
+body[data-theme="dark"] .partner-stage.meeting{background:#2B2436;border-color:#40344F;color:#D9C9EC}
+body[data-theme="dark"] .partner-stage.discussing{background:#1D3030;border-color:#2E4646;color:#BEE0DD}
+body[data-theme="dark"] .partner-stage.working{background:#22322A;border-color:#33493D;color:#C7E6D3}
+body[data-theme="dark"] .partner-stage.paused{background:#33241F;border-color:#4A322A;color:#EFB6AA}
+body[data-theme="dark"] .pt-import-table th{background:#20261F;color:var(--mut)}
+body[data-theme="dark"] .pt-import-table .pt-dupe{background:#332B1B;border-color:#4A3D25;color:#EBD3A2}
+body[data-theme="dark"] .cf-view{background:#1B201B;border-color:var(--line)}
+body[data-theme="dark"] .quick-add-btn{background:#26302A;border-color:#3A4438;color:#D9E6DE}
+body[data-theme="dark"] .quick-add-btn:hover{background:#2E3A33;border-color:#4A5A50}
+body[data-theme="dark"] .cf-check{background:#20261F;border-color:var(--line);color:var(--ink2)}
+body[data-theme="dark"] .cf-check.on{background:#22322A;border-color:#33493D;color:#C7E6D3}
+body[data-theme="dark"] .cf-item>label .cf-type{background:#26302A;color:#B9C6BE;border-color:#3A4438}
+body.bcs-native.bcs-native.bcs-native.bcs-native :is(input,select,textarea){font-size:16px !important}
+@media (max-width:760px){
+  .grid3{grid-template-columns:1fr}
+  .pt-meet-form{grid-template-columns:1fr 1fr}
+  .pt-meet-form #ptMeetNotes{grid-column:1 / -1}
+  .pt-meet-form .btn{grid-column:1 / -1}
+  .partner-toolbar select{max-width:none;flex:1 1 150px}
+}
 
 .progress-mini i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--sage-ink))}
 @media (max-width:760px){ .queue-list{grid-template-columns:1fr} .dossier-grid{grid-template-columns:1fr} }
@@ -15302,16 +15402,22 @@ try{
   <section class="view" id="view-partners">
     <div class="adv-head">
       <div>
-        <div class="eyebrow">BCS · partner ecosystem</div>
+        <div class="eyebrow">BCS · partner database</div>
         <h2 class="adv-title">Bank, CA, legal,<br><em>interiors aur contractors.</em></h2>
-        <p class="adv-sub">Har deal me kaam aane wale partners ek jagah — type, contact, city, referral/commission aur notes. Click karo, related record kholo, save karo.</p>
+        <p class="adv-sub">Office address, website, mobile, deal segments, corridors aur exact deal — sab editable. Sources se list laayein, connect karein, meeting ke baad working partner banayein.</p>
       </div>
-      <div class="adv-head-actions"><button class="btn primary" id="addPartnerBtn">+ Add partner</button></div>
+      <div class="adv-head-actions">
+        <button class="btn ghost" id="partnerImportBtn" title="Multiple sources se partner list import karein">📥 Import list</button>
+        <button class="btn primary" id="addPartnerBtn">+ Add partner</button>
+      </div>
     </div>
     <div class="links-stats" id="partnerStats"></div>
-    <div class="toolbar links-toolbar">
-      <div class="adv-search links-search"><input id="partnerSearch" placeholder="Search partner, type, city…"></div>
+    <div class="toolbar links-toolbar partner-toolbar">
+      <div class="adv-search links-search"><input id="partnerSearch" placeholder="Search name, contact, segment, corridor, deal…"></div>
+      <select id="partnerStageFilter"><option value="">All stages</option></select>
       <select id="partnerTypeFilter"><option value="">All types</option></select>
+      <select id="partnerCorridorFilter"><option value="">All corridors</option></select>
+      <select id="partnerSegmentFilter"><option value="">All segments</option></select>
       <div class="spacer"></div>
       <span class="links-toolbar-note" id="partnerCount"></span>
     </div>
@@ -18232,29 +18338,121 @@ try{
 
 <!-- ============ PARTNER EDITOR ============ -->
 <div class="overlay" id="partnerModal">
-  <div class="modal" style="width:min(640px,100%)">
+  <div class="modal" style="width:min(820px,100%)">
     <div class="modal-head"><h3 id="partnerTitle">Add partner</h3><button class="xbtn" data-close="partnerModal">✕</button></div>
     <div class="modal-body">
+      <div class="pt-sec"><span>1 · Identity &amp; contact</span></div>
       <div class="grid2">
-        <div class="field"><label>Partner name *</label><input id="ptName" placeholder="e.g. Sharma Home Loans"></div>
-        <div class="field"><label>Type</label><select id="pType"><option value="bank">Bank / home loan</option><option value="ca">CA / tax</option><option value="legal">Legal</option><option value="interiors">Interiors</option><option value="contractor">Contractor</option><option value="rent">Rent / rental</option><option value="vendor">Vendor</option><option value="other">Other</option></select></div>
+        <div class="field"><label>Partner / firm name *</label><input id="ptName" placeholder="e.g. Sharma Home Loans"></div>
+        <div class="field"><label>Partner type</label><select id="pType"><option value="bank">Bank / home loan</option><option value="ca">CA / tax</option><option value="legal">Legal</option><option value="interiors">Interiors</option><option value="contractor">Contractor</option><option value="rent">Rent / rental</option><option value="vendor">Vendor</option><option value="other">Other</option></select></div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Contact person</label><input id="pContact" placeholder="e.g. Rakesh Sharma"></div>
+        <div class="field"><label>Mobile number</label><input id="pPhone" placeholder="+91 …"></div>
+        <div class="field"><label>Alternate number</label><input id="pAltPhone" placeholder="Office / desk line"></div>
       </div>
       <div class="grid2">
-        <div class="field"><label>Phone</label><input id="pPhone" placeholder="+91 …"></div>
         <div class="field"><label>Email</label><input id="pEmail" placeholder="name@firm.in"></div>
+        <div class="field"><label>Website</label><input id="pWebsite" placeholder="www.firm.in"></div>
       </div>
       <div class="grid2">
         <div class="field"><label>City</label><input id="pCity" placeholder="Jaipur"></div>
-        <div class="field"><label>Referral fee (₹)</label><input id="pReferral" type="number" min="0" placeholder="0"></div>
+        <div class="field"><label>Office address</label><input id="pAddress" placeholder="Shop / office, street, area"></div>
       </div>
-      <div class="field"><label>Commission (%)</label><input id="pCommission" type="number" min="0" step="0.05" placeholder="e.g. 1.5"></div>
-      <div class="field"><label>Notes</label><textarea id="ptNotes" rows="3" placeholder="Speciality, response time, areas served…"></textarea></div>
+
+      <div class="pt-sec"><span>2 · Deals, segments &amp; corridors</span></div>
+      <div class="field"><label>Deals in segments</label><div class="checks" id="ptSegments"></div>
+        <div class="pt-add"><input id="ptSegCustom" placeholder="Add custom segment — e.g. NRI advisory"><button type="button" class="btn ghost sm" id="ptSegAdd">＋ Add</button></div>
+      </div>
+      <div class="field"><label>Corridors covered</label><div class="checks" id="ptCorridors"></div>
+        <div class="pt-add"><input id="ptCorrCustom" placeholder="Add custom corridor / area"><button type="button" class="btn ghost sm" id="ptCorrAdd">＋ Add</button></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Deal structure</label><input id="pDealType" list="ptDealTypes" placeholder="e.g. 1% referral, retainer, barter">
+          <datalist id="ptDealTypes"><option value="Referral %"><option value="Flat referral fee"><option value="Monthly retainer"><option value="Barter / exchange"><option value="Joint venture"><option value="Commission split"><option value="Service partnership"></datalist>
+        </div>
+        <div class="field"><label>What is the deal with them</label><textarea id="pDealSummary" rows="3" placeholder="e.g. 1% referral on every home-loan file; pays within 15 days; handles files above ₹40L."></textarea></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Referral fee (₹)</label><input id="pReferral" type="number" min="0" placeholder="0"></div>
+        <div class="field"><label>Commission (%)</label><input id="pCommission" type="number" min="0" step="0.05" placeholder="e.g. 1.5"></div>
+      </div>
+
+      <div class="pt-sec"><span>3 · Pipeline, source &amp; connections</span></div>
+      <div class="grid3">
+        <div class="field"><label>Stage</label><select id="pStage"></select></div>
+        <div class="field"><label>Last contact</label><input id="pLastContact" type="date"></div>
+        <div class="field"><label>Next follow-up</label><input id="pNextFollowUp" type="date"></div>
+      </div>
+      <div class="field"><label>Where did this partner come from</label><div class="checks" id="ptSources"></div>
+        <div class="pt-add"><input id="ptSrcCustom" placeholder="Add source — e.g. MagicBricks, WhatsApp group, referral"><button type="button" class="btn ghost sm" id="ptSrcAdd">＋ Add</button></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Source link</label><input id="pSourceUrl" placeholder="https:// listing / profile / sheet link"></div>
+        <div class="field"><label>Tags</label><input id="pTags" placeholder="comma separated — e.g. fast-payer, investor, JDA"></div>
+      </div>
+      <div class="field"><label>Linked partners <small style="font-weight:600;text-transform:none;letter-spacing:0;color:var(--mut)">— jinke saath mil ke kaam karte hain</small></label>
+        <div class="checks pt-linked" id="ptLinked"></div>
+      </div>
+
+      <div class="pt-sec"><span>4 · Meeting &amp; discussion log</span></div>
+      <div class="pt-meet-form">
+        <input id="ptMeetDate" type="date">
+        <select id="ptMeetMode"><option value="call">Call</option><option value="office">Office meeting</option><option value="site">Site visit</option><option value="whatsapp">WhatsApp</option><option value="other">Other</option></select>
+        <input id="ptMeetNotes" placeholder="Kya discuss hua, next step…">
+        <button type="button" class="btn ghost sm" id="ptMeetAdd">＋ Log</button>
+      </div>
+      <div class="pt-meet-list" id="ptMeetings"></div>
+
+      <div class="pt-sec"><span>5 · Custom fields &amp; notes</span></div>
+      <div class="field"><label>My custom fields <button type="button" class="quick-add-btn" data-cfmanage="partner">⚙ Manage</button></label><div id="ptCustomFields"></div></div>
+      <div class="field"><label>Notes</label><textarea id="ptNotes" rows="3" placeholder="Speciality, response time, payment behaviour, areas served…"></textarea></div>
       <input type="hidden" id="pId">
     </div>
     <div class="modal-foot">
       <button class="btn danger" id="ptDelete" style="margin-right:auto">Delete</button>
       <button class="btn ghost" data-close="partnerModal">Cancel</button>
       <button class="btn primary" id="ptSave">Save partner</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PARTNER BULK IMPORT ============ -->
+<div class="overlay" id="partnerImportModal">
+  <div class="modal" style="width:min(920px,94vw)">
+    <div class="modal-head"><h3>📥 Partner list import</h3><button class="xbtn" data-close="partnerImportModal">✕</button></div>
+    <div class="modal-body">
+      <div class="pt-import-note">
+        MagicBricks / Housing / Google / WhatsApp groups / Excel — jahan se bhi list mili ho, rows paste karein. Ek line = ek partner. Format:<br>
+        <b>Name | Type | Contact person | Mobile | City | Website | Source | Segments | Corridors | Deal notes | Address | Email</b><br>
+        Sirf <b>Name</b> zaroori hai. Segments/corridors comma se alag karein. Import ke baad sab kuch card se edit ho sakta hai.
+      </div>
+      <div class="field">
+        <label>1 · Rows paste karein</label>
+        <textarea id="ptImportPaste" rows="9" style="min-height:170px;font-family:'DM Sans',sans-serif" placeholder="Sharma Home Loans | bank | Rakesh Sharma | 9812345678 | Jaipur | sharmaloans.in | MagicBricks | home-loan, residential | Ajmer Road, Tonk Road | 1% referral on every file | C-Scheme, Jaipur | rakesh@sharmaloans.in&#10;Mehta &amp; Associates | ca | Ankit Mehta | 9829012345 | Jaipur |  | Referral | tax, audit |  | ₹15,000 per filing, fast turnaround"></textarea>
+      </div>
+      <div class="pt-import-actions">
+        <button type="button" class="btn ghost sm" id="ptImportSample">Load sample</button>
+        <label class="btn ghost sm pt-file-btn">📊 CSV file chunein<input type="file" id="ptImportFile" accept=".csv,.txt" hidden></label>
+        <button type="button" class="btn primary sm" id="ptImportAnalyze" style="margin-left:auto">🔍 Preview</button>
+      </div>
+      <div id="ptImportPreviewWrap" hidden>
+        <div class="pt-import-preview-head">
+          <b>2 · Check &amp; select</b>
+          <span class="mini-note" id="ptImportCount"></span>
+          <label class="pt-selectall"><input type="checkbox" id="ptImportAll" checked> Sab select</label>
+        </div>
+        <div class="pt-import-tablewrap">
+          <table class="pt-import-table">
+            <thead><tr><th>✓</th><th>Name</th><th>Type</th><th>Mobile</th><th>City</th><th>Source</th><th>Segments</th><th>Corridors</th><th>Deal</th></tr></thead>
+            <tbody id="ptImportRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="partnerImportModal">Cancel</button>
+      <button class="btn primary" id="ptImportDo" disabled>Import selected</button>
     </div>
   </div>
 </div>
@@ -18990,6 +19188,7 @@ const CF_ENTITIES = [
   { id:'client',    label:'Clients',     form:'#cCustomFields' },
   { id:'advisor',   label:'Advisors',    form:'#aCustomFields' },
   { id:'resale',    label:'Resale',      form:'#rCustomFields' },
+  { id:'partner',   label:'Partners',    form:'#ptCustomFields' },
 ];
 const CF_TYPES = [
   { id:'text',        label:'Text box' },
@@ -19840,19 +20039,56 @@ function normalizeDb(d){
     keys.forEach(k => { c.readiness[k] = !!c.readiness[k]; });
   });
   const PARTNER_TYPES = ['bank','ca','legal','interiors','contractor','rent','vendor','other'];
-  d.partners = d.partners.filter(p => p && String(p.id || '') && String(p.name || '').trim()).map((p, i) => ({
-    id: p.id || uid(),
-    name: String(p.name || '').trim().slice(0, 120),
-    type: PARTNER_TYPES.includes(p.type) ? p.type : 'other',
-    phone: String(p.phone || '').trim().slice(0, 40),
-    email: String(p.email || '').trim().slice(0, 120),
-    city: String(p.city || '').trim().slice(0, 80),
-    notes: String(p.notes || '').trim().slice(0, 600),
-    commissionPct: p.commissionPct == null || p.commissionPct === '' ? 0 : (+p.commissionPct || 0),
-    referralFee: p.referralFee == null || p.referralFee === '' ? 0 : (+p.referralFee || 0),
-    createdAt: p.createdAt || Date.now() + i,
-    updatedAt: p.updatedAt || p.createdAt || Date.now() + i
-  }));
+  const PARTNER_STAGES = ['sourced','contacted','meeting','discussing','working','paused'];
+  const ptList = (v, max, len) => {
+    const raw = Array.isArray(v) ? v : (typeof v === 'string' ? v.split(/[,;\n]/) : []);
+    const out = [];
+    raw.forEach(x => {
+      const s = String(x == null ? '' : x).trim().slice(0, len);
+      if(s && !out.some(y => y.toLowerCase() === s.toLowerCase())) out.push(s);
+    });
+    return out.slice(0, max);
+  };
+  const ptDate = v => /^\d{4}-\d{2}-\d{2}$/.test(String(v || '')) ? String(v) : '';
+  d.partners = d.partners.filter(p => p && String(p.id || '') && String(p.name || '').trim()).map((p, i) => {
+    const id = p.id || uid();
+    return {
+      id,
+      name: String(p.name || '').trim().slice(0, 120),
+      type: PARTNER_TYPES.includes(p.type) ? p.type : 'other',
+      contactPerson: String(p.contactPerson || '').trim().slice(0, 80),
+      phone: String(p.phone || '').trim().slice(0, 40),
+      altPhone: String(p.altPhone || '').trim().slice(0, 40),
+      email: String(p.email || '').trim().slice(0, 120),
+      website: String(p.website || '').trim().slice(0, 160),
+      city: String(p.city || '').trim().slice(0, 80),
+      address: String(p.address || '').trim().slice(0, 300),
+      segments: ptList(p.segments, 10, 50),
+      corridors: ptList(p.corridors, 12, 80),
+      dealType: String(p.dealType || '').trim().slice(0, 60),
+      dealSummary: String(p.dealSummary || '').trim().slice(0, 600),
+      stage: PARTNER_STAGES.includes(p.stage) ? p.stage : 'working',
+      sources: ptList(p.sources, 10, 60),
+      sourceUrl: String(p.sourceUrl || '').trim().slice(0, 300),
+      tags: ptList(p.tags, 16, 40),
+      nextFollowUp: ptDate(p.nextFollowUp),
+      lastContact: ptDate(p.lastContact),
+      meetings: (Array.isArray(p.meetings) ? p.meetings : []).filter(m => m && (m.date || m.notes)).map((m, mi) => ({
+        id: m.id || uid(),
+        date: ptDate(m.date),
+        mode: ['call','office','site','whatsapp','other'].includes(m.mode) ? m.mode : 'call',
+        notes: String(m.notes || '').trim().slice(0, 600),
+        at: m.at || Date.now() + mi
+      })).slice(0, 60),
+      linkedPartnerIds: ptList(p.linkedPartnerIds, 20, 80).filter(x => x !== id),
+      notes: String(p.notes || '').trim().slice(0, 1200),
+      commissionPct: p.commissionPct == null || p.commissionPct === '' ? 0 : (+p.commissionPct || 0),
+      referralFee: p.referralFee == null || p.referralFee === '' ? 0 : (+p.referralFee || 0),
+      custom: (p.custom && typeof p.custom === 'object' && !Array.isArray(p.custom)) ? p.custom : {},
+      createdAt: p.createdAt || Date.now() + i,
+      updatedAt: p.updatedAt || p.createdAt || Date.now() + i
+    };
+  });
   d.journeyLogs = d.journeyLogs.filter(j => j && j.id && j.kind && j.at).map(j => ({
     id: j.id || uid(),
     kind: j.kind,
@@ -20143,7 +20379,7 @@ function normalizeDb(d){
       };
     }).filter(c => c.label);
   });
-  if(!d.version || d.version < 12) d.version = 12;
+  if(!d.version || d.version < 13) d.version = 13;
   return d;
 }
 function save(){
@@ -35208,7 +35444,7 @@ function initTax(){
   renderTaxNews();
 }
 
-/* ---------- partners / vendor network ---------- */
+/* ---------- partners / partner database ---------- */
 const PARTNER_TYPES = [
   { id:'bank', label:'Bank / home loan', icon:'🏦' },
   { id:'ca', label:'CA / tax', icon:'🧮' },
@@ -35219,42 +35455,158 @@ const PARTNER_TYPES = [
   { id:'vendor', label:'Vendor', icon:'📦' },
   { id:'other', label:'Other', icon:'✨' }
 ];
+const PARTNER_STAGES = [
+  { id:'sourced',    label:'Sourced',          short:'Sourced',    note:'List mili — connect karna baaki' },
+  { id:'contacted',  label:'Contacted',        short:'Contacted',  note:'Pehla contact ho gaya' },
+  { id:'meeting',    label:'Meeting planned',  short:'Meeting',    note:'Meeting plan / ho gayi' },
+  { id:'discussing', label:'Discussing deal',  short:'Discussing', note:'Deal terms par baat chal rahi hai' },
+  { id:'working',    label:'Working together', short:'Working',    note:'Saath kaam shuru ho gaya' },
+  { id:'paused',     label:'Paused',           short:'Paused',     note:'Filhaal hold par' }
+];
+const PARTNER_SEGMENTS = ['Residential','Commercial','Plots / land','Farmhouse','Rental','Investment','Home loan','Interiors','Legal','Tax / CA','Construction','NRI'];
+const PARTNER_SOURCES = ['MagicBricks','Housing.com','99acres','Google','WhatsApp group','Referral','Developer','Client','Walk-in','Instagram','LinkedIn','Excel list'];
+const PARTNER_MEET_MODES = [
+  { id:'call', label:'Call' },
+  { id:'office', label:'Office meeting' },
+  { id:'site', label:'Site visit' },
+  { id:'whatsapp', label:'WhatsApp' },
+  { id:'other', label:'Other' }
+];
 const partnerTypeMeta = id => PARTNER_TYPES.find(x => x.id === id) || PARTNER_TYPES[7];
+const partnerStageMeta = id => PARTNER_STAGES.find(x => x.id === id) || PARTNER_STAGES[0];
+function partnerWebHref(url){
+  const u = String(url || '').trim();
+  if(!u) return '';
+  return /^https?:\/\//i.test(u) ? u : 'https://' + u.replace(/^\/+/, '');
+}
+const partnerWebLabel = url => String(url || '').replace(/^https?:\/\//i, '').replace(/\/+$/, '');
+function partnerTagList(v){
+  return String(v || '').split(/[,;\n]/).map(s => s.trim()).filter(Boolean);
+}
+function ptChipHTML(value, selected){
+  return `<label><input type="checkbox" value="${esc(value)}" ${selected.some(x => x.toLowerCase() === value.toLowerCase()) ? 'checked' : ''}><span>${esc(value)}</span></label>`;
+}
+function ptRenderChips(sel, options, selected){
+  const host = $(sel);
+  if(!host) return;
+  const all = [];
+  [...options, ...(selected || [])].forEach(v => {
+    const s = String(v || '').trim();
+    if(s && !all.some(x => x.toLowerCase() === s.toLowerCase())) all.push(s);
+  });
+  host.innerHTML = all.map(v => ptChipHTML(v, selected || [])).join('');
+}
+const ptReadChips = sel => $$(sel + ' input:checked').map(i => i.value);
+function ptAddChip(sel, inputSel){
+  const host = $(sel), input = $(inputSel);
+  if(!host || !input) return;
+  const v = input.value.trim();
+  if(!v) return;
+  if(![...host.querySelectorAll('input')].some(i => i.value.toLowerCase() === v.toLowerCase())){
+    host.insertAdjacentHTML('beforeend', ptChipHTML(v, [v]));
+  } else {
+    [...host.querySelectorAll('input')].forEach(i => { if(i.value.toLowerCase() === v.toLowerCase()) i.checked = true; });
+  }
+  input.value = '';
+  input.focus();
+}
+let ptMeetingsDraft = [];
+function renderPtMeetings(){
+  const host = $('#ptMeetings');
+  if(!host) return;
+  const rows = [...ptMeetingsDraft].sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+  host.innerHTML = rows.length ? rows.map(m => {
+    const mode = PARTNER_MEET_MODES.find(x => x.id === m.mode) || PARTNER_MEET_MODES[0];
+    return `<div class="pt-meet-row">
+      <span class="ptm-date">${m.date ? esc(fmtDate(m.date)) : 'No date'}</span>
+      <span class="ptm-mode">${esc(mode.label)}</span>
+      <span class="ptm-notes">${esc(m.notes || '—')}</span>
+      <button type="button" data-ptmeetdel="${m.id}" title="Delete meeting">✕</button>
+    </div>`;
+  }).join('') : '<div class="pt-meet-empty">Abhi koi meeting log nahi — date, mode aur notes add karein.</div>';
+  $$('#ptMeetings [data-ptmeetdel]').forEach(b => b.addEventListener('click', () => {
+    ptMeetingsDraft = ptMeetingsDraft.filter(m => m.id !== b.dataset.ptmeetdel);
+    renderPtMeetings();
+  }));
+}
+function partnerCardHTML(p){
+  const meta = partnerTypeMeta(p.type);
+  const stage = partnerStageMeta(p.stage);
+  const admin = isAdmin();
+  const contact = [];
+  if(p.phone) contact.push(`<span>☏ <a href="tel:${esc(p.phone)}">${esc(p.phone)}</a></span>`);
+  if(p.altPhone) contact.push(`<span>☏ ${esc(p.altPhone)}</span>`);
+  if(p.email) contact.push(`<span>✉ <a href="mailto:${esc(p.email)}">${esc(p.email)}</a></span>`);
+  if(p.website) contact.push(`<span>🌐 <a href="${esc(partnerWebHref(p.website))}" target="_blank" rel="noopener">${esc(partnerWebLabel(p.website))}</a></span>`);
+  if(p.address || p.city) contact.push(`<span>📍 ${esc([p.address, p.city].filter(Boolean).join(', '))}</span>`);
+  const segs = (p.segments || []).map(s => `<span class="partner-chip seg">${esc(s)}</span>`);
+  const cors = (p.corridors || []).map(s => `<span class="partner-chip corr">${esc(s)}</span>`);
+  let deal = p.dealSummary || p.dealType || '';
+  if(!deal && (p.commissionPct || p.referralFee)){
+    deal = [p.commissionPct ? `${p.commissionPct}% commission` : '', p.referralFee ? `Ref ${fmtPrice(p.referralFee / 100000)}` : ''].filter(Boolean).join(' · ');
+  }
+  const sources = (p.sources || []).join(' · ');
+  const linked = (p.linkedPartnerIds || []).map(id => (db.partners || []).find(x => x.id === id)).filter(Boolean);
+  const follow = p.nextFollowUp ? followupInfo(p.nextFollowUp) : null;
+  const lastMeet = (p.meetings || []).slice().sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))[0];
+  const custom = customFieldsView('partner', p);
+  return `<article class="partner-card">
+    <div class="partner-top">
+      <div class="partner-ic">${meta.icon}</div>
+      <div style="min-width:0"><b>${esc(p.name)}</b><small>${esc(meta.label)}${p.contactPerson ? ' · ' + esc(p.contactPerson) : ''}</small></div>
+      <span class="partner-stage ${stage.id}" title="${esc(stage.note)}">${esc(stage.short)}</span>
+    </div>
+    ${contact.length ? `<div class="partner-contact">${contact.join('')}</div>` : ''}
+    ${(segs.length || cors.length) ? `<div class="partner-chips">${segs.join('')}${cors.join('')}</div>` : ''}
+    ${deal ? `<div class="partner-deal"><b>Deal</b>${esc(deal)}</div>` : ''}
+    ${sources ? `<div class="partner-src">Source: ${p.sourceUrl ? `<a href="${esc(partnerWebHref(p.sourceUrl))}" target="_blank" rel="noopener">${esc(sources)}</a>` : esc(sources)}</div>` : ''}
+    ${(p.meetings || []).length ? `<div class="partner-src">🗓 ${(p.meetings || []).length} meeting${(p.meetings || []).length > 1 ? 's' : ''} logged${lastMeet && lastMeet.date ? ' · last ' + esc(fmtDate(lastMeet.date)) : ''}</div>` : ''}
+    ${follow ? `<div class="partner-follow ${follow.cls}">${esc(follow.label)}</div>` : ''}
+    ${p.notes ? `<p class="partner-notes">${esc(p.notes)}</p>` : ''}
+    ${custom ? `<div class="partner-cf">${custom}</div>` : ''}
+    ${linked.length ? `<div class="partner-chips">${linked.map(x => `<span class="partner-chip">↔ ${esc(x.name)}</span>`).join('')}</div>` : ''}
+    <div class="partner-act">
+      ${p.phone ? `<a href="tel:${esc(p.phone)}">☏ Call</a>` : ''}
+      ${p.phone && waLink(p.phone) ? `<a href="${esc(waLink(p.phone))}" target="_blank" rel="noopener">💬 WhatsApp</a>` : ''}
+      ${p.website ? `<a href="${esc(partnerWebHref(p.website))}" target="_blank" rel="noopener">🌐 Website</a>` : ''}
+      ${admin ? `<button type="button" data-partneredit="${p.id}">✎ Edit</button><button type="button" class="del" data-partnerdel="${p.id}">✕ Delete</button>` : ''}
+    </div>
+  </article>`;
+}
 function renderPartners(){
   if(!$('#partnerGrid')) return;
   const q = ($('#partnerSearch').value || '').trim().toLowerCase();
   const type = $('#partnerTypeFilter').value || '';
-  const list = (db.partners || []).filter(p => {
+  const stage = $('#partnerStageFilter') ? ($('#partnerStageFilter').value || '') : '';
+  const corr = $('#partnerCorridorFilter') ? ($('#partnerCorridorFilter').value || '') : '';
+  const seg = $('#partnerSegmentFilter') ? ($('#partnerSegmentFilter').value || '') : '';
+  const all = db.partners || [];
+  const list = all.filter(p => {
     if(type && p.type !== type) return false;
+    if(stage && p.stage !== stage) return false;
+    if(corr && !(p.corridors || []).some(c => c.toLowerCase() === corr.toLowerCase())) return false;
+    if(seg && !(p.segments || []).some(s => s.toLowerCase() === seg.toLowerCase())) return false;
     if(!q) return true;
-    return [p.name, p.notes, p.city, partnerTypeMeta(p.type).label].join(' ').toLowerCase().includes(q);
+    return [
+      p.name, p.contactPerson, p.phone, p.altPhone, p.email, p.website, p.city, p.address,
+      p.notes, p.dealSummary, p.dealType, (p.tags || []).join(' '), (p.segments || []).join(' '),
+      (p.corridors || []).join(' '), (p.sources || []).join(' '), partnerTypeMeta(p.type).label,
+      partnerStageMeta(p.stage).label
+    ].join(' ').toLowerCase().includes(q);
   });
-  const types = new Set((db.partners || []).map(p => p.type)).size;
-  const referralTotal = (db.partners || []).reduce((n,p) => n + (Number(p.referralFee) || 0), 0);
+  const working = all.filter(p => p.stage === 'working').length;
+  const corridors = new Set(all.flatMap(p => p.corridors || []).filter(Boolean)).size;
+  const meetings = all.reduce((n, p) => n + (p.meetings || []).length, 0);
+  const due = all.filter(p => p.nextFollowUp && p.nextFollowUp <= todayISO()).length;
   $('#partnerStats').innerHTML = `
-    <div><div class="k">Partners</div><div class="v">${(db.partners || []).length}</div></div>
-    <div><div class="k">Types</div><div class="v">${types}</div></div>
-    <div><div class="k">Cities</div><div class="v">${new Set((db.partners || []).map(p => p.city).filter(Boolean)).size}</div></div>
-    <div><div class="k">Referral flow</div><div class="v">${referralTotal ? fmtPrice(referralTotal / 100000) : '—'}</div></div>`;
-  $('#partnerCount').textContent = `${list.length} of ${(db.partners || []).length}`;
+    <div><div class="k">Partners</div><div class="v">${all.length}</div></div>
+    <div><div class="k">Working together</div><div class="v">${working}</div></div>
+    <div><div class="k">Corridors covered</div><div class="v">${corridors}</div></div>
+    <div><div class="k">Meetings logged</div><div class="v">${meetings}${due ? ` <small style="font-size:10px;color:var(--danger);font-weight:800">· ${due} follow-up</small>` : ''}</div></div>`;
+  $('#partnerCount').textContent = `${list.length} of ${all.length}`;
   const admin = isAdmin();
-  $('#partnerGrid').innerHTML = list.length ? list.map(p => {
-    const meta = partnerTypeMeta(p.type);
-    return `<article class="partner-card">
-      <div class="partner-top"><div class="partner-ic">${meta.icon}</div><div><b>${esc(p.name)}</b><small>${esc(meta.label)}</small></div></div>
-      <div class="partner-meta">
-        ${p.city ? `<span>📍 ${esc(p.city)}</span>` : ''}
-        ${p.phone ? `<span>☏ ${esc(p.phone)}</span>` : ''}
-        ${p.commissionPct ? `<span>${esc(p.commissionPct)}% comm.</span>` : ''}
-        ${p.referralFee ? `<span>Ref ${fmtPrice(p.referralFee)}</span>` : ''}
-      </div>
-      <p class="partner-notes">${esc(p.notes || 'Notes abhi nahi — edit karke jodein.')}</p>
-      <div class="partner-act">
-        ${p.phone ? `<a class="btn ghost sm" href="tel:${esc(p.phone)}">Call</a><a class="btn ghost sm" href="${waLink(p.phone)}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
-        ${admin ? `<button type="button" data-partneredit="${p.id}">✎ Edit</button><button type="button" class="del" data-partnerdel="${p.id}">✕ Delete</button>` : ''}
-      </div>
-    </article>`;
-  }).join('') : `<div class="links-board-empty tm-empty">${emptyBlock('Koi partner nahi', q || type ? 'Search/filter clear karein.' : 'Pehla partner add karein — bank/CA/legal/interior sab yahin.', admin ? '+ Add partner' : '', 'addpartner')}</div>`;
+  const filtered = q || type || stage || corr || seg;
+  $('#partnerGrid').innerHTML = list.length ? list.map(partnerCardHTML).join('') : `<div class="links-board-empty tm-empty">${emptyBlock('Koi partner nahi', filtered ? 'Search/filter clear karein.' : 'Pehla partner add karein — ya multiple sources se list import karein.', admin ? '+ Add partner' : '', 'addpartner')}</div>`;
   $$('#partnerGrid [data-partneredit]').forEach(b => b.addEventListener('click', () => openPartner(db.partners.find(x => x.id === b.dataset.partneredit))));
   $$('#partnerGrid [data-partnerdel]').forEach(b => b.addEventListener('click', () => deletePartner(b.dataset.partnerdel)));
   const seed = $('#partnerGrid [data-addpartner]');
@@ -35262,16 +35614,38 @@ function renderPartners(){
 }
 function openPartner(p){
   if(!isAdmin()) return toast('Advisor login se edit nahi hota', true);
+  const rec = p || {};
   $('#partnerTitle').textContent = p ? 'Edit partner — ' + (p.name || '') : 'Add partner';
-  $('#pId').value = p?.id || '';
-  $('#ptName').value = p?.name || '';
-  $('#pType').value = p?.type || 'other';
-  $('#pPhone').value = p?.phone || '';
-  $('#pEmail').value = p?.email || '';
-  $('#pCity').value = p?.city || '';
-  $('#ptNotes').value = p?.notes || '';
-  $('#pReferral').value = p?.referralFee ?? '';
-  $('#pCommission').value = p?.commissionPct ?? '';
+  $('#pId').value = rec.id || '';
+  $('#ptName').value = rec.name || '';
+  $('#pType').value = rec.type || 'other';
+  $('#pContact').value = rec.contactPerson || '';
+  $('#pPhone').value = rec.phone || '';
+  $('#pAltPhone').value = rec.altPhone || '';
+  $('#pEmail').value = rec.email || '';
+  $('#pWebsite').value = rec.website || '';
+  $('#pCity').value = rec.city || '';
+  $('#pAddress').value = rec.address || '';
+  $('#pDealType').value = rec.dealType || '';
+  $('#pDealSummary').value = rec.dealSummary || '';
+  $('#pStage').value = rec.stage || 'sourced';
+  $('#pLastContact').value = rec.lastContact || '';
+  $('#pNextFollowUp').value = rec.nextFollowUp || '';
+  $('#pSourceUrl').value = rec.sourceUrl || '';
+  $('#pTags').value = (rec.tags || []).join(', ');
+  $('#pReferral').value = rec.referralFee ?? '';
+  $('#pCommission').value = rec.commissionPct ?? '';
+  $('#ptNotes').value = rec.notes || '';
+  ptRenderChips('#ptSegments', PARTNER_SEGMENTS, rec.segments || []);
+  ptRenderChips('#ptCorridors', db.corridors.map(c => c.name), rec.corridors || []);
+  ptRenderChips('#ptSources', PARTNER_SOURCES, rec.sources || []);
+  const others = db.partners.filter(x => x.id !== rec.id);
+  $('#ptLinked').innerHTML = others.length ? others.map(x =>
+    `<label><input type="checkbox" value="${esc(x.id)}" ${(rec.linkedPartnerIds || []).includes(x.id) ? 'checked' : ''}><span>${esc(x.name)}</span></label>`
+  ).join('') : '<span class="pt-meet-empty">Doosre partner add karne par yahan link kar sakte hain.</span>';
+  ptMeetingsDraft = (rec.meetings || []).map(m => ({ ...m }));
+  renderPtMeetings();
+  renderCustomFields('#ptCustomFields', 'partner', rec.custom || {});
   $('#ptDelete').style.display = p ? '' : 'none';
   showOverlay('partnerModal');
 }
@@ -35279,11 +35653,38 @@ function savePartner(){
   if(!isAdmin()) return toast('Advisor login se edit nahi hota', true);
   const name = $('#ptName').value.trim();
   if(!name) return toast('Partner name likhein', true);
-  const rec = { name, type: $('#pType').value, phone: $('#pPhone').value.trim(), email: $('#pEmail').value.trim(), city: $('#pCity').value.trim(), referralFee: number($('#pReferral').value) ?? 0, commissionPct: number($('#pCommission').value) ?? 0, notes: $('#ptNotes').value.trim(), updatedAt: Date.now() };
   const id = $('#pId').value;
-  if(id){
-    const p = db.partners.find(x => x.id === id);
-    if(p) Object.assign(p, rec);
+  const existing = id ? db.partners.find(x => x.id === id) : null;
+  const rec = {
+    name,
+    type: $('#pType').value,
+    contactPerson: $('#pContact').value.trim(),
+    phone: $('#pPhone').value.trim(),
+    altPhone: $('#pAltPhone').value.trim(),
+    email: $('#pEmail').value.trim(),
+    website: $('#pWebsite').value.trim(),
+    city: $('#pCity').value.trim(),
+    address: $('#pAddress').value.trim(),
+    segments: ptReadChips('#ptSegments'),
+    corridors: ptReadChips('#ptCorridors'),
+    dealType: $('#pDealType').value.trim(),
+    dealSummary: $('#pDealSummary').value.trim(),
+    stage: $('#pStage').value || 'sourced',
+    sources: ptReadChips('#ptSources'),
+    sourceUrl: $('#pSourceUrl').value.trim(),
+    tags: partnerTagList($('#pTags').value),
+    nextFollowUp: $('#pNextFollowUp').value,
+    lastContact: $('#pLastContact').value,
+    meetings: ptMeetingsDraft.map(m => ({ ...m })),
+    linkedPartnerIds: $$('#ptLinked input:checked').map(i => i.value),
+    notes: $('#ptNotes').value.trim(),
+    commissionPct: number($('#pCommission').value) ?? 0,
+    referralFee: number($('#pReferral').value) ?? 0,
+    custom: cfPayload(existing && existing.custom, '#ptCustomFields'),
+    updatedAt: Date.now()
+  };
+  if(existing){
+    Object.assign(existing, rec);
     toast('Partner updated');
   } else {
     db.partners.push({ id: uid(), createdAt: Date.now(), ...rec });
@@ -35297,16 +35698,240 @@ function deletePartner(id){
   if(!p) return;
   if(!confirm(`"${p.name}" delete karein?`)) return;
   db.partners = db.partners.filter(x => x.id !== id);
+  db.partners.forEach(x => { x.linkedPartnerIds = (x.linkedPartnerIds || []).filter(l => l !== id); });
   save(); renderPartners(); toast('Partner deleted');
+}
+
+/* ---------- partner bulk import ---------- */
+let ptImportRows = [];
+function ptSplitRow(line){
+  if(line.includes('|')) return line.split('|').map(s => s.trim());
+  if(line.includes('\t')) return line.split('\t').map(s => s.trim());
+  const out = []; let cur = ''; let quoted = false;
+  for(let i = 0; i < line.length; i++){
+    const ch = line[i];
+    if(ch === '"'){
+      if(quoted && line[i + 1] === '"'){ cur += '"'; i++; }
+      else quoted = !quoted;
+    } else if(ch === ',' && !quoted){ out.push(cur.trim()); cur = ''; }
+    else cur += ch;
+  }
+  out.push(cur.trim());
+  return out;
+}
+function ptParseImport(text){
+  const lines = String(text || '').split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+  const typeId = v => {
+    const s = String(v || '').trim().toLowerCase();
+    const byId = PARTNER_TYPES.find(t => t.id === s);
+    if(byId) return byId.id;
+    const byLabel = PARTNER_TYPES.find(t => t.label.toLowerCase() === s || t.label.toLowerCase().split(' / ').includes(s));
+    return byLabel ? byLabel.id : 'other';
+  };
+  const rows = [];
+  lines.forEach((line, idx) => {
+    const c = ptSplitRow(line);
+    if(!c.length) return;
+    const first = String(c[0] || '').toLowerCase();
+    if(idx === 0 && /^(name|partner|firm|company)\b/.test(first) && !/\d{6,}/.test(line)) return;
+    const name = String(c[0] || '').trim();
+    if(!name) return;
+    const phone = String(c[3] || '').trim();
+    const dupe = (db.partners || []).some(p =>
+      (phone && phoneDigits(p.phone) && phoneDigits(p.phone) === phoneDigits(phone)) ||
+      String(p.name || '').trim().toLowerCase() === name.toLowerCase()
+    );
+    rows.push({
+      name,
+      type: typeId(c[1]),
+      contactPerson: String(c[2] || '').trim(),
+      phone,
+      city: String(c[4] || '').trim(),
+      website: String(c[5] || '').trim(),
+      sources: partnerTagList(c[6] || ''),
+      segments: partnerTagList(c[7] || ''),
+      corridors: partnerTagList(c[8] || ''),
+      dealSummary: String(c[9] || '').trim(),
+      address: String(c[10] || '').trim(),
+      email: String(c[11] || '').trim(),
+      dupe,
+      checked: !dupe
+    });
+  });
+  return rows;
+}
+function renderPtImportPreview(){
+  const wrap = $('#ptImportPreviewWrap');
+  if(!wrap) return;
+  wrap.hidden = !ptImportRows.length;
+  const picked = ptImportRows.filter(r => r.checked).length;
+  $('#ptImportCount').textContent = `${picked} selected · ${ptImportRows.length} rows · ${ptImportRows.filter(r => r.dupe).length} already exist`;
+  $('#ptImportRows').innerHTML = ptImportRows.map((r, i) => `<tr>
+    <td><input type="checkbox" data-ptrow="${i}" ${r.checked ? 'checked' : ''}></td>
+    <td class="pt-name">${esc(r.name)}${r.dupe ? '<span class="pt-dupe">exists</span>' : ''}</td>
+    <td>${esc(partnerTypeMeta(r.type).label)}</td>
+    <td>${esc(r.phone || '—')}</td>
+    <td>${esc(r.city || '—')}</td>
+    <td>${esc(r.sources.join(', ') || '—')}</td>
+    <td>${esc(r.segments.join(', ') || '—')}</td>
+    <td>${esc(r.corridors.join(', ') || '—')}</td>
+    <td>${esc(r.dealSummary || '—')}</td>
+  </tr>`).join('');
+  $$('#ptImportRows [data-ptrow]').forEach(cb => cb.addEventListener('change', () => {
+    const r = ptImportRows[+cb.dataset.ptrow];
+    if(r) r.checked = cb.checked;
+    renderPtImportPreview();
+  }));
+  $('#ptImportDo').disabled = !picked;
+}
+function ptAnalyzeImport(){
+  ptImportRows = ptParseImport($('#ptImportPaste').value);
+  if(!ptImportRows.length) return toast('Koi valid row nahi mili — Name pehle column me rakhein', true);
+  renderPtImportPreview();
+}
+function ptDoImport(){
+  if(!isAdmin()) return toast('Advisor login se import nahi hota', true);
+  const picks = ptImportRows.filter(r => r.checked);
+  if(!picks.length) return toast('Koi row select nahi', true);
+  let added = 0;
+  picks.forEach(r => {
+    const dupe = (db.partners || []).some(p =>
+      (r.phone && phoneDigits(p.phone) && phoneDigits(p.phone) === phoneDigits(r.phone)) ||
+      String(p.name || '').trim().toLowerCase() === r.name.toLowerCase()
+    );
+    if(dupe) return;
+    db.partners.push({
+      id: uid(),
+      name: r.name,
+      type: r.type,
+      contactPerson: r.contactPerson,
+      phone: r.phone,
+      altPhone: '',
+      email: r.email,
+      website: r.website,
+      city: r.city,
+      address: r.address,
+      segments: r.segments,
+      corridors: r.corridors,
+      dealType: '',
+      dealSummary: r.dealSummary,
+      stage: 'sourced',
+      sources: r.sources,
+      sourceUrl: '',
+      tags: [],
+      nextFollowUp: '',
+      lastContact: '',
+      meetings: [],
+      linkedPartnerIds: [],
+      notes: '',
+      commissionPct: 0,
+      referralFee: 0,
+      custom: {},
+      createdAt: Date.now(),
+      updatedAt: Date.now()
+    });
+    added++;
+  });
+  save(); renderPartners();
+  closeModal('partnerImportModal');
+  const skipped = picks.length - added;
+  ptImportRows = [];
+  $('#ptImportPaste').value = '';
+  $('#ptImportPreviewWrap').hidden = true;
+  $('#ptImportDo').disabled = true;
+  toast(`${added} partner imported${skipped ? ` · ${skipped} duplicate skip` : ''}`);
 }
 function initPartners(){
   if(!$('#partnerGrid')) return;
   $('#partnerTypeFilter').innerHTML = '<option value="">All types</option>' + PARTNER_TYPES.map(x => `<option value="${x.id}">${x.label}</option>`).join('');
+  if($('#partnerStageFilter')) $('#partnerStageFilter').innerHTML = '<option value="">All stages</option>' + PARTNER_STAGES.map(x => `<option value="${x.id}">${x.label}</option>`).join('');
+  if($('#pStage')) $('#pStage').innerHTML = PARTNER_STAGES.map(x => `<option value="${x.id}">${x.label}</option>`).join('');
+  const refreshPartnerFilters = () => {
+    const all = db.partners || [];
+    const corrSel = $('#partnerCorridorFilter');
+    if(corrSel){
+      const keep = corrSel.value;
+      const corrs = [...new Set(all.flatMap(p => p.corridors || []).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+      corrSel.innerHTML = '<option value="">All corridors</option>' + corrs.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
+      corrSel.value = corrs.includes(keep) ? keep : '';
+    }
+    const segSel = $('#partnerSegmentFilter');
+    if(segSel){
+      const keep = segSel.value;
+      const segs = [...new Set([...PARTNER_SEGMENTS, ...all.flatMap(p => p.segments || [])].filter(Boolean))].sort((a, b) => a.localeCompare(b));
+      segSel.innerHTML = '<option value="">All segments</option>' + segs.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join('');
+      segSel.value = segs.includes(keep) ? keep : '';
+    }
+  };
+  refreshPartnerFilters();
+  const rerender = () => { refreshPartnerFilters(); renderPartners(); };
   $('#partnerSearch').addEventListener('input', renderPartners);
   $('#partnerTypeFilter').addEventListener('change', renderPartners);
+  if($('#partnerStageFilter')) $('#partnerStageFilter').addEventListener('change', renderPartners);
+  if($('#partnerCorridorFilter')) $('#partnerCorridorFilter').addEventListener('change', renderPartners);
+  if($('#partnerSegmentFilter')) $('#partnerSegmentFilter').addEventListener('change', renderPartners);
   $('#addPartnerBtn').addEventListener('click', () => openPartner(null));
+  if($('#partnerImportBtn')) $('#partnerImportBtn').addEventListener('click', () => {
+    if(!isAdmin()) return toast('Advisor login se import nahi hota', true);
+    ptImportRows = [];
+    renderPtImportPreview();
+    showOverlay('partnerImportModal');
+  });
   $('#ptSave').addEventListener('click', savePartner);
   $('#ptDelete').addEventListener('click', () => deletePartner($('#pId').value));
+  $('#ptSegAdd').addEventListener('click', () => ptAddChip('#ptSegments', '#ptSegCustom'));
+  $('#ptCorrAdd').addEventListener('click', () => ptAddChip('#ptCorridors', '#ptCorrCustom'));
+  $('#ptSrcAdd').addEventListener('click', () => ptAddChip('#ptSources', '#ptSrcCustom'));
+  ['#ptSegCustom', '#ptCorrCustom', '#ptSrcCustom'].forEach(sel => {
+    const el = $(sel);
+    if(el) el.addEventListener('keydown', e => {
+      if(e.key !== 'Enter') return;
+      e.preventDefault();
+      if(sel === '#ptSegCustom') ptAddChip('#ptSegments', '#ptSegCustom');
+      if(sel === '#ptCorrCustom') ptAddChip('#ptCorridors', '#ptCorrCustom');
+      if(sel === '#ptSrcCustom') ptAddChip('#ptSources', '#ptSrcCustom');
+    });
+  });
+  $('#ptMeetAdd').addEventListener('click', () => {
+    const notes = $('#ptMeetNotes').value.trim();
+    const date = $('#ptMeetDate').value || todayISO();
+    if(!notes) return toast('Meeting notes likhein', true);
+    ptMeetingsDraft.push({ id: uid(), date, mode: $('#ptMeetMode').value || 'call', notes, at: Date.now() });
+    $('#ptMeetNotes').value = '';
+    const last = $('#pLastContact');
+    if(last && (!last.value || last.value < date)) last.value = date;
+    renderPtMeetings();
+    $('#ptMeetNotes').focus();
+  });
+  $('#ptMeetNotes').addEventListener('keydown', e => {
+    if(e.key === 'Enter'){ e.preventDefault(); $('#ptMeetAdd').click(); }
+  });
+  if($('#ptImportAnalyze')) $('#ptImportAnalyze').addEventListener('click', ptAnalyzeImport);
+  if($('#ptImportDo')) $('#ptImportDo').addEventListener('click', ptDoImport);
+  if($('#ptImportAll')) $('#ptImportAll').addEventListener('change', () => {
+    const on = $('#ptImportAll').checked;
+    ptImportRows.forEach(r => { r.checked = on; });
+    renderPtImportPreview();
+  });
+  if($('#ptImportSample')) $('#ptImportSample').addEventListener('click', () => {
+    $('#ptImportPaste').value = [
+      'Sharma Home Loans | bank | Rakesh Sharma | 9812345678 | Jaipur | sharmaloans.in | MagicBricks | Home loan, Residential | Ajmer Road, Tonk Road | 1% referral on every home-loan file; pays within 15 days | C-Scheme, Jaipur | rakesh@sharmaloans.in',
+      'Mehta & Associates | ca | Ankit Mehta | 9829012345 | Jaipur |  | Referral | Tax / CA, Audit |  | ₹15,000 per filing, fast turnaround',
+      'Urban Nest Interiors | interiors | Priya Jain | 9829123456 | Jaipur | urbannest.example | Instagram | Interiors, Commercial | Vaishali Nagar | 10% margin on referred projects | Vaishali Nagar, Jaipur'
+    ].join('\n');
+    ptAnalyzeImport();
+  });
+  if($('#ptImportFile')) $('#ptImportFile').addEventListener('change', e => {
+    const f = e.target.files && e.target.files[0];
+    if(!f) return;
+    const rd = new FileReader();
+    rd.onload = () => { $('#ptImportPaste').value = String(rd.result || ''); ptAnalyzeImport(); };
+    rd.readAsText(f);
+    e.target.value = '';
+  });
+  // keep dependent filters fresh after add/edit/import
+  const _renderPartners = renderPartners;
+  renderPartners = function(){ _renderPartners(); refreshPartnerFilters(); };
 }
 
 /* ---------- render ---------- */
