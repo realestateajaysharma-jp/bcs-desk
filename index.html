@@ -421,6 +421,25 @@ main{max-width:1480px;margin:0 auto;padding:28px 32px 100px}
 .filterbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .storage{position:fixed;right:16px;bottom:13px;font-size:10px;color:var(--mut);background:rgba(255,255,255,.9);padding:5px 10px;border-radius:8px;border:1px solid var(--line);z-index:30}
 .mob-add{display:none}
+/* ---- Gemini sidebar (bottom-left) ---- */
+.gemini-fab{display:grid;place-items:center;position:fixed;left:16px;bottom:16px;z-index:60;width:48px;height:48px;border-radius:50%;background:#1B1B1F;border:1px solid rgba(255,255,255,.12);cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.35);transition:transform .15s, box-shadow .15s}
+.gemini-fab:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 14px 32px rgba(0,0,0,.45)}
+.gemini-fab.on{box-shadow:0 0 0 3px rgba(155,114,242,.45), 0 10px 26px rgba(0,0,0,.4)}
+.gemini-panel{position:fixed;left:0;top:0;bottom:0;width:min(430px,92vw);z-index:120;background:#131318;border-right:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;box-shadow:24px 0 60px -30px rgba(0,0,0,.6);transform:translateX(-102%);transition:transform .28s cubic-bezier(.4,0,.2,1)}
+.gemini-panel.on{transform:translateX(0)}
+.gemini-head{display:flex;gap:10px;align-items:center;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.08);flex:none}
+.gemini-spark{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:16px;color:#fff;background:linear-gradient(135deg,#4C8DF6,#9B72F2 55%,#F2A64B);flex:none}
+.gemini-x{color:rgba(242,240,229,.7)}
+.gemini-x:hover{color:#fff}
+.gemini-body{flex:1;min-height:0;position:relative;display:flex}
+.gemini-body iframe{flex:1;width:100%;border:0;background:#fff}
+.gemini-fallback,.gemini-blocked{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px}
+.gemini-foot{flex:none;padding:9px 14px;border-top:1px solid rgba(255,255,255,.08);font-size:10px;color:rgba(242,240,229,.55);line-height:1.5}
+@media (max-width:640px){ .gemini-panel{width:100vw} .gemini-fab{left:12px;bottom:14px} }
+body.locked .gemini-fab{display:none}
+.gemini-prompts{display:flex;flex-wrap:wrap;gap:7px;padding:0 14px 12px}
+.gemini-chip{font:600 11px/1 'DM Sans',sans-serif;color:#F2F0E5;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:8px 11px;cursor:pointer;transition:.12s}
+.gemini-chip:hover{background:rgba(155,114,242,.25);border-color:rgba(155,114,242,.5)}
 
 /* ---------------- project detail ("all in one") ---------------- */
 #detailModal .modal{width:min(880px,100%)}
@@ -2136,6 +2155,11 @@ body.locked>.quick-add-dock{visibility:hidden}
 .qa-chip:hover{background:linear-gradient(90deg,#FFF6E8,#EEF8F2);border-color:#EADFC8;transform:translateY(-1px)}
 body[data-theme="dark"] .qa-chip{background:#141813;color:#F2F0E5;border-color:var(--line)}
 body[data-theme="dark"] .qa-chip:hover{background:#1B211B}
+/* share section selector */
+.share-sel{font:600 11.5px/1 'DM Sans',sans-serif;color:var(--mut);background:transparent;border:1px solid var(--line);border-radius:999px;padding:7px 12px;cursor:pointer;transition:.12s;white-space:nowrap}
+.share-sel.on{color:#fff;background:linear-gradient(135deg,var(--acc),color-mix(in srgb,var(--acc) 70%,#000));border-color:transparent}
+.share-fmt{font:600 11.5px/1 'DM Sans',sans-serif;color:var(--mut);background:transparent;border:1px solid var(--line);border-radius:999px;padding:7px 12px;cursor:pointer;transition:.12s}
+.share-fmt.on{color:#fff;background:var(--ink);border-color:transparent}
 .qa-list{overflow:auto;padding:8px;display:flex;flex-direction:column;gap:3px}
 .qa-item{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:12px;border:1px solid transparent;cursor:pointer;transition:.12s;text-align:left;width:100%}
 .qa-item:hover,.qa-item.on{background:linear-gradient(90deg,#FFF6E8,#EEF8F2);border-color:#EADFC8;transform:translateX(1px)}
@@ -16843,6 +16867,38 @@ try{
 
 <div class="storage" id="storageMeter"></div>
 <button class="mob-add" id="mobAdd">+</button>
+<button class="gemini-fab" id="geminiFab" title="Gemini Pro sidebar — AI assistant" aria-label="Open Gemini Pro sidebar">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <defs><linearGradient id="gemgrad" x1="0" y1="0" x2="24" y2="24"><stop offset="0" stop-color="#4C8DF6"/><stop offset=".5" stop-color="#9B72F2"/><stop offset="1" stop-color="#F2A64B"/></linearGradient></defs>
+    <path fill="url(#gemgrad)" d="M12 2c.9 4.6 2.5 6.7 5.4 7.4l2.6.6-2.6.6c-2.9.7-4.5 2.8-5.4 7.4-.9-4.6-2.5-6.7-5.4-7.4L4 10l2.6-.6C9.5 8.7 11.1 6.6 12 2z"/>
+    <path fill="url(#gemgrad)" d="M19 15c.4 2 1 2.9 2.2 3.2l1.1.3-1.1.3C20 19.1 19.4 20 19 22c-.4-2-1-2.9-2.2-3.2l-1.1-.3 1.1-.3C18 17.9 18.6 17 19 15z" opacity=".85"/>
+  </svg>
+</button>
+<div class="gemini-panel" id="geminiPanel" hidden aria-hidden="true" role="complementary" aria-label="Gemini Pro assistant">
+  <div class="gemini-head">
+    <span class="gemini-spark">✦</span>
+    <div style="min-width:0;flex:1"><b style="font-size:13.5px;color:#F2F0E5">Gemini Pro</b>
+      <div style="font-size:10px;color:rgba(242,240,229,.6)">Google AI · login ek baar, hamesha logged-in</div></div>
+    <button type="button" class="xbtn gemini-x" id="geminiClose" aria-label="Close Gemini sidebar">✕</button>
+  </div>
+  <div class="gemini-body" id="geminiBody">
+    <div class="gemini-fallback" id="geminiFallback" hidden>
+      <div style="font-size:34px">✦</div>
+      <b style="font-size:14px;color:#F2F0E5">Gemini sidebar window</b>
+      <p style="font-size:11.5px;color:rgba(242,240,229,.75);line-height:1.6;margin:8px 0 12px">Google Gemini ko andar embed karne se roka jata hai (X-Frame-Options), isliye sidebar ek apna window me khulta hai — left side, desk ke saath. Login sirf ek baar hota hai, window band hone ke baad bhi logged-in rehte hain.</p>
+      <button type="button" class="btn primary" id="geminiOpenWin" style="justify-content:center">✦ Gemini sidebar kholein</button>
+      <div class="gemini-prompts" style="justify-content:center;margin-top:14px;padding:0">
+        <button type="button" class="gemini-chip" data-gp="Meri Jaipur real-estate advisory ke liye is week ka marketing plan likho — Instagram reels ideas, WhatsApp broadcast message, aur 3 poster captions.">📈 Marketing plan</button>
+        <button type="button" class="gemini-chip" data-gp="Ek warm follow-up WhatsApp message likho ek Jaipur property client ke liye jisne 2 hafte pehle site visit ki thi — polite, short, next visit suggest kare.">💬 Follow-up msg</button>
+        <button type="button" class="gemini-chip" data-gp="Jaipur JDA aur RERA me pichhle 6 mahine ki badlaav ki simple summary do — investor ko samjhane layak.">🏛 JDA/RERA brief</button>
+        <button type="button" class="gemini-chip" data-gp="Ek plot investment pitch likho — 100 Gaj Ajmer Road corridor, ₹45L me, 5 saal me double hone ka logic, risk bhi batao.">🏗 Plot pitch</button>
+      </div>
+    </div>
+  </div>
+  <div class="gemini-foot">
+    <span>💡 Gemini window ko desk ke left me dock karein — ek saath dono dikhte hain</span>
+  </div>
+</div>
 <input type="file" id="excelFile" accept=".xlsx,.xls,.csv" style="display:none">
 
 <!-- ============ FESTIVAL POSTER ============ -->
@@ -17214,6 +17270,16 @@ try{
         <div style="min-width:0;flex:1">
           <b id="shareName" style="font-size:15px;color:var(--ink)"></b>
           <div id="shareMeta" style="font-size:11.5px;color:var(--mut);margin-top:2px"></div>
+        </div>
+      </div>
+      <div id="shareSelWrap" style="margin-bottom:14px">
+        <b style="font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)">Kya share karna hai — choose sections</b>
+        <div id="shareSelRow" style="display:flex;gap:7px;flex-wrap:wrap;margin-top:8px"></div>
+        <div style="display:flex;gap:7px;align-items:center;margin-top:10px;flex-wrap:wrap">
+          <span style="font-size:11px;color:var(--mut)">Format:</span>
+          <button type="button" class="share-fmt on" data-fmt="card">📇 Card page</button>
+          <button type="button" class="share-fmt" data-fmt="pdf">📄 PDF</button>
+          <span id="shareSizeNote" style="font-size:10.5px;color:var(--mut);margin-left:auto"></span>
         </div>
       </div>
       <div id="sharePrivacyNote" style="background:color-mix(in srgb,var(--acc) 7%,var(--panel));border:1px solid color-mix(in srgb,var(--acc) 22%,transparent);border-radius:12px;padding:12px 14px;font-size:11.5px;color:var(--ink2);line-height:1.6;margin-bottom:16px"></div>
@@ -27762,13 +27828,195 @@ function shareHubMessage(s){
   }
   return shareWishText(s.rec);
 }
+/* ---------- enhanced project share: choose your sections ---------- */
+const SHARE_SECTIONS = [
+  { id:'overview',     label:'📍 Overview & price',  locked:true },
+  { id:'gallery',      label:'🖼 Photos' },
+  { id:'videos',       label:'🎬 Videos' },
+  { id:'plots',        label:'▦ Plot availability' },
+  { id:'finance',      label:'💰 Payment plan' },
+  { id:'docs',         label:'📄 Documents' },
+  { id:'amenities',    label:'✓ Amenities' },
+  { id:'connectivity', label:'🛣 Connectivity' },
+  { id:'developer',    label:'🏗 Developer' }
+];
+let shareSections = { overview:true, gallery:true, videos:false, plots:true, finance:false, docs:false, amenities:true, connectivity:true, developer:true };
+let shareFmt = 'card';
+
+function buildCustomSharePage(p, cd, sel){
+  const c = corridor(p.corridor), d = dev(p.developerId);
+  const gal = (p.gallery || []).filter(g => g.type !== 'video');
+  const vids = (p.gallery || []).filter(g => g.type === 'video');
+  const amens = p.amenities || [];
+  const conns = (p.connectivity || []).filter(x => x.label || x.distance);
+  const feats = [...new Set([
+    ...(p.types || []).map(t => typeName[t] || t),
+    p.plotUse ? plotUseLabel(p.plotUse) : null,
+    p.rera ? 'RERA Registered' : null,
+    approvalLabel(p, true),
+    p.timeline ? timelineLabel(p.timeline) : null
+  ].filter(Boolean))];
+  const wa = cd.whatsapp ? 'https://wa.me/' + String(cd.whatsapp).replace(/\D/g,'') + '?text=' + encodeURIComponent('Namaste ' + cd.person + ' ji, mujhe "' + (p.name || 'this project') + '" ke baare me detail chahiye.') : '';
+  const img = p.image ? `<img src="${p.image}" alt="">` : `<div class="fallback">${esc(initial(p.name || 'BCS'))}</div>`;
+  const plotsAll = (db.plots || []).filter(pl => pl.projectId === p.id);
+  const plotsAvail = plotsAll.filter(pl => pl.status === 'available' || pl.status === 'release');
+  const plotsHtml = sel.plots && plotsAll.length ? `<h3>Plot availability</h3>
+    <div class="facts"><div class="fact"><small>Total plots</small><b>${plotsAll.length}</b></div>
+    <div class="fact"><small>Available now</small><b>${plotsAvail.length}</b></div>
+    <div class="fact"><small>Sizes</small><b>${esc(p.sizes || [...new Set(plotsAll.map(pl => pl.sizeGaj).filter(Boolean))].sort((a,b)=>a-b).map(s => s + ' Gaj').join(', ') || '—')}</b></div></div>
+    ${plotsAvail.length ? `<div class="g" style="margin-top:8px">${plotsAvail.slice(0,18).map(pl => `<div class="plotcard"><b>Plot ${esc(pl.label || pl.num)}</b><small>${pl.sizeGaj || 0} Gaj · ${pl.facing || '—'} facing</small><span>${esc(moneyINR(plotPriceOf(pl)))}</span></div>`).join('')}</div>` : ''}` : '';
+  const cfg = (window.finConfigOf ? window.finConfigOf(p) : null) || {};
+  const finHtml = sel.finance ? `<h3>Payment plan</h3>
+    <div class="facts">
+      ${priceRange(p) ? `<div class="fact"><small>Price</small><b>${esc(priceRange(p))}</b></div>` : ''}
+      ${rateText(p) ? `<div class="fact"><small>Rate</small><b>${esc(rateText(p))}</b></div>` : ''}
+      <div class="fact"><small>Booking amount</small><b>${cfg.bookingAmount ? esc(moneyINR(cfg.bookingAmount)) : 'On request'}</b></div>
+      <div class="fact"><small>Down payment</small><b>${(cfg.downPaymentPct || 10)}%</b></div>
+      <div class="fact"><small>Loan eligible</small><b>Up to ${(cfg.loanEligiblePct || 80)}%</b></div>
+      <div class="fact"><small>Registry</small><b>Stamp ${(cfg.stampDutyPct || 6)}% + Reg ${(cfg.regFeePct || 1)}%</b></div>
+    </div>
+    <p class="txt" style="margin-top:8px">Easy payment plan — booking ke baad down payment, balance bank loan ya installments me. Exact calculation aapke liye personally bhejenge.</p>` : '';
+  const docsList = (db.documents || []).filter(x => x.projectId === p.id && x.status !== 'missing');
+  const docsHtml = sel.docs && docsList.length ? `<h3>Documents & approvals</h3>${docsList.slice(0,12).map(x => `<div class="conn"><span>📄 ${esc(x.name || x.type || 'Document')}${x.ref ? ' · ' + esc(x.ref) : ''}</span><b>${esc(x.status === 'verified' ? '✓ Verified' : (x.status || 'Pending'))}</b></div>`).join('')}` : '';
+  const gallery = sel.gallery && gal.length ? `<h3>Gallery</h3><div class="g">${gal.slice(0,12).map(g => `<img src="${esc(g.url)}" alt="${esc(g.label || 'Photo')}">`).join('')}</div>` : '';
+  const ytId = u => { const m = String(u || '').match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/); return m ? m[1] : null; };
+  const videos = sel.videos && vids.length ? `<h3>Videos</h3><div class="g">${vids.slice(0,6).map(g => {
+    const id = ytId(g.url);
+    return id ? `<div class="vidwrap"><iframe src="https://www.youtube.com/embed/${id}" allowfullscreen loading="lazy"></iframe></div>`
+      : `<a class="vidlink" href="${esc(g.url)}" target="_blank" rel="noopener">▶ ${esc(g.label || 'Project video')}</a>`;
+  }).join('')}</div>` : '';
+  return `<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(p.name || 'Project')} — ${esc(cd.brand)}</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Segoe UI',Roboto,sans-serif;background:#F7F6F2;color:#1D1D1F;line-height:1.55}
+.hero{position:relative;height:300px;overflow:hidden;background:linear-gradient(140deg,#3A3928,#A57B36)}
+.hero img{width:100%;height:100%;object-fit:cover}
+.hero .fallback{width:100%;height:100%;display:grid;place-items:center;font-size:90px;color:rgba(255,255,255,.5);font-weight:800}
+.stamp{position:absolute;top:16px;left:16px;background:rgba(0,0,0,.72);color:#fff;font-size:11px;font-weight:800;letter-spacing:1px;padding:6px 12px;border-radius:999px;text-transform:uppercase}
+.wrap{max-width:820px;margin:0 auto;padding:22px 18px 120px}
+.card{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:22px;margin-top:-46px;position:relative;box-shadow:0 18px 40px -24px rgba(0,0,0,.25)}
+h1{font-size:26px;letter-spacing:-.5px;line-height:1.2}
+.loc{color:#6E6E73;font-size:13px;margin-top:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.tag{font-size:11px;font-weight:800;background:#F3EFE4;color:#7A5A1E;border:1px solid #E7DCC2;padding:5px 11px;border-radius:999px}
+h3{font-size:15px;margin:22px 0 10px;letter-spacing:-.2px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:rgba(0,0,0,.07);border:1px solid rgba(0,0,0,.07);border-radius:14px;overflow:hidden}
+.fact{background:#fff;padding:12px 14px}
+.fact small{display:block;font-size:9.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#8A877A}
+.fact b{font-size:13.5px}
+p.txt{font-size:13px;color:#424245}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.g img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;border:1px solid rgba(0,0,0,.06)}
+.plotcard{background:#F7F9F7;border:1px solid rgba(0,0,0,.06);border-radius:12px;padding:10px 12px;text-align:center}
+.plotcard b{display:block;font-size:13px}
+.plotcard small{display:block;color:#8A877A;font-size:10.5px;margin:3px 0}
+.plotcard span{font-weight:800;font-size:12.5px;color:#2F6644}
+.vidwrap{position:relative;padding-top:56%;border-radius:12px;overflow:hidden}
+.vidwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vidlink{display:block;padding:12px;border:1px solid rgba(0,0,0,.08);border-radius:12px;font-size:13px;font-weight:700;color:#2F6644;text-decoration:none}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip2{font-size:11.5px;background:#EFF4F0;color:#2F6644;border:1px solid #CFE4D6;padding:5px 10px;border-radius:999px;font-weight:650}
+.conn{display:flex;justify-content:space-between;border-bottom:1px dashed rgba(0,0,0,.08);padding:9px 2px;font-size:12.5px}
+.dev{display:flex;gap:12px;align-items:center;border:1px solid rgba(0,0,0,.08);border-radius:14px;padding:14px;margin-top:10px}
+.dev .av{width:48px;height:48px;border-radius:12px;background:#3A3928;color:#F6F2E7;display:grid;place-items:center;font-weight:800;font-size:17px;flex:none}
+.cta{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-top:1px solid rgba(0,0,0,.08);padding:12px 18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:7px;background:#2F6644;color:#fff;font-size:14px;font-weight:800;padding:13px 26px;border-radius:14px;text-decoration:none}
+.btn.alt{background:#fff;color:#2F6644;border:1.5px solid #2F6644}
+.foot{text-align:center;color:#8A877A;font-size:10.5px;padding:26px 0 6px;letter-spacing:.5px}
+@media(max-width:520px){.hero{height:220px}h1{font-size:21px}}
+@media print{.cta{display:none}}
+</style></head><body>
+<div class="hero">${img}${p.status ? `<span class="stamp">${esc((statusLabel[p.status] || p.status))}</span>` : ''}</div>
+<div class="wrap">
+  <div class="card">
+    <h1>${esc(p.name || 'Project')}</h1>
+    <div class="loc">${esc(p.location || (c ? c.name + ', Jaipur' : cd.city))}</div>
+    ${feats.length ? `<div class="tags">${feats.map(f => `<span class="tag">${esc(f)}</span>`).join('')}</div>` : ''}
+    <div class="facts">
+      <div class="fact"><small>Price</small><b>${esc(priceRange(p))}</b></div>
+      <div class="fact"><small>Rate</small><b>${esc(rateText(p) || '—')}</b></div>
+      <div class="fact"><small>Possession</small><b>${esc(p.timeline ? timelineLabel(p.timeline) : '—')}</b></div>
+      <div class="fact"><small>Sizes</small><b>${esc(p.sizes || '—')}</b></div>
+      <div class="fact"><small>RERA</small><b>${esc(p.rera || 'Not registered')}</b></div>
+      <div class="fact"><small>Approval</small><b>${esc(approvalLabel(p, true) || '—')}</b></div>
+    </div>
+    ${p.quickNote ? `<h3>Highlights</h3><p class="txt">${esc(p.quickNote)}</p>` : ''}
+    ${plotsHtml}
+    ${finHtml}
+    ${gallery}
+    ${videos}
+    ${docsHtml}
+    ${sel.amenities && amens.length ? `<h3>Amenities</h3><div class="chips">${amens.map(a => `<span class="chip2">✓ ${esc(a)}</span>`).join('')}</div>` : ''}
+    ${sel.connectivity && conns.length ? `<h3>Connectivity</h3>${conns.map(x => `<div class="conn"><span>${esc(x.label)}</span><b>${esc(x.distance || '')}</b></div>`).join('')}` : ''}
+    ${sel.developer && d ? `<h3>Developer</h3><div class="dev"><div class="av">${esc(initial(d.name))}</div>
+      <div><b style="font-size:14px">${esc(d.name)}</b>
+      <div style="font-size:11.5px;color:#6E6E73">${esc(d.designation || d.ownerName || '')}${d.phone ? ' · ' + esc(d.phone) : ''}</div></div></div>` : ''}
+  </div>
+  <div class="foot">SHARED VIA ${esc(cd.brand)} · ${esc(cd.person)} · ${esc(cd.city)}</div>
+</div>
+<div class="cta">
+  ${wa ? `<a class="btn" href="${wa}" target="_blank" rel="noopener">💬 WhatsApp par poochhein</a>` : ''}
+  ${cd.phone ? `<a class="btn alt" href="tel:${esc(cd.phone)}">📞 Call karein</a>` : ''}
+</div>
+</body></html>`;
+}
+function moneyINR(v){ return '₹' + Math.round(+v || 0).toLocaleString('en-IN'); }
+function plotPriceOf(pl){ return Math.round((+pl.sizeGaj || 0) * (+pl.rateGaj || 0)); }
+function renderShareSectionChips(kind){
+  const row = $('#shareSelRow'); if(!row) return;
+  if(kind !== 'project'){
+    $('#shareSelWrap').style.display = 'none';
+    return;
+  }
+  $('#shareSelWrap').style.display = '';
+  row.innerHTML = SHARE_SECTIONS.map(s => {
+    const on = !!shareSections[s.id];
+    return `<button type="button" class="share-sel${on ? ' on' : ''}" data-sec="${s.id}"${s.locked ? ' disabled title="Hamesha included"' : ''}>${s.label}${s.locked ? ' 🔒' : ''}</button>`;
+  }).join('');
+  row.querySelectorAll('.share-sel').forEach(b => b.addEventListener('click', () => {
+    const id = b.dataset.sec;
+    const def = SHARE_SECTIONS.find(x => x.id === id);
+    if(def && def.locked) return;
+    shareSections[id] = !shareSections[id];
+    b.classList.toggle('on', shareSections[id]);
+    rebuildShareHtml();
+  }));
+  $$('.share-fmt').forEach(b => {
+    b.classList.toggle('on', b.dataset.fmt === shareFmt);
+    b.onclick = () => {
+      shareFmt = b.dataset.fmt;
+      $$('.share-fmt').forEach(x => x.classList.toggle('on', x.dataset.fmt === shareFmt));
+      if(shareFmt === 'pdf') openSharePdfPreview();
+    };
+  });
+}
+function rebuildShareHtml(){
+  const s = window.__bcsShare; if(!s || s.kind !== 'project') return;
+  s.html = buildCustomSharePage(s.rec, s.cd, shareSections);
+  const kb = Math.round(s.html.length / 1024);
+  const note = $('#shareSizeNote');
+  if(note) note.textContent = kb > 1024 ? `≈ ${(kb/1024).toFixed(1)} MB (photos embedded)` : `≈ ${kb} KB`;
+}
+function openSharePdfPreview(){
+  const s = window.__bcsShare; if(!s) return;
+  rebuildShareHtml();
+  const w = window.open('', '_blank');
+  if(!w) return toast('Popup block hua — allow karein', true);
+  w.document.open(); w.document.write(s.html); w.document.close();
+  setTimeout(() => { try{ w.focus(); w.print(); }catch(e){} }, 600);
+  toast('Print dialog me "Save as PDF" choose karein');
+}
+
 function openShareHub(kind, id){
   let rec = null, html = '';
   const cd = shareCardData();
   if(kind === 'project'){
     rec = db.projects.find(x => x.id === id);
     if(!rec) return toast('Project load nahi hui', true);
-    html = buildSharePage(rec, cd);
+    html = buildCustomSharePage(rec, cd, shareSections);
   } else if(kind === 'client'){
     rec = db.clients.find(x => x.id === id);
     if(!rec) return toast('Client load nahi hui', true);
@@ -27813,10 +28061,17 @@ function openShareHub(kind, id){
   $('#shareTipNote').textContent = tips[kind];
   showOverlay('projectShareModal');
   window.__bcsShare = { kind:kind, rec:rec, cd:cd, html:html };
+  renderShareSectionChips(kind);
+  if(kind === 'project'){
+    const kb = Math.round(html.length / 1024);
+    const note = $('#shareSizeNote');
+    if(note) note.textContent = kb > 1024 ? `≈ ${(kb/1024).toFixed(1)} MB (photos embedded)` : `≈ ${kb} KB`;
+  }
 }
 function openProjectShare(){ openShareHub('project', detailId); }
 function shareDownloadFile(){
   const s = window.__bcsShare; if(!s) return;
+  if(s.kind === 'project' && shareFmt === 'pdf') return openSharePdfPreview();
   const blob = new Blob([s.html], { type:'text/html' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
@@ -34390,6 +34645,57 @@ function toggleQuickActions(){
   else openQuickActions();
 }
 
+function initGeminiSidebar(){
+  const fab = $('#geminiFab');
+  const panel = $('#geminiPanel');
+  if(!fab || !panel) return;
+  const GEM_URL = 'https://gemini.google.com/app';
+  let opened = false;
+  function dockWin(){
+    const w = Math.min(500, Math.round(screen.availWidth * 0.34) || 460);
+    const h = screen.availHeight || screen.height;
+    const win = window.open(GEM_URL, 'bcsGeminiSidebar', 'popup=yes,width=' + w + ',height=' + h + ',left=0,top=0,noopener');
+    try{ if(win){ win.focus(); } }catch(e){}
+    try{ localStorage.setItem('bcs_gemini_used', String(Date.now())); }catch(e){}
+    return win;
+  }
+  function openPanel(){
+    opened = true;
+    panel.hidden = false;
+    fab.classList.add('on');
+    requestAnimationFrame(() => panel.classList.add('on'));
+    $('#geminiFallback').hidden = false;
+  }
+  function closePanel(){
+    opened = false;
+    panel.classList.remove('on');
+    fab.classList.remove('on');
+    setTimeout(() => { if(!opened) panel.hidden = true; }, 320);
+  }
+  fab.addEventListener('click', () => { opened ? closePanel() : openPanel(); });
+  $('#geminiClose')?.addEventListener('click', closePanel);
+  $('#geminiOpenWin')?.addEventListener('click', () => {
+    const win = dockWin();
+    if(!win) toast('Popup block hua — browser me allow karein', true);
+  });
+  panel.addEventListener('click', e => {
+    const chip = e.target.closest('.gemini-chip');
+    if(!chip) return;
+    const text = chip.dataset.gp || '';
+    (async () => {
+      try{ await navigator.clipboard.writeText(text); }catch(e1){
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try{ document.execCommand('copy'); }catch(e2){}
+        ta.remove();
+      }
+    })();
+    const win = dockWin();
+    toast(win ? 'Prompt copy ho gaya — Gemini me paste (Ctrl+V) karein' : 'Popup block hua — allow karein', !win);
+  });
+}
+
 function initExperience(){
   let savedAccent = 'emerald';
   try{ savedAccent = localStorage.getItem(ACCENT_KEY) || 'emerald'; }catch(e){}
@@ -36043,6 +36349,7 @@ initMedia();
 initFeatureControls();
 initCloudSync();
 initExperience();
+initGeminiSidebar();
 initDailyHero();
 const hadLocalData = !!localStorage.getItem(LS_KEY);
 if(!hadLocalData && !window.indexedDB) save();
@@ -36225,6 +36532,25 @@ setInterval(function(){ try{ if(newsMode === 'live' && document.visibilityState 
 })();
 mirrorToIdb();
 if(navigator.storage && navigator.storage.persist && location.protocol !== 'file:'){ navigator.storage.persist().catch(()=>{}); }
+/* Retry persistence on first real user interaction — Chrome often denies the
+   silent load-time request until the desk has engagement. Data never resets. */
+(function(){
+  if(!(navigator.storage && navigator.storage.persist) || location.protocol === 'file:') return;
+  let done = false;
+  const arm = async () => {
+    if(done) return;
+    try{
+      let p = false;
+      try{ p = await navigator.storage.persisted(); }catch(e0){}
+      if(p){ done = true; return; }
+      p = await navigator.storage.persist().catch(() => false);
+      if(p) done = true;
+    }catch(e){}
+  };
+  ['pointerdown','keydown','touchstart'].forEach(ev =>
+    document.addEventListener(ev, arm, { passive:true }));
+  document.addEventListener('visibilitychange', () => { if(!document.hidden) arm(); });
+})();
 restoreFromIdbIfEmpty().then(restored => { if(!restored && !hadLocalData) save(); }).catch(function(){});
 scheduleProactiveOffload(5000);
 document.addEventListener('visibilitychange', () => {
