@@ -1232,16 +1232,45 @@ body.advisor-mode #resaleViewDelete{display:none !important}
 .media-pop{position:fixed;right:16px;bottom:112px;z-index:72;width:min(392px,calc(100vw - 24px));max-height:calc(100vh - 132px);background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 34px 70px -22px rgba(20,30,25,.55);display:none;flex-direction:column;overflow:hidden}
 .media-pop.on{display:flex;animation:mediaIn .26s cubic-bezier(.2,.8,.3,1)}
 @keyframes mediaIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
-.media-pop.theater{left:50%;right:auto;transform:translateX(-50%);bottom:24px;width:min(1040px,calc(100vw - 32px));max-height:calc(100vh - 48px)}
+.media-pop.theater{left:50%;right:auto;transform:translateX(-50%);bottom:20px;width:min(1240px,95vw);max-height:calc(100vh - 40px)}
 .media-pop.theater.on{animation:none}
-.media-pop.theater .mp-body{display:flex;flex-direction:column}
-.media-pop.theater .yt-stage{aspect-ratio:16/9;max-height:calc(100vh - 330px);min-height:220px}
+/* theater = bada video frame left + suggestions pane right */
+.media-pop.theater .mp-body{display:grid;grid-template-columns:1.6fr 1fr;gap:10px;align-items:start;overflow:hidden}
+.media-pop.theater .yt-stage{aspect-ratio:16/9;max-height:calc(100vh - 175px);min-height:300px;margin-bottom:0}
 .media-pop.theater .yt-stage iframe{height:100%}
+.media-pop.theater .mp-pane{max-height:calc(100vh - 185px);overflow:auto;scrollbar-width:thin;padding-right:3px}
 .media-pop .yt-item.playing{outline:2px solid #C79A2E;outline-offset:-2px}
+/* cinema — full-screen immersive video */
+.media-pop.cinema{position:fixed;inset:0;left:0!important;right:0!important;bottom:0;top:0;width:auto;max-height:none;transform:none;border-radius:0;border:none;background:#000;box-shadow:none}
+.media-pop.cinema .mp-head{background:#000;border-color:#161616;border-radius:0}
+.media-pop.cinema .mp-head .mp-brand b,.media-pop.cinema .mp-head .mp-brand span{color:#EDEDED}
+.media-pop.cinema .mp-tabs{display:none}
+.media-pop.cinema .mp-body{display:block;background:#000;overflow:auto}
+.media-pop.cinema .yt-stage{width:min(95vw,176vh);aspect-ratio:16/9;margin:6px auto 10px;max-height:calc(100vh - 160px);min-height:0;border-radius:10px}
+.media-pop.cinema .yt-now{max-width:min(95vw,176vh);margin:0 auto;background:#141414;border-color:#262626}
+.media-pop.cinema .yt-now b{color:#EDEDED}
+.media-pop.cinema .mp-pane{display:none}
 @media (max-width:820px){
   .media-pop.theater{left:10px;right:10px;transform:none;bottom:10px;width:auto;max-height:calc(100vh - 20px)}
+  .media-pop.theater .mp-body{display:flex;flex-direction:column}
   .media-pop.theater .yt-stage{max-height:calc(100vh - 300px)}
 }
+/* focus mode — 8 ambient sounds */
+.mpapp-ico.ff{background:linear-gradient(135deg,#FE4559,#B8002A);color:#fff}
+.focus-sounds{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:8px 2px 2px}
+.focus-chip{display:flex;align-items:center;gap:7px;padding:8px 10px;border-radius:11px;border:1px solid var(--line2);background:#F7FAF8;cursor:pointer;text-align:left;transition:.15s;font-family:'DM Sans',sans-serif;min-width:0}
+.focus-chip b{display:block;font-size:11px;font-weight:800;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.focus-chip span{display:block;font-size:9px;color:var(--mut);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.focus-chip:hover{border-color:#C9D1CC;background:#EFF4F0}
+.focus-chip.on{background:#17312A;border-color:#2F6644;box-shadow:0 6px 16px -10px rgba(47,102,68,.6)}
+.focus-chip.on b{color:#CDEBD7}
+.focus-chip.on span{color:#7FA893}
+.focus-ctl{display:flex;align-items:center;gap:8px;padding:8px 2px 4px;flex-wrap:wrap}
+.focus-ctl .fnote{flex:1;min-width:120px;font-size:10px;font-weight:800;color:#4E7C5B}
+.focus-ctl .fv-row{display:flex;align-items:center;gap:5px}
+.focus-ctl .fv-row b{font-size:9.5px;color:var(--mut);min-width:30px}
+.focus-ctl .fv-row input{width:76px;accent-color:#4E7C5B}
+.focus-ctl .btn{flex:none;padding:5px 10px;font-size:10px;border-radius:8px}
 .mp-head{display:flex;align-items:center;gap:10px;padding:13px 14px 11px;background:
   radial-gradient(120% 150% at 100% 0%,rgba(199,154,46,.16),transparent 55%),
   linear-gradient(145deg,#F8F4EA,#EDF3EE);border-bottom:1px solid var(--line);flex:none}
@@ -17050,7 +17079,8 @@ try{
       <div><b>BCS Media Lounge</b><span id="mpNow">YouTube · YT Music · live radio — sab isi me</span></div>
     </div>
     <div class="mp-hbtns">
-      <button id="mpExpand" title="Bada player / theater mode" aria-label="Toggle theater mode">⤢</button>
+      <button id="mpCinema" title="Cinema mode — poori screen, bada video (Esc se band)">⛶</button>
+      <button id="mpExpand" title="Bada player — side suggestions ke saath" aria-label="Bigger player with suggestions">⤢</button>
       <button id="mpMin" title="Minimize — playing chalta rahega" aria-label="Minimize player">–</button>
       <button id="mpClose" title="Close and stop" aria-label="Close player">✕</button>
     </div>
@@ -17122,6 +17152,16 @@ try{
         <button type="button" class="mp-app bigapp" data-ytpopup="music">
           <span class="mpapp-ico ytm">♫</span><b>YT Music</b><span>Full app window</span>
         </button>
+        <button type="button" class="mp-app bigapp" data-freefy="1">
+          <span class="mpapp-ico ff">🎵</span><b>Freefy</b><span>Music · podcasts · radio</span>
+        </button>
+      </div>
+      <div class="mp-sec-head"><b>🎧 Focus mode</b><span>8 ambient sounds — kaam ke liye</span></div>
+      <div class="focus-sounds" id="focusSounds"></div>
+      <div class="focus-ctl" id="focusCtl">
+        <span class="fnote" id="focusNow">Koi sound nahi chal rahi — chip dabao</span>
+        <span class="fv-row"><span>🔈</span><input type="range" id="focusVol" min="0" max="100" value="60" aria-label="Focus volume"><b id="focusVolTxt">60%</b></span>
+        <button type="button" class="btn ghost sm" id="focusStopBtn">■ Stop</button>
       </div>
       <div class="mp-sec-head"><b>Live ad-free radio</b><span>No ads · instant</span></div>
       <div class="mp-stations" id="musicStations"></div>
@@ -32923,6 +32963,7 @@ function initMedia(){
     selectedStationId = id;
     M.music.stationId = id;
     stopYouTube();
+    focusClearOnStation(id);
     musicName.textContent = s.name;
     musicSub.textContent = (s.genre || 'Live stream') + ' · ad-free';
     audio.src = s.url;
@@ -33069,6 +33110,7 @@ function initMedia(){
 
   function closeAll(){
     stopYouTube();
+    focusStop(true);
     audio.pause();
     audio.removeAttribute('src');
     try{ audio.load(); }catch(e){}
@@ -33243,8 +33285,220 @@ function initMedia(){
   if(expandBtn) expandBtn.addEventListener('click', () => {
     const big = pop.classList.toggle('theater');
     expandBtn.textContent = big ? '⤡' : '⤢';
-    expandBtn.title = big ? 'Chhota player' : 'Bada player / theater mode';
+    expandBtn.title = big ? 'Chhota player' : 'Bada player — side suggestions ke saath';
+    if(big) setCinema(false);
   });
+  /* cinema mode — full-screen immersive video */
+  const cinemaBtn = $('#mpCinema');
+  function setCinema(on){
+    pop.classList.toggle('cinema', on);
+    if(cinemaBtn){ cinemaBtn.textContent = on ? '⤡' : '⛶'; cinemaBtn.title = on ? 'Cinema mode band karein (Esc)' : 'Cinema mode — poori screen, bada video'; }
+    if(on && pop.classList.contains('theater')){
+      pop.classList.remove('theater');
+      if(expandBtn){ expandBtn.textContent = '⤢'; expandBtn.title = 'Bada player — side suggestions ke saath'; }
+    }
+  }
+  if(cinemaBtn) cinemaBtn.addEventListener('click', () => setCinema(!pop.classList.contains('cinema')));
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && pop.classList.contains('cinema')) setCinema(false);
+  });
+
+  /* --- focus mode — 8 ambient sounds (7 procedural + live jazz radio) --- */
+  const FOCUS_DEFS = [
+    { key:'rain-light',  ico:'☔', label:'Light rain',     desc:'Halki baarish' },
+    { key:'rain-heavy',  ico:'🌧', label:'Heavy rain',     desc:'Tez baarish' },
+    { key:'storm',       ico:'⛈', label:'Thunderstorm',   desc:'Halki garaj + baarish' },
+    { key:'water',       ico:'💧', label:'Flowing water',  desc:'Nadi / jharna' },
+    { key:'leaves',      ico:'🍃', label:'Leaves',         desc:'Patto ki sarsarahat' },
+    { key:'nature',      ico:'🌳', label:'Nature',         desc:'Chidiya · hawa' },
+    { key:'night',       ico:'🌙', label:'Night',          desc:'Jhingur · shaant raat' },
+    { key:'jazz',        ico:'🎷', label:'Jazz',           desc:'FIP Jazz · live' }
+  ];
+  if(!M.focus || typeof M.focus !== 'object') M.focus = {};
+  let focusVolV = (M.focus.volume != null) ? M.focus.volume : 0.6;
+  let focusCtx = null, focusMaster = null, focusSrcs = [], focusTimers = [];
+  let focusActive = '', focusLabel = '';
+  const focusBox = $('#focusSounds'), focusNow = $('#focusNow'), focusStopBtn = $('#focusStopBtn');
+  const focusVolEl = $('#focusVol'), focusVolTxt = $('#focusVolTxt');
+
+  function focusNoiseBuf(){
+    if(focusCtx._bcsNoise) return focusCtx._bcsNoise;
+    const buf = focusCtx.createBuffer(1, focusCtx.sampleRate * 2.2, focusCtx.sampleRate);
+    const d = buf.getChannelData(0);
+    let last = 0;
+    for(let i = 0; i < d.length; i++){
+      const w = Math.random() * 2 - 1;
+      last = (last + 0.02 * w) / 1.02;
+      d[i] = w * 0.6 + last * 3.2;
+    }
+    focusCtx._bcsNoise = buf;
+    return buf;
+  }
+  function focusLayer(mk, type, freq, q, gain){
+    const f = focusCtx.createBiquadFilter();
+    f.type = type; f.frequency.value = freq; if(q) f.Q.value = q;
+    const g = focusCtx.createGain(); g.gain.value = gain;
+    const s = mk(); s.connect(f); f.connect(g); g.connect(focusMaster);
+    focusSrcs.push(s);
+    return g;
+  }
+  function focusCleanup(){
+    focusTimers.forEach(t => { clearTimeout(t); clearInterval(t); });
+    focusTimers = [];
+    focusSrcs.forEach(n => { try{ n.stop(); }catch(e){} try{ n.disconnect(); }catch(e){} });
+    focusSrcs = [];
+    if(focusMaster){ try{ focusMaster.disconnect(); }catch(e){} focusMaster = null; }
+    if(focusCtx && focusCtx.state === 'running'){ try{ focusCtx.suspend(); }catch(e){} }
+  }
+  function focusStop(silent){
+    focusCleanup();
+    focusActive = ''; focusLabel = '';
+    if(focusBox) focusBox.querySelectorAll('.focus-chip').forEach(c => c.classList.remove('on'));
+    if(focusNow) focusNow.textContent = 'Koi sound nahi chal rahi — chip dabao';
+    if(!silent){ M.focus.sound = ''; save(); }
+  }
+  function startProcedural(key){
+    if(!focusCtx){
+      try{ focusCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+      catch(e){ toast('Focus audio engine support nahi hua', true); return; }
+    }
+    if(focusCtx.state === 'suspended'){ try{ focusCtx.resume(); }catch(e){} }
+    focusMaster = focusCtx.createGain();
+    focusMaster.gain.value = focusVolV;
+    focusMaster.connect(focusCtx.destination);
+    const buf = focusNoiseBuf();
+    const mk = () => { const s = focusCtx.createBufferSource(); s.buffer = buf; s.loop = true; s.start(); return s; };
+    if(key === 'rain-light'){
+      focusLayer(mk, 'bandpass', 2100, 0.35, 0.055);
+      focusLayer(mk, 'highpass', 5200, 0.7, 0.02);
+    } else if(key === 'rain-heavy'){
+      focusLayer(mk, 'bandpass', 1500, 0.3, 0.12);
+      focusLayer(mk, 'highpass', 3800, 0.6, 0.05);
+      focusLayer(mk, 'lowpass', 500, 0.5, 0.08);
+    } else if(key === 'storm'){
+      focusLayer(mk, 'bandpass', 1600, 0.3, 0.13);
+      focusLayer(mk, 'lowpass', 420, 0.6, 0.08);
+      const boom = () => {
+        if(focusActive !== 'storm') return;
+        const s = focusCtx.createBufferSource(); s.buffer = buf;
+        const f = focusCtx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 110; f.Q.value = 0.8;
+        const g = focusCtx.createGain(); const t = focusCtx.currentTime;
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.exponentialRampToValueAtTime(0.45 + Math.random() * 0.4, t + 0.4);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 2.6 + Math.random() * 1.5);
+        s.connect(f); f.connect(g); g.connect(focusMaster);
+        s.start(); focusSrcs.push(s);
+      };
+      focusTimers.push(setTimeout(boom, 1400));
+      focusTimers.push(setInterval(boom, 9000 + Math.random() * 6000));
+    } else if(key === 'water'){
+      const gMain = focusLayer(mk, 'lowpass', 900, 0.7, 0.15);
+      const lfo = focusCtx.createOscillator(); lfo.frequency.value = 0.35;
+      const lg = focusCtx.createGain(); lg.gain.value = 0.05;
+      lfo.connect(lg); lg.connect(gMain.gain); lfo.start();
+      focusSrcs.push(lfo);
+      focusLayer(mk, 'bandpass', 2600, 0.4, 0.02);
+    } else if(key === 'leaves'){
+      const gMain = focusLayer(mk, 'highpass', 4600, 0.6, 0.012);
+      const swell = () => {
+        if(focusActive !== 'leaves') return;
+        const t = focusCtx.currentTime;
+        gMain.gain.cancelScheduledValues(t);
+        gMain.gain.setValueAtTime(gMain.gain.value, t);
+        gMain.gain.linearRampToValueAtTime(0.035 + Math.random() * 0.03, t + 0.8 + Math.random());
+        gMain.gain.linearRampToValueAtTime(0.012, t + 2.4 + Math.random() * 2);
+        focusTimers.push(setTimeout(swell, 2600 + Math.random() * 3200));
+      };
+      focusTimers.push(setTimeout(swell, 1200));
+    } else if(key === 'nature'){
+      focusLayer(mk, 'lowpass', 620, 0.5, 0.035);
+      focusLayer(mk, 'bandpass', 2400, 0.4, 0.012);
+      const chirp = () => {
+        if(focusActive !== 'nature') return;
+        const t = focusCtx.currentTime;
+        const f0 = 2300 + Math.random() * 900;
+        const n = 1 + Math.floor(Math.random() * 3);
+        for(let i = 0; i < n; i++){
+          const o = focusCtx.createOscillator(); o.type = 'sine';
+          const g = focusCtx.createGain(); const t2 = t + i * (0.22 + Math.random() * 0.14);
+          o.frequency.setValueAtTime(f0, t2);
+          o.frequency.linearRampToValueAtTime(f0 + 500 + Math.random() * 400, t2 + 0.09);
+          o.frequency.linearRampToValueAtTime(f0 - 200, t2 + 0.18);
+          g.gain.setValueAtTime(0.0001, t2);
+          g.gain.exponentialRampToValueAtTime(0.05, t2 + 0.03);
+          g.gain.exponentialRampToValueAtTime(0.0001, t2 + 0.26);
+          o.connect(g); g.connect(focusMaster);
+          o.start(t2); o.stop(t2 + 0.3);
+        }
+        focusTimers.push(setTimeout(chirp, 1400 + Math.random() * 4200));
+      };
+      focusTimers.push(setTimeout(chirp, 700));
+    } else if(key === 'night'){
+      focusLayer(mk, 'lowpass', 480, 0.6, 0.03);
+      const cr = focusCtx.createOscillator(); cr.type = 'sine'; cr.frequency.value = 4300;
+      const crg = focusCtx.createGain(); crg.gain.value = 0.012;
+      const pl = focusCtx.createOscillator(); pl.type = 'sine'; pl.frequency.value = 24;
+      pl.connect(crg.gain);
+      cr.connect(crg); crg.connect(focusMaster);
+      cr.start(); pl.start();
+      focusSrcs.push(cr, pl);
+    }
+  }
+  function paintFocus(){
+    if(focusBox) focusBox.querySelectorAll('.focus-chip').forEach(c => c.classList.toggle('on', c.dataset.focus === focusActive));
+    if(focusNow) focusNow.textContent = focusActive ? (focusLabel + ' chalu hai') : 'Koi sound nahi chal rahi — chip dabao';
+  }
+  function startFocus(key){
+    focusStop(true);
+    focusActive = key;
+    const def = FOCUS_DEFS.find(d => d.key === key);
+    focusLabel = def ? (def.ico + ' ' + def.label) : key;
+    if(key === 'jazz'){
+      if(stationById('fipjazz')) playStation('fipjazz');
+      else { focusStop(); return; }
+    } else {
+      pauseMusic();
+      startProcedural(key);
+    }
+    M.focus.sound = key;
+    save();
+    paintFocus();
+  }
+  function focusClearOnStation(id){
+    if(focusActive && focusActive !== 'jazz') focusStop(true);
+    else if(focusActive === 'jazz' && id !== 'fipjazz') focusStop(true);
+  }
+  if(focusBox){
+    focusBox.innerHTML = FOCUS_DEFS.map(d => `<button type="button" class="focus-chip${M.focus.sound === d.key ? ' on' : ''}" data-focus="${d.key}" title="${esc(d.desc)}"><b>${d.ico} ${esc(d.label)}</b><span>${esc(d.desc)}</span></button>`).join('');
+    focusBox.addEventListener('click', e => {
+      const chip = e.target.closest('[data-focus]');
+      if(!chip) return;
+      if(focusActive === chip.dataset.focus){
+        const was = focusActive;
+        focusStop();
+        if(was === 'jazz' && !audio.paused) audio.pause();
+        return;
+      }
+      startFocus(chip.dataset.focus);
+    });
+  }
+  if(focusVolEl){
+    focusVolEl.value = Math.round(focusVolV * 100);
+    if(focusVolTxt) focusVolTxt.textContent = Math.round(focusVolV * 100) + '%';
+    focusVolEl.addEventListener('input', () => {
+      focusVolV = Math.max(0, Math.min(1, (+focusVolEl.value || 0) / 100));
+      if(focusVolTxt) focusVolTxt.textContent = Math.round(focusVolV * 100) + '%';
+      if(focusMaster) focusMaster.gain.value = focusVolV;
+      M.focus.volume = focusVolV;
+      save();
+    });
+  }
+  if(focusStopBtn) focusStopBtn.addEventListener('click', () => {
+    const was = focusActive;
+    focusStop();
+    if(was === 'jazz' && !audio.paused) audio.pause();
+  });
+  paintFocus();
   mini.addEventListener('click', e => {
     if(e.target.closest('#miniStop')){ closeAll(); return; }
     if(e.target.closest('#miniPlay')) return;
@@ -33269,6 +33523,15 @@ function initMedia(){
     playSongByName(b.dataset.ytq);
   }));
   if($('#musicApps')) $('#musicApps').addEventListener('click', e => {
+    const ffBtn = e.target.closest('[data-freefy]');
+    if(ffBtn){
+      const fw = Math.min(1000, Math.round((screen.availWidth || 1280) * 0.78) || 900);
+      const fh = screen.availHeight || screen.height;
+      const fwin = window.open('https://freefy.app/', 'bcsFreefyApp', 'popup=yes,width=' + fw + ',height=' + fh + ',left=' + Math.max(0, (screen.availWidth || 1280) - fw - 12) + ',top=0');
+      try{ if(fwin) fwin.focus(); }catch(err){}
+      toast(fwin ? 'Freefy window khul gayi — free music, podcasts, radio · no audio ads' : 'Popup block hua — allow karein', !fwin);
+      return;
+    }
     const popBtn = e.target.closest('[data-ytpopup]');
     if(popBtn){
       const isMusic = popBtn.dataset.ytpopup === 'music';
