@@ -38071,8 +38071,13 @@ function commissionOf(plot){
    ================================================================ */
 function renderInventory(){
   const sel = $('#invProject'); if(!sel) return;
-  const projects = db.projects || [];
-  if(!inv.pid || !projectOf(inv.pid)) inv.pid = (projects[0] || {}).id || null;
+  const projects = scopedProjects();               /* advisors see assigned projects only */
+  if(!inv.pid || !projects.some(p => p.id === inv.pid)) inv.pid = (projects[0] || {}).id || null;
+  /* drop any stale selection from another role/project */
+  if(inv.sel && inv.sel.size){
+    const allowed = new Set((db.plots || []).filter(pl => pl.projectId === inv.pid).map(pl => pl.id));
+    inv.sel.forEach(id => { if(!allowed.has(id)) inv.sel.delete(id); });
+  }
   sel.innerHTML = projects.map(p => `<option value="${esc(p.id)}"${p.id === inv.pid ? ' selected' : ''}>${esc(p.name)} · ${esc(corridorName(p.corridor))}</option>`).join('') || '<option value="">— koi project nahi —</option>';
   $('#invStatusFilter').innerHTML = options(PLOT_STATUSES, inv.status, 'All statuses');
   $('#invBulkStatus').innerHTML = options(PLOT_STATUSES, 'token');
@@ -38146,7 +38151,7 @@ function renderInvBody(){
 /* ----- bulk range generator ----- */
 function openRangeModal(){
   const sel = $('#prProject');
-  sel.innerHTML = (db.projects || []).map(p => `<option value="${esc(p.id)}"${p.id === inv.pid ? ' selected' : ''}>${esc(p.name)}</option>`).join('');
+  sel.innerHTML = scopedProjects().map(p => `<option value="${esc(p.id)}"${p.id === inv.pid ? ' selected' : ''}>${esc(p.name)}</option>`).join('');
   $('#prFacing').innerHTML = FACINGS.map(f => `<option>${f}</option>`).join('');
   showOverlay('plotRangeModal');
 }
