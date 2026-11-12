@@ -72,6 +72,16 @@
     try{ player.unMute(); }catch(e){}
     try{ player.setVolume(100); }catch(e){}
     try{ player.playVideo(); }catch(e){}
+    /* Some Chromium builds block the first autoplay attempt — retry a few
+       times quickly so the video starts without an extra tap. */
+    var tries = 0;
+    var iv = window.setInterval(function(){
+      tries += 1;
+      var st = -1;
+      try{ st = player.getPlayerState(); }catch(err){}
+      if(st === 1 || st === 3 || tries >= 4){ window.clearInterval(iv); return; }
+      try{ player.playVideo(); }catch(err){}
+    }, 700);
   }
 
   if(!/^[A-Za-z0-9_-]{11}$/.test(vid)){

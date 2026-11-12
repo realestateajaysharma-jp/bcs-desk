@@ -16810,8 +16810,11 @@ try{
       <div class="music-vol"><span>🔈</span><input type="range" id="musicVol" min="0" max="100" value="75" aria-label="Volume"><b id="musicVolTxt">75%</b></div>
       <div class="mp-sec-head"><b>Music apps</b><span>Sab kuch isi app me</span></div>
       <div class="mp-apps" id="musicApps">
-        <button type="button" class="mp-app" data-webmusic="https://music.vispark.in/" data-wmtitle="Vispark Music">
-          <b>VISPARK</b><span>In-app player</span>
+        <button type="button" class="mp-app" data-ytpopup="music">
+          <b>YT Music ↗</b><span>Full app window</span>
+        </button>
+        <button type="button" class="mp-app" data-ytpopup="video">
+          <b>YouTube ↗</b><span>Full app window</span>
         </button>
         <button type="button" class="mp-app" data-ytmode="music">
           <b>YouTube Music</b><span>In-app search</span>
@@ -31691,7 +31694,7 @@ function initMedia(){
   // inside the app even when the desktop app is opened from a local file.
   const YT_HELPER = 'https://realestateajaysharma-jp.github.io/bcs-desk/yt.html';
   const YT_HELPER_ORIGIN = 'https://realestateajaysharma-jp.github.io';
-  const YT_HELPER_VER = 5;
+  const YT_HELPER_VER = 6;
 
   const stationList = () => [...STATIONS, ...(M.music.custom || []).map(s => ({ ...s, custom:true }))];
   const stationById = id => stationList().find(s => s.id === id);
@@ -31984,6 +31987,58 @@ function initMedia(){
   }
 
   let songBusy = false;
+  /* Parse jina-reader markdown of a YouTube results page */
+  function parseJinaResults(txt){
+    const found = [];
+    const seen = new Set();
+    for(const m of txt.matchAll(/^###\s*\[([^\]]+)\]\((https?:\/\/www\.youtube\.com\/watch\?v=([A-Za-z0-9_-]{11})[^)]*)\)/gm)){
+      let title = m[1].replace(/\\+/g, ' ').replace(/\s+/g, ' ').trim();
+      const id = m[3];
+      if(!id || seen.has(id) || ytBlocked.has(id)) continue;
+      if(/^Mix\s*-\s*/i.test(title)) continue;
+      seen.add(id);
+      found.push({ id, title: title.slice(0, 150) || 'YouTube video' });
+      if(found.length >= 12) break;
+    }
+    if(!found.length){
+      for(const m of txt.matchAll(/watch\?v=([A-Za-z0-9_-]{11})/g)){
+        const id = m[1];
+        if(seen.has(id) || ytBlocked.has(id)) continue;
+        seen.add(id);
+        found.push({ id, title: 'YouTube video' });
+        if(found.length >= 12) break;
+      }
+    }
+    return found;
+  }
+  /* Multi-source song search — jina reader first, Piped API fallback */
+  async function fetchSongResults(q){
+    try{
+      const res = await fetch('https://r.jina.ai/https://www.youtube.com/results?search_query=' + encodeURIComponent(q), { signal: AbortSignal.timeout(15000) });
+      if(res.ok){
+        const found = parseJinaResults(await res.text());
+        if(found.length) return found;
+      }
+    }catch(e){}
+    try{
+      const res = await fetch('https://api.piped.private.coffee/search?q=' + encodeURIComponent(q) + '&filter=videos', { signal: AbortSignal.timeout(12000) });
+      if(res.ok){
+        const j = await res.json();
+        const found = [];
+        const seen = new Set();
+        (j.items || []).forEach(it => {
+          const mu = String(it.url || '').match(/watch\?v=([A-Za-z0-9_-]{11})/);
+          const id = mu ? mu[1] : (/^[A-Za-z0-9_-]{11}$/.test(String(it.id || '')) ? it.id : '');
+          if(!id || seen.has(id) || ytBlocked.has(id)) return;
+          if(/^Mix\s*-\s*/i.test(String(it.title || ''))) return;
+          seen.add(id);
+          found.push({ id, title: String(it.title || 'YouTube video').slice(0, 150) });
+        });
+        if(found.length) return found;
+      }
+    }catch(e){}
+    return [];
+  }
   async function playSongByName(raw){
     const q = String(raw || '').trim();
     if(!q) return toast('Song ya artist ka naam likhein', true);
@@ -31993,29 +32048,7 @@ function initMedia(){
     const old = btn ? btn.textContent : '';
     if(btn){ btn.textContent = 'Searching…'; btn.disabled = true; }
     try{
-      const res = await fetch('https://r.jina.ai/http://www.youtube.com/results?search_query=' + encodeURIComponent(q));
-      if(!res.ok) throw new Error('search ' + res.status);
-      const txt = await res.text();
-      const found = [];
-      const seen = new Set();
-      for(const m of txt.matchAll(/^###\s*\[([^\]]+)\]\((https?:\/\/www\.youtube\.com\/watch\?v=([A-Za-z0-9_-]{11})[^)]*)\)/gm)){
-        let title = m[1].replace(/\\+/g, ' ').replace(/\s+/g, ' ').trim();
-        const id = m[3];
-        if(!id || seen.has(id) || ytBlocked.has(id)) continue;
-        if(/^Mix\s*-\s*/i.test(title)) continue;
-        seen.add(id);
-        found.push({ id, title: title.slice(0, 150) || 'YouTube video' });
-        if(found.length >= 12) break;
-      }
-      if(!found.length){
-        for(const m of txt.matchAll(/watch\?v=([A-Za-z0-9_-]{11})/g)){
-          const id = m[1];
-          if(seen.has(id) || ytBlocked.has(id)) continue;
-          seen.add(id);
-          found.push({ id, title: 'YouTube video' });
-          if(found.length >= 12) break;
-        }
-      }
+      const found = await fetchSongResults(q);
       if(!found.length) throw new Error('no video found');
       ytResults = found;
       ytQueue = found.map(v => v.id);
@@ -32264,6 +32297,18 @@ function initMedia(){
     $('#songInput').value = '';
   });
   if($('#musicApps')) $('#musicApps').addEventListener('click', e => {
+    const popBtn = e.target.closest('[data-ytpopup]');
+    if(popBtn){
+      const isMusic = popBtn.dataset.ytpopup === 'music';
+      const w = Math.min(560, Math.round(screen.availWidth * 0.4) || 520);
+      const h = screen.availHeight || screen.height;
+      const url = isMusic ? 'https://music.youtube.com/' : 'https://www.youtube.com/';
+      const name = isMusic ? 'bcsYtMusicApp' : 'bcsYtVideoApp';
+      const win = window.open(url, name, 'popup=yes,width=' + w + ',height=' + h + ',left=' + (screen.availWidth - w) + ',top=0,noopener');
+      try{ if(win) win.focus(); }catch(err){}
+      toast(win ? (isMusic ? 'YouTube Music window khul gaya — login ek baar' : 'YouTube window khul gaya — login ek baar') : 'Popup block hua — allow karein', !win);
+      return;
+    }
     const web = e.target.closest('[data-webmusic]');
     if(web){ openWebMusic(web.dataset.webmusic, web.dataset.wmtitle); return; }
     const mode = e.target.closest('[data-ytmode]');
