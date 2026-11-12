@@ -14516,8 +14516,10 @@ body.advisor-mode .hero-stat[data-goto="advisors"]{display:none !important}
 .portal-line{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:4px}
 .portal-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border-radius:999px;border:1px solid var(--line);background:var(--panel);font-size:11px;color:var(--ink2)}
 .portal-pill b{color:var(--ink);font-weight:800}
-.portal-pill.ok{border-color:color-mix(in srgb,#2F8F6B 45%,transparent);color:#2F8F6B}
-.portal-pill.off{border-color:color-mix(in srgb,#B0452F 45%,transparent);color:#B0452F}
+.portal-pill.ok{border-color:color-mix(in srgb,#1F7A54 45%,transparent);color:#1F7A54}
+.portal-pill.off{border-color:color-mix(in srgb,#A33A26 45%,transparent);color:#A33A26}
+body[data-theme="dark"] .portal-pill.ok{border-color:color-mix(in srgb,#5CC79A 45%,transparent);color:#5CC79A}
+body[data-theme="dark"] .portal-pill.off{border-color:color-mix(in srgb,#E58A74 45%,transparent);color:#E58A74}
 .adv-assign-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .adv-assign-wrap .btn{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .access-hero{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,var(--acc) 7%,var(--panel));border:1px solid color-mix(in srgb,var(--acc) 22%,transparent);margin-bottom:16px}
@@ -14527,6 +14529,15 @@ body.advisor-mode .hero-stat[data-goto="advisors"]{display:none !important}
 .access-hero .status-pill{margin-left:auto}
 .access-row{display:flex;gap:6px;align-items:center}
 .access-row input{flex:1;min-width:0}
+/* access modal inputs: keep dark-mode fields dark and readable */
+body[data-theme="dark"] #advisorAccessModal .access-row input,
+body[data-theme="dark"] #advisorAccessModal input{
+  background:#141917 !important;color:#F2F0E5 !important;border-color:rgba(255,255,255,.16) !important;
+}
+body[data-theme="dark"] #advisorAccessModal .access-row input:focus{
+  border-color:color-mix(in srgb,var(--acc) 55%,transparent) !important;
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 18%,transparent) !important;
+}
 @media (max-width:560px){.access-row{flex-wrap:wrap}.access-row input{flex:1 1 100%}}
 </style>
 </head>
