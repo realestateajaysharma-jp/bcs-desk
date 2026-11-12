@@ -18718,6 +18718,7 @@ try{
       <div class="field" id="dlCustomFields"></div>
       <div class="modal-actions" style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px">
         <button class="btn ghost" id="dlReportBtn" type="button">📄 Report</button>
+        <button class="btn ghost" id="dlInvoiceBtn" type="button" title="Invoice / receipt">🧾 Invoice</button>
         <button class="btn ghost" id="dlDelete" type="button" style="color:var(--danger)">Delete</button>
         <button class="btn primary" id="dlSave" type="button">Save sale</button>
       </div>
@@ -18743,6 +18744,33 @@ try{
         <button class="btn primary" id="reportPdfBtn" type="button">🖨 PDF / Print</button>
       </div>
       <div class="mp-note" style="margin-top:8px">💡 PDF: print dialog me "Save as PDF" choose karein. AirDrop: macOS Chrome me share sheet se dusri device par bhejein — warna file download ho jayegi.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ COMMISSION INVOICE / RECEIPT BUILDER ============ -->
+<div class="overlay" id="invModal">
+  <div class="modal" style="width:min(560px,100%)">
+    <div class="modal-head"><h3 id="invTitle">🧾 Commission invoice</h3><button class="xbtn" data-close="invModal">✕</button></div>
+    <div class="modal-body">
+      <div class="grid2">
+        <div class="field"><label>Document type</label><select id="invType"><option value="invoice" selected>Invoice (brokerage bill)</option><option value="receipt">Receipt (payment received)</option></select></div>
+        <div class="field"><label>Number</label><input id="invNo" placeholder="INV-0001"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Date</label><input id="invDate" type="date"></div>
+        <div class="field"><label>GST % (0 = no GST)</label><input id="invGst" type="number" min="0" step="0.01" placeholder="0"></div>
+      </div>
+      <div class="calc-out" id="invOut" style="margin:10px 0"></div>
+      <div class="field"><label>Bank / payment details (invoice par print hoga)</label><textarea id="invBank" rows="2" placeholder="Bank: … · A/c: … · IFSC: … · UPI: …"></textarea></div>
+      <div class="field"><label>Notes (optional)</label><input id="invNote" placeholder="e.g. Payment 7 din me — Thank you"></div>
+      <div class="modal-actions" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:12px">
+        <button class="btn ghost" id="invCopyBtn" type="button">📋 Copy summary</button>
+        <button class="btn ghost" id="invWaBtn" type="button">💬 WhatsApp</button>
+        <button class="btn ghost" id="invDownloadBtn" type="button">⬇ Download</button>
+        <button class="btn primary" id="invPdfBtn" type="button">🖨 PDF / Print</button>
+      </div>
+      <div class="mp-note" style="margin-top:8px">💡 Invoice developer ko, receipt client ko bhejein. Number auto-next hota hai (settings me badal sakte hain).</div>
     </div>
   </div>
 </div>
@@ -37362,17 +37390,22 @@ function renderPipeline(){
       <td><b>${fmtMoney(d.dealValue)}</b><br><span style="font-size:9.5px;color:#4E7C5B">paid ${fmtMoney(dealPaid(d))}</span> <span style="font-size:9.5px;color:#A4452B">· pend ${fmtMoney(dealPending(d))}</span></td>
       <td>${brk ? `<b>${fmtMoney(brk)}</b><br><span style="font-size:9.5px;color:var(--mut)">${dealBrkPending(d) > 0 ? 'pend ' + fmtMoney(dealBrkPending(d)) : 'full received ✓'}</span>` : '—'}</td>
       <td>${dealStageChip(d)}</td>
-      <td style="white-space:nowrap"><button type="button" class="shortbtn" data-dealrep="${esc(d.id)}" title="Report">📄</button><button type="button" class="shortbtn" data-dealedit="${esc(d.id)}" title="Edit">✎</button><button type="button" class="shortbtn" data-dealdel="${esc(d.id)}" title="Delete">✕</button></td>
+      <td style="white-space:nowrap"><button type="button" class="shortbtn" data-dealinv="${esc(d.id)}" title="Invoice / receipt">🧾</button><button type="button" class="shortbtn" data-dealrem="${esc(d.id)}" title="WhatsApp payment reminder">💬</button><button type="button" class="shortbtn" data-dealrep="${esc(d.id)}" title="Report">📄</button><button type="button" class="shortbtn" data-dealedit="${esc(d.id)}" title="Edit">✎</button><button type="button" class="shortbtn" data-dealdel="${esc(d.id)}" title="Delete">✕</button></td>
     </tr>`;
   }).join('') : `<tr><td colspan="8" style="text-align:center;padding:22px;color:var(--mut);font-size:12px">Abhi koi sale nahi — <b>Add sale</b> se pehli booking daalein. Booking, payments, registry aur brokerage sab yahan track hoga.</td></tr>`;
   tbl.innerHTML = head + rows;
-  // follow-up panel: pending payments
+  // follow-up panel: pending payments + brokerage reminders
   const fl = $('#dealFollowList');
   if(fl){
     const pendDeals = live.filter(d => dealPending(d) > 0).sort((a,b) => (a.bookingDate || '').localeCompare(b.bookingDate || '')).slice(0, 8);
-    fl.innerHTML = pendDeals.length ? pendDeals.map(d => `<div class="tq-row" data-dealedit="${esc(d.id)}" role="button" tabindex="0">
+    const brkDeals = live.filter(d => dealBrkPending(d) > 0).sort((a,b) => dealBrkPending(b) - dealBrkPending(a)).slice(0, 5);
+    fl.innerHTML = (pendDeals.length ? pendDeals.map(d => `<div class="tq-row" data-dealedit="${esc(d.id)}" role="button" tabindex="0">
       <span class="tq-txt"><b>${esc(dealClientLabel(d))} — ${esc(dealLabel(d))}</b><span>pending <b style="color:#A4452B">${fmtMoney(dealPending(d))}</b> of ${fmtMoney(d.dealValue)}</span>${d.remarks ? `<span>${esc(d.remarks.slice(0, 60))}</span>` : ''}</span>
-    </div>`).join('') : '<div class="tq-empty">Sab payments clear ✓ — koi pending nahi.</div>';
+      <button type="button" class="tq-x" data-dealrem="${esc(d.id)}" title="WhatsApp payment reminder" style="opacity:1;font-size:13px">💬</button>
+    </div>`).join('') : '<div class="tq-empty">Sab payments clear ✓ — koi pending nahi.</div>')
+    + (brkDeals.length ? `<div class="tp-sec" style="padding-top:12px"><b>Brokerage pending — developer se</b><span>${brkDeals.length}</span></div>` + brkDeals.map(d => `<div class="tq-row" data-dealedit="${esc(d.id)}" role="button" tabindex="0">
+      <span class="tq-txt"><b>${esc(dealLabel(d))} · ${esc(d.code || '')}</b><span>brokerage pending <b style="color:#8A6480">${fmtMoney(dealBrkPending(d))}</b>${d.developerName ? ' · ' + esc(d.developerName) : ''}</span></span>
+    </div>`).join('') : '');
   }
 }
 function dlPaymentRowHTML(p, i){
@@ -37536,10 +37569,254 @@ function initPipeline(){
     if(del){ deleteDeal(del.dataset.dealdel); return; }
     const rep = e.target.closest('[data-dealrep]');
     if(rep){ openReportBuilder('pipeline', rep.dataset.dealrep); return; }
+    const inv = e.target.closest('[data-dealinv]');
+    if(inv){ openInvoiceBuilder(inv.dataset.dealinv); return; }
+    const rem = e.target.closest('[data-dealrem]');
+    if(rem){ openDealReminder(db.pipeline.find(x => x.id === rem.dataset.dealrem)); return; }
     const row = e.target.closest('[data-dealrow]');
     if(row){ openDeal(db.pipeline.find(x => x.id === row.dataset.dealrow)); }
   });
   renderPipeline();
+}
+/* ================= COMMISSION INVOICE / RECEIPT + PAYMENT REMINDERS ================= */
+function numToWordsIN(n){
+  n = Math.round(Number(n) || 0);
+  if(n === 0) return 'Zero';
+  const ones = ['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+  const tens = ['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+  const two = v => v < 20 ? ones[v] : (tens[Math.floor(v/10)] + (v % 10 ? ' ' + ones[v % 10] : ''));
+  const three = v => (v >= 100 ? ones[Math.floor(v/100)] + ' Hundred' + (v % 100 ? ' ' + two(v % 100) : '') : two(v));
+  const parts = [];
+  [[10000000,'Crore'],[100000,'Lakh'],[1000,'Thousand'],[1,'']].forEach(([div, name]) => {
+    const q = Math.floor(n / div); n %= div;
+    if(q) parts.push((div === 1 ? three(q) : three(q)) + (name ? ' ' + name : ''));
+  });
+  return parts.join(' ').replace(/\s+/g,' ').trim();
+}
+function invPrefs(){
+  if(!db.daily) db.daily = {};
+  const p = db.daily.invoicePrefs;
+  if(!p || typeof p !== 'object') db.daily.invoicePrefs = { gst:0, bank:'', note:'', invSeq:0, rctSeq:0 };
+  return db.daily.invoicePrefs;
+}
+let invState = { dealId:null };
+function invDocNo(type){
+  const p = invPrefs();
+  if(type === 'receipt') return 'RCT-' + String((Number(p.rctSeq) || 0) + 1).padStart(4, '0');
+  return 'INV-' + String((Number(p.invSeq) || 0) + 1).padStart(4, '0');
+}
+function invSuggestNo(){
+  const p = invPrefs();
+  const key = invState.dealId + ':' + $('#invType').value;
+  const issued = (p._issued || {})[key];
+  $('#invNo').value = issued || invDocNo($('#invType').value);
+}
+function invIssueNo(){
+  const p = invPrefs();
+  const o = invOpts();
+  const key = invState.dealId + ':' + o.type;
+  p._issued = p._issued || {};
+  if(p._issued[key] === o.no) return;
+  p._issued[key] = o.no;
+  const m = /^(INV|RCT)-(\d+)$/.exec(o.no);
+  if(m){
+    const n = Number(m[2]);
+    if(m[1] === 'INV' && n === (Number(p.invSeq) || 0) + 1) p.invSeq = n;
+    if(m[1] === 'RCT' && n === (Number(p.rctSeq) || 0) + 1) p.rctSeq = n;
+  }
+}
+function buildInvoicePage(deal, o){
+  const cd = shareCardData();
+  const isRct = o.type === 'receipt';
+  const base = isRct ? (Number(deal.brokeragePaid) || 0) : dealBrkTotal(deal);
+  const gstVal = Math.round(base * (Number(o.gst) || 0) / 100);
+  const total = base + gstVal;
+  const stamp = new Date(o.date || todayISO()).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+  const title = isRct ? 'Payment Receipt' : 'Commission Invoice';
+  const no = o.no || invDocNo(o.type);
+  const billTo = isRct ? (dealClientLabel(deal) + (deal.clientPhone ? ' · ' + deal.clientPhone : '')) : (deal.developerName || 'Developer — naam record nahi');
+  const rows = [[
+    'Brokerage — ' + (dealLabel(deal) || 'Property sale') + (deal.plotDetail ? ' (' + deal.plotDetail + ')' : ''),
+    deal.code || '—', deal.bookingDate || '—', base
+  ]];
+  return `<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(title)} ${esc(no)} — ${esc(cd.brand)}</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Segoe UI',Roboto,sans-serif;background:#F7F6F2;color:#1D1D1F;line-height:1.55;font-size:13px}
+.top{background:linear-gradient(140deg,#3A3928,#A57B36);color:#fff;padding:26px 20px}
+.top .in{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-end}
+.top small{font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:.75;display:block}
+.top h1{font-size:21px;margin-top:4px;letter-spacing:-.4px}
+.top .who{font-size:11.5px;opacity:.85;margin-top:3px}
+.top .doc{text-align:right}
+.top .doc b{font-size:15px;display:block}
+.top .doc span{font-size:11px;opacity:.85}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 80px}
+.card{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:16px;padding:18px 20px;margin-top:16px;page-break-inside:avoid}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.k{font-size:9.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#8A877A;margin-bottom:4px}
+table{width:100%;border-collapse:collapse;margin-top:6px}
+th{font-size:10px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#7A5A1E;text-align:left;padding:8px 10px;background:#F3EFE4;border-bottom:2px solid #E7DCC2}
+td{padding:8px 10px;border-bottom:1px solid rgba(0,0,0,.06);font-size:12px;vertical-align:top}
+td.amt,th.amt{text-align:right;white-space:nowrap}
+.tt td{border-bottom:none;font-weight:800;background:#F3EFE4;font-size:13px}
+.foot{text-align:center;color:#8A877A;font-size:10.5px;padding:22px 0 6px;letter-spacing:.5px}
+.sig{margin-top:26px;display:flex;justify-content:flex-end}
+.sig .s{text-align:center;font-size:11px;color:#424245}
+.sig .s i{display:block;border-top:1px solid #999;margin-bottom:4px;padding-top:4px;font-style:normal;min-width:180px}
+@media print{ body{background:#fff} .top{background:#3A3928 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact} .card{box-shadow:none;border:1px solid #ddd} }
+</style></head><body>
+<div class="top"><div class="in">
+  <div><small>${esc(cd.brand)} · ${esc(cd.tagline || 'Real estate advisory')}</small><h1>${esc(cd.brand)}</h1><div class="who">${esc(cd.person)} — ${esc(cd.title)}${cd.phone ? ' · ' + esc(cd.phone) : ''}${cd.email ? ' · ' + esc(cd.email) : ''}</div></div>
+  <div class="doc"><b>${esc(title)}</b><span>${esc(no)} · ${stamp}</span></div>
+</div></div>
+<div class="wrap">
+  <div class="card"><div class="grid">
+    <div><div class="k">${isRct ? 'Received from' : 'Billed to'}</div><b>${esc(billTo)}</b></div>
+    <div><div class="k">Deal reference</div><b>${esc(deal.code || '')} — ${esc(dealLabel(deal))}</b><div style="font-size:11px;color:#8A877A">Deal value ${fmtMoney(deal.dealValue)} · Client ${esc(dealClientLabel(deal))}${deal.bookingDate ? ' · Booking ' + esc(deal.bookingDate) : ''}</div></div>
+  </div></div>
+  <div class="card">
+    <div class="k">Details</div>
+    <table><thead><tr><th>Description</th><th>Deal ref</th><th>Booking date</th><th class="amt">Amount</th></tr></thead><tbody>
+      ${rows.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td class="amt">${fmtMoney(r[3])}</td></tr>`).join('')}
+      ${gstVal ? `<tr><td>GST @ ${o.gst}%</td><td></td><td></td><td class="amt">${fmtMoney(gstVal)}</td></tr>` : ''}
+      <tr class="tt"><td>Total ${isRct ? 'received' : 'payable'}</td><td></td><td></td><td class="amt">${fmtMoney(total)}</td></tr>
+    </tbody></table>
+    <div style="margin-top:10px;font-size:11.5px;color:#424245">₹ ${numToWordsIN(total)} only</div>
+    ${isRct && dealBrkPending(deal) > 0 ? `<div style="margin-top:6px;font-size:11.5px;color:#A4452B">Balance brokerage pending: ${fmtMoney(dealBrkPending(deal))}</div>` : ''}
+    ${!isRct && (Number(deal.brokeragePaid) || 0) > 0 ? `<div style="margin-top:6px;font-size:11.5px;color:#4E7C5B">Already received: ${fmtMoney(deal.brokeragePaid)} — net payable ${fmtMoney(Math.max(0, total - (Number(deal.brokeragePaid) || 0)))}</div>` : ''}
+  </div>
+  <div class="card"><div class="grid">
+    <div><div class="k">Bank / payment details</div><div style="font-size:12px;white-space:pre-line">${esc(o.bank || 'Bank transfer — details on request')}</div></div>
+    <div><div class="k">Notes</div><div style="font-size:12px;white-space:pre-line">${esc(o.note || (isRct ? 'Payment ka shukriya — deal par har update hum denge.' : 'Payment 7 din me — krupa karein.'))}</div></div>
+  </div>
+  <div class="sig"><div class="s"><i></i>For ${esc(cd.brand)}<br>${esc(cd.person)}</div></div></div>
+  <div class="foot">THIS IS A SYSTEM-GENERATED ${esc(title.toUpperCase())} FROM ${esc(cd.brand.toUpperCase())} DESK · ${stamp}</div>
+</div></body></html>`;
+}
+function invFill(deal){
+  const o = invState.opts || {};
+  $('#invType').value = o.type || 'invoice';
+  $('#invNo').value = o.no || invDocNo(o.type || 'invoice');
+  $('#invDate').value = o.date || todayISO();
+  $('#invGst').value = o.gst != null && o.gst !== '' ? o.gst : (invPrefs().gst || 0);
+  $('#invBank').value = o.bank != null ? o.bank : (invPrefs().bank || '');
+  $('#invNote').value = o.note != null ? o.note : (invPrefs().note || '');
+  invPaintOut(deal);
+}
+function invPaintOut(deal){
+  const deal2 = db.pipeline.find(x => x.id === invState.dealId) || deal;
+  if(!deal2){ $('#invOut').innerHTML = ''; return; }
+  const type = $('#invType').value;
+  const base = type === 'receipt' ? (Number(deal2.brokeragePaid) || 0) : dealBrkTotal(deal2);
+  const gstV = Math.round(base * (Number($('#invGst').value) || 0) / 100);
+  $('#invOut').innerHTML = `
+    <div class="calc-row"><span>${type === 'receipt' ? 'Receipt — brokerage received' : 'Invoice — brokerage total'}</span><b>${fmtMoney(base)}</b></div>
+    ${gstV ? `<div class="calc-row"><span>GST @${$('#invGst').value}%</span><b>${fmtMoney(gstV)}</b></div>` : ''}
+    <div class="calc-total"><span>${type === 'receipt' ? 'Total received' : 'Total payable'}</span><b>${fmtMoney(base + gstV)}</b></div>`;
+  const p = invPrefs();
+  p.gst = Number($('#invGst').value) || 0; p.bank = $('#invBank').value.trim(); p.note = $('#invNote').value.trim();
+}
+function invOpts(){
+  return { type:$('#invType').value, no:$('#invNo').value.trim(), date:$('#invDate').value, gst:Number($('#invGst').value) || 0, bank:$('#invBank').value.trim(), note:$('#invNote').value.trim() };
+}
+function invFileName(){
+  const o = invOpts();
+  const d = new Date(); const p2 = n => String(n).padStart(2, '0');
+  return (o.type === 'receipt' ? 'receipt' : 'invoice') + '-' + (o.no || 'draft').replace(/[^\w-]/g,'') + '-' + d.getFullYear() + p2(d.getMonth()+1) + p2(d.getDate()) + '.html';
+}
+function openInvoiceBuilder(dealId){
+  const deal = db.pipeline.find(x => x.id === dealId);
+  if(!deal) return;
+  invState = { dealId, opts:{} };
+  const deal2 = deal;
+  $('#invTitle').textContent = '🧾 ' + (deal.code || '') + ' — ' + dealLabel(deal2);
+  invFill(deal2);
+  invSuggestNo();
+  showOverlay('invModal');
+}
+function dealReminderText(d){
+  const cd = shareCardData();
+  const pend = dealPending(d);
+  return 'Namaste ' + dealClientLabel(d) + ' ji 🙏\n\n' + (cd.brand || 'BCS') + ' se payment reminder —\n' +
+    '🏠 ' + dealLabel(d) + (d.code ? ' (' + d.code + ')' : '') + '\n' +
+    '💰 Pending: *' + fmtMoney(pend) + '* / ' + fmtMoney(d.dealValue) +
+    (d.payNote ? '\n📝 ' + d.payNote : '') + '\n\n' +
+    'Payment hone ke baad hum receipt bhej denge. Koi sawaal ho to batayein 🙏\n\n' +
+    '— ' + (cd.person || '') + ', ' + (cd.brand || '') + (cd.phone ? '\n📞 ' + cd.phone : '');
+}
+function openDealReminder(d){
+  if(!d) return;
+  const phone = (d.clientPhone || '').replace(/[^\d]/g,'');
+  const msg = encodeURIComponent(dealReminderText(d));
+  const txtOnly = () => { try{ navigator.clipboard.writeText(dealReminderText(d)); toast('Phone nahi hai — reminder text copy ho gaya, client ko bhejein'); }catch(e){ toast('Phone nahi hai client record me', true); } };
+  if(phone.length >= 10){
+    const url = 'https://wa.me/' + (phone.length === 10 ? '91' + phone : phone) + '?text=' + msg;
+    const w = window.open(url, '_blank');
+    if(!w) txtOnly();
+    else toast('WhatsApp reminder khul gaya — Send dabana hai bas');
+  } else txtOnly();
+}
+function initInvoices(){
+  $('#invType').addEventListener('change', () => {
+    invSuggestNo();
+    invPaintOut();
+  });
+  ['invGst','invBank','invNote'].forEach(id => $('#' + id).addEventListener('input', invPaintOut));
+  $('#invGst').addEventListener('input', () => { const p = invPrefs(); p.gst = Number($('#invGst').value) || 0; });
+  $('#invBank').addEventListener('input', () => { const p = invPrefs(); p.bank = $('#invBank').value.trim(); });
+  $('#invNote').addEventListener('input', () => { const p = invPrefs(); p.note = $('#invNote').value.trim(); });
+  const needDeal = () => db.pipeline.find(x => x.id === invState.dealId);
+  $('#invPdfBtn').addEventListener('click', () => {
+    const deal = needDeal(); if(!deal) return;
+    const w = window.open('', '_blank');
+    if(!w) return toast('Popup block hua — allow karein', true);
+    const o = invOpts();
+    w.document.open(); w.document.write(buildInvoicePage(deal, o)); w.document.close();
+    invIssueNo(); save();
+    setTimeout(() => { try{ w.focus(); w.print(); }catch(e){} }, 600);
+    toast('Print dialog me "Save as PDF" choose karein');
+  });
+  $('#invDownloadBtn').addEventListener('click', () => {
+    const deal = needDeal(); if(!deal) return;
+    const blob = new Blob([buildInvoicePage(deal, invOpts())], { type:'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = invFileName();
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+    toast('Document download ho gayi');
+  });
+  $('#invWaBtn').addEventListener('click', () => {
+    const deal = needDeal(); if(!deal) return;
+    const o = invOpts();
+    const isRct = o.type === 'receipt';
+    const base = isRct ? (Number(deal.brokeragePaid) || 0) : dealBrkTotal(deal);
+    const gstV = Math.round(base * o.gst / 100);
+    const to = isRct ? (deal.clientPhone || '') : '';
+    const txt = '*' + (isRct ? 'Receipt' : 'Commission Invoice') + ' ' + (o.no || '') + '* — ' + (shareCardData().brand || 'BCS') + '\n\n' +
+      'Deal: ' + dealLabel(deal) + (deal.code ? ' (' + deal.code + ')' : '') + '\n' +
+      (isRct ? 'Payment received: ' + fmtMoney(base + gstV) : 'Brokerage payable: ' + fmtMoney(base + gstV) + (o.gst ? ' (incl. GST ' + o.gst + '%)' : '')) + '\n' +
+      (o.bank ? '🏦 ' + o.bank : '') + '\n' +
+      'Thank you 🙏';
+    if(!isRct && !to) { try{ navigator.clipboard.writeText(txt); toast('Developer ka phone record me nahi — invoice summary copy ho gayi'); }catch(e){ toast('Copy nahi hua', true); } return; }
+    const ph = to.replace(/[^\d]/g,'');
+    if(ph.length >= 10){ window.open('https://wa.me/' + (ph.length === 10 ? '91' + ph : ph) + '?text=' + encodeURIComponent(txt), '_blank'); toast('WhatsApp khul gaya'); }
+    else { try{ navigator.clipboard.writeText(txt); toast('Summary copy ho gayi — WhatsApp me paste karein'); }catch(e){ toast('Copy nahi hua', true); } }
+  });
+  $('#invCopyBtn').addEventListener('click', () => {
+    const deal = needDeal(); if(!deal) return;
+    const o = invOpts();
+    const base = o.type === 'receipt' ? (Number(deal.brokeragePaid) || 0) : dealBrkTotal(deal);
+    const gstV = Math.round(base * o.gst / 100);
+    const txt = (o.type === 'receipt' ? 'RECEIPT' : 'INVOICE') + ' ' + (o.no || '') + ' · ' + (o.date || todayISO()) + '\n' +
+      shareCardData().brand + ' — ' + dealLabel(deal) + (deal.code ? ' (' + deal.code + ')' : '') + '\n' +
+      'Brokerage: ' + fmtMoney(base) + (gstV ? ' · GST: ' + fmtMoney(gstV) : '') + '\n' +
+      'Total: ' + fmtMoney(base + gstV) + ' (₹ ' + numToWordsIN(base + gstV) + ' only)';
+    try{ navigator.clipboard.writeText(txt); toast('Invoice summary copy ho gayi'); }catch(e){ toast('Copy nahi hua', true); }
+  });
 }
 /* ================= BCS REPORT BUILDER ================= */
 function repRow(label, val){
@@ -38004,6 +38281,10 @@ function initReports(){
     if(editingDealId) openReportBuilder('pipeline', editingDealId);
     else toast('Pehle sale save karein — phir report banegi', true);
   });
+  $('#dlInvoiceBtn').addEventListener('click', () => {
+    if(editingDealId){ closeModal('dealModal'); openInvoiceBuilder(editingDealId); }
+    else toast('Pehle sale save karein — phir invoice banegi', true);
+  });
 }
 function render(){
   fillFilterCorridor($('#filterCorridor').value);
@@ -38047,6 +38328,7 @@ initTax();
 initPartners();
 initPipeline();
 initReports();
+initInvoices();
 initRoughpad();
 initCorridorManager();
 initTools();
