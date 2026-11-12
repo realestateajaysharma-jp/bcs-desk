@@ -422,6 +422,14 @@ main{max-width:1480px;margin:0 auto;padding:28px 32px 100px}
 .storage{position:fixed;right:16px;bottom:13px;font-size:10px;color:var(--mut);background:rgba(255,255,255,.9);padding:5px 10px;border-radius:8px;border:1px solid var(--line);z-index:30}
 .mob-add{display:none}
 /* ---- Gemini sidebar (bottom-left) ---- */
+.dock-sep{width:1px;align-self:stretch;background:var(--line);margin:6px 2px;flex:none}
+.dock-btn .sym{font-size:15px;font-weight:800;line-height:1}
+.dock-btn.gemini .gemspark{
+  width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;color:#fff;
+  background:linear-gradient(135deg,#4C8DF6,#9B72F2 55%,#F2A64B);
+  box-shadow:0 2px 8px rgba(155,114,242,.4);
+}
+.dock-btn.gemini.on .gemspark{box-shadow:0 0 0 3px rgba(155,114,242,.35), 0 2px 8px rgba(155,114,242,.4)}
 .gemini-fab{display:grid;place-items:center;position:fixed;left:16px;bottom:16px;z-index:60;width:48px;height:48px;border-radius:50%;background:#1B1B1F;border:1px solid rgba(255,255,255,.12);cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.35);transition:transform .15s, box-shadow .15s}
 .gemini-fab:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 14px 32px rgba(0,0,0,.45)}
 .gemini-fab.on{box-shadow:0 0 0 3px rgba(155,114,242,.45), 0 10px 26px rgba(0,0,0,.4)}
@@ -16698,6 +16706,14 @@ try{
   <button class="dock-btn" id="calcBtn" data-tip="Calculator" aria-label="Quick calculator"><span class="dock-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M8.5 7h7M9 12h.01M12.5 12h.01M16 12h.01M9 15.5h.01M12.5 15.5h.01M16 15.5h.01"/></svg></span><i>Calc</i></button>
   <button class="dock-btn" id="fieldsBtn" data-tip="Custom fields" aria-label="Custom fields"><span class="dock-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.2 5.2l2.1 2.1M16.7 16.7l2.1 2.1M18.8 5.2l-2.1 2.1M7.3 16.7l-2.1 2.1"/></svg></span><i>Fields</i></button>
   <button class="dock-btn" id="listsBtn" data-tip="Dropdown lists" aria-label="Dropdown lists"><span class="dock-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg></span><i>Lists</i></button>
+  <span class="dock-sep" aria-hidden="true"></span>
+  <button class="dock-btn" id="dockAddProject" data-tip="Add project" aria-label="Add project"><span class="dock-ic sym">▣</span><i>Project</i></button>
+  <button class="dock-btn" id="dockAddDeveloper" data-tip="Add developer" aria-label="Add developer"><span class="dock-ic sym">◈</span><i>Dev</i></button>
+  <button class="dock-btn" id="dockAddClient" data-tip="Add client" aria-label="Add client"><span class="dock-ic sym">◐</span><i>Client</i></button>
+  <button class="dock-btn" id="dockAddPartner" data-tip="Add partner" aria-label="Add partner"><span class="dock-ic sym">◉</span><i>Partner</i></button>
+  <button class="dock-btn" id="dockAddAdvisor" data-tip="Add advisor" aria-label="Add advisor"><span class="dock-ic sym">◎</span><i>Advisor</i></button>
+  <span class="dock-sep" aria-hidden="true"></span>
+  <button class="dock-btn gemini" id="dockGemini" data-tip="Gemini Pro sidebar" aria-label="Open Gemini sidebar"><span class="dock-ic sym gemspark">✦</span><i>Gemini</i></button>
 </div>
 <div class="toolpop" id="stickyPop">
   <div class="tp-head">
@@ -16854,11 +16870,11 @@ try{
       <span class="qa-esc">ESC</span>
     </div>
     <div class="qa-quick" id="qaQuickRow" aria-label="Quick add">
-      <button type="button" class="qa-chip" id="dockAddProject">▣ New project</button>
-      <button type="button" class="qa-chip" id="dockAddDeveloper">◈ New developer</button>
-      <button type="button" class="qa-chip" id="dockAddAdvisor">◎ New advisor</button>
-      <button type="button" class="qa-chip" id="dockAddPartner">▥ New partner</button>
-      <button type="button" class="qa-chip" id="dockAddClient">◐ New client</button>
+      <button type="button" class="qa-chip" id="qaAddProject">▣ New project</button>
+      <button type="button" class="qa-chip" id="qaAddDeveloper">◈ New developer</button>
+      <button type="button" class="qa-chip" id="qaAddAdvisor">◎ New advisor</button>
+      <button type="button" class="qa-chip" id="qaAddPartner">▥ New partner</button>
+      <button type="button" class="qa-chip" id="qaAddClient">◐ New client</button>
     </div>
     <div class="qa-list" id="qaList"></div>
     <div class="qa-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>↵</kbd> open</span><span><kbd>⌘K</kbd> close</span><span style="margin-left:auto">Everything stays editable</span></div>
@@ -31547,11 +31563,17 @@ function initTools(){
   };
   $('#stickyBtn').addEventListener('click', () => open('stickyPop'));
   $('#calcBtn').addEventListener('click', () => open('calcPop'));
-  $('#dockAddProject')?.addEventListener('click', () => { openProject(null); closeQuickActions(); });
-  $('#dockAddDeveloper')?.addEventListener('click', () => { openDeveloper(null); closeQuickActions(); });
-  $('#dockAddAdvisor')?.addEventListener('click', () => { openAdvisor(null); closeQuickActions(); });
-  $('#dockAddPartner')?.addEventListener('click', () => { openPartner(null); closeQuickActions(); });
-  $('#dockAddClient')?.addEventListener('click', () => { openClient(null); closeQuickActions(); });
+  const closeToolpops = () => { $$('.toolpop').forEach(p => p.classList.remove('on')); $$('.dock-btn').forEach(b => b.classList.remove('open')); };
+  $('#dockAddProject')?.addEventListener('click', () => { openProject(null); closeToolpops(); });
+  $('#dockAddDeveloper')?.addEventListener('click', () => { openDeveloper(null); closeToolpops(); });
+  $('#dockAddAdvisor')?.addEventListener('click', () => { openAdvisor(null); closeToolpops(); });
+  $('#dockAddPartner')?.addEventListener('click', () => { openPartner(null); closeToolpops(); });
+  $('#dockAddClient')?.addEventListener('click', () => { openClient(null); closeToolpops(); });
+  $('#qaAddProject')?.addEventListener('click', () => { openProject(null); closeQuickActions(); });
+  $('#qaAddDeveloper')?.addEventListener('click', () => { openDeveloper(null); closeQuickActions(); });
+  $('#qaAddAdvisor')?.addEventListener('click', () => { openAdvisor(null); closeQuickActions(); });
+  $('#qaAddPartner')?.addEventListener('click', () => { openPartner(null); closeQuickActions(); });
+  $('#qaAddClient')?.addEventListener('click', () => { openClient(null); closeQuickActions(); });
   $$('[data-toolclose]').forEach(b => b.addEventListener('click', () => {
     $('#' + b.dataset.toolclose).classList.remove('on');
     $$('.dock-btn').forEach(x => x.classList.remove('open'));
@@ -34663,6 +34685,7 @@ function initGeminiSidebar(){
     opened = true;
     panel.hidden = false;
     fab.classList.add('on');
+    const dg = $('#dockGemini'); if(dg) dg.classList.add('on');
     requestAnimationFrame(() => panel.classList.add('on'));
     $('#geminiFallback').hidden = false;
   }
@@ -34670,9 +34693,14 @@ function initGeminiSidebar(){
     opened = false;
     panel.classList.remove('on');
     fab.classList.remove('on');
+    const dg = $('#dockGemini'); if(dg) dg.classList.remove('on');
     setTimeout(() => { if(!opened) panel.hidden = true; }, 320);
   }
   fab.addEventListener('click', () => { opened ? closePanel() : openPanel(); });
+  $('#dockGemini')?.addEventListener('click', () => {
+    if(!opened){ openPanel(); const win = dockWin(); if(!win) toast('Popup block hua — browser me allow karein', true); }
+    else closePanel();
+  });
   $('#geminiClose')?.addEventListener('click', closePanel);
   $('#geminiOpenWin')?.addEventListener('click', () => {
     const win = dockWin();
