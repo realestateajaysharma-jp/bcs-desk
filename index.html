@@ -1272,6 +1272,51 @@ body.advisor-mode #resaleViewDelete{display:none !important}
 .mp-app span{font-size:8.5px;text-transform:uppercase;letter-spacing:.4px;color:var(--mut);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mp-app[data-webmusic]{background:#F2F8F4;border-color:#D3E6DA}
 .mp-app[data-webmusic]:hover{background:#E9F4ED}
+/* ---- YouTube / YT Music interface ---- */
+#mpTabs [data-mtab="yt"].on{background:#E62117;border-color:#E62117;box-shadow:0 4px 12px -6px rgba(230,33,23,.55)}
+#mpTabs [data-mtab="music"].on{background:#B8002A;border-color:#B8002A;box-shadow:0 4px 12px -6px rgba(184,0,42,.5)}
+.mp-body > .yt-stage{margin-bottom:4px}
+.yt-chips{display:flex;gap:6px;overflow-x:auto;padding:2px 0 4px;scrollbar-width:none;margin-bottom:9px}
+.yt-chips::-webkit-scrollbar{display:none}
+.yt-chip{flex:none;padding:5px 12px;border-radius:999px;border:1px solid var(--line2);background:#F4F6F3;color:var(--ink);font-size:10.5px;font-weight:700;cursor:pointer;transition:.15s;font-family:'DM Sans',sans-serif;white-space:nowrap}
+.yt-chip:hover{background:#E9EDE8;border-color:#C9D1CC}
+.yt-chip.on{background:var(--olive);border-color:var(--olive);color:#F6F2E7}
+.yt-chips.dark .yt-chip{background:#1E1E1E;border-color:#333;color:#EAEAEA}
+.yt-chips.dark .yt-chip:hover{background:#2B2B2B;border-color:#4A4A4A}
+.yt-chips.dark .yt-chip.on{background:#FF0033;border-color:#FF0033;color:#fff}
+/* YouTube results — thumbnail grid */
+#mpPaneYt #ytResults{display:grid;grid-template-columns:repeat(auto-fill,minmax(146px,1fr));gap:8px;max-height:300px}
+#mpPaneYt #ytResults .yt-item{flex-direction:column;align-items:stretch;gap:0;padding:0;border-color:transparent;background:transparent;border-radius:10px}
+#mpPaneYt #ytResults .yt-item:hover{background:rgba(0,0,0,.045);border-color:transparent}
+#mpPaneYt #ytResults .yt-thumb{width:100%;height:auto;aspect-ratio:16/9;border-radius:10px}
+#mpPaneYt #ytResults .yt-meta{padding:6px 3px 5px}
+#mpPaneYt #ytResults .yt-item.playing{background:#FFFCF3;border-color:transparent}
+/* YT Music — dark app pane */
+.media-pop.musicmode #mpPaneMusic{background:linear-gradient(180deg,#161616,#0C0C0C);border:1px solid #262626;border-radius:14px;padding:11px;color:#EDEDED;box-shadow:0 18px 40px -24px rgba(0,0,0,.8)}
+.media-pop.musicmode #mpPaneMusic .music-quick{background:#1B1B1B;border-color:#2C2C2C}
+.media-pop.musicmode #mpPaneMusic .mq-form input{background:#121212;border-color:#333;color:#F1F1F1}
+.media-pop.musicmode #mpPaneMusic .mq-note{color:#8E8E8E}
+.media-pop.musicmode #mpPaneMusic .mp-sec-head b,.media-pop.musicmode #mpPaneMusic .mp-sec-head span{color:#9C9C9C}
+.media-pop.musicmode #mpPaneMusic .yt-item{background:#1C1C1C;border-color:#2B2B2B}
+.media-pop.musicmode #mpPaneMusic .yt-item:hover{background:#262626;border-color:#3B3B3B}
+.media-pop.musicmode #mpPaneMusic .yt-item.playing{background:rgba(255,0,51,.12);border-color:rgba(255,0,51,.5)}
+.media-pop.musicmode #mpPaneMusic .yt-meta b{color:#F1F1F1}
+.media-pop.musicmode #mpPaneMusic .mp-app{background:#1C1C1C;border-color:#2B2B2B}
+.media-pop.musicmode #mpPaneMusic .mp-app b{color:#F1F1F1}
+.media-pop.musicmode #mpPaneMusic .mp-app span{color:#8E8E8E}
+.media-pop.musicmode #mpPaneMusic .mp-empty{background:#1B1B1B;border-color:#2E2E2E;color:#8E8E8E}
+.media-pop.musicmode #mpPaneMusic .station{background:#1C1C1C;border-color:#2B2B2B}
+.media-pop.musicmode #mpPaneMusic .station .st-txt b{color:#F1F1F1}
+.media-pop.musicmode #mpPaneMusic .station .st-txt span{color:#8E8E8E}
+.media-pop.musicmode #mpPaneMusic .mp-adv{border-color:#2E2E2E}
+.media-pop.musicmode #mpPaneMusic .mp-form input{background:#121212;border-color:#333;color:#F1F1F1}
+.media-pop.musicmode #mpPaneMusic .mp-note{color:#8E8E8E}
+.media-pop.musicmode #mpPaneMusic .music-vol{color:#BDBDBD}
+/* full-app buttons */
+.mp-app.bigapp{align-items:center;text-align:center;padding:10px 8px;gap:2px}
+.mpapp-ico{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:13px;color:#fff;margin-bottom:4px}
+.mpapp-ico.yt{background:#FF0000}
+.mpapp-ico.ytm{background:linear-gradient(135deg,#FF0033,#B8002A);border-radius:50%}
 .mp-adv{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
 .mp-adv summary{cursor:pointer;font-size:10px;font-weight:700;color:var(--mut);list-style:none}
 .mp-adv summary::-webkit-details-marker{display:none}
@@ -16760,7 +16805,7 @@ try{
       <div class="mp-badge">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg>
       </div>
-      <div><b>BCS Media Lounge</b><span id="mpNow">Song search · web music · live radio</span></div>
+      <div><b>BCS Media Lounge</b><span id="mpNow">YouTube · YT Music · live radio — sab isi me</span></div>
     </div>
     <div class="mp-hbtns">
       <button id="mpExpand" title="Bada player / theater mode" aria-label="Toggle theater mode">⤢</button>
@@ -16770,22 +16815,31 @@ try{
   </div>
   <div class="mp-tabs" id="mpTabs">
     <button type="button" data-mtab="yt" class="on">▶ YouTube</button>
-    <button type="button" data-mtab="music">♫ Music</button>
+    <button type="button" data-mtab="music">♫ YT Music</button>
   </div>
   <div class="mp-body">
+    <div class="yt-stage" id="ytStage"></div>
+    <div class="yt-now" id="ytNow">
+      <span class="yn-live" id="ytLiveBadge">Playing</span>
+      <b id="ytNowTitle">YouTube video</b>
+      <a class="yn-open" id="ytOpen" href="https://www.youtube.com/" target="_blank" rel="noopener" title="YouTube par kholein">↗</a>
+      <button type="button" class="yn-next" id="ytNext" title="Agla search result try karein" hidden>↻ Next</button>
+      <button type="button" class="yn-stop" id="ytStop">Stop</button>
+    </div>
     <div class="mp-pane on" id="mpPaneYt">
       <form class="mp-form" id="ytForm" autocomplete="off">
-        <input id="ytInput" placeholder="Song ka naam, YouTube link ya video ID" spellcheck="false" aria-label="Song name or YouTube link">
-        <button class="btn primary sm" type="submit">Play</button>
+        <input id="ytInput" placeholder="Search YouTube — song, artist ya link" spellcheck="false" aria-label="Search YouTube">
+        <button class="btn primary sm" type="submit">Search</button>
       </form>
-      <div class="mp-note">Song / artist ka naam likh ke <b>Play</b> — isi popup me video chalega. YouTube link ya video ID bhi paste kar sakte hain.</div>
-      <div class="yt-stage" id="ytStage"></div>
-      <div class="yt-now" id="ytNow">
-        <span class="yn-live" id="ytLiveBadge">Playing</span>
-        <b id="ytNowTitle">YouTube video</b>
-        <a class="yn-open" id="ytOpen" href="https://www.youtube.com/" target="_blank" rel="noopener" title="YouTube par kholein">↗</a>
-        <button type="button" class="yn-next" id="ytNext" title="Agla search result try karein" hidden>↻ Next</button>
-        <button type="button" class="yn-stop" id="ytStop">Stop</button>
+      <div class="yt-chips" id="ytChips">
+        <button type="button" class="yt-chip" data-ytq="trending music videos this week">Trending</button>
+        <button type="button" class="yt-chip" data-ytq="new punjabi songs 2026">Punjabi</button>
+        <button type="button" class="yt-chip" data-ytq="bollywood hits 2026">Bollywood</button>
+        <button type="button" class="yt-chip" data-ytq="lofi study beats">Lofi</button>
+        <button type="button" class="yt-chip" data-ytq="old hindi songs 90s">90s Gold</button>
+        <button type="button" class="yt-chip" data-ytq="jaipur news today">Jaipur</button>
+        <button type="button" class="yt-chip" data-ytq="comedy videos india">Comedy</button>
+        <button type="button" class="yt-chip" data-ytq="live news india">News Live</button>
       </div>
       <div class="mp-sec-head" id="ytResultsHead" hidden><b>Search results</b><span id="ytResultsCount"></span></div>
       <div class="yt-list" id="ytResults"></div>
@@ -16798,9 +16852,19 @@ try{
           <input id="songInput" placeholder="Song / artist — direct YouTube play" spellcheck="false" aria-label="Search a song on YouTube">
           <button class="btn primary sm" type="submit" id="songPlayBtn">▶ Play</button>
         </form>
-        <div class="mq-note">Link ki zaroorat nahi — naam likho, YouTube Music style results se song chunein. Video isi app me chalega.</div>
+        <div class="mq-note">Naam likho ya chip dabao — YT Music style list se song chuno. Video upar stage me chalenga.</div>
       </div>
-      <div class="mp-sec-head" id="songResultsHead" hidden><b>YouTube Music · in-app</b><span id="songResultsCount"></span></div>
+      <div class="yt-chips dark" id="songChips">
+        <button type="button" class="yt-chip" data-ytq="top bollywood songs">Bollywood</button>
+        <button type="button" class="yt-chip" data-ytq="arijit singh top songs">Arijit</button>
+        <button type="button" class="yt-chip" data-ytq="punjabi top songs 2026">Punjabi</button>
+        <button type="button" class="yt-chip" data-ytq="lofi chill songs">Lofi</button>
+        <button type="button" class="yt-chip" data-ytq="romantic hindi songs">Romance</button>
+        <button type="button" class="yt-chip" data-ytq="party dance songs hindi">Dance</button>
+        <button type="button" class="yt-chip" data-ytq="90s hindi hits">90s</button>
+        <button type="button" class="yt-chip" data-ytq="ghazal jagjit singh">Ghazal</button>
+      </div>
+      <div class="mp-sec-head" id="songResultsHead" hidden><b>YT Music · in-app</b><span id="songResultsCount"></span></div>
       <div class="yt-list" id="songResults"></div>
       <div class="music-now">
         <div class="music-eq paused" id="musicEq"><i></i><i></i><i></i><i></i></div>
@@ -16808,19 +16872,13 @@ try{
         <button type="button" class="music-play" id="musicToggle" aria-label="Play music">▶</button>
       </div>
       <div class="music-vol"><span>🔈</span><input type="range" id="musicVol" min="0" max="100" value="75" aria-label="Volume"><b id="musicVolTxt">75%</b></div>
-      <div class="mp-sec-head"><b>Music apps</b><span>Sab kuch isi app me</span></div>
+      <div class="mp-sec-head"><b>Full apps</b><span>Side window · login ek baar</span></div>
       <div class="mp-apps" id="musicApps">
-        <button type="button" class="mp-app" data-ytpopup="music">
-          <b>YT Music ↗</b><span>Full app window</span>
+        <button type="button" class="mp-app bigapp" data-ytpopup="video">
+          <span class="mpapp-ico yt">▶</span><b>YouTube</b><span>Full app window</span>
         </button>
-        <button type="button" class="mp-app" data-ytpopup="video">
-          <b>YouTube ↗</b><span>Full app window</span>
-        </button>
-        <button type="button" class="mp-app" data-ytmode="music">
-          <b>YouTube Music</b><span>In-app search</span>
-        </button>
-        <button type="button" class="mp-app" data-ytmode="yt">
-          <b>YouTube</b><span>In-app search &amp; play</span>
+        <button type="button" class="mp-app bigapp" data-ytpopup="music">
+          <span class="mpapp-ico ytm">♫</span><b>YT Music</b><span>Full app window</span>
         </button>
       </div>
       <div class="mp-sec-head"><b>Live ad-free radio</b><span>No ads · instant</span></div>
@@ -31984,6 +32042,7 @@ function initMedia(){
     $$('#mpTabs [data-mtab]').forEach(b => b.classList.toggle('on', b.dataset.mtab === currentTab));
     $('#mpPaneYt').classList.toggle('on', currentTab === 'yt');
     $('#mpPaneMusic').classList.toggle('on', currentTab === 'music');
+    if(pop) pop.classList.toggle('musicmode', currentTab === 'music');
   }
 
   let songBusy = false;
@@ -32039,7 +32098,7 @@ function initMedia(){
     }catch(e){}
     return [];
   }
-  async function playSongByName(raw){
+  async function playSongByName(raw, opts){
     const q = String(raw || '').trim();
     if(!q) return toast('Song ya artist ka naam likhein', true);
     if(songBusy) return;
@@ -32055,9 +32114,8 @@ function initMedia(){
       ytQueueIndex = 0;
       ytQueueQuery = q;
       renderYtResults();
-      setTab('yt');
       playYouTube(found[0].id, found[0].title, { fromQueue:true });
-      toast('▶ ' + q + ' — ' + found.length + ' results');
+      if(!(opts && opts.silent)) toast('▶ ' + q + ' — ' + found.length + ' results');
     }catch(err){
       console.warn('BCS song search failed', err);
       toast('Search nahi hua — internet check karein, ya YouTube link / video ID paste karein', true);
@@ -32091,6 +32149,8 @@ function initMedia(){
     paintFab();
   }
 
+  const ytHomeFeeds = { yt: 'trending music videos this week', music: 'top bollywood songs' };
+  const ytHomeDone = { yt: false, music: false };
   function openPop(tab){
     closeWebMusic();
     pop.classList.add('on');
@@ -32098,6 +32158,11 @@ function initMedia(){
     pop.setAttribute('aria-hidden', 'false');
     mini.setAttribute('aria-hidden', 'true');
     if(tab) setTab(tab);
+    /* Home feed — interface khali na lage, ek hi baar per session */
+    if(!ytHomeDone[currentTab] && !ytResults.length){
+      ytHomeDone[currentTab] = true;
+      playSongByName(ytHomeFeeds[currentTab], { silent:true });
+    }
     paintFab();
   }
 
@@ -32296,6 +32361,12 @@ function initMedia(){
     playSongByName(q);
     $('#songInput').value = '';
   });
+  /* quick-search chips — YouTube + YT Music */
+  $$('#ytChips [data-ytq], #songChips [data-ytq]').forEach(b => b.addEventListener('click', () => {
+    b.parentElement.querySelectorAll('[data-ytq]').forEach(x => x.classList.toggle('on', x === b));
+    setTab(b.closest('.yt-chips').classList.contains('dark') ? 'music' : 'yt');
+    playSongByName(b.dataset.ytq);
+  }));
   if($('#musicApps')) $('#musicApps').addEventListener('click', e => {
     const popBtn = e.target.closest('[data-ytpopup]');
     if(popBtn){
