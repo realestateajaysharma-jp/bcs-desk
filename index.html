@@ -978,6 +978,7 @@ body.advisor-mode #devProfileAddProject,
 body.advisor-mode #devProfileEdit,
 body.advisor-mode #devProfileDelete,
 body.advisor-mode #advProfileEdit,
+body.advisor-mode #advProfileAccessBtn,
 body.advisor-mode #advProfileDelete,
 body.advisor-mode #clientProfileDelete,
 body.advisor-mode #rDelete,
@@ -14497,6 +14498,37 @@ body[data-theme="dark"] .pipe-col{background:color-mix(in srgb,var(--panel) 40%,
 .visit-stop .acts button:hover{background:color-mix(in srgb,var(--acc) 10%,var(--panel))}
 @media (max-width:640px){ .ms-row{grid-template-columns:1fr 1fr} .ms-row .ms-lab{grid-column:1/-1} .visit-stop{grid-template-columns:auto 1fr} .visit-stop .acts{flex-direction:row} }
 </style>
+<style id="bcs-advisor-portal-css">
+/* Advisor portal: focused nav + access modal */
+.bcs-role-hidden{display:none !important}
+/* nav tabs carry high-specificity display:flex !important rules — win decisively */
+html body #nav#nav > button.bcs-role-hidden,
+html body #navMorePanel#navMorePanel > button.bcs-role-hidden{display:none !important}
+body.advisor-mode #heroAddProjectBtn,
+body.advisor-mode .hero-actions [data-goto="advisory"],
+body.advisor-mode #addActiveAdvisorBtn,
+body.advisor-mode #leadImportBtn,
+body.advisor-mode #onboardCard,
+body.advisor-mode #navMorePanel .nav-more-head span,
+body.advisor-mode #backupChipBtn,
+body.advisor-mode .hero-stat[data-goto="advisors"]{display:none !important}
+.portal-block{border:1px solid color-mix(in srgb,var(--acc) 26%,transparent);background:color-mix(in srgb,var(--acc) 5%,var(--panel))}
+.portal-line{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:4px}
+.portal-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border-radius:999px;border:1px solid var(--line);background:var(--panel);font-size:11px;color:var(--ink2)}
+.portal-pill b{color:var(--ink);font-weight:800}
+.portal-pill.ok{border-color:color-mix(in srgb,#2F8F6B 45%,transparent);color:#2F8F6B}
+.portal-pill.off{border-color:color-mix(in srgb,#B0452F 45%,transparent);color:#B0452F}
+.adv-assign-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.adv-assign-wrap .btn{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.access-hero{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,var(--acc) 7%,var(--panel));border:1px solid color-mix(in srgb,var(--acc) 22%,transparent);margin-bottom:16px}
+.access-avatar{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--acc),color-mix(in srgb,var(--acc) 60%,#000));flex:0 0 auto}
+.access-hero h4{margin:0;font-size:16px}
+.access-hero .role{font-size:11px;color:var(--mut);margin-top:2px}
+.access-hero .status-pill{margin-left:auto}
+.access-row{display:flex;gap:6px;align-items:center}
+.access-row input{flex:1;min-width:0}
+@media (max-width:560px){.access-row{flex-wrap:wrap}.access-row input{flex:1 1 100%}}
+</style>
 </head>
 <body class="locked">
 
@@ -14535,7 +14567,7 @@ body[data-theme="dark"] .pipe-col{background:color-mix(in srgb,var(--panel) 40%,
     </div>
     <div class="lock-kicker">Private advisory desk</div>
     <h2>Welcome back,<br><em>Ajay.</em></h2>
-    <p class="lock-sub">Admin sees the whole desk. Advisor login shows only assigned developers, projects and clients — nothing else.</p>
+    <p class="lock-sub">Admin sees the whole desk. Each advisor gets a private portal ID and password — assigned projects, clients and payouts only.</p>
     <div class="lock-roles" id="lockRoles">
       <button type="button" class="on" data-lockrole="admin">Admin desk</button>
       <button type="button" data-lockrole="advisor">Advisor login</button>
@@ -14550,11 +14582,11 @@ body[data-theme="dark"] .pipe-col{background:color-mix(in srgb,var(--panel) 40%,
       <div class="lock-form-block" id="lockAdvisorBlock">
         <label for="lockAdvisor">Advisor</label>
         <select id="lockAdvisor" class="lock-select"></select>
-        <label for="lockAdvisorPass">Advisor password (common)</label>
+        <label for="lockAdvisorPass">Advisor portal password</label>
         <div class="lock-input">
-          <input id="lockAdvisorPass" type="password" inputmode="numeric" maxlength="6" placeholder="••••" autocomplete="current-password" aria-label="Common advisor password">
+          <input id="lockAdvisorPass" type="password" maxlength="24" placeholder="••••••" autocomplete="current-password" aria-label="Advisor portal password">
         </div>
-        <div class="lock-hint">Sab advisors ke liye ek hi password: <b>1111</b>. Advisor select karenge to sirf unka assigned data dikhega.</div>
+        <div class="lock-hint" id="lockAdvisorIdHint">Admin se apna portal ID aur password lein. Login ke baad sirf assigned projects, clients aur payouts dikhenge.</div>
       </div>
       <button type="submit" class="btn primary" id="lockSubmit" style="width:100%;margin-top:10px;justify-content:center">Unlock desk →</button>
       <div class="lock-err" id="lockErr"></div>
@@ -14564,59 +14596,10 @@ body[data-theme="dark"] .pipe-col{background:color-mix(in srgb,var(--panel) 40%,
       <div><b>Ajay Sharma</b><span>Administrator · BCS</span></div>
       <span class="lock-secure">Local only</span>
     </div>
-    <p class="lock-note">Privacy view, not encryption — data stays on this device. Admin password 5794 · advisor password 1111.</p>
+    <p class="lock-note">Privacy view, not encryption. Admin password 5794 · advisors log in with the portal ID + password set by admin.</p>
   </div>
 </div>
 <script>
-(function(){
-  try{
-    var ROLE='admin', AUTH='bcs_auth_v1';
-    function $(s){ return document.querySelector(s); }
-    function $$(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); }
-    function err(m){ var e=$('#lockErr'); if(e){ e.textContent=m; } var c=$('#lockCard'); if(c){ c.classList.remove('shake'); void c.offsetWidth; c.classList.add('shake'); } }
-    function setRole(r){
-      ROLE=r==='advisor'?'advisor':'admin';
-      $$('#lockRoles button').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-lockrole')===ROLE); });
-      $('#lockAdminBlock').classList.toggle('on', ROLE==='admin');
-      $('#lockAdvisorBlock').classList.toggle('on', ROLE==='advisor');
-      $('#lockSubmit').textContent=ROLE==='admin'?'Unlock admin desk →':'Enter advisor view →';
-      $('#lockErr').textContent='';
-    }
-    function advisorList(){
-      try{ var raw=localStorage.getItem('bcs_db_v1'); if(!raw) return []; var db=JSON.parse(raw); return (db.advisors||[]).filter(function(a){ return a.status!=='inactive'; }); }catch(e){ return []; }
-    }
-    function fillAdvisor(){
-      var sel=$('#lockAdvisor'); if(!sel) return;
-      var list=advisorList();
-      sel.innerHTML=list.length?list.map(function(a){ return '<option value="'+a.id+'">'+(a.name||'Advisor')+'</option>'; }).join(''):'<option value="">No active advisor</option>';
-    }
-    function unlock(){
-      try{ sessionStorage.setItem(AUTH, JSON.stringify({role:ROLE, advisorId: ROLE==='advisor' ? ($('#lockAdvisor')||{}).value : undefined })); }catch(e){}
-      try{ if(typeof window.render==='function') window.render(); }catch(e){}
-      var ls=$('#lockScreen'); if(ls) ls.classList.remove('on');
-      document.body.classList.remove('locked');
-    }
-    var form=$('#lockForm');
-    if(form){
-      $$('#lockRoles button').forEach(function(b){ b.addEventListener('click', function(){ setRole(b.getAttribute('data-lockrole')); if(ROLE==='advisor') fillAdvisor(); }); });
-      form.addEventListener('submit', function(ev){
-        ev.preventDefault();
-        if(window.__bcsLockWired){ return; }
-        if(ROLE==='admin'){
-          var v=($('#lockPass')||{}).value||'';
-          if(String(v).trim()==='5794'){ unlock(); } else { err('Galat password — dobara try karein.'); }
-          return;
-        }
-        var v2=($('#lockAdvisorPass')||{}).value||'';
-        if(String(v2).trim()!=='1111'){ err('Galat advisor password — common password 1111 hai.'); return; }
-        var id=($('#lockAdvisor')||{}).value||'';
-        if(!id){ err('Ek active advisor select karo.'); return; }
-        unlock();
-      });
-      fillAdvisor();
-    }
-  }catch(e){}
-})();
 
 /* BCS UI polish — motion & ripple (non-breaking) */
 try{
@@ -17731,8 +17714,20 @@ try{
       </div>
       <div class="grid2">
         <div class="field"><label>Default commission (%)</label><input id="aCommission" type="number" min="0" step="0.05" placeholder="e.g. 1.5"></div>
-        <div class="field"><label>Login access</label>
-          <div class="transfer-warn" style="margin-top:0">Sab advisors ke liye common password <b>1111</b>. Sirf <b>Active BCS advisor</b> status wale login kar sakte hain. Prospect / agreed abhi login nahi karega.</div>
+        <div class="field"><label>Portal login ID</label>
+          <input id="aPortalId" placeholder="auto from name — e.g. rakesh-sharma" autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Portal password</label>
+          <div style="display:flex;gap:6px">
+            <input id="aPortalPass" placeholder="blank = auto 4-digit PIN" autocomplete="new-password" spellcheck="false" style="flex:1">
+            <button type="button" class="btn ghost sm" id="aPortalGen" title="Generate a fresh 4-digit PIN">Generate</button>
+          </div>
+        </div>
+        <div class="field"><label>Portal access</label>
+          <label class="chk-row" style="margin-top:0"><input type="checkbox" id="aPortalEnabled"><span>Advisor can log in</span></label>
+          <div class="lock-hint" style="margin-top:6px">Login ID + password se advisor apna portal kholega — sirf assigned projects/clients dikhenge. Admin kabhi bhi password reset kar sakta hai.</div>
         </div>
       </div>
       <div class="field"><label>Roads / corridors handled</label><div class="checks" id="aCorridors"></div></div>
@@ -17763,10 +17758,59 @@ try{
     <div class="modal-body" id="advisorProfileBody"></div>
     <div class="modal-foot">
       <button class="btn danger" id="advProfileDelete" style="margin-right:auto">Delete</button>
+      <button class="btn ghost sm" id="advProfileAccessBtn" title="Advisor ka portal ID, password aur assigned projects">🔑 Portal access</button>
       <button class="btn ghost sm" id="advProfileShareBtn" title="Advisor ko unki desk page bhejein">🔗 Advisor page</button>
       <button class="btn ghost sm" id="advProfilePayoutBtn" title="Date range ka payout statement PDF">📄 Payout statement</button>
       <button class="btn ghost" data-close="advisorProfileModal">Close</button>
       <button class="btn primary" id="advProfileEdit">Edit advisor</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ADVISOR PORTAL ACCESS ============ -->
+<div class="overlay" id="advisorAccessModal">
+  <div class="modal" style="width:min(520px,100%)">
+    <div class="modal-head">
+      <h3>Advisor portal access</h3>
+      <button class="xbtn" data-close="advisorAccessModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="access-hero">
+        <div class="access-avatar" id="aaAvatar">AS</div>
+        <div style="min-width:0">
+          <h4 id="aaName">Advisor</h4>
+          <div class="role" id="aaMeta">Private portal</div>
+        </div>
+        <span class="status-pill status-booked" id="aaState">Active</span>
+      </div>
+      <div class="field">
+        <label>Portal login ID</label>
+        <div class="access-row"><input id="aaPortalId" readonly><button type="button" class="btn ghost sm" id="aaCopyId">Copy</button></div>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <div class="access-row">
+          <input id="aaPortalPass" type="password" readonly autocomplete="off">
+          <button type="button" class="btn ghost sm" id="aaTogglePass">Show</button>
+          <button type="button" class="btn ghost sm" id="aaCopyPass">Copy</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>Direct login link</label>
+        <div class="access-row"><input id="aaPortalLink" readonly><button type="button" class="btn ghost sm" id="aaCopyLink">Copy</button></div>
+      </div>
+      <label class="chk-row" style="margin:2px 0 12px"><input type="checkbox" id="aaEnabled"><span>Portal access enabled</span></label>
+      <div class="field">
+        <label>Assigned projects <span style="font-size:10px;color:var(--mut)">(tick = visible in advisor portal)</span></label>
+        <div class="pick-list" id="aaProjects"></div>
+      </div>
+      <div class="lock-hint">Advisor ko yeh ID + password bhejein. Wo lock screen par “Advisor login” chun kar enter karega. Sirf tick kiye projects, unke developers, assigned clients, bookings aur payouts dikhenge.</div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn danger" id="aaReset" style="margin-right:auto">Reset password</button>
+      <button class="btn ghost" id="aaShare">WhatsApp share</button>
+      <button class="btn ghost" data-close="advisorAccessModal">Close</button>
+      <button class="btn primary" id="aaSave">Save access</button>
     </div>
   </div>
 </div>
@@ -18913,6 +18957,7 @@ const ADMIN_NAME = 'Ajay Sharma';
 const ADMIN_PASSWORD = '5794';
 const ADVISOR_PASSWORD = '1111';
 const AUTH_KEY = 'bcs_auth_v1';
+const ADVISOR_VIEWS = ['dashboard','projects','developers','clients','dayplan','inventory','advisors','resale','analytics','calc','links'];
 const DEFAULT_CLIENT_STATUSES = [
   { id:'new',         label:'New lead' },
   { id:'contacted',   label:'Contacted' },
@@ -19376,6 +19421,36 @@ window.addEventListener('pagehide', forceSave);
 window.addEventListener('visibilitychange', () => {
   if(document.visibilityState === 'hidden') forceSave();
 });
+/* ---------- advisor portal identity (login ID + password) ---------- */
+function bcsPortalSlug(name){
+  return String(name || 'advisor').toLowerCase().normalize('NFKD')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 28) || 'advisor';
+}
+function bcsMakePortalId(name, taken){
+  const base = bcsPortalSlug(name);
+  let id = base, n = 2;
+  while(taken && taken.has(id)) id = base + '-' + (n++);
+  if(taken) taken.add(id);
+  return id;
+}
+function bcsMakeAdvisorPin(){
+  let s = '';
+  for(let i = 0; i < 4; i++) s += Math.floor(Math.random() * 10);
+  return s;
+}
+function bcsAdvisorLoginUrl(a){
+  try{
+    const u = new URL(location.href);
+    u.search = '';
+    u.hash = '';
+    u.searchParams.set('advisor', a.portalId || a.id);
+    return u.toString();
+  }catch(e){ return (location.origin + location.pathname) + '?advisor=' + encodeURIComponent(a.portalId || a.id); }
+}
+function bcsAdvisorAccessOn(a){
+  return !!a && a.status === 'active' && a.portalEnabled !== false;
+}
+
 function normalizeDb(d){
   /* ---- BCS OPS: plot inventory + advisory pipeline defaults ---- */
   if(!Array.isArray(d.plots)) d.plots = [];
@@ -19579,7 +19654,35 @@ function normalizeDb(d){
     if(a.lastContact == null) a.lastContact = '';
     if(!DEFAULT_ADVISOR_STATUSES.some(s => s.id === a.status)) a.status = a.active === false ? 'inactive' : 'active';
     a.active = a.status === 'active';
+    if(a.portalId == null) a.portalId = '';
+    if(a.portalPass == null) a.portalPass = '';
+    if(typeof a.portalEnabled !== 'boolean') a.portalEnabled = a.status === 'active';
+    if(a.lastLoginAt == null) a.lastLoginAt = 0;
   });
+  /* unique, stable portal IDs for every advisor (safe for old data) */
+  (function(){
+    const taken = new Set();
+    d.advisors.forEach(a => {
+      let id = String(a.portalId || '').trim().toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '');
+      if(!id) id = bcsMakePortalId(a.name, taken);
+      else {
+        let base = id, n = 2;
+        while(taken.has(id)) id = base + '-' + (n++);
+        taken.add(id);
+      }
+      a.portalId = id;
+    });
+    /* every advisor gets a private 4-digit portal PIN — no shared default.
+       Admin can see and reset it from Advisors → Portal access. */
+    const usedPins = new Set(d.advisors.map(a => String(a.portalPass || '').trim()).filter(Boolean));
+    d.advisors.forEach(a => {
+      if(a.portalPass) return;
+      let pin;
+      do { pin = bcsMakeAdvisorPin(); } while(usedPins.has(pin));
+      usedPins.add(pin);
+      a.portalPass = pin;
+    });
+  })();
   d.clients.forEach(c => {
     if(!Array.isArray(c.types)) c.types = [];
     if(!Array.isArray(c.corridors)) c.corridors = [];
@@ -20024,7 +20127,7 @@ function normalizeDb(d){
       };
     }).filter(c => c.label);
   });
-  if(!d.version || d.version < 11) d.version = 11;
+  if(!d.version || d.version < 12) d.version = 12;
   return d;
 }
 function save(){
@@ -20889,6 +20992,10 @@ function bcsNavMoreSync(){
 }
 function bcsNavMoreClose(){ try{ const p = $('#navMorePanel'); if(p){ p.hidden = true; } const mb = $('#navMoreBtn'); if(mb) mb.setAttribute('aria-expanded','false'); }catch(e){} }
 function go(view){
+  if(!isAdmin() && !ADVISOR_VIEWS.includes(view)){
+    try{ toast('Advisor portal me ye page available nahi hai', true); }catch(e){}
+    return;
+  }
   try{ bcsSound('nav'); }catch(e){}
   try{ setTimeout(function(){ if(view === 'analytics') bcsAnimateBars(document); }, 60); }catch(e){}
   currentView = view; bcsNavMoreClose();
@@ -20924,7 +21031,12 @@ document.body.addEventListener('click', e => {
 function renderDashboard(){
   const projects = scopedProjects(), devs = scopedDevelopers(), clients = scopedClients();
   const advisors = isAdmin() ? db.advisors : [currentAdvisor()].filter(Boolean);
-  if($('#dashEyebrow')) $('#dashEyebrow').textContent = `BCS · Jaipur portfolio · ${db.corridors.length} road corridors`;
+  if($('#dashEyebrow')){
+    const me = currentAdvisor();
+    $('#dashEyebrow').textContent = isAdmin()
+      ? `BCS · Jaipur portfolio · ${db.corridors.length} road corridors`
+      : `Advisor portal · ${me ? me.name : 'Advisor'} · ${projects.length} assigned project${projects.length === 1 ? '' : 's'} · ${clients.length} client${clients.length === 1 ? '' : 's'}`;
+  }
   $('#statDevs').textContent = devs.length;
   $('#statProjects').textContent = projects.length;
   $('#statAdvisors').textContent = advisors.filter(a => a.status === 'active').length;
@@ -24144,10 +24256,41 @@ function initAdvisorControls(){
     const del = e.target.closest('[data-activedel]');
     if(del) return deleteAdvisor(del.dataset.activedel);
   });
+  if($('#aPortalGen')) $('#aPortalGen').addEventListener('click', () => {
+    $('#aPortalPass').value = bcsMakeAdvisorPin();
+    $('#aPortalPass').type = 'text';
+    toast('New PIN ready — “Save advisor” dabayein');
+  });
+  if($('#aStatus')) $('#aStatus').addEventListener('change', () => {
+    if(!$('#aPortalEnabled')) return;
+    $('#aPortalEnabled').checked = $('#aStatus').value === 'active';
+  });
   $('#aSave').addEventListener('click', saveAdvisor);
   $('#aDelete').addEventListener('click', () => { if(editingAdvisor) deleteAdvisor(editingAdvisor.id); });
   $('#aDropWrap').classList.add('advisor-drop');
   $('#advProfileEdit').addEventListener('click', () => { if(advisorProfileId) openAdvisor(advisorProfileId); });
+  if($('#advProfileAccessBtn')) $('#advProfileAccessBtn').addEventListener('click', () => { if(advisorProfileId) renderAdvisorAccess(advisorProfileId); });
+  if($('#aaSave')) $('#aaSave').addEventListener('click', saveAdvisorAccess);
+  if($('#aaReset')) $('#aaReset').addEventListener('click', resetAdvisorAccess);
+  if($('#aaShare')) $('#aaShare').addEventListener('click', shareAdvisorAccess);
+  if($('#aaTogglePass')) $('#aaTogglePass').addEventListener('click', () => {
+    const i = $('#aaPortalPass');
+    const show = i.type === 'password';
+    i.type = show ? 'text' : 'password';
+    $('#aaTogglePass').textContent = show ? 'Hide' : 'Show';
+  });
+  if($('#aaCopyId')) $('#aaCopyId').addEventListener('click', async () => {
+    const ok = await copyText($('#aaPortalId').value, 'Login ID copied ✓');
+    if(!ok) toast('Copy failed', true);
+  });
+  if($('#aaCopyPass')) $('#aaCopyPass').addEventListener('click', async () => {
+    const ok = await copyText($('#aaPortalPass').value, 'Password copied ✓');
+    if(!ok) toast('Copy failed', true);
+  });
+  if($('#aaCopyLink')) $('#aaCopyLink').addEventListener('click', async () => {
+    const ok = await copyText($('#aaPortalLink').value, 'Login link copied ✓');
+    if(!ok) toast('Copy failed', true);
+  });
   $('#advProfileDelete').addEventListener('click', () => { if(advisorProfileId) deleteAdvisor(advisorProfileId); });
 
   /* ---------- advisor payout statement ---------- */
@@ -24432,6 +24575,22 @@ function initAdvisorControls(){
     try{ if(window.__bcsArmMotion) window.__bcsArmMotion(); }catch(e){}
   });
   $('#advisorProfileBody').addEventListener('click', e => {
+    const acc = e.target.closest('[data-advaccess]');
+    if(acc){ renderAdvisorAccess(acc.dataset.advaccess); return; }
+    const tp = e.target.closest('[data-advtoggleproj]');
+    if(tp){
+      const a = advisor(advisorProfileId);
+      if(!a) return;
+      const pid = tp.dataset.advtoggleproj;
+      a.projectIds = Array.isArray(a.projectIds) ? a.projectIds : [];
+      const on = a.projectIds.includes(pid);
+      a.projectIds = on ? a.projectIds.filter(x => x !== pid) : [...a.projectIds, pid];
+      a.updatedAt = Date.now();
+      save(); renderAdvisors(); renderAdvisorProfile();
+      const pr = db.projects.find(x => x.id === pid);
+      toast((on ? 'Removed ' : 'Assigned ') + (pr ? pr.name : 'project') + (on ? ' from portal' : ' to portal'));
+      return;
+    }
     const p = e.target.closest('[data-advproj]');
     if(p) return openDetail(p.dataset.advproj);
     const c = e.target.closest('[data-advclient]');
@@ -24593,6 +24752,7 @@ function renderAdvisors(){
     const fu = followupInfo(a.nextFollowUp);
     return `<article class="advisor-card ${a.status === 'inactive' ? 'advisor-inactive' : ''}" data-advopen="${a.id}">
       ${isAdmin() ? `<div class="card-actions">
+        <button data-advaccess="${a.id}" title="Portal access">🔑</button>
         <button data-advedit="${a.id}" title="Edit advisor">✎</button>
         <button class="del" data-advdel="${a.id}" title="Delete advisor">✕</button>
       </div>` : ''}
@@ -24604,6 +24764,7 @@ function renderAdvisors(){
         </div>
       </div>
       <div class="adv-group">${a.groupName ? `<span class="gname">👥 ${esc(a.groupName)}</span>` : ''}${+a.teamSize ? `<span>${esc(a.teamSize)} team</span>` : ''}${advisorStatusPill(a)}</div>
+      ${isAdmin() ? `<div class="portal-line" style="margin:7px 0 2px"><span class="portal-pill ${bcsAdvisorAccessOn(a) ? 'ok' : 'off'}">🔑 ${esc(a.portalId || 'no portal')}</span><span class="portal-pill">${a.portalEnabled ? 'Login on' : 'Login off'}</span></div>` : ''}
       <div class="corr-chips">${advisorRoadIds(a).length ? advisorRoadIds(a).map(id => { const c = corridor(id); return `<button type="button" class="corridor-chip road-chip" data-advcroad="${id}" title="Open ${esc(c.name)} road hub"><span class="cor-dot" style="background:${c.color}"></span>${esc(c.name)}</button>`; }).join('') : `<span class="corridor-chip">No corridor set</span>`}</div>
       ${rate ? `<div class="adv-slab-rate"><span>₹${rate.toLocaleString('en-IN')} <small>/ sq yd slab</small></span>${a.commissionPct ? `<small>${esc(a.commissionPct)}% comm.</small>` : ''}</div>` : ''}
       ${a.slab ? `<div class="slab">${esc(a.slab)}</div>` : ''}
@@ -24618,11 +24779,75 @@ function renderAdvisors(){
   $$('#advisorGrid [data-advopen]').forEach(card => card.addEventListener('click', e => {
     const road = e.target.closest('[data-advcroad]');
     if(road){ e.stopPropagation(); openRoadHub(road.dataset.advcroad); return; }
+    if(e.target.closest('[data-advaccess]')){ renderAdvisorAccess(card.dataset.advopen); return; }
     if(e.target.closest('[data-advedit]')){ openAdvisor(card.dataset.advopen); return; }
     if(e.target.closest('[data-advdel]')) return;
     openAdvisorProfile(card.dataset.advopen);
   }));
   $$('#advisorGrid [data-advdel]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); deleteAdvisor(b.dataset.advdel); }));
+}
+
+/* ---------- advisor portal access (admin) ---------- */
+let advisorAccessId = null;
+function renderAdvisorAccess(id){
+  if(!isAdmin()) return toast('Portal access sirf admin ke paas hai', true);
+  const a = advisor(id);
+  if(!a) return;
+  advisorAccessId = id;
+  $('#aaName').textContent = a.name || 'Advisor';
+  $('#aaMeta').textContent = (a.groupName || 'Private portal') + (a.phone ? ' · ' + a.phone : (a.email ? ' · ' + a.email : ''));
+  $('#aaAvatar').textContent = initial(a.name || 'A');
+  $('#aaState').textContent = bcsAdvisorAccessOn(a) ? 'Portal active' : (a.status === 'active' ? 'Portal disabled' : 'Not active');
+  $('#aaState').className = 'status-pill ' + (bcsAdvisorAccessOn(a) ? 'status-booked' : 'status-lost');
+  $('#aaPortalId').value = a.portalId || '';
+  $('#aaPortalPass').value = a.portalPass || '';
+  $('#aaPortalPass').type = 'password';
+  $('#aaTogglePass').textContent = 'Show';
+  $('#aaPortalLink').value = bcsAdvisorLoginUrl(a);
+  $('#aaEnabled').checked = a.portalEnabled !== false;
+  $('#aaProjects').innerHTML = db.projects.length
+    ? db.projects.map(p => {
+        const d = dev(p.developerId);
+        return `<label><input type="checkbox" value="${p.id}" ${(a.projectIds || []).includes(p.id) ? 'checked' : ''}><span>${esc(p.name)}</span><span class="sub">${esc(d ? d.name : (corridor(p.corridor) || {}).name || '')}</span></label>`;
+      }).join('')
+    : '<div class="mini-empty">No projects yet — add a project first, then assign it here.</div>';
+  showOverlay('advisorAccessModal');
+}
+function saveAdvisorAccess(){
+  if(!isAdmin()) return toast('Portal access sirf admin ke paas hai', true);
+  const a = advisor(advisorAccessId);
+  if(!a) return;
+  a.portalEnabled = $('#aaEnabled').checked;
+  a.projectIds = readProjectPicker('#aaProjects');
+  a.updatedAt = Date.now();
+  save();
+  renderAdvisors();
+  if(advisorProfileId) renderAdvisorProfile();
+  closeModal('advisorAccessModal');
+  toast(a.portalEnabled ? 'Portal access saved — advisor can log in' : 'Portal access disabled');
+}
+function resetAdvisorAccess(){
+  if(!isAdmin()) return toast('Password sirf admin reset kar sakta hai', true);
+  const a = advisor(advisorAccessId);
+  if(!a) return;
+  if(!confirm(`Reset portal password for "${a.name}"?\n\nPurana password turant band ho jayega.`)) return;
+  a.portalPass = bcsMakeAdvisorPin();
+  a.updatedAt = Date.now();
+  save();
+  $('#aaPortalPass').value = a.portalPass;
+  $('#aaPortalPass').type = 'text';
+  $('#aaTogglePass').textContent = 'Hide';
+  renderAdvisors();
+  if(advisorProfileId) renderAdvisorProfile();
+  toast('New password: ' + a.portalPass + ' — advisor ko bhejein');
+}
+function shareAdvisorAccess(){
+  if(!isAdmin()) return toast('Portal access sirf admin ke paas hai', true);
+  const a = advisor(advisorAccessId);
+  if(!a) return;
+  const msg = `BCS Advisor Portal\n\nAdvisor: ${a.name}\nLogin ID: ${a.portalId}\nPassword: ${a.portalPass}\nOpen: ${bcsAdvisorLoginUrl(a)}\n\nLock screen par “Advisor login” chunein — sirf aapke assigned projects aur clients dikhenge.`;
+  const base = (typeof waLink === 'function' ? waLink(a.phone) : '') || 'https://wa.me/';
+  window.open(base + (base.includes('?') ? '&' : '?') + 'text=' + encodeURIComponent(msg), '_blank', 'noopener');
 }
 
 function openAdvisor(id, presetStatus, presetCorridors){
@@ -24651,6 +24876,9 @@ function openAdvisor(id, presetStatus, presetCorridors){
   }
   rateSel.value = rateVal;
   $('#aCommission').value = a.commissionPct ?? '';
+  if($('#aPortalId')) $('#aPortalId').value = a.portalId || '';
+  if($('#aPortalPass')) $('#aPortalPass').value = a.portalPass || '';
+  if($('#aPortalEnabled')) $('#aPortalEnabled').checked = a.portalEnabled !== false;
   $('#aSlab').value = a.slab || '';
   $('#aNotes').value = a.notes || '';
   renderCustomFields('#aCustomFields', 'advisor', a.custom || {});
@@ -24665,9 +24893,22 @@ function openAdvisor(id, presetStatus, presetCorridors){
 
 function saveAdvisor(){
   if(!isAdmin()) return toast('Advisor login se edit nahi hota', true);
+  const wasNew = !editingAdvisor;
   const name = $('#aName').value.trim();
   if(!name) return toast('Advisor ka naam required hai', true);
   const status = $('#aStatus') ? ($('#aStatus').value || 'prospect') : 'prospect';
+  const takenPortals = new Set(db.advisors.filter(x => !editingAdvisor || x.id !== editingAdvisor.id).map(x => x.portalId).filter(Boolean));
+  let portalId = String($('#aPortalId') ? $('#aPortalId').value : '').trim().toLowerCase()
+    .replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '');
+  if(!portalId){ portalId = bcsMakePortalId(name, takenPortals); }
+  else {
+    const base = portalId; let n = 2;
+    while(takenPortals.has(portalId)) portalId = base + '-' + (n++);
+    takenPortals.add(portalId);
+  }
+  let portalPass = String($('#aPortalPass') ? $('#aPortalPass').value : '').trim();
+  if(!portalPass) portalPass = (editingAdvisor && editingAdvisor.portalPass) ? editingAdvisor.portalPass : bcsMakeAdvisorPin();
+  const portalEnabled = status === 'active' && ($('#aPortalEnabled') ? $('#aPortalEnabled').checked : true);
   const payload = {
     name,
     phone: $('#aPhone').value.trim(),
@@ -24688,15 +24929,30 @@ function saveAdvisor(){
     commissionPct: number($('#aCommission').value) ?? 0,
     corridors: $$('#aCorridors input:checked').map(i => i.value),
     projectIds: readProjectPicker('#aProjects'),
+    portalId,
+    portalPass,
+    portalEnabled,
     custom: cfPayload(editingAdvisor, '#aCustomFields'),
   };
-  if(editingAdvisor){ Object.assign(editingAdvisor, payload); editingAdvisor.updatedAt = Date.now(); toast('Advisor updated'); }
-  else { db.advisors.push({ id:uid(), createdAt:Date.now(), updatedAt:Date.now(), ...payload }); toast(status === 'active' ? 'Active BCS advisor added' : 'Advisor added to pipeline'); }
+  let savedAdvisor;
+  if(editingAdvisor){
+    Object.assign(editingAdvisor, payload);
+    editingAdvisor.updatedAt = Date.now();
+    savedAdvisor = editingAdvisor;
+    toast('Advisor updated');
+  } else {
+    savedAdvisor = { id:uid(), createdAt:Date.now(), updatedAt:Date.now(), ...payload };
+    db.advisors.push(savedAdvisor);
+    toast(status === 'active' ? 'Active BCS advisor added' : 'Advisor added to pipeline');
+  }
   save();
   closeModal('advisorModal');
   render();
   if(advisorProfileId) renderAdvisorProfile();
   renderAdvisors();
+  if(wasNew && savedAdvisor && savedAdvisor.portalEnabled){
+    setTimeout(() => { try{ renderAdvisorAccess(savedAdvisor.id); }catch(e){} }, 180);
+  }
 }
 
 function deleteAdvisor(id){
@@ -24778,6 +25034,23 @@ function renderAdvisorProfile(){
       <div><div class="k">Project value</div><div class="v" style="font-size:11.5px">${esc(priceRangeOf(ps))}</div></div>
       <div><div class="k">Booking deals</div><div class="v" style="font-size:11.5px">${bookingDeal ? esc(fmtPrice(bookingDeal)) : '—'}</div></div>
     </div>
+    ${isAdmin() ? `<div class="profile-block portal-block">
+      <div class="lab">Advisor portal</div>
+      <div class="portal-line">
+        <span class="portal-pill">ID <b>${esc(a.portalId || '—')}</b></span>
+        <span class="portal-pill ${bcsAdvisorAccessOn(a) ? 'ok' : 'off'}">${bcsAdvisorAccessOn(a) ? 'Active' : (a.status === 'active' ? 'Disabled' : 'Not active')}</span>
+        <span class="portal-pill">${a.portalPass ? 'Password set' : 'No password'}</span>
+        <button type="button" class="btn ghost sm" data-advaccess="${a.id}">Manage access</button>
+      </div>
+      <div class="lock-hint">Login ID + password se advisor apna portal kholega. Password yahin se reset karein.</div>
+    </div>
+    <div class="profile-block">
+      <div class="lab">Assign projects <span style="font-size:10px;color:var(--mut);font-weight:500">tap to toggle — portal turant update hota hai</span></div>
+      <div class="adv-assign-wrap">${db.projects.length ? db.projects.map(p => {
+        const on = (a.projectIds || []).includes(p.id);
+        return `<button type="button" class="btn ${on ? 'primary' : 'ghost'} sm" data-advtoggleproj="${p.id}" aria-pressed="${on}">${on ? '✓ ' : '＋ '}${esc(p.name)}</button>`;
+      }).join('') : '<span class="mini-empty">No projects yet.</span>'}</div>
+    </div>` : ''}
     <div class="profile-block">
       <div class="lab">Slab / payment terms</div>
       <p>${esc(a.slab || 'Not recorded — edit the advisor to add booking/registry slab or visit fees.')}</p>
@@ -30124,10 +30397,22 @@ function authUnlocked(){ return !!readAuth(); }
 function populateLockAdvisors(){
   const sel = $('#lockAdvisor');
   if(!sel) return;
-  const eligible = db.advisors.filter(a => a.status === 'active');
+  const eligible = db.advisors.filter(bcsAdvisorAccessOn);
+  const cur = sel.value;
   sel.innerHTML = eligible.length
-    ? eligible.map(a => `<option value="${a.id}">${esc(a.name)}${a.groupName ? ' · ' + esc(a.groupName) : ''}${(a.corridors || []).length ? ' · ' + (a.corridors || []).map(id => corridor(id).name.replace(' Road','')).join('/') : ''}</option>`).join('')
-    : '<option value="">No active BCS advisor yet</option>';
+    ? eligible.map(a => `<option value="${a.id}">${esc(a.name)}${a.groupName ? ' · ' + esc(a.groupName) : ''} · ID: ${esc(a.portalId || '—')}</option>`).join('')
+    : '<option value="">No advisor portal active — admin se access lein</option>';
+  if(cur && eligible.some(a => a.id === cur)) sel.value = cur;
+  updateLockAdvisorHint();
+}
+function updateLockAdvisorHint(){
+  const hint = $('#lockAdvisorIdHint');
+  const sel = $('#lockAdvisor');
+  if(!hint || !sel) return;
+  const a = sel.value ? advisor(sel.value) : null;
+  hint.innerHTML = a
+    ? `Login ID: <b>${esc(a.portalId || a.id)}</b> · apna portal password enter karein.`
+    : 'Admin se apna portal ID aur password lein. Login ke baad sirf assigned projects, clients aur payouts dikhenge.';
 }
 
 function setLockRole(role){
@@ -30138,6 +30423,7 @@ function setLockRole(role){
   $('#lockSubmit').textContent = lockRole === 'admin' ? 'Unlock admin desk →' : 'Enter advisor view →';
   $('#lockErr').textContent = '';
   if(lockRole === 'advisor') populateLockAdvisors();
+  updateLockAdvisorHint();
   setTimeout(() => { try{ (lockRole === 'admin' ? $('#lockPass') : $('#lockAdvisorPass')).focus(); }catch(e){} }, 60);
 }
 
@@ -30169,6 +30455,35 @@ function applyRoleChrome(){
   $('#roleChip').innerHTML = admin
     ? '<span class="role-dot admin"></span><b>Admin</b><span>Ajay Sharma · full desk</span>'
     : `<span class="role-dot"></span><b>${esc(me ? me.name : 'Advisor')}</b><span>Assigned data only</span>`;
+  /* advisor portal: only the pages an advisor needs */
+  const allowed = admin ? null : new Set(ADVISOR_VIEWS);
+  $$('#nav button[data-view], #navMorePanel button[data-view]').forEach(b => {
+    const ok = !allowed || allowed.has(b.dataset.view);
+    b.classList.toggle('bcs-role-hidden', !ok);
+    b.setAttribute('aria-hidden', ok ? 'false' : 'true');
+    if(!ok) b.classList.remove('on');
+  });
+  const advTabLbl = document.querySelector('#nav button[data-view="advisors"] .nav-lbl');
+  if(advTabLbl) advTabLbl.textContent = admin ? 'Advisors' : 'My profile';
+  const heroAdv = document.querySelector('.hero-actions [data-goto="advisors"]');
+  if(heroAdv) heroAdv.textContent = admin ? 'Advisors' : 'My profile';
+  const heroH2 = document.querySelector('#view-dashboard .hero-life .intro-main h2');
+  const heroP = document.querySelector('#view-dashboard .hero-life .intro-main > p');
+  if(heroH2) heroH2.innerHTML = admin ? 'Every developer, every plot,<br><em>one clear view.</em>' : 'Your projects, clients,<br><em>one clear portal.</em>';
+  if(heroP) heroP.textContent = admin
+    ? 'Prices, approvals, people aur payments — ek hi control room. Jo change save hota hai, wahi sab pages mein live reflect hota hai.'
+    : 'Assigned projects, clients, bookings aur payouts — sab ek jagah. Admin jo assign karega, wahi aapke portal me live dikhega.';
+  const moreHead = document.querySelector('#navMorePanel .nav-more-head b');
+  if(moreHead) moreHead.textContent = admin ? 'All 22 pages' : 'Advisor tools';
+  const gs = document.getElementById('globalSearch');
+  if(gs) gs.placeholder = admin ? 'Search projects, developers, advisors, clients…' : 'Search my projects & clients…';
+  const lockBtnEl = document.getElementById('lockBtn');
+  if(lockBtnEl) lockBtnEl.title = admin ? 'Lock desk — Ajay Sharma' : 'Lock advisor portal';
+  if(!admin && !ADVISOR_VIEWS.includes(currentView)){
+    currentView = 'dashboard';
+    $$('.view').forEach(v => v.classList.toggle('on', v.id === 'view-dashboard'));
+    $$('#nav button[data-view]').forEach(b => b.classList.toggle('on', b.dataset.view === 'dashboard'));
+  }
   const caf = $('#clientAdvisorFilter');
   if(caf){
     const cur = caf.value;
@@ -30210,17 +30525,22 @@ $('#lockForm').addEventListener('submit', e => {
   }
   const id = $('#lockAdvisor').value;
   const a = id ? advisor(id) : null;
-  if(!a) return lockError('Admin ne abhi koi active BCS advisor add nahi kiya.', '#lockAdvisorPass');
-  if(a.status !== 'active') return lockError('Ye advisor abhi active BCS advisor nahi hai — admin se activate karwayein.', '#lockAdvisorPass');
-  if($('#lockAdvisorPass').value.trim() !== ADVISOR_PASSWORD) return lockError('Galat advisor password — common password 1111 hai.', '#lockAdvisorPass');
-  try{ sessionStorage.setItem(AUTH_KEY, JSON.stringify({ role:'advisor', advisorId:a.id })); }catch(err){}
+  if(!a) return lockError('Admin ne abhi koi advisor portal activate nahi kiya.', '#lockAdvisorPass');
+  if(!bcsAdvisorAccessOn(a)) return lockError('Is advisor ka portal abhi band hai — admin se activate karwayein.', '#lockAdvisorPass');
+  const typed = String($('#lockAdvisorPass').value || '').trim();
+  const expected = String(a.portalPass || ADVISOR_PASSWORD).trim();
+  if(!typed || typed !== expected) return lockError('Galat portal password — admin se reset karwayein.', '#lockAdvisorPass');
+  try{ sessionStorage.setItem(AUTH_KEY, JSON.stringify({ role:'advisor', advisorId:a.id, portalId:a.portalId, at:Date.now() })); }catch(err){}
   authState = readAuth();
+  a.lastLoginAt = Date.now();
+  try{ save(); }catch(err){}
   applyRoleChrome();
   reloadAdvDraft();
   setLocked(false);
   go('dashboard');
   toast('Welcome, ' + a.name + ' — assigned data only');
 });
+
 function lockError(msg, focusSel){
   $('#lockErr').textContent = msg;
   const card = $('#lockCard');
@@ -30235,6 +30555,22 @@ $('#lockBtn').addEventListener('click', () => {
   setLocked(true);
 });
 setLocked(!authUnlocked());
+/* deep link: ?advisor=<portal-id> opens the advisor login, prefilled */
+(function(){
+  try{
+    if(!document.body.classList.contains('locked')) return;
+    const qp = new URLSearchParams(location.search);
+    const key = (qp.get('advisor') || qp.get('id') || '').trim().toLowerCase();
+    if(!key) return;
+    const a = db.advisors.find(x => String(x.portalId || '').toLowerCase() === key || String(x.id).toLowerCase() === key);
+    if(!a) return;
+    setLockRole('advisor');
+    populateLockAdvisors();
+    $('#lockAdvisor').value = a.id;
+    updateLockAdvisorHint();
+    setTimeout(() => { try{ $('#lockAdvisorPass').focus(); }catch(e){} }, 220);
+  }catch(e){}
+})();
 
 /* ---------- v6: day plan (10–6 desk, 8-hour focus, day-wise) ---------- */
 let dayCursor = todayISO();
