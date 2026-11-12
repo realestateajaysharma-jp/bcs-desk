@@ -6692,6 +6692,29 @@ body[data-theme="dark"] .tooldock .dock-btn[data-tip]::after{background:#F5F5F7 
 @media (max-width:720px){.mob-add{display:grid !important}.media-dock{bottom:92px !important}}
 .tooldock.collapsed{gap:0 !important;padding:5px 7px !important}
 .tooldock.collapsed .dock-btn:not(.dock-min){display:none !important}
+/* ---- dock task button + to-do popup ---- */
+.dock-btn{position:relative}
+#taskBadge{position:absolute;top:-4px;right:-2px;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#C75B39;color:#fff;font-size:9.5px;font-weight:800;display:grid;place-items:center;border:1px solid #fff;box-shadow:0 2px 6px -2px rgba(0,0,0,.4);z-index:1}
+#taskBadge[hidden]{display:none !important}
+#taskPop{width:290px}
+.tp-sec{display:flex;align-items:center;gap:6px;padding:10px 12px 2px}
+.tp-sec b{font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mut);font-weight:800}
+.tp-sec span{font-size:9.5px;color:#4E7C5B;font-weight:800}
+.taskpop-list{max-height:210px;overflow:auto;padding:8px 10px;display:flex;flex-direction:column;gap:5px;scrollbar-width:thin}
+.tq-row{display:flex;align-items:flex-start;gap:8px;padding:7px 8px;border:1px solid var(--line2);border-radius:9px;background:#FCFDFB;cursor:pointer;transition:.15s}
+.tq-row:hover{border-color:#C9D1CC;background:#fff}
+.tq-row .tq-tick{flex:none;width:17px;height:17px;border-radius:50%;border:1.6px solid #B9C1B6;display:grid;place-items:center;font-size:9px;font-weight:800;color:#fff;margin-top:1px;transition:.15s}
+.tq-row .tq-txt{flex:1;min-width:0}
+.tq-row .tq-txt b{display:block;font-size:11px;line-height:1.35;color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.tq-row .tq-txt span{display:inline-block;font-size:9px;color:var(--mut);font-weight:700;margin-right:6px;margin-top:2px}
+.tq-row .tq-txt .tq-over{color:#A4452B}
+.tq-row .tq-x{flex:none;width:20px;height:20px;border-radius:6px;background:transparent;color:#B9C1B6;font-size:10px;display:grid;place-items:center;opacity:0;transition:.15s}
+.tq-row:hover .tq-x{opacity:1}
+.tq-row .tq-x:hover{background:#FBEDE8;color:#A4452B}
+.tq-row.done{opacity:.72}
+.tq-row.done .tq-tick{background:#4E7C5B;border-color:#4E7C5B}
+.tq-row.done .tq-txt b{text-decoration:line-through;color:var(--mut)}
+.tq-empty{padding:12px 8px;text-align:center;font-size:10.5px;color:#A9ADA3;font-weight:600;border:1px dashed var(--line);border-radius:9px;background:#FCFDFB;line-height:1.5}
 .tooldock .dock-min{font-size:16px !important;font-weight:800 !important;min-width:40px !important}
 main{padding-bottom:128px !important}
 
@@ -12378,6 +12401,13 @@ body[data-theme="dark"] .calc-grid .ceq{background:linear-gradient(135deg,#E7C46
 /* --- Music / video / podcast cards --- */
 body[data-theme="dark"] .station.on{background:rgba(229,190,98,.12) !important;border-color:rgba(229,190,98,.3) !important;color:#E5BE62 !important}
 body[data-theme="dark"] .yt-item.playing{background:rgba(229,190,98,.08) !important;border-color:rgba(229,190,98,.25) !important}
+body[data-theme="dark"] .tq-row{background:#1C1C1C !important;border-color:#2A2A2A !important}
+body[data-theme="dark"] .tq-row:hover{background:#242424 !important}
+body[data-theme="dark"] .tq-row .tq-txt b{color:#EDEDED !important}
+body[data-theme="dark"] .tq-row .tq-x:hover{background:#3A2A26 !important;color:#E08060 !important}
+body[data-theme="dark"] .tq-empty,body[data-theme="dark"] #taskQuickInput,body[data-theme="dark"] #taskPop .tp-foot{background:#1B1B1B !important;border-color:#2E2E2E !important;color:#8E8E8E !important}
+body[data-theme="dark"] #taskQuickInput{border-color:#333 !important;color:#F0F0F0 !important}
+body[data-theme="dark"] #taskBadge{border-color:#1C1C1C !important}
 
 /* --- Dock buttons --- */
 body[data-theme="dark"] .dock-btn.open{background:rgba(229,190,98,.15) !important;border-color:rgba(229,190,98,.3) !important;color:#E5BE62 !important}
@@ -16063,6 +16093,8 @@ try{
 
     <div class="links-stats" id="tmStats"></div>
 
+    <div class="panel" id="termOfDay" style="margin-bottom:14px"></div>
+
     <div class="toolbar links-toolbar">
       <div class="adv-search links-search">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -16367,6 +16399,62 @@ try{
           <div class="calc-out" id="crOut"></div>
           <div class="calc-src">DLC (Collector rate) — Jaipur me sab ise circle rate kehte hain; official name DLC hai. Result me residential/commercial/industrial/agri aur exterior/interior alag ho sakte hain. e-Value (Online DLC) se latest verify karo.</div>
         </div>
+      </div>
+
+      <div class="calc-head" style="margin-top:16px"><span class="calc-ic">🗺️</span><div><h4>State-wise Stamp Duty &amp; Registration</h4><small>Sab states — indicative rates, women concession ke saath</small></div><span class="calc-up">India · FY 2026-27</span></div>
+      <div class="calc-body">
+        <div class="grid2">
+          <div class="field"><label>State</label><select id="swState">
+            <option value="0" selected>Rajasthan (Jaipur)</option><option value="1">Maharashtra (Mumbai/Pune)</option><option value="2">Karnataka (Bengaluru)</option><option value="3">Uttar Pradesh (Noida/Lucknow)</option><option value="4">Delhi NCT</option><option value="5">Haryana (Gurugram/Faridabad)</option><option value="6">Punjab</option><option value="7">Gujarat (Ahmedabad)</option><option value="8">Tamil Nadu (Chennai)</option><option value="9">Madhya Pradesh (Bhopal/Indore)</option><option value="10">West Bengal (Kolkata)</option><option value="11">Telangana (Hyderabad)</option><option value="12">Bihar (Patna)</option><option value="13">Assam (Guwahati)</option>
+          </select></div>
+          <div class="field"><label>Buyer</label><select id="swGender"><option value="male">Male / Joint</option><option value="female">Female (single owner)</option></select></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label>Property value (₹)</label><input id="swVal" type="number" min="0" value="8000000"></div>
+          <div class="field"><label>&nbsp;</label><span style="font-size:10.5px;color:var(--mut);line-height:1.4">Rates state registration dept ke indicative hain — sub-city slab se alag ho sakte hain.</span></div>
+        </div>
+        <div class="calc-out" id="swOut"></div>
+        <div class="calc-src">Duty MAX(agreement, circle) par lagti hai. Concessions: mahila, first-home, affordable schemes state-wise. Delhi slab-based (≤₹25L kam), MH city-wise, KA zonal — exact rate registration dept site se verify karein.</div>
+      </div>
+
+      <div class="calc-head"><span class="calc-ic">🧾</span><div><h4>TDS on Purchase — Sec 194-IA (buyer pays)</h4><small>₹50L+ purchase par 1% — Form 26QB, 30 din</small></div><span class="calc-up">Income-tax Act</span></div>
+      <div class="calc-body">
+        <div class="grid2">
+          <div class="field"><label>Sale consideration (₹)</label><input id="tiVal" type="number" min="0" value="9000000"></div>
+          <div class="field"><label>Seller type</label><select id="tiSeller"><option value="resident">Resident seller</option><option value="nri">NRI seller (Sec 195 — rate alag)</option></select></div>
+        </div>
+        <div class="calc-out" id="tiOut"></div>
+        <div class="calc-src">Buyer khud TDS deposit karta hai — Form 26QB (7 din me) + Form 16B seller ko 15 din me. TDS sirf resident seller par 1%; NRI seller par Sec 195 (12.5%+ ya lower deduction certificate) — CA se plan karayein.</div>
+      </div>
+
+      <div class="calc-head"><span class="calc-ic">📊</span><div><h4>Capital Gains on Sale</h4><small>LTCG 12.5% / 20%+indexation · STCG slab</small></div><span class="calc-up">FY 2026-27</span></div>
+      <div class="calc-body">
+        <div class="grid3" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px">
+          <div class="field"><label>Kharid price (₹)</label><input id="cgBuy" type="number" min="0" value="5000000"></div>
+          <div class="field"><label>Kharid CII</label><input id="cgCiiB" type="number" min="1" value="280"></div>
+          <div class="field"><label>Holding (years)</label><input id="cgYrs" type="number" min="0" value="8"></div>
+          <div class="field"><label>Bikri price (₹)</label><input id="cgSell" type="number" min="0" value="10000000"></div>
+          <div class="field"><label>Bikri CII</label><input id="cgCiiS" type="number" min="1" value="376"></div>
+          <div class="field"><label>Bechne ka kharcha (₹)</label><input id="cgExp" type="number" min="0" value="100000"></div>
+        </div>
+        <div class="calc-out" id="cgOut"></div>
+        <div class="calc-src">Holding ≤2 saal → STCG (slab rate, indexation nahi). &gt;2 saal → option A: 12.5% flat without indexation, ya option B: 20% with indexation — dono compare karke kam tax chunein. Exemption: Sec 54 (residential house reinvest) / 54EC bonds ₹50L cap. CII latest Income-tax portal se.</div>
+      </div>
+
+      <div class="calc-head"><span class="calc-ic">🏗️</span><div><h4>Construction Cost Estimator</h4><small>Jaipur rates — basic se luxury tak</small></div><span class="calc-up">Jaipur · 2026</span></div>
+      <div class="calc-body">
+        <div class="grid3" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px">
+          <div class="field"><label>Built-up area (sq ft)</label><input id="cnArea" type="number" min="0" value="1800"></div>
+          <div class="field"><label>Quality</label><select id="cnQual">
+            <option value="1500">Basic — ₹1,500/sq ft</option>
+            <option value="1900" selected>Standard — ₹1,900/sq ft</option>
+            <option value="2400">Premium — ₹2,400/sq ft</option>
+            <option value="3200">Luxury — ₹3,200/sq ft</option>
+          </select></div>
+          <div class="field"><label>Boundary/gate (₹ lump)</label><input id="cnBound" type="number" min="0" value="200000"></div>
+        </div>
+        <div class="calc-out" id="cnOut"></div>
+        <div class="calc-src">Turnkey civil + finishing (structure, plaster, flooring, electrical, plumbing, paint). Land, approval fees, bore/tank alag. Jaipur market me labour + material variation 10-15% — contractor BOQ se confirm karein. Plot me basemen/stilt alag rate hota hai.</div>
       </div>
     </div>
     <p class="lock-hint" style="margin-top:14px">Rates har notification pe badal sakte hain — upar <b>Rates Studio</b> me ek jagah update karo. Final legal/tax advice ke liye CA/advocate se confirm karein.</p>
@@ -16749,6 +16837,7 @@ try{
 <div class="tooldock" id="toolDock" aria-label="Quick tools">
   <button class="dock-btn" id="stickyBtn" data-tip="Sticky note" aria-label="Sticky note"><span class="dock-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15.4 4.2a5 5 0 0 1 4.4 4.4L12 16.4 5 19l2.6-7 7.8-7.8z"/><path d="m13.5 6.5 4 4"/></svg></span><i>Sticky</i></button>
   <button class="dock-btn" id="calcBtn" data-tip="Calculator" aria-label="Quick calculator"><span class="dock-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M8.5 7h7M9 12h.01M12.5 12h.01M16 12h.01M9 15.5h.01M12.5 15.5h.01M16 15.5h.01"/></svg></span><i>Calc</i></button>
+  <button class="dock-btn" id="taskBtn" data-tip="Aaj ke tasks — pending &amp; done" aria-label="To-do tasks"><span class="dock-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.4h5.9A2.1 2.1 0 0 1 17 7.5V19a2.1 2.1 0 0 1-2.1 2.1H7.6A2.1 2.1 0 0 1 5.5 19V7.5A2.1 2.1 0 0 1 7.6 5.4Z"/><path d="m9 12 1.8 1.8L14.6 10M9 16.5h6"/></svg></span><span class="task-badge" id="taskBadge" hidden>0</span><i>Task</i></button>
   <button class="dock-btn" id="fieldsBtn" data-tip="Custom fields" aria-label="Custom fields"><span class="dock-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.2 5.2l2.1 2.1M16.7 16.7l2.1 2.1M18.8 5.2l-2.1 2.1M7.3 16.7l-2.1 2.1"/></svg></span><i>Fields</i></button>
   <button class="dock-btn" id="listsBtn" data-tip="Dropdown lists" aria-label="Dropdown lists"><span class="dock-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg></span><i>Lists</i></button>
   <span class="dock-sep" aria-hidden="true"></span>
@@ -16767,6 +16856,17 @@ try{
   </div>
   <div class="snote-list" id="stickyList"></div>
   <div class="tp-foot"><span id="stickySaved">Saved</span><span>auto-save · backup included</span></div>
+</div>
+<div class="toolpop" id="taskPop">
+  <div class="tp-head"><b>✅ Aaj ke tasks</b><span class="tp-head-actions"><span class="snote-count" id="taskCountChip">0 pending</span><button class="xbtn sm" data-toolclose="taskPop" aria-label="Close tasks">✕</button></span></div>
+  <form id="taskQuickForm" autocomplete="off" style="display:flex;gap:6px;padding:9px 10px 0">
+    <input id="taskQuickInput" placeholder="Naya task likho + Enter…" style="flex:1;min-width:0;padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:#FCFDFC;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none" spellcheck="false">
+    <button class="btn primary sm" type="submit">+ Add</button>
+  </form>
+  <div class="taskpop-list" id="taskPendingList"></div>
+  <div class="tp-sec" id="taskDoneHead" hidden><b>Done aaj</b><span id="taskDoneCount"></span></div>
+  <div class="taskpop-list" id="taskDoneList"></div>
+  <div class="tp-foot"><a href="#" id="taskOpenDayplan" style="color:var(--sage-ink);font-weight:800;text-decoration:none">Day Plan kholein ↗</a><span id="taskBadgeTxt"></span></div>
 </div>
 <div class="toolpop" id="calcPop">
   <div class="tp-head"><b>🧮 Calculator</b><button class="xbtn sm" data-toolclose="calcPop">✕</button></div>
@@ -19246,7 +19346,134 @@ const DEFAULT_QUOTES = [
   'Your reputation is your real inventory.',
   'Celebrate others sincerely. Goodwill compounds.',
   'Finish one thing before starting three.',
-  'If the client trusts you, price stops being the only story.'
+  'If the client trusts you, price stops being the only story.',
+  'Discipline beats motivation. Motivation beats nothing.',
+  'Har plot ki ek kahani hoti hai — usse sunna hi deal hai.',
+  'A focused morning decides the whole day\u2019s revenue.',
+  'Sell the outcome, not the square feet.',
+  'The corridor you study today is the commission of next year.',
+  'Data is your sixth sense in this business.',
+  'Client yaad rakhta hai feeling, rate bhool jata hai.',
+  'Ek phone call pehle karo — speed hi service hai.',
+  'Zameen ka paper strong, toh deal strong.',
+  'Site visit sells more than any brochure ever will.',
+  'Every task finished today is tomorrow\u2019s ease.',
+  'Trust is built in drops and lost in buckets.',
+  'Jo kareeb hai uske liye upar le jao — service hi retention hai.',
+  'Big deals are just small follow-ups that never stopped.',
+  'Learn one new term daily — vocabulary builds authority.',
+  'Your calendar is your real business plan.',
+  'Patience with people, urgency with paperwork.',
+  'Documentation today saves litigation tomorrow.',
+  'The market rewards those who show up on weekends.',
+  'Ek sahi advice = teen referrals.',
+  'Listen twice, quote once.',
+  'Ratios of the deal: 10 calls, 3 visits, 1 close.',
+  'Location decides the floor, RERA decides the roof.',
+  'Be the advisor who says no sometimes.',
+  'Khud ka data khud update karo — stale data stale deals deta hai.',
+  'A happy possession day is your best marketing.',
+  'Half the business is being reachable.',
+  'Simplicity in explanation is mastery.',
+  'Build one relationship daily — that\u2019s 300 a year.',
+  'Numbers on paper first, emotions on site later.',
+  'The agent who follows up wins; the one who remembers wins twice.',
+  'Time-bound promises are your brand.',
+  'Rate toh sab batate hain — risk batana expert ka kaam hai.',
+  'A plot shown at sunset sells twice as fast. Show it at sunset.',
+  'Keep learning the law; it keeps your money safe.',
+  'Regular beats occasional. Har din thoda.',
+  'Your name travels faster than your brochure.',
+  'One clear WhatsApp message beats ten confusing calls.',
+  'Worry less about competition, more about consistency.',
+  'Value pehle, commission baad mein.',
+  'Every property has a buyer — find the match, not the push.',
+  'Survey your city like a farmer surveys his land.',
+  'Silence after a quote is information. Wait for it.',
+  'Festivals are the harvest season of relationships.',
+  'Paisa documentation me nahi, trust me lagta hai.',
+  'A good deal makes two families happy. Aim for that.',
+  'Read one circle-rate notification a week.',
+  'Your desk, your rules — but the rules must be daily.',
+  'Marketing is a promise; possession is the proof.',
+  'Be the call clients look forward to.',
+  'Simplify the complicated — that\u2019s the whole job.',
+  'Objections are questions in disguise.',
+  'The best investable years of this business are the consistent ones.',
+  'Kabhi bhi over-promise mat karo — under-promise, over-deliver.',
+  'Money follows the one who understands money.',
+  'Keep your testimonials folder fuller than your complaints.',
+  'Learn the tax, earn the trust.',
+  'Focus is the rarest plot in the city — acquire it daily.',
+  'Ek din me ek kaam perfect karo.',
+  'The buyer buys the agent first.',
+  'Speed of response = size of business.',
+  'Ownership feels different when you walk the land yourself.',
+  'Invest in relationships the way you\u2019d invest in land — long term.',
+  'A follow-up saved today is a client saved tomorrow.',
+  'Stay transparent — hidden charges hide your reputation too.',
+  'Zameen sabr maangti hai, sabr aage zameen dilati hai.',
+  'The one who documents cleanly sleeps peacefully.',
+  'Your weekly review is your weekly raise.',
+  'Great advisors are great listeners first.',
+  'Close the loop — every unanswered message is a leak.',
+  'Discipline is choosing what matters over what\u2019s loud.',
+  'Ek achhi presentation raat bhar ki mehnat ko din bhar ka kaam banati hai.',
+  'Be rich in options, not in excuses.',
+  'The best time to build your brand was yesterday; the second best is today.',
+  'Confidence is preparedness in motion.',
+  'Deal structure clarity closes more deals than discounts.',
+  'Save like a lender, invest like an owner.',
+  'Notes liye bhi site visit adhoori hai.',
+  'You are one honest review away from your next ten clients.',
+  'Property business = people business with paperwork.',
+  'Update your knowledge like your software — daily, quietly.',
+  'Bade sapne chhote steps se bante hain — roz lo ek step.',
+  'The market tests patience, rewards preparation.',
+  'A clean title is worth more than a tall tower.',
+  'Every referral starts with one moment of extra care.',
+  'Don\u2019t sell inventory; solve a life problem.',
+  'Roz ka ek naya contact, mahine ka ek naya market.',
+  'Systems save you when motivation doesn\u2019t.',
+  'The client\u2019s doubt is an invitation to explain better.',
+  'Own your numbers before your numbers own you.',
+  'Quality of questions decides quality of deals.',
+  'Har follow-up me ek naya fact do — value dono taraf.',
+  'Success in this line is a compound-interest habit.',
+  'Live the market: visit sites, meet brokers, read the news.',
+  'Two ears, one mouth — use in that ratio on every site visit.',
+  'Your best salesperson is a delighted past client.',
+  'Ek accha kaam, das recommendations laata hai.',
+  'Price is what they pay; certainty is what they buy.',
+  'Work like you\u2019re building your own portfolio — because you are.',
+  'Ek saal ka data agle saal ki taakat hoti hai.',
+  'Meet one developer a week; know the source of supply.',
+  'The perfect client is created by perfect service.',
+  'Clarity on paper prevents confusion in court.',
+  'Busy is not a badge; booked calendar is.',
+  'Zameen ne jinko sabr sikhaya, unhe sab kuch sikhaya.',
+  'Consistency is what people actually buy.',
+  'Keep promises small and keep all of them.',
+  'A review asked-for is a review half-received.',
+  'Success = daily actions repeated with faith.',
+  'The deal you walk away from politely protects your next ten.',
+  'Knowledge shared is authority earned.',
+  'Ek doodh-wala bhi dealer ban sakta hai — consistency se.',
+  'Make the complicated Jargon simple; clients reward simplicity.',
+  'Do one thing daily that your future self will thank you for.',
+  'Success is 80% follow-through, 20% brilliance.',
+  'Learn the corridors by heart; clients feel the confidence.',
+  'Har Monday ek naya quarter hai — plan like it.',
+  'A quick honest \u201cno\u201d beats a slow fake \u201cyes\u201d.',
+  'The land remembers who cared for it. So do clients.',
+  'Serve first — the fee follows like a shadow.',
+  'Your reputation compounds faster than any CAGR.',
+  'Property law change hoti rehti hai — padhte raho, safe raho.',
+  'Adhoora data adhoora decision banata hai.',
+  'Be so regular that your absence is noticed.',
+  'The best advisors sell sleep — peace of mind is the product.',
+  'Ek task aaj, ek tension kam kal.',
+  'Build the desk; the desk builds the business.'
 ].map((text, i) => ({ id:'q-seed-' + (i+1), text, by:'BCS Desk', source:'seed', edited:false, createdAt:Date.now() }));
 
 const DEFAULT_LINK_CATEGORIES = [
@@ -19712,6 +19939,28 @@ const DEFAULT_TERMINOLOGY = [
   { cat:'financial', kind:'term', term:'Asset Turnover Ratio', hi:'एसेेट टर्नओवर', meaning:'Revenue ÷ Assets — portfolio assets se kitni efficiently earning ho rahi hai. Developer ke liye high ratio = efficient execution ka signal.' },
   { cat:'physical', kind:'term', term:'Ancillary Retail Space', hi:'सहायक retail जगह', meaning:'Main project ke andar choti shop/kiosk jaisi retail — footfall badhati hai, rent premium deti hai. Commercial project ke tenant mix ka part.' },
   { cat:'govt', kind:'term', term:'Area Development Scheme', hi:'क्षेत्र विकास योजना', meaning:'Authority dwara area me colony/layout develop karne ki approved scheme — JDA schemes Jaipur me classic example. Approved scheme ka plot JDA letter se verify karo.' },
+  { cat:'govt', kind:'term', term:'e-Panjiyan / e-Value (DLC)', hi:'ई-पंजीयन / डीएलसी', meaning:'Rajasthan registration department ka online portal — registry slot, fee calculator aur e-Value (online DLC/circle rate) yahin se milta hai. Deal se pehle yahin latest rate verify karo.', regions:'RJ · epanjiyan.rajasthan.gov.in' },
+  { cat:'govt', kind:'term', term:'Mutation / Namantaran', hi:'नामांतरण', meaning:'Registry ke baad revenue record me naye malik ka naam darna. Bina mutation ke ownership paper me adhoori hoti hai — loan, resale, compensation sab me mutation maangte hain. Tehsil me 90 din ke andar karaein.', regions:'RJ (namantaran) · UP (dakhil-kharij) · MH (mutation entry)' },
+  { cat:'govt', kind:'term', term:'Khasra / Khatauni', hi:'खसरा / खतौनी', meaning:'Khasra = plot/parcel number (village land record), Khatauni = us kisht ki ownership details ki isteri (ten-year) ledger. Agricultural/judicially-divided zameen verify karne ke liye khasra + khatauni dono lein.', regions:'RJ/UP/MP (khasra) · RJ (khasra + b1)' },
+  { cat:'govt', kind:'term', term:'Encumbrance Certificate (EC)', hi:'भारमुक्त प्रमाण', meaning:'Property par loan/mortgage/court-attachment jaisa "bojh" hai ya nahi — iski official certificate. South states me Sub-Registrar se Form 15/16, RJ me search report/nil-encumbrance via title search. Loan ke liye bank khud bhi EC maangta hai.', regions:'KA/TN/AP/TS · RJ title search' },
+  { cat:'legal', kind:'term', term:'Title Search & Title Report', hi:'टाइटल रिपोर्ट', meaning:'30-50 saal ki ownership chain ka lawyer-verified report — sab transfers, encumbrances, lis pendens check karke likha hua opinion. Bade deals me non-negotiable; chhoti deals me bhi ek baar kara lein — insurance nahi, confidence hai.', calc:'Search period min 30 years · chain har link registered + stamped' },
+  { cat:'legal', kind:'term', term:'Lis pendens (जारी मुकदमा)', hi:'लिस पेनडेंस', meaning:'Court me chal raha muqadma jis property ke upar hai — us property ki sale during pendency voidable hoti hai. Buyer ko court search/CERSAI check karwana chahiye; lis pendens property kharidi aage litigation ban sakti hai.', regions:'Sec 52 TPA' },
+  { cat:'legal', kind:'term', term:'Will / Inheritance transfer', hi:'वसीयत / उत्तराधिकार', meaning:'Owner ke inteqal ke baad legal heirs ko property milna. Probated will, succession certificate ya legal heir affidavit + NOC from other heirs — sab process state ke mutabik. Aisi property kharidte waqt sab heirs ka release/NOA likhit lein.' },
+  { cat:'tax', kind:'term', term:'TDS 194-IA vs 194-IB vs 194H', hi:'टीडीएस सेक्शन', meaning:'194-IA: ₹50L+ purchase me buyer seller ke 1% kaata hai. 194-IB: ₹50k+/month rent par tenant individual kaata hai (2% Oct 2024 se). 194H: broker commission par payee 2% kaata hai. Teeno alag form — 26QB (IA), manual/online (IB), 24Q/26Q (H).', calc:'IA = price × 1% (≥₹50L) · IB = rent × 2%/5% · H = commission × 2%' },
+  { cat:'tax', kind:'term', term:'Indexation & CII', hi:'सूचकांक / सीआईआई', meaning:'Cost Inflation Index — purchase price ko inflation ke hisaab se badhata hai, taxable gain kam karta hai. LTCG 20% with indexation option me use hota. CII table Income-tax site par yearly publish hota hai (FY 2001-02 se).', calc:'Indexed cost = cost × (CII sale year ÷ CII buy year)' },
+  { cat:'financial', kind:'calc', term:'Amortization schedule', hi:'किश्त विवरण', meaning:'Har EMI me kitna interest, kitna principal — month-by-month breakdown. Pehle saal EMI ka 70-80% interest hota hai; yeh dekh kar prepayment decide hota hai. BCS EMI calculator neeche total interest dikhata hai; bank amortization table lein.', calc:'Interest month = balance × monthly rate · Principal = EMI − interest' },
+  { cat:'financial', kind:'term', term:'Top-up loan & overdraft', hi:'टॉप-अप लोन', meaning:'Existing home loan ke upar extra loan (grih sankarsti). Interest home loan jaisa hota hai par purpose proof maangta hai. Overdraft variant me unused limit par interest nahi — fluctuating income walo ke liye smart.', regions:'Bank policy specific' },
+  { cat:'financial', kind:'term', term:'Processing fee & hidden costs', hi:'प्रोसेसिंग फीस', meaning:'Loan sanction me 0.25-0.5% + GST, technical/legal valuation charge, CERSAI, insurance single-premium (optional). Effective interest rate = headline rate + sab fees — comparison yahi karo, brosur rate nahi.', calc:'Effective cost ≈ rate + (total fees ÷ loan ÷ years)' },
+  { cat:'buyer', kind:'term', term:'Possession delay clause', hi:'पॉज़ेशन क्लॉज़', meaning:'Agreement me promised possession date + delay compensation formula + withdrawal right — teeno likhit hon. RERA ne default MCLR+2% set kiya hai par agreement me isse better terms negotiate ho sakte hain.', regions:'RERA Sec 18' },
+  { cat:'buyer', kind:'term', term:'Survey number & village map', hi:'सर्वे नंबर', meaning:'Gaon me har parcel ka survey/gat number — A-kaashra (village map) me locate hota hai. JDA-approved plot bhi survey number se cross-check karo — map mismatch regularized colony ka signal hota hai.', regions:'RJ (A-kaashra · gat) · MH (7/12) · south (patta)' },
+  { cat:'govt', kind:'term', term:'Jaipur JMC zones & property tax', hi:'जेएमसी ज़ोन', meaning:'Jaipur Nagar Nigam Greater + Heritage — property tax zones/wards basis par. Self-assessment annual value formula; online portal pe challan + receipt. Commercial vs residential usage rate alag.', regions:'JMC Greater · JMC Heritage' },
+  { cat:'govt', kind:'term', term:'Rajasthan RERA portal', hi:'राजस्थान रेरा', meaning:'rera.rajasthan.gov.in — project registration, agent search, complaints, orders sab public. Kisi project ya agent ka registration status yahin se free me verify hota hai. Complaint ₹1,000+ fee se online file hota hai.', regions:'RJ · rera.rajasthan.gov.in' },
+  { cat:'other', kind:'term', term:'Token vs Bayana vs Advance', hi:'टोकन / बयाना / एडवांस', meaning:'Bayana (Raj bhasha) = earnest money — deal ke seriousness ka proof. Legal me sab "advance/earnest" hai; receipt me amount, terms, refund window likhein. Bayana cheque/bank-trail me dein — cash bayana dispute me kamzor proof.', regions:'RJ (bayana) · general (token/earnest)' },
+  { cat:'other', kind:'term', term:'Registry vs Agreement', hi:'रजिस्ट्री vs एग्रीमेंट', meaning:'Registry (sale deed) se ownership transfer hoti hai — Sub-Registrar ke saamne panchnama ke saath. Agreement to Sell sirf commitment hai; uski registration (Sec 17) optional, registry compulsory. Bina registry ownership kabhi legal nahi badalti — sirf possession/adhikar papers badalte hain.' },
+  { cat:'other', kind:'term', term:'RWA (Resident Welfare Association)', hi:'आरडब्ल्यूए', meaning:'Society residents ka registered body — maintenance, audit, builder-handover, facilities. Flat lene se pehle RWA ki audit report aur maintenance history dekhein — society ki sehat ka asli report card.' },
+  { cat:'other', kind:'term', term:'Photometric / Site plan check', hi:'साइट प्लान', meaning:'Brochure ka site plan ground reality se match — setbacks, entry, parking, amenity block. Approved plan se compare karo; deviation par authority action + possession delay dono possible.' },
+  { cat:'pricing', kind:'term', term:'Rate per sq ft vs sq yd', hi:'रेट यूनिट', meaning:'Jaipur plots me ₹/sq yd common, flats me ₹/sq ft (saleable). Conversion: 1 sq yd = 9 sq ft. Comparison kabhi same unit me karo — 4500/sq yd = 500/sq ft, confuse na ho.', calc:'₹/sq yd ÷ 9 = ₹/sq ft · × 9 = reverse' },
+  { cat:'pricing', kind:'term', term:'Auction property (e-auction)', hi:'नीलामी संपत्ति', meaning:'Bank/SARFAESI/DRT ki li hui property online auction me bechi jati hai. Reserve price market se 10-25% kam ho sakta hai — par possession risk, purane dues, EMD (10% earnest deposit) aur "as-is" condition pehle samjho.', regions:'e-auction portals · bank sites' },
 ];
 /* ---------- v12: watch channels + custom podcasts (persisted in bcs_db_v1) ---------- */
 const WATCH_DEFAULT_CATS = [
@@ -19925,7 +20174,7 @@ function normalizeDb(d){
       id: uid(), built: true, createdAt: Date.now() + i, ...t
     }));
   }
-  if(+d.terminologySeedVersion !== 3){
+  if(+d.terminologySeedVersion !== 4){
     const custom = d.terminology.filter(t => t && !t.built);
     const prevByTerm = new Map();
     d.terminology.filter(t => t && t.built && t.term).forEach(t => prevByTerm.set(t.term, t));
@@ -19936,7 +20185,7 @@ function normalizeDb(d){
       }),
       ...custom
     ];
-    d.terminologySeedVersion = 3;
+    d.terminologySeedVersion = 4;
   }
   d.terminology = d.terminology.filter(t => t && String(t.term || '').trim()).map((t, i) => ({
     id: t.id || uid(),
@@ -20437,6 +20686,7 @@ function normalizeDb(d){
     }))
     .sort((a,b) => a.date.localeCompare(b.date));
   if(!Array.isArray(d.quotes)) d.quotes = DEFAULT_QUOTES.map(q => ({ ...q }));
+  else { const _haveQ = new Set(d.quotes.map(q => q.id)); DEFAULT_QUOTES.forEach(q => { if(!_haveQ.has(q.id)) d.quotes.push({ ...q }); }); }
   d.quotes = d.quotes
     .filter(q => q && String(q.text || '').trim())
     .map(q => ({
@@ -22305,9 +22555,9 @@ function quoteText(){
     const wrap = $('#calcStats');
     if(!wrap) return;
     wrap.innerHTML = `
-      <div><div class="k">Calculators</div><div class="v">13</div></div>
+      <div><div class="k">Calculators</div><div class="v">17</div></div>
+      <div><div class="k">States covered</div><div class="v">14</div></div>
       <div><div class="k">Stamp + Reg</div><div class="v">${num('#rgStamp') + num('#rgReg')}%</div></div>
-      <div><div class="k">GST</div><div class="v">1% / 5%</div></div>
       <div><div class="k">Home loan</div><div class="v">${num('#emRate')}%</div></div>`;
   }
   function bankCalc(){
@@ -22424,19 +22674,112 @@ function quoteText(){
     toast('Rates saved ✓ — sab calculators update');
     runAll();
   }
+  function stateCalc(){
+    const out = $('#swOut'); if(!out) return;
+    /* Indicative FY 2026-27 — [duty%, dutyFemale%, reg%, regCap, note] */
+    const DUTY = [
+      { name:'Rajasthan', duty:6, f:5, reg:1, cap:1000000, note:'Mahila 5% · reg fee cap ₹10L' },
+      { name:'Maharashtra', duty:6, f:5, reg:1, cap:30000, note:'City-wise (Mumbai 6%) · reg cap ₹30k' },
+      { name:'Karnataka', duty:5.6, f:5.1, reg:1, cap:200000, note:'Zonal (Bengaluru 5.6%) · reg cap ₹2L' },
+      { name:'Uttar Pradesh', duty:7, f:6, reg:1, cap:200000, note:'Mahila 6% · reg cap ₹2L' },
+      { name:'Delhi', duty:6, f:4, reg:1, cap:0, note:'≤₹25L me 5%/3% slab · women 4%' },
+      { name:'Haryana', duty:6, f:4, reg:1, cap:50000, note:'Urban 7% (incl. munic.) · women 4%' },
+      { name:'Punjab', duty:6, f:4, reg:1, cap:0, note:'Women 4% · slab by city' },
+      { name:'Gujarat', duty:4.9, f:4.9, reg:1, cap:0, note:'≈4.9% incl. cess' },
+      { name:'Tamil Nadu', duty:7, f:7, reg:4, cap:0, note:'Reg fee 4% · women same' },
+      { name:'Madhya Pradesh', duty:6, f:6, reg:3, cap:0, note:'Reg fee 3% · women rebate slab' },
+      { name:'West Bengal', duty:6, f:5, reg:1, cap:0, note:'Slab 5-6% by value' },
+      { name:'Telangana', duty:6, f:6, reg:3, cap:0, note:'Reg fee 3% (transfers)' },
+      { name:'Bihar', duty:6, f:5.7, reg:2, cap:0, note:'Women concession partial' },
+      { name:'Assam', duty:6.5, f:5.5, reg:1, cap:0, note:'Women 5.5%' }
+    ];
+    const d = DUTY[Math.min(13, Math.max(0, parseInt($('#swState').value, 10) || 0))];
+    const isF = $('#swGender').value === 'female';
+    const val = parseAmt('#swVal');
+    const dutyPct = isF ? d.f : d.duty;
+    const duty = val * dutyPct / 100;
+    let reg = val * d.reg / 100;
+    if(d.cap > 0) reg = Math.min(reg, d.cap);
+    const total = duty + reg;
+    const maleDuty = val * d.duty / 100;
+    const maleReg = Math.min(val * d.reg / 100, d.cap > 0 ? d.cap : Infinity);
+    out.innerHTML = `
+      <div class="calc-row"><span>${esc(d.name)} — stamp duty @${dutyPct}%${isF ? ' (women concession)' : ''}</span><b>₹ ${inr(duty)}</b></div>
+      <div class="calc-row"><span>Registration @${d.reg}%${d.cap > 0 ? ' (cap ₹ ' + inr(d.cap) + ')' : ''}</span><b>₹ ${inr(reg)}</b></div>
+      <div class="calc-total"><span>Total up-front (indicative)</span><b>₹ ${inr(total)}</b></div>
+      <div class="calc-src" style="margin-top:6px">${esc(d.note)}${isF && d.f < d.duty ? ' · Women bachat: ₹ ' + inr((maleDuty + maleReg) - total) : ''}</div>`;
+  }
+  function tdsCalc(){
+    const out = $('#tiOut'); if(!out) return;
+    const val = parseAmt('#tiVal');
+    const nri = $('#tiSeller').value === 'nri';
+    if(!val){ out.innerHTML = '<div class="calc-row"><span>Value daalein</span><b>—</b></div>'; return; }
+    if(nri){
+      const est = val * 0.125;
+      out.innerHTML = `
+        <div class="calc-row"><span>NRI seller — Sec 195 indicative @12.5%+</span><b>₹ ${inr(est)}</b></div>
+        <div class="calc-total"><span>Form 26QB nahi — Sec 195 process · CA zaroori</span><b>₹ ${inr(val + est)} hold</b></div>`;
+      return;
+    }
+    const applies = val >= 5000000;
+    const tds = applies ? val * 0.01 : 0;
+    out.innerHTML = `
+      <div class="calc-row"><span>Threshold ₹50,00,000</span><b>${applies ? 'Lagoo ✓' : 'Nahi lagti'}</b></div>
+      ${applies ? `<div class="calc-row"><span>TDS @1% (buyer deposit)</span><b>₹ ${inr(tds)}</b></div>
+      <div class="calc-row"><span>Seller ko dega</span><b>₹ ${inr(val - tds)}</b></div>
+      <div class="calc-total"><span>Form 26QB (7 din) + 16B (15 din)</span><b>Deadline watch</b></div>` : `<div class="calc-row"><span>Deal ₹50L se neeche</span><b>TDS nahi</b></div>`}`;
+  }
+  function cgCalc(){
+    const out = $('#cgOut'); if(!out) return;
+    const buy = parseAmt('#cgBuy'), sell = parseAmt('#cgSell'), exp = parseAmt('#cgExp');
+    const ciiB = Math.max(1, Number($('#cgCiiB').value) || 1), ciiS = Math.max(1, Number($('#cgCiiS').value) || 1);
+    const yrs = Math.max(0, Number($('#cgYrs').value) || 0);
+    if(!buy || !sell){ out.innerHTML = '<div class="calc-row"><span>Buy & sale price daalein</span><b>—</b></div>'; return; }
+    const ltcg = yrs > 2;
+    const gain = sell - buy - exp;
+    const indexed = buy * (ciiS / ciiB);
+    const gainIdx = sell - indexed - exp;
+    const taxFlat = Math.max(0, gain) * 0.125;
+    const taxIdx = Math.max(0, gainIdx) * 0.20;
+    const best = Math.min(taxFlat, taxIdx);
+    if(!ltcg){
+      out.innerHTML = `
+        <div class="calc-row"><span>Holding ${yrs} saal (≤2) — STCG slab rate par</span><b>Gain ₹ ${inr(gain)}</b></div>
+        <div class="calc-total"><span>Apni income slab lagao</span><b>Gain ₹ ${inr(gain)}</b></div>`;
+      return;
+    }
+    out.innerHTML = `
+      <div class="calc-row"><span>Gain (₹ ${inr(buy)} → ₹ ${inr(sell)}, kharcha ₹ ${inr(exp)})</span><b>₹ ${inr(gain)}</b></div>
+      <div class="calc-row"><span>Option A — 12.5% flat (no indexation)</span><b>₹ ${inr(taxFlat)}</b></div>
+      <div class="calc-row"><span>Option B — 20% + indexation (CII ${Math.round(ciiB)} → ${Math.round(ciiS)})</span><b>₹ ${inr(taxIdx)}</b></div>
+      <div class="calc-total"><span>Chun lo — kam tax option</span><b>₹ ${inr(best)}</b></div>
+      <div class="calc-src" style="margin-top:6px">Sec 54/54EC reinvestment se exemption possible — CA se plan karayein.</div>`;
+  }
+  function cnCalc(){
+    const out = $('#cnOut'); if(!out) return;
+    const area = Math.max(0, Number($('#cnArea').value) || 0);
+    const rate = Math.max(0, Number($('#cnQual').value) || 1900);
+    const bound = parseAmt('#cnBound');
+    const cost = area * rate;
+    const total = cost + bound;
+    out.innerHTML = `
+      <div class="calc-row"><span>Construction — ${area.toLocaleString('en-IN')} sq ft @₹${rate}/sq ft</span><b>₹ ${inr(cost)}</b></div>
+      <div class="calc-row"><span>Boundary / gate / misc</span><b>₹ ${inr(bound)}</b></div>
+      <div class="calc-total"><span>Estimated turnkey</span><b>₹ ${inr(total)}</b></div>`;
+  }
   function resetRates(){
     ['rtStamp','rtReg','rtSur','rtMclr','rtFee','rtBroker','rtTds','rtGstB','rtGrowth','rtFy'].forEach(k => { const d = { rtStamp:6, rtReg:1, rtSur:0, rtMclr:8.6, rtFee:0.5, rtBroker:2, rtTds:5, rtGstB:18, rtGrowth:5, rtFy:'FY 2026-27' }[k]; if($('#'+k)) $('#'+k).value = d; });
     try{ localStorage.removeItem(RAT_KEY); }catch(e){}
     applyRatesToCalcs(); runAll(); toast('Rates reset');
   }
   function calcShareAll(){
-    const parts = ['#bkOut','#ccOut','#crOut','#emOut','#rgOut','#gstOut','#cmOut','#rnOut','#arOut','#afOut','#ppOut','#spOut','#roOut','#dlOut'].map(id => $(id)?.innerText?.replace(/\s+/g,' ').trim()).filter(Boolean);
+    const parts = ['#bkOut','#ccOut','#crOut','#emOut','#rgOut','#gstOut','#cmOut','#rnOut','#arOut','#afOut','#ppOut','#spOut','#roOut','#dlOut','#swOut','#tiOut','#cgOut','#cnOut'].map(id => $(id)?.innerText?.replace(/\s+/g,' ').trim()).filter(Boolean);
     const text = ['*BCS Calculator Summary*', '', parts.join('\n'), '', 'BCS · Business City Square · @ajaysharma.bcs'].join('\n');
     if(navigator.share){ navigator.share({ title: 'BCS Calculators', text }).catch(() => {}); } else { window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank'); }
   }
-  const fns = [bankCalc, circleCalc, circleProCalc, emiCalc, regCalc, gstCalc, commCalc, rentCalc, areaCalc, affordCalc, prepayCalc, sipCalc, rentOwnCalc, delayCalc];
+  const fns = [bankCalc, circleCalc, circleProCalc, emiCalc, regCalc, gstCalc, commCalc, rentCalc, areaCalc, affordCalc, prepayCalc, sipCalc, rentOwnCalc, delayCalc, stateCalc, tdsCalc, cgCalc, cnCalc];
   function runAll(){ fns.forEach(f => { try{ f(); }catch(e){} }); renderCalcStats(); }
-  const ids = ['#bkAmt','#ccMarket','#ccCircle','#crLocality','#crType','#crArea','#crRate','#crUrbanRural','#crTag','#emAmt','#emRate','#emYears','#emFee','#rgAmt','#rgStamp','#rgReg','#rgSur','#gstAmt','#gstType','#cmAmt','#cmPct','#cmTds','#cmGst','#rnVal','#rnRent','#rnGrowth','#rnVac','#arVal','#arFrom','#afInc','#afRate','#afYears','#afFoir','#ppLoan','#ppAmt','#ppRate','#ppYears','#spAmt','#spYrs','#spRet','#spInf','#roRent','#roVal','#roRate','#roApp','#dlPaid','#dlMonths','#dlMclr'];
+  const ids = ['#bkAmt','#ccMarket','#ccCircle','#crLocality','#crType','#crArea','#crRate','#crUrbanRural','#crTag','#emAmt','#emRate','#emYears','#emFee','#rgAmt','#rgStamp','#rgReg','#rgSur','#gstAmt','#gstType','#cmAmt','#cmPct','#cmTds','#cmGst','#rnVal','#rnRent','#rnGrowth','#rnVac','#arVal','#arFrom','#afInc','#afRate','#afYears','#afFoir','#ppLoan','#ppAmt','#ppRate','#ppYears','#spAmt','#spYrs','#spRet','#spInf','#roRent','#roVal','#roRate','#roApp','#dlPaid','#dlMonths','#dlMclr','#swState','#swGender','#swVal','#tiVal','#tiSeller','#cgBuy','#cgCiiB','#cgYrs','#cgSell','#cgCiiS','#cgExp','#cnArea','#cnQual','#cnBound'];
   ids.forEach(id => { const el = $(id); if(el){ el.addEventListener('input', runAll); el.addEventListener('change', runAll); } });
   $('#crLoad')?.addEventListener('click', loadCircleDefault);
   $('#rtSave')?.addEventListener('click', saveRates);
@@ -23105,23 +23448,45 @@ function virtualTodayFestival(){
     source:'custom', edited:false
   };
 }
+function bcsShuffleBag(n){
+  const bag = Array.from({ length:n }, (_, i) => i);
+  for(let i = n - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); const t = bag[i]; bag[i] = bag[j]; bag[j] = t; }
+  return bag;
+}
 function dailyQuoteRecord(){
   const quotes = (db.quotes && db.quotes.length) ? db.quotes : DEFAULT_QUOTES;
   if(!quotes.length) return { text:'Aaj ka din shubh ho.', by:'' };
-  const d = isoToDate(todayISO()) || new Date();
-  const start = new Date(d.getFullYear(), 0, 1);
-  const doy = Math.floor((d.getTime() - start.getTime()) / 86400000);
-  const off = Number(db.daily && db.daily.quoteOffset) || 0;
-  const idx = ((doy + off) % quotes.length + quotes.length) % quotes.length;
+  if(!db.daily) db.daily = {};
+  /* Shuffle-bag: har quote ek baar aata hai, poora bank khatam hone par naya shuffle — kabhi repeat nahi */
+  let bag = Array.isArray(db.daily.quoteBag) ? db.daily.quoteBag : null;
+  let ptr = Number(db.daily.quotePtr) || 0;
+  if(!bag || bag.length !== quotes.length || ptr >= bag.length){
+    bag = bcsShuffleBag(quotes.length);
+    ptr = 0;
+    db.daily.quoteBag = bag;
+    db.daily.quotePtr = 0;
+  }
+  const idx = ((bag[ptr] % quotes.length) + quotes.length) % quotes.length;
   return quotes[idx];
 }
-function cycleDailyQuote(){
+function cycleDailyQuote(silent){
+  const quotes = (db.quotes && db.quotes.length) ? db.quotes : DEFAULT_QUOTES;
   if(!db.daily) db.daily = {};
-  db.daily.quoteOffset = (Number(db.daily.quoteOffset) || 0) + 1;
+  let bag = Array.isArray(db.daily.quoteBag) ? db.daily.quoteBag : null;
+  if(!bag || bag.length !== quotes.length){
+    bag = bcsShuffleBag(quotes.length);
+    db.daily.quoteBag = bag;
+    db.daily.quotePtr = 1;
+  } else {
+    let ptr = (Number(db.daily.quotePtr) || 0) + 1;
+    if(ptr >= bag.length){ db.daily.quoteBag = bcsShuffleBag(quotes.length); ptr = 0; }
+    db.daily.quotePtr = ptr;
+  }
   save();
   renderDailyHero();
   const box = $('#thQuoteBox');
   if(box){ box.classList.remove('swap'); void box.offsetWidth; box.classList.add('swap'); }
+  if(!silent) toast('Naya quote — ' + ((Number(db.daily.quotePtr) || 0) + 1) + ' / ' + quotes.length);
 }
 
 function dlWeekNumber(d){
@@ -30151,6 +30516,52 @@ function bcsMarketSegments(){
   if(fx && s.ethUsd) segs.push('<b>ETH</b> ' + mktInrRaw(s.ethUsd * fx, 0));
   return segs;
 }
+/* Evergreen real-estate facts — ticker me har minute rotate hote hain, fetch fail ho to bhi fresh content */
+const BCS_TICKER_FACTS = [
+  'Stamp duty Rajasthan 6% + registration 1% — duty max(circle rate, agreement value) par lagti hai',
+  'Rajasthan me registration fee 1% (cap ₹10 lakh) — mahila mallik ko stamp duty concession',
+  'Under-construction property par GST 5% (non-affordable) ya 1% (affordable) — ready/CC property par GST nahi',
+  '₹50 lakh+ ke purchase me buyer 1% TDS kaate — Form 26QB, 30 din ke andar',
+  'Property sale 2 saal+ holding par LTCG 12.5% (without indexation) ya 20% (with indexation)',
+  'RERA delay compensation — EMI interest MCLR + 2% se kam nahi hoti',
+  '1 pucca bigha (Rajasthan) = 27,225 sq ft = 25 biswa · kaccha bigha 17,424 sq ft',
+  '1 kanal = 20 marla ≈ 5,445 sq ft · 1 acre = 43,560 sq ft · 1 hectare ≈ 2.47 acre',
+  'BSP ke upar PLC, EDC/IDC, parking, club, IFMS, GST, stamp duty — total cost 20-35% zyada ho sakta hai',
+  'Home loan EMI me pehle saal majority interest hoti hai — prepay jaldi saalon me zyada fayda',
+  'RBI LTV rule: ₹30L tak → 90% loan · ₹30-75L → 80% · ₹75L se upar → 75%',
+  'Rajasthan e-Panjiyan portal se DLC (circle) rate aur registry slot online milta hai',
+  'JDA leasehold 99 saal ka hota hai — freehold conversion JDA office se hota hai',
+  'Registry ke waqt dono parties ke PAN + Aadhaar aur 2 witnesses zaroori hote hain',
+  'Home loan benefits: 80C me principal ₹1.5L + 24(b) me interest ₹2L',
+  'Rent ₹50,000+/month par tenant 194-IB ke under TDS kaat sakta hai — CA se confirm karein',
+  'RERA me 500 sq m se bade ya 8+ unit projects register hone zaroori — Rajasthan RERA portal se check karein',
+  'Jamabandi / Fard (bhulekh Rajasthan) se ownership verify karna pehla step hai',
+  'OC (Occupancy Certificate) ke bina possession legal nahi — utilities aur resale dono OC maangte hain',
+  'Circle vs market rate gap bada ho to duty circle par — cash component deal red flag hai',
+  'Commercial rental yield 6-9% vs residential 2.5-4% — Indian market average',
+  'Property tax Jaipur — JMC Greater / Heritage me annual value basis par online jama hota hai',
+  'Registry ke baad mutation (namantaran) 90 din me karaein — tehsil / Nagar Nigam',
+  'Bank valuation agreement value se kam nikle to loan bhi kam milega — LTV bank valuation par',
+  'Pre-EMI sirf interest hota hai — principal possession ke baad shuru hota hai',
+  'Rental agreement 11 month common hai — 1 saal se upar registration zaroori',
+  'Capital gains exemption: Sec 54 (residential reinvest) ya 54EC bonds (₹50L cap)',
+  'Circle rate time-to-time badhti hai — registry se pehle latest DLC check karein',
+  'Loan processing fee 0.25-0.5% + insurance — bank comparison me total cost dekhein',
+  'Sale deed me payment trail chequed/banked rakhein — cash bada amount risk hota hai',
+  'Token/booking amount refund terms likhit lein — RERA me 30 din me agreement force hota hai',
+  'Farad + khasra number + JDA approval bina kharidi high-risk hoti hai',
+  'Approved map deviation par penalty hoti hai — construction plan ke andar rakhein',
+  'EMI date salary ke 5-7 din baad set karein — cash flow smooth rehta hai',
+  'NRI bhi India me property kharid sakte hain (farmhouse/plantation/church land chhod kar)',
+  'Society me sinking fund + IFMS possession ke baad se start hote hain — budget me rakhein'
+];
+function bcsTickerFacts(){
+  const off = Math.floor(Date.now() / 60000); /* har minute naya window */
+  const n = BCS_TICKER_FACTS.length;
+  const picks = [];
+  for(let i = 0; i < Math.min(6, n); i++) picks.push(BCS_TICKER_FACTS[(off + i) % n]);
+  return picks.map(f => '<span class="ticker-item" title="BCS Desk · FY 2026-27 indicative — verify before final">💡 ' + esc(f) + '</span>').join(' <span class="tick-sep">•</span> ');
+}
 function bcsTickerHTML(){
   let items = (liveState.items || []).slice(0, 10);
   if(!items.length){
@@ -30166,7 +30577,8 @@ function bcsTickerHTML(){
         return '<a class="ticker-item" href="' + esc(it.link || '#') + '" target="_blank" rel="noopener noreferrer" title="' + esc(it.title || '') + '">' + esc(it.title || '') + '</a>';
       }).join(' <span class="tick-sep">•</span> ')
     : '<span class="ticker-item">Live headlines loading — press ↻ to fetch now</span>';
-  const one = '<span>' + rateStr + heads + ' <span class="tick-sep">•</span> </span>';
+  const facts = bcsTickerFacts();
+  const one = '<span>' + rateStr + heads + ' <span class="tick-sep">•</span> ' + facts + ' <span class="tick-sep">•</span> </span>';
   return one + one;
 }
 function bcsTickerAge(){
@@ -31286,6 +31698,8 @@ function initDayplan(){
       deb = setTimeout(() => { save(); const sv2 = $('#stickySaved'); if(sv2) sv2.textContent = 'Saved ✓'; }, 500);
     });
   }
+  wireTaskPop();
+  renderTaskPop();
 }
 
 function dayTodos(iso){
@@ -31585,8 +31999,98 @@ function resetDayTimer(){
   renderDayplan();
   toast('Day timer reset');
 }
+/* ---------- dock to-do popup (aaj ke tasks: pending + done) ---------- */
+function todayTodos(){
+  const iso = todayISO();
+  const list = (db.todos || []).filter(t => t.date === iso);
+  const cmp = (a,b) => {
+    const ap = { high:0, normal:1, low:2 }[a.priority || 'normal'];
+    const bp = { high:0, normal:1, low:2 }[b.priority || 'normal'];
+    if(a.done !== b.done) return a.done ? 1 : -1;
+    if(ap !== bp) return ap - bp;
+    return (a.createdAt || 0) - (b.createdAt || 0);
+  };
+  const pending = list.filter(t => !t.done).sort(cmp);
+  const done = list.filter(t => t.done).sort((a,b) => (b.doneAt || 0) - (a.doneAt || 0));
+  const overdue = (db.todos || []).filter(t => t.date < iso && !t.done);
+  return { pending, done, overdue };
+}
+function taskRowHTML(t, opts){
+  const doneCls = t.done ? ' done' : '';
+  const pri = t.priority === 'high' ? '⚠ ' : t.priority === 'low' ? '▽ ' : '';
+  return `<div class="tq-row${doneCls}" data-taskid="${esc(t.id)}" role="button" tabindex="0" title="${esc(t.title)}">
+    <span class="tq-tick">${t.done ? '✓' : ''}</span>
+    <span class="tq-txt"><b>${pri}${esc(t.title)}</b>${t.time ? `<span>⏰ ${esc(t.time)}</span>` : ''}${opts && opts.overdue ? `<span class="tq-over">${esc(t.date)}</span>` : ''}</span>
+    <button type="button" class="tq-x" data-taskdel title="Delete">✕</button>
+  </div>`;
+}
+function renderTaskPop(){
+  const { pending, done, overdue } = todayTodos();
+  const pen = $('#taskPendingList'), dne = $('#taskDoneList');
+  const total = pending.length + done.length;
+  const chip = $('#taskCountChip');
+  if(chip) chip.textContent = pending.length ? pending.length + ' pending' : (total ? 'sab done ✓' : 'koi task nahi');
+  const badge = $('#taskBadge');
+  if(badge){ badge.hidden = !pending.length; badge.textContent = pending.length; }
+  const badgeTxt = $('#taskBadgeTxt');
+  if(badgeTxt) badgeTxt.textContent = total ? `${done.length} done / ${total}` : 'aaj ka din';
+  if(pen){
+    let html = pending.map(t => taskRowHTML(t)).join('');
+    if(overdue.length){
+      html += overdue.slice(0, 5).map(t => taskRowHTML(t, { overdue:true })).join('');
+      html += '<div class="tq-empty" style="color:#A4452B">' + overdue.length + ' overdue — Day Plan me shift karein</div>';
+    }
+    pen.innerHTML = html || '<div class="tq-empty">Koi pending task nahi — quick add se naya task likhein.</div>';
+  }
+  if(dne){
+    dne.innerHTML = done.map(t => taskRowHTML(t)).join('');
+    const head = $('#taskDoneHead');
+    if(head){ head.hidden = !done.length; }
+    const dc = $('#taskDoneCount');
+    if(dc) dc.textContent = done.length ? done.length + ' ✓' : '';
+  }
+}
+function wireTaskPop(){
+  const pop = $('#taskPop');
+  if(!pop) return;
+  pop.addEventListener('click', e => {
+    const row = e.target.closest('[data-taskid]');
+    if(e.target.closest('#taskOpenDayplan')){
+      e.preventDefault();
+      $$('.toolpop').forEach(p => p.classList.remove('on'));
+      $$('.dock-btn').forEach(b => b.classList.remove('open'));
+      go('dayplan');
+      return;
+    }
+    if(!row) return;
+    const t = (db.todos || []).find(x => x.id === row.dataset.taskid);
+    if(!t) return;
+    if(e.target.closest('[data-taskdel]')){
+      db.todos = db.todos.filter(x => x.id !== t.id);
+      save(); renderTaskPop(); renderDayplan();
+      toast('Task delete ho gaya');
+      return;
+    }
+    t.done = !t.done;
+    t.doneAt = t.done ? Date.now() : null;
+    t.updatedAt = Date.now();
+    save(); renderTaskPop(); renderDayplan();
+    if(t.done){ toast('Done ✓ — ' + t.title); celebrate(); }
+  });
+  $('#taskQuickForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const inp = $('#taskQuickInput');
+    const title = (inp.value || '').trim();
+    if(!title) return toast('Task ka naam likhein', true);
+    db.todos.push({ id: uid(), date: todayISO(), title, time: '', note: '', priority: 'normal', done: false, doneAt: null, createdAt: Date.now(), updatedAt: Date.now() });
+    inp.value = '';
+    save(); renderTaskPop(); renderDayplan();
+    toast('Task added — aaj ke liye');
+  });
+  setInterval(() => { if($('#taskPop').classList.contains('on')) renderTaskPop(); }, 60000);
+}
 function timerTick(){
-  if(currentView !== 'dayplan') return;
+  if(currentView !== 'dayplan' && !$('#taskPop')?.classList.contains('on')) return;
   const t = readTimer();
   if(!(t.running || t.startedAt || t.accum)) return;
   timerSync();
@@ -31596,9 +32100,14 @@ function timerSync(){
   const t = readTimer();
   const box = $('#dayTimer');
   const full = el >= DAY_SECONDS;
+  const remain = Math.max(0, DAY_SECONDS - el);
   const mm = Math.floor(el / 60), h = Math.floor(mm / 60), m = mm % 60;
+  const rm = Math.floor(remain / 60), rh = Math.floor(rm / 60), rmm = rm % 60;
   $('#dtTime').textContent = String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0');
-  $('#dtLabel').textContent = full ? 'Day complete — 8:00 done ✓' : 'of 8:00 focus · 10 am – 6 pm';
+  if(full) $('#dtLabel').textContent = 'Day complete — 8:00 done ✓';
+  else if(t.running) $('#dtLabel').textContent = 'running ' + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ' · pending ' + String(rh).padStart(2,'0') + ':' + String(rmm).padStart(2,'0') + ' of 8:00';
+  else if(el > 0) $('#dtLabel').textContent = 'paused at ' + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ' · pending ' + String(rh).padStart(2,'0') + ':' + String(rmm).padStart(2,'0') + ' of 8:00';
+  else $('#dtLabel').textContent = 'of 8:00 focus · 10 am – 6 pm';
   $('#dtRing').style.strokeDashoffset = RING_C * (1 - el / DAY_SECONDS);
   $('#dtRing').style.stroke = full ? '#4E7C5B' : (t.running ? '#C79A2E' : '#8FA18F');
   box.classList.toggle('running', !!t.running && !full);
@@ -31606,6 +32115,10 @@ function timerSync(){
   const btn = $('#dtStart');
   btn.textContent = full ? 'Day done ✓' : (t.running ? 'Pause' : (el > 0 ? 'Resume' : 'Start day'));
   btn.disabled = full;
+  if($('#taskBadgeTxt') && $('#taskPop').classList.contains('on')){
+    const btxt = $('#taskBadgeTxt');
+    if(t.running || el > 0) btxt.textContent = 'timer ' + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ' · ' + (t.running ? 'running' : 'paused') + ' · pending ' + String(rh).padStart(2,'0') + ':' + String(rmm).padStart(2,'0');
+  }
 }
 
 /* ---------- sticky + calculator tool dock ---------- */
@@ -31617,12 +32130,15 @@ function initTools(){
     $$('.dock-btn').forEach(b => b.classList.remove('open'));
     if(!was){
       pop.classList.add('on');
-      (id === 'stickyPop' ? $('#stickyBtn') : $('#calcBtn')).classList.add('open');
+      const btnMap = { stickyPop:'stickyBtn', calcPop:'calcBtn', taskPop:'taskBtn' };
+      $('#' + (btnMap[id] || 'calcBtn')).classList.add('open');
       if(id === 'calcPop') setTimeout(() => $('#calcDisp').focus?.(), 50);
       if(id === 'stickyPop' && typeof bcsRenderStickyNotes === 'function') bcsRenderStickyNotes();
+      if(id === 'taskPop') renderTaskPop();
     }
   };
   $('#stickyBtn').addEventListener('click', () => open('stickyPop'));
+  $('#taskBtn').addEventListener('click', () => open('taskPop'));
   $('#calcBtn').addEventListener('click', () => open('calcPop'));
   const closeToolpops = () => { $$('.toolpop').forEach(p => p.classList.remove('on')); $$('.dock-btn').forEach(b => b.classList.remove('open')); };
   $('#dockAddProject')?.addEventListener('click', () => { openProject(null); closeToolpops(); });
@@ -35682,8 +36198,38 @@ $('#listsSave').addEventListener('click', () => {
 });
 
 /* ---------- terminology ---------- */
+function renderTermOfDay(){
+  const box = $('#termOfDay');
+  if(!box || !(db.terminology || []).length) return;
+  if(!db.daily) db.daily = {};
+  const doy = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 1).getTime()) / 86400000);
+  const off = Number(db.daily.termOffset) || 0;
+  const n = db.terminology.length;
+  const idx = ((doy + off) % n + n) % n;
+  const t = db.terminology[idx];
+  const catLabel = ({ legal:'Legal', financial:'Financial', tax:'Tax', buyer:'Buyer', pricing:'Pricing', physical:'Physical', govt:'Government', other:'Other', advice:'Advice' })[t.cat] || (t.cat || 'General').toUpperCase();
+  box.innerHTML = `
+    <div class="panel-head"><h4>📖 Term of the day</h4><span class="n-badge">${esc(catLabel)} · ${idx + 1} / ${n}</span></div>
+    <div style="margin-top:8px">
+      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+        <b style="font-family:'Fraunces',serif;font-size:17px;color:var(--ink)">${esc(t.term)}</b>
+        ${t.hi ? `<span style="font-size:12px;color:var(--mut)">${esc(t.hi)}</span>` : ''}
+        ${t.regions ? `<span class="n-badge">${esc(t.regions)}</span>` : ''}
+      </div>
+      <p style="font-size:12.5px;line-height:1.6;color:var(--ink2);margin:8px 0 0">${esc(t.meaning || '')}</p>
+      ${t.calc ? `<div style="margin-top:8px;padding:8px 10px;border:1px dashed var(--line);border-radius:9px;background:#FCFDFC;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--ink);white-space:pre-line">${esc(t.calc)}</div>` : ''}
+      ${t.example ? `<p style="font-size:11.5px;color:var(--mut);margin:7px 0 0;line-height:1.55"><b>Example:</b> ${esc(t.example)}</p>` : ''}
+      <div style="margin-top:9px"><button type="button" class="btn ghost sm" id="termNextBtn">↻ Agla term</button></div>
+    </div>`;
+  $('#termNextBtn').addEventListener('click', () => {
+    db.daily.termOffset = (Number(db.daily.termOffset) || 0) + 1;
+    save();
+    renderTermOfDay();
+  });
+}
 function renderTerminology(){
   if(!$('#tmGrid')) return;
+  renderTermOfDay();
   const q = ($('#tmSearch').value || '').trim().toLowerCase();
   const catF = $('#tmCategoryFilter').value || '';
   const kindF = $('#tmKindFilter').value || '';
@@ -36656,7 +37202,13 @@ function bcsPrefetchLive(){
   }catch(e){}
 }
 setTimeout(bcsPrefetchLive, 1800);
-setInterval(function(){ try{ if(newsMode === 'live' && document.visibilityState === 'visible' && navigator.onLine){ fetchLiveNews(liveState.sourceId || 'jaipur').catch(function(){}); } }catch(e){} }, 15 * 60000);
+/* headline refresh — news tab khula ho ya na ho, ticker kabhi stale nahi hoga */
+setInterval(function(){ try{ if(document.visibilityState === 'visible' && navigator.onLine && !liveState.loading){ fetchLiveNews(liveState.sourceId || 'jaipur').catch(function(){}); } }catch(e){} }, 10 * 60000);
+/* minute tick — quote rotate (shuffle-bag, no repeat) + ticker facts window rotate */
+setInterval(function(){
+  try{ if(document.visibilityState === 'visible'){ cycleDailyQuote(true); } }catch(e){}
+  try{ if(document.visibilityState === 'visible'){ renderTicker(); } }catch(e){}
+}, 60000);
 /* ---------- BCS canonical: file:// notice + safe storage on local file ---------- */
 (function(){
   try{
