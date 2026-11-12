@@ -12828,6 +12828,64 @@ body[data-theme="dark"] .search-viewer-panel .sep-sub{color:#A7ACA0 !important}
   .mob-add{bottom:calc(18px + env(safe-area-inset-bottom))}
   .media-dock,.media-mini{bottom:calc(14px + env(safe-area-inset-bottom))}
 }
+/* ============================================================
+   DARK MODE LEAK FIXES — whitish chips/blocks jo dark pages
+   par readable nahi the (KPI tiles, board, timeline, funnel,
+   templates, terminology, links, news ideas, accent chips)
+   ============================================================ */
+/* KPI tiles — inner .k/.v divs inherit light #FCFCFA otherwise */
+body[data-theme="dark"] :is(.team-stats,.pipeline-stats,.links-stats) :is(.k,.v){background:transparent !important}
+body[data-theme="dark"] :is(.present-brief div,.unit-stat,.price-metrics div,.dev-profile-stats button){background:#20261F !important;border-color:var(--line) !important;color:var(--ink) !important}
+/* projects kanban board */
+body[data-theme="dark"] #board .col{background:#161B18 !important;border-color:var(--line) !important}
+body[data-theme="dark"] #board .col-hub{background:#26302A !important;border-color:#3A4438 !important;color:#EDEBD9 !important}
+body[data-theme="dark"] #board .col-hub:hover{background:#342F20 !important;border-color:rgba(229,190,98,.4) !important;color:#E5BE62 !important}
+body[data-theme="dark"] :is(.col-head .add,.ec-row .add){background:#26302A !important;border-color:#3A4438 !important;color:#EDEBD9 !important}
+body[data-theme="dark"] .col-head .add:hover{background:var(--olive) !important;color:#171A14 !important}
+body[data-theme="dark"] .ec-col{border-color:var(--line2) !important}
+body[data-theme="dark"] .pcard .fav.fav{background:rgba(229,190,98,.14) !important;border-color:rgba(229,190,98,.35) !important;color:#E5BE62 !important}
+body[data-theme="dark"] .pcard .rera{background:rgba(229,190,98,.08) !important;border:1px solid rgba(229,190,98,.22) !important}
+body[data-theme="dark"] .chk-chip{background:#26302A !important;border-color:#3A4438 !important;color:#A7C4B0 !important}
+body[data-theme="dark"] .show-card .chk-chip{background:rgba(255,255,255,.14) !important;border-color:rgba(255,255,255,.25) !important;color:#EAF4EC !important}
+/* day plan — timeline, task chips, progress */
+body[data-theme="dark"] #dayTimeline,body[data-theme="dark"] .day-add{background:#1B201B !important;border-color:var(--line) !important}
+body[data-theme="dark"] .day-timeline .task{background:#20261F !important;border-color:var(--line) !important;color:var(--ink) !important}
+body[data-theme="dark"] .day-timeline .task.priority-high{background:rgba(164,69,43,.16) !important;border-color:rgba(164,69,43,.35) !important}
+body[data-theme="dark"] .day-timeline .task.priority-normal{background:#20261F !important;border-color:var(--line) !important}
+body[data-theme="dark"] .day-timeline .task.priority-low{background:rgba(255,255,255,.04) !important;border-color:var(--line2) !important}
+body[data-theme="dark"] :is(.dp-bar,.review-line .track,.an-bar .an-track){background:rgba(255,255,255,.1) !important}
+body[data-theme="dark"] .dt-ring .rg-bg{stroke:#2B332B}
+body[data-theme="dark"] .switch .track{background:#2B332B !important}
+/* analytics — funnel steps, insights, table */
+body[data-theme="dark"] :is(.an-fstep,.an-insight){background:#20261F !important;border-color:var(--line) !important;color:var(--ink2) !important}
+body[data-theme="dark"] .an-insight .ic{background:#26302A !important}
+body[data-theme="dark"] :is(.an-table th,.an-table tbody tr:hover td){background:#20261F !important}
+/* templates — preview pane */
+body[data-theme="dark"] .tpl-card .preview{background:#161B18 !important;border-color:var(--line) !important;color:#D9DED6 !important}
+/* terminology — icon, example, regions, formula, action buttons */
+body[data-theme="dark"] .tm-card .tm-ic{background:#26302A !important;border-color:#3A4438 !important}
+body[data-theme="dark"] :is(.tm-example,.tm-meaning){color:#D9DED6 !important}
+body[data-theme="dark"] .tm-example{background:#20261F !important;border-color:var(--line2) !important}
+body[data-theme="dark"] .tm-card .tm-regions{background:rgba(229,190,98,.08) !important;border-color:rgba(229,190,98,.22) !important;color:#E5BE62 !important}
+body[data-theme="dark"] .tm-formula{background:rgba(229,190,98,.08) !important;border-color:rgba(229,190,98,.25) !important;color:#F1D992 !important}
+body[data-theme="dark"] .tm-card .tm-act button{background:#20261F !important;border-color:var(--line) !important;color:#D9DED6 !important}
+body[data-theme="dark"] .tm-card .tm-act button:hover{background:#342F20 !important;color:#E5BE62 !important}
+body[data-theme="dark"] .tm-card .tm-act .del{background:rgba(164,69,43,.16) !important;border-color:rgba(164,69,43,.35) !important;color:#E8977F !important}
+/* dashboard pulse tag */
+body[data-theme="dark"] .pulse-tag{background:#26302A !important;border-color:#3A4438 !important;color:#D9DED6 !important}
+/* developers */
+body[data-theme="dark"] .dev-board-total{background:#26302A !important;border-color:#3A4438 !important;color:#EDEBD9 !important}
+/* important links */
+body[data-theme="dark"] .link-cat-count{background:#26302A !important;color:#A7ACA0 !important}
+body[data-theme="dark"] :is(.link-item .li-open,.link-fav){background:#20261F !important;border-color:var(--line2) !important;color:#E5BE62 !important}
+/* news & ideas */
+body[data-theme="dark"] :is(.ideas-stats>div,.news-toolbar){background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] :is(.ideas-filter button,.news-pin-filter){background:#20261F !important;border-color:var(--line) !important;color:var(--ink2) !important}
+body[data-theme="dark"] .live-source-desk{background:#1B201B !important;border-color:var(--line) !important}
+/* accent chips — indigo/rose/ocean accents had light --acc-soft in dark */
+body[data-theme="dark"][data-accent="indigo"]{--acc:#9AA8F0;--acc-deep:#2A3158;--acc-soft:#262A3E}
+body[data-theme="dark"][data-accent="rose"]{--acc:#E38BB0;--acc-deep:#422A35;--acc-soft:#3A2430}
+body[data-theme="dark"][data-accent="ocean"]{--acc:#6BC7DC;--acc-deep:#1F3F4D;--acc-soft:#17303A;--gold:#6BC7DC;--gold-soft:#17303A;--sage:#17303A;--sage-ink:#BFE9F4;--sand:#1B2C31;--mint:#17303A}
 </style>
 <style id="bcs-final-layout-fix">
 /* ============================================================
