@@ -3712,6 +3712,18 @@ body.bcs-native.bcs-native.bcs-native.bcs-native :is(input,select,textarea){font
 .col-adv{font-size:9px;font-weight:800;color:var(--sage-ink);background:rgba(223,233,227,.78);border:1px solid rgba(65,86,63,.14);border-radius:999px;padding:3px 7px;white-space:nowrap}
 .col-hub{width:24px;height:24px;border-radius:999px;display:grid;place-items:center;font-size:14px;color:var(--gold);background:#fff;border:1px solid var(--line);transition:.18s;flex:none}
 .col-hub:hover{border-color:var(--gold);background:#FFF4DA;transform:translateY(-1px)}
+/* collapsed khali-corridor column on projects board */
+.ec-col{background:transparent;border:1.5px dashed var(--line);border-radius:14px;min-height:120px;padding:10px}
+.ec-wrap{position:relative}
+.ec-wrap>summary{font-size:11px;font-weight:800;color:var(--mut);cursor:pointer;padding:8px 6px;border-radius:9px;list-style:none;white-space:nowrap}
+.ec-wrap>summary::before{content:''}
+.ec-wrap>summary:hover{color:var(--sage-ink);background:rgba(223,233,227,.5)}
+.ec-wrap[open]>summary{margin-bottom:6px}
+.ec-wrap[open]{position:absolute;top:0;left:0;right:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px;box-shadow:0 14px 30px -14px rgba(0,0,0,.25);z-index:30;max-height:60vh;overflow:auto}
+.ec-row{display:flex;align-items:center;gap:7px;padding:6px 6px;border-radius:8px;font-size:11.5px;font-weight:700;color:var(--ink)}
+.ec-row:hover{background:rgba(223,233,227,.45)}
+.ec-row .ec-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ec-row .add{width:22px;height:22px;flex:none}
 .hub-stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:14px 0 8px}
 .hub-count{background:linear-gradient(180deg,#fff,#F7FAF8);border:1px solid var(--line);border-radius:14px;padding:10px 8px;text-align:center;transition:.18s}
 .hub-count:hover{border-color:var(--gold);transform:translateY(-1px)}
@@ -24847,7 +24859,13 @@ function renderProjects(){
     board.innerHTML = `<div style="grid-column:1/-1">${emptyBlock(isAdmin() ? 'No projects yet' : 'No projects assigned yet','Your corridor board will fill up as you add projects.','Add your first project','addproject')}</div>`;
     bindProjectOpen(); return;
   }
-  board.innerHTML = db.corridors.map(c => {
+  const usedCorridors = db.corridors.filter(c => list.some(p => p.corridor === c.id));
+  const emptyCorridors = db.corridors.filter(c => !list.some(p => p.corridor === c.id));
+  if(!usedCorridors.length){
+    board.innerHTML = `<div style="grid-column:1/-1">${emptyBlock('Is filter me koi corridor match nahi hua','Corridor / status filter change karein ya naya project add karein — board turant bhar jayega.')}</div>`;
+    bindProjectOpen(); return;
+  }
+  board.innerHTML = usedCorridors.map(c => {
     const ps = list.filter(p => p.corridor === c.id);
     return `<div class="col" data-col="${c.id}">
       <div class="col-head">
@@ -24858,9 +24876,17 @@ function renderProjects(){
         <button class="col-hub" data-hubroad="${c.id}" title="Open road hub">⇢</button>
         <button class="add" data-addcor="${c.id}" title="Add project here">+</button>
       </div>
-      ${ps.map(projectCard).join('') || `<div style="font-size:11px;color:#A3ACA5;text-align:center;padding:20px 6px">Drop a project here</div>`}
+      ${ps.map(projectCard).join('')}
     </div>`;
-  }).join('');
+  }).join('') + (emptyCorridors.length ? `<div class="col ec-col">
+      <details class="ec-wrap">
+        <summary>＋ ${emptyCorridors.length} khali corridor${emptyCorridors.length === 1 ? '' : 's'}</summary>
+        ${emptyCorridors.map(c => `<div class="ec-row" data-col="${c.id}">
+          <span class="cor-dot" style="background:${c.color}"></span><span class="ec-name">${esc(c.name)}</span>
+          <button class="add" data-addcor="${c.id}" title="Add project here">+</button>
+        </div>`).join('')}
+      </details>
+    </div>` : '');
   bindProjectOpen(); bindDnD();
   $$('#board [data-addcor]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openProject(null, b.dataset.addcor); }));
   $$('#board [data-hubroad]').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openRoadHub(b.dataset.hubroad); }));
@@ -24912,6 +24938,7 @@ function bindDnD(){
     col.addEventListener('dragleave', () => col.classList.remove('over'));
     col.addEventListener('drop', e => {
       e.preventDefault(); col.classList.remove('over');
+      if(!col.dataset.col) return;
       const id = e.dataTransfer.getData('text/plain');
       const p = db.projects.find(x => x.id === id);
       if(p && p.corridor !== col.dataset.col){
@@ -27754,7 +27781,7 @@ function renderDetail(){
     p.rera ? 'RERA Registered' : null,
     apFull || null,
     p.timeline ? timelineLabel(p.timeline) : null,
-    band ? band.label + ' budget' : null
+    band ? (band.key === 'budget' ? 'Budget price' : band.label + ' budget') : null
   ].filter(Boolean))];
 
   $('#detailHero').innerHTML = `
@@ -27810,7 +27837,6 @@ function renderDetail(){
       <div class="dprice-line">
         <div class="dprice"><small>Guide price</small>${priceRange(p)}</div>
         <div class="dchips">${feats.map(f => `<span class="dchip green">${esc(f)}</span>`).join('')}</div>
-        <div class="dchips dossier-quick">${['dossier','cost','visit','doc'].map(k => `<button type="button" class="dchip green" data-quick="${k}">📄 ${k === 'dossier' ? 'Dossier' : k === 'cost' ? 'Cost builder' : k === 'visit' ? 'Log visit' : 'Add document'}</button>`).join('')}</div>
       </div>
       <!-- Gallery carousel at top of overview -->
       ${(p.gallery || []).length ? `
