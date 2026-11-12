@@ -14979,6 +14979,7 @@ try{
       <button type="button" data-view="news" aria-label="News"><span class="nav-ic" aria-hidden="true">📰</span><span class="nav-lbl">News</span><span class="nav-dot" aria-hidden="true"></span></button>
       <button type="button" data-view="calc" aria-label="Calculators"><span class="nav-ic" aria-hidden="true">⌘</span><span class="nav-lbl">Calculators</span></button>
       <button type="button" data-view="inventory" aria-label="Plot Inventory"><span class="nav-ic" aria-hidden="true">▦</span><span class="nav-lbl">Inventory</span></button>
+      <button type="button" data-view="pipeline" aria-label="Sales Pipeline"><span class="nav-ic" aria-hidden="true">⇢</span><span class="nav-lbl">Pipeline</span></button>
       <button type="button" data-view="advisors" aria-label="Advisors"><span class="nav-ic" aria-hidden="true">◎</span><span class="nav-lbl">Advisors</span></button>
       <button type="button" data-view="analytics" aria-label="Analytics"><span class="nav-ic" aria-hidden="true">▥</span><span class="nav-lbl">Analytics</span></button>
       <div class="nav-more-wrap">
@@ -14996,6 +14997,7 @@ try{
           <button type="button" data-view="news"><span class="nav-ic" aria-hidden="true">📰</span>News</button>
           <button type="button" data-view="calc"><span class="nav-ic" aria-hidden="true">⌘</span>Calculators</button>
           <button type="button" data-view="inventory"><span class="nav-ic" aria-hidden="true">▦</span>Plot Inventory</button>
+          <button type="button" data-view="pipeline"><span class="nav-ic" aria-hidden="true">⇢</span>Sales Pipeline</button>
           <button type="button" data-view="advisors"><span class="nav-ic" aria-hidden="true">◎</span>Advisors</button>
           <button type="button" data-view="partners"><span class="nav-ic" aria-hidden="true">◉</span>Partners</button>
           <button type="button" data-view="finance"><span class="nav-ic" aria-hidden="true">💰</span>Finance</button>
@@ -15375,6 +15377,7 @@ try{
       </div>
       <div class="adv-head-actions">
         <button class="btn ghost" id="bulkProjectBtn" title="Add several projects in one go">⚡ Bulk add</button>
+        <button class="btn ghost" data-repbtn="projects" title="Customised projects report — PDF / AirDrop">📊 Report</button>
         <button class="btn primary" id="addProjectBtn">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
           Add project
@@ -15441,6 +15444,7 @@ try{
         <button class="btn ghost bulk-dev-btn" data-bulkdev="1" title="Add several developers in one go">⚡ Bulk add</button>
         <button class="btn ghost sm" id="exportDevPdfBtn" title="Export developers PDF">📄 PDF</button>
         <button class="btn ghost sm" id="exportDevXlsxBtn" title="Export developers Excel">📊 Excel</button>
+        <button class="btn ghost" data-repbtn="developers" title="Customised developers report — PDF / AirDrop">📊 Report</button>
         <button class="btn primary" id="addDevBtn">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
           Add developer
@@ -15493,6 +15497,7 @@ try{
         <p class="adv-sub">Jaipur ka poora advisor network — group, mobile, team size aur ₹1,200 / ₹1,500 per sq yd slab ke saath. Roz prospect se call karein, meeting karein, aur agree hone par “Active BCS advisor” banayein — phir projects assign karke sale aur shared earnings track karein.</p>
       </div>
       <div class="adv-head-actions">
+        <button class="btn ghost" data-repbtn="advisors" title="Customised advisors report — PDF / AirDrop">📊 Report</button>
         <button class="btn primary" id="addAdvisorBtn">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
           Add advisor
@@ -15544,6 +15549,7 @@ try{
       </div>
       <div class="adv-head-actions">
         <button class="btn ghost" id="partnerImportBtn" title="Multiple sources se partner list import karein">📥 Import list</button>
+        <button class="btn ghost" data-repbtn="partners" title="Customised partners report — PDF / AirDrop">📊 Report</button>
         <button class="btn primary" id="addPartnerBtn">+ Add partner</button>
       </div>
     </div>
@@ -15558,6 +15564,52 @@ try{
       <span class="links-toolbar-note" id="partnerCount"></span>
     </div>
     <div class="partner-grid" id="partnerGrid"></div>
+  </section>
+
+  <!-- ============ SALES PIPELINE ============ -->
+  <section class="view" id="view-pipeline">
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · sales pipeline — booking se registry tak</div>
+        <h2 class="adv-title">Har sale,<br><em>start se end tak.</em></h2>
+        <p class="adv-sub">Booking, payment dates, bank/cheque trail, agreement, registry, handover aur brokerage slab — advisor ki sale ka poora lifecycle ek jagah, amount paid &amp; pending ke saath.</p>
+      </div>
+      <div class="adv-head-actions">
+        <button class="btn ghost" data-repbtn="pipeline" title="Customised sales report — PDF / AirDrop">📊 Report</button>
+        <button class="btn primary" id="addDealBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+          Add sale
+        </button>
+      </div>
+    </div>
+    <div class="links-stats" id="pipelineStats"></div>
+    <div class="toolbar links-toolbar">
+      <div class="adv-search links-search"><input id="dealSearch" placeholder="Search client, project, plot, advisor, code…"></div>
+      <select id="dealStatusFilter">
+        <option value="">All stages</option>
+        <option value="booked">Booked</option>
+        <option value="agreement">Agreement done</option>
+        <option value="registry">Registry done</option>
+        <option value="handover">Handover done</option>
+        <option value="closed">Closed</option>
+        <option value="cancelled">Cancelled</option>
+      </select>
+      <select id="dealAdvisorFilter"><option value="">All advisors</option></select>
+      <div class="spacer"></div>
+      <span class="links-toolbar-note" id="dealCount"></span>
+    </div>
+    <div class="panel" style="margin-bottom:14px">
+      <div class="panel-head"><h4>Sales ledger</h4><span class="n-badge" id="dealScopeBadge">all</span></div>
+      <div class="an-scroll"><table class="an-table" id="dealTable"></table></div>
+    </div>
+    <div class="day-cols">
+      <aside class="day-side" style="max-width:none">
+        <div class="panel day-follow">
+          <div class="panel-head"><h4>Payments aane wale / follow-up</h4><span class="sub">upcoming &amp; overdue</span></div>
+          <div id="dealFollowList"></div>
+        </div>
+      </aside>
+    </div>
   </section>
 
   <!-- ============ FINANCE ============ -->
@@ -15592,6 +15644,7 @@ try{
       </div>
       <div class="adv-head-actions">
         <button class="btn ghost" id="leadImportBtn" title="WhatsApp / Excel se leads import karein">📥 Lead import</button>
+        <button class="btn ghost" data-repbtn="clients" title="Customised clients report — PDF / AirDrop">📊 Report</button>
         <button class="btn primary" id="addClientBtn">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
           Add client
@@ -18555,6 +18608,114 @@ try{
   </div>
 </div>
 
+<!-- ============ SALES DEAL EDITOR ============ -->
+<div class="overlay" id="dealModal">
+  <div class="modal" style="width:min(880px,100%)">
+    <div class="modal-head"><h3 id="dealTitle">Add sale</h3><button class="xbtn" data-close="dealModal">✕</button></div>
+    <div class="modal-body">
+      <div class="pt-sec"><span>1 · Property &amp; deal</span></div>
+      <div class="grid2">
+        <div class="field"><label>Project</label><select id="dlProject"><option value="">— Custom / bahar ka —</option></select></div>
+        <div class="field"><label>Project name (agar list me nahi)</label><input id="dlProjectName" placeholder="e.g. Shiv Vatika, Ajmer Road"></div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Plot / unit detail</label><input id="dlPlot" placeholder="e.g. Plot 142, 100 Gaj, East"></div>
+        <div class="field"><label>Area</label><input id="dlArea" type="number" min="0" placeholder="100"></div>
+        <div class="field"><label>Unit</label><select id="dlUnit"><option value="sqYd">Gaj / sq yd</option><option value="sqFt">sq ft</option></select></div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Rate (₹ per unit)</label><input id="dlRate" type="number" min="0" placeholder="45000"></div>
+        <div class="field"><label>Total deal value (₹) *</label><input id="dlValue" type="number" min="0" placeholder="4500000"></div>
+        <div class="field"><label>Booking date</label><input id="dlBookingDate" type="date"></div>
+      </div>
+
+      <div class="pt-sec"><span>2 · Client &amp; advisor</span></div>
+      <div class="grid2">
+        <div class="field"><label>Client (list se)</label><select id="dlClient"><option value="">— naam likhein —</option></select></div>
+        <div class="field"><label>Client name (list me nahi ho to)</label><input id="dlClientName" placeholder="e.g. Ramesh Kumar"></div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Client mobile</label><input id="dlClientPhone" placeholder="+91 …"></div>
+        <div class="field"><label>Advisor (list se)</label><select id="dlAdvisor"><option value="">— none —</option></select></div>
+        <div class="field"><label>Advisor name (free text)</label><input id="dlAdvisorName" placeholder="agar list me nahi"></div>
+      </div>
+
+      <div class="pt-sec"><span>3 · Payments — booking + baaki</span></div>
+      <div class="grid2">
+        <div class="field"><label>Booking / token amount (₹)</label><input id="dlBookingAmt" type="number" min="0" placeholder="500000"></div>
+        <div class="field"><label>Payment note</label><input id="dlPayNote" placeholder="e.g. 20% down payment plan"></div>
+      </div>
+      <div class="field"><label>Payment received — date, amount, mode</label>
+        <div id="dlPayments"></div>
+        <button type="button" class="btn ghost sm" id="dlPayAdd" style="margin-top:7px">＋ Payment row</button>
+      </div>
+      <div class="calc-out" id="dlPayOut" style="margin-top:10px"></div>
+
+      <div class="pt-sec"><span>4 · Agreement · Registry · Handover</span></div>
+      <div class="grid3">
+        <div class="field"><label>Agreement date</label><input id="dlAgreement" type="date"></div>
+        <div class="field"><label>Registry date</label><input id="dlRegistryDate" type="date"></div>
+        <div class="field"><label>Registry office</label><input id="dlRegistryOffice" placeholder="SRO — e.g. Vaishali Nagar"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Handover / possession date</label><input id="dlHandover" type="date"></div>
+        <div class="field"><label>Stage</label><select id="dlStage">
+          <option value="booked" selected>Booked</option>
+          <option value="agreement">Agreement done</option>
+          <option value="registry">Registry done</option>
+          <option value="handover">Handover done</option>
+          <option value="closed">Closed</option>
+          <option value="cancelled">Cancelled</option>
+        </select></div>
+      </div>
+
+      <div class="pt-sec"><span>5 · Brokerage — developer se advisor tak</span></div>
+      <div class="grid3">
+        <div class="field"><label>Brokerage slab (%)</label><input id="dlBrkPct" type="number" min="0" step="0.05" placeholder="2"></div>
+        <div class="field"><label>ya flat amount (₹)</label><input id="dlBrkAmt" type="number" min="0" placeholder="90000"></div>
+        <div class="field"><label>Received from developer (₹)</label><input id="dlBrkPaid" type="number" min="0" placeholder="0"></div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Advisor share (%)</label><input id="dlAdvPct" type="number" min="0" step="0.05" placeholder="50"></div>
+        <div class="field"><label>Advisor ko paid (₹)</label><input id="dlAdvPaid" type="number" min="0" placeholder="0"></div>
+        <div class="field"><label>Brokerage received date</label><input id="dlBrkDate" type="date"></div>
+      </div>
+      <div class="calc-out" id="dlBrkOut" style="margin-top:10px"></div>
+
+      <div class="pt-sec"><span>6 · Remarks</span></div>
+      <div class="field"><label>Remarks / notes</label><textarea id="dlRemarks" rows="2" placeholder="Bank loan status, cheque numbers, koi bhi zaroori baat…"></textarea></div>
+      <div class="field" id="dlCustomFields"></div>
+      <div class="modal-actions" style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px">
+        <button class="btn ghost" id="dlReportBtn" type="button">📄 Report</button>
+        <button class="btn ghost" id="dlDelete" type="button" style="color:var(--danger)">Delete</button>
+        <button class="btn primary" id="dlSave" type="button">Save sale</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ REPORT BUILDER ============ -->
+<div class="overlay" id="reportModal">
+  <div class="modal" style="width:min(760px,100%)">
+    <div class="modal-head"><h3 id="reportTitle">📊 Customised report</h3><button class="xbtn" data-close="reportModal">✕</button></div>
+    <div class="modal-body">
+      <div class="grid2">
+        <div class="field"><label>Record</label><select id="reportRecord"><option value="">All records</option></select></div>
+        <div class="field"><label>Format</label><select id="reportFmt"><option value="pdf" selected>Detailed page (PDF / print)</option><option value="card">Compact card</option></select></div>
+      </div>
+      <div class="field"><label>Sections — jo chahiye wo on karein</label><div class="checks" id="reportSections"></div></div>
+      <div class="mp-note" id="reportSizeNote"></div>
+      <div class="modal-actions" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:12px">
+        <button class="btn ghost" id="reportCopyBtn" type="button">📋 Copy summary</button>
+        <button class="btn ghost" id="reportDownloadBtn" type="button">⬇ Download file</button>
+        <button class="btn ghost" id="reportShareBtn" type="button">📤 AirDrop / Share</button>
+        <button class="btn primary" id="reportPdfBtn" type="button">🖨 PDF / Print</button>
+      </div>
+      <div class="mp-note" style="margin-top:8px">💡 PDF: print dialog me "Save as PDF" choose karein. AirDrop: macOS Chrome me share sheet se dusri device par bhejein — warna file download ho jayegi.</div>
+    </div>
+  </div>
+</div>
+
 <!-- ============ TERMINOLOGY EDITOR ============ -->
 <div class="overlay" id="terminologyModal">
   <div class="modal" style="width:min(620px,100%)">
@@ -19594,7 +19755,7 @@ const ADMIN_NAME = 'Ajay Sharma';
 const ADMIN_PASSWORD = '5794';
 const ADVISOR_PASSWORD = '1111';
 const AUTH_KEY = 'bcs_auth_v1';
-const ADVISOR_VIEWS = ['dashboard','projects','developers','clients','dayplan','inventory','advisors','resale','analytics','calc','links'];
+const ADVISOR_VIEWS = ['dashboard','projects','developers','clients','dayplan','inventory','advisors','resale','analytics','calc','links','pipeline'];
 const DEFAULT_CLIENT_STATUSES = [
   { id:'new',         label:'New lead' },
   { id:'contacted',   label:'Contacted' },
@@ -20226,6 +20387,8 @@ function normalizeDb(d){
   if(!Array.isArray(d.bookings)) d.bookings = [];
   if(!Array.isArray(d.visits)) d.visits = [];
   if(!Array.isArray(d.partners)) d.partners = [];
+  if(!Array.isArray(d.pipeline)) d.pipeline = [];
+  if(!(Number(d.pipelineSeq) > 0)) d.pipelineSeq = 0;
   if(!Array.isArray(d.journeyLogs)) d.journeyLogs = [];
   if(!Array.isArray(d.documents)) d.documents = [];
   if(!Array.isArray(d.news)) d.news = [];
@@ -36994,8 +37157,736 @@ function initPartners(){
 }
 
 /* ---------- render ---------- */
+/* ================= BCS SALES PIPELINE ================= */
+const DEAL_STAGES = { booked:'Booked', agreement:'Agreement', registry:'Registry', handover:'Handover', closed:'Closed', cancelled:'Cancelled' };
+const DEAL_STAGES_COLOR = { booked:'#C79A2E', agreement:'#54779E', registry:'#7C8B6B', handover:'#2F6644', closed:'#4E7C5B', cancelled:'#A4452B' };
+const DEAL_MODES = { bank:'Bank transfer', cheque:'Cheque', upi:'UPI', rtgs:'RTGS/NEFT', cash:'Cash', other:'Other' };
+let dealPayDraft = [];
+let editingDealId = null;
+function fmtMoney(n){ return '₹' + Math.round(Number(n) || 0).toLocaleString('en-IN'); }
+function dlNum(sel){ const el = $(sel); const v = el ? Number(el.value) : NaN; return (isFinite(v) && v > 0) ? v : 0; }
+function dealPaid(d){ return (Number(d.bookingAmount) || 0) + (d.payments || []).reduce((s, p) => s + (Number(p.amount) || 0), 0); }
+function dealPending(d){ return Math.max(0, (Number(d.dealValue) || 0) - dealPaid(d)); }
+function dealBrkTotal(d){ return (Number(d.brokerageAmount) || 0) || ((Number(d.brokeragePct) || 0) * (Number(d.dealValue) || 0) / 100); }
+function dealBrkPending(d){ return Math.max(0, dealBrkTotal(d) - (Number(d.brokeragePaid) || 0)); }
+function dealAdvShare(d){ return dealBrkTotal(d) * (Number(d.advisorSharePct) || 0) / 100; }
+function dealAdvPayable(d){ return Math.max(0, dealAdvShare(d) - (Number(d.advisorPaid) || 0)); }
+function dealLabel(d){
+  if(d.projectId){ const p = db.projects.find(x => x.id === d.projectId); if(p) return p.name; }
+  return d.projectName || '—';
+}
+function dealClientLabel(d){ return d.clientName || (function(){ const c = db.clients.find(x => x.id === d.clientId); return c ? c.name : '—'; })(); }
+function dealAdvisorLabel(d){ return d.advisorName || (function(){ const a = db.advisors.find(x => x.id === d.advisorId); return a ? a.name : ''; })(); }
+function dealStageChip(d){
+  const st = DEAL_STAGES[d.stage] || d.stage;
+  const col = DEAL_STAGES_COLOR[d.stage] || '#888';
+  return `<span style="display:inline-block;padding:2px 8px;border-radius:999px;font-size:9px;font-weight:800;letter-spacing:.5px;color:#fff;background:${col}">${esc(st)}</span>`;
+}
+function pipelineDeals(){
+  const list = (db.pipeline || []).slice();
+  if(!isAdmin()){ const me = currentAdvisor(); if(me) return list.filter(d => d.advisorId === me.id || d.advisorName === me.name); }
+  return list;
+}
+function renderPipeline(){
+  if(!$('#dealTable')) return;
+  const scoped = pipelineDeals();
+  // filters
+  const q = ($('#dealSearch').value || '').trim().toLowerCase();
+  const stF = $('#dealStatusFilter').value;
+  const adF = $('#dealAdvisorFilter').value;
+  const selF = $('#dealAdvisorFilter');
+  const advNames = [...new Set(scoped.map(d => dealAdvisorLabel(d)).filter(Boolean))];
+  if(selF && selF.options.length - 1 !== advNames.length){
+    const cur = selF.value;
+    selF.innerHTML = '<option value="">All advisors</option>' + advNames.map(n => `<option>${esc(n)}</option>`).join('');
+    selF.value = advNames.includes(cur) ? cur : '';
+  }
+  let deals = scoped.filter(d => {
+    if(stF && d.stage !== stF) return false;
+    if(adF && dealAdvisorLabel(d) !== adF) return false;
+    if(!q) return true;
+    return [d.code, dealLabel(d), d.plotDetail, dealClientLabel(d), d.clientPhone, dealAdvisorLabel(d), d.remarks].filter(Boolean).join(' ').toLowerCase().includes(q);
+  }).sort((a,b) => (b.bookingDate || '').localeCompare(a.bookingDate || '') || (b.createdAt || 0) - (a.createdAt || 0));
+  // stats
+  const live = deals.filter(d => d.stage !== 'cancelled');
+  const totalVal = live.reduce((s,d) => s + (Number(d.dealValue) || 0), 0);
+  const paid = live.reduce((s,d) => s + dealPaid(d), 0);
+  const pend = live.reduce((s,d) => s + dealPending(d), 0);
+  const brkRecv = live.reduce((s,d) => s + (Number(d.brokeragePaid) || 0), 0);
+  const brkPend = live.reduce((s,d) => s + dealBrkPending(d), 0);
+  const advPay = live.reduce((s,d) => s + dealAdvPayable(d), 0);
+  const stats = $('#pipelineStats');
+  if(stats) stats.innerHTML = `
+    <div><div class="k">Sales (live)</div><div class="v">${live.length}</div></div>
+    <div><div class="k">Sales value</div><div class="v">${totalVal >= 10000000 ? '₹' + (totalVal/10000000).toFixed(2) + ' Cr' : '₹' + (totalVal/100000).toFixed(1) + ' L'}</div></div>
+    <div><div class="k">Received</div><div class="v">${paid >= 10000000 ? '₹' + (paid/10000000).toFixed(2) + ' Cr' : '₹' + (paid/100000).toFixed(1) + ' L'}</div></div>
+    <div><div class="k">Pending</div><div class="v" style="color:#A4452B">${pend >= 10000000 ? '₹' + (pend/10000000).toFixed(2) + ' Cr' : '₹' + (pend/100000).toFixed(1) + ' L'}</div></div>
+    <div><div class="k">Brokerage pending</div><div class="v" style="color:#8A6480">${brkPend >= 100000 ? '₹' + (brkPend/100000).toFixed(1) + ' L' : fmtMoney(brkPend)}</div></div>
+    <div><div class="k">Advisor payable</div><div class="v" style="color:#8A6480">${advPay >= 100000 ? '₹' + (advPay/100000).toFixed(1) + ' L' : fmtMoney(advPay)}</div></div>`;
+  const cnt = $('#dealCount');
+  if(cnt) cnt.textContent = deals.length + ' sale' + (deals.length === 1 ? '' : 's');
+  const badge = $('#dealScopeBadge');
+  if(badge) badge.textContent = isAdmin() ? 'all' : (currentAdvisor() ? esc(currentAdvisor().name.split(' ')[0]) : 'mine');
+  // table
+  const tbl = $('#dealTable');
+  if(!tbl) return;
+  const head = `<tr><th>Deal</th><th>Property</th><th>Client</th><th>Advisor</th><th>Value · paid · pending</th><th>Brokerage</th><th>Stage</th><th></th></tr>`;
+  const rows = deals.length ? deals.map(d => {
+    const brk = dealBrkTotal(d);
+    return `<tr data-dealrow="${esc(d.id)}" style="cursor:pointer">
+      <td><b>${esc(d.code || '—')}</b><br><span style="font-size:9px;color:var(--mut)">${esc(d.bookingDate || '')}</span></td>
+      <td><b>${esc(dealLabel(d))}</b>${d.plotDetail ? `<br><span style="font-size:9.5px;color:var(--mut)">${esc(d.plotDetail)}${d.area ? ' · ' + d.area + (d.areaUnit === 'sqFt' ? ' sq ft' : ' Gaj') : ''}</span>` : ''}</td>
+      <td><b>${esc(dealClientLabel(d))}</b>${d.clientPhone ? `<br><span style="font-size:9px;color:var(--mut)">${esc(d.clientPhone)}</span>` : ''}</td>
+      <td>${esc(dealAdvisorLabel(d) || '—')}</td>
+      <td><b>${fmtMoney(d.dealValue)}</b><br><span style="font-size:9.5px;color:#4E7C5B">paid ${fmtMoney(dealPaid(d))}</span> <span style="font-size:9.5px;color:#A4452B">· pend ${fmtMoney(dealPending(d))}</span></td>
+      <td>${brk ? `<b>${fmtMoney(brk)}</b><br><span style="font-size:9.5px;color:var(--mut)">${dealBrkPending(d) > 0 ? 'pend ' + fmtMoney(dealBrkPending(d)) : 'full received ✓'}</span>` : '—'}</td>
+      <td>${dealStageChip(d)}</td>
+      <td style="white-space:nowrap"><button type="button" class="shortbtn" data-dealrep="${esc(d.id)}" title="Report">📄</button><button type="button" class="shortbtn" data-dealedit="${esc(d.id)}" title="Edit">✎</button><button type="button" class="shortbtn" data-dealdel="${esc(d.id)}" title="Delete">✕</button></td>
+    </tr>`;
+  }).join('') : `<tr><td colspan="8" style="text-align:center;padding:22px;color:var(--mut);font-size:12px">Abhi koi sale nahi — <b>Add sale</b> se pehli booking daalein. Booking, payments, registry aur brokerage sab yahan track hoga.</td></tr>`;
+  tbl.innerHTML = head + rows;
+  // follow-up panel: pending payments
+  const fl = $('#dealFollowList');
+  if(fl){
+    const pendDeals = live.filter(d => dealPending(d) > 0).sort((a,b) => (a.bookingDate || '').localeCompare(b.bookingDate || '')).slice(0, 8);
+    fl.innerHTML = pendDeals.length ? pendDeals.map(d => `<div class="tq-row" data-dealedit="${esc(d.id)}" role="button" tabindex="0">
+      <span class="tq-txt"><b>${esc(dealClientLabel(d))} — ${esc(dealLabel(d))}</b><span>pending <b style="color:#A4452B">${fmtMoney(dealPending(d))}</b> of ${fmtMoney(d.dealValue)}</span>${d.remarks ? `<span>${esc(d.remarks.slice(0, 60))}</span>` : ''}</span>
+    </div>`).join('') : '<div class="tq-empty">Sab payments clear ✓ — koi pending nahi.</div>';
+  }
+}
+function dlPaymentRowHTML(p, i){
+  return `<div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap" data-payrow="${i}">
+    <input type="date" value="${esc(p.date || '')}" data-payf="date" style="flex:1 1 110px;padding:7px 8px;border:1px solid var(--line);border-radius:8px;font-size:11px;background:#FCFDFC;color:var(--ink)">
+    <input type="number" min="0" placeholder="₹ amount" value="${p.amount || ''}" data-payf="amount" style="flex:1 1 100px;padding:7px 8px;border:1px solid var(--line);border-radius:8px;font-size:11px;background:#FCFDFC;color:var(--ink)">
+    <select data-payf="mode" style="flex:1 1 110px;padding:7px 8px;border:1px solid var(--line);border-radius:8px;font-size:11px;background:#FCFDFC;color:var(--ink)">${Object.entries(DEAL_MODES).map(([k,v]) => `<option value="${k}" ${p.mode === k ? 'selected' : ''}>${v}</option>`).join('')}</select>
+    <input placeholder="Ref / cheque no." value="${esc(p.ref || '')}" data-payf="ref" style="flex:1 1 110px;padding:7px 8px;border:1px solid var(--line);border-radius:8px;font-size:11px;background:#FCFDFC;color:var(--ink)">
+    <button type="button" data-paydel="${i}" style="flex:none;width:28px;border:1px solid var(--line);border-radius:8px;background:#FBEDE8;color:#A4452B;font-size:11px">✕</button>
+  </div>`;
+}
+function dlPaintPayRows(){
+  const box = $('#dlPayments');
+  if(box) box.innerHTML = dealPayDraft.map(dlPaymentRowHTML).join('');
+  dlPaintPayOuts();
+}
+function dlPaintPayOuts(){
+  const val = dlNum('#dlValue'), bk = dlNum('#dlBookingAmt');
+  const recv = dealPayDraft.reduce((s,p) => s + (Number(p.amount) || 0), 0);
+  const paid = bk + recv, pend = Math.max(0, val - paid);
+  const out = $('#dlPayOut');
+  if(out) out.innerHTML = `
+    <div class="calc-row"><span>Deal value</span><b>${fmtMoney(val)}</b></div>
+    <div class="calc-row"><span>Booking + received (${dealPayDraft.length} payment${dealPayDraft.length === 1 ? '' : 's'})</span><b>${fmtMoney(paid)}</b></div>
+    <div class="calc-total"><span>Pending from client</span><b>${fmtMoney(pend)}</b></div>`;
+  const pct = dlNum('#dlBrkPct'), flat = dlNum('#dlBrkAmt'), recvB = dlNum('#dlBrkPaid'), advPct = dlNum('#dlAdvPct'), advPaid = dlNum('#dlAdvPaid');
+  const brkT = flat || (pct * val / 100);
+  const advShare = brkT * advPct / 100;
+  const bout = $('#dlBrkOut');
+  if(bout) bout.innerHTML = `
+    <div class="calc-row"><span>Brokerage total ${pct ? '(' + pct + '% slab)' : ''}</span><b>${fmtMoney(brkT)}</b></div>
+    <div class="calc-row"><span>Received from developer</span><b>${fmtMoney(recvB)}</b></div>
+    <div class="calc-row"><span>Pending from developer</span><b style="color:#8A6480">${fmtMoney(Math.max(0, brkT - recvB))}</b></div>
+    <div class="calc-row"><span>Advisor share @${advPct}%</span><b>${fmtMoney(advShare)}</b></div>
+    <div class="calc-total"><span>Advisor ko payable</span><b>${fmtMoney(Math.max(0, advShare - advPaid))}</b></div>`;
+}
+function openDeal(d){
+  editingDealId = d ? d.id : null;
+  dealPayDraft = d ? (d.payments || []).map(p => ({ ...p })) : [];
+  $('#dealTitle').textContent = d ? 'Edit sale — ' + (d.code || '') : 'Add sale';
+  $('#dlDelete').style.display = d ? '' : 'none';
+  // select options
+  const pj = $('#dlProject');
+  pj.innerHTML = '<option value="">— Custom / bahar ka —</option>' + db.projects.map(p => `<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('');
+  const cl = $('#dlClient');
+  cl.innerHTML = '<option value="">— naam likhein —</option>' + db.clients.map(c => `<option value="${esc(c.id)}">${esc(c.name)}${c.phone ? ' · ' + esc(c.phone) : ''}</option>`).join('');
+  const ad = $('#dlAdvisor');
+  ad.innerHTML = '<option value="">— none —</option>' + db.advisors.map(a => `<option value="${esc(a.id)}">${esc(a.name)}</option>`).join('');
+  $('#dlProject').value = d ? (d.projectId || '') : '';
+  $('#dlProjectName').value = d ? (d.projectName || '') : '';
+  $('#dlPlot').value = d ? (d.plotDetail || '') : '';
+  $('#dlArea').value = d && d.area ? d.area : '';
+  $('#dlUnit').value = d ? (d.areaUnit || 'sqYd') : 'sqYd';
+  $('#dlRate').value = d && d.rate ? d.rate : '';
+  $('#dlValue').value = d && d.dealValue ? d.dealValue : '';
+  $('#dlBookingDate').value = d ? (d.bookingDate || '') : todayISO();
+  $('#dlClient').value = d ? (d.clientId || '') : '';
+  $('#dlClientName').value = d ? (d.clientName || '') : '';
+  $('#dlClientPhone').value = d ? (d.clientPhone || '') : '';
+  $('#dlAdvisor').value = d ? (d.advisorId || '') : '';
+  $('#dlAdvisorName').value = d ? (d.advisorName || '') : '';
+  $('#dlBookingAmt').value = d && d.bookingAmount ? d.bookingAmount : '';
+  $('#dlPayNote').value = d ? (d.payNote || '') : '';
+  $('#dlAgreement').value = d ? (d.agreementDate || '') : '';
+  $('#dlRegistryDate').value = d ? (d.registryDate || '') : '';
+  $('#dlRegistryOffice').value = d ? (d.registryOffice || '') : '';
+  $('#dlHandover').value = d ? (d.handoverDate || '') : '';
+  $('#dlStage').value = d ? (d.stage || 'booked') : 'booked';
+  $('#dlBrkPct').value = d && d.brokeragePct ? d.brokeragePct : '';
+  $('#dlBrkAmt').value = d && d.brokerageAmount ? d.brokerageAmount : '';
+  $('#dlBrkPaid').value = d && d.brokeragePaid ? d.brokeragePaid : '';
+  $('#dlAdvPct').value = d && d.advisorSharePct != null && d.advisorSharePct !== '' ? d.advisorSharePct : (isAdmin() ? '' : '50');
+  $('#dlAdvPaid').value = d && d.advisorPaid ? d.advisorPaid : '';
+  $('#dlBrkDate').value = d ? (d.brokeragePaidDate || '') : '';
+  $('#dlRemarks').value = d ? (d.remarks || '') : '';
+  renderCustomFields('#dlCustomFields', 'deal', d ? (d.custom || {}) : {});
+  dlPaintPayRows();
+  showOverlay('dealModal');
+}
+function saveDeal(){
+  const value = dlNum('#dlValue');
+  if(!value) return toast('Deal value likhein', true);
+  const pid = $('#dlProject').value;
+  const pRec = pid ? db.projects.find(x => x.id === pid) : null;
+  const cid = $('#dlClient').value;
+  const cRec = cid ? db.clients.find(x => x.id === cid) : null;
+  const aid = $('#dlAdvisor').value;
+  const aRec = aid ? db.advisors.find(x => x.id === aid) : null;
+  const payments = dealPayDraft.filter(p => Number(p.amount) > 0).map(p => ({ date:p.date, amount:Number(p.amount), mode:p.mode, ref:p.ref }));
+  const rec = {
+    projectId: pid, projectName: pRec ? pRec.name : $('#dlProjectName').value.trim(),
+    developerName: pRec ? (function(){ const dv = db.developers.find(x => x.id === pRec.developerId); return dv ? dv.name : ''; })() : '',
+    plotDetail: $('#dlPlot').value.trim(),
+    area: Number($('#dlArea').value) || null, areaUnit: $('#dlUnit').value,
+    rate: Number($('#dlRate').value) || null, dealValue: value,
+    bookingDate: $('#dlBookingDate').value,
+    clientId: cid, clientName: cRec ? cRec.name : $('#dlClientName').value.trim(),
+    clientPhone: cRec ? (cRec.phone || '') : $('#dlClientPhone').value.trim(),
+    advisorId: aid, advisorName: aRec ? aRec.name : $('#dlAdvisorName').value.trim(),
+    bookingAmount: dlNum('#dlBookingAmt'), payNote: $('#dlPayNote').value.trim(),
+    payments,
+    agreementDate: $('#dlAgreement').value, registryDate: $('#dlRegistryDate').value,
+    registryOffice: $('#dlRegistryOffice').value.trim(), handoverDate: $('#dlHandover').value,
+    stage: $('#dlStage').value,
+    brokeragePct: Number($('#dlBrkPct').value) || null, brokerageAmount: dlNum('#dlBrkAmt') || null,
+    brokeragePaid: dlNum('#dlBrkPaid'), brokeragePaidDate: $('#dlBrkDate').value,
+    advisorSharePct: Number($('#dlAdvPct').value) || 0, advisorPaid: dlNum('#dlAdvPaid'),
+    remarks: $('#dlRemarks').value.trim(),
+    custom: cfPayload(editingDealId ? (db.pipeline.find(x => x.id === editingDealId) || {}).custom : null, '#dlCustomFields'),
+    updatedAt: Date.now()
+  };
+  if(editingDealId){
+    Object.assign(db.pipeline.find(x => x.id === editingDealId), rec);
+    toast('Sale updated');
+  } else {
+    db.pipelineSeq = (Number(db.pipelineSeq) || 0) + 1;
+    db.pipeline.push({ id: uid(), code: 'S-' + String(db.pipelineSeq).padStart(3, '0'), createdAt: Date.now(), ...rec });
+    toast('Sale added — pipeline me track hogi');
+  }
+  save(); renderPipeline(); closeModal('dealModal');
+}
+function deleteDeal(id){
+  const d = db.pipeline.find(x => x.id === id);
+  if(!d) return;
+  if(!confirm('Sale "' + (d.code || '') + '" — ' + dealClientLabel(d) + ' delete karein?')) return;
+  db.pipeline = db.pipeline.filter(x => x.id !== id);
+  save(); renderPipeline(); closeModal('dealModal');
+  toast('Sale delete ho gayi');
+}
+function initPipeline(){
+  if(!$('#dealTable')) return;
+  $('#addDealBtn').addEventListener('click', () => openDeal(null));
+  $('#dealSearch').addEventListener('input', renderPipeline);
+  $('#dealStatusFilter').addEventListener('change', renderPipeline);
+  $('#dealAdvisorFilter').addEventListener('change', renderPipeline);
+  $('#dlSave').addEventListener('click', saveDeal);
+  $('#dlDelete').addEventListener('click', () => { if(editingDealId) deleteDeal(editingDealId); });
+  $('#dlPayAdd').addEventListener('click', () => { dealPayDraft.push({ date:'', amount:'', mode:'bank', ref:'' }); dlPaintPayRows(); });
+  $('#dlPayments').addEventListener('click', e => {
+    const del = e.target.closest('[data-paydel]');
+    if(del){ dealPayDraft.splice(Number(del.dataset.paydel), 1); dlPaintPayRows(); }
+  });
+  $('#dlPayments').addEventListener('input', e => {
+    const row = e.target.closest('[data-payrow]');
+    if(!row) return;
+    const p = dealPayDraft[Number(row.dataset.payrow)];
+    if(p) p[e.target.dataset.payf] = e.target.value;
+    dlPaintPayOuts();
+  });
+  ['dlValue','dlBookingAmt','dlBrkPct','dlBrkAmt','dlBrkPaid','dlAdvPct','dlAdvPaid'].forEach(id => {
+    $('#' + id).addEventListener('input', () => dlPaintPayOuts());
+  });
+  $('#dlClient').addEventListener('change', () => {
+    const c = db.clients.find(x => x.id === $('#dlClient').value);
+    if(c){ $('#dlClientName').value = c.name || ''; $('#dlClientPhone').value = c.phone || ''; }
+  });
+  document.body.addEventListener('click', e => {
+    const edit = e.target.closest('[data-dealedit]');
+    if(edit){ openDeal(db.pipeline.find(x => x.id === edit.dataset.dealedit)); return; }
+    const del = e.target.closest('[data-dealdel]');
+    if(del){ deleteDeal(del.dataset.dealdel); return; }
+    const rep = e.target.closest('[data-dealrep]');
+    if(rep){ openReportBuilder('pipeline', rep.dataset.dealrep); return; }
+    const row = e.target.closest('[data-dealrow]');
+    if(row){ openDeal(db.pipeline.find(x => x.id === row.dataset.dealrow)); }
+  });
+  renderPipeline();
+}
+/* ================= BCS REPORT BUILDER ================= */
+function repRow(label, val){
+  if(val === '' || val == null || val === '—') return '';
+  return `<div class="rr"><span>${esc(label)}</span><b>${esc(String(val))}</b></div>`;
+}
+const REPORT_KINDS = {
+  projects: {
+    title:'Projects report',
+    recs: () => db.projects,
+    recName: p => p.name || 'Project',
+    sections: [
+      { id:'overview', label:'📍 Overview & price', locked:true },
+      { id:'plots', label:'▦ Plot availability' },
+      { id:'finance', label:'💰 Payment plan' },
+      { id:'docs', label:'📄 Documents' },
+      { id:'amenities', label:'✓ Amenities' },
+      { id:'connectivity', label:'🛣 Connectivity' },
+      { id:'developer', label:'🏗 Developer' }
+    ],
+    defaultOn: { plots:true, finance:false, docs:false, amenities:true, connectivity:true, developer:true },
+    cols: ['Corridor','Type','Price','Status','RERA'],
+    row: p => [ (corridor(p.corridor) || {}).name || '', typeLabel(p.types) || '—', priceRange(p) || '—', statusLabel[p.status] || p.status || '—', p.rera || '—' ],
+    detail(p, sel){
+      const d = dev(p.developerId);
+      const c = corridor(p.corridor);
+      let h = `<h3>Overview</h3><div class="rg">`
+        + repRow('Location', p.location || (c ? c.name + ', Jaipur' : ''))
+        + repRow('Corridor', c ? c.name : '')
+        + repRow('Type', typeLabel(p.types))
+        + repRow('Price range', priceRange(p))
+        + repRow('Rate', rateText(p))
+        + repRow('Sizes', p.sizes)
+        + repRow('Possession', p.timeline ? timelineLabel(p.timeline) : '')
+        + repRow('Approval', approvalLabel(p, true))
+        + repRow('RERA', p.rera)
+        + repRow('Status', statusLabel[p.status] || p.status)
+        + `</div>` + (p.quickNote ? `<p class="rt">${esc(p.quickNote)}</p>` : '');
+      if(sel.plots){
+        const all = (db.plots || []).filter(pl => pl.projectId === p.id);
+        const av = all.filter(pl => pl.status === 'available' || pl.status === 'release');
+        if(all.length){
+          h += `<h3>Plot availability</h3><div class="rg">` + repRow('Total plots', all.length) + repRow('Available now', av.length) + `</div>`;
+          h += `<table class="rtb"><tr><th>Plot</th><th>Size</th><th>Facing</th><th>Price</th></tr>` + av.slice(0, 24).map(pl => `<tr><td>${esc(pl.label || pl.num || '')}</td><td>${esc(pl.sizeGaj || 0)} Gaj</td><td>${esc(pl.facing || '—')}</td><td>${esc(moneyINR(plotPriceOf(pl)))}</td></tr>`).join('') + `</table>`;
+        }
+      }
+      if(sel.finance){
+        const cfg = (window.finConfigOf ? window.finConfigOf(p) : null) || {};
+        h += `<h3>Payment plan</h3><div class="rg">`
+          + repRow('Booking', cfg.bookingPct ? cfg.bookingPct + '%' : 'On request')
+          + repRow('Loan eligible', cfg.loanEligiblePct ? 'Up to ' + cfg.loanEligiblePct + '%' : '')
+          + repRow('Registry', (cfg.stampDutyPct || 6) + '% stamp + ' + (cfg.regFeePct || 1) + '% reg')
+          + repRow('Plan note', p.payNote || 'Booking ke baad down payment, balance bank loan ya installments me')
+          + `</div>`;
+      }
+      if(sel.docs){
+        const docs = (db.documents || []).filter(x => x.projectId === p.id && x.status !== 'missing');
+        if(docs.length) h += `<h3>Documents & approvals</h3><table class="rtb">` + docs.slice(0, 12).map(x => `<tr><td>📄 ${esc(x.name || x.type || 'Document')}${x.ref ? ' · ' + esc(x.ref) : ''}</td><td>${esc(x.status === 'verified' ? '✓ Verified' : (x.status || 'Pending'))}</td></tr>`).join('') + `</table>`;
+      }
+      if(sel.amenities && (p.amenities || []).length) h += `<h3>Amenities</h3><p class="rt">✓ ${esc((p.amenities || []).join(' · '))}</p>`;
+      if(sel.connectivity){
+        const conns = (p.connectivity || []).filter(x => x.label || x.distance);
+        if(conns.length) h += `<h3>Connectivity</h3><table class="rtb">` + conns.map(x => `<tr><td>${esc(x.label)}</td><td>${esc(x.distance || '')}</td></tr>`).join('') + `</table>`;
+      }
+      if(sel.developer && d) h += `<h3>Developer</h3><div class="rg">` + repRow('Developer', d.name) + repRow('Owner / contact', (d.ownerName || '') + (d.designation ? ' · ' + d.designation : '')) + repRow('Phone', d.phone) + repRow('Website', d.website) + `</div>`;
+      return h;
+    },
+    text(p){
+      const c = corridor(p.corridor), d = dev(p.developerId);
+      return [p.name, `Location: ${p.location || (c ? c.name + ', Jaipur' : '—')}`, `Type: ${typeLabel(p.types) || '—'}`, `Price: ${priceRange(p) || '—'}`, `Rate: ${rateText(p) || '—'}`, `Sizes: ${p.sizes || '—'}`, `Possession: ${p.timeline ? timelineLabel(p.timeline) : '—'}`, `RERA: ${p.rera || '—'}`, `Approval: ${approvalLabel(p, true) || '—'}`, `Status: ${statusLabel[p.status] || p.status || '—'}`, d ? `Developer: ${d.name}${d.phone ? ' · ' + d.phone : ''}` : ''].filter(Boolean).join('\n');
+    }
+  },
+  developers: {
+    title:'Developers report',
+    recs: () => db.developers,
+    recName: d => d.name || 'Developer',
+    sections: [
+      { id:'contact', label:'📞 Contact', locked:true },
+      { id:'projects', label:'▣ Projects' },
+      { id:'notes', label:'📝 Notes & remarks' }
+    ],
+    defaultOn: { projects:true, notes:true },
+    cols: ['Owner / contact','Phone','Website','Projects'],
+    row: d => [ [d.ownerName, d.designation].filter(Boolean).join(' · ') || '—', d.phone || '—', d.website || '—', String((db.projects || []).filter(p => p.developerId === d.id).length) ],
+    detail(d, sel){
+      let h = `<h3>Contact</h3><div class="rg">`
+        + repRow('Developer', d.name)
+        + repRow('Owner', d.ownerName)
+        + repRow('Designation', d.designation)
+        + repRow('Phone', d.phone) + repRow('Email', d.email) + repRow('Website', d.website)
+        + `</div>`;
+      if(sel.projects){
+        const ps = (db.projects || []).filter(p => p.developerId === d.id);
+        if(ps.length) h += `<h3>Projects (${ps.length})</h3><table class="rtb">` + ps.map(p => `<tr><td>${esc(p.name)}</td><td>${esc(statusLabel[p.status] || p.status || '')}</td><td>${esc(priceRange(p) || '')}</td></tr>`).join('') + `</table>`;
+      }
+      if(sel.notes && (d.notes || d.remarks)) h += `<h3>Notes</h3><p class="rt">${esc([d.notes, d.remarks].filter(Boolean).join('\n'))}</p>`;
+      return h;
+    },
+    text(d){
+      const ps = (db.projects || []).filter(p => p.developerId === d.id);
+      return [d.name, `Owner: ${d.ownerName || '—'}`, `Phone: ${d.phone || '—'}`, `Email: ${d.email || '—'}`, `Website: ${d.website || '—'}`, ps.length ? `Projects: ${ps.map(p => p.name).join(', ')}` : '', d.notes ? `Notes: ${d.notes}` : ''].filter(Boolean).join('\n');
+    }
+  },
+  clients: {
+    title:'Clients report',
+    recs: () => db.clients,
+    recName: c => c.name || 'Client',
+    sections: [
+      { id:'contact', label:'📞 Contact & requirement', locked:true },
+      { id:'shortlist', label:'▣ Shortlisted projects' },
+      { id:'readiness', label:'✓ Readiness (KYC, loan…)' },
+      { id:'followup', label:'◷ Follow-up history' },
+      { id:'notes', label:'📝 Notes' }
+    ],
+    defaultOn: { shortlist:true, readiness:true, followup:false, notes:true },
+    cols: ['Phone','Budget','Status','Follow-up'],
+    row: c => [ c.phone || '—', budgetText(c) || '—', clientStatusLabel(c.clientStatus) || c.clientStatus || '—', c.followUp || '—' ],
+    detail(c, sel){
+      let h = `<h3>Client profile</h3><div class="rg">`
+        + repRow('Client', c.name) + repRow('Phone', c.phone) + repRow('Email', c.email)
+        + repRow('Budget', budgetText(c))
+        + repRow('Requirement', c.requirement)
+        + repRow('Property type', typeLabel(c.types))
+        + repRow('Preferred corridors', (c.corridors || []).map(x => (corridor(x) || {}).name || x).join(', '))
+        + repRow('Status', clientStatusLabel(c.clientStatus) || c.clientStatus)
+        + repRow('Timeline', c.timeline)
+        + `</div>`;
+      if(sel.shortlist){
+        const ps = (c.projectIds || []).map(id => db.projects.find(x => x.id === id)).filter(Boolean);
+        if(ps.length) h += `<h3>Shortlisted projects</h3><table class="rtb">` + ps.map(p => `<tr><td>${esc(p.name)}</td><td>${esc(priceRange(p) || '')}</td><td>${esc(statusLabel[p.status] || '')}</td></tr>`).join('') + `</table>`;
+      }
+      if(sel.readiness){
+        const r = c.readiness || {};
+        h += `<h3>Readiness</h3><div class="rg">`
+          + repRow('KYC', r.kyc ? '✓ Complete' : 'Pending') + repRow('Income proof', r.income ? '✓' : 'Pending')
+          + repRow('Bank pre-approval', r.bankPreapproval ? '✓' : 'Pending') + repRow('CIBIL', r.cibil ? '✓' : 'Pending')
+          + repRow('Agreement ready', r.agreement ? '✓' : 'Pending') + `</div>`;
+      }
+      if(sel.followup){
+        const logs = (db.journeyLogs || []).filter(x => x.clientId === c.id).slice(-10).reverse();
+        if(logs.length) h += `<h3>Follow-up history</h3><table class="rtb">` + logs.map(l => `<tr><td>${esc(l.date || '')}</td><td>${esc(l.note || l.text || '')}</td></tr>`).join('') + `</table>`;
+        h += `<div class="rg">` + repRow('Next follow-up', c.followUp) + repRow('Last contact', c.lastContact) + `</div>`;
+      }
+      if(sel.notes && c.notes) h += `<h3>Notes</h3><p class="rt">${esc(c.notes)}</p>`;
+      return h;
+    },
+    text(c){
+      const r = c.readiness || {};
+      return [c.name, `Phone: ${c.phone || '—'}`, `Budget: ${budgetText(c) || '—'}`, `Requirement: ${c.requirement || '—'}`, `Status: ${clientStatusLabel(c.clientStatus) || c.clientStatus || '—'}`, `Next follow-up: ${c.followUp || '—'}`, `Ready: ${['kyc','income','bankPreapproval','cibil','agreement'].filter(k => r[k]).map(k => k === 'bankPreapproval' ? 'bank' : k).join(', ') || '—'}`].join('\n');
+    }
+  },
+  advisors: {
+    title:'Advisors report',
+    recs: () => db.advisors,
+    recName: a => a.name || 'Advisor',
+    sections: [
+      { id:'contact', label:'📞 Contact & profile', locked:true },
+      { id:'sales', label:'💰 Sales performance (pipeline)' },
+      { id:'projects', label:'▣ Assigned projects' },
+      { id:'notes', label:'📝 Notes' }
+    ],
+    defaultOn: { sales:true, projects:true, notes:false },
+    cols: ['Group','Phone','Slab','Status'],
+    row: a => [ a.groupName || '—', a.phone || '—', [a.slab, a.slabPerSqYd ? '₹' + a.slabPerSqYd + '/gaj' : ''].filter(Boolean).join(' · ') || '—', ADVISOR_STATUS_LABELS ? (ADVISOR_STATUS_LABELS[a.status] || a.status || '—') : (a.status || '—') ],
+    detail(a, sel){
+      let h = `<h3>Advisor profile</h3><div class="rg">`
+        + repRow('Advisor', a.name) + repRow('Phone', a.phone) + repRow('Email', a.email) + repRow('City', a.city)
+        + repRow('Group', a.groupName) + repRow('Team size', a.teamSize || '')
+        + repRow('Slab', [a.slab, a.slabPerSqYd ? '₹' + a.slabPerSqYd + '/sq yd' : ''].filter(Boolean).join(' · '))
+        + repRow('Commission', a.commissionPct ? a.commissionPct + '%' : '')
+        + repRow('Status', a.status || '—')
+        + repRow('Portal', a.portalEnabled ? 'Enabled (' + (a.portalId || '') + ')' : 'Disabled')
+        + repRow('Next follow-up', a.nextFollowUp) + repRow('Last contact', a.lastContact)
+        + `</div>`;
+      if(sel.sales){
+        const deals = (db.pipeline || []).filter(d => d.advisorId === a.id || d.advisorName === a.name);
+        const live = deals.filter(d => d.stage !== 'cancelled');
+        const val = live.reduce((s, d) => s + (Number(d.dealValue) || 0), 0);
+        const pay = live.reduce((s, d) => s + dealAdvShare(d), 0);
+        const paidA = live.reduce((s, d) => s + (Number(d.advisorPaid) || 0), 0);
+        h += `<h3>Sales performance</h3><div class="rg">`
+          + repRow('Total sales', live.length)
+          + repRow('Sales value', fmtMoney(val))
+          + repRow('Advisor share earned', fmtMoney(pay))
+          + repRow('Paid to advisor', fmtMoney(paidA))
+          + repRow('Payable', fmtMoney(Math.max(0, pay - paidA)))
+          + `</div>`;
+        if(deals.length) h += `<table class="rtb"><tr><th>Deal</th><th>Project</th><th>Client</th><th>Value</th><th>Share</th><th>Stage</th></tr>` + deals.map(d => `<tr><td>${esc(d.code || '')}</td><td>${esc(dealLabel(d))}</td><td>${esc(dealClientLabel(d))}</td><td>${esc(fmtMoney(d.dealValue))}</td><td>${esc(fmtMoney(dealAdvShare(d)))}</td><td>${esc(DEAL_STAGES[d.stage] || d.stage || '')}</td></tr>`).join('') + `</table>`;
+      }
+      if(sel.projects){
+        const ps = (a.projectIds || []).map(id => db.projects.find(x => x.id === id)).filter(Boolean);
+        if(ps.length) h += `<h3>Assigned projects</h3><p class="rt">${esc(ps.map(p => p.name).join(' · '))}</p>`;
+      }
+      if(sel.notes && a.notes) h += `<h3>Notes</h3><p class="rt">${esc(a.notes)}</p>`;
+      return h;
+    },
+    text(a){
+      const deals = (db.pipeline || []).filter(d => (d.advisorId === a.id || d.advisorName === a.name) && d.stage !== 'cancelled');
+      const val = deals.reduce((s, d) => s + (Number(d.dealValue) || 0), 0);
+      return [a.name, `Phone: ${a.phone || '—'}`, `Group: ${a.groupName || '—'}`, `Slab: ${[a.slab, a.slabPerSqYd ? '₹' + a.slabPerSqYd + '/sq yd' : ''].filter(Boolean).join(' · ') || '—'}`, `Status: ${a.status || '—'}`, deals.length ? `Sales: ${deals.length} deals · ${fmtMoney(val)} value` : ''].filter(Boolean).join('\n');
+    }
+  },
+  partners: {
+    title:'Partners report',
+    recs: () => db.partners,
+    recName: p => p.name || 'Partner',
+    sections: [
+      { id:'contact', label:'📞 Contact & address', locked:true },
+      { id:'deal', label:'🤝 Deal & commercial terms' },
+      { id:'connect', label:'◷ Connect history' },
+      { id:'notes', label:'📝 Notes' }
+    ],
+    defaultOn: { deal:true, connect:true, notes:false },
+    cols: ['Type','Contact','Phone','Stage'],
+    row: p => [ (PARTNER_TYPES.find(t => t.id === p.type) || {}).label || p.type || '—', p.contactPerson || '—', p.phone || '—', (PARTNER_STAGES.find(s => s.id === p.stage) || {}).label || p.stage || '—' ],
+    detail(p, sel){
+      let h = `<h3>Partner profile</h3><div class="rg">`
+        + repRow('Partner', p.name) + repRow('Type', (PARTNER_TYPES.find(t => t.id === p.type) || {}).label || p.type)
+        + repRow('Contact person', p.contactPerson) + repRow('Phone', p.phone) + repRow('Alt phone', p.altPhone)
+        + repRow('Email', p.email) + repRow('Website', p.website)
+        + repRow('City', p.city) + repRow('Address', p.address)
+        + repRow('Segments', (p.segments || []).join(', ')) + repRow('Corridors', (p.corridors || []).map(x => (corridor(x) || {}).name || x).join(', '))
+        + `</div>`;
+      if(sel.deal){
+        h += `<h3>Deal & commercial terms</h3><div class="rg">`
+          + repRow('Deal type', p.dealType) + repRow('Deal summary', p.dealSummary)
+          + repRow('Stage', (PARTNER_STAGES.find(s => s.id === p.stage) || {}).label || p.stage)
+          + repRow('Referral fee', p.referralFee != null && p.referralFee !== '' ? fmtMoney(p.referralFee) : '')
+          + repRow('Commission', p.commissionPct ? p.commissionPct + '%' : '')
+          + repRow('Source', p.sourceUrl)
+          + repRow('Tags', (p.tags || []).join(', '))
+          + `</div>`;
+      }
+      if(sel.connect) h += `<div class="rg">` + repRow('Last contact', p.lastContact) + repRow('Next follow-up', p.nextFollowUp) + `</div>`;
+      if(sel.notes && p.notes) h += `<h3>Notes</h3><p class="rt">${esc(p.notes)}</p>`;
+      return h;
+    },
+    text(p){
+      return [p.name, `Type: ${(PARTNER_TYPES.find(t => t.id === p.type) || {}).label || p.type || '—'}`, `Contact: ${p.contactPerson || '—'} · ${p.phone || '—'}`, `City: ${p.city || '—'}`, `Deal: ${p.dealType || '—'}${p.dealSummary ? ' — ' + p.dealSummary : ''}`, `Stage: ${(PARTNER_STAGES.find(s => s.id === p.stage) || {}).label || p.stage || '—'}`, `Next follow-up: ${p.nextFollowUp || '—'}`].join('\n');
+    }
+  },
+  pipeline: {
+    title:'Sales pipeline report',
+    recs: () => pipelineDeals(),
+    recName: d => (d.code || 'Sale') + ' — ' + dealClientLabel(d),
+    sections: [
+      { id:'deal', label:'📍 Deal & property', locked:true },
+      { id:'payments', label:'💰 Payment schedule & trail' },
+      { id:'legal', label:'📜 Agreement · Registry · Handover' },
+      { id:'brokerage', label:'🤝 Brokerage & advisor share' },
+      { id:'remarks', label:'📝 Remarks' }
+    ],
+    defaultOn: { payments:true, legal:true, brokerage:true, remarks:true },
+    cols: ['Property','Client','Advisor','Value','Paid','Pending','Stage'],
+    row: d => [ dealLabel(d) + (d.plotDetail ? ' · ' + d.plotDetail : ''), dealClientLabel(d), dealAdvisorLabel(d) || '—', fmtMoney(d.dealValue), fmtMoney(dealPaid(d)), fmtMoney(dealPending(d)), DEAL_STAGES[d.stage] || d.stage || '—' ],
+    detail(d, sel){
+      let h = `<h3>Deal — ${esc(d.code || '')}</h3><div class="rg">`
+        + repRow('Project', dealLabel(d)) + repRow('Developer', d.developerName)
+        + repRow('Plot / unit', d.plotDetail)
+        + repRow('Area', d.area ? d.area + (d.areaUnit === 'sqFt' ? ' sq ft' : ' Gaj (sq yd)') : '')
+        + repRow('Rate', d.rate ? fmtMoney(d.rate) + (d.areaUnit === 'sqFt' ? ' /sq ft' : ' /Gaj') : '')
+        + repRow('Deal value', fmtMoney(d.dealValue))
+        + repRow('Booking date', d.bookingDate)
+        + repRow('Booking amount', d.bookingAmount ? fmtMoney(d.bookingAmount) : '')
+        + repRow('Client', dealClientLabel(d) + (d.clientPhone ? ' · ' + d.clientPhone : ''))
+        + repRow('Advisor', dealAdvisorLabel(d))
+        + repRow('Stage', DEAL_STAGES[d.stage] || d.stage)
+        + `</div>`;
+      if(sel.payments){
+        const pays = d.payments || [];
+        h += `<h3>Payments</h3><div class="rg">`
+          + repRow('Received (incl. booking)', fmtMoney(dealPaid(d)))
+          + repRow('Pending from client', fmtMoney(dealPending(d)))
+          + (d.payNote ? repRow('Plan note', d.payNote) : '')
+          + `</div>`;
+        if(pays.length) h += `<table class="rtb"><tr><th>Date</th><th>Amount</th><th>Mode</th><th>Ref / cheque</th></tr>` + pays.map(p => `<tr><td>${esc(p.date || '—')}</td><td>${esc(fmtMoney(p.amount))}</td><td>${esc(DEAL_MODES[p.mode] || p.mode || '')}</td><td>${esc(p.ref || '—')}</td></tr>`).join('') + `</table>`;
+      }
+      if(sel.legal){
+        h += `<h3>Legal timeline</h3><div class="rg">`
+          + repRow('Agreement date', d.agreementDate)
+          + repRow('Registry date', d.registryDate)
+          + repRow('Registry office', d.registryOffice)
+          + repRow('Handover / possession', d.handoverDate)
+          + `</div>`;
+      }
+      if(sel.brokerage){
+        h += `<h3>Brokerage</h3><div class="rg">`
+          + repRow('Brokerage total', fmtMoney(dealBrkTotal(d)) + ((Number(d.brokeragePct) || 0) ? ` (${d.brokeragePct}% slab)` : ''))
+          + repRow('Received from developer', fmtMoney(Number(d.brokeragePaid) || 0) + (d.brokeragePaidDate ? ' · ' + d.brokeragePaidDate : ''))
+          + repRow('Pending from developer', fmtMoney(dealBrkPending(d)))
+          + repRow('Advisor share', (Number(d.advisorSharePct) || 0) + '% = ' + fmtMoney(dealAdvShare(d)))
+          + repRow('Paid to advisor', fmtMoney(Number(d.advisorPaid) || 0))
+          + repRow('Advisor payable', fmtMoney(dealAdvPayable(d)))
+          + `</div>`;
+      }
+      if(sel.remarks && d.remarks) h += `<h3>Remarks</h3><p class="rt">${esc(d.remarks)}</p>`;
+      return h;
+    },
+    text(d){
+      const pays = (d.payments || []).map(p => `  ${p.date || '?'} — ${fmtMoney(p.amount)} (${DEAL_MODES[p.mode] || p.mode || ''}${p.ref ? ' · ' + p.ref : ''})`).join('\n');
+      return [`${d.code || 'Sale'} — ${dealClientLabel(d)}`, `Project: ${dealLabel(d)}${d.plotDetail ? ' · ' + d.plotDetail : ''}`, `Value: ${fmtMoney(d.dealValue)} · paid ${fmtMoney(dealPaid(d))} · pending ${fmtMoney(dealPending(d))}`, `Booking: ${d.bookingDate || '—'}${d.bookingAmount ? ' · ' + fmtMoney(d.bookingAmount) : ''}`, `Advisor: ${dealAdvisorLabel(d) || '—'}`, `Stage: ${DEAL_STAGES[d.stage] || d.stage || '—'}`, pays ? `Payments:\n${pays}` : '', `Registry: ${d.registryDate || '—'}${d.registryOffice ? ' (' + d.registryOffice + ')' : ''}`, `Brokerage: ${fmtMoney(dealBrkTotal(d))} · pending ${fmtMoney(dealBrkPending(d))}`, `Advisor share: ${fmtMoney(dealAdvShare(d))} · payable ${fmtMoney(dealAdvPayable(d))}`, d.remarks ? `Remarks: ${d.remarks}` : ''].filter(Boolean).join('\n');
+    }
+  }
+};
+function buildReportPage(kind, recs, sel){
+  const def = REPORT_KINDS[kind];
+  const cd = shareCardData();
+  const stamp = new Date().toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+  const one = recs.length === 1;
+  const summary = one ? '' : `<h3 class="sh">Summary — ${recs.length} records</h3><table class="sum"><thead><tr><th>#</th><th class="nm">Record</th>${def.cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${recs.map((r, i) => `<tr><td>${i + 1}</td><td class="nm">${esc(def.recName(r))}</td>${def.row(r).map(v => `<td>${esc(String(v))}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+  const details = recs.map(r => `<div class="card"><h2>${esc(def.recName(r))}</h2>${def.detail(r, sel)}</div>`).join('');
+  return `<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(def.title)} — ${esc(cd.brand)} · ${stamp}</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Segoe UI',Roboto,sans-serif;background:#F7F6F2;color:#1D1D1F;line-height:1.55;font-size:13px}
+.top{background:linear-gradient(140deg,#3A3928,#A57B36);color:#fff;padding:26px 20px 30px}
+.top .in{max-width:820px;margin:0 auto}
+.top small{font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:.75}
+.top h1{font-size:24px;margin-top:6px;letter-spacing:-.5px}
+.top .meta{font-size:12px;opacity:.85;margin-top:4px}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px 90px}
+.card{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:16px;padding:20px 22px;margin-top:16px;page-break-inside:avoid}
+h2{font-size:19px;letter-spacing:-.4px;border-bottom:2px solid #A57B36;padding-bottom:8px;margin-bottom:4px}
+h3{font-size:13.5px;margin:16px 0 8px;letter-spacing:.3px;text-transform:uppercase;color:#7A5A1E}
+.sh{margin-top:18px}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.06);border-radius:10px;overflow:hidden}
+.rr{background:#fff;padding:8px 12px;display:flex;justify-content:space-between;gap:10px}
+.rr span{font-size:10.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:#8A877A;padding-top:1px}
+.rr b{font-size:12.5px;text-align:right;word-break:break-word}
+table{width:100%;border-collapse:collapse;margin-top:6px}
+.sum,.rtb th{background:#F3EFE4}
+th{font-size:10px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#7A5A1E;text-align:left;padding:8px 10px;border-bottom:2px solid #E7DCC2}
+td{padding:8px 10px;border-bottom:1px solid rgba(0,0,0,.06);font-size:12px;vertical-align:top}
+td.nm{font-weight:700}
+.rt{font-size:12.5px;color:#424245;margin-top:4px;white-space:pre-line}
+.foot{text-align:center;color:#8A877A;font-size:10.5px;padding:22px 0 6px;letter-spacing:.5px}
+@media print{
+  body{background:#fff}
+  .top{background:#3A3928 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .card{box-shadow:none;border:1px solid #ddd}
+}
+</style></head><body>
+<div class="top"><div class="in"><small>${esc(cd.brand)} · confidential desk report</small><h1>${esc(def.title)}</h1><div class="meta">${esc(cd.person)} · ${esc(cd.title)} · ${stamp}${one ? '' : ' · ' + recs.length + ' records'}</div></div></div>
+<div class="wrap">${summary}${details}
+<div class="foot">GENERATED BY ${esc(cd.brand.toUpperCase())} DESK · ${esc(cd.person)} · ${esc(cd.phone || cd.email || '')} · ${stamp}</div>
+</div></body></html>`;
+}
+let reportState = { kind:'projects', sel:{} };
+function reportSelDefault(kind){
+  const def = REPORT_KINDS[kind];
+  const sel = {};
+  (def.sections || []).forEach(s => { sel[s.id] = s.locked ? true : !!def.defaultOn[s.id]; });
+  return sel;
+}
+function reportRecs(){
+  const def = REPORT_KINDS[reportState.kind];
+  const idv = $('#reportRecord').value;
+  const all = def.recs() || [];
+  return idv ? all.filter(r => r.id === idv) : all;
+}
+function renderReportChips(){
+  const def = REPORT_KINDS[reportState.kind];
+  const box = $('#reportSections');
+  box.innerHTML = (def.sections || []).map(s => `<button type="button" class="share-sel${reportState.sel[s.id] ? ' on' : ''}" data-rsec="${s.id}"${s.locked ? ' disabled' : ''}>${s.label}${s.locked ? ' 🔒' : ''}</button>`).join('');
+}
+function reportFileName(){
+  const d = new Date();
+  const p = n => String(n).padStart(2, '0');
+  return reportState.kind + '-report-' + d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate()) + '.html';
+}
+function reportUpdateNote(){
+  try{
+    const recs = reportRecs();
+    const html = buildReportPage(reportState.kind, recs, reportState.sel);
+    const kb = Math.round(html.length / 1024);
+    $('#reportSizeNote').textContent = `≈ ${kb} KB · ${recs.length} record${recs.length === 1 ? '' : 's'} · ${Object.keys(reportState.sel).filter(k => reportState.sel[k]).length} sections on`;
+  }catch(e){ $('#reportSizeNote').textContent = ''; }
+}
+function openReportBuilder(kind, id){
+  const def = REPORT_KINDS[kind];
+  if(!def) return;
+  reportState = { kind, sel: reportSelDefault(kind) };
+  $('#reportTitle').textContent = '📊 ' + def.title + ' — customise';
+  const pick = $('#reportRecord');
+  const all = def.recs() || [];
+  pick.innerHTML = '<option value="">' + (all.length > 1 ? 'All records (' + all.length + ')' : 'All records') + '</option>' + all.map(r => `<option value="${esc(r.id)}">${esc(def.recName(r))}</option>`).join('');
+  pick.value = '';
+  if(id){ pick.value = id; if(!pick.value) pick.value = ''; }
+  renderReportChips();
+  reportUpdateNote();
+  showOverlay('reportModal');
+}
+function reportTextSummary(){
+  const recs = reportRecs();
+  const def = REPORT_KINDS[reportState.kind];
+  const cd = shareCardData();
+  const head = `*${def.title} — ${cd.brand}*` + '\n' + new Date().toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+  return head + '\n\n' + recs.map(r => def.text(r)).join('\n\n———\n\n') + `\n\n— ${cd.person}, ${cd.title}${cd.phone ? ' · ' + cd.phone : ''}`;
+}
+function initReports(){
+  document.body.addEventListener('click', e => {
+    const b = e.target.closest('[data-repbtn]');
+    if(b) openReportBuilder(b.dataset.repbtn);
+  });
+  $('#reportSections').addEventListener('click', e => {
+    const c = e.target.closest('[data-rsec]');
+    if(!c || c.disabled) return;
+    reportState.sel[c.dataset.rsec] = !reportState.sel[c.dataset.rsec];
+    c.classList.toggle('on', reportState.sel[c.dataset.rsec]);
+    reportUpdateNote();
+  });
+  $('#reportRecord').addEventListener('change', reportUpdateNote);
+  $('#reportPdfBtn').addEventListener('click', () => {
+    const recs = reportRecs();
+    if(!recs.length) return toast('Report ke liye records nahi mile', true);
+    const w = window.open('', '_blank');
+    if(!w) return toast('Popup block hua — allow karein', true);
+    w.document.open(); w.document.write(buildReportPage(reportState.kind, recs, reportState.sel)); w.document.close();
+    setTimeout(() => { try{ w.focus(); w.print(); }catch(e){} }, 600);
+    toast('Print dialog me "Save as PDF" choose karein');
+  });
+  $('#reportDownloadBtn').addEventListener('click', () => {
+    const recs = reportRecs();
+    if(!recs.length) return toast('Report ke liye records nahi mile', true);
+    const blob = new Blob([buildReportPage(reportState.kind, recs, reportState.sel)], { type:'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = reportFileName();
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+    toast('Report file download ho gayi');
+  });
+  $('#reportShareBtn').addEventListener('click', async () => {
+    const recs = reportRecs();
+    if(!recs.length) return toast('Report ke liye records nahi mile', true);
+    const html = buildReportPage(reportState.kind, recs, reportState.sel);
+    try{
+      const file = new File([html], reportFileName(), { type:'text/html' });
+      if(navigator.canShare && navigator.canShare({ files:[file] })){
+        await navigator.share({ files:[file], title: REPORT_KINDS[reportState.kind].title });
+        toast('Report share ho gayi ✓');
+        return;
+      }
+    }catch(err){ if(err && err.name === 'AbortError') return; }
+    const blob = new Blob([html], { type:'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = reportFileName();
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+    toast('Share sheet available nahi — file download ho gayi (AirDrop/Finder se bhejein)');
+  });
+  $('#reportCopyBtn').addEventListener('click', async () => {
+    const recs = reportRecs();
+    if(!recs.length) return toast('Report ke liye records nahi mile', true);
+    try{ await navigator.clipboard.writeText(reportTextSummary()); toast('Summary copy ho gayi — WhatsApp me paste karein'); }
+    catch(e){ toast('Copy nahi hua', true); }
+  });
+  $('#dlReportBtn').addEventListener('click', () => {
+    if(editingDealId) openReportBuilder('pipeline', editingDealId);
+    else toast('Pehle sale save karein — phir report banegi', true);
+  });
+}
 function render(){
   fillFilterCorridor($('#filterCorridor').value);
+  if(currentView === 'pipeline') renderPipeline();
   if(currentView === 'dashboard') renderDashboard();
   if(currentView === 'analytics') renderAnalytics();
   if(currentView === 'projects') renderProjects();
@@ -37033,6 +37924,8 @@ initLinks();
 initTerminology();
 initTax();
 initPartners();
+initPipeline();
+initReports();
 initCorridorManager();
 initTools();
 initMedia();
