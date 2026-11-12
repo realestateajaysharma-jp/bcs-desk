@@ -19449,6 +19449,15 @@ function bcsMakeAdvisorPin(){
   for(let i = 0; i < 4; i++) s += Math.floor(Math.random() * 10);
   return s;
 }
+/* Deterministic fallback PIN for advisors migrated from older data.
+   Same portal ID → same PIN on every device, so cloud sync never churns it.
+   Admin can always reset to a fresh random PIN from Portal access. */
+function bcsDerivedPin(seed){
+  let h = 2166136261;
+  const s = String(seed || 'bcs-advisor');
+  for(let i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return String(1000 + (Math.abs(h) % 9000));
+}
 function bcsAdvisorLoginUrl(a){
   try{
     const u = new URL(location.href);
@@ -19684,14 +19693,10 @@ function normalizeDb(d){
       a.portalId = id;
     });
     /* every advisor gets a private 4-digit portal PIN — no shared default.
+       Derived from the unique portal ID so all synced devices agree.
        Admin can see and reset it from Advisors → Portal access. */
-    const usedPins = new Set(d.advisors.map(a => String(a.portalPass || '').trim()).filter(Boolean));
     d.advisors.forEach(a => {
-      if(a.portalPass) return;
-      let pin;
-      do { pin = bcsMakeAdvisorPin(); } while(usedPins.has(pin));
-      usedPins.add(pin);
-      a.portalPass = pin;
+      if(!a.portalPass) a.portalPass = bcsDerivedPin(a.portalId);
     });
   })();
   d.clients.forEach(c => {
