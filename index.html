@@ -2131,6 +2131,11 @@ body.locked>.quick-add-dock{visibility:hidden}
 .qa-head input{flex:1;min-width:0;border:0;outline:0;background:transparent;font-size:15.5px;font-weight:600;color:var(--ink)}
 .qa-head input::placeholder{color:#9DA298;font-weight:500}
 .qa-head .qa-esc{font:700 9px/1 'DM Sans',sans-serif;color:var(--mut);background:#fff;border:1px solid var(--line);border-radius:6px;padding:5px 6px;flex:none}
+.qa-quick{display:flex;gap:7px;flex-wrap:wrap;padding:10px 17px 4px}
+.qa-chip{font:600 11.5px/1 'DM Sans',sans-serif;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 12px;cursor:pointer;transition:.12s;white-space:nowrap}
+.qa-chip:hover{background:linear-gradient(90deg,#FFF6E8,#EEF8F2);border-color:#EADFC8;transform:translateY(-1px)}
+body[data-theme="dark"] .qa-chip{background:#141813;color:#F2F0E5;border-color:var(--line)}
+body[data-theme="dark"] .qa-chip:hover{background:#1B211B}
 .qa-list{overflow:auto;padding:8px;display:flex;flex-direction:column;gap:3px}
 .qa-item{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:12px;border:1px solid transparent;cursor:pointer;transition:.12s;text-align:left;width:100%}
 .qa-item:hover,.qa-item.on{background:linear-gradient(90deg,#FFF6E8,#EEF8F2);border-color:#EADFC8;transform:translateX(1px)}
@@ -4041,6 +4046,29 @@ body[data-theme="dark"] .calc-card{background:var(--panel);border-color:var(--li
 body[data-theme="dark"] .calc-head{background:rgba(27,32,27,.6)}
 body[data-theme="dark"] .calc-out{background:#1B201B;border-color:var(--line)}
 body[data-theme="dark"] .calc-up{background:#2B2A1D;color:#E7C46E;border-color:#4A4430}
+
+/* ---- finance view ---- */
+.fc-config .grid3, .fc-breakdown .grid3 {display:grid;grid-template-columns:1fr 1fr 1fr;gap:13px}
+.fc-other-charges {margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.fc-charge-row {display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;align-items:center}
+.fc-charge-row input, .fc-charge-row select {padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:#FCFDFC;font-size:12.5px}
+.fc-result-grid {display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:8px}
+.fc-result-card {background:#FCFDFC;border:1px solid var(--line);border-radius:12px;padding:11px 12px;text-align:center;min-width:0}
+.fc-result-card.highlight {border-color:var(--gold);background:#FFFBE9}
+.fc-result-card.discount {border-color:var(--pst-sold);background:#FBEDEA}
+.fc-result-card.cash {border-color:var(--pst-hold);background:#FEF3E7}
+.fc-result-card.small {font-size:11px}
+.fc-result-card .big {display:block;font-size:18px;font-weight:800;font-family:'Fraunces',serif;color:var(--ink);font-variant-numeric:tabular-nums;margin:4px 0}
+.fc-result-card small {display:block;font-size:10px;color:var(--mut);line-height:1.3}
+.fc-result-section {grid-column:1/-1;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--mut);margin:12px 0 4px;padding-left:4px}
+.fc-client-tracker .fc-result-grid {grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+@media (max-width:640px){
+  .fc-config .grid3, .fc-breakdown .grid3 {grid-template-columns:1fr}
+  .fc-result-grid {grid-template-columns:1fr}
+}
+body[data-theme="dark"] .fc-result-card{background:#1B201B;color:#F2F0E5}
+body[data-theme="dark"] .fc-result-card.highlight{background:#2B2A1D;color:#E7C46E}
+body[data-theme="dark"] .fc-charge-row input, body[data-theme="dark"] .fc-charge-row select{background:#141813;color:#F2F0E5}
 
 /* ==== BCS SIX-LAYERS PACK — trust • location • gallery • prediction • circle rate • bank offers ==== */
 .trust-strip{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 4px}
@@ -14863,6 +14891,7 @@ try{
           <button type="button" data-view="inventory"><span class="nav-ic" aria-hidden="true">▦</span>Plot Inventory</button>
           <button type="button" data-view="advisors"><span class="nav-ic" aria-hidden="true">◎</span>Advisors</button>
           <button type="button" data-view="partners"><span class="nav-ic" aria-hidden="true">◉</span>Partners</button>
+          <button type="button" data-view="finance"><span class="nav-ic" aria-hidden="true">💰</span>Finance</button>
           <button type="button" data-view="resale"><span class="nav-ic" aria-hidden="true">⇌</span>Resale</button>
           <button type="button" data-view="analytics"><span class="nav-ic" aria-hidden="true">▥</span>Analytics</button>
           <button type="button" data-view="tax"><span class="nav-ic" aria-hidden="true">₹</span>Tax &amp; Advice</button>
@@ -15422,6 +15451,28 @@ try{
       <span class="links-toolbar-note" id="partnerCount"></span>
     </div>
     <div class="partner-grid" id="partnerGrid"></div>
+  </section>
+
+  <!-- ============ FINANCE ============ -->
+  <section class="view" id="view-finance">
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · finance desk</div>
+        <h2 class="adv-title">DLC, stamp duty, GST,<br><em>payment plans.</em></h2>
+        <p class="adv-sub">Project financial config ek baar set karein — plot budget breakdown aur client payment tracker auto calc. WhatsApp share built-in.</p>
+      </div>
+      <div class="adv-head-actions">
+        <button class="btn ghost" id="fcPrint" title="Print this page">🖨 Print</button>
+      </div>
+    </div>
+    <div class="toolbar links-toolbar">
+      <div class="adv-search links-search"><input id="fcProjectSearch" placeholder="Search project…"></div>
+      <select id="fcProjectSel" data-custom="true"><option value="">— Select project —</option></select>
+      <div class="spacer"></div>
+      <span class="links-toolbar-note" id="fcPlotCount"></span>
+    </div>
+    <div class="links-stats" id="fcStats"></div>
+    <div class="calc-grid" id="fcGrid"></div>
   </section>
 
   <!-- ============ CLIENTS ============ -->
@@ -16777,6 +16828,13 @@ try{
       <span class="qa-mark">⌘</span>
       <input id="qaInput" type="text" placeholder="Kuch bhi dhundein — project, client, action…" autocomplete="off" spellcheck="false" aria-label="Search actions and records">
       <span class="qa-esc">ESC</span>
+    </div>
+    <div class="qa-quick" id="qaQuickRow" aria-label="Quick add">
+      <button type="button" class="qa-chip" id="dockAddProject">▣ New project</button>
+      <button type="button" class="qa-chip" id="dockAddDeveloper">◈ New developer</button>
+      <button type="button" class="qa-chip" id="dockAddAdvisor">◎ New advisor</button>
+      <button type="button" class="qa-chip" id="dockAddPartner">▥ New partner</button>
+      <button type="button" class="qa-chip" id="dockAddClient">◐ New client</button>
     </div>
     <div class="qa-list" id="qaList"></div>
     <div class="qa-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>↵</kbd> open</span><span><kbd>⌘K</kbd> close</span><span style="margin-left:auto">Everything stays editable</span></div>
@@ -31234,6 +31292,11 @@ function initTools(){
   };
   $('#stickyBtn').addEventListener('click', () => open('stickyPop'));
   $('#calcBtn').addEventListener('click', () => open('calcPop'));
+  $('#dockAddProject')?.addEventListener('click', () => { openProject(null); closeQuickActions(); });
+  $('#dockAddDeveloper')?.addEventListener('click', () => { openDeveloper(null); closeQuickActions(); });
+  $('#dockAddAdvisor')?.addEventListener('click', () => { openAdvisor(null); closeQuickActions(); });
+  $('#dockAddPartner')?.addEventListener('click', () => { openPartner(null); closeQuickActions(); });
+  $('#dockAddClient')?.addEventListener('click', () => { openClient(null); closeQuickActions(); });
   $$('[data-toolclose]').forEach(b => b.addEventListener('click', () => {
     $('#' + b.dataset.toolclose).classList.remove('on');
     $$('.dock-btn').forEach(x => x.classList.remove('open'));
@@ -35950,6 +36013,7 @@ function render(){
   if(currentView === 'terminology') renderTerminology();
   if(currentView === 'tax') renderTax();
   if(currentView === 'partners') renderPartners();
+  if(currentView === 'finance'){ try{ window.renderFinance(); }catch(e){} }
   if(currentView === 'advisory'){ renderSavedBriefs(); renderAdvisoryResults(); }
   if(currentView === 'inventory'){ try{ window.BCS_OPS.renderInventory(); }catch(e){} }
   if(currentView === 'advisory' || currentView === 'clients'){ try{ window.BCS_OPS.renderPipeline(); }catch(e){} }
@@ -39151,9 +39215,165 @@ try{
   };
 }catch(e){}
 
+/* ================================================================
+   UNIVERSAL CUSTOM DATA HELPERS — make any select/input support custom values
+   ================================================================ */
+
+/* Make a <select> support custom "Other..." value
+   Usage: enableCustomSelect('#mySelect', {placeholder: 'Type custom value...', onCustom: (val) => console.log(val)})
+*/
+function enableCustomSelect(sel, opts){
+  const select = $(sel);
+  if(!select || select.dataset.customEnabled === 'true') return;
+  select.dataset.customEnabled = 'true';
+  const placeholder = opts?.placeholder || 'Custom value...';
+  const onCustom = opts?.onCustom || (() => {});
+
+  // Add "Custom..." option if not present
+  if(![...select.options].some(o => o.value === '__custom__')){
+    const customOpt = document.createElement('option');
+    customOpt.value = '__custom__';
+    customOpt.textContent = '✎ Custom…';
+    select.appendChild(customOpt);
+  }
+
+  // Create hidden custom input
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'custom-select-input';
+  input.placeholder = placeholder;
+  input.style.display = 'none';
+  input.style.marginTop = '6px';
+  input.style.width = '100%';
+  input.setAttribute('data-for', select.id);
+  select.parentNode.insertBefore(input, select.nextSibling);
+
+  select.addEventListener('change', () => {
+    const isCustom = select.value === '__custom__';
+    input.style.display = isCustom ? 'block' : 'none';
+    if(isCustom){
+      input.focus();
+      input.value = '';
+    } else {
+      input.value = '';
+    }
+  });
+
+  input.addEventListener('keydown', e => {
+    if(e.key === 'Enter'){
+      e.preventDefault();
+      const val = input.value.trim();
+      if(val){
+        // Add as permanent option before "Custom..."
+        const opt = document.createElement('option');
+        opt.value = val;
+        opt.textContent = val;
+        select.insertBefore(opt, select.querySelector('option[value="__custom__"]'));
+        select.value = val;
+        input.style.display = 'none';
+        input.value = '';
+        onCustom(val, select);
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    }
+  });
+
+  input.addEventListener('blur', () => {
+    if(input.style.display !== 'none' && !input.value.trim()){
+      select.value = select.options[0]?.value || '';
+      input.style.display = 'none';
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
+}
+
+/* Add datalist autocomplete to any text input
+   Usage: addDatalist('#myInput', ['option1', 'option2'], {source: () => db.projects.map(p=>p.name)})
+*/
+function addDatalist(sel, staticOptions, opts){
+  const input = $(sel);
+  if(!input) return;
+  const id = input.id || 'dl-' + Math.random().toString(36).slice(2);
+  input.id = id;
+
+  let dl = document.getElementById(id + '-datalist');
+  if(!dl){
+    dl = document.createElement('datalist');
+    dl.id = id + '-datalist';
+    document.body.appendChild(dl);
+  }
+  input.setAttribute('list', dl.id);
+
+  const update = () => {
+    let options = [...(staticOptions || [])];
+    if(opts?.source) options = options.concat(opts.source() || []);
+    if(opts?.fromDb){
+      const vals = new Set();
+      (db[opts.fromDb] || []).forEach(r => {
+        const v = r[opts.fieldKey];
+        if(v) vals.add(String(v));
+      });
+      options = options.concat([...vals]);
+    }
+    options = [...new Set(options.map(o => String(o).trim()).filter(Boolean))];
+    dl.innerHTML = options.map(o => `<option value="${esc(o)}">`).join('');
+  };
+
+  input.addEventListener('focus', update);
+  update();
+
+  return { update };
+}
+
+/* Auto-enable custom select for all selects with data-custom="true" */
+function autoEnableCustomSelects(){
+  $$('select[data-custom="true"]').forEach(sel => enableCustomSelect('#' + sel.id));
+}
+
+/* Auto-add datalist for inputs with data-datalist attribute */
+function autoEnableDatalists(){
+  $$('input[data-datalist], textarea[data-datalist]').forEach(input => {
+    const key = input.dataset.datalist;
+    addDatalist('#' + input.id, [], { fromDb: key });
+  });
+}
+
+/* Helper: get unique values from any array of objects by key */
+function uniqueValues(arr, key){
+  return [...new Set((arr || []).map(x => x[key]).filter(Boolean))];
+}
+
+/* Expose globally */
+window.enableCustomSelect = enableCustomSelect;
+window.addDatalist = addDatalist;
+window.autoEnableCustomSelects = autoEnableCustomSelects;
+window.autoEnableDatalists = autoEnableDatalists;
+window.uniqueValues = uniqueValues;
+
+/* ---------------- project financial config (DLC, stamp duty, etc.) ---------------- */
+function finConfigOf(project){
+  const p = project || {};
+  if(!p.finConfig || typeof p.finConfig !== 'object') p.finConfig = {
+    dlcRatePerGaj: 0,           // DLC rate per gaj
+    stampDutyPct: 6,            // stamp duty %
+    regFeePct: 1,               // registration fee %
+    gstPct: 1,                  // GST % (if applicable)
+    maintenanceCharges: 0,      // maintenance per gaj or fixed
+    infraCharges: 0,            // infra/development charges per gaj
+    otherCharges: [],           // array of {label, amount, type:'fixed'|'pergaj'|'pct'}
+    downPaymentPct: 10,         // default down payment %
+    bookingAmount: 100000,      // default booking amount
+    loanEligiblePct: 80,        // max loan % of deal value
+    discountPct: 0,             // default discount %
+    discountMax: 0,             // max discount amount
+  };
+  return p.finConfig;
+}
+window.finConfigOf = finConfigOf;
+
 /* expose for render() + other modules */
 window.BCS_OPS = { renderInventory, renderPipeline, renderInvBody, matchPlotsFor, openMatch, setStage, openDealEdit,
-  projectOf, devOf, corridorName, plotsOf, plotPrice, pipelineClients, clientCorridorId, waLink, money, options, PST, PLOT_STATUSES, inv };
+  projectOf, devOf, corridorName, plotsOf, plotPrice, pipelineClients, clientCorridorId, waLink, money, options, PST, PLOT_STATUSES, inv, finConfigOf };
 })();
 </script>
 
@@ -39556,9 +39776,483 @@ function exportInventoryCSV(){
   toast('Inventory CSV downloaded · ' + (rows.length - 1) + ' plots');
 }
 
+/* ================================================================
+   FINANCIAL CALCULATOR — Plot/Project Budget Breakdown
+   ================================================================ */
+
+function renderFinance(){
+  const search = $('#fcProjectSearch');
+  const sel = $('#fcProjectSel');
+  if(!search || !sel) return;
+
+  const projects = scopedProjects();
+  const current = sel.value || (projects[0] || {}).id;
+  sel.innerHTML = `<option value="">— Select project —</option>` +
+    projects.map(p => `<option value="${esc(p.id)}"${p.id === current ? ' selected' : ''}>${esc(p.name)} · ${esc(corridorName(p.corridor))}</option>`).join('');
+  // Re-enable custom select functionality (in case it was lost)
+  try{ enableCustomSelect('#' + sel.id, { placeholder: 'Type custom project...' }); }catch(e){}
+
+  if(current){
+    const p = projectOf(current);
+    if(p) loadFinanceProject(p);
+  } else {
+    $('#fcGrid').innerHTML = '<div class="calc-card" style="grid-column:1/-1;text-align:center;padding:40px"><div style="font-size:18px;margin-bottom:8px">💰</div><div style="color:var(--mut)">Select a project to load financial config</div></div>';
+    $('#fcStats').innerHTML = '';
+    $('#fcPlotCount').textContent = '';
+  }
+
+  search.addEventListener('input', () => {
+    const q = search.value.toLowerCase();
+    sel.innerHTML = '<option value="">— Select project —</option>' +
+      projects.filter(p => p.name.toLowerCase().includes(q) || corridorName(p.corridor).toLowerCase().includes(q))
+        .map(p => `<option value="${esc(p.id)}"${p.id === current ? ' selected' : ''}>${esc(p.name)} · ${esc(corridorName(p.corridor))}</option>`).join('');
+  });
+
+  sel.addEventListener('change', () => {
+    const p = projectOf(sel.value);
+    if(p) loadFinanceProject(p);
+  });
+}
+
+function loadFinanceProject(project){
+  const cfg = finConfigOf(project);
+  const plots = plotsOf(project.id);
+  const available = plots.filter(pl => pl.status === 'available' || pl.status === 'release');
+  const totalValue = plots.reduce((sum, pl) => sum + plotPrice(pl), 0);
+  const availValue = available.reduce((sum, pl) => sum + plotPrice(pl), 0);
+
+  $('#fcStats').innerHTML = `
+    <div><div class="k">Project</div><div class="v">${esc(project.name)}</div></div>
+    <div><div class="k">Total plots</div><div class="v">${plots.length}</div></div>
+    <div><div class="k">Available</div><div class="v">${available.length}</div></div>
+    <div><div class="k">Available value</div><div class="v">${money(availValue)}</div></div>
+  `;
+  $('#fcPlotCount').textContent = `${plots.length} plots · ${available.length} available`;
+
+  $('#fcGrid').innerHTML = `
+    <div class="calc-card fc-config">
+      <div class="calc-head"><span class="calc-ic">⚙️</span><div><h4>Project Financial Config</h4><small>DLC, stamp duty, registry, GST, discounts — set once per project</small></div></div>
+      <div class="calc-body">
+        <div class="grid3">
+          <div class="field"><label>DLC rate (₹/Gaj)</label><input id="fcDlc" type="number" min="0" value="${cfg.dlcRatePerGaj || ''}" placeholder="e.g. 4500"></div>
+          <div class="field"><label>Stamp duty %</label><input id="fcStamp" type="number" min="0" step="0.1" value="${cfg.stampDutyPct || 6}"></div>
+          <div class="field"><label>Registration %</label><input id="fcReg" type="number" min="0" step="0.1" value="${cfg.regFeePct || 1}"></div>
+        </div>
+        <div class="grid3">
+          <div class="field"><label>GST %</label><input id="fcGst" type="number" min="0" step="0.1" value="${cfg.gstPct || 1}"></div>
+          <div class="field"><label>Maintenance (₹/Gaj)</label><input id="fcMaint" type="number" min="0" value="${cfg.maintenanceCharges || 0}"></div>
+          <div class="field"><label>Infra charges (₹/Gaj)</label><input id="fcInfra" type="number" min="0" value="${cfg.infraCharges || 0}"></div>
+        </div>
+        <div class="grid3">
+          <div class="field"><label>Down payment %</label><input id="fcDownPct" type="number" min="0" max="100" step="1" value="${cfg.downPaymentPct || 10}"></div>
+          <div class="field"><label>Booking amount (₹)</label><input id="fcBooking" type="number" min="0" value="${cfg.bookingAmount || 100000}"></div>
+          <div class="field"><label>Loan eligible %</label><input id="fcLoanPct" type="number" min="0" max="100" step="1" value="${cfg.loanEligiblePct || 80}"></div>
+        </div>
+        <div class="grid3">
+          <div class="field"><label>Default discount %</label><input id="fcDiscPct" type="number" min="0" max="50" step="0.1" value="${cfg.discountPct || 0}"></div>
+          <div class="field"><label>Max discount (₹)</label><input id="fcDiscMax" type="number" min="0" value="${cfg.discountMax || 0}"></div>
+          <div class="field"><label>&nbsp;</label><button class="btn primary sm" id="fcSaveCfg" style="width:100%">Save config</button></div>
+        </div>
+        <div class="fc-other-charges">
+          <div style="display:flex;align-items:center;gap:10px;margin:10px 0 6px">
+            <b style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)">Other charges (add custom)</b>
+            <button class="btn ghost sm" id="fcAddCharge" style="margin-left:auto">＋ Add charge</button>
+          </div>
+          <div id="fcChargesWrap"></div>
+        </div>
+        <div class="calc-src">DLC = Collector rate (e-Panjiyan). Stamp duty = max(DLC, market) × %. Registration + surcharge = % of max(DLC, market). GST on under-construction only. Maintenance/infra per gaj or fixed.</div>
+      </div>
+    </div>
+
+    <div class="calc-card fc-breakdown">
+      <div class="calc-head"><span class="calc-ic">🧮</span><div><h4>Plot Budget Breakdown</h4><small>Select plot → see full client payment plan</small></div></div>
+      <div class="calc-body">
+        <div class="grid2" style="margin-bottom:12px">
+          <div class="field">
+            <label>Select plot</label>
+            <select id="fcPlotSel" data-custom="true"><option value="">— Choose plot —</option>${available.map(pl => `<option value="${esc(pl.id)}">Plot ${esc(pl.label || pl.num)} · ${pl.sizeGaj || 0} Gaj · ${money(plotPrice(pl))} · ${pl.facing || ''}</option>`).join('')}</select>
+          </div>
+          <div class="field">
+            <label>Market rate (₹/Gaj) — override</label>
+            <input id="fcMarketRate" type="number" min="0" placeholder="Leave empty = use plot rate">
+          </div>
+        </div>
+        <div class="grid3" style="margin-bottom:12px">
+          <div class="field"><label>Discount %</label><input id="fcPlotDiscPct" type="number" min="0" max="50" step="0.1" value="${cfg.discountPct || 0}"></div>
+          <div class="field"><label>Discount max (₹)</label><input id="fcPlotDiscMax" type="number" min="0" value="${cfg.discountMax || 0}"></div>
+          <div class="field"><label>&nbsp;</label><button class="btn primary sm" id="fcCalcPlot" style="width:100%">Calculate</button></div>
+        </div>
+        <div id="fcPlotResult" style="display:none"></div>
+      </div>
+    </div>
+
+    <div class="calc-card fc-client-tracker" style="grid-column:1/-1">
+      <div class="calc-head"><span class="calc-ic">👥</span><div><h4>Client Payment Tracker</h4><small>Track payments, balance, EMI per client for selected plot</small></div></div>
+      <div class="calc-body">
+        <div class="grid2" style="margin-bottom:12px">
+          <div class="field">
+            <label>Client</label>
+            <select id="fcClientSel" data-custom="true"><option value="">— Select client —</option>${(db.clients || []).filter(c => c.projectId === project.id).map(c => `<option value="${esc(c.id)}">${esc(c.name)} · ${budgetText(c)}</option>`).join('')}</select>
+          </div>
+          <div class="field">
+            <label>Plot (for this client)</label>
+            <select id="fcClientPlotSel" data-custom="true"><option value="">— Choose plot —</option>${available.map(pl => `<option value="${esc(pl.id)}">Plot ${esc(pl.label || pl.num)} · ${pl.sizeGaj || 0} Gaj · ${money(plotPrice(pl))}</option>`).join('')}</select>
+          </div>
+        </div>
+        <div class="grid3" style="margin-bottom:12px">
+          <div class="field"><label>Deal value (₹)</label><input id="fcDealVal" type="number" min="0" step="100000" placeholder="Auto from plot"></div>
+          <div class="field"><label>Down payment %</label><input id="fcClientDownPct" type="number" min="0" max="100" step="1" value="${cfg.downPaymentPct || 10}"></div>
+          <div class="field"><label>Booking paid (₹)</label><input id="fcClientBooking" type="number" min="0" value="0"></div>
+        </div>
+        <div class="grid3" style="margin-bottom:12px">
+          <div class="field"><label>Loan amount (₹)</label><input id="fcClientLoan" type="number" min="0" step="100000" placeholder="Auto calc"></div>
+          <div class="field"><label>Loan rate %</label><input id="fcClientLoanRate" type="number" min="0" step="0.05" value="8.6"></div>
+          <div class="field"><label>Tenure (years)</label><input id="fcClientTenure" type="number" min="1" max="30" value="20"></div>
+        </div>
+        <div class="grid3" style="margin-bottom:12px">
+          <div class="field"><label>Additional paid (₹)</label><input id="fcClientAddPaid" type="number" min="0" value="0" placeholder="Installments paid"></div>
+          <div class="field"><label>Discount applied (₹)</label><input id="fcClientDisc" type="number" min="0" value="0"></div>
+          <div class="field"><label>&nbsp;</label><button class="btn primary sm" id="fcCalcClient" style="width:100%">Calculate client plan</button></div>
+        </div>
+        <div id="fcClientResult" style="display:none"></div>
+      </div>
+    </div>
+  `;
+
+  // Enable custom select on dynamically created selects
+  try{
+    enableCustomSelect('#fcPlotSel', { placeholder: 'Type custom plot...' });
+    enableCustomSelect('#fcClientSel', { placeholder: 'Type custom client...' });
+    enableCustomSelect('#fcClientPlotSel', { placeholder: 'Type custom plot...' });
+  }catch(e){}
+  renderFcCharges(project);
+  wireFinanceEvents(project);
+}
+
+function renderFcCharges(project){
+  const wrap = $('#fcChargesWrap');
+  const cfg = finConfigOf(project);
+  const charges = cfg.otherCharges || [];
+  wrap.innerHTML = charges.map((c, i) => `
+    <div class="fc-charge-row" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;align-items:center">
+      <input type="text" data-fcc="label:${i}" value="${esc(c.label || '')}" placeholder="Label (e.g. Clubhouse, Legal, Parking)" style="flex:1;min-width:140px">
+      <input type="number" data-fcc="amount:${i}" min="0" value="${c.amount ?? ''}" placeholder="Amount" style="width:100px">
+      <select data-fcc="type:${i}" style="width:110px"><option value="fixed"${c.type === 'fixed' ? ' selected' : ''}>Fixed ₹</option><option value="pergaj"${c.type === 'pergaj' ? ' selected' : ''}>₹/Gaj</option><option value="pct"${c.type === 'pct' ? ' selected' : ''}>% of value</option></select>
+      <button type="button" class="btn ghost sm" data-fccdel="${i}" title="Delete">✕</button>
+    </div>
+  `).join('') || '<div style="color:var(--mut);font-size:12px">No extra charges — add above</div>';
+}
+
+function wireFinanceEvents(project){
+  const cfg = finConfigOf(project);
+
+  $('#fcSaveCfg')?.addEventListener('click', () => {
+    cfg.dlcRatePerGaj = +$('#fcDlc').value || null;
+    cfg.stampDutyPct = +$('#fcStamp').value || 6;
+    cfg.regFeePct = +$('#fcReg').value || 1;
+    cfg.gstPct = +$('#fcGst').value || 1;
+    cfg.maintenanceCharges = +$('#fcMaint').value || 0;
+    cfg.infraCharges = +$('#fcInfra').value || 0;
+    cfg.downPaymentPct = +$('#fcDownPct').value || 10;
+    cfg.bookingAmount = +$('#fcBooking').value || 100000;
+    cfg.loanEligiblePct = +$('#fcLoanPct').value || 80;
+    cfg.discountPct = +$('#fcDiscPct').value || 0;
+    cfg.discountMax = +$('#fcDiscMax').value || 0;
+    // collect other charges
+    const wrap = $('#fcChargesWrap');
+    cfg.otherCharges = [];
+    $$('#fcChargesWrap .fc-charge-row').forEach(row => {
+      const label = row.querySelector('[data-fcc^="label:"]').value.trim();
+      const amount = row.querySelector('[data-fcc^="amount:"]').value;
+      const type = row.querySelector('[data-fcc^="type:"]').value;
+      if(label) cfg.otherCharges.push({ label, amount: amount === '' ? null : +amount, type });
+    });
+    project.updatedAt = Date.now();
+    save(); renderFcCharges(project); toast('Financial config saved');
+  });
+
+  $('#fcAddCharge')?.addEventListener('click', () => {
+    if(!cfg.otherCharges) cfg.otherCharges = [];
+    cfg.otherCharges.push({ label: '', amount: null, type: 'fixed' });
+    renderFcCharges(project);
+  });
+
+  $$('[data-fccdel]')?.forEach(b => b.addEventListener('click', () => {
+    const i = +b.dataset.fccdel;
+    cfg.otherCharges.splice(i, 1);
+    renderFcCharges(project);
+  }));
+
+  $('#fcCalcPlot')?.addEventListener('click', () => calcFinancePlot(project));
+  $('#fcCalcClient')?.addEventListener('click', () => calcFinanceClient(project));
+
+  $('#fcPlotSel')?.addEventListener('change', () => {
+    const pid = $('#fcPlotSel').value;
+    const pl = (db.plots || []).find(x => x.id === pid);
+    if(pl) $('#fcMarketRate').value = pl.rateGaj || '';
+  });
+
+  $('#fcClientSel')?.addEventListener('change', () => {
+    const cid = $('#fcClientSel').value;
+    const c = (db.clients || []).find(x => x.id === cid);
+    if(c && c.dealPlotId) $('#fcClientPlotSel').value = c.dealPlotId;
+  });
+
+  $('#fcClientPlotSel')?.addEventListener('change', () => {
+    const pid = $('#fcClientPlotSel').value;
+    const pl = (db.plots || []).find(x => x.id === pid);
+    if(pl) {
+      $('#fcDealVal').value = plotPrice(pl);
+      $('#fcClientLoan').value = Math.round(plotPrice(pl) * (cfg.loanEligiblePct || 80) / 100);
+    }
+  });
+}
+
+function calcFinancePlot(project){
+  const pid = $('#fcPlotSel').value;
+  const pl = (db.plots || []).find(x => x.id === pid);
+  if(!pl) return toast('Select a plot', true);
+
+  const cfg = finConfigOf(project);
+  const gaj = +pl.sizeGaj || 0;
+  const marketRate = +$('#fcMarketRate').value || pl.rateGaj || 0;
+  const discPct = +$('#fcPlotDiscPct').value || 0;
+  const discMax = +$('#fcPlotDiscMax').value || 0;
+
+  if(!gaj || !marketRate) return toast('Plot size aur rate zaroori hain', true);
+
+  const dealValue = Math.round(gaj * marketRate);
+  const discount = Math.min(Math.round(dealValue * discPct / 100), discMax);
+  const netValue = dealValue - discount;
+
+  // Registry charges (on max of DLC and market)
+  const dlcRate = cfg.dlcRatePerGaj || 0;
+  const regBase = Math.max(dlcRate, marketRate) * gaj;
+  const stampDuty = Math.round(regBase * (cfg.stampDutyPct || 6) / 100);
+  const regFee = Math.round(regBase * (cfg.regFeePct || 1) / 100);
+  const regTotal = stampDuty + regFee;
+
+  // GST
+  const gstAmt = Math.round(netValue * (cfg.gstPct || 1) / 100);
+
+  // Other charges
+  let otherTotal = 0;
+  (cfg.otherCharges || []).forEach(c => {
+    if(c.amount != null){
+      if(c.type === 'fixed') otherTotal += c.amount;
+      else if(c.type === 'pergaj') otherTotal += c.amount * gaj;
+      else if(c.type === 'pct') otherTotal += Math.round(netValue * c.amount / 100);
+    }
+  });
+
+  // Down payment
+  const downPct = cfg.downPaymentPct || 10;
+  const downPayment = Math.round(netValue * downPct / 100);
+  const booking = cfg.bookingAmount || 100000;
+
+  // Loan
+  const loanPct = cfg.loanEligiblePct || 80;
+  const loanEligible = Math.round(netValue * loanPct / 100);
+  const loanRate = 8.6; // could be configurable
+  const loanTenure = 20;
+  const emi = loanEligible > 0 ? calcEMI(loanEligible, loanRate, loanTenure) : 0;
+
+  // Balance payable by client (cash/part B)
+  const totalCharges = regTotal + gstAmt + otherTotal;
+  const totalPayable = netValue + totalCharges;
+  const totalPaid = booking; // only booking for now
+  const balance = totalPayable - totalPaid;
+
+  const result = $('#fcPlotResult');
+  result.style.display = 'block';
+  result.innerHTML = `
+    <div class="fc-result-grid">
+      <div class="fc-result-card highlight"><b>Deal Value</b><br><span class="big">${money(dealValue)}</span><small>${gaj} Gaj × ${money(marketRate)}/Gaj</small></div>
+      ${discount > 0 ? `<div class="fc-result-card discount"><b>Discount</b><br><span class="big">−${money(discount)}</span><small>${discPct}% (max ${money(discMax)})</small></div>` : ''}
+      <div class="fc-result-card"><b>Net Deal Value</b><br><span class="big">${money(netValue)}</span></div>
+
+      <div class="fc-result-section"><b>Registry & Government Charges</b></div>
+      <div class="fc-result-card"><b>Stamp Duty (${cfg.stampDutyPct || 6}%)</b><br><span class="big">${money(stampDuty)}</span><small>On ${money(regBase)} (max of DLC ${money(dlcRate)} & market)</small></div>
+      <div class="fc-result-card"><b>Registration (${cfg.regFeePct || 1}%)</b><br><span class="big">${money(regFee)}</span></div>
+      <div class="fc-result-card"><b>Total Registry</b><br><span class="big">${money(regTotal)}</span></div>
+
+      <div class="fc-result-section"><b>Taxes & Other Charges</b></div>
+      <div class="fc-result-card"><b>GST (${cfg.gstPct || 1}%)</b><br><span class="big">${money(gstAmt)}</span><small>On net deal value</small></div>
+      ${otherTotal > 0 ? `
+        <div class="fc-result-card"><b>Other Charges</b><br><span class="big">${money(otherTotal)}</span></div>
+        ${(cfg.otherCharges || []).filter(c => c.amount != null).map(c => `<div class="fc-result-card small"><b>${esc(c.label)}</b><br><span class="big">${money(c.type === 'fixed' ? c.amount : (c.type === 'pergaj' ? c.amount * gaj : Math.round(netValue * c.amount / 100)))}</span><small>${c.type === 'fixed' ? 'Fixed' : (c.type === 'pergaj' ? '₹/Gaj' : c.amount + '%')}</small></div>`).join('')}
+      ` : ''}
+
+      <div class="fc-result-section"><b>Client Payment Plan</b></div>
+      <div class="fc-result-card"><b>Booking Amount</b><br><span class="big">${money(booking)}</span></div>
+      <div class="fc-result-card"><b>Down Payment (${downPct}%)</b><br><span class="big">${money(downPayment)}</span><small>Includes booking</small></div>
+      <div class="fc-result-card"><b>Loan Eligible (${loanPct}%)</b><br><span class="big">${money(loanEligible)}</span><small>EMI: ${money(emi)}/month @ ${loanRate}% × ${loanTenure}yr</small></div>
+      <div class="fc-result-card highlight"><b>Total Payable</b><br><span class="big">${money(totalPayable)}</span><small>Deal + registry + GST + other</small></div>
+      <div class="fc-result-card"><b>Paid (Booking)</b><br><span class="big">${money(totalPaid)}</span></div>
+      <div class="fc-result-card cash"><b>Balance (Cash / Part B)</b><br><span class="big">${money(balance)}</span><small>Client arranges before registry</small></div>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:8px">
+      <button class="btn ghost sm" id="fcPlotShare">📋 Copy breakdown</button>
+      <button class="btn primary sm" id="fcPlotWhatsApp">🟢 Share WhatsApp</button>
+    </div>
+  `;
+
+  // Wire share buttons
+  const text = generateFinancePlotText(project, pl, {
+    dealValue, discount, netValue, stampDuty, regFee, regTotal, gstAmt, otherTotal,
+    downPayment, booking, loanEligible, emi, totalPayable, totalPaid, balance
+  });
+  $('#fcPlotShare')?.addEventListener('click', () => copyText(text));
+  $('#fcPlotWhatsApp')?.addEventListener('click', () => openWhatsApp(text));
+}
+
+function calcFinanceClient(project){
+  const cid = $('#fcClientSel').value;
+  const pid = $('#fcClientPlotSel').value;
+  const c = (db.clients || []).find(x => x.id === cid);
+  const pl = (db.plots || []).find(x => x.id === pid);
+  if(!c || !pl) return toast('Select client and plot', true);
+
+  const cfg = finConfigOf(project);
+  const dealValue = +$('#fcDealVal').value || plotPrice(pl);
+  const downPct = +$('#fcClientDownPct').value || cfg.downPaymentPct || 10;
+  const bookingPaid = +$('#fcClientBooking').value || 0;
+  const loanAmt = +$('#fcClientLoan').value || Math.round(dealValue * (cfg.loanEligiblePct || 80) / 100);
+  const loanRate = +$('#fcClientLoanRate').value || 8.6;
+  const tenure = +$('#fcClientTenure').value || 20;
+  const addPaid = +$('#fcClientAddPaid').value || 0;
+  const discount = +$('#fcClientDisc').value || 0;
+
+  const netValue = dealValue - discount;
+  const dlcRate = cfg.dlcRatePerGaj || 0;
+  const marketRate = dealValue / (+pl.sizeGaj || 1);
+  const regBase = Math.max(dlcRate, marketRate) * (+pl.sizeGaj || 0);
+  const stampDuty = Math.round(regBase * (cfg.stampDutyPct || 6) / 100);
+  const regFee = Math.round(regBase * (cfg.regFeePct || 1) / 100);
+  const gstAmt = Math.round(netValue * (cfg.gstPct || 1) / 100);
+  let otherTotal = 0;
+  (cfg.otherCharges || []).forEach(oc => {
+    if(oc.amount != null){
+      if(oc.type === 'fixed') otherTotal += oc.amount;
+      else if(oc.type === 'pergaj') otherTotal += oc.amount * (+pl.sizeGaj || 0);
+      else if(oc.type === 'pct') otherTotal += Math.round(netValue * oc.amount / 100);
+    }
+  });
+
+  const totalCharges = stampDuty + regFee + gstAmt + otherTotal;
+  const totalPayable = netValue + totalCharges;
+  const downPayment = Math.round(netValue * downPct / 100);
+  const emi = loanAmt > 0 ? calcEMI(loanAmt, loanRate, tenure) : 0;
+  const totalPaid = bookingPaid + addPaid;
+  const balance = totalPayable - totalPaid - loanAmt; // balance after loan
+
+  const result = $('#fcClientResult');
+  result.style.display = 'block';
+  result.innerHTML = `
+    <div class="fc-result-grid">
+      <div class="fc-result-card highlight"><b>Client: ${esc(c.name)}</b><br><span>Plot ${esc(pl.label || pl.num)} · ${esc(project.name)}</span></div>
+      <div class="fc-result-card"><b>Deal Value</b><br><span class="big">${money(dealValue)}</span>${discount > 0 ? `<small>−${money(discount)} discount</small>` : ''}</div>
+      <div class="fc-result-card"><b>Net Value</b><br><span class="big">${money(netValue)}</span></div>
+
+      <div class="fc-result-section"><b>Charges</b></div>
+      <div class="fc-result-card"><b>Stamp + Registration</b><br><span class="big">${money(stampDuty + regFee)}</span></div>
+      <div class="fc-result-card"><b>GST</b><br><span class="big">${money(gstAmt)}</span></div>
+      ${otherTotal > 0 ? `<div class="fc-result-card"><b>Other Charges</b><br><span class="big">${money(otherTotal)}</span></div>` : ''}
+
+      <div class="fc-result-section"><b>Payment Schedule</b></div>
+      <div class="fc-result-card"><b>Booking Paid</b><br><span class="big">${money(bookingPaid)}</span></div>
+      <div class="fc-result-card"><b>Down Payment (${downPct}%)</b><br><span class="big">${money(downPayment)}</span><small>Total incl. booking</small></div>
+      <div class="fc-result-card"><b>Additional Paid</b><br><span class="big">${money(addPaid)}</span></div>
+      <div class="fc-result-card"><b>Loan Amount</b><br><span class="big">${money(loanAmt)}</span><small>EMI: ${money(emi)}/month @ ${loanRate}% × ${tenure}yr</small></div>
+      <div class="fc-result-card highlight"><b>Total Cost</b><br><span class="big">${money(totalPayable)}</span></div>
+      <div class="fc-result-card"><b>Total Paid</b><br><span class="big">${money(totalPaid)}</span></div>
+      <div class="fc-result-card cash"><b>Balance to Arrange</b><br><span class="big">${money(balance)}</span><small>Cash / Part B before registry</small></div>
+      <div class="fc-result-card"><b>Loan EMI</b><br><span class="big">${money(emi)} / month</span><small>${tenure} years @ ${loanRate}%</small></div>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:8px">
+      <button class="btn ghost sm" id="fcClientShare">📋 Copy plan</button>
+      <button class="btn primary sm" id="fcClientWhatsApp">🟢 Share WhatsApp</button>
+    </div>
+  `;
+
+  const text = generateFinanceClientText(c, project, pl, {
+    dealValue, discount, netValue, stampDuty, regFee, gstAmt, otherTotal,
+    bookingPaid, downPayment, addPaid, loanAmt, emi, totalPayable, totalPaid, balance
+  });
+  $('#fcClientShare')?.addEventListener('click', () => copyText(text));
+  $('#fcClientWhatsApp')?.addEventListener('click', () => openWhatsApp(text));
+}
+
+function calcEMI(principal, ratePct, years){
+  if(!principal || principal <= 0) return 0;
+  const r = ratePct / 12 / 100;
+  const n = years * 12;
+  return Math.round(principal * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1));
+}
+
+function generateFinancePlotText(project, pl, d){
+  return `*BCS FINANCIAL BREAKDOWN — PLOT ${pl.label || pl.num}*
+Project: ${project.name}
+Corridor: ${corridorName(project.corridor)}
+
+*DEAL*
+Size: ${pl.sizeGaj} Gaj
+Rate: ₹${d.dealValue / pl.sizeGaj}/Gaj
+Deal Value: ${money(d.dealValue)}
+${d.discount > 0 ? 'Discount: −' + money(d.discount) : ''}
+Net Value: ${money(d.netValue)}
+
+*REGISTRY & GOVT CHARGES*
+Stamp Duty: ${money(d.stampDuty)}
+Registration: ${money(d.regFee)}
+Total Registry: ${money(d.regTotal)}
+
+*TAXES & OTHER*
+GST: ${money(d.gstAmt)}
+${d.otherTotal > 0 ? 'Other Charges: ' + money(d.otherTotal) : ''}
+
+*CLIENT PAYMENT PLAN*
+Booking: ${money(d.booking)}
+Down Payment: ${money(d.downPayment)}
+Loan Eligible: ${money(d.loanEligible)} (EMI ${money(d.emi)}/mo)
+Total Payable: ${money(d.totalPayable)}
+Paid: ${money(d.totalPaid)}
+*Balance (Cash/Part B): ${money(d.balance)}*
+
+_Generated by BCS Desk · Verify with CA/advocate_`;
+}
+
+function generateFinanceClientText(client, project, pl, d){
+  return `*BCS CLIENT PAYMENT PLAN — ${client.name}*
+Project: ${project.name} · Plot ${pl.label || pl.num}
+Corridor: ${corridorName(project.corridor)}
+
+*DEAL*
+Deal Value: ${money(d.dealValue)}
+${d.discount > 0 ? 'Discount: −' + money(d.discount) : ''}
+Net Value: ${money(d.netValue)}
+
+*CHARGES*
+Stamp + Registration: ${money(d.stampDuty + d.regFee)}
+GST: ${money(d.gstAmt)}
+${d.otherTotal > 0 ? 'Other Charges: ' + money(d.otherTotal) : ''}
+
+*PAYMENT SCHEDULE*
+Booking Paid: ${money(d.bookingPaid)}
+Down Payment: ${money(d.downPayment)}
+Additional Paid: ${money(d.addPaid)}
+Loan: ${money(d.loanAmt)} (EMI ${money(d.emi)}/mo)
+Total Cost: ${money(d.totalPayable)}
+Total Paid: ${money(d.totalPaid)}
+*Balance to Arrange: ${money(d.balance)}*
+
+_Generated by BCS Desk · Verify with CA/advocate_`;
+}
+
 /* ---------------- events ---------------- */
 function wire2(){
   const on = (sel, ev, fn) => { const el = document.querySelector(sel); if(el) el.addEventListener(ev, fn); };
+  on('#fcPrint', 'click', () => window.print());
   on('#tsCopy', 'click', () => copyText(shareText));
   on('#tsWhatsApp', 'click', () => openWhatsApp(shareText));
   on('#lgAddBank', 'click', () => { const p = projectOf(legalFor); if(!p) return; legalOf(p).banks.push({ name:'', apf:'' }); renderBanks(); });
@@ -39674,7 +40368,10 @@ else wire2();
 
 window.BCS_OPS2 = { openDocketPlot: id => { const pl = (db.plots||[]).find(x=>x.id===id); if(pl) openTextModal('📄 Plot docket', plotDocketText(pl)); },
                     openLegal, openFinancials, openInvestor, openVisitPlanner, exportInventoryCSV,
-                    ledgerOverdueFor, openTextModal };
+                    ledgerOverdueFor, openTextModal, renderFcCharges, wireFinanceEvents, projectOf, calcFinancePlot, calcFinanceClient };
+window.renderFinance = renderFinance;
+window.calcFinancePlot = calcFinancePlot;
+window.calcFinanceClient = calcFinanceClient;
 })();
 </script>
 
