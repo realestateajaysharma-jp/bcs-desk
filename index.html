@@ -16723,27 +16723,11 @@ try{
         <div style="font-size:42px;margin-bottom:12px">▶</div>
         <h4 style="margin:0 0 6px">YouTube</h4>
         <p style="font-size:12px;color:var(--mut);margin:0 0 16px">Property videos upload karein, channel manage karein, analytics dekhein.</p>
-        <button class="btn ghost sm" style="width:100%;border-radius:10px" onclick="openSocialFrame('youtube')">Open YouTube</button>
+        <button class="btn ghost sm" style="width:100%;border-radius:10px" onclick="openSocialFrame('youtube')">Open YouTube app</button>
+        <button class="btn primary sm" style="width:100%;border-radius:10px;margin-top:8px" onclick="openSocialInApp()">🎧 In-app player</button>
       </div>
     </div>
-    <div id="socialFrameWrap" style="display:none;border-radius:18px;border:1px solid var(--line);overflow:hidden;background:var(--panel);margin-bottom:22px">
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--line)">
-        <h4 id="socialFrameTitle" style="margin:0;font-size:15px">Social Media</h4>
-        <div style="display:flex;gap:8px">
-          <a class="btn ghost sm" id="socialFrameNewTab" href="#" target="_blank" rel="noopener">↗ Open</a>
-          <button class="btn ghost sm" onclick="closeSocialFrame()">✕ Close</button>
-        </div>
-      </div>
-      <div id="socialLauncher" style="padding:34px 26px;text-align:center"></div>
-      <div class="mini-note" style="padding:10px 18px;border-top:1px solid var(--line);color:var(--mut)">WhatsApp, Instagram aur Facebook apni security (X-Frame-Options) ki wajah se iframe me block hote hain — isliye in-app launcher ek click me seedha platform par le jaata hai. YouTube in-frame me chalta hai.</div>
-    </div>
-    <div id="socialEmbedWrap" style="display:none;border-radius:18px;border:1px solid var(--line);overflow:hidden;background:#000;margin-bottom:22px">
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:rgba(255,255,255,.06)">
-        <h4 style="margin:0;color:#fff;font-size:14px">▶ YouTube — in-frame</h4>
-        <button class="btn ghost sm" onclick="closeSocialEmbed()" style="color:#fff">✕</button>
-      </div>
-      <iframe id="socialEmbedFrame" style="width:100%;height:min(68vh,640px);border:none;display:block" allow="autoplay; encrypted-media; picture-in-picture; clipboard-write" referrerpolicy="strict-origin-when-cross-origin" title="YouTube in-frame"></iframe>
-    </div>
+    <div class="mini-note" style="padding:12px 18px;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--mut);margin-bottom:22px">💡 <b>Kaise khulta hai:</b> WhatsApp, Instagram aur Facebook apni security (X-Frame-Options) ki wajah se kisi bhi page ke andar embed nahi ho sakte — isliye har card ek click me platform ka <b>dedicated app window</b> kholta hai (side me, BCS ke saath — dono saath chalte hain). Dobara click karne par wahi window aage aa jaati hai — login ek baar, fir hamesha. YouTube ke liye in-app player bhi hai.</div>
     <div class="sec-head">
       <h3>Quick social actions</h3>
       <span class="sub">Client ko turant message ya post bhejein</span>
@@ -32844,6 +32828,8 @@ function initMedia(){
     }
     paintFab();
   }
+  /* social desk se in-app player kholne ke liye */
+  window.bcsOpenMediaLounge = function(tab){ openPop(tab || 'yt'); };
 
   function closeAll(){
     stopYouTube();
@@ -35089,50 +35075,35 @@ const SOCIAL_PLATFORMS = {
   youtube: {
     name:'YouTube', emoji:'▶', url:'https://www.youtube.com',
     grad:'linear-gradient(135deg,#FF0000,#B30000)',
-    tip:'Property walkthroughs upload karein — ya "in-frame browse" se videos yahin dekhein.',
+    tip:'Property walkthroughs upload karein — app window me poora YouTube, ya 🎧 In-app player se search + play BCS ke andar hi.',
     links:[ ['Home','https://www.youtube.com/'], ['Studio','https://studio.youtube.com/'], ['Search Jaipur real estate','https://www.youtube.com/results?search_query=jaipur+real+estate'] ]
   }
 };
-let socialEmbedOpen = false;
+const SOCIAL_APPS = {
+  whatsapp:{ win:'bcsWhatsAppApp', w:560 },
+  instagram:{ win:'bcsInstagramApp', w:540 },
+  facebook:{ win:'bcsFacebookApp', w:1000 },
+  youtube:{ win:'bcsYouTubeApp', w:1020 }
+};
 function openSocialFrame(key){
-  const p = SOCIAL_PLATFORMS[key];
-  const wrap = $('#socialFrameWrap'), t = $('#socialFrameTitle'), box = $('#socialLauncher'), nt = $('#socialFrameNewTab');
-  if(!p || !wrap || !box) return;
-  if(t) t.textContent = p.emoji + '  ' + p.name;
-  if(nt) nt.href = p.url;
-  box.innerHTML = `
-    <div style="width:74px;height:74px;border-radius:22px;margin:0 auto 16px;background:${p.grad};display:grid;place-items:center;font-size:34px;box-shadow:0 14px 30px -12px rgba(0,0,0,.35)">${p.emoji}</div>
-    <h4 style="margin:0 0 8px;font-family:'Fraunces',serif;font-size:22px">${esc(p.name)}</h4>
-    <p style="font-size:12.5px;color:var(--mut);margin:0 auto 18px;max-width:440px;line-height:1.6">${esc(p.tip)}</p>
-    <button class="btn primary" style="padding:12px 30px;border-radius:12px;font-weight:800;font-size:14px" onclick="window.open('${p.url}','_blank','noopener')">${esc(p.name)} kholein ↗</button>
-    ${key === 'youtube' ? `<div style="margin-top:12px"><button class="btn ghost sm" style="border-radius:10px" onclick="openSocialEmbed()">▶ Browse YouTube in-frame</button></div>` : ''}
-    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:20px">
-      ${p.links.map(l => `<a class="btn ghost sm" href="${l[1]}" target="_blank" rel="noopener" style="border-radius:10px">${esc(l[0])} ↗</a>`).join('')}
-    </div>`;
-  wrap.style.display = 'block';
-  const ew = $('#socialEmbedWrap');
-  if(ew && !socialEmbedOpen) ew.style.display = 'none';
-  try{ wrap.scrollIntoView({ behavior:'smooth', block:'start' }); }catch(e){}
+  const p = SOCIAL_PLATFORMS[key], a = SOCIAL_APPS[key] || {};
+  if(!p) return;
+  const w = Math.min(a.w || 900, Math.round((screen.availWidth || 1280) * 0.92));
+  const h = screen.availHeight || screen.height || 800;
+  const win = window.open(p.url, a.win || 'bcsSocialApp', 'popup=yes,width=' + w + ',height=' + h + ',left=' + Math.max(0, (screen.availWidth || 1280) - w - 12) + ',top=0');
+  if(win){
+    try{ win.focus(); }catch(e){}
+    toast(p.name + ' app window khul gayi — login ek baar, agli baar wahi window reuse hogi');
+  } else {
+    const t = window.open(p.url, '_blank');
+    toast(t ? 'App window block hui — naye tab me khul gaya' : 'Popup block hua — browser me popups allow karein', !t);
+  }
 }
-function closeSocialFrame(){
-  const wrap = $('#socialFrameWrap');
-  if(wrap) wrap.style.display = 'none';
-  const box = $('#socialLauncher'); if(box) box.innerHTML = '';
-}
-function openSocialEmbed(){
-  const ew = $('#socialEmbedWrap'), f = $('#socialEmbedFrame');
-  if(!ew || !f) return;
-  f.src = 'https://www.youtube.com/embed?listType=search&list=jaipur%20real%20estate';
-  if(window.bcsArmFrame) window.bcsArmFrame(f, 'https://www.youtube.com/results?search_query=jaipur+real+estate', 'YouTube');
-  ew.style.display = 'block';
-  socialEmbedOpen = true;
-  try{ ew.scrollIntoView({ behavior:'smooth', block:'start' }); }catch(e){}
-}
-function closeSocialEmbed(){
-  const ew = $('#socialEmbedWrap'), f = $('#socialEmbedFrame');
-  if(ew) ew.style.display = 'none';
-  if(f) f.src = 'about:blank';
-  socialEmbedOpen = false;
+function openSocialInApp(){
+  if(typeof window.bcsOpenMediaLounge === 'function'){
+    window.bcsOpenMediaLounge('yt');
+    toast('Media lounge — YouTube search, song aur live radio sab in-app');
+  } else openSocialFrame('youtube');
 }
 function quickWhatsApp(){ openSocialFrame('whatsapp'); }
 function quickInstagram(){ openSocialFrame('instagram'); }
