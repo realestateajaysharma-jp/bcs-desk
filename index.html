@@ -13233,7 +13233,7 @@ body[data-theme="dark"] .backup-chip.ok{color:#7BD88F !important;background:rgba
 body[data-theme="dark"] .backup-chip.warn{color:#F3DFA6 !important;background:rgba(231,196,110,.14) !important}
 body[data-theme="dark"] .backup-chip.bad{color:#F0B8A8 !important;background:rgba(180,98,63,.18) !important}
 @keyframes bcsChipPulse{0%,100%{opacity:1}50%{opacity:.62}}
-@media (max-width:1180px){ .backup-chip .bchip-txt{display:none} .backup-chip{padding:0 9px !important} }
+@media (max-width:1280px){ .backup-chip .bchip-txt{display:none} .backup-chip{padding:0 9px !important} }
 
 /* ---------- In-app browser frame guard (works or clean fallback) ---------- */
 .bcs-frame-fb{position:absolute;inset:0;z-index:5;display:none;align-items:center;justify-content:center;padding:24px;
@@ -14220,16 +14220,61 @@ html body:not(.bcs-native) #navMorePanel{
   transform-origin:top right !important;
 }
 
-/* compact 12-tab row: fits ≈1250px, scrolls below that — never cramped */
-html body:not(.bcs-native) .hwrap-nav #nav > button{
-  padding:5px 8px !important;
-  font-size:11.5px !important;
-  gap:4px !important;
+/* 10 primary tabs — grow to fill the whole bar (no dead space on the right).
+   flex-grow distributes spare width; flex-shrink stays 0 so labels never clip. */
+html body:not(.bcs-native) .hwrap-nav #nav{
+  width:100% !important;
+  justify-content:flex-start !important;
+  gap:5px !important;
+  padding:6px 8px !important;
 }
-html body:not(.bcs-native) .hwrap-nav #nav > button .nav-ic{width:15px !important;height:15px !important;font-size:12px !important}
-html body:not(.bcs-native) .hwrap-nav #nav > button .nav-lbl{font-size:11.5px !important}
-html body:not(.bcs-native) .hwrap-nav #nav{gap:2px !important;padding:4px 5px !important}
-html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap > #navMoreBtn{padding:6px 9px !important}
+html body:not(.bcs-native) .hwrap-nav #nav::after{display:none !important}
+html body:not(.bcs-native) .hwrap-nav #nav > button,
+html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap{
+  flex:1 0 auto !important;
+  min-width:max-content !important;
+}
+html body:not(.bcs-native) .hwrap-nav #nav > button{
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  padding:7px 10px !important;
+  font-size:12px !important;
+  gap:6px !important;
+}
+html body:not(.bcs-native) .hwrap-nav #nav > button .nav-ic{width:17px !important;height:17px !important;font-size:13px !important}
+html body:not(.bcs-native) .hwrap-nav #nav > button .nav-lbl{font-size:12px !important}
+html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap{display:flex !important}
+html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap > #navMoreBtn{
+  flex:1 1 auto !important;
+  width:100% !important;
+  justify-content:center !important;
+  padding:7px 10px !important;
+  font-size:12px !important;
+}
+
+/* header action rail — icons keep their shape, text never squeezes/clips */
+html body:not(.bcs-native) .hwrap-top .hbtns{flex-wrap:nowrap !important;align-items:center !important;gap:7px !important}
+html body:not(.bcs-native) .hwrap-top .hbtns > *{flex:0 0 auto !important}
+html body:not(.bcs-native) .hbtns .icon-btn{overflow:visible !important}
+html body:not(.bcs-native) .hbtns .icon-btn > svg{flex:none !important}
+/* QA trigger = icon + ⌘K on one line (grid was stacking them vertically) */
+html body:not(.bcs-native) .hbtns .icon-btn.qa-trigger{
+  display:inline-flex !important;align-items:center !important;justify-content:center !important;
+  gap:6px !important;width:auto !important;min-width:38px !important;padding:0 9px !important;
+}
+/* backup chip = ☁ + label on one line (grid was stacking → clipped) */
+html body:not(.bcs-native) .hbtns .icon-btn.backup-chip{
+  display:inline-flex !important;flex-direction:row !important;align-items:center !important;justify-content:center !important;
+  gap:6px !important;width:auto !important;min-width:38px !important;padding:0 11px !important;white-space:nowrap !important;
+  aspect-ratio:auto !important;height:38px !important;
+}
+html body:not(.bcs-native) .hbtns .icon-btn.qa-trigger{aspect-ratio:auto !important;height:38px !important}
+html body:not(.bcs-native) .hbtns .backup-chip .bchip-txt{
+  flex:0 0 auto !important;max-width:none !important;overflow:visible !important;text-overflow:clip !important;
+}
+/* reminder popover floats above the page, never inside the 38px round button */
+html body .bcs-reminder-pop{z-index:4000 !important;opacity:1 !important}
 </style>
 
 <style id="bcs-ops-css">
@@ -14693,14 +14738,12 @@ try{
       <button type="button" data-view="developers" aria-label="Developers"><span class="nav-ic" aria-hidden="true">◈</span><span class="nav-lbl">Developers</span></button>
       <button type="button" data-view="clients" aria-label="Clients"><span class="nav-ic" aria-hidden="true">◐</span><span class="nav-lbl">Clients</span></button>
       <button type="button" data-view="dayplan" aria-label="Day Plan"><span class="nav-ic" aria-hidden="true">◷</span><span class="nav-lbl">Day Plan</span></button>
-      <button type="button" data-view="pulse" aria-label="Market Pulse"><span class="nav-ic" aria-hidden="true">↗</span><span class="nav-lbl">Market Pulse</span><span class="nav-dot gold" aria-hidden="true"></span></button>
-      <button type="button" data-view="news" aria-label="News"><span class="nav-ic" aria-hidden="true">📰</span><span class="nav-lbl">News</span><span class="nav-dot" aria-hidden="true"></span></button>
       <button type="button" data-view="calc" aria-label="Calculators"><span class="nav-ic" aria-hidden="true">⌘</span><span class="nav-lbl">Calculators</span></button>
       <button type="button" data-view="inventory" aria-label="Plot Inventory"><span class="nav-ic" aria-hidden="true">▦</span><span class="nav-lbl">Inventory</span></button>
       <button type="button" data-view="advisors" aria-label="Advisors"><span class="nav-ic" aria-hidden="true">◎</span><span class="nav-lbl">Advisors</span></button>
       <button type="button" data-view="analytics" aria-label="Analytics"><span class="nav-ic" aria-hidden="true">▥</span><span class="nav-lbl">Analytics</span></button>
       <div class="nav-more-wrap">
-        <button type="button" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" title="All pages" aria-label="More pages"><span class="nav-ic" aria-hidden="true">▦</span><span class="nav-lbl">More</span><span class="nav-chev" aria-hidden="true">▾</span></button>
+        <button type="button" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" title="All pages" aria-label="More pages"><span class="nav-ic" aria-hidden="true">⋯</span><span class="nav-lbl">More</span><span class="nav-chev" aria-hidden="true">▾</span></button>
         <div class="nav-more-panel" id="navMorePanel" hidden>
           <div class="nav-more-head"><b>All 22 pages</b><span>one click away</span></div>
           <input type="search" id="navPageSearch" class="nav-page-search" placeholder="Jump to a page…  /" aria-label="Search all pages" autocomplete="off" spellcheck="false">
@@ -20824,7 +20867,7 @@ function showOverlay(id){
   el.style.setProperty('z-index', String(overlayZ), 'important');
   el.classList.add('on');
 }
-var BCS_MORE_SET = ['partners','resale','tax','terminology','links','templates','podcasts','health','social','sheets'];
+var BCS_MORE_SET = ['pulse','news','partners','resale','tax','terminology','links','templates','podcasts','health','social','sheets'];
 function bcsNavMoreSync(){
   try{
     const mb = $('#navMoreBtn');
@@ -37354,6 +37397,30 @@ try{
     }
     var reminderPop = null;
     function bcsCloseReminderPop(){ if(reminderPop){ reminderPop.remove(); reminderPop = null; } }
+    /* the bell button is a 38px circle with overflow:hidden — a popover parented
+       inside it is invisible. Float it on <body>, anchored under the bell. */
+    function bcsPositionReminderPop(){
+      if(!reminderPop) return;
+      var bell = document.getElementById('reminderBellBtn');
+      if(!bell) return;
+      var r = bell.getBoundingClientRect();
+      var vw = window.innerWidth || document.documentElement.clientWidth;
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var w = Math.min(320, vw - 24);
+      var left = Math.max(12, Math.min(r.right - w, vw - w - 12));
+      var top = r.bottom + 10;
+      var h = reminderPop.offsetHeight || 240;
+      if(top + h > vh - 12) top = Math.max(12, r.top - h - 10);
+      var st = reminderPop.style;
+      st.setProperty('position','fixed','important');
+      st.setProperty('right','auto','important');
+      st.setProperty('bottom','auto','important');
+      st.setProperty('top', top + 'px','important');
+      st.setProperty('left', left + 'px','important');
+      st.setProperty('width', w + 'px','important');
+      st.setProperty('max-height', Math.max(120, vh - top - 12) + 'px','important');
+      st.setProperty('overflow-y','auto','important');
+    }
     function bcsReminderRows(r){
       var html = '';
       r.followups.slice(0, 6).forEach(function(f){
@@ -37455,7 +37522,8 @@ try{
             <button class="btn ghost sm" id="remPopNotify">${'Notification' in window && Notification.permission === 'granted' ? '🔔 Notify me' : '🔔 Enable'}</button>
             <button class="btn ghost sm" id="remPopDayplan">Day Plan</button>
           </div>`;
-        (document.querySelector('#reminderBellBtn') || document.body).appendChild(reminderPop);
+        document.body.appendChild(reminderPop);
+        bcsPositionReminderPop();
         bcsRemActions(reminderPop, r);
         $('#remPopNotify').addEventListener('click', bcsRequestNotifications);
         $('#remPopDayplan').addEventListener('click', function(){ bcsCloseReminderPop(); go('dayplan'); });
@@ -37463,6 +37531,9 @@ try{
       }
       if(!inPop) bcsCloseReminderPop();
     });
+    window.addEventListener('resize', bcsPositionReminderPop);
+    window.addEventListener('scroll', bcsPositionReminderPop, { passive:true, capture:true });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') bcsCloseReminderPop(); });
     /* boot: notify once per day if permission already granted */
     try{
       if('Notification' in window && Notification.permission === 'granted'){
