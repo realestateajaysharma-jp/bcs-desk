@@ -6706,9 +6706,23 @@ body[data-theme="dark"] .tooldock .dock-btn[data-tip]::after{background:#F5F5F7 
 .tooldock.collapsed .dock-btn:not(.dock-min){display:none !important}
 /* ---- dock task button + to-do popup ---- */
 .dock-btn{position:relative}
-#taskBadge{position:absolute;top:-4px;right:-2px;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#C75B39;color:#fff;font-size:9.5px;font-weight:800;display:grid;place-items:center;border:1px solid #fff;box-shadow:0 2px 6px -2px rgba(0,0,0,.4);z-index:1}
-#taskBadge[hidden]{display:none !important}
+#taskBadge,#roughBadge{position:absolute;top:-4px;right:-2px;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#C75B39;color:#fff;font-size:9.5px;font-weight:800;display:grid;place-items:center;border:1px solid #fff;box-shadow:0 2px 6px -2px rgba(0,0,0,.4);z-index:1}
+#taskBadge[hidden],#roughBadge[hidden]{display:none !important}
 #taskPop{width:290px}
+/* Roughpad — checklist notepad */
+#roughPop{width:290px}
+.rough-prog{display:flex;align-items:center;gap:8px;padding:10px 12px 0}
+.rough-prog .rp-bar{flex:1;height:5px;border-radius:99px;background:rgba(223,233,227,.7);overflow:hidden}
+.rough-prog .rp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#4E7C5B,#6FA07E);border-radius:99px;transition:width .25s}
+.rough-prog b{font-size:9.5px;font-weight:800;color:var(--mut);white-space:nowrap}
+.rough-paste{padding:8px 10px 2px}
+.rough-paste summary{font-size:10px;font-weight:800;color:var(--sage-ink);cursor:pointer;list-style:none;padding:6px 8px;border:1px dashed var(--line2);border-radius:8px;text-align:center}
+.rough-paste summary:hover{background:rgba(223,233,227,.45)}
+.rough-paste[open] summary{margin-bottom:6px}
+.rough-paste textarea{width:100%;min-height:90px;resize:vertical;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:#FCFDFC;font-size:11.5px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none;line-height:1.5}
+.rough-paste textarea:focus{border-color:#C9D1CC}
+.rough-foot{display:flex;gap:6px;padding:9px 10px 10px;border-top:1px solid var(--line2);margin-top:8px}
+.rough-foot .btn{flex:1;justify-content:center;padding:7px 4px;font-size:10.5px;border-radius:8px}
 .tp-sec{display:flex;align-items:center;gap:6px;padding:10px 12px 2px}
 .tp-sec b{font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mut);font-weight:800}
 .tp-sec span{font-size:9.5px;color:#4E7C5B;font-weight:800}
@@ -12418,8 +12432,10 @@ body[data-theme="dark"] .tq-row:hover{background:#242424 !important}
 body[data-theme="dark"] .tq-row .tq-txt b{color:#EDEDED !important}
 body[data-theme="dark"] .tq-row .tq-x:hover{background:#3A2A26 !important;color:#E08060 !important}
 body[data-theme="dark"] .tq-empty,body[data-theme="dark"] #taskQuickInput,body[data-theme="dark"] #taskPop .tp-foot{background:#1B1B1B !important;border-color:#2E2E2E !important;color:#8E8E8E !important}
+body[data-theme="dark"] #roughInput,body[data-theme="dark"] #roughBulk,body[data-theme="dark"] #roughPop .tq-row{background:#1B1B1B !important;border-color:#2E2E2E !important;color:#EDEBD9 !important}
+body[data-theme="dark"] #roughPop .tq-row .tq-txt b{color:#EDEBD9 !important}
 body[data-theme="dark"] #taskQuickInput{border-color:#333 !important;color:#F0F0F0 !important}
-body[data-theme="dark"] #taskBadge{border-color:#1C1C1C !important}
+body[data-theme="dark"] #taskBadge,body[data-theme="dark"] #roughBadge{border-color:#1C1C1C !important}
 
 /* --- Dock buttons --- */
 body[data-theme="dark"] .dock-btn.open{background:rgba(229,190,98,.15) !important;border-color:rgba(229,190,98,.3) !important;color:#E5BE62 !important}
@@ -16887,6 +16903,7 @@ try{
   <button class="dock-btn" id="stickyBtn" data-tip="Sticky note" aria-label="Sticky note"><span class="dock-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15.4 4.2a5 5 0 0 1 4.4 4.4L12 16.4 5 19l2.6-7 7.8-7.8z"/><path d="m13.5 6.5 4 4"/></svg></span><i>Sticky</i></button>
   <button class="dock-btn" id="calcBtn" data-tip="Calculator" aria-label="Quick calculator"><span class="dock-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M8.5 7h7M9 12h.01M12.5 12h.01M16 12h.01M9 15.5h.01M12.5 15.5h.01M16 15.5h.01"/></svg></span><i>Calc</i></button>
   <button class="dock-btn" id="taskBtn" data-tip="Aaj ke tasks — pending &amp; done" aria-label="To-do tasks"><span class="dock-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5.4h5.9A2.1 2.1 0 0 1 17 7.5V19a2.1 2.1 0 0 1-2.1 2.1H7.6A2.1 2.1 0 0 1 5.5 19V7.5A2.1 2.1 0 0 1 7.6 5.4Z"/><path d="m9 12 1.8 1.8L14.6 10M9 16.5h6"/></svg></span><span class="task-badge" id="taskBadge" hidden>0</span><i>Task</i></button>
+  <button class="dock-btn" id="roughBtn" data-tip="Roughpad — checklist notepad" aria-label="Roughpad checklist"><span class="dock-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3.5" width="16" height="17" rx="2.5"/><path d="M8 9h.01M12 9h4M8 13h.01M12 13h4M8 17h4"/></svg></span><span class="task-badge" id="roughBadge" hidden>0</span><i>Rough</i></button>
   <button class="dock-btn" id="fieldsBtn" data-tip="Custom fields" aria-label="Custom fields"><span class="dock-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.2 5.2l2.1 2.1M16.7 16.7l2.1 2.1M18.8 5.2l-2.1 2.1M7.3 16.7l-2.1 2.1"/></svg></span><i>Fields</i></button>
   <button class="dock-btn" id="listsBtn" data-tip="Dropdown lists" aria-label="Dropdown lists"><span class="dock-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg></span><i>Lists</i></button>
   <span class="dock-sep" aria-hidden="true"></span>
@@ -16916,6 +16933,24 @@ try{
   <div class="tp-sec" id="taskDoneHead" hidden><b>Done aaj</b><span id="taskDoneCount"></span></div>
   <div class="taskpop-list" id="taskDoneList"></div>
   <div class="tp-foot"><a href="#" id="taskOpenDayplan" style="color:var(--sage-ink);font-weight:800;text-decoration:none">Day Plan kholein ↗</a><span id="taskBadgeTxt"></span></div>
+</div>
+<div class="toolpop" id="roughPop">
+  <div class="tp-head"><b>🗒️ Roughpad</b><span class="tp-head-actions"><span class="snote-count" id="roughCount">0/0</span><button class="xbtn sm" data-toolclose="roughPop" aria-label="Close roughpad">✕</button></span></div>
+  <div class="rough-prog"><span class="rp-bar"><i id="roughProgress"></i></span><b id="roughProgTxt">0 done</b></div>
+  <form id="roughForm" autocomplete="off" style="display:flex;gap:6px;padding:9px 10px 0">
+    <input id="roughInput" placeholder="Item likho + Enter…" style="flex:1;min-width:0;padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:#FCFDFC;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--ink);outline:none" spellcheck="false">
+    <button class="btn primary sm" type="submit">+ Add</button>
+  </form>
+  <div class="taskpop-list" id="roughList"></div>
+  <details class="rough-paste" id="roughPasteBox">
+    <summary>📋 Bada text paste karein — har line ek item</summary>
+    <textarea id="roughBulk" placeholder="Ek line = ek checklist item&#10;Jaise:&#10;Shiv Vatika client ko call&#10;20L payment follow-up&#10;RERA doc collection"></textarea>
+    <button class="btn ghost sm" id="roughToItems" style="width:100%;justify-content:center;border-radius:8px;margin-top:6px">↑ Lines ko checklist me daalein</button>
+  </details>
+  <div class="rough-foot">
+    <button class="btn ghost" id="roughCopyBtn">📋 Copy list</button>
+    <button class="btn ghost" id="roughClearBtn">🧹 Done clear</button>
+  </div>
 </div>
 <div class="toolpop" id="calcPop">
   <div class="tp-head"><b>🧮 Calculator</b><button class="xbtn sm" data-toolclose="calcPop">✕</button></div>
@@ -20385,6 +20420,7 @@ function normalizeDb(d){
   if(!Array.isArray(d.partners)) d.partners = [];
   if(!Array.isArray(d.pipeline)) d.pipeline = [];
   if(!(Number(d.pipelineSeq) > 0)) d.pipelineSeq = 0;
+  if(!Array.isArray(d.roughpad)) d.roughpad = [];
   if(!Array.isArray(d.journeyLogs)) d.journeyLogs = [];
   if(!Array.isArray(d.documents)) d.documents = [];
   if(!Array.isArray(d.news)) d.news = [];
@@ -32295,6 +32331,92 @@ function timerSync(){
 }
 
 /* ---------- sticky + calculator tool dock ---------- */
+/* ---------- roughpad — global checklist notepad ---------- */
+function roughNorm(){
+  if(!Array.isArray(db.roughpad)) db.roughpad = [];
+  db.roughpad = db.roughpad.filter(it => it && typeof it.t === 'string');
+  db.roughpad.forEach(it => { it.done = !!it.done; });
+}
+function renderRoughpad(){
+  const list = $('#roughList'); if(!list) return;
+  const items = db.roughpad;
+  const done = items.filter(i => i.done).length;
+  list.innerHTML = items.length ? items.map((it, i) => `
+    <div class="tq-row${it.done ? ' done' : ''}" data-ridx="${i}">
+      <span class="tq-tick" data-rtick="${i}" style="${it.done ? 'background:#4E7C5B;border-color:#4E7C5B' : ''}">${it.done ? '✓' : ''}</span>
+      <span class="tq-txt"><b style="${it.done ? 'text-decoration:line-through;color:var(--mut)' : ''}">${esc(it.t)}</b></span>
+      <button class="tq-x" data-rdel="${i}" title="Delete item">✕</button>
+    </div>`).join('') : `<div class="tq-empty" style="text-align:center;font-size:11px;color:var(--mut);padding:16px 8px">Khali hai — upar item likho ya bada text paste karo.<br>Har line ek checklist item banegi.</div>`;
+  const pct = items.length ? Math.round(done / items.length * 100) : 0;
+  const bar = $('#roughProgress'); if(bar) bar.style.width = pct + '%';
+  const pt = $('#roughProgTxt'); if(pt) pt.textContent = done + ' done';
+  const cnt = $('#roughCount'); if(cnt) cnt.textContent = (items.length - done) + '/' + items.length;
+  const badge = $('#roughBadge');
+  const pend = items.length - done;
+  if(badge){ badge.textContent = pend; badge.hidden = pend === 0; }
+}
+function roughCopy(){
+  const txt = db.roughpad.map(i => (i.done ? '✓ ' : '☐ ') + i.t).join('\n');
+  if(!txt){ toast('List khali hai — pehle item add karein', true); return; }
+  const fin = () => toast('Checklist copy ho gayi — kahin bhi paste karein');
+  if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(fin, () => roughCopyFallback(txt, fin));
+  else roughCopyFallback(txt, fin);
+}
+function roughCopyFallback(txt, fin){
+  const ta = document.createElement('textarea');
+  ta.value = txt; ta.style.cssText = 'position:fixed;opacity:0';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); fin(); }catch(e){ toast('Copy nahi hua — manually select karein', true); }
+  ta.remove();
+}
+function initRoughpad(){
+  roughNorm();
+  const form = $('#roughForm');
+  if(form) form.addEventListener('submit', e => {
+    e.preventDefault();
+    const inp = $('#roughInput');
+    const t = inp.value.trim();
+    if(!t) return;
+    db.roughpad.push({ t, done:false });
+    inp.value = '';
+    save(); renderRoughpad();
+    inp.focus();
+  });
+  const list = $('#roughList');
+  if(list) list.addEventListener('click', e => {
+    const tick = e.target.closest('[data-rtick]');
+    if(tick){
+      const it = db.roughpad[+tick.dataset.rtick];
+      if(it){ it.done = !it.done; save(); renderRoughpad(); }
+      return;
+    }
+    const del = e.target.closest('[data-rdel]');
+    if(del){
+      db.roughpad.splice(+del.dataset.rdel, 1);
+      save(); renderRoughpad();
+    }
+  });
+  const toItems = $('#roughToItems');
+  if(toItems) toItems.addEventListener('click', () => {
+    const ta = $('#roughBulk');
+    const lines = (ta.value || '').split('\n').map(s => s.trim()).filter(Boolean);
+    if(!lines.length){ toast('Pehle text paste karein', true); return; }
+    lines.forEach(l => db.roughpad.push({ t:l, done:false }));
+    ta.value = '';
+    $('#roughPasteBox').open = false;
+    save(); renderRoughpad();
+    toast(lines.length + ' items checklist me add ho gaye');
+  });
+  $('#roughCopyBtn')?.addEventListener('click', roughCopy);
+  $('#roughClearBtn')?.addEventListener('click', () => {
+    const n = db.roughpad.filter(i => i.done).length;
+    if(!n){ toast('Koi done item nahi hai', true); return; }
+    db.roughpad = db.roughpad.filter(i => !i.done);
+    save(); renderRoughpad();
+    toast(n + ' done item clear ho gaye');
+  });
+  renderRoughpad();
+}
 function initTools(){
   const open = id => {
     const pop = $('#' + id);
@@ -32303,15 +32425,17 @@ function initTools(){
     $$('.dock-btn').forEach(b => b.classList.remove('open'));
     if(!was){
       pop.classList.add('on');
-      const btnMap = { stickyPop:'stickyBtn', calcPop:'calcBtn', taskPop:'taskBtn' };
+      const btnMap = { stickyPop:'stickyBtn', calcPop:'calcBtn', taskPop:'taskBtn', roughPop:'roughBtn' };
       $('#' + (btnMap[id] || 'calcBtn')).classList.add('open');
       if(id === 'calcPop') setTimeout(() => $('#calcDisp').focus?.(), 50);
       if(id === 'stickyPop' && typeof bcsRenderStickyNotes === 'function') bcsRenderStickyNotes();
       if(id === 'taskPop') renderTaskPop();
+      if(id === 'roughPop') renderRoughpad();
     }
   };
   $('#stickyBtn').addEventListener('click', () => open('stickyPop'));
   $('#taskBtn').addEventListener('click', () => open('taskPop'));
+  $('#roughBtn').addEventListener('click', () => open('roughPop'));
   $('#calcBtn').addEventListener('click', () => open('calcPop'));
   const closeToolpops = () => { $$('.toolpop').forEach(p => p.classList.remove('on')); $$('.dock-btn').forEach(b => b.classList.remove('open')); };
   $('#dockAddProject')?.addEventListener('click', () => { openProject(null); closeToolpops(); });
@@ -32329,7 +32453,7 @@ function initTools(){
     $$('.dock-btn').forEach(x => x.classList.remove('open'));
   }));
   document.addEventListener('click', e => {
-    if(e.target.closest('#stickyPop') || e.target.closest('#calcPop') || e.target.closest('.dock-btn')) return;
+    if(e.target.closest('.toolpop') || e.target.closest('.dock-btn')) return;
     $$('.toolpop').forEach(p => p.classList.remove('on'));
     $$('.dock-btn').forEach(x => x.classList.remove('open'));
   });
@@ -37923,6 +38047,7 @@ initTax();
 initPartners();
 initPipeline();
 initReports();
+initRoughpad();
 initCorridorManager();
 initTools();
 initMedia();
