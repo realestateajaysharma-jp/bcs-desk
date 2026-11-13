@@ -1,5 +1,5 @@
 /* BCS Desk — offline app shell */
-const CACHE = 'bcs-desk-v160';
+const CACHE = 'bcs-desk-v161';
 const ASSETS = [
   './festivals.json',
   './',

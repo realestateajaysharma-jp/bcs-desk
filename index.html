@@ -12916,6 +12916,43 @@ body[data-theme="dark"][data-accent="rose"]{--acc:#E38BB0;--acc-deep:#422A35;--a
 body[data-theme="dark"][data-accent="ocean"]{--acc:#6BC7DC;--acc-deep:#1F3F4D;--acc-soft:#17303A;--gold:#6BC7DC;--gold-soft:#17303A;--sage:#17303A;--sage-ink:#BFE9F4;--sand:#1B2C31;--mint:#17303A}
 
 /* ============================================================
+   PROJECT OVERVIEW v161 — one clean page per project
+   ============================================================ */
+.ov-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px;margin-bottom:11px}
+.ov-fact{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:11px 13px;min-width:0}
+.ov-fact small{display:block;font-size:9px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:var(--mut);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ov-fact b{display:block;font-size:14.5px;font-weight:800;color:var(--ink);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ov-fact b small{display:inline;font-size:10px;font-weight:700;color:var(--mut);text-transform:none;letter-spacing:0;margin:0}
+.ov-fact span{display:block;font-size:10px;color:var(--mut);font-weight:600;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ov-fact span.mono{font-size:9.5px;letter-spacing:.2px}
+.ov-fact.gold{background:linear-gradient(145deg,#FDF9EC,#F7F1DC);border-color:rgba(165,123,54,.35)}
+.ov-fact.gold b{color:#7A5A18}
+.ov-fact.gold span{color:#9A7A34}
+body[data-theme="dark"] .ov-fact{background:#1B211C;border-color:#2C332C}
+body[data-theme="dark"] .ov-fact b{color:#EDEBD9}
+body[data-theme="dark"] .ov-fact.gold{background:#241F12;border-color:#5A4518}
+body[data-theme="dark"] .ov-fact.gold b{color:#E7C46E}
+body[data-theme="dark"] .ov-fact.gold span{color:#A98F4E}
+.ov-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.ov-sec{margin-bottom:16px;border:1px solid var(--line);border-radius:16px;padding:13px 14px 12px;background:color-mix(in srgb,var(--panel) 55%,transparent)}
+.ov-sec .dsec-head{margin-bottom:8px}
+.ov-sec .dsec-head h4{font-size:14px}
+.ov-conn-rows{display:flex;flex-direction:column;gap:5px}
+.ov-conn-row{display:flex;align-items:baseline;gap:8px;padding:7px 10px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font-size:12px}
+.ov-conn-row b{min-width:0;flex:0 0 auto;max-width:45%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}
+.ov-conn-row span{font-weight:800;color:var(--gold);white-space:nowrap}
+.ov-conn-row i{font-style:normal;min-width:0;flex:1;color:var(--mut);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:right}
+body[data-theme="dark"] .ov-sec{background:rgba(255,255,255,.02);border-color:#2A2F2A}
+body[data-theme="dark"] .ov-conn-row{background:#1B211C;border-color:#2C332C}
+details.ov-more{margin:16px 0 6px;border:1px dashed var(--line2);border-radius:14px;background:color-mix(in srgb,var(--panel) 40%,transparent)}
+details.ov-more summary{cursor:pointer;padding:11px 14px;font-size:12.5px;font-weight:800;color:var(--ink2);list-style:none;user-select:none}
+details.ov-more summary::-webkit-details-marker{display:none}
+details.ov-more summary::before{content:"▸ ";color:var(--gold)}
+details.ov-more[open] summary::before{content:"▾ "}
+details.ov-more[open] summary{border-bottom:1px dashed var(--line2)}
+.ov-more-body{padding:12px 14px 14px}
+
+/* ============================================================
    BCS TABLET LAYER v160 — iPad Pro 9.7" (768×1024) + iPad Pro 13"/15" (1024×1366)
    Desktop layout stays, plus touch ergonomics: no iOS focus zoom,
    bigger tap targets, wider popovers, safe areas when installed.
@@ -17836,7 +17873,10 @@ try{
           </div>
         </div>
         <div class="grid2">
+          <div class="field"><label>DLC rate (₹ / sq yd) — circle rate</label><input id="pDlc" type="number" min="0" step="1" placeholder="e-Value se latest DLC bharo"></div>
           <div class="field"><label>RERA number</label><input id="pRera" placeholder="RAJ/RERA/…"></div>
+        </div>
+        <div class="grid2">
           <div class="field"><label>Approval type</label>
             <select id="pApprovalType">
               <option value="">Not recorded</option>
@@ -28020,6 +28060,12 @@ function renderDetail(){
 
   let body = '';
   if(detailTab === 'overview'){
+    const gal = p.gallery || [];
+    const amens = p.amenities || [];
+    const conns = (p.connectivity || []).filter(x => x.label || x.distance || x.note);
+    const docs = (db.documents || []).filter(dd => dd.projectId === p.id);
+    const invImgs = p.inventoryImages || [];
+    const chkList = checklistOf(p), chkS = checklistStats(p);
     const rows = [
       ['Corridor', esc(c.name)],
       ['Status', statusLabel[p.status] || '—'],
@@ -28028,30 +28074,35 @@ function renderDetail(){
       ['Possession / completion', esc(p.timeline ? timelineLabel(p.timeline) : '—')],
       ['Configurations / sizes', esc(p.sizes || '—')],
       ['Rate', esc(rateText(p) || '—')],
+      ['DLC (circle rate)', p.dlc ? '₹' + (+p.dlc).toLocaleString('en-IN') + ' / sq yd' : 'Not set — e-Value se verify karein'],
       ['RERA number', `<span class="mono">${esc(p.rera || 'Not registered / not provided')}</span>`],
       ['Approval type', esc(apFull || '—')],
       ['Approval detail / authority', esc(p.approval || '—')],
       p.societyName ? ['Society name', esc(p.societyName)] : null,
     ].filter(Boolean);
     const health = propertyHealth(p);
+    const docIco = t => ({ rera:'🏛️', approval:'✅', oc:'🏁', title:'📜', layout:'📐', id:'🪪', other:'📄' })[t] || '📄';
+    const docTypeName = t => ({ rera:'RERA certificate', approval:'Approval letter', oc:'OC / completion', title:'Title deed', layout:'Layout plan', id:'ID proofs', other:'Other' })[t] || 'Document';
+    const isUrl = v => /^https?:\/\//i.test(v || '');
     body = `
-      <div class="health-score-card">
-        <div class="health-score ${health.grade.cls}"><b>${health.score}</b><span>/100 · ${esc(health.grade.label)}</span></div>
-        <div class="health-copy"><div class="lab">Property health score — ${esc(health.grade.note)}</div><div class="health-bars">${[['Data',health.components.data],['Legal',health.components.legal],['Commercial',health.components.commercial],['Demand',health.components.demand],['Docs',health.components.docs]].map(([k,v]) => `<div><span>${k}</span><i><em style="width:${v}%"></em></i><b>${v}</b></div>`).join('')}</div>${health.risks.length ? `<p class="health-risks">⚠️ ${esc(health.risks.join(' · '))}</p>` : '<p class="health-risks ok">✅ No major red flags in current records.</p>'}</div>
+      <!-- 1 · QUICK FACTS -->
+      <div class="ov-facts">
+        <div class="ov-fact gold"><small>Price</small><b>${priceRange(p)}</b><span>${esc(rateText(p) || 'Rate not set')}</span></div>
+        <div class="ov-fact"><small>DLC · circle rate</small><b>${p.dlc ? '₹' + (+p.dlc).toLocaleString('en-IN') + ' <small>/ sq yd</small>' : 'Not set'}</b><span>e-Panjiyan e-Value se latest verify karein</span></div>
+        <div class="ov-fact"><small>Possession</small><b>${esc(p.timeline ? timelineLabel(p.timeline) : '—')}</b><span>${esc(p.sizes || 'Sizes not set')}</span></div>
+        <div class="ov-fact"><small>RERA</small><b>${p.rera ? '✓ Registered' : '—'}</b><span class="mono">${esc(p.rera || 'Not provided')}</span></div>
       </div>
-      ${trustStripHTML(p)}
-      ${locScoreHTML(p)}
-      <div class="dprice-line">
-        <div class="dprice"><small>Guide price</small>${priceRange(p)}</div>
-        <div class="dchips">${feats.map(f => `<span class="dchip green">${esc(f)}</span>`).join('')}</div>
-      </div>
-      <!-- Gallery carousel at top of overview -->
-      ${(p.gallery || []).length ? `
-      <div class="dsec" style="margin-top:14px">
-        <div class="dsec-head"><h4>Project gallery</h4><span class="cnt">${(p.gallery||[]).length} images</span></div>
+      ${feats.length ? `<div class="ov-chips">${feats.map(f => `<span class="dchip green">${esc(f)}</span>`).join('')}</div>` : ''}
+      ${p.soldOut ? `<div class="detail-soldout-note"><b>Primary inventory sold out.</b> ${esc(p.soldOutNote || 'Resale units, if any, are listed in the Resale tab.')}</div>` : ''}
+      ${p.quickNote ? `<div class="qnote-block"><div class="lab">📌 Important note</div><p>${esc(p.quickNote)}</p></div>` : ''}
+
+      <!-- 2 · PHOTOS & VIDEOS -->
+      <div class="ov-sec">
+        <div class="dsec-head"><h4>📸 Photos &amp; videos</h4><span class="cnt">${gal.length ? gal.length + ' items' : 'none yet'}</span><button type="button" class="btn ghost sm" data-jumptab="gallery" style="margin-left:auto">Sab dekhein →</button></div>
+        ${gal.length ? `
         <div class="proj-carousel" style="position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line);background:#000;margin-top:8px;aspect-ratio:16/9">
           <div class="carousel-track" style="display:flex;transition:transform 0.4s ease;height:100%;width:100%;overflow:hidden">
-            ${(p.gallery||[]).map((g, idx) => `
+            ${gal.map((g, idx) => `
               <div class="carousel-slide" style="flex:none;width:100%;height:100%;overflow:hidden">
                 ${g.type === 'video' ? `<video src="${esc(g.url)}" muted playsinline style="width:100%;height:100%;object-fit:cover"></video>` : `<img src="${esc(g.url)}" alt="${esc(g.label||'Gallery')}" style="width:100%;height:100%;object-fit:cover;display:block">`}
                 ${g.label ? `<div style="position:absolute;bottom:10px;left:10px;right:10px;background:rgba(0,0,0,.55);color:#fff;padding:6px 10px;border-radius:8px;font-size:11px">${esc(g.label)}</div>` : ''}
@@ -28059,47 +28110,97 @@ function renderDetail(){
             `).join('')}
           </div>
           <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:10">
-            ${(p.gallery||[]).map((_, idx) => `<button class="carousel-dot" data-carousel-idx="${idx}" style="width:8px;height:8px;border-radius:50%;background:${idx===0?'#fff':'rgba(255,255,255,.4)'};border:none;cursor:pointer"></button>`).join('')}
+            ${gal.map((_, idx) => `<button class="carousel-dot" data-carousel-idx="${idx}" style="width:8px;height:8px;border-radius:50%;background:${idx===0?'#fff':'rgba(255,255,255,.4)'};border:none;cursor:pointer"></button>`).join('')}
           </div>
-          ${(p.gallery||[]).length > 1 ? `
+          ${gal.length > 1 ? `
           <button type="button" class="carousel-nav carousel-prev" data-carousel-dir="-1" style="position:absolute;top:50%;left:8px;transform:translateY(-50%);background:rgba(0,0,0,.4);color:#fff;border:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;cursor:pointer;font-size:18px">‹</button>
           <button type="button" class="carousel-nav carousel-next" data-carousel-dir="1" style="position:absolute;top:50%;right:8px;transform:translateY(-50%);background:rgba(0,0,0,.4);color:#fff;border:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;cursor:pointer;font-size:18px">›</button>
           ` : ''}
         </div>
+        <div class="gallery-grid">${gal.map(g => `
+          <div class="gallery-item">
+            ${g.type === 'video' ? `<video src="${esc(g.url)}" muted preload="metadata"></video>` : `<img src="${esc(g.url)}" alt="${esc(g.label || g.type)}" loading="lazy">`}
+            <span class="g-type">${g.type === 'video' ? '▶ Video' : 'Photo'}</span>
+            ${g.label ? `<span class="g-label">${esc(g.label)}</span>` : ''}
+          </div>`).join('')}</div>`
+        : `<div class="dempty">Abhi koi photo ya video nahi. Gallery tab me add karein — photos aur videos yahin overview me dikhenge.</div>`}
       </div>
-      ` : ''}
-      ${p.soldOut ? `<div class="detail-soldout-note"><b>Primary inventory sold out.</b> ${esc(p.soldOutNote || 'Resale units, if any, are listed in the Resale tab.')}</div>` : ''}
-      ${p.quickNote ? `<div class="qnote-block"><div class="lab">📌 Important note</div><p>${esc(p.quickNote)}</p></div>` : ''}
-      ${(() => {
-        const s = checklistStats(p);
-        if(!s.total) return '';
-        return `<div class="dnotes" style="margin-bottom:13px">
-          <div class="lab">Project checklist · ${s.done}/${s.total} done</div>
-          <div class="chk-progress"><div class="chk-bar"><i style="width:${s.pct}%"></i></div><span>${s.pct}%</span></div>
-          ${s.total - s.done ? `<p style="margin-top:5px">Next: ${esc(checklistOf(p).filter(x => !x.done).slice(0,2).map(x => x.label).join(' · '))}</p>` : '<p style="margin-top:5px;color:#4E7C5B;font-weight:700">Sab checklist items complete ✓</p>'}
-        </div>`;
-      })()}
-      <div class="dgrid">
-        ${rows.map(([lab, val]) => `<div class="dcell"><div class="lab">${lab}</div><div class="val">${val}</div></div>`).join('')}
-        <div class="dcell full"><div class="lab">Location</div><div class="val">${esc(p.location || '—')}${p.mapUrl ? ` · <a href="${esc(p.mapUrl)}" target="_blank" rel="noopener">Open saved map ↗</a>` : ''}</div></div>
+
+      <!-- 3 · AMENITIES -->
+      <div class="ov-sec">
+        <div class="dsec-head"><h4>🏊 Amenities &amp; facilities</h4><span class="cnt">${amens.length}</span></div>
+        ${amens.length ? `<div class="amen-grid">${amens.map(a => `<span class="amen-chip">${checkIco}${esc(a)}</span>`).join('')}</div>`
+          : `<div class="dempty">No amenities recorded yet — Edit project → Amenities &amp; inventory me add karein.</div>`}
       </div>
-      ${customFieldsView('project', p)}
-      ${prosConsHTML(p)}
-      ${p.remarks ? `<div class="dremarks"><div class="lab">Approval / legal remarks</div><p>${esc(p.remarks)}</p></div>` : ''}
-      ${d ? `<div class="ddev" data-opendev="${d.id}" title="Open developer profile — all projects">
-        ${avatarHTML(d)}
-        <div style="min-width:0"><div class="nm">${esc(d.name)}</div><div class="sub">${esc(d.ownerName || 'Owner not set')}${d.phone ? ' · ' + esc(d.phone) : ''}</div></div>
-        <span class="mail">All projects →</span>
-      </div>` : `<div class="ddev"><div class="avatar">?</div><div class="nm" style="color:var(--mut);font-weight:600">No developer linked</div></div>`}
-      ${(() => {
-        const ads = advisorsForProject(p.id), cls = clientsForProject(p.id);
-        if(!ads.length && !cls.length) return '';
-        return `<div class="dnotes"><div class="lab">Team & clients linked</div>
-          ${ads.length ? `<div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:7px">${ads.map(a => `<button class="dchip green" type="button" data-openadv="${a.id}">Advisor · ${esc(a.name)}</button>`).join('')}</div>` : ''}
-          ${cls.length ? `<div style="display:flex;flex-wrap:wrap;gap:5px">${cls.map(c => `<button class="dchip" type="button" data-openclient="${c.id}">Client · ${esc(c.name || c.phone || 'Client')}</button>`).join('')}</div>` : ''}
-        </div>`;
-      })()}
-      ${p.notes ? `<div class="dnotes"><div class="lab">Advisor notes (internal)</div><p>${esc(p.notes)}</p></div>` : ''}`;
+
+      <!-- 4 · LOCATION & CONNECTIVITY -->
+      <div class="ov-sec">
+        <div class="dsec-head"><h4>📍 Location &amp; connectivity</h4><span class="cnt">${conns.length} landmarks</span><a class="btn ghost sm" href="${esc(mapOpenUrl(p))}" target="_blank" rel="noopener" style="margin-left:auto">Google Maps ↗</a></div>
+        <div class="map-frame" style="margin-bottom:10px"><iframe src="${mapEmbedUrl(p)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map — ${esc(p.name)}"></iframe></div>
+        ${conns.length ? `<div class="ov-conn-rows">${conns.map(cc => `<div class="ov-conn-row"><b>${esc(cc.label)}</b><span>${esc(cc.distance || '—')}</span>${cc.note ? `<i>${esc(cc.note)}</i>` : ''}</div>`).join('')}</div>`
+          : `<div class="dempty">Distances add nahi hui — Map tab me landmarks (school, metro, hospital) ki distance bharein.</div>`}
+        ${p.location ? `<p class="mini-note" style="margin-top:8px">📍 ${esc(p.location)}${p.mapUrl ? ` · <a href="${esc(p.mapUrl)}" target="_blank" rel="noopener">saved map link ↗</a>` : ''}</p>` : ''}
+      </div>
+
+      <!-- 5 · DOCUMENTS & BROCHURE -->
+      <div class="ov-sec">
+        <div class="dsec-head"><h4>📁 Documents &amp; brochure</h4><span class="cnt">${docs.length}</span>${isAdmin() ? `<button type="button" class="btn ghost sm" data-docadd="${p.id}" style="margin-left:auto">+ Add document</button>` : ''}</div>
+        ${docs.length ? `<div class="mini-list">${docs.map(dd => `<div class="dev-project-row" data-docedit="${dd.id}" role="button" tabindex="0" title="Open in vault">
+            <span class="pdot" style="background:${dd.status === 'verified' ? '#4F8A63' : dd.status === 'expired' || dd.status === 'missing' ? '#C24646' : '#C49A3E'}"></span>
+            <span style="min-width:0"><span class="nm">${docIco(dd.type)} ${esc(dd.name)}</span><div class="sub">${esc(docTypeName(dd.type))} · ${esc(dd.status)}${dd.expiry ? ' · exp ' + esc(fmtDate(dd.expiry)) : ''}</div></span>
+            <span class="price">${isUrl(dd.ref) ? `<a href="${esc(dd.ref)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:var(--gold);font-weight:700">View ↗</a>` : esc(dd.ref || '')}</span>
+          </div>`).join('')}</div>`
+          : `<div class="dempty">Koi document vaulted nahi. Brochure, layout plan, RERA cert, title deed yahan rakhein — PDF ka link ref me paste karein.</div>`}
+        ${invImgs.length ? `<div class="dsec-head" style="margin-top:12px"><h4>🖼️ Brochure / price-list images</h4><span class="cnt">${invImgs.length}</span></div>
+          <div class="inv-gallery">${invImgs.map((src, i) => `<button type="button" class="inv-thumb" data-invimg="${i}" title="Open image ${i+1}"><img src="${src}" alt="Inventory ${i+1}" loading="lazy"></button>`).join('')}</div>` : ''}
+      </div>
+
+      <!-- 6 · PROJECT CHECKLIST -->
+      <div class="ov-sec">
+        <div class="dsec-head"><h4>✅ Project checklist</h4><span class="cnt">${chkS.done}/${chkS.total}</span>${isAdmin() ? `<button type="button" class="btn ghost sm" data-chk-openproject="${p.id}" style="margin-left:auto">+ Add / edit items</button>` : ''}</div>
+        ${chkS.total ? `<div class="chk-progress" style="margin-bottom:8px"><div class="chk-bar"><i style="width:${chkS.pct}%"></i></div><span>${chkS.pct}% complete</span></div>
+        <div class="chk-detail-list">${chkList.map(x => `<div class="chk-detail-item ${x.done ? 'done' : ''}">
+          <button type="button" class="chk-tick" data-chk-toggle="${x.id}" title="${x.done ? 'Pending karein' : 'Done mark karein'}" ${isAdmin() ? '' : 'disabled'}>${x.done ? '✓' : ''}</button>
+          <span class="chk-name">${esc(x.label)}</span>
+          ${x.custom ? '<span class="chk-custom-tag">custom</span>' : ''}
+          ${isAdmin() && x.custom ? `<button type="button" class="chk-del" data-chk-del="${x.id}" title="Remove item">✕</button>` : ''}
+        </div>`).join('')}</div>`
+        : `<div class="dempty">Is project ki checklist khali hai — + Add / edit items se RERA verify, approval, site visit jaise steps lagayein.</div>`}
+      </div>
+
+      <!-- 7 · DEEP DETAILS (collapsed) -->
+      <details class="ov-more">
+        <summary>⚙️ Deep details — health score, full specs, legal, developer &amp; team</summary>
+        <div class="ov-more-body">
+          <div class="health-score-card">
+            <div class="health-score ${health.grade.cls}"><b>${health.score}</b><span>/100 · ${esc(health.grade.label)}</span></div>
+            <div class="health-copy"><div class="lab">Property health score — ${esc(health.grade.note)}</div><div class="health-bars">${[['Data',health.components.data],['Legal',health.components.legal],['Commercial',health.components.commercial],['Demand',health.components.demand],['Docs',health.components.docs]].map(([k,v]) => `<div><span>${k}</span><i><em style="width:${v}%"></em></i><b>${v}</b></div>`).join('')}</div>${health.risks.length ? `<p class="health-risks">⚠️ ${esc(health.risks.join(' · '))}</p>` : '<p class="health-risks ok">✅ No major red flags in current records.</p>'}</div>
+          </div>
+          ${trustStripHTML(p)}
+          ${locScoreHTML(p)}
+          <div class="dgrid">
+            ${rows.map(([lab, val]) => `<div class="dcell"><div class="lab">${lab}</div><div class="val">${val}</div></div>`).join('')}
+            <div class="dcell full"><div class="lab">Location</div><div class="val">${esc(p.location || '—')}${p.mapUrl ? ` · <a href="${esc(p.mapUrl)}" target="_blank" rel="noopener">Open saved map ↗</a>` : ''}</div></div>
+          </div>
+          ${customFieldsView('project', p)}
+          ${prosConsHTML(p)}
+          ${p.remarks ? `<div class="dremarks"><div class="lab">Approval / legal remarks</div><p>${esc(p.remarks)}</p></div>` : ''}
+          ${d ? `<div class="ddev" data-opendev="${d.id}" title="Open developer profile — all projects">
+            ${avatarHTML(d)}
+            <div style="min-width:0"><div class="nm">${esc(d.name)}</div><div class="sub">${esc(d.ownerName || 'Owner not set')}${d.phone ? ' · ' + esc(d.phone) : ''}</div></div>
+            <span class="mail">All projects →</span>
+          </div>` : `<div class="ddev"><div class="avatar">?</div><div class="nm" style="color:var(--mut);font-weight:600">No developer linked</div></div>`}
+          ${(() => {
+            const ads = advisorsForProject(p.id), cls = clientsForProject(p.id);
+            if(!ads.length && !cls.length) return '';
+            return `<div class="dnotes"><div class="lab">Team & clients linked</div>
+              ${ads.length ? `<div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:7px">${ads.map(a => `<button class="dchip green" type="button" data-openadv="${a.id}">Advisor · ${esc(a.name)}</button>`).join('')}</div>` : ''}
+              ${cls.length ? `<div style="display:flex;flex-wrap:wrap;gap:5px">${cls.map(cc2 => `<button class="dchip" type="button" data-openclient="${cc2.id}">Client · ${esc(cc2.name || cc2.phone || 'Client')}</button>`).join('')}</div>` : ''}
+            </div>`;
+          })()}
+          ${p.notes ? `<div class="dnotes"><div class="lab">Advisor notes (internal)</div><p>${esc(p.notes)}</p></div>` : ''}
+        </div>
+      </details>`;
   }
 
   if(detailTab === 'gallery'){
@@ -28302,6 +28403,11 @@ function bindDetail(){
   }));
   $$('#detailBody [data-docadd]').forEach(el => el.addEventListener('click', () => openDoc(null, el.dataset.docadd)));
   $$('#detailBody [data-docedit]').forEach(el => el.addEventListener('click', () => openDoc(el.dataset.docedit)));
+  $$('#detailBody [data-jumptab]').forEach(el => el.addEventListener('click', () => {
+    detailTab = el.dataset.jumptab;
+    renderDetail();
+    $('#detailBody').scrollTop = 0;
+  }));
   $$('#detailBody [data-visitadd]').forEach(el => el.addEventListener('click', () => openVisit(null, null, el.dataset.visitadd)));
   $$('#detailBody [data-visedit]').forEach(el => el.addEventListener('click', () => openVisit(el.dataset.visedit)));
   $$('#detailBody [data-chk-toggle]').forEach(el => el.addEventListener('click', () => toggleProjectChecklistItem(detailId, el.dataset.chkToggle)));
@@ -29184,6 +29290,7 @@ function openProject(id, presetCorridor, presetDevId, presetAdvisorIds){
   $('#pPriceMax').value = p.priceMax ?? '';
   $('#pRate').value = p.pricePerUnit ?? '';
   $('#pRateUnit').value = p.priceUnit || '';
+  $('#pDlc').value = p.dlc ?? '';
   $('#pRera').value = p.rera || '';
   $('#pApprovalType').value = p.approvalType || '';
   $('#pApproval').value = p.approval || '';
@@ -29471,6 +29578,7 @@ $('#pSave').addEventListener('click', () => {
     priceUnit: rateVal == null ? '' : rateUnit,
     pricePerUnit: rateVal,
     pricePerSqft: rateVal != null && rateUnit === 'sqft' ? rateVal : null,
+    dlc: $('#pDlc').value === '' ? null : +$('#pDlc').value,
     timeline: $('#pTimeline').value,
     location: $('#pLocation').value.trim(),
     mapUrl: $('#pMap').value.trim(),
