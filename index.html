@@ -12953,6 +12953,329 @@ details.ov-more[open] summary{border-bottom:1px dashed var(--line2)}
 .ov-more-body{padding:12px 14px 14px}
 
 /* ============================================================
+   MARKETING GAMEBOARD v163 — social se business tak
+   ============================================================ */
+.mkt-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;position:sticky;top:0;z-index:6;padding:8px 0;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px)}
+.mkt-tabs button{border:1px solid var(--line);background:var(--panel);color:var(--ink2);border-radius:999px;padding:7px 13px;font-size:11.5px;font-weight:800;cursor:pointer;font-family:inherit;white-space:nowrap;transition:.15s}
+.mkt-tabs button:hover{border-color:var(--gold)}
+.mkt-tabs button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.mkt-body{display:flex;flex-direction:column;gap:14px}
+.mkt-card{border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:16px 18px}
+.mkt-card-head{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;justify-content:space-between;margin-bottom:10px}
+.mkt-card-head h3{margin:0 0 3px;font-size:15px;font-weight:800;color:var(--ink)}
+.mkt-card-head p{margin:0;font-size:11.5px;color:var(--mut);font-weight:600;line-height:1.5;max-width:640px}
+.mkt-card-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.mkt-sec-head{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin:6px 0 -4px}
+.mkt-sec-head h4{margin:0;font-size:13.5px;font-weight:800;color:var(--ink)}
+.mkt-sec-head span{font-size:11px;color:var(--mut);font-weight:600}
+.mkt-empty{padding:20px 14px;text-align:center;font-size:12px;color:var(--mut);font-weight:600;border:1px dashed var(--line2);border-radius:14px;line-height:1.6}
+
+/* hero */
+.mkt-hero{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:14px;border:1px solid var(--line2);border-radius:20px;padding:16px 18px;background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 7%,var(--panel)),var(--panel))}
+.mkt-hero-main{min-width:0}
+.mkt-hero-top{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.mkt-pill{font-size:9.5px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--ink);color:#fff;white-space:nowrap}
+.mkt-pill.ghost{background:transparent;border:1px solid var(--line2);color:var(--mut)}
+.mkt-pill.fire{background:#FBEEE0;color:#A85A1E;border:1px solid #F0D3B4}
+.mkt-hero-title{margin:0 0 4px;font-size:21px;line-height:1.2;font-weight:800;color:var(--ink);letter-spacing:-.2px}
+.mkt-hero-sub{margin:0 0 12px;font-size:12px;color:var(--mut);font-weight:600;line-height:1.55}
+.mkt-tasks{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+.mkt-task{display:flex;align-items:flex-start;gap:9px;padding:8px 11px;border:1px solid var(--line);border-radius:11px;background:var(--panel);cursor:pointer;font-size:12.5px;font-weight:600;color:var(--ink2);line-height:1.5;transition:.15s}
+.mkt-task:hover{border-color:var(--gold)}
+.mkt-task input{flex:0 0 auto;width:16px;height:16px;margin:1px 0 0;accent-color:#4E7C5B;cursor:pointer}
+.mkt-task.on{background:#EEF6F0;border-color:#BFDCC7;color:#2F6B41;text-decoration:line-through;text-decoration-color:rgba(47,107,65,.4)}
+.mkt-task.locked{opacity:.55;cursor:not-allowed}
+.mkt-tip{margin:0 0 8px;padding:9px 12px;border-left:3px solid var(--gold);background:color-mix(in srgb,var(--gold) 7%,var(--panel));border-radius:0 10px 10px 0;font-size:11.5px;color:var(--ink2);font-weight:600;line-height:1.55}
+.mkt-idea-line{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font-size:11.5px;color:var(--mut);font-weight:600;line-height:1.5}
+.mkt-idea-line .btn{margin-left:auto}
+.mkt-hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.mkt-hero-side{display:flex;flex-direction:column;gap:8px}
+.mkt-mini{border:1px solid var(--line);border-radius:13px;background:var(--panel);padding:9px 11px}
+.mkt-mini small{display:block;font-size:9px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;color:var(--mut);margin-bottom:2px}
+.mkt-mini b{display:block;font-size:19px;font-weight:800;color:var(--ink);line-height:1.1}
+.mkt-mini b span{font-size:12px;color:var(--mut);font-weight:700}
+.mkt-mini-note{display:block;font-size:9.5px;color:var(--mut);font-weight:600;margin-top:2px}
+.mkt-bar{height:5px;border-radius:999px;background:color-mix(in srgb,var(--ink) 10%,transparent);overflow:hidden;margin-top:6px}
+.mkt-bar.big{height:8px}
+.mkt-bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--gold),#4E7C5B);transition:width .3s}
+
+/* brainstorm */
+.mkt-brain{border:1px dashed var(--line2);border-radius:16px;padding:14px 16px;background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--gold) 4%,transparent) 0 10px,transparent 10px 20px),var(--panel)}
+.mkt-brain-q{font-size:15px;font-weight:700;color:var(--ink);line-height:1.5;font-style:italic}
+.mkt-brain-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+
+/* vector grid */
+.mkt-vec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:9px}
+.mkt-vec{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:11px 12px;position:relative;overflow:hidden}
+.mkt-vec::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--vc,#999)}
+.mkt-vec-top{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--mut)}
+.mkt-vec-top span{font-size:13px}
+.mkt-vec-big{font-size:20px;font-weight:800;color:var(--ink);line-height:1.2;margin-top:4px}
+.mkt-vec-sub{font-size:9.5px;color:var(--mut);font-weight:600}
+.mkt-vec-foot{font-size:9.5px;color:var(--mut);font-weight:700;margin-top:4px}
+.mkt-vec.v-fol{--vc:#6C5CE7}.mkt-vec.v-dev{--vc:#B8892E}.mkt-vec.v-adv{--vc:#2F8F6B}
+.mkt-vec.v-cli{--vc:#2E6FBF}.mkt-vec.v-prj{--vc:#B0562E}.mkt-vec.v-earn{--vc:#4E7C5B}
+.mkt-vtag{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;padding:2px 7px;border-radius:999px;white-space:nowrap;border:1px solid transparent}
+.mkt-vtag.v-fol{background:#EFECFE;color:#5546C7;border-color:#D9D3FB}
+.mkt-vtag.v-dev{background:#FBF3DC;color:#8A6A1E;border-color:#E9D9A8}
+.mkt-vtag.v-adv{background:#E6F2E9;color:#2F6B41;border-color:#BFDCC7}
+.mkt-vtag.v-cli{background:#E7EFFA;color:#255C9E;border-color:#C6DAF2}
+.mkt-vtag.v-prj{background:#FBEDE4;color:#94441F;border-color:#EBCBB6}
+.mkt-vtag.v-earn{background:#EAF3EC;color:#3C6B4C;border-color:#C8DFCF}
+
+/* quick wins */
+.mkt-quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px}
+.mkt-qw{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:var(--panel);cursor:pointer;font-family:inherit;transition:.15s}
+.mkt-qw:hover{border-color:var(--gold);transform:translateY(-1px)}
+.mkt-qw span{font-size:17px}
+.mkt-qw b{font-size:12.5px;font-weight:800;color:var(--ink)}
+.mkt-qw small{font-size:10px;color:var(--mut);font-weight:600}
+
+/* challenge days */
+.mkt-prog-wrap{display:flex;flex-direction:column;gap:7px;margin:10px 0}
+.mkt-prog{display:flex;align-items:center;gap:10px}
+.mkt-prog .mkt-bar{flex:1;margin-top:0}
+.mkt-prog span{font-size:10.5px;font-weight:700;color:var(--mut);white-space:nowrap;min-width:130px;text-align:right}
+.mkt-vec-mini-row{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.mkt-vec-mini{font-size:9.5px;font-weight:800;padding:3px 8px;border-radius:999px;background:var(--panel2,#F4F2EC);border:1px solid var(--line);color:var(--ink2);white-space:nowrap}
+.mkt-vec-mini b{color:var(--mut)}
+.mkt-days{display:flex;flex-direction:column;gap:7px}
+.mkt-day{border:1px solid var(--line);border-radius:13px;background:var(--panel);overflow:hidden}
+.mkt-day.today{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 14%,transparent)}
+.mkt-day.done{background:color-mix(in srgb,#4E7C5B 4%,var(--panel))}
+.mkt-day summary{display:flex;align-items:center;gap:8px;padding:9px 12px;cursor:pointer;list-style:none;font-family:inherit;flex-wrap:wrap}
+.mkt-day summary::-webkit-details-marker{display:none}
+.mkt-day-n{font-size:9.5px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--mut);min-width:44px}
+.mkt-day.today .mkt-day-n{color:var(--gold)}
+.mkt-day-t{font-size:12.5px;font-weight:800;color:var(--ink);flex:1;min-width:120px}
+.mkt-day-m{font-size:10px;font-weight:700;color:var(--mut);white-space:nowrap}
+.mkt-day-prog{font-size:10px;font-weight:900;color:var(--mut);background:var(--panel2,#F4F2EC);border:1px solid var(--line);border-radius:999px;padding:2px 8px;white-space:nowrap}
+.mkt-day-prog.full{background:#E6F2E9;color:#2F6B41;border-color:#BFDCC7}
+.mkt-day-body{padding:0 12px 12px;border-top:1px dashed var(--line2);margin-top:2px;padding-top:10px}
+
+/* strategies */
+.mkt-chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px}
+.mkt-chip{border:1px solid var(--line);background:var(--panel);color:var(--ink2);border-radius:999px;padding:5px 11px;font-size:10.5px;font-weight:800;cursor:pointer;font-family:inherit;transition:.15s}
+.mkt-chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.mkt-strat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:11px}
+.mkt-strat{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:13px 14px;display:flex;flex-direction:column;gap:7px}
+.mkt-strat.added{border-color:#BFDCC7;background:color-mix(in srgb,#4E7C5B 4%,var(--panel))}
+.mkt-strat-top{display:flex;align-items:center;gap:9px}
+.mkt-strat-ico{font-size:20px;line-height:1}
+.mkt-strat-ttl{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.mkt-strat-ttl b{font-size:13.5px;font-weight:800;color:var(--ink)}
+.mkt-strat-pct{font-size:12px;font-weight:900;color:var(--gold)}
+.mkt-strat-out{font-size:10.5px;font-weight:700;color:var(--mut)}
+.mkt-strat-steps{display:flex;flex-direction:column;gap:4px}
+.mkt-strat-foot{display:flex;justify-content:flex-end;margin-top:2px}
+
+/* ideas */
+.mkt-search{margin:2px 0 8px}
+.mkt-search input{width:100%;border:1px solid var(--line);border-radius:11px;padding:9px 12px;font-family:inherit;font-size:12.5px;background:var(--panel);color:var(--ink);outline:none}
+.mkt-search input:focus{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 16%,transparent)}
+.mkt-idea-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:9px}
+.mkt-idea{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:12px 13px;display:flex;flex-direction:column;gap:5px}
+.mkt-idea.used{opacity:.62}
+.mkt-idea-top{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.mkt-fmt{font-size:8.5px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:var(--ink);color:#fff}
+.mkt-used{font-size:8.5px;font-weight:900;color:#2F6B41;background:#E6F2E9;border:1px solid #BFDCC7;border-radius:999px;padding:2px 7px;margin-left:auto}
+.mkt-idea-title{font-size:13px;font-weight:800;color:var(--ink);line-height:1.3}
+.mkt-idea-hook{margin:0;font-size:11px;color:var(--mut);font-weight:600;line-height:1.55}
+.mkt-idea-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+
+/* calendar */
+.mkt-cal-month{font-size:12.5px;font-weight:800;color:var(--ink);min-width:120px;text-align:center}
+.mkt-cal-stats{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:9px}
+.mkt-cal-stats span{font-size:10px;font-weight:800;color:var(--mut);background:var(--panel2,#F4F2EC);border:1px solid var(--line);border-radius:999px;padding:2px 9px}
+.mkt-cal-head{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:4px}
+.mkt-cal-head span{font-size:9px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;color:var(--mut);text-align:center}
+.mkt-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.mkt-cal-blank{min-height:64px}
+.mkt-cal-cell{position:relative;min-height:64px;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:5px 6px;text-align:left;cursor:pointer;font-family:inherit;display:flex;flex-direction:column;gap:2px;overflow:hidden;transition:.15s}
+.mkt-cal-cell:hover{border-color:var(--gold)}
+.mkt-cal-cell.today{border-color:var(--gold);box-shadow:0 0 0 2px color-mix(in srgb,var(--gold) 16%,transparent)}
+.mkt-cal-cell.posted{background:color-mix(in srgb,#4E7C5B 7%,var(--panel))}
+.mkt-cal-d{font-size:10.5px;font-weight:900;color:var(--ink2)}
+.mkt-cal-type{font-size:7.5px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;padding:1px 5px;border-radius:999px;background:var(--panel2,#F4F2EC);color:var(--mut);border:1px solid var(--line);white-space:nowrap;align-self:flex-start}
+.mkt-cal-type.t-reel{background:#EFECFE;color:#5546C7;border-color:#D9D3FB}
+.mkt-cal-type.t-short,.mkt-cal-type.t-video{background:#FBE7E7;color:#A33A3A;border-color:#EBC6C6}
+.mkt-cal-type.t-carousel{background:#E7EFFA;color:#255C9E;border-color:#C6DAF2}
+.mkt-cal-type.t-story{background:#FBF3DC;color:#8A6A1E;border-color:#E9D9A8}
+.mkt-cal-type.t-ad{background:#E6F2E9;color:#2F6B41;border-color:#BFDCC7}
+.mkt-cal-type.t-whatsapp{background:#E4F6EA;color:#1E7A46;border-color:#BFE4CC}
+.mkt-cal-idea{font-size:8.5px;color:var(--mut);font-weight:600;line-height:1.35;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.mkt-cal-tick{position:absolute;top:3px;right:5px;font-size:10px;font-weight:900;color:#2F6B41}
+.mkt-cal-legend{display:flex;gap:4px;flex-wrap:wrap;margin-top:9px}
+
+/* ads */
+.mkt-kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:9px}
+.mkt-kpi{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:10px 12px}
+.mkt-kpi small{display:block;font-size:9px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;color:var(--mut);margin-bottom:2px}
+.mkt-kpi b{display:block;font-size:17px;font-weight:800;color:var(--ink);line-height:1.2}
+.mkt-kpi span{font-size:9.5px;color:var(--mut);font-weight:600}
+.mkt-kpi.gold{background:linear-gradient(145deg,#FDF9EC,#F7F1DC);border-color:rgba(165,123,54,.35)}
+.mkt-kpi.gold b{color:#7A5A18}
+.mkt-camp-add{display:flex;gap:7px;flex-wrap:wrap}
+.mkt-camp-add input,.mkt-camp-add select{flex:1;min-width:130px;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-family:inherit;font-size:12px;background:var(--panel);color:var(--ink);outline:none}
+.mkt-camp-add input:focus,.mkt-camp-add select:focus{border-color:var(--gold)}
+.mkt-camps{display:flex;flex-direction:column;gap:9px}
+.mkt-camp{border:1px solid var(--line);border-radius:15px;background:var(--panel);padding:12px 14px}
+.mkt-camp-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:9px}
+.mkt-camp-head b{font-size:13px;font-weight:800;color:var(--ink);flex:1;min-width:120px}
+.mkt-camp-plat{font-size:9px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:var(--panel2,#F4F2EC);border:1px solid var(--line);color:var(--mut)}
+.mkt-camp-status{border:1px solid var(--line);border-radius:8px;padding:3px 7px;font-family:inherit;font-size:10.5px;font-weight:800;background:var(--panel);color:var(--ink2);cursor:pointer}
+.mkt-camp-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:6px}
+.mkt-camp-f{display:flex;flex-direction:column;gap:2px}
+.mkt-camp-f span{font-size:8.5px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--mut)}
+.mkt-camp-f input{border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-family:inherit;font-size:12px;font-weight:700;background:var(--panel);color:var(--ink);outline:none;width:100%}
+.mkt-camp-f input:focus{border-color:var(--gold)}
+.mkt-camp-metrics{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.mkt-camp-metrics span{font-size:10px;font-weight:700;color:var(--mut);background:var(--panel2,#F4F2EC);border:1px solid var(--line);border-radius:999px;padding:2px 9px}
+.mkt-camp-metrics b{color:var(--ink2);font-weight:900}
+
+/* growth */
+.mkt-fol-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.mkt-fol{display:flex;flex-direction:column;gap:3px}
+.mkt-fol span{font-size:9px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;color:var(--mut)}
+.mkt-fol input{border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-family:inherit;font-size:14px;font-weight:800;background:var(--panel);color:var(--ink);outline:none;width:100%}
+.mkt-fol input:focus{border-color:var(--gold)}
+.mkt-fol-total{border:1px solid rgba(165,123,54,.35);border-radius:12px;background:linear-gradient(145deg,#FDF9EC,#F7F1DC);padding:8px 11px}
+.mkt-fol-total small{display:block;font-size:8.5px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;color:#9A7A34}
+.mkt-fol-total b{display:block;font-size:19px;font-weight:800;color:#7A5A18;line-height:1.2}
+.mkt-fol-total span{font-size:9.5px;font-weight:700;color:#9A7A34}
+.mkt-spark{display:flex;align-items:flex-end;gap:5px;height:110px;margin-top:12px;padding:0 2px}
+.mkt-spark-col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;height:100%;min-width:0}
+.mkt-spark-col i{width:100%;max-width:34px;border-radius:5px 5px 0 0;background:linear-gradient(180deg,var(--gold),#4E7C5B);min-height:6px}
+.mkt-spark-col span{font-size:7.5px;font-weight:700;color:var(--mut);white-space:nowrap;transform:rotate(-45deg);transform-origin:center}
+.mkt-goal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.mkt-goal{display:flex;flex-direction:column;gap:3px;border:1px solid var(--line);border-radius:12px;padding:9px 11px;background:var(--panel)}
+.mkt-goal>span{font-size:9px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;color:var(--mut)}
+.mkt-goal input{border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-family:inherit;font-size:13px;font-weight:800;background:var(--panel);color:var(--ink);outline:none}
+.mkt-goal input:focus{border-color:var(--gold)}
+.mkt-goal small{font-size:9.5px;font-weight:700;color:var(--mut)}
+.mkt-funnel{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.mkt-fn{width:var(--w,100%);min-width:150px;max-width:100%;border:1px solid var(--line);border-radius:11px;background:linear-gradient(90deg,color-mix(in srgb,var(--gold) 12%,var(--panel)),var(--panel));padding:8px 12px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.mkt-fn span{font-size:10.5px;font-weight:800;color:var(--mut);white-space:nowrap}
+.mkt-fn b{font-size:14px;font-weight:800;color:var(--ink);white-space:nowrap}
+.mkt-fn i{font-size:9.5px;font-style:normal;font-weight:600;color:var(--mut);margin-left:auto;white-space:nowrap}
+.mkt-fn.gold{background:linear-gradient(90deg,#FBF3DC,#F7F1DC);border-color:rgba(165,123,54,.35)}
+.mkt-fn.gold b{color:#7A5A18}
+.mkt-funnel-note{margin-top:10px;padding:9px 12px;border-left:3px solid var(--gold);background:color-mix(in srgb,var(--gold) 7%,var(--panel));border-radius:0 10px 10px 0;font-size:11.5px;font-weight:600;color:var(--ink2);line-height:1.55}
+
+/* tips */
+.mkt-tips{border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden;margin-bottom:7px}
+.mkt-tips summary{display:flex;align-items:center;gap:9px;padding:11px 14px;cursor:pointer;list-style:none;font-family:inherit}
+.mkt-tips summary::-webkit-details-marker{display:none}
+.mkt-tips summary span:first-child{font-size:16px}
+.mkt-tips summary b{font-size:13px;font-weight:800;color:var(--ink);flex:1}
+.mkt-tips-n{font-size:9.5px;font-weight:800;color:var(--mut);background:var(--panel2,#F4F2EC);border:1px solid var(--line);border-radius:999px;padding:2px 8px}
+.mkt-tips[open] summary{border-bottom:1px dashed var(--line2)}
+.mkt-tips ul{margin:0;padding:11px 16px 13px 30px;display:flex;flex-direction:column;gap:6px}
+.mkt-tips li{font-size:11.5px;color:var(--ink2);font-weight:600;line-height:1.55}
+
+/* platform strip */
+.mkt-platform-strip{margin-top:18px;border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:14px 16px}
+.mkt-plat-head{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:9px}
+.mkt-plat-head b{font-size:12.5px;font-weight:800;color:var(--ink)}
+.mkt-plat-head span{font-size:10.5px;color:var(--mut);font-weight:600}
+.mkt-plat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px}
+.mkt-plat{position:relative;display:flex;align-items:center;gap:9px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel);cursor:pointer;font-family:inherit;text-align:left;overflow:hidden;transition:.15s}
+.mkt-plat::before{content:"";position:absolute;top:0;left:0;right:0;height:2.5px;background:var(--g,#999)}
+.mkt-plat:hover{border-color:var(--gold);transform:translateY(-1px)}
+.mkt-plat-ico{font-size:20px;line-height:1;flex:0 0 auto}
+.mkt-plat-txt{display:flex;flex-direction:column;min-width:0;flex:1}
+.mkt-plat-txt b{font-size:12px;font-weight:800;color:var(--ink)}
+.mkt-plat-txt span{font-size:9.5px;color:var(--mut);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mkt-plat-go{font-size:12px;font-weight:900;color:var(--mut);flex:0 0 auto}
+.mkt-quick{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+
+/* dark */
+body[data-theme="dark"] .mkt-card,
+body[data-theme="dark"] .mkt-strat,
+body[data-theme="dark"] .mkt-idea,
+body[data-theme="dark"] .mkt-day,
+body[data-theme="dark"] .mkt-vec,
+body[data-theme="dark"] .mkt-kpi,
+body[data-theme="dark"] .mkt-camp,
+body[data-theme="dark"] .mkt-tips,
+body[data-theme="dark"] .mkt-platform-strip,
+body[data-theme="dark"] .mkt-qw{background:#1B211C;border-color:#2C332C}
+body[data-theme="dark"] .mkt-hero{background:linear-gradient(160deg,rgba(196,154,62,.08),#191E19);border-color:#2F352F}
+body[data-theme="dark"] .mkt-hero-title,
+body[data-theme="dark"] .mkt-card-head h3,
+body[data-theme="dark"] .mkt-sec-head h4,
+body[data-theme="dark"] .mkt-day-t,
+body[data-theme="dark"] .mkt-strat-ttl b,
+body[data-theme="dark"] .mkt-idea-title,
+body[data-theme="dark"] .mkt-vec-big,
+body[data-theme="dark"] .mkt-kpi b,
+body[data-theme="dark"] .mkt-camp-head b,
+body[data-theme="dark"] .mkt-brain-q,
+body[data-theme="dark"] .mkt-qw b,
+body[data-theme="dark"] .mkt-fn b,
+body[data-theme="dark"] .mkt-plat-txt b{color:#EDEBD9}
+body[data-theme="dark"] .mkt-task{background:#1B211C;border-color:#2C332C;color:#C9CDBF}
+body[data-theme="dark"] .mkt-task.on{background:#1E2C21;border-color:#35543E;color:#8FCFA1}
+body[data-theme="dark"] .mkt-tip,
+body[data-theme="dark"] .mkt-funnel-note{background:rgba(196,154,62,.08);color:#D8D4C4}
+body[data-theme="dark"] .mkt-brain{background:repeating-linear-gradient(135deg,rgba(196,154,62,.05) 0 10px,transparent 10px 20px),#1B211C;border-color:#3A423A}
+body[data-theme="dark"] .mkt-mini{background:#1B211C;border-color:#2C332C}
+body[data-theme="dark"] .mkt-mini b{color:#EDEBD9}
+body[data-theme="dark"] .mkt-tabs button{background:#1B211C;border-color:#313831;color:#C9CDBF}
+body[data-theme="dark"] .mkt-tabs button.on{background:#E7C46E;border-color:#E7C46E;color:#221D0E}
+body[data-theme="dark"] .mkt-chip{background:#1B211C;border-color:#313831;color:#C9CDBF}
+body[data-theme="dark"] .mkt-chip.on{background:#E7C46E;border-color:#E7C46E;color:#221D0E}
+body[data-theme="dark"] .mkt-cal-cell{background:#1B211C;border-color:#2C332C}
+body[data-theme="dark"] .mkt-cal-cell.posted{background:#1C2A20}
+body[data-theme="dark"] .mkt-cal-d{color:#D8D4C4}
+body[data-theme="dark"] .mkt-cal-type{background:#222822;border-color:#313831;color:#A8AE9F}
+body[data-theme="dark"] .mkt-fol-total{background:#241F12;border-color:#5A4518}
+body[data-theme="dark"] .mkt-fol-total b{color:#E7C46E}
+body[data-theme="dark"] .mkt-fol-total small,body[data-theme="dark"] .mkt-fol-total span{color:#A98F4E}
+body[data-theme="dark"] .mkt-fol input,
+body[data-theme="dark"] .mkt-goal input,
+body[data-theme="dark"] .mkt-camp-f input,
+body[data-theme="dark"] .mkt-camp-add input,
+body[data-theme="dark"] .mkt-camp-add select,
+body[data-theme="dark"] .mkt-camp-status,
+body[data-theme="dark"] .mkt-search input{background:#151A15;border-color:#333A33;color:#EDEBD9}
+body[data-theme="dark"] .mkt-goal{background:#1B211C;border-color:#2C332C}
+body[data-theme="dark"] .mkt-fn{background:linear-gradient(90deg,rgba(196,154,62,.1),#1B211C);border-color:#2C332C}
+body[data-theme="dark"] .mkt-fn.gold{background:linear-gradient(90deg,#2A2313,#241F12);border-color:#5A4518}
+body[data-theme="dark"] .mkt-fn.gold b{color:#E7C46E}
+body[data-theme="dark"] .mkt-kpi.gold{background:linear-gradient(145deg,#241F12,#2A2313);border-color:#5A4518}
+body[data-theme="dark"] .mkt-kpi.gold b{color:#E7C46E}
+body[data-theme="dark"] .mkt-strat.added{background:#1C2A20;border-color:#35543E}
+body[data-theme="dark"] .mkt-day.done{background:#1C2A20}
+body[data-theme="dark"] .mkt-day-prog{background:#222822;border-color:#313831;color:#A8AE9F}
+body[data-theme="dark"] .mkt-day-prog.full{background:#1E2C21;border-color:#35543E;color:#8FCFA1}
+body[data-theme="dark"] .mkt-vec-mini{background:#222822;border-color:#313831;color:#C9CDBF}
+body[data-theme="dark"] .mkt-pill.ghost{border-color:#313831;color:#A8AE9F}
+body[data-theme="dark"] .mkt-pill.fire{background:#2B2114;color:#E0A46A;border-color:#57401E}
+body[data-theme="dark"] .mkt-fmt{background:#E7C46E;color:#221D0E}
+body[data-theme="dark"] .mkt-camp-plat,
+body[data-theme="dark"] .mkt-camp-metrics span,
+body[data-theme="dark"] .mkt-cal-stats span,
+body[data-theme="dark"] .mkt-tips-n{background:#222822;border-color:#313831;color:#A8AE9F}
+body[data-theme="dark"] .mkt-camp-metrics b{color:#D8D4C4}
+body[data-theme="dark"] .mkt-tips li{color:#C9CDBF}
+@media (max-width:900px){
+  .mkt-hero{grid-template-columns:1fr}
+  .mkt-hero-side{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+}
+@media (max-width:640px){
+  .mkt-card{padding:13px 14px}
+  .mkt-hero{padding:13px 14px}
+  .mkt-hero-title{font-size:18px}
+  .mkt-cal-cell{min-height:54px;padding:4px}
+  .mkt-cal-idea{display:none}
+  .mkt-tabs{overflow-x:auto;flex-wrap:nowrap;padding-bottom:10px}
+  .mkt-tabs button{flex:0 0 auto}
+  .mkt-prog span{min-width:96px;font-size:9.5px}
+  .mkt-strat-grid,.mkt-idea-grid{grid-template-columns:1fr}
+}
+
+/* ============================================================
    TARGET LISTS v162 — bulk prospects per page + two-way showcase
    ============================================================ */
 .targets-host{margin:0 0 14px}
@@ -16988,57 +17311,49 @@ try{
   </section>
 
   <!-- ============ SOCIAL MEDIA DESK ============ -->
+  <!-- ============ SOCIAL MEDIA DESK → MARKETING GAMEBOARD ============ -->
   <section class="view" id="view-social">
     <div class="adv-head">
       <div>
-        <div class="eyebrow">BCS · social desk</div>
-        <h2 class="adv-title">Social Media,<br><em>ek jagah sab platforms.</em></h2>
-        <p class="adv-sub">WhatsApp Web, Instagram, Facebook aur YouTube — sab social accounts in-app access karein, bina tab badle. Client ko message karein, post karein, page manage karein.</p>
+        <div class="eyebrow">BCS · growth gameboard</div>
+        <h2 class="adv-title">Marketing gameboard,<br><em>followers se business tak.</em></h2>
+        <p class="adv-sub">Roz ka mission, 30-day challenge, ready-made strategies, content ideas, Meta &amp; YouTube ad tracker aur follower growth — sab ek board par. Har task seedha business badhata hai: developers, advisors, clients, projects aur earnings.</p>
+      </div>
+      <div class="adv-head-actions">
+        <button class="btn ghost" id="mktRefreshBtn" title="Aaj ka mission aur brainstorm refresh karein">🔄 Aaj ka refresh</button>
       </div>
     </div>
-    <div class="social-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:22px">
-      <div class="social-card" style="border-radius:18px;border:1px solid var(--line);background:var(--panel);padding:24px;text-align:center;position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#25D366,#128C7E)"></div>
-        <div style="font-size:42px;margin-bottom:12px">💬</div>
-        <h4 style="margin:0 0 6px">WhatsApp Web</h4>
-        <p style="font-size:12px;color:var(--mut);margin:0 0 16px">Client ko message karein, lead share karein, chat history dekhein.</p>
-        <button class="btn primary sm" style="width:100%;border-radius:10px" onclick="openSocialFrame('whatsapp')">Open WhatsApp Web</button>
-      </div>
-      <div class="social-card" style="border-radius:18px;border:1px solid var(--line);background:var(--panel);padding:24px;text-align:center;position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#E1306C,#C13584)"></div>
-        <div style="font-size:42px;margin-bottom:12px">📸</div>
-        <h4 style="margin:0 0 6px">Instagram</h4>
-        <p style="font-size:12px;color:var(--mut);margin:0 0 16px">Property photos post karein, stories dekhein, followers se connect karein.</p>
-        <button class="btn ghost sm" style="width:100%;border-radius:10px" onclick="openSocialFrame('instagram')">Open Instagram</button>
-      </div>
-      <div class="social-card" style="border-radius:18px;border:1px solid var(--line);background:var(--panel);padding:24px;text-align:center;position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1877F2,#4267B2)"></div>
-        <div style="font-size:42px;margin-bottom:12px">📘</div>
-        <h4 style="margin:0 0 6px">Facebook</h4>
-        <p style="font-size:12px;color:var(--mut);margin:0 0 16px">Business page manage karein, reviews dekhein, community se judein.</p>
-        <button class="btn ghost sm" style="width:100%;border-radius:10px" onclick="openSocialFrame('facebook')">Open Facebook</button>
-      </div>
-      <div class="social-card" style="border-radius:18px;border:1px solid var(--line);background:var(--panel);padding:24px;text-align:center;position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF0000,#CC0000)"></div>
-        <div style="font-size:42px;margin-bottom:12px">▶</div>
-        <h4 style="margin:0 0 6px">YouTube</h4>
-        <p style="font-size:12px;color:var(--mut);margin:0 0 16px">Property videos upload karein, channel manage karein, analytics dekhein.</p>
-        <button class="btn ghost sm" style="width:100%;border-radius:10px" onclick="openSocialFrame('youtube')">Open YouTube app</button>
-        <button class="btn primary sm" style="width:100%;border-radius:10px;margin-top:8px" onclick="openSocialInApp()">🎧 In-app player</button>
-      </div>
-    </div>
-    <div class="mini-note" style="padding:12px 18px;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--mut);margin-bottom:22px">💡 <b>Kaise khulta hai:</b> WhatsApp, Instagram aur Facebook apni security (X-Frame-Options) ki wajah se kisi bhi page ke andar embed nahi ho sakte — isliye har card ek click me platform ka <b>dedicated app window</b> kholta hai (side me, BCS ke saath — dono saath chalte hain). Dobara click karne par wahi window aage aa jaati hai — login ek baar, fir hamesha. YouTube ke liye in-app player bhi hai.</div>
-    <div class="sec-head">
-      <h3>Quick social actions</h3>
-      <span class="sub">Client ko turant message ya post bhejein</span>
-    </div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px">
-      <button class="btn primary sm" onclick="quickWhatsApp()" style="border-radius:10px">📱 WhatsApp client</button>
-      <button class="btn ghost sm" onclick="quickInstagram()" style="border-radius:10px">📸 Instagram</button>
-      <button class="btn ghost sm" onclick="quickFacebook()" style="border-radius:10px">📘 Facebook</button>
-      <button class="btn ghost sm" onclick="quickYouTube()" style="border-radius:10px">▶ YouTube</button>
-    </div>
+    <div id="mktBody"></div>
+    <div class="mkt-platform-strip" id="mktPlatforms"></div>
   </section>
+
+  <!-- marketing day planner modal -->
+  <div class="overlay" id="mktDayModal">
+    <div class="modal" style="width:min(470px,100%)">
+      <div class="modal-head"><h3 id="mktDayTitle">Plan day</h3><button class="xbtn" data-close="mktDayModal">✕</button></div>
+      <div class="modal-body">
+        <div class="field"><label>Content type</label>
+          <select id="mktDayType">
+            <option value="">Not planned</option>
+            <option value="reel">Reel</option>
+            <option value="short">YouTube Short</option>
+            <option value="video">YouTube video</option>
+            <option value="carousel">Carousel</option>
+            <option value="story">Story</option>
+            <option value="ad">Ad</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="field"><label>Idea / caption / hook</label><textarea id="mktDayIdea" rows="3" placeholder="Aaj ka post idea…"></textarea></div>
+        <label class="chk" style="display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--ink2)"><input type="checkbox" id="mktDayPosted"> Posted / done</label>
+      </div>
+      <div class="modal-foot">
+        <button class="btn ghost" data-close="mktDayModal">Cancel</button>
+        <button class="btn primary" id="mktDaySave">Save day</button>
+      </div>
+    </div>
+  </div>
 
   <!-- ============ GOOGLE SHEETS INTEGRATION ============ -->
   <section class="view" id="view-sheets">
@@ -20755,6 +21070,51 @@ function normalizeDb(d){
   ['projects','developers','advisors','clients'].forEach(k => {
     if(!['active','all'].includes(d.uiScopes[k])) d.uiScopes[k] = 'active';
   });
+  /* ---- v163: marketing gameboard ---- */
+  if(!d.marketing || typeof d.marketing !== 'object') d.marketing = {};
+  const mktDb = d.marketing;
+  if(!mktDb.followers || typeof mktDb.followers !== 'object') mktDb.followers = {};
+  ['instagram','youtube','facebook','whatsapp'].forEach(k => { mktDb.followers[k] = Math.max(0, +mktDb.followers[k] || 0); });
+  if(!Array.isArray(mktDb.followerLog)) mktDb.followerLog = [];
+  mktDb.followerLog = mktDb.followerLog.filter(x => x && x.date).map(x => ({
+    date: String(x.date).slice(0, 10),
+    total: Math.max(0, +x.total || 0),
+    instagram: Math.max(0, +x.instagram || 0), youtube: Math.max(0, +x.youtube || 0),
+    facebook: Math.max(0, +x.facebook || 0), whatsapp: Math.max(0, +x.whatsapp || 0)
+  })).slice(-180);
+  if(!mktDb.daily || typeof mktDb.daily !== 'object') mktDb.daily = {};
+  Object.keys(mktDb.daily).forEach(k => {
+    const r = mktDb.daily[k];
+    if(!r || typeof r !== 'object'){ delete mktDb.daily[k]; return; }
+    if(!Array.isArray(r.done)) r.done = [];
+    r.done = r.done.filter(x => typeof x === 'string');
+  });
+  if(!mktDb.playbooks || typeof mktDb.playbooks !== 'object') mktDb.playbooks = {};
+  Object.keys(mktDb.playbooks).forEach(k => {
+    const p = mktDb.playbooks[k];
+    if(!p || typeof p !== 'object'){ delete mktDb.playbooks[k]; return; }
+    if(!Array.isArray(p.done)) p.done = [];
+  });
+  if(!mktDb.ideas || typeof mktDb.ideas !== 'object') mktDb.ideas = {};
+  if(!Array.isArray(mktDb.campaigns)) mktDb.campaigns = [];
+  mktDb.campaigns = mktDb.campaigns.filter(c => c && c.id).map(c => ({
+    id: c.id, name: String(c.name || 'Campaign').slice(0, 90),
+    platform: ['Meta','YouTube','Google','Instagram','WhatsApp','Other'].includes(c.platform) ? c.platform : 'Other',
+    status: ['running','paused','done'].includes(c.status) ? c.status : 'running',
+    budget: Math.max(0, +c.budget || 0), spend: Math.max(0, +c.spend || 0),
+    leads: Math.max(0, +c.leads || 0), deals: Math.max(0, +c.deals || 0),
+    revenue: Math.max(0, +c.revenue || 0), brokerage: Math.max(0, +c.brokerage || 0),
+    createdAt: c.createdAt || Date.now()
+  }));
+  if(!mktDb.goals || typeof mktDb.goals !== 'object') mktDb.goals = {};
+  if(!mktDb.calendar || typeof mktDb.calendar !== 'object') mktDb.calendar = {};
+  Object.keys(mktDb.calendar).forEach(k => {
+    const e = mktDb.calendar[k];
+    if(!e || typeof e !== 'object' || (!e.type && !e.idea && !e.posted)){ delete mktDb.calendar[k]; return; }
+    mktDb.calendar[k] = { type: String(e.type || ''), idea: String(e.idea || '').slice(0, 400), posted: !!e.posted };
+  });
+  if(!mktDb.challenge || typeof mktDb.challenge !== 'object') mktDb.challenge = { startedAt: '' };
+  if(!mktDb.brainstorm || typeof mktDb.brainstorm !== 'object') mktDb.brainstorm = { date:'', idx:0 };
   if(!Array.isArray(d.journeyLogs)) d.journeyLogs = [];
   if(!Array.isArray(d.documents)) d.documents = [];
   if(!Array.isArray(d.news)) d.news = [];
@@ -36062,7 +36422,1070 @@ function paintSheetsInputs(){
   if(k && document.activeElement !== k) k.value = sheetsCfg.apiKey || '';
   if(s && document.activeElement !== s) s.value = sheetsCfg.spreadsheetId || '';
 }
-function renderSocialDesk(){ /* static view — nothing dynamic to render */ }
+/* ============================================================
+   v163 · MARKETING GAMEBOARD — social se business tak
+   Roz ka mission · 30-day challenge · strategies · ideas
+   Meta/YouTube ad tracker · follower growth · tips
+   ============================================================ */
+const MKT_VECTORS = {
+  followers:  { label:'Followers',  ico:'👥', cls:'v-fol' },
+  developers: { label:'Developers', ico:'🏗️', cls:'v-dev' },
+  advisors:   { label:'Advisors',   ico:'🤝', cls:'v-adv' },
+  clients:    { label:'Clients',    ico:'🙋', cls:'v-cli' },
+  projects:   { label:'Projects',   ico:'🏠', cls:'v-prj' },
+  earnings:   { label:'Earnings',   ico:'₹',  cls:'v-earn' }
+};
+const MKT_TABS = [
+  { id:'today',      label:'🎯 Today' },
+  { id:'challenge',  label:'🏆 30-Day' },
+  { id:'strategies', label:'📈 Strategies' },
+  { id:'ideas',      label:'💡 Ideas' },
+  { id:'calendar',   label:'📅 Calendar' },
+  { id:'ads',        label:'📣 Ads' },
+  { id:'growth',     label:'📊 Growth' },
+  { id:'tips',       label:'🧠 Tips' }
+];
+const MKT_CHALLENGE = [
+  { d:1, title:'Profile audit', vector:'followers', mins:20,
+    tasks:['Bio: "Jaipur real estate advisor · RERA-approved projects · DM \'PLOT\'" + website link','Highlights banao: Projects / Client stories / Market updates / FAQ','1 story poll: "Ajmer Road ya Tonk Road — kahan invest karoge?"'],
+    tip:'Bio me 3 cheezein: kisko help karte ho, kahan, aur next step kya karein.',
+    idea:'Before/after profile audit reel — purana bio vs naya bio' },
+  { d:2, title:'Pehla area tour reel', vector:'followers', mins:45,
+    tasks:['Ajmer Road ka 45-sec vertical reel shoot karo (walk + voiceover)','Hook first 2 sec: "Ajmer Road me 40 lakh me kya milta hai?"','Caption + 5 local hashtags + location tag'],
+    tip:'Reels ka pehla 2 second sab kuch hai — price ya sawaal se shuru karo.',
+    idea:'"₹40L me kya milta hai" series — har corridor ka ek reel' },
+  { d:3, title:'Developer outreach sprint', vector:'developers', mins:40,
+    tasks:['10 Jaipur developers ki list banao (Instagram / Google Maps se)','Har ek ko DM: collab reel + free site-visit content offer','Follow-up ke liye target list me add karo'],
+    tip:'Developer ko "promotion" nahi, "qualified buyers" becho — wahi unki language hai.',
+    idea:'Reel: "3 naye projects Ajmer Road me — kaunsa best?"' },
+  { d:4, title:'Price-band carousel', vector:'clients', mins:40,
+    tasks:['5-slide carousel: ₹40–60L me 5 options','Har slide: project, size, price, 1 USP','CTA slide: "DM \'BUDGET\' — main 3 options bhejta hoon"'],
+    tip:'Price-band content sabse zyada save hota hai — buyer apna budget dhundhta hai.',
+    idea:'"₹50L budget? Ye 5 options dekho" carousel' },
+  { d:5, title:'YouTube authority video', vector:'followers', mins:90,
+    tasks:['Script: "Jaipur me plot lene se pehle 7 cheezein"','6–8 min video shoot (phone kaafi hai)','Thumbnail: bold 3 words + face + plot photo'],
+    tip:'YouTube search traffic 24x7 aata hai — ek video saal bhar leads deta hai.',
+    idea:'"Plot buying checklist" video + free PDF lead magnet' },
+  { d:6, title:'Client testimonial', vector:'clients', mins:40,
+    tasks:['5 purane clients ko video testimonial ke liye message karo','1 ko shoot karo (2 min, phone)','Testimonial ko 3 reels me kaato'],
+    tip:'Ek sachcha client video 100 ads se zyada bharosa banata hai.',
+    idea:'"Client ne 6 mahine me kya kiya" story reel' },
+  { d:7, title:'Week review + repost', vector:'followers', mins:25,
+    tasks:['Analytics dekho: kaunsa post best chala','Best reel ko story me repost + poll','Next week ke 3 content ideas likho'],
+    tip:'Jo chala usko dobara chalao — naya content se pehle proven content repeat karo.',
+    idea:'"This week in Jaipur property" 30-sec recap' },
+  { d:8, title:'Meta lead ad launch', vector:'earnings', mins:60,
+    tasks:['₹300/day budget, 1 project, 5 km radius ad set','Instant form: name, phone, budget, timeline','WhatsApp auto-reply set karo (5 min ke andar)'],
+    tip:'₹300/day se start karo — 3 din me CPL pata chal jayega.',
+    idea:'Meta ad creative: "₹45L me 200 gaj plot — Ajmer Road"' },
+  { d:9, title:'DLC explainer animation', vector:'followers', mins:50,
+    tasks:['Script: "DLC rate kya hai? 60 second me"','Canva / phone se text + voiceover animation','Caption me DLC calculator ka link'],
+    tip:'Confusing legal cheezein simple samjhao — aap expert ban jate ho.',
+    idea:'"DLC vs market rate" 60-sec animation' },
+  { d:10, title:'Advisor recruitment reel', vector:'advisors', mins:45,
+    tasks:['Reel: "Jaipur me property advisor bano — ₹1,500/sq yd slab"','Earning plan + leads support dikhao','CTA: "DM \'TEAM\'"'],
+    tip:'Advisor ko sirf paisa nahi, system chahiye — leads + training + CRM dikhao.',
+    idea:'"Advisor ki kamai" reel — per sq yd slab explain' },
+  { d:11, title:'WhatsApp broadcast', vector:'clients', mins:30,
+    tasks:['50 contacts ko naya listing broadcast','Broadcast lists banao (buyers / investors alag)','3 ready reply templates rakho'],
+    tip:'WhatsApp broadcast = free leads. Hafte me 1 baar, value ke saath.',
+    idea:'WhatsApp status series: "Aaj ka deal" — 3 stories' },
+  { d:12, title:'Google Business profile', vector:'clients', mins:45,
+    tasks:['Google Business profile banao / claim karo','10 photos + services + area add karo','3 clients se Google review maango'],
+    tip:'"Real estate agent near me" search ka source — Google Business free leads deta hai.',
+    idea:'Google review screenshot carousel' },
+  { d:13, title:'Site visit BTS reel', vector:'followers', mins:40,
+    tasks:['Site visit ka behind-the-scenes shoot karo','3 clips: plot, road, developer baat','Reel + "aaj ka visit" caption'],
+    tip:'BTS content trust banata hai — dikhao ki aap actually site par jaate ho.',
+    idea:'"Site visit par main kya dekhta hoon" 5-point reel' },
+  { d:14, title:'Client success story', vector:'clients', mins:40,
+    tasks:['1 client ki story likho (permission ke saath)','Carousel: problem → process → result','CTA: "Apni story shuru karo"'],
+    tip:'Story > review. Problem se result tak ka safar dikhao.',
+    idea:'"₹45L ka plot, 21 din me registry" case study' },
+  { d:15, title:'Developer collab reel', vector:'developers', mins:60,
+    tasks:['1 developer ko joint reel propose karo','Shoot: aap + developer, project ke saamne','Dono accounts se post karo (cross reach)'],
+    tip:'Collab se dono ke followers milte hain — free reach double.',
+    idea:'"Developer se seedha sawaal" Q&A reel' },
+  { d:16, title:'YouTube Shorts x3', vector:'followers', mins:40,
+    tasks:['Long video se 3 shorts kaato','Har short ka alag hook','Titles me keyword: "Jaipur plot", "Ajmer Road"'],
+    tip:'Ek video se 10 content banao — repurposing = free content.',
+    idea:'Shorts series: "60 second me Jaipur ka ek corridor"' },
+  { d:17, title:'Mistakes reel', vector:'followers', mins:35,
+    tasks:['"Plot kharidne me 5 galtiyan" script likho','Fast cuts + text overlay','Comment CTA: "kaunsi galti aapne ki?"'],
+    tip:'Mistakes / negative hooks sabse zyada share hote hain.',
+    idea:'"Ye 5 galtiyan mat karna" reel' },
+  { d:18, title:'Audience poll', vector:'followers', mins:20,
+    tasks:['Story poll: "Next kaunsa corridor cover karun?"','4 options: Ajmer / Tonk / Sikar / Ring Road','Result ke hisaab se next week plan'],
+    tip:'Audience ko choose karne do — engagement + free content idea.',
+    idea:'Poll result reveal reel' },
+  { d:19, title:'Advisor outreach', vector:'advisors', mins:40,
+    tasks:['20 advisors ko DM (earning plan ke saath)','Target list me add karo','3 ko call karo'],
+    tip:'Advisor recruitment me "system" becho, "job" nahi.',
+    idea:'"Team BCS join karo" carousel' },
+  { d:20, title:'EMI calculator reel', vector:'clients', mins:35,
+    tasks:['Screen record: EMI calculator use karte hue','"₹45L plot, 10 saal, EMI kitni?"','CTA: "Comment me apna budget likho"'],
+    tip:'Calculator content high-intent buyers laata hai.',
+    idea:'"EMI ka sach" reel' },
+  { d:21, title:'Retargeting ad', vector:'earnings', mins:45,
+    tasks:['Video viewers ka custom audience banao (Meta)','₹200/day retargeting ad','Offer: free site visit'],
+    tip:'Retargeting sabse sasta lead deta hai — jo interested hai unhe dobara dikhao.',
+    idea:'"Aapne dekha, ab visit karo" retarget ad' },
+  { d:22, title:'Drone / plot walkthrough', vector:'projects', mins:60,
+    tasks:['1 project ka aerial / plot walkthrough shoot','Voiceover: size, price, location','Reel + YouTube dono par'],
+    tip:'Aerial footage premium feel deta hai — drone rent ₹1,500 me milta hai.',
+    idea:'"Aasman se dekho" project reel' },
+  { d:23, title:'Brochure carousel', vector:'projects', mins:40,
+    tasks:['Project brochure ke 6 pages carousel','Har slide ek USP','Last slide: price + CTA'],
+    tip:'Brochure content developer ko tag karke post karo — wo share karega.',
+    idea:'"Naya launch" brochure carousel' },
+  { d:24, title:'Comment sprint', vector:'followers', mins:30,
+    tasks:['30 Jaipur local posts par meaningful comment','10 real estate pages follow karo','5 creators ko collab DM'],
+    tip:'Comments = free visibility. Value add karo, spam nahi.',
+    idea:'"Jaipur ke top 5 areas" collab reel' },
+  { d:25, title:'Local collab', vector:'followers', mins:50,
+    tasks:['Interior designer / home-loan agent dhundho','Joint reel ya giveaway plan','Cross-promote karo'],
+    tip:'Same audience, different business = perfect collab.',
+    idea:'"Ghar banane ka full plan" collab reel' },
+  { d:26, title:'RERA tutorial', vector:'followers', mins:40,
+    tasks:['"RERA kaise check karein" screen recording','60 sec me step-by-step','Save-worthy caption'],
+    tip:'Trust content = followers + serious buyers.',
+    idea:'"RERA scam se bacho" reel' },
+  { d:27, title:'Referral offer', vector:'advisors', mins:35,
+    tasks:['Referral offer design karo (₹10k per closed deal)','Advisors ko broadcast','Tracking sheet banao'],
+    tip:'Referral sabse sasta acquisition channel hai.',
+    idea:'"Refer karo, kamao" carousel' },
+  { d:28, title:'Market update', vector:'clients', mins:45,
+    tasks:['Is mahine ke price changes collect karo','Carousel: corridor-wise rate table','CTA: "Full report DM me"'],
+    tip:'Monthly market update = authority + repeat viewers.',
+    idea:'"November market report" carousel' },
+  { d:29, title:'Analytics double-down', vector:'followers', mins:30,
+    tasks:['Top 3 posts nikalo','Unke format ko repeat karo','Underperformers ka reason likho'],
+    tip:'Data > guess. Jo chala usko 3 baar repeat karo.',
+    idea:'"Best of month" compilation reel' },
+  { d:30, title:'Recap + CTA', vector:'earnings', mins:35,
+    tasks:['30-day recap reel banao','Results share karo (followers, leads, deals)','CTA: "Agla 30 din saath chalo — DM"'],
+    tip:'Public accountability = loyal audience + inbound leads.',
+    idea:'"30 din me kya hua" transformation reel' }
+];
+const MKT_STRATEGIES = [
+  { id:'reel-engine', title:'Instagram Reel Engine', ico:'🎬', vector:'followers', outcome:'4 hafte me 30–50% follower growth',
+    steps:['Hafte me 4 reels: 2 area tour, 1 price-band, 1 mistake/tip','Hook first 2 sec: price ya sawaal','Caption me location + 5 hashtags + CTA','Har reel ko 3 stories me repost','Best reel ko ₹300 se boost karo'] },
+  { id:'yt-authority', title:'YouTube Authority Channel', ico:'▶️', vector:'followers', outcome:'Search se 24x7 leads',
+    steps:['Mahine me 2 long videos (6–10 min)','Title me keyword pehle: "Jaipur plot", "Ajmer Road"','Har video se 3 shorts kaato','Description me WhatsApp link','Pin comment: free checklist PDF'] },
+  { id:'meta-leads', title:'Meta Lead Ads Machine', ico:'📣', vector:'earnings', outcome:'₹150–400 CPL, predictable leads',
+    steps:['1 project = 1 ad set, ₹300/day','Instant form: name, phone, budget, timeline','Creative: 15-sec reel + price overlay','WhatsApp auto-reply 5 min me','Har hafte CPL check + creative rotate'] },
+  { id:'dev-tieup', title:'Developer Tie-up Sprint', ico:'🏗️', vector:'developers', outcome:'3–5 developer tie-ups',
+    steps:['10 developers ki list banao','Pitch: "main aapke project ke liye qualified buyers laata hoon"','Free site-visit reel ka offer do','Commission / brokerage agreement','Monthly joint content plan'] },
+  { id:'advisor-funnel', title:'Advisor Recruiting Funnel', ico:'🤝', vector:'advisors', outcome:'5–10 active advisors',
+    steps:['Recruitment reel: earning plan + slab','DM funnel: "TEAM" keyword','Free training session','Onboarding kit: brochure + CRM access','First deal incentive'] },
+  { id:'referral-loop', title:'Client Referral Loop', ico:'🔁', vector:'clients', outcome:'30% leads referral se',
+    steps:['Har closed deal par referral card','WhatsApp broadcast: referral reward','Testimonial video lo','Referral tracking sheet','Monthly thank-you post'] },
+  { id:'wa-broadcast', title:'WhatsApp Broadcast System', ico:'💬', vector:'clients', outcome:'Free leads, 20–30% reply rate',
+    steps:['3 broadcast lists: buyers, investors, advisors','Hafte me 1 value broadcast (rate update)','Har listing ke 3 status','Reply templates ready rakho','Broadcast ke baad follow-up call'] },
+  { id:'project-launch', title:'Project Launch Campaign', ico:'🚀', vector:'projects', outcome:'Launch week me 20–40 leads',
+    steps:['Launch se 7 din pehle teaser','3 reels + 1 carousel + 1 ad','Site visit day (open house)','Launch offer: limited units','Post-launch testimonial content'] },
+  { id:'gbp', title:'Google Business Dominance', ico:'📍', vector:'clients', outcome:'"near me" search se free leads',
+    steps:['Profile claim + verify','10 photos + services add','Har hafte 1 post','Mahine me 3 reviews','Q&A section khud fill karo'] },
+  { id:'collab', title:'Local Collab Growth', ico:'🤝', vector:'followers', outcome:'Reach double, naye followers',
+    steps:['5 local creators dhundho (interior, loan, vastu)','Joint reel plan banao','Cross-post + tag','Giveaway collab','Monthly collab calendar'] },
+  { id:'retarget', title:'Retargeting Machine', ico:'🎯', vector:'earnings', outcome:'Sabse sasta lead source',
+    steps:['Video viewers + page visitors audience','₹200/day retarget ad','Offer: free site visit / brochure','7-day frequency cap','WhatsApp follow-up'] },
+  { id:'repurpose', title:'Content Repurposing System', ico:'♻️', vector:'followers', outcome:'10x content, same effort',
+    steps:['1 long video / mahina','3 shorts + 3 reels + 1 carousel','Har format ka alag hook','Calendar me schedule karo','Best performer ko boost'] }
+];
+const MKT_IDEAS = [
+  { id:'i1', title:'₹40L me kya milta hai', format:'reel', vector:'clients', hook:'"Ajmer Road pe 40 lakh me 200 gaj plot milta hai? Chalo dikhata hoon."' },
+  { id:'i2', title:'DLC vs market rate', format:'animation', vector:'followers', hook:'"Registry me DLC se zyada lagta hai — 60 second me samjho."' },
+  { id:'i3', title:'5 galtiyan plot kharidne me', format:'reel', vector:'followers', hook:'"Plot kharidne se pehle ye 5 galtiyan mat karna."' },
+  { id:'i4', title:'Aerial project tour', format:'reel', vector:'projects', hook:'"Aasman se dekho — ye project kaisa dikhta hai."' },
+  { id:'i5', title:'Client ne 21 din me registry kaise ki', format:'carousel', vector:'clients', hook:'"₹45L ka plot, 21 din me registry — poora process."' },
+  { id:'i6', title:'EMI ka sach', format:'reel', vector:'clients', hook:'"₹45L plot, 10 saal — EMI kitni hogi? Calculator chalao."' },
+  { id:'i7', title:'RERA check kaise karein', format:'animation', vector:'followers', hook:'"RERA number se project verify karna 60 second ka kaam."' },
+  { id:'i8', title:'Developer se 5 sawaal', format:'reel', vector:'developers', hook:'"Developer se seedha poocha — possession kab?"' },
+  { id:'i9', title:'Advisor ki kamai', format:'reel', vector:'advisors', hook:'"Property advisor banke mahine ka kitna bana sakte ho?"' },
+  { id:'i10', title:'Corridor battle: Ajmer vs Tonk', format:'carousel', vector:'followers', hook:'"Ajmer Road ya Tonk Road — kahan paisa zyada lagega?"' },
+  { id:'i11', title:'Naya launch teaser', format:'ad', vector:'projects', hook:'"Ajmer Road par naya project — sirf 40 units."' },
+  { id:'i12', title:'Brochure walkthrough', format:'carousel', vector:'projects', hook:'"Brochure me kya chhupa hai — slide by slide."' },
+  { id:'i13', title:'Site visit BTS', format:'reel', vector:'followers', hook:'"Aaj site visit par kya dekha — camera ke saath."' },
+  { id:'i14', title:'Plot vs flat', format:'reel', vector:'clients', hook:'"Plot lo ya flat? 5 saal baad kaun jeeta?"' },
+  { id:'i15', title:'Registry documents checklist', format:'carousel', vector:'clients', hook:'"Registry se pehle ye 9 documents ready rakho."' },
+  { id:'i16', title:'Bank loan 7 din me', format:'reel', vector:'clients', hook:'"Loan approve karana 7 din me possible hai — aise."' },
+  { id:'i17', title:'Vastu tips for plots', format:'reel', vector:'clients', hook:'"Plot kharidne se pehle ye vastu points check karo."' },
+  { id:'i18', title:'Ring Road ka future', format:'youtube', vector:'followers', hook:'"Jaipur Ring Road ke aas paas rates kahan ja rahe hain?"' },
+  { id:'i19', title:'Meri 30-day challenge', format:'story', vector:'followers', hook:'"30 din, roz 1 post — result aapke saamne."' },
+  { id:'i20', title:'Meta ad: price hook', format:'ad', vector:'earnings', hook:'"₹45L me 200 gaj plot — Ajmer Road, RERA approved."' },
+  { id:'i21', title:'Retarget: free site visit', format:'ad', vector:'earnings', hook:'"Aapne video dekha — ab free site visit book karo."' },
+  { id:'i22', title:'WhatsApp status deal', format:'whatsapp', vector:'clients', hook:'"Aaj ka deal: 3 plots, 1 din ke liye."' },
+  { id:'i23', title:'Google review carousel', format:'carousel', vector:'clients', hook:'"Clients kya kehte hain — asli reviews."' },
+  { id:'i24', title:'Behind the deal', format:'story', vector:'followers', hook:'"Ek deal ke peeche 21 din — poora safar."' },
+  { id:'i25', title:'Investor math: 5 saal me kitna', format:'carousel', vector:'clients', hook:'"₹50L ka plot 5 saal me kitna hoga? Numbers dekho."' },
+  { id:'i26', title:'Plot boundary rules', format:'reel', vector:'followers', hook:'"Boundary wall ke rules — jo koi nahi batata."' },
+  { id:'i27', title:'Colony vs society plot', format:'reel', vector:'clients', hook:'"Colony plot sasta kyun hai? Difference samjho."' },
+  { id:'i28', title:'Aaj ka market rate', format:'story', vector:'clients', hook:'"Aaj Ajmer Road ka rate — 30 second me."' },
+  { id:'i29', title:'Top 3 deals of the month', format:'carousel', vector:'earnings', hook:'"Is mahine ke 3 best deals — price ke saath."' },
+  { id:'i30', title:'Advisor training clip', format:'youtube', vector:'advisors', hook:'"Naye advisor ke liye pehle 7 din ka plan."' },
+  { id:'i31', title:'Developer testimonial', format:'reel', vector:'developers', hook:'"Developer ne khud bataya — kitne buyers aaye."' },
+  { id:'i32', title:'First-time buyer guide', format:'carousel', vector:'clients', hook:'"Pehli baar property le rahe ho? Ye 8 steps."' },
+  { id:'i33', title:'Land use / NA conversion', format:'animation', vector:'followers', hook:'"Agricultural land ko NA karna — 60 second explainer."' },
+  { id:'i34', title:'Home loan documents', format:'carousel', vector:'clients', hook:'"Loan ke liye ye documents chahiye — checklist."' },
+  { id:'i35', title:'My morning as an advisor', format:'reel', vector:'advisors', hook:'"Subah 7 baje se pehle main ye 3 kaam karta hoon."' },
+  { id:'i36', title:'30-day recap', format:'reel', vector:'earnings', hook:'"30 din me followers, leads aur deals — sab numbers."' }
+];
+const MKT_TIPS = [
+  { group:'Instagram', ico:'📸', items:[
+    'Reels ka pehla 2 second hook — price, sawaal ya shocking fact.',
+    'Hafte me 4–5 reels — consistency algorithm se zyada important.',
+    'Caption me local keyword (Ajmer Road, Jaipur plot) — search me aata hai.',
+    'Saves + shares > likes. Carousel save-worthy banao.',
+    'Story me poll / question sticker — engagement signal.',
+    'Location tag + 5 niche hashtags (sirf #jaipur mat lagao).',
+    'Best time: 7–9 PM IST (Jaipur audience).',
+    'Collab post = dono ke followers ko dikhta hai.'
+  ]},
+  { group:'YouTube', ico:'▶️', items:[
+    'Title me search keyword pehle: "Ajmer Road plot price 2026".',
+    'Thumbnail: face + bold 3 words + high contrast.',
+    'First 30 sec me promise do — intro lamba mat karo.',
+    'Har video se 3 shorts — free reach.',
+    'Description me WhatsApp link + timestamps.',
+    'Pin comment me lead magnet (checklist PDF).'
+  ]},
+  { group:'Meta Ads', ico:'📣', items:[
+    '₹300/day se start, 3 din data lo, phir scale karo.',
+    '1 ad set = 1 project = 1 audience. Sab mix mat karo.',
+    'Instant form > landing page (kam drop-off).',
+    'Creative har 7 din rotate — fatigue se CPL badhta hai.',
+    'Video 15 sec max, first 3 sec hook.',
+    'Retargeting alag campaign me chalao.',
+    'WhatsApp par 5 min me reply — warna lead thandi ho jati hai.'
+  ]},
+  { group:'WhatsApp', ico:'💬', items:[
+    'Broadcast list banao, group nahi — personal touch rehta hai.',
+    'Hafte me 1 value message (rate update), roz nahi.',
+    'Status = free ad. Har listing ke 3 status.',
+    'Serious buyers ke liye voice note > text.',
+    'Reply template ready rakho: price, location, visit slot.'
+  ]},
+  { group:'Google', ico:'📍', items:[
+    'Business profile claim karo — "near me" search ka source.',
+    'Har hafte 1 post + 3 photos.',
+    'Reviews maango — 20+ reviews = top ranking.',
+    'Q&A section khud fill karo (price, area, timing).'
+  ]},
+  { group:'General', ico:'🧠', items:[
+    '80% value, 20% promotion — ratio maintain karo.',
+    'Ek content se 10 pieces banao (repurpose).',
+    'Har post me CTA — DM, save, ya call.',
+    'Consistency > perfection. Roz 1 post > hafte me 1 perfect.',
+    'Track karo: jo format chala, usko repeat karo.'
+  ]}
+];
+const MKT_BRAINSTORMS = [
+  'Aaj ek aisa sawaal poocho jo buyer ke dimaag me hai — "kitna down payment lagega?"',
+  'Socho: is hafte kaun sa project sabse zyada poocha ja raha hai? Uska 1 reel banao.',
+  'Ek client ko call karo jise 3 mahine se baat nahi ki — sirf rate update ke liye.',
+  'Apne top 3 competitors ke last 5 posts dekho. Kya cheez aap copy kar sakte ho?',
+  'Aaj ka content: "1 minute me Jaipur ka ek corridor" — map + price + 1 tip.',
+  'Likho: aapke 5 best USPs kya hain? Ab unme se 1 ko reel banao.',
+  'Ek developer ko free site-visit content offer bhejo — aaj hi.',
+  'Purane client se referral maango — ek WhatsApp message kaafi hai.',
+  'Aaj ek myth tod do: "plot me loan nahi milta" — sach kya hai?',
+  'Apne best-selling project ka 15-sec ad creative likho — price hook ke saath.',
+  'Socho: aapka audience kaun hai — investor, first-time buyer, ya NRI? Aaj usi ke liye post.',
+  'Aaj ek before/after banao: purana plot vs developed plot.',
+  'Ek local business (interior/loan/vastu) ko collab message bhejo.',
+  'Aaj ka idea: "Agar budget ₹30L ho to kya karun?" — 3 options.',
+  'Apne WhatsApp status par aaj 3 stories: rate, listing, testimonial.',
+  'Socho: kaunsa content aapne 3 mahine se repeat nahi kiya? Wapas chalao.',
+  'Aaj ek FAQ answer karo jo har client poochta hai.',
+  'Ek advisor ko apne system ka demo do — 15 min call.',
+  'Aaj ka hook: "Ye galti 90% buyers karte hain."',
+  'Apne Google reviews padho — usme se 1 content idea nikalo.',
+  'Socho: aapki sabse badi deal kaise hui? Wahi story banao.',
+  'Aaj ek "cost breakdown" post banao: plot + registry + stamp duty + development.',
+  'Ek purane video ko repost karo naye hook ke saath.',
+  'Aaj 10 naye developers ko Instagram par follow karo + 3 ko DM.',
+  'Socho: aapka next launch kaun sa project hoga? Teaser plan likho.',
+  'Aaj ek client ka objection likho ("mehenga hai") aur uska jawab video banao.',
+  'Aaj ka idea: "5 documents jo registry se pehle chahiye."',
+  'Apne analytics me dekho: kis city/area se followers aa rahe hain?',
+  'Ek testimonial ko 3 formats me convert karo: reel, carousel, story.',
+  'Aaj 30 din ka plan review karo — kya chala, kya nahi. Next month ka 1 goal likho.'
+];
+/* ---------- state + helpers ---------- */
+let mktTab = 'today';
+let mktIdeaFilter = 'all';
+let mktIdeaQ = '';
+let mktStratFilter = 'all';
+let mktCalMonth = '';
+let mktEditingDay = '';
+
+function mktState(){
+  if(!db.marketing || typeof db.marketing !== 'object') db.marketing = {};
+  const m = db.marketing;
+  if(!m.followers || typeof m.followers !== 'object') m.followers = { instagram:0, youtube:0, facebook:0, whatsapp:0 };
+  ['instagram','youtube','facebook','whatsapp'].forEach(k => { m.followers[k] = Math.max(0, +m.followers[k] || 0); });
+  if(!Array.isArray(m.followerLog)) m.followerLog = [];
+  if(!m.daily || typeof m.daily !== 'object') m.daily = {};
+  if(!m.playbooks || typeof m.playbooks !== 'object') m.playbooks = {};
+  if(!m.ideas || typeof m.ideas !== 'object') m.ideas = {};
+  if(!Array.isArray(m.campaigns)) m.campaigns = [];
+  if(!m.goals || typeof m.goals !== 'object') m.goals = {};
+  if(!m.calendar || typeof m.calendar !== 'object') m.calendar = {};
+  if(!m.challenge || typeof m.challenge !== 'object') m.challenge = { startedAt:'' };
+  if(!m.brainstorm || typeof m.brainstorm !== 'object') m.brainstorm = { date:'', idx:0 };
+  return m;
+}
+const mktPad = n => String(n).padStart(2, '0');
+function mktKey(d){ const x = d ? new Date(d) : new Date(); return x.getFullYear() + '-' + mktPad(x.getMonth()+1) + '-' + mktPad(x.getDate()); }
+function mktToday(){ return mktKey(); }
+function mktAddDays(key, n){
+  const p = key.split('-').map(Number);
+  return mktKey(new Date(p[0], p[1]-1, p[2] + n));
+}
+function mktDayDiff(a, b){
+  const A = new Date(a + 'T00:00:00'), B = new Date(b + 'T00:00:00');
+  return Math.round((B - A) / 86400000);
+}
+function mktChallengeDay(){
+  const m = mktState();
+  if(!m.challenge.startedAt) return 0;
+  return mktDayDiff(m.challenge.startedAt, mktToday()) + 1;
+}
+function mktDayRec(key){
+  const m = mktState();
+  if(!m.daily[key] || typeof m.daily[key] !== 'object') m.daily[key] = { done:[], note:'' };
+  if(!Array.isArray(m.daily[key].done)) m.daily[key].done = [];
+  return m.daily[key];
+}
+function mktTaskDone(key, id){
+  const r = mktState().daily[key];
+  return !!(r && Array.isArray(r.done) && r.done.includes(id));
+}
+function mktHasActivity(key){
+  const r = mktState().daily[key];
+  return !!(r && Array.isArray(r.done) && r.done.length);
+}
+function mktStreak(){
+  let n = 0, k = mktToday();
+  if(!mktHasActivity(k)) k = mktAddDays(k, -1);
+  for(let i = 0; i < 365; i++){
+    if(mktHasActivity(k)){ n++; k = mktAddDays(k, -1); } else break;
+  }
+  return n;
+}
+function mktChallengeProgress(){
+  const m = mktState();
+  let done = 0, daysDone = 0;
+  if(m.challenge.startedAt){
+    MKT_CHALLENGE.forEach(day => {
+      const key = mktAddDays(m.challenge.startedAt, day.d - 1);
+      let d = 0;
+      day.tasks.forEach((_, i) => { if(mktTaskDone(key, 'd' + day.d + '-' + i)) d++; });
+      done += d;
+      if(d === day.tasks.length) daysDone++;
+    });
+  }
+  return { done, total: 90, daysDone };
+}
+function mktVectorStats(){
+  const m = mktState();
+  const out = {};
+  Object.keys(MKT_VECTORS).forEach(k => out[k] = { done:0, total:0 });
+  if(m.challenge.startedAt){
+    MKT_CHALLENGE.forEach(day => {
+      const v = out[day.vector]; if(!v) return;
+      const key = mktAddDays(m.challenge.startedAt, day.d - 1);
+      day.tasks.forEach((_, i) => { v.total++; if(mktTaskDone(key, 'd' + day.d + '-' + i)) v.done++; });
+    });
+  }
+  return out;
+}
+function mktCampSum(f){
+  return mktState().campaigns.reduce((a, c) => a + (+c[f] || 0), 0);
+}
+function mktBizCounts(){
+  const m = mktState();
+  return {
+    followers: ['instagram','youtube','facebook','whatsapp'].reduce((a, k) => a + (+m.followers[k] || 0), 0),
+    developers: (db.developers || []).length,
+    advisors: (db.advisors || []).filter(a => a.status === 'active').length,
+    clients: (db.clients || []).length,
+    projects: (db.projects || []).length,
+    leads: mktCampSum('leads'),
+    deals: mktCampSum('deals'),
+    spend: mktCampSum('spend'),
+    brokerage: mktCampSum('brokerage'),
+    revenue: mktCampSum('revenue')
+  };
+}
+function mktBrainstorm(){
+  const m = mktState();
+  const key = mktToday();
+  if(m.brainstorm.date !== key){ m.brainstorm = { date:key, idx: Math.floor(Date.now() / 86400000) % MKT_BRAINSTORMS.length }; }
+  const idx = Math.abs(+m.brainstorm.idx || 0) % MKT_BRAINSTORMS.length;
+  return { text: MKT_BRAINSTORMS[idx], idx };
+}
+function mktVectorTag(v){
+  const x = MKT_VECTORS[v] || { label:v, ico:'•', cls:'' };
+  return `<span class="mkt-vtag ${x.cls}">${x.ico} ${x.label}</span>`;
+}
+function mktCopy(text){
+  try{ navigator.clipboard.writeText(text); toast('Copy ho gaya ✓'); }
+  catch(e){
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); toast('Copy ho gaya ✓'); }catch(_){ toast('Copy nahi hua', true); }
+    ta.remove();
+  }
+}
+function mktPct(a, b){ return b > 0 ? Math.min(100, Math.round(a / b * 100)) : 0; }
+
+/* ---------- shell ---------- */
+function mktRender(){
+  const host = document.getElementById('mktBody');
+  if(!host) return;
+  const tabs = `<div class="mkt-tabs">${MKT_TABS.map(t =>
+    `<button type="button" data-mkt-tab="${t.id}" class="${mktTab === t.id ? 'on' : ''}">${t.label}</button>`).join('')}</div>`;
+  let body = '';
+  if(mktTab === 'today') body = mktTodayHTML();
+  else if(mktTab === 'challenge') body = mktChallengeHTML();
+  else if(mktTab === 'strategies') body = mktStrategiesHTML();
+  else if(mktTab === 'ideas') body = mktIdeasHTML();
+  else if(mktTab === 'calendar') body = mktCalendarHTML();
+  else if(mktTab === 'ads') body = mktAdsHTML();
+  else if(mktTab === 'growth') body = mktGrowthHTML();
+  else if(mktTab === 'tips') body = mktTipsHTML();
+  host.innerHTML = tabs + `<div class="mkt-body">${body}</div>`;
+  mktRenderPlatforms();
+}
+
+function mktRenderPlatforms(){
+  const host = document.getElementById('mktPlatforms');
+  if(!host) return;
+  const items = [
+    { key:'whatsapp', ico:'💬', name:'WhatsApp Web', note:'Client message · broadcast · status', grad:'#25D366,#128C7E' },
+    { key:'instagram', ico:'📸', name:'Instagram', note:'Reels · stories · DMs', grad:'#E1306C,#C13584' },
+    { key:'facebook', ico:'📘', name:'Facebook', note:'Page · reviews · community', grad:'#1877F2,#4267B2' },
+    { key:'youtube', ico:'▶', name:'YouTube', note:'Videos · shorts · analytics', grad:'#FF0000,#CC0000' }
+  ];
+  host.innerHTML = `<div class="mkt-plat-head"><b>🌐 Apne platforms — ek click me</b><span>Dedicated app window me khulta hai, BCS ke saath side-by-side</span></div>
+    <div class="mkt-plat-grid">${items.map(it => `<button type="button" class="mkt-plat" data-mkt-open="${it.key}" style="--g:linear-gradient(90deg,${it.grad})">
+      <span class="mkt-plat-ico">${it.ico}</span>
+      <span class="mkt-plat-txt"><b>${it.name}</b><span>${it.note}</span></span>
+      <span class="mkt-plat-go">↗</span>
+    </button>`).join('')}</div>
+    <div class="mkt-quick">
+      <button type="button" class="btn ghost sm" onclick="quickWhatsApp()">📱 WhatsApp client</button>
+      <button type="button" class="btn ghost sm" onclick="quickInstagram()">📸 Instagram</button>
+      <button type="button" class="btn ghost sm" onclick="quickFacebook()">📘 Facebook</button>
+      <button type="button" class="btn ghost sm" onclick="quickYouTube()">▶ YouTube</button>
+      <button type="button" class="btn ghost sm" onclick="openSocialInApp()">🎧 In-app player</button>
+    </div>`;
+}
+
+/* ---------- TODAY ---------- */
+function mktTodayHTML(){
+  const m = mktState();
+  const started = !!m.challenge.startedAt;
+  const n = mktChallengeDay();
+  const day = started && n >= 1 && n <= 30 ? MKT_CHALLENGE[n-1] : MKT_CHALLENGE[0];
+  const key = started ? mktAddDays(m.challenge.startedAt, day.d - 1) : mktToday();
+  const streak = mktStreak();
+  const prog = mktChallengeProgress();
+  const biz = mktBizCounts();
+  const bs = mktBrainstorm();
+  const vec = mktVectorStats();
+  const finished = started && n > 30;
+
+  const taskRows = day.tasks.map((t, i) => {
+    const id = 'd' + day.d + '-' + i;
+    const done = mktTaskDone(key, id);
+    return `<label class="mkt-task ${done ? 'on' : ''}">
+      <input type="checkbox" data-mkt-task="${key}" data-mkt-tid="${id}" ${done ? 'checked' : ''}>
+      <span>${esc(t)}</span></label>`;
+  }).join('');
+
+  return `
+  <div class="mkt-hero">
+    <div class="mkt-hero-main">
+      <div class="mkt-hero-top">
+        <span class="mkt-pill">${finished ? '🏁 Challenge complete' : started ? 'Day ' + Math.min(n, 30) + ' / 30' : 'Ready to start'}</span>
+        ${mktVectorTag(day.vector)}
+        <span class="mkt-pill ghost">⏱ ${day.mins} min</span>
+        ${streak ? `<span class="mkt-pill fire">🔥 ${streak} din streak</span>` : ''}
+      </div>
+      <h3 class="mkt-hero-title">${started && !finished ? esc(day.title) : finished ? '30 din complete — agla round shuru karo' : 'Aaj ka pehla mission: profile audit'}</h3>
+      <p class="mkt-hero-sub">${started && !finished
+        ? 'Aaj ke 3 kaam tick karo. Chhote steps, roz — yahi game hai.'
+        : finished
+          ? 'Aapne 90 tasks ka safar poora kiya. Naya round shuru karo aur streak aage badhao.'
+          : '30-day challenge shuru karo — roz 3 chhote kaam, seedha business growth ke liye.'}</p>
+      <div class="mkt-tasks">${taskRows}</div>
+      <div class="mkt-tip">💡 <b>Strategy:</b> ${esc(day.tip)}</div>
+      <div class="mkt-idea-line">
+        <span>🎬 <b>Aaj ka content idea:</b> ${esc(day.idea)}</span>
+        <button type="button" class="btn ghost sm" data-mkt-copy="${esc(day.idea)}">Copy</button>
+      </div>
+      <div class="mkt-hero-actions">
+        ${!started ? `<button type="button" class="btn primary" data-mkt-start="1">🏆 Start 30-day challenge</button>` : ''}
+        ${finished ? `<button type="button" class="btn primary" data-mkt-start="1">🔄 Naya round shuru karo</button>` : ''}
+        <button type="button" class="btn ghost" data-mkt-tab="challenge">Poora plan dekho →</button>
+        <button type="button" class="btn ghost" data-mkt-tab="ideas">💡 Idea bank</button>
+      </div>
+    </div>
+    <div class="mkt-hero-side">
+      <div class="mkt-mini"><small>Challenge progress</small><b>${prog.done}<span>/90</span></b><div class="mkt-bar"><i style="width:${mktPct(prog.done, 90)}%"></i></div></div>
+      <div class="mkt-mini"><small>Days fully done</small><b>${prog.daysDone}<span>/30</span></b><div class="mkt-bar"><i style="width:${mktPct(prog.daysDone, 30)}%"></i></div></div>
+      <div class="mkt-mini"><small>Total followers</small><b>${biz.followers.toLocaleString('en-IN')}</b><span class="mkt-mini-note">IG + YT + FB + WA</span></div>
+      <div class="mkt-mini"><small>Ad leads · deals</small><b>${biz.leads}<span> · ${biz.deals}</span></b><span class="mkt-mini-note">campaign tracker se</span></div>
+    </div>
+  </div>
+
+  <div class="mkt-sec-head"><h4>🧠 Aaj ka brainstorm</h4><span>Roz ek naya sawaal — 5 min socho, 1 post banao</span></div>
+  <div class="mkt-brain">
+    <div class="mkt-brain-q">"${esc(bs.text)}"</div>
+    <div class="mkt-brain-actions">
+      <button type="button" class="btn ghost sm" data-mkt-brainstorm="1">🔄 Naya prompt</button>
+      <button type="button" class="btn ghost sm" data-mkt-brain-plan="1">📅 Kal ke liye plan karo</button>
+    </div>
+  </div>
+
+  <div class="mkt-sec-head"><h4>🎯 Growth track — har kaam kis business ko badhata hai</h4><span>30-day challenge ke tasks vector-wise</span></div>
+  <div class="mkt-vec-grid">
+    ${Object.keys(MKT_VECTORS).map(k => {
+      const v = MKT_VECTORS[k], s = vec[k];
+      const live = k === 'developers' ? biz.developers : k === 'advisors' ? biz.advisors : k === 'clients' ? biz.clients : k === 'projects' ? biz.projects : k === 'followers' ? biz.followers : biz.brokerage;
+      return `<div class="mkt-vec ${v.cls}">
+        <div class="mkt-vec-top"><span>${v.ico}</span><b>${v.label}</b></div>
+        <div class="mkt-vec-big">${k === 'earnings' ? '₹' + (+live || 0).toLocaleString('en-IN') : (+live || 0).toLocaleString('en-IN')}</div>
+        <div class="mkt-vec-sub">${k === 'earnings' ? 'brokerage tracked' : k === 'followers' ? 'total audience' : 'in system'}</div>
+        <div class="mkt-bar"><i style="width:${mktPct(s.done, s.total)}%"></i></div>
+        <div class="mkt-vec-foot">${s.done}/${s.total} tasks done</div>
+      </div>`;
+    }).join('')}
+  </div>
+
+  <div class="mkt-sec-head"><h4>⚡ Aaj ke quick wins</h4><span>2 minute ke kaam — turant karo</span></div>
+  <div class="mkt-quick-grid">
+    <button type="button" class="mkt-qw" data-mkt-tab="ideas"><span>💡</span><b>1 idea uthao</b><small>Idea bank se aaj ka post chuno</small></button>
+    <button type="button" class="mkt-qw" data-mkt-tab="strategies"><span>📈</span><b>1 strategy add karo</b><small>Playbook plan me daalo</small></button>
+    <button type="button" class="mkt-qw" data-mkt-tab="ads"><span>📣</span><b>Ad tracker kholo</b><small>CPL aur ROAS dekho</small></button>
+    <button type="button" class="mkt-qw" data-mkt-tab="growth"><span>📊</span><b>Followers update</b><small>Aaj ka snapshot save karo</small></button>
+  </div>`;
+}
+
+/* ---------- 30-DAY CHALLENGE ---------- */
+function mktChallengeHTML(){
+  const m = mktState();
+  const started = !!m.challenge.startedAt;
+  const n = mktChallengeDay();
+  const prog = mktChallengeProgress();
+  const vec = mktVectorStats();
+  const rows = MKT_CHALLENGE.map(day => {
+    const key = started ? mktAddDays(m.challenge.startedAt, day.d - 1) : mktAddDays(mktToday(), day.d - 1);
+    const isToday = started && n === day.d;
+    const isFuture = started ? (key > mktToday()) : day.d > 1;
+    let dcount = 0;
+    day.tasks.forEach((_, i) => { if(mktTaskDone(key, 'd' + day.d + '-' + i)) dcount++; });
+    const full = dcount === day.tasks.length;
+    return `<details class="mkt-day ${isToday ? 'today' : ''} ${full ? 'done' : ''}" ${isToday ? 'open' : ''}>
+      <summary>
+        <span class="mkt-day-n">Day ${day.d}</span>
+        <span class="mkt-day-t">${esc(day.title)}</span>
+        ${mktVectorTag(day.vector)}
+        <span class="mkt-day-m">${day.mins}m</span>
+        <span class="mkt-day-prog ${full ? 'full' : ''}">${dcount}/3</span>
+      </summary>
+      <div class="mkt-day-body">
+        <div class="mkt-tasks">${day.tasks.map((t, i) => {
+          const id = 'd' + day.d + '-' + i;
+          const done = mktTaskDone(key, id);
+          return `<label class="mkt-task ${done ? 'on' : ''} ${isFuture ? 'locked' : ''}">
+            <input type="checkbox" data-mkt-task="${key}" data-mkt-tid="${id}" ${done ? 'checked' : ''} ${isFuture ? 'disabled' : ''}>
+            <span>${esc(t)}</span></label>`;
+        }).join('')}</div>
+        <div class="mkt-tip">💡 <b>Strategy:</b> ${esc(day.tip)}</div>
+        <div class="mkt-idea-line"><span>🎬 <b>Content idea:</b> ${esc(day.idea)}</span>
+          <button type="button" class="btn ghost sm" data-mkt-copy="${esc(day.idea)}">Copy</button></div>
+      </div>
+    </details>`;
+  }).join('');
+
+  return `
+  <div class="mkt-card">
+    <div class="mkt-card-head">
+      <div>
+        <h3>🏆 30-day growth challenge</h3>
+        <p>${started ? `Shuru: ${esc(m.challenge.startedAt)} · Day ${Math.min(n, 30)} of 30` : 'Abhi shuru nahi hua — Day 1 aapka profile audit hai.'}</p>
+      </div>
+      <div class="mkt-card-actions">
+        ${!started ? `<button type="button" class="btn primary" data-mkt-start="1">Start challenge</button>`
+          : `<button type="button" class="btn ghost sm" data-mkt-start="1">🔄 Restart</button>`}
+      </div>
+    </div>
+    <div class="mkt-prog-wrap">
+      <div class="mkt-prog"><div class="mkt-bar big"><i style="width:${mktPct(prog.done, 90)}%"></i></div><span>${prog.done}/90 tasks</span></div>
+      <div class="mkt-prog"><div class="mkt-bar big"><i style="width:${mktPct(prog.daysDone, 30)}%"></i></div><span>${prog.daysDone}/30 days complete</span></div>
+      <div class="mkt-prog"><div class="mkt-bar big"><i style="width:${mktPct(mktStreak(), 30)}%"></i></div><span>🔥 ${mktStreak()} din streak</span></div>
+    </div>
+    <div class="mkt-vec-mini-row">
+      ${Object.keys(MKT_VECTORS).map(k => `<span class="mkt-vec-mini ${MKT_VECTORS[k].cls}">${MKT_VECTORS[k].ico} ${MKT_VECTORS[k].label} <b>${vec[k].done}/${vec[k].total}</b></span>`).join('')}
+    </div>
+  </div>
+  <div class="mkt-days">${rows}</div>`;
+}
+
+/* ---------- STRATEGIES ---------- */
+function mktStrategiesHTML(){
+  const m = mktState();
+  const filters = [['all','Sab'], ...Object.keys(MKT_VECTORS).map(k => [k, MKT_VECTORS[k].ico + ' ' + MKT_VECTORS[k].label])];
+  const list = MKT_STRATEGIES.filter(s => mktStratFilter === 'all' || s.vector === mktStratFilter);
+  const cards = list.map(s => {
+    const st = m.playbooks[s.id] || null;
+    const done = st && Array.isArray(st.done) ? st.done : [];
+    const pct = mktPct(done.length, s.steps.length);
+    return `<div class="mkt-strat ${st ? 'added' : ''}">
+      <div class="mkt-strat-top">
+        <span class="mkt-strat-ico">${s.ico}</span>
+        <div class="mkt-strat-ttl"><b>${esc(s.title)}</b><span>${mktVectorTag(s.vector)}</span></div>
+        <span class="mkt-strat-pct">${pct}%</span>
+      </div>
+      <div class="mkt-strat-out">🎯 ${esc(s.outcome)}</div>
+      <div class="mkt-bar"><i style="width:${pct}%"></i></div>
+      <div class="mkt-strat-steps">${s.steps.map((step, i) => {
+        const on = done.includes(i);
+        return `<label class="mkt-task ${on ? 'on' : ''} ${st ? '' : 'locked'}">
+          <input type="checkbox" data-mkt-strat="${s.id}" data-mkt-step="${i}" ${on ? 'checked' : ''} ${st ? '' : 'disabled'}>
+          <span>${esc(step)}</span></label>`;
+      }).join('')}</div>
+      <div class="mkt-strat-foot">
+        ${st ? `<button type="button" class="btn ghost sm" data-mkt-strat-remove="${s.id}">Remove from plan</button>`
+          : `<button type="button" class="btn primary sm" data-mkt-strat-add="${s.id}">+ Add to my plan</button>`}
+      </div>
+    </div>`;
+  }).join('');
+  return `
+  <div class="mkt-card">
+    <div class="mkt-card-head">
+      <div><h3>📈 Strategy playbooks</h3><p>Ready-made systems — add karo, steps tick karo, business badhao.</p></div>
+    </div>
+    <div class="mkt-chips">${filters.map(([k, l]) => `<button type="button" class="mkt-chip ${mktStratFilter === k ? 'on' : ''}" data-mkt-strat-filter="${k}">${l}</button>`).join('')}</div>
+  </div>
+  <div class="mkt-strat-grid">${cards || '<div class="mkt-empty">Is vector me koi strategy nahi.</div>'}</div>`;
+}
+
+/* ---------- IDEAS ---------- */
+function mktIdeaCards(){
+  const m = mktState();
+  const q = mktIdeaQ.toLowerCase();
+  const list = MKT_IDEAS.filter(i =>
+    (mktIdeaFilter === 'all' || i.format === mktIdeaFilter) &&
+    (!q || (i.title + ' ' + i.hook + ' ' + i.format).toLowerCase().includes(q)));
+  const cards = list.map(i => {
+    const u = m.ideas[i.id];
+    return `<div class="mkt-idea ${u ? 'used' : ''}">
+      <div class="mkt-idea-top"><span class="mkt-fmt">${i.format}</span>${mktVectorTag(i.vector)}${u ? '<span class="mkt-used">✓ used</span>' : ''}</div>
+      <b class="mkt-idea-title">${esc(i.title)}</b>
+      <p class="mkt-idea-hook">${esc(i.hook)}</p>
+      <div class="mkt-idea-actions">
+        <button type="button" class="btn ghost sm" data-mkt-copy="${esc(i.hook)}">Copy hook</button>
+        <button type="button" class="btn ghost sm" data-mkt-idea-today="${i.id}">📅 Aaj plan karo</button>
+        <button type="button" class="btn ghost sm" data-mkt-idea-used="${i.id}">${u ? '↺ Unmark' : '✓ Used'}</button>
+      </div>
+    </div>`;
+  }).join('');
+  return { html: cards || '<div class="mkt-empty">Koi idea match nahi hua — search clear karo.</div>', count: list.length };
+}
+function mktIdeasHTML(){
+  const m = mktState();
+  const formats = [['all','Sab'],['reel','Reel'],['short','Short'],['video','YouTube'],['carousel','Carousel'],['story','Story'],['ad','Ad'],['animation','Animation'],['whatsapp','WhatsApp']];
+  const used = Object.keys(m.ideas).length;
+  const grid = mktIdeaCards();
+  return `
+  <div class="mkt-card">
+    <div class="mkt-card-head">
+      <div><h3>💡 Content idea bank</h3><p><span id="mktIdeaCount">${MKT_IDEAS.length}</span> ready hooks — reels, ads, carousels, animations. <span id="mktIdeaUsed">${used}</span> used.</p></div>
+    </div>
+    <div class="mkt-search"><input id="mktIdeaSearch" placeholder="Search idea / hook…" value="${esc(mktIdeaQ)}"></div>
+    <div class="mkt-chips">${formats.map(([k, l]) => `<button type="button" class="mkt-chip ${mktIdeaFilter === k ? 'on' : ''}" data-mkt-idea-filter="${k}">${l}</button>`).join('')}</div>
+  </div>
+  <div class="mkt-idea-grid" id="mktIdeaGrid">${grid.html}</div>`;
+}
+/* ---------- CALENDAR ---------- */
+function mktCalMonthKey(){
+  if(mktCalMonth) return mktCalMonth;
+  const now = new Date();
+  return now.getFullYear() + '-' + mktPad(now.getMonth() + 1);
+}
+function mktCalShift(delta){
+  const [y, mo] = mktCalMonthKey().split('-').map(Number);
+  const d = new Date(y, mo - 1 + delta, 1);
+  mktCalMonth = d.getFullYear() + '-' + mktPad(d.getMonth() + 1);
+  mktRender();
+}
+const MKT_TYPE_LABEL = { reel:'Reel', short:'Short', video:'YouTube', carousel:'Carousel', story:'Story', ad:'Ad', whatsapp:'WhatsApp', other:'Other' };
+function mktCalendarHTML(){
+  const m = mktState();
+  const monthKey = mktCalMonthKey();
+  const [y, mo] = monthKey.split('-').map(Number);
+  const first = new Date(y, mo - 1, 1);
+  const daysIn = new Date(y, mo, 0).getDate();
+  const startDow = (first.getDay() + 6) % 7;
+  const monthName = first.toLocaleDateString('en-IN', { month:'long', year:'numeric' });
+  const today = mktToday();
+  const cells = [];
+  for(let i = 0; i < startDow; i++) cells.push('<span class="mkt-cal-blank"></span>');
+  for(let d = 1; d <= daysIn; d++){
+    const key = y + '-' + mktPad(mo) + '-' + mktPad(d);
+    const e = m.calendar[key] || null;
+    const isToday = key === today;
+    cells.push(`<button type="button" class="mkt-cal-cell ${isToday ? 'today' : ''} ${e && e.posted ? 'posted' : ''} ${e ? 'planned' : ''}" data-mkt-cal-day="${key}">
+      <span class="mkt-cal-d">${d}</span>
+      ${e && e.type ? `<span class="mkt-cal-type t-${e.type}">${MKT_TYPE_LABEL[e.type] || e.type}</span>` : ''}
+      ${e && e.idea ? `<span class="mkt-cal-idea">${esc(e.idea)}</span>` : ''}
+      ${e && e.posted ? '<span class="mkt-cal-tick">✓</span>' : ''}
+    </button>`);
+  }
+  const monthEntries = Object.keys(m.calendar).filter(k => k.startsWith(monthKey));
+  const planned = monthEntries.length;
+  const posted = monthEntries.filter(k => m.calendar[k] && m.calendar[k].posted).length;
+  return `
+  <div class="mkt-card">
+    <div class="mkt-card-head">
+      <div><h3>📅 Content calendar</h3><p>Kisi bhi din par click karke type + idea + "posted" set karo.</p></div>
+      <div class="mkt-card-actions">
+        <button type="button" class="btn ghost sm" data-mkt-cal-prev="1">←</button>
+        <b class="mkt-cal-month">${monthName}</b>
+        <button type="button" class="btn ghost sm" data-mkt-cal-next="1">→</button>
+        <button type="button" class="btn ghost sm" data-mkt-cal-today="1">Aaj</button>
+      </div>
+    </div>
+    <div class="mkt-cal-stats">
+      <span>${planned} planned</span><span>${posted} posted</span><span>${Math.max(0, planned - posted)} pending</span>
+    </div>
+    <div class="mkt-cal-head">${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x => `<span>${x}</span>`).join('')}</div>
+    <div class="mkt-cal-grid">${cells.join('')}</div>
+    <div class="mkt-cal-legend">${Object.keys(MKT_TYPE_LABEL).map(k => `<span class="mkt-cal-type t-${k}">${MKT_TYPE_LABEL[k]}</span>`).join('')}</div>
+  </div>
+  <div class="mkt-card">
+    <div class="mkt-card-head"><div><h3>⚡ Auto-plan is hafte</h3><p>Idea bank se 7 din auto bhar do — phir edit kar sakte ho.</p></div>
+      <div class="mkt-card-actions"><button type="button" class="btn primary sm" data-mkt-autoplan="1">Auto-plan 7 days</button></div></div>
+  </div>`;
+}
+
+/* ---------- ADS ---------- */
+function mktAdsHTML(){
+  const m = mktState();
+  const sum = f => m.campaigns.reduce((a, c) => a + (+c[f] || 0), 0);
+  const spend = sum('spend'), leads = sum('leads'), deals = sum('deals'), revenue = sum('revenue'), brokerage = sum('brokerage'), budget = sum('budget');
+  const cpl = leads ? spend / leads : 0;
+  const cpd = deals ? spend / deals : 0;
+  const roas = spend ? revenue / spend : 0;
+  const platforms = ['Meta','YouTube','Google','Instagram','WhatsApp','Other'];
+  const rows = m.campaigns.map(c => {
+    const cCpl = (+c.leads) ? (+c.spend || 0) / (+c.leads) : 0;
+    const cCpd = (+c.deals) ? (+c.spend || 0) / (+c.deals) : 0;
+    const cRoas = (+c.spend) ? (+c.revenue || 0) / (+c.spend) : 0;
+    return `<div class="mkt-camp">
+      <div class="mkt-camp-head">
+        <b>${esc(c.name)}</b>
+        <span class="mkt-camp-plat">${esc(c.platform || 'Other')}</span>
+        <select data-mkt-camp="${c.id}" data-mkt-field="status" class="mkt-camp-status">
+          ${['running','paused','done'].map(s => `<option value="${s}" ${c.status === s ? 'selected' : ''}>${s}</option>`).join('')}
+        </select>
+        <button type="button" class="tgt-btn del" data-mkt-camp-del="${c.id}" title="Delete campaign">🗑</button>
+      </div>
+      <div class="mkt-camp-fields">
+        ${[['budget','Budget ₹'],['spend','Spend ₹'],['leads','Leads'],['deals','Deals'],['revenue','Sale value ₹'],['brokerage','Brokerage ₹']].map(([f, l]) =>
+          `<label class="mkt-camp-f"><span>${l}</span><input type="number" min="0" step="1" data-mkt-camp="${c.id}" data-mkt-field="${f}" value="${+c[f] || 0}"></label>`).join('')}
+      </div>
+      <div class="mkt-camp-metrics">
+        <span>CPL <b>₹${Math.round(cCpl).toLocaleString('en-IN')}</b></span>
+        <span>Cost/deal <b>₹${Math.round(cCpd).toLocaleString('en-IN')}</b></span>
+        <span>ROAS <b>${cRoas.toFixed(1)}x</b></span>
+      </div>
+    </div>`;
+  }).join('');
+  return `
+  <div class="mkt-kpi-row">
+    <div class="mkt-kpi"><small>Spend</small><b>₹${spend.toLocaleString('en-IN')}</b><span>budget ₹${budget.toLocaleString('en-IN')}</span></div>
+    <div class="mkt-kpi"><small>Leads</small><b>${leads}</b><span>CPL ₹${Math.round(cpl).toLocaleString('en-IN')}</span></div>
+    <div class="mkt-kpi"><small>Deals</small><b>${deals}</b><span>cost/deal ₹${Math.round(cpd).toLocaleString('en-IN')}</span></div>
+    <div class="mkt-kpi"><small>Sale value</small><b>₹${revenue.toLocaleString('en-IN')}</b><span>ROAS ${roas.toFixed(1)}x</span></div>
+    <div class="mkt-kpi gold"><small>Brokerage</small><b>₹${brokerage.toLocaleString('en-IN')}</b><span>earning tracked</span></div>
+  </div>
+  <div class="mkt-card">
+    <div class="mkt-card-head"><div><h3>📣 Meta / YouTube ad tracker</h3><p>Har campaign ka budget, spend, leads, deals aur ROAS — ek jagah.</p></div></div>
+    <div class="mkt-camp-add">
+      <input id="mktCampName" placeholder="Campaign name (e.g. Ajmer Road lead ad)">
+      <select id="mktCampPlatform">${platforms.map(p => `<option>${p}</option>`).join('')}</select>
+      <input id="mktCampBudget" type="number" min="0" placeholder="Daily budget ₹">
+      <button type="button" class="btn primary sm" data-mkt-camp-add="1">+ Add campaign</button>
+    </div>
+  </div>
+  <div class="mkt-camps">${rows || '<div class="mkt-empty">Koi campaign nahi. Upar se pehla campaign add karo — Meta lead ad se shuru karo.</div>'}</div>`;
+}
+
+/* ---------- GROWTH ---------- */
+function mktGrowthHTML(){
+  const m = mktState();
+  const biz = mktBizCounts();
+  const platforms = [['instagram','Instagram'],['youtube','YouTube'],['facebook','Facebook'],['whatsapp','WhatsApp']];
+  const log = m.followerLog.slice(-12);
+  const maxV = Math.max(1, ...log.map(x => +x.total || 0));
+  const last = m.followerLog[m.followerLog.length - 1];
+  const prev = m.followerLog[m.followerLog.length - 2];
+  const delta = last && prev ? (+last.total || 0) - (+prev.total || 0) : 0;
+  const goals = m.goals || {};
+  const monthKey = mktToday().slice(0, 7);
+  const gFollowers = +goals.followers || 0, gLeads = +goals.leads || 0, gDeals = +goals.deals || 0, gBrok = +goals.brokerage || 0;
+  return `
+  <div class="mkt-card">
+    <div class="mkt-card-head"><div><h3>📊 Follower growth</h3><p>Aaj ka snapshot save karo — graph aur growth rate apne aap.</p></div></div>
+    <div class="mkt-fol-grid">
+      ${platforms.map(([k, l]) => `<label class="mkt-fol"><span>${l}</span><input type="number" min="0" data-mkt-follower="${k}" value="${+m.followers[k] || 0}"></label>`).join('')}
+      <div class="mkt-fol-total"><small>Total</small><b>${biz.followers.toLocaleString('en-IN')}</b><span>${delta >= 0 ? '+' : ''}${delta.toLocaleString('en-IN')} last snapshot</span></div>
+    </div>
+    <div class="mkt-card-actions" style="margin-top:10px"><button type="button" class="btn primary sm" data-mkt-follow-save="1">📌 Save today's snapshot</button></div>
+    ${log.length ? `<div class="mkt-spark">${log.map(x => `<div class="mkt-spark-col" title="${esc(x.date)} · ${(+x.total || 0).toLocaleString('en-IN')}"><i style="height:${Math.max(6, Math.round((+x.total || 0) / maxV * 100))}%"></i><span>${esc((x.date || '').slice(5))}</span></div>`).join('')}</div>` : '<div class="mkt-empty" style="margin-top:12px">Pehla snapshot save karo — graph yahan banega.</div>'}
+  </div>
+
+  <div class="mkt-card">
+    <div class="mkt-card-head"><div><h3>🎯 Is mahine ke goals</h3><p>${monthKey} — realistic targets set karo, progress auto-track hoga.</p></div></div>
+    <div class="mkt-goal-grid">
+      <label class="mkt-goal"><span>Followers target</span><input type="number" min="0" data-mkt-goal="followers" value="${gFollowers}"><div class="mkt-bar"><i style="width:${mktPct(biz.followers, gFollowers)}%"></i></div><small>${biz.followers} / ${gFollowers || '—'}</small></label>
+      <label class="mkt-goal"><span>Leads target</span><input type="number" min="0" data-mkt-goal="leads" value="${gLeads}"><div class="mkt-bar"><i style="width:${mktPct(biz.leads, gLeads)}%"></i></div><small>${biz.leads} / ${gLeads || '—'}</small></label>
+      <label class="mkt-goal"><span>Deals target</span><input type="number" min="0" data-mkt-goal="deals" value="${gDeals}"><div class="mkt-bar"><i style="width:${mktPct(biz.deals, gDeals)}%"></i></div><small>${biz.deals} / ${gDeals || '—'}</small></label>
+      <label class="mkt-goal"><span>Brokerage target ₹</span><input type="number" min="0" data-mkt-goal="brokerage" value="${gBrok}"><div class="mkt-bar"><i style="width:${mktPct(biz.brokerage, gBrok)}%"></i></div><small>₹${biz.brokerage.toLocaleString('en-IN')} / ₹${gBrok.toLocaleString('en-IN')}</small></label>
+    </div>
+  </div>
+
+  <div class="mkt-card">
+    <div class="mkt-card-head"><div><h3>🔻 Conversion funnel</h3><p>Audience se earning tak — kahan leak ho raha hai dekho.</p></div></div>
+    <div class="mkt-funnel">
+      <div class="mkt-fn" style="--w:100%"><span>👥 Audience</span><b>${biz.followers.toLocaleString('en-IN')}</b></div>
+      <div class="mkt-fn" style="--w:${Math.max(18, mktPct(biz.leads, Math.max(biz.followers, 1)))}%"><span>📥 Leads</span><b>${biz.leads}</b><i>${biz.followers ? (biz.leads / biz.followers * 100).toFixed(1) + '% of audience' : 'ad leads'}</i></div>
+      <div class="mkt-fn" style="--w:${Math.max(12, mktPct(biz.deals, Math.max(biz.leads, 1)))}%"><span>🤝 Deals</span><b>${biz.deals}</b><i>${biz.leads ? (biz.deals / biz.leads * 100).toFixed(0) + '% lead → deal' : '—'}</i></div>
+      <div class="mkt-fn gold" style="--w:${Math.max(10, mktPct(biz.brokerage, Math.max(biz.revenue, 1)))}%"><span>₹ Brokerage</span><b>₹${biz.brokerage.toLocaleString('en-IN')}</b><i>sale value ₹${biz.revenue.toLocaleString('en-IN')}</i></div>
+    </div>
+    <div class="mkt-funnel-note">💡 ${biz.leads === 0 ? 'Leads 0 hain — pehla Meta lead ad chalao (Ads tab).' : biz.deals === 0 ? 'Leads aa rahe hain par deal nahi — follow-up speed 5 min karo aur site visit offer do.' : 'Funnel chal raha hai — ab creative rotate karke CPL neeche lao.'}</div>
+  </div>`;
+}
+
+/* ---------- TIPS ---------- */
+function mktTipsHTML(){
+  return MKT_TIPS.map(g => `<details class="mkt-tips" ${g.group === 'Instagram' ? 'open' : ''}>
+    <summary><span>${g.ico}</span><b>${g.group}</b><span class="mkt-tips-n">${g.items.length} tips</span></summary>
+    <ul>${g.items.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
+  </details>`).join('');
+}
+
+/* ---------- day modal ---------- */
+function mktOpenDay(key){
+  const m = mktState();
+  const e = m.calendar[key] || {};
+  mktEditingDay = key;
+  const dt = new Date(key + 'T00:00:00');
+  $('#mktDayTitle').textContent = '📅 ' + dt.toLocaleDateString('en-IN', { weekday:'long', day:'numeric', month:'short' });
+  $('#mktDayType').value = e.type || '';
+  $('#mktDayIdea').value = e.idea || '';
+  $('#mktDayPosted').checked = !!e.posted;
+  showOverlay('mktDayModal');
+}
+
+/* ---------- actions ---------- */
+function mktStartChallenge(){
+  const m = mktState();
+  if(m.challenge.startedAt && !confirm('Challenge restart karein? Purani tick history safe rahegi (dates ke hisaab se).')) return;
+  m.challenge.startedAt = mktToday();
+  save();
+  mktRender();
+  toast('30-day challenge shuru! Day 1 — profile audit 🏆');
+}
+function mktAddIdeaToDay(ideaId, key){
+  const m = mktState();
+  const idea = MKT_IDEAS.find(i => i.id === ideaId);
+  if(!idea) return;
+  const k = key || mktToday();
+  const fmtMap = { reel:'reel', short:'short', video:'video', carousel:'carousel', story:'story', ad:'ad', animation:'reel', whatsapp:'whatsapp' };
+  m.calendar[k] = { type: fmtMap[idea.format] || 'other', idea: idea.title + ' — ' + idea.hook, posted: false };
+  save(); mktRender();
+  toast('Idea ' + (k === mktToday() ? 'aaj' : k) + ' ke plan me daal diya 📅');
+}
+function mktAutoPlanWeek(){
+  const m = mktState();
+  const pool = MKT_IDEAS.slice();
+  let added = 0;
+  for(let i = 0; i < 7; i++){
+    const key = mktAddDays(mktToday(), i);
+    if(m.calendar[key] && m.calendar[key].idea) continue;
+    const idea = pool[(i * 5 + 2) % pool.length];
+    const fmtMap = { reel:'reel', short:'short', video:'video', carousel:'carousel', story:'story', ad:'ad', animation:'reel', whatsapp:'whatsapp' };
+    m.calendar[key] = { type: fmtMap[idea.format] || 'other', idea: idea.title + ' — ' + idea.hook, posted: false };
+    added++;
+  }
+  save(); mktRender();
+  toast(added + ' din plan ho gaye — calendar dekho 📅');
+}
+
+/* ---------- wiring ---------- */
+document.addEventListener('click', e => {
+  const t = e.target;
+  if(!t || !t.closest) return;
+  let el;
+  if((el = t.closest('[data-mkt-tab]'))){ mktTab = el.dataset.mktTab; mktRender(); return; }
+  if((el = t.closest('[data-mkt-start]'))){ mktStartChallenge(); return; }
+  if((el = t.closest('[data-mkt-copy]'))){ mktCopy(el.dataset.mktCopy || ''); return; }
+  if((el = t.closest('[data-mkt-brainstorm]'))){
+    const m = mktState();
+    m.brainstorm.idx = (Math.abs(+m.brainstorm.idx || 0) + 1 + Math.floor(Math.random() * 3)) % MKT_BRAINSTORMS.length;
+    m.brainstorm.date = mktToday();
+    save(); mktRender(); return;
+  }
+  if((el = t.closest('[data-mkt-brain-plan]'))){
+    const bs = mktBrainstorm();
+    const m = mktState();
+    m.calendar[mktAddDays(mktToday(), 1)] = { type:'story', idea: bs.text, posted:false };
+    save(); mktRender(); toast('Kal ke plan me brainstorm daal diya 📅'); return;
+  }
+  if((el = t.closest('[data-mkt-strat-filter]'))){ mktStratFilter = el.dataset.mktStratFilter; mktRender(); return; }
+  if((el = t.closest('[data-mkt-strat-add]'))){
+    const m = mktState();
+    m.playbooks[el.dataset.mktStratAdd] = { done:[], addedAt: Date.now() };
+    save(); mktRender(); toast('Strategy plan me add ho gayi 📈'); return;
+  }
+  if((el = t.closest('[data-mkt-strat-remove]'))){
+    const m = mktState();
+    delete m.playbooks[el.dataset.mktStratRemove];
+    save(); mktRender(); toast('Strategy plan se hat gayi'); return;
+  }
+  if((el = t.closest('[data-mkt-idea-filter]'))){ mktIdeaFilter = el.dataset.mktIdeaFilter; mktRender(); return; }
+  if((el = t.closest('[data-mkt-idea-today]'))){ mktAddIdeaToDay(el.dataset.mktIdeaToday); return; }
+  if((el = t.closest('[data-mkt-idea-used]'))){
+    const m = mktState();
+    const id = el.dataset.mktIdeaUsed;
+    if(m.ideas[id]) delete m.ideas[id]; else m.ideas[id] = { at: Date.now() };
+    save(); mktRender(); return;
+  }
+  if((el = t.closest('[data-mkt-cal-prev]'))){ mktCalShift(-1); return; }
+  if((el = t.closest('[data-mkt-cal-next]'))){ mktCalShift(1); return; }
+  if((el = t.closest('[data-mkt-cal-today]'))){ mktCalMonth = ''; mktRender(); return; }
+  if((el = t.closest('[data-mkt-cal-day]'))){ mktOpenDay(el.dataset.mktCalDay); return; }
+  if((el = t.closest('[data-mkt-autoplan]'))){ mktAutoPlanWeek(); return; }
+  if((el = t.closest('[data-mkt-camp-add]'))){
+    const name = ($('#mktCampName') || {}).value || '';
+    if(!name.trim()) return toast('Campaign ka naam likho', true);
+    const m = mktState();
+    m.campaigns.push({
+      id: uid(), name: name.trim().slice(0, 80),
+      platform: ($('#mktCampPlatform') || {}).value || 'Meta',
+      status:'running', budget: +($('#mktCampBudget') || {}).value || 0,
+      spend:0, leads:0, deals:0, revenue:0, brokerage:0, createdAt: Date.now()
+    });
+    save(); mktRender(); toast('Campaign add ho gaya 📣'); return;
+  }
+  if((el = t.closest('[data-mkt-camp-del]'))){
+    const m = mktState();
+    const id = el.dataset.mktCampDel;
+    const c = m.campaigns.find(x => x.id === id);
+    if(!confirm('Campaign delete karein' + (c ? ' — ' + c.name : '') + '?')) return;
+    m.campaigns = m.campaigns.filter(x => x.id !== id);
+    save(); mktRender(); toast('Campaign delete ho gaya'); return;
+  }
+  if((el = t.closest('[data-mkt-follow-save]'))){
+    const m = mktState();
+    const total = ['instagram','youtube','facebook','whatsapp'].reduce((a, k) => a + (+m.followers[k] || 0), 0);
+    m.followerLog = m.followerLog.filter(x => x.date !== mktToday());
+    m.followerLog.push({ date: mktToday(), total, instagram:+m.followers.instagram || 0, youtube:+m.followers.youtube || 0, facebook:+m.followers.facebook || 0, whatsapp:+m.followers.whatsapp || 0 });
+    m.followerLog.sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+    if(m.followerLog.length > 120) m.followerLog = m.followerLog.slice(-120);
+    save(); mktRender(); toast('Snapshot saved — ' + total.toLocaleString('en-IN') + ' followers 📌'); return;
+  }
+  if((el = t.closest('[data-mkt-open]'))){ openSocialFrame(el.dataset.mktOpen); return; }
+});
+
+document.addEventListener('change', e => {
+  const t = e.target;
+  if(!t || !t.closest) return;
+  if(t.matches('input[data-mkt-task]')){
+    const key = t.dataset.mktTask, id = t.dataset.mktTid;
+    const rec = mktDayRec(key);
+    const i = rec.done.indexOf(id);
+    if(t.checked){ if(i < 0) rec.done.push(id); } else if(i >= 0) rec.done.splice(i, 1);
+    save(); mktRender(); return;
+  }
+  if(t.matches('input[data-mkt-strat]')){
+    const m = mktState();
+    const st = m.playbooks[t.dataset.mktStrat];
+    if(!st) return;
+    if(!Array.isArray(st.done)) st.done = [];
+    const step = +t.dataset.mktStep;
+    const i = st.done.indexOf(step);
+    if(t.checked){ if(i < 0) st.done.push(step); } else if(i >= 0) st.done.splice(i, 1);
+    save(); mktRender(); return;
+  }
+  if(t.matches('[data-mkt-camp]')){
+    const m = mktState();
+    const c = m.campaigns.find(x => x.id === t.dataset.mktCamp);
+    if(!c) return;
+    const f = t.dataset.mktField;
+    c[f] = f === 'status' ? t.value : (+t.value || 0);
+    save(); mktRender(); return;
+  }
+  if(t.matches('[data-mkt-follower]')){
+    const m = mktState();
+    m.followers[t.dataset.mktFollower] = Math.max(0, +t.value || 0);
+    save(); mktRender(); return;
+  }
+  if(t.matches('[data-mkt-goal]')){
+    const m = mktState();
+    m.goals[t.dataset.mktGoal] = Math.max(0, +t.value || 0);
+    m.goals.month = mktToday().slice(0, 7);
+    save(); mktRender(); return;
+  }
+});
+
+document.addEventListener('input', e => {
+  const t = e.target;
+  if(t && t.id === 'mktIdeaSearch'){
+    mktIdeaQ = t.value;
+    const grid = document.getElementById('mktIdeaGrid');
+    if(grid){
+      const g = mktIdeaCards();
+      grid.innerHTML = g.html;
+      const c = document.getElementById('mktIdeaCount');
+      if(c) c.textContent = g.count;
+    } else mktRender();
+  }
+});
+
+const mktDaySaveBtn = document.getElementById('mktDaySave');
+if(mktDaySaveBtn) mktDaySaveBtn.addEventListener('click', () => {
+  if(!mktEditingDay) return;
+  const m = mktState();
+  const type = $('#mktDayType').value;
+  const idea = $('#mktDayIdea').value.trim();
+  const posted = $('#mktDayPosted').checked;
+  if(!type && !idea && !posted) delete m.calendar[mktEditingDay];
+  else m.calendar[mktEditingDay] = { type, idea, posted };
+  save();
+  closeModal('mktDayModal');
+  mktRender();
+  toast('Day plan saved ✓');
+});
+const mktRefreshBtn = document.getElementById('mktRefreshBtn');
+if(mktRefreshBtn) mktRefreshBtn.addEventListener('click', () => {
+  const m = mktState();
+  m.brainstorm = { date:'', idx:0 };
+  mktRender();
+  toast('Aaj ka mission refresh ho gaya 🔄');
+});
+
+function renderSocialDesk(){
+  mktRender();
+}
+
 
 function cycleTheme(){
   const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
