@@ -12666,6 +12666,63 @@ body[data-theme="dark"] .cal-chip.mark-content{background:#152A38 !important;col
 body[data-theme="dark"] .cal-chip.visit{background:#142A34 !important;color:#9FD3E8 !important;border-color:#24505F !important}
 body[data-theme="dark"] .cal-chip.due{background:#332714 !important;color:#F0CB8C !important;border-color:#5C451E !important}
 body[data-theme="dark"] .cal-chip.due.over{background:#3A1D16 !important;color:#F2A18D !important;border-color:#5E2B20 !important}
+/* dark theme — components added in the trust / intel pass */
+body[data-theme="dark"] :is(.ci-card,.c360-tile,.pd-item,.cu-item,.aw-phrase,.aw-voice,.aw-idea,.ph-chart,.ph-step,.persona-problem,.persona-match,.cor-ex-grid > div,.ci-facts > div){background:#171C19 !important;border-color:rgba(255,255,255,.09) !important}
+body[data-theme="dark"] :is(.c360-group,.ci-wrap,.pd-wrap,.ph-track){background:transparent !important}
+body[data-theme="dark"] :is(.c360-tile,.pd-item,.cu-item,.aw-phrase,.aw-voice,.aw-idea,.persona-match,.ci-row):hover{border-color:var(--gold) !important;background:#1C231E !important}
+body[data-theme="dark"] :is(.ci-facts .k,.ci-head span,.c360-k,.c360-s,.c360-head span,.ph-step .ph-body small,.ph-chart-head span,.ph-bar-lab,.ph-collect,.aw-voice .k,.aw-idea small,.aw-phrase em,.aw-voice em,.pd-item small,.cu-item small,.cu-src,.ci-drive,.ci-driver,.ci-watch,.ci-src,.persona-problem span,.persona-match small,.cor-ex-driver,.cor-ex-watch){color:#9AA39C !important}
+body[data-theme="dark"] :is(.ci-card-head b,.ci-facts b,.c360-v,.ph-step .ph-body b,.ph-chart-head b,.aw-idea b,.persona-problem b,.persona-match b,.pd-item b,.cu-item b){color:#E7EBE6 !important}
+body[data-theme="dark"] .c360-tile.warn{background:#241713 !important;border-color:#4A2A20 !important}
+body[data-theme="dark"] .c360-tile.warn .c360-v{color:#F0A98F !important}
+body[data-theme="dark"] .persona-hook,body[data-theme="dark"] .cor-ex-pitch{background:#171C19 !important;color:#E7EBE6 !important;border-color:rgba(255,255,255,.09) !important;border-left-color:var(--gold) !important}
+body[data-theme="dark"] .persona-mini{background:#171C19 !important;color:#9AA39C !important;border-color:rgba(255,255,255,.12) !important}
+body[data-theme="dark"] .persona-mini.on{background:var(--gold) !important;color:#221D0E !important}
+body[data-theme="dark"] .persona-objection{background:#2A2413 !important;border-color:#4A4430 !important;color:#E7C46E !important}
+body[data-theme="dark"] .persona-objection span{color:#D8BE86 !important}
+body[data-theme="dark"] .persona-chip{background:#1B211D !important;border-color:rgba(255,255,255,.12) !important;color:#D9DED8 !important}
+body[data-theme="dark"] .aw-phrase,body[data-theme="dark"] .aw-voice,body[data-theme="dark"] .aw-idea{color:#E7EBE6 !important}
+body[data-theme="dark"] .pd-item:hover{background:#1C231E !important}
+body[data-theme="dark"] .ci-bar{background:rgba(255,255,255,.08) !important}
+body[data-theme="dark"] .ph-ring{background:conic-gradient(#6E9B7C var(--pct,0%),rgba(255,255,255,.1) 0) !important}
+body[data-theme="dark"] .ph-step.live{background:linear-gradient(90deg,#241F12,#171C19 60%) !important;border-color:#4A4430 !important}
+body[data-theme="dark"] .pick-sep{background:rgba(255,255,255,.1) !important}
+body[data-theme="dark"] .persona-filter{border-color:rgba(255,255,255,.16) !important}
+body[data-theme="dark"] .persona-bchip{background:#2A2413 !important;border-color:#4A4430 !important;color:#E7C46E !important}
+/* advanced desk — timeline, scoreboard, partner stats */
+.tl-list{display:grid;gap:0}
+.tl-item{display:flex;align-items:flex-start;gap:9px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.tl-item:last-child{border-bottom:0}
+.tl-ic{font-size:13px;flex:none;width:20px;text-align:center}
+.tl-body{min-width:0;flex:1}
+.tl-body b{display:block;font-size:11.5px;color:var(--ink)}
+.tl-body small{display:block;font-size:10.5px;color:var(--mut);line-height:1.4}
+.tl-date{font-size:9.5px;font-weight:800;color:var(--mut);flex:none;white-space:nowrap;padding-top:1px}
+.pt-stats{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.pt-stats span{font-size:9.5px;font-weight:700;color:var(--mut);background:#F4F6F3;border:1px solid var(--line);border-radius:999px;padding:3px 8px}
+.pt-stats b{color:var(--ink)}
+.ad-score{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:14px}
+.ad-score-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:9px}
+.ad-score-head b{font-family:'Fraunces',serif;font-size:14px;color:var(--ink)}
+.ad-score-head span{font-size:9.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--mut);margin-left:auto}
+.ad-score-list{display:grid;gap:6px}
+.ad-score-row{display:grid;grid-template-columns:22px minmax(0,1fr) 44px 48px 62px 40px;gap:8px;align-items:center;background:#FBFCFA;border:1px solid var(--line);border-radius:11px;padding:8px 10px;cursor:pointer;text-align:left;transition:.16s}
+.ad-score-row:hover{border-color:var(--gold)}
+.ad-rank{font-family:'Fraunces',serif;font-size:14px;color:var(--gold);text-align:center}
+.ad-main{min-width:0}
+.ad-main b{display:block;font-size:12px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ad-main small{display:block;font-size:9.5px;color:var(--mut)}
+.ad-nums{text-align:right}
+.ad-nums b{display:block;font-size:12px;color:var(--ink)}
+.ad-nums small{display:block;font-size:8.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--mut)}
+.ad-score-val{font-family:'Fraunces',serif;font-size:16px;font-weight:700;color:var(--sage-ink);text-align:right}
+body[data-theme="dark"] :is(.tl-item){border-bottom-color:rgba(255,255,255,.09) !important}
+body[data-theme="dark"] :is(.tl-body b,.ad-main b,.pt-stats b,.ad-nums b){color:#E7EBE6 !important}
+body[data-theme="dark"] :is(.tl-body small,.tl-date,.ad-main small,.ad-nums small){color:#9AA39C !important}
+body[data-theme="dark"] .ad-score{background:transparent !important}
+body[data-theme="dark"] .ad-score-row{background:#171C19 !important;border-color:rgba(255,255,255,.09) !important}
+body[data-theme="dark"] .ad-score-row:hover{border-color:var(--gold) !important;background:#1C231E !important}
+body[data-theme="dark"] .pt-stats span{background:#171C19 !important;border-color:rgba(255,255,255,.09) !important}
+
 
 /* --- Mini month calendar --- */
 body[data-theme="dark"] .mini-month-day{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
@@ -16048,16 +16105,16 @@ try{
          </div>
        </div>
     </div>
-    <div class="sec-head fest-head">
-      <h3>Month festivals & creatives</h3>
-      <span class="sub">Har card click karo — WhatsApp poster ready. Manage se date/greet/quote badlo.</span>
-      <button class="btn ghost sm" id="seniorFestManage" style="margin-left:auto">⚙ Manage festivals</button>
-    </div>
     <div class="sec-head hub-head-360">
       <h3>BCS 360 — poora business ek nazar mein</h3>
       <span class="sub">Har number aapke existing data se — clients, advisors, projects, plots, bookings, sales ledger, partners, news. Tap karo, seedha us module par.</span>
     </div>
     <div class="cmd-360" id="command360"></div>
+    <div class="sec-head fest-head">
+      <h3>Month festivals & creatives</h3>
+      <span class="sub">Har card click karo — WhatsApp poster ready. Manage se date/greet/quote badlo.</span>
+      <button class="btn ghost sm" id="seniorFestManage" style="margin-left:auto">⚙ Manage festivals</button>
+    </div>
     <div class="month-fest" id="monthFestivals"></div>
 
     <div class="sec-head month-head">
@@ -16360,9 +16417,11 @@ try{
         </button>
         <button class="btn ghost sm" id="exportAdvPdfBtn" title="Export advisors PDF">📄 PDF</button>
         <button class="btn ghost sm" id="exportAdvXlsxBtn" title="Export advisors Excel">📊 Excel</button>
+        <button class="btn ghost sm" id="advisorsCsvBtn" title="Export advisors with scoreboard numbers">⬇ CSV</button>
       </div>
     </div>
     <div class="team-stats" id="advisorStats"></div>
+    <div id="advisorScoreboard"></div>
     <div id="targetsAdvisors" class="targets-host"></div>
     <div id="advHood"></div>
 
@@ -16425,6 +16484,7 @@ try{
       <select id="partnerSegmentFilter"><option value="">All segments</option></select>
       <div class="spacer"></div>
       <span class="links-toolbar-note" id="partnerCount"></span>
+      <button class="btn ghost sm" id="partnersCsvBtn" title="Export partner network with referral performance">⬇ CSV</button>
     </div>
     <div class="partner-grid" id="partnerGrid"></div>
   </section>
@@ -16540,6 +16600,7 @@ try{
         </div>
         <div class="spacer"></div>
         <span style="font-size:11.5px;color:var(--mut)">Transfer a client from their profile — full handover history stays saved.</span>
+        <button class="btn ghost sm" id="clientsCsvBtn" title="Export all clients — persona, money, visit aur follow-up data">⬇ CSV</button>
       </div>
       <div class="client-grid" id="clientGrid"></div>
       <div class="tgt-ghost-host" id="cliGhosts" style="display:none"></div>
@@ -23326,6 +23387,54 @@ document.body.addEventListener('click', e => {
   const g = e.target.closest('[data-goto]');
   if(g) go(g.dataset.goto);
 });
+/* ---------- logo tap = next page (one page at a time) ---------- */
+function navViewOrder(){
+  const btn = $$('#nav button[data-view], #navMorePanel button[data-view]').filter(b => b && !b.hidden && !b.closest('[hidden]'));
+  const seen = [];
+  btn.forEach(b => { if(b.dataset.view && !seen.includes(b.dataset.view)) seen.push(b.dataset.view); });
+  return seen.length ? seen : ['dashboard','advisory','projects','developers','clients','dayplan','pulse','news','calc','advisors','partners','resale','analytics','tax','links','templates','podcasts','health','inventory','pipeline'];
+}
+function nextViewName(){
+  const order = navViewOrder();
+  const i = order.indexOf(currentView);
+  return order[(i + 1) % order.length];
+}
+function cycleNextView(){
+  const next = nextViewName();
+  go(next);
+  const lbl = (function(){ try { const b = document.querySelector('#nav button[data-view="' + next + '"], #navMorePanel button[data-view="' + next + '"]'); return b ? (b.querySelector('.nav-lbl') || b).textContent.trim() : next; } catch(e){ return next; } })();
+  toast('→ ' + lbl);
+}
+function cyclePrevView(){
+  const order = navViewOrder();
+  const i = order.indexOf(currentView);
+  go(order[(i - 1 + order.length) % order.length]);
+}
+(function bindLogoCycle(){
+  function wire(){
+    $$('.brand, .logo').forEach(el => {
+      if(!el || el.dataset.cycleBound) return;
+      el.dataset.cycleBound = '1';
+      el.setAttribute('role', 'button');
+      el.setAttribute('tabindex', '0');
+      el.setAttribute('title', 'Tap: next page · Right-click / long-press: previous page');
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', e => {
+        if(e.target.closest('#globalSearch, .searchbox, input, a')) return;
+        e.preventDefault();
+        cycleNextView();
+      });
+      el.addEventListener('contextmenu', e => { e.preventDefault(); cyclePrevView(); });
+      el.addEventListener('keydown', e => {
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); cycleNextView(); }
+        if(e.key === 'ArrowLeft'){ e.preventDefault(); cyclePrevView(); }
+      });
+    });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire);
+  else wire();
+  setTimeout(wire, 1200);
+})();
 /* ---------- dashboard ---------- */
 function renderDashboard(){
   const projects = scopedProjects(), devs = scopedDevelopers(), clients = scopedClients();
@@ -27360,6 +27469,9 @@ function renderAdvisors(){
     $$('#advisorCoverage [data-covroad]').forEach(card => card.addEventListener('click', () => openRoadHub(card.dataset.covroad)));
   }
 
+  const sb = $('#advisorScoreboard');
+  if(sb){ try{ sb.innerHTML = advisorScoreboardHTML(list.length ? list : team); $$('#advisorScoreboard [data-adscore]').forEach(b => b.addEventListener('click', () => openAdvisorProfile(b.dataset.adscore))); }catch(e){ sb.innerHTML = ''; } }
+  const acsv = $('#advisorsCsvBtn'); if(acsv && !acsv.dataset.bound){ acsv.dataset.bound = '1'; acsv.addEventListener('click', exportAdvisorsCSV); }
   $('#advisorGrid').innerHTML = list.length ? list.map(a => {
     const ps = projectsForAdvisor(a);
     const meta = advisorStatusMeta(a.status);
@@ -27762,6 +27874,7 @@ function initClientControls(){
     (isAdmin() ? db.advisors : [currentAdvisor()].filter(Boolean)).map(a => `<option value="${a.id}">${esc(a.name)}</option>`).join('');
   $('#addClientBtn').addEventListener('click', () => openClient(null));
   $('#clientSort').addEventListener('change', renderClients);
+  const ccsv = $('#clientsCsvBtn'); if(ccsv) ccsv.addEventListener('click', exportClientsCSV);
   $('#clientAdvisorFilter').addEventListener('change', renderClients);
   $('#clientStatusBar').addEventListener('click', e => {
     const b = e.target.closest('[data-cfilter]');
@@ -28512,6 +28625,7 @@ function renderClientProfile(){
       </div>`;
     })()}
     ${personaPlaybookHTML(c)}
+    ${clientTimelineHTML(c)}
     <div class="profile-sec">
       <h5>Site visits & outcomes <span class="n">${(db.visits || []).filter(v => v.clientId === c.id).length}</span>${isAdmin() ? `<button class="btn ghost sm" type="button" data-caddvisit="${c.id}" style="margin-left:auto">+ Log visit</button>` : ''}</h5>
       ${(() => {
@@ -28726,6 +28840,146 @@ document.addEventListener('click', e => {
   const b = e.target.closest('[data-c360]');
   if(b && !e.target.closest('[data-goto]')) cmd360Action(b.dataset.c360);
 });
+/* ============================================================
+   BCS ADVANCED DESK — unified timelines, scoreboards, exports
+   Client activity timeline · partner performance · advisor
+   scoreboard · CSV exports. Sab existing collections se.
+   ============================================================ */
+function csvDownload(rows, filename){
+  const csv = rows.map(r => r.map(v => { v = String(v == null ? '' : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(',')).join('\n');
+  const blob = new Blob(['\ufeff' + csv], { type:'text/csv;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+}
+function exportClientsCSV(){
+  const list = scopedClients();
+  if(!list.length) return toast('Koi client nahi hai export ke liye', true);
+  const rows = [['Client ID','Name','Phone','Email','Status','Persona','Advisor','Budget min (L)','Budget max (L)','Timeline','Types','Corridors','Requirement','Next follow-up','Last contact','Scheduled visit','Visit slot','Pickup','Projects suggested','Bookings','Deals','Received','Pending','After-sales touches']];
+  list.forEach(c => {
+    const bks = scopedBookings().filter(b => b.clientId === c.id && b.stage !== 'cancelled');
+    const deals = (db.pipeline || []).filter(d => d.clientId === c.id && d.stage !== 'cancelled');
+    const recv = bks.reduce((s,b) => s + (number(b.received) || 0), 0);
+    const pend = bks.reduce((s,b) => s + (bookingPending(b) || 0), 0);
+    rows.push([
+      c.id, c.name || '', c.phone || '', c.email || '', clientStatusLabel(c.clientStatus), BCS_PERSONAS[clientPersona(c)].label,
+      c.advisorId ? ((advisor(c.advisorId) || {}).name || '') : 'Admin desk',
+      c.budgetMin ?? '', c.budgetMax ?? '', c.timeline || '', (c.types || []).join(' / '),
+      (c.corridors || []).map(id => corridor(id).name).join(' / '), c.requirement || '', c.nextFollowUp || '', c.lastContact || '',
+      c.visitDate || '', c.visitSlot || '', c.pickup || '', (c.projectIds || []).length,
+      bks.length, deals.length, recv ? fmtPrice(recv) : '', pend ? fmtPrice(pend) : '',
+      typeof afterSalesTouches === 'function' ? afterSalesTouches(c).length : 0
+    ]);
+  });
+  csvDownload(rows, `bcs-clients-${todayISO()}.csv`);
+  toast('Clients CSV · ' + list.length + ' rows');
+}
+function clientActivityTimeline(c){
+  if(!c) return [];
+  const out = [];
+  const isoOf = v => v || '';
+  (db.visits || []).filter(v => v.clientId === c.id).forEach(v => out.push({ at: isoOf(v.date), ic:'🧭', label:'Site visit', detail:(v.projectId ? ((scopedProjects().find(p => p.id === v.projectId) || {}).name || '') : '') + (v.outcome ? ' · ' + v.outcome : '') + (v.feedback ? ' · ' + v.feedback : '') }));
+  scopedBookings().filter(b => b.clientId === c.id).forEach(b => {
+    out.push({ at: isoOf(b.bookingDate), ic:'🏠', label:'Booking ' + bookingStageLabel(b.stage), detail:((bookingProject(b) || {}).name || '') + ' · ' + (number(b.bookingAmount) != null ? fmtPrice(b.bookingAmount) : '—') });
+    if(number(b.received)) out.push({ at: isoOf(b.updatedAt ? new Date(b.updatedAt).toISOString().slice(0,10) : b.bookingDate), ic:'₹', label:'Payment received', detail:fmtPrice(b.received) + ((bookingProject(b) || {}).name ? ' · ' + bookingProject(b).name : '') });
+  });
+  (db.pipeline || []).filter(d => d.clientId === c.id).forEach(d => {
+    out.push({ at: isoOf(d.bookingDate), ic:'📜', label:'Sale ' + (DEAL_STAGES[d.stage] || d.stage || ''), detail:(d.code || '') + ' · ' + moneyINR(Number(d.dealValue) || 0) });
+    (d.payments || []).forEach(p => out.push({ at: isoOf(p.date), ic:'💳', label:'Deal payment', detail:moneyINR(Number(p.amount) || 0) + (p.mode ? ' · ' + p.mode : '') }));
+    if(d.registryDate) out.push({ at: isoOf(d.registryDate), ic:'📝', label:'Registry', detail:d.registryOffice || '' });
+  });
+  (db.plots || []).filter(pl => pl.clientId === c.id || pl.id === c.dealPlotId).forEach(pl => {
+    const ms = (pl.ledger && pl.ledger.milestones) || [];
+    ms.forEach(m => out.push({ at: isoOf(m.date), ic:'🎯', label:'Milestone ' + (m.status === 'received' ? 'received' : 'due'), detail:(m.label || 'Payment') + ' · ' + moneyINR(Number(m.amount) || 0) }));
+  });
+  (db.journeyLogs || []).filter(j => j.clientId === c.id).forEach(j => out.push({ at: isoOf(j.at ? new Date(j.at).toISOString().slice(0,10) : ''), ic:'💬', label:'WhatsApp sent', detail:(j.kind || '') }));
+  (c.transferHistory || []).forEach(h => out.push({ at: isoOf(h.at ? new Date(h.at).toISOString().slice(0,10) : ''), ic:'↔', label:'Handover', detail:(h.fromName || 'Admin') + ' → ' + (h.toName || 'Admin') + (h.reason ? ' · ' + h.reason : '') }));
+  if(typeof afterSalesTouches === 'function') afterSalesTouches(c).forEach(t => out.push({ at: isoOf(t.date), ic:'🤝', label:'After-sales · ' + (t.kind === 'referral' ? 'referral ask' : 'anniversary'), detail:t.sub }));
+  return out.filter(x => x.at).sort((a,b) => (b.at || '').localeCompare(a.at || '')).slice(0, 24);
+}
+function clientTimelineHTML(c){
+  const items = clientActivityTimeline(c);
+  if(!items.length) return '';
+  return `<div class="profile-sec client-timeline">
+      <h5>🕒 Activity timeline <span class="n">${items.length}</span></h5>
+      <p style="font-size:11px;color:var(--mut);line-height:1.5;margin-bottom:8px">Visits, bookings, payments, milestones, WhatsApp, handover aur after-sales — sab ek hi thread me.</p>
+      <div class="tl-list">${items.map(x => `<div class="tl-item"><span class="tl-ic">${x.ic}</span><span class="tl-body"><b>${esc(x.label)}</b>${x.detail ? `<small>${esc(x.detail)}</small>` : ''}</span><span class="tl-date">${esc(fmtDate(x.at))}</span></div>`).join('')}</div>
+    </div>`;
+}
+/* ---------- partner performance ---------- */
+function partnerStats(p){
+  const deals = (db.pipeline || []).filter(d => (d.partnerId && d.partnerId === p.id) || (p.name && (d.notes || '').toLowerCase().includes(String(p.name).toLowerCase())));
+  const bookings = scopedBookings().filter(b => { const t = ((b.notes || '') + ' ' + (b.partnerName || '')).toLowerCase(); return p.name && t.includes(String(p.name).toLowerCase()); });
+  const meetings = (p.meetings || []);
+  const last = [...meetings].sort((a,b) => (b.date || '').localeCompare(a.date || ''))[0];
+  const val = deals.reduce((s,d) => s + (Number(d.dealValue) || 0), 0);
+  return { deals: deals.length, bookings: bookings.length, meetings: meetings.length, lastMeeting: last ? last.date : '', value: val };
+}
+function partnerStatsHTML(p){
+  const s = partnerStats(p);
+  return `<div class="pt-stats">
+      <span><b>${s.deals}</b> deals</span>
+      <span><b>${s.bookings}</b> bookings</span>
+      <span><b>${s.meetings}</b> meetings${s.lastMeeting ? ' · last ' + esc(fmtDate(s.lastMeeting)) : ''}</span>
+      ${s.value ? `<span><b>${fmtPrice(s.value / 100000)}</b> deal value</span>` : ''}
+    </div>`;
+}
+function exportPartnersCSV(){
+  const list = db.partners || [];
+  if(!list.length) return toast('Koi partner nahi hai export ke liye', true);
+  const rows = [['Partner','Type','Stage','Contact','Phone','Alt phone','Email','City','Segments','Corridors','Sources','Deal type','Deal summary','Deals','Bookings','Meetings','Last meeting']];
+  list.forEach(p => {
+    const s = partnerStats(p);
+    rows.push([p.name || '', partnerTypeMeta(p.type).label, partnerStageMeta(p.stage).label, p.contactPerson || '', p.phone || '', p.altPhone || '', p.email || '', p.city || '', (p.segments || []).join(' / '), (p.corridors || []).join(' / '), (p.sources || []).join(' / '), p.dealType || '', p.dealSummary || '', s.deals, s.bookings, s.meetings, s.lastMeeting || '']);
+  });
+  csvDownload(rows, `bcs-partners-${todayISO()}.csv`);
+  toast('Partners CSV · ' + list.length + ' rows');
+}
+/* ---------- advisor scoreboard ---------- */
+function advisorScore(a){
+  if(!a) return null;
+  const clients = scopedClients().filter(c => c.advisorId === a.id);
+  const projects = scopedProjects().filter(p => (a.projectIds || []).includes(p.id));
+  const deals = (db.pipeline || []).filter(d => d.advisorId === a.id && d.stage !== 'cancelled');
+  const bks = scopedBookings().filter(b => (b.advisorId === a.id) || clients.some(c => c.id === b.clientId));
+  const value = deals.reduce((s,d) => s + (Number(d.dealValue) || 0), 0);
+  const brkTotal = deals.reduce((s,d) => s + dealBrkTotal(d), 0);
+  const brkPaid = deals.reduce((s,d) => s + (Number(d.brokeragePaid) || 0), 0);
+  const payable = deals.reduce((s,d) => s + dealAdvPayable(d), 0);
+  const visits = (db.visits || []).filter(v => v.advisorId === a.id).length;
+  const booked = clients.filter(c => c.clientStatus === 'booked').length;
+  const conv = clients.length ? Math.round(booked / clients.length * 100) : 0;
+  return { clients: clients.length, projects: projects.length, deals: deals.length, value, brkTotal, brkPaid, payable, visits, booked, conv,
+    score: Math.round(conv * 0.4 + Math.min(100, deals.length * 20) * 0.4 + Math.min(100, visits * 10) * 0.2) };
+}
+function advisorScoreboardHTML(list){
+  const rows = (list || visibleAdvisors()).map(a => ({ a, s: advisorScore(a) })).sort((x,y) => (y.s.score - x.s.score));
+  if(!rows.length) return '';
+  return `<div class="ad-score">
+    <div class="ad-score-head"><b>🏆 Advisor scoreboard</b><span>booked conversion · deals · visits score</span></div>
+    <div class="ad-score-list">${rows.map((r,i) => `<button type="button" class="ad-score-row" data-adscore="${r.a.id}" title="Advisor profile kholein">
+      <span class="ad-rank">${i + 1}</span>
+      <span class="ad-main"><b>${esc(r.a.name || 'Advisor')}</b><small>${r.s.clients} clients · ${r.s.projects} projects · ${r.s.visits} visits</small></span>
+      <span class="ad-nums"><b>${r.s.deals}</b><small>deals</small></span>
+      <span class="ad-nums"><b>${r.s.conv}%</b><small>booked</small></span>
+      <span class="ad-nums"><b>${r.s.payable ? fmtPrice(r.s.payable / 100000) : '—'}</b><small>payable</small></span>
+      <span class="ad-score-val">${r.s.score}</span>
+    </button>`).join('')}</div>
+  </div>`;
+}
+function exportAdvisorsCSV(){
+  const list = visibleAdvisors();
+  if(!list.length) return toast('Koi advisor nahi hai export ke liye', true);
+  const rows = [['Advisor','Status','Phone','Email','City','Corridors','Projects','Clients','Booked','Conversion %','Visits','Deals','Deal value','Brokerage total','Brokerage paid','Advisor payable','Score']];
+  list.forEach(a => {
+    const s = advisorScore(a);
+    rows.push([a.name || '', advisorStatusMeta(a.status).label, a.phone || '', a.email || '', a.city || '', (a.corridors || []).map(id => corridor(id).name).join(' / '), s.projects, s.clients, s.booked, s.conv, s.visits, s.deals, Math.round(s.value), Math.round(s.brkTotal), Math.round(s.brkPaid), Math.round(s.payable), s.score]);
+  });
+  csvDownload(rows, `bcs-advisors-${todayISO()}.csv`);
+  toast('Advisors CSV · ' + list.length + ' rows');
+}
 /* ================= resale inventory ================= */
 let editingResale = null, resaleViewId = null;
 
@@ -40795,6 +41049,7 @@ function partnerCardHTML(p){
     </div>
     ${contact.length ? `<div class="partner-contact">${contact.join('')}</div>` : ''}
     ${(segs.length || cors.length) ? `<div class="partner-chips">${segs.join('')}${cors.join('')}</div>` : ''}
+    ${typeof partnerStatsHTML === 'function' ? partnerStatsHTML(p) : ''}
     ${deal ? `<div class="partner-deal"><b>Deal</b>${esc(deal)}</div>` : ''}
     ${sources ? `<div class="partner-src">Source: ${p.sourceUrl ? `<a href="${esc(partnerWebHref(p.sourceUrl))}" target="_blank" rel="noopener">${esc(sources)}</a>` : esc(sources)}</div>` : ''}
     ${(p.meetings || []).length ? `<div class="partner-src">🗓 ${(p.meetings || []).length} meeting${(p.meetings || []).length > 1 ? 's' : ''} logged${lastMeet && lastMeet.date ? ' · last ' + esc(fmtDate(lastMeet.date)) : ''}</div>` : ''}
@@ -41080,6 +41335,7 @@ function ptDoImport(){
 }
 function initPartners(){
   if(!$('#partnerGrid')) return;
+  const pcsv = $('#partnersCsvBtn'); if(pcsv) pcsv.addEventListener('click', exportPartnersCSV);
   $('#partnerTypeFilter').innerHTML = '<option value="">All types</option>' + PARTNER_TYPES.map(x => `<option value="${x.id}">${x.label}</option>`).join('');
   if($('#partnerStageFilter')) $('#partnerStageFilter').innerHTML = '<option value="">All stages</option>' + PARTNER_STAGES.map(x => `<option value="${x.id}">${x.label}</option>`).join('');
   if($('#pStage')) $('#pStage').innerHTML = PARTNER_STAGES.map(x => `<option value="${x.id}">${x.label}</option>`).join('');
