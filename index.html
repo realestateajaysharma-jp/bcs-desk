@@ -3992,6 +3992,53 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
 .aw-idea small{font-size:10.5px;color:var(--mut);line-height:1.45}
 .aw-idea em{font-size:9.5px;font-style:normal;font-weight:800;color:var(--sage-ink)}
 .partner-play .persona-hook{margin-bottom:8px}
+/* corridor intelligence + portal directory */
+.ci-wrap,.pd-wrap{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:10px}
+.ci-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.ci-head b{font-family:'Fraunces',serif;font-size:13.5px;color:var(--ink)}
+.ci-head span{font-size:9px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--mut);margin-left:auto}
+.ci-chart{display:grid;gap:5px;margin-bottom:12px}
+.ci-row{display:grid;grid-template-columns:96px minmax(0,1fr) 62px;gap:8px;align-items:center;cursor:pointer}
+.ci-row:hover .ci-name{color:var(--gold)}
+.ci-name{font-size:11px;font-weight:800;color:var(--ink)}
+.ci-bars{display:grid;gap:3px}
+.ci-bar{position:relative;display:block;height:11px;background:var(--line);border-radius:999px;overflow:hidden}
+.ci-bar i{display:block;height:100%;border-radius:999px;opacity:.9}
+.ci-bar em{position:absolute;right:7px;top:50%;transform:translateY(-50%);font-style:normal;font-size:7.5px;font-weight:900;letter-spacing:.4px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.ci-prem{font-size:10px;font-weight:900;text-align:right}
+.ci-prem.up{color:#2F8F6B}
+.ci-prem.down{color:#8A6480}
+.ci-city{margin-top:4px}
+.ci-city i{display:block;height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0 6px,transparent 6px 12px)}
+.ci-city em{font-style:normal;font-size:9px;font-weight:800;color:var(--gold);letter-spacing:.3px}
+.ci-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:9px}
+.ci-card{background:#FBFCFA;border:1px solid var(--line);border-radius:13px;padding:11px 12px}
+.ci-card-head{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}
+.ci-card-head b{font-size:12.5px;color:var(--ink)}
+.ci-tag{margin-left:auto;font-size:9px;font-weight:900;letter-spacing:.4px;text-transform:uppercase}
+.ci-tag.up{color:#2F8F6B}
+.ci-tag.down{color:#8A6480}
+.ci-facts{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
+.ci-facts > div{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:6px 8px}
+.ci-facts .k{font-size:8px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;color:var(--mut);display:block}
+.ci-facts b{font-size:11px;color:var(--ink)}
+.ci-drive,.ci-driver,.ci-watch,.ci-src{font-size:10.5px;color:var(--mut);line-height:1.45;margin-bottom:3px}
+.ci-drive b,.ci-driver b,.ci-watch b,.ci-src b{color:var(--ink)}
+.cu-list{display:grid;gap:7px}
+.cu-item{display:flex;align-items:center;gap:9px;background:#FBFCFA;border:1px solid var(--line);border-radius:11px;padding:9px 11px;text-decoration:none;transition:.16s;color:var(--ink)}
+.cu-item:hover{border-color:var(--gold)}
+.cu-cor{font-size:8.5px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:#fff;padding:3px 8px;border-radius:999px;white-space:nowrap;flex:none}
+.cu-item b{display:block;font-size:12px;line-height:1.35}
+.cu-item small{display:block;font-size:10.5px;color:var(--mut);line-height:1.45;margin-top:2px}
+.cu-src{font-size:9px;font-weight:800;color:var(--mut);flex:none;text-align:right;max-width:88px}
+.pd-group{margin-bottom:11px}
+.pd-group-head{font-size:11.5px;margin-bottom:7px}
+.pd-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:6px}
+.pd-item{display:flex;align-items:center;gap:8px;background:#FBFCFA;border:1px solid var(--line);border-radius:10px;padding:7px 10px;text-decoration:none;transition:.16s;color:var(--ink)}
+.pd-item:hover{border-color:var(--gold);background:#FFFDF6}
+.pd-item b{font-size:11px;display:block;line-height:1.3}
+.pd-item small{font-size:9.5px;color:var(--mut);display:block;line-height:1.35}
+.pd-item em{margin-left:auto;font-style:normal;font-size:11px;color:var(--gold);flex:none}
 /* BCS 360 */
 .cmd-360{display:grid;gap:12px}
 .c360-group{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:12px}
@@ -20549,6 +20596,9 @@ const DEFAULT_QUOTES = [
 
 const DEFAULT_LINK_CATEGORIES = [
   { id:'lcat-gov',     name:'Government / RERA', color:'#7C8B6B' },
+  { id:'lcat-auction', name:'Auction & land desk', color:'#C4674A' },
+  { id:'lcat-corridor', name:'Corridors & infrastructure', color:'#4E7CA8' },
+  { id:'lcat-market',   name:'Market data & news', color:'#3A8FB8' },
   { id:'lcat-jaipur',  name:'Jaipur local',      color:'#C4A24A' },
   { id:'lcat-portals', name:'Property portals',  color:'#54779E' },
   { id:'lcat-tools',   name:'Tools & references',color:'#8A6480' },
@@ -20561,6 +20611,23 @@ const STARTER_LINKS = [
   { id:'lstarter-maps',    name:'Google Maps',                 url:'https://www.google.com/maps',           categoryId:'lcat-jaipur',  note:'Site location & distance' },
   { id:'lstarter-bcs',     name:'BCS on Instagram',            url:'https://www.instagram.com/ajaysharma.bcs/', categoryId:'lcat-jaipur', note:'Ajay Sharma · BCS updates' },
   { id:'lstarter-mb',      name:'MagicBricks',                 url:'https://www.magicbricks.com/',          categoryId:'lcat-portals', note:'Market listings & rate check' },
+  { id:'lstarter-epanjiyan', name:'e-Panjiyan — DLC rate',     url:'https://epanjiyan.rajasthan.gov.in/',   categoryId:'lcat-gov',  note:'Colony-wise circle rate & e-value' },
+  { id:'lstarter-bhunaksha', name:'Bhunaksha — GIS map',       url:'https://bhunaksha.rajasthan.gov.in/',   categoryId:'lcat-gov',  note:'Khasra boundary map check' },
+  { id:'lstarter-igrs',    name:'IGRS Rajasthan',              url:'https://igrs.rajasthan.gov.in/',        categoryId:'lcat-gov',  note:'Registered deed verification' },
+  { id:'lstarter-udh',     name:'UDH Online Services',         url:'https://udhonline.rajasthan.gov.in/',   categoryId:'lcat-gov',  note:'Property ID, mutation, tenders' },
+  { id:'lstarter-udhauc',  name:'JDA / UDH live auctions',     url:'https://udhonline.rajasthan.gov.in/Portal/PortalAuctionList', categoryId:'lcat-auction', note:'JDA scheme plots bid pe — residential & commercial' },
+  { id:'lstarter-riicoauc', name:'RIICO E-Auction',            url:'https://riico.rajasthan.gov.in/eAuction.aspx?menu_id=25', categoryId:'lcat-auction', note:'Industrial plots + asset auctions, EMD rules' },
+  { id:'lstarter-lsgauc',  name:'LSG E-Auction portal',        url:'https://lsgeauction.rajasthan.gov.in/', categoryId:'lcat-auction', note:'Municipal property auctions across Rajasthan' },
+  { id:'lstarter-nhai',    name:'NHAI',                        url:'https://nhai.gov.in/',                  categoryId:'lcat-corridor', note:'Delhi–Jaipur expressway, ring road, NH upgrades' },
+  { id:'lstarter-jmrc',    name:'JMRC — Jaipur Metro',         url:'https://jaipurmetrorail.in/',           categoryId:'lcat-corridor', note:'Phase-1 live · Phase-2 DPR & stations' },
+  { id:'lstarter-master',  name:'JDA Master Development Plan', url:'https://jda.urban.rajasthan.gov.in/',   categoryId:'lcat-corridor', note:'Master plan 2027 & zone-wise land use' },
+  { id:'lstarter-sez',     name:'SEZ India portal',            url:'https://sezindia.nic.in/',              categoryId:'lcat-corridor', note:'SEZ approvals · Mahindra World City Jaipur' },
+  { id:'lstarter-riico',   name:'RIICO — industrial areas',    url:'https://riico.rajasthan.gov.in/',       categoryId:'lcat-corridor', note:'Sitapura / Mahindra belt industrial plots' },
+  { id:'lstarter-rhb',     name:'RHB — Housing Board',         url:'https://rhb.rajasthan.gov.in/',         categoryId:'lcat-corridor', note:'Pratap Nagar & city housing schemes' },
+  { id:'lstarter-transport', name:'Transport Dept Rajasthan',   url:'https://transport.rajasthan.gov.in/',   categoryId:'lcat-corridor', note:'Metro, roads, transport projects' },
+  { id:'lstarter-sy',      name:'Square Yards — Jaipur',       url:'https://www.squareyards.com/jaipur',    categoryId:'lcat-market',   note:'Locality & corridor median rates' },
+  { id:'lstarter-etrealty', name:'ET Realty',                  url:'https://economictimes.indiatimes.com/wealth/real-estate', categoryId:'lcat-market', note:'Policy, RERA & market analysis' },
+  { id:'lstarter-credai',  name:'CREDAI',                      url:'https://www.credai.org/',              categoryId:'lcat-market',   note:'Builder body — launches & policy' },
   { id:'lstarter-99',      name:'99acres',                     url:'https://www.99acres.com/',              categoryId:'lcat-portals', note:'Competitor listings' },
   { id:'lstarter-housing', name:'Housing.com',                 url:'https://housing.com/',                  categoryId:'lcat-portals', note:'Project research' },
   { id:'lstarter-calc',    name:'Google Calculator',           url:'https://www.google.com/search?q=calculator', categoryId:'lcat-tools', note:'Quick sq yd / rate maths' },
@@ -20592,6 +20659,87 @@ const PROPERTYWALA_JAIPUR_NEWS = [
   { title:'Jaipur 15.76% price surge in 2025 — corridor-wise growth decode', source:'PropertyWala Guides', url:'https://propertywala.com/blog/guides/decoding-jaipurs-15-76-percent-price-surge-in-2025', summary:'Q3 2025 me 15.76% jump — undervalued pockets + return tactics. Investor ke liye corridor hi alpha hai.', date:'2026-05-23', category:'market', siteName:'PropertyWala' },
   { title:'Jaipur ultra-luxury booming: ₹10+ Cr homes up 170% YoY (2025)', source:'PropertyWala Trends', url:'https://propertywala.com/blog/trends/jaipurs-ultra-luxury-real-estate-why-10-crore-homes-are-booming-in-2025', summary:'₹10-20 Cr homes me Vaishali Nagar premium lead — HNI chase is real. BCS luxury comps isi se tune karo.', date:'2026-05-13', category:'market', siteName:'PropertyWala' },
   { title:'Jaipur Office stock 9.7msf, add 6.62msf by 2028 (Commercial)', source:'PropertyWala In the News', url:'https://propertywala.com/jaipur_rajasthan/', summary:'Tier-II commercial leader: office stock 9.7msf, warehousing 22% vacancy, 2.4msf supply by 2028. Ajmer Road Sitapura belt ke liye positive.', date:'2026-10-22', category:'project', siteName:'PropertyWala' },
+];
+/* ============================================================
+   BCS CORRIDOR INTELLIGENCE + TRUSTED PORTAL DIRECTORY
+   Corridor-wise rate / infra / demand comparison (numbers +
+   charts) aur official portals — JDA, RERA, CREDAI, e-Auction,
+   master plan, Apna Khata/Bhunaksha, NHAI, SEZ, JMRC metro.
+   ============================================================ */
+const BCS_CORRIDOR_INTEL = [
+  { id:'ajmer', corridor:'Ajmer Road', median:3450, dlcLow:4950, dlcHigh:8800, dlcZone:'Kalwar Road / Sirsi Road',
+    demand:'Very high', growth:'Fastest launch pipeline', drive:'Sitapura & Mahindra SEZ · expressway access · Metro Phase-2 corridor',
+    watch:'Launch density high — developer track record check', sources:['JDA · schemes & approvals','NHAI · Delhi–Jaipur corridor','SEZ India · Mahindra World City'] },
+  { id:'tonk', corridor:'Tonk Road', median:5400, dlcLow:9900, dlcHigh:17600, dlcZone:'Tonk Road / Pratap Nagar',
+    demand:'High', growth:'Steady — end-user led', drive:'Airport corridor · Pratap Nagar RHB schemes · schools & hospitals belt',
+    watch:'Exterior vs interior DLC farq — plot position confirm karo', sources:['RHB Rajasthan · Pratap Nagar schemes','JDA · zonal plans','JMC · property tax zones'] },
+  { id:'sikar', corridor:'Sikar Road', median:4800, dlcLow:5670, dlcHigh:6800, dlcZone:'Vidya Vihar / Goner Road',
+    demand:'High', growth:'New stock + airport approach', drive:'Goner Road & Jagatpura layout growth · airport 12 km',
+    watch:'New launches — possession timeline verify', sources:['JDA · Goner Road layouts','JMRC · Phase-2 SIA','e-Panjiyan · DLC'] },
+  { id:'delhi', corridor:'Delhi Road', median:8400, dlcLow:90000, dlcHigh:125000, dlcZone:'C-Scheme & M.I. Road',
+    demand:'Premium', growth:'HNI + commercial', drive:'Central Jaipur premium · main-road frontage · high rental yield',
+    watch:'Commercial ₹1.24 lakh /sq m — use-case clear rakho', sources:['JDA · central zone plans','JMC · commercial zones','RIICO · commercial belts'] },
+  { id:'agra', corridor:'Agra Road', median:6550, dlcLow:12000, dlcHigh:42000, dlcZone:'Amer / Jal Mahal',
+    demand:'High', growth:'Tourism-led', drive:'Amer–Jal Mahal heritage belt · high-street retail demand',
+    watch:'Seasonal rental — exit plan rakho', sources:['JDA · Amer zone plans','Tourism Dept · circuits','e-Panjiyan · DLC'] },
+  { id:'diggi', corridor:'Diggi Road', median:4350, dlcLow:8800, dlcHigh:15400, dlcZone:'Sanganer',
+    demand:'Medium', growth:'Airport-side value belt', drive:'Sanganer airport proximity · affordable inventory',
+    watch:'Title & approval extra verify', sources:['Apna Khata · land records','Bhunaksha ·gis map','JDA · Sanganer plans'] }
+];
+const BCS_RATE_REF = { city:'Jaipur', cityMedian:4800, source:'Square Yards median (Sep 2026)', asOn:'Sep 2026' };
+const BCS_PORTALS = [
+  { group:'Government & registry', ic:'🏛️', items:[
+    { name:'Rajasthan RERA', url:'https://rera.rajasthan.gov.in/', use:'Project & agent registration, complaints' },
+    { name:'JDA — Jaipur Development Authority', url:'https://jda.urban.rajasthan.gov.in/', use:'Schemes, approvals, master plan, zonal plans' },
+    { name:'e-Panjiyan — DLC / e-Value', url:'https://epanjiyan.rajasthan.gov.in/', use:'Colony-wise circle rate + stamp duty' },
+    { name:'IGRS Rajasthan', url:'https://igrs.rajasthan.gov.in/', use:'Registered deeds & document verification' },
+    { name:'Apna Khata — land records', url:'https://apnakhata.rajasthan.gov.in/', use:'Jamabandi / khasra verification' },
+    { name:'Bhunaksha — GIS map', url:'https://bhunaksha.rajasthan.gov.in/', use:'Khasra boundary map check' },
+    { name:'UDH Online Services', url:'https://udhonline.rajasthan.gov.in/', use:'Property ID, mutation, tenders, free-hold' },
+    { name:'Jaipur Municipal Corporation', url:'https://jaipurmc.org/', use:'Property tax, zones, local services' },
+    { name:'e-Mitra', url:'https://emitra.rajasthan.gov.in/', use:'Citizen certificates & payments' }
+  ]},
+  { group:'E-Auction & land desk', ic:'🔔', items:[
+    { name:'JDA / UDH live auctions', url:'https://udhonline.rajasthan.gov.in/Portal/PortalAuctionList', use:'JDA scheme plots — live residential & commercial auctions' },
+    { name:'RIICO E-Auction', url:'https://riico.rajasthan.gov.in/eAuction.aspx?menu_id=25', use:'Industrial plots + asset auctions, EMD rules' },
+    { name:'LSG E-Auction portal', url:'https://lsgeauction.rajasthan.gov.in/', use:'Municipal property auctions across Rajasthan' },
+    { name:'JDA property / scheme search', url:'https://udhonline.rajasthan.gov.in/', use:'Scheme eligibility & property ID create' }
+  ]},
+  { group:'Corridors & infrastructure', ic:'🛣️', items:[
+    { name:'NHAI', url:'https://nhai.gov.in/', use:'Delhi–Jaipur expressway, ring road, NH upgrades' },
+    { name:'JMRC — Jaipur Metro', url:'https://jaipurmetrorail.in/', use:'Phase-1 status, Phase-2 DPR, stations' },
+    { name:'JDA Master Development Plan', url:'https://jda.urban.rajasthan.gov.in/', use:'Master Plan 2027 & zone-wise land use' },
+    { name:'SEZ India portal', url:'https://sezindia.nic.in/', use:'SEZ approvals, Mahindra World City Jaipur' },
+    { name:'RIICO — industrial areas', url:'https://riico.rajasthan.gov.in/', use:'Sitapura / Mahindra belt industrial plots' },
+    { name:'RHB — Rajasthan Housing Board', url:'https://rhb.rajasthan.gov.in/', use:'Pratap Nagar & city housing schemes' },
+    { name:'Transport Dept Rajasthan', url:'https://transport.rajasthan.gov.in/', use:'Metro, roads, transport projects' }
+  ]},
+  { group:'Market data & industry', ic:'📊', items:[
+    { name:'Square Yards — Jaipur', url:'https://www.squareyards.com/jaipur', use:'Locality & corridor median rates' },
+    { name:'MagicBricks — Jaipur', url:'https://www.magicbricks.com/jaipur', use:'Listings + price trends' },
+    { name:'99acres — Jaipur', url:'https://www.99acres.com/jaipur', use:'Competitor listings & comps' },
+    { name:'ET Realty', url:'https://economictimes.indiatimes.com/wealth/real-estate', use:'Policy, RERA, market analysis' },
+    { name:'CREDAI', url:'https://www.credai.org/', use:'Builder body, policy & launches' },
+    { name:'PropertyWala Jaipur', url:'https://www.propertywala.com/jaipur', use:'News + featured projects' }
+  ]}
+];
+const BCS_CORRIDOR_UPDATES = [
+  { title:'JDA approves ₹575 Cr city works — Gopalpura Bypass elevated road included', corridor:'ajmer', source:'JDA / PropertyWala', date:'2026-11-06', cat:'infrastructure', url:'https://jda.urban.rajasthan.gov.in/',
+    summary:'₹250.85 Cr Gopalpura bypass + ring road link — Ajmer Road / Sanganer travel time badhegi, corridor inventory premium test hoga.' },
+  { title:'Metro Phase-2 DPR + Social Impact Assessment published — Sitapura to Ambabari', corridor:'sikar', source:'JMRC / Transport Dept', date:'2026-10-20', cat:'infrastructure', url:'https://transport.rajasthan.gov.in/content/transportportal/en/metro/Project/PresentStatus.html',
+    summary:'23.1 km Phase-2 (Sitapura–Ambabari) PPP mode pe — station catchment 500m-1km wale plots ka rate revision window.' },
+  { title:'Ashiana ₹1,000+ Cr FY27 land plan incl. Jaipur', corridor:'agra', source:'Company filing / ET', date:'2026-11-04', cat:'market', url:'https://economictimes.indiatimes.com/wealth/real-estate',
+    summary:'Agar senior developer land acquire kar raha hai to Amer–Jal Mahal belt me next 4-6 months fresh inventory aa sakti hai.' },
+  { title:'Rajasthan Housing Board — 4 new schemes, 2 in Jaipur (Pratap Nagar, Indira Gandhi Nagar)', corridor:'tonk', source:'RHB Rajasthan', date:'2026-11-05', cat:'project', url:'https://rhb.rajasthan.gov.in/',
+    summary:'Pratap Nagar 146 units + IG Nagar 144 journalist flats — lottery allotment se Tonk Road demand push milegi.' },
+  { title:'Mahindra World City Jaipur — Adani data & convention centre MoU talks', corridor:'ajmer', source:'SEZ India / company', date:'2026-10-09', cat:'infrastructure', url:'https://sezindia.nic.in/',
+    summary:'Ajmer Road commercial demand engine — office + logistics hiring se nearby residential absorption badhega.' },
+  { title:'JDA e-Auction: Abhinav Vihar & Shaurya Nagar plots live', corridor:'tonk', source:'UDH Online', date:'2026-08-21', cat:'auction', url:'https://udhonline.rajasthan.gov.in/Portal/PortalAuctionList',
+    summary:'JDA scheme plots bid pe — auction BSP vs market rate ka gap hi asli corridor signal hai. EMD ₹64.8k–4.5L depending on plot.' },
+  { title:'NHAI: Delhi–Jaipur expressway & Jaipur Ring Road packages', corridor:'delhi', source:'NHAI', date:'2026-09-30', cat:'infrastructure', url:'https://nhai.gov.in/',
+    summary:'Ring road closure + bypass projects — transit time ka data client ko bhejo, speed sale hoti hai.' },
+  { title:'Jaipur prices +15.76% (2025) — corridor-wise growth decode', corridor:'agra', source:'PropertyWala Research', date:'2026-05-23', cat:'market', url:'https://www.propertywala.com/',
+    summary:'Undervalued pockets outperformed — corridor selection alpha hai. Compare karo DLC floor vs market median.' }
 ];
 const DEFAULT_ADVISOR_STATUSES = [
   { id:'prospect',  label:'Prospect / to call', short:'Prospect', cls:'status-new' },
@@ -21717,7 +21865,14 @@ function normalizeDb(d){
       if(urls.has(item.url)) return;
       d.news.push({ id: uid(), createdAt: Date.now() + i * 1000, updatedAt: Date.now() + i * 1000, pinned: i < 2, ...item });
     });
-    d.newsSeedVersion = 2;
+    (typeof BCS_CORRIDOR_UPDATES !== 'undefined' ? BCS_CORRIDOR_UPDATES : []).forEach((u, i) => {
+      if(urls.has(u.url)) return;
+      const ex = (typeof BCS_CORRIDOR_INTEL !== 'undefined' ? BCS_CORRIDOR_INTEL : []).find(x => x.id === u.corridor);
+      d.news.push({ id: uid(), createdAt: Date.now() + 500000 + i * 1000, updatedAt: Date.now() + 500000 + i * 1000, pinned:false,
+        title: u.title, url: u.url, source: u.source, siteName: u.source, category: u.cat, date: u.date, summary: u.summary,
+        body: ex ? ('Corridor: ' + ex.corridor + ' · ' + ex.drive + ' · Watch-out: ' + ex.watch) : '', previewImage:'' });
+    });
+    d.newsSeedVersion = 3;
   }
   d.todos.forEach(t => {
     if(t.id == null) t.id = uid();
@@ -22647,7 +22802,7 @@ function contentIdeas(){
   // 4 · DLC awareness (monthly)
   out.push({ ic:'📐', kind:'DLC awareness post', hook:'Jaipur DLC rate — exterior vs interior, ek post me samjho', body:'Zone-wise table dikhao, stamp duty 6%/5% samjhao. Sabse zyada save aur share hota hai.', cta:'"Apne plot ka DLC bhejo, main calculate karke bata deta hoon"', pulse:true });
   // 5 · market moment (Nifty Realty / gold)
-  out.push({ ic:'📊', kind:'Market moment post', hook:`Nifty Realty 921.25 — par Jaipur DLC flat. Matlab kya?`, body:'Listed realty correction vs Jaipur floor price. Value argument strong hota hai.', cta:'"Market report chahiye to bolo"', pulse:true });
+  out.push({ ic:'📊', kind:'Market moment post', hook:`Nifty Realty 908.90 (−1.34%) — par Jaipur DLC floor flat. Matlab kya?`, body:'Listed realty correction vs Jaipur floor price. Value argument strong hota hai — Sensex +0.63% par realty laggard.', cta:'"Market report chahiye to bolo"', pulse:true });
   // 6 · after-sales trust moment
   out.push({ ic:'🤝', kind:'After-sales trust story', hook:'"Registry ke baad bhi main yahin hoon" — client ka message', body:'Ledger clear hone ke baad referral ask ka real screenshot (consent ke saath). Trust ka proof.', cta:'"Referral ke liye shukriya"', clients:true });
   return out.slice(0, 6);
@@ -22729,6 +22884,108 @@ function awarenessDeskHTML(){
     </div>
   </div>`;
 }
+/* ---------- corridor intel rendering (charts + portal directory) ---------- */
+function corridorIntelRows(){
+  return BCS_CORRIDOR_INTEL.map(x => {
+    const projects = scopedProjects().filter(p => (p.corridor || '') === x.id || (corridor(p.corridor).name || '').toLowerCase() === x.corridor.toLowerCase());
+    const units = projects.reduce((n,p) => n + unitCounts(p).total, 0);
+    const sold = projects.reduce((n,p) => { const u = unitCounts(p); return n + u.booked + u.sold; }, 0);
+    const clients = (db.clients || []).filter(c => (c.corridors || []).some(id => (corridor(id).name || '').toLowerCase() === x.corridor.toLowerCase()));
+    const deskUnits = { projects: projects.length, units, sold, clients: clients.length };
+    const premium = Math.round((x.median * 10.764 / 1000 - (x.dlcLow + x.dlcHigh) / 2 / 1000) * 100);
+    return { ...x, ...deskUnits, premium };
+  });
+}
+function corridorIntelChart(){
+  const rows = corridorIntelRows();
+  const max = Math.max(...rows.map(r => r.median), BCS_RATE_REF.cityMedian) * 1.1;
+  const cityLine = BCS_RATE_REF.cityMedian;
+  const bar = (v, color, label) => `<span class="ci-bar"><i style="width:${Math.max(2, Math.round(v / max * 100))}%;background:${color}"></i><em>${label}</em></span>`;
+  return rows.map(r => `
+    <div class="ci-row" data-goto="projects" title="Projects board kholein">
+      <span class="ci-name">${esc(r.corridor)}</span>
+      <span class="ci-bars">${bar(r.median, '#54779E', '₹' + r.median.toLocaleString('en-IN'))}${bar(Math.round((r.dlcLow + r.dlcHigh) / 2), '#A57B36', 'DLC ₹' + Math.round((r.dlcLow + r.dlcHigh) / 2).toLocaleString('en-IN'))}</span>
+      <span class="ci-prem ${r.premium >= 0 ? 'up' : 'down'}">${r.premium > 0 ? '+' : ''}${r.premium}%</span>
+    </div>`).join('') +
+    `<div class="ci-city" style="left:0"><i style="width:${Math.round(cityLine / max * 100)}%"></i><em>Jaipur median ₹4,800/sq ft (Square Yards · ${esc(BCS_RATE_REF.asOn)})</em></div>`;
+}
+function corridorIntelHTML(){
+  const rows = corridorIntelRows();
+  return `<div class="ci-wrap">
+      <div class="ci-head"><b>📊 Corridor comparison — market median vs DLC floor</b><span>₹/sq ft · ₹/sq m DLC</span></div>
+      <div class="ci-chart">${corridorIntelChart()}</div>
+      <div class="ci-cards">
+        ${rows.map(r => `
+          <div class="ci-card">
+            <div class="ci-card-head"><b>${esc(r.corridor)}</b><span class="ci-tag ${r.premium >= 0 ? 'up' : 'down'}">premium ${r.premium > 0 ? '+' : ''}${r.premium}%</span></div>
+            <div class="ci-facts">
+              <div><span class="k">Market median</span><b>₹${r.median.toLocaleString('en-IN')} /sq ft</b></div>
+              <div><span class="k">DLC floor</span><b>₹${(r.dlcLow).toLocaleString('en-IN')}–${(r.dlcHigh).toLocaleString('en-IN')} /sq m</b></div>
+              <div><span class="k">Demand</span><b>${esc(r.demand)}</b></div>
+              <div><span class="k">Desk</span><b>${r.projects} proj · ${r.units} units · ${r.sold} sold · ${r.clients} clients</b></div>
+            </div>
+            <div class="ci-drive"><b>Growth driver:</b> ${esc(r.drive)}</div>
+            <div class="ci-driver"><b>Growth status:</b> ${esc(r.growth)}</div>
+            <div class="ci-watch"><b>Watch-out:</b> ${esc(r.watch)}</div>
+            <div class="ci-src"><b>Read more:</b> ${r.sources.map(s => esc(s)).join(' · ')}</div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+}
+function portalDirectoryHTML(){
+  return `<div class="pd-wrap">
+    <div class="ci-head"><b>🔗 Trusted portals — corridor & case ke liye</b><span>official sources</span></div>
+    ${BCS_PORTALS.map(g => `
+      <div class="pd-group">
+        <div class="pd-group-head">${g.ic} <b>${esc(g.group)}</b></div>
+        <div class="pd-items">
+          ${g.items.map(it => `<a class="pd-item" href="${esc(it.url)}" target="_blank" rel="noopener noreferrer" title="${esc(it.use)}">
+            <b>${esc(it.name)}</b><small>${esc(it.use)}</small><em>↗</em>
+          </a>`).join('')}
+        </div>
+      </div>`).join('')}
+  </div>`;
+}
+function corridorUpdatesHTML(){
+  return `<div class="pd-wrap">
+    <div class="ci-head"><b>🛣️ Growth corridor updates — read karo, client ko bhejo</b><span>${BCS_CORRIDOR_UPDATES.length} updates</span></div>
+    <div class="cu-list">
+      ${BCS_CORRIDOR_UPDATES.map(u => {
+        const ex = BCS_CORRIDOR_INTEL.find(x => x.id === u.corridor);
+        return `<a class="cu-item" href="${esc(u.url)}" target="_blank" rel="noopener noreferrer" title="${esc(u.summary)}">
+          <span class="cu-cor" style="background:${ex ? (corridor(corridorIdByName(ex.corridor)) || {}).color || '#54779E' : '#54779E'}">${esc(ex ? ex.corridor : 'Jaipur')}</span>
+          <span style="min-width:0"><b>${esc(u.title)}</b><small>${esc(u.summary)}</small></span>
+          <span class="cu-src">${esc(u.source)} · ${esc(fmtDate(u.date))}</span>
+        </a>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+function corridorIdByName(name){
+  const c = (db.corridors || []).find(x => (x.name || '').toLowerCase() === String(name).toLowerCase());
+  return c ? c.id : '';
+}
+function renderCorridorIntel(){
+  const puls = $('#view-pulse');
+  if(!puls) return;
+  let wrap = $('#corridorIntelPanel');
+  const html = `<div class="panel" id="corridorIntelPanel" style="margin-top:12px">
+      <div class="panel-head"><h4>₹ Jaipur growth corridors — rate · infra · insight</h4><span class="n-badge">${BCS_CORRIDOR_UPDATES.length} updates</span><span class="sub" style="font-size:10.5px;color:var(--mut)">Corridor-wise market median vs DLC floor, infrastructure driver, demand aur official source — sab ek jagah.</span></div>
+      ${corridorIntelHTML()}
+      ${corridorUpdatesHTML()}
+      ${portalDirectoryHTML()}
+    </div>`;
+  if(!wrap){
+    const ap = $('#awarenessPanel');
+    if(ap) ap.insertAdjacentHTML('afterend', html);
+    else {
+      const ir = $('#indiaRatesPanel');
+      if(ir) ir.insertAdjacentHTML('afterend', html);
+      else puls.insertAdjacentHTML('beforeend', html);
+    }
+  } else wrap.outerHTML = html;
+}
+/* renderCorridorIntel() is called from the market boot hook */
 function renderAwarenessDesk(){
   const puls = $('#view-pulse');
   if(!puls) return;
@@ -43050,18 +43307,18 @@ const BCS_RATES_REF = {
   city: 'Jaipur · Rajasthan 302021',
   gold: { g24: 13695, g22: 12555, g18: 10275, per10g24: 136950, per10g22: 125550, per10g18: 102750, chg10g: -820 },
   silver: { g: 190, kg: 190000, chgKg: -5000 },
-  fx: { usdInr: 94.24, pct: 0.21, prev: 94.04 },
+  fx: { usdInr: 93.92, pct: -0.29, prev: 94.25 },
   crypto: { btcUsd: 64906, ethUsd: 1780 },
   fuel: { petrol: 113.19, diesel: 98.25, cng: 101.50, chg: 0 },
   indices: [
-    { name:'Nifty 50', val:'25,144.30', pts:-155.05, pct:-0.61, note:'NSE close · 13 Nov' },
-    { name:'Sensex', val:'81,592.45', pts:-318.56, pct:-0.39, note:'BSE close · 13 Nov' },
-    { name:'Nifty Realty', val:'921.25', pts:-13.00, pct:-1.39, note:'sector top laggard' },
-    { name:'Nifty Bank', val:'61,034.10', pts:-484.40, pct:-0.79, note:'NSE close · 13 Nov' },
-    { name:'India VIX', val:'15.50', pts:-1.12, pct:-6.75, note:'volatility gauge' }
+    { name:'Nifty 50', val:'25,291.10', pts:146.80, pct:0.58, note:'NSE close · 16 Nov' },
+    { name:'Sensex', val:'82,104.79', pts:512.34, pct:0.63, note:'BSE close · 16 Nov' },
+    { name:'Nifty Realty', val:'908.90', pts:-12.35, pct:-1.34, note:'realty laggard' },
+    { name:'Nifty Bank', val:'61,575.90', pts:541.80, pct:0.89, note:'NSE close · 16 Nov' },
+    { name:'India VIX', val:'15.68', pts:0.18, pct:1.16, note:'volatility gauge' }
   ],
-  mcx: { gold10: 136000, silverKg: 176000, note:'Dec futures · MCX 13 Nov' },
-  fii: 'Nov FPI inflow $8bn+ — 9 straight sessions of FII buying',
+  mcx: { gold10: 134801, silverKg: 169917, note:'MCX close · 16 Nov' },
+  fii: 'Nov FPI net buy $8.9bn — record single-month inflow, 3rd straight winning week',
   stamp: { duty:'6% (male owner) · 5% (female owner)', reg:'1% of value', note:'Higher of DLC value or price' },
   dlc: [
     { zone:'C-Scheme & M.I. Road', low:90000, high:125000, type:'Residential' },
@@ -43186,12 +43443,12 @@ function renderLiveMarket(snapshot){
       delta: mktDeltaChip(null, 'unchanged'), sub:'Rajasthan pump · ' + BCS_RATES_REF.verifiedLabel },
     { label:'Diesel · Jaipur', val: ratesRefVal(BCS_RATES_REF.fuel.diesel, 2),
       delta: mktDeltaChip(null, 'unchanged'), sub:'Rajasthan pump · ' + BCS_RATES_REF.verifiedLabel },
-    { label:'Nifty 50', val: '25,144.30',
-      delta: mktDeltaChip(-0.61, 'NSE close'), sub:'NSE · 13 Nov 2026' },
-    { label:'Sensex', val: '81,592.45',
-      delta: mktDeltaChip(-0.39, 'BSE close'), sub:'BSE · 13 Nov 2026' },
-    { label:'Nifty Realty', val: '921.25',
-      delta: mktDeltaChip(-1.39, 'top laggard'), sub:'realty sector · 13 Nov' },
+    { label:'Nifty 50', val: '25,291.10',
+      delta: mktDeltaChip(0.58, 'NSE close'), sub:'NSE · 16 Nov close' },
+    { label:'Sensex', val: '82,104.79',
+      delta: mktDeltaChip(0.63, 'BSE close'), sub:'BSE · 16 Nov close' },
+    { label:'Nifty Realty', val: '908.90',
+      delta: mktDeltaChip(-1.34, 'laggard'), sub:'realty sector · 16 Nov' },
     { label:'Gold · Jaipur 24K', val: '₹1,36,950',
       delta: mktDeltaChip(-0.60, 'per 10g'), sub:'Jaipur retail · ' + BCS_RATES_REF.verifiedLabel },
     { label:'Silver · Jaipur', val: '₹1,90,000',
@@ -43296,6 +43553,7 @@ function renderDataStatus(){
 initMarketStrip();
 try{ renderIndiaRates(); }catch(e){ console.warn('[BCS rates]', e); }
 try{ renderAwarenessDesk(); }catch(e){ console.warn('[BCS awareness]', e); }
+try{ renderCorridorIntel(); }catch(e){ console.warn('[BCS intel]', e); }
 /* paint cached headlines immediately, then fetch fresh ones on boot
    (so the ticker is never empty until the News tab is opened) */
 try{ renderTicker(); }catch(e){}
