@@ -22971,6 +22971,12 @@ let __calView = 'month';
 function scheduledVisitList(){
   return scopedClients().filter(c => c.visitDate && /^\d{4}-\d{2}-\d{2}$/.test(String(c.visitDate)));
 }
+function dueVisitList(){
+  // scheduled visits that are today or only recently passed — stale dates are noise
+  const floor = addISO(todayISO(), -7);
+  const today = todayISO();
+  return scheduledVisitList().filter(c => c.visitDate <= today && c.visitDate >= floor);
+}
 function plotMilestoneList(){
   const out = [];
   (db.plots || []).forEach(plot => {
@@ -24463,7 +24469,7 @@ function renderSeniorDesk(){
     ...overdueTasks.slice(0,1).map(t => ({ title:t.title || 'Overdue task', sub:'Overdue · ' + fmtDate(t.date), kind:'dayplan' })),
     ...dueClients.slice(0,3).map(c => ({ title:c.name || c.phone || 'Client', sub:'Client · ' + followupInfo(c.nextFollowUp).label, click:'senclient', id:c.id })),
     ...dueAdvisors.slice(0,2).map(a => ({ title:a.name || 'Advisor', sub:'Advisor · ' + followupInfo(a.nextFollowUp).label, click:'senadvisor', id:a.id })),
-    ...scheduledVisitList().filter(c => c.visitDate <= today).slice(0,2).map(c => ({ title:c.name || c.phone || 'Client', sub:'Site visit · ' + (c.visitSlot || 'time TBD') + (c.visitDate === today ? ' · today' : ' · ' + fmtDate(c.visitDate)), click:'senvisit', id:c.id })),
+    ...dueVisitList().slice(0,2).map(c => ({ title:c.name || c.phone || 'Client', sub:'Site visit · ' + (c.visitSlot || 'time TBD') + (c.visitDate === today ? ' · today' : ' · ' + fmtDate(c.visitDate)), click:'senvisit', id:c.id })),
     ...plotDueGroups(plotMilestoneList().filter(x => x.milestone.date <= today)).sort((a,b) => a.date.localeCompare(b.date)).slice(0,2).map(x => ({ title:x.client ? (x.client.name || x.client.phone || 'Client') : 'Plot due', sub:(x.count > 1 ? x.count + ' milestones · ' : '') + moneyINR(x.amount) + (x.overdue ? ' · overdue' : ''), click:'sendue', id:x.plot.id }))
   ].slice(0, 9);
   const attention = [
