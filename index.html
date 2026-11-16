@@ -13276,6 +13276,78 @@ body[data-theme="dark"] .mkt-tips li{color:#C9CDBF}
 }
 
 /* ============================================================
+   ACTIVATION LANES v164 — slab confirm → active → promote
+   ============================================================ */
+.hood{margin:0 0 16px;border:1px solid var(--line2);border-radius:16px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 5%,var(--panel)),var(--panel));padding:12px 14px 14px;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.hood-head{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.hood-head>div{min-width:0;flex:1}
+.hood-head b{display:block;font-size:12.5px;font-weight:800;letter-spacing:.2px;color:var(--ink)}
+.hood-head span{display:block;font-size:10.5px;color:var(--mut);font-weight:600;line-height:1.5;margin-top:2px}
+.hood-total{flex:0 0 auto;font-size:10.5px;font-weight:800;color:var(--mut);background:var(--panel2,#F4F2EC);border:1px solid var(--line);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.hood-lanes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hood-lane{border:1.5px dashed var(--line2);border-radius:13px;padding:9px 10px;background:var(--panel);min-width:0;transition:.15s}
+.hood-lane.hood-active{border-style:solid;border-color:#C6DECE;background:linear-gradient(180deg,#F5FBF7,var(--panel))}
+.hood-lane.over{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 20%,transparent);background:color-mix(in srgb,var(--gold) 7%,var(--panel))}
+.hood-lane-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.hood-lane-head b{font-size:11px;font-weight:800;letter-spacing:.3px;color:var(--ink)}
+.hood-active .hood-lane-head b{color:#2F6644}
+.hood-lane-head span{margin-left:auto;font-size:10px;font-weight:800;color:var(--mut);background:var(--panel2,#F4F2EC);border:1px solid var(--line);border-radius:999px;padding:2px 8px}
+.hood-cards{display:flex;flex-direction:column;gap:6px;max-height:230px;overflow:auto}
+.hood-chip{display:flex;align-items:center;gap:8px;padding:7px 8px 7px 10px;border:1px solid var(--line);border-radius:11px;background:var(--panel);cursor:grab;min-width:0;transition:.14s}
+.hood-chip:hover{border-color:var(--line2);box-shadow:0 6px 18px -12px rgba(46,45,32,.5)}
+.hood-chip:active{cursor:grabbing}
+.hood-chip.dragging{opacity:.45}
+.hood-chip.is-active{border-left:3px solid #4F8A63}
+.hood-chip.is-hold{border-left:3px solid #D8B25A}
+.hc-dot{width:7px;height:7px;border-radius:50%;flex:none;background:#C9A84E}
+.hood-chip.is-active .hc-dot{background:#4F8A63}
+.hc-main{min-width:0;flex:1;display:flex;flex-direction:column}
+.hc-main b{font-size:11.5px;font-weight:800;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hc-main span{font-size:9.5px;color:var(--mut);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hc-actions{display:flex;gap:4px;flex:0 0 auto}
+.hc-actions button{border:1px solid var(--line2);background:var(--panel);color:var(--ink2);border-radius:7px;padding:4px 7px;font-size:9.5px;font-weight:800;cursor:pointer;font-family:inherit;white-space:nowrap;transition:.14s}
+.hc-actions button:hover{background:var(--panel2,#F4F2EC)}
+.hood-empty{font-size:10.5px;color:var(--mut);font-weight:600;text-align:center;padding:12px 8px;border:1px dashed var(--line2);border-radius:10px;line-height:1.5}
+.links-stats .v small{display:block;font-size:9.5px;color:var(--mut);font-weight:600;margin-top:2px;line-height:1.35}
+.dev-slab-chip{margin-top:7px;font-size:10px;font-weight:800;color:#2F6644;background:#EDF6EF;border:1px solid #C6DECE;border-radius:8px;padding:4px 8px;display:inline-block;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hold-chip{margin-top:7px;font-size:10px;font-weight:800;color:#8A6D1F;background:#FBF3DC;border:1px dashed #E9D9A8;border-radius:8px;padding:4px 8px;display:inline-block}
+.hold-chip.sm{font-size:9px;padding:3px 7px;margin-top:5px}
+.slab-fields .field{margin-bottom:10px}
+.promo-tabs{display:flex;gap:6px;margin-bottom:10px}
+.promo-tabs button{border:1px solid var(--line2);background:var(--panel);color:var(--ink2);border-radius:999px;padding:6px 13px;font-size:11.5px;font-weight:800;cursor:pointer;font-family:inherit}
+.promo-tabs button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.promo-projects{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px}
+.promo-proj{display:flex;flex-direction:column;gap:1px;border:1px solid var(--line2);background:var(--panel);border-radius:10px;padding:6px 9px;min-width:0;max-width:100%}
+.promo-proj b{font-size:11px;font-weight:800;color:var(--ink)}
+.promo-proj span{font-size:9.5px;color:var(--mut);font-weight:600}
+.promo-empty{font-size:11px;color:var(--mut);font-weight:600}
+#promoMsg{min-height:190px;font-family:inherit;line-height:1.6}
+.promo-note{font-size:10.5px;color:var(--mut);font-weight:700;margin-right:auto}
+body[data-theme="dark"] .hood{background:linear-gradient(180deg,rgba(196,154,62,.07),#191E19);border-color:#2F352F}
+body[data-theme="dark"] .hood-lane{background:#1B211C;border-color:#333A33}
+body[data-theme="dark"] .hood-lane.hood-active{background:linear-gradient(180deg,#1B2A1F,#1B211C);border-color:#35543E}
+body[data-theme="dark"] .hood-lane-head b{color:#EDEBD9}
+body[data-theme="dark"] .hood-active .hood-lane-head b{color:#8FCFA1}
+body[data-theme="dark"] .hood-lane-head span,body[data-theme="dark"] .hood-total{background:#222822;border-color:#313831;color:#A8AE9F}
+body[data-theme="dark"] .hood-chip{background:#1F261F;border-color:#2C332C}
+body[data-theme="dark"] .hc-main b{color:#EDEBD9}
+body[data-theme="dark"] .hc-actions button{background:#222822;border-color:#343B34;color:#C9CDBF}
+body[data-theme="dark"] .dev-slab-chip{background:#1E2C21;border-color:#35543E;color:#8FCFA1}
+body[data-theme="dark"] .hold-chip{background:#2A2418;border-color:#4A3F22;color:#E7C46E}
+body[data-theme="dark"] .promo-tabs button{background:#1B211C;border-color:#313831;color:#C9CDBF}
+body[data-theme="dark"] .promo-tabs button.on{background:#E7C46E;border-color:#E7C46E;color:#221D0E}
+body[data-theme="dark"] .promo-proj{background:#1B211C;border-color:#2C332C}
+body[data-theme="dark"] .promo-proj b{color:#EDEBD9}
+@media(max-width:900px){ .hood-lanes{grid-template-columns:1fr} .hood-cards{max-height:200px} }
+@media(max-width:640px){
+  .hood{padding:10px 10px 11px}
+  .hood-head span{font-size:10px}
+  .hood-chip{flex-wrap:wrap}
+  .hc-actions{margin-left:15px}
+  .promo-tabs button{flex:1}
+}
+
+/* ============================================================
    TARGET LISTS v162 — bulk prospects per page + two-way showcase
    ============================================================ */
 .targets-host{margin:0 0 14px}
@@ -16016,6 +16088,7 @@ try{
       <button class="btn ghost sm" id="exportProjPdfBtn" title="Export projects PDF">📄 PDF</button>
       <button class="btn ghost sm" id="exportProjXlsxBtn" title="Export projects Excel">📊 Excel</button>
     </div>
+    <div id="projHood"></div>
     <div class="board" id="board"></div>
     <div class="show-grid" id="galleryGrid" style="display:none"></div>
     <div id="projectListWrap" style="display:none"></div>
@@ -16036,6 +16109,7 @@ try{
       </div>
     </div>
     <div class="links-stats" id="devStats"></div>
+    <div id="devHood"></div>
     <div id="targetsDevelopers" class="targets-host"></div>
     <div class="sec-head" style="margin-top:18px">
       <h3>Developers &amp; owners</h3>
@@ -16119,6 +16193,7 @@ try{
     </div>
     <div class="team-stats" id="advisorStats"></div>
     <div id="targetsAdvisors" class="targets-host"></div>
+    <div id="advHood"></div>
 
     <div class="sec-head" style="margin-top:4px">
       <h3>Active BCS advisors</h3>
@@ -18231,6 +18306,7 @@ try{
             <select id="pStatus"><option value="ongoing">Ongoing</option><option value="upcoming">Upcoming</option><option value="completed">Completed</option></select>
           </div>
         </div>
+        <label class="switch" style="margin:0 0 12px"><input type="checkbox" id="pActive" checked><span class="track"></span><span><b>Active lane</b> — project advisors &amp; clients ko promote karne ke liye live hai</span></label>
         <div class="field">
           <label>Property type — select all that apply</label>
           <div class="checks" id="pTypes"></div>
@@ -18562,6 +18638,50 @@ try{
   </div>
 </div>
 
+<!-- ============ ACTIVATION · SLAB CONFIRM (v164) ============ -->
+<div class="overlay" id="slabModal">
+  <div class="modal" style="width:min(480px,100%)">
+    <div class="modal-head">
+      <h3 id="slabTitle">Slab confirm karein</h3>
+      <button class="xbtn" data-close="slabModal">✕</button>
+    </div>
+    <div class="modal-body slab-fields">
+      <p class="mini-note" id="slabSub" style="margin-top:0"></p>
+      <div class="field" id="slabRateField"><label>Slab per sq yd (₹)</label><input id="slabRate" type="number" min="0" step="50" placeholder="1200 / 1500"></div>
+      <div class="field" id="slabTextField"><label>Slab detail</label><input id="slabText" placeholder="e.g. ₹1,200 / sq yd · 10% booking · 30 din payout"></div>
+      <div class="field"><label>Terms / payout note</label><input id="slabNote" placeholder="e.g. Booking par 10%, registry ke 30 din me payout"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="slabModal">Cancel</button>
+      <button class="btn primary" id="slabSave">Confirm &amp; activate</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ACTIVATION · PROMOTE (v164) ============ -->
+<div class="overlay" id="promoteModal">
+  <div class="modal" style="width:min(680px,100%)">
+    <div class="modal-head">
+      <h3 id="promoTitle">Promote</h3>
+      <button class="xbtn" data-close="promoteModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="promo-tabs" id="promoTabs">
+        <button type="button" data-promo-aud="advisor" class="on">👥 Advisors</button>
+        <button type="button" data-promo-aud="client">🏠 Clients</button>
+      </div>
+      <div class="promo-projects" id="promoProjects"></div>
+      <div class="field"><label>Ready message — copy ya WhatsApp</label><textarea id="promoMsg" rows="10"></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <span class="promo-note" id="promoNote"></span>
+      <button class="btn ghost" data-close="promoteModal">Baad me</button>
+      <button class="btn ghost" id="promoCopy">📋 Copy</button>
+      <button class="btn primary" id="promoWa">💬 WhatsApp</button>
+    </div>
+  </div>
+</div>
+
 <!-- ============ CORRIDOR MANAGER ============ -->
 <div class="overlay" id="corridorModal">
   <div class="modal" style="width:min(640px,100%)">
@@ -18622,6 +18742,11 @@ try{
         <div class="field"><label>Phone</label><input id="dPhone" placeholder="+91 …"></div>
       </div>
       <div class="field"><label>Developer website</label><input id="dWebsite" type="url" inputmode="url" placeholder="https://www.company.com" spellcheck="false"></div>
+      <div class="grid2">
+        <div class="field"><label>Slab confirmed <span style="font-size:10px;color:var(--mut)">(active lane)</span></label><input id="dSlab" placeholder="e.g. ₹1,200 / sq yd"></div>
+        <div class="field"><label>Slab note</label><input id="dSlabNote" placeholder="e.g. 10% booking · 30 din payout"></div>
+      </div>
+      <label class="switch" style="margin:2px 0 12px"><input type="checkbox" id="dActive"><span class="track"></span><span><b>Active lane</b> — slab confirmed, promoting now (warna pre-meeting / on hold)</span></label>
       <div class="field"><label>Notes</label><textarea id="dNotes" placeholder="Relationship, slab discussion, references…"></textarea></div>
       <div class="field"><label>Developer remarks</label><textarea id="dRemarks" placeholder="Payment behaviour, approval style, launch plans, do's &amp; don'ts — anything you want to remember about this developer…"></textarea></div>
       <div class="field"><label>My custom fields <button type="button" class="quick-add-btn" data-cfmanage="developer">⚙ Manage</button></label><div id="dCustomFields"></div></div>
@@ -21166,6 +21291,10 @@ function normalizeDb(d){
     if(x.ownerPhoto == null) x.ownerPhoto = '';
     if(x.designation == null) x.designation = '';
     if(x.birthday == null) x.birthday = '';
+    if(x.slab == null) x.slab = '';
+    if(x.slabNote == null) x.slabNote = '';
+    if(x.slabAt == null) x.slabAt = null;
+    if(typeof x.active !== 'boolean') x.active = true;
     // Backward compat: if photo exists but no logo, promote photo to logo
     if(x.photo && !x.logo) x.logo = x.photo;
   });
@@ -21254,6 +21383,10 @@ function normalizeDb(d){
   });
   d.projects.forEach(p => {
     if(!Array.isArray(p.types)) p.types = [];
+    if(p.slab == null) p.slab = '';
+    if(p.slabNote == null) p.slabNote = '';
+    if(p.slabAt == null) p.slabAt = null;
+    if(typeof p.active !== 'boolean') p.active = true;
     if(p.timeline == null) p.timeline = '';
     if(p.plotUse == null) p.plotUse = '';
     if(p.approvalType == null) p.approvalType = guessApprovalType(p.approval);
@@ -25494,6 +25627,7 @@ function emptyBlock(title, text, btn, action){
 /* ---------- projects ---------- */
 function filteredProjects(){
   let list = [...scopedProjects()];
+  if(targetScope('projects') === 'active') list = list.filter(projIsActive);
   const q = $('#globalSearch').value.trim().toLowerCase();
   if(q) list = list.filter(p => {
     const d = dev(p.developerId);
@@ -25520,6 +25654,7 @@ function filteredProjects(){
 }
 function renderProjects(){
   try{ renderTargets('projects'); }catch(e){}
+  try{ renderActivationHood('projects'); }catch(e){}
   const list = filteredProjects();
   const all = scopedProjects();
   const fs = $('#filterStatus').value;
@@ -25638,6 +25773,7 @@ function projectCard(p){
       <div class="ttl">${esc(p.name)}</div>
       <div class="dev">${esc(d ? d.name : 'No developer')}</div>
       <div class="price">${priceRange(p)}</div>
+      ${projIsActive(p) ? '' : `<div class="hold-chip sm">○ On hold — activation lane se live karein</div>`}
       ${(priceBadgeHTML(p) || qualityBadgeHTML(p)) ? `<div class="tags" style="margin-top:5px">${priceBadgeHTML(p)}${qualityBadgeHTML(p)}</div>` : ''}
       ${(p.types||[]).length ? `<div class="tags">${p.types.map(t => `<span class="tag">${esc(typeName[t] || t)}</span>`).join('')}</div>` : ''}
       ${p.rera ? `<div class="rera">◆ ${esc(p.rera)}</div>` : approvalLabel(p) ? `<div class="rera">◆ ${esc(approvalLabel(p))}</div>` : ''}
@@ -25739,19 +25875,24 @@ function renderDevBoard(){
 
 function renderDevelopers(){
   try{ renderTargets('developers'); }catch(e){}
+  try{ renderActivationHood('developers'); }catch(e){}
   try{
     const all = scopedDevelopers();
+    const activeN = all.filter(devIsActive).length;
+    const holdN = all.length - activeN;
     const ps = scopedProjects().length;
     const rera = scopedProjects().filter(p => p.rera).length;
     const withProj = all.filter(d => projectsForDeveloper(d.id).length).length;
     if($('#devStats')) $('#devStats').innerHTML = `
-      <div><div class="k">Developers</div><div class="v">${all.length}</div></div>
+      <div><div class="k">Developers</div><div class="v">${activeN}<small>${holdN} pre-meeting / hold</small></div></div>
       <div><div class="k">With projects</div><div class="v">${withProj}</div></div>
       <div><div class="k">Total projects</div><div class="v">${ps}</div></div>
       <div><div class="k">RERA projects</div><div class="v">${rera}</div></div>`;
   }catch(e){}
   const q = $('#globalSearch').value.trim().toLowerCase();
-  let list = [...scopedDevelopers()].sort((a,b) => (a.name||'').localeCompare(b.name||''));
+  let list = [...scopedDevelopers()];
+  if(targetScope('developers') === 'active') list = list.filter(devIsActive);
+  list.sort((a,b) => (a.name||'').localeCompare(b.name||''));
   if(q) list = list.filter(d => [d.name,d.ownerName,d.designation,d.email,d.phone,d.notes,d.remarks].filter(Boolean).join(' ').toLowerCase().includes(q));
   $$('#devViewToggle button').forEach(x => x.classList.toggle('on', x.dataset.devview === devViewMode));
   $('#devBoard').style.display = devViewMode === 'cards' ? '' : 'none';
@@ -25788,6 +25929,8 @@ function renderDevelopers(){
         ${ps.length ? `<span class="chip">${ps.length} project${ps.length===1?'':'s'}</span>` : `<span class="chip" style="opacity:.6">No projects</span>`}
         ${corr.slice(0,3).map(id => `<span class="chip">${esc(corridor(id).name.replace(' Road',''))}</span>`).join('')}
       </div>
+      ${d.slab ? `<div class="dev-slab-chip">✓ ${esc(d.slab)}${d.slabNote ? ' · ' + esc(d.slabNote) : ''}</div>` : ''}
+      ${devIsActive(d) ? '' : `<div class="hold-chip">○ Pre-meeting / on hold — activation lane se live karein</div>`}
       ${ps.length ? `<div class="dev-status-strip">${DEV_BUCKETS.map(b => `<button type="button" class="${cnt[b.id] ? '' : 'zero'}" data-devid="${d.id}" data-devstatus="${b.id}" title="${cnt[b.id]} ${b.label} project${cnt[b.id] === 1 ? '' : 's'} — list dekhein"><b>${cnt[b.id]}</b><span>${b.label}</span></button>`).join('')}</div>` : ''}
       ${d.remarks ? `<div class="dev-remark-preview">“${esc(String(d.remarks).slice(0, 120))}${String(d.remarks).length > 120 ? '…' : ''}”</div>` : ''}
       ${ps.length ? `<div class="meta-row"><span class="k">Open</span><div class="project-mini">${ps.slice(0,3).map(p => `<span>${esc(p.name)}</span>`).join('')}${ps.length > 3 ? `<span>+${ps.length - 3} more</span>` : ''}</div></div>` : ''}
@@ -26372,6 +26515,7 @@ function initAdvisorControls(){
 
 function renderAdvisors(){
   try{ renderTargets('advisors'); }catch(e){}
+  try{ renderActivationHood('advisors'); }catch(e){}
   const q = ($('#globalSearch').value || '').trim().toLowerCase();
   const state = advisorStatusFilter || (($('#advisorState') || {}).value || '');
   const team = isAdmin() ? db.advisors : [currentAdvisor()].filter(Boolean);
@@ -29765,6 +29909,7 @@ function openProject(id, presetCorridor, presetDevId, presetAdvisorIds){
   $('#pCorrQuick').classList.remove('on');
   $('#pCorrQuickName').value = '';
   $('#pStatus').value = p.status || 'ongoing';
+  if($('#pActive')) $('#pActive').checked = id ? projIsActive(p) : true;
   $$('#pTypes input').forEach(i => { i.checked = (p.types||[]).includes(i.value); });
   $('#pPlotUse').value = p.plotUse || '';
   $('#pTimeline').value = p.timeline || '';
@@ -29825,6 +29970,9 @@ function openDeveloper(id){
   $('#dWebsite').value = d.website || '';
   $('#dNotes').value = d.notes || '';
   $('#dRemarks').value = d.remarks || '';
+  if($('#dSlab')) $('#dSlab').value = d.slab || '';
+  if($('#dSlabNote')) $('#dSlabNote').value = d.slabNote || '';
+  if($('#dActive')) $('#dActive').checked = id ? devIsActive(d) : false;
   renderCustomFields('#dCustomFields', 'developer', d.custom || {});
   tempDevLogo = d.logo || d.photo || null;
   tempDevOwnerPhoto = d.ownerPhoto || null;
@@ -30051,6 +30199,7 @@ $('#pSave').addEventListener('click', () => {
     developerId: $('#pDev').value || null,
     corridor: $('#pCorridor').value,
     status: $('#pStatus').value,
+    active: $('#pActive') ? $('#pActive').checked : true,
     types: $$('#pTypes input:checked').map(i => i.value),
     plotUse: $('#pPlotUse').value,
     rera: $('#pRera').value.trim(),
@@ -30126,6 +30275,9 @@ $('#dSave').addEventListener('click', () => {
     email: $('#dEmail').value.trim(),
     phone: $('#dPhone').value.trim(),
     website: normalizeWebUrl($('#dWebsite').value.trim()),
+    slab: $('#dSlab') ? $('#dSlab').value.trim() : '',
+    slabNote: $('#dSlabNote') ? $('#dSlabNote').value.trim() : '',
+    active: $('#dActive') ? $('#dActive').checked : true,
     notes: $('#dNotes').value.trim(),
     remarks: $('#dRemarks').value.trim(),
     photo: tempDevImage || '',
@@ -30136,6 +30288,8 @@ $('#dSave').addEventListener('click', () => {
     ownerPhotoKey: editingDeveloper && editingDeveloper.ownerPhoto === (tempDevOwnerPhoto || '') ? (editingDeveloper.ownerPhotoKey || '') : '',
     custom: cfPayload(editingDeveloper, '#dCustomFields'),
   };
+  if(payload.slab && (!editingDeveloper || editingDeveloper.slab !== payload.slab || !editingDeveloper.slabAt)) payload.slabAt = Date.now();
+  if(!payload.slab) payload.slabAt = null;
   if(editingDeveloper){ Object.assign(editingDeveloper, payload); toast('Developer updated'); }
   else { db.developers.push({ id:uid(), ...payload }); toast('Developer added'); }
   save(); closeModal('developerModal'); render();
@@ -37486,6 +37640,376 @@ function renderSocialDesk(){
   mktRender();
 }
 
+/* ============================================================
+   v164 · ACTIVATION LANES — slab confirm → active → promote
+   Developers · Projects · Advisors
+   ============================================================ */
+const devIsActive = d => !!d && d.active !== false;
+const projIsActive = p => !!p && p.active !== false;
+const HOOD_HOSTS = { developers:'devHood', projects:'projHood', advisors:'advHood' };
+const HOOD_LABELS = {
+  developers: { active:'Active — slab confirmed', hold:'Pre-meeting / on hold' },
+  projects:   { active:'Active — slab confirmed', hold:'Pre-meeting / on hold' },
+  advisors:   { active:'Active — slab confirmed', hold:'Pre-meeting / on hold' }
+};
+let hoodSlabCtx = null;
+let promoState = null;
+
+function hoodRecords(kind){
+  if(kind === 'developers') return scopedDevelopers().slice().sort((a,b) => (a.name||'').localeCompare(b.name||''));
+  if(kind === 'projects') return scopedProjects().slice().sort((a,b) => (a.name||'').localeCompare(b.name||''));
+  return (isAdmin() ? db.advisors : [currentAdvisor()].filter(Boolean)).slice()
+    .sort((a,b) => (a.name||'').localeCompare(b.name||''));
+}
+function hoodIsActive(kind, rec){
+  if(!rec) return false;
+  if(kind === 'advisors') return rec.status === 'active';
+  return kind === 'projects' ? projIsActive(rec) : devIsActive(rec);
+}
+function hoodChipMeta(kind, rec){
+  if(kind === 'developers'){
+    const n = projectsForDeveloper(rec.id).length;
+    return [rec.slab || 'slab pending', n + ' project' + (n === 1 ? '' : 's')].join(' · ');
+  }
+  if(kind === 'projects'){
+    const d = dev(rec.developerId);
+    return [d ? d.name : 'No developer', priceRange(rec)].filter(Boolean).join(' · ');
+  }
+  const rate = +rec.slabPerSqYd || 0;
+  const n = projectsForAdvisor(rec).length;
+  return [rate ? '₹' + rate.toLocaleString('en-IN') + ' / sq yd' : 'slab pending',
+    n + ' project' + (n === 1 ? '' : 's'), advisorStatusMeta(rec.status).short].join(' · ');
+}
+function hoodChip(kind, rec, active){
+  const meta = hoodChipMeta(kind, rec);
+  return `<div class="hood-chip ${active ? 'is-active' : 'is-hold'}" draggable="true" data-hood-chip="${kind}:${rec.id}">
+    <span class="hc-dot"></span>
+    <div class="hc-main"><b>${esc(rec.name || 'Untitled')}</b><span>${esc(meta)}</span></div>
+    <div class="hc-actions">
+      ${active
+        ? `<button type="button" data-hood-act="promote" data-hood-kind="${kind}" data-hood-id="${rec.id}" title="Advisors &amp; clients ko promote karein">📣</button>
+           <button type="button" data-hood-act="hold" data-hood-kind="${kind}" data-hood-id="${rec.id}" title="Hold par bhejein">↩</button>`
+        : `<button type="button" data-hood-act="activate" data-hood-kind="${kind}" data-hood-id="${rec.id}" title="Slab confirm karke active lane me le aayein">✓ Activate</button>`}
+    </div>
+  </div>`;
+}
+function hoodLane(kind, lane, label, list){
+  return `<div class="hood-lane hood-${lane}" data-hood-lane="${lane}" data-hood-kind="${kind}">
+    <div class="hood-lane-head"><b>${lane === 'active' ? '●' : '○'} ${esc(label)}</b><span>${list.length}</span></div>
+    <div class="hood-cards">${list.length
+      ? list.map(r => hoodChip(kind, r, lane === 'active')).join('')
+      : `<div class="hood-empty">${lane === 'active' ? 'Abhi koi active record nahi — hold lane se drag karein.' : 'Sab active hain 🎉'}</div>`}</div>
+  </div>`;
+}
+function renderActivationHood(kind){
+  const host = $('#' + (HOOD_HOSTS[kind] || ''));
+  if(!host) return;
+  if(!isAdmin()){ host.innerHTML = ''; return; }
+  const all = hoodRecords(kind);
+  const active = all.filter(r => hoodIsActive(kind, r));
+  const hold = all.filter(r => !hoodIsActive(kind, r));
+  const L = HOOD_LABELS[kind];
+  host.innerHTML = `<div class="hood">
+    <div class="hood-head">
+      <div><b>Activation lanes</b><span>Slab confirm hote hi record ko active lane me drag karein — phir uske projects advisors &amp; clients ko promote karein.</span></div>
+      <span class="hood-total">${active.length} active · ${hold.length} hold</span>
+    </div>
+    <div class="hood-lanes">
+      ${hoodLane(kind, 'active', L.active, active)}
+      ${hoodLane(kind, 'hold', L.hold, hold)}
+    </div>
+  </div>`;
+}
+
+function hoodActivate(kind, id){
+  if(!isAdmin()) return toast('Sirf admin activate kar sakta hai', true);
+  if(kind === 'developers'){
+    const d = db.developers.find(x => x.id === id);
+    if(!d) return;
+    if(!String(d.slab || '').trim()) return openSlabConfirm('developers', id);
+    d.active = true;
+    d.slabAt = d.slabAt || Date.now();
+    const ps = projectsForDeveloper(id);
+    ps.forEach(p => { p.active = true; });
+    save(); render();
+    toast((d.name || 'Developer') + ' active lane me' + (ps.length ? ' · ' + ps.length + ' project live' : ''));
+    return openPromoteModal('developers', id);
+  }
+  if(kind === 'projects'){
+    const p = db.projects.find(x => x.id === id);
+    if(!p) return;
+    p.active = true;
+    save(); render();
+    toast((p.name || 'Project') + ' active lane me');
+    return openPromoteModal('projects', id);
+  }
+  const a = advisor(id);
+  if(!a) return;
+  if(!(+a.slabPerSqYd > 0) && !String(a.slab || '').trim()) return openSlabConfirm('advisors', id);
+  a.status = 'active';
+  a.active = true;
+  if(a.portalId) a.portalEnabled = true;
+  save(); render();
+  toast((a.name || 'Advisor') + ' active BCS advisor ✓');
+  return openPromoteModal('advisors', id);
+}
+function hoodHold(kind, id){
+  if(!isAdmin()) return toast('Sirf admin hold kar sakta hai', true);
+  if(kind === 'developers'){
+    const d = db.developers.find(x => x.id === id);
+    if(!d) return;
+    d.active = false;
+    let n = 0;
+    projectsForDeveloper(id).forEach(p => { if(projIsActive(p)){ p.active = false; n++; } });
+    save(); render();
+    toast((d.name || 'Developer') + ' hold par' + (n ? ' · ' + n + ' project bhi hold' : ''));
+    return;
+  }
+  if(kind === 'projects'){
+    const p = db.projects.find(x => x.id === id);
+    if(!p) return;
+    p.active = false;
+    save(); render();
+    toast((p.name || 'Project') + ' hold par');
+    return;
+  }
+  const a = advisor(id);
+  if(!a) return;
+  a.status = 'agreed';
+  a.active = false;
+  save(); render();
+  toast((a.name || 'Advisor') + ' hold par — Agreed stage');
+}
+
+function openSlabConfirm(kind, id){
+  const rec = kind === 'developers' ? db.developers.find(x => x.id === id)
+            : kind === 'projects' ? db.projects.find(x => x.id === id)
+            : advisor(id);
+  if(!rec) return;
+  hoodSlabCtx = { kind, id };
+  const isAdv = kind === 'advisors';
+  $('#slabTitle').textContent = isAdv ? 'Advisor slab confirm karein' : 'Slab confirm karein';
+  $('#slabSub').innerHTML = `“<b>${esc(rec.name || '')}</b>” ko active lane me le jaane se pehle slab record karein — ye detail promote message me bhi jayegi.`;
+  $('#slabRateField').style.display = isAdv ? '' : 'none';
+  $('#slabTextField').style.display = isAdv ? 'none' : '';
+  $('#slabRate').value = isAdv ? ((+rec.slabPerSqYd || '') || '') : '';
+  $('#slabText').value = rec.slab || '';
+  $('#slabNote').value = rec.slabNote || '';
+  showOverlay('slabModal');
+  setTimeout(() => { const el = isAdv ? $('#slabRate') : $('#slabText'); if(el) el.focus(); }, 80);
+}
+
+function promoProjects(kind, id){
+  if(kind === 'developers') return projectsForDeveloper(id);
+  if(kind === 'advisors'){ const a = advisor(id); return a ? projectsForAdvisor(a) : []; }
+  const p = db.projects.find(x => x.id === id);
+  return p ? [p] : [];
+}
+function promoProjectLines(projects){
+  return projects.slice(0, 6).map(p => {
+    const c = corridor(p.corridor);
+    const bits = [p.name, c ? c.name.replace(' Road','') : '', priceRange(p)].filter(Boolean);
+    return '• ' + bits.join(' · ');
+  }).join('\n') + (projects.length > 6 ? '\n• +' + (projects.length - 6) + ' more' : '');
+}
+function promoBuildMessage(){
+  if(!promoState) return '';
+  const { kind, id, audience } = promoState;
+  const cd = shareCardData();
+  const rec = kind === 'developers' ? db.developers.find(x => x.id === id)
+            : kind === 'projects' ? db.projects.find(x => x.id === id)
+            : advisor(id);
+  if(!rec) return '';
+  const projects = promoProjects(kind, id);
+  const contact = cd.person + (cd.phone ? ' (' + cd.phone + ')' : '');
+  const lines = [];
+  if(kind === 'advisors'){
+    const rate = +rec.slabPerSqYd || 0;
+    lines.push('*Welcome aboard, ' + (rec.name || '') + '*');
+    lines.push('Aapka BCS slab confirm ho gaya' + (rate ? ': ₹' + rate.toLocaleString('en-IN') + ' / sq yd' : '') + '.');
+    if(rec.slab) lines.push('📋 ' + rec.slab);
+    if(rec.slabNote) lines.push('📝 ' + rec.slabNote);
+    if(projects.length){ lines.push(''); lines.push('Aapke projects:'); lines.push(promoProjectLines(projects)); }
+    lines.push('');
+    lines.push('Client visit, site plan ya price sheet ke liye message karein — ' + contact);
+    return lines.join('\n');
+  }
+  if(kind === 'developers'){
+    const slab = rec.slab || '';
+    if(audience === 'client'){
+      lines.push('*' + (rec.name || 'Developer') + ' — BCS par available*');
+      if(projects.length){ lines.push(''); lines.push('Aaj ke live projects:'); lines.push(promoProjectLines(projects)); }
+      lines.push('');
+      lines.push('Site visit, price sheet aur payment plan ke liye reply karein — ' + contact);
+      return lines.join('\n');
+    }
+    lines.push('*BCS slab update — ' + (rec.name || '') + '*');
+    lines.push('✅ Slab confirmed' + (slab ? ': ' + slab : ''));
+    if(rec.slabNote) lines.push('📝 ' + rec.slabNote);
+    if(projects.length){ lines.push(''); lines.push('Projects ab live hain:'); lines.push(promoProjectLines(projects)); }
+    lines.push('');
+    lines.push('Aapke clients ke liye site visit / price sheet chahiye to reply karein — ' + contact);
+    return lines.join('\n');
+  }
+  const p = rec;
+  const d = dev(p.developerId);
+  if(audience === 'client'){
+    lines.push(shareProjectSummary(p));
+    lines.push('');
+    lines.push('Site visit, availability aur payment plan ke liye reply karein — ' + contact);
+    return lines.join('\n');
+  }
+  lines.push('*New BCS listing — ' + (p.name || '') + '*');
+  lines.push(shareProjectSummary(p));
+  if(d && d.slab) lines.push('🤝 Developer slab: ' + d.slab);
+  if(p.slabNote) lines.push('📝 ' + p.slabNote);
+  lines.push('');
+  lines.push('Client le jaane ke liye ready — ' + contact);
+  return lines.join('\n');
+}
+function renderPromote(){
+  if(!promoState) return;
+  const projects = promoProjects(promoState.kind, promoState.id);
+  $('#promoProjects').innerHTML = projects.length
+    ? projects.map(p => {
+        const c = corridor(p.corridor);
+        return `<span class="promo-proj"><b>${esc(p.name)}</b><span>${esc(c ? c.name.replace(' Road','') : 'Jaipur')} · ${esc(priceRange(p))}</span></span>`;
+      }).join('')
+    : '<span class="promo-empty">Koi project linked nahi — pehle project add/link karein.</span>';
+  $('#promoMsg').value = promoBuildMessage();
+  const n = projects.length;
+  $('#promoNote').textContent = n + ' project' + (n === 1 ? '' : 's') + ' · ' + (promoState.audience === 'client' ? 'client message' : 'advisor message');
+}
+function openPromoteModal(kind, id){
+  const rec = kind === 'developers' ? db.developers.find(x => x.id === id)
+            : kind === 'projects' ? db.projects.find(x => x.id === id)
+            : advisor(id);
+  if(!rec) return;
+  promoState = { kind, id, audience:'advisor' };
+  $('#promoTitle').textContent = 'Promote — ' + (rec.name || '');
+  $('#promoTabs').style.display = kind === 'advisors' ? 'none' : '';
+  $$('#promoTabs button').forEach(b => b.classList.toggle('on', b.dataset.promoAud === 'advisor'));
+  renderPromote();
+  showOverlay('promoteModal');
+}
+
+$('#slabSave').addEventListener('click', () => {
+  if(!hoodSlabCtx) return;
+  const { kind, id } = hoodSlabCtx;
+  const rate = Math.max(0, Math.round(+$('#slabRate').value || 0));
+  const text = $('#slabText').value.trim();
+  const note = $('#slabNote').value.trim();
+  if(kind === 'advisors'){
+    if(!rate && !text) return toast('Slab rate ya slab detail bharein', true);
+    const a = advisor(id);
+    if(!a) return;
+    if(rate) a.slabPerSqYd = rate;
+    a.slab = text || (rate ? '₹' + rate.toLocaleString('en-IN') + ' / sq yd' : (a.slab || ''));
+    a.slabNote = note;
+    a.slabAt = Date.now();
+    a.status = 'active';
+    a.active = true;
+    if(a.portalId) a.portalEnabled = true;
+  } else {
+    if(!text) return toast('Slab likhein — e.g. ₹1,200 / sq yd', true);
+    const rec = kind === 'developers' ? db.developers.find(x => x.id === id) : db.projects.find(x => x.id === id);
+    if(!rec) return;
+    rec.slab = text;
+    rec.slabNote = note;
+    rec.slabAt = Date.now();
+    rec.active = true;
+    if(kind === 'developers') projectsForDeveloper(id).forEach(p => { p.active = true; });
+  }
+  hoodSlabCtx = null;
+  closeModal('slabModal');
+  save(); render();
+  toast('Slab confirm — record active lane me ✓');
+  openPromoteModal(kind, id);
+});
+
+$('#promoCopy').addEventListener('click', async () => {
+  const msg = $('#promoMsg').value;
+  try{ await navigator.clipboard.writeText(msg); toast('Message copy ho gaya'); }
+  catch(e){
+    const ta = $('#promoMsg'); ta.focus(); ta.select();
+    try{ document.execCommand('copy'); toast('Message copy ho gaya'); }catch(err){ toast('Copy nahi hua — manually select karein', true); }
+  }
+});
+$('#promoWa').addEventListener('click', () => {
+  const msg = $('#promoMsg').value || '';
+  window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
+});
+$('#promoTabs').addEventListener('click', e => {
+  const b = e.target.closest('[data-promo-aud]');
+  if(!b || !promoState) return;
+  promoState.audience = b.dataset.promoAud;
+  $$('#promoTabs button').forEach(x => x.classList.toggle('on', x === b));
+  renderPromote();
+});
+
+/* lane drag + click wiring — one document-level set, survives every re-render */
+document.addEventListener('dragstart', e => {
+  const chip = e.target && e.target.closest ? e.target.closest('[data-hood-chip]') : null;
+  if(!chip) return;
+  const raw = 'hood:' + chip.dataset.hoodChip;
+  try{ e.dataTransfer.setData('text/plain', raw); e.dataTransfer.effectAllowed = 'move'; }catch(err){}
+  chip.classList.add('dragging');
+});
+document.addEventListener('dragend', e => {
+  const chip = e.target && e.target.closest ? e.target.closest('[data-hood-chip]') : null;
+  if(chip) chip.classList.remove('dragging');
+  $$('.hood-lane.over').forEach(l => l.classList.remove('over'));
+});
+document.addEventListener('dragover', e => {
+  const lane = e.target && e.target.closest ? e.target.closest('[data-hood-lane]') : null;
+  if(!lane) return;
+  e.preventDefault();
+  try{ e.dataTransfer.dropEffect = 'move'; }catch(err){}
+  lane.classList.add('over');
+});
+document.addEventListener('dragleave', e => {
+  const lane = e.target && e.target.closest ? e.target.closest('[data-hood-lane]') : null;
+  if(lane && (!e.relatedTarget || !lane.contains(e.relatedTarget))) lane.classList.remove('over');
+});
+document.addEventListener('drop', e => {
+  const lane = e.target && e.target.closest ? e.target.closest('[data-hood-lane]') : null;
+  if(!lane) return;
+  e.preventDefault();
+  lane.classList.remove('over');
+  let raw = '';
+  try{ raw = e.dataTransfer.getData('text/plain') || ''; }catch(err){}
+  if(raw.indexOf('hood:') !== 0) return;
+  const rest = raw.slice(5);
+  const cut = rest.indexOf(':');
+  if(cut < 0) return;
+  const kind = rest.slice(0, cut);
+  const id = rest.slice(cut + 1);
+  if(kind !== lane.dataset.hoodKind) return;
+  if(lane.dataset.hoodLane === 'active') hoodActivate(kind, id);
+  else hoodHold(kind, id);
+});
+document.addEventListener('click', e => {
+  const btn = e.target && e.target.closest ? e.target.closest('[data-hood-act]') : null;
+  if(!btn) return;
+  e.preventDefault();
+  e.stopPropagation();
+  const kind = btn.dataset.hoodKind, id = btn.dataset.hoodId, act = btn.dataset.hoodAct;
+  if(act === 'activate') hoodActivate(kind, id);
+  else if(act === 'hold') hoodHold(kind, id);
+  else if(act === 'promote') openPromoteModal(kind, id);
+});
+document.addEventListener('click', e => {
+  const chip = e.target && e.target.closest ? e.target.closest('[data-hood-chip]') : null;
+  if(!chip || (e.target.closest && e.target.closest('[data-hood-act]'))) return;
+  const raw = chip.dataset.hoodChip || '';
+  const cut = raw.indexOf(':');
+  if(cut < 0) return;
+  const kind = raw.slice(0, cut), id = raw.slice(cut + 1);
+  if(kind === 'developers') return openDeveloperProfile(id);
+  if(kind === 'projects') return openDetail(id);
+  if(kind === 'advisors') return openAdvisorProfile(id);
+});
+
 
 function cycleTheme(){
   const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
@@ -40548,6 +41072,7 @@ function setTargetScope(kind, scope){
   save();
   document.querySelectorAll('[data-tscope-kind="' + kind + '"]').forEach(b => b.classList.toggle('on', b.dataset.tscope === db.uiScopes[kind]));
   renderGhosts(kind);
+  try{ render(); }catch(e){}
 }
 function initTargets(){
   document.addEventListener('click', e => {
