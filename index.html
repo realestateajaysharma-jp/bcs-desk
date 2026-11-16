@@ -17254,6 +17254,7 @@ try{
       <div><div class="k">PW Jaipur featured</div><div class="v">6 proj</div></div>
       <div><div class="k">PW news (today)</div><div class="v">JDA ₹575 Cr</div></div>
     </div>
+    <div class="panel" id="indiaRatesPanel" style="margin-top:12px"></div>
     <div class="panel" style="margin-top:12px">
       <div class="panel-head"><h4>Jaipur at a glance — charon sources ka summary</h4><span class="n-badge">Nov 2026</span></div>
       <div class="brief-grid">
@@ -28951,10 +28952,11 @@ function renderDetail(){
       <!-- 1 · QUICK FACTS -->
       <div class="ov-facts">
         <div class="ov-fact gold"><small>Price</small><b>${priceRange(p)}</b><span>${esc(rateText(p) || 'Rate not set')}</span></div>
-        <div class="ov-fact"><small>DLC · circle rate</small><b>${p.dlc ? '₹' + (+p.dlc).toLocaleString('en-IN') + ' <small>/ sq yd</small>' : 'Not set'}</b><span>e-Panjiyan e-Value se latest verify karein</span></div>
+        <div class="ov-fact"><small>DLC · circle rate</small><b>${p.dlc ? '₹' + (+p.dlc).toLocaleString('en-IN') + ' <small>/ sq yd</small>' : 'Not set'}</b><span>${p.dlc ? '≈ ₹' + (+p.dlc * 1.196).toLocaleString('en-IN') + ' / sq m · DLC band check neeche' : 'e-Panjiyan e-Value se latest verify karein'}</span></div>
         <div class="ov-fact"><small>Possession</small><b>${esc(p.timeline ? timelineLabel(p.timeline) : '—')}</b><span>${esc(p.sizes || 'Sizes not set')}</span></div>
         <div class="ov-fact"><small>RERA</small><b>${p.rera ? '✓ Registered' : '—'}</b><span class="mono">${esc(p.rera || 'Not provided')}</span></div>
       </div>
+      ${dlcNoteHTML(p)}
       ${hasMoney ? `<div class="ov-sec">
         <div class="dsec-head"><h4>₹ Project money</h4><span class="cnt">${projDeals.length + projBookings.length} live record${(projDeals.length + projBookings.length) === 1 ? '' : 's'}</span><button type="button" class="btn ghost sm" data-projpipeline="${p.id}" style="margin-left:auto">Sales ledger →</button></div>
         <div class="ov-facts">
@@ -42144,6 +42146,104 @@ function mktDeltaChip(pct, fallbackTxt){
   const arrow = cls === 'up' ? '▲' : '▼';
   return { cls: cls, txt: arrow + ' ' + Math.abs(pct).toFixed(2) + '%' };
 }
+/* ============================================================
+   BCS INDIA + JAIPUR RATES REFERENCE — 16 Nov 2026
+   Jaipur 302021 & India benchmarks an advisor quotes on a call:
+   bullion (Jaipur retail), fuel, indices, FX, crypto + Jaipur
+   DLC (circle) rates for stamp-duty maths.
+   Live spot (gold/silver/BTC/ETH/FX) still comes from the
+   existing feeds below; this block is the verified local layer.
+   ============================================================ */
+const BCS_RATES_REF = {
+  verifiedOn: '2026-11-16',
+  verifiedLabel: '16 Nov 2026',
+  city: 'Jaipur · Rajasthan 302021',
+  gold: { g24: 13695, g22: 12555, g18: 10275, per10g24: 136950, per10g22: 125550, per10g18: 102750, chg10g: -820 },
+  silver: { g: 190, kg: 190000, chgKg: -5000 },
+  fx: { usdInr: 94.24, pct: 0.21, prev: 94.04 },
+  crypto: { btcUsd: 64906, ethUsd: 1780 },
+  fuel: { petrol: 113.19, diesel: 98.25, cng: 101.50, chg: 0 },
+  indices: [
+    { name:'Nifty 50', val:'25,144.30', pts:-155.05, pct:-0.61, note:'NSE close · 13 Nov' },
+    { name:'Sensex', val:'81,592.45', pts:-318.56, pct:-0.39, note:'BSE close · 13 Nov' },
+    { name:'Nifty Realty', val:'921.25', pts:-13.00, pct:-1.39, note:'sector top laggard' },
+    { name:'Nifty Bank', val:'61,034.10', pts:-484.40, pct:-0.79, note:'NSE close · 13 Nov' },
+    { name:'India VIX', val:'15.50', pts:-1.12, pct:-6.75, note:'volatility gauge' }
+  ],
+  mcx: { gold10: 136000, silverKg: 176000, note:'Dec futures · MCX 13 Nov' },
+  fii: 'Nov FPI inflow $8bn+ — 9 straight sessions of FII buying',
+  stamp: { duty:'6% (male owner) · 5% (female owner)', reg:'1% of value', note:'Higher of DLC value or price' },
+  dlc: [
+    { zone:'C-Scheme & M.I. Road', low:90000, high:125000, type:'Residential' },
+    { zone:'Bani Park', low:40000, high:65000, type:'Residential' },
+    { zone:'Vaishali Nagar', low:35000, high:55000, type:'Residential' },
+    { zone:'Amer / Jal Mahal', low:12000, high:42000, type:'Residential' },
+    { zone:'Tonk Road / Pratap Nagar', low:9900, high:17600, type:'Residential' },
+    { zone:'Sanganer', low:8800, high:15400, type:'Residential' },
+    { zone:'Jagatpura / Goner Road', low:5670, high:6800, type:'Residential (interior → exterior)' },
+    { zone:'Kalwar Road / Sirsi Road', low:4950, high:8800, type:'Residential' },
+    { zone:'Flat / apartment · Jagatpura', low:40900, high:40900, type:'Apartment' }
+  ],
+  sources: 'Bullion: Goodreturns/Groww Jaipur · Fuel: Goodreturns/CarDekho Jaipur · Indices: NSE/BSE EOD · DLC: Rajasthan e-Panjiyan (District Level Committee)'
+};
+function sqmToSqyd(n){ return n / 1.196; }
+function ratesRefVal(n, dec){ if(n == null || isNaN(n)) return '—'; return '₹' + Number(n).toLocaleString('en-IN', { maximumFractionDigits: dec == null ? 0 : dec, minimumFractionDigits: dec == null ? 0 : dec }); }
+function dlcVerdict(p){
+  if(!p || p.dlc == null || p.dlc === '' || isNaN(+p.dlc)) return null;
+  const sqm = (+p.dlc) * 1.196;
+  let band = null, best = Infinity;
+  BCS_RATES_REF.dlc.forEach(d => {
+    const dist = sqm < d.low ? (d.low - sqm) : (sqm > d.high ? (sqm - d.high) : 0);
+    if(dist < best){ best = dist; band = d; }
+  });
+  if(!band) return null;
+  const cls = sqm < band.low ? 'low' : (sqm > band.high ? 'high' : 'ok');
+  const txt = cls === 'low' ? 'Reference DLC se neeche — e-Panjiyan se colony ka exact rate verify karein'
+    : cls === 'high' ? 'Reference DLC range se upar — premium location / approved plot, price justify karein'
+    : band.zone + ' ke DLC band ke andar';
+  return { cls, band, sqm, txt };
+}
+function dlcNoteHTML(p){
+  const dv = dlcVerdict(p);
+  if(!dv) return '';
+  const band = dv.band;
+  return `<div class="dempty" style="border-left:3px solid var(--gold)"><b>DLC cross-check:</b> ₹${Math.round(dv.sqm).toLocaleString('en-IN')} / sq m — ${esc(dv.txt)}${band ? ' · reference ' + esc(band.zone) + ' (₹' + band.low.toLocaleString('en-IN') + '–₹' + band.high.toLocaleString('en-IN') + ' / sq m)' : ''}. Stamp duty ${esc(BCS_RATES_REF.stamp.duty)} + registration ${esc(BCS_RATES_REF.stamp.reg)} — DLC value ya price, jo zyada ho. Market Pulse tab me poora zone-wise DLC table hai.</div>`;
+}
+function renderIndiaRates(){
+  const wrap = $('#indiaRatesPanel');
+  if(!wrap) return;
+  const r = BCS_RATES_REF;
+  const idxStat = i => `<div><div class="k">${esc(i.name)}</div><div class="v" style="color:${i.pct < 0 ? '#A4452B' : i.pct > 0 ? '#2F8F6B' : 'var(--ink)'}">${esc(i.val)}<small style="font-size:9.5px;font-weight:700;margin-left:5px">${i.pts > 0 ? '+' : ''}${i.pts} (${i.pct > 0 ? '+' : ''}${i.pct}%)</small></div><small style="font-size:9.5px;color:var(--mut);display:block;margin-top:2px">${esc(i.note)}</small></div>`;
+  const dlcRows = r.dlc.map(d => `<tr>
+      <td><b>${esc(d.zone)}</b></td>
+      <td style="white-space:nowrap">${esc(d.type)}</td>
+      <td style="white-space:nowrap;text-align:right">₹${d.low.toLocaleString('en-IN')} – ₹${d.high.toLocaleString('en-IN')}</td>
+      <td style="white-space:nowrap;text-align:right">₹${Math.round(sqmToSqyd(d.low)).toLocaleString('en-IN')} – ₹${Math.round(sqmToSqyd(d.high)).toLocaleString('en-IN')}</td>
+    </tr>`).join('');
+  wrap.innerHTML = `
+    <div class="panel-head"><h4>India + Jaipur rates — jo har call par quote hote hain</h4><span class="n-badge">${esc(r.verifiedLabel)}</span></div>
+    <p style="font-size:11.5px;color:var(--mut);line-height:1.55;margin-bottom:10px">${esc(r.city)} bullion, fuel aur index rates + Jaipur <b>DLC (circle) rate</b> reference. Gold/silver/BTC/ETH/FX upar LIVE strip me bhi auto-refresh hote hain; yeh panel verified local layer hai — deal ya plot quote karne se pehle yahan se number lo.</p>
+    <div class="links-stats">
+      <div><div class="k">Petrol · Jaipur</div><div class="v">${ratesRefVal(r.fuel.petrol, 2)}<small style="font-size:9.5px;font-weight:700">/L</small></div><small style="font-size:9.5px;color:var(--mut);display:block;margin-top:2px">Rajasthan · no change</small></div>
+      <div><div class="k">Diesel · Jaipur</div><div class="v">${ratesRefVal(r.fuel.diesel, 2)}<small style="font-size:9.5px;font-weight:700">/L</small></div><small style="font-size:9.5px;color:var(--mut);display:block;margin-top:2px">Rajasthan · no change</small></div>
+      <div><div class="k">CNG · Jaipur</div><div class="v">${ratesRefVal(r.fuel.cng, 2)}<small style="font-size:9.5px;font-weight:700">/kg</small></div><small style="font-size:9.5px;color:var(--mut);display:block;margin-top:2px">Rajasthan</small></div>
+    </div>
+    <div class="links-stats" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+      ${r.indices.map(idxStat).join('')}
+    </div>
+    <div class="brief-grid" style="margin-top:10px">
+      <div class="brief-box"><h5>🪙 Gold — Jaipur retail</h5><p><b>24K</b> ₹13,695/g · <b>₹1,36,950/10g</b> (−₹820)<br><b>22K</b> ₹12,555/g · <b>₹1,25,550/10g</b><br><b>18K</b> ₹10,275/g · <b>₹1,02,750/10g</b><br><small style="color:var(--mut)">GST 3% + making charges alag — MCX Dec futures ₹1.36 lakh/10g</small></p></div>
+      <div class="brief-box"><h5>🥈 Silver — Jaipur retail</h5><p><b>₹190/g</b> · <b>₹1,90,000/kg</b> (−₹5,000)<br>10g ₹1,900 · 100g ₹19,000<br><small style="color:var(--mut)">MCX Dec futures ₹1.76 lakh/kg — retail premium = GST + dealer spread</small></p></div>
+      <div class="brief-box"><h5>💵 FX & crypto</h5><p><b>USD/INR ₹94.24</b> (₹94.04 prev · +0.21%)<br><b>BTC</b> $64,906 ≈ ₹61.2 lakh<br><b>ETH</b> $1,780 ≈ ₹1.68 lakh<br><small style="color:var(--mut)">Crypto market cap $2.2T — BTC −21% month, "extreme fear" sentiment</small></p></div>
+      <div class="brief-box"><h5>🏦 Market mood — sales link</h5><p>Nifty Realty <b>921.25 (−1.39%)</b> — worst sector on 13 Nov; Sensex −0.39%. ${esc(r.fii)}. <b>Buyer script:</b> listed realty correction = builder launch prices abhi bhi Jaipur DLC ke paas — value zone, FII registration to dekh kar turant decide karo.</p></div>
+      <div class="brief-box"><h5>📐 Jaipur DLC (circle) rate</h5><p>Stamp duty <b>${esc(r.stamp.duty)}</b> + registration <b>${esc(r.stamp.reg)}</b> — ${esc(r.stamp.note)}. Colony ka exact rate e-Panjiyan (District Level Committee) se verify karein.</p></div>
+      <div class="brief-box"><h5>🔗 Sources</h5><p>${esc(r.sources)}</p></div>
+    </div>
+    <div class="dsec">
+      <div class="dsec-head"><h4>Jaipur DLC rates — zone wise reference</h4><span class="cnt">₹/sq m · ₹/sq yd</span><span class="hint">₹/sq yd = ₹/sq m ÷ 1.196 — project detail me DLC isi unit me save hota hai.</span></div>
+      <div style="overflow-x:auto"><table class="an-table"><thead><tr><th>Zone / colony</th><th>Type</th><th style="text-align:right">₹ / sq m</th><th style="text-align:right">₹ / sq yd</th></tr></thead><tbody>${dlcRows}</tbody></table></div>
+    </div>`;
+}
 function renderLiveMarket(snapshot){
   const row = $('#liveMarketRow');
   const upd = $('#liveMarketUpdated');
@@ -42166,25 +42266,48 @@ function renderLiveMarket(snapshot){
   }
   const usdInr = typeof s.usdInr === 'number' ? s.usdInr : null;
   const prev = s.prev || {};
-  const gold10 = mktGoldPer10g(s.goldUsd, usdInr);
-  const silver1kg = mktSilverPerKg(s.silverUsd, usdInr);
+  // International spot → India landed price: gold carries ~15% customs + AIDC,
+  // silver ~23% (duty + dealer spread) to land on Jaipur retail bullion rates.
+  const MKT_DUTY = { gold:1.15, silver:1.23 };
   const btcInr = (s.btcUsd && usdInr) ? s.btcUsd * usdInr : null;
   const ethInr = (s.ethUsd && usdInr) ? s.ethUsd * usdInr : null;
   const staleCls = (Date.now() - (s.at || 0) > 30 * 60000) ? ' is-stale' : '';
   const prevFx = prev.usdInr || usdInr;
+  const goldSpot = mktGoldPer10g(s.goldUsd, usdInr);
+  const silverSpot = mktSilverPerKg(s.silverUsd, usdInr);
+  const gold10 = goldSpot != null ? goldSpot * MKT_DUTY.gold : null;
+  const silver1kg = silverSpot != null ? silverSpot * MKT_DUTY.silver : null;
+  const gold10Prev = mktGoldPer10g(prev.goldUsd, prevFx);
+  const silverKgPrev = mktSilverPerKg(prev.silverUsd, prevFx);
   const cards = [
     { label:'USD / INR', val: usdInr != null ? mktFmt(usdInr, '₹', 2) : '—',
       delta: mktDeltaChip(mktDelta(usdInr, prev.usdInr), 'spot'), sub:'open.er-api.com' },
-    { label:'Gold / 10g', val: gold10 != null ? mktInrRaw(gold10, 0) : '—',
-      delta: mktDeltaChip(mktDelta(gold10, mktGoldPer10g(prev.goldUsd, prevFx)), '24K spot'), sub:'gold-api.com' },
-    { label:'Silver / kg', val: silver1kg != null ? mktInrRaw(silver1kg, 0) : '—',
-      delta: mktDeltaChip(mktDelta(silver1kg, mktSilverPerKg(prev.silverUsd, prevFx)), '999 fine'), sub:'gold-api.com' },
+    { label:'Gold (India) / 10g', val: gold10 != null ? mktInrRaw(gold10, 0) : '—',
+      delta: mktDeltaChip(mktDelta(gold10, gold10Prev != null ? gold10Prev * MKT_DUTY.gold : null), '24K landed'), sub:'spot + import duty · est.' },
+    { label:'Silver (India) / kg', val: silver1kg != null ? mktInrRaw(silver1kg, 0) : '—',
+      delta: mktDeltaChip(mktDelta(silver1kg, silverKgPrev != null ? silverKgPrev * MKT_DUTY.silver : null), '999 landed'), sub:'spot + import duty · est.' },
     { label:'Bitcoin', val: btcInr != null ? mktInrRaw(btcInr, 0) : '—',
       delta: (s.btc24 != null) ? mktDeltaChip(s.btc24, '24h') : mktDeltaChip(mktDelta(btcInr, (prev.btcUsd && prevFx) ? prev.btcUsd * prevFx : null), 'BTC'),
       sub: (s.btc24 != null) ? 'coingecko · 24h' : 'gold-api.com' },
     { label:'Ethereum', val: ethInr != null ? mktInrRaw(ethInr, 0) : '—',
       delta: (s.eth24 != null) ? mktDeltaChip(s.eth24, '24h') : mktDeltaChip(mktDelta(ethInr, (prev.ethUsd && prevFx) ? prev.ethUsd * prevFx : null), 'ETH'),
-      sub: (s.eth24 != null) ? 'coingecko · 24h' : 'gold-api.com' }
+      sub: (s.eth24 != null) ? 'coingecko · 24h' : 'gold-api.com' },
+    { label:'Petrol · Jaipur', val: ratesRefVal(BCS_RATES_REF.fuel.petrol, 2),
+      delta: mktDeltaChip(null, 'unchanged'), sub:'Rajasthan pump · ' + BCS_RATES_REF.verifiedLabel },
+    { label:'Diesel · Jaipur', val: ratesRefVal(BCS_RATES_REF.fuel.diesel, 2),
+      delta: mktDeltaChip(null, 'unchanged'), sub:'Rajasthan pump · ' + BCS_RATES_REF.verifiedLabel },
+    { label:'Nifty 50', val: '25,144.30',
+      delta: mktDeltaChip(-0.61, 'NSE close'), sub:'NSE · 13 Nov 2026' },
+    { label:'Sensex', val: '81,592.45',
+      delta: mktDeltaChip(-0.39, 'BSE close'), sub:'BSE · 13 Nov 2026' },
+    { label:'Nifty Realty', val: '921.25',
+      delta: mktDeltaChip(-1.39, 'top laggard'), sub:'realty sector · 13 Nov' },
+    { label:'Gold · Jaipur 24K', val: '₹1,36,950',
+      delta: mktDeltaChip(-0.60, 'per 10g'), sub:'Jaipur retail · ' + BCS_RATES_REF.verifiedLabel },
+    { label:'Silver · Jaipur', val: '₹1,90,000',
+      delta: mktDeltaChip(-2.56, 'per kg'), sub:'Jaipur retail · ' + BCS_RATES_REF.verifiedLabel },
+    { label:'CNG · Jaipur', val: '₹101.50',
+      delta: mktDeltaChip(null, 'unchanged'), sub:'Rajasthan · ' + BCS_RATES_REF.verifiedLabel }
   ];
   row.innerHTML = cards.map(function(c){
     return '<div class="lm-card' + staleCls + '" title="Change since last refresh">' +
@@ -42281,6 +42404,7 @@ function renderDataStatus(){
 }
 /* Boot + auto-refresh wiring */
 initMarketStrip();
+try{ renderIndiaRates(); }catch(e){ console.warn('[BCS rates]', e); }
 /* paint cached headlines immediately, then fetch fresh ones on boot
    (so the ticker is never empty until the News tab is opened) */
 try{ renderTicker(); }catch(e){}
@@ -42360,13 +42484,15 @@ function renderBannerMarket(){
     const row = document.getElementById('bannerMarket'); if(!row) return;
     const snap = (typeof mktLoadSnapshot === 'function') ? mktLoadSnapshot() : null;
     const usd = snap && snap.usdInr;
-    const gold10 = snap && snap.goldUsd && usd ? snap.goldUsd * usd * (10/31.1035) : null;
-    const silKg  = snap && snap.silverUsd && usd ? snap.silverUsd * usd * (1000/31.1035) : null;
+    const MKT_DUTY = { gold:1.15, silver:1.23 };
+    const gold10 = snap && snap.goldUsd && usd ? snap.goldUsd * usd * (10/31.1035) * MKT_DUTY.gold : null;
+    const silKg  = snap && snap.silverUsd && usd ? snap.silverUsd * usd * (1000/31.1035) * MKT_DUTY.silver : null;
     const btcInr = snap && snap.btcUsd && usd ? snap.btcUsd * usd : null;
     const fmt = (n, d) => Number(n).toLocaleString('en-IN', { maximumFractionDigits: d, minimumFractionDigits: d });
     const chips = [
       ['USD / INR', usd != null ? '₹' + fmt(usd, 2) : '—'],
       ['Gold / 10g', gold10 != null ? '₹' + fmt(gold10, 0) : '—'],
+      ['Petrol', '₹' + (BCS_RATES_REF && BCS_RATES_REF.fuel ? BCS_RATES_REF.fuel.petrol.toFixed(2) : '—')],
       ['Silver / kg', silKg != null ? '₹' + fmt(silKg, 0) : '—'],
       ['BTC / INR', btcInr != null ? '₹' + fmt(btcInr, 0) : '—']
     ];
