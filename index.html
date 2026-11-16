@@ -3969,6 +3969,29 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
 .ph-ring > div{text-align:center}
 .ph-ring b{display:block;font-family:'Fraunces',serif;font-size:18px;color:var(--ink)}
 .ph-ring span{font-size:8px;color:var(--mut);font-weight:800;letter-spacing:.4px}
+/* corridor expertise + awareness desk */
+.cor-ex-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:9px}
+.cor-ex-grid > div{background:#FBFCFA;border:1px solid var(--line);border-radius:11px;padding:8px 10px}
+.cor-ex-grid .lab{font-size:8.5px;font-weight:900;letter-spacing:.8px;text-transform:uppercase;color:var(--mut);margin-bottom:2px}
+.cor-ex-grid .val{font-size:11.5px;font-weight:700;color:var(--ink);line-height:1.35}
+.cor-ex-pitch{font-family:'Fraunces',serif;font-size:13.5px;line-height:1.5;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.cor-ex-driver,.cor-ex-watch{font-size:11px;color:var(--mut);line-height:1.5}
+.cor-ex-driver b,.cor-ex-watch b{color:var(--ink)}
+.cor-ex-watch{margin-top:3px}
+.aw-list{display:grid;gap:7px}
+.aw-phrase,.aw-voice{text-align:left;display:grid;gap:2px;background:#FBFCFA;border:1px solid var(--line);border-radius:11px;padding:9px 11px;cursor:pointer;transition:.16s;color:var(--ink)}
+.aw-phrase:hover,.aw-voice:hover{border-color:var(--gold)}
+.aw-phrase{font-size:11.5px;line-height:1.5}
+.aw-phrase em,.aw-voice em{font-size:8.5px;font-weight:900;letter-spacing:.8px;text-transform:uppercase;color:var(--gold);font-style:normal}
+.aw-voice .k{font-size:8.5px;font-weight:900;letter-spacing:.8px;text-transform:uppercase;color:var(--mut)}
+.aw-voice span.k{display:block}
+.aw-idea{text-align:left;display:grid;gap:2px;background:#FBFCFA;border:1px solid var(--line);border-radius:11px;padding:9px 11px;cursor:pointer;transition:.16s;color:var(--ink)}
+.aw-idea:hover{border-color:var(--gold)}
+.aw-idea .k{font-size:8.5px;font-weight:900;letter-spacing:.8px;text-transform:uppercase;color:var(--gold)}
+.aw-idea b{font-size:12.5px;line-height:1.35}
+.aw-idea small{font-size:10.5px;color:var(--mut);line-height:1.45}
+.aw-idea em{font-size:9.5px;font-style:normal;font-weight:800;color:var(--sage-ink)}
+.partner-play .persona-hook{margin-bottom:8px}
 /* BCS 360 */
 .cmd-360{display:grid;gap:12px}
 .c360-group{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:12px}
@@ -22539,6 +22562,197 @@ function openConnected(kind, id){
 }
 /* ---------- road hub: one-click network for a corridor ---------- */
 let roadHubId = null;
+/* ============================================================
+   BCS CORRIDOR EXPERTISE + BUYER AWARENESS
+   Corridor playbook: har road ka DLC band, median rate, kis
+   buyer ke liye best hai, growth driver aur ek pitch line.
+   Buyer awareness: common problems → BCS solution, with catchy
+   phrases for WhatsApp/creative voice. Trust as the brand asset.
+   ============================================================ */
+const BCS_CORRIDOR_EXPERTISE = {
+  ajmer: { dlc:'Kalwar Road / Sirsi Road ₹4,950–₹8,800 /sq m', median:'~₹3,450 /sq ft', bestFor:'Investor + first-time plot buyer',
+    driver:'Sitapura & Mahindra SEZ industrial belt · Metro Phase-2 corridor · biggest launch pipeline',
+    pitch:'Ajmer Road — SEZ kaam, airport-door ki connectivity, aur ab bhi DLC ke paas rate. Investor window abhi khuli hai.',
+    watch:'Launch density zyada hai — developer track record aur RERA dono check karo.' },
+  tonk: { dlc:'Tonk Road / Pratap Nagar ₹9,900–₹17,600 /sq m', median:'~₹5,400 /sq ft', bestFor:'Family buyer + working professional',
+    driver:'Airport corridor · Pratap Nagar RHB schemes · established schools & hospitals',
+    pitch:'Tonk Road — airport 15 minute, school-hospital paas, aur family ke liye ready ecosystem. Ghar ke liye sabse safe corridor.',
+    watch:'Pratap Nagar interior lanes me DLC alag hai — exterior/interior confirm karna.' },
+  sikar: { dlc:'Vidya Vihar / Goner Road ₹5,670–₹6,800 /sq m', median:'~₹4,800 /sq ft', bestFor:'Investor + end-user mix',
+    driver:'Goner Road & Jagatpura growth · new stock + airport approach',
+    pitch:'Sikar Road — naya stock, planned layout, aur Jagatpura ka growth. Jaldi decide karo, rate badhne se pehle.',
+    watch:'New launches me possession timeline dhyan se padho.' },
+  delhi: { dlc:'C-Scheme & M.I. Road ₹90,000–₹1,25,000 /sq m', median:'~₹8,400 /sq ft', bestFor:'HNI + commercial investor',
+    driver:'Central Jaipur premium · main-road frontage · high rental yield',
+    pitch:'Delhi Road / Central — Jaipur ka dil. Yahan rate mein premium hai, bharosa mein bhi.',
+    watch:'Commercial rates ₹1.24 lakh /sq m tak — use-case clear rakho.' },
+  agra: { dlc:'Amer / Jal Mahal ₹12,000–₹42,000 /sq m', median:'~₹6,550 /sq ft', bestFor:'Investor + second-home buyer',
+    driver:'Amer–Jal Mahal tourism belt · high street retail demand',
+    pitch:'Agra Road — heritage tourism belt. Rental aur second-home dono ke liye strong.',
+    watch:'Seasonal rental demand — exit plan ready rakho.' },
+  diggi: { dlc:'Sanganer ₹8,800–₹15,400 /sq m', median:'~₹4,350 /sq ft', bestFor:'Value buyer + investor',
+    driver:'Sanganer airport-side growth · affordable inventory',
+    pitch:'Diggi Road — budget-friendly, airport paas. Pehli property ke liye sabse practical corridor.',
+    watch:'Approval aur title documents extra verify karo.' }
+};
+function corridorExpertise(c){
+  if(!c) return null;
+  const key = String(c.id || '').toLowerCase();
+  if(BCS_CORRIDOR_EXPERTISE[key]) return { ...BCS_CORRIDOR_EXPERTISE[key], matched:true };
+  // fuzzy match on corridor name
+  const name = (c.name || '').toLowerCase();
+  const hit = Object.keys(BCS_CORRIDOR_EXPERTISE).find(k => name.includes(k));
+  if(hit) return { ...BCS_CORRIDOR_EXPERTISE[hit], matched:true };
+  return null;
+}
+function corridorExpertiseHTML(c){
+  const e = corridorExpertise(c);
+  if(!e) return '';
+  const ps = scopedProjects().filter(p => p.corridor === c.id);
+  const sold = ps.reduce((n,p) => { const u = unitCounts(p); return n + u.booked + u.sold; }, 0);
+  const units = ps.reduce((n,p) => n + unitCounts(p).total, 0);
+  const dues = plotMilestoneList().filter(x => x.plot.projectId && ps.some(p => p.id === x.plot.projectId));
+  const dueTotal = dues.reduce((s,x) => s + (Number(x.milestone.amount) || 0), 0);
+  const devs = developersForRoad ? developersForRoad(c.id) : [];
+  return `<div class="profile-sec corridor-expertise">
+      <h5>🎓 Corridor expertise — ${esc(c.name)} <span class="n">${ps.length} projects</span></h5>
+      <div class="cor-ex-grid">
+        <div><div class="lab">DLC band</div><div class="val">${esc(e.dlc)}</div></div>
+        <div><div class="lab">Market median</div><div class="val">${esc(e.median)}</div></div>
+        <div><div class="lab">Best for</div><div class="val">${esc(e.bestFor)}</div></div>
+        <div><div class="lab">Live in desk</div><div class="val">${sold}/${units} sold${dueTotal ? ' · ' + moneyINR(dueTotal) + ' due' : ''}${devs.length ? ' · ' + devs.length + ' developers' : ''}</div></div>
+      </div>
+      <div class="cor-ex-pitch">“${esc(e.pitch)}”</div>
+      <div class="cor-ex-driver"><b>Growth driver:</b> ${esc(e.driver)}</div>
+      <div class="cor-ex-watch"><b>Watch-out:</b> ${esc(e.watch)}</div>
+    </div>`;
+}
+/* ---------- content ideas: video/creative hooks from live data ---------- */
+function contentIdeas(){
+  const today = todayISO();
+  const out = [];
+  // 1 · recent price revision → "rate badla" reel
+  scopedProjects().forEach(p => {
+    const hist = [...(p.priceHistory || [])].sort((a,b) => (b.at || 0) - (a.at || 0))[0];
+    if(hist && hist.date && hist.date >= addISO(today, -30) && hist.newMin != null && hist.oldMin != null && hist.newMin !== hist.oldMin){
+      const pct = Math.round((hist.newMin - hist.oldMin) / hist.oldMin * 100);
+      out.push({ ic:'🏷️', kind:'Price revision video', hook:`${p.name} ka rate ${pct > 0 ? 'badh' : 'gir'} gaya — ${pct > 0 ? '+' : ''}${pct}% 30 din me`, body:'Purana rate vs naya rate side-by-side dikhao, DLC floor bhi batao. Decision pressure banta hai.', cta:'"Updated rate sheet chahiye to message karo"', proj:p.id });
+    }
+  });
+  // 2 · sold-out / limited inventory
+  scopedProjects().filter(p => p.soldOut).slice(0,2).forEach(p => out.push({ ic:'🚫', kind:'Sold-out announcement', hook:`${p.name} primary inventory khatam — ab resale window`, body:'Kitne unit bache the, kitne bikे — number dikhao. Resale list bhi bhejo.', cta:'"Resale ke liye waiting list me naam add karo"', proj:p.id }));
+  // 3 · corridor walkthrough (corridor expertise)
+  const c0 = (db.corridors || [])[0];
+  if(c0 && corridorExpertise(c0)) out.push({ ic:'🛣️', kind:'Corridor walkthrough', hook:`${c0.name} — 3 cheezein jo buyer ko pata honi chahiye`, body:'Connectivity + DLC band + growth driver. 60 second drive-through reel.', cta:'"Aaj sham walkthrough slot khula hai"', corridor:c0.id });
+  // 4 · DLC awareness (monthly)
+  out.push({ ic:'📐', kind:'DLC awareness post', hook:'Jaipur DLC rate — exterior vs interior, ek post me samjho', body:'Zone-wise table dikhao, stamp duty 6%/5% samjhao. Sabse zyada save aur share hota hai.', cta:'"Apne plot ka DLC bhejo, main calculate karke bata deta hoon"', pulse:true });
+  // 5 · market moment (Nifty Realty / gold)
+  out.push({ ic:'📊', kind:'Market moment post', hook:`Nifty Realty 921.25 — par Jaipur DLC flat. Matlab kya?`, body:'Listed realty correction vs Jaipur floor price. Value argument strong hota hai.', cta:'"Market report chahiye to bolo"', pulse:true });
+  // 6 · after-sales trust moment
+  out.push({ ic:'🤝', kind:'After-sales trust story', hook:'"Registry ke baad bhi main yahin hoon" — client ka message', body:'Ledger clear hone ke baad referral ask ka real screenshot (consent ke saath). Trust ka proof.', cta:'"Referral ke liye shukriya"', clients:true });
+  return out.slice(0, 6);
+}
+function contentIdeasHTML(){
+  const ideas = contentIdeas();
+  if(!ideas.length) return '';
+  return `<div class="brief-box"><h5>🎬 Content ideas — aapke data se</h5>
+    <div class="aw-list">${ideas.map((x,i) => `<button type="button" class="aw-idea" data-idea="${i}" title="${x.kind} — detail kholein">
+      <span class="k">${esc(x.kind)}</span>
+      <b>${esc(x.hook)}</b>
+      <small>${esc(x.body)}</small>
+      <em>${esc(x.cta)}</em>
+    </button>`).join('')}</div></div>`;
+}
+/* ---------- partner / referral playbook ---------- */
+function partnerPlaybook(p){
+  const sent = (db.journeyLogs || []).length;
+  const partnerBookings = scopedBookings().length;
+  return {
+    hook:'Partner network = BCS ka seedha reach. Ek client refer karo, poora process hum sambhal lenge.',
+    pitch:'Aapko referral fee poora aur time par — client ka data, payment status aur registry sab aapko bhi dikhega (share karke).',
+    ask:'Is month aapke circle me kitne buyers “ready to move" hain? Unke naam bhejiye — main personally follow-up karta hoon.',
+    stats: partnerBookings + ' active bookings · ' + sent + ' journeys logged'
+  };
+}
+function partnerPlaybookHTML(p){
+  const pb = partnerPlaybook(p);
+  return `<div class="profile-sec partner-play"><h5>🤝 Partner playbook <span class="n">${esc(pb.stats)}</span></h5>
+      <div class="persona-hook">“${esc(pb.hook)}”</div>
+      <p style="font-size:11.5px;color:var(--mut);line-height:1.5;margin-bottom:7px">${esc(pb.pitch)}</p>
+      <div class="persona-next"><span class="k">Aaj ka ask</span><b>${esc(pb.ask)}</b></div>
+    </div>`;
+}
+/* ---------- buyer awareness desk (trust as brand asset) ---------- */
+const BCS_AWARENESS = {
+  phrases: [
+    'Rate roz badalta hai — “soch kar batata hoon” ke waqt bhi DLC aur stamp duty same rehte hain. Pehle number clear karo.',
+    'Jaipur me circle rate (DLC) har April badalta hai — purana rate math me bahut farq daalta hai.',
+    'Site visit 45 minute ka hota hai. Decision ka 80% wahi ho jaata hai.',
+    'Payment plan aapke haath me ho — token se registry tak har milestone ek ledger me.',
+    'BCS ka promise: jis plot ki rate batayi, wahi registry me likhi jaaye.'
+  ],
+  problems: [
+    { q:'“Plot rate DLC se zyada kyu hai?”', a:'Market rate = demand + location + approval. DLC sirf floor hai — main dono ka side-by-side data bhejta hoon, farq samajh aa jaata hai.' },
+    { q:'“Stamp duty kitni lagegi?”', a:'Jaipur: 6% (male) / 5% (female) + 1% registration, DLC value ya price jis pe zyada ho. Calculator me poora breakup hai.' },
+    { q:'“Builder ke payment plan bharose nahi hote”', a:'Construction-linked milestones ledger me date ke saath hain — main har stage se pehle 7 din reminder karta hoon.' },
+    { q:'“RERA approved hai ki nahi kaise pata?”', a:'Project detail me RERA number + approval type + document vault — teen jagah verify. Missing/expired document turant red flag banta hai.' },
+    { q:'“Registry kahan hoga, kab hoga?”', a:'Deal ke agreement date, registry office aur date ledger me record hote hain — ek page par poora lifecycle.' }
+  ],
+  voice: [
+    { tag:'Warm', line:'“Jaipur ki har gully ka rate hum jaante hain — aapko sirf sahi raasta batana hai.”' },
+    { tag:'Bold', line:'“Data bolta hai, main sirf samjhata hoon.”' },
+    { tag:'Reassuring', line:'“Jab tak aapke registry tak documents clear na hon, main chalta nahi.”' },
+    { tag:'Action', line:'“Aaj shaam 7 baje — site visit aur payment plan, dono ek call me.”' }
+  ]
+};
+function awarenessDeskHTML(){
+  const a = BCS_AWARENESS;
+  const phraseBtns = a.phrases.map((t,i) => `<button type="button" class="aw-phrase" data-awcopy="${i}" title="Copy karke WhatsApp status/creative me use karein">“${esc(t)}”<em>copy</em></button>`).join('');
+  const problems = a.problems.map(p => `<div class="persona-problem"><b>${esc(p.q)}</b><span>${esc(p.a)}</span></div>`).join('');
+  const voice = a.voice.map(v => `<button type="button" class="aw-voice" data-awcopyvoice="${v.tag}" title="Brand voice line copy karein"><span class="k">${esc(v.tag)}</span>“${esc(v.line)}”<em>copy</em></button>`).join('');
+  const ideas = contentIdeasHTML();
+  return `<div class="panel" id="awarenessPanel" style="margin-top:12px">
+    <div class="panel-head"><h4>🛡️ Buyer awareness & trust desk</h4><span class="n-badge">BCS voice</span><span class="sub" style="font-size:10.5px;color:var(--mut)">Buyer ki problem → BCS ka solution. Har line WhatsApp status, poster ya call script me seedha use hoti hai.</span></div>
+    <div class="brief-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+      <div class="brief-box"><h5>📣 Catchy phrases</h5><div class="aw-list">${phraseBtns}</div></div>
+      <div class="brief-box"><h5>❓ Buyer problems → solutions</h5><div class="aw-list">${problems}</div></div>
+      ${ideas}
+      <div class="brief-box partner-welcome"><h5>🤝 Partner network playbook</h5><div class="aw-list">${(() => { const pb = partnerPlaybook({}); return `<div class="persona-hook">“${esc(pb.hook)}”</div><p style="font-size:11px;color:var(--mut);line-height:1.5">${esc(pb.pitch)}</p><div class="persona-next"><span class="k">Aaj ka ask</span><b>${esc(pb.ask)}</b></div>`; })()}</div></div>
+      <div class="brief-box"><h5>✍️ Brand voice</h5><div class="aw-list">${voice}</div></div>
+      <div class="brief-box"><h5>🤝 Trust = brand asset</h5><p>Har client ka ek hi sawaal hai — <b>“bharosa kiske karein?”</b> BCS ka jawab data me hai: RERA + approval documents vault, DLC cross-check, payment ledger, handover history. Yahi cheez pehle bhi aur deal ke baad bhi yaad rakhi jaati hai — <b>“BCS se liya tha, sab clear tha.”</b></p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
+          <button type="button" class="btn ghost sm" data-goto="projects">Projects →</button>
+          <button type="button" class="btn ghost sm" data-goto="calc">Calculators →</button>
+          <button type="button" class="btn ghost sm" data-goto="partners">Partner network →</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+function renderAwarenessDesk(){
+  const puls = $('#view-pulse');
+  if(!puls) return;
+  let wrap = $('#awarenessPanel');
+  if(!wrap){
+    const anchor = $('#indiaRatesPanel');
+    if(anchor) anchor.insertAdjacentHTML('afterend', awarenessDeskHTML());
+  } else {
+    wrap.outerHTML = awarenessDeskHTML();
+  }
+  wireAwarenessCopy();
+}
+function wireAwarenessCopy(){
+  $$('#awarenessPanel [data-awcopy]').forEach(b => b.addEventListener('click', async () => {
+    const idx = Number(b.dataset.awcopy);
+    const ok = await copyText(BCS_AWARENESS.phrases[idx]);
+    toast(ok ? 'Phrase copy ho gaya — creative/status me use karein' : 'Copy fail — manually select karein', !ok);
+  }));
+  $$('#awarenessPanel [data-awcopyvoice]').forEach(b => b.addEventListener('click', async () => {
+    const v = BCS_AWARENESS.voice.find(x => x.tag === b.dataset.awcopyvoice);
+    const ok = await copyText(v ? v.line : '');
+    toast(ok ? 'Brand voice line copy — ' + (v ? v.tag : '') : 'Copy fail', !ok);
+  }));
+}
 function openRoadHub(id){
   if(!db.corridors.some(c => c.id === id)) return;
   roadHubId = id;
@@ -22589,6 +22803,7 @@ function renderRoadHub(){
       ${countBtn('resale', resale, 'Resale')}
       ${countBtn('bookings', bookings, 'Bookings')}
     </div>
+    ${corridorExpertiseHTML(c)}
     ${isAdmin() ? `<div class="profile-block hub-actions"><div class="lab">Quick add on this road</div><div class="adv-quick">
       <button type="button" class="btn primary sm" data-hubaddproject="${c.id}">+ Project</button>
       <button type="button" class="btn ghost sm" data-hubaddadvisor="${c.id}">+ Advisor</button>
@@ -24199,6 +24414,15 @@ function dueJourneys(){
   });
   (db.visits || []).filter(v => v.date && v.date <= today && !v.outcome?.includes('booked') && !v.nextDate).forEach(v => items.push({ kind:'feedback', id:v.id, title:(db.clients.find(c => c.id === v.clientId)?.name || 'Client'), sub:'Post-visit feedback due', clientId:v.clientId, projectId:v.projectId, priority:2 }));
   scopedClients().filter(c => c.nextFollowUp && c.nextFollowUp <= today && !['booked','lost'].includes(c.clientStatus || 'new')).forEach(c => items.push({ kind:'followup', id:c.id, title:c.name || c.phone || 'Client', sub:'Follow-up due · ' + followupInfo(c.nextFollowUp).label, clientId:c.id, priority: urgencyRank(c.nextFollowUp) }));
+  // after-sales connection touches (deal ke baad yaad rehna)
+  if(typeof afterSalesTouches === 'function'){
+    scopedClients().forEach(c => {
+      afterSalesTouches(c).forEach(t => {
+        if(t.kind === 'festival') return;
+        items.push({ kind:'aftersales', id:t.id, title:t.title, sub:t.sub, clientId:c.id, waKind:t.wa, date:t.date, priority: t.kind === 'referral' ? 1 : (t.priority || 3) });
+      });
+    });
+  }
   return items.sort((a,b) => a.priority - b.priority).slice(0,6);
 }
 function journeyManualText(){
@@ -24247,7 +24471,7 @@ function renderJourneyPanel(){
   const kindOpts = [['offer','🎁 Offer / update'],['followup','🔁 Follow-up'],['payment','💰 Payment reminder'],['feedback','⭐ Feedback'],['greeting','🙏 Greeting']].map(([v,l]) => `<option value="${v}">${l}</option>`).join('');
   wrap.innerHTML = `
     <div class="panel-head"><h4>Journey sends (${items.length} due)</h4><span class="n-badge">Log: ${logs} sent</span></div>
-    ${items.length ? `<div class="queue-list">${items.map(i => `<button type="button" class="queue-row" data-journey="${i.kind}:${i.id}"><span class="queue-ic">💬</span><span><b>${esc(i.title)}</b><small>${esc(i.sub)}</small></span><em>Send ›</em></button>`).join('')}</div>` : '<div class="empty-inline">Auto due nahi hai — neeche se manual journey bhejo, turant kaam karega. 👇</div>'}
+    ${items.length ? `<div class="queue-list">${items.map(i => `<button type="button" class="queue-row" data-journey="${i.kind}:${i.id}"><span class="queue-ic">${i.kind === 'aftersales' ? '🤝' : '💬'}</span><span><b>${esc(i.title)}</b><small>${esc(i.sub)}</small></span><em>Send ›</em></button>`).join('')}</div>` : '<div class="empty-inline">Auto due nahi hai — neeche se manual journey bhejo, turant kaam karega. 👇</div>'}
     <div class="jm-composer">
       <div class="jm-grid">
         <label><span>Type</span><select id="jmKind">${kindOpts}</select></label>
@@ -24278,10 +24502,18 @@ function sendJourney(spec){
   if(kind === 'payment'){ booking = scopedBookings().find(b => b.id === id); clientId = booking?.clientId || ''; projectId = booking?.projectId || ''; advisorId = booking?.advisorId || ''; }
   if(kind === 'feedback'){ visit = (db.visits || []).find(v => v.id === id); clientId = visit?.clientId || ''; projectId = visit?.projectId || ''; advisorId = visit?.advisorId || ''; }
   if(kind === 'followup'){ clientId = id; }
+  let afterCtx = null;
+  if(kind === 'aftersales'){
+    const c = scopedClients().find(cl => afterSalesTouches(cl).some(t => t.id === id));
+    if(!c) return toast('Client linked hona chahiye', true);
+    const touch = afterSalesTouches(c).find(t => t.id === id);
+    clientId = c.id;
+    afterCtx = { kind: touch ? touch.wa : 'anniversary', ctx: touch ? touch.context : { client:c } };
+  }
   const client = clientId ? db.clients.find(c => c.id === clientId) : null;
   const project = projectId ? scopedProjects().find(p => p.id === projectId) : null;
   if(!client) return toast('Client linked hona chahiye', true);
-  const text = journeyText(kind, { client, project, booking });
+  const text = afterCtx ? afterSalesTouchText(afterCtx.kind, afterCtx.ctx) : journeyText(kind, { client, project, booking });
   const digits = waLink(client.phone);
   if(!db.journeyLogs) db.journeyLogs = [];
   db.journeyLogs.push({ id: uid(), kind, clientId, projectId, advisorId, at: Date.now(), text });
@@ -27353,6 +27585,8 @@ function initClientControls(){
     if(e.target.closest('[data-cvisitplan]')) return openVisitPlannerSafe();
     if(e.target.closest('[data-cpipeline]')){ closeModal('clientProfileModal'); go('pipeline'); return; }
     if(e.target.closest('[data-personawa]')) return openPersonaWhatsApp(db.clients.find(x => x.id === clientProfileId));
+    const as = e.target.closest('[data-astouch]');
+    if(as) return sendAfterSalesTouch(as.dataset.astouch, as.dataset.asid);
     const ps = e.target.closest('[data-personaset]');
     if(ps) return setClientPersona(clientProfileId, ps.dataset.personaset);
   });
@@ -28034,6 +28268,7 @@ function renderClientProfile(){
       })()}
     </div>
     ${c.notes ? `<div class="profile-block"><div class="lab">Internal notes</div><p>${esc(c.notes)}</p></div>` : ''}
+    ${afterSalesPanelHTML(c)}
     <div class="profile-sec">
       <h5>Handover history <span class="n">${history.length}</span></h5>
       ${history.length ? `<div class="transfer-history">${[...history].reverse().map(h => `
@@ -40680,6 +40915,113 @@ function initPartners(){
 }
 
 /* ---------- render ---------- */
+/* ============================================================
+   BCS AFTER-SALES CONNECTION — deal ke baad yaad rehna
+   Registry anniversary · possession · referral ask · festival
+   greeting · ledger closed tap — sab client/project data se.
+   Journey panel me due date ke saath aate hain.
+   ============================================================ */
+function afterSalesTouches(c){
+  if(!c) return [];
+  const out = [];
+  const today = todayISO();
+  const deals = (db.pipeline || []).filter(d => d.clientId === c.id && d.stage !== 'cancelled');
+  const plots = (db.plots || []).filter(pl => pl.clientId === c.id || pl.id === c.dealPlotId);
+  const bookings = scopedBookings().filter(b => b.clientId === c.id && b.stage !== 'cancelled');
+  const visits = (db.visits || []).filter(v => v.clientId === c.id);
+  // 1 · registry / agreement anniversary
+  deals.forEach(d => {
+    const dates = [d.registryDate, d.agreementDate].filter(Boolean);
+    dates.forEach(dt => {
+      if(dt >= today) return;
+      const anniv = new Date(dt);
+      const thisYear = new Date(today).getFullYear();
+      const next = new Date(thisYear, anniv.getMonth(), anniv.getDate());
+      const iso = (next < new Date(today) ? new Date(thisYear + 1, anniv.getMonth(), anniv.getDate()) : next).toISOString().slice(0,10);
+      out.push({ kind:'anniversary', id:c.id + ':' + d.id + ':' + dt, title:c.name || c.phone || 'Client',
+        sub:(d.registryDate === dt ? 'Registry' : 'Agreement') + ' anniversary · ' + (d.code || 'deal'),
+        date: iso, wa: 'anniversary', priority: urgencyRank(iso), context:{ client:c, deal:d } });
+    });
+  });
+  // 2 · ledger fully paid → referral ask (biggest trust asset)
+  plots.forEach(pl => {
+    const L = pl && pl.ledger;
+    const ms = L && Array.isArray(L.milestones) ? L.milestones : [];
+    if(!ms.length) return;
+    const allPaid = ms.every(m => m.status === 'received');
+    if(!allPaid) return;
+    out.push({ kind:'referral', id:c.id + ':' + pl.id, title:c.name || c.phone || 'Client',
+      sub:'Ledger clear · referral maangein — ' + (pl.plotNo || 'plot'),
+      date: today, wa:'referral', priority:2, context:{ client:c, plot:pl } });
+  });
+  // 3 · visit anniversary (1 year after first visit)
+  const firstVisit = [...visits].sort((a,b) => (a.date || '').localeCompare(b.date || ''))[0];
+  if(firstVisit && firstVisit.date){
+    const d0 = new Date(firstVisit.date), t0 = new Date(today);
+    const next = new Date(t0.getFullYear(), d0.getMonth(), d0.getDate());
+    const iso = (next < t0 ? new Date(t0.getFullYear() + 1, d0.getMonth(), d0.getDate()) : next).toISOString().slice(0,10);
+    out.push({ kind:'visitanniv', id:c.id + ':' + firstVisit.id, title:c.name || c.phone || 'Client',
+      sub:'Site visit anniversary · ' + (firstVisit.outcome || 'logged'),
+      date: iso, wa:'anniversary', priority: urgencyRank(iso), context:{ client:c, visit:firstVisit } });
+  }
+  // 4 · upcoming festival greeting (already a module — reuse)
+  const fests = upcomingFestivals(2, today);
+  fests.forEach(f => {
+    if(!bookings.length && !deals.length) return;
+    out.push({ kind:'festival', id:c.id + ':' + f.id, title:c.name || c.phone || 'Client',
+      sub: f.name + ' greeting · active relationship',
+      date: f.date, wa:'greeting', priority: urgencyRank(f.date), context:{ client:c, fest:f } });
+  });
+  return out.filter(x => x.date >= today).sort((a,b) => (a.date || '').localeCompare(b.date || ''));
+}
+function afterSalesTouchText(kind, ctx){
+  const c = ctx && ctx.client;
+  const name = c ? (c.name || c.phone || 'ji') : 'ji';
+  const deal = ctx && ctx.deal;
+  const plot = ctx && ctx.plot;
+  const fest = ctx && ctx.fest;
+  const what = deal ? (deal.code || 'property') : plot ? ('plot ' + (plot.plotNo || '')) : 'BCS property';
+  if(kind === 'anniversary'){
+    return `Namaste ${name} ji,\n\nAaj ${what} ka saal poora hua — pehle bhi thank you. Registry, documents aur handover ke baad bhi main yahin hoon; koi bhi kaam ho (resale, rent, referral ya documentation) to seedha message kijiye.\n\n— Ajay Sharma, BCS`;
+  }
+  if(kind === 'referral'){
+    return `Namaste ${name} ji,\n\nAapka ${what} ka payment ledger clear ho gaya — congratulations! BCS par bharosa aapke dikhaya, iske liye shukriya.\n\nEk request: aapke circle me koi property dekhe, to mera number share kijye — main usse bhi wahi transparency dunga. Aur aapko referral ke roop me priority treatment milega.\n\n— Ajay Sharma, BCS`;
+  }
+  if(kind === 'visitanniv'){
+    return `Namaste ${name} ji,\n\nAaj exactly ek saal pehle humne ${what} dekha tha. Us waqt se ab tak market kuch badla hai — aapke liye latest corridor update bhej deta hoon.\n\n— Ajay Sharma, BCS`;
+  }
+  if(kind === 'festival'){
+    return `Namaste ${name} ji,\n\n${fest ? fest.name : 'Aaj ka din'} ki hardik shubhkamnayein! Aapke ${what} ke saath-saath aapke parivaar ko bhi. Koi zaroorat pade to main yahin hoon.\n\n— Ajay Sharma, BCS`;
+  }
+  return '';
+}
+function afterSalesPanelHTML(c){
+  const touches = afterSalesTouches(c);
+  if(!touches.length){
+    return `<div class="profile-sec"><h5>🤝 After-sales connection <span class="n">0</span></h5>
+      <div class="empty-inline">Deal close hone ke baad registry anniversary, ledger-clear referral ask aur festival greetings yahan apne aap aa jayenge.</div></div>`;
+  }
+  return `<div class="profile-sec"><h5>🤝 After-sales connection <span class="n">${touches.length}</span></h5>
+      <p style="font-size:11px;color:var(--mut);line-height:1.5;margin-bottom:7px">Deal ke baad yaad rehna hi asli network banta hai — har touch is client ke deals/plots/visits se bana hai.</p>
+      <div class="mini-list">${touches.slice(0,6).map(t => `<button type="button" data-astouch="${t.wa}" data-asid="${esc(t.id)}" title="WhatsApp message banayein">
+        <span class="pdot" style="background:${t.kind === 'referral' ? '#C49A3E' : t.kind === 'anniversary' ? '#7B67C6' : '#3A8FB8'}"></span>
+        <span style="min-width:0"><span class="nm">${esc(fmtDate(t.date))} · ${esc(t.kind === 'referral' ? 'Referral ask' : t.kind === 'anniversary' ? 'Registry anniversary' : t.kind === 'visitanniv' ? 'Visit anniversary' : 'Festival greeting')}</span>
+        <span class="sub">${esc(t.sub)}</span></span>
+        <span class="price">Send ›</span>
+      </button>`).join('')}</div>
+    </div>`;
+}
+function sendAfterSalesTouch(waKind, id){
+  const c = db.clients.find(x => x.id === clientProfileId);
+  if(!c) return;
+  const touch = afterSalesTouches(c).find(t => t.id === id);
+  const ctx = (touch && touch.context) || { client:c };
+  const txt = afterSalesTouchText(waKind || (touch && touch.wa), ctx);
+  const base = waLink(c.phone);
+  if(!base) return toast('Is client ka WhatsApp number nahi hai', true);
+  try{ window.open(base + '?text=' + encodeURIComponent(txt), '_blank', 'noopener'); toast('After-sales message WhatsApp me ready'); }
+  catch(e){ toast('WhatsApp open nahi hua', true); }
+}
 /* ================= BCS SALES PIPELINE ================= */
 const DEAL_STAGES = { booked:'Booked', agreement:'Agreement', registry:'Registry', handover:'Handover', closed:'Closed', cancelled:'Cancelled' };
 const DEAL_STAGES_COLOR = { booked:'#C79A2E', agreement:'#54779E', registry:'#7C8B6B', handover:'#2F6644', closed:'#4E7C5B', cancelled:'#A4452B' };
@@ -42953,6 +43295,7 @@ function renderDataStatus(){
 /* Boot + auto-refresh wiring */
 initMarketStrip();
 try{ renderIndiaRates(); }catch(e){ console.warn('[BCS rates]', e); }
+try{ renderAwarenessDesk(); }catch(e){ console.warn('[BCS awareness]', e); }
 /* paint cached headlines immediately, then fetch fresh ones on boot
    (so the ticker is never empty until the News tab is opened) */
 try{ renderTicker(); }catch(e){}
