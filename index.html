@@ -3901,6 +3901,13 @@ body[data-theme="dark"] .tooldock .dock-btn{background:rgba(27,32,27,.96)}
 .cal-chip.mark-content{background:#DCEBF5;color:#285F82;border-color:#BFD8ED}
 .cal-chip.fest{background:#FFF8EA;color:#8A6D1F;border-color:#E8D39A}
 .cal-chip.task,.cal-chip.follow,.cal-chip.book{background:#EEF3FB;color:#3F66A8;border-color:#D2E0F5}
+.cal-chip.visit{background:#E4F2FA;color:#28627F;border-color:#BFDCEB}
+.cal-chip.due{background:#FDF1E2;color:#92551B;border-color:#EFD6B4}
+.cal-chip.due.over{background:#FBEAE6;color:#A4452B;border-color:#EFD1C7}
+.cell-link{font:inherit;color:inherit;background:none;border:none;padding:0;cursor:pointer;text-align:left;text-decoration:underline;text-decoration-color:color-mix(in srgb, var(--gold) 55%, transparent);text-underline-offset:2px;transition:color .16s}
+.cell-link:hover{color:var(--gold)}
+.cell-link.sub{font-size:9.5px;font-weight:800;letter-spacing:.3px;color:var(--mut);text-decoration:none}
+.cell-link.sub:hover{color:var(--gold);text-decoration:underline}
 .month-legend-row{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:12px}
 .month-legend{display:inline-flex;align-items:center;gap:5px;font-size:9.5px;font-weight:800;text-transform:uppercase;color:var(--mut)}
 .month-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
@@ -5362,6 +5369,9 @@ body[data-theme="dark"] .month-legend{background:rgba(255,255,255,.06) !importan
 .agenda-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:color-mix(in srgb, var(--acc) 6%, transparent) !important;border:1px solid var(--hair) !important}
 .agenda-row b{font-size:12.5px !important;display:block !important}
 .agenda-row small{font-size:10.5px !important;color:var(--mut) !important}
+.agenda-row.agenda-btn{width:100% !important;text-align:left !important;font:inherit !important;color:inherit !important;cursor:pointer !important;transition:border-color .16s,background .16s}
+.agenda-row.agenda-btn:hover{border-color:color-mix(in srgb, var(--acc) 35%, var(--hair)) !important;background:color-mix(in srgb, var(--acc) 11%, transparent) !important}
+.agenda-row .agenda-open{margin-left:auto !important;font-style:normal !important;font-size:9px !important;font-weight:900 !important;letter-spacing:.6px !important;text-transform:uppercase !important;color:var(--gold) !important;flex:none !important}
 .agenda-ic{width:34px !important;height:34px !important;border-radius:11px !important;background:var(--panel) !important;border:1px solid var(--hair) !important;display:grid !important;place-items:center !important;flex:none !important;font-size:16px !important}
 .mark-date-line{font-size:12px !important;font-weight:750 !important;color:var(--acc-deep) !important;margin-bottom:10px !important;padding:8px 11px !important;border-radius:10px !important;background:color-mix(in srgb, var(--acc) 8%, transparent) !important;border:1px solid color-mix(in srgb, var(--acc) 14%, transparent) !important}
 body[data-theme="dark"] .mark-date-line{color:var(--acc) !important}
@@ -12506,6 +12516,9 @@ body[data-theme="dark"] .cal-chip.mark-booked{background:#17301F !important;colo
 body[data-theme="dark"] .cal-chip.mark-busy{background:#361A15 !important;color:#F2A18D !important;border-color:#5A2B20 !important}
 body[data-theme="dark"] .cal-chip.mark-custom{background:#241E3B !important;color:#C9D1FF !important;border-color:#3A2E6B !important}
 body[data-theme="dark"] .cal-chip.mark-content{background:#152A38 !important;color:#A9D3F2 !important;border-color:#274C67 !important}
+body[data-theme="dark"] .cal-chip.visit{background:#142A34 !important;color:#9FD3E8 !important;border-color:#24505F !important}
+body[data-theme="dark"] .cal-chip.due{background:#332714 !important;color:#F0CB8C !important;border-color:#5C451E !important}
+body[data-theme="dark"] .cal-chip.due.over{background:#3A1D16 !important;color:#F2A18D !important;border-color:#5E2B20 !important}
 
 /* --- Mini month calendar --- */
 body[data-theme="dark"] .mini-month-day{background:#1B201B !important;border-color:rgba(255,255,255,.08) !important;color:#C9CCD3 !important}
@@ -22955,6 +22968,58 @@ function calendarISO(d){
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 let __calView = 'month';
+function scheduledVisitList(){
+  return scopedClients().filter(c => c.visitDate && /^\d{4}-\d{2}-\d{2}$/.test(String(c.visitDate)));
+}
+function plotMilestoneList(){
+  const out = [];
+  (db.plots || []).forEach(plot => {
+    const ms = plot && plot.ledger && Array.isArray(plot.ledger.milestones) ? plot.ledger.milestones : [];
+    ms.forEach(m => {
+      if(!m || !m.date || m.status === 'received') return;
+      if(!/^\d{4}-\d{2}-\d{2}$/.test(String(m.date))) return;
+      const project = (db.projects || []).find(p => p.id === plot.projectId) || null;
+      const client = (db.clients || []).find(c => c.id === plot.clientId || c.dealPlotId === plot.id) || null;
+      out.push({ plot, project, client, milestone:m, overdue: m.date < todayISO() });
+    });
+  });
+  return out;
+}
+function plotDueGroups(items){
+  const map = new Map();
+  (items || []).forEach(x => {
+    const cur = map.get(x.plot.id);
+    if(!cur) map.set(x.plot.id, { plot:x.plot, project:x.project, client:x.client, amount:(+x.milestone.amount || 0), count:1, overdue:x.overdue, date:x.milestone.date });
+    else {
+      cur.amount += (+x.milestone.amount || 0); cur.count += 1;
+      cur.overdue = cur.overdue || x.overdue;
+      if(x.milestone.date < cur.date) cur.date = x.milestone.date;
+      if(!cur.client && x.client) cur.client = x.client;
+      if(!cur.project && x.project) cur.project = x.project;
+    }
+  });
+  return [...map.values()];
+}
+function openCalDue(plotId){
+  try{ if(window.BCS_OPS2 && window.BCS_OPS2.openFinancials) return window.BCS_OPS2.openFinancials(plotId); }catch(e){}
+  toast('Financial ledger module load nahi hua — page refresh karein', true);
+}
+function openVisitPlannerSafe(){
+  try{ if(window.BCS_OPS2 && typeof window.BCS_OPS2.openVisitPlanner === 'function') return window.BCS_OPS2.openVisitPlanner(); }catch(e){}
+  try{ if(window.BCS_OPS && typeof window.BCS_OPS.openDealEdit === 'function') return window.BCS_OPS.openDealEdit(clientProfileId); }catch(e){}
+  toast('Visit planner load nahi hua — page refresh karein', true);
+}
+const PLOT_STATUS_LABELS = { available:'Available', token:'Under Token', hold:'Hold', sold:'Sold / Registered', resale:'Investor Resale', release:'New Release' };
+function plotStatusLabel(id){ return PLOT_STATUS_LABELS[id] || id || '—'; }
+function dealStageLabel(id){
+  const m = { inbound:'Inbound Lead', profiling:'Requirement Profiling', visit:'Site Visit Scheduled', token:'Token / Negotiation', closed:'Registry / Closed', booked:'Booked', cancelled:'Cancelled' };
+  return m[id] || id || '—';
+}
+function dealValueOf(d){ return (Number(d && d.dealValue) || 0); }
+function openCalVisit(clientId, visitId){
+  if(visitId && typeof openVisit === 'function') return openVisit(visitId);
+  if(clientId) return openClientProfile(clientId);
+}
 function calDateMaps(){
   const marksByDate = new Map();
   (db.monthMarks || []).forEach(mark => { if(!marksByDate.has(mark.date)) marksByDate.set(mark.date, []); marksByDate.get(mark.date).push(mark); });
@@ -22964,21 +23029,66 @@ function calDateMaps(){
   scopedClients().forEach(c => { if(!c.nextFollowUp) return; if(!followByDate.has(c.nextFollowUp)) followByDate.set(c.nextFollowUp, []); followByDate.get(c.nextFollowUp).push(c); });
   const bookingByDate = new Map();
   scopedBookings().forEach(b => { if(!b.bookingDate) return; if(!bookingByDate.has(b.bookingDate)) bookingByDate.set(b.bookingDate, []); bookingByDate.get(b.bookingDate).push(b); });
-  return { marksByDate, taskByDate, followByDate, bookingByDate };
+  const visitByDate = new Map();
+  const addVisit = (date, payload) => { if(!visitByDate.has(date)) visitByDate.set(date, []); visitByDate.get(date).push(payload); };
+  const plannedKeys = new Set();
+  scheduledVisitList().forEach(c => {
+    const plot = c.dealPlotId ? (db.plots || []).find(pl => pl.id === c.dealPlotId) : null;
+    const projectId = c.projectId || (plot ? plot.projectId : '');
+    const project = projectId ? (db.projects || []).find(p => p.id === projectId) : null;
+    plannedKeys.add(c.id + '|' + c.visitDate);
+    addVisit(c.visitDate, { client:c, planned:true, project });
+  });
+  (db.visits || []).forEach(v => {
+    if(!v.date || plannedKeys.has((v.clientId || '') + '|' + v.date)) return;
+    const client = v.clientId ? (db.clients || []).find(c => c.id === v.clientId) : null;
+    const project = v.projectId ? (db.projects || []).find(p => p.id === v.projectId) : null;
+    addVisit(v.date, { client, visit:v, planned:false, project });
+  });
+  const dueByDate = new Map();
+  plotMilestoneList().forEach(x => {
+    const date = x.milestone.date;
+    if(!dueByDate.has(date)) dueByDate.set(date, []);
+    dueByDate.get(date).push(x);
+  });
+  return { marksByDate, taskByDate, followByDate, bookingByDate, visitByDate, dueByDate };
 }
 function calChipsFor(iso, maps){
   const marks = maps.marksByDate.get(iso) || [];
   const tasks = maps.taskByDate.get(iso) || [];
   const follows = maps.followByDate.get(iso) || [];
   const bookings = maps.bookingByDate.get(iso) || [];
+  const visits = (maps.visitByDate && maps.visitByDate.get(iso)) || [];
+  const dues = (maps.dueByDate && maps.dueByDate.get(iso)) || [];
   const fest = festivalByDate(iso);
   return [
     ...marks.map(mark => `<span class="cal-chip mark-${mark.type}" title="${esc(mark.label)}">${esc(MONTH_MARK_TYPES[mark.type]?.label || 'Label')}</span>`),
     fest ? `<span class="cal-chip fest" title="${esc(fest.name || '')}">${esc(fest.emoji || '✨')} ${esc(fest.name || '')}</span>` : '',
     ...tasks.map(t => `<span class="cal-chip task">☑ ${esc((t.title || 'Task').slice(0, 28))}</span>`),
     ...follows.map(c => `<span class="cal-chip follow">📞 ${esc(c.name || c.phone || 'Client')}</span>`),
-    ...bookings.map(b => `<span class="cal-chip book">🏠 ${esc(bookingClient(b)?.name || 'Booking')}</span>`)
+    ...bookings.map(b => `<span class="cal-chip book">🏠 ${esc(bookingClient(b)?.name || 'Booking')}</span>`),
+    ...visits.map(v => `<span class="cal-chip visit" title="${v.planned ? 'Scheduled site visit' : 'Logged site visit'}">🧭 ${esc((v.client && (v.client.name || v.client.phone)) || 'Visit')}</span>`),
+    ...dues.map(x => `<span class="cal-chip due${x.overdue ? ' over' : ''}" title="${esc((x.milestone.label || 'Payment') + ' · ' + moneyINR(x.milestone.amount || 0))}">₹ ${esc((x.client && (x.client.name || x.client.phone)) || x.milestone.label || 'Due')}</span>`)
   ].filter(Boolean).join('');
+}
+function calExtraAgendaRows(iso, maps){
+  const visits = (maps.visitByDate && maps.visitByDate.get(iso)) || [];
+  const dues = (maps.dueByDate && maps.dueByDate.get(iso)) || [];
+  return [
+    ...visits.map(v => {
+      const c = v.client;
+      const name = c ? (c.name || c.phone || 'Client') : 'Site visit';
+      const slot = v.planned ? (c && c.visitSlot ? c.visitSlot : 'time TBD') : ((v.visit && v.visit.outcome) || 'logged');
+      const pickup = v.planned && c && c.pickup ? ' · ' + c.pickup : '';
+      const proj = v.project ? ' · ' + v.project.name : '';
+      return `<button type="button" class="agenda-row agenda-btn" data-calvisit="${c ? c.id : ''}" data-calvlog="${v.visit ? v.visit.id : ''}"><span class="agenda-ic">🧭</span><span><b>${esc(name)}</b><small>${v.planned ? 'Site visit' : 'Visit logged'} · ${esc(slot)}${esc(pickup)}${esc(proj)}</small></span><em class="agenda-open">Open</em></button>`;
+    }),
+    ...dues.map(x => {
+      const name = x.client ? (x.client.name || x.client.phone || 'Client') : ('Plot ' + (x.plot.label || x.plot.num || ''));
+      const sub = (x.milestone.label || 'Payment') + ' · ' + moneyINR(x.milestone.amount || 0) + (x.overdue ? ' · overdue' : '') + (x.project ? ' · ' + x.project.name : '');
+      return `<button type="button" class="agenda-row agenda-btn" data-caldue="${x.plot.id}"><span class="agenda-ic">₹</span><span><b>${esc(name)}</b><small>${esc(sub)}</small></span><em class="agenda-open">Open</em></button>`;
+    })
+  ].join('');
 }
 function renderWeekCalendar(panel, title, maps){
   const cur = new Date(monthCursor);
@@ -23061,6 +23171,17 @@ function renderMonthCalendar(){
     if(!bookingByDate.has(b.bookingDate)) bookingByDate.set(b.bookingDate, []);
     bookingByDate.get(b.bookingDate).push(b);
   });
+  const visitByDate = new Map();
+  scheduledVisitList().forEach(c => {
+    if(!visitByDate.has(c.visitDate)) visitByDate.set(c.visitDate, []);
+    visitByDate.get(c.visitDate).push(c);
+  });
+  const dueByDate = new Map();
+  plotMilestoneList().forEach(x => {
+    const date = x.milestone.date;
+    if(!dueByDate.has(date)) dueByDate.set(date, []);
+    dueByDate.get(date).push(x);
+  });
   const header = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d => `<span>${d}</span>`).join('');
   const cells = [];
   for(let i = 0; i < startBlank; i++) cells.push('<span class="cal-cell empty"></span>');
@@ -23071,6 +23192,9 @@ function renderMonthCalendar(){
     const tasks = taskByDate.get(iso) || [];
     const follows = followByDate.get(iso) || [];
     const bookings = bookingByDate.get(iso) || [];
+    const visits = visitByDate.get(iso) || [];
+    const dues = dueByDate.get(iso) || [];
+    const dueOver = dues.some(x => x.overdue);
     const fest = festivalByDate(iso);
     const isToday = iso === todayISO();
     const chips = [
@@ -23078,7 +23202,9 @@ function renderMonthCalendar(){
       fest ? `<span class="cal-chip fest" title="${esc(fest.name || '')}">${esc(fest.emoji || '✨')}</span>` : '',
       tasks.length ? `<span class="cal-chip task">Task ${tasks.length}</span>` : '',
       follows.length ? `<span class="cal-chip follow">Follow ${follows.length}</span>` : '',
-      bookings.length ? `<span class="cal-chip book">${bookings.length} book</span>` : ''
+      bookings.length ? `<span class="cal-chip book">${bookings.length} book</span>` : '',
+      visits.length ? `<span class="cal-chip visit" title="Scheduled site visits">🧭 Visit ${visits.length}</span>` : '',
+      dues.length ? `<span class="cal-chip due${dueOver ? ' over' : ''}" title="Plot payment milestones due">₹ Due ${dues.length}</span>` : ''
     ].filter(Boolean).join('');
     cells.push(`<button type="button" class="cal-cell ${isToday ? 'today' : ''} ${fest ? 'fest' : ''} ${marks.length ? 'marked' : ''}" data-caldate="${iso}" title="${esc(fest?.name || '')}">
       <b>${d}</b>
@@ -23087,7 +23213,8 @@ function renderMonthCalendar(){
     </button>`);
   }
   const legend = Object.keys(MONTH_MARK_TYPES).map(k => `<span class="month-legend"><i style="background:${MONTH_MARK_TYPES[k].color}"></i>${MONTH_MARK_TYPES[k].label}</span>`).join('') +
-    '<span class="month-legend"><i style="background:var(--gold)"></i>Festival</span><span class="month-legend"><i style="background:#4C8FD6"></i>Task / follow-up / booking</span>';
+    '<span class="month-legend"><i style="background:var(--gold)"></i>Festival</span><span class="month-legend"><i style="background:#4C8FD6"></i>Task / follow-up / booking</span>' +
+    '<span class="month-legend"><i style="background:#28627F"></i>Site visit</span><span class="month-legend"><i style="background:#92551B"></i>Payment due</span>';
   if(!window.__selDate) window.__selDate = todayISO();
   const selTasks = ((db.todos || []).filter(t => t.date === window.__selDate) || []);
   const selFollows = scopedClients().filter(c => c.nextFollowUp === window.__selDate);
@@ -23099,7 +23226,8 @@ function renderMonthCalendar(){
     ...selMarks.map(m => `<div class="agenda-row"><span class="agenda-ic">🏷️</span><span><b>${esc(m.label || '')}</b><small>${esc(MONTH_MARK_TYPES[m.type]?.label || 'Label')}${m.note ? ' · ' + esc(m.note) : ''}</small></span><button type="button" class="btn ghost xs" data-agenda-edit="${m.id}">Edit</button></div>`),
     ...selTasks.map(t => `<div class="agenda-row"><span class="agenda-ic">☑</span><span><b>${esc(t.title || 'Task')}</b><small>${t.done ? 'Done' : 'Task pending'}</small></span></div>`),
     ...selFollows.map(c => `<div class="agenda-row"><span class="agenda-ic">📞</span><span><b>${esc(c.name || c.phone || 'Client')}</b><small>Follow-up due</small></span></div>`),
-    ...selBookings.map(b => `<div class="agenda-row"><span class="agenda-ic">🏠</span><span><b>${esc(bookingClient(b)?.name || 'Booking')}</b><small>Booking · ${esc(b.stage || '')}</small></span></div>`)
+    ...selBookings.map(b => `<div class="agenda-row"><span class="agenda-ic">🏠</span><span><b>${esc(bookingClient(b)?.name || 'Booking')}</b><small>Booking · ${esc(b.stage || '')}</small></span></div>`),
+    calExtraAgendaRows(window.__selDate, calDateMaps())
   ].join('');
   panel.innerHTML = `
     <div class="cal-wrap">
@@ -23130,6 +23258,8 @@ function renderMonthCalendar(){
     const ag = $('#calAgenda'); if(ag) ag.scrollIntoView({ behavior:'smooth', block:'nearest' });
   }));
   $$('#calAgenda [data-agenda-edit]').forEach(b => b.addEventListener('click', () => fillMonthMark(b.dataset.agendaEdit)));
+  $$('#monthPanel [data-calvisit]').forEach(b => b.addEventListener('click', () => openCalVisit(b.dataset.calvisit, b.dataset.calvlog)));
+  $$('#monthPanel [data-caldue]').forEach(b => b.addEventListener('click', () => openCalDue(b.dataset.caldue)));
   const calAdd = $('#calTodoAdd'), calInp = $('#calTodoInput'), calLbl = $('#calAddLabel'), calEdit = $('#calEditLabels');
   if(calAdd) calAdd.addEventListener('click', () => {
     const t = (calInp && calInp.value || '').trim();
@@ -23191,11 +23321,14 @@ function bindCalAgenda(panel){
       ...marks.map(mm => `<div class="agenda-row"><span class="agenda-ic">🏷️</span><span><b>${esc(mm.label || '')}</b><small>${esc(MONTH_MARK_TYPES[mm.type]?.label || 'Label')}${mm.note ? ' · ' + esc(mm.note) : ''}</small></span><button type="button" class="btn ghost xs" data-agenda-edit="${mm.id}">Edit</button></div>`),
       ...tasks.map(t => `<div class="agenda-row"><span class="agenda-ic">☑</span><span><b>${esc(t.title || 'Task')}</b><small>${t.done ? 'Done' : 'Task pending'}</small></span></div>`),
       ...follows.map(c => `<div class="agenda-row"><span class="agenda-ic">📞</span><span><b>${esc(c.name || c.phone || 'Client')}</b><small>Follow-up due</small></span></div>`),
-      ...bookings.map(b => `<div class="agenda-row"><span class="agenda-ic">🏠</span><span><b>${esc(bookingClient(b)?.name || 'Booking')}</b><small>Booking · ${esc(b.stage || '')}</small></span></div>`)
+      ...bookings.map(b => `<div class="agenda-row"><span class="agenda-ic">🏠</span><span><b>${esc(bookingClient(b)?.name || 'Booking')}</b><small>Booking · ${esc(b.stage || '')}</small></span></div>`),
+      calExtraAgendaRows(iso, maps)
     ].join('');
     const listEl = ag.querySelector('#calAgendaList');
     if(listEl) listEl.innerHTML = rows || '<div class="empty-inline">Is din kuch nahi — label ya task add karo.</div>';
     $$('#calAgenda [data-agenda-edit]').forEach(b => b.addEventListener('click', () => fillMonthMark(b.dataset.agendaEdit)));
+    ag.querySelectorAll('[data-calvisit]').forEach(b => b.addEventListener('click', () => openCalVisit(b.dataset.calvisit, b.dataset.calvlog)));
+    ag.querySelectorAll('[data-caldue]').forEach(b => b.addEventListener('click', () => openCalDue(b.dataset.caldue)));
     const calAdd = ag.querySelector('#calTodoAddSched') || ag.querySelector('#calTodoAdd');
     const calInp = ag.querySelector('#calTodoInputSched') || ag.querySelector('#calTodoInput');
     const calLbl = ag.querySelector('#calAddLabelSched') || ag.querySelector('#calAddLabel');
@@ -23225,7 +23358,8 @@ function renderMarkList(iso){
     fest ? `<div class="agenda-row"><span class="agenda-ic">🪔</span><span><b>${esc(fest.name || '')}</b><small>Festival</small></span></div>` : '',
     ...tasks.map(t => `<div class="agenda-row"><span class="agenda-ic">☑</span><span><b>${esc(t.title || 'Task')}</b><small>${t.done ? 'Done' : 'Task pending'}</small></span></div>`),
     ...follows.map(c => `<div class="agenda-row"><span class="agenda-ic">📞</span><span><b>${esc(c.name || c.phone || 'Client')}</b><small>Follow-up due</small></span></div>`),
-    ...bookings.map(b => `<div class="agenda-row"><span class="agenda-ic">🏠</span><span><b>${esc(bookingClient(b)?.name || 'Booking')}</b><small>Booking · ${esc(b.stage || '')}</small></span></div>`)
+    ...bookings.map(b => `<div class="agenda-row"><span class="agenda-ic">🏠</span><span><b>${esc(bookingClient(b)?.name || 'Booking')}</b><small>Booking · ${esc(b.stage || '')}</small></span></div>`),
+    calExtraAgendaRows(iso, calDateMaps())
   ].join('');
   const marks = (db.monthMarks || []).filter(m => m.date === iso);
   wrap.innerHTML = (agenda ? `<div class="agenda-list">${agenda}</div>` : '') + (marks.length ? marks.map(m => `
@@ -23237,6 +23371,8 @@ function renderMarkList(iso){
     </div>`).join('') : '<div class="empty-inline">Is date par koi mark nahi — neeche se add karo.</div>');
   $$('#markList [data-mark-edit]').forEach(b => b.addEventListener('click', () => fillMonthMark(b.dataset.markEdit)));
   $$('#markList [data-mark-del]').forEach(b => b.addEventListener('click', () => deleteMonthMark(b.dataset.markDel)));
+  $$('#markList [data-calvisit]').forEach(b => b.addEventListener('click', () => openCalVisit(b.dataset.calvisit, b.dataset.calvlog)));
+  $$('#markList [data-caldue]').forEach(b => b.addEventListener('click', () => openCalDue(b.dataset.caldue)));
 }
 function openMonthMark(iso){
   const d = iso ? isoToDate(iso) : null;
@@ -23324,7 +23460,12 @@ function nextBestActions(){
   });
   (db.documents || []).filter(d => d.expiry && d.expiry >= today && d.expiry <= addISO(today, 45)).forEach(d => items.push({ kind:'doc', id:d.id, title:d.name || 'Document', sub:'Expiry ' + fmtDate(d.expiry) + ' · ' + (d.status || 'pending'), date:d.expiry, priority:2 }));
   (db.monthMarks || []).filter(m => m.date >= today).forEach(m => items.push({ kind:'mark', id:m.id, title:m.label, sub:(MONTH_MARK_TYPES[m.type]?.label || 'Label') + ' · ' + fmtDate(m.date), date:m.date, priority: urgencyRank(m.date) }));
-  return items.sort((a,b) => a.priority - b.priority || (a.date || '').localeCompare(b.date || '')).slice(0, 8);
+  scheduledVisitList().forEach(c => items.push({ kind:'visit', id:c.id, title:c.name || c.phone || 'Client', sub:'Site visit · ' + (c.visitSlot || 'time TBD') + (c.visitDate ? ' · ' + fmtDate(c.visitDate) : ''), date:c.visitDate, priority: urgencyRank(c.visitDate) }));
+  plotDueGroups(plotMilestoneList()).forEach(x => {
+    const who = x.client ? (x.client.name || x.client.phone || 'Client') : 'Plot due';
+    items.push({ kind:'due', id:x.plot.id, title:who, sub:(x.count > 1 ? x.count + ' milestones · ' : '') + moneyINR(x.amount) + (x.overdue ? ' · overdue' : ' · ' + fmtDate(x.date)) + (x.project ? ' · ' + x.project.name : ''), date:x.date, priority: x.overdue ? 0 : urgencyRank(x.date) });
+  });
+  return items.sort((a,b) => a.priority - b.priority || (a.date || '').localeCompare(b.date || '')).slice(0, 10);
 }
 function renderNextQueue(){
   const wrap = $('#nextQueue');
@@ -23332,7 +23473,7 @@ function renderNextQueue(){
   const items = nextBestActions();
   const rates = typeof rateAlerts === 'function' ? rateAlerts() : [];
   wrap.innerHTML = `<div class="panel-head"><h4>Action list</h4><span class="n-badge">${items.length}</span></div>` +
-    (items.length ? `<div class="queue-list">${items.map(i => `<button type="button" class="queue-row" data-queue="${i.kind}:${i.id}"><span class="queue-ic">${i.kind === 'booking' ? '₹' : i.kind === 'client' ? '☎' : i.kind === 'advisor' ? '♟' : i.kind === 'task' ? '✓' : '!'}</span><span><b>${esc(i.title)}</b><small>${esc(i.sub)}</small></span><em>Open</em></button>`).join('')}</div>` : '<div class="empty-inline">Aaj ka queue clear hai — main ek bookable slot/client agenda add karo.</div>') +
+    (items.length ? `<div class="queue-list">${items.map(i => `<button type="button" class="queue-row" data-queue="${i.kind}:${i.id}"><span class="queue-ic">${i.kind === 'booking' ? '₹' : i.kind === 'due' ? '₹' : i.kind === 'visit' ? '🧭' : i.kind === 'client' ? '☎' : i.kind === 'advisor' ? '♟' : i.kind === 'task' ? '✓' : '!'}</span><span><b>${esc(i.title)}</b><small>${esc(i.sub)}</small></span><em>Open</em></button>`).join('')}</div>` : '<div class="empty-inline">Aaj ka queue clear hai — main ek bookable slot/client agenda add karo.</div>') +
     (rates.length ? `<div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)"><div style="display:flex;align-items:center;gap:8px"><b style="font-size:12px">📈 Rate watch</b><span class="n-badge">${rates.length}</span><span style="margin-left:auto;font-size:11px;color:var(--mut)">≥3% move</span></div><div style="display:grid;gap:6px;margin-top:7px">${rates.map(r => `<button type="button" class="queue-row" data-rate="${r.project.id}"><span class="rate-chip ${r.kind}">${r.delta > 0 ? '+' : ''}${r.delta}%</span><span><b>${esc(r.project.name)}</b><small>${esc(fmtPrice(r.prev.price / 100000) || r.prev.price)} → ${esc(fmtPrice(r.last.price / 100000) || r.last.price)} · ${esc(fmtDate(r.last.date))}</small></span><em>Open</em></button>`).join('')}</div></div>` : '');
   $$('#nextQueue [data-queue]').forEach(btn => btn.addEventListener('click', () => {
     const [kind, id] = btn.dataset.queue.split(':');
@@ -23342,6 +23483,8 @@ function renderNextQueue(){
     else if(kind === 'task') go('dayplan');
     else if(kind === 'doc') openDoc(id);
     else if(kind === 'mark') openMonthMark(null);
+    else if(kind === 'visit') openCalVisit(id, '');
+    else if(kind === 'due') openCalDue(id);
   }));
   $$('#nextQueue [data-rate]').forEach(btn => btn.addEventListener('click', () => openDetail(btn.dataset.rate)));
   const add = $('#queueAddTask');
@@ -24319,8 +24462,10 @@ function renderSeniorDesk(){
     ...tasks.slice(0,2).map(t => ({ title:t.title || 'Task', sub:(t.time ? t.time + ' · ' : '' ) + (t.priority || 'normal'), kind:'dayplan' })),
     ...overdueTasks.slice(0,1).map(t => ({ title:t.title || 'Overdue task', sub:'Overdue · ' + fmtDate(t.date), kind:'dayplan' })),
     ...dueClients.slice(0,3).map(c => ({ title:c.name || c.phone || 'Client', sub:'Client · ' + followupInfo(c.nextFollowUp).label, click:'senclient', id:c.id })),
-    ...dueAdvisors.slice(0,2).map(a => ({ title:a.name || 'Advisor', sub:'Advisor · ' + followupInfo(a.nextFollowUp).label, click:'senadvisor', id:a.id }))
-  ].slice(0, 7);
+    ...dueAdvisors.slice(0,2).map(a => ({ title:a.name || 'Advisor', sub:'Advisor · ' + followupInfo(a.nextFollowUp).label, click:'senadvisor', id:a.id })),
+    ...scheduledVisitList().filter(c => c.visitDate <= today).slice(0,2).map(c => ({ title:c.name || c.phone || 'Client', sub:'Site visit · ' + (c.visitSlot || 'time TBD') + (c.visitDate === today ? ' · today' : ' · ' + fmtDate(c.visitDate)), click:'senvisit', id:c.id })),
+    ...plotDueGroups(plotMilestoneList().filter(x => x.milestone.date <= today)).sort((a,b) => a.date.localeCompare(b.date)).slice(0,2).map(x => ({ title:x.client ? (x.client.name || x.client.phone || 'Client') : 'Plot due', sub:(x.count > 1 ? x.count + ' milestones · ' : '') + moneyINR(x.amount) + (x.overdue ? ' · overdue' : ''), click:'sendue', id:x.plot.id }))
+  ].slice(0, 9);
   const attention = [
     ...projects.filter(p => !p.developerId).slice(0,2).map(p => ({ title:p.name, sub:'No developer linked', click:'senproj', id:p.id })),
     ...projects.filter(p => !p.rera).slice(0,2).map(p => ({ title:p.name, sub:'RERA not recorded', click:'senproj', id:p.id })),
@@ -24334,7 +24479,11 @@ function renderSeniorDesk(){
       ? `<button type="button" class="sen-row" data-senadvisor="${item.id}"><span><b>${esc(item.title)}</b><small>${esc(item.sub)}</small></span><em>Open</em></button>`
       : item.click === 'senproj'
         ? `<button type="button" class="sen-row" data-senproj="${item.id}"><span><b>${esc(item.title)}</b><small>${esc(item.sub)}</small></span><em>Open</em></button>`
-        : `<button type="button" class="sen-row" data-goto="${item.kind}"><span><b>${esc(item.title)}</b><small>${esc(item.sub)}</small></span><em>Open</em></button>`;
+        : item.click === 'senvisit'
+          ? `<button type="button" class="sen-row" data-senvisit="${item.id}"><span><b>${esc(item.title)}</b><small>${esc(item.sub)}</small></span><em>Open</em></button>`
+          : item.click === 'sendue'
+            ? `<button type="button" class="sen-row" data-sendue="${item.id}"><span><b>${esc(item.title)}</b><small>${esc(item.sub)}</small></span><em>Open</em></button>`
+            : `<button type="button" class="sen-row" data-goto="${item.kind}"><span><b>${esc(item.title)}</b><small>${esc(item.sub)}</small></span><em>Open</em></button>`;
   $('#seniorPriorities').innerHTML = `
     <div class="panel-head"><h4>Today's priorities</h4><span class="n-badge">${priorityItems.length}</span></div>
     ${priorityItems.length ? priorityItems.map(action).join('') : '<div class="empty-inline">Aaj ka queue clear hai — main ek bookable slot/client agenda add karo.</div>'}
@@ -24381,6 +24530,8 @@ function renderSeniorDesk(){
   if(manage) manage.onclick = () => openFestivalManager();
   $$('#seniorPriorities [data-senclient]').forEach(b => b.addEventListener('click', () => openClientProfile(b.dataset.senclient)));
   $$('#seniorPriorities [data-senadvisor]').forEach(b => b.addEventListener('click', () => openAdvisorProfile(b.dataset.senadvisor)));
+  $$('#seniorPriorities [data-senvisit]').forEach(b => b.addEventListener('click', () => openCalVisit(b.dataset.senvisit, '')));
+  $$('#seniorPriorities [data-sendue]').forEach(b => b.addEventListener('click', () => openCalDue(b.dataset.sendue)));
   $$('#seniorAttention [data-senclient]').forEach(b => b.addEventListener('click', () => openClientProfile(b.dataset.senclient)));
   $$('#seniorAttention [data-senproj]').forEach(b => b.addEventListener('click', () => openDetail(b.dataset.senproj)));
   $$('#monthFestivals [data-festposter]').forEach(b => b.addEventListener('click', () => openPosterFor(b.dataset.festposter)));
@@ -24619,6 +24770,10 @@ function renderDailyHero(){
     scopedClients().forEach(c => { if(c.nextFollowUp) { if(!followBy.has(c.nextFollowUp)) followBy.set(c.nextFollowUp, []); followBy.get(c.nextFollowUp).push(c); } });
     const bookBy = new Map();
     scopedBookings().forEach(b => { if(b.bookingDate) { if(!bookBy.has(b.bookingDate)) bookBy.set(b.bookingDate, []); bookBy.get(b.bookingDate).push(b); } });
+    const visitBy = new Map();
+    scheduledVisitList().forEach(c => { if(!visitBy.has(c.visitDate)) visitBy.set(c.visitDate, []); visitBy.get(c.visitDate).push(c); });
+    const dueBy = new Map();
+    plotMilestoneList().forEach(x => { const dt = x.milestone.date; if(!dueBy.has(dt)) dueBy.set(dt, []); dueBy.get(dt).push(x); });
     const cells = [];
     for(let i = 0; i < blank; i++) cells.push('<span class="mini-month-day empty"></span>');
     for(let d = 1; d <= days; d++){
@@ -24628,14 +24783,20 @@ function renderDailyHero(){
       const hasClient = (bookBy.get(iso) || []).length || (followBy.get(iso) || []).length;
       const hasContent = marks.some(x => x.type === 'content') || (taskBy.get(iso) || []).length;
       const hasLeave = marks.some(x => x.type === 'leave');
+      const visitCount = (visitBy.get(iso) || []).length;
+      const dueCount = (dueBy.get(iso) || []).length;
+      const dueOver = (dueBy.get(iso) || []).some(x => x.overdue);
       const dots = [
         hasClient ? '<i style="--c:#2F8F6B"></i>' : '',
+        visitCount ? '<i style="--c:#28627F"></i>' : '',
+        dueCount ? `<i style="--c:${dueOver ? '#C24646' : '#B4712A'}"></i>` : '',
         f ? '<i style="--c:#F2994A"></i>' : '',
         hasLeave ? '<i style="--c:#C24646"></i>' : '',
         hasContent ? '<i style="--c:#3A7CA5"></i>' : ''
       ].join('');
       const cls = ['mini-month-day', iso === iso ? (iso === todayISO() ? 'today' : '') : '', f ? 'fest' : '', hasLeave ? 'leave' : '', hasClient ? 'client' : '', hasContent ? 'content' : ''].join(' ');
-      cells.push(`<button type="button" class="${cls.trim()}" data-weekday="${iso}" title="${esc(f ? f.name : 'Open this date')}"><span class="mini-month-date">${d}</span><span class="mini-month-dots">${dots}</span></button>`);
+      const titleBits = [f ? f.name : 'Open this date', visitCount ? visitCount + ' visit' : '', dueCount ? dueCount + ' due' : ''].filter(Boolean).join(' · ');
+      cells.push(`<button type="button" class="${cls.trim()}" data-weekday="${iso}" title="${esc(titleBits)}"><span class="mini-month-date">${d}</span><span class="mini-month-dots">${dots}</span></button>`);
     }
     miniMonth.innerHTML = cells.join('');
   }
@@ -27088,6 +27249,12 @@ function initClientControls(){
     if(v) return openVisit(v.dataset.cvisit);
     if(e.target.closest('[data-caddvisit]')) return openVisit(null, clientProfileId);
     if(e.target.closest('[data-addbookingclient]')) return openBooking(null, clientProfileId);
+    const pl = e.target.closest('[data-cplotfin]');
+    if(pl) return openCalDue(pl.dataset.cplotfin);
+    const dl = e.target.closest('[data-cdealopen]');
+    if(dl) return openDeal((db.pipeline || []).find(x => x.id === dl.dataset.cdealopen));
+    if(e.target.closest('[data-cvisitplan]')) return openVisitPlannerSafe();
+    if(e.target.closest('[data-cpipeline]')){ closeModal('clientProfileModal'); go('pipeline'); return; }
   });
 }
 
@@ -27490,6 +27657,48 @@ function renderClientProfile(){
       <div><div class="k">Suggested</div><div class="v">${projects.length}</div></div>
       <div><div class="k">Last contact</div><div class="v" style="font-size:12px">${esc(fmtDate(c.lastContact))}</div></div>
     </div>
+    ${c.visitDate ? `<div class="profile-sec">
+      <h5>Scheduled site visit <span class="n">${esc(fmtDate(c.visitDate))}</span>${isAdmin() ? `<button class="btn ghost sm" type="button" data-cvisitplan="1" style="margin-left:auto">Planner →</button>` : ''}</h5>
+      <div class="team-stats" style="margin:8px 0 10px">
+        <div><div class="k">Date</div><div class="v" style="font-size:12px">${esc(c.visitDate < todayISO() ? 'Passed · ' + esc(fmtDate(c.visitDate)) : c.visitDate === todayISO() ? 'Aaj · ' + esc(fmtDate(c.visitDate)) : esc(fmtDate(c.visitDate)))}</div></div>
+        <div><div class="k">Slot</div><div class="v" style="font-size:12px">${esc(c.visitSlot || 'Not set')}</div></div>
+        <div><div class="k">Pickup</div><div class="v" style="font-size:12px">${esc(c.pickup || 'office')}</div></div>
+      </div>
+    </div>` : ''}
+    ${(() => {
+      const plots = (db.plots || []).filter(pl => pl.clientId === c.id || pl.id === c.dealPlotId);
+      const deals = (db.pipeline || []).filter(d => d.clientId === c.id);
+      if(!plots.length && !deals.length) return '';
+      const plotLabel = pl => (pl.plotNo || pl.number || pl.label ? 'Plot ' + (pl.plotNo || pl.number || pl.label) : 'Plot');
+      return `<div class="profile-sec">
+        <h5>Deal & plot ledger <span class="n">${plots.length + deals.length}</span><button type="button" class="btn ghost sm" data-cpipeline="1" style="margin-left:auto">Sales ledger →</button></h5>
+        <div class="mini-list">
+        ${plots.map(pl => {
+          const proj = (db.projects || []).find(x => x.id === pl.projectId) || null;
+          const dues = plotMilestoneList().filter(x => x.plot.id === pl.id);
+          const dueTotal = dues.reduce((s,x) => s + (Number(x.milestone.amount) || 0), 0);
+          const over = dues.some(x => x.overdue);
+          const value = (Number(pl.sizeGaj) || 0) * (Number(pl.rateGaj) || 0);
+          return `<button type="button" data-cplotfin="${pl.id}" title="Open payment ledger">
+            <span class="pdot" style="background:${over ? '#C24646' : dueTotal ? '#C49A3E' : '#4E7C5B'}"></span>
+            <span style="min-width:0"><span class="nm">${esc(plotLabel(pl))} · ${esc(plotStatusLabel(pl.status))}</span>
+            <span class="sub">${esc(proj ? proj.name : 'Project not linked')} · ${value ? moneyINR(value) : '—'}${dueTotal ? ' · ' + moneyINR(dueTotal) + ' due' + (over ? ' (overdue)' : '') : ' · ledger clear'}</span></span>
+            <span class="price">${dues.length ? dues.length + ' due' : 'Ledger'}</span>
+          </button>`;
+        }).join('')}
+        ${deals.map(d => {
+          const pend = dealPending(d);
+          const brkP = dealBrkPending(d);
+          return `<button type="button" data-cdealopen="${d.id}" title="Open deal">
+            <span class="pdot" style="background:${d.stage === 'cancelled' ? '#A8A79E' : d.stage === 'closed' ? '#4E7C5B' : '#C79A3E'}"></span>
+            <span style="min-width:0"><span class="nm">${esc(d.code || 'Deal')} · ${esc(dealStageLabel(d.stage))}</span>
+            <span class="sub">${esc(dealLabel(d))} · value ${moneyINR(dealValueOf(d))}${pend ? ' · ' + moneyINR(pend) + ' pending' : ''}${brkP ? ' · brokerage ' + moneyINR(brkP) : ''}</span></span>
+            <span class="price">${pend ? moneyINR(pend) : 'Clear'}</span>
+          </button>`;
+        }).join('')}
+        </div>
+      </div>`;
+    })()}
     ${(() => {
       const bks = scopedBookings().filter(b => b.clientId === c.id);
       const totalRec = bks.reduce((n,b) => n + (number(b.received) || 0), 0);
@@ -28721,6 +28930,17 @@ function renderDetail(){
     const docIco = t => ({ rera:'🏛️', approval:'✅', oc:'🏁', title:'📜', layout:'📐', id:'🪪', other:'📄' })[t] || '📄';
     const docTypeName = t => ({ rera:'RERA certificate', approval:'Approval letter', oc:'OC / completion', title:'Title deed', layout:'Layout plan', id:'ID proofs', other:'Other' })[t] || 'Document';
     const isUrl = v => /^https?:\/\//i.test(v || '');
+    const projBookings = (db.bookings || []).filter(b => b.projectId === p.id && b.stage !== 'cancelled');
+    const projDeals = (db.pipeline || []).filter(d => d.projectId === p.id && d.stage !== 'cancelled');
+    const projPlots = (db.plots || []).filter(pl => pl.projectId === p.id);
+    const unitStat = unitCounts(p);
+    const dealVal = projDeals.reduce((s,d) => s + (Number(d.dealValue) || 0), 0);
+    const dealPend = projDeals.reduce((s,d) => s + dealPending(d), 0);
+    const brkPend = projDeals.reduce((s,d) => s + dealBrkPending(d), 0);
+    const bookPend = projBookings.reduce((s,b) => s + (bookingPending(b) || 0), 0);
+    const bookVal = projBookings.reduce((s,b) => s + (Number(b.bookingAmount) || 0), 0);
+    const plotDue = plotMilestoneList().filter(x => x.plot.projectId === p.id).reduce((s,x) => s + (Number(x.milestone.amount) || 0), 0);
+    const hasMoney = projDeals.length || projBookings.length || projPlots.length;
     body = `
       <!-- 1 · QUICK FACTS -->
       <div class="ov-facts">
@@ -28729,6 +28949,15 @@ function renderDetail(){
         <div class="ov-fact"><small>Possession</small><b>${esc(p.timeline ? timelineLabel(p.timeline) : '—')}</b><span>${esc(p.sizes || 'Sizes not set')}</span></div>
         <div class="ov-fact"><small>RERA</small><b>${p.rera ? '✓ Registered' : '—'}</b><span class="mono">${esc(p.rera || 'Not provided')}</span></div>
       </div>
+      ${hasMoney ? `<div class="ov-sec">
+        <div class="dsec-head"><h4>₹ Project money</h4><span class="cnt">${projDeals.length + projBookings.length} live record${(projDeals.length + projBookings.length) === 1 ? '' : 's'}</span><button type="button" class="btn ghost sm" data-projpipeline="${p.id}" style="margin-left:auto">Sales ledger →</button></div>
+        <div class="ov-facts">
+          <div class="ov-fact"><small>Sales ledger</small><b>${projDeals.length ? moneyINR(dealVal) : '—'}</b><span>${projDeals.length} sale${projDeals.length === 1 ? '' : 's'}${dealPend ? ' · ' + moneyINR(dealPend) + ' pending' : ''}</span></div>
+          <div class="ov-fact"><small>Bookings</small><b>${projBookings.length || '—'}</b><span>${projBookings.length ? moneyINR(bookVal) + ' value' + (bookPend ? ' · ' + moneyINR(bookPend) + ' pending' : '') : 'No bookings yet'}</span></div>
+          <div class="ov-fact"><small>Plot milestones due</small><b>${plotDue ? moneyINR(plotDue) : '—'}</b><span>${projPlots.length} plot${projPlots.length === 1 ? '' : 's'} tracked · <button type="button" class="linkbtn" data-projinv="${p.id}">inventory →</button></span></div>
+          <div class="ov-fact"><small>Brokerage pending</small><b>${brkPend ? moneyINR(brkPend) : '—'}</b><span>${unitStat.booked + unitStat.sold} booked/sold unit${(unitStat.booked + unitStat.sold) === 1 ? '' : 's'}</span></div>
+        </div>
+      </div>` : ''}
       ${feats.length ? `<div class="ov-chips">${feats.map(f => `<span class="dchip green">${esc(f)}</span>`).join('')}</div>` : ''}
       ${p.soldOut ? `<div class="detail-soldout-note"><b>Primary inventory sold out.</b> ${esc(p.soldOutNote || 'Resale units, if any, are listed in the Resale tab.')}</div>` : ''}
       ${p.quickNote ? `<div class="qnote-block"><div class="lab">📌 Important note</div><p>${esc(p.quickNote)}</p></div>` : ''}
@@ -29044,6 +29273,19 @@ function bindDetail(){
     detailTab = el.dataset.jumptab;
     renderDetail();
     $('#detailBody').scrollTop = 0;
+  }));
+  $$('#detailBody [data-projinv]').forEach(el => el.addEventListener('click', () => {
+    detailTab = 'inventory';
+    renderDetail();
+    $('#detailBody').scrollTop = 0;
+  }));
+  $$('#detailBody [data-projpipeline]').forEach(el => el.addEventListener('click', () => {
+    const p = currentDetail();
+    closeModal('detailModal');
+    go('pipeline');
+    const s = $('#dealSearch');
+    if(s && p) s.value = p.name;
+    if(typeof renderPipeline === 'function') renderPipeline();
   }));
   $$('#detailBody [data-visitadd]').forEach(el => el.addEventListener('click', () => openVisit(null, null, el.dataset.visitadd)));
   $$('#detailBody [data-visedit]').forEach(el => el.addEventListener('click', () => openVisit(el.dataset.visedit)));
@@ -39958,11 +40200,15 @@ function renderPipeline(){
   const head = `<tr><th>Deal</th><th>Property</th><th>Client</th><th>Advisor</th><th>Value · paid · pending</th><th>Brokerage</th><th>Stage</th><th></th></tr>`;
   const rows = deals.length ? deals.map(d => {
     const brk = dealBrkTotal(d);
+    const projRec = d.projectId ? (db.projects.find(x => x.id === d.projectId) || null) : null;
+    const clientRec = d.clientId ? (db.clients.find(x => x.id === d.clientId) || null) : null;
+    const advRec = d.advisorId ? (db.advisors.find(x => x.id === d.advisorId) || null) : null;
+    const plotRec = clientRec && clientRec.dealPlotId ? ((db.plots || []).find(p => p.id === clientRec.dealPlotId) || null) : null;
     return `<tr data-dealrow="${esc(d.id)}" style="cursor:pointer">
       <td><b>${esc(d.code || '—')}</b><br><span style="font-size:9px;color:var(--mut)">${esc(d.bookingDate || '')}</span></td>
-      <td><b>${esc(dealLabel(d))}</b>${d.plotDetail ? `<br><span style="font-size:9.5px;color:var(--mut)">${esc(d.plotDetail)}${d.area ? ' · ' + d.area + (d.areaUnit === 'sqFt' ? ' sq ft' : ' Gaj') : ''}</span>` : ''}</td>
-      <td><b>${esc(dealClientLabel(d))}</b>${d.clientPhone ? `<br><span style="font-size:9px;color:var(--mut)">${esc(d.clientPhone)}</span>` : ''}</td>
-      <td>${esc(dealAdvisorLabel(d) || '—')}</td>
+      <td>${projRec ? `<button type="button" class="cell-link" data-dealproj="${esc(projRec.id)}" title="Project detail khulein"><b>${esc(dealLabel(d))}</b></button>` : `<b>${esc(dealLabel(d))}</b>`}${d.plotDetail ? `<br><span style="font-size:9.5px;color:var(--mut)">${esc(d.plotDetail)}${d.area ? ' · ' + d.area + (d.areaUnit === 'sqFt' ? ' sq ft' : ' Gaj') : ''}</span>` : ''}${plotRec ? `<br><button type="button" class="cell-link sub" data-dealplot="${esc(plotRec.id)}" title="Plot payment ledger khulein">💳 Plot ledger</button>` : ''}</td>
+      <td>${clientRec ? `<button type="button" class="cell-link" data-dealclient="${esc(clientRec.id)}" title="Client profile khulein"><b>${esc(dealClientLabel(d))}</b></button>` : `<b>${esc(dealClientLabel(d))}</b>`}${d.clientPhone ? `<br><span style="font-size:9px;color:var(--mut)">${esc(d.clientPhone)}</span>` : ''}</td>
+      <td>${advRec ? `<button type="button" class="cell-link sub" data-dealadv="${esc(advRec.id)}" title="Advisor profile khulein">${esc(dealAdvisorLabel(d) || '—')}</button>` : esc(dealAdvisorLabel(d) || '—')}</td>
       <td><b>${fmtMoney(d.dealValue)}</b><br><span style="font-size:9.5px;color:#4E7C5B">paid ${fmtMoney(dealPaid(d))}</span> <span style="font-size:9.5px;color:#A4452B">· pend ${fmtMoney(dealPending(d))}</span></td>
       <td>${brk ? `<b>${fmtMoney(brk)}</b><br><span style="font-size:9.5px;color:var(--mut)">${dealBrkPending(d) > 0 ? 'pend ' + fmtMoney(dealBrkPending(d)) : 'full received ✓'}</span>` : '—'}</td>
       <td>${dealStageChip(d)}</td>
@@ -40138,6 +40384,17 @@ function initPipeline(){
     const c = db.clients.find(x => x.id === $('#dlClient').value);
     if(c){ $('#dlClientName').value = c.name || ''; $('#dlClientPhone').value = c.phone || ''; }
   });
+  /* cross-links: client / project / advisor names in the ledger */
+  document.addEventListener('click', e => {
+    const cl = e.target.closest('#dealTable [data-dealclient]');
+    if(cl){ e.preventDefault(); e.stopImmediatePropagation(); openClientProfile(cl.dataset.dealclient); return; }
+    const pr = e.target.closest('#dealTable [data-dealproj]');
+    if(pr){ e.preventDefault(); e.stopImmediatePropagation(); openDetail(pr.dataset.dealproj); return; }
+    const av = e.target.closest('#dealTable [data-dealadv]');
+    if(av){ e.preventDefault(); e.stopImmediatePropagation(); openAdvisorProfile(av.dataset.dealadv); return; }
+    const pl = e.target.closest('#dealTable [data-dealplot]');
+    if(pl){ e.preventDefault(); e.stopImmediatePropagation(); openCalDue(pl.dataset.dealplot); }
+  }, true);
   document.body.addEventListener('click', e => {
     const edit = e.target.closest('[data-dealedit]');
     if(edit){ openDeal(db.pipeline.find(x => x.id === edit.dataset.dealedit)); return; }
