@@ -12953,6 +12953,85 @@ details.ov-more[open] summary{border-bottom:1px dashed var(--line2)}
 .ov-more-body{padding:12px 14px 14px}
 
 /* ============================================================
+   TARGET LISTS v162 — bulk prospects per page + two-way showcase
+   ============================================================ */
+.targets-host{margin:0 0 14px}
+.tgt-panel{border:1px solid var(--line2);border-radius:16px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 5%,var(--panel)),var(--panel));padding:12px 14px 13px;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.tgt-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:9px}
+.tgt-title{font-size:12.5px;font-weight:800;letter-spacing:.2px;color:var(--ink)}
+.tgt-counts{font-size:10.5px;font-weight:700;color:var(--mut);background:var(--panel2,#F4F2EC);border:1px solid var(--line);border-radius:999px;padding:3px 9px;white-space:nowrap}
+.tgt-head .btn{margin-left:auto}
+.tgt-bulk{margin-bottom:10px;border:1px dashed var(--line2);border-radius:12px;padding:9px 10px;background:var(--panel)}
+.tgt-bulk textarea{width:100%;min-height:86px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:9px 10px;font-family:inherit;font-size:12.5px;line-height:1.55;background:var(--panel);color:var(--ink);outline:none}
+.tgt-bulk textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 18%,transparent)}
+.tgt-bulk-foot{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:7px}
+.tgt-bulk-foot span{font-size:10.5px;color:var(--mut);font-weight:600}
+.tgt-bulk-foot .btn{margin-left:auto}
+.tgt-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:9px}
+.tgt-tabs button{border:1px solid var(--line);background:var(--panel);color:var(--ink2);border-radius:999px;padding:5px 11px;font-size:11px;font-weight:800;cursor:pointer;font-family:inherit;transition:.15s}
+.tgt-tabs button b{font-weight:900;color:var(--mut);margin-left:2px}
+.tgt-tabs button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.tgt-tabs button.on b{color:rgba(255,255,255,.72)}
+.tgt-list{display:flex;flex-direction:column;gap:5px;max-height:290px;overflow:auto}
+.tgt-row{display:flex;align-items:center;gap:9px;padding:7px 10px;border:1px solid var(--line);border-radius:11px;background:var(--panel);min-width:0}
+.tgt-badge{flex:0 0 auto;font-size:9px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;padding:3px 7px;border-radius:999px;white-space:nowrap}
+.tgt-badge.todo{background:#FBF3DC;color:#8A6A1E;border:1px solid #E9D9A8}
+.tgt-badge.ok{background:#E6F2E9;color:#2F6B41;border:1px solid #BFDCC7}
+.tgt-badge.no{background:#FAE7E7;color:#A33A3A;border:1px solid #EBC6C6}
+.tgt-main{display:flex;flex-direction:column;min-width:0;flex:1}
+.tgt-main b{font-size:12.5px;font-weight:800;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tgt-main span{font-size:10.5px;color:var(--mut);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tgt-actions{display:flex;gap:5px;flex:0 0 auto}
+.tgt-btn{border:1px solid var(--line2);background:var(--panel);color:var(--ink2);border-radius:8px;padding:5px 9px;font-size:10.5px;font-weight:800;cursor:pointer;font-family:inherit;white-space:nowrap;transition:.15s}
+.tgt-btn:hover{background:var(--panel2,#F4F2EC)}
+.tgt-btn.ok{border-color:#BFDCC7;background:#EDF6EF;color:#2F6B41}
+.tgt-btn.ok:hover{background:#DDF0E2}
+.tgt-btn.no{border-color:#EBC6C6;background:#FCF0F0;color:#A33A3A}
+.tgt-btn.no:hover{background:#F8E2E2}
+.tgt-btn.del{padding:5px 7px;color:var(--mut)}
+.tgt-btn.del:hover{color:#A33A3A;border-color:#EBC6C6}
+.tgt-empty{padding:14px 12px;text-align:center;font-size:11.5px;color:var(--mut);font-weight:600;line-height:1.6;border:1px dashed var(--line2);border-radius:11px}
+.tgt-ghost-host{margin:16px 0 6px}
+.tgt-ghost-head{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:9px}
+.tgt-ghost-head b{font-size:12.5px;font-weight:800;color:var(--ink)}
+.tgt-ghost-head span{font-size:10.5px;color:var(--mut);font-weight:700}
+.tgt-ghost-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:9px}
+.tgt-ghost{position:relative;display:flex;flex-direction:column;gap:3px;padding:12px 13px;border:1.5px dashed var(--line2);border-radius:14px;background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--gold) 4%,transparent) 0 10px,transparent 10px 20px),var(--panel);min-width:0}
+.tgt-ghost-badge{position:absolute;top:9px;right:9px;font-size:8px;font-weight:900;letter-spacing:.6px;color:#8A6A1E;background:#FBF3DC;border:1px solid #E9D9A8;border-radius:999px;padding:2px 6px}
+.tgt-ghost b{font-size:13px;font-weight:800;color:var(--ink);padding-right:56px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tgt-ghost>span{font-size:10.5px;color:var(--mut);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tgt-ghost-actions{display:flex;gap:5px;margin-top:7px}
+.tgt-ghost-actions .tgt-btn{flex:1;text-align:center}
+.tgt-scope-seg{flex:0 0 auto}
+.tgt-scope-seg button{font-size:10.5px}
+body[data-theme="dark"] .tgt-panel{background:linear-gradient(180deg,rgba(196,154,62,.07),#191E19);border-color:#2F352F}
+body[data-theme="dark"] .tgt-counts{background:#222822;border-color:#313831;color:#A8AE9F}
+body[data-theme="dark"] .tgt-bulk{background:#1B211C;border-color:#333A33}
+body[data-theme="dark"] .tgt-bulk textarea{background:#151A15;border-color:#333A33;color:#EDEBD9}
+body[data-theme="dark"] .tgt-tabs button{background:#1B211C;border-color:#313831;color:#C9CDBF}
+body[data-theme="dark"] .tgt-tabs button.on{background:#E7C46E;border-color:#E7C46E;color:#221D0E}
+body[data-theme="dark"] .tgt-tabs button.on b{color:rgba(34,29,14,.6)}
+body[data-theme="dark"] .tgt-row{background:#1B211C;border-color:#2C332C}
+body[data-theme="dark"] .tgt-main b{color:#EDEBD9}
+body[data-theme="dark"] .tgt-btn{background:#222822;border-color:#343B34;color:#C9CDBF}
+body[data-theme="dark"] .tgt-btn.ok{background:#1E2C21;border-color:#35543E;color:#8FCFA1}
+body[data-theme="dark"] .tgt-btn.no{background:#2C1F1F;border-color:#543535;color:#E39C9C}
+body[data-theme="dark"] .tgt-badge.todo{background:#2B2410;color:#E0C07A;border-color:#57491E}
+body[data-theme="dark"] .tgt-badge.ok{background:#1E2C21;color:#8FCFA1;border-color:#35543E}
+body[data-theme="dark"] .tgt-badge.no{background:#2C1F1F;color:#E39C9C;border-color:#543535}
+body[data-theme="dark"] .tgt-ghost{background:repeating-linear-gradient(135deg,rgba(196,154,62,.05) 0 10px,transparent 10px 20px),#1B211C;border-color:#3A423A}
+body[data-theme="dark"] .tgt-ghost b{color:#EDEBD9}
+body[data-theme="dark"] .tgt-ghost-badge{background:#2B2410;color:#E0C07A;border-color:#57491E}
+@media (max-width:640px){
+  .tgt-panel{padding:10px 11px}
+  .tgt-head{gap:7px}
+  .tgt-head .btn{margin-left:0;width:100%}
+  .tgt-row{flex-wrap:wrap;gap:7px}
+  .tgt-actions{width:100%;justify-content:flex-end}
+  .tgt-ghost-grid{grid-template-columns:1fr}
+}
+
+/* ============================================================
    BCS TABLET LAYER v160 — iPad Pro 9.7" (768×1024) + iPad Pro 13"/15" (1024×1366)
    Desktop layout stays, plus touch ergonomics: no iOS focus zoom,
    bigger tap targets, wider popovers, safe areas when installed.
@@ -15583,6 +15662,7 @@ try{
     </div>
     <div class="proj-kpis" id="projectTiles"></div>
     <div class="proj-corr-row" id="projectCorrChips"></div>
+    <div id="targetsProjects" class="targets-host"></div>
     <div class="toolbar">
       <div class="filterbar">
         <label class="f-label"><span>Corridor</span><select id="filterCorridor"><option value="">All corridors</option></select></label>
@@ -15603,6 +15683,10 @@ try{
         <button data-mode="gallery">Gallery</button>
         <button data-mode="list">List</button>
       </div>
+      <div class="seg tgt-scope-seg" title="Showcase filter — active projects only ya saare targets bhi">
+        <button type="button" data-tscope="active" data-tscope-kind="projects" class="on">Active</button>
+        <button type="button" data-tscope="all" data-tscope-kind="projects">All data</button>
+      </div>
       <button class="btn ghost sm" id="projectFieldsBtn" title="Apne custom columns / fields banayein">⚙ Fields</button>
       <button class="btn ghost sm" id="compareBtn" title="2–4 projects compare karein">⚖ Compare</button>
       <button class="btn ghost sm" id="exportCsvBtn">Export CSV</button>
@@ -15612,6 +15696,7 @@ try{
     <div class="board" id="board"></div>
     <div class="show-grid" id="galleryGrid" style="display:none"></div>
     <div id="projectListWrap" style="display:none"></div>
+    <div class="tgt-ghost-host" id="projGhosts" style="display:none"></div>
   </section>
 
   <!-- ============ DEVELOPERS ============ -->
@@ -15628,6 +15713,7 @@ try{
       </div>
     </div>
     <div class="links-stats" id="devStats"></div>
+    <div id="targetsDevelopers" class="targets-host"></div>
     <div class="sec-head" style="margin-top:18px">
       <h3>Developers &amp; owners</h3>
       <div class="pill-wrap view-switch">
@@ -15635,6 +15721,10 @@ try{
           <button data-devview="cards" class="on">Cards</button>
           <button data-devview="list">List</button>
           <button data-devview="kanban">Kanban</button>
+        </div>
+        <div class="seg tgt-scope-seg" title="Showcase filter — active developers only ya targets bhi">
+          <button type="button" data-tscope="active" data-tscope-kind="developers" class="on">Active</button>
+          <button type="button" data-tscope="all" data-tscope-kind="developers">All data</button>
         </div>
         <button class="btn ghost" id="devFieldsBtn" title="Developer ke apne custom fields banayein">⚙ Fields</button>
         <button class="btn ghost" id="dupBtn">Duplicate check</button>
@@ -15652,6 +15742,7 @@ try{
     <div class="dev-grid" id="devGrid"></div>
     <div id="devListWrap" style="display:none"></div>
     <div class="dev-kanban" id="devKanban" style="display:none"></div>
+    <div class="tgt-ghost-host" id="devGhosts" style="display:none"></div>
   </section>
 
   <!-- ============ RESALE ============ -->
@@ -15704,6 +15795,7 @@ try{
       </div>
     </div>
     <div class="team-stats" id="advisorStats"></div>
+    <div id="targetsAdvisors" class="targets-host"></div>
 
     <div class="sec-head" style="margin-top:4px">
       <h3>Active BCS advisors</h3>
@@ -15731,10 +15823,15 @@ try{
       <select id="advisorCorridor"><option value="">All corridors</option></select>
       <select id="advisorState"><option value="">All statuses</option></select>
       <select id="advisorGroup"><option value="">All groups</option></select>
+      <div class="seg tgt-scope-seg" title="Showcase filter — active advisors only ya targets bhi">
+        <button type="button" data-tscope="active" data-tscope-kind="advisors" class="on">Active</button>
+        <button type="button" data-tscope="all" data-tscope-kind="advisors">All data</button>
+      </div>
       <div class="spacer"></div>
       <span style="font-size:11.5px;color:var(--mut)">Projects assigned from an advisor profile or the project form</span>
     </div>
     <div class="advisor-grid" id="advisorGrid"></div>
+    <div class="tgt-ghost-host" id="advGhosts" style="display:none"></div>
   </section>
 
   <section class="view" id="view-partners">
@@ -15858,6 +15955,7 @@ try{
 
     <div id="clientDesk">
       <div class="pipeline-stats" id="clientStats"></div>
+      <div id="targetsClients" class="targets-host"></div>
       <div class="client-status-bar" id="clientStatusBar"></div>
       <div class="toolbar">
         <select id="clientAdvisorFilter"><option value="">All advisors</option></select>
@@ -15867,10 +15965,15 @@ try{
           <option value="name">Name A–Z</option>
           <option value="budget">Budget ↑</option>
         </select>
+        <div class="seg tgt-scope-seg" title="Showcase filter — active clients only ya targets bhi">
+          <button type="button" data-tscope="active" data-tscope-kind="clients" class="on">Active</button>
+          <button type="button" data-tscope="all" data-tscope-kind="clients">All data</button>
+        </div>
         <div class="spacer"></div>
         <span style="font-size:11.5px;color:var(--mut)">Transfer a client from their profile — full handover history stays saved.</span>
       </div>
       <div class="client-grid" id="clientGrid"></div>
+      <div class="tgt-ghost-host" id="cliGhosts" style="display:none"></div>
     </div>
 
     <div id="bookingsDesk" style="display:none">
@@ -20632,6 +20735,26 @@ function normalizeDb(d){
   if(!Array.isArray(d.pipeline)) d.pipeline = [];
   if(!(Number(d.pipelineSeq) > 0)) d.pipelineSeq = 0;
   if(!Array.isArray(d.roughpad)) d.roughpad = [];
+  /* ---- v162: target lists (prospects staged per page) ---- */
+  if(!Array.isArray(d.targets)) d.targets = [];
+  const TGT_KIND_FIX = { projects:'project', developers:'developer', advisors:'advisor', clients:'client' };
+  d.targets = d.targets.filter(t => t && t.kind && String(t.name || '').trim()).map(t => ({
+    id: t.id || uid(),
+    kind: TGT_KIND_FIX[t.kind] || (['project','developer','advisor','client'].includes(t.kind) ? t.kind : 'client'),
+    name: String(t.name).trim().slice(0, 160),
+    phone: String(t.phone || '').trim().slice(0, 40),
+    meta: String(t.meta || '').trim().slice(0, 160),
+    note: String(t.note || '').trim().slice(0, 400),
+    status: ['todo','active','rejected'].includes(t.status) ? t.status : 'todo',
+    linkedId: t.linkedId || '',
+    createdAt: t.createdAt || Date.now(),
+    activeAt: t.activeAt || null,
+    rejectedAt: t.rejectedAt || null
+  }));
+  if(!d.uiScopes || typeof d.uiScopes !== 'object') d.uiScopes = {};
+  ['projects','developers','advisors','clients'].forEach(k => {
+    if(!['active','all'].includes(d.uiScopes[k])) d.uiScopes[k] = 'active';
+  });
   if(!Array.isArray(d.journeyLogs)) d.journeyLogs = [];
   if(!Array.isArray(d.documents)) d.documents = [];
   if(!Array.isArray(d.news)) d.news = [];
@@ -25036,6 +25159,7 @@ function filteredProjects(){
   return list;
 }
 function renderProjects(){
+  try{ renderTargets('projects'); }catch(e){}
   const list = filteredProjects();
   const all = scopedProjects();
   const fs = $('#filterStatus').value;
@@ -25254,6 +25378,7 @@ function renderDevBoard(){
 }
 
 function renderDevelopers(){
+  try{ renderTargets('developers'); }catch(e){}
   try{
     const all = scopedDevelopers();
     const ps = scopedProjects().length;
@@ -25886,6 +26011,7 @@ function initAdvisorControls(){
 }
 
 function renderAdvisors(){
+  try{ renderTargets('advisors'); }catch(e){}
   const q = ($('#globalSearch').value || '').trim().toLowerCase();
   const state = advisorStatusFilter || (($('#advisorState') || {}).value || '');
   const team = isAdmin() ? db.advisors : [currentAdvisor()].filter(Boolean);
@@ -26456,6 +26582,7 @@ function initClientControls(){
 }
 
 function renderClients(){
+  try{ renderTargets('clients'); }catch(e){}
   const q = ($('#globalSearch').value || '').trim().toLowerCase();
   const allClients = scopedClients();
   let list = [...allClients];
@@ -38787,6 +38914,245 @@ function render(){
   storageMeter();
   try{ if(window.__bcsArmMotion) window.__bcsArmMotion(); }catch(e){}
 }
+/* ---------- v162: TARGET LISTS — bulk prospects + two-way showcase ----------
+   Har page (Projects / Developers / Advisors / Clients) par ek target panel:
+   · bulk paste se jitne chaahe names add karo (koi limit nahi)
+   · jab kaam shuru ho, "✓ Working" se official record banao
+   · reject pehle hi kar do — baad me restore bhi ho sakta hai
+   · page ka showcase filter: "Active" (sirf working) ya "All data" (targets bhi)
+   ------------------------------------------------------------------------ */
+const TARGET_KINDS = {
+  projects:   { label:'Projects',   single:'project',   record:'project',   fmt:'Project name, Developer name, phone' },
+  developers: { label:'Developers', single:'developer', record:'developer', fmt:'Developer name, phone, company/owner (optional)' },
+  advisors:   { label:'Advisors',   single:'advisor',   record:'advisor',   fmt:'Advisor name, phone, group (optional)' },
+  clients:    { label:'Clients',    single:'client',    record:'client',    fmt:'Client name, phone, requirement (optional)' }
+};
+const TARGET_HOSTS = { projects:'targetsProjects', developers:'targetsDevelopers', advisors:'targetsAdvisors', clients:'targetsClients' };
+const TARGET_GHOSTS = { projects:'projGhosts', developers:'devGhosts', advisors:'advGhosts', clients:'cliGhosts' };
+let targetTabs = { projects:'todo', developers:'todo', advisors:'todo', clients:'todo' };
+let targetBulkOpen = {};
+
+/* page key (plural) -> stored record kind (singular) */
+const targetRecordKind = kind => (TARGET_KINDS[kind] && TARGET_KINDS[kind].record) || 'client';
+function targetsOf(kind){
+  const rk = targetRecordKind(kind);
+  return (db.targets || []).filter(t => t.kind === rk || t.kind === kind);
+}
+function targetsCounts(kind){
+  const list = targetsOf(kind);
+  return {
+    todo: list.filter(t => t.status === 'todo').length,
+    active: list.filter(t => t.status === 'active').length,
+    rejected: list.filter(t => t.status === 'rejected').length,
+    all: list.length
+  };
+}
+function targetScope(kind){ return (db.uiScopes && db.uiScopes[kind] === 'all') ? 'all' : 'active'; }
+
+function targetRowHTML(t, kind){
+  const badge = t.status === 'active' ? '<span class="tgt-badge ok">✓ Working</span>'
+    : t.status === 'rejected' ? '<span class="tgt-badge no">✕ Rejected</span>'
+    : '<span class="tgt-badge todo">◷ To do</span>';
+  const contact = [t.phone, t.meta].filter(Boolean).map(esc).join(' · ') || 'No phone / detail yet';
+  return `<div class="tgt-row">
+    ${badge}
+    <span class="tgt-main"><b>${esc(t.name)}</b><span>${contact}</span></span>
+    <span class="tgt-actions">
+      ${t.status === 'todo' ? `<button type="button" class="tgt-btn ok" data-tgt-promote="${t.id}" title="Make official — ${esc(TARGET_KINDS[kind].single)} ban jayega">✓ Working</button>
+        <button type="button" class="tgt-btn no" data-tgt-reject="${t.id}" title="Reject — list se hat jayega">✕ Reject</button>` : ''}
+      ${t.status === 'rejected' ? `<button type="button" class="tgt-btn" data-tgt-restore="${t.id}">↺ Restore</button>` : ''}
+      <button type="button" class="tgt-btn del" data-tgt-del="${t.id}" title="Delete permanently">🗑</button>
+    </span>
+  </div>`;
+}
+
+function renderTargets(kind){
+  const host = document.getElementById(TARGET_HOSTS[kind]);
+  if(!host) return;
+  if(!isAdmin()){ host.innerHTML = ''; host.style.display = 'none'; return; }
+  if(!Array.isArray(db.targets)) db.targets = [];
+  const meta = TARGET_KINDS[kind];
+  const counts = targetsCounts(kind);
+  const tab = targetTabs[kind] || 'todo';
+  const list = targetsOf(kind).filter(t => t.status === tab).sort((a,b) => (b.createdAt || 0) - (a.createdAt || 0));
+  const tabBtn = (id, label, n) => `<button type="button" data-tgt-tab="${id}" data-tgt-tab-kind="${kind}" class="${tab === id ? 'on' : ''}">${label} <b>${n}</b></button>`;
+  const example = kind === 'projects' ? 'Sunrise Greens, Marudhar Realty, 98290 12345'
+    : kind === 'clients' ? 'Ramesh Kumar, 98290 12345, 3BHK Ajmer Road'
+    : kind === 'advisors' ? 'Suresh Sharma, 98290 12345, Sharma Associates'
+    : 'Marudhar Realty, 98290 12345, owner name';
+  host.style.display = '';
+  host.innerHTML = `<div class="tgt-panel">
+    <div class="tgt-head">
+      <span class="tgt-title">🎯 Target list · ${meta.label}</span>
+      <span class="tgt-counts">${counts.todo} to do · ${counts.active} working · ${counts.rejected} rejected</span>
+      <button type="button" class="btn ghost sm" data-tgt-bulk="${kind}">${targetBulkOpen[kind] ? '▴ Hide bulk add' : '⚡ Bulk paste'}</button>
+    </div>
+    ${targetBulkOpen[kind] ? `<div class="tgt-bulk">
+      <textarea data-tgt-input="${kind}" rows="4" spellcheck="false" placeholder="Ek line = ek ${meta.single} — jitni lines chaahe, koi limit nahi.&#10;Format: ${meta.fmt}&#10;Example: ${example}"></textarea>
+      <div class="tgt-bulk-foot"><span>Phone optional hai. Duplicates apne aap skip ho jayenge.</span><button type="button" class="btn primary sm" data-tgt-add="${kind}">+ Add all to target list</button></div>
+    </div>` : ''}
+    <div class="tgt-tabs">${tabBtn('todo','To do',counts.todo)}${tabBtn('active','Working with us',counts.active)}${tabBtn('rejected','Rejected',counts.rejected)}</div>
+    <div class="tgt-list">${list.length ? list.map(t => targetRowHTML(t, kind)).join('')
+      : `<div class="tgt-empty">${tab === 'todo'
+        ? 'Koi target pending nahi — “⚡ Bulk paste” se names/numbers ki list banao. Jab kaam shuru karo, “✓ Working” dabao.'
+        : tab === 'active' ? 'Abhi koi target official nahi hua.'
+        : 'Koi rejected entry nahi.'}</div>`}</div>
+  </div>`;
+  renderGhosts(kind);
+}
+
+function renderGhosts(kind){
+  const host = document.getElementById(TARGET_GHOSTS[kind]);
+  if(!host) return;
+  if(!isAdmin()){ host.style.display = 'none'; host.innerHTML = ''; return; }
+  const scope = targetScope(kind);
+  if(scope !== 'all'){ host.style.display = 'none'; host.innerHTML = ''; return; }
+  const todo = targetsOf(kind).filter(t => t.status === 'todo');
+  host.style.display = '';
+  host.innerHTML = `<div class="tgt-ghost-head"><b>🎯 Targets — not yet working with us</b><span>${todo.length} pending · promote ya reject karein</span></div>
+    <div class="tgt-ghost-grid">${todo.length ? todo.map(t => `<div class="tgt-ghost">
+      <span class="tgt-ghost-badge">PROSPECT</span>
+      <b>${esc(t.name)}</b>
+      <span>${[t.phone, t.meta].filter(Boolean).map(esc).join(' · ') || 'No contact yet'}</span>
+      <div class="tgt-ghost-actions">
+        <button type="button" class="tgt-btn ok" data-tgt-promote="${t.id}">✓ Make official</button>
+        <button type="button" class="tgt-btn no" data-tgt-reject="${t.id}">✕ Reject</button>
+      </div>
+    </div>`).join('') : `<div class="tgt-empty" style="grid-column:1/-1">All-data mode me koi pending target nahi. Target panel se naye prospects add karein.</div>`}</div>`;
+}
+
+function addTargetsFromBulk(kind){
+  const ta = document.querySelector('[data-tgt-input="' + kind + '"]');
+  if(!ta) return;
+  const lines = ta.value.split('\n').map(l => l.trim()).filter(Boolean);
+  if(!lines.length) return toast('Pehle names paste karein', true);
+  if(!Array.isArray(db.targets)) db.targets = [];
+  let added = 0, dup = 0;
+  const seen = new Set(targetsOf(kind).map(t => (t.name || '').toLowerCase() + '|' + (t.phone || '')));
+  lines.forEach(line => {
+    const parts = line.split(/[,|\t;]+/).map(s => s.trim()).filter(Boolean);
+    if(!parts.length) return;
+    const name = parts[0];
+    if(!name) return;
+    let phone = '', meta2 = '';
+    if(kind === 'projects'){ meta2 = parts[1] || ''; phone = parts[2] || ''; }
+    else { phone = parts[1] || ''; meta2 = parts[2] || ''; }
+    const key = name.toLowerCase() + '|' + phone;
+    if(seen.has(key)){ dup++; return; }
+    seen.add(key);
+    db.targets.push({ id:uid(), kind:targetRecordKind(kind), name:name.slice(0,160), phone:phone.slice(0,40), meta:meta2.slice(0,160), note:'', status:'todo', linkedId:'', createdAt:Date.now(), activeAt:null, rejectedAt:null });
+    added++;
+  });
+  ta.value = '';
+  targetBulkOpen[kind] = false;
+  targetTabs[kind] = 'todo';
+  save();
+  renderTargets(kind);
+  toast(added + ' target' + (added === 1 ? '' : 's') + ' add hue' + (dup ? ' · ' + dup + ' duplicate skip' : ''));
+}
+
+function promoteTarget(id){
+  const t = (db.targets || []).find(x => x.id === id);
+  if(!t) return;
+  if(t.status === 'active') return toast('Ye target already working hai');
+  let linkedId = '';
+  if(t.kind === 'developer'){
+    const exists = db.developers.find(d => (d.name || '').toLowerCase() === t.name.toLowerCase());
+    if(exists){ linkedId = exists.id; if(!exists.phone && t.phone) exists.phone = t.phone; }
+    else {
+      const d = { id:uid(), name:t.name, ownerName:t.meta || '', email:'', phone:t.phone || '', photo:'', notes:'Promoted from target list', remarks:'' };
+      db.developers.push(d); linkedId = d.id;
+    }
+  } else if(t.kind === 'advisor'){
+    const exists = db.advisors.find(a => (a.name || '').toLowerCase() === t.name.toLowerCase());
+    if(exists){
+      linkedId = exists.id;
+      if(exists.status !== 'active'){ exists.status = 'active'; exists.active = true; }
+      if(!exists.phone && t.phone) exists.phone = t.phone;
+    } else {
+      const a = { id:uid(), createdAt:Date.now(), updatedAt:Date.now(), name:t.name, phone:t.phone || '', email:'', photo:'', groupName:t.meta || '', birthday:'', teamSize:0, city:'Jaipur', status:'active', active:true, nextFollowUp:'', lastContact:'', slabPerSqYd:0, slab:'', notes:'Promoted from target list', commissionPct:0, corridors:[], projectIds:[], portalId:'', portalPass:'', portalEnabled:false, custom:{} };
+      db.advisors.push(a); linkedId = a.id;
+    }
+  } else if(t.kind === 'client'){
+    const exists = db.clients.find(c => (c.name || '').toLowerCase() === t.name.toLowerCase() && (c.phone || '') === (t.phone || ''));
+    if(exists){ linkedId = exists.id; }
+    else {
+      const c = { id:uid(), createdAt:Date.now(), updatedAt:Date.now(), name:t.name, phone:t.phone || '', email:'', clientStatus:'new', stage:'inbound', advisorId:'', nextFollowUp:'', lastContact:'', birthday:'', budgetMin:null, budgetMax:null, timeline:'', types:[], corridors:[], requirement:t.meta || '', notes:'Promoted from target list', readiness:{ kyc:false, income:false, bankPreapproval:false, cibil:false, agreement:false }, projectIds:[], custom:{}, transferHistory:[] };
+      db.clients.push(c); linkedId = c.id;
+    }
+  } else {
+    let devId = '';
+    if(t.meta){
+      const d = db.developers.find(x => (x.name || '').toLowerCase() === t.meta.toLowerCase());
+      if(d) devId = d.id;
+      else { const nd = { id:uid(), name:t.meta, ownerName:'', email:'', phone:t.phone || '', photo:'', notes:'Auto-created from target project', remarks:'' }; db.developers.push(nd); devId = nd.id; }
+    }
+    const exists = db.projects.find(p => (p.name || '').toLowerCase() === t.name.toLowerCase());
+    if(exists){ linkedId = exists.id; }
+    else {
+      const p = { id:uid(), createdAt:Date.now(), developerId:devId || null, name:t.name, corridor:(db.corridors[0] || {}).id || 'ajmer', status:'upcoming', types:[], plotUse:'', rera:'', approvalType:'', approval:'', societyName:'', remarks:'', priceMin:null, priceMax:null, priceUnit:'', pricePerUnit:null, dlc:null, timeline:'', sizes:'', location:'', mapUrl:'', image:'', amenities:[], pros:'', cons:'', connectivity:[], inventoryNotes:'', inventoryImages:[], notes:'Promoted from target list' + (t.phone ? ' · ' + t.phone : ''), checklist:[], custom:{} };
+      db.projects.push(p); linkedId = p.id;
+    }
+  }
+  t.status = 'active'; t.activeAt = Date.now(); t.linkedId = linkedId;
+  save(); render();
+  const kindLabel = Object.keys(TARGET_KINDS).find(k => targetRecordKind(k) === t.kind);
+  toast(t.name + ' — official ✓ ' + ((TARGET_KINDS[kindLabel] || {}).label || 'record') + ' me add ho gaya');
+}
+
+function rejectTarget(id){
+  const t = (db.targets || []).find(x => x.id === id);
+  if(!t) return;
+  t.status = 'rejected'; t.rejectedAt = Date.now();
+  save(); render();
+  toast('Rejected — “Rejected” tab se kabhi bhi restore kar sakte hain');
+}
+function restoreTarget(id){
+  const t = (db.targets || []).find(x => x.id === id);
+  if(!t) return;
+  t.status = 'todo'; t.rejectedAt = null;
+  save(); render();
+  toast('Target wapas list me ✓');
+}
+function deleteTarget(id){
+  db.targets = (db.targets || []).filter(t => t.id !== id);
+  save(); render();
+  toast('Target delete ho gaya');
+}
+function setTargetScope(kind, scope){
+  if(!db.uiScopes) db.uiScopes = {};
+  db.uiScopes[kind] = scope === 'all' ? 'all' : 'active';
+  save();
+  document.querySelectorAll('[data-tscope-kind="' + kind + '"]').forEach(b => b.classList.toggle('on', b.dataset.tscope === db.uiScopes[kind]));
+  renderGhosts(kind);
+}
+function initTargets(){
+  document.addEventListener('click', e => {
+    const bulk = e.target.closest('[data-tgt-bulk]');
+    if(bulk){ const k = bulk.dataset.tgtBulk; targetBulkOpen[k] = !targetBulkOpen[k]; renderTargets(k); return; }
+    const add = e.target.closest('[data-tgt-add]');
+    if(add){ addTargetsFromBulk(add.dataset.tgtAdd); return; }
+    const tab = e.target.closest('[data-tgt-tab]');
+    if(tab){ const k = tab.dataset.tgtTabKind; targetTabs[k] = tab.dataset.tgtTab; renderTargets(k); return; }
+    const prom = e.target.closest('[data-tgt-promote]');
+    if(prom){ promoteTarget(prom.dataset.tgtPromote); return; }
+    const rej = e.target.closest('[data-tgt-reject]');
+    if(rej){ rejectTarget(rej.dataset.tgtReject); return; }
+    const res = e.target.closest('[data-tgt-restore]');
+    if(res){ restoreTarget(res.dataset.tgtRestore); return; }
+    const del = e.target.closest('[data-tgt-del]');
+    if(del){ if(confirm('Ye target permanently delete karein?')) deleteTarget(del.dataset.tgtDel); return; }
+    const sc = e.target.closest('[data-tscope]');
+    if(sc){ setTargetScope(sc.dataset.tscopeKind, sc.dataset.tscope); return; }
+  });
+  ['projects','developers','advisors','clients'].forEach(k => {
+    if(!targetTabs[k]) targetTabs[k] = 'todo';
+    document.querySelectorAll('[data-tscope-kind="' + k + '"]').forEach(b => b.classList.toggle('on', b.dataset.tscope === targetScope(k)));
+    renderTargets(k);
+  });
+  if(!isAdmin()) document.querySelectorAll('.tgt-scope-seg').forEach(el => el.style.display = 'none');
+}
+
 initTypeControls();
 initAdvisorControls();
 initRoadHub();
@@ -38804,6 +39170,7 @@ initPipeline();
 initReports();
 initInvoices();
 initRoughpad();
+initTargets();
 initCorridorManager();
 initTools();
 initMedia();
