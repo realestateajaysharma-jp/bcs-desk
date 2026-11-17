@@ -34898,11 +34898,6 @@ async function fetchLiveFeedRss(rss){
     throw new Error('allorigins raw empty');
   })());
   attempts.push((async () => {
-    const res = await fetchWithTimeout('https://api.allorigins.win/get?url=' + encodeURIComponent(rss), { cache:'no-store' }, 7000);
-    if(res.ok){ const j = await res.json(); const parsed = j && j.contents ? parseRssXml(j.contents) : null; if(parsed && parsed.length) return parsed; }
-    throw new Error('allorigins get empty');
-  })());
-  attempts.push((async () => {
     const text = await tryText('https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(rss), 8000);
     const parsed = parseRssXml(text);
     if(parsed && parsed.length) return parsed;
