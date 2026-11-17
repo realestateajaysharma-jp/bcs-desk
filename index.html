@@ -12722,6 +12722,80 @@ body[data-theme="dark"] .ad-score{background:transparent !important}
 body[data-theme="dark"] .ad-score-row{background:#171C19 !important;border-color:rgba(255,255,255,.09) !important}
 body[data-theme="dark"] .ad-score-row:hover{border-color:var(--gold) !important;background:#1C231E !important}
 body[data-theme="dark"] .pt-stats span{background:#171C19 !important;border-color:rgba(255,255,255,.09) !important}
+/* data doctor */
+.dd-wrap{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:12px}
+.dd-score{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.dd-ring{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;flex:none;background:conic-gradient(#4E7C5B var(--pct,0%),#E9EEEA 0)}
+.dd-ring > div{text-align:center}
+.dd-ring b{display:block;font-family:'Fraunces',serif;font-size:19px;color:var(--ink)}
+.dd-ring span{font-size:8px;font-weight:800;color:var(--mut);letter-spacing:.4px}
+.dd-score.warn .dd-ring{background:conic-gradient(#C79A3E var(--pct,0%),#E9EEEA 0)}
+.dd-score.bad .dd-ring{background:conic-gradient(#A4452B var(--pct,0%),#E9EEEA 0)}
+.dd-copy b{display:block;font-size:13.5px;color:var(--ink);margin-bottom:3px}
+.dd-copy small{font-size:11px;color:var(--mut);line-height:1.5}
+.dd-list{display:grid;gap:6px}
+.dd-row{display:flex;align-items:center;gap:9px;background:#FBFCFA;border:1px solid var(--line);border-radius:11px;padding:8px 11px;cursor:pointer;text-align:left;transition:.16s}
+.dd-row:hover{border-color:var(--gold)}
+.dd-sev{font-size:8px;letter-spacing:1px;flex:none}
+.dd-sev.dd-high{color:#A4452B}
+.dd-sev.dd-med{color:#C79A3E}
+.dd-sev.dd-low{color:#7C8B6B}
+.dd-main{min-width:0;flex:1}
+.dd-main b{display:block;font-size:11.5px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dd-main small{display:block;font-size:10.5px;color:var(--mut);line-height:1.4}
+.dd-row em{font-style:normal;font-size:9px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--gold);flex:none}
+body[data-theme="dark"] .dd-wrap{background:transparent !important}
+body[data-theme="dark"] .dd-row{background:#171C19 !important;border-color:rgba(255,255,255,.09) !important}
+body[data-theme="dark"] .dd-row:hover{border-color:var(--gold) !important;background:#1C231E !important}
+body[data-theme="dark"] .dd-main b{color:#E7EBE6 !important}
+body[data-theme="dark"] .dd-main small,body[data-theme="dark"] .dd-copy small{color:#9AA39C !important}
+body[data-theme="dark"] .dd-copy b{color:#E7EBE6 !important}
+body[data-theme="dark"] .dd-ring{background:conic-gradient(#6E9B7C var(--pct,0%),rgba(255,255,255,.1) 0) !important}
+body[data-theme="dark"] .dd-score.warn .dd-ring{background:conic-gradient(#C79A3E var(--pct,0%),rgba(255,255,255,.1) 0) !important}
+body[data-theme="dark"] .dd-score.bad .dd-ring{background:conic-gradient(#C24646 var(--pct,0%),rgba(255,255,255,.1) 0) !important}
+/* deal room */
+.dr-cta{margin:10px 0 2px}
+.dr-cta .btn{width:100%;justify-content:center}
+.dr-hero{display:flex;align-items:center;gap:11px;margin-bottom:12px}
+.dr-hero h4{font-family:'Fraunces',serif;font-size:16px;color:var(--ink)}
+.dr-hero .role{font-size:11px;color:var(--mut)}
+.dr-moneybar{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:12px}
+.dr-money{background:#FBFCFA;border:1px solid var(--line);border-radius:11px;padding:8px 10px}
+.dr-money .k{font-size:8.5px;font-weight:900;letter-spacing:.8px;text-transform:uppercase;color:var(--mut);display:block;margin-bottom:2px}
+.dr-money b{font-size:12.5px;color:var(--ink)}
+.dr-money .dr-pos b{color:#4E7C5B}
+.dr-money .dr-neg b{color:#A4452B}
+.dr-progress{grid-column:1/-1;display:flex;align-items:center;gap:8px}
+.dr-progress .ph-bar{flex:1}
+.dr-progress span{font-size:10px;font-weight:800;color:var(--mut);flex:none}
+.dr-sec{margin-bottom:12px}
+.dr-sec h5{display:flex;align-items:center;gap:7px;font-size:12px;margin-bottom:6px}
+.dr-row{display:flex;align-items:center;gap:9px;width:100%;text-align:left;background:#FBFCFA;border:1px solid var(--line);border-radius:11px;padding:8px 11px;margin-bottom:5px;cursor:pointer;transition:.16s}
+.dr-row:hover{border-color:var(--gold)}
+.dr-row b{display:block;font-size:11.5px;color:var(--ink)}
+.dr-row small{display:block;font-size:10.5px;color:var(--mut);line-height:1.4}
+.dr-row em{margin-left:auto;font-style:normal;font-size:11px;font-weight:800;color:var(--ink);flex:none}
+body[data-theme="dark"] :is(.dr-money,.dr-row){background:#171C19 !important;border-color:rgba(255,255,255,.09) !important}
+body[data-theme="dark"] .dr-row:hover{border-color:var(--gold) !important;background:#1C231E !important}
+body[data-theme="dark"] :is(.dr-row b,.dr-money b,.dr-hero h4){color:#E7EBE6 !important}
+body[data-theme="dark"] :is(.dr-row small,.dr-money .k,.dr-progress span,.dr-hero .role){color:#9AA39C !important}
+/* newsletter studio */
+.nl-kinds{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}
+.nl-kinds .btn.on{border-color:var(--gold);color:var(--gold);background:#FFF8EA}
+#nlText{width:100%;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;line-height:1.55;color:var(--ink);background:#FBFCFA;border:1px solid var(--line);border-radius:12px;padding:11px 12px;resize:vertical}
+#nlText:focus{outline:none;border-color:var(--gold)}
+body[data-theme="dark"] #nlText{background:#171C19 !important;border-color:rgba(255,255,255,.1) !important;color:#E7EBE6 !important}
+body[data-theme="dark"] .nl-kinds .btn.on{background:#2A2413 !important;border-color:#4A4430 !important;color:#E7C46E !important}
+/* command palette */
+#paletteModal .modal{padding:0}
+.pl-group{margin-bottom:8px}
+.pl-gtitle{font-size:8.5px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--mut);padding:5px 8px 3px}
+.pl-item{display:flex;align-items:baseline;gap:9px;width:100%;text-align:left;background:transparent;border:0;border-radius:10px;padding:8px 10px;cursor:pointer;transition:.14s}
+.pl-item:hover,.pl-item.sel{background:#F1F5F0}
+.pl-item b{font-size:12.5px;color:var(--ink);font-weight:700}
+.pl-item small{font-size:10.5px;color:var(--mut);margin-left:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
+body[data-theme="dark"] .pl-item:hover,body[data-theme="dark"] .pl-item.sel{background:#1C231E !important}
+body[data-theme="dark"] .pl-item b{color:#E7EBE6 !important}
 
 
 /* --- Mini month calendar --- */
@@ -16110,6 +16184,12 @@ try{
       <span class="sub">Har number aapke existing data se — clients, advisors, projects, plots, bookings, sales ledger, partners, news. Tap karo, seedha us module par.</span>
     </div>
     <div class="cmd-360" id="command360"></div>
+    <div class="sec-head" style="margin-top:14px">
+      <h3>🩺 Data doctor — data hi trust hai</h3>
+      <span class="sub">Missing fields, broken links, expired docs, money mismatches — sab scan. Fix karte jao, score badhta jayega.</span>
+      <button type="button" class="btn ghost sm" data-ddrefresh="1" style="margin-left:auto">↻ Scan again</button>
+    </div>
+    <div class="panel" id="dataDoctor" style="margin-bottom:14px"></div>
     <div class="sec-head fest-head">
       <h3>Month festivals & creatives</h3>
       <span class="sub">Har card click karo — WhatsApp poster ready. Manage se date/greet/quote badlo.</span>
@@ -17468,6 +17548,7 @@ try{
       <div><div class="k">PW news (today)</div><div class="v">JDA ₹575 Cr</div></div>
     </div>
     <div class="panel" id="indiaRatesPanel" style="margin-top:12px"></div>
+    <div class="panel" id="newsletterPanel" style="margin-top:12px"></div>
     <div class="panel" style="margin-top:12px">
       <div class="panel-head"><h4>Jaipur at a glance — charon sources ka summary</h4><span class="n-badge">Nov 2026</span></div>
       <div class="brief-grid">
@@ -23026,6 +23107,104 @@ function corridorIdByName(name){
   const c = (db.corridors || []).find(x => (x.name || '').toLowerCase() === String(name).toLowerCase());
   return c ? c.id : '';
 }
+/* ============================================================
+   BCS NEWSLETTER STUDIO — live data se WhatsApp newsletter
+   Rates + corridor updates + aapke projects ki phases +
+   festival — ek click me ready text. Copy karke broadcast.
+   ============================================================ */
+function newsletterText(kind){
+  const today = todayISO();
+  const lines = [];
+  const r = (typeof BCS_RATES_REF !== 'undefined') ? BCS_RATES_REF : null;
+  const snap = (typeof mktLoadSnapshot === 'function') ? mktLoadSnapshot() : null;
+  const usd = snap && snap.usdInr;
+  const gold10 = snap && snap.goldUsd && usd ? mktGoldPer10g(snap.goldUsd, usd) * 1.15 : null;
+  const silKg = snap && snap.silverUsd && usd ? mktSilverPerKg(snap.silverUsd, usd) * 1.23 : null;
+  if(kind === 'market' || kind === 'full'){
+    lines.push('*📈 BCS MARKET UPDATE — ' + fmtDate(today) + '*');
+    lines.push('');
+    if(r) lines.push('• Nifty 50: *' + r.indices[0].val + '* (' + (r.indices[0].pct > 0 ? '+' : '') + r.indices[0].pct + '%) · Sensex *' + r.indices[1].val + '*');
+    if(r) lines.push('• Nifty Realty: *' + r.indices[2].val + '* (' + r.indices[2].pct + '%) — listed realty correct, Jaipur DLC floor stable');
+    if(usd) lines.push('• USD/INR: *₹' + Number(usd).toFixed(2) + '*');
+    if(gold10) lines.push('• Gold (India): *' + mktInrRaw(gold10, 0) + '/10g*');
+    if(silKg) lines.push('• Silver (India): *' + mktInrRaw(silKg, 0) + '/kg*');
+    if(r) lines.push('• Petrol Jaipur: *₹' + r.fuel.petrol + '* · Diesel: *₹' + r.fuel.diesel + '*');
+    lines.push('');
+    lines.push('_Sources: NSE/BSE, gold-api, er-api, Rajasthan pump rates_');
+    lines.push('');
+  }
+  if(kind === 'corridor' || kind === 'full'){
+    lines.push('*🛣️ JAIPUR GROWTH CORRIDORS*');
+    (typeof BCS_CORRIDOR_INTEL !== 'undefined' ? BCS_CORRIDOR_INTEL : []).slice(0,4).forEach(x => {
+      lines.push('• *' + x.corridor + '* — median ₹' + x.median.toLocaleString('en-IN') + '/sq ft · DLC ₹' + Math.round((x.dlcLow + x.dlcHigh) / 2).toLocaleString('en-IN') + '/sq m · ' + x.demand + ' demand');
+    });
+    lines.push('');
+    lines.push('* corri update:*');
+    (typeof BCS_CORRIDOR_UPDATES !== 'undefined' ? BCS_CORRIDOR_UPDATES : []).slice(0,3).forEach(u => {
+      lines.push('• ' + u.title + ' _(' + u.source + ')_');
+    });
+    lines.push('');
+  }
+  if(kind === 'projects' || kind === 'full'){
+    lines.push('*🏗️ BCS PROJECT DESK*');
+    scopedProjects().slice(0, 5).forEach(p => {
+      const hist = [...(p.priceHistory || [])].sort((a,b) => (b.at || 0) - (a.at || 0))[0];
+      const u = unitCounts(p);
+      const bits = [];
+      if(priceRange(p) !== 'Price on request') bits.push(priceRange(p));
+      if(u.total) bits.push(u.booked + u.sold + '/' + u.total + ' sold');
+      if(hist && hist.newMin != null && hist.oldMin != null && hist.newMin !== hist.oldMin) bits.push('rate ' + (hist.newMin > hist.oldMin ? '↗' : '↘') + ' ' + hist.newMin);
+      lines.push('• *' + p.name + '* — ' + (bits.join(' · ') || corridor(p.corridor).name));
+    });
+    lines.push('');
+  }
+  if(kind === 'festival'){
+    const fests = upcomingFestivals(2, today);
+    if(fests.length){
+      lines.push('*✨ AAGE KYA HAI*');
+      fests.forEach(f => lines.push('• ' + (f.emoji || '✨') + ' ' + f.name + ' — ' + fmtDate(f.date)));
+      lines.push('');
+    }
+  }
+  lines.push('_Har number desk se verified hai — sawal ho to seedha message karo._');
+  lines.push('— *Ajay Sharma · BCS* · @ajaysharma.bcs');
+  return lines.join('\n');
+}
+function renderNewsletterStudio(){
+  const wrap = $('#newsletterPanel');
+  if(!wrap) return;
+  const kinds = [['full','🧾 Full newsletter'], ['market','📈 Market only'], ['corridor','🛣️ Corridor only'], ['projects','🏗️ Projects only'], ['festival','✨ Festival']];
+  wrap.innerHTML = `
+    <div class="panel-head"><h4>📨 Newsletter studio — ek click WhatsApp broadcast</h4><span class="n-badge">live data</span><span class="hint">Rates, corridor updates, aapke projects, festival — sab desk se. Copy karo, WhatsApp status/groups me bhejo.</span></div>
+    <div class="nl-kinds">${kinds.map(k => `<button type="button" class="btn ghost sm ${k[0] === 'full' ? 'on' : ''}" data-nlkind="${k[0]}">${k[1]}</button>`).join('')}</div>
+    <textarea id="nlText" rows="12" spellcheck="false"></textarea>
+    <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+      <button type="button" class="btn primary sm" id="nlCopy">📋 Copy</button>
+      <button type="button" class="btn ghost sm" id="nlWa">💬 WhatsApp kholein</button>
+      <span style="font-size:10.5px;color:var(--mut);align-self:center" id="nlMeta"></span>
+    </div>`;
+  const ta = $('#nlText');
+  const paint = kind => {
+    ta.value = newsletterText(kind);
+    const meta = $('#nlMeta');
+    if(meta) meta.textContent = ta.value.length + ' chars · ' + ta.value.split('\n').length + ' lines';
+  };
+  paint('full');
+  $$('#newsletterPanel [data-nlkind]').forEach(b => b.addEventListener('click', () => {
+    $$('#newsletterPanel [data-nlkind]').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    paint(b.dataset.nlkind);
+  }));
+  const cp = $('#nlCopy');
+  if(cp) cp.addEventListener('click', async () => {
+    const ok = await copyText(ta.value);
+    toast(ok ? 'Newsletter copy — WhatsApp me paste karo' : 'Copy fail — manually select karein', !ok);
+  });
+  const wab = $('#nlWa');
+  if(wab) wab.addEventListener('click', () => {
+    window.open('https://wa.me/?text=' + encodeURIComponent(ta.value), '_blank', 'noopener');
+  });
+}
 function renderCorridorIntel(){
   const puls = $('#view-pulse');
   if(!puls) return;
@@ -23622,6 +23801,7 @@ function renderDashboard(){
   renderPulse();
   renderSeniorDesk();
   try{ renderCommand360(); }catch(e){}
+  try{ renderDataDoctor(); }catch(e){}
   renderNextQueue();
   renderJourneyPanel();
   renderDailyHero();
@@ -28625,6 +28805,7 @@ function renderClientProfile(){
       </div>`;
     })()}
     ${personaPlaybookHTML(c)}
+    <div class="dr-cta"><button type="button" class="btn primary sm" data-dealroom="${c.id}">🏛️ Deal Room kholein — booking + sale + ledger + docs ek modal me</button></div>
     ${clientTimelineHTML(c)}
     <div class="profile-sec">
       <h5>Site visits & outcomes <span class="n">${(db.visits || []).filter(v => v.clientId === c.id).length}</span>${isAdmin() ? `<button class="btn ghost sm" type="button" data-caddvisit="${c.id}" style="margin-left:auto">+ Log visit</button>` : ''}</h5>
@@ -28980,6 +29161,236 @@ function exportAdvisorsCSV(){
   csvDownload(rows, `bcs-advisors-${todayISO()}.csv`);
   toast('Advisors CSV · ' + list.length + ' rows');
 }
+/* ============================================================
+   BCS DATA DOCTOR — data hi trust hai
+   Poore system ka quality scan: missing fields, broken links,
+   expired documents, money mismatches, duplicates. Har issue
+   ka direct "Fix" jump usi record par. Score 0–100.
+   ============================================================ */
+function dataDoctorScan(){
+  const issues = [];
+  const push = (entity, id, label, issue, severity, act) => issues.push({ entity, id, label, issue, severity, act });
+  const today = todayISO();
+  // clients
+  (db.clients || []).forEach(c => {
+    const who = c.name || c.phone || 'Client';
+    if(!c.phone && !c.email) push('client', c.id, who, 'Phone aur email dono missing — contact possible nahi', 'high', 'client');
+    if(!c.advisorId) push('client', c.id, who, 'Advisor assign nahi — follow-up owner missing', 'med', 'client');
+    if(c.budgetMin == null && c.budgetMax == null) push('client', c.id, who, 'Budget record nahi — matching weak hoga', 'med', 'client');
+    if(!c.nextFollowUp && !['booked','lost'].includes(c.clientStatus || 'new')) push('client', c.id, who, 'Next follow-up set nahi', 'low', 'client');
+    if(c.requirement == null || String(c.requirement).trim() === '') push('client', c.id, who, 'Requirement khali — pitch generic banegi', 'low', 'client');
+  });
+  // duplicate phones
+  const byPhone = {};
+  (db.clients || []).forEach(c => { if(!c.phone) return; (byPhone[c.phone] = byPhone[c.phone] || []).push(c); });
+  Object.keys(byPhone).forEach(ph => { if(byPhone[ph].length > 1) push('client', byPhone[ph][0].id, byPhone[ph].map(c => c.name || ph).join(' + '), byPhone[ph].length + ' clients same phone ' + ph + ' — duplicate?', 'med', 'client'); });
+  // projects
+  scopedProjects().forEach(p => {
+    if(!p.developerId) push('project', p.id, p.name, 'Developer linked nahi', 'med', 'project');
+    if(!p.rera) push('project', p.id, p.name, 'RERA number record nahi — trust pitch weak', 'med', 'project');
+    if(p.priceMin == null && p.priceMax == null) push('project', p.id, p.name, 'Price range missing — rate quote nahi hoga', 'high', 'project');
+    if(!p.corridor) push('project', p.id, p.name, 'Corridor set nahi — corridor intel se bahar', 'med', 'project');
+    if(p.dlc == null || p.dlc === '') push('project', p.id, p.name, 'DLC rate khali — stamp duty math adhoora', 'low', 'project');
+    const u = unitCounts(p);
+    if(p.soldOut && !u.sold && !u.booked) push('project', p.id, p.name, 'Sold-out marked par units sold nahi — data mismatch', 'med', 'project');
+  });
+  // plots
+  (db.plots || []).forEach(pl => {
+    const label = 'Plot ' + (pl.plotNo || pl.label || pl.num || '');
+    if(!pl.sizeGaj || !pl.rateGaj) push('plot', pl.id, label, 'Size ya rate missing — value calc nahi hogi', 'med', 'plot');
+    if(['sold','token','hold'].includes(pl.status) && !pl.clientId) push('plot', pl.id, label, 'Status ' + pl.status + ' par client link missing', 'high', 'plot');
+    const ms = (pl.ledger && pl.ledger.milestones) || [];
+    if(['sold','token'].includes(pl.status) && !ms.length) push('plot', pl.id, label, 'Payment milestones khali — collection blind', 'high', 'plot');
+  });
+  // bookings
+  scopedBookings().forEach(b => {
+    const who = (bookingClient(b) || {}).name || 'Booking';
+    if(b.bookingAmount == null) push('booking', b.id, who, 'Booking amount missing', 'high', 'pipeline');
+    if(number(b.received) > number(b.bookingAmount)) push('booking', b.id, who, 'Received > booking amount — entry check karo', 'high', 'pipeline');
+    if(!b.projectId) push('booking', b.id, who, 'Project link missing', 'med', 'pipeline');
+  });
+  // deals
+  (db.pipeline || []).forEach(d => {
+    const who = dealClientLabel(d);
+    if(!Number(d.dealValue)) push('deal', d.id, who || 'Deal', 'Deal value missing', 'high', 'pipeline');
+    if(!d.clientId && !d.clientName) push('deal', d.id, 'Deal ' + (d.code || ''), 'Client link missing — ledger orphan', 'high', 'pipeline');
+    if(d.registryDate && d.bookingDate && d.registryDate < d.bookingDate) push('deal', d.id, who, 'Registry date booking se pehle — galti lagti hai', 'med', 'pipeline');
+  });
+  // documents
+  (db.documents || []).forEach(d => {
+    if(d.status === 'expired') push('doc', d.id, d.name || 'Document', 'Expired — ' + fmtDate(d.expiry), 'high', 'project');
+    else if(d.status === 'missing') push('doc', d.id, d.name || 'Document', 'Missing record', 'high', 'project');
+    else if(d.expiry && d.expiry >= today && d.expiry <= addISO(today, 30)) push('doc', d.id, d.name || 'Document', '30 din me expire — ' + fmtDate(d.expiry), 'med', 'project');
+  });
+  // advisors
+  visibleAdvisors().forEach(a => {
+    if(!a.phone) push('advisor', a.id, a.name || 'Advisor', 'Phone missing — network reach weak', 'med', 'advisors');
+    if(a.portalOn && !a.portalPass) push('advisor', a.id, a.name || 'Advisor', 'Portal ON par password set nahi', 'med', 'advisors');
+  });
+  const order = { high:0, med:1, low:2 };
+  issues.sort((a,b) => order[a.severity] - order[b.severity]);
+  const high = issues.filter(i => i.severity === 'high').length;
+  const score = Math.max(0, 100 - high * 6 - (issues.length - high) * 2);
+  return { issues, high, med: issues.length - high, score, total: issues.length };
+}
+function dataDoctorHTML(){
+  const d = dataDoctorScan();
+  const tone = d.score >= 85 ? 'ok' : d.score >= 65 ? 'warn' : 'bad';
+  const sevCls = s => s === 'high' ? 'dd-high' : s === 'med' ? 'dd-med' : 'dd-low';
+  const actLabel = e => ({ client:'Client kholein', project:'Project kholein', plot:'Ledger kholein', booking:'Ledger kholein', deal:'Deal kholein', doc:'Docs kholein', advisor:'Advisor kholein' })[e] || 'Fix';
+  const fixFn = i => {
+    if(i.entity === 'client') return `openClientProfile('${i.id}')`;
+    if(i.entity === 'project') return `openDetail('${i.id}')`;
+    if(i.entity === 'plot') return `openCalDue('${i.id}')`;
+    if(i.entity === 'deal') return `openDeal(db.pipeline.find(x => x.id === '${i.id}'))`;
+    if(i.entity === 'booking') return `openBooking('${i.id}')`;
+    if(i.entity === 'doc') return `openDoc('${i.id}')`;
+    if(i.entity === 'advisor') return `openAdvisorProfile('${i.id}')`;
+    return `go('dashboard')`;
+  };
+  const rows = d.issues.slice(0, 10).map(i => `<button type="button" class="dd-row" data-ddact="${esc(i.entity + ':' + i.id)}" title="${esc(i.issue)}">
+      <span class="dd-sev ${sevCls(i.severity)}">${i.severity === 'high' ? '●●●' : i.severity === 'med' ? '●●' : '●'}</span>
+      <span class="dd-main"><b>${esc(i.label)}</b><small>${esc(i.issue)}</small></span>
+      <em>${esc(actLabel(i.entity))} →</em>
+    </button>`).join('');
+  return `<div class="dd-wrap">
+      <div class="dd-score ${tone}">
+        <div class="dd-ring" style="--pct:${d.score}%"><div><b>${d.score}</b><span>/100</span></div></div>
+        <div class="dd-copy">
+          <b>${d.score >= 85 ? 'Data solid hai — trust ready' : d.score >= 65 ? 'Theek hai — par kuch gaps trust weak karte hain' : 'Data gaps zyada hain — pehle yahi theek karo'}</b>
+          <small>${d.total} issue${d.total === 1 ? '' : 's'} · ${d.high} high risk · ${d.med} medium/low. Har fix ke saath data hi nahi, bharosa bhi strong hota hai.</small>
+        </div>
+      </div>
+      ${rows ? `<div class="dd-list">${rows}</div>` : '<div class="empty-inline">Koi issue nahi mila — data clean hai. 🎉</div>'}
+    </div>`;
+}
+function ddAction(spec){
+  const [entity, id] = String(spec || '').split(':');
+  if(entity === 'client') return openClientProfile(id);
+  if(entity === 'project') return openDetail(id);
+  if(entity === 'plot') return openCalDue(id);
+  if(entity === 'deal'){ const d = (db.pipeline || []).find(x => x.id === id); if(d) return openDeal(d); return go('pipeline'); }
+  if(entity === 'booking') return openBooking(id);
+  if(entity === 'doc') return openDoc(id);
+  if(entity === 'advisor') return openAdvisorProfile(id);
+}
+function renderDataDoctor(){
+  const wrap = $('#dataDoctor');
+  if(!wrap) return;
+  if(typeof dataDoctorScan !== 'function') return;
+  wrap.innerHTML = dataDoctorHTML();
+  $$('#dataDoctor [data-ddact]').forEach(b => b.addEventListener('click', () => ddAction(b.dataset.ddact)));
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-ddrefresh]');
+  if(b){ renderDataDoctor(); toast('Data doctor scan fresh — ' + (dataDoctorScan().total) + ' issues'); }
+});
+/* ============================================================
+   BCS DEAL ROOM — ek client ka poora deal lifecycle ek modal
+   Booking + sale + plot ledger + documents + timeline + money.
+   Interlinks: openBooking, openDeal, openFinancials, openDoc,
+   clientTimeline, afterSales. Print/PDF ready.
+   ============================================================ */
+let dealRoomClientId = null;
+function dealRoomData(c){
+  const bks = scopedBookings().filter(b => b.clientId === c.id && b.stage !== 'cancelled');
+  const deals = (db.pipeline || []).filter(d => d.clientId === c.id && d.stage !== 'cancelled');
+  const plots = (db.plots || []).filter(pl => pl.clientId === c.id || pl.id === c.dealPlotId);
+  const docs = (db.documents || []).filter(d => d.projectId && (bks.some(b => b.projectId === d.projectId) || deals.some(d => d.projectId === d.projectId) || plots.some(pl => pl.projectId === d.projectId)));
+  const received = bks.reduce((s,b) => s + (number(b.received) || 0), 0) + deals.reduce((s,d) => s + dealPaid(d), 0);
+  const pending = bks.reduce((s,b) => s + (bookingPending(b) || 0), 0) + deals.reduce((s,d) => s + dealPending(d), 0);
+  const msDue = plots.reduce((s,pl) => s + (((pl.ledger || {}).milestones) || []).filter(m => m.status !== 'received').reduce((s2,m) => s2 + (Number(m.amount) || 0), 0), 0);
+  const brkPend = deals.reduce((s,d) => s + dealBrkPending(d), 0);
+  return { bks, deals, plots, docs, received, pending, msDue, brkPend };
+}
+function dealRoomHTML(c){
+  const d = dealRoomData(c);
+  const total = d.received + d.pending + d.msDue;
+  const pct = total ? Math.round(d.received / total * 100) : 0;
+  const moneyRow = (label, val, cls) => `<div class="dr-money"><span class="k">${esc(label)}</span><b class="${cls || ''}">${val}</b></div>`;
+  const bkRows = d.bks.map(b => `<button type="button" class="dr-row" data-drbk="${b.id}">
+      <span class="pdot" style="background:${b.stage === 'cancelled' ? '#A8A79E' : b.stage === 'closed' ? '#4E7C5B' : '#C79A3E'}"></span>
+      <span style="min-width:0"><b>${esc((bookingProject(b) || {}).name || 'Project')}</b><small>${esc(bookingStageLabel(b.stage))} · ${esc(fmtDate(b.bookingDate))} · pending ${bookingPending(b) ? fmtPrice(bookingPending(b)) : '—'}</small></span>
+      <em>${number(b.bookingAmount) != null ? fmtPrice(b.bookingAmount) : '—'}</em>
+    </button>`).join('');
+  const dealRows = d.deals.map(dl => `<button type="button" class="dr-row" data-drdl="${dl.id}">
+      <span class="pdot" style="background:#54779E"></span>
+      <span style="min-width:0"><b>${esc(dl.code || 'Sale')} · ${esc(DEAL_STAGES[dl.stage] || dl.stage || '')}</b><small>${esc(dealLabel(dl))} · brokerage pending ${dealBrkPending(dl) ? fmtMoney(dealBrkPending(dl)) : 'clear'}</small></span>
+      <em>${fmtMoney(dl.dealValue)}</em>
+    </button>`).join('');
+  const plotRows = d.plots.map(pl => {
+    const ms = ((pl.ledger || {}).milestones) || [];
+    const due = ms.filter(m => m.status !== 'received');
+    const over = due.some(m => m.date && m.date < todayISO());
+    return `<button type="button" class="dr-row" data-drpl="${pl.id}">
+      <span class="pdot" style="background:${over ? '#C24646' : due.length ? '#C79A3E' : '#4E7C5B'}"></span>
+      <span style="min-width:0"><b>Plot ${esc(pl.plotNo || pl.label || '')} · ${esc(plotStatusLabel(pl.status))}</b><small>${ms.length ? ms.length + ' milestones · ' + (due.length ? moneyINR(due.reduce((s,m) => s + (Number(m.amount)||0), 0)) + ' due' : 'ledger clear') : 'no milestones'}</small></span>
+      <em>${(Number(pl.sizeGaj)||0) * (Number(pl.rateGaj)||0) ? moneyINR((Number(pl.sizeGaj)||0) * (Number(pl.rateGaj)||0)) : '—'}</em>
+    </button>`;
+  }).join('');
+  const docRows = d.docs.map(dc => `<button type="button" class="dr-row" data-drdc="${dc.id}">
+      <span class="pdot" style="background:${dc.status === 'verified' ? '#4E7C5B' : dc.status === 'expired' || dc.status === 'missing' ? '#C24646' : '#C49A3E'}"></span>
+      <span style="min-width:0"><b>${esc(dc.name || 'Document')}</b><small>${esc(dc.type || '')} · ${esc(dc.status || '')}${dc.expiry ? ' · exp ' + esc(fmtDate(dc.expiry)) : ''}</small></span>
+      <em>open</em>
+    </button>`).join('');
+  const tl = clientActivityTimeline(c).slice(0, 10);
+  const tlRows = tl.map(x => `<div class="tl-item"><span class="tl-ic">${x.ic}</span><span class="tl-body"><b>${esc(x.label)}</b>${x.detail ? `<small>${esc(x.detail)}</small>` : ''}</span><span class="tl-date">${esc(fmtDate(x.at))}</span></div>`).join('');
+  return `
+    <div class="dr-hero">
+      <div class="avatar">${esc(initial(c.name || c.phone))}</div>
+      <div style="min-width:0">
+        <h4>${esc(c.name || 'Client')} — Deal Room</h4>
+        <div class="role">${esc(c.phone || '')} · ${esc(BCS_PERSONAS[clientPersona(c)].label)}</div>
+      </div>
+      <div class="pill-wrap">
+        <button type="button" class="btn ghost sm" data-drwa="1">WhatsApp</button>
+        <button type="button" class="btn ghost sm" data-drprint="1">Print / PDF</button>
+      </div>
+    </div>
+    <div class="dr-moneybar">
+      ${moneyRow('Received', moneyINR(d.received), 'dr-pos')}
+      ${moneyRow('Pending', moneyINR(d.pending + d.msDue), d.pending + d.msDue ? 'dr-neg' : '')}
+      ${moneyRow('Brokerage due (dev)', d.brkPend ? moneyINR(d.brkPend) : '—', '')}
+      <div class="dr-progress"><div class="ph-bar"><i style="width:${pct}%;background:${pct >= 80 ? '#4E7C5B' : pct >= 40 ? '#C79A3E' : '#A4452B'}"></i></div><span>${pct}% collected</span></div>
+    </div>
+    <div class="dr-sec"><h5>Bookings <span class="n">${d.bks.length}</span></h5>${bkRows || '<div class="empty-inline">Koi booking nahi.</div>'}</div>
+    <div class="dr-sec"><h5>Sales ledger <span class="n">${d.deals.length}</span></h5>${dealRows || '<div class="empty-inline">Koi sale nahi.</div>'}</div>
+    <div class="dr-sec"><h5>Plot ledger <span class="n">${d.plots.length}</span></h5>${plotRows || '<div class="empty-inline">Koi plot nahi.</div>'}</div>
+    <div class="dr-sec"><h5>Documents <span class="n">${d.docs.length}</span></h5>${docRows || '<div class="empty-inline">Koi document nahi.</div>'}</div>
+    <div class="dr-sec"><h5>Activity <span class="n">${tl.length}</span></h5><div class="tl-list">${tlRows || '<div class="empty-inline">Koi activity nahi.</div>'}</div></div>`;
+}
+function openDealRoom(clientId){
+  const c = (db.clients || []).find(x => x.id === clientId);
+  if(!c) return toast('Client nahi mila', true);
+  if(typeof clientPersona !== 'function') return;
+  dealRoomClientId = clientId;
+  let wrap = $('#dealRoomBody');
+  if(!wrap){
+    document.body.insertAdjacentHTML('beforeend', `<div class="overlay" id="dealRoomModal"><div class="modal" style="max-width:640px"><div class="modal-head"><h3>Deal Room</h3><button class="xbtn" data-close="dealRoomModal">✕</button></div><div class="modal-body" id="dealRoomBody"></div></div></div>`);
+    wrap = $('#dealRoomBody');
+  }
+  wrap.innerHTML = dealRoomHTML(c);
+  showOverlay('dealRoomModal');
+  $$('#dealRoomBody [data-drbk]').forEach(b => b.addEventListener('click', () => openBooking(b.dataset.drbk)));
+  $$('#dealRoomBody [data-drdl]').forEach(b => b.addEventListener('click', () => { const d = (db.pipeline || []).find(x => x.id === b.dataset.drdl); if(d) openDeal(d); }));
+  $$('#dealRoomBody [data-drpl]').forEach(b => b.addEventListener('click', () => openCalDue(b.dataset.drpl)));
+  $$('#dealRoomBody [data-drdc]').forEach(b => b.addEventListener('click', () => openDoc(b.dataset.drdc)));
+  const wa = $('#dealRoomBody [data-drwa]');
+  if(wa) wa.addEventListener('click', () => openPersonaWhatsApp(c));
+  const pr = $('#dealRoomBody [data-drprint]');
+  if(pr) pr.addEventListener('click', () => {
+    const html = dealRoomHTML(c);
+    const w = window.open('', '_blank');
+    if(!w) return toast('Popup block hai — print nahi hua', true);
+    w.document.write('<html><head><title>BCS Deal Room — ' + esc(c.name || '') + '</title><meta charset="utf-8"><style>body{font-family:-apple-system,Segoe UI,sans-serif;padding:24px;color:#1c2420}h1{font-size:20px}table{width:100%;border-collapse:collapse;font-size:12px}td,th{border:1px solid #ccc;padding:6px;text-align:left}.k{font-weight:700}</style></head><body>' + html + '</body></html>');
+    w.document.close();
+    setTimeout(() => { try{ w.print(); }catch(e){} }, 400);
+  });
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-dealroom]');
+  if(b){ e.preventDefault(); e.stopPropagation(); openDealRoom(b.dataset.dealroom); }
+}, true);
 /* ================= resale inventory ================= */
 let editingResale = null, resaleViewId = null;
 
@@ -34123,6 +34534,105 @@ function addStarterLinks(){
   else toast('Starter links pehle se saved hain');
 }
 
+/* ============================================================
+   BCS COMMAND PALETTE — Ctrl+K / ⌘K
+   Ek search box se: client, project, plot, partner, advisor,
+   page jump, aur quick actions. Existing data par hi chalta hai.
+   ============================================================ */
+const PALETTE_ACTIONS = [
+  { label:'Dashboard kholein', hint:'page', run:() => go('dashboard') },
+  { label:'Clients kholein', hint:'page', run:() => go('clients') },
+  { label:'Sales ledger kholein', hint:'page', run:() => go('pipeline') },
+  { label:'Market Pulse + rates', hint:'page', run:() => go('pulse') },
+  { label:'Naya client add', hint:'action', run:() => { go('clients'); openClient(null); } },
+  { label:'Naya project add', hint:'action', run:() => { go('projects'); openProject(null); } },
+  { label:'Naya advisor add', hint:'action', run:() => { go('advisors'); openAdvisor(null); } },
+  { label:'Naya partner add', hint:'action', run:() => { go('partners'); if(typeof openPartner === 'function') openPartner(null); } },
+  { label:'Naya booking add', hint:'action', run:() => { go('clients'); setClientsMode('bookings'); openBooking(null); } },
+  { label:'Nayi sale add', hint:'action', run:() => { go('pipeline'); openDeal(null); } },
+  { label:'Visit planner kholein', hint:'action', run:() => openVisitPlannerSafe() },
+  { label:'Newsletter studio', hint:'action', run:() => { go('pulse'); setTimeout(() => { const n = document.getElementById('newsletterPanel'); if(n) n.scrollIntoView({ behavior:'smooth', block:'start' }); }, 250); } },
+  { label:'Data doctor scan', hint:'action', run:() => { go('dashboard'); setTimeout(() => { const d = document.getElementById('dataDoctor'); if(d) d.scrollIntoView({ behavior:'smooth', block:'start' }); }, 250); } },
+  { label:'Backup download', hint:'action', run:() => { if(typeof downloadBackup === 'function') downloadBackup().catch(() => toast('Backup fail', true)); } },
+  { label:'Theme toggle (dark/light)', hint:'action', run:() => { const btn = document.getElementById('themeBtn'); if(btn) btn.click(); } },
+  { label:'Clients CSV export', hint:'export', run:() => exportClientsCSV() },
+  { label:'Advisors CSV export', hint:'export', run:() => exportAdvisorsCSV() },
+  { label:'Partners CSV export', hint:'export', run:() => exportPartnersCSV() }
+];
+let paletteOpen = false;
+function paletteResults(q){
+  const out = [];
+  const ql = String(q || '').trim().toLowerCase();
+  if(!ql) return { groups:[{ title:'Quick actions', items:PALETTE_ACTIONS.slice(0, 8).map(a => ({ label:a.label, sub:a.hint, run:a.run })) }] };
+  // entities
+  (db.clients || []).filter(c => [c.name, c.phone, c.email].filter(Boolean).join(' ').toLowerCase().includes(ql)).slice(0, 4)
+    .forEach(c => out.push({ group:'Clients', label:c.name || c.phone || 'Client', sub:(clientStatusLabel(c.clientStatus) || '') + (c.phone ? ' · ' + c.phone : ''), run:() => openClientProfile(c.id) }));
+  scopedProjects().filter(p => [p.name, p.location, corridor(p.corridor).name].filter(Boolean).join(' ').toLowerCase().includes(ql)).slice(0, 4)
+    .forEach(p => out.push({ group:'Projects', label:p.name, sub:corridor(p.corridor).name + ' · ' + priceRange(p), run:() => openDetail(p.id) }));
+  (db.plots || []).filter(pl => String(pl.plotNo || pl.label || pl.num || '').toLowerCase().includes(ql.replace('plot','').trim())).slice(0, 3)
+    .forEach(pl => out.push({ group:'Plots', label:'Plot ' + (pl.plotNo || pl.label || pl.num || ''), sub:((db.projects || []).find(x => x.id === pl.projectId) || {}).name || '', run:() => openCalDue(pl.id) }));
+  visibleAdvisors().filter(a => [a.name, a.phone, a.city].filter(Boolean).join(' ').toLowerCase().includes(ql)).slice(0, 3)
+    .forEach(a => out.push({ group:'Advisors', label:a.name || 'Advisor', sub:advisorStatusMeta(a.status).label, run:() => openAdvisorProfile(a.id) }));
+  (db.partners || []).filter(p => [p.name, p.contactPerson, p.city].filter(Boolean).join(' ').toLowerCase().includes(ql)).slice(0, 3)
+    .forEach(p => out.push({ group:'Partners', label:p.name || 'Partner', sub:partnerStageMeta(p.stage).label + (p.contactPerson ? ' · ' + p.contactPerson : ''), run:() => { go('partners'); } }));
+  PALETTE_ACTIONS.filter(a => a.label.toLowerCase().includes(ql)).slice(0, 5)
+    .forEach(a => out.push({ group:'Actions', label:a.label, sub:a.hint, run:a.run }));
+  const groups = [];
+  out.forEach(o => { let g = groups.find(x => x.title === o.group); if(!g){ g = { title:o.group, items:[] }; groups.push(g); } g.items.push(o); });
+  return { groups: groups.slice(0, 5) };
+}
+function palettePaint(q){
+  const wrap = $('#paletteResults');
+  if(!wrap) return;
+  const { groups } = paletteResults(q);
+  let idx = 0;
+  wrap.innerHTML = groups.map(g => `<div class="pl-group"><div class="pl-gtitle">${esc(g.title)}</div>` +
+    g.items.map(o => `<button type="button" class="pl-item ${idx++ === 0 ? 'sel' : ''}" data-plrun="${idx - 1}"><b>${esc(o.label)}</b><small>${esc(o.sub || '')}</small></button>`).join('') + '</div>').join('')
+    || '<div class="empty-inline">Kuch nahi mila — dusra keyword try karo.</div>';
+  const items = [];
+  groups.forEach(g => g.items.forEach(o => items.push(o.run)));
+  wrap.dataset.items = '';
+  $$('#paletteResults .pl-item').forEach((b, i) => b.addEventListener('click', () => { closePalette(); try{ items[i](); }catch(err){ toast('Action fail — ' + err.message, true); } }));
+  wrap.__items = items;
+}
+function openPalette(){
+  let ov = $('#paletteModal');
+  if(!ov){
+    document.body.insertAdjacentHTML('beforeend', `<div class="overlay" id="paletteModal"><div class="modal" style="max-width:520px;padding:0">
+      <div style="display:flex;align-items:center;gap:9px;padding:12px 14px;border-bottom:1px solid var(--line)">
+        <span style="font-size:14px">🔎</span>
+        <input id="paletteInput" placeholder="Client, project, plot, advisor, partner ya action likho…" style="flex:1;border:0;background:transparent;font-size:14px;color:var(--ink)">
+        <span style="font-size:9px;font-weight:800;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:2px 6px">ESC</span>
+      </div>
+      <div id="paletteResults" style="max-height:52vh;overflow:auto;padding:8px"></div>
+    </div></div>`);
+    ov = $('#paletteModal');
+    $('#paletteInput').addEventListener('input', e => palettePaint(e.target.value));
+    $('#paletteInput').addEventListener('keydown', e => {
+      const wrap = $('#paletteResults');
+      const items = wrap.__items || [];
+      if(e.key === 'Enter'){ const first = wrap.querySelector('.pl-item'); if(first) first.click(); }
+    });
+  }
+  paletteOpen = true;
+  showOverlay('paletteModal');
+  const inp = $('#paletteInput');
+  inp.value = '';
+  palettePaint('');
+  setTimeout(() => { try{ inp.focus(); }catch(e){} }, 60);
+}
+function closePalette(){
+  paletteOpen = false;
+  const ov = $('#paletteModal');
+  if(ov && ov.classList.contains('on')) closeModal('paletteModal');
+}
+document.addEventListener('keydown', e => {
+  if((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')){ e.preventDefault(); paletteOpen ? closePalette() : openPalette(); return; }
+  if(e.key === 'Escape' && paletteOpen) closePalette();
+});
+document.addEventListener('click', e => {
+  if(paletteOpen && !e.target.closest('#paletteModal')) closePalette();
+});
 /* ---------- role-based lock (client-side privacy gate) ---------- */
 let lockRole = 'admin';
 function authUnlocked(){ return !!readAuth(); }
@@ -43810,6 +44320,7 @@ initMarketStrip();
 try{ renderIndiaRates(); }catch(e){ console.warn('[BCS rates]', e); }
 try{ renderAwarenessDesk(); }catch(e){ console.warn('[BCS awareness]', e); }
 try{ renderCorridorIntel(); }catch(e){ console.warn('[BCS intel]', e); }
+try{ renderNewsletterStudio(); }catch(e){ console.warn('[BCS nl]', e); }
 /* paint cached headlines immediately, then fetch fresh ones on boot
    (so the ticker is never empty until the News tab is opened) */
 try{ renderTicker(); }catch(e){}
