@@ -15804,6 +15804,66 @@ body[data-theme="dark"] #advisorAccessModal .access-row input:focus{
 @media (max-width:560px){.access-row{flex-wrap:wrap}.access-row input{flex:1 1 100%}}
 </style>
 </head>
+<style id="bcs-docs-vault-css">
+/* ===== project document vault: import PDF/image, label, preview, download ===== */
+.doc-attach{border:1px dashed color-mix(in srgb,var(--acc) 34%,var(--line));border-radius:14px;padding:12px;background:color-mix(in srgb,var(--acc) 4%,var(--panel));display:flex;flex-direction:column;gap:9px}
+.doc-attach-head{display:flex;align-items:center;gap:8px;font-size:10.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--mut)}
+.doc-attach-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.doc-file-chip{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 10px;min-width:0;flex:1}
+.doc-file-chip .ic{width:38px;height:38px;border-radius:9px;background:color-mix(in srgb,var(--acc) 12%,var(--panel));display:grid;place-items:center;font-size:17px;flex:none;overflow:hidden}
+.doc-file-chip .ic img{width:100%;height:100%;object-fit:cover;display:block}
+.doc-file-chip .meta{min-width:0;display:flex;flex-direction:column;gap:1px;flex:1}
+.doc-file-chip .meta b{font-size:12px;font-weight:750;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.doc-file-chip .meta small{font-size:10.5px;color:var(--mut)}
+.doc-file-chip .acts{display:flex;gap:5px;margin-left:auto;flex:none}
+.doc-icon-btn{width:30px;height:30px;border-radius:9px;border:1px solid var(--line);background:var(--panel);color:var(--ink2);display:grid;place-items:center;cursor:pointer;font-size:13px;line-height:1;padding:0}
+.doc-icon-btn:hover{border-color:var(--acc);color:var(--acc)}
+.doc-icon-btn.danger:hover{border-color:#C24646;color:#C24646}
+.doc-type-pill{font-size:9px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;padding:3px 7px;border-radius:999px;background:color-mix(in srgb,var(--acc) 12%,var(--panel));color:var(--acc-deep);border:1px solid color-mix(in srgb,var(--acc) 22%,transparent);white-space:nowrap}
+.doc-row-wrap{display:flex;gap:6px;align-items:stretch}
+.doc-row-wrap .dev-project-row{flex:1;min-width:0}
+.doc-row-acts{display:flex;flex-direction:column;gap:3px;justify-content:center;flex:none}
+.doc-row-acts button{width:28px;height:26px;border-radius:8px;border:1px solid var(--line);background:var(--panel);cursor:pointer;font-size:11px;color:var(--ink2);line-height:1;padding:0}
+.doc-row-acts button:hover{border-color:var(--acc);color:var(--acc)}
+.doc-import-hint{font-size:10.5px;color:var(--mut);line-height:1.5;margin:0}
+/* document preview */
+.doc-preview-modal{width:min(1080px,100%);max-height:94vh;display:flex;flex-direction:column}
+.doc-preview-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:0 20px 10px;font-size:11px;color:var(--mut)}
+.doc-preview-body{flex:1;min-height:0;background:#111;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:auto;height:66vh}
+.doc-preview-body img{max-width:100%;max-height:100%;display:block;object-fit:contain;background:#fff}
+.doc-preview-body iframe{width:100%;height:100%;border:0;background:#fff;display:block}
+.doc-preview-fallback{color:#E7EBE6;text-align:center;padding:40px 20px;font-size:13px;line-height:1.6}
+/* project file (dossier v2) */
+.dossier-modal{width:min(980px,100%) !important}
+.dossier-body-scroll{max-height:66vh;overflow:auto;-webkit-overflow-scrolling:touch;padding-right:4px}
+.dossier-sec{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:12px 14px;margin-top:10px}
+.dossier-sec>h5{font-size:10px;letter-spacing:1.1px;text-transform:uppercase;color:var(--mut);margin:0 0 8px;display:flex;align-items:center;gap:7px}
+.dossier-sec>h5 .cnt{font-size:9px;font-weight:900;color:var(--acc-deep);background:color-mix(in srgb,var(--acc) 14%,transparent);border-radius:999px;padding:2px 7px}
+.dossier-kv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 14px}
+.dossier-kv>div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed color-mix(in srgb,var(--line) 80%,transparent);padding:3px 0;font-size:12px;min-width:0}
+.dossier-kv small{color:var(--mut);font-size:10.5px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;flex:none;padding-top:1px}
+.dossier-kv b{font-weight:700;color:var(--ink);text-align:right;overflow-wrap:anywhere}
+.dossier-chips{display:flex;flex-wrap:wrap;gap:6px}
+.dossier-chip{font-size:10.5px;font-weight:750;border:1px solid var(--line);background:color-mix(in srgb,var(--acc) 5%,var(--panel));border-radius:999px;padding:4px 9px;color:var(--ink2)}
+.dossier-doc-row{display:flex;gap:9px;align-items:center;border:1px solid var(--line);background:var(--panel);border-radius:11px;padding:7px 9px;margin-bottom:5px}
+.dossier-doc-row .ic{width:30px;height:30px;border-radius:8px;background:color-mix(in srgb,var(--acc) 10%,var(--panel));display:grid;place-items:center;font-size:14px;flex:none;overflow:hidden}
+.dossier-doc-row .ic img{width:100%;height:100%;object-fit:cover}
+.dossier-doc-row .meta{flex:1;min-width:0}
+.dossier-doc-row .meta b{display:block;font-size:12px;font-weight:750;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dossier-doc-row .meta small{font-size:10px;color:var(--mut)}
+.dossier-doc-row .acts{display:flex;gap:4px;flex:none}
+.dossier-empty{font-size:11.5px;color:var(--mut);padding:4px 0;line-height:1.5}
+body[data-theme="dark"] .doc-attach{background:color-mix(in srgb,#A57B36 8%,var(--panel))}
+body[data-theme="dark"] .doc-preview-meta{color:#9AA39C}
+body[data-theme="dark"] .dossier-sec,body[data-theme="dark"] .doc-file-chip,body[data-theme="dark"] .dossier-doc-row{background:#171C19}
+body[data-theme="dark"] .dossier-kv>div{border-bottom-color:rgba(255,255,255,.09)}
+@media (max-width:640px){
+  .dossier-kv{grid-template-columns:1fr}
+  .doc-preview-body{height:56vh}
+  .doc-row-wrap{flex-direction:column}
+  .doc-row-acts{flex-direction:row;justify-content:flex-end}
+}
+</style>
 <body class="locked">
 
 <div class="lock on" id="lockScreen">
@@ -18551,21 +18611,33 @@ try{
 
 <!-- ============ DOCUMENT VAULT ============ -->
 <div class="overlay" id="docModal">
-  <div class="modal" style="width:min(680px,100%)">
+  <div class="modal" style="width:min(720px,100%)">
     <div class="modal-head"><h3 id="docTitle">Document</h3><button class="xbtn" data-close="docModal">✕</button></div>
     <div class="modal-body">
       <div class="field"><label>Project</label><select id="docProject"></select></div>
       <div class="grid2">
         <div class="field"><label>Document name</label><input id="docName" placeholder="RERA certificate / JDA approval / OC"></div>
-        <div class="field"><label>Type</label><select id="docType"><option value="rera">RERA certificate</option><option value="approval">Approval</option><option value="oc">OC / CC</option><option value="title">Title deed</option><option value="layout">Layout plan</option><option value="id">Photo ID / KYC</option><option value="other">Other</option></select></div>
+        <div class="field"><label>What is it? (label)</label><input id="docLabel" placeholder="e.g. 90A sanction letter — JDA"></div>
       </div>
       <div class="grid2">
+        <div class="field"><label>Type</label><select id="docType"><option value="rera">RERA certificate</option><option value="approval">Approval / sanction</option><option value="oc">OC / CC</option><option value="title">Title deed</option><option value="layout">Layout plan</option><option value="map">Map / master plan</option><option value="id">Photo ID / KYC</option><option value="deed">Sale deed</option><option value="registry">Registry copy</option><option value="tax">Tax / stamp receipt</option><option value="noc">NOC</option><option value="receipt">Payment receipt</option><option value="brochure">Brochure</option><option value="photo">Site photo</option><option value="loan">Loan document</option><option value="other">Other</option></select></div>
         <div class="field"><label>Status</label><select id="docStatus"><option value="pending">Pending / review</option><option value="verified">Verified</option><option value="expired">Expired</option><option value="missing">Missing</option></select></div>
-        <div class="field"><label>Expiry / valid till</label><input type="date" id="docExpiry"></div>
       </div>
       <div class="grid2">
+        <div class="field"><label>Expiry / valid till</label><input type="date" id="docExpiry"></div>
         <div class="field"><label>Reference no.</label><input id="docRef" placeholder="RERA no / file no"></div>
-        <div class="field"><label>Note</label><input id="docNote" placeholder="Authority / verified by"></div>
+      </div>
+      <div class="field"><label>Note</label><input id="docNote" placeholder="Authority / verified by"></div>
+      <div class="field"><label>Import file — PDF ya image</label>
+        <div class="doc-attach">
+          <div class="doc-attach-row">
+            <label class="btn ghost sm" for="docFile" style="cursor:pointer;margin:0">📎 Import PDF / image</label>
+            <input type="file" id="docFile" accept="image/*,application/pdf" hidden>
+            <button type="button" class="btn ghost sm" id="docFilePreview" hidden>👁 Preview</button>
+          </div>
+          <div id="docFileBox"></div>
+          <p class="doc-import-hint">File app ke andar hi save hoti hai — pehle preview, download sirf zaroorat par. PDF, JPG, PNG, WebP · max 20 MB.</p>
+        </div>
       </div>
       <input type="hidden" id="docId">
     </div>
@@ -18573,6 +18645,23 @@ try{
       <button class="btn danger" id="docDelete" style="margin-right:auto">Delete</button>
       <button class="btn ghost" data-close="docModal">Cancel</button>
       <button class="btn primary" id="docSave">Save document</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DOCUMENT PREVIEW (image / PDF, in-app) ============ -->
+<div class="overlay" id="docPreviewModal">
+  <div class="modal doc-preview-modal">
+    <div class="modal-head">
+      <h3 id="docPreviewTitle">Document preview</h3>
+      <button class="xbtn" data-close="docPreviewModal">✕</button>
+    </div>
+    <div class="doc-preview-meta" id="docPreviewMeta"></div>
+    <div class="doc-preview-body" id="docPreviewBody"></div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="docPreviewModal">Close</button>
+      <button class="btn ghost" id="docPreviewNewTab" title="Blob preview naye tab me">Open ↗</button>
+      <button class="btn primary" id="docPreviewDownload">⬇ Download</button>
     </div>
   </div>
 </div>
@@ -18702,7 +18791,7 @@ try{
       <button class="btn danger sm" id="detailDelete">Delete</button>
       <button class="btn ghost sm" id="detailFeature" title="Dashboard par promote karein">☆ Feature</button>
       <button class="btn ghost sm" id="detailCompare" title="Is project ko compare karein">⚖ Compare</button>
-      <button class="btn ghost sm" id="detailDossier" title="One-click property dossier">📄 Dossier</button>
+      <button class="btn ghost sm" id="detailDossier" title="Poora project file — details, documents, preview/download">📄 Project file</button>
       <button class="btn ghost sm" id="detailCost" title="Cost & quotation">₹ Cost</button>
       <button class="btn ghost sm" id="detailVisit" title="Log site visit">📍 Visit</button>
       <button class="btn ghost sm" id="detailDoc" title="Add document">📁 Doc</button>
@@ -22048,16 +22137,23 @@ function normalizeDb(d){
     createdAt: v.createdAt || Date.now() + i,
     updatedAt: v.updatedAt || v.createdAt || Date.now() + i
   })).slice(0, 1000);
-  const DOC_TYPES = ['rera','approval','oc','title','layout','id','other'];
+  const DOC_TYPES = ['rera','approval','oc','title','layout','map','id','deed','registry','tax','noc','receipt','brochure','photo','loan','other'];
   d.documents = d.documents.filter(x => x && String(x.id || '')).map((x, i) => ({
     id: x.id || uid(),
     projectId: projectIds.has(x.projectId) ? x.projectId : '',
     name: String(x.name || '').trim().slice(0, 160),
+    label: String(x.label || '').trim().slice(0, 120),
     type: DOC_TYPES.includes(x.type) ? x.type : 'other',
     status: ['verified','pending','expired','missing'].includes(x.status) ? x.status : 'pending',
     expiry: /^\d{4}-\d{2}-\d{2}$/.test(String(x.expiry || '')) ? String(x.expiry) : '',
     ref: String(x.ref || '').trim().slice(0, 160),
     note: String(x.note || '').trim().slice(0, 500),
+    fileName: String(x.fileName || '').trim().slice(0, 220),
+    fileType: String(x.fileType || '').trim().slice(0, 120),
+    fileSize: Number.isFinite(+x.fileSize) ? +x.fileSize : 0,
+    fileKey: String(x.fileKey || '').trim().slice(0, 120),
+    thumb: String(x.thumb || '').slice(0, 300000),
+    hasFile: !!(x.fileKey || x.hasFile),
     createdAt: x.createdAt || Date.now() + i,
     updatedAt: x.updatedAt || x.createdAt || Date.now() + i
   })).filter(x => x.name || x.projectId).slice(0, 1000);
@@ -24491,45 +24587,207 @@ function renderNextQueue(){
   const team = $('#teamBoardBtn');
   if(team) team.onclick = openTeamBoard;
 }
-function openDossier(p){
-  if(!p) return;
-  const d = dev(p.developerId);
-  const c = corridor(p.corridor);
+function dossierKv(rows){
+  return '<div class="dossier-kv">' + rows.filter(Boolean).map(r => '<div><small>' + esc(r[0]) + '</small><b>' + r[1] + '</b></div>').join('') + '</div>';
+}
+function dossierChips(list, empty){
+  if(!list.length) return '<div class="dossier-empty">' + esc(empty || 'None recorded') + '</div>';
+  return '<div class="dossier-chips">' + list.map(x => '<span class="dossier-chip">' + esc(x) + '</span>').join('') + '</div>';
+}
+function dossierDocRows(docs, interactive){
+  if(!docs.length) return '<div class="dossier-empty">No documents vaulted yet — Documents tab se PDF/image import karke label karein.</div>';
+  return docs.map(d => {
+    const meta = docMetaFrom(d);
+    const isImg = meta && /^image\//i.test(meta.fileType || '');
+    const ic = meta && meta.thumb ? '<img src="' + esc(meta.thumb) + '" alt="">' : (meta ? (isImg ? '🖼️' : '📄') : docTypeIcon(d.type));
+    const acts = interactive
+      ? (meta
+          ? '<button type="button" class="doc-icon-btn" data-docpreview="' + esc(d.id) + '" title="Preview">👁</button><button type="button" class="doc-icon-btn" data-docdownload="' + esc(d.id) + '" title="Download">⬇</button>'
+          : '<button type="button" class="doc-icon-btn" data-docattach="' + esc(d.id) + '" title="Attach PDF / image">📎</button>')
+      : '';
+    return '<div class="dossier-doc-row">' +
+      '<span class="ic">' + ic + '</span>' +
+      '<span class="meta"><b>' + esc(d.name || 'Document') + '</b><small>' + esc(d.label || docTypeLabel(d.type)) + ' · ' + esc(d.status || 'pending') +
+        (d.expiry ? ' · exp ' + esc(fmtDate(d.expiry)) : '') +
+        (meta ? ' · ' + esc(docSizeLabel(meta.fileSize)) : ' · no file') + '</small></span>' +
+      '<span class="acts">' + acts + '</span>' +
+    '</div>';
+  }).join('');
+}
+function buildDossierSections(p, interactive){
+  const d = dev(p.developerId), c = corridor(p.corridor);
   const docs = (db.documents || []).filter(x => x.projectId === p.id);
   const docsRisk = docs.filter(x => x.status === 'expired' || x.status === 'missing');
   const advisors = advisorsForProject(p.id);
   const clients = clientsForProject(p.id);
+  const plots = (db.plots || []).filter(x => x.projectId === p.id);
+  const uc = unitCounts(p);
+  const bookings = (db.bookings || []).filter(b => b.projectId === p.id && b.stage !== 'cancelled');
+  const deals = (db.pipeline || []).filter(x => x.projectId === p.id && x.stage !== 'cancelled');
+  const visits = (db.visits || []).filter(v => v.projectId === p.id).sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+  const chk = checklistStats(p);
+  const chkLeft = checklistOf(p).filter(x => !x.done).slice(0, 8);
+  const hist = [...(p.priceHistory || [])].sort((a, b) => (b.at || 0) - (a.at || 0)).slice(0, 3);
+  const plotAvail = plots.filter(x => x.status === 'available' || x.status === 'release').length;
+  const plotSold = plots.filter(x => x.status === 'sold' || x.status === 'booked').length;
+  const dealVal = deals.reduce((s, x) => s + (Number(x.dealValue) || 0), 0);
+  const dealPend = deals.reduce((s, x) => s + dealPending(x), 0);
+  const bookVal = bookings.reduce((s, b) => s + (Number(b.dealValue) || 0), 0);
+  const bookPend = bookings.reduce((s, b) => s + (bookingPending(b) || 0), 0);
+  const docsSize = docs.reduce((s, x) => s + (+x.fileSize || 0), 0);
+  const amens = (p.amenities || []).map(a => a.label || a).filter(Boolean);
+  const conns = (p.connectivity || []).filter(x => x.label || x.distance);
   const issues = [];
   if(!p.rera) issues.push('RERA number missing');
   if(!p.approval) issues.push('Approval not recorded');
   if(!d) issues.push('Developer not linked');
   if(!p.priceMin && !p.priceMax) issues.push('Price missing');
   if(docsRisk.length) issues.push(docsRisk.length + ' document alert(s)');
-  const body = `
-    <div class="dossier-head">
-      <div><div class="eyebrow">BCS PROPERTY DOSSIER</div><h4>${esc(p.name)}</h4><p>${esc(p.location || c.name + ', Jaipur')} · ${esc(c.name)} · ${statusLabel[p.status] || ''}</p></div>
-      <div class="dossier-badge">${p.rera ? 'RERA ✓' : 'RERA ⚠️'}</div>
-    </div>
-    <div class="dossier-grid">
-      <div class="dossier-box"><h5>Commercial</h5><p><b>${priceRange(p)}</b></p><p>${esc(p.sizes || 'Sizes not recorded')}</p><p>${esc(rateText(p) || 'Rate not recorded')}</p><p>${esc(p.timeline ? timelineLabel(p.timeline) : 'Timeline not recorded')}</p></div>
-      <div class="dossier-box"><h5>Legal / approvals</h5><p>${esc(approvalLabel(p, true) || 'Approval missing')}</p><p>${esc(p.approval || 'Approval note missing')}</p><p>RERA: ${esc(p.rera || 'not recorded')}</p><p>${docs.length ? docs.length + ' document(s) vaulted' : 'No documents in vault yet'}</p></div>
-      <div class="dossier-box"><h5>Stakeholders</h5><p><b>${d ? esc(d.name) : 'No developer'}</b>${d && d.phone ? ' · ' + esc(d.phone) : ''}</p><p>Advisors: ${advisors.length ? advisors.map(a => esc(a.name)).join(', ') : 'none'}</p><p>Clients: ${clients.length ? clients.map(x => esc(x.name || x.phone || 'Client')).join(', ') : 'none'}</p></div>
-      <div class="dossier-box"><h5>Risk / attention</h5>${issues.length ? `<ul>${issues.map(i => `<li>${esc(i)}</li>`).join('')}</ul>` : '<p>No red flags in current records.</p>'}</div>
-    </div>
-    <div class="dossier-actions">
-      <button type="button" class="btn ghost sm" data-dossier-cost="${p.id}">₹ Cost builder</button>
-      <button type="button" class="btn ghost sm" data-dossier-visit="${p.id}">📍 Log visit</button>
-      <button type="button" class="btn ghost sm" data-dossier-doc="${p.id}">📁 Document</button>
-      <button type="button" class="btn ghost sm" data-dossier-project="${p.id}">Open project</button>
-    </div>`;
-  $('#dossierTitle').textContent = 'Property dossier — ' + (p.name || '');
-  $('#dossierBody').innerHTML = body;
+  const sec = (title, body, count) => '<div class="dossier-sec"><h5>' + title + (count != null ? '<span class="cnt">' + count + '</span>' : '') + '</h5>' + body + '</div>';
+  return [
+    sec('🏠 Project identity', dossierKv([
+      ['Project', esc(p.name || '—')],
+      ['Corridor', esc(c.name || '—')],
+      ['Location', esc(p.location || '—')],
+      ['Status', esc(statusLabel[p.status] || p.status || '—')],
+      ['Developer', d ? esc(d.name) + (d.phone ? ' · ' + esc(d.phone) : '') : 'Not linked'],
+      ['Property type', esc(typeLabel(p.types) || '—')],
+      p.plotUse ? ['Plot use', esc(plotUseLabel(p.plotUse))] : null,
+      p.societyName ? ['Society / colony', esc(p.societyName)] : null,
+      ['Configurations / sizes', esc(p.sizes || '—')],
+      ['Possession / completion', esc(p.timeline ? timelineLabel(p.timeline) : '—')],
+      p.mapUrl ? ['Map / layout link', '<a href="' + esc(p.mapUrl) + '" target="_blank" rel="noopener">Open map ↗</a>'] : null,
+      ['Active listing', p.active === false ? 'Paused' : 'Active']
+    ])),
+    sec('💰 Commercial & pricing', dossierKv([
+      ['Price band', esc(priceRange(p))],
+      ['Rate', esc(rateText(p) || '—')],
+      ['DLC / circle rate', p.dlc ? '₹' + (+p.dlc).toLocaleString('en-IN') + ' / sq yd' : 'Not set'],
+      ['Circle rate update', p.circleDate ? esc(fmtDate(p.circleDate)) : '—'],
+      ['Price revisions', String((p.priceHistory || []).length)],
+      ['Last update', p.priceUpdatedAt ? esc(fmtDate(new Date(p.priceUpdatedAt).toISOString().slice(0, 10))) : '—']
+    ]) + (hist.length ? '<div style="margin-top:8px">' + hist.map(h => '<div class="dossier-empty">• ' + esc(h.date || '') + ' — ' + esc(fmtPrice(h.newMin) || '—') + (h.note ? ' · ' + esc(h.note) : '') + '</div>').join('') + '</div>' : '')),
+    sec('✅ Approvals & legal', dossierKv([
+      ['Approval type', esc(approvalLabel(p, true) || '—')],
+      ['Approval detail', esc(p.approval || '—')],
+      ['RERA', esc(p.rera || 'Not recorded')],
+      ['Documents', docs.length + ' vaulted · ' + docs.filter(x => x.fileKey).length + ' attached'],
+      ['Doc alerts', docsRisk.length ? docsRisk.length + ' expired / missing' : 'None']
+    ])),
+    sec('📄 Documents', dossierDocRows(docs, interactive) + (docsSize ? '<div class="dossier-empty" style="margin-top:6px">Attached files: ' + docSizeLabel(docsSize) + ' total</div>' : ''), docs.length),
+    sec('👥 People', dossierKv([
+      ['Developer', d ? esc(d.name) : '—'],
+      ['Developer phone', d && d.phone ? esc(d.phone) : '—'],
+      ['Advisors', String(advisors.length)],
+      ['Clients linked', String(clients.length)]
+    ]) + '<div style="margin-top:8px">' + dossierChips(advisors.map(a => a.name), 'No advisor assigned') + '</div>' +
+      (clients.length ? '<div style="margin-top:6px">' + dossierChips(clients.map(x => x.name || x.phone || 'Client'), '') + '</div>' : '')),
+    sec('📊 Sales & money', dossierKv([
+      ['Bookings', bookings.length + ' · ' + fmtMoney(bookVal)],
+      ['Booking pending', fmtMoney(bookPend)],
+      ['Pipeline deals', deals.length + ' · ' + fmtMoney(dealVal)],
+      ['Pipeline pending', fmtMoney(dealPend)],
+      ['Plots', plots.length ? plotAvail + ' available / ' + plots.length + ' total' : '—'],
+      ['Plots sold / booked', plots.length ? String(plotSold) : '—'],
+      ['Units', uc.total ? uc.available + ' available / ' + uc.total + ' total' : '—']
+    ])),
+    sec('📍 Site visits', visits.length
+      ? visits.slice(0, 6).map(v => {
+          const cl = v.clientId ? (db.clients || []).find(x => x.id === v.clientId) : null;
+          return '<div class="dossier-empty">• ' + esc(fmtDate(v.date)) + ' — ' + esc(cl ? (cl.name || cl.phone || 'Client') : 'Client') + ' · ' + esc(v.outcome || 'visit') + (v.feedback ? ' · ' + esc(v.feedback) : '') + '</div>';
+        }).join('')
+      : '<div class="dossier-empty">No site visits logged yet.</div>', visits.length),
+    sec('☑ Readiness checklist', '<div class="dossier-empty" style="margin-bottom:6px">' + chk.done + ' / ' + chk.total + ' done · ' + chk.pct + '%</div>' +
+      (chkLeft.length ? '<div class="dossier-chips">' + chkLeft.map(x => '<span class="dossier-chip">○ ' + esc(x.label) + '</span>').join('') + '</div>' : '<div class="dossier-empty">Sab checklist items done ✓</div>'), chk.pct + '%'),
+    (amens.length || conns.length) ? sec('✦ Amenities & connectivity',
+      (amens.length ? dossierChips(amens, '') : '') +
+      (conns.length ? '<div style="margin-top:6px">' + conns.map(x => '<div class="dossier-empty">• ' + esc(x.label || '') + (x.distance ? ' — ' + esc(x.distance) : '') + (x.note ? ' · ' + esc(x.note) : '') + '</div>').join('') + '</div>' : '')) : '',
+    (p.notes || p.remarks || p.pros || p.cons) ? sec('📝 Notes',
+      (p.notes ? '<div class="dossier-empty"><b>Notes:</b> ' + esc(p.notes) + '</div>' : '') +
+      (p.remarks ? '<div class="dossier-empty"><b>Remarks:</b> ' + esc(p.remarks) + '</div>' : '') +
+      (p.pros ? '<div class="dossier-empty"><b>Pros:</b> ' + esc(p.pros) + '</div>' : '') +
+      (p.cons ? '<div class="dossier-empty"><b>Watch-outs:</b> ' + esc(p.cons) + '</div>' : '')) : '',
+    issues.length ? sec('⚠ Attention', '<div class="dossier-chips">' + issues.map(i => '<span class="dossier-chip" style="border-color:#E3B7A8;color:#A4452B">' + esc(i) + '</span>').join('') + '</div>') : ''
+  ].filter(Boolean).join('');
+}
+function openDossier(p){
+  if(!p) return;
+  const d = dev(p.developerId), c = corridor(p.corridor);
+  const docs = (db.documents || []).filter(x => x.projectId === p.id);
+  const head = `<div class="dossier-head">
+    <div><div class="eyebrow">BCS PROJECT FILE</div><h4>${esc(p.name)}</h4>
+    <p>${esc(p.location || c.name + ', Jaipur')} · ${esc(c.name)} · ${esc(statusLabel[p.status] || '')}${d ? ' · ' + esc(d.name) : ''}</p></div>
+    <div class="dossier-badge">${p.rera ? 'RERA ✓' : 'RERA ⚠️'}</div>
+  </div>
+  <div class="dossier-actions" style="margin-top:0;margin-bottom:4px">
+    <button type="button" class="btn ghost sm" data-dossier-doc="${p.id}">📎 Add / import document</button>
+    <button type="button" class="btn ghost sm" data-dossier-download="${p.id}">⬇ Download all files (${docs.filter(x => x.fileKey).length})</button>
+    <button type="button" class="btn ghost sm" data-dossier-visit="${p.id}">📍 Log visit</button>
+    <button type="button" class="btn ghost sm" data-dossier-cost="${p.id}">₹ Cost builder</button>
+    <button type="button" class="btn ghost sm" data-dossier-project="${p.id}">Open project →</button>
+  </div>`;
+  $('#dossierTitle').textContent = 'Project file — ' + (p.name || '');
+  $('#dossierBody').innerHTML = head + '<div class="dossier-body-scroll">' + buildDossierSections(p, true) + '</div>';
   $('#dossierBody').dataset.projectId = p.id;
   showOverlay('dossierModal');
+  const pid = p.id;
   $$('#dossierBody [data-dossier-cost]').forEach(b => b.addEventListener('click', () => openCostBuilder(b.dataset.dossierCost)));
   $$('#dossierBody [data-dossier-visit]').forEach(b => b.addEventListener('click', () => openVisit(null, null, b.dataset.dossierVisit)));
   $$('#dossierBody [data-dossier-doc]').forEach(b => b.addEventListener('click', () => openDoc(null, b.dataset.dossierDoc)));
+  $$('#dossierBody [data-dossier-download]').forEach(b => b.addEventListener('click', () => downloadAllProjectDocs(pid)));
   $$('#dossierBody [data-dossier-project]').forEach(b => b.addEventListener('click', () => { closeModal('dossierModal'); openDetail(b.dataset.dossierProject); }));
+  $$('#dossierBody [data-docattach]').forEach(b => b.addEventListener('click', () => openDoc(b.dataset.docattach)));
+}
+async function downloadAllProjectDocs(projectId){
+  const docs = (db.documents || []).filter(x => x.projectId === projectId && x.fileKey);
+  if(!docs.length) return toast('Is project me koi attached file nahi', true);
+  toast(docs.length + ' file(s) download ho rahi hain…');
+  for(const d of docs){
+    await docDownloadMeta(docMetaFrom(d), true);
+    await new Promise(r => setTimeout(r, 700));
+  }
+  toast(docs.length + ' file(s) download queue me bhej di gayi');
+}
+function dossierPrintableHTML(p){
+  const c = corridor(p.corridor);
+  const stamp = new Date().toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+  const cover = p.image ? '<img src="' + esc(p.image) + '" alt="" style="width:100%;max-height:240px;object-fit:cover;border-radius:14px;margin-bottom:10px">' : '';
+  return '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>' + esc(p.name || 'Project') + ' — BCS project file</title><style>' +
+    '*{box-sizing:border-box;margin:0;padding:0}' +
+    'body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#F7F6F2;color:#1D1D1F;line-height:1.55;font-size:13px;--panel:#fff;--line:#E3E6E1;--mut:#7C847C;--ink:#1F2A22;--ink2:#424245;--acc:#A57B36;--acc-deep:#7A5A1E}' +
+    '.top{background:linear-gradient(140deg,#3A3928,#A57B36);color:#fff;padding:26px 20px}' +
+    '.top .in{max-width:860px;margin:0 auto}.top small{font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:.78}' +
+    '.top h1{font-size:24px;margin-top:6px;letter-spacing:-.5px}.top .meta{font-size:12px;opacity:.9;margin-top:4px}' +
+    '.wrap{max-width:860px;margin:0 auto;padding:16px 16px 70px}' +
+    '.dossier-sec{background:#fff;border:1px solid #E3E6E1;border-radius:14px;padding:12px 14px;margin-top:10px;page-break-inside:avoid}' +
+    '.dossier-sec>h5{font-size:10px;letter-spacing:1.1px;text-transform:uppercase;color:#7C847C;margin:0 0 8px;display:flex;gap:7px;align-items:center}' +
+    '.dossier-sec>h5 .cnt{font-size:9px;font-weight:900;color:#7A5A1E;background:#F3EFE4;border-radius:999px;padding:2px 7px}' +
+    '.dossier-kv{display:grid;grid-template-columns:1fr 1fr;gap:5px 16px}' +
+    '.dossier-kv>div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed #E3E6E1;padding:3px 0;font-size:12px}' +
+    '.dossier-kv small{color:#7C847C;font-size:10px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;flex:none}' +
+    '.dossier-kv b{font-weight:700;color:#1F2A22;text-align:right;overflow-wrap:anywhere}' +
+    '.dossier-chips{display:flex;flex-wrap:wrap;gap:6px}.dossier-chip{font-size:10.5px;font-weight:700;border:1px solid #E3E6E1;background:#FAFBF8;border-radius:999px;padding:4px 9px;color:#424245}' +
+    '.dossier-doc-row{display:flex;gap:9px;align-items:center;border:1px solid #E3E6E1;background:#FCFDFC;border-radius:11px;padding:7px 9px;margin-bottom:5px}' +
+    '.dossier-doc-row .ic{width:28px;height:28px;border-radius:8px;background:#F3EFE4;display:grid;place-items:center;font-size:13px;flex:none;overflow:hidden}' +
+    '.dossier-doc-row .ic img{width:100%;height:100%;object-fit:cover}' +
+    '.dossier-doc-row .meta{flex:1;min-width:0}.dossier-doc-row .meta b{display:block;font-size:12px}' +
+    '.dossier-doc-row .meta small{font-size:10px;color:#7C847C}' +
+    '.dossier-empty{font-size:11.5px;color:#7C847C;padding:3px 0;line-height:1.5}' +
+    '.foot{text-align:center;color:#7C847C;font-size:10.5px;padding:24px 0 6px;letter-spacing:.5px}' +
+    '@media print{body{background:#fff}.top{background:#3A3928 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.dossier-sec{box-shadow:none}}' +
+    '</style></head><body>' +
+    '<div class="top"><div class="in"><small>BCS Desk · project file</small><h1>' + esc(p.name || 'Project') + '</h1>' +
+    '<div class="meta">' + esc(p.location || c.name) + ' · ' + esc(c.name) + ' · ' + esc(statusLabel[p.status] || '') + ' · ' + stamp + '</div></div></div>' +
+    '<div class="wrap">' + cover + buildDossierSections(p, false) +
+    '<div class="foot">BCS · Business City Square · Jaipur · generated ' + stamp + '</div></div></body></html>';
+}
+function printDossier(){
+  const p = db.projects.find(x => x.id === ($('#dossierBody') ? $('#dossierBody').dataset.projectId : ''));
+  if(!p) return;
+  const w = window.open('', '_blank');
+  if(!w) return toast('Popup block hua — browser me allow karein', true);
+  w.document.open(); w.document.write(dossierPrintableHTML(p)); w.document.close();
+  setTimeout(() => { try{ w.focus(); w.print(); }catch(e){} }, 600);
 }
 function dossierText(){
   const p = db.projects.find(x => x.id === $('#dossierBody')?.dataset.projectId);
@@ -24542,7 +24800,7 @@ function dossierText(){
     `Developer: ${d ? (d.name + (d.phone ? ' · ' + d.phone : '')) : 'not linked'}`,
     `Advisors: ${advisorsForProject(p.id).map(a => a.name).join(', ') || 'none'}`,
     `Clients: ${clientsForProject(p.id).map(x => x.name || x.phone || 'Client').join(', ') || 'none'}`,
-    `Documents: ${docs.length ? docs.map(x => x.name + ' (' + x.status + ')').join('; ') : 'none'}`,
+    `Documents: ${docs.length ? docs.map(x => x.name + ' (' + (x.label || x.status) + (x.fileKey ? ' · file' : '') + ')').join('; ') : 'none'}`,
     '', 'BCS · Business City Square · @ajaysharma.bcs'].join('\n');
 }
 function shareDossier(){
@@ -24617,7 +24875,7 @@ function quoteText(){
   bind('#cbShare', () => shareWa('BCS Quotation')(quoteText()));
   bind('#dossierCopy', async () => { const ok = await copyText(dossierText()); toast(ok ? 'Dossier copied ✓' : 'Copy failed', !ok); });
   bind('#dossierShare', () => shareDossier());
-  bind('#dossierPrint', () => window.print());
+  bind('#dossierPrint', () => printDossier());
   bind('#weeklyCopy', async () => { const t = typeof weeklyReport === 'function' ? weeklyReport().text : ''; const ok = await copyText(t); toast(ok ? 'Report copied ✓' : 'Copy failed', !ok); });
   bind('#weeklyShare', () => { const t = typeof weeklyReport === 'function' ? weeklyReport().text : ''; shareWa('BCS Weekly Report')(t); });
   bind('#weeklyPrint', () => window.print());
@@ -25028,43 +25286,196 @@ function deleteVisit(){
   db.visits = (db.visits || []).filter(v => v.id !== id);
   save(); closeModal('visitModal'); render(); toast('Visit deleted');
 }
+/* ============================================================
+   DOCUMENT VAULT — import PDF / image, label, preview, download
+   ============================================================ */
+let docFileState = { current:null, pending:null, remove:false };
+function docTypeLabel(t){
+  return ({ rera:'RERA certificate', approval:'Approval / sanction', oc:'OC / CC', title:'Title deed', layout:'Layout plan', map:'Map / master plan', id:'Photo ID / KYC', deed:'Sale deed', registry:'Registry copy', tax:'Tax / stamp receipt', noc:'NOC', receipt:'Payment receipt', brochure:'Brochure', photo:'Site photo', loan:'Loan document', other:'Other' })[t] || 'Document';
+}
+function docTypeIcon(t){
+  return ({ rera:'🏛️', approval:'✅', oc:'🏁', title:'📜', layout:'📐', map:'🗺️', id:'🪪', deed:'📜', registry:'🧾', tax:'💳', noc:'🛡️', receipt:'💵', brochure:'📘', photo:'📷', loan:'🏦', other:'📄' })[t] || '📄';
+}
+function docSizeLabel(n){
+  if(!n) return '';
+  return n > 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(n / 1024)) + ' KB';
+}
+function docMetaFrom(d){
+  if(!d || !d.fileKey) return null;
+  return { fileKey:d.fileKey, fileName:d.fileName || d.name || 'document', fileType:d.fileType || '', fileSize:+d.fileSize || 0, thumb:d.thumb || '' };
+}
+function docFileChipHTML(meta, opts){
+  opts = opts || {};
+  const isImg = /^image\//i.test(meta.fileType || '') || /\.(jpe?g|png|webp|gif|heic)$/i.test(meta.fileName || '');
+  const ic = isImg && meta.thumb ? '<img src="' + esc(meta.thumb) + '" alt="">' : (isImg ? '🖼️' : '📄');
+  return '<div class="doc-file-chip">' +
+    '<span class="ic">' + ic + '</span>' +
+    '<span class="meta"><b>' + esc(meta.fileName || 'Attached file') + '</b><small>' + (isImg ? 'Image' : 'PDF') + (meta.fileSize ? ' · ' + docSizeLabel(meta.fileSize) : '') + '</small></span>' +
+    '<span class="acts">' +
+      (opts.remove ? '<button type="button" class="doc-icon-btn danger" id="docFileRemove" title="Remove file">✕</button>' : '') +
+    '</span>' +
+  '</div>';
+}
+function docRenderAttach(){
+  const box = $('#docFileBox');
+  if(!box) return;
+  const meta = docFileState.pending || (!docFileState.remove ? docFileState.current : null);
+  if(meta){
+    box.innerHTML = docFileChipHTML(meta, { remove:true });
+    const rm = $('#docFileRemove');
+    if(rm) rm.onclick = () => { docFileState.pending = null; docFileState.remove = true; docRenderAttach(); };
+  } else {
+    box.innerHTML = '<p class="doc-import-hint">Koi file attached nahi — PDF ya photo import karein.</p>';
+  }
+  const pv = $('#docFilePreview');
+  if(pv) pv.hidden = !meta;
+}
+async function docReadFile(file){
+  if(!file) return null;
+  if(!/^image\//i.test(file.type) && file.type !== 'application/pdf') throw new Error('Sirf PDF ya image file chalegi');
+  if(file.size > 20 * 1024 * 1024) throw new Error('File 20 MB se badi hai — chhoti file chunein');
+  let dataUrl, thumb = '';
+  if(/^image\//i.test(file.type)){
+    dataUrl = await fileToImage(file, 1800, .9);
+    thumb = await compressDataUrl(dataUrl, 380, .62);
+  } else {
+    dataUrl = await new Promise((res, rej) => { const rd = new FileReader(); rd.onload = () => res(rd.result); rd.onerror = rej; rd.readAsDataURL(file); });
+  }
+  const fileKey = 'docf_' + uid();
+  await idbPut(fileKey, dataUrl);
+  return { fileKey, fileName:file.name || ('document-' + Date.now()), fileType:file.type || '', fileSize:file.size || 0, thumb };
+}
 function deleteDoc(){
   if(!isAdmin()) return toast('Advisor login se delete nahi hota', true);
   const id = $('#docId').value; if(!id) return;
   if(!confirm('Ye document delete karna hai?')) return;
-  db.documents = (db.documents || []).filter(d => d.id !== id);
-  save(); closeModal('docModal'); render(); toast('Document deleted');
+  const d = (db.documents || []).find(x => x.id === id);
+  if(d && d.fileKey){ try{ idbDel(d.fileKey).catch(() => {}); }catch(e){} }
+  db.documents = (db.documents || []).filter(x => x.id !== id);
+  save(); closeModal('docModal'); render();
+  if(detailId){ try{ renderDetail(); }catch(e){} }
+  toast('Document deleted');
 }
 function openDoc(id, presetProjectId){
   const d = id ? (db.documents || []).find(x => x.id === id) : null;
   if(id && !d) return;
+  docFileState = { current: docMetaFrom(d), pending:null, remove:false };
   $('#docTitle').textContent = id ? 'Edit document' : 'Add document';
-  $('#docProject').innerHTML = '<option value="">— no project —</option>' + scopedProjects().map(p => `<option value="${p.id}">${esc(p.name)}</option>`).join('');
-  $('#docId').value = d?.id || '';
-  $('#docProject').value = d?.projectId || presetProjectId || '';
-  $('#docName').value = d?.name || '';
-  $('#docType').value = d?.type || 'other';
-  $('#docStatus').value = d?.status || 'pending';
-  $('#docExpiry').value = d?.expiry || '';
-  $('#docRef').value = d?.ref || '';
-  $('#docNote').value = d?.note || '';
+  $('#docProject').innerHTML = '<option value="">— no project —</option>' + scopedProjects().map(p => '<option value="' + p.id + '">' + esc(p.name) + '</option>').join('');
+  $('#docId').value = d ? d.id : '';
+  $('#docProject').value = (d && d.projectId) || presetProjectId || '';
+  $('#docName').value = (d && d.name) || '';
+  $('#docLabel').value = (d && d.label) || '';
+  $('#docType').value = (d && d.type) || 'other';
+  $('#docStatus').value = (d && d.status) || 'pending';
+  $('#docExpiry').value = (d && d.expiry) || '';
+  $('#docRef').value = (d && d.ref) || '';
+  $('#docNote').value = (d && d.note) || '';
+  const fi = $('#docFile'); if(fi) fi.value = '';
+  docRenderAttach();
   $('#docDelete').style.display = id && isAdmin() ? 'inline-flex' : 'none';
   showOverlay('docModal');
 }
 function saveDoc(){
   if(!isAdmin()) return toast('Advisor login se edit nahi hota', true);
-  const name = $('#docName').value.trim();
+  const pending = docFileState.pending;
+  const name = $('#docName').value.trim() || (pending ? String(pending.fileName || '').replace(/\.[a-z0-9]+$/i, '') : '');
   if(!name) return toast('Document ka naam likhein', true);
-  const rec = { projectId:$('#docProject').value || '', name, type:$('#docType').value, status:$('#docStatus').value, expiry:$('#docExpiry').value || '', ref:$('#docRef').value.trim(), note:$('#docNote').value.trim(), updatedAt:Date.now() };
+  const rec = {
+    projectId:$('#docProject').value || '', name,
+    label:$('#docLabel').value.trim(),
+    type:$('#docType').value, status:$('#docStatus').value,
+    expiry:$('#docExpiry').value || '', ref:$('#docRef').value.trim(), note:$('#docNote').value.trim(),
+    updatedAt:Date.now()
+  };
   const id = $('#docId').value;
+  const prev = id ? (db.documents || []).find(x => x.id === id) : null;
+  const oldKey = prev && prev.fileKey;
+  let attach = null;
+  if(pending){
+    attach = pending;
+    if(oldKey && oldKey !== pending.fileKey){ try{ idbDel(oldKey).catch(() => {}); }catch(e){} }
+  } else if(docFileState.remove){
+    if(oldKey){ try{ idbDel(oldKey).catch(() => {}); }catch(e){} }
+  } else {
+    attach = docFileState.current || docMetaFrom(prev);
+  }
+  Object.assign(rec, attach
+    ? { fileName:attach.fileName, fileType:attach.fileType, fileSize:attach.fileSize, fileKey:attach.fileKey, thumb:attach.thumb || '', hasFile:true }
+    : { fileName:'', fileType:'', fileSize:0, fileKey:'', thumb:'', hasFile:false });
   if(id){
     const d = db.documents.find(x => x.id === id); if(d) Object.assign(d, rec);
     toast('Document updated');
   } else {
     db.documents.push({ id: uid(), createdAt: Date.now(), ...rec });
-    toast('Document saved to vault');
+    toast(attach ? 'Document + file vault me save ho gaya' : 'Document saved to vault');
   }
-  save(); closeModal('docModal'); render();
+  save(); closeModal('docModal');
+  if(detailId){ try{ renderDetail(); }catch(e){} }
+  render();
+  const dm = $('#dossierModal');
+  if(dm && dm.classList.contains('on')){
+    const dp = db.projects.find(x => x.id === ($('#dossierBody').dataset.projectId));
+    if(dp) openDossier(dp);
+  }
+}
+function dataUrlToBlob(dataUrl){
+  const s = String(dataUrl || '');
+  const comma = s.indexOf(',');
+  if(comma < 0) throw new Error('bad data url');
+  const head = s.slice(0, comma), b64 = s.slice(comma + 1);
+  const m = head.match(/data:([^;]+)/);
+  const mime = (m && m[1]) || 'application/octet-stream';
+  const bin = atob(b64);
+  const len = bin.length;
+  const arr = new Uint8Array(len);
+  for(let i = 0; i < len; i++) arr[i] = bin.charCodeAt(i);
+  return new Blob([arr], { type:mime });
+}
+let docPreviewUrl = '';
+function docRevokePreview(){
+  if(docPreviewUrl){ try{ URL.revokeObjectURL(docPreviewUrl); }catch(e){} docPreviewUrl = ''; }
+}
+async function docPreviewMeta(meta, title, sub){
+  if(!meta || !meta.fileKey) return toast('Is document me file attached nahi hai', true);
+  try{
+    const data = await idbGet(meta.fileKey);
+    if(!data) return toast('File data nahi mila — backup se restore karein', true);
+    const isImg = /^image\//i.test(meta.fileType || '') || String(data).startsWith('data:image/');
+    docRevokePreview();
+    docPreviewUrl = URL.createObjectURL(dataUrlToBlob(data));
+    const body = $('#docPreviewBody');
+    const bar = $('#docPreviewMeta');
+    $('#docPreviewTitle').textContent = title || 'Document preview';
+    if(bar) bar.innerHTML = '<span class="doc-type-pill">' + (isImg ? 'IMAGE' : 'PDF') + '</span>' +
+      '<span>' + esc(meta.fileName || '') + '</span>' +
+      (meta.fileSize ? '<span>· ' + docSizeLabel(meta.fileSize) + '</span>' : '') +
+      (sub ? '<span>· ' + esc(sub) + '</span>' : '') +
+      '<span style="margin-left:auto">Preview blank ho to Open ↗ ya Download use karein</span>';
+    if(isImg){
+      body.innerHTML = '<img src="' + docPreviewUrl + '" alt="' + esc(title || 'Document') + '">';
+    } else {
+      body.innerHTML = '<iframe src="' + docPreviewUrl + '" title="PDF preview"></iframe>';
+    }
+    const dl = $('#docPreviewDownload');
+    if(dl) dl.onclick = () => docDownloadMeta(meta);
+    const nt = $('#docPreviewNewTab');
+    if(nt) nt.onclick = () => { const w = window.open(docPreviewUrl, '_blank'); if(!w) toast('Popup block hua — Download use karein', true); };
+    showOverlay('docPreviewModal');
+  }catch(e){ toast('Preview fail — download try karein', true); }
+}
+async function docDownloadMeta(meta, silent){
+  if(!meta || !meta.fileKey) return toast('File attached nahi hai', true);
+  try{
+    const data = await idbGet(meta.fileKey);
+    if(!data) throw new Error('missing');
+    const url = URL.createObjectURL(dataUrlToBlob(data));
+    const a = document.createElement('a');
+    a.href = url; a.download = meta.fileName || 'document';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => { try{ URL.revokeObjectURL(url); }catch(e){} }, 9000);
+    if(!silent) toast('Download started — ' + (meta.fileName || 'file'));
+  }catch(e){ if(!silent) toast('File missing — backup restore karein', true); }
 }
 function openLead(presetAdvisorId){
   $('#leadName').value = ''; $('#leadPhone').value = ''; $('#leadMin').value = ''; $('#leadMax').value = '';
@@ -31815,10 +32226,28 @@ function renderDetail(){
   if(detailTab === 'documents'){
     const docs = (db.documents || []).filter(d => d.projectId === p.id);
     const risk = docs.filter(d => d.status === 'expired' || d.status === 'missing');
+    const withFile = docs.filter(d => d.fileKey).length;
     body = `<div class="dsec">
-      <div class="dsec-head"><h4>Document vault</h4><span class="cnt">${docs.length}</span>${isAdmin() ? `<button class="btn ghost sm" type="button" data-docadd="${p.id}" style="margin-left:auto">+ Add document</button>` : ''}</div>
+      <div class="dsec-head"><h4>Document vault</h4><span class="cnt">${docs.length}</span>
+        <span style="margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+          <button class="btn ghost sm" type="button" data-dossier-open="${p.id}">📄 Project file</button>
+          ${isAdmin() ? `<label class="btn ghost sm" style="cursor:pointer;margin:0">📎 Import PDF / image<input type="file" id="docQuickFile" data-docproject="${p.id}" accept="image/*,application/pdf" hidden></label>` : ''}
+          ${isAdmin() ? `<button class="btn primary sm" type="button" data-docadd="${p.id}">+ Add</button>` : ''}
+        </span>
+      </div>
       ${risk.length ? `<div class="transfer-warn">${risk.length} red-flag document(s) — expired ya missing records turant verify karo.</div>` : ''}
-      ${docs.length ? `<div class="mini-list">${docs.map(d => `<button type="button" class="dev-project-row" data-docedit="${d.id}"><span class="pdot" style="background:${d.status === 'verified' ? '#4F8A63' : d.status === 'expired' || d.status === 'missing' ? '#C24646' : '#C49A3E'}"></span><span style="min-width:0"><span class="nm">${esc(d.name)}</span><div class="sub">${esc(d.type)} · ${esc(d.status)}${d.expiry ? ' · exp ' + esc(fmtDate(d.expiry)) : ''}</div></span><span class="price">${esc(d.ref || '')}</span></button>`).join('')}</div>` : '<div class="dempty">No documents vaulted. RERA, approval, OC, title deed, layout plan yahan rakhkar expiry/status track karein.</div>'}
+      ${docs.length ? `<div class="mini-list">${docs.map(d => `<div class="doc-row-wrap">
+        <button type="button" class="dev-project-row" data-docedit="${d.id}">
+          <span class="pdot" style="background:${d.status === 'verified' ? '#4F8A63' : d.status === 'expired' || d.status === 'missing' ? '#C24646' : '#C49A3E'}"></span>
+          <span style="min-width:0"><span class="nm">${docTypeIcon(d.type)} ${esc(d.name)}</span>
+          <div class="sub">${esc(d.label || docTypeLabel(d.type))} · ${esc(d.status)}${d.expiry ? ' · exp ' + esc(fmtDate(d.expiry)) : ''}${d.fileKey ? ' · 📎 ' + esc(d.fileName || 'file') : ' · no file'}</div></span>
+          <span class="price">${d.fileKey ? esc(docSizeLabel(d.fileSize)) : esc(d.ref || '')}</span>
+        </button>
+        <span class="doc-row-acts">
+          ${d.fileKey ? `<button type="button" data-docpreview="${d.id}" title="Preview in app">👁</button><button type="button" data-docdownload="${d.id}" title="Download">⬇</button>` : ''}
+        </span>
+      </div>`).join('')}</div>` : '<div class="dempty">No documents vaulted. RERA, approval, OC, title deed, layout plan, registry — PDF ya photo import karke label karein. Pehle app me preview hoga, download sirf zaroorat par.</div>'}
+      ${withFile ? `<div class="doc-import-hint" style="margin-top:8px">${withFile} file(s) attached · sab app ke andar (IndexedDB) safe hain — backup lene par file bhi saath jayegi.</div>` : ''}
     </div>`;
   }
 
@@ -31917,6 +32346,7 @@ function bindDetail(){
     if(el.dataset.quick === 'doc') return openDoc(null, p.id);
   }));
   $$('#detailBody [data-docadd]').forEach(el => el.addEventListener('click', () => openDoc(null, el.dataset.docadd)));
+  $$('#detailBody [data-dossier-open]').forEach(el => el.addEventListener('click', () => { const pp = db.projects.find(x => x.id === el.dataset.dossierOpen); if(pp) openDossier(pp); }));
   $$('#detailBody [data-docedit]').forEach(el => el.addEventListener('click', () => openDoc(el.dataset.docedit)));
   $$('#detailBody [data-jumptab]').forEach(el => el.addEventListener('click', () => {
     detailTab = el.dataset.jumptab;
@@ -38310,6 +38740,15 @@ async function idbGet(key){
     const req = tx.objectStore(IDB_STORE).get(key);
     req.onsuccess = () => resolve(req.result || null);
     req.onerror = () => reject(req.error);
+  });
+}
+async function idbDel(key){
+  const d = await idbOpen();
+  return new Promise((resolve, reject) => {
+    const tx = d.transaction(IDB_STORE, 'readwrite');
+    tx.objectStore(IDB_STORE).delete(key);
+    tx.oncomplete = () => resolve(true);
+    tx.onerror = () => reject(tx.error);
   });
 }
 let idbMirrorTimer = null;
@@ -49268,6 +49707,99 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply);
   else apply();
   window.__bcsMobileNav = { mount:mount, unmount:unmount, apply:apply };
+})();
+</script>
+<script>
+/* ===== document vault wiring: import, preview, download (all entry points) ===== */
+(function(){
+  "use strict";
+  function fail(e){ try{ toast((e && e.message) || 'File import fail', true); }catch(_){} }
+  function isEl(t){ return t && t.nodeType === 1; }
+
+  document.addEventListener('change', async function(e){
+    const t = e.target;
+    if(!isEl(t)) return;
+    if(t.id === 'docFile'){
+      const f = t.files && t.files[0]; if(!f) return;
+      try{
+        const meta = await docReadFile(f);
+        docFileState.pending = meta; docFileState.remove = false;
+        const nm = document.getElementById('docName');
+        if(nm && !nm.value.trim()) nm.value = String(f.name || '').replace(/\.[a-z0-9]+$/i, '');
+        docRenderAttach();
+        toast('File ready — Save karte hi project se jud jayegi');
+      }catch(err){ fail(err); }
+      t.value = '';
+      return;
+    }
+    if(t.id === 'docQuickFile'){
+      const f = t.files && t.files[0]; if(!f) return;
+      const pid = t.getAttribute('data-docproject') || '';
+      try{
+        openDoc(null, pid);
+        const meta = await docReadFile(f);
+        docFileState.pending = meta; docFileState.remove = false;
+        const nm = document.getElementById('docName');
+        if(nm && !nm.value.trim()) nm.value = String(f.name || '').replace(/\.[a-z0-9]+$/i, '');
+        docRenderAttach();
+        toast('File ready — name/label check karke Save karein');
+      }catch(err){ fail(err); }
+      t.value = '';
+    }
+  }, true);
+
+  document.addEventListener('click', function(e){
+    const t = e.target;
+    if(!isEl(t)) return;
+    const pv = t.closest('[data-docpreview]');
+    if(pv){
+      e.preventDefault(); e.stopPropagation();
+      const d = (db.documents || []).find(x => x.id === pv.getAttribute('data-docpreview'));
+      if(d) docPreviewMeta(docMetaFrom(d), d.name || 'Document preview', d.label || docTypeLabel(d.type));
+      return;
+    }
+    const dl = t.closest('[data-docdownload]');
+    if(dl){
+      e.preventDefault(); e.stopPropagation();
+      const d = (db.documents || []).find(x => x.id === dl.getAttribute('data-docdownload'));
+      if(d) docDownloadMeta(docMetaFrom(d));
+      return;
+    }
+    if(t.closest('#docFilePreview')){
+      e.preventDefault();
+      const meta = docFileState.pending || (!docFileState.remove ? docFileState.current : null);
+      if(meta){
+        const nm = document.getElementById('docName');
+        docPreviewMeta(meta, (nm && nm.value.trim()) || meta.fileName, 'not saved yet');
+      }
+      return;
+    }
+    if(t.id === 'docPreviewModal' || t.closest('[data-close="docPreviewModal"]')){
+      setTimeout(docRevokePreview, 80);
+    }
+  }, true);
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') setTimeout(docRevokePreview, 80);
+  });
+
+  window.BCS_DOCS = {
+    openWithFile: async function(pid, file){
+      try{
+        openDoc(null, pid);
+        const meta = await docReadFile(file);
+        docFileState.pending = meta; docFileState.remove = false;
+        const nm = document.getElementById('docName');
+        if(nm && !nm.value.trim()) nm.value = String((file && file.name) || '').replace(/\.[a-z0-9]+$/i, '');
+        docRenderAttach();
+      }catch(e){ fail(e); }
+    },
+    preview: docPreviewMeta,
+    download: docDownloadMeta,
+    downloadAll: downloadAllProjectDocs,
+    openDossier: openDossier,
+    printDossier: printDossier
+  };
 })();
 </script>
 </body>
