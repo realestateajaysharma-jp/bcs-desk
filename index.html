@@ -24013,10 +24013,13 @@ document.body.addEventListener('click', e => {
 });
 /* ---------- logo tap = next page (one page at a time) ---------- */
 function navViewOrder(){
-  const btn = $$('#nav button[data-view], #navMorePanel button[data-view]').filter(b => b && !b.hidden && !b.closest('[hidden]'));
+  /* every page, in nav order — the collapsed "More" panel must NOT drop views,
+     and any view in the DOM but missing from nav is appended so nothing is skipped */
   const seen = [];
-  btn.forEach(b => { if(b.dataset.view && !seen.includes(b.dataset.view)) seen.push(b.dataset.view); });
-  return seen.length ? seen : ['dashboard','advisory','projects','developers','clients','dayplan','pulse','news','calc','advisors','partners','resale','analytics','tax','links','templates','podcasts','health','inventory','pipeline'];
+  const push = v => { const k = String(v || '').trim(); if(k && !seen.includes(k)) seen.push(k); };
+  $$('#nav button[data-view], #navMorePanel button[data-view]').forEach(b => push(b.dataset.view));
+  $$('.view').forEach(v => push(String(v.id || '').replace('view-','')));
+  return seen.length ? seen : ['dashboard'];
 }
 function nextViewName(){
   const order = navViewOrder();
@@ -24043,13 +24046,21 @@ function cyclePrevView(){
       el.setAttribute('tabindex', '0');
       el.setAttribute('title', 'Tap: next page · Right-click / long-press: previous page');
       el.style.cursor = 'pointer';
+      /* the visible .logo sits INSIDE .brand — only the innermost bound element may act,
+         otherwise one tap fires twice and skips a page */
+      const owner = e => {
+        const inner = e.target.closest ? e.target.closest('.brand, .logo') : null;
+        return !inner || inner === e.currentTarget;
+      };
       el.addEventListener('click', e => {
         if(e.target.closest('#globalSearch, .searchbox, input, a')) return;
+        if(!owner(e)) return;
         e.preventDefault();
         cycleNextView();
       });
-      el.addEventListener('contextmenu', e => { e.preventDefault(); cyclePrevView(); });
+      el.addEventListener('contextmenu', e => { if(!owner(e)) return; e.preventDefault(); cyclePrevView(); });
       el.addEventListener('keydown', e => {
+        if(!owner(e)) return;
         if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); cycleNextView(); }
         if(e.key === 'ArrowLeft'){ e.preventDefault(); cyclePrevView(); }
       });
