@@ -15972,6 +15972,81 @@ body[data-theme="dark"] .ops-dd-item select{background:#111611;border-color:rgba
   .ops-table{min-width:520px}
   .ops-split{grid-template-columns:1fr}
 }
+
+/* ============ v183 · dashboard site log (time + page wise) ============ */
+.sitelog-head{margin-top:26px}
+.sitelog-panel{padding:0;overflow:hidden}
+.sitelog-top{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:10px 12px;border-bottom:1px solid var(--line)}
+.sitelog-tabs{display:flex;gap:3px;padding:3px;border-radius:10px;background:color-mix(in oklab,var(--line) 38%,transparent)}
+.sitelog-tabs button{border:0;background:transparent;color:var(--mut);font:700 11px/1 'DM Sans',system-ui,sans-serif;
+  padding:7px 10px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.sitelog-tabs button:hover{color:var(--ink)}
+.sitelog-tabs button.on{background:var(--panel);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.sitelog-stat{font-size:10.5px;color:var(--mut);font-weight:600;white-space:nowrap}
+.sitelog-filters{display:flex;gap:5px;flex-wrap:wrap;margin-left:auto}
+.sitelog-filters button{border:1px solid var(--line);background:transparent;color:var(--mut);
+  font:600 10.5px/1 'DM Sans',system-ui,sans-serif;padding:5px 9px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.sitelog-filters button:hover{color:var(--ink);border-color:color-mix(in oklab,var(--acc) 35%,var(--line))}
+.sitelog-filters button.on{background:color-mix(in oklab,var(--acc) 14%,transparent);color:var(--ink);
+  border-color:color-mix(in oklab,var(--acc) 38%,var(--line))}
+.sitelog-body{padding:4px 12px 12px;max-height:430px;overflow:auto;overscroll-behavior:contain}
+.sitelog-day{position:sticky;top:0;z-index:1;background:var(--panel);
+  font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mut);font-weight:800;padding:11px 2px 6px}
+.sitelog-row{display:flex;align-items:flex-start;gap:9px;padding:7px 6px;border-radius:9px;cursor:pointer;border:0;background:transparent;
+  width:100%;text-align:left;font-family:inherit}
+.sitelog-row:hover{background:color-mix(in oklab,var(--acc) 7%,transparent)}
+.sitelog-time{font:600 10.5px/1.5 'DM Sans',system-ui,sans-serif;color:var(--mut);font-variant-numeric:tabular-nums;min-width:42px;flex:0 0 auto}
+.sitelog-dot{width:7px;height:7px;border-radius:50%;margin-top:6px;flex:0 0 auto;background:var(--acc)}
+.sitelog-row.visit .sitelog-dot{background:color-mix(in oklab,var(--acc) 42%,var(--line))}
+.sitelog-row.k-created .sitelog-dot{background:#4E7C5B}
+.sitelog-row.k-deleted .sitelog-dot{background:#A4452B}
+.sitelog-row.k-undo .sitelog-dot{background:#C49A3E}
+.sitelog-row.k-restore .sitelog-dot{background:#3A8FB8}
+.sitelog-main{flex:1;min-width:0}
+.sitelog-title{font-size:12px;color:var(--ink);font-weight:600;line-height:1.35;overflow-wrap:anywhere}
+.sitelog-sub{font-size:10.5px;color:var(--mut);line-height:1.45;margin-top:1px;overflow-wrap:anywhere}
+.sitelog-chip{display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:800;letter-spacing:.3px;
+  padding:2px 6px;border-radius:999px;background:color-mix(in oklab,var(--line) 45%,transparent);color:var(--mut);margin-right:5px}
+.sitelog-chip.ok{background:rgba(47,102,68,.13);color:#2F6644}
+.sitelog-chip.warn{background:rgba(196,154,62,.18);color:#7A5A23}
+.sitelog-chip.bad{background:rgba(164,69,43,.13);color:#A4452B}
+.sitelog-chip.info{background:rgba(58,143,184,.13);color:#1F5F66}
+.sitelog-pages{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:8px;padding:11px 0 2px}
+.sitelog-page{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:11px;padding:9px 10px;
+  background:color-mix(in oklab,var(--panel) 88%,var(--bg))}
+.sitelog-page .ic{width:26px;height:26px;flex:0 0 auto;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;
+  background:color-mix(in oklab,var(--acc) 12%,transparent);font-size:12px}
+.sitelog-page .txt{flex:1;min-width:0}
+.sitelog-page b{display:block;font-size:12px;color:var(--ink);line-height:1.3}
+.sitelog-page span{display:block;font-size:10px;color:var(--mut);line-height:1.4;overflow-wrap:anywhere}
+.sitelog-page button{border:1px solid var(--line);background:transparent;color:var(--ink2);font:700 10px/1 'DM Sans',system-ui,sans-serif;
+  padding:6px 9px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.sitelog-page button:hover{border-color:var(--acc);color:var(--ink)}
+.sitelog-empty{padding:20px 12px;text-align:center;color:var(--mut);font-size:11.5px;line-height:1.6}
+.sitelog-empty b{display:block;color:var(--ink);font-size:12.5px;margin-bottom:3px}
+.sitelog-ver{display:flex;align-items:baseline;gap:7px;padding:12px 2px 5px;position:sticky;top:0;z-index:1;background:var(--panel)}
+.sitelog-ver b{font:700 11px/1 'DM Sans',system-ui,sans-serif;letter-spacing:.6px;color:var(--ink)}
+.sitelog-ver span{font-size:10px;color:var(--mut)}
+body[data-theme="dark"] .sitelog-tabs{background:rgba(255,255,255,.06)}
+body[data-theme="dark"] .sitelog-tabs button.on{background:#1B221B;color:#F2F0E5;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+body[data-theme="dark"] .sitelog-page{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}
+body[data-theme="dark"] .sitelog-row:hover{background:rgba(255,255,255,.05)}
+body[data-theme="dark"] .sitelog-day,body[data-theme="dark"] .sitelog-ver{background:var(--panel)}
+body[data-theme="dark"] .sitelog-chip.ok{background:rgba(78,124,91,.24);color:#A8D3B4}
+body[data-theme="dark"] .sitelog-chip.warn{background:rgba(196,154,62,.24);color:#EBCF8A}
+body[data-theme="dark"] .sitelog-chip.bad{background:rgba(164,69,43,.26);color:#F0AE97}
+body[data-theme="dark"] .sitelog-chip.info{background:rgba(58,143,184,.24);color:#A6D6E8}
+@media (max-width:640px){
+  .sitelog-filters{margin-left:0;width:100%}
+  .sitelog-stat{width:100%;order:-1}
+  .sitelog-body{max-height:none}
+  .sitelog-pages{grid-template-columns:1fr}
+  .sitelog-tabs{width:100%}
+  .sitelog-tabs button{flex:1;min-height:36px;font-size:11.5px;padding:9px 6px}
+  .sitelog-filters button{min-height:34px;padding:8px 11px;font-size:11px}
+  .sitelog-page button{min-height:34px;padding:8px 12px}
+  .sitelog-row{padding:9px 6px}
+}
 </style>
 </head>
 <style id="bcs-mkt-daily-css">
@@ -17064,6 +17139,25 @@ try{
         <button class="btn ghost" id="exportExcelBtn">Export current data (.xlsx)</button>
         <span class="excel-note" id="excelStatus">Internet chahiye pehli baar (SheetJS CDN). Offline hone par CSV fallback milega.</span>
       </div>
+    </div>
+
+    <!-- v183: whole-site log — what's new + what changed, time-wise & page-wise -->
+    <div class="sec-head sitelog-head">
+      <h3>Site log — what's new &amp; what changed</h3>
+      <span class="sub">Page-wise + time-wise · app additions aur record changes, dono ek jagah</span>
+      <button class="btn ghost sm" id="siteLogFullBtn" type="button" style="margin-left:auto">Open full log →</button>
+    </div>
+    <div class="panel sitelog-panel">
+      <div class="sitelog-top">
+        <div class="sitelog-tabs" id="siteLogTabs" role="tablist" aria-label="Site log views">
+          <button type="button" data-sltab="timeline" class="on">🕘 Timeline</button>
+          <button type="button" data-sltab="whatsnew">✨ What's new</button>
+          <button type="button" data-sltab="pages">🗂 Page by page</button>
+        </div>
+        <span class="sitelog-stat" id="siteLogStats"></span>
+        <div class="sitelog-filters" id="siteLogFilters"></div>
+      </div>
+      <div class="sitelog-body" id="siteLogBody"></div>
     </div>
   </section>
 
@@ -22545,6 +22639,13 @@ function normalizeDb(d){
     projectIds: Array.isArray(x.projectIds) ? x.projectIds.map(String) : [],
     note: String(x.note || '').slice(0, 400)
   })).slice(0, 200);
+  /* site log — page visits, newest first, capped so it stays light */
+  if(!Array.isArray(ops.pageLog)) ops.pageLog = [];
+  ops.pageLog = ops.pageLog.filter(x => x && x.ts).map(x => ({
+    id: String(x.id || uid()), ts: +x.ts || Date.now(),
+    view: String(x.view || 'dashboard').slice(0, 30),
+    actor: String(x.actor || 'Admin').slice(0, 60)
+  })).sort((a,b) => b.ts - a.ts).slice(0, 300);
 
   /* ---- BCS OPS: plot inventory + advisory pipeline defaults ---- */
   if(!Array.isArray(d.plots)) d.plots = [];
@@ -46249,6 +46350,8 @@ function render(){
   fillFilterCorridor($('#filterCorridor').value);
   if(currentView === 'pipeline') renderPipeline();
   if(currentView === 'dashboard') renderDashboard();
+  try{ window.BCS_OPS3.noteView(currentView); }catch(e){}
+  if(currentView === 'dashboard'){ try{ window.BCS_OPS3.renderDashLog(); }catch(e){} }
   if(currentView === 'analytics') renderAnalytics();
   if(currentView === 'projects') renderProjects();
   if(currentView === 'resale') renderResale();
@@ -55330,6 +55433,281 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     previewDoc('Client shortlist — ' + (c.name || 'client'), html, (c.name || 'client') + '-shortlist.html');
   }
 
+
+  /* ---------------------------------------------------------
+     v183 · dashboard site log — time-wise + page-wise
+     · page visits (light, separate from the big db save)
+     · record changes from the ops audit
+     · a built-in "what's new" changelog mapped to pages
+     --------------------------------------------------------- */
+  const PAGE_META = {
+    dashboard:  { label:'Dashboard',    ic:'⌂',  note:'Daily command center — focus, queue, senior panels' },
+    advisory:   { label:'Advisory',     ic:'✦',  note:'Client brief builder + saved presentations' },
+    projects:   { label:'Projects',     ic:'▣',  note:'Developer projects, price bands, approvals' },
+    developers: { label:'Developers',   ic:'◈',  note:'Builder profiles + corridor presence' },
+    clients:    { label:'Clients',      ic:'◐',  note:'Leads, follow-ups, shortlists, lead source' },
+    dayplan:    { label:'Day Plan',     ic:'◷',  note:'Tasks, calendar, reminders' },
+    pulse:      { label:'Market Pulse', ic:'↗',  note:'Corridor rates + content ideas' },
+    news:       { label:'News',         ic:'📰', note:'Jaipur real-estate headlines' },
+    calc:       { label:'Calculators',  ic:'⌘',  note:'EMI, registry, ROI, 30/35/35 split' },
+    inventory:  { label:'Inventory',    ic:'▦',  note:'Plot-level stock, payout, ledger' },
+    pipeline:   { label:'Pipeline',     ic:'⇢',  note:'Sales, stages, payments, brokerage' },
+    exchange:   { label:'Exchange',     ic:'⇄',  note:'Split settings + advisor exchange' },
+    advisors:   { label:'Advisors',     ic:'◎',  note:'Network, targets, payouts, portal access' },
+    partners:   { label:'Partners',     ic:'◉',  note:'Channel partners + referral desk' },
+    finance:    { label:'Finance',      ic:'💰', note:'Income, expenses, P&L' },
+    resale:     { label:'Resale',       ic:'⇌',  note:'Resale listings + deals' },
+    analytics:  { label:'Analytics',    ic:'▥',  note:'Portfolio numbers + trends' },
+    ops:        { label:'Ops',          ic:'⌗',  note:'Backups, audit, docs, money, DD, ROI, invoices' },
+    tax:        { label:'Tax & Advice', ic:'₹',  note:'Tax notes + client advisory' },
+    terminology:{ label:'Terminology',  ic:'Aa', note:'Glossary of Jaipur land terms' },
+    links:      { label:'Links',        ic:'⛓',  note:'Govt portals + daily tools' },
+    templates:  { label:'Templates',    ic:'▤',  note:'Message + document templates' },
+    podcasts:   { label:'Podcasts',     ic:'🎙', note:'Listening desk' },
+    health:     { label:'Health',       ic:'♥',  note:'Data health + sync status' },
+    social:     { label:'Social Media', ic:'🌐', note:'Content desk + daily plan' },
+    sheets:     { label:'Google Sheets',ic:'📊', note:'Two-way sheet sync' },
+    app:        { label:'Whole app',    ic:'⌘',  note:'Cross-page improvements' }
+  };
+  const VIEW_FROM_ENTITY = {
+    Client:'clients', Sale:'pipeline', Plot:'inventory', Advisor:'advisors',
+    Project:'projects', Developer:'developers', Task:'dayplan',
+    Document:'ops', Invoice:'ops', Broadcast:'ops', ROI:'ops', 'Client page':'ops', Backup:'ops'
+  };
+  const SITE_LOG = [
+    { v:'v183', date:'2026-11-18', page:'dashboard', kind:'new',
+      title:'Dashboard — site log',
+      detail:'Recent additions aur record changes ek card me — timeline, what’s new aur page-by-page view.' },
+    { v:'v182', date:'2026-11-18', page:'ops', kind:'new',
+      title:'Versioned backups + one-tap restore',
+      detail:'Auto snapshot har 30 min, last 40 IDB me; restore se pehle safety snapshot.' },
+    { v:'v182', date:'2026-11-18', page:'ops', kind:'new',
+      title:'Activity log · undo · advisor audit',
+      detail:'Har client/sale/plot/project change ka field diff, one-click undo, actor-wise audit.' },
+    { v:'v182', date:'2026-11-18', page:'ops', kind:'new',
+      title:'Deal document & compliance checklist',
+      detail:'12-point file per sale — booking form se registry, mutation aur TDS 26QB tak.' },
+    { v:'v182', date:'2026-11-18', page:'ops', kind:'new',
+      title:'Receivables aging + reminder queue',
+      detail:'0–30/31–60/61–90/90+ buckets, exact WhatsApp message preview ke saath.' },
+    { v:'v182', date:'2026-11-18', page:'ops', kind:'new',
+      title:'Plot due-diligence pack',
+      detail:'JDA 90-A, jamabandi, naksha, DLC, encumbrance, approach road, conversion, RERA, title chain.' },
+    { v:'v182', date:'2026-11-18', page:'ops', kind:'new',
+      title:'Lead source + marketing ROI',
+      detail:'Spend → leads → bookings → brokerage, CPL aur ROAS source-wise.' },
+    { v:'v182', date:'2026-11-18', page:'clients', kind:'new',
+      title:'Client lead source field',
+      detail:'Har client par source + note — ROI report isi se banti hai.' },
+    { v:'v182', date:'2026-11-18', page:'ops', kind:'new',
+      title:'Commission ledger 30/35/35 + invoice',
+      detail:'Har sale ka split (originating / executing / BCS) aur GST brokerage invoice.' },
+    { v:'v182', date:'2026-11-18', page:'ops', kind:'new',
+      title:'WhatsApp templates + broadcast queue',
+      detail:'Merge fields, audience filters, preview-first sending, recipient-wise status.' },
+    { v:'v182', date:'2026-11-18', page:'ops', kind:'new',
+      title:'Locality / map intelligence',
+      detail:'Corridor cards, GPS map pins aur corridor-wise locality notes.' },
+    { v:'v182', date:'2026-11-18', page:'ops', kind:'new',
+      title:'Shareable client shortlist pages',
+      detail:'Standalone HTML page, no login — preview, download ya WhatsApp se bhejein.' },
+    { v:'v181', date:'2026-11-18', page:'app', kind:'fix',
+      title:'Dark mode on every page',
+      detail:'25 views + 82 overlays — light aur dark dono themes me contrast verified.' },
+    { v:'v181', date:'2026-11-18', page:'app', kind:'fix',
+      title:'Preview-first reports & shares',
+      detail:'Har report pehle in-app preview me khulti hai, phir print/copy/WhatsApp.' },
+    { v:'v181', date:'2026-11-18', page:'app', kind:'improve',
+      title:'Dead-control + mobile pass',
+      detail:'390 px layouts fix, non-working buttons hataye, console clean.' }
+  ];
+
+  let dashLogTab = 'timeline', dashLogPage = '', pageLogTimer = null;
+
+  const dayStart = ts => { const d = new Date(ts); d.setHours(0,0,0,0); return d.getTime(); };
+  function ago(ts){
+    const s = Math.max(0, Math.round((Date.now() - ts) / 1000));
+    if(s < 60) return 'abhi';
+    const m = Math.round(s / 60); if(m < 60) return m + ' min pehle';
+    const h = Math.round(m / 60); if(h < 24) return h + ' ghante pehle';
+    const d = Math.round(h / 24); if(d < 30) return d + ' din pehle';
+    return new Date(ts).toLocaleDateString('en-IN');
+  }
+  function dayTitle(ts){
+    const k = dayStart(ts), t = dayStart(Date.now());
+    if(k === t) return 'Aaj';
+    if(k === t - 86400000) return 'Kal';
+    return new Date(ts).toLocaleDateString('en-IN', { weekday:'short', day:'numeric', month:'short', year:'numeric' });
+  }
+  const clockOf = ts => new Date(ts).toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' });
+  const pageLabel = v => (PAGE_META[v] && PAGE_META[v].label) || v || '—';
+  const pageIcon = v => (PAGE_META[v] && PAGE_META[v].ic) || '•';
+
+  function noteView(view){
+    if(!view || !PAGE_META[view]) return;
+    const ls = document.getElementById('lockScreen');
+    if(ls && ls.classList.contains('on')) return;
+    const o = opsOf();
+    if(!Array.isArray(o.pageLog)) o.pageLog = [];
+    const last = o.pageLog[0];
+    const now = Date.now();
+    if(last && last.view === view && now - last.ts < 5 * 60 * 1000) return;
+    o.pageLog.unshift({ id: uid(), ts: now, view, actor: actor() });
+    if(o.pageLog.length > 300) o.pageLog.length = 300;
+    clearTimeout(pageLogTimer);
+    pageLogTimer = setTimeout(() => { try{ if(typeof window.save === 'function') window.save(); }catch(e){} }, 1800);
+  }
+
+  function dashFeed(){
+    const o = opsOf();
+    const visits = (o.pageLog || []).map(v => ({
+      ts: v.ts, view: v.view, actor: v.actor, kind: 'visit',
+      title: 'Opened ' + pageLabel(v.view),
+      detail: (PAGE_META[v.view] && PAGE_META[v.view].note) || ''
+    }));
+    const acts = (o.activity || [])
+      .filter(a => isAdmin() || a.actor === actor())
+      .map(a => ({
+        ts: a.ts, view: VIEW_FROM_ENTITY[a.entity] || 'ops', actor: a.actor,
+        kind: a.kind || 'edit', title: a.label || 'Change', detail: a.detail || ''
+      }));
+    return [...visits, ...acts].sort((a, b) => b.ts - a.ts).slice(0, 90);
+  }
+
+  function renderDashLog(){
+    const body = q('#siteLogBody');
+    if(!body) return;
+    qa('#siteLogTabs button').forEach(b => {
+      const on = b.dataset.sltab === dashLogTab;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    const fullBtn = q('#siteLogFullBtn');
+    if(fullBtn) fullBtn.style.display = isAdmin() ? '' : 'none';
+
+    const o = opsOf();
+    const visits = o.pageLog || [];
+    const acts = (o.activity || []).filter(a => isAdmin() || a.actor === actor());
+    const t0 = dayStart(Date.now());
+    const weekFrom = t0 - 6 * 86400000;
+    const todayCount = visits.filter(v => v.ts >= t0).length + acts.filter(a => a.ts >= t0).length;
+    const weekCount = visits.filter(v => v.ts >= weekFrom).length + acts.filter(a => a.ts >= weekFrom).length;
+    const lastTs = Math.max(0, ...visits.map(v => v.ts), ...acts.map(a => a.ts));
+    const stat = q('#siteLogStats');
+    if(stat) stat.textContent = (todayCount ? todayCount + ' aaj' : 'aaj 0') + ' · ' + weekCount + ' is hafte · last ' + (lastTs ? ago(lastTs) : '—');
+
+    const filters = q('#siteLogFilters');
+    if(filters){
+      if(dashLogTab === 'whatsnew'){
+        filters.innerHTML = '';
+      } else {
+        const counts = {};
+        dashFeed().forEach(e => { counts[e.view] = (counts[e.view] || 0) + 1; });
+        const views = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b)).slice(0, 10);
+        filters.innerHTML = `<button type="button" data-slf="" class="${dashLogPage ? '' : 'on'}">All pages</button>` +
+          views.map(v => `<button type="button" data-slf="${esc(v)}" class="${dashLogPage === v ? 'on' : ''}">${esc(pageLabel(v))} · ${counts[v]}</button>`).join('');
+      }
+    }
+
+    if(dashLogTab === 'timeline'){
+      let feed = dashFeed();
+      if(dashLogPage) feed = feed.filter(e => e.view === dashLogPage);
+      if(!feed.length){
+        body.innerHTML = `<div class="sitelog-empty"><b>Abhi koi log nahi</b>Pages kholna shuru karein ya koi record edit karein — yahan time aur page ke hisaab se dikhega.</div>`;
+        return;
+      }
+      let html = '', lastDay = null;
+      feed.forEach(e => {
+        const dk = dayStart(e.ts);
+        if(dk !== lastDay){ lastDay = dk; html += `<div class="sitelog-day">${esc(dayTitle(e.ts))}</div>`; }
+        const chipCls = e.kind === 'created' ? 'ok' : e.kind === 'deleted' ? 'bad' : e.kind === 'undo' ? 'warn' : e.kind === 'restore' ? 'info' : '';
+        html += `<button type="button" class="sitelog-row ${e.kind === 'visit' ? 'visit' : ''} k-${esc(e.kind)}" data-slgo="${esc(e.view)}" title="Open ${esc(pageLabel(e.view))}">
+          <span class="sitelog-time">${esc(clockOf(e.ts))}</span>
+          <span class="sitelog-dot" aria-hidden="true"></span>
+          <span class="sitelog-main">
+            <span class="sitelog-title"><span class="sitelog-chip ${chipCls}">${pageIcon(e.view)} ${esc(pageLabel(e.view))}</span>${esc(e.title)}</span>
+            <span class="sitelog-sub">${esc(e.actor || '')}${e.detail ? ' · ' + esc(e.detail) : ''}</span>
+          </span>
+        </button>`;
+      });
+      body.innerHTML = html;
+      return;
+    }
+
+    if(dashLogTab === 'whatsnew'){
+      let html = '', lastV = null;
+      SITE_LOG.forEach(e => {
+        if(e.v !== lastV){
+          lastV = e.v;
+          html += `<div class="sitelog-ver"><b>${esc(e.v)}</b><span>${esc(dayLabelOf(e.date))}</span></div>`;
+        }
+        const chipCls = e.kind === 'new' ? 'ok' : e.kind === 'fix' ? 'warn' : 'info';
+        const nav = e.page && e.page !== 'app';
+        html += `<button type="button" class="sitelog-row ${nav ? '' : 'static'}" ${nav ? 'data-slgo="' + esc(e.page) + '"' : ''} title="${nav ? 'Open ' + esc(pageLabel(e.page)) : 'App-wide change'}">
+          <span class="sitelog-time">${esc(e.kind)}</span>
+          <span class="sitelog-dot" aria-hidden="true"></span>
+          <span class="sitelog-main">
+            <span class="sitelog-title"><span class="sitelog-chip ${chipCls}">${pageIcon(e.page)} ${esc(pageLabel(e.page))}</span>${esc(e.title)}</span>
+            <span class="sitelog-sub">${esc(e.detail)}</span>
+          </span>
+        </button>`;
+      });
+      body.innerHTML = html;
+      return;
+    }
+
+    /* page by page */
+    const rows = Object.keys(PAGE_META).filter(v => v !== 'app').map(v => {
+      const vs = visits.filter(x => x.view === v);
+      const as = acts.filter(a => (VIEW_FROM_ENTITY[a.entity] || 'ops') === v);
+      const last = Math.max(0, ...vs.map(x => x.ts), ...as.map(x => x.ts));
+      return { v, last, visits: vs.length, changes: as.length, today: vs.filter(x => x.ts >= t0).length + as.filter(a => a.ts >= t0).length };
+    }).sort((a, b) => (b.last || 0) - (a.last || 0) || b.changes - a.changes || a.v.localeCompare(b.v));
+    const list = dashLogPage ? rows.filter(r => r.v === dashLogPage) : rows;
+    if(!list.length){
+      body.innerHTML = `<div class="sitelog-empty"><b>Is page par koi entry nahi</b>Filter hata kar sab pages dekhein.</div>`;
+      return;
+    }
+    const cards = list.map(r => {
+      const pm = PAGE_META[r.v];
+      const bits = [];
+      if(r.last) bits.push('last ' + ago(r.last));
+      if(r.today) bits.push(r.today + ' aaj');
+      if(r.visits) bits.push(r.visits + ' visit' + (r.visits === 1 ? '' : 's'));
+      if(r.changes) bits.push(r.changes + ' change' + (r.changes === 1 ? '' : 's'));
+      return `<div class="sitelog-page">
+        <span class="ic" aria-hidden="true">${pm.ic}</span>
+        <span class="txt"><b>${esc(pm.label)}</b><span>${esc(bits.length ? bits.join(' · ') : 'abhi tak nahi khola — ek baar dekh lein')}</span></span>
+        <button type="button" data-slgo="${esc(r.v)}">Open</button>
+      </div>`;
+    }).join('');
+    body.innerHTML = `<div class="sitelog-pages">${cards}</div>`;
+  }
+  function dayLabelOf(iso){
+    try{ return fmtDate(iso); }catch(e){ return iso || ''; }
+  }
+
+  document.addEventListener('click', function(e){
+    const t = e.target;
+    if(!t || !t.closest) return;
+    const tab = t.closest('[data-sltab]');
+    if(tab){
+      const next = tab.dataset.sltab;
+      if(next !== dashLogTab) dashLogPage = '';
+      dashLogTab = next;
+      renderDashLog();
+      return;
+    }
+    const chip = t.closest('[data-slf]');
+    if(chip){ dashLogPage = chip.dataset.slf || ''; renderDashLog(); return; }
+    const row = t.closest('[data-slgo]');
+    if(row){
+      const v = row.dataset.slgo;
+      if(v && v !== 'app' && PAGE_META[v]){ try{ go(v); }catch(err){} }
+      return;
+    }
+  });
+
   /* ---------------------------------------------------------
      boot wiring
      --------------------------------------------------------- */
@@ -55339,6 +55717,14 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     const ex = q('#opsExportAll');
     if(ex) ex.addEventListener('click', () => downloadBackup());
     if(!isAdmin()) qa('[data-view="ops"]').forEach(b => { b.style.display = 'none'; });
+
+    /* dashboard site log → full activity log */
+    const slFull = q('#siteLogFullBtn');
+    if(slFull) slFull.addEventListener('click', () => {
+      opsTab = 'activity';
+      try{ go('ops'); }catch(e){}
+      setTimeout(() => { try{ renderOps(); }catch(e){} }, 60);
+    });
 
     /* client profile → shortlist page */
     try{
@@ -55362,6 +55748,8 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     }catch(e){}
 
     try{ auditScan(); }catch(e){}
+    try{ noteView(currentView); }catch(e){}
+    try{ renderDashLog(); }catch(e){}
     setTimeout(() => { try{ opsAutoBackupTick(); }catch(e){} }, 5000);
     setInterval(() => { try{ opsAutoBackupTick(); }catch(e){} }, 5 * 60 * 1000);
   }
@@ -55384,6 +55772,13 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     renderOps: renderOps,
     backupNow: opsBackupNow,
     log: opsLog,
+    noteView: noteView,
+    renderDashLog: renderDashLog,
+    openTab: function(tab){
+      if(tab) opsTab = tab;
+      try{ go('ops'); }catch(e){}
+      setTimeout(() => { try{ renderOps(); }catch(e){} }, 60);
+    },
     openClientPage: function(clientId){
       if(clientId) opsPageClient = clientId;
       opsTab = 'pages';
