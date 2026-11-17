@@ -16206,6 +16206,108 @@ body[data-theme="dark"] .dossier-kv>div{border-bottom-color:rgba(255,255,255,.09
   .doc-row-wrap{flex-direction:column}
   .doc-row-acts{flex-direction:row;justify-content:flex-end}
 }
+/* ---- v181 dark-mode contrast fixes (audited across all views) ---- */
+html[data-theme="dark"]{--bg:#0A0D0C;background:#0A0D0C !important}
+html[data-theme="light"]{--bg:#F5F5F7;background:#F5F5F7 !important}
+body[data-theme="dark"]{background-color:#0A0D0C !important;color:#F2F0E5 !important}
+body[data-theme="light"]{background-color:#F5F5F7 !important;color:#25252B}
+body[data-theme="dark"] .followup.due{color:#F0A78C}
+body[data-theme="dark"] .resale-card .fact{background:#20261F;border-color:var(--line);color:var(--ink2)}
+body[data-theme="dark"] .resale-card .seller{background:#1E241D;border-color:var(--line);color:var(--ink2)}
+body[data-theme="dark"] .resale-playbook{background:#241F12;border-color:#5A4518;color:#E8DFC2}
+body[data-theme="dark"] .resale-playbook b{color:#F1D992}
+body[data-theme="dark"] .mkt-pill{background:#2E352E;color:#F2F0E5;border:1px solid #3B443B}
+body[data-theme="dark"] .mkt-pill.ghost{background:transparent}
+body[data-theme="dark"] .mkt-vtag.v-fol{background:#241F3A;color:#C9BFF5;border-color:#3B3360}
+body[data-theme="dark"] .mkt-vtag.v-dev{background:#2B2413;color:#E7C46E;border-color:#5A4518}
+body[data-theme="dark"] .mkt-vtag.v-adv{background:#1C2A20;color:#8FCFA1;border-color:#35543E}
+body[data-theme="dark"] .mkt-vtag.v-cli{background:#1A2533;color:#9FC6F0;border-color:#2E4560}
+body[data-theme="dark"] .mkt-vtag.v-prj{background:#2B1F17;color:#E9A87F;border-color:#553522}
+body[data-theme="dark"] .mkt-vtag.v-earn{background:#1C2A20;color:#9BD3AE;border-color:#35543E}
+body[data-theme="dark"] .guide-step .guide-num{color:#101310 !important}
+body[data-theme="dark"] .ci-card{background:var(--panel);border-color:var(--line)}
+body[data-theme="dark"] .ci-prem.up,body[data-theme="dark"] .ci-tag.up{color:#6FCFA6}
+body[data-theme="dark"] .ci-prem.down,body[data-theme="dark"] .ci-tag.down{color:#D9A9C9}
+body[data-theme="dark"] .ci-bar em{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.55)}
+body[data-theme="dark"] .pst{filter:none}
+body[data-theme="dark"] .pst-avail{color:#6FCFA6}
+body[data-theme="dark"] .pst-token{color:#E7C46E}
+body[data-theme="dark"] .pst-hold{color:#EDA678}
+body[data-theme="dark"] .pst-sold{color:#F0947E}
+body[data-theme="dark"] .pst-resale{color:#BCABF2}
+body[data-theme="dark"] .pst-release{color:#8CCBEA}
+body[data-theme="dark"] .advisor-card .adv-group .gname,body[data-theme="dark"] span.gname{background:#26302A;border-color:#3A4438;color:#EDEBD9}
+body[data-theme="dark"] .vt-pill{background:#20261F;border-color:var(--line);color:var(--ink2)}
+body[data-theme="dark"] .vt-pill.green{background:#1C2A20;border-color:#35543E;color:#8FCFA1}
+body[data-theme="dark"] .vt-pill.gold{background:#2B2413;border-color:#5A4518;color:#E7C46E}
+body[data-theme="dark"] .vt-pill.blue{background:#1A2533;border-color:#2E4560;color:#9FC6F0}
+body[data-theme="dark"] .vt-pill.red{background:#2B1C17;border-color:#553022;color:#F0A78C}
+body[data-theme="dark"] .xch-tabs button.on{background:linear-gradient(135deg,#E7C46E,#B8892E);color:#171A14;border-color:rgba(229,190,98,.35)}
+body[data-theme="dark"] .xch-btn.pri{background:linear-gradient(135deg,#E7C46E,#B8892E);color:#171A14;border-color:rgba(229,190,98,.35)}
+body[data-theme="dark"] .xch-btn.pri:hover{background:linear-gradient(135deg,#F0D082,#C79A3E);color:#171A14}
+body[data-theme="dark"] .unit-badge.available{background:#1C2A20;border-color:#35543E;color:#8FCFA1}
+body[data-theme="dark"] .unit-badge.hold{background:#2B2413;border-color:#5A4518;color:#E7C46E}
+body[data-theme="dark"] .unit-badge.booked{background:#1A2533;border-color:#2E4560;color:#9FC6F0}
+body[data-theme="dark"] .unit-badge.sold{background:#242B25;border-color:var(--line);color:#B4BCB5}
+body[data-theme="dark"] .proj-kpi.green b,body[data-theme="dark"] .tile.green b{color:#7FD3A6}
+body[data-theme="dark"] .proj-kpi.red b{color:#F0A08A}
+body[data-theme="dark"] .booking-mini-row .bm-amt b{color:#7FD3A6}
+body[data-theme="dark"] .bm-rates i{color:#FFF6DC !important}
+body[data-theme="dark"] .pcard .rera{color:#6FCFA6 !important}
+body[data-theme="dark"] .tp-sec span{color:#7FD3A6}
+body[data-theme="dark"] .top-head .th-src i{background:var(--acc);color:#fff;box-shadow:inset 0 0 0 999px rgba(10,13,12,.42)}
+body[data-theme="dark"] .cu-cor{box-shadow:inset 0 0 0 999px rgba(10,13,12,.42)}
+/* modal + overlay surfaces */
+body[data-theme="dark"] .drop{background:#1B211C;border-color:#3A4438}
+body[data-theme="dark"] .drop b{color:#E7C46E}
+body[data-theme="dark"] .chk-row{background:#1B211C;border-color:var(--line)}
+body[data-theme="dark"] .chk-row .chk-del,body[data-theme="dark"] .chk-row .chk-edit{background:#26302A;border-color:var(--line);color:var(--ink2)}
+body[data-theme="dark"] .quality-add-box{background:#1B211C;border-color:#3A4438}
+body[data-theme="dark"] .detail-foot{background:#151A16}
+body[data-theme="dark"] .nread-bar{background:#151A16}
+body[data-theme="dark"] .nread-bar a,body[data-theme="dark"] .nread-bar button{background:#20261F;color:#8FCFA1;border-color:var(--line)}
+body[data-theme="dark"] .nread-site{background:#0F1411}
+body[data-theme="dark"] .nread-site-note{background:#151A16;color:#A7ACA0}
+body[data-theme="dark"] .transfer-current{background:#1B211C}
+body[data-theme="dark"] .transfer-warn{background:#241F12;border-color:#5A4518;color:#E7C46E}
+body[data-theme="dark"] .fm-toolbar{background:#1B211C}
+body[data-theme="dark"] .poster-stage{background:linear-gradient(135deg,#151A16,#221F15);border-color:var(--line)}
+body[data-theme="dark"] .poster-tabs button,body[data-theme="dark"] .fm-tabs button{background:#20261F;border-color:var(--line);color:var(--ink2)}
+body[data-theme="dark"] .poster-tabs button.on,body[data-theme="dark"] .fm-tabs button.on{background:linear-gradient(135deg,#E7C46E,#B8892E);border-color:transparent;color:#171A14}
+body[data-theme="dark"] .poster-badge-row span{background:#26302A;border-color:#3A4438;color:#EDEBD9}
+body[data-theme="dark"] .share-fmt.on{background:linear-gradient(135deg,#E7C46E,#B8892E);color:#171A14;border-color:transparent}
+body[data-theme="dark"] .form-tabs{background:#151A16}
+body[data-theme="dark"] .form-tabs button.on{background:#20261F;color:var(--ink)}
+body[data-theme="dark"] .form-tabs button:hover{background:#20261F;color:var(--ink2)}
+body[data-theme="dark"] .profile-contact a,body[data-theme="dark"] .profile-contact span{background:#1B211C;border-color:var(--line);color:var(--ink2)}
+body[data-theme="dark"] .profile-contact .wa{background:#1C2A20;border-color:#35543E;color:#8FCFA1}
+body[data-theme="dark"] .pipeline button{background:#20261F;border-color:var(--line);color:var(--ink2)}
+body[data-theme="dark"] .pipeline button:hover{background:#26302A;border-color:#3A4438}
+body[data-theme="dark"] .pipeline button.on{background:linear-gradient(135deg,#E7C46E,#B8892E);border-color:transparent;color:#171A14}
+body[data-theme="dark"] .xch-stage-steps button.on{background:linear-gradient(135deg,#E7C46E,#B8892E);color:#171A14;border-color:transparent}
+body[data-theme="dark"] .dsec-head .cnt{background:#26302A;border-color:#3A4438;color:#CDEBD7}
+body[data-theme="dark"] .dossier-sec>h5 .cnt{color:#E7C46E;background:rgba(231,196,110,.16)}
+body[data-theme="dark"] .dossier-badge{background:#1C2A20;border-color:#35543E;color:#8FCFA1}
+body[data-theme="dark"] .frow.due .fnm span{color:#F0A08A}
+body[data-theme="dark"] .brief-next b{color:#E7C46E !important}
+body[data-theme="dark"] [style*="color:#A4452B"]{color:#F0A78C !important}
+body[data-theme="dark"] [style*="color:#8A6480"]{color:#D9A9C9 !important}
+body[data-theme="dark"] [style*="color:#4E7C5B"]{color:#7FD3A6 !important}
+body[data-theme="dark"] [style*="color:#8A6D1F"]{color:#E7C46E !important}
+body[data-theme="dark"] [style*="color:#2F8F6B"]{color:#6FCFA6 !important}
+body[data-theme="dark"] [style*="color:#42624C"]{color:#7FD3A6 !important}
+body[data-theme="dark"] [style*="color:#3E6B4F"]{color:#7FD3A6 !important}
+body[data-theme="dark"] [style*="color:#7B67C6"]{color:#BCABF2 !important}
+body[data-theme="dark"] [style*="color:#B98A1E"]{color:#E7C46E !important}
+body[data-theme="dark"] [style*="color:#C06A2A"]{color:#EDA678 !important}
+body[data-theme="dark"] [style*="color:#B0452F"]{color:#F0947E !important}
+body[data-theme="dark"] [style*="color:#3A8FB8"]{color:#8CCBEA !important}
+body[data-theme="dark"] [style*="color:#7E6022"]{color:#E7C46E !important}
+body[data-theme="dark"] [style*="color:#5C4530"]{color:#D9C3A6 !important}
+body[data-theme="dark"] [style*="background:#EEF2EF"]{background:#2A322A !important}
+body[data-theme="dark"] .cmp-bar-track,body[data-theme="dark"] .an-track{background:#2A322A}
+body[data-theme="dark"] [style*="background:#FBEDE8"],body[data-theme="dark"] [style*="background:#FBECEA"],body[data-theme="dark"] [style*="background:#FBEAE6"]{background:#33211B !important;color:#F0A78C !important}
+body[data-theme="dark"] [style*="background:#FFFDF4"],body[data-theme="dark"] [style*="background:#FFFBE9"],body[data-theme="dark"] [style*="background:#FBF8EF"]{background:#241F12 !important;border-color:#5A4518 !important;color:#E8DFC2 !important}
 </style>
 <body class="locked">
 
@@ -23688,6 +23790,30 @@ function contentIdeasHTML(){
       <em>${esc(x.cta)}</em>
     </button>`).join('')}</div></div>`;
 }
+/* Content-idea cards: open a full in-app preview (copy / WhatsApp / share) */
+document.addEventListener('click', e => {
+  const card = e.target.closest('[data-idea]');
+  if(!card) return;
+  const idea = contentIdeas()[Number(card.dataset.idea)];
+  if(!idea) return toast('Idea load nahi hui — page refresh karein', true);
+  const text = [
+    (idea.ic ? idea.ic + ' ' : '') + idea.kind,
+    '',
+    'Hook: ' + idea.hook,
+    '',
+    'Post body: ' + idea.body,
+    '',
+    'CTA: ' + idea.cta
+  ].join('\n');
+  if(window.BCSPreview) return window.BCSPreview.open({
+    title: idea.kind + ' — content idea',
+    text,
+    waText: text,
+    filename: 'BCS-content-idea-' + todayISO() + '.txt',
+    kind: 'Content idea · Pulse'
+  });
+  copyText(text); toast('Idea copy ho gaya — WhatsApp me paste karein');
+});
 /* ---------- partner / referral playbook ---------- */
 function partnerPlaybook(p){
   const sent = (db.journeyLogs || []).length;
@@ -39620,7 +39746,7 @@ function renderHealth(){
       <div class="health-card" style="max-width:640px">
         <div class="lab">Text database (localStorage) + Full photos (browser DB)</div>
         <div class="big">${usage.kb} KB <span style="font-size:13px;color:var(--mut)">text + IDB photos ${usage.imgCount} · ~${usage.imgMb.toFixed(1)} MB</span></div>
-        <div style="height:9px;background:#EEF2EF;border-radius:999px;overflow:hidden;margin-top:9px"><i style="display:block;height:100%;width:${Math.max(2, usage.pct).toFixed(0)}%;background:${usage.pct > 85 ? '#B5623F' : usage.pct > 65 ? '#C49A3E' : '#6E9B7C'};border-radius:999px"></i></div>
+        <div style="height:9px;background:var(--line2);border-radius:999px;overflow:hidden;margin-top:9px"><i style="display:block;height:100%;width:${Math.max(2, usage.pct).toFixed(0)}%;background:${usage.pct > 85 ? '#B5623F' : usage.pct > 65 ? '#C49A3E' : '#6E9B7C'};border-radius:999px"></i></div>
         <p id="idbStatsLine" style="margin-top:8px;color:var(--mut)">Checking browser DB & quota…</p>
         <p id="persistLine" style="margin-top:4px;color:var(--mut)">Persist (Mac keeps data forever): checking…</p>
         <p id="lastBackupLine" style="margin-top:4px;color:var(--mut)">Last backup: checking…</p>
@@ -43587,7 +43713,7 @@ function renderAnalytics(){
     return `${color} ${from}deg ${to}deg`;
   });
   if($('#anStatus')) $('#anStatus').innerHTML = `
-    <div class="an-donut" style="background:conic-gradient(${projects.length ? stops.join(',') : '#EEF2EF 0deg 360deg'})">
+    <div class="an-donut" style="background:conic-gradient(${projects.length ? stops.join(',') : 'var(--line2) 0deg 360deg'})">
       <div class="an-donut-mid"><b>${projects.length}</b><span>projects</span></div>
     </div>
     <div class="an-legend">${statuses.map(([id, label, color]) => {
@@ -44881,7 +45007,12 @@ function dealAdvisorLabel(d){ return d.advisorName || (function(){ const a = db.
 function dealStageChip(d){
   const st = DEAL_STAGES[d.stage] || d.stage;
   const col = DEAL_STAGES_COLOR[d.stage] || '#888';
-  return `<span style="display:inline-block;padding:2px 8px;border-radius:999px;font-size:9px;font-weight:800;letter-spacing:.5px;color:#fff;background:${col}">${esc(st)}</span>`;
+  // Pick readable label colour for both light + dark themes (gold/olive chips need dark text).
+  const hex = String(col).replace('#','');
+  const r = parseInt(hex.slice(0,2),16)||0, g = parseInt(hex.slice(2,4),16)||0, b = parseInt(hex.slice(4,6),16)||0;
+  const lum = (0.2126*(r/255) + 0.7152*(g/255) + 0.0722*(b/255));
+  const txt = lum > 0.45 ? '#171A14' : '#FFFDF6';
+  return `<span style="display:inline-block;padding:2px 8px;border-radius:999px;font-size:9px;font-weight:800;letter-spacing:.5px;color:${txt};background:${col}">${esc(st)}</span>`;
 }
 function pipelineDeals(){
   const list = (db.pipeline || []).slice();
