@@ -15828,6 +15828,151 @@ body[data-theme="dark"] #advisorAccessModal .access-row input:focus{
 }
 @media (max-width:560px){.access-row{flex-wrap:wrap}.access-row input{flex:1 1 100%}}
 </style>
+<style id="bcs-ops3-css">
+/* ============ OPS III · operations workspace ============ */
+.ops-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 16px;padding:6px;border-radius:16px;
+  background:color-mix(in oklab,var(--panel) 92%,transparent);border:1px solid var(--line)}
+.ops-tabs button{flex:0 0 auto;border:0;background:transparent;color:var(--ink2);font:600 12px/1 'DM Sans',system-ui,sans-serif;
+  padding:9px 12px;border-radius:11px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;letter-spacing:.2px;white-space:nowrap}
+.ops-tabs button:hover{background:color-mix(in oklab,var(--acc) 8%,transparent);color:var(--ink)}
+.ops-tabs button.on{background:linear-gradient(135deg,var(--acc-deep),var(--acc));color:#FFFDF6;box-shadow:0 3px 10px rgba(58,57,40,.22)}
+.ops-tabs button b{font-size:10px;padding:1px 5px;border-radius:999px;background:rgba(0,0,0,.16)}
+.ops-tabs button.on b{background:rgba(255,255,255,.24)}
+
+.ops-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:14px}
+.ops-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 15px}
+.ops-card h4{font:600 13px/1.3 'DM Sans',system-ui,sans-serif;margin:0 0 3px;color:var(--ink);letter-spacing:.1px}
+.ops-card .sub{font-size:11px;color:var(--mut);display:block;margin-bottom:10px}
+.ops-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:14px}
+.ops-kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:11px 13px}
+.ops-kpi .k{font-size:9.5px;letter-spacing:1.1px;text-transform:uppercase;color:var(--mut);font-weight:700}
+.ops-kpi .v{font:600 18px/1.2 'Fraunces',Georgia,serif;color:var(--ink);margin-top:4px}
+.ops-kpi .v small{font-size:11px;font-family:'DM Sans',system-ui,sans-serif;color:var(--mut);font-weight:600}
+.ops-kpi.warn .v{color:#A4452B}
+.ops-kpi.ok .v{color:#2F6644}
+
+.ops-panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 15px;margin-bottom:14px}
+.ops-panel-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:11px}
+.ops-panel-head h4{margin:0;font:600 13.5px/1.2 'DM Sans',system-ui,sans-serif;color:var(--ink)}
+.ops-panel-head .sub{font-size:11px;color:var(--mut)}
+.ops-panel-head .spacer{margin-left:auto}
+.ops-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.ops-table{width:100%;border-collapse:collapse;font-size:12px;min-width:560px}
+.ops-table th{font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:var(--mut);text-align:left;
+  padding:7px 8px;border-bottom:1px solid var(--line);font-weight:800;white-space:nowrap}
+.ops-table td{padding:8px;border-bottom:1px solid color-mix(in oklab,var(--line) 65%,transparent);color:var(--ink2);vertical-align:middle}
+.ops-table tr:last-child td{border-bottom:0}
+.ops-table td.num,.ops-table th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ops-table td b{color:var(--ink);font-weight:600}
+.ops-table .tiny{font-size:10.5px;color:var(--mut);display:block}
+
+.ops-chip{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:999px;font-size:9.5px;
+  font-weight:800;letter-spacing:.4px;white-space:nowrap;border:1px solid transparent}
+.ops-chip.ok{background:rgba(47,102,68,.13);color:#2F6644;border-color:rgba(47,102,68,.26)}
+.ops-chip.warn{background:rgba(196,154,62,.16);color:#7A5A23;border-color:rgba(196,154,62,.32)}
+.ops-chip.bad{background:rgba(164,69,43,.13);color:#A4452B;border-color:rgba(164,69,43,.28)}
+.ops-chip.mut{background:color-mix(in oklab,var(--line) 45%,transparent);color:var(--mut);border-color:var(--line)}
+.ops-chip.info{background:rgba(58,143,184,.13);color:#1F5F66;border-color:rgba(58,143,184,.28)}
+.ops-chip.gold{background:rgba(196,154,62,.16);color:#7A5A23;border-color:rgba(196,154,62,.32)}
+
+.ops-row{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--line);border-radius:12px;
+  background:color-mix(in oklab,var(--panel) 88%,var(--bg));margin-bottom:7px}
+.ops-row:last-child{margin-bottom:0}
+.ops-row .grow{flex:1;min-width:0}
+.ops-row .nm{display:block;font-size:12.5px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ops-row .mt{display:block;font-size:10.5px;color:var(--mut);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ops-row .amt{font:600 12.5px/1 'DM Sans',system-ui,sans-serif;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+.ops-empty{padding:22px 14px;text-align:center;color:var(--mut);font-size:12px;line-height:1.6;
+  border:1px dashed var(--line);border-radius:13px;background:color-mix(in oklab,var(--panel) 70%,transparent)}
+.ops-empty b{display:block;color:var(--ink);font-size:13px;margin-bottom:3px}
+
+.ops-bar{height:7px;border-radius:999px;background:color-mix(in oklab,var(--line) 60%,transparent);overflow:hidden}
+.ops-bar > i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--acc-deep),var(--acc));transition:width .35s ease}
+
+.ops-aging{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:8px;margin-bottom:12px}
+.ops-age{border-radius:13px;padding:10px 12px;border:1px solid var(--line);background:color-mix(in oklab,var(--panel) 90%,var(--bg))}
+.ops-age .k{font-size:9.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--mut);font-weight:800}
+.ops-age .v{font:600 16px/1.2 'Fraunces',Georgia,serif;margin-top:4px;color:var(--ink)}
+.ops-age.a1{border-left:3px solid #4E7C5B}
+.ops-age.a2{border-left:3px solid #C49A3E}
+.ops-age.a3{border-left:3px solid #B9793A}
+.ops-age.a4{border-left:3px solid #A4452B}
+
+.ops-dd-item{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px dashed color-mix(in oklab,var(--line) 70%,transparent)}
+.ops-dd-item:last-child{border-bottom:0}
+.ops-dd-item .grow{flex:1;min-width:0}
+.ops-dd-item .nm{font-size:12px;font-weight:600;color:var(--ink);display:block}
+.ops-dd-item .mt{font-size:10.5px;color:var(--mut);display:block;margin-top:2px}
+.ops-dd-item select{padding:5px 7px;font-size:11px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+
+.ops-field{display:flex;flex-direction:column;gap:4px}
+.ops-field label{font-size:9.5px;letter-spacing:.9px;text-transform:uppercase;color:var(--mut);font-weight:800}
+.ops-field input,.ops-field select,.ops-field textarea{width:100%;padding:8px 9px;border-radius:9px;border:1px solid var(--line);
+  background:var(--panel);color:var(--ink);font:500 12px/1.35 'DM Sans',system-ui,sans-serif}
+.ops-field textarea{resize:vertical;min-height:64px;line-height:1.5}
+.ops-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px;align-items:end;margin-bottom:10px}
+.ops-form .wide{grid-column:1/-1}
+
+.ops-tpl{white-space:pre-wrap;font:12px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:color-mix(in oklab,var(--bg) 70%,var(--panel));border:1px solid var(--line);border-radius:11px;padding:11px 12px;color:var(--ink2)}
+
+.ops-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--acc);display:inline-block;margin-right:5px}
+
+.ops-split{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.ops-split > div{background:color-mix(in oklab,var(--bg) 55%,var(--panel));border:1px solid var(--line);border-radius:11px;padding:9px 10px}
+.ops-split .k{font-size:9px;letter-spacing:.8px;text-transform:uppercase;color:var(--mut);font-weight:800}
+.ops-split .v{font:600 13px/1.2 'DM Sans',system-ui,sans-serif;color:var(--ink);margin-top:3px;font-variant-numeric:tabular-nums}
+
+.ops-modal .modal{width:min(720px,100%)}
+.ops-modal .modal-body{max-height:min(70vh,640px);overflow:auto}
+
+body[data-theme="dark"] .ops-tabs{background:color-mix(in oklab,#151A15 92%,transparent);border-color:rgba(255,255,255,.08)}
+body[data-theme="dark"] .ops-tabs button{color:#C9C6B6}
+body[data-theme="dark"] .ops-tabs button:hover{background:rgba(255,255,255,.06);color:#F2F0E5}
+body[data-theme="dark"] .ops-tabs button.on{color:#171A14;background:linear-gradient(135deg,#D9C07A,#C9A552)}
+body[data-theme="dark"] .ops-card,
+body[data-theme="dark"] .ops-panel,
+body[data-theme="dark"] .ops-kpi{background:#151A15;border-color:rgba(255,255,255,.085)}
+body[data-theme="dark"] .ops-row{background:#131813;border-color:rgba(255,255,255,.075)}
+body[data-theme="dark"] .ops-row .nm,
+body[data-theme="dark"] .ops-kpi .v,
+body[data-theme="dark"] .ops-card h4,
+body[data-theme="dark"] .ops-panel-head h4{color:#F2F0E5}
+body[data-theme="dark"] .ops-row .mt,
+body[data-theme="dark"] .ops-kpi .k,
+body[data-theme="dark"] .ops-card .sub,
+body[data-theme="dark"] .ops-panel-head .sub{color:#9FA394}
+body[data-theme="dark"] .ops-table td{color:#D8D5C6;border-color:rgba(255,255,255,.06)}
+body[data-theme="dark"] .ops-table td b{color:#F2F0E5}
+body[data-theme="dark"] .ops-table th{color:#9FA394;border-color:rgba(255,255,255,.1)}
+body[data-theme="dark"] .ops-chip.ok{background:rgba(76,160,110,.16);color:#9BD8B0;border-color:rgba(76,160,110,.3)}
+body[data-theme="dark"] .ops-chip.warn,
+body[data-theme="dark"] .ops-chip.gold{background:rgba(201,165,82,.16);color:#E6C983;border-color:rgba(201,165,82,.32)}
+body[data-theme="dark"] .ops-chip.bad{background:rgba(196,90,62,.18);color:#F0A68C;border-color:rgba(196,90,62,.34)}
+body[data-theme="dark"] .ops-chip.info{background:rgba(88,168,196,.16);color:#9ED4E4;border-color:rgba(88,168,196,.3)}
+body[data-theme="dark"] .ops-chip.mut{background:rgba(255,255,255,.06);color:#A9AC9E;border-color:rgba(255,255,255,.1)}
+body[data-theme="dark"] .ops-empty{background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.1);color:#9FA394}
+body[data-theme="dark"] .ops-empty b{color:#F2F0E5}
+body[data-theme="dark"] .ops-age{background:#131813;border-color:rgba(255,255,255,.075)}
+body[data-theme="dark"] .ops-age .v{color:#F2F0E5}
+body[data-theme="dark"] .ops-field input,
+body[data-theme="dark"] .ops-field select,
+body[data-theme="dark"] .ops-field textarea{background:#111611;border-color:rgba(255,255,255,.12);color:#F2F0E5}
+body[data-theme="dark"] .ops-field label{color:#9FA394}
+body[data-theme="dark"] .ops-tpl{background:#101510;border-color:rgba(255,255,255,.09);color:#D8D5C6}
+body[data-theme="dark"] .ops-split > div{background:#111611;border-color:rgba(255,255,255,.075)}
+body[data-theme="dark"] .ops-split .v{color:#F2F0E5}
+body[data-theme="dark"] .ops-dd-item{border-color:rgba(255,255,255,.07)}
+body[data-theme="dark"] .ops-dd-item select{background:#111611;border-color:rgba(255,255,255,.12);color:#F2F0E5}
+@media (max-width:560px){
+  .ops-tabs{padding:5px;gap:4px}
+  .ops-tabs button{padding:8px 9px;font-size:11px}
+  .ops-panel{padding:11px 11px}
+  .ops-table{min-width:520px}
+  .ops-split{grid-template-columns:1fr}
+}
+</style>
 </head>
 <style id="bcs-mkt-daily-css">
 /* ===== v177 · social daily plan, custom ideas, day-plan interlink ===== */
@@ -16518,6 +16663,7 @@ try{
       <button type="button" data-view="exchange" aria-label="Exchange"><span class="nav-ic" aria-hidden="true">⇄</span><span class="nav-lbl">Exchange</span></button>
       <button type="button" data-view="advisors" aria-label="Advisors"><span class="nav-ic" aria-hidden="true">◎</span><span class="nav-lbl">Advisors</span></button>
       <button type="button" data-view="analytics" aria-label="Analytics"><span class="nav-ic" aria-hidden="true">▥</span><span class="nav-lbl">Analytics</span></button>
+      <button type="button" data-view="ops" aria-label="Operations"><span class="nav-ic" aria-hidden="true">⌗</span><span class="nav-lbl">Ops</span></button>
       <div class="nav-more-wrap">
         <button type="button" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" title="All pages" aria-label="More pages"><span class="nav-ic" aria-hidden="true">⋯</span><span class="nav-lbl">More</span><span class="nav-chev" aria-hidden="true">▾</span></button>
         <div class="nav-more-panel" id="navMorePanel" hidden>
@@ -16540,6 +16686,7 @@ try{
           <button type="button" data-view="finance"><span class="nav-ic" aria-hidden="true">💰</span>Finance</button>
           <button type="button" data-view="resale"><span class="nav-ic" aria-hidden="true">⇌</span>Resale</button>
           <button type="button" data-view="analytics"><span class="nav-ic" aria-hidden="true">▥</span>Analytics</button>
+          <button type="button" data-view="ops"><span class="nav-ic" aria-hidden="true">⌗</span>Operations</button>
           <button type="button" data-view="tax"><span class="nav-ic" aria-hidden="true">₹</span>Tax &amp; Advice</button>
           <button type="button" data-view="terminology"><span class="nav-ic" aria-hidden="true">Aa</span>Terminology</button>
           <button type="button" data-view="links"><span class="nav-ic" aria-hidden="true">⛓</span>Links</button>
@@ -18615,6 +18762,23 @@ try{
       <div class="an-scroll"><table class="an-table" id="anAdvisorTable"></table></div>
     </div>
   </section>
+
+  <!-- ============ OPERATIONS · BACKUPS · AUDIT · COMPLIANCE ============ -->
+  <section class="view" id="view-ops">
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · operations &amp; compliance desk</div>
+        <h2 class="adv-title">The back office,<br><em>finally in one place.</em></h2>
+        <p class="adv-sub">Versioned backups, activity audit, document checklists, receivables aging, due-diligence packs, lead-source ROI, commission ledger, broadcast queue aur locality pins — sab aapke apne records se, live.</p>
+      </div>
+      <div class="adv-head-actions">
+        <button class="btn ghost" id="opsBackupNow">⤓ Backup now</button>
+        <button class="btn ghost" id="opsExportAll">⬇ Export JSON</button>
+      </div>
+    </div>
+    <div class="ops-tabs" id="opsTabs" role="tablist" aria-label="Operations sections"></div>
+    <div id="opsBody"></div>
+  </section>
 </main>
 
 <!-- ============ TOOL DOCK: sticky + calculator (har view se available) ============ -->
@@ -20250,6 +20414,10 @@ try{
       <div class="grid2">
         <div class="field"><label>Email</label><input id="cEmail" type="email" placeholder="client@email.com"></div>
         <div class="field" id="cAdvisorField"><label>Lead advisor</label><select id="cAdvisor"></select></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Lead source</label><select id="cSource"></select></div>
+        <div class="field"><label>Source detail / campaign</label><input id="cSourceNote" placeholder="e.g. Meta ad — ₹45L plot"></div>
       </div>
       <div class="grid2">
         <div class="field"><label>Pipeline status</label><select id="cStatus"></select></div>
@@ -22270,6 +22438,114 @@ function bcsAdvisorAccessOn(a){
 }
 
 function normalizeDb(d){
+  /* ---- BCS OPS III: operations workspace ---------------------------------
+     backups · activity/undo · deal documents · receivables + reminders ·
+     due-diligence packs · lead-source ROI · commission ledger + invoices ·
+     WhatsApp templates + broadcast queue · locality pins.
+     Everything is optional and self-healing — old databases upgrade in place. */
+  if(!d.ops || typeof d.ops !== 'object' || Array.isArray(d.ops)) d.ops = {};
+  const ops = d.ops;
+  if(!Array.isArray(ops.backups)) ops.backups = [];
+  ops.backups = ops.backups.filter(b => b && b.id).map(b => ({
+    id: b.id, ts: +b.ts || Date.now(),
+    kind: ['auto','manual','restore','import'].includes(b.kind) ? b.kind : 'auto',
+    label: String(b.label || '').slice(0, 140),
+    size: Math.max(0, +b.size || 0),
+    counts: (b.counts && typeof b.counts === 'object' && !Array.isArray(b.counts)) ? b.counts : {}
+  })).sort((a,b) => b.ts - a.ts).slice(0, 40);
+  if(!Array.isArray(ops.activity)) ops.activity = [];
+  ops.activity = ops.activity.filter(a => a && a.id).map(a => ({
+    id: a.id, ts: +a.ts || Date.now(),
+    actor: String(a.actor || 'Admin').slice(0, 60),
+    kind: String(a.kind || 'edit').slice(0, 40),
+    entity: String(a.entity || '').slice(0, 40),
+    entityId: String(a.entityId || '').slice(0, 60),
+    label: String(a.label || '').slice(0, 200),
+    detail: String(a.detail || '').slice(0, 400),
+    undo: (a.undo && typeof a.undo === 'object' && !Array.isArray(a.undo)) ? a.undo : null,
+    undone: !!a.undone
+  })).sort((a,b) => b.ts - a.ts).slice(0, 600)
+    .map((a, i) => i < 150 ? a : Object.assign({}, a, { undo: null }));
+  if(!Array.isArray(ops.docs)) ops.docs = [];
+  ops.docs = ops.docs.filter(x => x && x.id).map(x => ({
+    id: x.id,
+    dealId: String(x.dealId || ''), clientId: String(x.clientId || ''), projectId: String(x.projectId || ''),
+    item: String(x.item || '').slice(0, 120),
+    status: ['pending','done','na'].includes(x.status) ? x.status : 'pending',
+    due: String(x.due || ''), note: String(x.note || '').slice(0, 300),
+    updatedAt: +x.updatedAt || Date.now()
+  }));
+  if(!Array.isArray(ops.reminders)) ops.reminders = [];
+  ops.reminders = ops.reminders.filter(r => r && r.id).map(r => ({
+    id: r.id, dealId: String(r.dealId || ''), clientId: String(r.clientId || ''),
+    amount: Math.max(0, +r.amount || 0), due: String(r.due || ''),
+    channel: r.channel === 'call' ? 'call' : 'whatsapp',
+    status: r.status === 'sent' ? 'sent' : 'queued',
+    sentAt: r.sentAt ? +r.sentAt : null, note: String(r.note || '').slice(0, 240),
+    createdAt: +r.createdAt || Date.now()
+  }));
+  if(!Array.isArray(ops.waTemplates)) ops.waTemplates = [];
+  ops.waTemplates = ops.waTemplates.filter(t => t && String(t.body || '').trim()).map(t => ({
+    id: t.id || uid(), name: String(t.name || 'Untitled template').slice(0, 100),
+    scope: String(t.scope || 'general').slice(0, 30),
+    body: String(t.body).slice(0, 2000),
+    createdAt: +t.createdAt || Date.now(), updatedAt: +t.updatedAt || Date.now()
+  }));
+  if(!Array.isArray(ops.broadcasts)) ops.broadcasts = [];
+  ops.broadcasts = ops.broadcasts.filter(b => b && b.id).map(b => ({
+    id: b.id, ts: +b.ts || Date.now(), name: String(b.name || 'Broadcast').slice(0, 120),
+    templateId: String(b.templateId || ''), audience: String(b.audience || 'all').slice(0, 40),
+    status: ['draft','queued','sending','done'].includes(b.status) ? b.status : 'draft',
+    recipients: Array.isArray(b.recipients) ? b.recipients.filter(r => r && r.id).map(r => ({
+      id: r.id, name: String(r.name || '').slice(0, 100), phone: String(r.phone || '').slice(0, 30),
+      status: r.status === 'sent' ? 'sent' : 'queued', sentAt: r.sentAt ? +r.sentAt : null
+    })) : []
+  })).sort((a,b) => b.ts - a.ts).slice(0, 60);
+  if(!Array.isArray(ops.roi)) ops.roi = [];
+  ops.roi = ops.roi.filter(x => x && x.id).map(x => ({
+    id: x.id, month: String(x.month || todayISO().slice(0,7)).slice(0, 7),
+    source: String(x.source || 'Other').slice(0, 60),
+    spend: Math.max(0, +x.spend || 0), note: String(x.note || '').slice(0, 240),
+    createdAt: +x.createdAt || Date.now()
+  }));
+  if(!Array.isArray(ops.dd)) ops.dd = [];
+  ops.dd = ops.dd.filter(x => x && x.id && x.projectId).map(x => ({
+    id: x.id, projectId: String(x.projectId), note: String(x.note || '').slice(0, 600),
+    items: (x.items && typeof x.items === 'object' && !Array.isArray(x.items)) ? x.items : {},
+    updatedAt: +x.updatedAt || Date.now()
+  }));
+  if(!Array.isArray(ops.invoices)) ops.invoices = [];
+  ops.invoices = ops.invoices.filter(x => x && x.id).map(x => ({
+    id: x.id, no: String(x.no || '').slice(0, 40), dealId: String(x.dealId || ''),
+    date: String(x.date || todayISO()), due: String(x.due || ''),
+    amount: Math.max(0, +x.amount || 0), gstPct: Math.max(0, +x.gstPct || 0),
+    status: ['draft','sent','paid'].includes(x.status) ? x.status : 'draft',
+    paidAt: x.paidAt ? +x.paidAt : null, note: String(x.note || '').slice(0, 300),
+    createdAt: +x.createdAt || Date.now()
+  })).sort((a,b) => (b.date || '').localeCompare(a.date || ''));
+  if(!(Number(ops.invoiceSeq) > 0)) ops.invoiceSeq = 0;
+  if(!Array.isArray(ops.pins)) ops.pins = [];
+  ops.pins = ops.pins.filter(p => p && p.id).map(p => ({
+    id: p.id, corridorId: String(p.corridorId || ''), title: String(p.title || 'Pin').slice(0, 120),
+    lat: +p.lat || 0, lng: +p.lng || 0, note: String(p.note || '').slice(0, 300),
+    kind: ['project','landmark','office','other'].includes(p.kind) ? p.kind : 'landmark',
+    createdAt: +p.createdAt || Date.now()
+  }));
+  if(!Array.isArray(ops.locality)) ops.locality = [];
+  ops.locality = ops.locality.filter(x => x && x.id).map(x => ({
+    id: x.id, corridorId: String(x.corridorId || ''),
+    title: String(x.title || 'Note').slice(0, 140), note: String(x.note || '').slice(0, 1200),
+    updatedAt: +x.updatedAt || Date.now()
+  }));
+  if(!Array.isArray(ops.sources)) ops.sources = ['Walk-in','Referral','WhatsApp','Instagram','Facebook / Meta ads','Google search','YouTube','Developer','Advisor network','Exchange','Property portal','Print / banner','Other'];
+  ops.sources = [...new Set(ops.sources.map(s => String(s || '').trim()).filter(Boolean))].slice(0, 40);
+  if(!Array.isArray(ops.shortlists)) ops.shortlists = [];
+  ops.shortlists = ops.shortlists.filter(x => x && x.id).map(x => ({
+    id: x.id, clientId: String(x.clientId || ''), ts: +x.ts || Date.now(),
+    projectIds: Array.isArray(x.projectIds) ? x.projectIds.map(String) : [],
+    note: String(x.note || '').slice(0, 400)
+  })).slice(0, 200);
+
   /* ---- BCS OPS: plot inventory + advisory pipeline defaults ---- */
   if(!Array.isArray(d.plots)) d.plots = [];
   d.plots = d.plots.filter(p => p && p.projectId).map(p => ({
@@ -22317,6 +22593,8 @@ function normalizeDb(d){
     if(c.visitDate == null) c.visitDate = '';
     if(c.visitSlot == null) c.visitSlot = '';
     if(c.pickup == null) c.pickup = '';
+    if(c.source == null) c.source = '';
+    if(c.sourceNote == null) c.sourceNote = '';
   });
   if(!Array.isArray(d.terminology)){
     d.terminology = DEFAULT_TERMINOLOGY.map((t, i) => ({
@@ -29661,6 +29939,12 @@ function openClient(id, presetAdvisorId){
   $('#cName').value = c.name || '';
   $('#cPhone').value = c.phone || '';
   $('#cEmail').value = c.email || '';
+  if($('#cSource')){
+    const srcs = ((db.ops && db.ops.sources) || []).slice();
+    $('#cSource').innerHTML = '<option value="">— not recorded —</option>' + srcs.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join('');
+    $('#cSource').value = c.source || '';
+  }
+  if($('#cSourceNote')) $('#cSourceNote').value = c.sourceNote || '';
   $('#cStatus').value = c.clientStatus || 'new';
   $('#cFollowUp').value = c.nextFollowUp || '';
   $('#cLastContact').value = c.lastContact || '';
@@ -29699,6 +29983,8 @@ function saveClient(){
     phone: $('#cPhone').value.trim(),
     email: $('#cEmail').value.trim(),
     clientStatus: $('#cStatus').value || 'new',
+    source: $('#cSource') ? ($('#cSource').value || '') : '',
+    sourceNote: $('#cSourceNote') ? ($('#cSourceNote').value.trim()) : '',
     advisorId: wantedAdvisor,
     nextFollowUp: $('#cFollowUp').value || '',
     lastContact: $('#cLastContact').value || '',
@@ -45979,6 +46265,7 @@ function render(){
   if(currentView === 'advisory'){ renderSavedBriefs(); renderAdvisoryResults(); }
   if(currentView === 'inventory'){ try{ window.BCS_OPS.renderInventory(); }catch(e){} }
   if(currentView === 'exchange'){ try{ renderExchange(); }catch(e){ console.warn('[BCS exchange render]', e); } }
+  if(currentView === 'ops'){ try{ window.BCS_OPS3.renderOps(); }catch(e){ console.warn('[BCS ops render]', e); } }
   if(currentView === 'advisory' || currentView === 'clients'){ try{ window.BCS_OPS.renderPipeline(); }catch(e){} }
   if(currentView === 'templates') renderTemplates();
   if(currentView === 'health'){ renderHealth(); renderSyncCard(); try{ renderDataStatus(); }catch(e){} }
@@ -53333,6 +53620,1776 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     waOpen: whatsapp,
     subsetCSS: subsetCSS,
     cleanName: cleanName
+  };
+})();
+</script>
+
+<script>
+/* =========================================================
+   BCS OPS III · OPERATIONS WORKSPACE (v182)
+   ---------------------------------------------------------
+   1  Versioned backups + one-tap restore
+   2  Activity log · undo · advisor audit
+   3  Deal document & compliance checklist
+   4  Receivables aging + reminder queue
+   5  Lead source + marketing ROI
+   6  WhatsApp template engine + broadcast queue
+   7  Plot due-diligence pack (90-A · jamabandi · naksha ·
+      DLC · encumbrance · road · conversion · RERA)
+   8  Commission ledger (30/35/35) + brokerage invoice
+   9  Locality / map intelligence
+   10 Shareable client shortlist pages (no login)
+   ========================================================= */
+(function(){
+  'use strict';
+
+  const q = s => document.querySelector(s);
+  const qa = s => Array.prototype.slice.call(document.querySelectorAll(s));
+  const money = v => '₹' + Math.round(Number(v) || 0).toLocaleString('en-IN');
+  const short = v => { v = Number(v) || 0; const a = Math.abs(v); if(a >= 1e7) return '₹' + (v / 1e7).toFixed(2) + ' Cr'; if(a >= 1e5) return '₹' + (v / 1e5).toFixed(1) + ' L'; return money(v); };
+  const daysBetween = (a, b) => Math.round((new Date(b + 'T00:00:00').getTime() - new Date(a + 'T00:00:00').getTime()) / 86400000);
+  const opsOf = () => { if(!db.ops || typeof db.ops !== 'object') db.ops = {}; return db.ops; };
+  const byId = (coll, id) => (db[coll] || []).find(x => x && x.id === id) || null;
+  const corrName = id => { const c = (db.corridors || []).find(x => x.id === id); return c ? c.name : '—'; };
+  const actor = () => isAdmin() ? 'Admin' : ((currentAdvisor() || {}).name || 'Advisor');
+  const stLabel = id => { try{ return clientStatusLabel(id); }catch(e){ return id || '—'; } };
+  const initials = s => String(s || '?').trim().split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  const dayLabel = iso => { try{ return fmtDate(iso); }catch(e){ return iso || '—'; } };
+  const nowStamp = () => new Date().toLocaleString('en-IN', { day:'numeric', month:'short', year:'2-digit', hour:'2-digit', minute:'2-digit' });
+
+  /* ---------------------------------------------------------
+     activity log + undo
+     --------------------------------------------------------- */
+  function opsLog(kind, entity, entityId, label, detail, undo){
+    const o = opsOf();
+    if(!Array.isArray(o.activity)) o.activity = [];
+    o.activity.unshift({
+      id: uid(), ts: Date.now(), actor: actor(),
+      kind: String(kind || 'edit'), entity: String(entity || ''),
+      entityId: String(entityId || ''), label: String(label || ''),
+      detail: String(detail || ''), undo: undo || null, undone: false
+    });
+    if(o.activity.length > 600) o.activity.length = 600;
+  }
+  window.opsLog = opsLog;
+
+  const AUDIT_COLLS = { clients:'Client', pipeline:'Sale', plots:'Plot', advisors:'Advisor', projects:'Project', developers:'Developer' };
+  let auditState = null, auditTimer = null, rawSave = null;
+
+  function auditName(coll, r){
+    if(coll === 'clients') return r.name || r.phone || 'client';
+    if(coll === 'pipeline'){
+      const c = r.clientId ? byId('clients', r.clientId) : null;
+      return (r.code ? r.code + ' · ' : '') + (r.clientName || (c && c.name) || 'sale');
+    }
+    if(coll === 'plots') return 'Plot ' + (r.label || r.num || '—');
+    if(coll === 'advisors' || coll === 'projects' || coll === 'developers') return r.name || coll;
+    return 'record';
+  }
+  function auditDetail(coll, a, b){
+    const keys = coll === 'clients' ? ['clientStatus','source','advisorId','nextFollowUp','budgetMax','phone','name']
+      : coll === 'pipeline' ? ['stage','dealValue','bookingAmount','brokerageAmount','brokeragePaid','advisorPaid','registryDate','handoverDate']
+      : coll === 'plots' ? ['status','rateGaj','clientName','payoutPaid','sizeGaj']
+      : coll === 'advisors' ? ['status','slabRate','commissionPct','phone']
+      : ['status','name','corridor'];
+    const out = [];
+    keys.forEach(k => {
+      const x = a[k] == null ? '' : a[k], y = b[k] == null ? '' : b[k];
+      if(String(x) === String(y)) return;
+      out.push(k + ': ' + (x === '' ? '—' : x) + ' → ' + (y === '' ? '—' : y));
+    });
+    return out.slice(0, 4).join(' · ');
+  }
+  function auditScan(){
+    const next = {};
+    Object.keys(AUDIT_COLLS).forEach(coll => {
+      const m = new Map();
+      (db[coll] || []).forEach(r => { if(r && r.id) m.set(r.id, JSON.stringify(r)); });
+      next[coll] = m;
+    });
+    if(!auditState){ auditState = next; return; }
+    Object.keys(AUDIT_COLLS).forEach(coll => {
+      const prev = auditState[coll] || new Map();
+      const cur = next[coll];
+      cur.forEach((json, id) => {
+        const before = prev.get(id);
+        if(before === json) return;
+        let rec; try{ rec = JSON.parse(json); }catch(e){ return; }
+        if(!before){
+          opsLog('created', AUDIT_COLLS[coll], id, 'Added ' + auditName(coll, rec), '', { coll, id, before: null });
+        } else {
+          let old; try{ old = JSON.parse(before); }catch(e){ return; }
+          const detail = auditDetail(coll, old, rec);
+          opsLog('updated', AUDIT_COLLS[coll], id, 'Updated ' + auditName(coll, rec), detail, { coll, id, before: old });
+        }
+      });
+      prev.forEach((json, id) => {
+        if(cur.has(id)) return;
+        let old; try{ old = JSON.parse(json); }catch(e){ return; }
+        opsLog('deleted', AUDIT_COLLS[coll], id, 'Deleted ' + auditName(coll, old), '', { coll, id, before: old });
+      });
+    });
+    auditState = next;
+  }
+  function scheduleAudit(){ clearTimeout(auditTimer); auditTimer = setTimeout(() => { try{
+    const before = (opsOf().activity || []).length;
+    auditScan();
+    if((opsOf().activity || []).length !== before && typeof rawSave === 'function') rawSave();
+  }catch(e){} }, 900); }
+
+  function opsUndo(logId){
+    const o = opsOf();
+    const a = (o.activity || []).find(x => x.id === logId);
+    if(!a || !a.undo || a.undone) return toast('Is entry ka undo available nahi hai', true);
+    const u = a.undo;
+    const arr = db[u.coll];
+    if(!Array.isArray(arr)) return toast('Collection nahi mila', true);
+    if(u.before == null){
+      db[u.coll] = arr.filter(x => x.id !== u.id);
+    } else {
+      const i = arr.findIndex(x => x.id === u.id);
+      if(i >= 0) arr[i] = u.before; else arr.push(u.before);
+    }
+    a.undone = true;
+    opsLog('undo', a.entity, a.entityId, 'Undo — ' + a.label, 'Reverted to previous version');
+    auditState = null;
+    save(); renderOps(); render();
+    toast('Undo ho gaya');
+  }
+
+  /* ---------------------------------------------------------
+     backups
+     --------------------------------------------------------- */
+  const BK_PREFIX = '__bcs_bk_';
+  async function opsBackupNow(kind, label){
+    const o = opsOf();
+    const id = 'bk_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    let payload;
+    try{ payload = JSON.stringify(db); }catch(e){ toast('Backup fail — data read nahi hua', true); return null; }
+    try{ await idbPut(BK_PREFIX + id, payload); }
+    catch(e){ toast('Backup storage full — kuch purane backup delete karein', true); return null; }
+    const rec = {
+      id, ts: Date.now(), kind: kind || 'manual',
+      label: label || (kind === 'auto' ? 'Auto snapshot' : 'Manual backup'),
+      size: payload.length,
+      counts: {
+        clients: (db.clients || []).length, projects: (db.projects || []).length,
+        plots: (db.plots || []).length, deals: (db.pipeline || []).length,
+        advisors: (db.advisors || []).length
+      }
+    };
+    const all = [rec, ...(o.backups || [])];
+    const dropped = all.slice(40);
+    o.backups = all.slice(0, 40);
+    dropped.forEach(b => { try{ idbDel(BK_PREFIX + b.id).catch(() => {}); }catch(e){} });
+    auditState = null;
+    save(); renderOps();
+    toast('Backup saved · ' + nowStamp());
+    return rec;
+  }
+  async function opsRestoreBackup(id){
+    const o = opsOf();
+    const rec = (o.backups || []).find(b => b.id === id);
+    if(!rec) return toast('Backup nahi mila', true);
+    if(!confirm('Is backup par restore karein?\n\n' + new Date(rec.ts).toLocaleString('en-IN') + '\n' + (rec.label || '') + '\n\nCurrent data ka safety snapshot pehle ban jayega.')) return;
+    let raw = null;
+    try{ raw = await idbGet(BK_PREFIX + id); }catch(e){}
+    if(!raw) return toast('Backup data IDB me nahi mila — delete ho gaya hoga', true);
+    let parsed;
+    try{ parsed = JSON.parse(raw); }catch(e){ return toast('Backup corrupt hai', true); }
+    await opsBackupNow('restore', 'Safety snapshot before restore');
+    const oldBackups = (o.backups || []).slice();
+    db = normalizeDb(parsed);
+    /* keep the full snapshot history — the restored payload has an older list */
+    const merged = [...((db.ops && db.ops.backups) || []), ...oldBackups];
+    const seen = new Set();
+    db.ops.backups = merged
+      .filter(b => b && b.id && !seen.has(b.id) && seen.add(b.id))
+      .sort((a, b) => b.ts - a.ts)
+      .slice(0, 40);
+    auditState = null;
+    opsLog('restore', 'Backup', id, 'Restored backup from ' + new Date(rec.ts).toLocaleString('en-IN'), rec.label || '');
+    save(); renderOps(); render();
+    toast('Restore ho gaya ✓');
+  }
+  async function opsPreviewBackup(id){
+    const rec = (opsOf().backups || []).find(b => b.id === id);
+    let raw = null;
+    try{ raw = await idbGet(BK_PREFIX + id); }catch(e){}
+    let txt = 'Backup data nahi mila.';
+    if(raw){
+      try{
+        const p = JSON.parse(raw);
+        txt = [
+          'Snapshot: ' + new Date(rec.ts).toLocaleString('en-IN'),
+          'Kind: ' + rec.kind + ' · Size: ' + (rec.size / 1024).toFixed(0) + ' KB',
+          '',
+          'Clients: ' + (p.clients || []).length,
+          'Projects: ' + (p.projects || []).length,
+          'Plots: ' + (p.plots || []).length,
+          'Deals: ' + (p.pipeline || []).length,
+          'Advisors: ' + (p.advisors || []).length,
+          'Developers: ' + (p.developers || []).length,
+          '',
+          'Clients: ' + (p.clients || []).slice(0, 12).map(c => c.name || c.phone).filter(Boolean).join(', ')
+        ].join('\n');
+      }catch(e){ txt = 'Backup parse nahi hua.'; }
+    }
+    previewMessage('Backup snapshot', txt);
+  }
+  let lastAutoBackup = 0;
+  function opsAutoBackupTick(){
+    if(!db) return;
+    const o = opsOf();
+    const last = (o.backups && o.backups[0]) ? o.backups[0].ts : 0;
+    if(Date.now() - last < 30 * 60 * 1000) return;
+    if(Date.now() - lastAutoBackup < 5 * 60 * 1000) return;
+    lastAutoBackup = Date.now();
+    opsBackupNow('auto', 'Auto snapshot').catch(() => {});
+  }
+
+  /* ---------------------------------------------------------
+     shared preview helpers — every share goes through the panel
+     --------------------------------------------------------- */
+  function previewMessage(title, text, phone, opts){
+    opts = opts || {};
+    if(window.BCSPreview && typeof window.BCSPreview.open === 'function'){
+      return window.BCSPreview.open({
+        title: title || 'BCS message',
+        kind: opts.kind || 'Message',
+        text: text,
+        waText: text,
+        waUrl: phone ? (waLink(phone) || '') : '',
+        filename: opts.filename || '',
+        html: opts.html || '',
+        onWhatsApp: opts.onWhatsApp || null
+      });
+    }
+    try{ copyText(text); toast('Preview engine nahi mila — text copy ho gaya'); }catch(e){}
+    return null;
+  }
+  function previewDoc(title, html, filename){
+    if(window.BCSPreview && typeof window.BCSPreview.open === 'function'){
+      return window.BCSPreview.open({ title, kind: 'Document', html, filename: filename || '' });
+    }
+  }
+
+  /* ---------------------------------------------------------
+     tabs
+     --------------------------------------------------------- */
+  const OPS_TABS = [
+    { id:'backups',    label:'🗄 Backups' },
+    { id:'activity',   label:'🕘 Activity' },
+    { id:'docs',       label:'📄 Documents' },
+    { id:'money',      label:'₹ Receivables' },
+    { id:'dd',         label:'⚖ Due diligence' },
+    { id:'roi',        label:'📣 Lead ROI' },
+    { id:'commission', label:'🧾 Commission' },
+    { id:'broadcast',  label:'💬 Broadcast' },
+    { id:'map',        label:'🗺 Locality' },
+    { id:'pages',      label:'🔗 Client pages' }
+  ];
+  let opsTab = 'backups';
+  let opsActQ = '', opsActEntity = '', opsActTimer = null;
+  let opsDocsDeal = '';
+  let opsDdProject = '';
+  let opsPageClient = '';
+  let opsInvDeal = '';
+  let opsBcTpl = '';
+
+  /* ---------------------------------------------------------
+     tab 1 · backups
+     --------------------------------------------------------- */
+  function renderBackups(){
+    const o = opsOf();
+    const list = o.backups || [];
+    const last = list[0];
+    const totalSize = list.reduce((s, b) => s + (b.size || 0), 0);
+    const auto = list.filter(b => b.kind === 'auto').length;
+    const kindChip = k => k === 'auto' ? '<span class="ops-chip mut">auto</span>'
+      : k === 'restore' ? '<span class="ops-chip warn">pre-restore</span>'
+      : k === 'import' ? '<span class="ops-chip info">import</span>'
+      : '<span class="ops-chip ok">manual</span>';
+    return `
+      <div class="ops-kpis">
+        <div class="ops-kpi"><div class="k">Snapshots</div><div class="v">${list.length} <small>/ 40</small></div></div>
+        <div class="ops-kpi"><div class="k">Last backup</div><div class="v" style="font-size:13px">${last ? new Date(last.ts).toLocaleString('en-IN', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' }) : '—'}</div></div>
+        <div class="ops-kpi"><div class="k">Auto snapshots</div><div class="v">${auto}</div></div>
+        <div class="ops-kpi"><div class="k">Total size</div><div class="v" style="font-size:13px">${(totalSize / 1024).toFixed(0)} KB</div></div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head">
+          <h4>Versioned backups</h4>
+          <span class="sub">auto har 30 min · restore se pehle safety snapshot · last 40</span>
+          <span class="spacer"></span>
+          <button class="btn primary sm" data-bk-now>⤓ Backup now</button>
+          <button class="btn ghost sm" data-bk-export>⬇ Export JSON</button>
+        </div>
+        ${list.length ? list.map(b => `<div class="ops-row">
+          <div class="grow">
+            <span class="nm">${esc(b.label || 'Snapshot')} ${kindChip(b.kind)}</span>
+            <span class="mt">${new Date(b.ts).toLocaleString('en-IN')} · ${(b.size / 1024).toFixed(0)} KB · ${(b.counts && b.counts.clients) || 0} clients · ${(b.counts && b.counts.deals) || 0} sales · ${(b.counts && b.counts.plots) || 0} plots</span>
+          </div>
+          <button class="btn ghost sm" data-bk-preview="${b.id}">View</button>
+          <button class="btn ghost sm" data-bk-restore="${b.id}">↺ Restore</button>
+          <button class="btn ghost sm" data-bk-del="${b.id}" title="Delete snapshot">🗑</button>
+        </div>`).join('') : `<div class="ops-empty"><b>Abhi koi backup nahi</b>“Backup now” dabayein — pehla snapshot turant ban jayega. Uske baad app khud har 30 minute me ek auto snapshot rakhega.</div>`}
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head"><h4>Kaise kaam karta hai</h4></div>
+        <div style="font-size:12px;color:var(--mut);line-height:1.7">
+          • Snapshot poora database (clients, projects, plots, sales, ops data) IDB me store karta hai — localStorage bharta nahi.<br>
+          • Auto snapshot tab banta hai jab 30 minute se koi backup nahi hua — app khula ho tab bhi.<br>
+          • Restore se pehle current state ka “pre-restore” snapshot ban jata hai, isliye galti se restore bhi undo ho sakta hai.<br>
+          • 40 se purane snapshots apne aap delete ho jate hain. Export JSON se full off-device copy lein.
+        </div>
+      </div>`;
+  }
+
+  /* ---------------------------------------------------------
+     tab 2 · activity + audit
+     --------------------------------------------------------- */
+  function renderActivity(){
+    const o = opsOf();
+    const all = o.activity || [];
+    const q1 = opsActQ.toLowerCase();
+    const list = all.filter(a => {
+      if(opsActEntity && a.entity !== opsActEntity) return false;
+      if(!q1) return true;
+      return [a.actor, a.label, a.detail, a.kind, a.entity].join(' ').toLowerCase().includes(q1);
+    });
+    const todayCount = all.filter(a => new Date(a.ts).toDateString() === new Date().toDateString()).length;
+    const undoable = all.filter(a => a.undo && !a.undone).length;
+    const byActor = {};
+    all.forEach(a => { byActor[a.actor] = (byActor[a.actor] || 0) + 1; });
+    const actorRows = Object.keys(byActor).sort((a, b) => byActor[b] - byActor[a]).slice(0, 6);
+    const kindChip = k => k === 'created' ? '<span class="ops-chip ok">added</span>'
+      : k === 'deleted' ? '<span class="ops-chip bad">deleted</span>'
+      : k === 'undo' ? '<span class="ops-chip warn">undo</span>'
+      : k === 'restore' ? '<span class="ops-chip info">restore</span>'
+      : '<span class="ops-chip mut">edited</span>';
+    const ents = [...new Set(all.map(a => a.entity).filter(Boolean))];
+    return `
+      <div class="ops-kpis">
+        <div class="ops-kpi"><div class="k">Events</div><div class="v">${all.length}</div></div>
+        <div class="ops-kpi"><div class="k">Aaj</div><div class="v">${todayCount}</div></div>
+        <div class="ops-kpi"><div class="k">Undo ready</div><div class="v">${undoable}</div></div>
+        <div class="ops-kpi"><div class="k">Actors</div><div class="v">${Object.keys(byActor).length}</div></div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head">
+          <h4>Activity log</h4><span class="sub">kaun, kab, kya badla — automatic</span>
+          <span class="spacer"></span>
+          <input id="opsActQ" style="max-width:190px;padding:7px 9px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);font-size:12px" placeholder="Search…" value="${esc(opsActQ)}">
+          <select id="opsActEntity" style="padding:7px 8px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);font-size:12px">
+            <option value="">All records</option>
+            ${ents.map(e => `<option value="${esc(e)}"${opsActEntity === e ? ' selected' : ''}>${esc(e)}</option>`).join('')}
+          </select>
+        </div>
+        <div class="ops-scroll">
+          <table class="ops-table">
+            <thead><tr><th>When</th><th>Actor</th><th>What</th><th>Change</th><th class="num">Undo</th></tr></thead>
+            <tbody>${list.length ? list.slice(0, 200).map(a => `<tr${a.undone ? ' style="opacity:.55"' : ''}>
+              <td style="white-space:nowrap">${new Date(a.ts).toLocaleString('en-IN', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' })}<span class="tiny">${esc(a.entity || '')}</span></td>
+              <td>${esc(a.actor)}</td>
+              <td><b>${esc(a.label)}</b> ${kindChip(a.kind)}</td>
+              <td>${esc(a.detail || '—')}</td>
+              <td class="num">${a.undo && !a.undone ? `<button class="btn ghost sm" data-act-undo="${a.id}">↺ Undo</button>` : (a.undone ? '<span class="ops-chip mut">undone</span>' : '—')}</td>
+            </tr>`).join('') : `<tr><td colspan="5"><div class="ops-empty"><b>Koi activity nahi mili</b>Client, sale, plot ya project me koi bhi badlav karein — yahan automatic dikhega.</div></td></tr>`}</tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head"><h4>Advisor audit</h4><span class="sub">kisne kitne changes kiye</span></div>
+        ${actorRows.length ? actorRows.map(([name, n]) => `<div class="ops-row">
+          <span style="width:26px;height:26px;border-radius:50%;background:color-mix(in oklab,var(--acc) 16%,var(--panel));color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font:700 10px 'DM Sans',sans-serif">${esc(initials(name))}</span>
+          <div class="grow"><span class="nm">${esc(name)}</span><span class="mt">${n} logged action${n === 1 ? '' : 's'}</span></div>
+          <span class="ops-chip mut">${Math.round(n / Math.max(1, all.length) * 100)}%</span>
+        </div>`).join('') : `<div class="ops-empty">Abhi koi action log nahi hua.</div>`}
+      </div>`;
+  }
+
+  /* ---------------------------------------------------------
+     tab 3 · documents & compliance
+     --------------------------------------------------------- */
+  const DOC_ITEMS = [
+    'Booking form / allotment letter',
+    'KYC — Aadhaar + PAN',
+    'Token / booking receipt',
+    'Agreement to sell',
+    'Payment receipts + bank trail',
+    'Loan sanction letter',
+    'Registry / sale deed',
+    'Mutation (namantaran)',
+    'NOC / society clearance',
+    'Possession letter',
+    'TDS 26QB + Form 16B',
+    'Encumbrance certificate'
+  ];
+  function docsFor(dealId){
+    const o = opsOf();
+    if(!Array.isArray(o.docs)) o.docs = [];
+    const d = byId('pipeline', dealId);
+    const out = [];
+    DOC_ITEMS.forEach(item => {
+      let rec = o.docs.find(x => x.dealId === dealId && x.item === item);
+      if(!rec){
+        rec = { id: uid(), dealId, clientId: (d && d.clientId) || '', projectId: (d && d.projectId) || '', item, status: 'pending', due: '', note: '', updatedAt: Date.now() };
+        o.docs.push(rec);
+      }
+      out.push(rec);
+    });
+    o.docs.filter(x => x.dealId === dealId && DOC_ITEMS.indexOf(x.item) < 0).forEach(x => out.push(x));
+    return out;
+  }
+  function docProgress(dealId){
+    const list = docsFor(dealId);
+    const active = list.filter(x => x.status !== 'na');
+    const done = active.filter(x => x.status === 'done').length;
+    return { total: active.length, done, pct: active.length ? Math.round(done / active.length * 100) : 0 };
+  }
+  function renderDocs(){
+    const deals = (db.pipeline || []).filter(d => d.stage !== 'cancelled');
+    if(!deals.length){
+      return `<div class="ops-empty"><b>Koi sale record nahi</b>Pipeline me sale add karein — uske baad yahan 12-point document checklist apne aap ban jayegi.</div>`;
+    }
+    if(!opsDocsDeal || !deals.some(d => d.id === opsDocsDeal)) opsDocsDeal = deals[0].id;
+    const deal = byId('pipeline', opsDocsDeal);
+    const list = docsFor(opsDocsDeal);
+    const prog = docProgress(opsDocsDeal);
+    const allProg = deals.map(d => docProgress(d.id));
+    const ready = allProg.filter(p => p.pct === 100).length;
+    const avg = allProg.length ? Math.round(allProg.reduce((s, p) => s + p.pct, 0) / allProg.length) : 0;
+    const statusChip = s => s === 'done' ? '<span class="ops-chip ok">done</span>' : s === 'na' ? '<span class="ops-chip mut">n/a</span>' : '<span class="ops-chip warn">pending</span>';
+    return `
+      <div class="ops-kpis">
+        <div class="ops-kpi"><div class="k">Live sales</div><div class="v">${deals.length}</div></div>
+        <div class="ops-kpi"><div class="k">File complete</div><div class="v">${ready} <small>/ ${deals.length}</small></div></div>
+        <div class="ops-kpi"><div class="k">Avg completeness</div><div class="v">${avg}%</div></div>
+        <div class="ops-kpi ${avg < 50 ? 'warn' : 'ok'}"><div class="k">Pending docs</div><div class="v">${(opsOf().docs || []).filter(x => x.status === 'pending').length}</div></div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head">
+          <h4>Deal document &amp; compliance checklist</h4>
+          <span class="sub">har sale ka file — booking se possession tak</span>
+          <span class="spacer"></span>
+          <select id="opsDocsDealSel" style="padding:7px 8px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);font-size:12px;max-width:260px">
+            ${deals.map(d => `<option value="${d.id}"${d.id === opsDocsDeal ? ' selected' : ''}>${esc((d.code ? d.code + ' · ' : '') + dealClientLabel(d) + ' — ' + dealLabel(d))}</option>`).join('')}
+          </select>
+          <button class="btn ghost sm" data-doc-share>📤 Share checklist</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <div class="ops-bar" style="flex:1"><i style="width:${prog.pct}%"></i></div>
+          <span class="ops-chip ${prog.pct === 100 ? 'ok' : prog.pct >= 50 ? 'warn' : 'bad'}">${prog.done}/${prog.total} · ${prog.pct}%</span>
+        </div>
+        <div style="font-size:11.5px;color:var(--mut);margin-bottom:10px">${esc(dealClientLabel(deal))} · ${esc(dealLabel(deal))}${deal.plotDetail ? ' · ' + esc(deal.plotDetail) : ''}</div>
+        ${list.map(x => `<div class="ops-dd-item">
+          <div class="grow">
+            <span class="nm">${esc(x.item)} ${statusChip(x.status)}</span>
+            ${x.note ? `<span class="mt">${esc(x.note)}</span>` : ''}
+          </div>
+          <input data-doc-note="${x.id}" value="${esc(x.note || '')}" placeholder="Note / file ref" style="width:150px;padding:5px 7px;font-size:11px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)">
+          <select data-doc-status="${x.id}" style="padding:5px 7px;font-size:11px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)">
+            <option value="pending"${x.status === 'pending' ? ' selected' : ''}>Pending</option>
+            <option value="done"${x.status === 'done' ? ' selected' : ''}>Done</option>
+            <option value="na"${x.status === 'na' ? ' selected' : ''}>N/A</option>
+          </select>
+          ${DOC_ITEMS.indexOf(x.item) < 0 ? `<button class="btn ghost sm" data-doc-del="${x.id}" title="Remove">🗑</button>` : ''}
+        </div>`).join('')}
+        <div class="ops-form" style="margin-top:12px">
+          <div class="ops-field wide"><label>Custom document</label><input id="opsDocNew" placeholder="e.g. Society NOC / bank valuation report"></div>
+        </div>
+        <button class="btn ghost sm" data-doc-add>＋ Add document</button>
+      </div>`;
+  }
+
+  /* ---------------------------------------------------------
+     tab 4 · receivables aging + reminder queue
+     --------------------------------------------------------- */
+  function receivables(){
+    const out = [];
+    (db.pipeline || []).filter(d => d.stage !== 'cancelled').forEach(d => {
+      const pending = dealPending(d);
+      const brk = dealBrkPending(d);
+      const total = pending + brk;
+      if(total <= 0) return;
+      const lastPay = (d.payments || []).reduce((m, p) => (p && p.date && p.date > m ? p.date : m), d.bookingDate || '');
+      const base = lastPay || d.bookingDate || (d.createdAt ? new Date(d.createdAt).toISOString().slice(0, 10) : todayISO());
+      const age = Math.max(0, daysBetween(base, todayISO()));
+      out.push({ deal: d, pending, brk, outstanding: total, age, base });
+    });
+    return out.sort((a, b) => b.age - a.age);
+  }
+  function ageBucket(age){ return age <= 30 ? 'a1' : age <= 60 ? 'a2' : age <= 90 ? 'a3' : 'a4'; }
+  function ageLabel(age){ return age <= 30 ? '0–30 din' : age <= 60 ? '31–60 din' : age <= 90 ? '61–90 din' : '90+ din'; }
+  function reminderText(r){
+    const d = r.deal;
+    const name = dealClientLabel(d) || 'ji';
+    const parts = [];
+    if(r.pending > 0) parts.push('property balance ' + money(r.pending));
+    if(r.brk > 0) parts.push('brokerage ' + money(r.brk));
+    return 'Namaste ' + name + ' ji,\n\n' + dealLabel(d) + (d.plotDetail ? ' (' + d.plotDetail + ')' : '') + ' ke liye ' + parts.join(' aur ') + ' pending hai. Last payment ke baad ' + r.age + ' din ho gaye hain.\n\nAaj ya kal settle kar dein to ledger clear ho jayega — main receipt aur updated statement bhej dunga.\n\n— Ajay Sharma\nBCS (Business City Square), Jaipur';
+  }
+  function renderMoney(){
+    const rows = receivables();
+    const o = opsOf();
+    const buckets = { a1: 0, a2: 0, a3: 0, a4: 0 };
+    rows.forEach(r => { buckets[ageBucket(r.age)] += r.outstanding; });
+    const totalOut = rows.reduce((s, r) => s + r.outstanding, 0);
+    const queue = o.reminders || [];
+    const queued = queue.filter(r => r.status === 'queued').length;
+    return `
+      <div class="ops-kpis">
+        <div class="ops-kpi ${totalOut ? 'warn' : 'ok'}"><div class="k">Total outstanding</div><div class="v">${short(totalOut)}</div></div>
+        <div class="ops-kpi"><div class="k">Accounts</div><div class="v">${rows.length}</div></div>
+        <div class="ops-kpi ${buckets.a4 ? 'warn' : ''}"><div class="k">90+ days</div><div class="v">${short(buckets.a4)}</div></div>
+        <div class="ops-kpi"><div class="k">In queue</div><div class="v">${queued}</div></div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head">
+          <h4>Receivables aging</h4><span class="sub">property balance + brokerage · last payment se</span>
+          <span class="spacer"></span>
+          <button class="btn ghost sm" data-rem-gen>⚡ Build reminder queue</button>
+        </div>
+        <div class="ops-aging">
+          <div class="ops-age a1"><div class="k">0–30 din</div><div class="v">${short(buckets.a1)}</div></div>
+          <div class="ops-age a2"><div class="k">31–60 din</div><div class="v">${short(buckets.a2)}</div></div>
+          <div class="ops-age a3"><div class="k">61–90 din</div><div class="v">${short(buckets.a3)}</div></div>
+          <div class="ops-age a4"><div class="k">90+ din</div><div class="v">${short(buckets.a4)}</div></div>
+        </div>
+        <div class="ops-scroll">
+          <table class="ops-table">
+            <thead><tr><th>Client</th><th>Property</th><th class="num">Property due</th><th class="num">Brokerage due</th><th class="num">Outstanding</th><th>Age</th><th></th></tr></thead>
+            <tbody>${rows.length ? rows.map(r => `<tr>
+              <td><b>${esc(dealClientLabel(r.deal))}</b><span class="tiny">${esc(r.deal.clientPhone || '')}</span></td>
+              <td>${esc(dealLabel(r.deal))}<span class="tiny">${esc(r.deal.plotDetail || '')}</span></td>
+              <td class="num">${r.pending ? money(r.pending) : '—'}</td>
+              <td class="num">${r.brk ? money(r.brk) : '—'}</td>
+              <td class="num"><b>${money(r.outstanding)}</b></td>
+              <td><span class="ops-chip ${r.age > 90 ? 'bad' : r.age > 60 ? 'warn' : 'mut'}">${ageLabel(r.age)}</span></td>
+              <td class="num"><button class="btn ghost sm" data-remind-deal="${r.deal.id}">💬 Remind</button></td>
+            </tr>`).join('') : `<tr><td colspan="7"><div class="ops-empty"><b>Sab clear hai ✓</b>Koi outstanding receivable nahi. Sale add karte hi yahan aging apne aap dikhegi.</div></td></tr>`}</tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head"><h4>Reminder queue</h4><span class="sub">message pehle preview me — phir WhatsApp</span></div>
+        ${queue.length ? queue.map(r => {
+          const d = byId('pipeline', r.dealId);
+          return `<div class="ops-row">
+            <div class="grow">
+              <span class="nm">${esc(d ? dealClientLabel(d) : 'Client')} ${r.status === 'sent' ? '<span class="ops-chip ok">sent</span>' : '<span class="ops-chip warn">queued</span>'}</span>
+              <span class="mt">${r.amount ? money(r.amount) + ' · ' : ''}${r.status === 'sent' && r.sentAt ? 'sent ' + new Date(r.sentAt).toLocaleDateString('en-IN') : 'ready to send'}${r.note ? ' · ' + esc(r.note) : ''}</span>
+            </div>
+            <button class="btn ghost sm" data-rem-open="${r.id}">👁 Preview</button>
+            <button class="btn ghost sm" data-rem-sent="${r.id}">✓ Sent</button>
+            <button class="btn ghost sm" data-rem-del="${r.id}">🗑</button>
+          </div>`;
+        }).join('') : `<div class="ops-empty"><b>Queue khali hai</b>“Build reminder queue” dabayein — har outstanding account ka ready message queue me aa jayega.</div>`}
+      </div>`;
+  }
+
+  /* ---------------------------------------------------------
+     tab 5 · due diligence pack
+     --------------------------------------------------------- */
+  const DD_ITEMS = [
+    { id:'sanction90a', label:'JDA 90-A sanction / approval letter', hint:'Scheme sanction number + letter copy' },
+    { id:'jamabandi',   label:'Jamabandi / Fard (revenue record)', hint:'Tehsil se latest fard — ownership + khasra' },
+    { id:'naksha',      label:'Approved naksha / layout plan', hint:'Authority-approved map, plot numbers' },
+    { id:'dlc',         label:'DLC / circle rate check', hint:'e-Panjiyan e-Value se latest rate' },
+    { id:'encumbrance', label:'Encumbrance / title search', hint:'Loan, mortgage, court attachment — nil report' },
+    { id:'road',        label:'Approach road & access', hint:'Road width, ownership, 90-A road' },
+    { id:'conversion',  label:'Land conversion (NA / CLU)', hint:'Agriculture → residential conversion order' },
+    { id:'rera',        label:'RERA registration', hint:'Project registration no. + valid till date' },
+    { id:'chain',       label:'Chain of title / sale deeds', hint:'30-year ownership chain, registered links' }
+  ];
+  function ddRec(projectId){
+    const o = opsOf();
+    if(!Array.isArray(o.dd)) o.dd = [];
+    let rec = o.dd.find(x => x.projectId === projectId);
+    if(!rec){
+      rec = { id: uid(), projectId, note: '', items: {}, updatedAt: Date.now() };
+      o.dd.push(rec);
+    }
+    if(!rec.items || typeof rec.items !== 'object') rec.items = {};
+    DD_ITEMS.forEach(it => { if(!rec.items[it.id]) rec.items[it.id] = { status:'pending', note:'' }; });
+    return rec;
+  }
+  function ddScore(projectId){
+    const rec = ddRec(projectId);
+    let done = 0, active = 0;
+    DD_ITEMS.forEach(it => {
+      const s = (rec.items[it.id] || {}).status || 'pending';
+      if(s === 'na') return;
+      active++;
+      if(s === 'done') done++;
+    });
+    return { done, active, pct: active ? Math.round(done / active * 100) : 0, rec };
+  }
+  function renderDd(){
+    const projects = db.projects || [];
+    if(!projects.length) return `<div class="ops-empty"><b>Koi project nahi</b>Projects me ek project add karein — due-diligence pack uske liye ban jayega.</div>`;
+    if(!opsDdProject || !projects.some(p => p.id === opsDdProject)) opsDdProject = projects[0].id;
+    const proj = byId('projects', opsDdProject);
+    const sc = ddScore(opsDdProject);
+    const allScores = projects.map(p => ddScore(p.id).pct);
+    const avg = allScores.length ? Math.round(allScores.reduce((a, b) => a + b, 0) / allScores.length) : 0;
+    const statusChip = s => s === 'done' ? '<span class="ops-chip ok">clear</span>' : s === 'na' ? '<span class="ops-chip mut">n/a</span>' : '<span class="ops-chip warn">open</span>';
+    return `
+      <div class="ops-kpis">
+        <div class="ops-kpi"><div class="k">Projects</div><div class="v">${projects.length}</div></div>
+        <div class="ops-kpi ${sc.pct === 100 ? 'ok' : sc.pct < 50 ? 'warn' : ''}"><div class="k">This project</div><div class="v">${sc.pct}%</div></div>
+        <div class="ops-kpi"><div class="k">Portfolio avg</div><div class="v">${avg}%</div></div>
+        <div class="ops-kpi"><div class="k">Open checks</div><div class="v">${projects.reduce((s, p) => { const r = ddScore(p.id); return s + (r.active - r.done); }, 0)}</div></div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head">
+          <h4>Plot due-diligence pack</h4><span class="sub">9-point title + approval check</span>
+          <span class="spacer"></span>
+          <select id="opsDdSel" style="padding:7px 8px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);font-size:12px;max-width:260px">
+            ${projects.map(p => `<option value="${p.id}"${p.id === opsDdProject ? ' selected' : ''}>${esc(p.name)}</option>`).join('')}
+          </select>
+          <button class="btn ghost sm" data-dd-share>📤 Share pack</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <div class="ops-bar" style="flex:1"><i style="width:${sc.pct}%"></i></div>
+          <span class="ops-chip ${sc.pct === 100 ? 'ok' : sc.pct >= 50 ? 'warn' : 'bad'}">${sc.done}/${sc.active} clear · ${sc.pct}%</span>
+        </div>
+        <div style="font-size:11.5px;color:var(--mut);margin-bottom:10px">${esc(proj.name)} · ${esc(corrName(proj.corridor))}${proj.rera ? ' · RERA ' + esc(proj.rera) : ' · RERA not recorded'}</div>
+        ${DD_ITEMS.map(it => {
+          const cell = sc.rec.items[it.id] || { status:'pending', note:'' };
+          return `<div class="ops-dd-item">
+            <div class="grow"><span class="nm">${esc(it.label)} ${statusChip(cell.status)}</span><span class="mt">${esc(it.hint)}</span></div>
+            <input data-dd-note="${it.id}" value="${esc(cell.note || '')}" placeholder="Ref / note" style="width:150px;padding:5px 7px;font-size:11px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)">
+            <select data-dd-status="${it.id}" style="padding:5px 7px;font-size:11px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)">
+              <option value="pending"${cell.status === 'pending' ? ' selected' : ''}>Open</option>
+              <option value="done"${cell.status === 'done' ? ' selected' : ''}>Clear</option>
+              <option value="na"${cell.status === 'na' ? ' selected' : ''}>N/A</option>
+            </select>
+          </div>`;
+        }).join('')}
+        <div class="ops-field" style="margin-top:12px"><label>Pack note</label><textarea id="opsDdNote" rows="2" placeholder="Overall observation — title chain, road, conversion status…">${esc(sc.rec.note || '')}</textarea></div>
+        <button class="btn ghost sm" style="margin-top:8px" data-dd-save>Save note</button>
+      </div>`;
+  }
+
+  /* ---------------------------------------------------------
+     tab 6 · lead source + marketing ROI
+     --------------------------------------------------------- */
+  function roiRows(){
+    const o = opsOf();
+    const srcs = new Set(o.sources || []);
+    (db.clients || []).forEach(c => { if(c.source) srcs.add(c.source); });
+    (o.roi || []).forEach(r => { if(r.source) srcs.add(r.source); });
+    return [...srcs].map(src => {
+      const spend = (o.roi || []).filter(r => r.source === src).reduce((s, r) => s + r.spend, 0);
+      const leads = (db.clients || []).filter(c => c.source === src);
+      const ids = new Set(leads.map(c => c.id));
+      const deals = (db.pipeline || []).filter(d => d.stage !== 'cancelled' && (ids.has(d.clientId) || (d.clientName && leads.some(c => c.name === d.clientName))));
+      const revenue = deals.reduce((s, d) => s + (Number(d.dealValue) || 0), 0);
+      const brokerage = deals.reduce((s, d) => s + dealBrkTotal(d), 0);
+      return {
+        src, spend, leads: leads.length, bookings: deals.length, revenue, brokerage,
+        cpl: leads.length ? spend / leads.length : 0,
+        cpb: deals.length ? spend / deals.length : 0,
+        roas: spend ? brokerage / spend : 0
+      };
+    }).filter(r => r.spend || r.leads || r.bookings).sort((a, b) => b.spend - a.spend || b.leads - a.leads);
+  }
+  function renderRoi(){
+    const rows = roiRows();
+    const o = opsOf();
+    const spend = rows.reduce((s, r) => s + r.spend, 0);
+    const leads = rows.reduce((s, r) => s + r.leads, 0);
+    const bookings = rows.reduce((s, r) => s + r.bookings, 0);
+    const brokerage = rows.reduce((s, r) => s + r.brokerage, 0);
+    const roas = spend ? brokerage / spend : 0;
+    const maxSpend = Math.max(1, ...rows.map(r => r.spend));
+    const months = [...new Set((o.roi || []).map(r => r.month))].sort().reverse();
+    return `
+      <div class="ops-kpis">
+        <div class="ops-kpi"><div class="k">Marketing spend</div><div class="v">${short(spend)}</div></div>
+        <div class="ops-kpi"><div class="k">Leads</div><div class="v">${leads}</div></div>
+        <div class="ops-kpi"><div class="k">Bookings</div><div class="v">${bookings}</div></div>
+        <div class="ops-kpi ${roas >= 3 ? 'ok' : roas && roas < 1 ? 'warn' : ''}"><div class="k">ROAS</div><div class="v">${roas ? roas.toFixed(2) + '×' : '—'}</div></div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head"><h4>Log spend</h4><span class="sub">month + source + amount</span></div>
+        <div class="ops-form">
+          <div class="ops-field"><label>Month</label><input type="month" id="opsRoiMonth" value="${esc((months[0] || todayISO().slice(0, 7)))}"></div>
+          <div class="ops-field"><label>Source</label><select id="opsRoiSource">${(o.sources || []).map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join('')}</select></div>
+          <div class="ops-field"><label>Spend (₹)</label><input type="number" id="opsRoiSpend" min="0" placeholder="5000"></div>
+          <div class="ops-field"><label>Note</label><input id="opsRoiNote" placeholder="Meta ad — ₹45L plot campaign"></div>
+          <div class="ops-field"><label>&nbsp;</label><button class="btn primary sm" data-roi-add>+ Add spend</button></div>
+        </div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head"><h4>Source performance</h4><span class="sub">spend → leads → bookings → brokerage</span></div>
+        <div class="ops-scroll">
+          <table class="ops-table">
+            <thead><tr><th>Source</th><th class="num">Spend</th><th class="num">Leads</th><th class="num">Bookings</th><th class="num">CPL</th><th class="num">Cost / booking</th><th class="num">Brokerage</th><th class="num">ROAS</th></tr></thead>
+            <tbody>${rows.length ? rows.map(r => `<tr>
+              <td><b>${esc(r.src)}</b><div class="ops-bar" style="margin-top:4px;width:${Math.max(6, Math.round(r.spend / maxSpend * 100))}%"><i style="width:100%"></i></div></td>
+              <td class="num">${r.spend ? money(r.spend) : '—'}</td>
+              <td class="num">${r.leads || '—'}</td>
+              <td class="num">${r.bookings || '—'}</td>
+              <td class="num">${r.cpl ? money(r.cpl) : '—'}</td>
+              <td class="num">${r.cpb ? money(r.cpb) : '—'}</td>
+              <td class="num">${r.brokerage ? money(r.brokerage) : '—'}</td>
+              <td class="num"><span class="ops-chip ${r.roas >= 3 ? 'ok' : r.roas && r.roas < 1 ? 'bad' : 'mut'}">${r.roas ? r.roas.toFixed(2) + '×' : '—'}</span></td>
+            </tr>`).join('') : `<tr><td colspan="8"><div class="ops-empty"><b>Koi data nahi</b>Client me “Lead source” bharein aur yahan spend log karein — phir source-wise ROI apne aap banega.</div></td></tr>`}</tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head"><h4>Spend entries</h4><span class="sub">${(o.roi || []).length} logged</span></div>
+        ${(o.roi || []).length ? (o.roi || []).slice().sort((a, b) => (b.month || '').localeCompare(a.month || '')).map(r => `<div class="ops-row">
+          <div class="grow"><span class="nm">${esc(r.source)} · ${esc(r.month)}</span><span class="mt">${esc(r.note || 'no note')}</span></div>
+          <span class="amt">${money(r.spend)}</span>
+          <button class="btn ghost sm" data-roi-del="${r.id}">🗑</button>
+        </div>`).join('') : `<div class="ops-empty">Abhi koi spend entry nahi.</div>`}
+      </div>`;
+  }
+
+  /* ---------------------------------------------------------
+     tab 7 · commission ledger + invoices
+     --------------------------------------------------------- */
+  function splitCfg(){
+    const st = (db.exchange && db.exchange.settings) || {};
+    let origin = Number(st.originPct), exec = Number(st.execPct), bcs = Number(st.bcsPct);
+    if(!isFinite(origin) || origin < 0) origin = 30;
+    if(!isFinite(exec) || exec < 0) exec = 35;
+    if(!isFinite(bcs) || bcs < 0) bcs = 35;
+    const total = origin + exec + bcs;
+    if(Math.abs(total - 100) > 0.01 && total > 0){
+      origin = origin / total * 100; exec = exec / total * 100; bcs = bcs / total * 100;
+    }
+    return { origin, exec, bcs, exact: Math.abs(total - 100) <= 0.01 };
+  }
+  function invoiceTotals(inv){
+    const gst = inv.amount * (inv.gstPct || 0) / 100;
+    return { base: inv.amount, gst, total: inv.amount + gst };
+  }
+  function renderCommission(){
+    const o = opsOf();
+    const cfg = splitCfg();
+    const deals = (db.pipeline || []).filter(d => d.stage !== 'cancelled');
+    const tot = deals.reduce((acc, d) => {
+      const brk = dealBrkTotal(d);
+      acc.brk += brk;
+      acc.recv += Math.min(brk, Number(d.brokeragePaid) || 0);
+      acc.pend += dealBrkPending(d);
+      acc.adv += dealAdvShare(d);
+      acc.advPaid += Number(d.advisorPaid) || 0;
+      return acc;
+    }, { brk: 0, recv: 0, pend: 0, adv: 0, advPaid: 0 });
+    const bcsNet = tot.brk - tot.adv;
+    if(!opsInvDeal || !deals.some(d => d.id === opsInvDeal)) opsInvDeal = deals[0] ? deals[0].id : '';
+    const invs = (o.invoices || []).slice();
+    return `
+      <div class="ops-kpis">
+        <div class="ops-kpi"><div class="k">Brokerage (live)</div><div class="v">${short(tot.brk)}</div></div>
+        <div class="ops-kpi ok"><div class="k">Received</div><div class="v">${short(tot.recv)}</div></div>
+        <div class="ops-kpi warn"><div class="k">Pending</div><div class="v">${short(tot.pend)}</div></div>
+        <div class="ops-kpi"><div class="k">BCS net</div><div class="v">${short(bcsNet)}</div></div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head">
+          <h4>Commission ledger — 30 / 35 / 35</h4>
+          <span class="sub">originating ${cfg.origin.toFixed(0)}% · executing ${cfg.exec.toFixed(0)}% · BCS ${cfg.bcs.toFixed(0)}%</span>
+        </div>
+        <div class="ops-scroll">
+          <table class="ops-table">
+            <thead><tr><th>Sale</th><th>Client</th><th>Advisor</th><th class="num">Brokerage</th><th class="num">Originating</th><th class="num">Executing</th><th class="num">BCS</th><th class="num">Advisor paid</th><th>Status</th></tr></thead>
+            <tbody>${deals.length ? deals.map(d => {
+              const brk = dealBrkTotal(d);
+              const origin = brk * cfg.origin / 100, exec = brk * cfg.exec / 100, bcs = brk * cfg.bcs / 100;
+              const pend = dealBrkPending(d);
+              return `<tr>
+                <td><b>${esc(d.code || 'Sale')}</b><span class="tiny">${esc(dealLabel(d))}</span></td>
+                <td>${esc(dealClientLabel(d))}</td>
+                <td>${esc(dealAdvisorLabel(d) || 'Admin desk')}</td>
+                <td class="num">${brk ? money(brk) : '—'}</td>
+                <td class="num">${origin ? money(origin) : '—'}</td>
+                <td class="num">${exec ? money(exec) : '—'}</td>
+                <td class="num"><b>${bcs ? money(bcs) : '—'}</b></td>
+                <td class="num">${d.advisorPaid ? money(d.advisorPaid) : '—'}</td>
+                <td>${pend <= 0 && brk ? '<span class="ops-chip ok">settled</span>' : brk ? '<span class="ops-chip warn">' + money(pend) + '</span>' : '<span class="ops-chip mut">no slab</span>'}</td>
+              </tr>`;
+            }).join('') : `<tr><td colspan="9"><div class="ops-empty"><b>Koi sale nahi</b>Pipeline me sale add karein — commission ledger apne aap banega.</div></td></tr>`}</tbody>
+          </table>
+        </div>
+        <div style="font-size:11px;color:var(--mut);margin-top:9px;line-height:1.6">Split gross developer receivable par lagta hai. Default 30/35/35 Exchange settings se aata hai${cfg.exact ? '' : ' (abhi custom split hai)'} — sab calculation layers yahi config use karte hain.</div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head"><h4>Brokerage invoice</h4><span class="sub">banayein → preview → print / download / WhatsApp</span></div>
+        ${deals.length ? `<div class="ops-form">
+          <div class="ops-field wide"><label>Sale</label><select id="opsInvDealSel">${deals.map(d => `<option value="${d.id}"${d.id === opsInvDeal ? ' selected' : ''}>${esc((d.code ? d.code + ' · ' : '') + dealClientLabel(d) + ' — ' + dealLabel(d))}</option>`).join('')}</select></div>
+          <div class="ops-field"><label>Amount (₹)</label><input type="number" id="opsInvAmount" min="0" value="${Math.round(dealBrkTotal(byId('pipeline', opsInvDeal) || {}) || 0)}"></div>
+          <div class="ops-field"><label>GST %</label><input type="number" id="opsInvGst" min="0" value="18"></div>
+          <div class="ops-field"><label>Date</label><input type="date" id="opsInvDate" value="${todayISO()}"></div>
+          <div class="ops-field"><label>&nbsp;</label><button class="btn primary sm" data-inv-make>🧾 Create invoice</button></div>
+        </div>` : `<div class="ops-empty">Invoice banane ke liye pehle ek sale add karein.</div>`}
+        ${invs.length ? `<div class="ops-scroll" style="margin-top:12px"><table class="ops-table">
+          <thead><tr><th>Invoice</th><th>Date</th><th class="num">Base</th><th class="num">GST</th><th class="num">Total</th><th>Status</th><th></th></tr></thead>
+          <tbody>${invs.map(inv => { const t = invoiceTotals(inv); return `<tr>
+            <td><b>${esc(inv.no)}</b><span class="tiny">${esc((byId('pipeline', inv.dealId) && dealClientLabel(byId('pipeline', inv.dealId))) || '')}</span></td>
+            <td>${esc(dayLabel(inv.date))}</td>
+            <td class="num">${money(t.base)}</td>
+            <td class="num">${money(t.gst)}</td>
+            <td class="num"><b>${money(t.total)}</b></td>
+            <td>${inv.status === 'paid' ? '<span class="ops-chip ok">paid</span>' : inv.status === 'sent' ? '<span class="ops-chip info">sent</span>' : '<span class="ops-chip mut">draft</span>'}</td>
+            <td class="num" style="white-space:nowrap">
+              <button class="btn ghost sm" data-inv-share="${inv.id}">👁</button>
+              <button class="btn ghost sm" data-inv-status="${inv.id}">↻</button>
+              <button class="btn ghost sm" data-inv-del="${inv.id}">🗑</button>
+            </td>
+          </tr>`; }).join('')}</tbody>
+        </table></div>` : `<div class="ops-empty" style="margin-top:12px">Abhi koi invoice nahi — upar se ek banayein.</div>`}
+      </div>`;
+  }
+
+  /* ---------------------------------------------------------
+     tab 8 · WhatsApp templates + broadcast queue
+     --------------------------------------------------------- */
+  const TPL_SEED = [
+    { name:'Site visit follow-up', scope:'client', body:'Namaste {client} ji,\n\n{project} ki site visit ke baad aapka feedback chahiye. Location, price aur payment plan — teeno par clear picture de sakta hoon.\n\nKal shaam {time} baje call karoon?\n\n— Ajay Sharma, BCS' },
+    { name:'Payment reminder', scope:'client', body:'Namaste {client} ji,\n\n{project} ke liye {amount} pending hai. Aaj ya kal settle kar dein to ledger clear ho jayega — receipt aur updated statement main bhej dunga.\n\n— Ajay Sharma, BCS' },
+    { name:'New project launch', scope:'client', body:'🏡 *{project}* — naya launch\n📍 {corridor}\n💰 {price}\n\nAapke budget ke hisaab se ye fit baith raha hai. 2–3 plots shortlist kar diye hain — site visit fix karein?\n\n— Ajay Sharma, BCS' },
+    { name:'Shortlist ready', scope:'client', body:'Namaste {client} ji,\n\nAapke liye {count} options shortlist kiye hain — budget, corridor aur approval ke hisaab se.\n\nAapka personal shortlist page neeche attach hai.\n\nKoi bhi option pasand aaye to bata dijiye, main uski poori file nikaal deta hoon.\n\n— Ajay Sharma, BCS' },
+    { name:'Advisor weekly target', scope:'advisor', body:'Namaste {advisor} ji,\n\nIs hafte ka focus:\n1. 2 site visits\n2. 5 fresh client calls\n3. 1 booking proposal\n\nAapke assigned projects aur pending follow-ups desk par ready hain.\n\n— Ajay Sharma, BCS' }
+  ];
+  function ensureTemplates(){
+    const o = opsOf();
+    if(!Array.isArray(o.waTemplates)) o.waTemplates = [];
+    if(!o.waTemplates.length){
+      o.waTemplates = TPL_SEED.map(t => ({ id: uid(), name: t.name, scope: t.scope, body: t.body, createdAt: Date.now(), updatedAt: Date.now() }));
+    }
+    return o.waTemplates;
+  }
+  const MERGE_FIELDS = [
+    ['{client}', 'client ka naam'], ['{phone}', 'mobile'], ['{project}', 'project / shortlist ka pehla project'],
+    ['{corridor}', 'corridor'], ['{budget}', 'budget range'], ['{status}', 'pipeline status'],
+    ['{advisor}', 'lead advisor'], ['{amount}', 'outstanding / deal amount'], ['{due}', 'next follow-up'],
+    ['{date}', 'aaj ki date'], ['{count}', 'shortlist count'], ['{link}', 'client page link'],
+    ['{time}', 'suggested time'], ['{price}', 'price band'], ['{company}', 'BCS signature']
+  ];
+  function resolveTemplate(body, ctx){
+    ctx = ctx || {};
+    const c = ctx.client || {};
+    return String(body || '').replace(/\{(\w+)\}/g, (m, k) => {
+      let v = '';
+      switch(k){
+        case 'client': v = c.name || c.phone || 'ji'; break;
+        case 'phone': v = c.phone || ''; break;
+        case 'project': v = ctx.project || ''; break;
+        case 'corridor': v = ctx.corridor || ''; break;
+        case 'budget': v = ctx.budget || ''; break;
+        case 'status': v = ctx.status || stLabel(c.clientStatus); break;
+        case 'advisor': v = ctx.advisor || ''; break;
+        case 'amount': v = ctx.amount || ''; break;
+        case 'due': v = c.nextFollowUp ? dayLabel(c.nextFollowUp) : ''; break;
+        case 'date': v = dayLabel(todayISO()); break;
+        case 'count': v = ctx.count || ''; break;
+        case 'link': v = ctx.link || '(client page attach karein)'; break;
+        case 'time': v = ctx.time || '5'; break;
+        case 'price': v = ctx.price || ''; break;
+        case 'company': v = 'BCS (Business City Square), Jaipur'; break;
+        default: v = m;
+      }
+      return v;
+    });
+  }
+  function clientCtx(c){
+    const proj = (c.projectIds || []).map(id => byId('projects', id)).filter(Boolean)[0] || null;
+    return {
+      client: c,
+      project: proj ? proj.name : '',
+      corridor: proj ? corrName(proj.corridor) : (c.corridors || []).map(corrName).filter(x => x && x !== '—').join(', '),
+      budget: (c.budgetMin || c.budgetMax) ? ('₹' + (c.budgetMin || 0) + '–' + (c.budgetMax || 0) + ' L') : '',
+      advisor: (c.advisorId && byId('advisors', c.advisorId)) ? byId('advisors', c.advisorId).name : '',
+      status: stLabel(c.clientStatus),
+      count: String((c.projectIds || []).length || '')
+    };
+  }
+  function renderBroadcast(){
+    const o = opsOf();
+    const tpls = ensureTemplates();
+    if(!opsBcTpl || !tpls.some(t => t.id === opsBcTpl)) opsBcTpl = tpls[0].id;
+    const tpl = tpls.find(t => t.id === opsBcTpl);
+    const bcs = (o.broadcasts || []);
+    const clients = (db.clients || []).filter(c => c.phone);
+    return `
+      <div class="ops-kpis">
+        <div class="ops-kpi"><div class="k">Templates</div><div class="v">${tpls.length}</div></div>
+        <div class="ops-kpi"><div class="k">Clients with phone</div><div class="v">${clients.length}</div></div>
+        <div class="ops-kpi"><div class="k">Broadcasts</div><div class="v">${bcs.length}</div></div>
+        <div class="ops-kpi"><div class="k">Queued msgs</div><div class="v">${bcs.reduce((s, b) => s + b.recipients.filter(r => r.status === 'queued').length, 0)}</div></div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head"><h4>WhatsApp template engine</h4><span class="sub">merge fields + exact message preview</span></div>
+        <div class="ops-form">
+          <div class="ops-field"><label>Template</label><select id="opsBcTplSel">${tpls.map(t => `<option value="${t.id}"${t.id === opsBcTpl ? ' selected' : ''}>${esc(t.name)}</option>`).join('')}</select></div>
+          <div class="ops-field wide"><label>Message body</label><textarea id="opsBcBody" rows="6">${esc(tpl ? tpl.body : '')}</textarea></div>
+          <div class="ops-field"><label>Name</label><input id="opsBcName" value="${esc(tpl ? tpl.name : '')}"></div>
+          <div class="ops-field"><label>Scope</label><select id="opsBcScope"><option value="general">general</option><option value="client">client</option><option value="advisor">advisor</option><option value="developer">developer</option></select></div>
+          <div class="ops-field"><label>&nbsp;</label><button class="btn ghost sm" data-tpl-save>Save template</button></div>
+          <div class="ops-field"><label>&nbsp;</label><button class="btn ghost sm" data-tpl-new>＋ New</button></div>
+          <div class="ops-field"><label>&nbsp;</label><button class="btn ghost sm" data-tpl-del>🗑 Delete</button></div>
+        </div>
+        <div style="font-size:11px;color:var(--mut);line-height:1.8;margin-top:4px">
+          <b style="color:var(--ink)">Merge fields:</b> ${MERGE_FIELDS.map(([k, v]) => `<code style="background:color-mix(in oklab,var(--line) 40%,transparent);padding:1px 4px;border-radius:4px">${k}</code> ${esc(v)}`).join(' · ')}
+        </div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head"><h4>Broadcast queue</h4><span class="sub">audience chuno — har message preview ke baad hi bhejna</span></div>
+        <div class="ops-form">
+          <div class="ops-field"><label>Audience</label><select id="opsBcAudience">
+            <option value="all">All clients with phone</option>
+            <option value="active">Active clients (not booked/lost)</option>
+            <option value="token">Token / registry stage</option>
+            <option value="outstanding">Clients with outstanding</option>
+            ${(o.sources || []).map(s => `<option value="src:${esc(s)}">Source: ${esc(s)}</option>`).join('')}
+          </select></div>
+          <div class="ops-field"><label>Queue name</label><input id="opsBcQueueName" placeholder="e.g. Diwali greetings"></div>
+          <div class="ops-field"><label>&nbsp;</label><button class="btn primary sm" data-bc-build>📥 Build queue</button></div>
+        </div>
+        ${bcs.length ? bcs.map(b => {
+          const sent = b.recipients.filter(r => r.status === 'sent').length;
+          return `<div class="ops-row">
+            <div class="grow">
+              <span class="nm">${esc(b.name)} <span class="ops-chip ${b.status === 'done' ? 'ok' : b.status === 'queued' ? 'warn' : 'mut'}">${b.status}</span></span>
+              <span class="mt">${new Date(b.ts).toLocaleString('en-IN', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' })} · ${sent}/${b.recipients.length} sent · ${esc(b.audience)}</span>
+            </div>
+            <button class="btn ghost sm" data-bc-open="${b.id}">Open queue</button>
+            <button class="btn ghost sm" data-bc-sent-all="${b.id}">✓ Mark all sent</button>
+            <button class="btn ghost sm" data-bc-del="${b.id}">🗑</button>
+          </div>`;
+        }).join('') : `<div class="ops-empty"><b>Koi broadcast nahi</b>Template ready hai — audience chuno aur “Build queue” dabayein. Har message pehle preview me khulega, phir WhatsApp.</div>`}
+      </div>`;
+  }
+
+  /* ---------------------------------------------------------
+     tab 9 · locality / map intelligence
+     --------------------------------------------------------- */
+  function renderMap(){
+    const o = opsOf();
+    const pins = o.pins || [];
+    const notes = o.locality || [];
+    const corrs = db.corridors || [];
+    return `
+      <div class="ops-kpis">
+        <div class="ops-kpi"><div class="k">Corridors</div><div class="v">${corrs.length}</div></div>
+        <div class="ops-kpi"><div class="k">Map pins</div><div class="v">${pins.length}</div></div>
+        <div class="ops-kpi"><div class="k">Locality notes</div><div class="v">${notes.length}</div></div>
+        <div class="ops-kpi"><div class="k">Projects mapped</div><div class="v">${(db.projects || []).filter(p => p.mapUrl).length}</div></div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head"><h4>Corridor intelligence</h4><span class="sub">supply · price band · pins · notes</span></div>
+        <div class="ops-grid">
+          ${corrs.map(c => {
+            const projs = (db.projects || []).filter(p => p.corridor === c.id);
+            const rates = projs.map(p => Number(p.pricePerUnit) || 0).filter(Boolean);
+            const avg = rates.length ? Math.round(rates.reduce((a, b) => a + b, 0) / rates.length) : 0;
+            const cp = pins.filter(p => p.corridorId === c.id).length;
+            const cn = notes.filter(n => n.corridorId === c.id).length;
+            return `<div class="ops-card">
+              <h4>${esc(c.name)}</h4>
+              <span class="sub">${projs.length} project${projs.length === 1 ? '' : 's'} · ${avg ? money(avg) + '/unit avg' : 'rate not set'} · ${cp} pins · ${cn} notes</span>
+              <div style="display:flex;gap:6px;flex-wrap:wrap">
+                <a class="btn ghost sm" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.name + ' Jaipur')}" target="_blank" rel="noopener">🗺 Open map</a>
+                ${projs.length ? `<button class="btn ghost sm" data-map-proj="${c.id}">Projects</button>` : ''}
+              </div>
+            </div>`;
+          }).join('') || `<div class="ops-empty">Corridors nahi mile.</div>`}
+        </div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head"><h4>Add map pin</h4><span class="sub">GPS ya manual lat/lng</span></div>
+        <div class="ops-form">
+          <div class="ops-field"><label>Title</label><input id="opsPinTitle" placeholder="e.g. Sunrise Greens site office"></div>
+          <div class="ops-field"><label>Corridor</label><select id="opsPinCorr">${corrs.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></div>
+          <div class="ops-field"><label>Kind</label><select id="opsPinKind"><option value="project">Project</option><option value="landmark">Landmark</option><option value="office">Office</option><option value="other">Other</option></select></div>
+          <div class="ops-field"><label>Lat</label><input id="opsPinLat" type="number" step="0.000001" placeholder="26.9124"></div>
+          <div class="ops-field"><label>Lng</label><input id="opsPinLng" type="number" step="0.000001" placeholder="75.7873"></div>
+          <div class="ops-field"><label>&nbsp;</label><button class="btn ghost sm" data-pin-loc>📍 Use my location</button></div>
+          <div class="ops-field"><label>&nbsp;</label><button class="btn primary sm" data-pin-add>+ Add pin</button></div>
+        </div>
+        <div class="ops-field"><label>Note</label><input id="opsPinNote" placeholder="Approach road, landmark, gate number…"></div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head"><h4>Pins</h4><span class="sub">${pins.length} saved</span></div>
+        ${pins.length ? pins.map(p => `<div class="ops-row">
+          <span class="ops-chip ${p.kind === 'project' ? 'info' : 'mut'}">${esc(p.kind)}</span>
+          <div class="grow"><span class="nm">${esc(p.title)}</span><span class="mt">${esc(corrName(p.corridorId))}${p.lat && p.lng ? ' · ' + p.lat.toFixed(5) + ', ' + p.lng.toFixed(5) : ' · no coords'}${p.note ? ' · ' + esc(p.note) : ''}</span></div>
+          ${p.lat && p.lng ? `<a class="btn ghost sm" href="https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}" target="_blank" rel="noopener">🗺</a>` : ''}
+          <button class="btn ghost sm" data-pin-del="${p.id}">🗑</button>
+        </div>`).join('') : `<div class="ops-empty">Abhi koi pin nahi — “Use my location” se site office pin karein.</div>`}
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head"><h4>Locality notes</h4><span class="sub">corridor-wise knowledge</span></div>
+        <div class="ops-form">
+          <div class="ops-field"><label>Corridor</label><select id="opsLocCorr">${corrs.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></div>
+          <div class="ops-field"><label>Title</label><input id="opsLocTitle" placeholder="e.g. Ring Road se approach"></div>
+          <div class="ops-field wide"><label>Note</label><textarea id="opsLocNote" rows="2" placeholder="Road width, water, school, market, price trend…"></textarea></div>
+        </div>
+        <button class="btn primary sm" data-loc-add>+ Add note</button>
+        ${notes.length ? notes.map(n => `<div class="ops-row" style="margin-top:8px">
+          <div class="grow"><span class="nm">${esc(n.title)} <span class="ops-chip mut">${esc(corrName(n.corridorId))}</span></span><span class="mt" style="white-space:normal">${esc(n.note)}</span></div>
+          <button class="btn ghost sm" data-loc-del="${n.id}">🗑</button>
+        </div>`).join('') : ''}
+      </div>`;
+  }
+
+  /* ---------------------------------------------------------
+     tab 10 · shareable client shortlist pages
+     --------------------------------------------------------- */
+  function shortlistProjects(c){
+    let ids = (c.projectIds || []).slice();
+    if(!ids.length){
+      const min = (Number(c.budgetMin) || 0) * 100000, max = (Number(c.budgetMax) || 0) * 100000;
+      const corr = c.corridorId || (c.corridors || [])[0] || '';
+      ids = (db.projects || []).filter(p => {
+        if(p.status === 'cancelled') return false;
+        if(corr && p.corridor !== corr) return false;
+        if(min && (Number(p.priceMax) || 0) * 100000 < min) return false;
+        if(max && (Number(p.priceMin) || 0) * 100000 > max) return false;
+        return true;
+      }).slice(0, 6).map(p => p.id);
+    }
+    return ids.map(id => byId('projects', id)).filter(Boolean);
+  }
+  function priceBand(p){
+    if(p.priceMin && p.priceMax) return '₹' + p.priceMin + '–' + p.priceMax + ' L';
+    if(p.priceMin) return '₹' + p.priceMin + ' L+';
+    if(p.priceMax) return 'upto ₹' + p.priceMax + ' L';
+    return 'Price on request';
+  }
+  function clientPageHTML(c){
+    const projs = shortlistProjects(c);
+    const adv = c.advisorId ? byId('advisors', c.advisorId) : null;
+    const card = p => {
+      const img = p.image ? `<img src="${esc(p.image)}" alt="" style="width:100%;height:150px;object-fit:cover;display:block">` : '';
+      return `<div style="border:1px solid #E3E0D3;border-radius:16px;overflow:hidden;background:#fff">
+        ${img}
+        <div style="padding:13px 14px">
+          <div style="font:600 15px/1.25 'Fraunces',Georgia,serif;color:#1D1D1F">${esc(p.name)}</div>
+          <div style="font-size:11px;color:#8A8878;margin:3px 0 8px">${esc(corrName(p.corridor))}${p.location ? ' · ' + esc(p.location) : ''}</div>
+          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px">
+            <span style="font-size:9.5px;font-weight:700;letter-spacing:.4px;background:#F1F4EE;color:#2F6644;border-radius:999px;padding:3px 8px">${esc(priceBand(p))}</span>
+            ${p.approvalType ? `<span style="font-size:9.5px;font-weight:700;letter-spacing:.4px;background:#F6F1E4;color:#7A5A23;border-radius:999px;padding:3px 8px">${esc(String(p.approvalType).toUpperCase())}</span>` : ''}
+            ${p.sizes ? `<span style="font-size:9.5px;font-weight:700;letter-spacing:.4px;background:#EEF2F7;color:#2C5282;border-radius:999px;padding:3px 8px">${esc(p.sizes)}</span>` : ''}
+          </div>
+          ${p.pros ? `<div style="font-size:11.5px;color:#4A4A42;line-height:1.55">${esc(String(p.pros).split('\n').slice(0, 3).join(' · '))}</div>` : ''}
+          ${p.rera ? `<div style="font-size:10px;color:#8A8878;margin-top:6px">RERA ${esc(p.rera)}</div>` : ''}
+        </div>
+      </div>`;
+    };
+    return `<!doctype html><html lang="en"><head><meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>${esc(c.name || 'Your shortlist')} — BCS shortlist</title>
+      <style>
+        *{box-sizing:border-box}body{margin:0;font-family:'DM Sans',-apple-system,'Segoe UI',Roboto,sans-serif;background:#F7F6F2;color:#1D1D1F;line-height:1.55}
+        .hero{background:linear-gradient(140deg,#3A3928,#A57B36);color:#fff;padding:30px 22px 32px}
+        .hero small{font-size:9.5px;letter-spacing:2.4px;text-transform:uppercase;opacity:.8;display:block}
+        .hero h1{font-family:'Fraunces',Georgia,serif;font-size:26px;line-height:1.18;margin:8px 0 6px;letter-spacing:-.4px}
+        .hero p{font-size:12.5px;opacity:.9;margin:0}
+        .wrap{max-width:760px;margin:0 auto;padding:20px 18px 56px}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:13px}
+        .cta{margin-top:20px;background:#fff;border:1px solid #E3E0D3;border-radius:16px;padding:16px 17px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+        .cta b{font-family:'Fraunces',Georgia,serif;font-size:15px;display:block}
+        .cta a{display:inline-flex;align-items:center;gap:6px;background:#3A3928;color:#FFFDF6;text-decoration:none;border-radius:10px;padding:9px 14px;font-size:12px;font-weight:700}
+        .foot{max-width:760px;margin:0 auto;padding:0 18px 40px;font-size:10.5px;color:#8A8878}
+        @media(max-width:520px){.hero{padding:24px 16px 26px}.hero h1{font-size:22px}.wrap{padding:14px 12px 40px}}
+      </style></head><body>
+      <div class="hero">
+        <small>BCS · Business City Square · Jaipur</small>
+        <h1>${esc(c.name || 'Aapke liye shortlist')}</h1>
+        <p>${projs.length} option${projs.length === 1 ? '' : 's'} — aapke budget aur requirement ke hisaab se.</p>
+      </div>
+      <div class="wrap">
+        <div class="grid">${projs.map(card).join('') || '<div style="padding:20px;color:#8A8878">Abhi koi option shortlist nahi hua.</div>'}</div>
+        <div class="cta">
+          <div style="flex:1;min-width:200px"><b>Site visit fix karein</b><span style="font-size:11.5px;color:#6B6A5E">Koi bhi option pasand aaye to ek message kaafi hai.</span></div>
+          <a href="${esc(waLink((adv && adv.phone) || '') || 'https://wa.me/')}">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="foot">Ye page aapke liye BCS ne banaya hai — prices indicative hain, availability confirm karein. RERA details project-wise verify karein.</div>
+      </body></html>`;
+  }
+  function renderPages(){
+    const clients = db.clients || [];
+    if(!clients.length) return `<div class="ops-empty"><b>Koi client nahi</b>Clients me ek client add karein — uske liye shareable shortlist page yahan se banega (no login needed).</div>`;
+    if(!opsPageClient || !clients.some(c => c.id === opsPageClient)) opsPageClient = clients[0].id;
+    const c = byId('clients', opsPageClient);
+    const projs = shortlistProjects(c);
+    const saved = (opsOf().shortlists || []).filter(s => s.clientId === c.id);
+    return `
+      <div class="ops-panel">
+        <div class="ops-panel-head">
+          <h4>Shareable client shortlist page</h4>
+          <span class="sub">standalone HTML · client ko login ki zaroorat nahi</span>
+          <span class="spacer"></span>
+          <select id="opsPageClientSel" style="padding:7px 8px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);font-size:12px;max-width:260px">
+            ${clients.map(x => `<option value="${x.id}"${x.id === opsPageClient ? ' selected' : ''}>${esc(x.name || x.phone || 'Client')}</option>`).join('')}
+          </select>
+        </div>
+        <div class="ops-kpis" style="margin-bottom:12px">
+          <div class="ops-kpi"><div class="k">Client</div><div class="v" style="font-size:14px">${esc(c.name || '—')}</div></div>
+          <div class="ops-kpi"><div class="k">Shortlisted</div><div class="v">${projs.length}</div></div>
+          <div class="ops-kpi"><div class="k">Budget</div><div class="v" style="font-size:14px">${(c.budgetMin || c.budgetMax) ? '₹' + (c.budgetMin || 0) + '–' + (c.budgetMax || 0) + ' L' : '—'}</div></div>
+          <div class="ops-kpi"><div class="k">Source</div><div class="v" style="font-size:13px">${esc(c.source || '—')}</div></div>
+        </div>
+        ${projs.length ? projs.map(p => `<div class="ops-row">
+          <div class="grow"><span class="nm">${esc(p.name)}</span><span class="mt">${esc(corrName(p.corridor))} · ${esc(priceBand(p))}${p.sizes ? ' · ' + esc(p.sizes) : ''}</span></div>
+          <span class="ops-chip mut">${esc(p.approvalType || 'approval n/a')}</span>
+        </div>`).join('') : `<div class="ops-empty">Is client ke liye koi project shortlist nahi — client me “Suggested projects” bharein.</div>`}
+        <div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:12px">
+          <button class="btn primary sm" data-page-make>👁 Preview page</button>
+          <button class="btn ghost sm" data-page-download>⬇ Download HTML</button>
+          <button class="btn ghost sm" data-page-share>📤 Share / WhatsApp</button>
+          <button class="btn ghost sm" data-page-save>💾 Save version</button>
+        </div>
+        <div style="font-size:11px;color:var(--mut);margin-top:9px;line-height:1.6">Page self-contained hai — koi server, login ya internet dependency nahi. Download karke WhatsApp par file bhej dein, ya preview se hi share karein.</div>
+      </div>
+      <div class="ops-panel">
+        <div class="ops-panel-head"><h4>Saved versions</h4><span class="sub">${saved.length} for this client</span></div>
+        ${saved.length ? saved.slice().sort((a, b) => b.ts - a.ts).map(s => `<div class="ops-row">
+          <div class="grow"><span class="nm">${new Date(s.ts).toLocaleString('en-IN')}</span><span class="mt">${s.projectIds.length} projects${s.note ? ' · ' + esc(s.note) : ''}</span></div>
+          <button class="btn ghost sm" data-page-open="${s.id}">Open</button>
+          <button class="btn ghost sm" data-page-del="${s.id}">🗑</button>
+        </div>`).join('') : `<div class="ops-empty">Abhi koi saved version nahi.</div>`}
+      </div>`;
+  }
+
+  /* ---------------------------------------------------------
+     render + wiring
+     --------------------------------------------------------- */
+  const RENDERERS = {
+    backups: renderBackups, activity: renderActivity, docs: renderDocs,
+    money: renderMoney, dd: renderDd, roi: renderRoi,
+    commission: renderCommission, broadcast: renderBroadcast,
+    map: renderMap, pages: renderPages
+  };
+
+  function renderOps(){
+    const tabs = q('#opsTabs');
+    const body = q('#opsBody');
+    if(!tabs || !body) return;
+    if(!isAdmin()){
+      tabs.innerHTML = '';
+      body.innerHTML = '<div class="ops-empty"><b>Admin only</b>Operations workspace admin desk ke liye hai.</div>';
+      return;
+    }
+    const o = opsOf();
+    const counts = {
+      backups: (o.backups || []).length,
+      activity: (o.activity || []).filter(a => !a.undone).length,
+      docs: (o.docs || []).filter(x => x.status === 'pending').length,
+      money: receivables().length,
+      dd: (o.dd || []).length,
+      roi: (o.roi || []).length,
+      commission: (db.pipeline || []).filter(d => d.stage !== 'cancelled').length,
+      broadcast: (o.broadcasts || []).length,
+      map: (o.pins || []).length,
+      pages: (db.clients || []).length
+    };
+    tabs.innerHTML = OPS_TABS.map(t => `<button type="button" role="tab" data-opstab="${t.id}" class="${opsTab === t.id ? 'on' : ''}" aria-selected="${opsTab === t.id}">${t.label}${counts[t.id] ? `<b>${counts[t.id]}</b>` : ''}</button>`).join('');
+    try{
+      body.innerHTML = RENDERERS[opsTab] ? RENDERERS[opsTab]() : '';
+    }catch(e){
+      console.error('[BCS ops render]', e);
+      body.innerHTML = `<div class="ops-empty"><b>Is section me error aaya</b>${esc(e && e.message || '')}</div>`;
+    }
+  }
+
+  /* delegated clicks */
+  document.addEventListener('click', function(e){
+    const t = e.target;
+    if(!t || !t.closest) return;
+
+    const tabBtn = t.closest('[data-opstab]');
+    if(tabBtn){ opsTab = tabBtn.dataset.opstab; renderOps(); return; }
+
+    /* backups */
+    if(t.closest('[data-bk-now]')) return void opsBackupNow('manual', 'Manual backup');
+    if(t.closest('[data-bk-export]')) return void downloadBackup();
+    const bkPrev = t.closest('[data-bk-preview]');
+    if(bkPrev) return void opsPreviewBackup(bkPrev.dataset.bkPreview);
+    const bkRes = t.closest('[data-bk-restore]');
+    if(bkRes) return void opsRestoreBackup(bkRes.dataset.bkRestore);
+    const bkDel = t.closest('[data-bk-del]');
+    if(bkDel){
+      const id = bkDel.dataset.bkDel;
+      if(!confirm('Ye backup snapshot delete karein?')) return;
+      const o = opsOf();
+      o.backups = (o.backups || []).filter(b => b.id !== id);
+      try{ idbDel(BK_PREFIX + id).catch(() => {}); }catch(err){}
+      auditState = null; save(); renderOps(); toast('Snapshot deleted');
+      return;
+    }
+
+    /* activity */
+    const undoBtn = t.closest('[data-act-undo]');
+    if(undoBtn) return opsUndo(undoBtn.dataset.actUndo);
+
+    /* documents */
+    const docShare = t.closest('[data-doc-share]');
+    if(docShare){
+      const d = byId('pipeline', opsDocsDeal);
+      const list = docsFor(opsDocsDeal);
+      const prog = docProgress(opsDocsDeal);
+      const txt = 'BCS · Document checklist\n\n' + (d ? dealClientLabel(d) + ' — ' + dealLabel(d) + '\n' : '') +
+        'Progress: ' + prog.done + '/' + prog.total + ' (' + prog.pct + '%)\n\n' +
+        list.map(x => (x.status === 'done' ? '✓ ' : x.status === 'na' ? '– ' : '○ ') + x.item + (x.note ? '  (' + x.note + ')' : '')).join('\n') +
+        '\n\n— BCS (Business City Square), Jaipur';
+      return previewMessage('Document checklist', txt, d ? d.clientPhone : '');
+    }
+    const docAdd = t.closest('[data-doc-add]');
+    if(docAdd){
+      const inp = q('#opsDocNew');
+      const v = inp ? inp.value.trim() : '';
+      if(!v) return toast('Document ka naam likhein', true);
+      const d = byId('pipeline', opsDocsDeal);
+      opsOf().docs.push({ id: uid(), dealId: opsDocsDeal, clientId: (d && d.clientId) || '', projectId: (d && d.projectId) || '', item: v, status: 'pending', due: '', note: '', updatedAt: Date.now() });
+      opsLog('created', 'Document', opsDocsDeal, 'Added document — ' + v, '');
+      auditState = null; save(); renderOps(); toast('Document added');
+      return;
+    }
+    const docDel = t.closest('[data-doc-del]');
+    if(docDel){
+      const id = docDel.dataset.docDel;
+      const o = opsOf();
+      o.docs = (o.docs || []).filter(x => x.id !== id);
+      auditState = null; save(); renderOps(); return;
+    }
+
+    /* receivables */
+    if(t.closest('[data-rem-gen]')){
+      const rows = receivables();
+      const o = opsOf();
+      let added = 0;
+      rows.forEach(r => {
+        if((o.reminders || []).some(x => x.dealId === r.deal.id && x.status === 'queued')) return;
+        o.reminders.push({ id: uid(), dealId: r.deal.id, clientId: r.deal.clientId || '', amount: r.outstanding, due: todayISO(), channel: 'whatsapp', status: 'queued', sentAt: null, note: r.age + ' days overdue', createdAt: Date.now() });
+        added++;
+      });
+      auditState = null; save(); renderOps();
+      toast(added ? added + ' reminder queue me add hue' : 'Sab outstanding already queue me hain');
+      return;
+    }
+    const remind = t.closest('[data-remind-deal]');
+    if(remind){
+      const r = receivables().find(x => x.deal.id === remind.dataset.remindDeal);
+      if(!r) return;
+      return previewMessage('Payment reminder', reminderText(r), r.deal.clientPhone);
+    }
+    const remOpen = t.closest('[data-rem-open]');
+    if(remOpen){
+      const o = opsOf();
+      const r = (o.reminders || []).find(x => x.id === remOpen.dataset.remOpen);
+      if(!r) return;
+      const d = byId('pipeline', r.dealId);
+      if(!d) return toast('Sale record nahi mila', true);
+      const rr = receivables().find(x => x.deal.id === d.id) || { deal: d, pending: dealPending(d), brk: dealBrkPending(d), outstanding: dealPending(d) + dealBrkPending(d), age: 0 };
+      const txt = reminderText(rr);
+      previewMessage('Payment reminder', txt, d.clientPhone, {
+        onWhatsApp: function(){
+          r.status = 'sent'; r.sentAt = Date.now();
+          auditState = null; save(); renderOps();
+        }
+      });
+      return;
+    }
+    const remSent = t.closest('[data-rem-sent]');
+    if(remSent){
+      const o = opsOf();
+      const r = (o.reminders || []).find(x => x.id === remSent.dataset.remSent);
+      if(r){ r.status = 'sent'; r.sentAt = Date.now(); auditState = null; save(); renderOps(); toast('Marked sent'); }
+      return;
+    }
+    const remDel = t.closest('[data-rem-del]');
+    if(remDel){
+      const o = opsOf();
+      o.reminders = (o.reminders || []).filter(x => x.id !== remDel.dataset.remDel);
+      auditState = null; save(); renderOps(); return;
+    }
+
+    /* due diligence */
+    const ddShare = t.closest('[data-dd-share]');
+    if(ddShare){
+      const proj = byId('projects', opsDdProject);
+      const sc = ddScore(opsDdProject);
+      const txt = 'BCS · Due-diligence pack\n\n' + (proj ? proj.name + '\n' + corrName(proj.corridor) + '\n' : '') +
+        'Score: ' + sc.done + '/' + sc.active + ' (' + sc.pct + '%)\n\n' +
+        DD_ITEMS.map(it => {
+          const cell = sc.rec.items[it.id] || {};
+          return (cell.status === 'done' ? '✓ ' : cell.status === 'na' ? '– ' : '○ ') + it.label + (cell.note ? '  (' + cell.note + ')' : '');
+        }).join('\n') +
+        (sc.rec.note ? '\n\nNote: ' + sc.rec.note : '') +
+        '\n\n— BCS (Business City Square), Jaipur';
+      return previewMessage('Due-diligence pack', txt);
+    }
+    if(t.closest('[data-dd-save]')){
+      const rec = ddRec(opsDdProject);
+      const n = q('#opsDdNote');
+      rec.note = n ? n.value.trim() : '';
+      rec.updatedAt = Date.now();
+      auditState = null; save(); renderOps(); toast('Pack note saved');
+      return;
+    }
+
+    /* ROI */
+    if(t.closest('[data-roi-add]')){
+      const month = q('#opsRoiMonth') ? q('#opsRoiMonth').value : todayISO().slice(0, 7);
+      const source = q('#opsRoiSource') ? q('#opsRoiSource').value : 'Other';
+      const spend = Number(q('#opsRoiSpend') ? q('#opsRoiSpend').value : 0) || 0;
+      const note = q('#opsRoiNote') ? q('#opsRoiNote').value.trim() : '';
+      if(!spend) return toast('Spend amount daalein', true);
+      opsOf().roi.push({ id: uid(), month: month || todayISO().slice(0, 7), source, spend, note, createdAt: Date.now() });
+      opsLog('created', 'ROI', source, 'Logged ' + money(spend) + ' spend — ' + source, month);
+      auditState = null; save(); renderOps(); toast('Spend logged');
+      return;
+    }
+    const roiDel = t.closest('[data-roi-del]');
+    if(roiDel){
+      const o = opsOf();
+      o.roi = (o.roi || []).filter(x => x.id !== roiDel.dataset.roiDel);
+      auditState = null; save(); renderOps(); return;
+    }
+
+    /* commission / invoice */
+    if(t.closest('[data-inv-make]')){
+      const sel = q('#opsInvDealSel');
+      const dealId = sel ? sel.value : opsInvDeal;
+      const d = byId('pipeline', dealId);
+      if(!d) return toast('Sale select karein', true);
+      const amount = Number(q('#opsInvAmount') ? q('#opsInvAmount').value : 0) || dealBrkTotal(d);
+      if(!amount) return toast('Invoice amount daalein', true);
+      const gstPct = Number(q('#opsInvGst') ? q('#opsInvGst').value : 18) || 0;
+      const date = (q('#opsInvDate') && q('#opsInvDate').value) || todayISO();
+      const o = opsOf();
+      o.invoiceSeq = (Number(o.invoiceSeq) || 0) + 1;
+      const fy = (function(){ const y = new Date(date).getFullYear(); const m = new Date(date).getMonth(); const start = m >= 3 ? y : y - 1; return String(start).slice(2) + '-' + String(start + 1).slice(2); })();
+      const no = 'BCS/' + fy + '/' + String(o.invoiceSeq).padStart(4, '0');
+      const inv = { id: uid(), no, dealId, date, due: addISO(date, 15), amount, gstPct, status: 'draft', paidAt: null, note: '', createdAt: Date.now() };
+      o.invoices.unshift(inv);
+      opsLog('created', 'Invoice', inv.id, 'Invoice ' + no + ' — ' + money(amount), dealClientLabel(d));
+      auditState = null; save(); renderOps();
+      setTimeout(() => previewInvoice(inv.id), 120);
+      return;
+    }
+    const invShare = t.closest('[data-inv-share]');
+    if(invShare) return previewInvoice(invShare.dataset.invShare);
+    const invStatus = t.closest('[data-inv-status]');
+    if(invStatus){
+      const o = opsOf();
+      const inv = (o.invoices || []).find(x => x.id === invStatus.dataset.invStatus);
+      if(inv){
+        inv.status = inv.status === 'draft' ? 'sent' : inv.status === 'sent' ? 'paid' : 'draft';
+        if(inv.status === 'paid') inv.paidAt = Date.now();
+        auditState = null; save(); renderOps();
+      }
+      return;
+    }
+    const invDel = t.closest('[data-inv-del]');
+    if(invDel){
+      if(!confirm('Invoice delete karein?')) return;
+      const o = opsOf();
+      o.invoices = (o.invoices || []).filter(x => x.id !== invDel.dataset.invDel);
+      auditState = null; save(); renderOps(); return;
+    }
+
+    /* broadcast */
+    if(t.closest('[data-tpl-save]')){
+      const o = opsOf();
+      const tpl = (o.waTemplates || []).find(x => x.id === opsBcTpl);
+      if(!tpl) return;
+      const body = q('#opsBcBody') ? q('#opsBcBody').value : '';
+      if(!body.trim()) return toast('Message body khali hai', true);
+      tpl.body = body;
+      if(q('#opsBcName')) tpl.name = q('#opsBcName').value.trim() || tpl.name;
+      if(q('#opsBcScope')) tpl.scope = q('#opsBcScope').value;
+      tpl.updatedAt = Date.now();
+      auditState = null; save(); renderOps(); toast('Template saved');
+      return;
+    }
+    if(t.closest('[data-tpl-new]')){
+      const o = opsOf();
+      const tpl = { id: uid(), name: 'New template', scope: 'general', body: 'Namaste {client} ji,\n\n', createdAt: Date.now(), updatedAt: Date.now() };
+      o.waTemplates.push(tpl);
+      opsBcTpl = tpl.id;
+      auditState = null; save(); renderOps();
+      return;
+    }
+    if(t.closest('[data-tpl-del]')){
+      const o = opsOf();
+      if((o.waTemplates || []).length <= 1) return toast('Ek template toh rakhna hoga', true);
+      if(!confirm('Ye template delete karein?')) return;
+      o.waTemplates = o.waTemplates.filter(x => x.id !== opsBcTpl);
+      opsBcTpl = o.waTemplates[0].id;
+      auditState = null; save(); renderOps(); return;
+    }
+    if(t.closest('[data-bc-build]')){
+      const tpl = (opsOf().waTemplates || []).find(x => x.id === opsBcTpl);
+      if(!tpl) return toast('Template select karein', true);
+      const aud = q('#opsBcAudience') ? q('#opsBcAudience').value : 'all';
+      let list = (db.clients || []).filter(c => c.phone);
+      if(aud === 'active') list = list.filter(c => !['booked', 'lost'].includes(c.clientStatus || 'new'));
+      if(aud === 'token') list = list.filter(c => ['token', 'closed'].includes(c.clientStatus || ''));
+      if(aud === 'outstanding'){
+        const ids = new Set(receivables().map(r => r.deal.clientId).filter(Boolean));
+        list = list.filter(c => ids.has(c.id));
+      }
+      if(aud.indexOf('src:') === 0){
+        const src = aud.slice(4);
+        list = list.filter(c => c.source === src);
+      }
+      if(!list.length) return toast('Is audience me koi phone wala client nahi', true);
+      const o = opsOf();
+      const recips = list.map(c => ({ id: uid(), name: c.name || c.phone, phone: c.phone, status: 'queued', sentAt: null, clientId: c.id }));
+      const name = (q('#opsBcQueueName') && q('#opsBcQueueName').value.trim()) || (tpl.name + ' · ' + nowStamp());
+      const bc = { id: uid(), ts: Date.now(), name, templateId: tpl.id, audience: aud, status: 'queued', recipients: recips };
+      o.broadcasts.unshift(bc);
+      opsLog('created', 'Broadcast', bc.id, 'Queued “' + name + '”', recips.length + ' recipients');
+      auditState = null; save(); renderOps();
+      toast(recips.length + ' recipients queue me');
+      return;
+    }
+    const bcOpen = t.closest('[data-bc-open]');
+    if(bcOpen) return openBroadcast(bcOpen.dataset.bcOpen);
+    const bcSentAll = t.closest('[data-bc-sent-all]');
+    if(bcSentAll){
+      const o = opsOf();
+      const bc = (o.broadcasts || []).find(x => x.id === bcSentAll.dataset.bcSentAll);
+      if(bc){ bc.recipients.forEach(r => { if(r.status !== 'sent'){ r.status = 'sent'; r.sentAt = Date.now(); } }); bc.status = 'done'; auditState = null; save(); renderOps(); toast('Sab sent mark hue'); }
+      return;
+    }
+    const bcDel = t.closest('[data-bc-del]');
+    if(bcDel){
+      if(!confirm('Broadcast delete karein?')) return;
+      const o = opsOf();
+      o.broadcasts = (o.broadcasts || []).filter(x => x.id !== bcDel.dataset.bcDel);
+      auditState = null; save(); renderOps(); return;
+    }
+
+    /* map */
+    if(t.closest('[data-pin-loc]')){
+      if(!navigator.geolocation) return toast('Is browser me location available nahi', true);
+      toast('Location le rahe hain…');
+      navigator.geolocation.getCurrentPosition(pos => {
+        if(q('#opsPinLat')) q('#opsPinLat').value = pos.coords.latitude.toFixed(6);
+        if(q('#opsPinLng')) q('#opsPinLng').value = pos.coords.longitude.toFixed(6);
+        toast('Location aa gayi — title likhkar Add pin dabayein');
+      }, () => toast('Location permission nahi mili — manually lat/lng daalein', true), { enableHighAccuracy: true, timeout: 8000 });
+      return;
+    }
+    if(t.closest('[data-pin-add]')){
+      const title = q('#opsPinTitle') ? q('#opsPinTitle').value.trim() : '';
+      if(!title) return toast('Pin ka title likhein', true);
+      const lat = Number(q('#opsPinLat') ? q('#opsPinLat').value : 0) || 0;
+      const lng = Number(q('#opsPinLng') ? q('#opsPinLng').value : 0) || 0;
+      opsOf().pins.push({
+        id: uid(), corridorId: q('#opsPinCorr') ? q('#opsPinCorr').value : '',
+        title, lat, lng, note: q('#opsPinNote') ? q('#opsPinNote').value.trim() : '',
+        kind: q('#opsPinKind') ? q('#opsPinKind').value : 'landmark', createdAt: Date.now()
+      });
+      auditState = null; save(); renderOps(); toast('Pin saved');
+      return;
+    }
+    const pinDel = t.closest('[data-pin-del]');
+    if(pinDel){
+      const o = opsOf();
+      o.pins = (o.pins || []).filter(x => x.id !== pinDel.dataset.pinDel);
+      auditState = null; save(); renderOps(); return;
+    }
+    if(t.closest('[data-loc-add]')){
+      const title = q('#opsLocTitle') ? q('#opsLocTitle').value.trim() : '';
+      const note = q('#opsLocNote') ? q('#opsLocNote').value.trim() : '';
+      if(!title || !note) return toast('Title aur note dono likhein', true);
+      opsOf().locality.push({ id: uid(), corridorId: q('#opsLocCorr') ? q('#opsLocCorr').value : '', title, note, updatedAt: Date.now() });
+      auditState = null; save(); renderOps(); toast('Locality note saved');
+      return;
+    }
+    const locDel = t.closest('[data-loc-del]');
+    if(locDel){
+      const o = opsOf();
+      o.locality = (o.locality || []).filter(x => x.id !== locDel.dataset.locDel);
+      auditState = null; save(); renderOps(); return;
+    }
+    const mapProj = t.closest('[data-map-proj]');
+    if(mapProj){
+      const corr = mapProj.dataset.mapProj;
+      const projs = (db.projects || []).filter(p => p.corridor === corr);
+      const txt = 'BCS · ' + corrName(corr) + '\n\n' + projs.map(p => '• ' + p.name + ' — ' + priceBand(p) + (p.rera ? ' · RERA ' + p.rera : '')).join('\n') + '\n\n— BCS, Jaipur';
+      return previewMessage(corrName(corr) + ' projects', txt);
+    }
+
+    /* client pages */
+    if(t.closest('[data-page-make]')) return previewClientPage();
+    if(t.closest('[data-page-download]')){
+      const c = byId('clients', opsPageClient);
+      if(!c) return;
+      const html = clientPageHTML(c);
+      try{
+        const blob = new Blob([html], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = (String(c.name || 'client').replace(/[^a-z0-9]+/gi, '-').toLowerCase() || 'client') + '-bcs-shortlist.html';
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => { try{ URL.revokeObjectURL(url); }catch(e){} }, 4000);
+        toast('Shortlist page download ho gaya');
+      }catch(err){ toast('Download fail — preview se share karein', true); }
+      return;
+    }
+    if(t.closest('[data-page-share]')){
+      const c = byId('clients', opsPageClient);
+      if(!c) return;
+      const html = clientPageHTML(c);
+      previewMessage('Client shortlist page', 'Namaste ' + (c.name || 'ji') + ' ji,\n\nAapke liye ' + shortlistProjects(c).length + ' options shortlist kiye hain — budget, corridor aur approval ke hisaab se.\n\nPoora shortlist page neeche attach hai. Koi option pasand aaye to bata dijiye.\n\n— Ajay Sharma\nBCS (Business City Square), Jaipur', c.phone, {
+        kind: 'Client page', html, filename: (c.name || 'client') + '-shortlist.html'
+      });
+      return;
+    }
+    if(t.closest('[data-page-save]')){
+      const c = byId('clients', opsPageClient);
+      if(!c) return;
+      opsOf().shortlists.unshift({ id: uid(), clientId: c.id, ts: Date.now(), projectIds: shortlistProjects(c).map(p => p.id), note: '' });
+      opsLog('created', 'Client page', c.id, 'Saved shortlist version — ' + (c.name || c.phone), '');
+      auditState = null; save(); renderOps(); toast('Version saved');
+      return;
+    }
+    const pageOpen = t.closest('[data-page-open]');
+    if(pageOpen){
+      const s = (opsOf().shortlists || []).find(x => x.id === pageOpen.dataset.pageOpen);
+      if(!s) return;
+      const c = byId('clients', s.clientId);
+      if(!c) return;
+      const html = clientPageHTML(Object.assign({}, c, { projectIds: s.projectIds }));
+      previewDoc('Client shortlist', html, (c.name || 'client') + '-shortlist.html');
+      return;
+    }
+    const pageDel = t.closest('[data-page-del]');
+    if(pageDel){
+      const o = opsOf();
+      o.shortlists = (o.shortlists || []).filter(x => x.id !== pageDel.dataset.pageDel);
+      auditState = null; save(); renderOps(); return;
+    }
+  });
+
+  /* change handlers (selects / inputs that save on change) */
+  document.addEventListener('change', function(e){
+    const t = e.target;
+    if(!t || !t.closest) return;
+    if(t.id === 'opsActEntity'){ opsActEntity = t.value; renderOps(); return; }
+    if(t.id === 'opsDocsDealSel'){ opsDocsDeal = t.value; renderOps(); return; }
+    if(t.id === 'opsDdSel'){ opsDdProject = t.value; renderOps(); return; }
+    if(t.id === 'opsBcTplSel'){ opsBcTpl = t.value; renderOps(); return; }
+    if(t.id === 'opsPageClientSel'){ opsPageClient = t.value; renderOps(); return; }
+    if(t.id === 'opsInvDealSel'){
+      opsInvDeal = t.value;
+      const d = byId('pipeline', opsInvDeal);
+      if(d && q('#opsInvAmount')) q('#opsInvAmount').value = Math.round(dealBrkTotal(d));
+      return;
+    }
+    const ds = t.closest('[data-doc-status]');
+    if(ds){
+      const o = opsOf();
+      const rec = (o.docs || []).find(x => x.id === ds.dataset.docStatus);
+      if(rec){ rec.status = ds.value; rec.updatedAt = Date.now(); auditState = null; save(); renderOps(); }
+      return;
+    }
+    const ddn = t.closest('[data-dd-status]');
+    if(ddn){
+      const rec = ddRec(opsDdProject);
+      rec.items[ddn.dataset.ddStatus] = Object.assign({ status: 'pending', note: '' }, rec.items[ddn.dataset.ddStatus], { status: ddn.value });
+      rec.updatedAt = Date.now();
+      auditState = null; save(); renderOps(); return;
+    }
+  });
+  document.addEventListener('input', function(e){
+    const t = e.target;
+    if(!t || !t.closest) return;
+    if(t.id === 'opsActQ'){
+      opsActQ = t.value;
+      clearTimeout(opsActTimer);
+      opsActTimer = setTimeout(() => {
+        renderOps();
+        const el = q('#opsActQ');
+        if(el){ el.focus(); try{ el.setSelectionRange(el.value.length, el.value.length); }catch(err){} }
+      }, 320);
+      return;
+    }
+    const dn = t.closest('[data-doc-note]');
+    if(dn){
+      const o = opsOf();
+      const rec = (o.docs || []).find(x => x.id === dn.dataset.docNote);
+      if(rec){ rec.note = dn.value; rec.updatedAt = Date.now(); }
+      return;
+    }
+    const dd = t.closest('[data-dd-note]');
+    if(dd){
+      const rec = ddRec(opsDdProject);
+      rec.items[dd.dataset.ddNote] = Object.assign({ status: 'pending', note: '' }, rec.items[dd.dataset.ddNote], { note: dd.value });
+      rec.updatedAt = Date.now();
+      return;
+    }
+  });
+  document.addEventListener('focusout', function(e){
+    const t = e.target;
+    if(!t || !t.closest) return;
+    if(t.closest('[data-doc-note]') || t.closest('[data-dd-note]')){ auditState = null; save(); }
+  });
+
+  /* ---------------------------------------------------------
+     broadcast queue walker — preview each recipient, then send
+     --------------------------------------------------------- */
+  function openBroadcast(id){
+    const o = opsOf();
+    const bc = (o.broadcasts || []).find(x => x.id === id);
+    if(!bc) return;
+    const tpl = (o.waTemplates || []).find(x => x.id === bc.templateId) || (o.waTemplates || [])[0];
+    const next = bc.recipients.find(r => r.status !== 'sent');
+    if(!next){
+      toast('Is queue ke sab messages sent hain');
+      if(bc.status !== 'done'){ bc.status = 'done'; save(); renderOps(); }
+      return;
+    }
+    const c = byId('clients', next.clientId) || { name: next.name, phone: next.phone };
+    const ctx = clientCtx(c);
+    const text = resolveTemplate(tpl ? tpl.body : '', ctx);
+    previewMessage(bc.name + ' · ' + (next.name || next.phone), text, next.phone, {
+      kind: 'Broadcast',
+      onWhatsApp: function(){
+        next.status = 'sent'; next.sentAt = Date.now();
+        if(bc.recipients.every(r => r.status === 'sent')) bc.status = 'done';
+        auditState = null; save(); renderOps();
+        toast('Sent · ' + bc.recipients.filter(r => r.status === 'sent').length + '/' + bc.recipients.length);
+      }
+    });
+  }
+
+  /* ---------------------------------------------------------
+     invoice + client page preview builders
+     --------------------------------------------------------- */
+  function previewInvoice(id){
+    const o = opsOf();
+    const inv = (o.invoices || []).find(x => x.id === id);
+    if(!inv) return;
+    const d = byId('pipeline', inv.dealId);
+    const t = invoiceTotals(inv);
+    const dev = d ? (d.developerName || ((d.projectId && byId('projects', d.projectId) && byId('projects', d.projectId).developerId) ? (byId('developers', byId('projects', d.projectId).developerId) || {}).name : '')) : '';
+    const html = `<div style="max-width:760px;margin:0 auto;padding:26px 24px;font-family:'DM Sans',system-ui,sans-serif;color:#1D1D1F">
+      <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:2px solid #3A3928;padding-bottom:16px">
+        <div>
+          <div style="font:600 21px/1.2 'Fraunces',Georgia,serif;letter-spacing:-.3px">BCS · Business City Square</div>
+          <div style="font-size:11px;color:#6B6A5E;margin-top:3px">Jaipur · Real estate advisory · RERA-registered</div>
+          <div style="font-size:11px;color:#6B6A5E">@ajaysharma.bcs</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:#8A8878">Brokerage invoice</div>
+          <div style="font:600 15px/1.3 'DM Sans',sans-serif;margin-top:4px">${esc(inv.no)}</div>
+          <div style="font-size:11px;color:#6B6A5E">${esc(dayLabel(inv.date))}${inv.due ? ' · due ' + esc(dayLabel(inv.due)) : ''}</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0">
+        <div>
+          <div style="font-size:9.5px;letter-spacing:1.4px;text-transform:uppercase;color:#8A8878;margin-bottom:4px">Billed to</div>
+          <div style="font-size:13px;font-weight:600">${esc(dev || 'Developer / channel partner')}</div>
+          <div style="font-size:11.5px;color:#6B6A5E">${esc(d ? dealLabel(d) : '')}</div>
+        </div>
+        <div>
+          <div style="font-size:9.5px;letter-spacing:1.4px;text-transform:uppercase;color:#8A8878;margin-bottom:4px">Client / sale</div>
+          <div style="font-size:13px;font-weight:600">${esc(d ? dealClientLabel(d) : '—')}</div>
+          <div style="font-size:11.5px;color:#6B6A5E">${esc(d ? (d.code || '') + (d.plotDetail ? ' · ' + d.plotDetail : '') : '')}</div>
+        </div>
+      </div>
+      <table style="width:100%;border-collapse:collapse;font-size:12px">
+        <thead><tr>
+          <th style="text-align:left;padding:8px;border-bottom:1px solid #E3E0D3;font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:#8A8878">Description</th>
+          <th style="text-align:right;padding:8px;border-bottom:1px solid #E3E0D3;font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:#8A8878">Amount</th>
+        </tr></thead>
+        <tbody>
+          <tr><td style="padding:10px 8px;border-bottom:1px solid #EFEDE4">Brokerage / channel commission — ${esc(d ? dealLabel(d) : '')}${d && d.plotDetail ? ' (' + esc(d.plotDetail) + ')' : ''}</td><td style="padding:10px 8px;text-align:right;border-bottom:1px solid #EFEDE4">${money(t.base)}</td></tr>
+          <tr><td style="padding:10px 8px;border-bottom:1px solid #EFEDE4">GST @ ${inv.gstPct || 0}%</td><td style="padding:10px 8px;text-align:right;border-bottom:1px solid #EFEDE4">${money(t.gst)}</td></tr>
+          <tr><td style="padding:12px 8px;font-weight:700">Total payable</td><td style="padding:12px 8px;text-align:right;font-weight:700;font-size:14px">${money(t.total)}</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:18px;font-size:10.5px;color:#8A8878;line-height:1.65;border-top:1px solid #EFEDE4;padding-top:12px">
+        Payment within 15 days. Please quote invoice number with the transfer. This is a computer-generated invoice from BCS Desk.<br>
+        Status: ${inv.status === 'paid' ? 'PAID' : inv.status === 'sent' ? 'SENT' : 'DRAFT'}
+      </div>
+    </div>`;
+    previewDoc('Invoice ' + inv.no, html, inv.no.replace(/[^a-z0-9]+/gi, '-') + '.html');
+  }
+  function previewClientPage(){
+    const c = byId('clients', opsPageClient);
+    if(!c) return;
+    const html = clientPageHTML(c);
+    previewDoc('Client shortlist — ' + (c.name || 'client'), html, (c.name || 'client') + '-shortlist.html');
+  }
+
+  /* ---------------------------------------------------------
+     boot wiring
+     --------------------------------------------------------- */
+  function boot(){
+    const bn = q('#opsBackupNow');
+    if(bn) bn.addEventListener('click', () => opsBackupNow('manual', 'Manual backup'));
+    const ex = q('#opsExportAll');
+    if(ex) ex.addEventListener('click', () => downloadBackup());
+    if(!isAdmin()) qa('[data-view="ops"]').forEach(b => { b.style.display = 'none'; });
+
+    /* client profile → shortlist page */
+    try{
+      const foot = q('#clientProfileModal .modal-foot');
+      if(foot && !q('#opsClientPageBtn')){
+        const b = document.createElement('button');
+        b.className = 'btn ghost'; b.id = 'opsClientPageBtn'; b.type = 'button';
+        b.title = 'Shareable shortlist page — no login';
+        b.textContent = '🗂 Shortlist page';
+        const close = foot.querySelector('[data-close="clientProfileModal"]');
+        if(close) foot.insertBefore(b, close); else foot.appendChild(b);
+        b.addEventListener('click', () => {
+          if(!clientProfileId) return;
+          opsPageClient = clientProfileId;
+          opsTab = 'pages';
+          closeModal('clientProfileModal');
+          go('ops');
+          setTimeout(() => { try{ renderOps(); }catch(e){} }, 60);
+        });
+      }
+    }catch(e){}
+
+    try{ auditScan(); }catch(e){}
+    setTimeout(() => { try{ opsAutoBackupTick(); }catch(e){} }, 5000);
+    setInterval(() => { try{ opsAutoBackupTick(); }catch(e){} }, 5 * 60 * 1000);
+  }
+
+  /* wrap save() so every write is audited */
+  try{
+    const prevSave = window.save || save;
+    rawSave = prevSave;
+    window.save = function(){
+      const r = prevSave.apply(this, arguments);
+      try{ scheduleAudit(); }catch(e){}
+      return r;
+    };
+  }catch(e){}
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+
+  window.BCS_OPS3 = {
+    renderOps: renderOps,
+    backupNow: opsBackupNow,
+    log: opsLog,
+    openClientPage: function(clientId){
+      if(clientId) opsPageClient = clientId;
+      opsTab = 'pages';
+      go('ops');
+      setTimeout(() => { try{ previewClientPage(); }catch(e){} }, 80);
+    }
   };
 })();
 </script>
