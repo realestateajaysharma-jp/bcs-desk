@@ -15211,6 +15211,10 @@ body.bcs-native :is(.fest-card,.lm-card,.news-mode-btn){scroll-snap-align:start}
     border-radius:22px 22px 0 0 !important;overflow-y:auto !important;-webkit-overflow-scrolling:touch !important;
   }
   body.bcs-native :is(.modal-head,.sheet-head){position:sticky !important;top:0 !important;z-index:3 !important;background:var(--panel) !important}
+  /* universal preview panel: edge-to-edge, no rounded sheet corners, no outer scroll */
+  body.bcs-native #textShareModal .modal.ts-panel{border-radius:0 !important;overflow:hidden !important;height:100% !important;max-height:100dvh !important}
+  body.bcs-native #textShareModal .ts-head{padding-top:calc(14px + var(--bcs-safe-t, env(safe-area-inset-top, 0px)))}
+  body.bcs-native #textShareModal .ts-foot{padding-bottom:calc(10px + env(safe-area-inset-bottom, 0px))}
 }
 /* sticky bars never hide under the Dynamic Island */
 @supports (padding: max(0px)){
@@ -15709,6 +15713,27 @@ body[data-theme="dark"] .pipe-col{background:color-mix(in srgb,var(--panel) 40%,
   background:color-mix(in srgb,var(--acc) 5%,var(--panel));border:1px dashed var(--line);
   border-radius:13px;padding:13px 14px;max-height:46vh;overflow:auto;color:var(--ink)}
 .docket-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+/* ===== universal in-app preview panel (reports · share · WhatsApp) ===== */
+#textShareModal .modal.ts-panel{width:min(1080px,96vw);height:min(92vh,920px);max-height:94vh;display:flex;flex-direction:column;overflow:hidden;padding:0}
+.ts-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);flex:none}
+.ts-head h3{font-family:'Fraunces',serif;font-size:19px;line-height:1.2;margin:0}
+.ts-meta{font-size:10.5px;color:var(--mut);margin-top:3px;line-height:1.4}
+.ts-toolbar{display:flex;gap:7px;flex-wrap:wrap;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--acc) 4%,var(--panel));flex:none}
+.ts-toolbar .btn{min-height:36px}
+.ts-spacer{flex:1;min-width:6px}
+.ts-badge{font-size:9.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:4px 9px;white-space:nowrap}
+.ts-stage{flex:1;min-height:0;overflow:hidden;background:#fff;position:relative}
+.ts-stage iframe{width:100%;height:100%;border:0;display:block;background:#fff}
+.ts-stage pre{display:none;margin:0;height:100%;overflow:auto;padding:18px 20px;white-space:pre-wrap;overflow-wrap:anywhere;font:12.5px/1.65 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--ink);background:color-mix(in srgb,var(--acc) 4%,var(--panel))}
+.ts-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;border-top:1px solid var(--line);flex:none}
+.ts-hint{font-size:10.5px;color:var(--mut);line-height:1.4}
+@media(max-width:640px){
+  #textShareModal{padding:0}
+  #textShareModal .modal.ts-panel{width:100%;height:100%;max-height:100%;border-radius:0}
+  .ts-toolbar .btn{flex:1 1 auto;justify-content:center;font-size:11.5px;padding:8px 10px}
+  .ts-hint{display:none}
+  .ts-head h3{font-size:17px}
+}
 /* legal vault */
 .legal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
 .legal-grid .field{display:flex;flex-direction:column;gap:5px;min-width:0}
@@ -18946,6 +18971,7 @@ try{
     <div class="modal-body" id="dossierBody"></div>
     <div class="modal-foot">
       <button class="btn ghost" data-close="dossierModal">Close</button>
+      <button class="btn primary" id="dossierPreview">👁 Full preview</button>
       <button class="btn ghost" id="dossierCopy">Copy text</button>
       <button class="btn ghost" id="dossierPrint">Print / PDF</button>
       <button class="btn primary" id="dossierShare">Share WhatsApp</button>
@@ -19177,9 +19203,10 @@ try{
       </div>
       <div id="sharePrivacyNote" style="background:color-mix(in srgb,var(--acc) 7%,var(--panel));border:1px solid color-mix(in srgb,var(--acc) 22%,transparent);border-radius:12px;padding:12px 14px;font-size:11.5px;color:var(--ink2);line-height:1.6;margin-bottom:16px"></div>
       <div style="display:grid;gap:10px">
-        <button class="btn primary" id="shareDownloadBtn" style="justify-content:center">⬇ Download share page (.html)</button>
-        <button class="btn ghost" id="shareFileBtn" style="justify-content:center">📱 Send file via WhatsApp / AirDrop</button>
-        <button class="btn ghost" id="shareCopyBtn" style="justify-content:center">📋 Copy project message</button>
+        <button class="btn primary" id="sharePreviewBtn" style="justify-content:center">👁 Preview page & message</button>
+        <button class="btn ghost" id="shareDownloadBtn" style="justify-content:center">⬇ Preview & download page (.html)</button>
+        <button class="btn ghost" id="shareFileBtn" style="justify-content:center">📱 Preview & send file</button>
+        <button class="btn ghost" id="shareCopyBtn" style="justify-content:center">📋 Preview message</button>
         <div style="display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px">
           <img id="shareQr" alt="QR" style="width:110px;height:110px;border-radius:8px;background:#fff;display:none">
           <div style="flex:1;min-width:0">
@@ -20424,10 +20451,11 @@ try{
       <div class="field"><label>Sections — jo chahiye wo on karein</label><div class="checks" id="reportSections"></div></div>
       <div class="mp-note" id="reportSizeNote"></div>
       <div class="modal-actions" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:12px">
+        <button class="btn primary" id="reportPreviewBtn" type="button">👁 Preview full report</button>
         <button class="btn ghost" id="reportCopyBtn" type="button">📋 Copy summary</button>
         <button class="btn ghost" id="reportDownloadBtn" type="button">⬇ Download file</button>
         <button class="btn ghost" id="reportShareBtn" type="button">📤 AirDrop / Share</button>
-        <button class="btn primary" id="reportPdfBtn" type="button">🖨 PDF / Print</button>
+        <button class="btn ghost" id="reportPdfBtn" type="button">🖨 PDF / Print</button>
       </div>
       <div class="mp-note" style="margin-top:8px">💡 PDF: print dialog me "Save as PDF" choose karein. AirDrop: macOS Chrome me share sheet se dusri device par bhejein — warna file download ho jayegi.</div>
     </div>
@@ -20944,16 +20972,28 @@ try{
 </div>
 <!-- ============ OPS II MODALS · docket · route · ledger · legal vault ============ -->
 <div class="overlay" id="textShareModal">
-  <div class="modal">
-    <div class="modal-head"><h3 id="tsTitle">Share</h3><button class="xbtn" data-close="textShareModal">✕</button></div>
-    <div class="modal-body">
-      <div class="docket-preview" id="tsPreview"></div>
-      <div class="docket-actions">
-        <button class="btn ghost" id="tsCopy">📋 Copy to Clipboard</button>
-        <button class="btn primary" id="tsWhatsApp">🟢 Open in WhatsApp</button>
-      </div>
+  <div class="modal ts-panel">
+    <div class="modal-head ts-head">
+      <div style="min-width:0"><h3 id="tsTitle">Preview</h3><div class="ts-meta" id="tsMeta">Report preview</div></div>
+      <button class="xbtn" data-close="textShareModal" aria-label="Close preview">✕</button>
     </div>
-    <div class="modal-foot"><button class="btn ghost" data-close="textShareModal">Close</button></div>
+    <div class="ts-toolbar">
+      <button class="btn ghost sm" id="tsCopy" type="button">📋 Copy</button>
+      <button class="btn ghost sm" id="tsPrint" type="button">🖨 Print / PDF</button>
+      <button class="btn primary sm" id="tsWhatsApp" type="button">🟢 WhatsApp</button>
+      <button class="btn ghost sm" id="tsShare" type="button">📤 Share</button>
+      <button class="btn ghost sm" id="tsDownload" type="button">⬇ Download</button>
+      <span class="ts-spacer"></span>
+      <span class="ts-badge" id="tsBadge">Preview</span>
+    </div>
+    <div class="ts-stage" id="tsStage">
+      <iframe id="tsFrame" title="Report preview" sandbox="allow-same-origin"></iframe>
+      <pre id="tsPreview"></pre>
+    </div>
+    <div class="modal-foot ts-foot">
+      <span class="ts-hint">Pehle poora output dekhein — Copy, Print, WhatsApp ya Download tab jab chahiye.</span>
+      <button class="btn ghost" data-close="textShareModal">Close</button>
+    </div>
   </div>
 </div>
 
@@ -23890,7 +23930,9 @@ function renderNewsletterStudio(){
   });
   const wab = $('#nlWa');
   if(wab) wab.addEventListener('click', () => {
-    window.open('https://wa.me/?text=' + encodeURIComponent(ta.value), '_blank', 'noopener');
+    const txt = ta.value || '';
+    if(window.BCSPreview) return window.BCSPreview.open({ title: 'Newsletter', text: txt, waText: txt, filename: 'BCS-newsletter-' + todayISO() + '.txt', kind: 'Newsletter · preview' });
+    window.open('https://wa.me/?text=' + encodeURIComponent(txt), '_blank', 'noopener');
   });
 }
 function renderCorridorIntel(){
@@ -25243,14 +25285,25 @@ function dossierPrintableHTML(p){
     '<div class="wrap">' + cover + buildDossierSections(p, false) +
     '<div class="foot">BCS · Business City Square · Jaipur · generated ' + stamp + '</div></div></body></html>';
 }
-function printDossier(){
+function previewDossier(){
   const p = db.projects.find(x => x.id === ($('#dossierBody') ? $('#dossierBody').dataset.projectId : ''));
   if(!p) return;
+  const text = dossierText();
+  const slug = String(p.name || 'project').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 48) || 'project';
+  if(window.BCSPreview) return window.BCSPreview.open({
+    title: 'Project file — ' + (p.name || ''),
+    html: dossierPrintableHTML(p),
+    text: text,
+    filename: 'BCS-' + slug + '-file.html',
+    waText: text,
+    kind: 'Project file · full preview'
+  });
   const w = window.open('', '_blank');
   if(!w) return toast('Popup block hua — browser me allow karein', true);
   w.document.open(); w.document.write(dossierPrintableHTML(p)); w.document.close();
   setTimeout(() => { try{ w.focus(); w.print(); }catch(e){} }, 600);
 }
+function printDossier(){ previewDossier(); }
 function dossierText(){
   const p = db.projects.find(x => x.id === $('#dossierBody')?.dataset.projectId);
   if(!p) return '';
@@ -25265,13 +25318,7 @@ function dossierText(){
     `Documents: ${docs.length ? docs.map(x => x.name + ' (' + (x.label || x.status) + (x.fileKey ? ' · file' : '') + ')').join('; ') : 'none'}`,
     '', 'BCS · Business City Square · @ajaysharma.bcs'].join('\n');
 }
-function shareDossier(){
-  const text = dossierText();
-  if(!text) return;
-  const p = db.projects.find(x => x.id === $('#dossierBody')?.dataset.projectId);
-  if(navigator.share){ navigator.share({ title:(p?.name || 'Property') + ' · BCS', text }).catch(() => {}); }
-  else window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
-}
+function shareDossier(){ previewDossier(); }
 function openCostBuilder(projectId, clientId){
   const sel = $('#cbProject');
   sel.innerHTML = scopedProjects().map(p => `<option value="${p.id}">${esc(p.name)}</option>`).join('');
@@ -25332,21 +25379,27 @@ function quoteText(){
     if(navigator.share){ navigator.share({ title, text }).catch(() => {}); } else { window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank'); }
   };
   const bind = (id, fn) => { const el = $(id); if(el) el.addEventListener('click', fn); };
+  const previewText = (title, text) => {
+    if(window.BCSPreview) return window.BCSPreview.open({ title: title, text: text, waText: text, kind: 'Message preview' });
+    shareWa(title)(text);
+  };
+  const previewDossierNow = () => { if(typeof previewDossier === 'function') previewDossier(); };
   bind('#cbOffer', () => { if(typeof openOfferSheet === 'function') openOfferSheet(); });
-  bind('#cbCopy', async () => { const ok = await copyText(quoteText()); toast(ok ? 'Quote copied ✓' : 'Copy failed', !ok); });
-  bind('#cbShare', () => shareWa('BCS Quotation')(quoteText()));
-  bind('#dossierCopy', async () => { const ok = await copyText(dossierText()); toast(ok ? 'Dossier copied ✓' : 'Copy failed', !ok); });
-  bind('#dossierShare', () => shareDossier());
-  bind('#dossierPrint', () => printDossier());
-  bind('#weeklyCopy', async () => { const t = typeof weeklyReport === 'function' ? weeklyReport().text : ''; const ok = await copyText(t); toast(ok ? 'Report copied ✓' : 'Copy failed', !ok); });
-  bind('#weeklyShare', () => { const t = typeof weeklyReport === 'function' ? weeklyReport().text : ''; shareWa('BCS Weekly Report')(t); });
-  bind('#weeklyPrint', () => window.print());
-  bind('#briefCopy', async () => { const ok = await copyText(briefText()); toast(ok ? 'Brief copied ✓' : 'Copy failed', !ok); });
-  bind('#briefShare', () => shareWa('BCS Daily Brief')(briefText()));
-  bind('#briefPrint', () => window.print());
-  bind('#offerCopy', async () => { const ok = await copyText(offerText()); toast(ok ? 'Offer copied ✓' : 'Copy failed', !ok); });
-  bind('#offerShare', () => shareWa('BCS Offer Sheet')(offerText()));
-  bind('#offerPrint', () => window.print());
+  bind('#cbCopy', () => previewText('BCS Quotation', quoteText()));
+  bind('#cbShare', () => previewText('BCS Quotation', quoteText()));
+  bind('#dossierPreview', previewDossierNow);
+  bind('#dossierCopy', previewDossierNow);
+  bind('#dossierShare', previewDossierNow);
+  bind('#dossierPrint', previewDossierNow);
+  bind('#weeklyCopy', () => previewText('BCS Weekly Report', typeof weeklyReport === 'function' ? weeklyReport().text : ''));
+  bind('#weeklyShare', () => previewText('BCS Weekly Report', typeof weeklyReport === 'function' ? weeklyReport().text : ''));
+  bind('#weeklyPrint', () => previewText('BCS Weekly Report', typeof weeklyReport === 'function' ? weeklyReport().text : ''));
+  bind('#briefCopy', () => previewText('BCS Daily Brief', briefText()));
+  bind('#briefShare', () => previewText('BCS Daily Brief', briefText()));
+  bind('#briefPrint', () => previewText('BCS Daily Brief', briefText()));
+  bind('#offerCopy', () => previewText('BCS Offer Sheet', offerText()));
+  bind('#offerShare', () => previewText('BCS Offer Sheet', offerText()));
+  bind('#offerPrint', () => previewText('BCS Offer Sheet', offerText()));
   ['#cbArea','#cbRate','#cbPlc','#cbEdc','#cbOther','#cbDiscount','#cbStampPct','#cbRegPct','#cbBrokerPct'].forEach(id => { const el = $(id); if(el) el.addEventListener('input', () => { calcQuotation(); }); });
   const sel = $('#cbProject'); if(sel) sel.addEventListener('change', () => calcQuotation());
   const gst = $('#cbGstType'); if(gst) gst.addEventListener('change', () => calcQuotation());
@@ -25660,9 +25713,13 @@ function quoteText(){
     try{ localStorage.removeItem(RAT_KEY); }catch(e){}
     applyRatesToCalcs(); runAll(); toast('Rates reset');
   }
-  function calcShareAll(){
+  function calcSummaryText(){
     const parts = ['#bkOut','#ccOut','#crOut','#emOut','#rgOut','#gstOut','#cmOut','#rnOut','#arOut','#afOut','#ppOut','#spOut','#roOut','#dlOut','#swOut','#tiOut','#cgOut','#cnOut'].map(id => $(id)?.innerText?.replace(/\s+/g,' ').trim()).filter(Boolean);
-    const text = ['*BCS Calculator Summary*', '', parts.join('\n'), '', 'BCS · Business City Square · @ajaysharma.bcs'].join('\n');
+    return ['*BCS Calculator Summary*', '', parts.join('\n'), '', 'BCS · Business City Square · @ajaysharma.bcs'].join('\n');
+  }
+  function calcShareAll(){
+    const text = calcSummaryText();
+    if(window.BCSPreview) return window.BCSPreview.open({ title: 'Calculator summary', text: text, waText: text, filename: 'bcs-calculator-summary-' + todayISO() + '.txt', kind: 'Calculator · preview' });
     if(navigator.share){ navigator.share({ title: 'BCS Calculators', text }).catch(() => {}); } else { window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank'); }
   }
   const fns = [bankCalc, circleCalc, circleProCalc, emiCalc, regCalc, gstCalc, commCalc, rentCalc, areaCalc, affordCalc, prepayCalc, sipCalc, rentOwnCalc, delayCalc, stateCalc, tdsCalc, cgCalc, cnCalc];
@@ -25678,6 +25735,7 @@ function quoteText(){
   $('#pulsePwOpen')?.addEventListener('click', () => window.open('https://www.propertywala.com/jaipur_rajasthan/', '_blank', 'noopener'));
   $('#pulseShare')?.addEventListener('click', () => {
     const txt = '*BCS Market Pulse — Jaipur* (Aurum + Square Yards + 2bigha + PropertyWala)\n' + 'Pulse: 969 projects · SY: 1,066 listings · PW: 6 featured Jaipur projects\n' + 'News: JDA ₹575 Cr works · RHB 4 schemes · Ashiana ₹1,000 Cr land plan\n' + 'Aurum: https://www.aurumproptech.in/pulse/properties/jaipur/overview\n' + 'SY: https://www.squareyards.com/jaipur-real-estate\n' + '2bigha: https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.98&lng=75.59&zoom=7.77\n' + 'PW: https://www.propertywala.com/jaipur_rajasthan/\n' + 'News: https://www.propertywala.com/news/\n' + 'BCS · Business City Square · @ajaysharma.bcs';
+    if(window.BCSPreview) return window.BCSPreview.open({ title: 'BCS Market Pulse — Jaipur', text: txt, waText: txt, filename: 'bcs-market-pulse-' + todayISO() + '.txt', kind: 'Market pulse · preview' });
     if(navigator.share){ navigator.share({ title: 'BCS Market Pulse — Jaipur', text: txt }).catch(() => {}); } else { window.open('https://wa.me/?text=' + encodeURIComponent(txt), '_blank'); }
   });
   function bcsPulseLoad(url){
@@ -25700,7 +25758,11 @@ function quoteText(){
     bcsPulseLoad(b.dataset.pulseSrc);
   }));
   try{ const _pf = $('#pulseFrame'); if(_pf){ _pf.addEventListener('load', function(){ const l = $('#pulseLoader'); if(l) l.classList.add('hide'); _pf.style.opacity = '1'; }); } }catch(e){}
-  $('#calcPrintAll')?.addEventListener('click', () => window.print());
+  $('#calcPrintAll')?.addEventListener('click', () => {
+    const text = calcSummaryText();
+    if(window.BCSPreview) return window.BCSPreview.open({ title: 'Calculator summary', text: text, waText: text, filename: 'bcs-calculator-summary-' + todayISO() + '.txt', kind: 'Calculator · print preview' });
+    window.print();
+  });
   $('#calcShareAll')?.addEventListener('click', calcShareAll);
   try{ loadRates(); }catch(e){}
   try{ runAll(); }catch(e){}
@@ -26015,14 +26077,17 @@ function sendJourneyCustom(){
     if(!client) return toast('Pehle client chunein', true);
     const digits = waLink(client.phone);
     if(!digits) return toast('Client ka phone nahi hai — pehle Clients me add karo', true);
-    if(!db.journeyLogs) db.journeyLogs = [];
-    const logKind = kind;
-    db.journeyLogs.push({ id: uid(), kind: logKind, clientId: cid, projectId: pid, advisorId: isAdmin() ? '' : (currentAdvisor()?.id || ''), at: Date.now(), text });
-    save();
-    bcsSound('success');
+    const logSend = () => {
+      if(!db.journeyLogs) db.journeyLogs = [];
+      db.journeyLogs.push({ id: uid(), kind: kind, clientId: cid, projectId: pid, advisorId: isAdmin() ? '' : (currentAdvisor()?.id || ''), at: Date.now(), text });
+      save();
+      try{ bcsSound('success'); }catch(err){}
+      renderJourneyPanel();
+    };
+    if(window.BCSPreview) return window.BCSPreview.open({ title: 'WhatsApp — ' + (client.name || client.phone), text: text, waText: text, waUrl: client.phone, filename: 'BCS-message-' + todayISO() + '.txt', kind: 'Journey message · WhatsApp preview', onWhatsApp: logSend });
+    logSend();
     window.open(digits + '?text=' + encodeURIComponent(text), '_blank');
     toast('WhatsApp khul raha hai — ' + (client.name || client.phone));
-    renderJourneyPanel();
   }catch(e){ toast('Send nahi hua', true); }
 }
 function renderJourneyPanel(){
@@ -26057,7 +26122,7 @@ function renderJourneyPanel(){
   ['#jmKind','#jmClient','#jmProject'].forEach(function(sel){ const el = $(sel); if(el) el.addEventListener('change', () => { const ta = $('#jmText'); if(ta) ta.dataset.touched = '1'; journeyManualText(); }); });
   const ta = $('#jmText'); if(ta) ta.addEventListener('input', () => { ta.dataset.touched = '1'; });
   const rf = $('#jmRefresh'); if(rf) rf.addEventListener('click', () => { if(ta) delete ta.dataset.touched; journeyManualText(); });
-  const cp = $('#jmCopy'); if(cp) cp.addEventListener('click', () => { const t = (ta && ta.value) || ''; if(!t) return toast('Pehle client chunein', true); if(navigator.clipboard) navigator.clipboard.writeText(t).then(() => toast('Message copied ✓')).catch(() => toast('Copy nahi hua', true)); else toast('Copy nahi hua', true); });
+  const cp = $('#jmCopy'); if(cp) cp.addEventListener('click', () => { const t = (ta && ta.value) || ''; if(!t) return toast('Pehle client chunein', true); if(window.BCSPreview) return window.BCSPreview.open({ title: 'Journey message', text: t, waText: t, filename: 'BCS-message-' + todayISO() + '.txt', kind: 'Client message · preview' }); if(navigator.clipboard) navigator.clipboard.writeText(t).then(() => toast('Message copied ✓')).catch(() => toast('Copy nahi hua', true)); else toast('Copy nahi hua', true); });
   const sd = $('#jmSend'); if(sd) sd.addEventListener('click', sendJourneyCustom);
   journeyManualText();
 }
@@ -26080,12 +26145,16 @@ function sendJourney(spec){
   if(!client) return toast('Client linked hona chahiye', true);
   const text = afterCtx ? afterSalesTouchText(afterCtx.kind, afterCtx.ctx) : journeyText(kind, { client, project, booking });
   const digits = waLink(client.phone);
-  if(!db.journeyLogs) db.journeyLogs = [];
-  db.journeyLogs.push({ id: uid(), kind, clientId, projectId, advisorId, at: Date.now(), text });
-  save();
+  const logSend = () => {
+    if(!db.journeyLogs) db.journeyLogs = [];
+    db.journeyLogs.push({ id: uid(), kind, clientId, projectId, advisorId, at: Date.now(), text });
+    save();
+    renderJourneyPanel();
+  };
+  if(window.BCSPreview) return window.BCSPreview.open({ title: 'WhatsApp — ' + (client.name || client.phone), text: text, waText: text, waUrl: client.phone, filename: 'BCS-message-' + todayISO() + '.txt', kind: 'Journey message · WhatsApp preview', onWhatsApp: logSend });
+  logSend();
   if(window.open) window.open((digits ? digits + '?text=' : 'https://wa.me/?text=') + encodeURIComponent(text), '_blank');
   else window.location.href = 'https://wa.me/?text=' + encodeURIComponent(text);
-  renderJourneyPanel();
 }
 function weeklyRange(){
   const d = new Date();
@@ -26128,8 +26197,17 @@ function weeklyReport(){
 }
 function openWeekly(){
   const rep = weeklyReport();
-  $('#weeklyTitle').textContent = `Weekly report — ${fmtDate(rep.start)} to ${fmtDate(rep.end)}`;
+  const title = `Weekly report — ${fmtDate(rep.start)} to ${fmtDate(rep.end)}`;
+  $('#weeklyTitle').textContent = title;
   $('#weeklyBody').innerHTML = rep.html;
+  if(window.BCSPreview) return window.BCSPreview.open({
+    title: title,
+    html: window.BCSPreview.textHTML('Weekly Business Report', rep.text),
+    text: rep.text,
+    filename: 'bcs-weekly-report-' + rep.start + '.html',
+    waText: rep.text,
+    kind: 'Weekly report · full preview'
+  });
   showOverlay('weeklyModal');
 }
 
@@ -26230,6 +26308,17 @@ function openDailyBrief(){
       <div class="brief-box"><h5>₹ Money (${d.bookingsToday.length} bookings today)</h5>${d.dueBookings.length ? d.dueBookings.map(b => '<div class="brief-item"><span class="dot" style="background:#C24646"></span><span><b>' + esc(fmtPrice(bookingPending(b))) + '</b> pending — ' + esc((bookingClient(b) || {}).name || 'booking') + '<small>' + esc(bookingProject(b) ? bookingProject(b).name : '') + '</small></span></div>').join('') : '<p>Collection clear.</p>'}${d.bookingsToday.length ? '<p style="margin-top:6px">Today: ' + d.bookingsToday.map(b => { const p = bookingProject(b); const c = bookingClient(b); return esc((c && (c.name || c.phone)) || 'booking') + ' @ ' + esc(p ? p.name : ''); }).join(', ') + '</p>' : ''}</div>
       <div class="brief-box"><h5>📈 Rate watch (${d.rates.length})</h5>${d.rates.length ? d.rates.map(r => '<div class="brief-item"><span class="rate-chip ' + r.kind + '">' + (r.delta > 0 ? '+' : '') + r.delta + '%</span><span><b>' + esc(r.project.name) + '</b><small>' + esc(fmtPrice(r.prev.price / 100000) || r.prev.price) + ' → ' + esc(fmtPrice(r.last.price / 100000) || r.last.price) + ' · ' + esc(fmtDate(r.last.date)) + '</small></span></div>').join('') : '<p>No major price move.</p>'}${d.docs.length ? '<p style="margin-top:6px">Docs (15d): ' + d.docs.map(x => esc(x.name || 'doc') + ' ' + esc(fmtDate(x.expiry))).join(', ') + '</p>' : ''}</div>
     </div>`;
+  if(window.BCSPreview){
+    const txt = briefText();
+    return window.BCSPreview.open({
+      title: `☀️ Daily brief — ${fmtDate(d.today)}`,
+      html: $('#briefBody').innerHTML,
+      text: txt,
+      filename: 'bcs-daily-brief-' + d.today + '.html',
+      waText: txt,
+      kind: 'Daily brief · full preview'
+    });
+  }
   showOverlay('briefModal');
 }
 function openOfferSheet(){
@@ -26285,12 +26374,23 @@ function openOfferSheet(){
       </div>
     </div>`;
   $('#offerBody').dataset.projectId = p.id;
+  if(window.BCSPreview){
+    const txt = offerText();
+    return window.BCSPreview.open({
+      title: 'Offer sheet — ' + (p.name || ''),
+      html: $('#offerBody').innerHTML,
+      text: txt,
+      filename: 'bcs-offer-sheet-' + String(p.name || 'project').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 48) + '.html',
+      waText: txt,
+      kind: 'Offer sheet · full preview'
+    });
+  }
   showOverlay('offerModal');
 }
 function offerText(){
   const p = scopedProjects().find(x => x.id === $('#offerBody')?.dataset.projectId);
   if(!p) return '';
-  const out = ($('#offerBody')?.innerText || '').replace(/\n{2,}/g,'\n').trim();
+  const out = (($('#offerBody')?.innerText || $('#offerBody')?.textContent || '')).replace(/\n{2,}/g,'\n').trim();
   return ['*BCS Offer Sheet*', p.name, out, '', 'BCS · Business City Square · @ajaysharma.bcs'].filter(Boolean).join('\n');
 }
 function openTeamBoard(){
@@ -26324,8 +26424,8 @@ function renderSeniorDesk(){
   if(!$('#seniorPriorities')) return;
   const today = todayISO();
   const clients = scopedClients();
-  const tasks = (db.todos || []).filter(t => t.date === today && !t.done).sort((a,b) => (a.time || '').localeCompare(b.time || ''));
-  const overdueTasks = (db.todos || []).filter(t => t.date && t.date < today && !t.done).slice(0, 3);
+  const tasks = (db.todos || []).filter(t => t.date === today && !t.done && !t.xchLeadId).sort((a,b) => (a.time || '').localeCompare(b.time || ''));
+  const overdueTasks = (db.todos || []).filter(t => t.date && t.date < today && !t.done && !t.xchLeadId).slice(0, 3);
   const dueClients = clients.filter(c => c.nextFollowUp && c.nextFollowUp <= today && !['booked','lost'].includes(c.clientStatus || 'new'))
     .sort((a,b) => (a.nextFollowUp || '').localeCompare(b.nextFollowUp || '')).slice(0, 5);
   const advisors = visibleAdvisors();
@@ -27110,6 +27210,7 @@ async function shareBcsCard(){
   try{
     const blob = await canvasToBlob(canvas);
     const file = new File([blob], 'bcs-visiting-card.png', { type:'image/png' });
+    if(window.BCSPreview) return window.BCSPreview.openImage({ title: 'BCS visiting card', dataUrl: canvas.toDataURL('image/png'), file: file, text: 'BCS · Business City Square · @ajaysharma.bcs', waText: 'BCS · Business City Square · @ajaysharma.bcs', filename: 'bcs-visiting-card.png', kind: 'Visiting card · preview before sharing' });
     if(navigator.canShare && navigator.canShare({ files:[file] })){
       await navigator.share({ files:[file], title:'BCS visiting card', text:'BCS · Business City Square · @ajaysharma.bcs' });
       return;
@@ -27172,6 +27273,7 @@ async function sharePosterNow(){
   try{
     if(!blob) blob = await canvasToBlob(canvas);
     const file = new File([blob], posterFileName(), { type:'image/png' });
+    if(window.BCSPreview) return window.BCSPreview.openImage({ title: (posterFestival.name || 'BCS') + ' poster', dataUrl: canvas.toDataURL('image/png'), file: file, text: (posterFestival.greetEn || 'Greetings from BCS') + ' — BCS · @ajaysharma.bcs', waText: (posterFestival.greetEn || 'Greetings from BCS') + ' — BCS · @ajaysharma.bcs', filename: posterFileName(), kind: 'Festival poster · preview before sharing' });
     if(navigator.canShare && navigator.canShare({ files:[file] })){
       await navigator.share({
         files:[file],
@@ -28776,6 +28878,7 @@ function shareAdvisorAccess(){
   if(!a) return;
   const msg = `BCS Advisor Portal\n\nAdvisor: ${a.name}\nLogin ID: ${a.portalId}\nPassword: ${a.portalPass}\nOpen: ${bcsAdvisorLoginUrl(a)}\n\nLock screen par “Advisor login” chunein — sirf aapke assigned projects aur clients dikhenge.`;
   const base = (typeof waLink === 'function' ? waLink(a.phone) : '') || 'https://wa.me/';
+  if(window.BCSPreview) return window.BCSPreview.open({ title: 'Advisor portal access — ' + (a.name || ''), text: msg, waText: msg, waUrl: a.phone || '', filename: 'BCS-advisor-access-' + todayISO() + '.txt', kind: 'Portal access · preview before sending' });
   window.open(base + (base.includes('?') ? '&' : '?') + 'text=' + encodeURIComponent(msg), '_blank', 'noopener');
 }
 
@@ -29689,6 +29792,7 @@ function openPersonaWhatsApp(c){
   const pb = personaPlaybook(c);
   const base = waLink(c.phone);
   if(!base) return toast('Is client ka WhatsApp number nahi hai', true);
+  if(window.BCSPreview) return window.BCSPreview.open({ title: 'WhatsApp — ' + (c.name || c.phone || 'Client'), text: pb.wa || '', waText: pb.wa || '', waUrl: c.phone, filename: 'BCS-persona-' + todayISO() + '.txt', kind: 'Persona message · WhatsApp preview (' + pb.persona.label + ')' });
   const url = base + '?text=' + encodeURIComponent(pb.wa || '');
   try{ window.open(url, '_blank', 'noopener'); toast('Persona message WhatsApp me ready — ' + pb.persona.label); }
   catch(e){ toast('WhatsApp open nahi hua — link copy karein', true); }
@@ -30405,6 +30509,7 @@ function openDealRoom(clientId){
   const pr = $('#dealRoomBody [data-drprint]');
   if(pr) pr.addEventListener('click', () => {
     const html = dealRoomHTML(c);
+    if(window.BCSPreview) return window.BCSPreview.open({ title: 'Deal room — ' + (c.name || ''), html: html, filename: 'BCS-deal-room-' + todayISO() + '.html', kind: 'Deal room · full preview' });
     const w = window.open('', '_blank');
     if(!w) return toast('Popup block hai — print nahi hua', true);
     w.document.write('<html><head><title>BCS Deal Room — ' + esc(c.name || '') + '</title><meta charset="utf-8"><style>body{font-family:-apple-system,Segoe UI,sans-serif;padding:24px;color:#1c2420}h1{font-size:20px}table{width:100%;border-collapse:collapse;font-size:12px}td,th{border:1px solid #ccc;padding:6px;text-align:left}.k{font-weight:700}</style></head><body>' + html + '</body></html>');
@@ -30435,7 +30540,7 @@ function buildICS(){
     if(l.expiry) add(l.expiry, '⏳ Lead protection expiry — ' + (l.clientName || 'Client'), l.code + ' · ' + xchCorridorName(l.corridor) + ' · BCS Exchange');
   });
   plotMilestoneList().forEach(x => add(x.milestone.date, '₹ ' + (x.milestone.label || 'Payment due') + ' — ' + (x.client ? (x.client.name || x.client.phone) : 'Plot'), moneyINR(x.milestone.amount || 0) + (x.plot ? ' · Plot ' + (x.plot.plotNo || x.plot.label || '') : '') + ' · BCS Desk'));
-  (db.todos || []).filter(t => t.date && !t.done).forEach(t => add(t.date, '☑ ' + (t.title || 'Task'), (t.time || '') + (t.note ? ' · ' + t.note : '')));
+  (db.todos || []).filter(t => t.date && !t.done && !t.xchLeadId).forEach(t => add(t.date, '☑ ' + (t.title || 'Task'), (t.time || '') + (t.note ? ' · ' + t.note : '')));
   (db.monthMarks || []).forEach(m => add(m.date, '🏷 ' + (m.label || 'Mark'), (MONTH_MARK_TYPES[m.type] || {}).label || ''));
   scopedBookings().filter(b => b.bookingDate && b.stage !== 'cancelled').forEach(b => add(b.bookingDate, '🏠 Booking — ' + ((bookingClient(b) || {}).name || 'Client'), ((bookingProject(b) || {}).name || '') + ' · ' + bookingStageLabel(b.stage)));
   (typeof upcomingFestivals === 'function' ? upcomingFestivals(40, addISO(todayISO(), -30)) : []).forEach(f => add(f.date, (f.emoji || '✨') + ' ' + (f.name || 'Festival'), (f.note || '') + ' · BCS festival calendar'));
@@ -30473,7 +30578,7 @@ function dayAgendaText(iso){
   const follows = (maps.followByDate.get(iso)) || [];
   const books = (maps.bookingByDate.get(iso)) || [];
   const dues = (maps.dueByDate.get(iso)) || [];
-  const tasks = (db.todos || []).filter(t => t.date === iso && !t.done);
+  const tasks = (db.todos || []).filter(t => t.date === iso && !t.done && !t.xchLeadId);
   const marks = (db.monthMarks || []).filter(m => m.date === iso);
   const fest = festivalByDate(iso);
   const lines = [];
@@ -30527,11 +30632,15 @@ function dayAgendaText(iso){
   return lines.join('\n');
 }
 function copyDayAgenda(iso){
-  const txt = dayAgendaText(iso || window.__selDate || todayISO());
+  const day = iso || window.__selDate || todayISO();
+  const txt = dayAgendaText(day);
+  if(window.BCSPreview) return window.BCSPreview.open({ title: 'Day agenda — ' + fmtDate(day), text: txt, waText: txt, filename: 'bcs-day-agenda-' + day + '.txt', kind: 'Day agenda · preview' });
   copyText(txt).then(ok => toast(ok ? 'Day agenda copy — WhatsApp me paste karo' : 'Copy fail — manually select karein', !ok));
 }
 function whatsappDayAgenda(iso){
-  const txt = dayAgendaText(iso || window.__selDate || todayISO());
+  const day = iso || window.__selDate || todayISO();
+  const txt = dayAgendaText(day);
+  if(window.BCSPreview) return window.BCSPreview.open({ title: 'Day agenda — ' + fmtDate(day), text: txt, waText: txt, filename: 'bcs-day-agenda-' + day + '.txt', kind: 'Day agenda · WhatsApp preview' });
   window.open('https://wa.me/?text=' + encodeURIComponent(txt), '_blank', 'noopener');
 }
 function weekAgendaText(fromISO){
@@ -30563,6 +30672,7 @@ function weekAgendaText(fromISO){
 }
 function copyWeekAgenda(){
   const txt = weekAgendaText();
+  if(window.BCSPreview) return window.BCSPreview.open({ title: '7-day plan', text: txt, waText: txt, filename: 'bcs-7-day-plan-' + todayISO() + '.txt', kind: '7-day plan · preview' });
   copyText(txt).then(ok => toast(ok ? '7-day plan copy — WhatsApp me paste karo' : 'Copy fail', !ok));
 }
 document.addEventListener('click', e => {
@@ -31043,7 +31153,9 @@ function openCreative(kind, projectId){
       toast(ok ? 'Caption copy — paste karo' : 'Copy fail — manually select karein', !ok);
     });
     $('#crWa').addEventListener('click', () => {
-      window.open('https://wa.me/?text=' + encodeURIComponent($('#creativeCaption').value), '_blank', 'noopener');
+      const txt = $('#creativeCaption').value || '';
+      if(window.BCSPreview) return window.BCSPreview.open({ title: 'Creative caption', text: txt, waText: txt, filename: 'BCS-caption-' + todayISO() + '.txt', kind: 'Creative caption · preview' });
+      window.open('https://wa.me/?text=' + encodeURIComponent(txt), '_blank', 'noopener');
     });
     $('#crDownload').addEventListener('click', () => {
       const canvas = crActiveCanvas();
@@ -31067,6 +31179,7 @@ function openCreative(kind, projectId){
         const blob = await canvasToBlob(canvas);
         const file = new File([blob], 'bcs-' + creativeKind + '-' + todayISO() + '.png', { type:'image/png' });
         const text = $('#creativeCaption').value;
+        if(window.BCSPreview) return window.BCSPreview.openImage({ title: 'BCS creative — ' + creativeKind, dataUrl: canvas.toDataURL('image/png'), file: file, text: text, waText: text, filename: file.name, kind: 'Creative · preview before sharing' });
         if(navigator.canShare && navigator.canShare({ files:[file] })){
           await navigator.share({ files:[file], title:'BCS creative', text });
           return;
@@ -31210,14 +31323,18 @@ document.addEventListener('click', async e => {
   const c = e.target.closest('#plCopy');
   if(c){
     e.preventDefault();
-    const ok = await copyText(plPlanText());
+    const txt = plPlanText();
+    if(window.BCSPreview) return window.BCSPreview.open({ title: 'Payment plan', text: txt, waText: txt, filename: 'BCS-payment-plan-' + todayISO() + '.txt', kind: 'Payment plan · preview' });
+    const ok = await copyText(txt);
     toast(ok ? 'Payment plan copy — client ko bhejo' : 'Copy fail', !ok);
     return;
   }
   const w = e.target.closest('#plWa');
   if(w){
     e.preventDefault();
-    window.open('https://wa.me/?text=' + encodeURIComponent(plPlanText()), '_blank', 'noopener');
+    const txt = plPlanText();
+    if(window.BCSPreview) return window.BCSPreview.open({ title: 'Payment plan', text: txt, waText: txt, filename: 'BCS-payment-plan-' + todayISO() + '.txt', kind: 'Payment plan · WhatsApp preview' });
+    window.open('https://wa.me/?text=' + encodeURIComponent(txt), '_blank', 'noopener');
   }
 });
 
@@ -31246,7 +31363,9 @@ function initResale(){
   $('#resaleViewCopy').addEventListener('click', async () => {
     const r = db.resale.find(x => x.id === resaleViewId);
     if(!r) return;
-    const ok = await copyText(resaleChatText(r));
+    const txt = resaleChatText(r);
+    if(window.BCSPreview) return window.BCSPreview.open({ title: 'Resale — ' + (r.unit || 'Unit'), text: txt, waText: txt, filename: 'BCS-resale-' + todayISO() + '.txt', kind: 'Resale details · preview' });
+    const ok = await copyText(txt);
     toast(ok ? 'Resale details copied — paste in WhatsApp' : 'Copy failed — try again', !ok);
   });
   $('#resaleViewProject').addEventListener('click', () => {
@@ -31638,7 +31757,7 @@ function initAdvisory(){
   $('#advSaveBrief').addEventListener('click', saveBriefHandler);
   $('#advPresentTop').addEventListener('click', openPresentation);
   $('#advCopy').addEventListener('click', () => copyAdvisorySummary());
-  $('#presentPrint').addEventListener('click', () => window.print());
+  $('#presentPrint').addEventListener('click', () => { if(typeof openPresentation === 'function') openPresentation(); });
   $('#presentCopy').addEventListener('click', copyPresentationText);
   $('#savedBriefs').addEventListener('click', e => {
     const load = e.target.closest('[data-loadbrief]');
@@ -32048,39 +32167,50 @@ function openPresentation(){
       <div><b>BCS · Business City Square</b><br>@ajaysharma.bcs · Jaipur</div>
       <div style="text-align:right;max-width:360px">Prices and availability are indicative and subject to change. RERA and approval details should be re-verified before booking.</div>
     </div>`;
+  if(window.BCSPreview){
+    const txt = summaryText(items);
+    return window.BCSPreview.open({
+      title: 'Client presentation — ' + (b.name || 'Shortlist'),
+      html: $('#presentSheet').innerHTML,
+      text: txt,
+      filename: 'BCS-presentation-' + todayISO() + '.html',
+      waText: txt,
+      kind: 'Client presentation · full preview'
+    });
+  }
   showOverlay('presentModal');
 }
 function summaryText(list, heading){
   const b = advBrief;
-  const lines = ['*BCS — Business City Square*'];
-  lines.push(heading || (b.name ? `Property options for ${b.name}` : 'Shortlisted property options'));
+  const out = ['*BCS — Business City Square*'];
+  out.push(heading || (b.name ? `Property options for ${b.name}` : 'Shortlisted property options'));
   const budget = (number(b.budgetMin) != null || number(b.budgetMax) != null) ? budgetText(b) : 'Flexible';
-  lines.push(`Budget: ${budget}`);
-  if(b.timeline) lines.push(`Timeline: ${b.timeline === 'flex' ? 'Flexible' : timelineLabel(b.timeline)}`);
-  if(b.types.length) lines.push(`Type: ${b.types.map(t => typeName[t] || t).join(', ')}`);
-  if(b.corridors.length) lines.push(`Corridor: ${b.corridors.map(id => corridor(id).name).join(', ')}`);
-  if(b.approvalType) lines.push(`Approval: ${(APPROVAL_TYPES.find(a => a.id === b.approvalType) || {}).label || b.approvalType}`);
-  lines.push('');
+  out.push(`Budget: ${budget}`);
+  if(b.timeline) out.push(`Timeline: ${b.timeline === 'flex' ? 'Flexible' : timelineLabel(b.timeline)}`);
+  if(b.types.length) out.push(`Type: ${b.types.map(t => typeName[t] || t).join(', ')}`);
+  if(b.corridors.length) out.push(`Corridor: ${b.corridors.map(id => corridor(id).name).join(', ')}`);
+  if(b.approvalType) out.push(`Approval: ${(APPROVAL_TYPES.find(a => a.id === b.approvalType) || {}).label || b.approvalType}`);
+  out.push('');
   list.forEach((p, i) => {
     const d = dev(p.developerId);
-    lines.push(`${i + 1}. *${p.name}* — ${corridor(p.corridor).name}`);
-    lines.push(`   ${priceRange(p)} · ${typeLabel(p.types)}${p.plotUse ? ' · ' + plotUseLabel(p.plotUse) : ''}${p.sizes ? ' · ' + p.sizes : ''}`);
-    if(rateText(p)) lines.push(`   Rate: ${rateText(p)}`);
-    if(p.timeline) lines.push(`   Possession: ${timelineLabel(p.timeline)}`);
-    if(p.rera) lines.push(`   RERA: ${p.rera}`);
+    out.push(`${i + 1}. *${p.name}* — ${corridor(p.corridor).name}`);
+    out.push(`   ${priceRange(p)} · ${typeLabel(p.types)}${p.plotUse ? ' · ' + plotUseLabel(p.plotUse) : ''}${p.sizes ? ' · ' + p.sizes : ''}`);
+    if(rateText(p)) out.push(`   Rate: ${rateText(p)}`);
+    if(p.timeline) out.push(`   Possession: ${timelineLabel(p.timeline)}`);
+    if(p.rera) out.push(`   RERA: ${p.rera}`);
     const ap = approvalLabel(p, true);
-    if(ap) lines.push(`   Approval: ${ap}${p.approval ? ' · ' + p.approval : ''}`);
+    if(ap) out.push(`   Approval: ${ap}${p.approval ? ' · ' + p.approval : ''}`);
     const pos = lines(p.pros).slice(0, 2), neg = lines(p.cons).slice(0, 2);
-    if(pos.length) lines.push(`   Positives: ${pos.join('; ')}`);
-    if(neg.length) lines.push(`   Watch-outs: ${neg.join('; ')}`);
+    if(pos.length) out.push(`   Positives: ${pos.join('; ')}`);
+    if(neg.length) out.push(`   Watch-outs: ${neg.join('; ')}`);
     if(p.soldOut){
       const ru = availableResaleForProject(p.id);
-      lines.push(`   Sold out${ru.length ? ` · Resale: ${ru.map(r => [r.unit, r.size, r.price != null ? fmtPrice(r.price) : null].filter(Boolean).join(' · ')).join(' | ')}` : ''}`);
+      out.push(`   Sold out${ru.length ? ` · Resale: ${ru.map(r => [r.unit, r.size, r.price != null ? fmtPrice(r.price) : null].filter(Boolean).join(' · ')).join(' | ')}` : ''}`);
     }
-    if(d && (d.phone || d.name)) lines.push(`   ${d.name || 'Developer'}${d.phone ? ' · ' + d.phone : ''}`);
+    if(d && (d.phone || d.name)) out.push(`   ${d.name || 'Developer'}${d.phone ? ' · ' + d.phone : ''}`);
   });
-  if(b.notes) lines.push('', `Notes: ${b.notes}`);
-  return lines.join('\n');
+  if(b.notes) out.push('', `Notes: ${b.notes}`);
+  return out.join('\n');
 }
 function copyText(text){
   if(navigator.clipboard && window.isSecureContext){
@@ -32103,13 +32233,17 @@ async function copyAdvisorySummary(){
     ? advShortlist.map(id => scopedProjects().find(p => p.id === id)).filter(Boolean)
     : advisoryMatches().slice(0,5).map(r => r.p);
   if(!items.length) return toast('Koi project available nahi', true);
-  const ok = await copyText(summaryText(items, advShortlist.length ? 'Shortlisted options' : 'Top matching options'));
+  const txt = summaryText(items, advShortlist.length ? 'Shortlisted options' : 'Top matching options');
+  if(window.BCSPreview) return window.BCSPreview.open({ title: 'Property options summary', text: txt, waText: txt, filename: 'BCS-summary-' + todayISO() + '.txt', kind: 'Advisory summary · preview' });
+  const ok = await copyText(txt);
   toast(ok ? 'Summary copied — paste in WhatsApp' : 'Copy failed — try again', !ok);
 }
 async function copyPresentationText(){
   const items = advShortlist.map(id => scopedProjects().find(p => p.id === id)).filter(Boolean);
   if(!items.length) return toast('Shortlist empty hai', true);
-  const ok = await copyText(summaryText(items));
+  const txt = summaryText(items);
+  if(window.BCSPreview) return window.BCSPreview.open({ title: 'Shortlist summary', text: txt, waText: txt, filename: 'BCS-shortlist-' + todayISO() + '.txt', kind: 'Shortlist · preview' });
+  const ok = await copyText(txt);
   toast(ok ? 'Copied for WhatsApp' : 'Copy failed — try again', !ok);
 }
 
@@ -33371,15 +33505,31 @@ function rebuildShareHtml(){
   const note = $('#shareSizeNote');
   if(note) note.textContent = kb > 1024 ? `≈ ${(kb/1024).toFixed(1)} MB (photos embedded)` : `≈ ${kb} KB`;
 }
-function openSharePdfPreview(){
+function shareFileName(s){
+  return 'BCS-' + String((s && s.rec && s.rec.name) || 'page').replace(/[^a-z0-9]+/gi, '-').slice(0, 40) + '.html';
+}
+function openSharePreview(){
   const s = window.__bcsShare; if(!s) return;
   rebuildShareHtml();
+  const text = shareHubMessage(s);
+  const filename = shareFileName(s);
+  let file = null;
+  try{ file = new File([s.html], filename, { type: 'text/html' }); }catch(e){}
+  if(window.BCSPreview) return window.BCSPreview.open({
+    title: (s.kind === 'project' ? 'Share page — ' : s.kind === 'client' ? 'Client page — ' : 'Advisor page — ') + (s.rec.name || ''),
+    html: s.html,
+    text: text,
+    filename: filename,
+    waText: text,
+    file: file,
+    kind: 'Share page · preview before sending'
+  });
   const w = window.open('', '_blank');
   if(!w) return toast('Popup block hua — allow karein', true);
   w.document.open(); w.document.write(s.html); w.document.close();
   setTimeout(() => { try{ w.focus(); w.print(); }catch(e){} }, 600);
-  toast('Print dialog me "Save as PDF" choose karein');
 }
+function openSharePdfPreview(){ openSharePreview(); }
 
 function openShareHub(kind, id){
   let rec = null, html = '';
@@ -33451,24 +33601,10 @@ function shareDownloadFile(){
   toast('Page download ho gaya — share karein ya host karein');
 }
 $('#detailShareBtn').addEventListener('click', openProjectShare);
-$('#shareDownloadBtn').addEventListener('click', shareDownloadFile);
-$('#shareCopyBtn').addEventListener('click', async () => {
-  const s = window.__bcsShare; if(!s) return;
-  const ok = await copyText(shareHubMessage(s));
-  toast(ok ? 'Message copy ho gaya — WhatsApp par paste karein' : 'Copy fail — dobara try karein', !ok);
-});
-$('#shareFileBtn').addEventListener('click', async () => {
-  const s = window.__bcsShare; if(!s) return;
-  try{
-    const file = new File([s.html], 'BCS-' + (s.rec.name || 'page').replace(/[^a-z0-9]+/gi,'-').slice(0,40) + '.html', { type:'text/html' });
-    if(navigator.canShare && navigator.canShare({ files:[file] })){
-      await navigator.share({ files:[file], title: s.rec.name || 'BCS', text: shareHubMessage(s) });
-      toast('Share ho gaya');
-    } else {
-      toast('Share support nahi hai — Download button use karein', true);
-    }
-  }catch(e){ if(e && e.name !== 'AbortError') toast('Share fail — Download use karein', true); }
-});
+$('#sharePreviewBtn').addEventListener('click', openSharePreview);
+$('#shareDownloadBtn').addEventListener('click', openSharePreview);
+$('#shareCopyBtn').addEventListener('click', openSharePreview);
+$('#shareFileBtn').addEventListener('click', openSharePreview);
 $('#detailFeature').addEventListener('click', () => { if(detailId) toggleFeature(detailId); });
 $('#detailCompare').addEventListener('click', () => {
   if(!detailId) return;
@@ -40172,7 +40308,9 @@ function initFeatureControls(){
   if(tplCopy) tplCopy.addEventListener('click', () => {
     const t = editingTemplateId ? db.templates.find(x => x.id === editingTemplateId) : null;
     const content = $('#tplContent').value;
-    copyText(t ? resolveTemplate(content, t) : content).then(ok => toast(ok ? 'Copied' : 'Copy failed', !ok));
+    const txt = t ? resolveTemplate(content, t) : content;
+    if(window.BCSPreview) return window.BCSPreview.open({ title: 'Template message', text: txt, waText: txt, filename: 'BCS-template-' + todayISO() + '.txt', kind: 'Template · preview' });
+    copyText(txt).then(ok => toast(ok ? 'Copied' : 'Copy failed', !ok));
   });
   const tplPh = $('#tplPlaceholders');
   if(tplPh) tplPh.addEventListener('click', e => {
@@ -41320,6 +41458,7 @@ function mktKitText(idea){
 function mktShareText(text, title){
   const msg = String(text || '').trim();
   if(!msg) return toast('Pehle kuch text to ho', true);
+  if(window.BCSPreview) return window.BCSPreview.open({ title: title || 'Marketing post', text: msg, waText: msg, filename: 'BCS-post-' + todayISO() + '.txt', kind: 'Marketing post · preview' });
   if(navigator.share){
     try{ navigator.share({ title: title || 'BCS post kit', text: msg }).catch(() => {}); return; }catch(e){}
   }
@@ -42690,6 +42829,7 @@ $('#promoCopy').addEventListener('click', async () => {
 });
 $('#promoWa').addEventListener('click', () => {
   const msg = $('#promoMsg').value || '';
+  if(window.BCSPreview) return window.BCSPreview.open({ title: 'Promote message', text: msg, waText: msg, filename: 'BCS-promo-' + todayISO() + '.txt', kind: 'Promote message · preview' });
   window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
 });
 $('#promoTabs').addEventListener('click', e => {
@@ -43977,6 +44117,7 @@ async function shareTaxArticle(id){
   const t = db.taxArticles.find(x => x.id === id);
   if(!t) return;
   const text = taxShareText(t);
+  if(window.BCSPreview) return window.BCSPreview.open({ title: t.title + ' · BCS Tax & Advice', text, waText: text, filename: 'BCS-tax-' + todayISO() + '.txt', kind: 'Tax & advice · preview' });
   if(navigator.share){
     try{ await navigator.share({ title:t.title + ' · BCS Tax & Advice', text }); return; }catch(e){ if(e && e.name === 'AbortError') return; }
   }
@@ -44012,6 +44153,7 @@ function renderTaxNews(){
     const t = TAX_LIVE.find(x => x.title === b.dataset.newsShare);
     if(!t) return;
     const txt = ['*BCS Tax & Advice — Live Update*', t.title, fmtDate(t.date), '', t.body, '', 'Source: ' + t.source, t.url, '', 'BCS · Business City Square · @ajaysharma.bcs'].join('\n');
+    if(window.BCSPreview) return window.BCSPreview.open({ title: t.title, text: txt, waText: txt, filename: 'BCS-tax-update-' + t.date + '.txt', kind: 'Tax live update · preview' });
     if(navigator.share){ try{ await navigator.share({ title: t.title, text: txt }); }catch(e){} } else { window.open('https://wa.me/?text=' + encodeURIComponent(txt), '_blank'); }
   }));
 }
@@ -45175,8 +45317,10 @@ function dealReminderText(d){
 function openDealReminder(d){
   if(!d) return;
   const phone = (d.clientPhone || '').replace(/[^\d]/g,'');
-  const msg = encodeURIComponent(dealReminderText(d));
-  const txtOnly = () => { try{ navigator.clipboard.writeText(dealReminderText(d)); toast('Phone nahi hai — reminder text copy ho gaya, client ko bhejein'); }catch(e){ toast('Phone nahi hai client record me', true); } };
+  const txt = dealReminderText(d);
+  if(window.BCSPreview) return window.BCSPreview.open({ title: 'Payment reminder — ' + dealClientLabel(d), text: txt, waText: txt, waUrl: phone, filename: 'BCS-reminder-' + todayISO() + '.txt', kind: 'Payment reminder · WhatsApp preview' });
+  const msg = encodeURIComponent(txt);
+  const txtOnly = () => { try{ navigator.clipboard.writeText(txt); toast('Phone nahi hai — reminder text copy ho gaya, client ko bhejein'); }catch(e){ toast('Phone nahi hai client record me', true); } };
   if(phone.length >= 10){
     const url = 'https://wa.me/' + (phone.length === 10 ? '91' + phone : phone) + '?text=' + msg;
     const w = window.open(url, '_blank');
@@ -45194,54 +45338,49 @@ function initInvoices(){
   $('#invBank').addEventListener('input', () => { const p = invPrefs(); p.bank = $('#invBank').value.trim(); });
   $('#invNote').addEventListener('input', () => { const p = invPrefs(); p.note = $('#invNote').value.trim(); });
   const needDeal = () => db.pipeline.find(x => x.id === invState.dealId);
-  $('#invPdfBtn').addEventListener('click', () => {
-    const deal = needDeal(); if(!deal) return;
-    const w = window.open('', '_blank');
-    if(!w) return toast('Popup block hua — allow karein', true);
-    const o = invOpts();
-    w.document.open(); w.document.write(buildInvoicePage(deal, o)); w.document.close();
-    invIssueNo(); save();
-    setTimeout(() => { try{ w.focus(); w.print(); }catch(e){} }, 600);
-    toast('Print dialog me "Save as PDF" choose karein');
-  });
-  $('#invDownloadBtn').addEventListener('click', () => {
-    const deal = needDeal(); if(!deal) return;
-    const blob = new Blob([buildInvoicePage(deal, invOpts())], { type:'text/html' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = invFileName();
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 4000);
-    toast('Document download ho gayi');
-  });
-  $('#invWaBtn').addEventListener('click', () => {
-    const deal = needDeal(); if(!deal) return;
-    const o = invOpts();
+  const invSummaryText = (deal, o) => {
+    const base = o.type === 'receipt' ? (Number(deal.brokeragePaid) || 0) : dealBrkTotal(deal);
+    const gstV = Math.round(base * o.gst / 100);
+    return (o.type === 'receipt' ? 'RECEIPT' : 'INVOICE') + ' ' + (o.no || '') + ' · ' + (o.date || todayISO()) + '\n' +
+      shareCardData().brand + ' — ' + dealLabel(deal) + (deal.code ? ' (' + deal.code + ')' : '') + '\n' +
+      'Brokerage: ' + fmtMoney(base) + (gstV ? ' · GST: ' + fmtMoney(gstV) : '') + '\n' +
+      'Total: ' + fmtMoney(base + gstV) + ' (₹ ' + numToWordsIN(base + gstV) + ' only)';
+  };
+  const invWaText = (deal, o) => {
     const isRct = o.type === 'receipt';
     const base = isRct ? (Number(deal.brokeragePaid) || 0) : dealBrkTotal(deal);
     const gstV = Math.round(base * o.gst / 100);
-    const to = isRct ? (deal.clientPhone || '') : '';
-    const txt = '*' + (isRct ? 'Receipt' : 'Commission Invoice') + ' ' + (o.no || '') + '* — ' + (shareCardData().brand || 'BCS') + '\n\n' +
+    return '*' + (isRct ? 'Receipt' : 'Commission Invoice') + ' ' + (o.no || '') + '* — ' + (shareCardData().brand || 'BCS') + '\n\n' +
       'Deal: ' + dealLabel(deal) + (deal.code ? ' (' + deal.code + ')' : '') + '\n' +
       (isRct ? 'Payment received: ' + fmtMoney(base + gstV) : 'Brokerage payable: ' + fmtMoney(base + gstV) + (o.gst ? ' (incl. GST ' + o.gst + '%)' : '')) + '\n' +
       (o.bank ? '🏦 ' + o.bank : '') + '\n' +
       'Thank you 🙏';
-    if(!isRct && !to) { try{ navigator.clipboard.writeText(txt); toast('Developer ka phone record me nahi — invoice summary copy ho gayi'); }catch(e){ toast('Copy nahi hua', true); } return; }
-    const ph = to.replace(/[^\d]/g,'');
-    if(ph.length >= 10){ window.open('https://wa.me/' + (ph.length === 10 ? '91' + ph : ph) + '?text=' + encodeURIComponent(txt), '_blank'); toast('WhatsApp khul gaya'); }
-    else { try{ navigator.clipboard.writeText(txt); toast('Summary copy ho gayi — WhatsApp me paste karein'); }catch(e){ toast('Copy nahi hua', true); } }
-  });
-  $('#invCopyBtn').addEventListener('click', () => {
+  };
+  const previewInvoice = (issue) => {
     const deal = needDeal(); if(!deal) return;
     const o = invOpts();
-    const base = o.type === 'receipt' ? (Number(deal.brokeragePaid) || 0) : dealBrkTotal(deal);
-    const gstV = Math.round(base * o.gst / 100);
-    const txt = (o.type === 'receipt' ? 'RECEIPT' : 'INVOICE') + ' ' + (o.no || '') + ' · ' + (o.date || todayISO()) + '\n' +
-      shareCardData().brand + ' — ' + dealLabel(deal) + (deal.code ? ' (' + deal.code + ')' : '') + '\n' +
-      'Brokerage: ' + fmtMoney(base) + (gstV ? ' · GST: ' + fmtMoney(gstV) : '') + '\n' +
-      'Total: ' + fmtMoney(base + gstV) + ' (₹ ' + numToWordsIN(base + gstV) + ' only)';
-    try{ navigator.clipboard.writeText(txt); toast('Invoice summary copy ho gayi'); }catch(e){ toast('Copy nahi hua', true); }
-  });
+    const isRct = o.type === 'receipt';
+    if(issue){ invIssueNo(); save(); }
+    const html = buildInvoicePage(deal, o);
+    const to = isRct ? (deal.clientPhone || '') : '';
+    if(window.BCSPreview) return window.BCSPreview.open({
+      title: (isRct ? 'Receipt ' : 'Commission invoice ') + (o.no || ''),
+      html: html,
+      text: invSummaryText(deal, o),
+      waText: invWaText(deal, o),
+      waUrl: to,
+      filename: invFileName(),
+      kind: 'Invoice · full preview'
+    });
+    const w = window.open('', '_blank');
+    if(!w) return toast('Popup block hua — allow karein', true);
+    w.document.open(); w.document.write(html); w.document.close();
+    if(issue) setTimeout(() => { try{ w.focus(); w.print(); }catch(e){} }, 600);
+  };
+  $('#invPdfBtn').addEventListener('click', () => previewInvoice(true));
+  $('#invDownloadBtn').addEventListener('click', () => previewInvoice(false));
+  $('#invWaBtn').addEventListener('click', () => previewInvoice(false));
+  $('#invCopyBtn').addEventListener('click', () => previewInvoice(false));
 }
 /* ================= BCS REPORT BUILDER ================= */
 function repRow(label, val){
@@ -45643,6 +45782,26 @@ function reportTextSummary(){
   const head = `*${def.title} — ${cd.brand}*` + '\n' + new Date().toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
   return head + '\n\n' + recs.map(r => def.text(r)).join('\n\n———\n\n') + `\n\n— ${cd.person}, ${cd.title}${cd.phone ? ' · ' + cd.phone : ''}`;
 }
+function openReportPreview(){
+  const recs = reportRecs();
+  if(!recs.length) return toast('Report ke liye records nahi mile', true);
+  const def = REPORT_KINDS[reportState.kind];
+  const html = buildReportPage(reportState.kind, recs, reportState.sel);
+  const text = reportTextSummary();
+  const filename = reportFileName();
+  if(window.BCSPreview) return window.BCSPreview.open({
+    title: def.title,
+    html: html,
+    text: text,
+    filename: filename,
+    waText: text,
+    kind: 'Full report · in-app preview'
+  });
+  const w = window.open('', '_blank');
+  if(!w) return toast('Popup block hua — allow karein', true);
+  w.document.open(); w.document.write(html); w.document.close();
+  setTimeout(() => { try{ w.focus(); w.print(); }catch(e){} }, 600);
+}
 function initReports(){
   document.body.addEventListener('click', e => {
     const b = e.target.closest('[data-repbtn]');
@@ -45656,51 +45815,9 @@ function initReports(){
     reportUpdateNote();
   });
   $('#reportRecord').addEventListener('change', reportUpdateNote);
-  $('#reportPdfBtn').addEventListener('click', () => {
-    const recs = reportRecs();
-    if(!recs.length) return toast('Report ke liye records nahi mile', true);
-    const w = window.open('', '_blank');
-    if(!w) return toast('Popup block hua — allow karein', true);
-    w.document.open(); w.document.write(buildReportPage(reportState.kind, recs, reportState.sel)); w.document.close();
-    setTimeout(() => { try{ w.focus(); w.print(); }catch(e){} }, 600);
-    toast('Print dialog me "Save as PDF" choose karein');
-  });
-  $('#reportDownloadBtn').addEventListener('click', () => {
-    const recs = reportRecs();
-    if(!recs.length) return toast('Report ke liye records nahi mile', true);
-    const blob = new Blob([buildReportPage(reportState.kind, recs, reportState.sel)], { type:'text/html' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = reportFileName();
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 4000);
-    toast('Report file download ho gayi');
-  });
-  $('#reportShareBtn').addEventListener('click', async () => {
-    const recs = reportRecs();
-    if(!recs.length) return toast('Report ke liye records nahi mile', true);
-    const html = buildReportPage(reportState.kind, recs, reportState.sel);
-    try{
-      const file = new File([html], reportFileName(), { type:'text/html' });
-      if(navigator.canShare && navigator.canShare({ files:[file] })){
-        await navigator.share({ files:[file], title: REPORT_KINDS[reportState.kind].title });
-        toast('Report share ho gayi ✓');
-        return;
-      }
-    }catch(err){ if(err && err.name === 'AbortError') return; }
-    const blob = new Blob([html], { type:'text/html' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = reportFileName();
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 4000);
-    toast('Share sheet available nahi — file download ho gayi (AirDrop/Finder se bhejein)');
-  });
-  $('#reportCopyBtn').addEventListener('click', async () => {
-    const recs = reportRecs();
-    if(!recs.length) return toast('Report ke liye records nahi mile', true);
-    try{ await navigator.clipboard.writeText(reportTextSummary()); toast('Summary copy ho gayi — WhatsApp me paste karein'); }
-    catch(e){ toast('Copy nahi hua', true); }
+  ['#reportPreviewBtn', '#reportPdfBtn', '#reportDownloadBtn', '#reportShareBtn', '#reportCopyBtn'].forEach(sel => {
+    const el = $(sel);
+    if(el) el.addEventListener('click', openReportPreview);
   });
   $('#dlReportBtn').addEventListener('click', () => {
     if(editingDealId) openReportBuilder('pipeline', editingDealId);
@@ -48163,17 +48280,26 @@ function xchEnsure(d){
   if(!Array.isArray(x.settlements)) x.settlements = [];
   if(!x.settings || typeof x.settings !== 'object') x.settings = {};
   const st = x.settings;
-  if(!(Number(st.expiryDays) > 0)) st.expiryDays = 90;
+  st.expiryDays = Math.min(365, Math.max(7, Math.round(Number(st.expiryDays) || 90)));
   if(typeof st.maskingDefault !== 'boolean') st.maskingDefault = true;
   const splitDefaults = { originPct:30, execPct:35, bcsPct:35 };
-  Object.keys(splitDefaults).forEach(k => { if(!isFinite(+st[k])) st[k] = splitDefaults[k]; });
+  Object.keys(splitDefaults).forEach(k => { if(!isFinite(+st[k]) || +st[k] < 0 || +st[k] > 100) st[k] = splitDefaults[k]; });
   if(!x.maskAdvisors || typeof x.maskAdvisors !== 'object' || Array.isArray(x.maskAdvisors)) x.maskAdvisors = {};
+  Object.keys(x.maskAdvisors).forEach(k => { x.maskAdvisors[k] = !!x.maskAdvisors[k]; });
   if(!x.ui || typeof x.ui !== 'object' || Array.isArray(x.ui)) x.ui = {};
   if(['vault','match','pipeline','settlements'].indexOf(x.ui.tab) < 0) x.ui.tab = 'vault';
   if(typeof x.ui.vaultQ !== 'string') x.ui.vaultQ = '';
   if(typeof x.ui.vaultStage !== 'string') x.ui.vaultStage = '';
+  if(x.ui.vaultStage && STAGES.indexOf(x.ui.vaultStage) < 0) x.ui.vaultStage = '';
   if(typeof x.ui.matchLeadId !== 'string') x.ui.matchLeadId = '';
+  if(typeof x.ui.invQ !== 'string') x.ui.invQ = '';
   if(!Array.isArray(x.ui.cmpIds)) x.ui.cmpIds = [];
+  let codeMax = Number(x.seq) || 0;
+  x.leads.forEach(l => {
+    const m = String(l && l.code || '').match(/^REQ-\d{4}-(\d+)$/);
+    if(m) codeMax = Math.max(codeMax, Number(m[1]) || 0);
+  });
+  x.seq = codeMax;
   x.leads = x.leads.filter(l => l && l.id).map(l => {
     if(STAGES.indexOf(l.stage) < 0) l.stage = 'logged';
     if(!Array.isArray(l.logs)) l.logs = [];
@@ -48181,7 +48307,10 @@ function xchEnsure(d){
     if(!Array.isArray(l.matches)) l.matches = [];
     if(typeof l.masked !== 'boolean' && l.masked !== null) l.masked = null;
     if(!l.createdAt) l.createdAt = Date.now();
-    if(!l.code) l.code = 'REQ-' + new Date(l.createdAt).getFullYear() + '-0000';
+    if(!l.code){
+      x.seq = (Number(x.seq) || 0) + 1;
+      l.code = 'REQ-' + new Date(l.createdAt).getFullYear() + '-' + String(x.seq).padStart(4, '0');
+    }
     if(!l.expiry) l.expiry = addISO(todayISO(), st.expiryDays);
     l.clientName = String(l.clientName || '');
     l.clientPhone = String(l.clientPhone || '');
@@ -48193,6 +48322,7 @@ function xchEnsure(d){
     l.timeline = String(l.timeline || 'immediate');
     return l;
   });
+  if(x.ui.matchLeadId && !x.leads.some(l => l.id === x.ui.matchLeadId)) x.ui.matchLeadId = '';
   x.inventory = x.inventory.filter(i => i && i.id).map(i => {
     i.name = String(i.name || 'Project');
     i.developer = String(i.developer || '');
@@ -48210,6 +48340,8 @@ function xchEnsure(d){
     if(typeof i.active !== 'boolean') i.active = true;
     return i;
   });
+  const invIds = new Set(x.inventory.map(i => i.id));
+  x.ui.cmpIds = x.ui.cmpIds.filter(id => typeof id === 'string' && invIds.has(id));
   x.settlements = x.settlements.filter(s => s && s.id).map(s => {
     s.status = s.status === 'cleared' ? 'cleared' : 'pending';
     ['txn','slab','rate','gaj','gross','originPct','execPct','bcsPct','originAmt','execAmt','bcsAmt'].forEach(k => { s[k] = Number(s[k]) || 0; });
@@ -48249,7 +48381,7 @@ function xchMaskActive(lead){
   if(lead && lead.masked === true) return true;
   if(lead && lead.masked === false) return false;
   const me = currentAdvisor();
-  if(me && x.maskAdvisors[me.id] === true) return true;
+  if(me && Object.prototype.hasOwnProperty.call(x.maskAdvisors, me.id)) return !!x.maskAdvisors[me.id];
   return !!x.settings.maskingDefault;
 }
 function xchPhoneFor(lead){ return xchMaskActive(lead) ? xchMaskPhone(lead && lead.clientPhone) : ((lead && lead.clientPhone) || '—'); }
@@ -48344,7 +48476,9 @@ function xchWa(phone, text){
 }
 function xchCertISO(lead){
   const t = Number(lead && lead.createdAt) || Date.now();
-  return new Date(t).toISOString().slice(0, 10);
+  const d = new Date(t);
+  const p = n => String(n).padStart(2, '0');
+  return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
 }
 
 /* ---------- matching ---------- */
@@ -48362,11 +48496,12 @@ function xchMatch(lead, inv){
   const cost = rate && gaj ? rate * gaj : 0;
   const bMin = (Number(lead && lead.budgetMin) || 0) * 100000;
   const bMax = (Number(lead && lead.budgetMax) || 0) * 100000;
-  if(cost && bMax){
+  if(cost && (bMin || bMax)){
     const lo = bMin ? bMin * 0.9 : 0;
-    const hi = bMax * 1.1;
+    const hi = bMax ? bMax * 1.1 : (bMin ? bMin * 1.4 : 0);
+    const stretch = bMax ? bMax * 1.25 : (bMin ? bMin * 1.7 : 0);
     if(cost <= hi){ score += 30; why.push({ ok:true, t:(cost < lo ? 'Under budget · ' : 'Budget fit · ') + xchINR(cost) }); }
-    else if(cost <= bMax * 1.25){ score += 12; why.push({ ok:true, t:'Budget stretched · ' + xchINR(cost) }); }
+    else if(cost <= stretch){ score += 12; why.push({ ok:true, t:'Budget stretched · ' + xchINR(cost) }); }
     else { why.push({ ok:false, t:'Above budget · ' + xchINR(cost) }); }
   } else {
     score += 10;
@@ -48403,9 +48538,9 @@ function xchSettleCalc(o){
   if(mode === 'rate') gross = rate * gaj * slab / 100;
   else if(mode === 'manual') gross = manual;
   else gross = txn * slab / 100;
-  const op = o.originPct === '' || o.originPct == null ? 30 : num(o.originPct);
-  const ep = o.execPct === '' || o.execPct == null ? 35 : num(o.execPct);
-  const bp = o.bcsPct === '' || o.bcsPct == null ? 35 : num(o.bcsPct);
+  const op = o.originPct === '' || o.originPct == null ? 30 : Math.max(0, num(o.originPct));
+  const ep = o.execPct === '' || o.execPct == null ? 35 : Math.max(0, num(o.execPct));
+  const bp = o.bcsPct === '' || o.bcsPct == null ? 35 : Math.max(0, num(o.bcsPct));
   const total = op + ep + bp;
   return {
     mode, txn, slab, rate, gaj, manual,
@@ -48498,7 +48633,9 @@ function xchDocketText(inv, lead){
 /* ---------- data actions ---------- */
 function xchUpsertClient(lead){
   if(!Array.isArray(db.clients)) db.clients = [];
+  const phoneKey = xchDigits(lead.clientPhone);
   let c = db.clients.find(x => x.xchLeadId === lead.id);
+  if(!c && phoneKey.length >= 10) c = db.clients.find(x => xchDigits(x.phone) === phoneKey);
   const corridorId = xchCorridorId(lead.corridor);
   if(!c){
     c = {
@@ -48510,7 +48647,7 @@ function xchUpsertClient(lead){
       budgetMax: lead.budgetMax == null ? null : lead.budgetMax,
       timeline: lead.timeline || '', requirement: lead.notes || '',
       notes: 'Captured via Exchange · ' + lead.code,
-      nextFollowUp: lead.followUp || '', lastContact: '',
+      nextFollowUp: '', lastContact: '',
       transferHistory: [], custom: {},
       readiness: { kyc:false, income:false, bankPreapproval:false, cibil:false, agreement:false },
       xchLeadId: lead.id, source: 'exchange'
@@ -48521,33 +48658,43 @@ function xchUpsertClient(lead){
     c.phone = lead.clientPhone || c.phone;
     c.updatedAt = Date.now();
     if(lead.advisorId) c.advisorId = lead.advisorId;
-    if(corridorId) c.corridors = [corridorId];
-    c.budgetMin = lead.budgetMin == null ? c.budgetMin : lead.budgetMin;
-    c.budgetMax = lead.budgetMax == null ? c.budgetMax : lead.budgetMax;
-    c.timeline = lead.timeline || c.timeline;
-    c.requirement = lead.notes || c.requirement;
-    c.nextFollowUp = lead.followUp || c.nextFollowUp;
+    if(corridorId){
+      const list = Array.isArray(c.corridors) ? c.corridors.slice() : [];
+      if(list.indexOf(corridorId) < 0) list.push(corridorId);
+      c.corridors = list;
+    }
+    if(lead.budgetMin != null) c.budgetMin = lead.budgetMin;
+    if(lead.budgetMax != null) c.budgetMax = lead.budgetMax;
+    if(lead.timeline) c.timeline = lead.timeline;
+    if(lead.notes) c.requirement = lead.notes;
+    c.xchLeadId = lead.id;
   }
   lead.clientId = c.id;
   return c;
 }
 function xchUpsertTodo(lead){
   if(!Array.isArray(db.todos)) db.todos = [];
-  if(!lead.followUp) return;
-  let t = db.todos.find(x => x.xchLeadId === lead.id && !x.done);
+  const open = db.todos.filter(x => x.xchLeadId === lead.id && !x.done);
+  if(!lead.followUp){
+    if(open.length) db.todos = db.todos.filter(x => !(x.xchLeadId === lead.id && !x.done));
+    return;
+  }
+  const title = 'Exchange follow-up — ' + (lead.clientName || 'Client') + ' (' + lead.code + ')';
+  const note = (xchCorridorName(lead.corridor) || '') + ' · ' + xchBudgetText(lead);
+  let t = open[0];
   if(!t){
     t = {
       id: uid(), xchLeadId: lead.id, date: lead.followUp, time: '',
-      title: 'Exchange follow-up — ' + (lead.clientName || 'Client') + ' (' + lead.code + ')',
-      note: (xchCorridorName(lead.corridor) || '') + ' · ' + xchBudgetText(lead),
-      priority: 'high', done: false, doneAt: null,
+      title, note, priority: 'high', done: false, doneAt: null,
       createdAt: Date.now(), updatedAt: Date.now()
     };
     db.todos.push(t);
   } else {
     t.date = lead.followUp;
-    t.title = 'Exchange follow-up — ' + (lead.clientName || 'Client') + ' (' + lead.code + ')';
+    t.title = title;
+    t.note = note;
     t.updatedAt = Date.now();
+    if(open.length > 1) db.todos = db.todos.filter(x => !(x.xchLeadId === lead.id && !x.done && x !== t));
   }
 }
 function xchSetStage(lead, stage){
@@ -48571,10 +48718,16 @@ function xchRenew(lead){
 }
 function xchDeleteLead(lead){
   if(!lead) return;
-  if(!confirm('Delete ' + lead.code + '? Client record rahega, lead vault se hat jayega.')) return;
+  if(!isAdmin()) return toast('Sirf admin lead delete kar sakta hai', true);
+  if(!confirm('Delete ' + lead.code + '? Client record rahega; lead, follow-up task aur links hat jayenge. Settlement ledger safe rahega.')) return;
   const x = xch();
   x.leads = x.leads.filter(l => l.id !== lead.id);
   x.ui.cmpIds = x.ui.cmpIds.filter(id => id !== lead.id);
+  if(x.ui.matchLeadId === lead.id) x.ui.matchLeadId = '';
+  if(xchDetailId === lead.id){ xchDetailId = ''; try{ closeModal('xchDetailModal'); }catch(e){} }
+  (db.clients || []).forEach(c => { if(c.xchLeadId === lead.id) delete c.xchLeadId; });
+  db.todos = (db.todos || []).filter(t => !(t.xchLeadId === lead.id && !t.done));
+  (x.settlements || []).forEach(s => { if(s.leadId === lead.id) s.leadId = ''; });
   xchSave(); renderExchange();
   toast('Lead deleted');
 }
@@ -48617,8 +48770,9 @@ function xchStatsHTML(){
   const expiring = active.filter(l => { const d = xchDaysLeft(l.expiry); return d != null && d >= 0 && d <= 15; }).length;
   const settled = leads.filter(l => l.stage === 'settled').length;
   const sets = xchScopedSettlements();
-  const gross = sets.reduce((n, s) => n + (Number(s.gross) || 0), 0);
-  const bcs = sets.reduce((n, s) => n + (Number(s.bcsAmt) || 0), 0);
+  const cleared = sets.filter(s => s.status === 'cleared');
+  const gross = cleared.reduce((n, s) => n + (Number(s.gross) || 0), 0);
+  const bcs = cleared.reduce((n, s) => n + (Number(s.bcsAmt) || 0), 0);
   const pending = sets.filter(s => s.status !== 'cleared').reduce((n, s) => n + (Number(s.gross) || 0), 0);
   const inv = (xch() || {}).inventory || [];
   return ''
@@ -48634,6 +48788,8 @@ function renderExchange(){
   if(!x) return;
   const stats = document.getElementById('xchStats');
   if(stats) stats.innerHTML = xchStatsHTML();
+  const settingsBtn = document.getElementById('xchSettingsBtn');
+  if(settingsBtn) settingsBtn.style.display = isAdmin() ? '' : 'none';
   const tabs = document.querySelectorAll('#xchTabs [data-xch-tab]');
   Array.prototype.forEach.call(tabs, b => b.classList.toggle('on', b.getAttribute('data-xch-tab') === x.ui.tab));
   const body = document.getElementById('xchBody');
@@ -48642,19 +48798,20 @@ function renderExchange(){
   else if(x.ui.tab === 'pipeline') body.innerHTML = xchPipelineHTML();
   else if(x.ui.tab === 'settlements') body.innerHTML = xchSettleHTML();
   else body.innerHTML = xchVaultHTML();
+  if(x.ui.tab === 'settlements'){ try{ xchInlineCalc(); }catch(e){} }
 }
 
 /* ---------- render: vault ---------- */
-function xchVaultHTML(){
+function xchVaultListHTML(){
   const x = xch();
   const q = String(x.ui.vaultQ || '').toLowerCase();
+  const total = xchScopedLeads().length;
   let list = xchScopedLeads().slice().sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
   if(x.ui.vaultStage) list = list.filter(l => l.stage === x.ui.vaultStage);
   if(q){
     list = list.filter(l => [l.code, l.clientName, l.clientPhone, l.advisorName, l.advisorMobile, xchCorridorName(l.corridor), xchBudgetText(l), l.notes]
       .filter(Boolean).join(' ').toLowerCase().indexOf(q) >= 0);
   }
-  const stageOpts = '<option value="">All stages</option>' + XCH_STAGES.map(s => '<option value="' + s.id + '"' + (x.ui.vaultStage === s.id ? ' selected' : '') + '>' + esc(s.label) + '</option>').join('');
   const cards = list.map(l => {
     const st = xchStageMeta(l.stage);
     const exp = xchExpiryPill(l);
@@ -48676,14 +48833,21 @@ function xchVaultHTML(){
       + (isAdmin() ? '<button type="button" class="xch-btn del" data-xchleaddel="' + l.id + '">✕</button>' : '')
       + '</div></article>';
   }).join('');
+  if(cards) return '<div class="xch-grid">' + cards + '</div>';
+  return '<div class="xch-empty">' + (total
+    ? 'Koi lead filter/search se match nahi. Filter clear karein.'
+    : 'Koi requirement nahi mila. <b>＋ Requirement</b> se naya lead log karein.<br>Advisor requirement bhejega to yahan automatic aa jayega.') + '</div>';
+}
+function xchVaultHTML(){
+  const x = xch();
+  const stageOpts = '<option value="">All stages</option>' + XCH_STAGES.map(s => '<option value="' + s.id + '"' + (x.ui.vaultStage === s.id ? ' selected' : '') + '>' + esc(s.label) + '</option>').join('');
   return ''
     + '<div class="xch-bar">'
     + '<input class="grow" id="xchVaultQ" placeholder="Search code, client, advisor, corridor, phone…" value="' + esc(x.ui.vaultQ || '') + '">'
     + '<select id="xchVaultStage">' + stageOpts + '</select>'
     + '<button type="button" class="xch-btn" id="xchVaultAdd">＋ Requirement</button>'
     + '</div>'
-    + (cards ? '<div class="xch-grid">' + cards + '</div>'
-      : '<div class="xch-empty">Koi requirement nahi mila. <b>＋ Requirement</b> se naya lead log karein, ya filter clear karein.<br>Advisor requirement bhejega to yahan automatic aa jayega.</div>');
+    + '<div id="xchVaultList">' + xchVaultListHTML() + '</div>';
 }
 
 /* ---------- render: match ---------- */
@@ -48745,7 +48909,7 @@ function xchMatchHTML(){
     + (matches.length ? '<div class="xch-grid">' + cards + '</div>' : '<div class="xch-empty">Exchange inventory khali hai. <b>⬇ Import from Projects</b> dabayein ya <b>▦ Add inventory</b> se project add karein.</div>')
     + cmpTable + xchInventoryHTML();
 }
-function xchInventoryHTML(){
+function xchInvListHTML(){
   const x = xch();
   const q = String(x.ui.invQ || '').toLowerCase();
   let list = x.inventory.slice().sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
@@ -48759,12 +48923,21 @@ function xchInventoryHTML(){
     + '<td>' + (i.active !== false ? '<span class="xch-verdict">Active</span>' : '<span class="xch-verdict alt">Off</span>') + '</td>'
     + '<td><button type="button" class="xch-btn" data-xchinvopen="' + i.id + '">✎</button> <button type="button" class="xch-btn del" data-xchinvdel="' + i.id + '">✕</button></td>'
     + '</tr>').join('');
-  return '<div class="xch-cmp-wrap" id="xchInvWrap"><div class="xch-cmp-tools"><h4 style="margin:0;flex:1">Exchange inventory · ' + list.length + '</h4>'
+  return {
+    count: list.length,
+    html: rows
+      ? '<div class="xch-scroll"><table class="xch-table"><thead><tr><th>Project</th><th>Corridor</th><th>Approval</th><th class="num">Rate/gaj</th><th>Sizes / slab</th><th>Status</th><th></th></tr></thead><tbody>' + rows + '</tbody></table></div>'
+      : '<div class="xch-empty">' + (x.inventory.length ? 'Koi project search se match nahi. Filter clear karein.' : 'Inventory khali hai. <b>＋ Add</b> ya <b>⬇ Projects</b> se import karein.') + '</div>'
+  };
+}
+function xchInventoryHTML(){
+  const x = xch();
+  const l = xchInvListHTML();
+  return '<div class="xch-cmp-wrap" id="xchInvWrap"><div class="xch-cmp-tools"><h4 id="xchInvCount" style="margin:0;flex:1">Exchange inventory · ' + l.count + '</h4>'
     + '<input id="xchInvQ" placeholder="Search project, corridor, RERA…" value="' + esc(x.ui.invQ || '') + '" style="min-width:180px">'
     + '<button type="button" class="xch-btn" data-xchinvadd>＋ Add</button>'
     + '<button type="button" class="xch-btn" data-xchinvimport>⬇ Projects</button></div>'
-    + (rows ? '<div class="xch-scroll"><table class="xch-table"><thead><tr><th>Project</th><th>Corridor</th><th>Approval</th><th class="num">Rate/gaj</th><th>Sizes / slab</th><th>Status</th><th></th></tr></thead><tbody>' + rows + '</tbody></table></div>'
-      : '<div class="xch-empty">Inventory khali hai. <b>＋ Add</b> ya <b>⬇ Projects</b> se import karein.</div>')
+    + '<div id="xchInvList">' + l.html + '</div>'
     + '</div>';
 }
 
@@ -48861,12 +49034,17 @@ function xchOpenLead(id, editMode){
   if(id && !lead) return;
   if(lead && !xchCanEdit(lead)) return toast('Ye lead aapke paas nahi hai', true);
   const me = currentAdvisor();
-  xchFillSelect('xchCorridor', XCH_CORRIDORS.map(c => ({ value:c, label:c })), lead ? xchCorridorName(lead.corridor) : '', 'Select corridor');
+  const cName = lead ? xchCorridorName(lead.corridor) : '';
+  const cList = XCH_CORRIDORS.slice();
+  if(cName && cList.indexOf(cName) < 0) cList.push(cName);
+  xchFillSelect('xchCorridor', cList.map(c => ({ value:c, label:c })), cName, 'Select corridor');
   xchFillSelect('xchExec', (db.advisors || []).map(a => ({ value:a.id, label:a.name + (a.phone ? ' · ' + a.phone : '') })), lead ? (lead.execId || '') : '', 'To be assigned');
   const set = (eid, val) => { const el = document.getElementById(eid); if(el) el.value = val == null ? '' : val; };
+  const originName = lead ? (lead.advisorName || ((db.advisors || []).find(a => a.id === lead.advisorId) || {}).name || '') : ((me && me.name) || '');
+  const originMobile = lead ? (lead.advisorMobile || ((db.advisors || []).find(a => a.id === lead.advisorId) || {}).phone || '') : ((me && me.phone) || '');
   set('xchLeadId', lead ? lead.id : '');
-  set('xchAdvName', lead ? lead.advisorName : ((me && me.name) || ''));
-  set('xchAdvMobile', lead ? lead.advisorMobile : ((me && me.phone) || ''));
+  set('xchAdvName', originName);
+  set('xchAdvMobile', originMobile);
   set('xchClientName', lead ? lead.clientName : '');
   set('xchClientPhone', lead ? lead.clientPhone : '');
   set('xchBudgetMin', lead ? lead.budgetMin : '');
@@ -48876,11 +49054,13 @@ function xchOpenLead(id, editMode){
   set('xchFollowUp', lead ? lead.followUp : todayISO());
   const tl = document.getElementById('xchTimeline'); if(tl) tl.value = (lead && lead.timeline) || 'immediate';
   const mask = document.getElementById('xchMask');
-  if(mask) mask.checked = lead ? (lead.masked === true ? true : lead.masked === false ? false : !!x.settings.maskingDefault) : !!x.settings.maskingDefault;
+  if(mask) mask.value = lead ? (lead.masked === true ? 'on' : lead.masked === false ? 'off' : '') : '';
+  const maskWrap = document.getElementById('xchMaskWrap');
+  if(maskWrap) maskWrap.style.display = isAdmin() ? '' : 'none';
   const title = document.getElementById('xchLeadModalTitle');
   if(title) title.textContent = lead ? 'Requirement edit — ' + lead.code : 'Naya requirement';
   const hint = document.getElementById('xchMaskHint');
-  if(hint) hint.textContent = isAdmin() ? 'Admin ko full number dikhta hai; advisors ko masked.' : 'Aapko masked number dikhega jab masking on ho.';
+  if(hint) hint.textContent = isAdmin() ? 'Admin ko full number dikhta hai; advisors ko lead/global setting ke hisaab se masked.' : 'Aapko masked number dikhega jab is lead ya aapke advisor profile par masking on ho.';
   const execWrap = document.getElementById('xchExecWrap');
   if(execWrap) execWrap.style.display = isAdmin() ? '' : 'none';
   if(!editMode && !lead && !isAdmin()) toast('Advisor mode: client phone masked rahega', false);
@@ -48893,25 +49073,42 @@ function xchSaveLead(){
   const name = String(val('xchClientName')).trim();
   const phone = String(val('xchClientPhone')).trim();
   if(!name) return toast('Client ka naam likhein', true);
-  if(!phone) return toast('Client phone likhein', true);
+  if(xchDigits(phone).length < 10) return toast('Client phone 10-digit likhein', true);
   const bmin = number(val('xchBudgetMin'));
   const bmax = number(val('xchBudgetMax'));
+  if((bmin != null && bmin < 0) || (bmax != null && bmax < 0)) return toast('Budget negative nahi ho sakta', true);
   if(bmin != null && bmax != null && bmin > bmax) return toast('Budget min max se bada hai', true);
   const gaj = number(val('xchGaj'));
-  if(gaj != null && (gaj < 20 || gaj > 5000)) return toast('Plot size gaj me check karein', true);
-  const advName = String(val('xchAdvName')).trim();
-  const advMobile = String(val('xchAdvMobile')).trim();
-  const matched = xchFindAdvisor(advName, advMobile);
-  const execId = isAdmin() ? val('xchExec') : '';
-  const execName = execId ? (((db.advisors || []).find(a => a.id === execId) || {}).name || '') : '';
-  const now = Date.now();
+  if(gaj != null && (gaj < 20 || gaj > 5000)) return toast('Plot size 20–5000 gaj ke beech check karein', true);
   let lead = id ? x.leads.find(l => l.id === id) : null;
+  const me = currentAdvisor();
+  let advName = String(val('xchAdvName')).trim();
+  let advMobile = String(val('xchAdvMobile')).trim();
+  if(!isAdmin() && lead){
+    advName = lead.advisorName || advName;
+    advMobile = lead.advisorMobile || advMobile;
+  } else if(!isAdmin() && me){
+    if(!advName) advName = me.name || '';
+    if(!advMobile) advMobile = me.phone || '';
+  }
+  if(advMobile && xchDigits(advMobile).length < 10) return toast('Advisor mobile 10-digit likhein', true);
+  const matched = xchFindAdvisor(advName, advMobile);
+  if(matched){
+    if(!advName) advName = matched.name || '';
+    if(!advMobile) advMobile = matched.phone || '';
+  }
+  const dup = !lead ? x.leads.find(l => xchDigits(l.clientPhone) === xchDigits(phone) && l.stage !== 'settled') : null;
+  if(dup && !confirm('Is phone par lead already hai — ' + dup.code + '. Phir bhi naya requirement banayein?')) return;
+  const execSel = isAdmin() ? val('xchExec') : (lead ? (lead.execId || '') : '');
+  const execName = execSel ? (((db.advisors || []).find(a => a.id === execSel) || {}).name || '') : '';
+  const maskVal = isAdmin() ? val('xchMask') : (lead ? (lead.masked === true ? 'on' : lead.masked === false ? 'off' : '') : '');
+  const now = Date.now();
   if(!lead){
     lead = {
       id: uid(), code: xchNextCode(), createdAt: now, updatedAt: now,
       stage: 'logged', logs: [], visits: [], matches: [], masked: null,
       source: isAdmin() ? 'admin' : 'advisor',
-      createdBy: isAdmin() ? 'admin' : ((currentAdvisor() || {}).id || ''),
+      createdBy: isAdmin() ? 'admin' : ((me || {}).id || ''),
       expiry: addISO(todayISO(), x.settings.expiryDays)
     };
     x.leads.unshift(lead);
@@ -48921,13 +49118,14 @@ function xchSaveLead(){
   }
   Object.assign(lead, {
     advisorName: advName, advisorMobile: advMobile,
-    advisorId: matched ? matched.id : (lead.advisorId || ''),
+    advisorId: matched ? matched.id : (lead.advisorId || (!isAdmin() && me ? me.id : '')),
     clientName: name, clientPhone: phone,
-    corridor: val('xchCorridor'), budgetMin: bmin, budgetMax: bmax, gaj: gaj,
+    corridor: val('xchCorridor') || (lead.corridor || ''),
+    budgetMin: bmin, budgetMax: bmax, gaj: gaj,
     timeline: val('xchTimeline'), notes: String(val('xchNotes')).trim(),
     followUp: val('xchFollowUp'),
-    masked: document.getElementById('xchMask') && document.getElementById('xchMask').checked ? true : false,
-    execId: execId || lead.execId || '', execName: execName || lead.execName || ''
+    masked: maskVal === 'on' ? true : maskVal === 'off' ? false : null,
+    execId: execSel || '', execName: execName || ''
   });
   xchUpsertClient(lead);
   xchUpsertTodo(lead);
@@ -48960,7 +49158,7 @@ function xchOpenDetail(id){
     + '</div>'
     + (days != null && days < 0 && l.stage !== 'settled' ? '<p class="xch-warnline" style="margin:7px 0 0">Protection expired — renew karke dobara claim lock karein.</p>' : '')
     + '<div class="xch-inline" style="margin-top:7px"><button type="button" class="xch-btn" data-xchrenew="' + l.id + '">↻ Renew ' + x.settings.expiryDays + ' days</button>'
-    + (l.followUp ? '<button type="button" class="xch-btn" data-xchleadwa="' + l.id + '">↗ WhatsApp</button>' : '')
+    + '<button type="button" class="xch-btn" data-xchleadwa="' + l.id + '">↗ WhatsApp</button>'
     + '</div></div>'
     + '<div class="xch-detail-sec"><h5>Requirement</h5><div class="xch-kv">'
     + '<div><div class="k">Client</div><div class="v">' + esc(l.clientName || '—') + '</div></div>'
@@ -49013,7 +49211,10 @@ function xchCertHTML(lead){
 function xchOpenInv(id){
   const x = xch();
   const inv = id ? x.inventory.find(i => i.id === id) : null;
-  xchFillSelect('xchInvCorridor', XCH_CORRIDORS.map(c => ({ value:c, label:c })), inv ? xchCorridorName(inv.corridor) : '', 'Select corridor');
+  const cName = inv ? xchCorridorName(inv.corridor) : '';
+  const cList = XCH_CORRIDORS.slice();
+  if(cName && cList.indexOf(cName) < 0) cList.push(cName);
+  xchFillSelect('xchInvCorridor', cList.map(c => ({ value:c, label:c })), cName, 'Select corridor');
   xchFillSelect('xchInvProject', (db.projects || []).map(p => ({ value:p.id, label:p.name + ' · ' + xchCorridorName(p.corridor) })), inv ? (inv.projectId || '') : '', '— New / manual entry —');
   const set = (eid, val) => { const el = document.getElementById(eid); if(el) el.value = val == null ? '' : val; };
   set('xchInvId', inv ? inv.id : '');
@@ -49040,8 +49241,10 @@ function xchSaveInv(){
   const id = val('xchInvId');
   const name = String(val('xchInvName')).trim();
   if(!name) return toast('Project ka naam likhein', true);
+  const projectId = val('xchInvProject') || '';
+  if(projectId && x.inventory.some(i => i.projectId === projectId && i.id !== id)) return toast('Ye project pehle se inventory me hai — edit karein', true);
   const rec = {
-    projectId: val('xchInvProject') || '', name, developer: String(val('xchInvDev')).trim(),
+    projectId, name, developer: String(val('xchInvDev')).trim(),
     corridor: val('xchInvCorridor'), approval: val('xchInvApproval') || 'other',
     rera: String(val('xchInvRera')).trim(), rate: Number(val('xchInvRate')) || 0,
     sizes: String(val('xchInvSizes')).trim(), roadWidth: Number(val('xchInvRoad')) || 0,
@@ -49103,9 +49306,12 @@ function xchSaveSettle(){
   if(r.warn && !confirm('Split total ' + r.total + '% hai, 100% nahi. Phir bhi save karein?')) return;
   const id = val('xchSetId');
   const code = String(val('xchSetCode')).trim();
-  const lead = x.leads.find(l => l.code === code || l.id === val('xchSetLeadId'));
+  const codeKey = code.toUpperCase();
+  const lead = x.leads.find(l => (codeKey && String(l.code || '').toUpperCase() === codeKey) || l.id === val('xchSetLeadId'));
+  const existing = id ? x.settlements.find(s => s.id === id) : null;
+  const oldLeadId = existing ? existing.leadId : '';
   const rec = {
-    code: code || (lead ? lead.code : ''),
+    code: lead ? lead.code : code,
     leadId: lead ? lead.id : '',
     date: val('xchSetDate') || todayISO(),
     mode: val('xchSetMode') || 'pct',
@@ -49119,13 +49325,24 @@ function xchSaveSettle(){
     status: val('xchSetStatus') === 'cleared' ? 'cleared' : 'pending',
     updatedAt: Date.now()
   };
-  const existing = id ? x.settlements.find(s => s.id === id) : null;
+  let savedId = existing ? existing.id : '';
   if(existing) Object.assign(existing, rec);
-  else x.settlements.unshift(Object.assign({ id: uid(), createdAt: Date.now() }, rec));
+  else { const fresh = Object.assign({ id: uid(), createdAt: Date.now() }, rec); x.settlements.unshift(fresh); savedId = fresh.id; }
+  if(oldLeadId && oldLeadId !== (lead && lead.id)){
+    const oldLead = x.leads.find(l => l.id === oldLeadId);
+    if(oldLead && oldLead.settlementId === savedId){
+      delete oldLead.settlementId;
+      if(oldLead.stage === 'settled' && !x.settlements.some(s => s.leadId === oldLead.id && s.status === 'cleared')) oldLead.stage = 'registry';
+    }
+  }
   if(lead){
-    lead.settlementId = existing ? existing.id : (x.settlements[0] || {}).id;
-    lead.stage = 'settled';
-    lead.dealValue = r.txn;
+    lead.settlementId = savedId;
+    const otherCleared = x.settlements.some(s => s.id !== savedId && s.leadId === lead.id && s.status === 'cleared');
+    if(rec.status === 'cleared' || otherCleared) lead.stage = 'settled';
+    else if(lead.stage === 'settled') lead.stage = 'registry';
+    else if(XCH_STAGES.findIndex(s => s.id === lead.stage) < XCH_STAGES.findIndex(s => s.id === 'registry')) lead.stage = 'registry';
+    const dealValue = r.txn || (r.mode === 'rate' ? r.rate * r.gaj : r.gross);
+    lead.dealValue = Math.round(dealValue || 0);
     lead.slab = r.slab;
     lead.gross = r.gross;
     xchLog(lead, 'Settlement ' + (rec.status === 'cleared' ? 'cleared' : 'logged') + ' · gross ' + xchINR(r.gross));
@@ -49136,6 +49353,7 @@ function xchSaveSettle(){
   toast(existing ? 'Settlement updated' : 'Settlement logged');
 }
 function xchOpenSettings(){
+  if(!isAdmin()) return toast('Exchange settings sirf admin ke liye hain', true);
   const x = xch();
   const set = (id, val) => { const el = document.getElementById(id); if(el) el.value = val; };
   set('xchCfgExpiry', x.settings.expiryDays);
@@ -49146,17 +49364,22 @@ function xchOpenSettings(){
   const list = document.getElementById('xchMaskAdvList');
   if(list){
     const advs = db.advisors || [];
-    list.innerHTML = advs.length ? advs.map(a => '<label style="display:flex;align-items:center;gap:8px;padding:5px 0;font-size:11.5px;font-weight:700;color:var(--ink2)"><input type="checkbox" data-xchadvmask="' + a.id + '"' + (x.maskAdvisors[a.id] ? ' checked' : '') + '> ' + esc(a.name) + (a.phone ? ' · ' + esc(a.phone) : '') + '</label>').join('')
+    list.innerHTML = advs.length ? advs.map(a => {
+      const on = Object.prototype.hasOwnProperty.call(x.maskAdvisors, a.id) ? !!x.maskAdvisors[a.id] : !!x.settings.maskingDefault;
+      return '<label style="display:flex;align-items:center;gap:8px;padding:5px 0;font-size:11.5px;font-weight:700;color:var(--ink2)"><input type="checkbox" data-xchadvmask="' + a.id + '"' + (on ? ' checked' : '') + '> ' + esc(a.name) + (a.phone ? ' · ' + esc(a.phone) : '') + '</label>';
+    }).join('')
       : '<div class="xch-note">Koi advisor record nahi. Advisors page se add karein.</div>';
   }
   showOverlay('xchSettingsModal');
 }
 function xchSaveSettings(){
+  if(!isAdmin()) return toast('Exchange settings sirf admin ke liye hain', true);
   const x = xch();
   const val = id => { const el = document.getElementById(id); return el ? el.value : ''; };
   const days = Number(val('xchCfgExpiry'));
   if(!(days >= 7 && days <= 365)) return toast('Validity 7–365 din ke beech rakhein', true);
   const o = Number(val('xchCfgO')), e = Number(val('xchCfgE')), b = Number(val('xchCfgB'));
+  if(![o, e, b].every(n => isFinite(n) && n >= 0 && n <= 100)) return toast('Split % 0–100 ke beech rakhein', true);
   if(Math.abs((o + e + b) - 100) > 0.01) return toast('Split total 100% hona chahiye (abhi ' + (o + e + b) + '%)', true);
   x.settings.expiryDays = Math.round(days);
   x.settings.maskingDefault = val('xchCfgMask') === 'on';
@@ -49200,6 +49423,8 @@ function xchImportFile(file){
       if(src.settings) x.settings = Object.assign({}, x.settings, src.settings);
       if(src.maskAdvisors) x.maskAdvisors = Object.assign({}, x.maskAdvisors, src.maskAdvisors);
       xchEnsure(db);
+      const importedIds = new Set((src.leads || []).map(l => l && l.id).filter(Boolean));
+      x.leads.filter(l => importedIds.has(l.id)).forEach(l => { try{ xchUpsertClient(l); xchUpsertTodo(l); }catch(e){} });
       xchSave(); renderExchange();
       toast('Exchange JSON import ho gaya');
     }catch(err){ toast('Import fail — valid exchange JSON chahiye', true); }
@@ -49210,9 +49435,10 @@ function xchImportFile(file){
 /* ---------- interlinks ---------- */
 function xchDayPlanHTML(day){
   const leads = xchScopedLeads();
+  const todoIds = new Set((db.todos || []).filter(t => t.xchLeadId && !t.done).map(t => t.xchLeadId));
   const rows = [];
   leads.forEach(l => {
-    if(l.followUp === day) rows.push({ l, kind:'Follow-up', cls:'' });
+    if(l.followUp === day && !todoIds.has(l.id)) rows.push({ l, kind:'Follow-up', cls:'' });
     if(l.expiry === day) rows.push({ l, kind:'Protection expiry', cls:'warn' });
   });
   if(!rows.length) return '<div class="xchd-empty">Is din koi exchange follow-up ya expiry nahi. <b>Exchange</b> page se requirement add karein.</div>';
@@ -49232,25 +49458,25 @@ function xchPriorityItems(){
 function xchAdvisorStatsHTML(a){
   if(!a) return '';
   const x = xch();
-  const mine = x.leads.filter(l => l.advisorId === a.id || l.execId === a.id);
-  const origin = mine.filter(l => l.advisorId === a.id).length;
+  const mine = x.leads.filter(l => l.advisorId === a.id || l.execId === a.id || l.createdBy === a.id);
+  const origin = mine.filter(l => l.advisorId === a.id || l.createdBy === a.id).length;
   const closer = mine.filter(l => l.execId === a.id).length;
-  const sets = x.settlements.filter(s => mine.some(l => l.id === s.leadId));
+  const sets = x.settlements.filter(s => s.status === 'cleared' && mine.some(l => l.id === s.leadId));
   const payout = sets.reduce((n, s) => {
     const lead = mine.find(l => l.id === s.leadId) || {};
     return n + (lead.execId === a.id ? (Number(s.execAmt) || 0) : (Number(s.originAmt) || 0));
   }, 0);
-  const masked = !!x.maskAdvisors[a.id];
+  const masked = Object.prototype.hasOwnProperty.call(x.maskAdvisors, a.id) ? !!x.maskAdvisors[a.id] : !!x.settings.maskingDefault;
   return '<div class="team-stats">'
     + '<div><div class="k">Exchange leads</div><div class="v">' + mine.length + '</div></div>'
     + '<div><div class="k">As originator</div><div class="v">' + origin + '</div></div>'
     + '<div><div class="k">As closer</div><div class="v">' + closer + '</div></div>'
-    + '<div><div class="k">Settled payout</div><div class="v" style="font-size:11.5px">' + (payout ? xchINR(payout) : '—') + '</div></div>'
+    + '<div><div class="k">Cleared payout</div><div class="v" style="font-size:11.5px">' + (payout ? xchINR(payout) : '—') + '</div></div>'
     + '</div>'
     + (isAdmin() ? '<div class="profile-block"><div class="lab">Exchange masking</div><div class="adv-quick">'
       + '<button type="button" class="btn ' + (masked ? 'primary' : 'ghost') + ' sm" data-xchadvmaskbtn="' + a.id + '">' + (masked ? '✓ Masking on' : 'Masking off') + '</button>'
       + '<button type="button" class="btn ghost sm" data-xchadvleads="' + a.id + '">Open exchange leads</button>'
-      + '</div><div class="lock-hint">Masking on = is advisor ko exchange leads me client phone masked dikhega. Admin ko hamesha full number.</div></div>' : '');
+      + '</div><div class="lock-hint">' + (Object.prototype.hasOwnProperty.call(x.maskAdvisors, a.id) ? 'Is advisor ke liye custom setting. ' : 'Global default lag raha hai. ') + 'Masking on = client phone masked dikhega. Admin ko hamesha full number.</div></div>' : '');
 }
 function xchInlineCalc(){
   const root = document.getElementById('xchSettleCalc');
@@ -49297,9 +49523,9 @@ document.addEventListener('click', function(e){
   const matchBtn = q('[data-xchleadmatch]');
   if(matchBtn){ const x = xch(); x.ui.tab = 'match'; x.ui.matchLeadId = matchBtn.getAttribute('data-xchleadmatch'); xchSave(); renderExchange(); return; }
   const certBtn = q('[data-xchleadcert]');
-  if(certBtn){ const x = xch(); const l = x.leads.find(a => a.id === certBtn.getAttribute('data-xchleadcert')); if(l){ xchDetailId = l.id; copyText(xchCertificateText(l)).then(ok => toast(ok ? 'Certificate copy — WhatsApp me paste karein' : 'Copy fail', !ok)); } return; }
+  if(certBtn){ const x = xch(); const l = x.leads.find(a => a.id === certBtn.getAttribute('data-xchleadcert')); if(l){ xchDetailId = l.id; if(!xchPreviewCert(l)) copyText(xchCertificateText(l)).then(ok => toast(ok ? 'Certificate copy — WhatsApp me paste karein' : 'Copy fail', !ok)); } return; }
   const waBtn = q('[data-xchleadwa]');
-  if(waBtn){ const x = xch(); const l = x.leads.find(a => a.id === waBtn.getAttribute('data-xchleadwa')); if(l){ const win = window.open(xchWa(l.advisorMobile || '', xchLeadShareText(l)), '_blank', 'noopener'); if(!win) toast('WhatsApp popup block hua', true); } return; }
+  if(waBtn){ const x = xch(); const l = x.leads.find(a => a.id === waBtn.getAttribute('data-xchleadwa')); if(l){ if(!xchPreviewCert(l)){ const win = window.open(xchWa(l.advisorMobile || '', xchLeadShareText(l)), '_blank', 'noopener'); if(!win) toast('WhatsApp popup block hua', true); } } return; }
   const delBtn = q('[data-xchleaddel]');
   if(delBtn){ const x = xch(); xchDeleteLead(x.leads.find(a => a.id === delBtn.getAttribute('data-xchleaddel'))); return; }
   const renewBtn = q('[data-xchrenew]');
@@ -49314,7 +49540,7 @@ document.addEventListener('click', function(e){
     const x = xch();
     const inv = x.inventory.find(i => i.id === docket.getAttribute('data-xchdocket'));
     const lead = x.leads.find(l => l.id === x.ui.matchLeadId) || null;
-    if(inv){ const txt = xchDocketText(inv, lead); copyText(txt).then(ok => { toast(ok ? 'Docket copy — WhatsApp me paste karein' : 'Copy fail', !ok); const win = window.open(xchWa('', txt), '_blank', 'noopener'); if(!win) toast('WhatsApp popup block hua', true); }); }
+    if(inv){ const txt = xchDocketText(inv, lead); if(window.BCSPreview){ window.BCSPreview.open({ title: 'Inventory docket — ' + (inv.name || ''), text: txt, waText: txt, filename: 'BCS-docket-' + todayISO() + '.txt', kind: 'Inventory docket · preview' }); } else { copyText(txt).then(ok => { toast(ok ? 'Docket copy — WhatsApp me paste karein' : 'Copy fail', !ok); const win = window.open(xchWa('', txt), '_blank', 'noopener'); if(!win) toast('WhatsApp popup block hua', true); }); } }
     return;
   }
   const proj = q('[data-xchproj]');
@@ -49326,11 +49552,30 @@ document.addEventListener('click', function(e){
   const invOpen = q('[data-xchinvopen]');
   if(invOpen){ e.preventDefault(); xchOpenInv(invOpen.getAttribute('data-xchinvopen')); return; }
   const invDel = q('[data-xchinvdel]');
-  if(invDel){ const x = xch(); if(confirm('Inventory se hata dein?')){ x.inventory = x.inventory.filter(i => i.id !== invDel.getAttribute('data-xchinvdel')); xchSave(); renderExchange(); toast('Inventory removed'); } return; }
+  if(invDel){ if(!isAdmin()) return toast('Sirf admin inventory delete kar sakta hai', true); const x = xch(); if(confirm('Inventory se hata dein?')){ const id = invDel.getAttribute('data-xchinvdel'); x.inventory = x.inventory.filter(i => i.id !== id); x.ui.cmpIds = (x.ui.cmpIds || []).filter(cid => cid !== id); xchSave(); renderExchange(); toast('Inventory removed'); } return; }
   const setOpen = q('[data-xchsetopen]');
   if(setOpen){ e.preventDefault(); xchOpenSettle(setOpen.getAttribute('data-xchsetopen')); return; }
   const setDel = q('[data-xchsetdel]');
-  if(setDel){ const x = xch(); if(confirm('Settlement entry delete karein?')){ x.settlements = x.settlements.filter(s => s.id !== setDel.getAttribute('data-xchsetdel')); xchSave(); renderExchange(); toast('Settlement deleted'); } return; }
+  if(setDel){
+    if(!isAdmin()) return toast('Sirf admin settlement delete kar sakta hai', true);
+    const x = xch();
+    if(confirm('Settlement entry delete karein?')){
+      const id = setDel.getAttribute('data-xchsetdel');
+      const rec = x.settlements.find(s => s.id === id);
+      const leadId = rec ? rec.leadId : '';
+      x.settlements = x.settlements.filter(s => s.id !== id);
+      if(leadId){
+        const lead = x.leads.find(l => l.id === leadId);
+        if(lead && lead.settlementId === id){
+          delete lead.settlementId;
+          const otherCleared = x.settlements.some(s => s.leadId === lead.id && s.status === 'cleared');
+          if(lead.stage === 'settled' && !otherCleared) lead.stage = 'registry';
+        }
+      }
+      xchSave(); renderExchange(); toast('Settlement deleted');
+    }
+    return;
+  }
   if(q('[data-xchsetnew]')){ e.preventDefault(); xchOpenSettle(''); return; }
   if(q('[data-xchlogsettle]')){
     e.preventDefault();
@@ -49343,20 +49588,30 @@ document.addEventListener('click', function(e){
   }
   if(q('[data-xchresetcalc]')){
     const root = document.getElementById('xchSettleCalc');
-    if(root){ Array.prototype.forEach.call(root.querySelectorAll('input[type="number"]'), el => { el.value = ''; }); const s = root.querySelector('[data-xchcf="slab"]'); if(s) s.value = '2'; const m = root.querySelector('[data-xchcf="mode"]'); if(m) m.value = 'pct'; xchInlineCalc(); }
+    if(root){
+      const x = xch();
+      const cfg = x.settings;
+      ['code','txn','rate','gaj','gross'].forEach(k => { const el = root.querySelector('[data-xchcf="' + k + '"]'); if(el) el.value = ''; });
+      const s = root.querySelector('[data-xchcf="slab"]'); if(s) s.value = '2';
+      const m = root.querySelector('[data-xchcf="mode"]'); if(m) m.value = 'pct';
+      const o = root.querySelector('[data-xchcf="originPct"]'); if(o) o.value = cfg.originPct;
+      const e2 = root.querySelector('[data-xchcf="execPct"]'); if(e2) e2.value = cfg.execPct;
+      const b = root.querySelector('[data-xchcf="bcsPct"]'); if(b) b.value = cfg.bcsPct;
+      xchInlineCalc();
+    }
     return;
   }
   const advMaskBtn = q('[data-xchadvmaskbtn]');
   if(advMaskBtn){ const x = xch(); const id = advMaskBtn.getAttribute('data-xchadvmaskbtn'); x.maskAdvisors[id] = !x.maskAdvisors[id]; xchSave(); renderAdvisorProfile(); toast(x.maskAdvisors[id] ? 'Masking on' : 'Masking off'); return; }
   const advLeads = q('[data-xchadvleads]');
-  if(advLeads){ try{ closeModal('advisorProfileModal'); }catch(err){} const x = xch(); const a = advLeads.getAttribute('data-xchadvleads'); const l = x.leads.find(z => z.advisorId === a || z.execId === a); if(l){ x.ui.tab = 'vault'; x.ui.vaultQ = ''; xchSave(); go('exchange'); xchOpenDetail(l.id); } else { go('exchange'); } return; }
+  if(advLeads){ try{ closeModal('advisorProfileModal'); }catch(err){} const x = xch(); const a = advLeads.getAttribute('data-xchadvleads'); const l = x.leads.find(z => z.advisorId === a || z.execId === a || z.createdBy === a); if(l){ x.ui.tab = 'vault'; x.ui.vaultQ = ''; x.ui.vaultStage = ''; xchSave(); go('exchange'); xchOpenDetail(l.id); } else { x.ui.tab = 'vault'; x.ui.vaultQ = ''; x.ui.vaultStage = ''; xchSave(); go('exchange'); } return; }
 
   const detCopy = q('#xchDetailCopy');
-  if(detCopy){ const x = xch(); const l = x.leads.find(a => a.id === xchDetailId); if(l) copyText(xchCertificateText(l)).then(ok => toast(ok ? 'Copy ho gaya' : 'Copy fail', !ok)); return; }
+  if(detCopy){ const x = xch(); const l = x.leads.find(a => a.id === xchDetailId); if(l){ if(!xchPreviewCert(l)) copyText(xchCertificateText(l)).then(ok => toast(ok ? 'Copy ho gaya' : 'Copy fail', !ok)); } return; }
   const detWa = q('#xchDetailWa');
-  if(detWa){ const x = xch(); const l = x.leads.find(a => a.id === xchDetailId); if(l){ const win = window.open(xchWa(l.advisorMobile || '', xchLeadShareText(l)), '_blank', 'noopener'); if(!win) toast('WhatsApp popup block hua', true); } return; }
+  if(detWa){ const x = xch(); const l = x.leads.find(a => a.id === xchDetailId); if(l){ if(!xchPreviewCert(l)){ const win = window.open(xchWa(l.advisorMobile || '', xchLeadShareText(l)), '_blank', 'noopener'); if(!win) toast('WhatsApp popup block hua', true); } } return; }
   const detPrint = q('#xchDetailPrint');
-  if(detPrint){ const x = xch(); const l = x.leads.find(a => a.id === xchDetailId); if(l) xchPrint(xchCertHTML(l) + '<h3 style="font-family:Georgia,serif;margin:18px 0 6px">' + esc(l.code) + ' — ' + esc(l.clientName || 'Client') + '</h3><p style="font-family:Georgia,serif;font-size:12px;line-height:1.6">Corridor: ' + esc(xchCorridorName(l.corridor)) + '<br>Budget: ' + esc(xchBudgetText(l)) + '<br>Size: ' + (l.gaj || '—') + ' gaj<br>Originator: ' + esc(l.advisorName || 'Admin desk') + '<br>Valid till: ' + esc(fmtDate(l.expiry)) + '</p>'); return; }
+  if(detPrint){ const x = xch(); const l = x.leads.find(a => a.id === xchDetailId); if(l){ if(!xchPreviewCert(l)) xchPrint(xchCertHTML(l)); } return; }
 });
 document.addEventListener('change', function(e){
   const t = e.target;
@@ -49390,11 +49645,27 @@ document.addEventListener('change', function(e){
 document.addEventListener('input', function(e){
   const t = e.target;
   if(!t) return;
-  if(t.id === 'xchVaultQ'){ const x = xch(); x.ui.vaultQ = t.value; const body = document.getElementById('xchBody'); if(body) body.innerHTML = xchVaultHTML(); const inp = document.getElementById('xchVaultQ'); if(inp){ inp.focus(); inp.setSelectionRange(inp.value.length, inp.value.length); } return; }
-  if(t.id === 'xchInvQ'){ const x = xch(); x.ui.invQ = t.value; const wrap = document.getElementById('xchInvWrap'); if(wrap){ wrap.outerHTML = xchInventoryHTML(); const inp = document.getElementById('xchInvQ'); if(inp){ inp.focus(); inp.setSelectionRange(inp.value.length, inp.value.length); } } return; }
+  if(t.id === 'xchVaultQ'){ const x = xch(); x.ui.vaultQ = t.value; const list = document.getElementById('xchVaultList'); if(list) list.innerHTML = xchVaultListHTML(); return; }
+  if(t.id === 'xchInvQ'){ const x = xch(); x.ui.invQ = t.value; const l = xchInvListHTML(); const list = document.getElementById('xchInvList'); if(list) list.innerHTML = l.html; const cnt = document.getElementById('xchInvCount'); if(cnt) cnt.textContent = 'Exchange inventory · ' + l.count; return; }
   if(t.id && t.id.indexOf('xchSet') === 0){ xchModalCalc(); return; }
   if(t.matches && t.matches('[data-xchcf]')){ xchInlineCalc(); return; }
 });
+function xchPreviewCert(l){
+  if(!l || !window.BCSPreview) return false;
+  const html = xchCertHTML(l)
+    + '<h3 style="font-family:Georgia,serif;margin:18px 0 6px">' + esc(l.code) + ' — ' + esc(l.clientName || 'Client') + '</h3>'
+    + '<p style="font-family:Georgia,serif;font-size:12px;line-height:1.6">Corridor: ' + esc(xchCorridorName(l.corridor)) + '<br>Budget: ' + esc(xchBudgetText(l)) + '<br>Size: ' + (l.gaj || '—') + ' gaj<br>Originator: ' + esc(l.advisorName || 'Admin desk') + '<br>Valid till: ' + esc(fmtDate(l.expiry)) + '</p>';
+  window.BCSPreview.open({
+    title: 'Lead protection — ' + l.code,
+    html: html,
+    text: xchCertificateText(l),
+    waText: xchLeadShareText(l),
+    waUrl: l.advisorMobile || '',
+    filename: 'BCS-' + String(l.code || 'lead').replace(/[^A-Za-z0-9-]+/g, '-') + '-protection.html',
+    kind: 'Lead protection certificate · preview'
+  });
+  return true;
+}
 function xchPrint(html){
   const f = document.createElement('iframe');
   f.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0';
@@ -49434,11 +49705,15 @@ try{ xchEnsure(db); }catch(e){ console.warn('[BCS exchange]', e); }
         </select></div>
         <div class="field"><label>Budget min (₹ lakh)</label><input type="number" id="xchBudgetMin" min="0" step="0.5" placeholder="40"></div>
         <div class="field"><label>Budget max (₹ lakh)</label><input type="number" id="xchBudgetMax" min="0" step="0.5" placeholder="55"></div>
-        <div class="field"><label>Plot size (gaj)</label><input type="number" id="xchGaj" min="100" max="500" step="5" placeholder="120"></div>
+        <div class="field"><label>Plot size (gaj)</label><input type="number" id="xchGaj" min="20" max="5000" step="5" placeholder="120"></div>
         <div class="field"><label>Follow-up date</label><input type="date" id="xchFollowUp"></div>
         <div class="field full" id="xchExecWrap"><label>Executing advisor (closer)</label><select id="xchExec"></select></div>
         <div class="field full"><label>Requirement notes</label><textarea id="xchNotes" rows="2" placeholder="Kya chahiye — corner plot, park facing, loan needed…"></textarea></div>
-        <label class="chk full" id="xchMaskWrap" style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--ink2)"><input type="checkbox" id="xchMask"> Mask client phone for advisors (admin always sees full)</label>
+        <div class="field full" id="xchMaskWrap"><label>Client phone masking for advisors</label><select id="xchMask">
+          <option value="">Use global / advisor setting</option>
+          <option value="on">Mask this lead</option>
+          <option value="off">Show full number on this lead</option>
+        </select></div>
       </div>
       <p class="mkt-hintline">Save karte hi: unique ID <b>REQ-YYYY-XXXX</b>, 90-din ki expiry, client record, follow-up task aur protection certificate ban jayega.</p>
     </div>
@@ -51240,6 +51515,7 @@ const { projectOf, devOf, corridorName, plotsOf, plotPrice, pipelineClients, cli
 let shareText = '';
 function openTextModal(title, text){
   shareText = text;
+  if(window.BCSPreview) return window.BCSPreview.open({ title: title, text: text, kind: 'Message preview' });
   document.getElementById('tsTitle').textContent = title;
   document.getElementById('tsPreview').textContent = text;
   showOverlay('textShareModal');
@@ -51254,7 +51530,8 @@ async function copyText(text){
     ta.remove();
   }
 }
-function openWhatsApp(text){
+function openWhatsApp(text, title, waUrl){
+  if(window.BCSPreview) return window.BCSPreview.open({ title: title || 'WhatsApp message', text: text, waText: text, waUrl: waUrl || '', kind: 'WhatsApp preview' });
   window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank', 'noopener');
 }
 
@@ -51947,8 +52224,12 @@ function calcFinancePlot(project){
     dealValue, discount, netValue, stampDuty, regFee, regTotal, gstAmt, otherTotal,
     downPayment, booking, loanEligible, emi, totalPayable, totalPaid, balance
   });
-  $('#fcPlotShare')?.addEventListener('click', () => copyText(text));
-  $('#fcPlotWhatsApp')?.addEventListener('click', () => openWhatsApp(text));
+  const previewPlot = () => {
+    if(window.BCSPreview) return window.BCSPreview.open({ title: 'Plot cost breakdown — ' + (pl.label || pl.num || ''), text: text, waText: text, filename: 'BCS-plot-cost-' + todayISO() + '.txt', kind: 'Finance breakdown · preview' });
+    copyText(text);
+  };
+  $('#fcPlotShare')?.addEventListener('click', previewPlot);
+  $('#fcPlotWhatsApp')?.addEventListener('click', previewPlot);
 }
 
 function calcFinanceClient(project){
@@ -52024,8 +52305,12 @@ function calcFinanceClient(project){
     dealValue, discount, netValue, stampDuty, regFee, gstAmt, otherTotal,
     bookingPaid, downPayment, addPaid, loanAmt, emi, totalPayable, totalPaid, balance
   });
-  $('#fcClientShare')?.addEventListener('click', () => copyText(text));
-  $('#fcClientWhatsApp')?.addEventListener('click', () => openWhatsApp(text));
+  const previewClient = () => {
+    if(window.BCSPreview) return window.BCSPreview.open({ title: 'Client payment plan — ' + (c.name || ''), text: text, waText: text, waUrl: c.phone || '', filename: 'BCS-payment-plan-' + todayISO() + '.txt', kind: 'Client payment plan · preview' });
+    copyText(text);
+  };
+  $('#fcClientShare')?.addEventListener('click', previewClient);
+  $('#fcClientWhatsApp')?.addEventListener('click', previewClient);
 }
 
 function calcEMI(principal, ratePct, years){
@@ -52097,9 +52382,17 @@ _Generated by BCS Desk · Verify with CA/advocate_`;
 /* ---------------- events ---------------- */
 function wire2(){
   const on = (sel, ev, fn) => { const el = document.querySelector(sel); if(el) el.addEventListener(ev, fn); };
-  on('#fcPrint', 'click', () => window.print());
-  on('#tsCopy', 'click', () => copyText(shareText));
-  on('#tsWhatsApp', 'click', () => openWhatsApp(shareText));
+  on('#fcPrint', 'click', () => {
+    const parts = [];
+    ['fcPlotResult', 'fcClientResult'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el && el.style.display !== 'none' && (el.innerText || '').trim()) parts.push((el.innerText || '').trim());
+    });
+    if(!parts.length) return toast('Pehle calculator chalayein — result ke baad print/preview', true);
+    const txt = ['*BCS Finance Summary*', '', parts.join('\n\n———\n\n'), '', '— BCS · Business City Square · @ajaysharma.bcs'].join('\n');
+    if(window.BCSPreview) return window.BCSPreview.open({ title: 'Finance summary', text: txt, waText: txt, filename: 'BCS-finance-summary-' + todayISO() + '.txt', kind: 'Finance summary · print preview' });
+    window.print();
+  });
   on('#lgAddBank', 'click', () => { const p = projectOf(legalFor); if(!p) return; legalOf(p).banks.push({ name:'', apf:'' }); renderBanks(); });
   on('#lgSave', 'click', () => {
     const p = projectOf(legalFor); if(!p) return;
@@ -52539,5 +52832,379 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   };
 })();
 </script>
+
+<script>
+/* =========================================================
+   BCS UNIVERSAL PREVIEW  ·  window.BCSPreview
+   ---------------------------------------------------------
+   Har report / share / WhatsApp pehle ek full-screen preview
+   panel me khulti hai. Copy · Print/PDF · WhatsApp · Share ·
+   Download actions panel ke andar hi rehte hain.
+   ========================================================= */
+(function(){
+  'use strict';
+  const frame = document.getElementById('tsFrame');
+  const pre = document.getElementById('tsPreview');
+  const overlay = document.getElementById('textShareModal');
+  if(!frame || !pre || !overlay) return;
+
+  const state = {
+    title: '', kind: '', text: '', waText: '', waUrl: '', filename: '',
+    html: '', docHTML: '', printHTML: '', mode: 'text', file: null, openedAt: 0, onWhatsApp: null
+  };
+
+  const escHTML = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+  const isFullDoc = v => /^\s*(?:<!doctype\s+html|<html[\s>])/i.test(String(v || ''));
+  const hasTags = v => /<\/?[a-z][a-z0-9-]*(?:\s[^>]*)?>/i.test(String(v || ''));
+  const themeNow = () => (document.body && document.body.dataset.theme) || (document.documentElement && document.documentElement.dataset.theme) || 'light';
+  const todayLabel = () => new Date().toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+
+  const FONTS = 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap';
+
+  /* ---------- app CSS subset (keeps reports pixel-close, light payload) ---------- */
+  let cssCache = { key: '', css: '' };
+  function collectRefs(html){
+    const classes = new Set(), ids = new Set();
+    String(html || '').replace(/class\s*=\s*"([^"]*)"/g, (m, c) => { c.split(/\s+/).forEach(x => { if(x) classes.add(x); }); return m; });
+    String(html || '').replace(/class\s*=\s*'([^']*)'/g, (m, c) => { c.split(/\s+/).forEach(x => { if(x) classes.add(x); }); return m; });
+    String(html || '').replace(/id\s*=\s*"([^"]*)"/g, (m, c) => { if(c) ids.add(c.trim()); return m; });
+    String(html || '').replace(/id\s*=\s*'([^']*)'/g, (m, c) => { if(c) ids.add(c.trim()); return m; });
+    return { classes, ids };
+  }
+  function ruleWanted(rule, refs){
+    let sel = '';
+    try{ sel = rule.selectorText || ''; }catch(e){ sel = ''; }
+    if(!sel) return false;
+    const cls = sel.match(/\.[A-Za-z0-9_-]+/g) || [];
+    const idm = sel.match(/#[A-Za-z0-9_-]+/g) || [];
+    if(!cls.length && !idm.length) return true;
+    if(cls.some(c => refs.classes.has(c.slice(1)))) return true;
+    if(idm.some(i => refs.ids.has(i.slice(1)))) return true;
+    return false;
+  }
+  function subsetCSS(html){
+    const key = String(html || '');
+    if(cssCache.key === key) return cssCache.css;
+    const refs = collectRefs(key);
+    const out = [];
+    const walk = rules => {
+      Array.prototype.forEach.call(rules || [], rule => {
+        const t = rule.type;
+        try{
+          if(t === 1){
+            if(ruleWanted(rule, refs)) out.push(rule.cssText);
+          } else if(t === 4){
+            const before = out.length;
+            walk(rule.cssRules);
+            const chunk = out.splice(before);
+            if(chunk.length) out.push('@media ' + rule.media.mediaText + '{' + chunk.join('\n') + '}');
+          } else if(t === 12){
+            const before = out.length;
+            walk(rule.cssRules);
+            const chunk = out.splice(before);
+            if(chunk.length) out.push('@supports ' + (rule.conditionText || '') + '{' + chunk.join('\n') + '}');
+          } else if(t === 5 || t === 7){
+            out.push(rule.cssText);
+          }
+        }catch(e){}
+      });
+    };
+    Array.prototype.forEach.call(document.styleSheets, sheet => {
+      let rules = null;
+      try{ rules = sheet.cssRules; }catch(e){ return; }
+      if(rules) walk(rules);
+    });
+    let css = out.join('\n');
+    if(css.length < 500) css = '';
+    cssCache = { key, css };
+    return css;
+  }
+
+  const BASE_CSS = 'html{color-scheme:light}html,body{margin:0;padding:0}'
+    + 'body{font-family:\'DM Sans\',system-ui,-apple-system,sans-serif;background:var(--bg,#F7F6F2);color:var(--ink,#1D1D1F);'
+    + 'padding:18px 20px 44px;-webkit-font-smoothing:antialiased;line-height:1.55;overflow-wrap:anywhere}'
+    + 'body[data-theme="dark"]{background:var(--bg,#101310);color:var(--ink,#F2F0E5)}'
+    + 'img,svg,canvas{max-width:100%}a{color:inherit}'
+    + '@media(max-width:560px){body{padding:12px 13px 34px}}';
+
+  function shellDoc(fragment, title){
+    return '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+      + '<meta name="viewport" content="width=device-width,initial-scale=1">'
+      + '<title>' + escHTML(title || 'BCS preview') + '</title>'
+      + '<link rel="preconnect" href="https://fonts.googleapis.com">'
+      + '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+      + '<link rel="stylesheet" href="' + FONTS + '">'
+      + '<style>' + subsetCSS(fragment) + '</style>'
+      + '<style>' + BASE_CSS + '</style>'
+      + '</head><body data-theme="' + escHTML(themeNow()) + '">' + fragment + '</body></html>';
+  }
+
+  /* ---------- plain text → branded document (print · download · weekly) ---------- */
+  function textHTML(title, text){
+    const body = String(text == null ? '' : text);
+    return '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+      + '<meta name="viewport" content="width=device-width,initial-scale=1">'
+      + '<title>' + escHTML(title || 'BCS report') + '</title>'
+      + '<style>'
+      + '*{box-sizing:border-box}html,body{margin:0;padding:0}'
+      + 'body{font-family:\'DM Sans\',-apple-system,\'Segoe UI\',Roboto,sans-serif;background:#F7F6F2;color:#1D1D1F;line-height:1.6;font-size:13.5px}'
+      + '.top{background:linear-gradient(140deg,#3A3928,#A57B36);color:#fff;padding:24px 22px 26px}'
+      + '.top small{font-size:9.5px;letter-spacing:2.2px;text-transform:uppercase;opacity:.78;display:block}'
+      + '.top h1{font-family:\'Fraunces\',Georgia,serif;font-size:22px;line-height:1.2;margin:7px 0 0;letter-spacing:-.3px}'
+      + '.top .meta{font-size:11.5px;opacity:.86;margin-top:5px}'
+      + '.wrap{max-width:820px;margin:0 auto;padding:18px 20px 60px}'
+      + 'pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;background:#fff;border:1px solid rgba(0,0,0,.07);'
+      + 'border-radius:16px;padding:20px 22px;font:13px/1.7 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#26251C}'
+      + '.foot{max-width:820px;margin:0 auto;padding:0 20px 40px;font-size:10.5px;color:#8A8878;letter-spacing:.4px}'
+      + '@media print{.top{background:#3A3928 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}body{background:#fff}pre{border-color:#ddd;border-radius:8px}}'
+      + '@media(max-width:560px){.wrap{padding:12px 12px 44px}pre{padding:14px 14px;font-size:12px}}'
+      + '</style></head><body>'
+      + '<div class="top"><small>BCS · Business City Square</small><h1>' + escHTML(title || 'Report') + '</h1>'
+      + '<div class="meta">Jaipur · @ajaysharma.bcs · ' + escHTML(todayLabel()) + '</div></div>'
+      + '<div class="wrap"><pre>' + escHTML(body) + '</pre></div>'
+      + '<div class="foot">BCS Desk se auto-generated. Numbers aur availability confirm karein.</div>'
+      + '</body></html>';
+  }
+
+  /* ---------- helpers ---------- */
+  function cleanName(name, ext){
+    let n = String(name || 'bcs-report').trim().replace(/[^a-z0-9._-]+/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+    if(!n) n = 'bcs-report';
+    n = n.replace(/\.(html?|txt|pdf)$/i, '');
+    return n + '.' + ext;
+  }
+  function currentText(){
+    if(state.text) return state.text;
+    if(state.html){
+      const d = document.createElement('div');
+      d.innerHTML = state.html;
+      return (d.innerText || d.textContent || '').replace(/\n{3,}/g, '\n\n').trim();
+    }
+    return '';
+  }
+  function waTarget(){
+    let base = String(state.waUrl || '').trim();
+    const text = state.waText || currentText();
+    if(/^https?:/i.test(base)){
+      if(/[?&]text=/.test(base)) return base;
+      return base + (base.indexOf('?') >= 0 ? '&' : '?') + 'text=' + encodeURIComponent(text);
+    }
+    if(base){
+      const digits = base.replace(/[^\d]/g, '');
+      if(digits.length >= 10) return 'https://wa.me/' + (digits.length === 10 ? '91' + digits : digits) + '?text=' + encodeURIComponent(text);
+    }
+    return 'https://wa.me/?text=' + encodeURIComponent(text);
+  }
+  function toastMsg(msg, isErr){
+    try{ if(typeof window.toast === 'function') return window.toast(msg, !!isErr); }catch(e){}
+    try{ console.log('[BCS]', msg); }catch(e){}
+  }
+  function docFor(kind){
+    if(kind === 'download'){
+      if(state.mode === 'html') return { doc: state.docHTML, ext: 'html', mime: 'text/html' };
+      return { doc: currentText(), ext: 'txt', mime: 'text/plain' };
+    }
+    if(state.mode === 'html') return { doc: state.docHTML, ext: 'html', mime: 'text/html' };
+    return { doc: state.printHTML || textHTML(state.title, currentText()), ext: 'html', mime: 'text/html' };
+  }
+
+  /* ---------- actions ---------- */
+  async function copy(){
+    const text = currentText() || state.title;
+    try{
+      await navigator.clipboard.writeText(text);
+      toastMsg('Copy ho gaya — paste kar sakte hain');
+      return true;
+    }catch(e){
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+      document.body.appendChild(ta); ta.select();
+      let ok = false;
+      try{ ok = document.execCommand('copy'); }catch(e2){}
+      ta.remove();
+      toastMsg(ok ? 'Copy ho gaya — paste kar sakte hain' : 'Copy nahi hua — text select karke copy karein', !ok);
+      return ok;
+    }
+  }
+  function print(){
+    const src = docFor('print');
+    const f = document.createElement('iframe');
+    f.setAttribute('aria-hidden', 'true');
+    f.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0;opacity:0;pointer-events:none';
+    document.body.appendChild(f);
+    f.onload = function(){
+      setTimeout(function(){
+        try{ f.contentWindow.focus(); f.contentWindow.print(); }catch(e){ toastMsg('Print dialog nahi khula — Download use karein', true); }
+        setTimeout(function(){ try{ f.remove(); }catch(e){} }, 60000);
+      }, 220);
+    };
+    if(src.ext === 'txt'){ f.srcdoc = textHTML(state.title, src.doc); }
+    else { f.srcdoc = src.doc; }
+    toastMsg('Print dialog me "Save as PDF" choose kar sakte hain');
+  }
+  function whatsapp(){
+    if(typeof state.onWhatsApp === 'function'){
+      try{ state.onWhatsApp(); }catch(e){}
+    }
+    const url = waTarget();
+    const w = window.open(url, '_blank', 'noopener');
+    if(!w) toastMsg('WhatsApp popup block hua — allow karein', true);
+  }
+  async function share(){
+    const title = state.title || 'BCS report';
+    const text = state.waText || currentText();
+    let file = state.file || null;
+    if(!file && state.mode === 'html'){
+      try{ file = new File([state.docHTML], cleanName(state.filename || state.title, 'html'), { type: 'text/html' }); }catch(e){ file = null; }
+    }
+    try{
+      if(file && navigator.canShare && navigator.canShare({ files: [file] })){
+        await navigator.share({ files: [file], title: title, text: text });
+        toastMsg('Share sheet khul gaya ✓');
+        return;
+      }
+      if(navigator.share){
+        await navigator.share({ title: title, text: text || title });
+        toastMsg('Share sheet khul gaya ✓');
+        return;
+      }
+    }catch(e){
+      if(e && e.name === 'AbortError') return;
+    }
+    await copy();
+    toastMsg('Share sheet available nahi — text copy ho gaya, WhatsApp me paste karein');
+  }
+  function download(){
+    if(state.file && /^image\//.test(state.file.type || '')){
+      try{
+        const iurl = URL.createObjectURL(state.file);
+        const ia = document.createElement('a');
+        ia.href = iurl; ia.download = state.file.name || cleanName(state.title, 'png');
+        document.body.appendChild(ia); ia.click(); ia.remove();
+        setTimeout(function(){ try{ URL.revokeObjectURL(iurl); }catch(e){} }, 4000);
+        toastMsg('Image download ho gayi');
+      }catch(e){ toastMsg('Download fail — Share use karein', true); }
+      return;
+    }
+    const src = docFor('download');
+    const name = cleanName(state.filename || state.title, src.ext);
+    try{
+      const blob = new Blob([src.doc], { type: src.mime });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = name;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function(){ try{ URL.revokeObjectURL(url); }catch(e){} }, 4000);
+      toastMsg('Download ho gaya — ' + name);
+    }catch(e){ toastMsg('Download fail — Copy use karein', true); }
+  }
+
+  /* ---------- open ---------- */
+  function open(opts){
+    opts = opts || {};
+    const rawHtml = typeof opts.html === 'string' ? opts.html : '';
+    const rawText = typeof opts.text === 'string' ? opts.text : '';
+    state.title = opts.title || 'Preview';
+    state.kind = opts.kind || 'Preview';
+    state.waText = typeof opts.waText === 'string' ? opts.waText : rawText;
+    state.waUrl = opts.waUrl || '';
+    state.filename = opts.filename || '';
+    state.file = opts.file || null;
+    state.onWhatsApp = typeof opts.onWhatsApp === 'function' ? opts.onWhatsApp : null;
+    state.html = rawHtml;
+    state.text = rawText;
+    state.openedAt = Date.now();
+
+    let mode = 'text';
+    if(rawHtml){
+      if(isFullDoc(rawHtml) || hasTags(rawHtml)) mode = 'html';
+      else if(!rawText) { state.text = rawHtml; state.html = ''; }
+    } else if(rawText && hasTags(rawText) && !/[^\s]/.test(rawText.replace(/<[^>]*>/g, ''))) {
+      /* html-only string passed as text — keep as html */
+      state.html = rawText; state.text = ''; mode = 'html';
+    }
+    state.mode = mode;
+
+    if(mode === 'html'){
+      state.docHTML = isFullDoc(state.html) ? state.html : shellDoc(state.html, state.title);
+      state.printHTML = state.docHTML;
+      frame.style.display = 'block';
+      pre.style.display = 'none';
+      pre.textContent = '';
+      try{ frame.srcdoc = state.docHTML; }catch(e){ frame.srcdoc = shellDoc('<p>Preview load nahi hua.</p>', state.title); }
+    } else {
+      state.docHTML = '';
+      state.printHTML = textHTML(state.title, state.text);
+      frame.style.display = 'none';
+      pre.style.display = 'block';
+      pre.textContent = state.text || '—';
+      try{ frame.srcdoc = ''; }catch(e){}
+      try{ pre.scrollTop = 0; }catch(e){}
+    }
+
+    const titleEl = document.getElementById('tsTitle');
+    const metaEl = document.getElementById('tsMeta');
+    const badgeEl = document.getElementById('tsBadge');
+    if(titleEl) titleEl.textContent = state.title;
+    const chars = (currentText() || '').length;
+    if(metaEl) metaEl.textContent = state.kind + ' · ' + todayLabel() + (chars ? ' · ' + chars.toLocaleString('en-IN') + ' chars' : '');
+    if(badgeEl) badgeEl.textContent = mode === 'html' ? (isFullDoc(state.html) ? 'Document' : 'Report') : 'Message';
+
+    try{
+      if(typeof window.showOverlay === 'function') window.showOverlay('textShareModal');
+      else overlay.classList.add('on');
+    }catch(e){ overlay.classList.add('on'); }
+    try{ overlay.scrollTop = 0; }catch(e){}
+    return state;
+  }
+
+  function close(){
+    try{ if(typeof window.closeModal === 'function') window.closeModal('textShareModal'); else overlay.classList.remove('on'); }catch(e){}
+  }
+
+  /* ---------- wiring ---------- */
+  const on = (sel, ev, fn) => { const el = document.querySelector(sel); if(el) el.addEventListener(ev, fn); };
+  on('#tsCopy', 'click', copy);
+  on('#tsPrint', 'click', print);
+  on('#tsWhatsApp', 'click', whatsapp);
+  on('#tsShare', 'click', share);
+  on('#tsDownload', 'click', download);
+
+  document.addEventListener('click', function(e){
+    const t = e.target;
+    if(!t || !t.closest) return;
+    if(t.closest('[data-close="textShareModal"]')){
+      setTimeout(function(){ try{ frame.srcdoc = ''; }catch(err){} }, 240);
+    }
+  });
+
+  function openImage(opts){
+    opts = opts || {};
+    const src = opts.dataUrl || '';
+    if(!src) return open(opts);
+    const img = '<div style="display:flex;align-items:center;justify-content:center;min-height:66vh;padding:2px">'
+      + '<img src="' + escHTML(src) + '" alt="' + escHTML(opts.title || 'BCS creative') + '" '
+      + 'style="max-width:100%;height:auto;border-radius:14px;box-shadow:0 14px 40px rgba(0,0,0,.22);background:#fff"></div>';
+    return open(Object.assign({}, opts, { html: img }));
+  }
+
+  window.BCSPreview = {
+    state: state,
+    openImage: openImage,
+    open: open,
+    close: close,
+    copy: copy,
+    print: print,
+    whatsapp: whatsapp,
+    share: share,
+    download: download,
+    textHTML: textHTML,
+    waOpen: whatsapp,
+    subsetCSS: subsetCSS,
+    cleanName: cleanName
+  };
+})();
+</script>
+
 </body>
 </html>
