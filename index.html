@@ -15804,6 +15804,114 @@ body[data-theme="dark"] #advisorAccessModal .access-row input:focus{
 @media (max-width:560px){.access-row{flex-wrap:wrap}.access-row input{flex:1 1 100%}}
 </style>
 </head>
+<style id="bcs-mkt-daily-css">
+/* ===== v177 · social daily plan, custom ideas, day-plan interlink ===== */
+.mkt-plan-card{border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:14px 16px}
+.mkt-plan-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:9px}
+.mkt-plan-top h3{margin:0;font-size:15px;font-weight:800;color:var(--ink);flex:1;min-width:150px}
+.mkt-plan-top h3 small{display:block;font-size:10.5px;font-weight:700;color:var(--mut);margin-top:2px}
+.mkt-plan-stat{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:10px}
+.mkt-plan-stat .mkt-bar{flex:1;min-width:110px}
+.mkt-plan-stat span{font-size:10.5px;font-weight:800;color:var(--mut);white-space:nowrap}
+.mkt-post-row{display:flex;align-items:flex-start;gap:9px;border:1px solid var(--line);border-radius:12px;padding:9px 11px;background:var(--panel);margin-bottom:6px}
+.mkt-post-row.on{background:color-mix(in srgb,#4E7C5B 8%,var(--panel));border-color:#BFDCC7}
+.mkt-post-tick{width:21px;height:21px;border-radius:6px;border:1.5px solid var(--line2);background:var(--panel);display:grid;place-items:center;font-size:11px;font-weight:900;color:transparent;cursor:pointer;flex:0 0 auto;margin-top:1px;padding:0;font-family:inherit}
+.mkt-post-row.on .mkt-post-tick{background:#4E7C5B;border-color:#4E7C5B;color:#fff}
+.mkt-post-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.mkt-post-main b{font-size:12px;font-weight:800;color:var(--ink);line-height:1.35}
+.mkt-post-row.on .mkt-post-main b{text-decoration:line-through;opacity:.7}
+.mkt-post-meta{font-size:9.5px;font-weight:800;color:var(--mut);display:flex;gap:6px;flex-wrap:wrap;letter-spacing:.2px}
+.mkt-post-acts{display:flex;gap:3px;flex-wrap:wrap;justify-content:flex-end;flex:0 0 auto}
+.mkt-ico-btn{width:26px;height:26px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink2);font-size:11px;cursor:pointer;display:grid;place-items:center;padding:0;font-family:inherit;line-height:1}
+.mkt-ico-btn:hover{border-color:var(--gold);color:var(--gold)}
+.mkt-ico-btn.del:hover{border-color:#A4452B;color:#A4452B}
+.mkt-daily-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:9px}
+.mkt-daily{border:1px solid var(--line);border-radius:16px;background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 7%,var(--panel)),var(--panel));padding:12px 13px;display:flex;flex-direction:column;gap:5px}
+.mkt-daily-slot{font-size:8.5px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;color:#9A7A34}
+.mkt-daily b{font-size:13px;font-weight:800;color:var(--ink);line-height:1.3}
+.mkt-daily-hook{margin:0;font-size:11px;font-weight:700;color:var(--ink2);line-height:1.5}
+.mkt-daily-cap{margin:0;font-size:10px;color:var(--mut);font-weight:600;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.mkt-daily-why{font-size:9.5px;font-weight:700;color:#4E7C5B;line-height:1.45}
+.mkt-daily-tags{font-size:9px;color:var(--gold);font-weight:800;line-height:1.5;word-break:break-word}
+.mkt-daily-acts{display:flex;gap:4px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+.mkt-myplan{border:1px solid var(--line);border-radius:12px;padding:9px 11px;background:var(--panel);display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:6px}
+.mkt-myplan b{font-size:12px;font-weight:800;color:var(--ink);flex:1;min-width:130px}
+.mkt-myplan .nx{font-size:10px;font-weight:700;color:var(--mut);flex:1 1 100%;line-height:1.45}
+.mkt-hook{border:1px dashed var(--line2);border-radius:12px;padding:9px 11px;background:var(--panel);margin-bottom:6px}
+.mkt-hook b{font-size:11.5px;font-weight:800;color:var(--ink);display:block;margin-bottom:2px}
+.mkt-hook code{font-family:inherit;font-size:11px;color:var(--ink2);font-weight:700}
+.mkt-hook small{display:block;font-size:10px;color:var(--mut);font-weight:600;margin-top:2px}
+.mkt-idea-cap{margin:0;font-size:10px;color:var(--mut);font-weight:600;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mkt-idea-tags{font-size:9px;color:var(--gold);font-weight:800;line-height:1.5;word-break:break-word}
+.mkt-planned{font-size:8.5px;font-weight:900;color:#255C9E;background:#E7EFFA;border:1px solid #C6DAF2;border-radius:999px;padding:2px 7px}
+.mkt-cal-count{font-size:8px;font-weight:900;color:#255C9E;background:#E7EFFA;border:1px solid #C6DAF2;border-radius:999px;padding:1px 5px;align-self:flex-start;white-space:nowrap}
+.mkt-cal-cell.allposted .mkt-cal-count{color:#2F6B41;background:#E6F2E9;border-color:#BFDCC7}
+.mkt-day-posts{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.mkt-day-post{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:10px;padding:6px 8px;background:var(--panel)}
+.mkt-day-post b{flex:1;min-width:0;font-size:11px;font-weight:700;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mkt-day-post .tp{font-size:8.5px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;color:var(--mut);background:var(--panel2,#F4F2EC);border:1px solid var(--line);border-radius:999px;padding:1px 6px;white-space:nowrap}
+.mkt-day-post .tm{font-size:9.5px;font-weight:800;color:var(--mut)}
+.mkt-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mkt-form-grid .full{grid-column:1/-1}
+.mkt-form-grid .field{margin:0}
+.mkt-form-grid label{font-size:9.5px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--mut)}
+.mkt-form-grid input,.mkt-form-grid select,.mkt-form-grid textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-family:inherit;font-size:12px;background:var(--panel);color:var(--ink);outline:none}
+.mkt-form-grid input:focus,.mkt-form-grid select:focus,.mkt-form-grid textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 14%,transparent)}
+.mkt-day-addrow{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.mkt-hintline{font-size:10px;color:var(--mut);font-weight:600;line-height:1.5;margin:9px 0 0}
+.mkt-kit-out{border:1px solid var(--line);border-radius:12px;background:var(--panel2,#F4F2EC);padding:11px 13px;font-size:11.5px;font-weight:600;color:var(--ink2);white-space:pre-wrap;line-height:1.65;max-height:52vh;overflow:auto}
+.mkd-prog{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.mkd-prog .mkt-bar{flex:1}
+.mkd-prog span{font-size:9.5px;font-weight:800;color:var(--mut);white-space:nowrap}
+.mkd-row{display:flex;align-items:flex-start;gap:7px;padding:6px 0;border-bottom:1px dashed var(--line2)}
+.mkd-row:last-child{border-bottom:none}
+.mkd-tick{width:19px;height:19px;border-radius:5px;border:1.5px solid var(--line2);background:var(--panel);display:grid;place-items:center;font-size:10px;font-weight:900;color:transparent;cursor:pointer;flex:0 0 auto;margin-top:1px;padding:0;font-family:inherit}
+.mkd-row.on .mkd-tick{background:#4E7C5B;border-color:#4E7C5B;color:#fff}
+.mkd-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.mkd-txt b{font-size:11px;font-weight:800;color:var(--ink);line-height:1.35}
+.mkd-row.on .mkd-txt b{text-decoration:line-through;opacity:.65}
+.mkd-txt span{font-size:9.5px;font-weight:700;color:var(--mut)}
+.mkd-empty{font-size:10.5px;color:var(--mut);font-weight:600;line-height:1.55}
+.mkd-foot{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+body[data-theme="dark"] .mkt-plan-card,
+body[data-theme="dark"] .mkt-post-row,
+body[data-theme="dark"] .mkt-myplan,
+body[data-theme="dark"] .mkt-hook,
+body[data-theme="dark"] .mkt-day-post,
+body[data-theme="dark"] .mkt-daily{background:#1B211C;border-color:#2C332C}
+body[data-theme="dark"] .mkt-post-row.on{background:#1E2C21;border-color:#35543E}
+body[data-theme="dark"] .mkt-daily{background:linear-gradient(160deg,rgba(196,154,62,.09),#1B211C)}
+body[data-theme="dark"] .mkt-plan-top h3,
+body[data-theme="dark"] .mkt-post-main b,
+body[data-theme="dark"] .mkt-daily b,
+body[data-theme="dark"] .mkt-myplan b,
+body[data-theme="dark"] .mkt-hook b,
+body[data-theme="dark"] .mkt-day-post b,
+body[data-theme="dark"] .mkd-txt b{color:#EDEBD9}
+body[data-theme="dark"] .mkt-daily-hook,
+body[data-theme="dark"] .mkt-hook code,
+body[data-theme="dark"] .mkt-kit-out{color:#D8D4C4}
+body[data-theme="dark"] .mkt-post-tick,
+body[data-theme="dark"] .mkd-tick{background:#151A15;border-color:#3A423A}
+body[data-theme="dark"] .mkt-post-row.on .mkt-post-tick,
+body[data-theme="dark"] .mkd-row.on .mkd-tick{background:#4E7C5B;border-color:#4E7C5B}
+body[data-theme="dark"] .mkt-ico-btn{background:#1B211C;border-color:#313831;color:#C9CDBF}
+body[data-theme="dark"] .mkt-ico-btn:hover{border-color:#E7C46E;color:#E7C46E}
+body[data-theme="dark"] .mkt-day-post .tp{background:#222822;border-color:#313831;color:#A8AE9F}
+body[data-theme="dark"] .mkt-kit-out{background:#151A15;border-color:#333A33}
+body[data-theme="dark"] .mkt-form-grid input,
+body[data-theme="dark"] .mkt-form-grid select,
+body[data-theme="dark"] .mkt-form-grid textarea{background:#151A15;border-color:#333A33;color:#EDEBD9}
+body[data-theme="dark"] .mkt-planned{background:#1D2733;border-color:#33455C;color:#9FC3EA}
+body[data-theme="dark"] .mkt-cal-count{background:#1D2733;border-color:#33455C;color:#9FC3EA}
+body[data-theme="dark"] .mkt-cal-cell.allposted .mkt-cal-count{background:#1E2C21;border-color:#35543E;color:#8FCFA1}
+body[data-theme="dark"] .mkt-daily-slot{color:#C7A961}
+body[data-theme="dark"] .mkt-daily-why{color:#8FCFA1}
+@media (max-width:560px){
+  .mkt-form-grid{grid-template-columns:1fr}
+  .mkt-daily-grid{grid-template-columns:1fr}
+}
+</style>
 <style id="bcs-docs-vault-css">
 /* ===== project document vault: import PDF/image, label, preview, download ===== */
 .doc-attach{border:1px dashed color-mix(in srgb,var(--acc) 34%,var(--line));border-radius:14px;padding:12px;background:color-mix(in srgb,var(--acc) 4%,var(--panel));display:flex;flex-direction:column;gap:9px}
@@ -16902,6 +17010,10 @@ try{
           <div class="panel-head"><h4>Advisor calls near this day</h4><span class="link" data-goto="advisors">Advisors</span></div>
           <div id="dayAdvisorList"></div>
         </div>
+        <div class="panel day-follow mkd-panel">
+          <div class="panel-head"><h4>Aaj ka posting plan</h4><span class="link" data-mkt-goto="social">Social</span></div>
+          <div id="dayMktPosts"></div>
+        </div>
         <div class="panel day-idea">
           <div class="panel-head"><h4>Sticky note</h4><span class="sub">Auto-save</span></div>
           <textarea id="stickyNote" placeholder="Koi bhi scratch — rate, plate number, wish list, yaad rakhne wali baat…"></textarea>
@@ -17916,30 +18028,93 @@ try{
     <div class="mkt-platform-strip" id="mktPlatforms"></div>
   </section>
 
-  <!-- marketing day planner modal -->
+  <!-- marketing day planner modal (multi-post) -->
   <div class="overlay" id="mktDayModal">
-    <div class="modal" style="width:min(470px,100%)">
+    <div class="modal" style="width:min(580px,100%)">
       <div class="modal-head"><h3 id="mktDayTitle">Plan day</h3><button class="xbtn" data-close="mktDayModal">✕</button></div>
       <div class="modal-body">
-        <div class="field"><label>Content type</label>
-          <select id="mktDayType">
-            <option value="">Not planned</option>
-            <option value="reel">Reel</option>
-            <option value="short">YouTube Short</option>
-            <option value="video">YouTube video</option>
-            <option value="carousel">Carousel</option>
-            <option value="story">Story</option>
-            <option value="ad">Ad</option>
-            <option value="whatsapp">WhatsApp</option>
-            <option value="other">Other</option>
-          </select>
+        <div class="mkt-day-posts" id="mktDayPosts"></div>
+        <div class="mkt-form-grid">
+          <div class="field"><label>Content type</label>
+            <select id="mktDayType">
+              <option value="reel">Reel</option>
+              <option value="short">YouTube Short</option>
+              <option value="video">YouTube video</option>
+              <option value="carousel">Carousel</option>
+              <option value="story">Story</option>
+              <option value="ad">Ad</option>
+              <option value="whatsapp">WhatsApp status</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="field"><label>Posting time</label><input type="time" id="mktDayTime"></div>
+          <div class="field full"><label>Idea / hook / caption</label><textarea id="mktDayIdea" rows="3" placeholder="Aaj ka post idea…"></textarea></div>
         </div>
-        <div class="field"><label>Idea / caption / hook</label><textarea id="mktDayIdea" rows="3" placeholder="Aaj ka post idea…"></textarea></div>
-        <label class="chk" style="display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--ink2)"><input type="checkbox" id="mktDayPosted"> Posted / done</label>
+        <div class="mkt-day-addrow">
+          <button type="button" class="btn primary sm" id="mktDayAddPost">+ Add post</button>
+          <button type="button" class="btn ghost sm" data-mkt-daily-into="1">💡 Aaj ke ideas bharo</button>
+        </div>
+        <p class="mkt-hintline">Ek din me multiple posts — Reel + Story + WhatsApp status. Har post Day Plan me task ban jayega, aur posted tick dono jagah sync rahega.</p>
       </div>
       <div class="modal-foot">
-        <button class="btn ghost" data-close="mktDayModal">Cancel</button>
-        <button class="btn primary" id="mktDaySave">Save day</button>
+        <button class="btn ghost" data-close="mktDayModal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- custom idea modal -->
+  <div class="overlay" id="mktIdeaModal">
+    <div class="modal" style="width:min(580px,100%)">
+      <div class="modal-head"><h3 id="mktIdeaModalTitle">Apna idea add karo</h3><button class="xbtn" data-close="mktIdeaModal">✕</button></div>
+      <div class="modal-body">
+        <input type="hidden" id="mktIdeaEditId">
+        <div class="mkt-form-grid">
+          <div class="field full"><label>Idea title</label><input id="mktIdeaTitle" placeholder="e.g. Ajmer Road pe ₹50L ka best plot"></div>
+          <div class="field"><label>Format</label>
+            <select id="mktIdeaFormat">
+              <option value="reel">Reel</option>
+              <option value="short">YouTube Short</option>
+              <option value="video">YouTube video</option>
+              <option value="carousel">Carousel</option>
+              <option value="story">Story</option>
+              <option value="ad">Ad</option>
+              <option value="whatsapp">WhatsApp</option>
+            </select>
+          </div>
+          <div class="field"><label>Business vector</label>
+            <select id="mktIdeaVector">
+              <option value="followers">👥 Followers</option>
+              <option value="developers">🏗️ Developers</option>
+              <option value="advisors">🤝 Advisors</option>
+              <option value="clients">🙋 Clients</option>
+              <option value="projects">🏠 Projects</option>
+              <option value="earnings">₹ Earnings</option>
+            </select>
+          </div>
+          <div class="field full"><label>Hook (first 2 seconds)</label><textarea id="mktIdeaHook" rows="2" placeholder="&quot;Ye galti 90% plot buyers karte hain…&quot;"></textarea></div>
+          <div class="field full"><label>Caption</label><textarea id="mktIdeaCaption" rows="3" placeholder="2–3 line caption + CTA"></textarea></div>
+          <div class="field full"><label>Hashtags (space separated)</label><input id="mktIdeaTags" placeholder="#JaipurRealEstate #Plot #RERA"></div>
+          <div class="field full"><label>CTA</label><input id="mktIdeaCta" placeholder="DM 'PLOT' — 3 options bhejta hoon"></div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn ghost" data-close="mktIdeaModal">Cancel</button>
+        <button class="btn primary" id="mktIdeaSave">Save idea</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- idea kit modal -->
+  <div class="overlay" id="mktKitModal">
+    <div class="modal" style="width:min(580px,100%)">
+      <div class="modal-head"><h3 id="mktKitTitle">Post kit</h3><button class="xbtn" data-close="mktKitModal">✕</button></div>
+      <div class="modal-body">
+        <div class="mkt-kit-out" id="mktKitBody"></div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn ghost" data-close="mktKitModal">Close</button>
+        <button class="btn ghost" id="mktKitCopy">📋 Copy kit</button>
+        <button class="btn primary" id="mktKitPlan">📅 Plan karo</button>
       </div>
     </div>
   </div>
@@ -21880,9 +22055,42 @@ function normalizeDb(d){
   if(!mktDb.calendar || typeof mktDb.calendar !== 'object') mktDb.calendar = {};
   Object.keys(mktDb.calendar).forEach(k => {
     const e = mktDb.calendar[k];
-    if(!e || typeof e !== 'object' || (!e.type && !e.idea && !e.posted)){ delete mktDb.calendar[k]; return; }
-    mktDb.calendar[k] = { type: String(e.type || ''), idea: String(e.idea || '').slice(0, 400), posted: !!e.posted };
+    if(!e || typeof e !== 'object'){ delete mktDb.calendar[k]; return; }
+    let posts = Array.isArray(e.posts) ? e.posts : null;
+    if(!posts){
+      posts = (e.type || e.idea || e.posted)
+        ? [{ id:'lg-' + k, type:String(e.type || ''), idea:String(e.idea || '').slice(0, 500), time:'', posted:!!e.posted, source:'legacy', createdAt:Date.now() }]
+        : [];
+    }
+    posts = posts.filter(p => p && (p.type || p.idea || p.title)).map(p => ({
+      id: p.id || uid(),
+      type: ['reel','short','video','carousel','story','ad','whatsapp','other'].includes(p.type) ? p.type : 'other',
+      idea: String(p.idea || p.title || '').slice(0, 500),
+      time: /^\d{2}:\d{2}$/.test(String(p.time || '')) ? String(p.time) : '',
+      posted: !!p.posted,
+      source: String(p.source || 'manual').slice(0, 24),
+      ideaId: String(p.ideaId || '').slice(0, 40),
+      caption: String(p.caption || '').slice(0, 900),
+      hashtags: String(p.hashtags || '').slice(0, 300),
+      createdAt: p.createdAt || Date.now()
+    }));
+    if(!posts.length){ delete mktDb.calendar[k]; return; }
+    mktDb.calendar[k] = { posts };
   });
+  if(!Array.isArray(mktDb.myIdeas)) mktDb.myIdeas = [];
+  mktDb.myIdeas = mktDb.myIdeas.filter(i => i && String(i.title || '').trim()).map(i => ({
+    id: i.id || uid(), custom: true,
+    title: String(i.title || '').slice(0, 140),
+    format: ['reel','short','video','carousel','story','ad','whatsapp','other'].includes(i.format) ? i.format : 'reel',
+    vector: ['followers','developers','advisors','clients','projects','earnings'].includes(i.vector) ? i.vector : 'followers',
+    hook: String(i.hook || '').slice(0, 300),
+    caption: String(i.caption || '').slice(0, 900),
+    hashtags: Array.isArray(i.hashtags) ? i.hashtags.map(String).slice(0, 10) : String(i.hashtags || '').split(/\s+/).filter(Boolean).slice(0, 10),
+    cta: String(i.cta || '').slice(0, 200),
+    createdAt: i.createdAt || Date.now()
+  })).slice(0, 300);
+  if(!mktDb.rotation || typeof mktDb.rotation !== 'object') mktDb.rotation = { offset:0, date:'' };
+  if(mktDb.autoTodo === undefined) mktDb.autoTodo = true;
   if(!mktDb.challenge || typeof mktDb.challenge !== 'object') mktDb.challenge = { startedAt: '' };
   if(!mktDb.brainstorm || typeof mktDb.brainstorm !== 'object') mktDb.brainstorm = { date:'', idx:0 };
   if(!Array.isArray(d.journeyLogs)) d.journeyLogs = [];
@@ -29972,6 +30180,7 @@ function buildICS(){
     if(d.registryDate) add(d.registryDate, '📜 Registry — ' + who, 'Deal ' + (d.code || '') + ' · ' + (typeof fmtMoney === 'function' ? fmtMoney(d.dealValue) : ''));
     if(d.bookingDate) add(d.bookingDate, '🏷️ Sale booking — ' + who, 'Deal ' + (d.code || ''));
   });
+  (typeof mktAllPosts === 'function' ? mktAllPosts() : []).forEach(p => add(p.key, '📣 ' + (typeof mktPostLabel === 'function' ? mktPostLabel(p) : 'Post') + ' — ' + (typeof mktPostTitle === 'function' ? mktPostTitle(p) : ''), (p.time ? 'Post at ' + p.time + ' · ' : '') + 'Social post · BCS marketing' + (p.posted ? ' · posted' : '')));
   if(!evts.length) return null;
   const dt = iso => iso.replace(/-/g, '');
   const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//BCS Desk//Calendar//EN', 'CALSCALE:GREGORIAN', 'X-WR-CALNAME:BCS Desk — Jaipur'];
@@ -30030,6 +30239,12 @@ function dayAgendaText(iso){
   if(tasks.length){
     lines.push('*TASKS*');
     tasks.forEach(t => lines.push('☑ ' + (t.title || 'Task') + (t.time ? ' (' + t.time + ')' : '')));
+    lines.push('');
+  }
+  const mposts = (typeof mktPosts === 'function') ? mktPosts(iso) : [];
+  if(mposts.length){
+    lines.push('*SOCIAL POSTS*');
+    mposts.forEach(p => lines.push((p.posted ? '✅ ' : '📣 ') + (p.time ? p.time + ' · ' : '') + (typeof mktPostTitle === 'function' ? mktPostTitle(p) : '')));
     lines.push('');
   }
   if(marks.length){
@@ -36306,6 +36521,7 @@ function toggleTodo(id){
   t.done = !t.done;
   t.doneAt = t.done ? Date.now() : null;
   t.updatedAt = Date.now();
+  try{ mktMirrorTodo(t); }catch(e){}
   save(); renderDayplan();
   if(t.done){ toast('Done ✓ — ' + t.title); celebrate(); }
 }
@@ -36539,6 +36755,13 @@ function renderDayplan(){
     : `<div class="empty-inline">Is hafte koi advisor call due nahi. Advisor profile me next call date set karein.</div>`;
   $$('#dayAdvisorList [data-openadvisor]').forEach(b => b.addEventListener('click', () => openAdvisorProfile(b.dataset.openadvisor)));
 
+  // social posting plan for this day
+  const mkHost = $('#dayMktPosts');
+  if(mkHost){
+    try{ mkHost.innerHTML = mktDayPlanHTML(dayCursor); }
+    catch(e){ mkHost.innerHTML = '<div class="mkd-empty">Posting plan load nahi hua — Social tab kholo.</div>'; }
+  }
+
   renderMorningBrief();
   renderWeeklyReview();
   timerSync();
@@ -36647,6 +36870,7 @@ function wireTaskPop(){
     t.done = !t.done;
     t.doneAt = t.done ? Date.now() : null;
     t.updatedAt = Date.now();
+    try{ mktMirrorTodo(t); }catch(e){}
     save(); renderTaskPop(); renderDayplan();
     if(t.done){ toast('Done ✓ — ' + t.title); celebrate(); }
   });
@@ -40319,6 +40543,301 @@ const MKT_BRAINSTORMS = [
   'Ek testimonial ko 3 formats me convert karo: reel, carousel, story.',
   'Aaj 30 din ka plan review karo — kya chala, kya nahi. Next month ka 1 goal likho.'
 ];
+
+/* ============================================================
+   v177 · DAILY VIRAL IDEA ENGINE
+   Har idea ek complete post kit hai: hook, caption, hashtags,
+   CTA, virality logic aur shoot steps. Roz 3 ideas rotate hote
+   hain — same din me stable, agle din naye.
+   ============================================================ */
+const MKT_VIRAL_IDEAS = [
+  { id:'v01', cat:'Price truth', format:'reel', vector:'followers',
+    title:'DLC rate vs market rate — asli jhol kahan hai',
+    hook:'"Registry me DLC se zyada lagta hai — par asli jhol kahin aur hota hai."',
+    caption:'DLC circle rate sirf stamp duty ke liye hota hai, deal price nahi.\nIsliye "DLC se sasta" bolne wale se poochho: registry kis rate par hogi?\nDM "DLC" — main aapka stamp duty free nikal ke bhejta hoon.',
+    hashtags:['#JaipurRealEstate','#DLC','#StampDuty','#PropertyRegistry','#JaipurProperty'],
+    cta:'DM "DLC" — free stamp duty calculation',
+    why:'Paisa bachane wali info sabse zyada save aur forward hoti hai — log apne family group me bhejte hain.',
+    best:'Reel · 7–9 pm · on-screen numbers ke saath voiceover',
+    steps:['Screen par DLC vs market rate ka 1 real example dikhao','3 line me stamp duty formula likho','End me DM keyword + free calculation offer'] },
+  { id:'v02', cat:'Buyer education', format:'carousel', vector:'followers',
+    title:'Plot kharidne se pehle 5 galtiyan',
+    hook:'"Ye 5 galtiyan 90% plot buyers karte hain — 5vi sabse mehngi."',
+    caption:'Plot sasta lagta hai, galti mehngi padti hai.\n1) Title 30 saal ka chain 2) RERA/approval 3) Road width 4) Registry vs GPA 5) Possession date.\nSave karo — site visit se pehle ye list kholo.',
+    hashtags:['#PlotBuying','#JaipurPlots','#RealEstateTips','#RERA','#FirstTimeBuyer'],
+    cta:'Save this + share with someone buying a plot',
+    why:'Listicle + "5vi sabse mehngi" curiosity gap se last slide tak retention banta hai; saves badhte hain.',
+    best:'Carousel · 11 am–1 pm · bold 6-word slides',
+    steps:['Har slide par 1 galti + 1 fix','Slide 5 par sabse costly mistake','Last slide: save + DM CTA'] },
+  { id:'v03', cat:'Budget hook', format:'reel', vector:'clients',
+    title:'₹40 lakh me Ajmer Road pe kya milta hai',
+    hook:'"₹40 lakh me Ajmer Road pe kya milta hai? Chalo live dikhata hoon."',
+    caption:'₹40L budget me 3 options: 100 gaj corner, 120 gaj park-facing, 150 gaj outskirts.\nHar option ka rate, road width aur registry cost bola hai video me.\nDM "40" — teeno ka comparison PDF bhejta hoon.',
+    hashtags:['#AjmerRoad','#JaipurPlots','#40Lakh','#PropertyInvesting','#JaipurRealEstate'],
+    cta:'DM "40" — comparison PDF',
+    why:'Exact budget + exact location = high-intent audience; ye log comment aur DM karte hain, sirf like nahi.',
+    best:'Reel · 6–8 pm · walking shot + price overlay',
+    steps:['3 plots, 3 price overlays','Har plot par 1 USP bolo','End: DM keyword + comparison PDF'] },
+  { id:'v04', cat:'Legal clarity', format:'carousel', vector:'clients',
+    title:'Registry se pehle 7 documents',
+    hook:'"Registry ke din ye 7 documents nahi hue to registry ruk sakti hai."',
+    caption:'Registry ke din ka drama avoid karo.\nSale deed, chain deeds, jamabandi, naksha, RERA, NOC, ID proofs — checklist ready rakho.\nSave karo aur apne dealer ko bhi bhejo.',
+    hashtags:['#PropertyRegistry','#LegalChecklist','#JaipurProperty','#RealEstateIndia','#PlotBuying'],
+    cta:'Save + share with your buyer',
+    why:'Checklist content screenshot hota hai — sabse zyada saves aur WhatsApp forwards milte hain.',
+    best:'Carousel · 9–11 am · clean checklist design',
+    steps:['7 slides, 1 document per slide','Har slide: kyun zaroori hai (1 line)','Last slide: save + free checklist DM'] },
+  { id:'v05', cat:'Trust builder', format:'reel', vector:'followers',
+    title:'RERA check 60 second me',
+    hook:'"Ye website kholo aur 60 second me pata karo project RERA-approved hai ya nahi."',
+    caption:'RERA number hone ka matlab approval nahi hota — status check karna zaroori hai.\nScreen record karke poora process dikhaya hai.\nDM "RERA" — main aapke project ka status nikal ke bhejta hoon.',
+    hashtags:['#RERA','#RERAApproved','#JaipurRealEstate','#PropertySafety','#RealEstateTips'],
+    cta:'DM "RERA" — project status check',
+    why:'Screen-record tutorial sabse zyada share hota hai kyunki log dusron ko "ye dekh" bolke bhejte hain.',
+    best:'Reel · 12–2 pm · screen recording + voiceover',
+    steps:['RERA portal kholo, live search karo','1 approved + 1 pending example','End: DM keyword for status check'] },
+  { id:'v06', cat:'Money math', format:'reel', vector:'clients',
+    title:'Plot loan ka sach — EMI kitni hogi',
+    hook:'"₹45 lakh ka plot, 10 saal — EMI kitni hogi? Calculator chalao."',
+    caption:'Plot loan me down payment 25–30% hota hai, aur tenure flat se kam milta hai.\nScreen par live calculation: ₹45L, 9%, 10 saal.\nDM "EMI" — apne budget ki EMI nikalwao.',
+    hashtags:['#EMI','#PlotLoan','#HomeLoan','#JaipurProperty','#FinancialPlanning'],
+    cta:'DM "EMI" — free EMI calculation',
+    why:'Live calculation videos par log comment me apna number daalte hain — engagement + qualified leads dono.',
+    best:'Reel · 8–10 pm · calculator screen + big numbers',
+    steps:['Live calculator chalao','3 scenarios: 5/10/15 saal','End: DM apna budget likho'] },
+  { id:'v07', cat:'Project showcase', format:'reel', vector:'projects',
+    title:'Aerial before/after — plot se township tak',
+    hook:'"Ek hi jagah, 2 saal ka fark — aasman se dekho."',
+    caption:'2019 me kacchi sadak, 2026 me 60 ft road + park + street light.\nYahi development premium banati hai.\nDM "TOUR" — is project ka site visit book karo.',
+    hashtags:['#BeforeAfter','#JaipurDevelopment','#RealEstateInvesting','#DroneShot','#JaipurRealEstate'],
+    cta:'DM "TOUR" — book a site visit',
+    why:'Before/after transformation 2 second me samajh aa jata hai — silent viewers bhi rukte hain.',
+    best:'Reel · 5–7 pm · drone + text overlay "2019 → 2026"',
+    steps:['Purani photo/clip dikhao','Same angle ka naya drone shot','End: development + visit CTA'] },
+  { id:'v08', cat:'Client story', format:'carousel', vector:'clients',
+    title:'₹45L ka plot, 21 din me registry',
+    hook:'"21 din me registry — kya kiya? Poora process, bina masala."',
+    caption:'Day 1 shortlist, Day 3 site visit, Day 7 title check, Day 12 loan, Day 21 registry.\nClient ki permission ke saath timeline share kar raha hoon.\nDM "PROCESS" — apna timeline plan karo.',
+    hashtags:['#ClientStory','#Registry','#JaipurProperty','#RealEstateJourney','#PropertyBuying'],
+    cta:'DM "PROCESS" — plan your timeline',
+    why:'Specific numbers (45L, 21 din) proof ban jaate hain — trust ke saath shares laate hain.',
+    best:'Carousel · 7–9 pm · timeline graphic',
+    steps:['6-slide timeline','Har slide: kaam + din','Last: client quote + CTA'] },
+  { id:'v09', cat:'Objection handling', format:'reel', vector:'clients',
+    title:'"Mehenga hai" ka jawab — 20 second me',
+    hook:'"Client bola mehenga hai — maine rate nahi, 3 cheezein dikhayi."',
+    caption:'Sasta plot aksar mehnga padta hai: chhoti road, no approval, weak title.\nRate compare karne se pehle ye 3 cheezein compare karo.\nDM "COMPARE" — 2 projects ka honest comparison.',
+    hashtags:['#RealEstateObjection','#PropertyTips','#JaipurRealEstate','#SiteVisit','#PropertyInvesting'],
+    cta:'DM "COMPARE" — honest comparison',
+    why:'Sales objection content ko agents save karte hain aur clients ko forward karte hain — double reach.',
+    best:'Reel · 10 am–12 pm · talking head + b-roll',
+    steps:['Objection bolo as-is','3 comparison points','End: DM comparison CTA'] },
+  { id:'v10', cat:'Local authority', format:'carousel', vector:'followers',
+    title:'Ajmer Road vs Tonk Road vs Ring Road',
+    hook:'"Teen corridor, teen alag game — aapka budget kahan fit hai?"',
+    caption:'Ajmer Road: entry budget + growth. Tonk Road: established + rental. Ring Road: future infra + patience.\nHar corridor ka rate band, traffic aur registry cost diya hai.\nSave karo — broker ke bina khud compare karo.',
+    hashtags:['#JaipurCorridors','#AjmerRoad','#TonkRoad','#RingRoad','#JaipurRealEstate'],
+    cta:'Save + DM "CORRIDOR" for rate sheet',
+    why:'Local comparison content ko log apne circle me share karte hain — "ye padh le" wali value.',
+    best:'Carousel · 12–2 pm · map + rate table',
+    steps:['3 slides, 1 corridor each','Rate band + 1 pro + 1 con','Last: save + rate sheet DM'] },
+  { id:'v11', cat:'Money math', format:'reel', vector:'clients',
+    title:'Stamp duty live calculation',
+    hook:'"₹50 lakh ke plot par registry me kitna lagega? Chalo nikalte hain."',
+    caption:'Stamp duty + registration + mutation + misc — sab milake 6–8% tak jata hai.\nLive example me poora breakdown hai.\nDM "COST" — apne plot ka total cost nikalwao.',
+    hashtags:['#StampDuty','#RegistryCost','#JaipurProperty','#PropertyBuying','#RealEstateIndia'],
+    cta:'DM "COST" — total cost breakdown',
+    why:'Hidden-cost content sabse zyada "bhaiya ye sach hai?" comments laata hai — reach boost.',
+    best:'Reel · 7–9 pm · paper par breakdown',
+    steps:['₹50L example lo','4 cost heads likho','Total + DM CTA'] },
+  { id:'v12', cat:'Comparison', format:'carousel', vector:'followers',
+    title:'Plot vs flat — 10 saal baad kya?',
+    hook:'"₹1 crore ka plot ya ₹1 crore ka flat — 10 saal baad kya behtar?"',
+    caption:'Plot: land value + construction control, par rental late. Flat: rental day 1, par depreciation aur maintenance.\n10 saal ka honest math carousel me hai.\nSave karo — EMI se pehle ye dekh lo.',
+    hashtags:['#PlotVsFlat','#RealEstateInvesting','#JaipurProperty','#InvestmentTips','#PropertyIndia'],
+    cta:'Save + comment "PLOT" or "FLAT"',
+    why:'Binary choice posts comment war banate hain — comments algorithm ke liye sabse strong signal.',
+    best:'Carousel · 8–10 pm · split-screen design',
+    steps:['5-slide comparison','Appreciation vs rental math','Last: comment your pick'] },
+  { id:'v13', cat:'Developer collab', format:'reel', vector:'developers',
+    title:'Developer ke saath site walk — collab reel',
+    hook:'"Aaj developer khud bata rahe hain — is project me kya alag hai."',
+    caption:'Collab reel = dono ki audience.\nDeveloper se 3 sawaal: approval, possession, payment plan.\nDM "COLLAB" — aapke project ka content plan banate hain.',
+    hashtags:['#DeveloperCollab','#JaipurRealEstate','#ProjectLaunch','#SiteWalk','#RealEstateMarketing'],
+    cta:'DM "COLLAB" — project content plan',
+    why:'Collab post dono accounts par reach deta hai; developer ka audience aapko naya follower deta hai.',
+    best:'Reel · 11 am–1 pm · handheld site walk',
+    steps:['Developer se 3 sawaal','Site visuals + price hook','Dono accounts par tag + CTA'] },
+  { id:'v14', cat:'Transparency', format:'reel', vector:'followers',
+    title:'Brokerage ka sach — kitna commission?',
+    hook:'"Broker kitna kamata hai? Main openly bolta hoon."',
+    caption:'Plot par 1–2%, resale par 1%, rental par 1 month — market ke hisaab se.\nTransparency se trust banta hai, aur trust se referral.\nDM "DEAL" — bina hidden charge ke deal karo.',
+    hashtags:['#Brokerage','#RealEstateBroker','#Transparency','#JaipurProperty','#PropertyDeal'],
+    cta:'DM "DEAL" — zero hidden charges',
+    why:'Industry ka "secret" openly bolna authority banata hai — ye video sabse zyada share hoti hai.',
+    best:'Reel · 6–8 pm · talking head, no music',
+    steps:['3 deal types ka commission','1 line: kyun transparent','End: referral CTA'] },
+  { id:'v15', cat:'Engagement', format:'story', vector:'followers',
+    title:'Poll: aapka budget kya hai?',
+    hook:'"Sirf 1 tap — aapka budget kis band me hai?"',
+    caption:'Story poll: under 30L / 30–50L / 50L–1Cr / 1Cr+.\nResult ke hisaab se kal ka content banega.\nPoll ke baad DM "BUDGET" — matching options.',
+    hashtags:['#JaipurProperty','#BudgetPoll','#RealEstateIndia','#PlotBuying','#JaipurRealEstate'],
+    cta:'Poll + DM "BUDGET"',
+    why:'Poll me tap karna sabse easy action hai — reach aur DM dono badhte hain, aur audience data milta hai.',
+    best:'Story · 9–11 am · 4-option poll + swipe-up',
+    steps:['Poll lagao','Result screenshot next story me','DM keyword offer'] },
+  { id:'v16', cat:'NRI', format:'carousel', vector:'clients',
+    title:'NRI buyer ka 6-point checklist',
+    hook:'"NRI ho aur India me plot lena hai? Ye 6 cheezein pehle fix karo."',
+    caption:'POA, NRE/NRO payment, TDS, registry attendance, tenant check, resale plan.\nYe 6 cheezein clear hote hi deal 10 din me close hoti hai.\nDM "NRI" — video call par shortlist.',
+    hashtags:['#NRIProperty','#NRIInvesting','#JaipurRealEstate','#PropertyIndia','#NRI'],
+    cta:'DM "NRI" — video shortlist call',
+    why:'NRI audience high-value hai aur specific checklist unke groups me turant forward hoti hai.',
+    best:'Carousel · 7–9 pm IST · clean English + Hindi mix',
+    steps:['6 slides, 1 point each','Payment + POA par focus','Last: video call CTA'] },
+  { id:'v17', cat:'Emotion', format:'story', vector:'projects',
+    title:'Possession day — client ki khushi',
+    hook:'"Aaj chabi mili — 3 saal ka safar poora."',
+    caption:'Possession day par client ke saath 1 story.\nIsme project ka naam, timeline aur client ka 1 line quote.\nDM "POSSESSION" — apna possession plan dekho.',
+    hashtags:['#PossessionDay','#JaipurProperty','#ClientStory','#RealEstateIndia','#HomeBuying'],
+    cta:'DM "POSSESSION" — plan your handover',
+    why:'Emotional milestone content par congratulation comments aate hain — engagement + social proof.',
+    best:'Story · 12–2 pm · 3 frames: gate, keys, family',
+    steps:['Gate + project board','Chabi handover shot','Client quote + CTA'] },
+  { id:'v18', cat:'Behind the scenes', format:'story', vector:'followers',
+    title:'Ek din site visits ke saath',
+    hook:'"Aaj 4 site visits — chalo saath chalo."',
+    caption:'Subah 9 baje nikalna, 4 sites, 2 clients, 1 registry.\nReal day, real dirt, real paperwork.\nDM "VISIT" — is weekend ka slot book karo.',
+    hashtags:['#BehindTheScenes','#SiteVisit','#JaipurRealEstate','#RealEstateLife','#JaipurProperty'],
+    cta:'DM "VISIT" — weekend slot',
+    why:'BTS content face aur process dikhata hai — parasocial trust sabse fast isi se banta hai.',
+    best:'Story · 9 am–7 pm · 5–6 short frames',
+    steps:['Morning start frame','2 site clips + 1 client moment','End: weekend visit CTA'] },
+  { id:'v19', cat:'WhatsApp', format:'whatsapp', vector:'clients',
+    title:'3 listings under ₹50L — status',
+    hook:'"Is hafte ke 3 best plots — ₹50L se kam."',
+    caption:'1) Ajmer Road 100 gaj ₹38L 2) Tonk Road 120 gaj ₹46L 3) Ring Road 150 gaj ₹49L.\nRate, road width aur registry included.\nReply "PLOT" — details bhejta hoon.',
+    hashtags:['#JaipurPlots','#Under50Lakh','#PropertyDeal','#JaipurRealEstate','#PlotForSale'],
+    cta:'Reply "PLOT" on WhatsApp',
+    why:'WhatsApp status aapke warm network tak seedha jata hai — conversion rate Instagram se zyada hota hai.',
+    best:'WhatsApp status · 10 am + 7 pm · 3 clean photos + rate text',
+    steps:['3 photos, 3 rate cards','1 line USP each','Reply keyword'] },
+  { id:'v20', cat:'Myth busting', format:'reel', vector:'followers',
+    title:'"Plot pe loan nahi milta" — myth',
+    hook:'"Sab kehte hain plot pe loan nahi milta — chalo bank ka rule dekhte hain."',
+    caption:'Plot loan milta hai — bas approval, title aur lender matter karta hai.\n3 banks ke criteria screen par hain.\nDM "LOAN" — eligible options nikalwao.',
+    hashtags:['#PlotLoan','#HomeLoan','#MythBusted','#JaipurProperty','#PropertyFinance'],
+    cta:'DM "LOAN" — check eligibility',
+    why:'Myth-busting format comment me debate laata hai, aur debate reach badhata hai.',
+    best:'Reel · 7–9 pm · text-first, fast cuts',
+    steps:['Myth bolo','Bank criteria dikhao','End: eligibility CTA'] },
+  { id:'v21', cat:'Legal clarity', format:'carousel', vector:'clients',
+    title:'Title check ke 3 red flags',
+    hook:'"Ye 3 red flags dikhe to plot chhod do — chahe rate kitna bhi ho."',
+    caption:'1) 30 saal se purana chain missing 2) GPA-based sale 3) agricultural land bina conversion.\nInme se ek bhi ho to registry se pehle ruk jao.\nDM "TITLE" — document review.',
+    hashtags:['#TitleCheck','#PropertyLegal','#JaipurRealEstate','#PlotBuying','#RealEstateIndia'],
+    cta:'DM "TITLE" — document review',
+    why:'Fear + specific fix wala content sabse zyada save hota hai; buyers ise family ko bhejte hain.',
+    best:'Carousel · 11 am–1 pm · red-flag icons',
+    steps:['3 slides, 1 red flag each','Har slide: kya karna hai','Last: document review CTA'] },
+  { id:'v22', cat:'Rate card', format:'story', vector:'followers',
+    title:'Ajmer Road rate card — is hafte',
+    hook:'"Is hafte Ajmer Road ka rate — jo koi nahi batata."',
+    caption:'100 gaj: ₹32–40L · 120 gaj: ₹38–48L · 150 gaj: ₹45–58L.\nRate road width aur approval ke hisaab se badalta hai.\nDM "RATE" — area-wise rate sheet.',
+    hashtags:['#RateCard','#AjmerRoad','#JaipurPlots','#PropertyRates','#JaipurRealEstate'],
+    cta:'DM "RATE" — area rate sheet',
+    why:'Rate card ko log screenshot lete hain aur apne group me bhejte hain — silent virality.',
+    best:'Story · 8–10 am · clean table graphic',
+    steps:['3 size bands','Rate + reason','DM rate sheet'] },
+  { id:'v23', cat:'Social proof', format:'reel', vector:'clients',
+    title:'Client testimonial — 30 second',
+    hook:'"Client ne khud bola — kyun unhone mujhse liya."',
+    caption:'Asli client, asli site, asli words.\n1 line: "isne rate nahi, risk bataya."\nDM "REVIEW" — aise hi honest deals ke liye.',
+    hashtags:['#ClientTestimonial','#JaipurRealEstate','#TrustedAdvisor','#PropertyDeal','#ClientLove'],
+    cta:'DM "REVIEW" — honest deals',
+    why:'Real face + real voice wala testimonial ads se zyada convert karta hai — trust transfer.',
+    best:'Reel · 6–8 pm · 20–30 sec, no script',
+    steps:['Client ko 1 sawaal poochho','Cut to site visuals','End: CTA + review ask'] },
+  { id:'v24', cat:'Recruitment', format:'reel', vector:'advisors',
+    title:'Advisor kyun banein — 3 reasons',
+    hook:'"Job chhodi, advisor bane — 3 cheezein badal gayi."',
+    caption:'1) Apna time 2) Zero inventory risk 3) Har deal par seedha commission.\nTraining + leads hum dete hain.\nDM "ADVISOR" — team join karo.',
+    hashtags:['#AdvisorJobs','#RealEstateCareer','#JaipurJobs','#Commission','#WorkWithUs'],
+    cta:'DM "ADVISOR" — join the team',
+    why:'Career content ka audience alag hota hai aur DM me serious candidates aate hain — hiring funnel.',
+    best:'Reel · 7–9 am + 8–10 pm · talking head',
+    steps:['3 reasons, 3 cuts','1 line proof/earning range','End: DM ADVISOR'] },
+  { id:'v25', cat:'Event', format:'story', vector:'clients',
+    title:'Weekend site visit invite',
+    hook:'"Is Sunday, 11 baje — 3 projects, 1 AC bus."',
+    caption:'Sunday site visit: 3 projects, pickup office se, lunch included.\nSeats limited — family ke saath aao.\nDM "SUNDAY" — seat book karo.',
+    hashtags:['#SiteVisit','#JaipurProperty','#SundayPlan','#PlotBuying','#JaipurRealEstate'],
+    cta:'DM "SUNDAY" — book seat',
+    why:'Specific time + limited seats urgency banate hain; DM me naam-number aate hain.',
+    best:'Story · 6–9 pm · poster + countdown sticker',
+    steps:['Poster frame + time','3 project names','Countdown + DM CTA'] },
+  { id:'v26', cat:'Comparison', format:'carousel', vector:'followers',
+    title:'₹1 crore plot vs ₹1 crore flat',
+    hook:'"Same ₹1 crore — par 10 saal baad fark dekho."',
+    caption:'Plot: no maintenance, land appreciation, construction control.\nFlat: rental from month 1, depreciation, society charges.\nDecision aapka — numbers mere paas hain.\nSave karo.',
+    hashtags:['#PlotVsFlat','#Investment','#JaipurRealEstate','#RealEstateMath','#PropertyIndia'],
+    cta:'Save + DM "MATH" for the sheet',
+    why:'High-ticket comparison par log apna scenario poochhte hain — comments se leads.',
+    best:'Carousel · 8–10 pm · 5 slides, 2 numbers per slide',
+    steps:['5-slide comparison','10-year math table','Last: DM MATH'] },
+  { id:'v27', cat:'Repurpose', format:'reel', vector:'followers',
+    title:'Google review se reel banao',
+    hook:'"Client ne Google par jo likha — wahi meri best reel hai."',
+    caption:'Review ka 1 line uthao, usko hook banao, baaki video me proof do.\nYe content banane me 10 minute lagte hain.\nDM "REVIEW" — apni reviews se content plan.',
+    hashtags:['#GoogleReviews','#ContentIdeas','#RealEstateMarketing','#JaipurRealEstate','#SocialProof'],
+    cta:'DM "REVIEW" — content plan',
+    why:'Repurposing hack content ko creators aur agents save karte hain — niche authority.',
+    best:'Reel · 11 am–1 pm · review screenshot + face',
+    steps:['Review screenshot dikhao','1 line ko hook banao','End: repurpose CTA'] },
+  { id:'v28', cat:'Market update', format:'reel', vector:'followers',
+    title:'60-second Jaipur market update',
+    hook:'"Is mahine Jaipur me rate kis corridor me badha? 60 second me."',
+    caption:'Ajmer Road: steady. Ring Road: infra push. Tonk Road: rental strong.\n1 data point per corridor, no fluff.\nDM "UPDATE" — monthly rate sheet.',
+    hashtags:['#JaipurRealEstate','#MarketUpdate','#PropertyRates','#Investing','#Jaipur'],
+    cta:'DM "UPDATE" — monthly sheet',
+    why:'Monthly series habit banati hai — log har mahine wapas aate hain aur share karte hain.',
+    best:'Reel · 1st of month, 9–11 am · data overlays',
+    steps:['3 corridors, 1 data point each','1 line takeaway','End: monthly sheet CTA'] },
+  { id:'v29', cat:'FAQ', format:'reel', vector:'followers',
+    title:'Registry ke baad construction — FAQ',
+    hook:'"Plot registry ho gaya, ab construction kab shuru kar sakte hain?"',
+    caption:'Registry ke baad: mutation, naksha approval, aur setback rules check karo.\n3 line me process bataya hai.\nDM "CONSTRUCT" — approval checklist.',
+    hashtags:['#Construction','#Registry','#JaipurProperty','#PlotBuying','#RealEstateFAQ'],
+    cta:'DM "CONSTRUCT" — approval checklist',
+    why:'Post-purchase FAQ ka audience already buyer hota hai — high-intent aur referral.',
+    best:'Reel · 7–9 pm · whiteboard style',
+    steps:['Question bolo','3-step process','End: checklist DM'] },
+  { id:'v30', cat:'Offer', format:'ad', vector:'clients',
+    title:'"Aapka budget, mera shortlist" — lead ad',
+    hook:'"Budget batao, 24 ghante me 3 matching plots bhejta hoon."',
+    caption:'Form fill karo: budget, area, timeline.\nMain 24 ghante me 3 vetted options bhejta hoon — rate, title, approval sab check karke.\nFree, no obligation.',
+    hashtags:['#JaipurPlots','#PropertyShortlist','#JaipurRealEstate','#PlotForSale','#PropertyConsultant'],
+    cta:'Fill the form — 3 options in 24 hours',
+    why:'Clear promise + deadline wala offer CPL kam karta hai kyunki expectation set hoti hai.',
+    best:'Ad · Meta lead form · 15–30 sec reel creative',
+    steps:['3-second hook: budget → 3 options','Show 1 sample shortlist','End: form fill CTA'] }
+];
+
+const MKT_HOOK_FORMULAS = [
+  { name:'Sach vs jhooth', formula:'"Sab kehte hain <common belief> — par sach ye hai…"', ex:'"Sab kehte hain plot pe loan nahi milta — par sach ye hai…"' },
+  { name:'Specific number', formula:'"<Exact amount> me <exact area> me kya milta hai?"', ex:'"₹40 lakh me Ajmer Road pe kya milta hai?"' },
+  { name:'Costly mistake', formula:'"Ye <number> galtiyan <audience> karte hain — <last> sabse mehngi."', ex:'"Ye 5 galtiyan plot buyers karte hain — 5vi sabse mehngi."' },
+  { name:'Time challenge', formula:'"<Task> <time> me — chalo karte hain."', ex:'"RERA check 60 second me — chalo karte hain."' },
+  { name:'Insider line', formula:'"Jo broker aapko nahi batayega — <topic>."', ex:'"Jo broker aapko nahi batayega — registry ka hidden cost."' },
+  { name:'Before / after', formula:'"<Year> vs <year> — ek hi jagah, poora fark."', ex:'"2019 vs 2026 — ek hi jagah, poora fark."' },
+  { name:'Client dialogue', formula:'"Client bola "<objection>" — maine <action>."', ex:'"Client bola \\"mehenga hai\\" — maine rate nahi, 3 cheezein dikhayi."' },
+  { name:'Save this', formula:'"<Audience> ho? Ye <number> cheezein save karo."', ex:'"NRI ho? Ye 6 cheezein save karo."' },
+  { name:'Two options', formula:'"<Option A> ya <Option B> — 10 saal baad kya behtar?"', ex:'"₹1Cr ka plot ya ₹1Cr ka flat — 10 saal baad kya behtar?"' },
+  { name:'Local proof', formula:'"<Area> ka rate is hafte — jo koi nahi batata."', ex:'"Ajmer Road ka rate is hafte — jo koi nahi batata."' },
+  { name:'Stop doing this', formula:'"<Audience> — ye karna band karo."', ex:'"Plot buyers — registry se pehle GPA par sign karna band karo."' },
+  { name:'Free tool', formula:'"DM "<keyword>" — main <free thing> bhejta hoon."', ex:'"DM "COST" — main aapka total registry cost nikal ke bhejta hoon."' }
+];
+
 /* ---------- state + helpers ---------- */
 let mktTab = 'today';
 let mktIdeaFilter = 'all';
@@ -40341,6 +40860,9 @@ function mktState(){
   if(!m.calendar || typeof m.calendar !== 'object') m.calendar = {};
   if(!m.challenge || typeof m.challenge !== 'object') m.challenge = { startedAt:'' };
   if(!m.brainstorm || typeof m.brainstorm !== 'object') m.brainstorm = { date:'', idx:0 };
+  if(!Array.isArray(m.myIdeas)) m.myIdeas = [];
+  if(!m.rotation || typeof m.rotation !== 'object') m.rotation = { offset:0, date:'' };
+  if(m.autoTodo === undefined) m.autoTodo = true;
   return m;
 }
 const mktPad = n => String(n).padStart(2, '0');
@@ -40448,6 +40970,233 @@ function mktCopy(text){
 }
 function mktPct(a, b){ return b > 0 ? Math.min(100, Math.round(a / b * 100)) : 0; }
 
+/* ---------- v177 · post model, daily rotation, interlink ---------- */
+const MKT_FMT_LABEL = { reel:'Reel', short:'Short', video:'YouTube', carousel:'Carousel', story:'Story', ad:'Ad', whatsapp:'WhatsApp', other:'Other' };
+const MKT_FMT_MAP = { reel:'reel', short:'short', video:'video', carousel:'carousel', story:'story', ad:'ad', animation:'reel', whatsapp:'whatsapp' };
+
+function mktFindIdea(id){
+  const m = mktState();
+  return MKT_VIRAL_IDEAS.find(i => i.id === id) ||
+    (Array.isArray(m.myIdeas) ? m.myIdeas.find(i => i.id === id) : null) ||
+    MKT_IDEAS.find(i => i.id === id) || null;
+}
+function mktPosts(key){
+  const m = mktState();
+  const e = m.calendar[key];
+  if(!e || typeof e !== 'object') return [];
+  if(Array.isArray(e.posts)) return e.posts.filter(p => p && (p.type || p.idea || p.title));
+  if(e.type || e.idea || e.posted){
+    return [{ id:'lg-' + key, type:e.type || '', idea:e.idea || '', time:'', posted:!!e.posted, source:'legacy' }];
+  }
+  return [];
+}
+function mktEnsureDay(key){
+  const m = mktState();
+  let e = m.calendar[key];
+  if(!e || typeof e !== 'object') e = m.calendar[key] = {};
+  if(!Array.isArray(e.posts)){
+    const legacy = [];
+    if(e.type || e.idea || e.posted){
+      legacy.push({ id: 'lg-' + key, type:e.type || '', idea:e.idea || '', time:'', posted:!!e.posted, source:'legacy', createdAt: Date.now() });
+    }
+    e.posts = legacy;
+    delete e.type; delete e.idea; delete e.posted;
+  }
+  return e;
+}
+function mktAllPosts(){
+  const m = mktState();
+  const out = [];
+  Object.keys(m.calendar || {}).forEach(k => mktPosts(k).forEach(p => out.push(Object.assign({ key:k }, p))));
+  return out.sort((a, b) => (a.key || '').localeCompare(b.key || '') || String(a.time || '').localeCompare(String(b.time || '')));
+}
+function mktPostLabel(p){ return MKT_FMT_LABEL[p && p.type] || 'Post'; }
+function mktPostTitle(p){
+  const t = String((p && (p.idea || p.title)) || '').trim();
+  return t || (mktPostLabel(p) + ' — idea add karo');
+}
+function mktPostKit(p){
+  if(!p) return '';
+  const idea = p.ideaId ? mktFindIdea(p.ideaId) : null;
+  if(idea && (idea.caption || idea.hook)) return mktKitText(idea);
+  const parts = ['🎬 ' + mktPostTitle(p)];
+  if(p.caption) parts.push('', 'CAPTION:', p.caption);
+  if(p.hashtags) parts.push('', p.hashtags);
+  return parts.join('\n').trim();
+}
+function mktKitText(idea){
+  if(!idea) return '';
+  const tags = Array.isArray(idea.hashtags) ? idea.hashtags.join(' ') : String(idea.hashtags || '');
+  const lines = [];
+  if(idea.title) lines.push('🎬 ' + idea.title);
+  if(idea.hook) lines.push('', 'HOOK: ' + idea.hook);
+  if(idea.caption) lines.push('', 'CAPTION:', idea.caption);
+  if(tags) lines.push('', tags);
+  if(idea.cta) lines.push('', 'CTA: ' + idea.cta);
+  if(Array.isArray(idea.steps) && idea.steps.length){
+    lines.push('', 'STEPS:', idea.steps.map((x, i) => (i + 1) + '. ' + x).join('\n'));
+  }
+  if(idea.why) lines.push('', 'KYUN CHALEGA: ' + idea.why);
+  if(idea.best) lines.push('BEST: ' + idea.best);
+  return lines.join('\n').trim();
+}
+function mktShareText(text, title){
+  const msg = String(text || '').trim();
+  if(!msg) return toast('Pehle kuch text to ho', true);
+  if(navigator.share){
+    try{ navigator.share({ title: title || 'BCS post kit', text: msg }).catch(() => {}); return; }catch(e){}
+  }
+  const url = 'https://wa.me/?text=' + encodeURIComponent(msg);
+  const w = window.open(url, 'bcsShareWa', 'popup=yes,width=520,height=680');
+  if(!w){ try{ mktCopy(msg); }catch(e){ toast('Share window block hui — copy kar liya', true); } }
+}
+function mktRotSeed(){
+  const m = mktState();
+  return mktDayDiff('2024-01-01', mktToday()) + (Math.abs(+((m.rotation || {}).offset) || 0) * 3);
+}
+function mktDailyIdeas(){
+  const pool = MKT_VIRAL_IDEAS;
+  if(!pool.length) return [];
+  const seed = mktRotSeed();
+  const buckets = [
+    { slot:'🎬 Reel slot', fmts:['reel','ad'] },
+    { slot:'🖼 Carousel slot', fmts:['carousel'] },
+    { slot:'📱 Story slot', fmts:['story','whatsapp'] }
+  ];
+  return buckets.map((b, i) => {
+    const list = pool.filter(x => b.fmts.indexOf(x.format) >= 0);
+    if(!list.length) return null;
+    const idx = ((seed * 3 + i * 5) % list.length + list.length) % list.length;
+    return Object.assign({ slot:b.slot }, list[idx]);
+  }).filter(Boolean);
+}
+function mktRotateIdeas(){
+  const m = mktState();
+  if(!m.rotation || typeof m.rotation !== 'object') m.rotation = { offset:0, date:'' };
+  m.rotation.offset = (Math.abs(+m.rotation.offset || 0) + 1) % 997;
+  m.rotation.date = mktToday();
+  save(); mktRender();
+  toast('Naye 3 ideas aa gaye 🔄');
+}
+function mktTodoFor(key, post){
+  return (db.todos || []).find(t => t.mktKey === key && t.mktPostId === post.id);
+}
+function mktSyncPostTodo(key, post){
+  if(!post || !post.id) return;
+  const m = mktState();
+  if(m.autoTodo === false) return;
+  const existing = mktTodoFor(key, post);
+  const title = '📣 ' + mktPostLabel(post) + ' — ' + mktPostTitle(post).slice(0, 80);
+  if(existing){
+    existing.title = title;
+    existing.date = key;
+    existing.time = post.time || '';
+    existing.updatedAt = Date.now();
+    if(post.posted){
+      if(!existing.done){ existing.done = true; existing.doneAt = existing.doneAt || Date.now(); }
+    } else if(existing.done){
+      existing.done = false; existing.doneAt = null;
+    }
+    return;
+  }
+  db.todos.push({
+    id: uid(), date: key, title, time: post.time || '', note:'Social post · BCS marketing',
+    priority:'normal', done: !!post.posted, doneAt: post.posted ? Date.now() : null,
+    createdAt: Date.now(), updatedAt: Date.now(), mktKey: key, mktPostId: post.id
+  });
+}
+function mktSyncDayTodos(key){
+  const posts = mktPosts(key);
+  const ids = posts.map(p => p.id);
+  db.todos = (db.todos || []).filter(t => !(t.mktKey === key && t.mktPostId && ids.indexOf(t.mktPostId) < 0));
+  posts.forEach(p => mktSyncPostTodo(key, p));
+}
+function mktMirrorTodo(t){
+  if(!t || !t.mktKey || !t.mktPostId) return;
+  const post = mktPosts(t.mktKey).find(p => p.id === t.mktPostId);
+  if(!post) return;
+  post.posted = !!t.done;
+  post.updatedAt = Date.now();
+}
+function mktAddPost(key, data){
+  const e = mktEnsureDay(key);
+  const d = data || {};
+  const p = {
+    id: uid(),
+    type: d.type || 'reel',
+    idea: String(d.idea || '').slice(0, 500),
+    time: /^\d{2}:\d{2}$/.test(String(d.time || '')) ? String(d.time) : '',
+    posted: !!d.posted,
+    source: d.source || 'manual',
+    ideaId: d.ideaId || '',
+    caption: String(d.caption || '').slice(0, 900),
+    hashtags: String(d.hashtags || '').slice(0, 300),
+    createdAt: Date.now()
+  };
+  e.posts.push(p);
+  mktSyncPostTodo(key, p);
+  return p;
+}
+function mktUpdatePost(key, id, patch){
+  const e = mktEnsureDay(key);
+  const p = e.posts.find(x => x.id === id);
+  if(!p) return null;
+  Object.assign(p, patch || {});
+  p.updatedAt = Date.now();
+  mktSyncPostTodo(key, p);
+  return p;
+}
+function mktDeletePost(key, id){
+  const m = mktState();
+  const e = m.calendar[key];
+  if(e && Array.isArray(e.posts)){
+    e.posts = e.posts.filter(p => p.id !== id);
+    if(!e.posts.length) delete m.calendar[key];
+  }
+  db.todos = (db.todos || []).filter(t => !(t.mktKey === key && t.mktPostId === id));
+}
+function mktTogglePost(key, id){
+  const p = mktPosts(key).find(x => x.id === id);
+  if(!p) return;
+  mktUpdatePost(key, id, { posted: !p.posted });
+  const t = mktTodoFor(key, p);
+  if(t){ t.done = !!p.posted; t.doneAt = p.posted ? Date.now() : null; t.updatedAt = Date.now(); }
+  mktAfterPostChange();
+}
+function mktAfterPostChange(){
+  save();
+  try{ if($('#mktDayModal') && $('#mktDayModal').classList.contains('on')) mktRenderDayPosts(); }catch(e){}
+  try{ if(currentView === 'social') mktRender(); }catch(e){}
+  try{ if(currentView === 'dayplan') renderDayplan(); }catch(e){}
+  try{ if(typeof renderTaskPop === 'function') renderTaskPop(); }catch(e){}
+}
+function mktDayPlanHTML(iso){
+  const key = iso || mktToday();
+  const posts = mktPosts(key);
+  const done = posts.filter(p => p.posted).length;
+  const rows = posts.map(p => `<div class="mkd-row ${p.posted ? 'on' : ''}">
+      <button type="button" class="mkd-tick" data-mkt-post-toggle="${esc(p.id)}" data-mkt-post-day="${esc(key)}" title="${p.posted ? 'Mark as not posted' : 'Mark as posted'}">✓</button>
+      <span class="mkd-txt"><b>${esc(mktPostTitle(p))}</b><span>${esc(mktPostLabel(p))}${p.time ? ' · ' + esc(p.time) : ''}${p.posted ? ' · posted ✓' : ''}</span></span>
+    </div>`).join('');
+  const body = posts.length
+    ? `<div class="mkd-prog"><div class="mkt-bar"><i style="width:${mktPct(done, posts.length)}%"></i></div><span>${done}/${posts.length} posted</span></div>${rows}`
+    : '<div class="mkd-empty">Is din koi social post plan nahi. Social tab se idea plan karo — yahan task ban jayega.</div>';
+  const foot = `<div class="mkd-foot">
+      <button type="button" class="btn ghost sm" data-mkt-goto="social">+ Post plan karo</button>
+      ${posts.length ? `<button type="button" class="btn ghost sm" data-mkt-day-alltodo="${esc(key)}">↧ Tasks me daalo</button>` : ''}
+    </div>`;
+  return body + foot;
+}
+function mktDayAllTodo(key){
+  const posts = mktPosts(key);
+  if(!posts.length) return toast('Pehle koi post plan karo', true);
+  posts.forEach(p => mktSyncPostTodo(key, p));
+  save();
+  if(currentView === 'dayplan') renderDayplan();
+  toast(posts.length + ' posting task Day Plan me daal diye ✓');
+}
+
+
 /* ---------- shell ---------- */
 function mktRender(){
   const host = document.getElementById('mktBody');
@@ -40505,6 +41254,17 @@ function mktTodayHTML(){
   const vec = mktVectorStats();
   const finished = started && n > 30;
 
+  const todayKey = mktToday();
+  const todayPosts = mktPosts(todayKey);
+  const postedN = todayPosts.filter(p => p.posted).length;
+  const daily = mktDailyIdeas();
+  const myPlan = Object.keys(m.playbooks || {}).map(id => {
+    const st = MKT_STRATEGIES.find(x => x.id === id);
+    if(!st) return null;
+    const done = Array.isArray((m.playbooks[id] || {}).done) ? (m.playbooks[id].done || []).length : 0;
+    return { s:st, done, next: st.steps[done] || '' };
+  }).filter(Boolean);
+
   const taskRows = day.tasks.map((t, i) => {
     const id = 'd' + day.d + '-' + i;
     const done = mktTaskDone(key, id);
@@ -40513,7 +41273,63 @@ function mktTodayHTML(){
       <span>${esc(t)}</span></label>`;
   }).join('');
 
+  const planRows = todayPosts.map(p => `<div class="mkt-post-row ${p.posted ? 'on' : ''}">
+      <button type="button" class="mkt-post-tick" data-mkt-post-toggle="${esc(p.id)}" data-mkt-post-day="${esc(todayKey)}" title="${p.posted ? 'Mark as not posted' : 'Mark as posted'}">✓</button>
+      <span class="mkt-post-main"><b>${esc(mktPostTitle(p))}</b>
+        <span class="mkt-post-meta"><span>${esc(mktPostLabel(p))}</span>${p.time ? `<span>⏰ ${esc(p.time)}</span>` : ''}${p.posted ? '<span style="color:#2F6B41">✓ posted</span>' : '<span style="color:#A4452B">pending</span>'}</span>
+      </span>
+      <span class="mkt-post-acts">
+        <button type="button" class="mkt-ico-btn" data-mkt-post-copy="${esc(p.id)}" data-mkt-post-day="${esc(todayKey)}" title="Copy caption kit">📋</button>
+        <button type="button" class="mkt-ico-btn" data-mkt-post-share="${esc(p.id)}" data-mkt-post-day="${esc(todayKey)}" title="Share on WhatsApp">↗</button>
+        <button type="button" class="mkt-ico-btn" data-mkt-cal-day="${esc(todayKey)}" title="Edit today's plan">✎</button>
+        <button type="button" class="mkt-ico-btn del" data-mkt-post-del="${esc(p.id)}" data-mkt-post-day="${esc(todayKey)}" title="Delete post">🗑</button>
+      </span>
+    </div>`).join('');
+
+  const dailyCards = daily.map(i => `<div class="mkt-daily">
+      <span class="mkt-daily-slot">${esc(i.slot)} · ${esc(MKT_FMT_LABEL[i.format] || i.format)}</span>
+      <b>${esc(i.title)}</b>
+      <p class="mkt-daily-hook">${esc(i.hook)}</p>
+      <p class="mkt-daily-cap">${esc(i.caption || '')}</p>
+      <div class="mkt-daily-why">🔥 ${esc(i.why || '')}</div>
+      <div class="mkt-daily-tags">${esc((i.hashtags || []).join(' '))}</div>
+      <div class="mkt-daily-acts">
+        <button type="button" class="btn primary sm" data-mkt-idea-today="${i.id}">📅 Aaj plan karo</button>
+        <button type="button" class="btn ghost sm" data-mkt-idea-kit="${i.id}">👁 Kit</button>
+        <button type="button" class="btn ghost sm" data-mkt-copy-kit="${i.id}">📋 Copy</button>
+      </div>
+    </div>`).join('');
+
   return `
+  <div class="mkt-plan-card">
+    <div class="mkt-plan-top">
+      <h3>🎯 Aaj ka posting plan<small>${new Date(todayKey + 'T00:00:00').toLocaleDateString('en-IN', { weekday:'long', day:'numeric', month:'short' })} · ${todayPosts.length} post${todayPosts.length === 1 ? '' : 's'}</small></h3>
+      <button type="button" class="btn primary sm" data-mkt-cal-day="${todayKey}">+ Post add karo</button>
+      <button type="button" class="btn ghost sm" data-mkt-autoplan="1">📅 Auto-plan 7 days</button>
+    </div>
+    ${todayPosts.length
+      ? `<div class="mkt-plan-stat"><div class="mkt-bar"><i style="width:${mktPct(postedN, todayPosts.length)}%"></i></div><span>${postedN}/${todayPosts.length} posted</span></div>${planRows}`
+      : '<div class="mkt-empty" style="padding:4px 0 10px">Aaj koi post plan nahi hai. Neeche se idea chuno ya apna post add karo — Day Plan me task khud ban jayega.</div>'}
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
+      <button type="button" class="btn ghost sm" data-mkt-daily-plan="1">💡 Aaj ke 3 ideas plan karo</button>
+      <button type="button" class="btn ghost sm" data-mkt-day-alltodo="${todayKey}">↧ Day Plan me daalo</button>
+      <button type="button" class="btn ghost sm" data-mkt-idea-add="1">✍️ Apna idea</button>
+    </div>
+  </div>
+
+  <div class="mkt-sec-head"><h4>💡 Aaj ke 3 viral ideas</h4><span>Roz badalte hain · full kit ke saath</span>
+    <button type="button" class="btn ghost sm" data-mkt-rotate="1">🔄 Aur ideas</button></div>
+  <div class="mkt-daily-grid">${dailyCards}</div>
+
+  <div class="mkt-sec-head"><h4>📈 Meri plan — next step</h4><span>Jo strategies aapne plan me daali, unka agla kaam</span></div>
+  <div>${myPlan.length ? myPlan.map(x => `<div class="mkt-myplan">
+      <b>${esc(x.s.ico + ' ' + x.s.title)}</b>
+      <span>${x.done}/${x.s.steps.length} steps</span>
+      <span class="nx">Next: ${esc(x.next || 'Sab steps done — review karo')}</span>
+      ${x.next ? `<button type="button" class="btn ghost sm" data-mkt-strat-todo="${esc(x.s.id)}">↧ Day Plan me daalo</button>` : ''}
+      <button type="button" class="btn ghost sm" data-mkt-tab="strategies">Open</button>
+    </div>`).join('') : '<div class="mkt-empty">Abhi koi strategy plan me nahi. Strategies tab se "+ Add to my plan" karo — progress aur next step yahan dikhega.</div>'}</div>
+
   <div class="mkt-hero">
     <div class="mkt-hero-main">
       <div class="mkt-hero-top">
@@ -40561,14 +41377,14 @@ function mktTodayHTML(){
   <div class="mkt-sec-head"><h4>🎯 Growth track — har kaam kis business ko badhata hai</h4><span>30-day challenge ke tasks vector-wise</span></div>
   <div class="mkt-vec-grid">
     ${Object.keys(MKT_VECTORS).map(k => {
-      const v = MKT_VECTORS[k], s = vec[k];
+      const v = MKT_VECTORS[k], st = vec[k];
       const live = k === 'developers' ? biz.developers : k === 'advisors' ? biz.advisors : k === 'clients' ? biz.clients : k === 'projects' ? biz.projects : k === 'followers' ? biz.followers : biz.brokerage;
       return `<div class="mkt-vec ${v.cls}">
         <div class="mkt-vec-top"><span>${v.ico}</span><b>${v.label}</b></div>
         <div class="mkt-vec-big">${k === 'earnings' ? '₹' + (+live || 0).toLocaleString('en-IN') : (+live || 0).toLocaleString('en-IN')}</div>
         <div class="mkt-vec-sub">${k === 'earnings' ? 'brokerage tracked' : k === 'followers' ? 'total audience' : 'in system'}</div>
-        <div class="mkt-bar"><i style="width:${mktPct(s.done, s.total)}%"></i></div>
-        <div class="mkt-vec-foot">${s.done}/${s.total} tasks done</div>
+        <div class="mkt-bar"><i style="width:${mktPct(st.done, st.total)}%"></i></div>
+        <div class="mkt-vec-foot">${st.done}/${st.total} tasks done</div>
       </div>`;
     }).join('')}
   </div>
@@ -40686,39 +41502,66 @@ function mktStrategiesHTML(){
 function mktIdeaCards(){
   const m = mktState();
   const q = mktIdeaQ.toLowerCase();
-  const list = MKT_IDEAS.filter(i =>
-    (mktIdeaFilter === 'all' || i.format === mktIdeaFilter) &&
-    (!q || (i.title + ' ' + i.hook + ' ' + i.format).toLowerCase().includes(q)));
+  const mine = Array.isArray(m.myIdeas) ? m.myIdeas : [];
+  const all = MKT_VIRAL_IDEAS.concat(mine.map(i => Object.assign({}, i, { custom:true })));
+  const list = all.filter(i => {
+    if(mktIdeaFilter === 'mine'){ if(!i.custom) return false; }
+    else if(mktIdeaFilter !== 'all' && i.format !== mktIdeaFilter) return false;
+    if(!q) return true;
+    const tags = Array.isArray(i.hashtags) ? i.hashtags.join(' ') : (i.hashtags || '');
+    return (i.title + ' ' + i.hook + ' ' + i.format + ' ' + (i.caption || '') + ' ' + tags).toLowerCase().includes(q);
+  });
+  const planned = {};
+  mktAllPosts().forEach(p => { if(p.ideaId) planned[p.ideaId] = p.key; });
   const cards = list.map(i => {
     const u = m.ideas[i.id];
+    const pdate = planned[i.id];
     return `<div class="mkt-idea ${u ? 'used' : ''}">
-      <div class="mkt-idea-top"><span class="mkt-fmt">${i.format}</span>${mktVectorTag(i.vector)}${u ? '<span class="mkt-used">✓ used</span>' : ''}</div>
+      <div class="mkt-idea-top">
+        <span class="mkt-fmt">${esc(MKT_FMT_LABEL[i.format] || i.format)}</span>
+        ${mktVectorTag(i.vector)}
+        ${pdate ? `<span class="mkt-planned">📅 ${esc(pdate.slice(5))}</span>` : ''}
+        ${i.custom ? '<span class="mkt-used" style="margin-left:auto">✍️ mine</span>' : (u ? '<span class="mkt-used">✓ used</span>' : '')}
+      </div>
       <b class="mkt-idea-title">${esc(i.title)}</b>
       <p class="mkt-idea-hook">${esc(i.hook)}</p>
+      ${i.caption ? `<p class="mkt-idea-cap">${esc(i.caption)}</p>` : ''}
+      ${i.hashtags && i.hashtags.length ? `<div class="mkt-idea-tags">${esc(Array.isArray(i.hashtags) ? i.hashtags.join(' ') : i.hashtags)}</div>` : ''}
       <div class="mkt-idea-actions">
-        <button type="button" class="btn ghost sm" data-mkt-copy="${esc(i.hook)}">Copy hook</button>
-        <button type="button" class="btn ghost sm" data-mkt-idea-today="${i.id}">📅 Aaj plan karo</button>
-        <button type="button" class="btn ghost sm" data-mkt-idea-used="${i.id}">${u ? '↺ Unmark' : '✓ Used'}</button>
+        <button type="button" class="btn ghost sm" data-mkt-idea-today="${i.id}">📅 Plan karo</button>
+        <button type="button" class="btn ghost sm" data-mkt-idea-kit="${i.id}">👁 Kit</button>
+        <button type="button" class="btn ghost sm" data-mkt-copy-kit="${i.id}">📋 Copy</button>
+        ${i.custom
+          ? `<button type="button" class="btn ghost sm" data-mkt-idea-edit="${i.id}">✎ Edit</button><button type="button" class="btn ghost sm" data-mkt-idea-del="${i.id}">🗑</button>`
+          : `<button type="button" class="btn ghost sm" data-mkt-idea-used="${i.id}">${u ? '↺ Unmark' : '✓ Used'}</button>`}
       </div>
     </div>`;
   }).join('');
-  return { html: cards || '<div class="mkt-empty">Koi idea match nahi hua — search clear karo.</div>', count: list.length };
+  return { html: cards || '<div class="mkt-empty">Koi idea match nahi hua — search clear karo ya apna idea add karo.</div>', count: list.length };
 }
 function mktIdeasHTML(){
   const m = mktState();
-  const formats = [['all','Sab'],['reel','Reel'],['short','Short'],['video','YouTube'],['carousel','Carousel'],['story','Story'],['ad','Ad'],['animation','Animation'],['whatsapp','WhatsApp']];
+  const formats = [['all','Sab'],['mine','✍️ Meri ideas'],['reel','Reel'],['short','Short'],['video','YouTube'],['carousel','Carousel'],['story','Story'],['ad','Ad'],['whatsapp','WhatsApp']];
   const used = Object.keys(m.ideas).length;
+  const mineN = (m.myIdeas || []).length;
   const grid = mktIdeaCards();
+  const hooks = MKT_HOOK_FORMULAS.map(h => `<div class="mkt-hook"><b>${esc(h.name)}</b><code>${esc(h.formula)}</code><small>${esc(h.ex)}</small></div>`).join('');
   return `
   <div class="mkt-card">
     <div class="mkt-card-head">
-      <div><h3>💡 Content idea bank</h3><p><span id="mktIdeaCount">${MKT_IDEAS.length}</span> ready hooks — reels, ads, carousels, animations. <span id="mktIdeaUsed">${used}</span> used.</p></div>
+      <div><h3>💡 Idea bank — roz naya</h3><p><span id="mktIdeaCount">${grid.count}</span> ideas in view · ${MKT_VIRAL_IDEAS.length} ready kits · ${mineN} apni ideas · <span id="mktIdeaUsed">${used}</span> used. Har kit me hook, caption, hashtags aur shoot steps hain.</p></div>
+      <div class="mkt-card-actions"><button type="button" class="btn primary sm" data-mkt-idea-add="1">✍️ Apna idea add karo</button></div>
     </div>
-    <div class="mkt-search"><input id="mktIdeaSearch" placeholder="Search idea / hook…" value="${esc(mktIdeaQ)}"></div>
+    <div class="mkt-search"><input id="mktIdeaSearch" placeholder="Search idea / hook / hashtag…" value="${esc(mktIdeaQ)}"></div>
     <div class="mkt-chips">${formats.map(([k, l]) => `<button type="button" class="mkt-chip ${mktIdeaFilter === k ? 'on' : ''}" data-mkt-idea-filter="${k}">${l}</button>`).join('')}</div>
   </div>
-  <div class="mkt-idea-grid" id="mktIdeaGrid">${grid.html}</div>`;
+  <div class="mkt-idea-grid" id="mktIdeaGrid">${grid.html}</div>
+  <details class="mkt-tips">
+    <summary><span>🧲</span><b>12 hook formulas — jo rukne par majboor karein</b><span class="mkt-tips-n">${MKT_HOOK_FORMULAS.length}</span></summary>
+    <div style="padding:11px 14px 13px">${hooks}</div>
+  </details>`;
 }
+
 /* ---------- CALENDAR ---------- */
 function mktCalMonthKey(){
   if(mktCalMonth) return mktCalMonth;
@@ -40745,22 +41588,25 @@ function mktCalendarHTML(){
   for(let i = 0; i < startDow; i++) cells.push('<span class="mkt-cal-blank"></span>');
   for(let d = 1; d <= daysIn; d++){
     const key = y + '-' + mktPad(mo) + '-' + mktPad(d);
-    const e = m.calendar[key] || null;
+    const posts = mktPosts(key);
+    const doneN = posts.filter(p => p.posted).length;
     const isToday = key === today;
-    cells.push(`<button type="button" class="mkt-cal-cell ${isToday ? 'today' : ''} ${e && e.posted ? 'posted' : ''} ${e ? 'planned' : ''}" data-mkt-cal-day="${key}">
+    const allDone = posts.length > 0 && doneN === posts.length;
+    cells.push(`<button type="button" class="mkt-cal-cell ${isToday ? 'today' : ''} ${allDone ? 'posted allposted' : ''} ${posts.length ? 'planned' : ''}" data-mkt-cal-day="${key}">
       <span class="mkt-cal-d">${d}</span>
-      ${e && e.type ? `<span class="mkt-cal-type t-${e.type}">${MKT_TYPE_LABEL[e.type] || e.type}</span>` : ''}
-      ${e && e.idea ? `<span class="mkt-cal-idea">${esc(e.idea)}</span>` : ''}
-      ${e && e.posted ? '<span class="mkt-cal-tick">✓</span>' : ''}
+      ${posts.length ? `<span class="mkt-cal-count">${doneN}/${posts.length} post${posts.length > 1 ? 's' : ''}</span>` : ''}
+      ${posts.slice(0, 2).map(p => `<span class="mkt-cal-idea">${esc(mktPostLabel(p) + ': ' + mktPostTitle(p))}</span>`).join('')}
+      ${posts.length > 2 ? `<span class="mkt-cal-idea">+${posts.length - 2} more</span>` : ''}
+      ${allDone ? '<span class="mkt-cal-tick">✓</span>' : ''}
     </button>`);
   }
-  const monthEntries = Object.keys(m.calendar).filter(k => k.startsWith(monthKey));
-  const planned = monthEntries.length;
-  const posted = monthEntries.filter(k => m.calendar[k] && m.calendar[k].posted).length;
+  const all = mktAllPosts().filter(p => p.key.indexOf(monthKey) === 0);
+  const planned = all.length;
+  const posted = all.filter(p => p.posted).length;
   return `
   <div class="mkt-card">
     <div class="mkt-card-head">
-      <div><h3>📅 Content calendar</h3><p>Kisi bhi din par click karke type + idea + "posted" set karo.</p></div>
+      <div><h3>📅 Content calendar</h3><p>Kisi bhi din par click karo — ek din me multiple posts (Reel + Story + WhatsApp), har post ka time aur posted status.</p></div>
       <div class="mkt-card-actions">
         <button type="button" class="btn ghost sm" data-mkt-cal-prev="1">←</button>
         <b class="mkt-cal-month">${monthName}</b>
@@ -40769,15 +41615,18 @@ function mktCalendarHTML(){
       </div>
     </div>
     <div class="mkt-cal-stats">
-      <span>${planned} planned</span><span>${posted} posted</span><span>${Math.max(0, planned - posted)} pending</span>
+      <span>${planned} posts planned</span><span>${posted} posted</span><span>${Math.max(0, planned - posted)} pending</span>
     </div>
     <div class="mkt-cal-head">${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x => `<span>${x}</span>`).join('')}</div>
     <div class="mkt-cal-grid">${cells.join('')}</div>
     <div class="mkt-cal-legend">${Object.keys(MKT_TYPE_LABEL).map(k => `<span class="mkt-cal-type t-${k}">${MKT_TYPE_LABEL[k]}</span>`).join('')}</div>
   </div>
   <div class="mkt-card">
-    <div class="mkt-card-head"><div><h3>⚡ Auto-plan is hafte</h3><p>Idea bank se 7 din auto bhar do — phir edit kar sakte ho.</p></div>
-      <div class="mkt-card-actions"><button type="button" class="btn primary sm" data-mkt-autoplan="1">Auto-plan 7 days</button></div></div>
+    <div class="mkt-card-head"><div><h3>⚡ Auto-plan is hafte</h3><p>Daily rotation se 7 din ke posts bhar do — khaali din hi bharenge, phir edit kar sakte ho. Har post Day Plan me task ban jayega.</p></div>
+      <div class="mkt-card-actions">
+        <button type="button" class="btn ghost sm" data-mkt-daily-plan="1">💡 Aaj ke 3 ideas</button>
+        <button type="button" class="btn primary sm" data-mkt-autoplan="1">Auto-plan 7 days</button>
+      </div></div>
   </div>`;
 }
 
@@ -40888,17 +41737,101 @@ function mktTipsHTML(){
   </details>`).join('');
 }
 
-/* ---------- day modal ---------- */
+/* ---------- day modal (multi-post) ---------- */
+function mktRenderDayPosts(){
+  const host = $('#mktDayPosts');
+  if(!host) return;
+  const key = mktEditingDay || mktToday();
+  const posts = mktPosts(key);
+  host.innerHTML = posts.length ? posts.map(p => `<div class="mkt-day-post">
+      <button type="button" class="mkt-post-tick" data-mkt-post-toggle="${esc(p.id)}" data-mkt-post-day="${esc(key)}" style="${p.posted ? 'background:#4E7C5B;border-color:#4E7C5B;color:#fff' : ''}" title="${p.posted ? 'Mark as not posted' : 'Mark as posted'}">✓</button>
+      <span class="tp">${esc(mktPostLabel(p))}</span>
+      <b>${esc(mktPostTitle(p))}</b>
+      ${p.time ? `<span class="tm">${esc(p.time)}</span>` : ''}
+      <button type="button" class="mkt-ico-btn" data-mkt-post-copy="${esc(p.id)}" data-mkt-post-day="${esc(key)}" title="Copy kit">📋</button>
+      <button type="button" class="mkt-ico-btn" data-mkt-post-share="${esc(p.id)}" data-mkt-post-day="${esc(key)}" title="Share">↗</button>
+      <button type="button" class="mkt-ico-btn del" data-mkt-post-del="${esc(p.id)}" data-mkt-post-day="${esc(key)}" title="Delete">🗑</button>
+    </div>`).join('') : '<div class="mkt-empty" style="padding:6px 0">Is din koi post nahi — neeche se add karo.</div>';
+}
 function mktOpenDay(key){
-  const m = mktState();
-  const e = m.calendar[key] || {};
   mktEditingDay = key;
   const dt = new Date(key + 'T00:00:00');
   $('#mktDayTitle').textContent = '📅 ' + dt.toLocaleDateString('en-IN', { weekday:'long', day:'numeric', month:'short' });
-  $('#mktDayType').value = e.type || '';
-  $('#mktDayIdea').value = e.idea || '';
-  $('#mktDayPosted').checked = !!e.posted;
+  $('#mktDayType').value = 'reel';
+  $('#mktDayTime').value = '';
+  $('#mktDayIdea').value = '';
+  mktRenderDayPosts();
   showOverlay('mktDayModal');
+}
+function mktAddPostFromModal(){
+  const key = mktEditingDay || mktToday();
+  const idea = (($('#mktDayIdea') || {}).value || '').trim();
+  const type = ($('#mktDayType') || {}).value || 'reel';
+  const time = ($('#mktDayTime') || {}).value || '';
+  if(!idea) return toast('Post ka idea ya hook likho', true);
+  mktAddPost(key, { type, idea, time });
+  save();
+  if($('#mktDayIdea')) $('#mktDayIdea').value = '';
+  if($('#mktDayTime')) $('#mktDayTime').value = '';
+  mktRenderDayPosts();
+  try{ if(currentView === 'social') mktRender(); }catch(e){}
+  try{ if(currentView === 'dayplan') renderDayplan(); }catch(e){}
+  toast('Post plan ho gaya ✓ Day Plan me task ban gaya');
+}
+function mktOpenIdea(id){
+  const m = mktState();
+  const idea = id ? (m.myIdeas || []).find(i => i.id === id) : null;
+  $('#mktIdeaEditId').value = idea ? idea.id : '';
+  $('#mktIdeaModalTitle').textContent = idea ? 'Idea edit karo' : 'Apna idea add karo';
+  $('#mktIdeaTitle').value = idea ? idea.title : '';
+  $('#mktIdeaFormat').value = idea ? idea.format : 'reel';
+  $('#mktIdeaVector').value = idea ? idea.vector : 'followers';
+  $('#mktIdeaHook').value = idea ? (idea.hook || '') : '';
+  $('#mktIdeaCaption').value = idea ? (idea.caption || '') : '';
+  $('#mktIdeaTags').value = idea ? (Array.isArray(idea.hashtags) ? idea.hashtags.join(' ') : (idea.hashtags || '')) : '';
+  $('#mktIdeaCta').value = idea ? (idea.cta || '') : '';
+  showOverlay('mktIdeaModal');
+  setTimeout(() => { try{ $('#mktIdeaTitle').focus(); }catch(e){} }, 120);
+}
+function mktSaveIdea(){
+  const m = mktState();
+  const id = ($('#mktIdeaEditId') || {}).value || '';
+  const title = (($('#mktIdeaTitle') || {}).value || '').trim();
+  if(!title) return toast('Idea ka title likho', true);
+  const tags = (($('#mktIdeaTags') || {}).value || '').split(/\s+/).filter(Boolean).slice(0, 10);
+  const data = {
+    custom: true,
+    title: title.slice(0, 140),
+    format: ($('#mktIdeaFormat') || {}).value || 'reel',
+    vector: ($('#mktIdeaVector') || {}).value || 'followers',
+    hook: (($('#mktIdeaHook') || {}).value || '').trim().slice(0, 300),
+    caption: (($('#mktIdeaCaption') || {}).value || '').trim().slice(0, 900),
+    hashtags: tags,
+    cta: (($('#mktIdeaCta') || {}).value || '').trim().slice(0, 200)
+  };
+  if(id){
+    const i = m.myIdeas.findIndex(x => x.id === id);
+    if(i >= 0) m.myIdeas[i] = Object.assign({}, m.myIdeas[i], data);
+  } else {
+    m.myIdeas.push(Object.assign({ id: uid(), createdAt: Date.now() }, data));
+  }
+  save(); closeModal('mktIdeaModal'); mktRender();
+  toast(id ? 'Idea update ho gaya ✓' : 'Apna idea add ho gaya ✓');
+}
+function mktDeleteIdea(id){
+  const m = mktState();
+  if(!confirm('Ye idea delete karein?')) return;
+  m.myIdeas = (m.myIdeas || []).filter(i => i.id !== id);
+  save(); mktRender(); toast('Idea delete ho gaya');
+}
+function mktOpenKit(id){
+  const idea = mktFindIdea(id);
+  if(!idea) return toast('Idea nahi mila', true);
+  $('#mktKitTitle').textContent = '🎬 ' + (idea.title || 'Post kit');
+  $('#mktKitBody').textContent = mktKitText(idea);
+  const cb = $('#mktKitCopy'); if(cb) cb.dataset.kitId = id;
+  const pb = $('#mktKitPlan'); if(pb) pb.dataset.kitPlan = id;
+  showOverlay('mktKitModal');
 }
 
 /* ---------- actions ---------- */
@@ -40911,29 +41844,88 @@ function mktStartChallenge(){
   toast('30-day challenge shuru! Day 1 — profile audit 🏆');
 }
 function mktAddIdeaToDay(ideaId, key){
-  const m = mktState();
-  const idea = MKT_IDEAS.find(i => i.id === ideaId);
-  if(!idea) return;
+  const idea = mktFindIdea(ideaId);
+  if(!idea) return toast('Idea nahi mila', true);
   const k = key || mktToday();
-  const fmtMap = { reel:'reel', short:'short', video:'video', carousel:'carousel', story:'story', ad:'ad', animation:'reel', whatsapp:'whatsapp' };
-  m.calendar[k] = { type: fmtMap[idea.format] || 'other', idea: idea.title + ' — ' + idea.hook, posted: false };
+  mktAddPost(k, {
+    type: MKT_FMT_MAP[idea.format] || 'reel',
+    idea: idea.title,
+    ideaId: idea.id,
+    caption: idea.caption || '',
+    hashtags: Array.isArray(idea.hashtags) ? idea.hashtags.join(' ') : (idea.hashtags || ''),
+    source: idea.custom ? 'mine' : 'bank'
+  });
   save(); mktRender();
-  toast('Idea ' + (k === mktToday() ? 'aaj' : k) + ' ke plan me daal diya 📅');
+  toast('Idea ' + (k === mktToday() ? 'aaj' : k) + ' ke plan me add ho gaya 📅');
+}
+function mktPlanDailyIdeas(key){
+  const k = key || mktToday();
+  const ideas = mktDailyIdeas();
+  let added = 0;
+  const slots = ['19:00', '11:00', '09:00'];
+  ideas.forEach((i, idx) => {
+    if(mktPosts(k).some(p => p.ideaId === i.id)) return;
+    mktAddPost(k, {
+      type: MKT_FMT_MAP[i.format] || 'reel',
+      idea: i.title,
+      ideaId: i.id,
+      time: slots[idx] || '',
+      caption: i.caption || '',
+      hashtags: (i.hashtags || []).join(' '),
+      source: 'daily'
+    });
+    added++;
+  });
+  save();
+  try{ if(currentView === 'social') mktRender(); }catch(e){}
+  try{ if(currentView === 'dayplan') renderDayplan(); }catch(e){}
+  try{ if($('#mktDayModal') && $('#mktDayModal').classList.contains('on')) mktRenderDayPosts(); }catch(e){}
+  toast(added ? added + ' ideas plan ho gaye — Day Plan me tasks ready 📅' : 'Aaj ke 3 ideas pehle se plan hain', !added);
 }
 function mktAutoPlanWeek(){
-  const m = mktState();
-  const pool = MKT_IDEAS.slice();
   let added = 0;
+  const seed = mktRotSeed();
+  const pattern = ['reel','carousel','story','reel','whatsapp','carousel','reel'];
+  const timeMap = { reel:'19:00', carousel:'11:00', story:'09:00', whatsapp:'20:00' };
   for(let i = 0; i < 7; i++){
     const key = mktAddDays(mktToday(), i);
-    if(m.calendar[key] && m.calendar[key].idea) continue;
-    const idea = pool[(i * 5 + 2) % pool.length];
-    const fmtMap = { reel:'reel', short:'short', video:'video', carousel:'carousel', story:'story', ad:'ad', animation:'reel', whatsapp:'whatsapp' };
-    m.calendar[key] = { type: fmtMap[idea.format] || 'other', idea: idea.title + ' — ' + idea.hook, posted: false };
+    if(mktPosts(key).length) continue;
+    const fmt = pattern[i % pattern.length];
+    const fmts = fmt === 'reel' ? ['reel','ad'] : (fmt === 'story' ? ['story'] : [fmt]);
+    const list = MKT_VIRAL_IDEAS.filter(x => fmts.indexOf(x.format) >= 0);
+    if(!list.length) continue;
+    const idx = ((seed * 2 + i * 7) % list.length + list.length) % list.length;
+    const idea = list[idx];
+    mktAddPost(key, {
+      type: MKT_FMT_MAP[fmt] || 'reel',
+      idea: idea.title,
+      ideaId: idea.id,
+      time: timeMap[fmt] || '11:00',
+      caption: idea.caption || '',
+      hashtags: (idea.hashtags || []).join(' '),
+      source: 'auto'
+    });
     added++;
   }
   save(); mktRender();
-  toast(added + ' din plan ho gaye — calendar dekho 📅');
+  toast(added ? added + ' din ke posts plan ho gaye — Day Plan me tasks ready 📅' : 'Is hafte pehle se posts plan hain');
+}
+function mktStrategyTodo(id){
+  const m = mktState();
+  const st = m.playbooks[id];
+  const strat = MKT_STRATEGIES.find(x => x.id === id);
+  if(!st || !strat) return toast('Pehle strategy plan me add karo', true);
+  const done = Array.isArray(st.done) ? st.done : [];
+  const next = strat.steps[done.length];
+  if(!next) return toast('Sab steps done hain ✓', true);
+  db.todos.push({
+    id: uid(), date: mktToday(), title: '📈 ' + strat.title + ' — ' + next, time:'',
+    note:'Strategy step · BCS marketing', priority:'normal', done:false, doneAt:null,
+    createdAt: Date.now(), updatedAt: Date.now(), mktStratId: id
+  });
+  save();
+  try{ if(currentView === 'dayplan') renderDayplan(); }catch(e){}
+  toast('Next step Day Plan me daal diya ✓');
 }
 
 /* ---------- wiring ---------- */
@@ -40944,6 +41936,33 @@ document.addEventListener('click', e => {
   if((el = t.closest('[data-mkt-tab]'))){ mktTab = el.dataset.mktTab; mktRender(); return; }
   if((el = t.closest('[data-mkt-start]'))){ mktStartChallenge(); return; }
   if((el = t.closest('[data-mkt-copy]'))){ mktCopy(el.dataset.mktCopy || ''); return; }
+  if((el = t.closest('[data-mkt-copy-kit]'))){ const i = mktFindIdea(el.dataset.mktCopyKit); mktCopy(mktKitText(i)); return; }
+  if((el = t.closest('[data-mkt-rotate]'))){ mktRotateIdeas(); return; }
+  if((el = t.closest('[data-mkt-idea-add]'))){ mktOpenIdea(''); return; }
+  if((el = t.closest('[data-mkt-idea-edit]'))){ mktOpenIdea(el.dataset.mktIdeaEdit); return; }
+  if((el = t.closest('[data-mkt-idea-del]'))){ mktDeleteIdea(el.dataset.mktIdeaDel); return; }
+  if((el = t.closest('[data-mkt-idea-kit]'))){ mktOpenKit(el.dataset.mktIdeaKit); return; }
+  if((el = t.closest('[data-mkt-post-toggle]'))){ mktTogglePost(el.dataset.mktPostDay, el.dataset.mktPostToggle); return; }
+  if((el = t.closest('[data-mkt-post-del]'))){
+    if(confirm('Ye post delete karein?')){
+      mktDeletePost(el.dataset.mktPostDay, el.dataset.mktPostDel);
+      mktAfterPostChange();
+      toast('Post delete ho gaya');
+    }
+    return;
+  }
+  if((el = t.closest('[data-mkt-post-copy]'))){
+    const p = mktPosts(el.dataset.mktPostDay).find(x => x.id === el.dataset.mktPostCopy);
+    mktCopy(mktPostKit(p)); return;
+  }
+  if((el = t.closest('[data-mkt-post-share]'))){
+    const p = mktPosts(el.dataset.mktPostDay).find(x => x.id === el.dataset.mktPostShare);
+    mktShareText(mktPostKit(p), mktPostTitle(p)); return;
+  }
+  if((el = t.closest('[data-mkt-goto]'))){ go(el.dataset.mktGoto); return; }
+  if((el = t.closest('[data-mkt-day-alltodo]'))){ mktDayAllTodo(el.dataset.mktDayAlltodo); return; }
+  if((el = t.closest('[data-mkt-daily-plan]'))){ mktPlanDailyIdeas(); return; }
+  if((el = t.closest('[data-mkt-strat-todo]'))){ mktStrategyTodo(el.dataset.mktStratTodo); return; }
   if((el = t.closest('[data-mkt-brainstorm]'))){
     const m = mktState();
     m.brainstorm.idx = (Math.abs(+m.brainstorm.idx || 0) + 1 + Math.floor(Math.random() * 3)) % MKT_BRAINSTORMS.length;
@@ -41009,6 +42028,7 @@ document.addEventListener('click', e => {
     if(m.followerLog.length > 120) m.followerLog = m.followerLog.slice(-120);
     save(); mktRender(); toast('Snapshot saved — ' + total.toLocaleString('en-IN') + ' followers 📌'); return;
   }
+  if((el = t.closest('[data-mkt-daily-into]'))){ mktPlanDailyIdeas(mktEditingDay || mktToday()); return; }
   if((el = t.closest('[data-mkt-open]'))){ openSocialFrame(el.dataset.mktOpen); return; }
 });
 
@@ -41067,26 +42087,29 @@ document.addEventListener('input', e => {
   }
 });
 
-const mktDaySaveBtn = document.getElementById('mktDaySave');
-if(mktDaySaveBtn) mktDaySaveBtn.addEventListener('click', () => {
-  if(!mktEditingDay) return;
-  const m = mktState();
-  const type = $('#mktDayType').value;
-  const idea = $('#mktDayIdea').value.trim();
-  const posted = $('#mktDayPosted').checked;
-  if(!type && !idea && !posted) delete m.calendar[mktEditingDay];
-  else m.calendar[mktEditingDay] = { type, idea, posted };
-  save();
-  closeModal('mktDayModal');
-  mktRender();
-  toast('Day plan saved ✓');
+const mktDayAddBtn = document.getElementById('mktDayAddPost');
+if(mktDayAddBtn) mktDayAddBtn.addEventListener('click', mktAddPostFromModal);
+const mktIdeaSaveBtn = document.getElementById('mktIdeaSave');
+if(mktIdeaSaveBtn) mktIdeaSaveBtn.addEventListener('click', mktSaveIdea);
+const mktKitCopyBtn = document.getElementById('mktKitCopy');
+if(mktKitCopyBtn) mktKitCopyBtn.addEventListener('click', () => mktCopy(mktKitText(mktFindIdea(mktKitCopyBtn.dataset.kitId || ''))));
+const mktKitPlanBtn = document.getElementById('mktKitPlan');
+if(mktKitPlanBtn) mktKitPlanBtn.addEventListener('click', () => {
+  const id = mktKitPlanBtn.dataset.kitPlan || '';
+  if(!id) return;
+  mktAddIdeaToDay(id);
+  closeModal('mktKitModal');
 });
 const mktRefreshBtn = document.getElementById('mktRefreshBtn');
 if(mktRefreshBtn) mktRefreshBtn.addEventListener('click', () => {
   const m = mktState();
   m.brainstorm = { date:'', idx:0 };
+  if(!m.rotation || typeof m.rotation !== 'object') m.rotation = { offset:0, date:'' };
+  m.rotation.offset = (Math.abs(+m.rotation.offset || 0) + 1) % 997;
+  m.rotation.date = mktToday();
+  save();
   mktRender();
-  toast('Aaj ka mission refresh ho gaya 🔄');
+  toast('Aaj ka mission aur ideas refresh ho gaye 🔄');
 });
 
 function renderSocialDesk(){
