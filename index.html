@@ -12796,6 +12796,16 @@ body[data-theme="dark"] .nl-kinds .btn.on{background:#2A2413 !important;border-c
 .pl-item small{font-size:10.5px;color:var(--mut);margin-left:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
 body[data-theme="dark"] .pl-item:hover,body[data-theme="dark"] .pl-item.sel{background:#1C231E !important}
 body[data-theme="dark"] .pl-item b{color:#E7EBE6 !important}
+/* creative studio */
+.cr-kinds{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}
+.cr-kinds .btn.on{border-color:var(--gold);color:var(--gold);background:#FFF8EA}
+#creativeCaption{width:100%;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;line-height:1.55;color:var(--ink);background:#FBFCFA;border:1px solid var(--line);border-radius:12px;padding:11px 12px;resize:vertical}
+#creativeCaption:focus{outline:none;border-color:var(--gold)}
+#crStyle{background:#fff;border:1px solid var(--line);border-radius:8px;color:var(--ink)}
+body[data-theme="dark"] #creativeCaption{background:#171C19 !important;border-color:rgba(255,255,255,.1) !important;color:#E7EBE6 !important}
+body[data-theme="dark"] #crStyle{background:#171C19 !important;border-color:rgba(255,255,255,.12) !important;color:#E7EBE6 !important}
+body[data-theme="dark"] .cr-kinds .btn.on{background:#2A2413 !important;border-color:#4A4430 !important;color:#E7C46E !important}
+body[data-theme="dark"] #crStage{background:linear-gradient(135deg,#141915,#10140F) !important;border-color:rgba(255,255,255,.09) !important}
 
 
 /* --- Mini month calendar --- */
@@ -17520,6 +17530,71 @@ try{
         <div class="calc-src">Turnkey civil + finishing (structure, plaster, flooring, electrical, plumbing, paint). Land, approval fees, bore/tank alag. Jaipur market me labour + material variation 10-15% — contractor BOQ se confirm karein. Plot me basemen/stilt alag rate hota hai.</div>
       </div>
     </div>
+
+    <div class="calc-head" style="margin-top:20px"><span class="calc-ic">🧠</span><div><h4>Advanced desk calculators</h4><small>Brokerage payout, flip ROI aur payment plan — deal closing ke liye</small></div><span class="calc-up">BCS · 2026</span></div>
+    <div class="calc-grid" id="advCalcGrid">
+      <div class="calc-card" id="calcBrokerSplit">
+        <div class="calc-head"><span class="calc-ic">🤝</span><div><h4>Brokerage payout splitter</h4><small>Co-broker + GST + TDS 194H → net in hand</small></div></div>
+        <div class="calc-body">
+          <div class="grid2">
+            <div class="field"><label>Deal value (₹)</label><input id="bxValue" type="number" min="0" value="5000000"></div>
+            <div class="field"><label>Total brokerage (%)</label><input id="bxPct" type="number" min="0" step="0.1" value="2"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Aapka share (%)</label><input id="bxMy" type="number" min="0" max="100" value="60"></div>
+            <div class="field"><label>GST on brokerage (%)</label><input id="bxGst" type="number" min="0" step="0.5" value="18"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>TDS 194H (%)</label><input id="bxTds" type="number" min="0" step="0.5" value="5"></div>
+            <div class="field"><label>&nbsp;</label><span style="font-size:10.5px;color:var(--mut);line-height:1.4">Co-broker share auto = 100 − aapka share.</span></div>
+          </div>
+          <div class="calc-out" id="bxOut"></div>
+        </div>
+      </div>
+      <div class="calc-card" id="calcFlip">
+        <div class="calc-head"><span class="calc-ic">📈</span><div><h4>Flip / investment ROI</h4><small>Duty, holding cost, sale brokerage → net profit + CAGR</small></div></div>
+        <div class="calc-body">
+          <div class="grid2">
+            <div class="field"><label>Buy price (₹)</label><input id="fxBuy" type="number" min="0" value="4000000"></div>
+            <div class="field"><label>Sell price (₹)</label><input id="fxSell" type="number" min="0" value="5200000"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Stamp + registration (%)</label><input id="fxDuty" type="number" min="0" step="0.1" value="7"></div>
+            <div class="field"><label>Holding months</label><input id="fxMonths" type="number" min="1" max="120" value="18"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Monthly holding cost (₹)</label><input id="fxHold" type="number" min="0" value="15000"></div>
+            <div class="field"><label>Renovation (₹)</label><input id="fxRenov" type="number" min="0" value="200000"></div>
+          </div>
+          <div class="grid2">
+            <div class="field"><label>Sale brokerage (%)</label><input id="fxBrk" type="number" min="0" step="0.1" value="1"></div>
+            <div class="field"><label>&nbsp;</label><span style="font-size:10.5px;color:var(--mut);line-height:1.4">Tax alag — CG calculator dekho.</span></div>
+          </div>
+          <div class="calc-out" id="fxOut"></div>
+        </div>
+      </div>
+      <div class="calc-card" id="calcPlan" style="grid-column:1/-1">
+        <div class="calc-head"><span class="calc-ic">🗓️</span><div><h4>Payment plan builder</h4><small>Milestone % → amount + date, WhatsApp ready</small></div><span class="calc-up">Client share</span></div>
+        <div class="calc-body">
+          <div class="grid2">
+            <div class="field"><label>Total value (₹)</label><input id="plTotal" type="number" min="0" value="6000000"></div>
+            <div class="field"><label>Booking date</label><input id="plStart" type="date" value=""></div>
+          </div>
+          <div class="grid3" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px">
+            <div class="field"><label>Booking %</label><input id="plBooking" type="number" min="0" max="100" value="10"></div>
+            <div class="field"><label>Agreement %</label><input id="plAgree" type="number" min="0" max="100" value="20"></div>
+            <div class="field"><label>Slab %</label><input id="plSlab" type="number" min="0" max="100" value="40"></div>
+            <div class="field"><label>Registry %</label><input id="plReg" type="number" min="0" max="100" value="25"></div>
+            <div class="field"><label>Gap (days)</label><input id="plGap" type="number" min="0" value="45"></div>
+          </div>
+          <div class="calc-out" id="plOut"></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+            <button type="button" class="btn ghost sm" id="plCopy">📋 Plan copy</button>
+            <button type="button" class="btn ghost sm" id="plWa">💬 WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <p class="lock-hint" style="margin-top:14px">Rates har notification pe badal sakte hain — upar <b>Rates Studio</b> me ek jagah update karo. Final legal/tax advice ke liye CA/advocate se confirm karein.</p>
   </section>
 
@@ -17549,6 +17624,14 @@ try{
     </div>
     <div class="panel" id="indiaRatesPanel" style="margin-top:12px"></div>
     <div class="panel" id="newsletterPanel" style="margin-top:12px"></div>
+    <div class="panel" id="creativePanel" style="margin-top:12px">
+      <div class="panel-head"><h4>🎨 Creative studio</h4><span class="n-badge">live data</span><span class="hint">Market rate card, project card ya festival poster — status + square, caption aur hashtags ke saath. Ek tap me WhatsApp.</span></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button type="button" class="btn primary sm" data-creative="market">📈 Market rate card</button>
+        <button type="button" class="btn ghost sm" data-creative="project">🏗️ Project card</button>
+        <button type="button" class="btn ghost sm" data-creative="festival">🪔 Festival poster</button>
+      </div>
+    </div>
     <div class="panel" style="margin-top:12px">
       <div class="panel-head"><h4>Jaipur at a glance — charon sources ka summary</h4><span class="n-badge">Nov 2026</span></div>
       <div class="brief-grid">
@@ -18568,6 +18651,7 @@ try{
       <button class="btn ghost sm" id="detailDoc" title="Add document">📁 Doc</button>
       <button class="btn ghost sm" id="detailLegalBtn" title="Legal due-diligence vault">⚖ Legal</button>
       <button class="btn ghost sm" id="detailDocketBtn" title="WhatsApp project docket">📄 Docket</button>
+      <button class="btn ghost sm" id="detailCreative" title="Project card + caption banao">🎨 Creative</button>
       <button class="btn ghost sm" id="detailShareBtn" title="Client ko share karne ke liye page banayein">🔗 Share</button>
       <div class="sp"></div>
       <button class="btn ghost" data-close="detailModal">Close</button>
@@ -24083,7 +24167,7 @@ function renderMonthCalendar(){
   panel.innerHTML = `
     <div class="cal-wrap">
       <div class="cal-main">
-        <div class="panel-head"><h4>${title}</h4><span class="month-count">${(db.monthMarks || []).length} saved marks</span></div>
+        <div class="panel-head"><h4>${title}</h4><span class="month-count">${(db.monthMarks || []).length} saved marks</span><button type="button" class="btn ghost sm" id="calIcsBtn" title="iPhone / Google Calendar me import karo (.ics)">📅 Export .ics</button></div>
         <div class="month-grid-head">${header}</div>
         <div class="month-grid">${cells.join('')}</div>
         <div class="month-legend-row">${legend}<span class="month-add-note">Date par click karke label add/edit kar sakte ho.</span></div>
@@ -24096,9 +24180,14 @@ function renderMonthCalendar(){
           <input id="calTodoInput" placeholder="To-do likho… e.g. Site visit 4pm">
           <button type="button" class="btn primary sm" id="calTodoAdd">+ Add</button>
         </div>
-        <div style="display:flex;gap:8px;margin-top:10px">
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
           <button type="button" class="btn ghost sm" id="calAddLabel">🏷️ Add label</button>
           <button type="button" class="btn ghost sm" id="calEditLabels">Edit labels</button>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+          <button type="button" class="btn ghost sm" id="calAgendaCopy">📋 Agenda copy</button>
+          <button type="button" class="btn ghost sm" id="calAgendaWa">💬 WhatsApp</button>
+          <button type="button" class="btn ghost sm" id="calWeekDigest">🗓️ 7-day plan</button>
         </div>
       </aside>
     </div>
@@ -29391,6 +29480,796 @@ document.addEventListener('click', e => {
   const b = e.target.closest('[data-dealroom]');
   if(b){ e.preventDefault(); e.stopPropagation(); openDealRoom(b.dataset.dealroom); }
 }, true);
+/* ============================================================
+   BCS CALENDAR+ — ICS export (Apple/Google Calendar) aur
+   Day agenda WhatsApp/copy. Sab existing calendar data se.
+   ============================================================ */
+function icsEsc(s){ return String(s || '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n'); }
+function icsStamp(){
+  const d = new Date();
+  return d.getUTCFullYear() + String(d.getUTCMonth() + 1).padStart(2, '0') + String(d.getUTCDate()).padStart(2, '0') + 'T' + String(d.getUTCHours()).padStart(2, '0') + String(d.getUTCMinutes()).padStart(2, '0') + String(d.getUTCSeconds()).padStart(2, '0') + 'Z';
+}
+function buildICS(){
+  const evts = [];
+  const add = (date, title, desc) => { if(!date || !/^\d{4}-\d{2}-\d{2}$/.test(String(date))) return; evts.push({ date, title, desc: desc || '' }); };
+  (typeof scheduledVisitList === 'function' ? scheduledVisitList() : []).forEach(c => add(c.visitDate, '🧭 Site visit — ' + (c.name || 'Client'), 'Slot: ' + (c.visitSlot || 'TBD') + ' · Pickup: ' + (c.pickup || 'office') + ' · BCS Desk'));
+  scopedClients().forEach(c => { if(c.nextFollowUp) add(c.nextFollowUp, '📞 Follow-up — ' + (c.name || c.phone || 'Client'), 'BCS Desk'); });
+  plotMilestoneList().forEach(x => add(x.milestone.date, '₹ ' + (x.milestone.label || 'Payment due') + ' — ' + (x.client ? (x.client.name || x.client.phone) : 'Plot'), moneyINR(x.milestone.amount || 0) + (x.plot ? ' · Plot ' + (x.plot.plotNo || x.plot.label || '') : '') + ' · BCS Desk'));
+  (db.todos || []).filter(t => t.date && !t.done).forEach(t => add(t.date, '☑ ' + (t.title || 'Task'), (t.time || '') + (t.note ? ' · ' + t.note : '')));
+  (db.monthMarks || []).forEach(m => add(m.date, '🏷 ' + (m.label || 'Mark'), (MONTH_MARK_TYPES[m.type] || {}).label || ''));
+  scopedBookings().filter(b => b.bookingDate && b.stage !== 'cancelled').forEach(b => add(b.bookingDate, '🏠 Booking — ' + ((bookingClient(b) || {}).name || 'Client'), ((bookingProject(b) || {}).name || '') + ' · ' + bookingStageLabel(b.stage)));
+  (typeof upcomingFestivals === 'function' ? upcomingFestivals(40, addISO(todayISO(), -30)) : []).forEach(f => add(f.date, (f.emoji || '✨') + ' ' + (f.name || 'Festival'), (f.note || '') + ' · BCS festival calendar'));
+  (db.pipeline || []).filter(d => d.stage !== 'cancelled').forEach(d => {
+    const who = (typeof dealClientLabel === 'function' ? dealClientLabel(d) : '') || 'Client';
+    if(d.registryDate) add(d.registryDate, '📜 Registry — ' + who, 'Deal ' + (d.code || '') + ' · ' + (typeof fmtMoney === 'function' ? fmtMoney(d.dealValue) : ''));
+    if(d.bookingDate) add(d.bookingDate, '🏷️ Sale booking — ' + who, 'Deal ' + (d.code || ''));
+  });
+  if(!evts.length) return null;
+  const dt = iso => iso.replace(/-/g, '');
+  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//BCS Desk//Calendar//EN', 'CALSCALE:GREGORIAN', 'X-WR-CALNAME:BCS Desk — Jaipur'];
+  evts.forEach((e, i) => {
+    lines.push('BEGIN:VEVENT', 'UID:bcs-' + dt(e.date) + '-' + i + '@bcsdesk', 'DTSTAMP:' + icsStamp(), 'DTSTART;VALUE=DATE:' + dt(e.date), 'DTEND;VALUE=DATE:' + dt(addISO(e.date, 1)), 'SUMMARY:' + icsEsc(e.title), 'DESCRIPTION:' + icsEsc(e.desc), 'BEGIN:VALARM', 'TRIGGER:-PT9H', 'ACTION:DISPLAY', 'DESCRIPTION:' + icsEsc(e.title), 'END:VALARM', 'END:VEVENT');
+  });
+  lines.push('END:VCALENDAR');
+  return lines.join('\r\n');
+}
+function downloadCalendarICS(){
+  const ics = buildICS();
+  if(!ics) return toast('Calendar khali hai — visit, follow-up ya due add karo', true);
+  const blob = new Blob([ics], { type:'text/calendar;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'bcs-calendar-' + todayISO() + '.ics';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  toast('Calendar file downloaded — iPhone/Google Calendar me import karo');
+}
+function dayAgendaText(iso){
+  const maps = calDateMaps();
+  const visits = (maps.visitByDate.get(iso)) || [];
+  const follows = (maps.followByDate.get(iso)) || [];
+  const books = (maps.bookingByDate.get(iso)) || [];
+  const dues = (maps.dueByDate.get(iso)) || [];
+  const tasks = (db.todos || []).filter(t => t.date === iso && !t.done);
+  const marks = (db.monthMarks || []).filter(m => m.date === iso);
+  const fest = festivalByDate(iso);
+  const lines = [];
+  lines.push('*📅 BCS — ' + fmtDate(iso) + '*');
+  if(fest) lines.push('🪔 ' + fest.name);
+  lines.push('');
+  if(visits.length){
+    lines.push('*SITE VISITS*');
+    visits.forEach(v => lines.push('🧭 ' + ((v.client && (v.client.name || v.client.phone)) || 'Client') + ' · ' + ((v.client && v.client.visitSlot) || (v.visit && v.visit.outcome) || '') + (v.client && v.client.pickup ? ' · pickup ' + v.client.pickup : '') + (v.project ? ' · ' + v.project.name : '')));
+    lines.push('');
+  }
+  if(follows.length){
+    lines.push('*FOLLOW-UPS*');
+    follows.forEach(c => lines.push('📞 ' + (c.name || c.phone || 'Client') + (c.phone ? ' — ' + c.phone : '')));
+    lines.push('');
+  }
+  if(dues.length){
+    lines.push('*PAYMENTS DUE*');
+    dues.forEach(x => lines.push('₹ ' + (x.milestone.label || 'Payment') + ' — ' + moneyINR(x.milestone.amount || 0) + (x.client ? ' · ' + (x.client.name || x.client.phone) : '') + (x.overdue ? ' (overdue)' : '')));
+    lines.push('');
+  }
+  if(books.length){
+    lines.push('*BOOKINGS*');
+    books.forEach(b => lines.push('🏠 ' + ((bookingClient(b) || {}).name || 'Client') + ' · ' + bookingStageLabel(b.stage) + ((bookingProject(b) || {}).name ? ' · ' + bookingProject(b).name : '')));
+    lines.push('');
+  }
+  if(tasks.length){
+    lines.push('*TASKS*');
+    tasks.forEach(t => lines.push('☑ ' + (t.title || 'Task') + (t.time ? ' (' + t.time + ')' : '')));
+    lines.push('');
+  }
+  if(marks.length){
+    lines.push('*LABELS*');
+    marks.forEach(m => lines.push('🏷 ' + (m.label || '') + ' (' + ((MONTH_MARK_TYPES[m.type] || {}).label || '') + ')'));
+    lines.push('');
+  }
+  if(!lines.length) return '📅 ' + fmtDate(iso) + ' — koi agenda nahi.';
+  lines.push('_BCS Desk se auto-generated_');
+  return lines.join('\n');
+}
+function copyDayAgenda(iso){
+  const txt = dayAgendaText(iso || window.__selDate || todayISO());
+  copyText(txt).then(ok => toast(ok ? 'Day agenda copy — WhatsApp me paste karo' : 'Copy fail — manually select karein', !ok));
+}
+function whatsappDayAgenda(iso){
+  const txt = dayAgendaText(iso || window.__selDate || todayISO());
+  window.open('https://wa.me/?text=' + encodeURIComponent(txt), '_blank', 'noopener');
+}
+function weekAgendaText(fromISO){
+  const maps = calDateMaps();
+  const start = fromISO || window.__selDate || todayISO();
+  const lines = ['*🗓️ BCS — 7 day plan*', '_' + fmtDate(start) + ' se aage_', ''];
+  let any = false;
+  for(let i = 0; i < 7; i++){
+    const d = addISO(start, i);
+    const items = [];
+    ((maps.visitByDate.get(d)) || []).forEach(v => items.push('🧭 ' + ((v.client && (v.client.name || v.client.phone)) || 'Visit') + (v.project ? ' · ' + v.project.name : '')));
+    ((maps.followByDate.get(d)) || []).forEach(c => items.push('📞 ' + (c.name || c.phone || 'Client')));
+    ((maps.dueByDate.get(d)) || []).forEach(x => items.push('₹ ' + (x.milestone.label || 'Payment') + ' ' + moneyINR(x.milestone.amount || 0) + (x.client ? ' · ' + (x.client.name || x.client.phone) : '')));
+    ((maps.bookingByDate.get(d)) || []).forEach(b => items.push('🏠 ' + ((bookingClient(b) || {}).name || 'Client')));
+    (db.todos || []).filter(t => t.date === d && !t.done).forEach(t => items.push('☑ ' + (t.title || 'Task')));
+    (db.monthMarks || []).filter(m => m.date === d).forEach(m => items.push('🏷 ' + (m.label || '')));
+    const fest = festivalByDate(d);
+    if(fest) items.push((fest.emoji || '✨') + ' ' + fest.name);
+    if(items.length){
+      any = true;
+      lines.push('*' + fmtDate(d) + '*');
+      items.forEach(x => lines.push('• ' + x));
+      lines.push('');
+    }
+  }
+  if(!any) lines.push('_Is hafte kuch scheduled nahi — visits aur follow-ups add karein._');
+  lines.push('BCS · Business City Square · @ajaysharma.bcs');
+  return lines.join('\n');
+}
+function copyWeekAgenda(){
+  const txt = weekAgendaText();
+  copyText(txt).then(ok => toast(ok ? '7-day plan copy — WhatsApp me paste karo' : 'Copy fail', !ok));
+}
+document.addEventListener('click', e => {
+  if(e.target.closest('#calIcsBtn')){ e.preventDefault(); downloadCalendarICS(); return; }
+  const ca = e.target.closest('#calAgendaCopy');
+  if(ca){ e.preventDefault(); copyDayAgenda(); return; }
+  const cw = e.target.closest('#calAgendaWa');
+  if(cw){ e.preventDefault(); whatsappDayAgenda(); return; }
+  if(e.target.closest('#calWeekDigest')){ e.preventDefault(); copyWeekAgenda(); }
+});
+/* ============================================================
+   BCS CREATIVE STUDIO — market rate card, project card, festival
+   poster + caption/hashtag generator. Sab live data se.
+   WhatsApp status (1080×1920) aur square post (1080×1080).
+   ============================================================ */
+const CREATIVE_PAL = { bg1:'#0E3A2C', bg2:'#1B5B44', accent:'#F0C86A', paper:'rgba(255,251,241,.97)', mut:'rgba(255,251,241,.66)' };
+let creativeKind = 'market';
+let creativeFormat = 'status';
+let creativeProjectId = null;
+
+function creativeFestival(){
+  if(typeof posterFestival !== 'undefined' && posterFestival) return posterFestival;
+  if(typeof festivalByDate === 'function' && festivalByDate(todayISO())) return festivalByDate(todayISO());
+  return (typeof virtualTodayFestival === 'function') ? virtualTodayFestival() : { name:'BCS', emoji:'✨', theme:'green', date:todayISO(), greetHi:'', greetEn:'' };
+}
+function crMarketRows(){
+  const r = (typeof BCS_RATES_REF !== 'undefined') ? BCS_RATES_REF : null;
+  const snap = (typeof mktLoadSnapshot === 'function') ? mktLoadSnapshot() : null;
+  const usd = snap && snap.usdInr;
+  const gold = (snap && snap.goldUsd && usd) ? mktGoldPer10g(snap.goldUsd, usd) * 1.15 : null;
+  const silver = (snap && snap.silverUsd && usd) ? mktSilverPerKg(snap.silverUsd, usd) * 1.23 : null;
+  const rows = [];
+  if(r && r.indices){
+    rows.push({ k:'NIFTY 50', v:String(r.indices[0].val), d:r.indices[0].pct });
+    rows.push({ k:'SENSEX', v:String(r.indices[1].val), d:r.indices[1].pct });
+    rows.push({ k:'NIFTY REALTY', v:String(r.indices[2].val), d:r.indices[2].pct });
+  }
+  if(usd) rows.push({ k:'USD / INR', v:'₹ ' + Number(usd).toFixed(2), d:null });
+  if(gold) rows.push({ k:'GOLD · 10g', v:mktInrRaw(gold, 0), d:null });
+  if(silver) rows.push({ k:'SILVER · 1kg', v:mktInrRaw(silver, 0), d:null });
+  if(r && r.fuel) rows.push({ k:'PETROL · JAIPUR', v:'₹ ' + r.fuel.petrol, d:null });
+  return rows;
+}
+function crCorridorRows(n){
+  const list = (typeof BCS_CORRIDOR_INTEL !== 'undefined' ? BCS_CORRIDOR_INTEL : []) || [];
+  return list.slice(0, n || 4).map(x => ({
+    name: x.corridor,
+    median: '₹ ' + Number(x.median || 0).toLocaleString('en-IN') + '/sq ft',
+    dlc: 'DLC ₹ ' + Math.round(((Number(x.dlcLow) || 0) + (Number(x.dlcHigh) || 0)) / 2).toLocaleString('en-IN') + '/sq m',
+    demand: x.demand || ''
+  }));
+}
+function crCanvasPair(){
+  return { status: $('#creativeStatus'), square: $('#creativeSquare') };
+}
+function crActiveCanvas(){
+  const p = crCanvasPair();
+  return creativeFormat === 'square' ? p.square : p.status;
+}
+function crBase(ctx, W, H, pal){
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.clearRect(0,0,W,H);
+  const g = ctx.createLinearGradient(0, 0, W, H);
+  g.addColorStop(0, pal.bg1);
+  g.addColorStop(.6, pal.bg2);
+  g.addColorStop(1, pal.bg1);
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, W, H);
+  let rg = ctx.createRadialGradient(W*.86, H*.12, 0, W*.86, H*.12, W*.66);
+  rg.addColorStop(0, 'rgba(255,255,255,.22)');
+  rg.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = rg;
+  ctx.fillRect(0, 0, W, H);
+  rg = ctx.createRadialGradient(W*.08, H*.9, 0, W*.08, H*.9, W*.6);
+  rg.addColorStop(0, 'rgba(240,200,106,.18)');
+  rg.addColorStop(1, 'rgba(240,200,106,0)');
+  ctx.fillStyle = rg;
+  ctx.fillRect(0, 0, W, H);
+}
+function crFrame(ctx, W, H, pad, r){
+  ctx.strokeStyle = 'rgba(255,255,255,.22)';
+  ctx.lineWidth = 3;
+  roundRectPath(ctx, pad, pad, W - pad*2, H - pad*2, r);
+  ctx.stroke();
+}
+function crBrand(ctx, W, pad, big){
+  const box = big ? 118 : 96;
+  ctx.fillStyle = CREATIVE_PAL.paper;
+  roundRectPath(ctx, pad, pad, box, box, big ? 28 : 22);
+  ctx.fill();
+  ctx.fillStyle = CREATIVE_PAL.bg1;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.font = `700 ${Math.round(box*.36)}px 'Fraunces', Georgia, serif`;
+  ctx.fillText('BCS', pad + box/2, pad + box/2 + 2);
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillStyle = CREATIVE_PAL.paper;
+  ctx.font = `800 ${big ? 29 : 23}px 'DM Sans', system-ui, sans-serif`;
+  ctx.fillText('BUSINESS CITY SQUARE', pad + box + 24, pad + box*.44);
+  ctx.fillStyle = CREATIVE_PAL.mut;
+  ctx.font = `600 ${big ? 20 : 16}px 'DM Sans', system-ui, sans-serif`;
+  ctx.fillText('JAIPUR PROPERTY INTELLIGENCE', pad + box + 24, pad + box*.76);
+  ctx.textAlign = 'right';
+  ctx.fillStyle = 'rgba(255,251,241,.78)';
+  ctx.font = `600 ${big ? 24 : 19}px 'DM Sans', system-ui, sans-serif`;
+  ctx.fillText(fmtDate(todayISO()), W - pad, pad + box*.44);
+  ctx.textAlign = 'left';
+  return pad + box + 24;
+}
+function crFooter(ctx, W, H, pad, big){
+  ctx.fillStyle = 'rgba(255,255,255,.22)';
+  ctx.fillRect(pad, H - pad - (big ? 96 : 74), W - pad*2, 2);
+  ctx.fillStyle = CREATIVE_PAL.paper;
+  ctx.font = `700 ${big ? 26 : 20}px 'DM Sans', system-ui, sans-serif`;
+  ctx.textAlign = 'left';
+  ctx.fillText('BCS · Business City Square', pad, H - pad - (big ? 46 : 34));
+  ctx.fillStyle = CREATIVE_PAL.accent;
+  ctx.textAlign = 'right';
+  ctx.fillText('@ajaysharma.bcs', W - pad, H - pad - (big ? 46 : 34));
+  ctx.fillStyle = CREATIVE_PAL.mut;
+  ctx.font = `500 ${big ? 20 : 15}px 'DM Sans', system-ui, sans-serif`;
+  ctx.textAlign = 'left';
+  ctx.fillText('Jaipur · Rajasthan', pad, H - pad - (big ? 12 : 8));
+}
+function drawMarketCard(canvas){
+  if(!canvas) return;
+  const W = canvas.width, H = canvas.height;
+  const ctx = canvas.getContext('2d');
+  const big = H > W;
+  const pad = big ? 92 : 64;
+  crBase(ctx, W, H, CREATIVE_PAL);
+  crFrame(ctx, W, H, big ? 38 : 28, big ? 38 : 28);
+  crBrand(ctx, W, pad, big);
+  const rows = crMarketRows();
+  const cors = crCorridorRows(big ? 4 : 3);
+  ctx.textAlign = 'left';
+  if(big){
+    ctx.fillStyle = CREATIVE_PAL.paper;
+    ctx.font = `600 96px 'Fraunces', Georgia, serif`;
+    ctx.fillText('Jaipur', pad, 420);
+    ctx.fillStyle = CREATIVE_PAL.accent;
+    ctx.font = `800 44px 'DM Sans', system-ui, sans-serif`;
+    ctx.fillText('MARKET SNAPSHOT', pad, 486);
+    ctx.fillStyle = CREATIVE_PAL.mut;
+    ctx.font = `500 28px 'DM Sans', system-ui, sans-serif`;
+    ctx.fillText('Rates, rupee aur realty — ek nazar me', pad, 536);
+    let y = 640;
+    rows.slice(0, 7).forEach(r => {
+      ctx.fillStyle = 'rgba(255,251,241,.10)';
+      roundRectPath(ctx, pad, y - 44, W - pad*2, 76, 18);
+      ctx.fill();
+      ctx.fillStyle = 'rgba(255,251,241,.82)';
+      ctx.font = `700 26px 'DM Sans', system-ui, sans-serif`;
+      ctx.fillText(r.k, pad + 26, y + 6);
+      ctx.textAlign = 'right';
+      ctx.fillStyle = CREATIVE_PAL.paper;
+      ctx.font = `800 32px 'DM Sans', system-ui, sans-serif`;
+      ctx.fillText(String(r.v), W - pad - 120, y + 6);
+      if(r.d != null){
+        const up = Number(r.d) >= 0;
+        ctx.fillStyle = up ? '#9BE3B0' : '#FFB4A2';
+        ctx.font = `800 24px 'DM Sans', system-ui, sans-serif`;
+        ctx.fillText((up ? '▲ ' : '▼ ') + Math.abs(Number(r.d)) + '%', W - pad - 24, y + 6);
+      }
+      ctx.textAlign = 'left';
+      y += 92;
+    });
+    const cy = Math.max(y + 40, 1330);
+    ctx.fillStyle = CREATIVE_PAL.accent;
+    ctx.font = `800 28px 'DM Sans', system-ui, sans-serif`;
+    ctx.fillText('GROWTH CORRIDORS', pad, cy);
+    ctx.fillStyle = CREATIVE_PAL.mut;
+    ctx.font = `500 20px 'DM Sans', system-ui, sans-serif`;
+    ctx.fillText('Median resale vs DLC floor', pad, cy + 30);
+    let yy = cy + 86;
+    cors.forEach(c => {
+      ctx.fillStyle = CREATIVE_PAL.paper;
+      ctx.font = `700 27px 'DM Sans', system-ui, sans-serif`;
+      ctx.fillText(c.name, pad, yy);
+      ctx.textAlign = 'right';
+      ctx.fillStyle = CREATIVE_PAL.paper;
+      ctx.font = `700 25px 'DM Sans', system-ui, sans-serif`;
+      ctx.fillText(c.median, W - pad, yy - 2);
+      ctx.fillStyle = CREATIVE_PAL.mut;
+      ctx.font = `500 20px 'DM Sans', system-ui, sans-serif`;
+      ctx.fillText(c.dlc, W - pad, yy + 26);
+      ctx.textAlign = 'left';
+      yy += 74;
+    });
+    crFooter(ctx, W, H, pad, true);
+  } else {
+    ctx.fillStyle = CREATIVE_PAL.paper;
+    ctx.font = `600 72px 'Fraunces', Georgia, serif`;
+    ctx.fillText('Jaipur market', pad, 300);
+    ctx.fillStyle = CREATIVE_PAL.accent;
+    ctx.font = `800 30px 'DM Sans', system-ui, sans-serif`;
+    ctx.fillText('SNAPSHOT · ' + fmtDate(todayISO()), pad, 344);
+    const cols = [[], []];
+    rows.slice(0, 6).forEach((r, i) => cols[i % 2].push(r));
+    cols.forEach((col, ci) => {
+      let y = 412;
+      const x = pad + ci * ((W - pad*2) / 2);
+      const w = (W - pad*2) / 2 - 16;
+      col.forEach(r => {
+        ctx.fillStyle = 'rgba(255,251,241,.10)';
+        roundRectPath(ctx, x, y - 36, w, 62, 14);
+        ctx.fill();
+        ctx.fillStyle = 'rgba(255,251,241,.78)';
+        ctx.font = `700 20px 'DM Sans', system-ui, sans-serif`;
+        ctx.fillText(r.k, x + 18, y + 2);
+        ctx.textAlign = 'right';
+        ctx.fillStyle = CREATIVE_PAL.paper;
+        ctx.font = `800 24px 'DM Sans', system-ui, sans-serif`;
+        ctx.fillText(String(r.v), x + w - 16, y + 2);
+        if(r.d != null){
+          const up = Number(r.d) >= 0;
+          ctx.fillStyle = up ? '#9BE3B0' : '#FFB4A2';
+          ctx.font = `800 16px 'DM Sans', system-ui, sans-serif`;
+          ctx.fillText((up ? '▲' : '▼') + Math.abs(Number(r.d)) + '%', x + w - 16, y + 24);
+        }
+        ctx.textAlign = 'left';
+        y += 74;
+      });
+    });
+    ctx.fillStyle = CREATIVE_PAL.accent;
+    ctx.font = `800 22px 'DM Sans', system-ui, sans-serif`;
+    ctx.fillText('GROWTH CORRIDORS', pad, 730);
+    let yy = 774;
+    cors.forEach(c => {
+      ctx.fillStyle = CREATIVE_PAL.paper;
+      ctx.font = `700 21px 'DM Sans', system-ui, sans-serif`;
+      ctx.fillText(c.name, pad, yy);
+      ctx.textAlign = 'right';
+      ctx.fillStyle = CREATIVE_PAL.mut;
+      ctx.font = `600 19px 'DM Sans', system-ui, sans-serif`;
+      ctx.fillText(c.median + '  ·  ' + c.dlc, W - pad, yy);
+      ctx.textAlign = 'left';
+      yy += 42;
+    });
+    crFooter(ctx, W, H, pad, false);
+  }
+}
+function drawProjectCard(canvas, p){
+  if(!canvas || !p) return;
+  const W = canvas.width, H = canvas.height;
+  const ctx = canvas.getContext('2d');
+  const big = H > W;
+  const pad = big ? 92 : 64;
+  crBase(ctx, W, H, CREATIVE_PAL);
+  crFrame(ctx, W, H, big ? 38 : 28, big ? 38 : 28);
+  crBrand(ctx, W, pad, big);
+  const u = (typeof unitCounts === 'function') ? unitCounts(p) : { total:0, sold:0, booked:0, available:0 };
+  const price = (typeof priceRange === 'function') ? priceRange(p) : '';
+  const cor = (typeof corridor === 'function') ? corridor(p.corridor) : { name:'' };
+  const chips = [];
+  if(p.rera) chips.push('RERA ' + p.rera);
+  if(p.dlc) chips.push('DLC ₹' + Number(p.dlc).toLocaleString('en-IN') + '/sq m');
+  if(u.total) chips.push((u.sold + u.booked) + '/' + u.total + ' sold');
+  if(p.timeline) chips.push(String(p.timeline));
+  if(p.status) chips.push(String(p.status).toUpperCase());
+  ctx.textAlign = 'left';
+  if(big){
+    ctx.fillStyle = CREATIVE_PAL.accent;
+    ctx.font = `800 30px 'DM Sans', system-ui, sans-serif`;
+    ctx.fillText((cor.name || 'JAIPUR').toUpperCase() + ' · BCS PICK', pad, 400);
+    ctx.fillStyle = CREATIVE_PAL.paper;
+    ctx.font = `600 84px 'Fraunces', Georgia, serif`;
+    wrapCanvasText(ctx, String(p.name || 'Project'), pad, 500, W - pad*2, 94, 3);
+    const nameLines = Math.min(3, Math.max(1, Math.ceil(String(p.name || '').length / 18)));
+    let y = 500 + nameLines * 94 + 26;
+    ctx.fillStyle = 'rgba(255,251,241,.78)';
+    ctx.font = `500 30px 'DM Sans', system-ui, sans-serif`;
+    if(p.location) { ctx.fillText(String(p.location), pad, y); y += 46; }
+    ctx.fillStyle = CREATIVE_PAL.accent;
+    ctx.font = `800 56px 'DM Sans', system-ui, sans-serif`;
+    if(price && price !== 'Price on request'){ ctx.fillText(price, pad, y + 40); y += 96; }
+    else { ctx.fillText('Price on request', pad, y + 40); y += 96; }
+    let cy = y + 10;
+    chips.slice(0, 6).forEach(c => {
+      ctx.font = `700 24px 'DM Sans', system-ui, sans-serif`;
+      const w = ctx.measureText(c).width + 44;
+      ctx.fillStyle = 'rgba(255,251,241,.12)';
+      roundRectPath(ctx, pad, cy - 32, w, 50, 25);
+      ctx.fill();
+      ctx.fillStyle = CREATIVE_PAL.paper;
+      ctx.fillText(c, pad + 22, cy + 3);
+      cy += 66;
+    });
+    ctx.fillStyle = CREATIVE_PAL.mut;
+    ctx.font = `500 26px 'DM Sans', system-ui, sans-serif`;
+    const line = (u.available ? u.available + ' units available · ' : '') + 'Site visit & documents desk se';
+    ctx.fillText(line, pad, H - pad - 150);
+    crFooter(ctx, W, H, pad, true);
+  } else {
+    ctx.fillStyle = CREATIVE_PAL.accent;
+    ctx.font = `800 22px 'DM Sans', system-ui, sans-serif`;
+    ctx.fillText((cor.name || 'JAIPUR').toUpperCase() + ' · BCS PICK', pad, 286);
+    ctx.fillStyle = CREATIVE_PAL.paper;
+    ctx.font = `600 58px 'Fraunces', Georgia, serif`;
+    wrapCanvasText(ctx, String(p.name || 'Project'), pad, 352, W - pad*2, 64, 2);
+    let y = 352 + 74;
+    ctx.fillStyle = 'rgba(255,251,241,.78)';
+    ctx.font = `500 24px 'DM Sans', system-ui, sans-serif`;
+    if(p.location){ ctx.fillText(String(p.location), pad, y); y += 40; }
+    ctx.fillStyle = CREATIVE_PAL.accent;
+    ctx.font = `800 40px 'DM Sans', system-ui, sans-serif`;
+    ctx.fillText(price && price !== 'Price on request' ? price : 'Price on request', pad, y + 22);
+    y += 76;
+    chips.slice(0, 4).forEach(c => {
+      ctx.font = `700 19px 'DM Sans', system-ui, sans-serif`;
+      const w = ctx.measureText(c).width + 34;
+      ctx.fillStyle = 'rgba(255,251,241,.12)';
+      roundRectPath(ctx, pad, y - 24, w, 40, 20);
+      ctx.fill();
+      ctx.fillStyle = CREATIVE_PAL.paper;
+      ctx.fillText(c, pad + 17, y + 3);
+      y += 52;
+    });
+    crFooter(ctx, W, H, pad, false);
+  }
+}
+function creativeCaption(kind){
+  const date = fmtDate(todayISO());
+  const tags = '#JaipurRealEstate #BCS #JaipurProperty #RERA #JDA #BusinessCitySquare #AjaySharma #RealEstateRajasthan';
+  if(kind === 'market'){
+    const rows = crMarketRows();
+    const cors = crCorridorRows(4);
+    const lines = ['📈 *JAIPUR MARKET SNAPSHOT — ' + date + '*', ''];
+    rows.forEach(r => lines.push('• ' + r.k + ': *' + r.v + '*' + (r.d != null ? ' (' + (Number(r.d) >= 0 ? '+' : '') + r.d + '%)' : '')));
+    lines.push('');
+    lines.push('🛣️ *Growth corridors*');
+    cors.forEach(c => lines.push('• ' + c.name + ' — ' + c.median + ' · ' + c.dlc));
+    lines.push('');
+    lines.push('_Numbers desk se verified. Property decide karne se pehle rate, DLC aur RERA teeno check karein._');
+    lines.push('');
+    lines.push(tags);
+    lines.push('— Ajay Sharma · BCS · @ajaysharma.bcs');
+    return lines.join('\n');
+  }
+  if(kind === 'project'){
+    const p = (db.projects || []).find(x => x.id === creativeProjectId) || scopedProjects()[0];
+    if(!p) return 'Project add karein, phir creative banega.';
+    const u = (typeof unitCounts === 'function') ? unitCounts(p) : { total:0, sold:0, booked:0, available:0 };
+    const price = (typeof priceRange === 'function') ? priceRange(p) : '';
+    const cor = (typeof corridor === 'function') ? corridor(p.corridor) : { name:'' };
+    const lines = ['🏗️ *' + p.name + '*', ''];
+    if(cor.name) lines.push('📍 ' + cor.name);
+    if(p.location) lines.push('🗺️ ' + p.location);
+    if(price) lines.push('💰 ' + price);
+    if(p.rera) lines.push('✅ RERA: ' + p.rera);
+    if(p.dlc) lines.push('🏛️ DLC: ₹' + Number(p.dlc).toLocaleString('en-IN') + '/sq m');
+    if(u.total) lines.push('🏠 ' + (u.sold + u.booked) + '/' + u.total + ' units sold · ' + u.available + ' available');
+    if(p.timeline) lines.push('⏳ ' + p.timeline);
+    lines.push('');
+    lines.push('_Site visit, documents aur payment plan — BCS desk par._');
+    lines.push('');
+    lines.push('#JaipurRealEstate #BCS #' + String(p.name || '').replace(/[^A-Za-z0-9]/g, '') + ' #RERA #JaipurProperty #BusinessCitySquare');
+    lines.push('— Ajay Sharma · BCS · @ajaysharma.bcs');
+    return lines.join('\n');
+  }
+  const f = creativeFestival();
+  const lines = [];
+  lines.push((f.emoji || '✨') + ' *' + (f.name || 'Festival') + '*');
+  if(f.hi) lines.push('*' + f.hi + '*');
+  if(f.greetHi) lines.push('');
+  if(f.greetHi) lines.push(f.greetHi);
+  if(f.greetEn) lines.push(f.greetEn);
+  lines.push('');
+  lines.push('_BCS · Business City Square · Jaipur_');
+  lines.push('#Jaipur #' + String(f.name || 'Festival').replace(/[^A-Za-z0-9]/g, '') + ' #BCS #RealEstate');
+  lines.push('— Ajay Sharma · @ajaysharma.bcs');
+  return lines.join('\n');
+}
+function creativeCaptionStatus(kind){
+  const f = creativeFestival();
+  if(kind === 'market'){
+    const rows = crMarketRows().slice(0, 3);
+    const cors = crCorridorRows(1);
+    const lines = ['📈 *Jaipur market · ' + fmtDate(todayISO()) + '*'];
+    rows.forEach(r => lines.push(r.k + ': *' + r.v + '*' + (r.d != null ? ' (' + (Number(r.d) >= 0 ? '+' : '') + r.d + '%)' : '')));
+    if(cors[0]) lines.push('🛣️ ' + cors[0].name + ' — ' + cors[0].median);
+    lines.push('');
+    lines.push('BCS · @ajaysharma.bcs');
+    return lines.join('\n');
+  }
+  if(kind === 'project'){
+    const p = (db.projects || []).find(x => x.id === creativeProjectId) || scopedProjects()[0];
+    if(!p) return 'Project add karein.';
+    const price = (typeof priceRange === 'function') ? priceRange(p) : '';
+    const cor = (typeof corridor === 'function') ? corridor(p.corridor) : { name:'' };
+    const lines = ['🏗️ *' + p.name + '*'];
+    if(cor.name) lines.push('📍 ' + cor.name);
+    if(price) lines.push('💰 ' + price);
+    if(p.rera) lines.push('✅ RERA ' + p.rera);
+    lines.push('');
+    lines.push('BCS · @ajaysharma.bcs');
+    return lines.join('\n');
+  }
+  return [(f.emoji || '✨') + ' *' + (f.name || '') + '*', f.greetHi || f.greetEn || '', 'BCS · @ajaysharma.bcs'].filter(Boolean).join('\n');
+}
+function creativePaint(){
+  const pair = crCanvasPair();
+  if(!pair.status) return;
+  if(creativeKind === 'market'){
+    drawMarketCard(pair.status);
+    drawMarketCard(pair.square);
+  } else if(creativeKind === 'project'){
+    const p = (db.projects || []).find(x => x.id === creativeProjectId) || scopedProjects()[0];
+    drawProjectCard(pair.status, p);
+    drawProjectCard(pair.square, p);
+  } else {
+    const f = creativeFestival();
+    if(typeof drawPoster === 'function'){
+      drawPoster(pair.status, 'status', f);
+      drawPoster(pair.square, 'square', f);
+    }
+  }
+  pair.status.classList.toggle('on', creativeFormat !== 'square');
+  pair.square.classList.toggle('on', creativeFormat === 'square');
+  const cap = $('#creativeCaption');
+  const _style = ($('#crStyle') && $('#crStyle').value) || 'full';
+  if(cap) cap.value = _style === 'status' ? creativeCaptionStatus(creativeKind) : creativeCaption(creativeKind);
+  const meta = $('#crMeta');
+  if(cap && meta) meta.textContent = cap.value.length + ' chars · ' + cap.value.split('\n').length + ' lines';
+  const pick = $('#crProjectPick');
+  if(pick) pick.style.display = creativeKind === 'project' ? '' : 'none';
+}
+function creativeSetKind(kind){
+  creativeKind = ['market','project','festival'].includes(kind) ? kind : 'market';
+  $$('#creativeModal [data-crkind]').forEach(b => b.classList.toggle('on', b.dataset.crkind === creativeKind));
+  creativePaint();
+}
+function creativeSetFormat(fmt){
+  creativeFormat = fmt === 'square' ? 'square' : 'status';
+  $$('#creativeModal [data-crformat]').forEach(b => b.classList.toggle('on', b.dataset.crformat === creativeFormat));
+  creativePaint();
+}
+function openCreative(kind, projectId){
+  if(projectId) creativeProjectId = projectId;
+  let ov = $('#creativeModal');
+  if(!ov){
+    document.body.insertAdjacentHTML('beforeend', `<div class="overlay" id="creativeModal"><div class="modal" style="width:min(780px,100%)">
+      <div class="modal-head"><h3>🎨 Creative studio</h3><button class="xbtn" data-close="creativeModal">✕</button></div>
+      <div class="modal-body">
+        <div class="cr-kinds">
+          <button type="button" class="btn ghost sm on" data-crkind="market">📈 Market rate card</button>
+          <button type="button" class="btn ghost sm" data-crkind="project">🏗️ Project card</button>
+          <button type="button" class="btn ghost sm" data-crkind="festival">🪔 Festival poster</button>
+        </div>
+        <div class="field" id="crProjectPick" style="display:none;margin-bottom:8px"><label>Project</label><select id="crProjectSel"></select></div>
+        <div class="poster-tabs">
+          <button type="button" data-crformat="status" class="on">WhatsApp status · 1080×1920</button>
+          <button type="button" data-crformat="square">Square post · 1080×1080</button>
+        </div>
+        <div class="poster-stage" id="crStage"><canvas id="creativeStatus" width="1080" height="1920"></canvas><canvas id="creativeSquare" width="1080" height="1080"></canvas></div>
+        <div class="field" style="margin-top:10px"><label style="display:flex;align-items:center;justify-content:space-between;gap:8px">Caption + hashtags <select id="crStyle" style="width:auto;padding:3px 8px;font-size:10.5px"><option value="full">Full post</option><option value="status">WhatsApp status (short)</option></select></label><textarea id="creativeCaption" rows="7" spellcheck="false"></textarea><div style="font-size:10.5px;color:var(--mut);margin-top:4px" id="crMeta"></div></div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn ghost" data-close="creativeModal">Close</button>
+        <button class="btn ghost" id="crCopy">📋 Copy caption</button>
+        <button class="btn ghost" id="crWa">💬 WhatsApp</button>
+        <button class="btn ghost" id="crDownload">⬇ PNG</button>
+        <button class="btn primary" id="crShare">Share</button>
+      </div>
+    </div></div>`);
+    ov = $('#creativeModal');
+    const sel = $('#crProjectSel');
+    if(sel){
+      sel.innerHTML = scopedProjects().map(p => `<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('') || '<option value="">Koi project nahi</option>';
+      sel.addEventListener('change', () => { creativeProjectId = sel.value; creativePaint(); });
+    }
+    $$('#creativeModal [data-crkind]').forEach(b => b.addEventListener('click', () => creativeSetKind(b.dataset.crkind)));
+    $('#crStyle').addEventListener('change', () => creativePaint());
+    $$('#creativeModal [data-crformat]').forEach(b => b.addEventListener('click', () => creativeSetFormat(b.dataset.crformat)));
+    $('#crCopy').addEventListener('click', async () => {
+      const ok = await copyText($('#creativeCaption').value);
+      toast(ok ? 'Caption copy — paste karo' : 'Copy fail — manually select karein', !ok);
+    });
+    $('#crWa').addEventListener('click', () => {
+      window.open('https://wa.me/?text=' + encodeURIComponent($('#creativeCaption').value), '_blank', 'noopener');
+    });
+    $('#crDownload').addEventListener('click', () => {
+      const canvas = crActiveCanvas();
+      if(!canvas) return;
+      canvas.toBlob(blob => {
+        if(!blob) return toast('Image nahi bani — try again', true);
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'bcs-' + creativeKind + '-' + creativeFormat + '-' + todayISO() + '.png';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+        toast('Creative downloaded — ' + creativeFormat);
+      }, 'image/png');
+    });
+    $('#crShare').addEventListener('click', async () => {
+      const canvas = crActiveCanvas();
+      if(!canvas) return;
+      try{
+        const blob = await canvasToBlob(canvas);
+        const file = new File([blob], 'bcs-' + creativeKind + '-' + todayISO() + '.png', { type:'image/png' });
+        const text = $('#creativeCaption').value;
+        if(navigator.canShare && navigator.canShare({ files:[file] })){
+          await navigator.share({ files:[file], title:'BCS creative', text });
+          return;
+        }
+      }catch(e){ if(e && e.name === 'AbortError') return; }
+      $('#crDownload').click();
+    });
+  }
+  if(!creativeProjectId && scopedProjects()[0]) creativeProjectId = scopedProjects()[0].id;
+  const sel = $('#crProjectSel');
+  if(sel && creativeProjectId) sel.value = creativeProjectId;
+  showOverlay('creativeModal');
+  creativeSetKind(kind || creativeKind);
+  creativeSetFormat(creativeFormat);
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-creative]');
+  if(b){ e.preventDefault(); e.stopPropagation(); openCreative(b.dataset.creative || 'market', b.dataset.creativeProject || null); return; }
+  if(e.target.closest('#detailCreative')){ e.preventDefault(); openCreative('project', detailId); }
+});
+
+/* ============================================================
+   BCS ADVANCED CALCULATORS
+   1) Brokerage payout splitter — co-broker, GST, TDS 194H
+   2) Flip ROI — duty, holding cost, net profit, annualised
+   3) Payment plan builder — milestones + dates + WhatsApp
+   Independent bindings; existing calculators untouched.
+   ============================================================ */
+function bxNum(id){ const el = $('#' + id); const v = el ? Number(el.value) : 0; return isFinite(v) ? v : 0; }
+function bxInr(v){ return '₹ ' + Math.round(Number(v) || 0).toLocaleString('en-IN'); }
+function bxRun(){
+  // 1) brokerage splitter
+  const o1 = $('#bxOut');
+  if(o1){
+    const val = bxNum('bxValue');
+    const pct = bxNum('bxPct');
+    const my = Math.min(100, Math.max(0, bxNum('bxMy')));
+    const gstPct = bxNum('bxGst');
+    const tdsPct = bxNum('bxTds');
+    const total = val * pct / 100;
+    const mine = total * my / 100;
+    const co = total - mine;
+    const gst = mine * gstPct / 100;
+    const invoice = mine + gst;
+    const tds = mine * tdsPct / 100;
+    const net = invoice - tds;
+    const coGst = co * gstPct / 100;
+    o1.innerHTML = `
+      <div class="calc-row"><span>Total brokerage (${pct}% of deal)</span><b>${bxInr(total)}</b></div>
+      <div class="calc-row"><span>Aapka share (${my}%)</span><b>${bxInr(mine)}</b></div>
+      <div class="calc-row"><span>Co-broker payout (${100 - my}%)</span><b>${bxInr(co)}</b></div>
+      <div class="calc-row"><span>GST on your share (${gstPct}%)</span><b>${bxInr(gst)}</b></div>
+      <div class="calc-row"><span>TDS 194H (${tdsPct}% on commission)</span><b>− ${bxInr(tds)}</b></div>
+      <div class="calc-row"><span>Co-broker invoice + GST</span><b>${bxInr(co + coGst)}</b></div>
+      <div class="calc-total"><span>Net in hand (invoice − TDS)</span><b>${bxInr(net)}</b></div>
+      <div class="calc-src" style="margin-top:6px">TDS 194H commission par lagta hai, GST par nahi. Co-broker ko GST invoice chahiye tabhi input credit milega.</div>`;
+  }
+  // 2) flip roi
+  const o2 = $('#fxOut');
+  if(o2){
+    const buy = bxNum('fxBuy');
+    const dutyPct = bxNum('fxDuty');
+    const months = Math.max(1, bxNum('fxMonths'));
+    const hold = bxNum('fxHold');
+    const ren = bxNum('fxRenov');
+    const sell = bxNum('fxSell');
+    const brkPct = bxNum('fxBrk');
+    const duty = buy * dutyPct / 100;
+    const holdCost = hold * months;
+    const sellCost = sell * brkPct / 100;
+    const invested = buy + duty + ren + holdCost;
+    const proceeds = sell - sellCost;
+    const profit = proceeds - invested;
+    const roi = invested ? profit / invested * 100 : 0;
+    const years = months / 12;
+    const cagr = (invested > 0 && proceeds > 0) ? (Math.pow(proceeds / invested, 1 / years) - 1) * 100 : 0;
+    const breakEven = invested + sellCost;
+    o2.innerHTML = `
+      <div class="calc-row"><span>Purchase + stamp/reg (${dutyPct}%)</span><b>${bxInr(buy + duty)}</b></div>
+      <div class="calc-row"><span>Renovation + holding (${months} mo)</span><b>${bxInr(ren + holdCost)}</b></div>
+      <div class="calc-row"><span>Total invested</span><b>${bxInr(invested)}</b></div>
+      <div class="calc-row"><span>Sale − brokerage (${brkPct}%)</span><b>${bxInr(proceeds)}</b></div>
+      <div class="calc-row"><span>Net profit</span><b style="color:${profit >= 0 ? '#2F7A4F' : '#A4452B'}">${bxInr(profit)}</b></div>
+      <div class="calc-row"><span>ROI (total)</span><b>${roi.toFixed(1)}%</b></div>
+      <div class="calc-row"><span>Annualised (CAGR)</span><b>${cagr.toFixed(1)}%</b></div>
+      <div class="calc-total"><span>Break-even sale price</span><b>${bxInr(breakEven)}</b></div>
+      <div class="calc-src" style="margin-top:6px">Capital gains tax isme alag hai — upar CG calculator se LTCG/STCG nikaal lo.</div>`;
+  }
+  // 3) payment plan builder
+  const o3 = $('#plOut');
+  if(o3){
+    const total = bxNum('plTotal');
+    const bPct = bxNum('plBooking');
+    const aPct = bxNum('plAgree');
+    const sPct = bxNum('plSlab');
+    const rPct = bxNum('plReg');
+    const gap = Math.max(0, Math.round(bxNum('plGap')));
+    const start = ($('#plStart') && $('#plStart').value) || todayISO();
+    const rows = [
+      { k:'Booking', pct:bPct, date:start },
+      { k:'Agreement', pct:aPct, date:addISO(start, gap) },
+      { k:'Slab / structure', pct:sPct, date:addISO(start, gap * 2) },
+      { k:'Registry / possession', pct:rPct, date:addISO(start, gap * 3) }
+    ];
+    const used = bPct + aPct + sPct + rPct;
+    const balPct = Math.max(0, 100 - used);
+    const html = rows.map(r => `<div class="calc-row"><span>${r.k} · ${r.pct}% · ${fmtDate(r.date)}</span><b>${bxInr(total * r.pct / 100)}</b></div>`).join('')
+      + (balPct > 0 ? `<div class="calc-row"><span>Balance / other charges · ${balPct.toFixed(1)}%</span><b>${bxInr(total * balPct / 100)}</b></div>` : '')
+      + `<div class="calc-total"><span>Plan total (${used.toFixed(1)}% mapped)</span><b>${bxInr(total * used / 100)}</b></div>`
+      + `<div class="calc-src" style="margin-top:6px">${used > 100 ? '⚠ Percentages 100 se zyada hain — check karein.' : 'Developer plan se dates/percent match karke client ko bhejein.'}</div>`;
+    o3.innerHTML = html;
+  }
+}
+function plPlanText(){
+  const total = bxNum('plTotal');
+  const bPct = bxNum('plBooking'), aPct = bxNum('plAgree'), sPct = bxNum('plSlab'), rPct = bxNum('plReg');
+  const gap = Math.max(0, Math.round(bxNum('plGap')));
+  const start = ($('#plStart') && $('#plStart').value) || todayISO();
+  const rows = [
+    ['Booking', bPct, start],
+    ['Agreement', aPct, addISO(start, gap)],
+    ['Slab / structure', sPct, addISO(start, gap * 2)],
+    ['Registry / possession', rPct, addISO(start, gap * 3)]
+  ];
+  const used = bPct + aPct + sPct + rPct;
+  const lines = ['*🏗️ BCS Payment Plan*', 'Total: *' + bxInr(total) + '*', ''];
+  rows.forEach(r => lines.push('• ' + r[0] + ' — ' + r[1] + '% · ' + fmtDate(r[2]) + ' · *' + bxInr(total * r[1] / 100) + '*'));
+  if(used < 100) lines.push('• Balance — ' + (100 - used).toFixed(1) + '% · *' + bxInr(total * (100 - used) / 100) + '*');
+  lines.push('');
+  lines.push('_Dates indicative — developer allotment letter final hoga._');
+  lines.push('BCS · Business City Square · @ajaysharma.bcs');
+  return lines.join('\n');
+}
+document.addEventListener('input', e => {
+  if(e.target.closest('#advCalcGrid')) bxRun();
+});
+document.addEventListener('change', e => {
+  if(e.target.closest('#advCalcGrid')) bxRun();
+});
+document.addEventListener('click', async e => {
+  const c = e.target.closest('#plCopy');
+  if(c){
+    e.preventDefault();
+    const ok = await copyText(plPlanText());
+    toast(ok ? 'Payment plan copy — client ko bhejo' : 'Copy fail', !ok);
+    return;
+  }
+  const w = e.target.closest('#plWa');
+  if(w){
+    e.preventDefault();
+    window.open('https://wa.me/?text=' + encodeURIComponent(plPlanText()), '_blank', 'noopener');
+  }
+});
+
+try{ const _ps = $('#plStart'); if(_ps && !_ps.value) _ps.value = todayISO(); bxRun(); }catch(e){ console.warn('[BCS calc]', e); }
+
 /* ================= resale inventory ================= */
 let editingResale = null, resaleViewId = null;
 
@@ -34551,6 +35430,7 @@ const PALETTE_ACTIONS = [
   { label:'Naya booking add', hint:'action', run:() => { go('clients'); setClientsMode('bookings'); openBooking(null); } },
   { label:'Nayi sale add', hint:'action', run:() => { go('pipeline'); openDeal(null); } },
   { label:'Visit planner kholein', hint:'action', run:() => openVisitPlannerSafe() },
+  { label:'Creative studio — rate card / project card', hint:'action', run:() => openCreative('market') },
   { label:'Newsletter studio', hint:'action', run:() => { go('pulse'); setTimeout(() => { const n = document.getElementById('newsletterPanel'); if(n) n.scrollIntoView({ behavior:'smooth', block:'start' }); }, 250); } },
   { label:'Data doctor scan', hint:'action', run:() => { go('dashboard'); setTimeout(() => { const d = document.getElementById('dataDoctor'); if(d) d.scrollIntoView({ behavior:'smooth', block:'start' }); }, 250); } },
   { label:'Backup download', hint:'action', run:() => { if(typeof downloadBackup === 'function') downloadBackup().catch(() => toast('Backup fail', true)); } },
