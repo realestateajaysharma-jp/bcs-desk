@@ -15912,6 +15912,216 @@ body[data-theme="dark"] .mkt-daily-why{color:#8FCFA1}
   .mkt-daily-grid{grid-template-columns:1fr}
 }
 </style>
+<style id="bcs-exchange-css">
+/* ===== v179 · co-brokering exchange: vault, match, pipeline, settlements ===== */
+.xch-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px;margin-bottom:12px}
+.xch-stat{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:10px 12px}
+.xch-stat .k{font-size:9px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;color:var(--mut)}
+.xch-stat .v{font-size:19px;font-weight:900;color:var(--ink);line-height:1.2;margin-top:2px}
+.xch-stat .v small{font-size:10px;font-weight:800;color:var(--mut)}
+.xch-stat.gold .v{color:#8A6A24}
+.xch-stat.green .v{color:#2F6B41}
+.xch-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.xch-tabs button{border:1px solid var(--line);background:var(--panel);color:var(--ink2);border-radius:999px;padding:8px 13px;font-family:inherit;font-size:11.5px;font-weight:800;cursor:pointer}
+.xch-tabs button.on{background:var(--ink);color:#F6F2E7;border-color:var(--ink)}
+.xch-bar{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.xch-bar input,.xch-bar select{border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-family:inherit;font-size:12px;background:var(--panel);color:var(--ink);outline:none}
+.xch-bar input:focus,.xch-bar select:focus{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 14%,transparent)}
+.xch-bar .grow{flex:1;min-width:150px}
+.xch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:9px}
+.xch-lead{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:12px 13px;display:flex;flex-direction:column;gap:6px}
+.xch-lead.is-expired{opacity:.72}
+.xch-lead-top{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.xch-code{font-size:9px;font-weight:900;letter-spacing:.5px;color:#255C9E;background:#E7EFFA;border:1px solid #C6DAF2;border-radius:999px;padding:2px 7px}
+.xch-stage{font-size:8.5px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;border-radius:999px;padding:2px 7px;background:var(--panel2,#F4F2EC);border:1px solid var(--line);color:var(--ink2)}
+.xch-stage.s-matched{background:#FFF4DF;border-color:#EBD4A6;color:#8A6A24}
+.xch-stage.s-tour{background:#E7EFFA;border-color:#C6DAF2;color:#255C9E}
+.xch-stage.s-token{background:#F1EAFB;border-color:#DCCBF3;color:#5B3E8C}
+.xch-stage.s-registry{background:#E6F2E9;border-color:#BFDCC7;color:#2F6B41}
+.xch-stage.s-settled{background:#1F3A28;border-color:#1F3A28;color:#EAF3EC}
+.xch-exp{font-size:8.5px;font-weight:900;border-radius:999px;padding:2px 7px;margin-left:auto;background:#E6F2E9;border:1px solid #BFDCC7;color:#2F6B41;white-space:nowrap}
+.xch-exp.warn{background:#FFF4DF;border-color:#EBD4A6;color:#8A6A24}
+.xch-exp.dead{background:#FBE9E4;border-color:#EFC5BA;color:#A4452B}
+.xch-client{font-size:13.5px;font-weight:800;color:var(--ink);line-height:1.3}
+.xch-meta{font-size:10.5px;font-weight:700;color:var(--mut);display:flex;gap:8px;flex-wrap:wrap}
+.xch-facts{display:flex;gap:5px;flex-wrap:wrap}
+.xch-facts span{font-size:10px;font-weight:800;color:var(--ink2);background:color-mix(in srgb,var(--gold) 8%,var(--panel));border:1px solid var(--line);border-radius:8px;padding:3px 7px}
+.xch-adv{font-size:9.5px;font-weight:700;color:var(--mut)}
+.xch-acts{display:flex;gap:4px;flex-wrap:wrap;margin-top:2px}
+.xch-btn{border:1px solid var(--line);background:var(--panel);color:var(--ink2);border-radius:9px;padding:5px 9px;font-family:inherit;font-size:10.5px;font-weight:800;cursor:pointer;line-height:1.3}
+.xch-btn:hover{border-color:var(--gold);color:var(--gold)}
+.xch-btn.pri{background:var(--ink);color:#F6F2E7;border-color:var(--ink)}
+.xch-btn.pri:hover{background:#2E2D20;color:#F6F2E7}
+.xch-btn.del:hover{border-color:#A4452B;color:#A4452B}
+.xch-empty{border:1px dashed var(--line2);border-radius:14px;padding:18px;text-align:center;font-size:11.5px;font-weight:700;color:var(--mut);line-height:1.6}
+/* match */
+.xch-match-head{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:12px 14px;margin-bottom:10px;display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.xch-match-head .field{margin:0;min-width:180px;flex:1}
+.xch-req{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;flex:1 1 100%}
+.xch-req span{font-size:10px;font-weight:800;color:var(--ink2);background:color-mix(in srgb,var(--gold) 9%,var(--panel));border:1px solid var(--line);border-radius:8px;padding:3px 8px}
+.xch-match{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:12px 13px;display:flex;flex-direction:column;gap:6px;position:relative}
+.xch-match.best{border-color:color-mix(in srgb,var(--gold) 55%,var(--line));box-shadow:0 10px 26px -22px rgba(138,106,36,.9)}
+.xch-score{position:absolute;top:10px;right:11px;font-size:9.5px;font-weight:900;color:#8A6A24;background:#FFF4DF;border:1px solid #EBD4A6;border-radius:999px;padding:2px 8px}
+.xch-match b{font-size:13px;font-weight:800;color:var(--ink);padding-right:52px;line-height:1.3}
+.xch-match .sub{font-size:10px;font-weight:700;color:var(--mut)}
+.xch-why{display:flex;flex-direction:column;gap:2px;font-size:10px;font-weight:700;color:#2F6B41}
+.xch-why .no{color:#A4452B}
+.xch-money{display:flex;gap:8px;flex-wrap:wrap;font-size:10.5px;font-weight:800;color:var(--ink2);border-top:1px dashed var(--line2);padding-top:6px}
+.xch-money b{font-size:12px;color:var(--ink);padding:0}
+.xch-cmp-wrap{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:12px 13px;margin-top:12px}
+.xch-cmp-wrap h4{margin:0 0 8px;font-size:13px;font-weight:800;color:var(--ink)}
+.xch-table{width:100%;border-collapse:collapse;font-size:10.5px}
+.xch-table th,.xch-table td{border-bottom:1px solid var(--line2);padding:6px 7px;text-align:left;vertical-align:top}
+.xch-table th{font-size:9px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+.xch-table td b{font-weight:800;color:var(--ink)}
+.xch-table .num{text-align:right;white-space:nowrap}
+.xch-verdict{font-size:9px;font-weight:900;border-radius:999px;padding:2px 6px;background:#E6F2E9;border:1px solid #BFDCC7;color:#2F6B41;white-space:nowrap}
+.xch-verdict.alt{background:#FFF4DF;border-color:#EBD4A6;color:#8A6A24}
+.xch-cmp-tools{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;align-items:center}
+.xch-cmp-tools input,.xch-cmp-tools select{border:1px solid var(--line);border-radius:9px;padding:6px 9px;font-family:inherit;font-size:11px;background:var(--panel);color:var(--ink)}
+.xch-scroll{overflow-x:auto}
+/* pipeline */
+.xch-kan{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(228px,1fr);gap:8px;overflow-x:auto;padding-bottom:8px;align-items:start}
+.xch-col{background:color-mix(in srgb,var(--ink) 4%,var(--panel));border:1px solid var(--line);border-radius:14px;padding:8px;min-height:110px}
+.xch-col-head{display:flex;align-items:center;gap:6px;margin-bottom:7px;font-size:10px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;color:var(--ink2)}
+.xch-col-head span{margin-left:auto;font-size:9px;font-weight:900;color:var(--mut);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:1px 6px}
+.xch-kcard{border:1px solid var(--line);border-radius:11px;background:var(--panel);padding:8px 9px;margin-bottom:6px;display:flex;flex-direction:column;gap:3px;cursor:pointer}
+.xch-kcard:hover{border-color:color-mix(in srgb,var(--gold) 50%,var(--line))}
+.xch-kcard b{font-size:11.5px;font-weight:800;color:var(--ink);line-height:1.3}
+.xch-kcard small{font-size:9.5px;font-weight:700;color:var(--mut);line-height:1.4}
+.xch-kcard .kx{display:flex;gap:5px;align-items:center;margin-top:2px}
+.xch-kcard .kx .xch-btn{padding:3px 7px;font-size:9.5px}
+/* settlements */
+.xch-calc{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:13px 14px;margin-bottom:12px}
+.xch-calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px}
+.xch-calc-grid .field{margin:0}
+.xch-calc-grid label{font-size:9px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--mut)}
+.xch-calc-grid input,.xch-calc-grid select{width:100%;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-family:inherit;font-size:12px;background:var(--panel);color:var(--ink);outline:none}
+.xch-calc-grid input:focus,.xch-calc-grid select:focus{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 14%,transparent)}
+.xch-out{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:11px}
+.xch-out .box{border:1px solid var(--line);border-radius:12px;padding:9px 11px;background:color-mix(in srgb,var(--gold) 5%,var(--panel))}
+.xch-out .box .k{font-size:9px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--mut)}
+.xch-out .box .v{font-size:15px;font-weight:900;color:var(--ink);margin-top:2px}
+.xch-out .box.o{border-color:#BFDCC7;background:#F2F8F4}
+.xch-out .box.e{border-color:#C6DAF2;background:#F3F7FC}
+.xch-out .box.b{border-color:#EBD4A6;background:#FFFBF1}
+.xch-note{font-size:10px;font-weight:700;color:var(--mut);line-height:1.55;margin-top:8px}
+/* certificate */
+.xch-cert{border:1.5px solid color-mix(in srgb,var(--gold) 48%,var(--line));border-radius:16px;background:linear-gradient(160deg,#FFFDF6,#F7F3E7);padding:14px 16px;position:relative;overflow:hidden}
+.xch-cert:before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 100% 0%,rgba(199,154,46,.16),transparent 60%);pointer-events:none}
+.xch-cert-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.xch-cert-seal{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#C79A2E,#8A6A24);color:#FFF9E8;display:grid;place-items:center;font-size:15px;flex:none;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}
+.xch-cert-top b{font-size:11.5px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;color:#6E5419;line-height:1.3}
+.xch-cert-top small{display:block;font-size:9px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#9A7A34}
+.xch-cert-ref{font-size:15px;font-weight:900;color:#2E2D20;letter-spacing:.6px;margin:2px 0 6px}
+.xch-cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;font-size:10.5px}
+.xch-cert-grid .k{font-size:8.5px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:#9A7A34}
+.xch-cert-grid .v{font-weight:800;color:#2E2D20;line-height:1.35}
+.xch-cert-terms{margin-top:9px;border-top:1px dashed rgba(138,106,36,.4);padding-top:7px;font-size:9.5px;font-weight:700;color:#6B5A32;line-height:1.55}
+.xch-detail-sec{border:1px solid var(--line);border-radius:14px;padding:11px 12px;background:var(--panel);margin-top:10px}
+.xch-detail-sec h5{margin:0 0 7px;font-size:10px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;color:var(--mut)}
+.xch-stage-steps{display:flex;gap:4px;flex-wrap:wrap}
+.xch-stage-steps button{flex:1 1 auto;min-width:74px;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:6px 5px;font-family:inherit;font-size:9px;font-weight:900;letter-spacing:.3px;text-transform:uppercase;color:var(--mut);cursor:pointer;line-height:1.3}
+.xch-stage-steps button.on{background:var(--ink);color:#F6F2E7;border-color:var(--ink)}
+.xch-log{display:flex;flex-direction:column;gap:5px;max-height:170px;overflow:auto}
+.xch-log-row{display:flex;gap:7px;font-size:10px;font-weight:700;color:var(--ink2);line-height:1.4}
+.xch-log-row .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);margin-top:4px;flex:none}
+.xch-log-row small{display:block;color:var(--mut);font-weight:700;font-size:9px}
+.xch-kv{display:grid;grid-template-columns:1fr 1fr;gap:5px 12px;font-size:10.5px}
+.xch-kv .k{font-size:8.5px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--mut)}
+.xch-kv .v{font-weight:800;color:var(--ink);line-height:1.35}
+.xch-warnline{font-size:10px;font-weight:800;color:#A4452B;line-height:1.5}
+.xch-okline{font-size:10px;font-weight:800;color:#2F6B41;line-height:1.5}
+.xch-inline{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.xch-inline input,.xch-inline select{border:1px solid var(--line);border-radius:9px;padding:7px 9px;font-family:inherit;font-size:11.5px;background:var(--panel);color:var(--ink)}
+/* day plan panel */
+.xchd-row{display:flex;align-items:flex-start;gap:7px;padding:6px 0;border-bottom:1px dashed var(--line2)}
+.xchd-row:last-child{border-bottom:none}
+.xchd-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.xchd-txt b{font-size:11px;font-weight:800;color:var(--ink);line-height:1.35}
+.xchd-txt span{font-size:9.5px;font-weight:700;color:var(--mut)}
+.xchd-empty{font-size:10.5px;color:var(--mut);font-weight:600;line-height:1.55}
+.xchd-foot{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.xch-badge{font-size:8px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;border-radius:999px;padding:1px 6px;background:#FFF4DF;border:1px solid #EBD4A6;color:#8A6A24}
+/* dark */
+body[data-theme="dark"] .xch-lead,
+body[data-theme="dark"] .xch-match,
+body[data-theme="dark"] .xch-match-head,
+body[data-theme="dark"] .xch-calc,
+body[data-theme="dark"] .xch-cmp-wrap,
+body[data-theme="dark"] .xch-stat,
+body[data-theme="dark"] .xch-col,
+body[data-theme="dark"] .xch-kcard,
+body[data-theme="dark"] .xch-detail-sec{background:#1B211C;border-color:#2C332C}
+body[data-theme="dark"] .xch-col{background:#171C18}
+body[data-theme="dark"] .xch-client,
+body[data-theme="dark"] .xch-match b,
+body[data-theme="dark"] .xch-cmp-wrap h4,
+body[data-theme="dark"] .xch-kcard b,
+body[data-theme="dark"] .xch-stat .v,
+body[data-theme="dark"] .xch-out .box .v,
+body[data-theme="dark"] .xch-kv .v,
+body[data-theme="dark"] .xchd-txt b,
+body[data-theme="dark"] .xch-table td b{color:#EDEBD9}
+body[data-theme="dark"] .xch-facts span,
+body[data-theme="dark"] .xch-req span{background:#222822;border-color:#313831;color:#C9CDBF}
+body[data-theme="dark"] .xch-out .box{background:#1E241F;border-color:#2C332C}
+body[data-theme="dark"] .xch-out .box.o{background:#1E2C21;border-color:#35543E}
+body[data-theme="dark"] .xch-out .box.e{background:#1D2733;border-color:#33455C}
+body[data-theme="dark"] .xch-out .box.b{background:#2A2418;border-color:#5C4B27}
+body[data-theme="dark"] .xch-cert{background:linear-gradient(160deg,#241F14,#1B211C);border-color:#5C4B27}
+body[data-theme="dark"] .xch-cert-ref,
+body[data-theme="dark"] .xch-cert-grid .v{color:#EDEBD9}
+body[data-theme="dark"] .xch-cert-terms{color:#C7B98F;border-color:rgba(199,154,46,.35)}
+body[data-theme="dark"] .xch-btn{background:#1B211C;border-color:#313831;color:#C9CDBF}
+body[data-theme="dark"] .xch-btn:hover{border-color:#E7C46E;color:#E7C46E}
+body[data-theme="dark"] .xch-btn.pri{background:#EDEBD9;color:#1B211C;border-color:#EDEBD9}
+body[data-theme="dark"] .xch-tabs button{background:#1B211C;border-color:#2C332C;color:#C9CDBF}
+body[data-theme="dark"] .xch-tabs button.on{background:#EDEBD9;color:#1B211C;border-color:#EDEBD9}
+body[data-theme="dark"] .xch-bar input,
+body[data-theme="dark"] .xch-bar select,
+body[data-theme="dark"] .xch-calc-grid input,
+body[data-theme="dark"] .xch-calc-grid select,
+body[data-theme="dark"] .xch-cmp-tools input,
+body[data-theme="dark"] .xch-cmp-tools select,
+body[data-theme="dark"] .xch-inline input,
+body[data-theme="dark"] .xch-inline select{background:#151A15;border-color:#333A33;color:#EDEBD9}
+body[data-theme="dark"] .xch-code{background:#1D2733;border-color:#33455C;color:#9FC3EA}
+body[data-theme="dark"] .xch-stage{background:#222822;border-color:#313831;color:#A8AE9F}
+body[data-theme="dark"] .xch-stage.s-matched{background:#2A2418;border-color:#5C4B27;color:#E7C46E}
+body[data-theme="dark"] .xch-stage.s-tour{background:#1D2733;border-color:#33455C;color:#9FC3EA}
+body[data-theme="dark"] .xch-stage.s-token{background:#241E33;border-color:#453566;color:#C6B0EC}
+body[data-theme="dark"] .xch-stage.s-registry{background:#1E2C21;border-color:#35543E;color:#8FCFA1}
+body[data-theme="dark"] .xch-stage.s-settled{background:#EDEBD9;border-color:#EDEBD9;color:#1B211C}
+body[data-theme="dark"] .xch-exp{background:#1E2C21;border-color:#35543E;color:#8FCFA1}
+body[data-theme="dark"] .xch-exp.warn{background:#2A2418;border-color:#5C4B27;color:#E7C46E}
+body[data-theme="dark"] .xch-exp.dead{background:#2E1D18;border-color:#6B3A2C;color:#E8A794}
+body[data-theme="dark"] .xch-score{background:#2A2418;border-color:#5C4B27;color:#E7C46E}
+body[data-theme="dark"] .xch-why{color:#8FCFA1}
+body[data-theme="dark"] .xch-why .no{color:#E8A794}
+body[data-theme="dark"] .xch-verdict{background:#1E2C21;border-color:#35543E;color:#8FCFA1}
+body[data-theme="dark"] .xch-verdict.alt{background:#2A2418;border-color:#5C4B27;color:#E7C46E}
+body[data-theme="dark"] .xch-badge{background:#2A2418;border-color:#5C4B27;color:#E7C46E}
+@media (max-width:620px){
+  .xch-grid{grid-template-columns:1fr}
+  .xch-cert-grid{grid-template-columns:1fr}
+  .xch-kv{grid-template-columns:1fr}
+  .xch-kan{grid-auto-columns:minmax(200px,84vw)}
+  .xch-stats{grid-template-columns:repeat(auto-fit,minmax(96px,1fr))}
+  /* touch targets + no clipped money boxes on phones */
+  .xch-tabs{gap:5px}
+  .xch-tabs button{min-height:40px;padding:9px 14px}
+  .xch-btn{min-height:38px;padding:8px 11px;font-size:11px}
+  .xch-kcard .kx .xch-btn{min-height:32px}
+  .xch-bar input,.xch-bar select{min-height:40px}
+  .xch-out{grid-template-columns:1fr 1fr}
+  .xch-out .box{padding:8px 9px}
+  .xch-out .box .v{font-size:13.5px;overflow-wrap:anywhere}
+  .xch-stat{padding:8px 10px}
+  .xch-stat .v{font-size:16px;overflow-wrap:anywhere}
+  .xch-calc-grid{grid-template-columns:1fr 1fr}
+}
+</style>
 <style id="bcs-docs-vault-css">
 /* ===== project document vault: import PDF/image, label, preview, download ===== */
 .doc-attach{border:1px dashed color-mix(in srgb,var(--acc) 34%,var(--line));border-radius:14px;padding:12px;background:color-mix(in srgb,var(--acc) 4%,var(--panel));display:flex;flex-direction:column;gap:9px}
@@ -16178,12 +16388,13 @@ try{
       <button type="button" data-view="calc" aria-label="Calculators"><span class="nav-ic" aria-hidden="true">⌘</span><span class="nav-lbl">Calculators</span></button>
       <button type="button" data-view="inventory" aria-label="Plot Inventory"><span class="nav-ic" aria-hidden="true">▦</span><span class="nav-lbl">Inventory</span></button>
       <button type="button" data-view="pipeline" aria-label="Sales Pipeline"><span class="nav-ic" aria-hidden="true">⇢</span><span class="nav-lbl">Pipeline</span></button>
+      <button type="button" data-view="exchange" aria-label="Exchange"><span class="nav-ic" aria-hidden="true">⇄</span><span class="nav-lbl">Exchange</span></button>
       <button type="button" data-view="advisors" aria-label="Advisors"><span class="nav-ic" aria-hidden="true">◎</span><span class="nav-lbl">Advisors</span></button>
       <button type="button" data-view="analytics" aria-label="Analytics"><span class="nav-ic" aria-hidden="true">▥</span><span class="nav-lbl">Analytics</span></button>
       <div class="nav-more-wrap">
         <button type="button" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" title="All pages" aria-label="More pages"><span class="nav-ic" aria-hidden="true">⋯</span><span class="nav-lbl">More</span><span class="nav-chev" aria-hidden="true">▾</span></button>
         <div class="nav-more-panel" id="navMorePanel" hidden>
-          <div class="nav-more-head"><b>All 22 pages</b><span>one click away</span></div>
+          <div class="nav-more-head"><b>All pages</b><span>one click away</span></div>
           <input type="search" id="navPageSearch" class="nav-page-search" placeholder="Jump to a page…  /" aria-label="Search all pages" autocomplete="off" spellcheck="false">
           <button type="button" data-view="dashboard"><span class="nav-ic" aria-hidden="true">⌂</span>Dashboard</button>
           <button type="button" data-view="advisory"><span class="nav-ic" aria-hidden="true">✦</span>Advisory</button>
@@ -16196,6 +16407,7 @@ try{
           <button type="button" data-view="calc"><span class="nav-ic" aria-hidden="true">⌘</span>Calculators</button>
           <button type="button" data-view="inventory"><span class="nav-ic" aria-hidden="true">▦</span>Plot Inventory</button>
           <button type="button" data-view="pipeline"><span class="nav-ic" aria-hidden="true">⇢</span>Sales Pipeline</button>
+          <button type="button" data-view="exchange"><span class="nav-ic" aria-hidden="true">⇄</span>Exchange</button>
           <button type="button" data-view="advisors"><span class="nav-ic" aria-hidden="true">◎</span>Advisors</button>
           <button type="button" data-view="partners"><span class="nav-ic" aria-hidden="true">◉</span>Partners</button>
           <button type="button" data-view="finance"><span class="nav-ic" aria-hidden="true">💰</span>Finance</button>
@@ -16850,6 +17062,31 @@ try{
     </div>
   </section>
 
+  <!-- ============ CO-BROKERING EXCHANGE ============ -->
+  <section class="view" id="view-exchange">
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · co-brokering exchange — spillover lead clearinghouse</div>
+        <h2 class="adv-title">Requirement in,<br><em>matched deal out.</em></h2>
+        <p class="adv-sub">Admin ya advisor requirement daale — 90-din ka lead protection certificate, corridor + budget ke hisaab se smart match, stage-wise pipeline aur 30/35/35 settlement ledger. Aapke projects, developers, inventory, clients aur advisors — sab inbuilt data se juda hua.</p>
+      </div>
+      <div class="adv-head-actions">
+        <button class="btn ghost" id="xchSettingsBtn" type="button">⚙ Settings</button>
+        <button class="btn ghost" id="xchInvBtn" type="button">▦ Add inventory</button>
+        <button class="btn ghost" id="xchImportProjectsBtn" type="button">⬇ Import from Projects</button>
+        <button class="btn primary" id="xchNewLeadBtn" type="button">＋ Requirement</button>
+      </div>
+    </div>
+    <div class="xch-stats" id="xchStats"></div>
+    <div class="xch-tabs" id="xchTabs">
+      <button type="button" data-xch-tab="vault" class="on">🔐 Lead vault</button>
+      <button type="button" data-xch-tab="match">🎯 Smart match</button>
+      <button type="button" data-xch-tab="pipeline">⇢ Pipeline</button>
+      <button type="button" data-xch-tab="settlements">₹ Settlements</button>
+    </div>
+    <div id="xchBody"></div>
+  </section>
+
   <!-- ============ FINANCE ============ -->
   <section class="view" id="view-finance">
     <div class="adv-head">
@@ -17013,6 +17250,10 @@ try{
         <div class="panel day-follow mkd-panel">
           <div class="panel-head"><h4>Aaj ka posting plan</h4><span class="link" data-mkt-goto="social">Social</span></div>
           <div id="dayMktPosts"></div>
+        </div>
+        <div class="panel day-follow">
+          <div class="panel-head"><h4>Exchange leads</h4><span class="link" data-goto="exchange">Exchange</span></div>
+          <div id="dayXchLeads"></div>
         </div>
         <div class="panel day-idea">
           <div class="panel-head"><h4>Sticky note</h4><span class="sub">Auto-save</span></div>
@@ -21360,7 +21601,7 @@ const ADMIN_NAME = 'Ajay Sharma';
 const ADMIN_PASSWORD = '5794';
 const ADVISOR_PASSWORD = '1111';
 const AUTH_KEY = 'bcs_auth_v1';
-const ADVISOR_VIEWS = ['dashboard','projects','developers','clients','dayplan','inventory','advisors','resale','analytics','calc','links','pipeline'];
+const ADVISOR_VIEWS = ['dashboard','projects','developers','clients','dayplan','inventory','advisors','resale','analytics','calc','links','pipeline','exchange'];
 const DEFAULT_CLIENT_STATUSES = [
   { id:'new',         label:'New lead' },
   { id:'contacted',   label:'Contacted' },
@@ -22719,6 +22960,8 @@ function normalizeDb(d){
       };
     }).filter(c => c.label);
   });
+  /* ---- v179: co-brokering exchange root ---- */
+  try{ if(typeof xchEnsure === 'function') xchEnsure(d); }catch(e){ console.warn('[BCS exchange normalize]', e); }
   if(!d.version || d.version < 13) d.version = 13;
   return d;
 }
@@ -26108,7 +26351,8 @@ function renderSeniorDesk(){
     ...dueClients.slice(0,3).map(c => ({ title:c.name || c.phone || 'Client', sub:'Client · ' + followupInfo(c.nextFollowUp).label, click:'senclient', id:c.id })),
     ...dueAdvisors.slice(0,2).map(a => ({ title:a.name || 'Advisor', sub:'Advisor · ' + followupInfo(a.nextFollowUp).label, click:'senadvisor', id:a.id })),
     ...dueVisitList().slice(0,2).map(c => ({ title:c.name || c.phone || 'Client', sub:'Site visit · ' + (c.visitSlot || 'time TBD') + (c.visitDate === today ? ' · today' : ' · ' + fmtDate(c.visitDate)), click:'senvisit', id:c.id })),
-    ...plotDueGroups(plotMilestoneList().filter(x => x.milestone.date <= today)).sort((a,b) => a.date.localeCompare(b.date)).slice(0,2).map(x => ({ title:x.client ? (x.client.name || x.client.phone || 'Client') : 'Plot due', sub:(x.count > 1 ? x.count + ' milestones · ' : '') + moneyINR(x.amount) + (x.overdue ? ' · overdue' : ''), click:'sendue', id:x.plot.id }))
+    ...plotDueGroups(plotMilestoneList().filter(x => x.milestone.date <= today)).sort((a,b) => a.date.localeCompare(b.date)).slice(0,2).map(x => ({ title:x.client ? (x.client.name || x.client.phone || 'Client') : 'Plot due', sub:(x.count > 1 ? x.count + ' milestones · ' : '') + moneyINR(x.amount) + (x.overdue ? ' · overdue' : ''), click:'sendue', id:x.plot.id })),
+    ...(typeof xchPriorityItems === 'function' ? xchPriorityItems() : [])
   ].slice(0, 9);
   const attention = [
     ...projects.filter(p => !p.developerId).slice(0,2).map(p => ({ title:p.name, sub:'No developer linked', click:'senproj', id:p.id })),
@@ -26127,6 +26371,8 @@ function renderSeniorDesk(){
           ? `<button type="button" class="sen-row" data-senvisit="${item.id}"><span><b>${esc(item.title)}</b><small>${esc(item.sub)}</small></span><em>Open</em></button>`
           : item.click === 'sendue'
             ? `<button type="button" class="sen-row" data-sendue="${item.id}"><span><b>${esc(item.title)}</b><small>${esc(item.sub)}</small></span><em>Open</em></button>`
+            : item.click === 'xchlead'
+            ? `<button type="button" class="sen-row" data-xchleadopen="${item.id}"><span><b>${esc(item.title)}</b><small>${esc(item.sub)}</small></span><em>Open</em></button>`
             : `<button type="button" class="sen-row" data-goto="${item.kind}"><span><b>${esc(item.title)}</b><small>${esc(item.sub)}</small></span><em>Open</em></button>`;
   $('#seniorPriorities').innerHTML = `
     <div class="panel-head"><h4>Today's priorities</h4><span class="n-badge">${priorityItems.length}</span></div>
@@ -28717,6 +28963,7 @@ function renderAdvisorProfile(){
       <div><div class="k">Project value</div><div class="v" style="font-size:11.5px">${esc(priceRangeOf(ps))}</div></div>
       <div><div class="k">Booking deals</div><div class="v" style="font-size:11.5px">${bookingDeal ? esc(fmtPrice(bookingDeal)) : '—'}</div></div>
     </div>
+    ${typeof xchAdvisorStatsHTML === 'function' ? xchAdvisorStatsHTML(a) : ''}
     ${isAdmin() ? `<div class="profile-block portal-block">
       <div class="lab">Advisor portal</div>
       <div class="portal-line">
@@ -28987,6 +29234,7 @@ function renderClients(){
       </div>
       <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
         ${statusPill(c.clientStatus)}
+        ${c.xchLeadId ? '<span class="xch-badge">⇄ Exchange</span>' : ''}
         <span class="followup ${fu.cls}">${esc(fu.label)}</span>
         ${personaChipHTML(c, true)}
         ${returned ? `<span class="returned-chip">↩ Returned to admin</span>` : ''}
@@ -29487,6 +29735,7 @@ function renderClientProfile(){
       <span>${esc(fu.label)}</span>
       ${adv ? `<a href="#" data-cadvisor="${adv.id}">Advisor: ${esc(adv.name)}</a>` : `<span>No advisor assigned</span>`}
     </div>
+    ${c.xchLeadId ? `<div class="profile-block"><div class="lab">Co-brokering exchange</div><div class="adv-quick"><button type="button" class="btn ghost sm" data-xchleadopen="${c.xchLeadId}">⇄ Open requirement in Exchange</button></div><div class="lock-hint">Ye client exchange requirement se linked hai — matching, stage aur settlement wahin control hote hain.</div></div>` : ''}
     ${customFieldsView('client', c)}
     <div class="pipeline" style="margin-bottom:14px">
       ${CLIENT_STATUSES.map(s => `<button type="button" data-cstatus="${s.id}" class="${(c.clientStatus || 'new') === s.id ? 'on' : ''}">${esc(s.label)}</button>`).join('')}
@@ -30181,6 +30430,10 @@ function buildICS(){
   const add = (date, title, desc) => { if(!date || !/^\d{4}-\d{2}-\d{2}$/.test(String(date))) return; evts.push({ date, title, desc: desc || '' }); };
   (typeof scheduledVisitList === 'function' ? scheduledVisitList() : []).forEach(c => add(c.visitDate, '🧭 Site visit — ' + (c.name || 'Client'), 'Slot: ' + (c.visitSlot || 'TBD') + ' · Pickup: ' + (c.pickup || 'office') + ' · BCS Desk'));
   scopedClients().forEach(c => { if(c.nextFollowUp) add(c.nextFollowUp, '📞 Follow-up — ' + (c.name || c.phone || 'Client'), 'BCS Desk'); });
+  (typeof xchScopedLeads === 'function' ? xchScopedLeads() : []).filter(l => l.stage !== 'settled').forEach(l => {
+    if(l.followUp) add(l.followUp, '🤝 Exchange follow-up — ' + (l.clientName || 'Client'), l.code + ' · ' + xchCorridorName(l.corridor) + ' · BCS Exchange');
+    if(l.expiry) add(l.expiry, '⏳ Lead protection expiry — ' + (l.clientName || 'Client'), l.code + ' · ' + xchCorridorName(l.corridor) + ' · BCS Exchange');
+  });
   plotMilestoneList().forEach(x => add(x.milestone.date, '₹ ' + (x.milestone.label || 'Payment due') + ' — ' + (x.client ? (x.client.name || x.client.phone) : 'Plot'), moneyINR(x.milestone.amount || 0) + (x.plot ? ' · Plot ' + (x.plot.plotNo || x.plot.label || '') : '') + ' · BCS Desk'));
   (db.todos || []).filter(t => t.date && !t.done).forEach(t => add(t.date, '☑ ' + (t.title || 'Task'), (t.time || '') + (t.note ? ' · ' + t.note : '')));
   (db.monthMarks || []).forEach(m => add(m.date, '🏷 ' + (m.label || 'Mark'), (MONTH_MARK_TYPES[m.type] || {}).label || ''));
@@ -30256,6 +30509,12 @@ function dayAgendaText(iso){
   if(mposts.length){
     lines.push('*SOCIAL POSTS*');
     mposts.forEach(p => lines.push((p.posted ? '✅ ' : '📣 ') + (p.time ? p.time + ' · ' : '') + (typeof mktPostTitle === 'function' ? mktPostTitle(p) : '')));
+    lines.push('');
+  }
+  const xchLeads = (typeof xchScopedLeads === 'function') ? xchScopedLeads().filter(l => l.followUp === iso || l.expiry === iso) : [];
+  if(xchLeads.length){
+    lines.push('*EXCHANGE LEADS*');
+    xchLeads.forEach(l => lines.push((l.followUp === iso ? '🤝 Follow-up · ' : '⏳ Protection expiry · ') + (l.clientName || 'Client') + ' · ' + l.code + (l.corridor ? ' · ' + xchCorridorName(l.corridor) : '')));
     lines.push('');
   }
   if(marks.length){
@@ -36771,6 +37030,13 @@ function renderDayplan(){
   if(mkHost){
     try{ mkHost.innerHTML = mktDayPlanHTML(dayCursor); }
     catch(e){ mkHost.innerHTML = '<div class="mkd-empty">Posting plan load nahi hua — Social tab kholo.</div>'; }
+  }
+
+  // exchange follow-ups / protection expiry for this day
+  const xchHost = $('#dayXchLeads');
+  if(xchHost){
+    try{ xchHost.innerHTML = xchDayPlanHTML(dayCursor); }
+    catch(e){ xchHost.innerHTML = '<div class="xchd-empty">Exchange leads load nahi hue.</div>'; }
   }
 
   renderMorningBrief();
@@ -45464,6 +45730,7 @@ function render(){
   if(currentView === 'finance'){ try{ window.renderFinance(); }catch(e){} }
   if(currentView === 'advisory'){ renderSavedBriefs(); renderAdvisoryResults(); }
   if(currentView === 'inventory'){ try{ window.BCS_OPS.renderInventory(); }catch(e){} }
+  if(currentView === 'exchange'){ try{ renderExchange(); }catch(e){ console.warn('[BCS exchange render]', e); } }
   if(currentView === 'advisory' || currentView === 'clients'){ try{ window.BCS_OPS.renderPipeline(); }catch(e){} }
   if(currentView === 'templates') renderTemplates();
   if(currentView === 'health'){ renderHealth(); renderSyncCard(); try{ renderDataStatus(); }catch(e){} }
@@ -47857,7 +48124,1448 @@ try{
   }catch(e){ console.warn('[BCS search engines]', e); }
 })();
 
+
+/* ============================================================
+   BCS v179 — Co-brokering Exchange
+   Lead vault · smart match · pipeline · settlements
+   Single data root: db.exchange
+   ============================================================ */
+const XCH_STAGES = [
+  { id:'logged',   label:'Logged',              short:'Logged'   },
+  { id:'matched',  label:'Matched',             short:'Matched'  },
+  { id:'tour',     label:'Site Tour Dispatched', short:'Tour'     },
+  { id:'token',    label:'Token Deposited',      short:'Token'    },
+  { id:'registry', label:'Registry Executed',    short:'Registry' },
+  { id:'settled',  label:'Commission Settled',   short:'Settled'  }
+];
+const XCH_CORRIDORS = ['Ajmer Road','Ring Road','Sikar Road','Diggi Road','Sirsi Road','Tonk Road'];
+const XCH_NEARBY = {
+  'Ajmer Road': ['Ring Road','Sirsi Road'],
+  'Ring Road':  ['Ajmer Road','Sikar Road','Tonk Road'],
+  'Sikar Road': ['Ring Road','Diggi Road'],
+  'Diggi Road': ['Sikar Road','Tonk Road'],
+  'Sirsi Road': ['Ajmer Road','Tonk Road'],
+  'Tonk Road':  ['Ring Road','Diggi Road','Sirsi Road']
+};
+const XCH_APPROVALS = { jda:'JDA Approved', '90a':'90-A Converted', society:'Society Scheme', other:'Other / verify' };
+const XCH_TIMELINES = { immediate:'Immediate', '30d':'30 Days', investment:'Investment' };
+
+/* ---------- state ---------- */
+function xchEnsure(d){
+  d = d || db;
+  if(!d) return null;
+  if(!d.exchange || typeof d.exchange !== 'object' || Array.isArray(d.exchange)) d.exchange = {};
+  const x = d.exchange;
+  const STAGES = ['logged','matched','tour','token','registry','settled'];
+  if(!(Number(x.seq) > 0)) x.seq = 0;
+  if(!Array.isArray(x.leads)) x.leads = [];
+  if(!Array.isArray(x.inventory)) x.inventory = [];
+  if(!Array.isArray(x.settlements)) x.settlements = [];
+  if(!x.settings || typeof x.settings !== 'object') x.settings = {};
+  const st = x.settings;
+  if(!(Number(st.expiryDays) > 0)) st.expiryDays = 90;
+  if(typeof st.maskingDefault !== 'boolean') st.maskingDefault = true;
+  const splitDefaults = { originPct:30, execPct:35, bcsPct:35 };
+  Object.keys(splitDefaults).forEach(k => { if(!isFinite(+st[k])) st[k] = splitDefaults[k]; });
+  if(!x.maskAdvisors || typeof x.maskAdvisors !== 'object' || Array.isArray(x.maskAdvisors)) x.maskAdvisors = {};
+  if(!x.ui || typeof x.ui !== 'object' || Array.isArray(x.ui)) x.ui = {};
+  if(['vault','match','pipeline','settlements'].indexOf(x.ui.tab) < 0) x.ui.tab = 'vault';
+  if(typeof x.ui.vaultQ !== 'string') x.ui.vaultQ = '';
+  if(typeof x.ui.vaultStage !== 'string') x.ui.vaultStage = '';
+  if(typeof x.ui.matchLeadId !== 'string') x.ui.matchLeadId = '';
+  if(!Array.isArray(x.ui.cmpIds)) x.ui.cmpIds = [];
+  x.leads = x.leads.filter(l => l && l.id).map(l => {
+    if(STAGES.indexOf(l.stage) < 0) l.stage = 'logged';
+    if(!Array.isArray(l.logs)) l.logs = [];
+    if(!Array.isArray(l.visits)) l.visits = [];
+    if(!Array.isArray(l.matches)) l.matches = [];
+    if(typeof l.masked !== 'boolean' && l.masked !== null) l.masked = null;
+    if(!l.createdAt) l.createdAt = Date.now();
+    if(!l.code) l.code = 'REQ-' + new Date(l.createdAt).getFullYear() + '-0000';
+    if(!l.expiry) l.expiry = addISO(todayISO(), st.expiryDays);
+    l.clientName = String(l.clientName || '');
+    l.clientPhone = String(l.clientPhone || '');
+    l.advisorName = String(l.advisorName || '');
+    l.advisorMobile = String(l.advisorMobile || '');
+    l.corridor = String(l.corridor || '');
+    l.notes = String(l.notes || '');
+    l.followUp = String(l.followUp || '');
+    l.timeline = String(l.timeline || 'immediate');
+    return l;
+  });
+  x.inventory = x.inventory.filter(i => i && i.id).map(i => {
+    i.name = String(i.name || 'Project');
+    i.developer = String(i.developer || '');
+    i.corridor = String(i.corridor || '');
+    i.rera = String(i.rera || '');
+    i.sizes = String(i.sizes || '');
+    i.amenities = String(i.amenities || '');
+    i.connectivity = String(i.connectivity || '');
+    i.layout = String(i.layout || '');
+    i.notes = String(i.notes || '');
+    i.approval = ['jda','90a','society','other'].indexOf(i.approval) >= 0 ? i.approval : 'other';
+    i.rate = Number(i.rate) || 0;
+    i.slab = Number(i.slab) || 0;
+    i.roadWidth = Number(i.roadWidth) || 0;
+    if(typeof i.active !== 'boolean') i.active = true;
+    return i;
+  });
+  x.settlements = x.settlements.filter(s => s && s.id).map(s => {
+    s.status = s.status === 'cleared' ? 'cleared' : 'pending';
+    ['txn','slab','rate','gaj','gross','originPct','execPct','bcsPct','originAmt','execAmt','bcsAmt'].forEach(k => { s[k] = Number(s[k]) || 0; });
+    return s;
+  });
+  return x;
+}
+function xch(){ return xchEnsure(db); }
+function xchSave(){ try{ save(); }catch(e){} }
+
+/* ---------- small helpers ---------- */
+function xchDigits(v){ return String(v || '').replace(/\D/g, '').slice(-10); }
+function xchINR(v){ return moneyINR(v || 0); }
+function xchCorridorName(v){
+  const s = String(v || '').trim();
+  if(!s) return '';
+  const hit = (db.corridors || []).find(c => c.id === s || String(c.name || '').toLowerCase() === s.toLowerCase());
+  if(hit) return hit.name;
+  const named = XCH_CORRIDORS.find(n => n.toLowerCase() === s.toLowerCase());
+  return named || s;
+}
+function xchCorridorId(name){
+  const s = String(name || '').toLowerCase();
+  const hit = (db.corridors || []).find(c => String(c.name || '').toLowerCase() === s || c.id === s);
+  return hit ? hit.id : '';
+}
+function xchStageMeta(id){ return XCH_STAGES.find(s => s.id === id) || XCH_STAGES[0]; }
+function xchMaskPhone(p){
+  const d = String(p || '').replace(/\D/g, '');
+  if(!d) return 'XXXXX-XX';
+  return 'XXXXX-XX' + d.slice(-3);
+}
+function xchMaskActive(lead){
+  if(isAdmin()) return false;
+  const x = xch();
+  if(!x) return false;
+  if(lead && lead.masked === true) return true;
+  if(lead && lead.masked === false) return false;
+  const me = currentAdvisor();
+  if(me && x.maskAdvisors[me.id] === true) return true;
+  return !!x.settings.maskingDefault;
+}
+function xchPhoneFor(lead){ return xchMaskActive(lead) ? xchMaskPhone(lead && lead.clientPhone) : ((lead && lead.clientPhone) || '—'); }
+function xchScopedLeads(){
+  const x = xch();
+  if(!x) return [];
+  if(isAdmin()) return x.leads.slice();
+  const me = currentAdvisor();
+  if(!me) return [];
+  return x.leads.filter(l => l.advisorId === me.id || l.execId === me.id || l.createdBy === me.id);
+}
+function xchScopedSettlements(){
+  const x = xch();
+  if(!x) return [];
+  if(isAdmin()) return x.settlements.slice();
+  const mine = xchScopedLeads();
+  const ids = new Set(mine.map(l => l.id));
+  const codes = new Set(mine.map(l => l.code));
+  return x.settlements.filter(s => ids.has(s.leadId) || codes.has(s.code));
+}
+function xchCanEdit(lead){
+  if(!lead) return false;
+  if(isAdmin()) return true;
+  const me = currentAdvisor();
+  if(!me) return false;
+  return lead.advisorId === me.id || lead.createdBy === me.id || lead.execId === me.id;
+}
+function xchDaysLeft(iso){
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(String(iso || ''))) return null;
+  const p = String(iso).split('-').map(Number);
+  const t = Date.UTC(p[0], p[1] - 1, p[2]);
+  const n = new Date();
+  const now = Date.UTC(n.getFullYear(), n.getMonth(), n.getDate());
+  return Math.round((t - now) / 86400000);
+}
+function xchBudgetText(l){
+  const a = Number(l && l.budgetMin), b = Number(l && l.budgetMax);
+  if(!a && !b) return 'Flexible';
+  if(a && b) return '₹' + a + '–' + b + ' L';
+  return '₹' + (a || b) + ' L';
+}
+function xchParseSizes(v){
+  return String(v || '').split(/[,;/|]+/).map(s => Number(String(s).replace(/[^\d.]/g, ''))).filter(n => n > 0);
+}
+function xchSizeFit(inv, gaj){
+  const sizes = xchParseSizes(inv && inv.sizes);
+  if(!sizes.length) return { ok: null, sizes };
+  const g = Number(gaj) || 0;
+  if(!g) return { ok: null, sizes };
+  const tol = Math.max(10, g * 0.1);
+  const hit = sizes.find(s => Math.abs(s - g) <= tol);
+  return { ok: !!hit, sizes, hit: hit || null };
+}
+function xchFindAdvisor(name, mobile){
+  const m = xchDigits(mobile), n = String(name || '').trim().toLowerCase();
+  const list = db.advisors || [];
+  if(m){ const hit = list.find(a => xchDigits(a.phone) === m); if(hit) return hit; }
+  if(n){ const hit = list.find(a => String(a.name || '').trim().toLowerCase() === n); if(hit) return hit; }
+  return null;
+}
+function xchNextCode(){
+  const x = xch();
+  const y = new Date().getFullYear();
+  const prefix = 'REQ-' + y + '-';
+  let max = Number(x.seq) || 0;
+  x.leads.forEach(l => {
+    const m = String(l.code || '').match(/^REQ-\d{4}-(\d+)$/);
+    if(m) max = Math.max(max, Number(m[1]) || 0);
+  });
+  x.seq = max + 1;
+  return prefix + String(x.seq).padStart(4, '0');
+}
+function xchLog(lead, text){
+  if(!lead) return;
+  if(!Array.isArray(lead.logs)) lead.logs = [];
+  const me = currentAdvisor();
+  lead.logs.unshift({ at: Date.now(), text: String(text || ''), by: isAdmin() ? 'Admin' : ((me && me.name) || 'Advisor') });
+  if(lead.logs.length > 60) lead.logs.length = 60;
+  lead.updatedAt = Date.now();
+}
+function xchExpiryPill(lead){
+  const d = xchDaysLeft(lead && lead.expiry);
+  if(d == null) return '<span class="xch-exp">—</span>';
+  if(d < 0) return '<span class="xch-exp dead">Expired</span>';
+  if(d <= 15) return '<span class="xch-exp warn">' + d + 'd left</span>';
+  return '<span class="xch-exp">' + d + 'd left</span>';
+}
+function xchWa(phone, text){
+  const d = xchDigits(phone);
+  const base = 'https://wa.me/' + (d ? (d.length === 10 ? '91' + d : d) : '');
+  return base + '?text=' + encodeURIComponent(text || '');
+}
+function xchCertISO(lead){
+  const t = Number(lead && lead.createdAt) || Date.now();
+  return new Date(t).toISOString().slice(0, 10);
+}
+
+/* ---------- matching ---------- */
+function xchMatch(lead, inv){
+  const why = [];
+  let score = 0;
+  const lc = xchCorridorName(lead && lead.corridor);
+  const ic = xchCorridorName(inv && inv.corridor);
+  if(lc && ic && lc === ic){ score += 45; why.push({ ok:true, t:'Same corridor · ' + ic }); }
+  else if(lc && ic && (XCH_NEARBY[lc] || []).indexOf(ic) >= 0){ score += 18; why.push({ ok:true, t:'Nearby corridor · ' + ic }); }
+  else { why.push({ ok:false, t:'Corridor different · ' + (ic || '—') }); }
+
+  const rate = Number(inv && inv.rate) || 0;
+  const gaj = Number(lead && lead.gaj) || 0;
+  const cost = rate && gaj ? rate * gaj : 0;
+  const bMin = (Number(lead && lead.budgetMin) || 0) * 100000;
+  const bMax = (Number(lead && lead.budgetMax) || 0) * 100000;
+  if(cost && bMax){
+    const lo = bMin ? bMin * 0.9 : 0;
+    const hi = bMax * 1.1;
+    if(cost <= hi){ score += 30; why.push({ ok:true, t:(cost < lo ? 'Under budget · ' : 'Budget fit · ') + xchINR(cost) }); }
+    else if(cost <= bMax * 1.25){ score += 12; why.push({ ok:true, t:'Budget stretched · ' + xchINR(cost) }); }
+    else { why.push({ ok:false, t:'Above budget · ' + xchINR(cost) }); }
+  } else {
+    score += 10;
+    why.push({ ok:true, t: cost ? 'Budget flexible' : 'Rate missing — verify' });
+  }
+
+  const fit = xchSizeFit(inv, gaj);
+  if(fit.ok === true){ score += 20; why.push({ ok:true, t:'Size available · ' + gaj + ' gaj' }); }
+  else if(fit.ok === null){ score += 8; why.push({ ok:true, t:'Size — verify availability' }); }
+  else { why.push({ ok:false, t:'Size not listed · ' + (inv.sizes || '—') }); }
+
+  if(inv && inv.rera){ score += 5; why.push({ ok:true, t:'RERA registered' }); }
+  if(inv && (inv.approval === 'jda' || inv.approval === '90a')){ score += 5; why.push({ ok:true, t:XCH_APPROVALS[inv.approval] }); }
+
+  score = Math.min(100, score);
+  const verdict = score >= 80 ? 'Strong' : score >= 55 ? 'Good' : score >= 35 ? 'Possible' : 'Weak';
+  return { score, why, cost, verdict };
+}
+function xchMatchesFor(lead){
+  const x = xch();
+  if(!x || !lead) return [];
+  return x.inventory.filter(i => i.active !== false)
+    .map(inv => ({ inv, m: xchMatch(lead, inv) }))
+    .sort((a, b) => b.m.score - a.m.score);
+}
+
+/* ---------- settlement math ---------- */
+function xchSettleCalc(o){
+  o = o || {};
+  const num = v => { const n = Number(v); return isFinite(n) ? n : 0; };
+  const mode = o.mode === 'rate' || o.mode === 'manual' ? o.mode : 'pct';
+  const txn = num(o.txn), slab = num(o.slab), rate = num(o.rate), gaj = num(o.gaj), manual = num(o.gross);
+  let gross = 0;
+  if(mode === 'rate') gross = rate * gaj * slab / 100;
+  else if(mode === 'manual') gross = manual;
+  else gross = txn * slab / 100;
+  const op = o.originPct === '' || o.originPct == null ? 30 : num(o.originPct);
+  const ep = o.execPct === '' || o.execPct == null ? 35 : num(o.execPct);
+  const bp = o.bcsPct === '' || o.bcsPct == null ? 35 : num(o.bcsPct);
+  const total = op + ep + bp;
+  return {
+    mode, txn, slab, rate, gaj, manual,
+    gross: Math.round(gross),
+    origin: Math.round(gross * op / 100),
+    exec: Math.round(gross * ep / 100),
+    bcs: Math.round(gross * bp / 100),
+    op, ep, bp, total,
+    warn: Math.abs(total - 100) > 0.01
+  };
+}
+function xchModeNote(r){
+  if(r.mode === 'rate') return 'Base rate method: ' + r.gaj + ' gaj × ₹' + (r.rate || 0).toLocaleString('en-IN') + '/gaj × ' + r.slab + '% slab';
+  if(r.mode === 'manual') return 'Manual gross entry — slab % sirf reference ke liye.';
+  return 'Transaction method: ' + xchINR(r.txn) + ' × ' + r.slab + '% slab';
+}
+function xchOutHTML(r){
+  return '<div class="box"><div class="k">Gross developer receivable</div><div class="v">' + xchINR(r.gross) + '</div></div>'
+    + '<div class="box o"><div class="k">Originator · ' + r.op + '%</div><div class="v">' + xchINR(r.origin) + '</div></div>'
+    + '<div class="box e"><div class="k">Executing · ' + r.ep + '%</div><div class="v">' + xchINR(r.exec) + '</div></div>'
+    + '<div class="box b"><div class="k">BCS platform · ' + r.bp + '%</div><div class="v">' + xchINR(r.bcs) + '</div></div>';
+}
+function xchCalcNoteHTML(r){
+  return (r.warn ? '<div class="xch-warnline">Split total ' + r.total + '% — 100% rakhein.</div>' : '<div class="xch-okline">Split total 100% · 30/35/35 default.</div>')
+    + '<div class="xch-note">' + esc(xchModeNote(r)) + '</div>';
+}
+
+/* ---------- text builders ---------- */
+function xchLeadShareText(l){
+  const x = xch();
+  const exec = l.execId ? ((db.advisors || []).find(a => a.id === l.execId) || {}).name : l.execName;
+  return [
+    '🛡 *BCS Lead Protection — ' + l.code + '*',
+    'Client: ' + (l.clientName || 'Client'),
+    'Phone: ' + xchPhoneFor(l),
+    'Corridor: ' + (xchCorridorName(l.corridor) || '—'),
+    'Budget: ' + xchBudgetText(l),
+    'Size: ' + (l.gaj ? l.gaj + ' gaj' : '—'),
+    'Timeline: ' + (XCH_TIMELINES[l.timeline] || '—'),
+    'Originator: ' + (l.advisorName || 'Admin desk'),
+    'Executing: ' + (exec || 'To be assigned'),
+    'Valid till: ' + fmtDate(l.expiry),
+    '',
+    'Split on gross developer receivable — originator ' + x.settings.originPct + '% · executing ' + x.settings.execPct + '% · BCS ' + x.settings.bcsPct + '%.',
+    '_BCS · Business City Square, Jaipur_'
+  ].join('\n');
+}
+function xchCertificateText(l){
+  const x = xch();
+  return [
+    '🛡 *DIGITAL LEAD PROTECTION CERTIFICATE*',
+    'BCS · Business City Square, Jaipur',
+    '',
+    'Reference: *' + l.code + '*',
+    'Client: ' + (l.clientName || 'Client'),
+    'Phone: ' + xchPhoneFor(l),
+    'Corridor: ' + (xchCorridorName(l.corridor) || '—'),
+    'Budget: ' + xchBudgetText(l),
+    'Plot size: ' + (l.gaj ? l.gaj + ' gaj' : '—'),
+    'Timeline: ' + (XCH_TIMELINES[l.timeline] || '—'),
+    'Originator: ' + (l.advisorName || 'Admin desk'),
+    'Logged: ' + fmtDate(xchCertISO(l)),
+    'Valid till: ' + fmtDate(l.expiry) + ' (' + x.settings.expiryDays + ' days)',
+    '',
+    'Lead protection: is requirement par originating advisor ka claim ' + x.settings.expiryDays + ' din tak. Settlement split — ' + x.settings.originPct + '/' + x.settings.execPct + '/' + x.settings.bcsPct + ' of gross developer receivable.',
+    '_System generated · BCS Desk_'
+  ].join('\n');
+}
+function xchDocketText(inv, lead){
+  const rate = Number(inv.rate) || 0;
+  const gaj = Number(lead && lead.gaj) || 0;
+  const est = rate && gaj ? rate * gaj : 0;
+  const lines = [
+    '🏡 *' + (inv.name || 'Project') + '*',
+    '📍 ' + (xchCorridorName(inv.corridor) || 'Jaipur'),
+    '✅ ' + (XCH_APPROVALS[inv.approval] || 'Approval verify') + (inv.rera ? ' · RERA ' + inv.rera : ''),
+    '📐 Sizes: ' + (inv.sizes || 'On request'),
+    '💰 Base rate: ₹' + rate.toLocaleString('en-IN') + ' / gaj' + (est ? ' · approx ' + xchINR(est) + ' for ' + gaj + ' gaj' : ''),
+    inv.roadWidth ? '🛣 Road width: ' + inv.roadWidth + ' ft' : '',
+    inv.amenities ? '🏗 ' + inv.amenities : '',
+    inv.connectivity ? '🧭 ' + inv.connectivity : '',
+    inv.layout ? '🔗 Layout: ' + inv.layout : '',
+    inv.notes ? '📝 ' + inv.notes : '',
+    '',
+    '_Shared by BCS Desk for ' + (lead ? (lead.clientName || 'client') : 'client') + ' · ' + (lead ? lead.code : '') + '. No direct builder contact shared._'
+  ].filter(Boolean);
+  return lines.join('\n');
+}
+
+/* ---------- data actions ---------- */
+function xchUpsertClient(lead){
+  if(!Array.isArray(db.clients)) db.clients = [];
+  let c = db.clients.find(x => x.xchLeadId === lead.id);
+  const corridorId = xchCorridorId(lead.corridor);
+  if(!c){
+    c = {
+      id: uid(), createdAt: Date.now(), updatedAt: Date.now(),
+      name: lead.clientName, phone: lead.clientPhone, email: '',
+      advisorId: lead.advisorId || '', clientStatus: 'new',
+      corridors: corridorId ? [corridorId] : [], projectIds: [], types: [],
+      budgetMin: lead.budgetMin == null ? null : lead.budgetMin,
+      budgetMax: lead.budgetMax == null ? null : lead.budgetMax,
+      timeline: lead.timeline || '', requirement: lead.notes || '',
+      notes: 'Captured via Exchange · ' + lead.code,
+      nextFollowUp: lead.followUp || '', lastContact: '',
+      transferHistory: [], custom: {},
+      readiness: { kyc:false, income:false, bankPreapproval:false, cibil:false, agreement:false },
+      xchLeadId: lead.id, source: 'exchange'
+    };
+    db.clients.push(c);
+  } else {
+    c.name = lead.clientName || c.name;
+    c.phone = lead.clientPhone || c.phone;
+    c.updatedAt = Date.now();
+    if(lead.advisorId) c.advisorId = lead.advisorId;
+    if(corridorId) c.corridors = [corridorId];
+    c.budgetMin = lead.budgetMin == null ? c.budgetMin : lead.budgetMin;
+    c.budgetMax = lead.budgetMax == null ? c.budgetMax : lead.budgetMax;
+    c.timeline = lead.timeline || c.timeline;
+    c.requirement = lead.notes || c.requirement;
+    c.nextFollowUp = lead.followUp || c.nextFollowUp;
+  }
+  lead.clientId = c.id;
+  return c;
+}
+function xchUpsertTodo(lead){
+  if(!Array.isArray(db.todos)) db.todos = [];
+  if(!lead.followUp) return;
+  let t = db.todos.find(x => x.xchLeadId === lead.id && !x.done);
+  if(!t){
+    t = {
+      id: uid(), xchLeadId: lead.id, date: lead.followUp, time: '',
+      title: 'Exchange follow-up — ' + (lead.clientName || 'Client') + ' (' + lead.code + ')',
+      note: (xchCorridorName(lead.corridor) || '') + ' · ' + xchBudgetText(lead),
+      priority: 'high', done: false, doneAt: null,
+      createdAt: Date.now(), updatedAt: Date.now()
+    };
+    db.todos.push(t);
+  } else {
+    t.date = lead.followUp;
+    t.title = 'Exchange follow-up — ' + (lead.clientName || 'Client') + ' (' + lead.code + ')';
+    t.updatedAt = Date.now();
+  }
+}
+function xchSetStage(lead, stage){
+  if(!lead || !xchStageMeta(stage)) return;
+  if(lead.stage === stage) return;
+  lead.stage = stage;
+  xchLog(lead, 'Stage → ' + xchStageMeta(stage).label);
+  xchSave();
+  renderExchange();
+  if(xchDetailId === lead.id) xchOpenDetail(lead.id);
+  toast('Stage update · ' + xchStageMeta(stage).label);
+}
+function xchRenew(lead){
+  if(!lead) return;
+  const x = xch();
+  lead.expiry = addISO(todayISO(), x.settings.expiryDays);
+  xchLog(lead, 'Protection renewed till ' + fmtDate(lead.expiry));
+  xchSave(); renderExchange();
+  if(xchDetailId === lead.id) xchOpenDetail(lead.id);
+  toast('Lead protection renew · ' + fmtDate(lead.expiry));
+}
+function xchDeleteLead(lead){
+  if(!lead) return;
+  if(!confirm('Delete ' + lead.code + '? Client record rahega, lead vault se hat jayega.')) return;
+  const x = xch();
+  x.leads = x.leads.filter(l => l.id !== lead.id);
+  x.ui.cmpIds = x.ui.cmpIds.filter(id => id !== lead.id);
+  xchSave(); renderExchange();
+  toast('Lead deleted');
+}
+function xchImportFromProjects(){
+  const x = xch();
+  const linked = new Set(x.inventory.map(i => i.projectId).filter(Boolean));
+  let n = 0;
+  (db.projects || []).forEach(p => {
+    if(linked.has(p.id)) return;
+    let rate = Number(p.pricePerUnit) || 0;
+    if(rate && p.priceUnit === 'sqft') rate = Math.round(rate * 9);
+    const devName = ((db.developers || []).find(d => d.id === p.developerId) || {}).name || '';
+    const conn = Array.isArray(p.connectivity)
+      ? p.connectivity.map(c => (c.label || '') + (c.distance ? ' ' + c.distance : '')).filter(Boolean).join(', ')
+      : String(p.connectivity || '');
+    const inv = {
+      id: uid(), projectId: p.id, name: p.name || 'Project', developer: devName,
+      corridor: xchCorridorName(p.corridor),
+      approval: XCH_APPROVALS[p.approvalType] ? p.approvalType : 'other',
+      rera: p.rera || '', rate,
+      sizes: (String(p.sizes || '').match(/\d+/g) || []).map(Number).filter(n => n >= 20).slice(0, 8).join(', '),
+      roadWidth: 0, slab: 2, layout: p.mapUrl || '',
+      amenities: Array.isArray(p.amenities) ? p.amenities.join(', ') : String(p.amenities || ''),
+      connectivity: conn,
+      notes: p.remarks || p.inventoryNotes || '',
+      active: true, createdAt: Date.now(), updatedAt: Date.now()
+    };
+    x.inventory.push(inv);
+    n++;
+  });
+  xchSave(); renderExchange();
+  toast(n ? n + ' project inventory me import ho gaye' : 'Sab projects pehle se imported hain');
+}
+
+/* ---------- render: shell ---------- */
+function xchStatsHTML(){
+  const leads = xchScopedLeads();
+  const active = leads.filter(l => l.stage !== 'settled');
+  const expired = active.filter(l => { const d = xchDaysLeft(l.expiry); return d != null && d < 0; }).length;
+  const expiring = active.filter(l => { const d = xchDaysLeft(l.expiry); return d != null && d >= 0 && d <= 15; }).length;
+  const settled = leads.filter(l => l.stage === 'settled').length;
+  const sets = xchScopedSettlements();
+  const gross = sets.reduce((n, s) => n + (Number(s.gross) || 0), 0);
+  const bcs = sets.reduce((n, s) => n + (Number(s.bcsAmt) || 0), 0);
+  const pending = sets.filter(s => s.status !== 'cleared').reduce((n, s) => n + (Number(s.gross) || 0), 0);
+  const inv = (xch() || {}).inventory || [];
+  return ''
+    + '<div class="xch-stat"><div class="k">Active leads</div><div class="v">' + active.length + ' <small>/ ' + leads.length + '</small></div></div>'
+    + '<div class="xch-stat gold"><div class="k">Expiring ≤15d</div><div class="v">' + expiring + ' <small>· ' + expired + ' expired</small></div></div>'
+    + '<div class="xch-stat"><div class="k">Inventory</div><div class="v">' + inv.filter(i => i.active !== false).length + ' <small>projects</small></div></div>'
+    + '<div class="xch-stat green"><div class="k">Settled gross</div><div class="v">' + (gross ? xchINR(gross) : '—') + '</div></div>'
+    + '<div class="xch-stat gold"><div class="k">BCS retained</div><div class="v">' + (bcs ? xchINR(bcs) : '—') + '</div></div>'
+    + '<div class="xch-stat"><div class="k">Pending payout</div><div class="v">' + (pending ? xchINR(pending) : '—') + '</div></div>';
+}
+function renderExchange(){
+  const x = xch();
+  if(!x) return;
+  const stats = document.getElementById('xchStats');
+  if(stats) stats.innerHTML = xchStatsHTML();
+  const tabs = document.querySelectorAll('#xchTabs [data-xch-tab]');
+  Array.prototype.forEach.call(tabs, b => b.classList.toggle('on', b.getAttribute('data-xch-tab') === x.ui.tab));
+  const body = document.getElementById('xchBody');
+  if(!body) return;
+  if(x.ui.tab === 'match') body.innerHTML = xchMatchHTML();
+  else if(x.ui.tab === 'pipeline') body.innerHTML = xchPipelineHTML();
+  else if(x.ui.tab === 'settlements') body.innerHTML = xchSettleHTML();
+  else body.innerHTML = xchVaultHTML();
+}
+
+/* ---------- render: vault ---------- */
+function xchVaultHTML(){
+  const x = xch();
+  const q = String(x.ui.vaultQ || '').toLowerCase();
+  let list = xchScopedLeads().slice().sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+  if(x.ui.vaultStage) list = list.filter(l => l.stage === x.ui.vaultStage);
+  if(q){
+    list = list.filter(l => [l.code, l.clientName, l.clientPhone, l.advisorName, l.advisorMobile, xchCorridorName(l.corridor), xchBudgetText(l), l.notes]
+      .filter(Boolean).join(' ').toLowerCase().indexOf(q) >= 0);
+  }
+  const stageOpts = '<option value="">All stages</option>' + XCH_STAGES.map(s => '<option value="' + s.id + '"' + (x.ui.vaultStage === s.id ? ' selected' : '') + '>' + esc(s.label) + '</option>').join('');
+  const cards = list.map(l => {
+    const st = xchStageMeta(l.stage);
+    const exp = xchExpiryPill(l);
+    const dead = (xchDaysLeft(l.expiry) || 0) < 0 && l.stage !== 'settled';
+    const exec = l.execId ? ((db.advisors || []).find(a => a.id === l.execId) || {}).name : l.execName;
+    return '<article class="xch-lead' + (dead ? ' is-expired' : '') + '">'
+      + '<div class="xch-lead-top"><span class="xch-code">' + esc(l.code) + '</span>'
+      + '<span class="xch-stage s-' + l.stage + '">' + esc(st.label) + '</span>' + exp + '</div>'
+      + '<div class="xch-client">' + esc(l.clientName || 'Client') + '</div>'
+      + '<div class="xch-meta"><span>📞 ' + esc(xchPhoneFor(l)) + '</span><span>📍 ' + esc(xchCorridorName(l.corridor) || '—') + '</span></div>'
+      + '<div class="xch-facts"><span>' + esc(xchBudgetText(l)) + '</span><span>' + (l.gaj ? esc(l.gaj) + ' gaj' : 'Size —') + '</span><span>' + esc(XCH_TIMELINES[l.timeline] || '—') + '</span></div>'
+      + '<div class="xch-adv">Originator: ' + esc(l.advisorName || 'Admin desk') + ' · Closer: ' + esc(exec || '—') + '</div>'
+      + '<div class="xch-acts">'
+      + '<button type="button" class="xch-btn pri" data-xchleadopen="' + l.id + '">Open</button>'
+      + '<button type="button" class="xch-btn" data-xchleadmatch="' + l.id + '">🎯 Match</button>'
+      + '<button type="button" class="xch-btn" data-xchleadwa="' + l.id + '">↗ WhatsApp</button>'
+      + '<button type="button" class="xch-btn" data-xchleadcert="' + l.id + '">🛡 Certificate</button>'
+      + (xchCanEdit(l) ? '<button type="button" class="xch-btn" data-xchleadopen="' + l.id + '" data-xchedit="1">✎ Edit</button>' : '')
+      + (isAdmin() ? '<button type="button" class="xch-btn del" data-xchleaddel="' + l.id + '">✕</button>' : '')
+      + '</div></article>';
+  }).join('');
+  return ''
+    + '<div class="xch-bar">'
+    + '<input class="grow" id="xchVaultQ" placeholder="Search code, client, advisor, corridor, phone…" value="' + esc(x.ui.vaultQ || '') + '">'
+    + '<select id="xchVaultStage">' + stageOpts + '</select>'
+    + '<button type="button" class="xch-btn" id="xchVaultAdd">＋ Requirement</button>'
+    + '</div>'
+    + (cards ? '<div class="xch-grid">' + cards + '</div>'
+      : '<div class="xch-empty">Koi requirement nahi mila. <b>＋ Requirement</b> se naya lead log karein, ya filter clear karein.<br>Advisor requirement bhejega to yahan automatic aa jayega.</div>');
+}
+
+/* ---------- render: match ---------- */
+function xchMatchHTML(){
+  const x = xch();
+  const leads = xchScopedLeads().filter(l => l.stage !== 'settled').sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+  if(!leads.length){
+    return '<div class="xch-empty">Match karne ke liye pehle koi active requirement chahiye.<br><b>Lead vault</b> me requirement add karein.</div>' + xchInventoryHTML();
+  }
+  let lead = leads.find(l => l.id === x.ui.matchLeadId) || leads[0];
+  x.ui.matchLeadId = lead.id;
+  const matches = xchMatchesFor(lead);
+  const opts = leads.map(l => '<option value="' + l.id + '"' + (l.id === lead.id ? ' selected' : '') + '>' + esc(l.code + ' · ' + (l.clientName || 'Client') + ' · ' + xchCorridorName(l.corridor)) + '</option>').join('');
+  const top = matches.slice(0, 8);
+  const cards = top.map((row, i) => {
+    const inv = row.inv, m = row.m;
+    const sizeNote = inv.sizes ? esc(inv.sizes) : '—';
+    return '<article class="xch-match' + (i === 0 && m.score >= 55 ? ' best' : '') + '">'
+      + '<span class="xch-score">' + m.score + '/100 · ' + esc(m.verdict) + '</span>'
+      + '<b>' + esc(inv.name) + '</b>'
+      + '<div class="sub">' + esc(xchCorridorName(inv.corridor) || '—') + ' · ' + esc(XCH_APPROVALS[inv.approval] || '—') + (inv.rera ? ' · RERA' : ' · RERA —') + (inv.roadWidth ? ' · ' + inv.roadWidth + ' ft road' : '') + '</div>'
+      + '<div class="xch-why">' + m.why.map(w => '<span class="' + (w.ok ? '' : 'no') + '">' + (w.ok ? '✓ ' : '✕ ') + esc(w.t) + '</span>').join('') + '</div>'
+      + '<div class="xch-money"><span>Rate <b>₹' + (Number(inv.rate) || 0).toLocaleString('en-IN') + '/gaj</b></span><span>Sizes <b>' + sizeNote + '</b></span>' + (m.cost ? '<span>Est. <b>' + xchINR(m.cost) + '</b></span>' : '') + '</div>'
+      + '<div class="xch-acts">'
+      + '<button type="button" class="xch-btn pri" data-xchcmpadd="' + inv.id + '">＋ Compare</button>'
+      + '<button type="button" class="xch-btn" data-xchdocket="' + inv.id + '">↗ WhatsApp docket</button>'
+      + (inv.projectId ? '<button type="button" class="xch-btn" data-xchproj="' + inv.projectId + '">▣ Project</button>' : '')
+      + '</div></article>';
+  }).join('');
+
+  const cmpRows = x.ui.cmpIds.map(id => matches.find(r => r.inv.id === id)).filter(Boolean);
+  const cmpPick = matches.filter(r => x.ui.cmpIds.indexOf(r.inv.id) < 0).map(r => '<option value="' + r.inv.id + '">' + esc(r.inv.name + ' · ' + r.m.score + '/100') + '</option>').join('');
+  const cmpTable = cmpRows.length ? '<div class="xch-cmp-wrap">'
+    + '<div class="xch-cmp-tools"><h4 style="margin:0;flex:1">Manual compare · ' + cmpRows.length + ' shortlisted</h4>'
+    + '<select data-xchcmppick><option value="">Add project to compare…</option>' + cmpPick + '</select>'
+    + '<button type="button" class="xch-btn" data-xchcmpclear>Clear</button></div>'
+    + '<div class="xch-scroll"><table class="xch-table"><thead><tr><th>Project</th><th>Corridor</th><th>Approval</th><th class="num">Rate/gaj</th><th class="num">Est. cost</th><th>Score</th><th>Verdict</th><th></th></tr></thead><tbody>'
+    + cmpRows.map(r => '<tr><td><b>' + esc(r.inv.name) + '</b><br><small>' + esc(r.inv.sizes || '—') + '</small></td>'
+      + '<td>' + esc(xchCorridorName(r.inv.corridor) || '—') + '</td>'
+      + '<td>' + esc(XCH_APPROVALS[r.inv.approval] || '—') + (r.inv.rera ? '<br><small>RERA</small>' : '') + '</td>'
+      + '<td class="num">₹' + (Number(r.inv.rate) || 0).toLocaleString('en-IN') + '</td>'
+      + '<td class="num">' + (r.m.cost ? xchINR(r.m.cost) : '—') + '</td>'
+      + '<td class="num">' + r.m.score + '</td>'
+      + '<td><span class="xch-verdict' + (r.m.verdict === 'Weak' ? ' alt' : '') + '">' + esc(r.m.verdict) + '</span></td>'
+      + '<td><button type="button" class="xch-btn del" data-xchcmprm="' + r.inv.id + '">✕</button></td></tr>').join('')
+    + '</tbody></table></div>'
+    + '<div class="xch-detail-sec" style="margin-top:10px"><h5>Decision notes</h5>'
+    + cmpRows.map(r => '<div style="margin-bottom:7px"><b style="font-size:11px">' + esc(r.inv.name) + '</b><div class="xch-why">' + r.m.why.map(w => '<span class="' + (w.ok ? '' : 'no') + '">' + (w.ok ? '✓ ' : '✕ ') + esc(w.t) + '</span>').join('') + '</div></div>').join('')
+    + '</div></div>'
+    : '<div class="xch-cmp-wrap"><h4>Manual compare</h4><p class="xch-note" style="margin:0">Upar kisi bhi card par <b>＋ Compare</b> dabayein — 2–4 projects ka rate, cost, approval aur match score side-by-side dikhega. Client ko clear recommendation dene ke liye.</p></div>';
+
+  return ''
+    + '<div class="xch-match-head">'
+    + '<div class="field"><label>Requirement</label><select data-xchmatchlead>' + opts + '</select></div>'
+    + '<button type="button" class="xch-btn" data-xchleadopen="' + lead.id + '">Open lead</button>'
+    + '<button type="button" class="xch-btn" data-xchleadwa="' + lead.id + '">↗ Share requirement</button>'
+    + '<div class="xch-req"><span>📍 ' + esc(xchCorridorName(lead.corridor) || 'Any corridor') + '</span><span>💰 ' + esc(xchBudgetText(lead)) + '</span><span>📐 ' + (lead.gaj ? esc(lead.gaj) + ' gaj' : 'Any size') + '</span><span>⏱ ' + esc(XCH_TIMELINES[lead.timeline] || '—') + '</span><span>🛡 ' + esc(xchPhoneFor(lead)) + '</span></div>'
+    + '</div>'
+    + (matches.length ? '<div class="xch-grid">' + cards + '</div>' : '<div class="xch-empty">Exchange inventory khali hai. <b>⬇ Import from Projects</b> dabayein ya <b>▦ Add inventory</b> se project add karein.</div>')
+    + cmpTable + xchInventoryHTML();
+}
+function xchInventoryHTML(){
+  const x = xch();
+  const q = String(x.ui.invQ || '').toLowerCase();
+  let list = x.inventory.slice().sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+  if(q) list = list.filter(i => [i.name, i.developer, xchCorridorName(i.corridor), i.rera, i.sizes, i.notes].filter(Boolean).join(' ').toLowerCase().indexOf(q) >= 0);
+  const rows = list.map(i => '<tr>'
+    + '<td><b>' + esc(i.name) + '</b><br><small>' + esc(i.developer || '') + (i.rera ? ' · ' + esc(i.rera) : '') + '</small></td>'
+    + '<td>' + esc(xchCorridorName(i.corridor) || '—') + '</td>'
+    + '<td>' + esc(XCH_APPROVALS[i.approval] || '—') + '<br><small>' + (i.roadWidth ? i.roadWidth + ' ft road' : 'road —') + '</small></td>'
+    + '<td class="num">₹' + (Number(i.rate) || 0).toLocaleString('en-IN') + '</td>'
+    + '<td>' + esc(i.sizes || '—') + '<br><small>' + (Number(i.slab) || 0) + '% slab</small></td>'
+    + '<td>' + (i.active !== false ? '<span class="xch-verdict">Active</span>' : '<span class="xch-verdict alt">Off</span>') + '</td>'
+    + '<td><button type="button" class="xch-btn" data-xchinvopen="' + i.id + '">✎</button> <button type="button" class="xch-btn del" data-xchinvdel="' + i.id + '">✕</button></td>'
+    + '</tr>').join('');
+  return '<div class="xch-cmp-wrap" id="xchInvWrap"><div class="xch-cmp-tools"><h4 style="margin:0;flex:1">Exchange inventory · ' + list.length + '</h4>'
+    + '<input id="xchInvQ" placeholder="Search project, corridor, RERA…" value="' + esc(x.ui.invQ || '') + '" style="min-width:180px">'
+    + '<button type="button" class="xch-btn" data-xchinvadd>＋ Add</button>'
+    + '<button type="button" class="xch-btn" data-xchinvimport>⬇ Projects</button></div>'
+    + (rows ? '<div class="xch-scroll"><table class="xch-table"><thead><tr><th>Project</th><th>Corridor</th><th>Approval</th><th class="num">Rate/gaj</th><th>Sizes / slab</th><th>Status</th><th></th></tr></thead><tbody>' + rows + '</tbody></table></div>'
+      : '<div class="xch-empty">Inventory khali hai. <b>＋ Add</b> ya <b>⬇ Projects</b> se import karein.</div>')
+    + '</div>';
+}
+
+/* ---------- render: pipeline ---------- */
+function xchPipelineHTML(){
+  const leads = xchScopedLeads();
+  const cols = XCH_STAGES.map(st => {
+    const list = leads.filter(l => l.stage === st.id);
+    const cards = list.map(l => {
+      const exec = l.execId ? ((db.advisors || []).find(a => a.id === l.execId) || {}).name : l.execName;
+      const lastVisit = (l.visits || [])[0];
+      const lastLog = (l.logs || [])[0];
+      const idx = XCH_STAGES.findIndex(s => s.id === l.stage);
+      const next = XCH_STAGES[idx + 1];
+      return '<div class="xch-kcard" data-xchleadopen="' + l.id + '">'
+        + '<b>' + esc(l.clientName || 'Client') + '</b>'
+        + '<small>' + esc(l.code) + ' · ' + esc(xchCorridorName(l.corridor) || '—') + ' · ' + esc(xchBudgetText(l)) + '</small>'
+        + '<small>Closer: ' + esc(exec || '—') + '</small>'
+        + (lastVisit ? '<small>📍 ' + esc(String(lastVisit.note || lastVisit.text || '').slice(0, 70)) + '</small>' : '')
+        + (lastLog ? '<small>🕒 ' + esc(String(lastLog.text || '').slice(0, 60)) + '</small>' : '')
+        + '<div class="kx">' + (next ? '<button type="button" class="xch-btn" data-xchstage="' + l.id + '|' + next.id + '">' + esc(next.short) + ' →</button>' : '') + xchExpiryPill(l) + '</div>'
+        + '</div>';
+    }).join('');
+    return '<div class="xch-col"><div class="xch-col-head">' + esc(st.short) + '<span>' + list.length + '</span></div>' + (cards || '<div class="xch-empty" style="padding:10px;font-size:10px">Khali</div>') + '</div>';
+  }).join('');
+  return '<div class="xch-bar"><span class="xch-note" style="margin:0;flex:1">Card par tap = full detail. <b>Next →</b> se stage aage badhayein — log time-stamp ke saath save hota hai.</span></div>'
+    + '<div class="xch-kan">' + cols + '</div>';
+}
+
+/* ---------- render: settlements ---------- */
+function xchSettleHTML(){
+  const x = xch();
+  const sets = xchScopedSettlements().slice().sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+  const cfg = x.settings;
+  const totals = sets.reduce((o, s) => {
+    o.gross += Number(s.gross) || 0;
+    o.origin += Number(s.originAmt) || 0;
+    o.exec += Number(s.execAmt) || 0;
+    o.bcs += Number(s.bcsAmt) || 0;
+    if(s.status !== 'cleared') o.pending += Number(s.gross) || 0;
+    return o;
+  }, { gross:0, origin:0, exec:0, bcs:0, pending:0 });
+  const rows = sets.map(s => '<tr>'
+    + '<td><b>' + esc(s.code || '—') + '</b><br><small>' + esc(s.date ? fmtDate(s.date) : '') + '</small></td>'
+    + '<td class="num">' + (s.txn ? xchINR(s.txn) : '—') + '<br><small>' + (s.slab || 0) + '% slab</small></td>'
+    + '<td class="num"><b>' + xchINR(s.gross) + '</b><br><small>' + esc(s.mode === 'rate' ? 'rate×gaj' : s.mode === 'manual' ? 'manual' : 'txn×slab') + '</small></td>'
+    + '<td class="num">' + xchINR(s.originAmt) + '<br><small>' + (s.originPct || 0) + '%</small></td>'
+    + '<td class="num">' + xchINR(s.execAmt) + '<br><small>' + (s.execPct || 0) + '%</small></td>'
+    + '<td class="num">' + xchINR(s.bcsAmt) + '<br><small>' + (s.bcsPct || 0) + '%</small></td>'
+    + '<td><small>Dev: ' + esc(s.devUtr || '—') + '<br>Orig: ' + esc(s.originUtr || '—') + '<br>Close: ' + esc(s.closerUtr || '—') + '</small></td>'
+    + '<td><span class="xch-stage ' + (s.status === 'cleared' ? 's-registry' : 's-token') + '">' + (s.status === 'cleared' ? 'Cleared' : 'Pending') + '</span></td>'
+    + '<td><button type="button" class="xch-btn" data-xchsetopen="' + s.id + '">✎</button> <button type="button" class="xch-btn del" data-xchsetdel="' + s.id + '">✕</button></td>'
+    + '</tr>').join('');
+  return ''
+    + '<div class="xch-calc" id="xchSettleCalc">'
+    + '<div class="xch-calc-grid">'
+    + '<div class="field"><label>Calculation mode</label><select data-xchcf="mode"><option value="pct">Value × slab %</option><option value="rate">Base rate × gaj × slab %</option><option value="manual">Manual gross</option></select></div>'
+    + '<div class="field"><label>Deal / REQ ID</label><input data-xchcf="code" placeholder="REQ-2026-0001"></div>'
+    + '<div class="field"><label>Total transaction value (₹)</label><input type="number" data-xchcf="txn" min="0" step="1000" placeholder="8000000"></div>'
+    + '<div class="field"><label>Developer master slab (%)</label><input type="number" data-xchcf="slab" min="0" step="0.05" value="2"></div>'
+    + '<div class="field"><label>Base rate (₹ / gaj)</label><input type="number" data-xchcf="rate" min="0" step="100" placeholder="28000"></div>'
+    + '<div class="field"><label>Plot size (gaj)</label><input type="number" data-xchcf="gaj" min="0" step="1" placeholder="120"></div>'
+    + '<div class="field"><label>Manual gross (₹)</label><input type="number" data-xchcf="gross" min="0" step="1000" placeholder="auto"></div>'
+    + '<div class="field"><label>Originator %</label><input type="number" data-xchcf="originPct" min="0" max="100" step="1" value="' + cfg.originPct + '"></div>'
+    + '<div class="field"><label>Executing %</label><input type="number" data-xchcf="execPct" min="0" max="100" step="1" value="' + cfg.execPct + '"></div>'
+    + '<div class="field"><label>BCS %</label><input type="number" data-xchcf="bcsPct" min="0" max="100" step="1" value="' + cfg.bcsPct + '"></div>'
+    + '</div>'
+    + '<div class="xch-out" data-xchout></div><div data-xchnote></div>'
+    + '<div class="xch-inline" style="margin-top:9px"><button type="button" class="xch-btn pri" data-xchlogsettle>＋ Log this settlement</button><button type="button" class="xch-btn" data-xchresetcalc>Reset</button><button type="button" class="xch-btn" data-xchsetnew>Blank ledger entry</button></div>'
+    + '</div>'
+    + '<div class="xch-stats" style="margin-bottom:10px">'
+    + '<div class="xch-stat"><div class="k">Ledger gross</div><div class="v">' + (totals.gross ? xchINR(totals.gross) : '—') + '</div></div>'
+    + '<div class="xch-stat gold"><div class="k">Originator payout</div><div class="v">' + (totals.origin ? xchINR(totals.origin) : '—') + '</div></div>'
+    + '<div class="xch-stat"><div class="k">Executing payout</div><div class="v">' + (totals.exec ? xchINR(totals.exec) : '—') + '</div></div>'
+    + '<div class="xch-stat green"><div class="k">BCS retained</div><div class="v">' + (totals.bcs ? xchINR(totals.bcs) : '—') + '</div></div>'
+    + '<div class="xch-stat"><div class="k">Pending clearance</div><div class="v">' + (totals.pending ? xchINR(totals.pending) : '—') + '</div></div>'
+    + '</div>'
+    + '<div class="xch-cmp-wrap"><h4>Settlement ledger</h4>'
+    + (rows ? '<div class="xch-scroll"><table class="xch-table"><thead><tr><th>Deal</th><th class="num">Txn / slab</th><th class="num">Gross</th><th class="num">Originator</th><th class="num">Executing</th><th class="num">BCS</th><th>UTRs</th><th>Status</th><th></th></tr></thead><tbody>' + rows + '</tbody></table></div>'
+      : '<div class="xch-empty">Abhi koi settlement logged nahi. Upar calculator bharein aur <b>＋ Log this settlement</b> dabayein.</div>')
+    + '</div>';
+}
+
+/* ---------- modals ---------- */
+let xchDetailId = '';
+function xchFillSelect(id, items, value, blank){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.innerHTML = (blank ? '<option value="">' + esc(blank) + '</option>' : '') + items.map(it => '<option value="' + esc(it.value) + '"' + (String(it.value) === String(value) ? ' selected' : '') + '>' + esc(it.label) + '</option>').join('');
+}
+function xchOpenLead(id, editMode){
+  const x = xch();
+  const lead = id ? x.leads.find(l => l.id === id) : null;
+  if(id && !lead) return;
+  if(lead && !xchCanEdit(lead)) return toast('Ye lead aapke paas nahi hai', true);
+  const me = currentAdvisor();
+  xchFillSelect('xchCorridor', XCH_CORRIDORS.map(c => ({ value:c, label:c })), lead ? xchCorridorName(lead.corridor) : '', 'Select corridor');
+  xchFillSelect('xchExec', (db.advisors || []).map(a => ({ value:a.id, label:a.name + (a.phone ? ' · ' + a.phone : '') })), lead ? (lead.execId || '') : '', 'To be assigned');
+  const set = (eid, val) => { const el = document.getElementById(eid); if(el) el.value = val == null ? '' : val; };
+  set('xchLeadId', lead ? lead.id : '');
+  set('xchAdvName', lead ? lead.advisorName : ((me && me.name) || ''));
+  set('xchAdvMobile', lead ? lead.advisorMobile : ((me && me.phone) || ''));
+  set('xchClientName', lead ? lead.clientName : '');
+  set('xchClientPhone', lead ? lead.clientPhone : '');
+  set('xchBudgetMin', lead ? lead.budgetMin : '');
+  set('xchBudgetMax', lead ? lead.budgetMax : '');
+  set('xchGaj', lead ? lead.gaj : '');
+  set('xchNotes', lead ? lead.notes : '');
+  set('xchFollowUp', lead ? lead.followUp : todayISO());
+  const tl = document.getElementById('xchTimeline'); if(tl) tl.value = (lead && lead.timeline) || 'immediate';
+  const mask = document.getElementById('xchMask');
+  if(mask) mask.checked = lead ? (lead.masked === true ? true : lead.masked === false ? false : !!x.settings.maskingDefault) : !!x.settings.maskingDefault;
+  const title = document.getElementById('xchLeadModalTitle');
+  if(title) title.textContent = lead ? 'Requirement edit — ' + lead.code : 'Naya requirement';
+  const hint = document.getElementById('xchMaskHint');
+  if(hint) hint.textContent = isAdmin() ? 'Admin ko full number dikhta hai; advisors ko masked.' : 'Aapko masked number dikhega jab masking on ho.';
+  const execWrap = document.getElementById('xchExecWrap');
+  if(execWrap) execWrap.style.display = isAdmin() ? '' : 'none';
+  if(!editMode && !lead && !isAdmin()) toast('Advisor mode: client phone masked rahega', false);
+  showOverlay('xchLeadModal');
+}
+function xchSaveLead(){
+  const x = xch();
+  const val = id => { const el = document.getElementById(id); return el ? el.value : ''; };
+  const id = val('xchLeadId');
+  const name = String(val('xchClientName')).trim();
+  const phone = String(val('xchClientPhone')).trim();
+  if(!name) return toast('Client ka naam likhein', true);
+  if(!phone) return toast('Client phone likhein', true);
+  const bmin = number(val('xchBudgetMin'));
+  const bmax = number(val('xchBudgetMax'));
+  if(bmin != null && bmax != null && bmin > bmax) return toast('Budget min max se bada hai', true);
+  const gaj = number(val('xchGaj'));
+  if(gaj != null && (gaj < 20 || gaj > 5000)) return toast('Plot size gaj me check karein', true);
+  const advName = String(val('xchAdvName')).trim();
+  const advMobile = String(val('xchAdvMobile')).trim();
+  const matched = xchFindAdvisor(advName, advMobile);
+  const execId = isAdmin() ? val('xchExec') : '';
+  const execName = execId ? (((db.advisors || []).find(a => a.id === execId) || {}).name || '') : '';
+  const now = Date.now();
+  let lead = id ? x.leads.find(l => l.id === id) : null;
+  if(!lead){
+    lead = {
+      id: uid(), code: xchNextCode(), createdAt: now, updatedAt: now,
+      stage: 'logged', logs: [], visits: [], matches: [], masked: null,
+      source: isAdmin() ? 'admin' : 'advisor',
+      createdBy: isAdmin() ? 'admin' : ((currentAdvisor() || {}).id || ''),
+      expiry: addISO(todayISO(), x.settings.expiryDays)
+    };
+    x.leads.unshift(lead);
+    xchLog(lead, 'Requirement logged · ' + (xchCorridorName(val('xchCorridor')) || 'corridor TBD'));
+  } else {
+    xchLog(lead, 'Requirement updated');
+  }
+  Object.assign(lead, {
+    advisorName: advName, advisorMobile: advMobile,
+    advisorId: matched ? matched.id : (lead.advisorId || ''),
+    clientName: name, clientPhone: phone,
+    corridor: val('xchCorridor'), budgetMin: bmin, budgetMax: bmax, gaj: gaj,
+    timeline: val('xchTimeline'), notes: String(val('xchNotes')).trim(),
+    followUp: val('xchFollowUp'),
+    masked: document.getElementById('xchMask') && document.getElementById('xchMask').checked ? true : false,
+    execId: execId || lead.execId || '', execName: execName || lead.execName || ''
+  });
+  xchUpsertClient(lead);
+  xchUpsertTodo(lead);
+  xchSave();
+  try{ closeModal('xchLeadModal'); }catch(e){}
+  renderExchange();
+  toast('Lead saved · ' + lead.code);
+  xchOpenDetail(lead.id);
+}
+function xchOpenDetail(id){
+  const x = xch();
+  const l = x.leads.find(a => a.id === id);
+  if(!l) return;
+  if(!isAdmin() && !(xchScopedLeads().some(a => a.id === l.id))) return toast('Ye lead aapke paas nahi hai', true);
+  xchDetailId = id;
+  const st = xchStageMeta(l.stage);
+  const exec = l.execId ? ((db.advisors || []).find(a => a.id === l.execId) || {}).name : l.execName;
+  const matches = xchMatchesFor(l).slice(0, 4);
+  const logs = (l.logs || []).slice(0, 12);
+  const days = xchDaysLeft(l.expiry);
+  const client = l.clientId ? (db.clients || []).find(c => c.id === l.clientId) : null;
+  const body = document.getElementById('xchDetailBody');
+  const title = document.getElementById('xchDetailTitle');
+  if(title) title.textContent = l.code + ' · ' + (l.clientName || 'Client');
+  if(!body) return;
+  body.innerHTML = ''
+    + xchCertHTML(l)
+    + '<div class="xch-detail-sec"><h5>Stage · ' + esc(st.label) + '</h5><div class="xch-stage-steps">'
+    + XCH_STAGES.map(s => '<button type="button" class="' + (s.id === l.stage ? 'on' : '') + '" data-xchstage="' + l.id + '|' + s.id + '">' + esc(s.short) + '</button>').join('')
+    + '</div>'
+    + (days != null && days < 0 && l.stage !== 'settled' ? '<p class="xch-warnline" style="margin:7px 0 0">Protection expired — renew karke dobara claim lock karein.</p>' : '')
+    + '<div class="xch-inline" style="margin-top:7px"><button type="button" class="xch-btn" data-xchrenew="' + l.id + '">↻ Renew ' + x.settings.expiryDays + ' days</button>'
+    + (l.followUp ? '<button type="button" class="xch-btn" data-xchleadwa="' + l.id + '">↗ WhatsApp</button>' : '')
+    + '</div></div>'
+    + '<div class="xch-detail-sec"><h5>Requirement</h5><div class="xch-kv">'
+    + '<div><div class="k">Client</div><div class="v">' + esc(l.clientName || '—') + '</div></div>'
+    + '<div><div class="k">Phone</div><div class="v">' + esc(xchPhoneFor(l)) + '</div></div>'
+    + '<div><div class="k">Corridor</div><div class="v">' + esc(xchCorridorName(l.corridor) || '—') + '</div></div>'
+    + '<div><div class="k">Budget</div><div class="v">' + esc(xchBudgetText(l)) + '</div></div>'
+    + '<div><div class="k">Size</div><div class="v">' + (l.gaj ? esc(l.gaj) + ' gaj' : '—') + '</div></div>'
+    + '<div><div class="k">Timeline</div><div class="v">' + esc(XCH_TIMELINES[l.timeline] || '—') + '</div></div>'
+    + '<div><div class="k">Originator</div><div class="v">' + esc(l.advisorName || 'Admin desk') + '</div></div>'
+    + '<div><div class="k">Executing</div><div class="v">' + esc(exec || 'To be assigned') + '</div></div>'
+    + '<div><div class="k">Logged</div><div class="v">' + esc(fmtDate(xchCertISO(l))) + '</div></div>'
+    + '<div><div class="k">Valid till</div><div class="v">' + esc(fmtDate(l.expiry)) + '</div></div>'
+    + '</div>'
+    + (l.notes ? '<p class="xch-note" style="margin-top:7px">' + esc(l.notes) + '</p>' : '')
+    + '<div class="xch-inline" style="margin-top:8px">'
+    + (client ? '<button type="button" class="xch-btn" data-xchclient="' + client.id + '">◐ Client page</button>' : '')
+    + (xchCanEdit(l) ? '<button type="button" class="xch-btn" data-xcheditlead="' + l.id + '">✎ Edit requirement</button>' : '')
+    + '</div></div>'
+    + '<div class="xch-detail-sec"><h5>Recommended matches</h5>'
+    + (matches.length ? matches.map(r => '<div class="xchd-row"><div class="xchd-txt"><b>' + esc(r.inv.name) + ' · ' + r.m.score + '/100</b><span>' + esc(xchCorridorName(r.inv.corridor)) + ' · ' + (r.m.cost ? xchINR(r.m.cost) : 'rate missing') + ' · ' + esc(r.m.verdict) + '</span></div><button type="button" class="xch-btn" data-xchdocket="' + r.inv.id + '">Docket</button></div>').join('')
+      : '<div class="xch-note">Inventory khali hai — Import from Projects karein.</div>')
+    + '</div>'
+    + '<div class="xch-detail-sec"><h5>Status log</h5><div class="xch-log">'
+    + (logs.length ? logs.map(g => '<div class="xch-log-row"><span class="dot"></span><div>' + esc(g.text) + '<small>' + esc(g.by || '') + ' · ' + esc(new Date(g.at || Date.now()).toLocaleString('en-IN')) + '</small></div></div>').join('') : '<div class="xch-note">Koi log nahi.</div>')
+    + '</div></div>';
+  showOverlay('xchDetailModal');
+}
+function xchCertHTML(lead){
+  const x = xch();
+  const days = xchDaysLeft(lead.expiry);
+  const exec = lead.execId ? ((db.advisors || []).find(a => a.id === lead.execId) || {}).name : lead.execName;
+  return '<div class="xch-cert">'
+    + '<div class="xch-cert-top"><div class="xch-cert-seal">🛡</div><div><b>Digital Lead Protection Certificate</b><small>BCS · Business City Square, Jaipur</small></div></div>'
+    + '<div class="xch-cert-ref">' + esc(lead.code) + '</div>'
+    + '<div class="xch-cert-grid">'
+    + '<div><div class="k">Client</div><div class="v">' + esc(lead.clientName || 'Client') + '</div></div>'
+    + '<div><div class="k">Phone</div><div class="v">' + esc(xchPhoneFor(lead)) + '</div></div>'
+    + '<div><div class="k">Corridor</div><div class="v">' + esc(xchCorridorName(lead.corridor) || '—') + '</div></div>'
+    + '<div><div class="k">Budget</div><div class="v">' + esc(xchBudgetText(lead)) + '</div></div>'
+    + '<div><div class="k">Plot size</div><div class="v">' + (lead.gaj ? esc(lead.gaj) + ' gaj' : '—') + '</div></div>'
+    + '<div><div class="k">Timeline</div><div class="v">' + esc(XCH_TIMELINES[lead.timeline] || '—') + '</div></div>'
+    + '<div><div class="k">Originating advisor</div><div class="v">' + esc(lead.advisorName || 'Admin desk') + '</div></div>'
+    + '<div><div class="k">Executing advisor</div><div class="v">' + esc(exec || 'To be assigned') + '</div></div>'
+    + '<div><div class="k">Logged on</div><div class="v">' + esc(fmtDate(xchCertISO(lead))) + '</div></div>'
+    + '<div><div class="k">Valid till</div><div class="v">' + esc(fmtDate(lead.expiry)) + ' · ' + (days == null ? '—' : days >= 0 ? days + ' din baaki' : 'expired') + '</div></div>'
+    + '</div>'
+    + '<div class="xch-cert-terms">Lead protection: is requirement par originating advisor ka claim ' + x.settings.expiryDays + ' din tak. Settlement split — originator ' + x.settings.originPct + '% · executing ' + x.settings.execPct + '% · BCS ' + x.settings.bcsPct + '% of gross developer receivable. Client phone masked where applicable.</div>'
+    + '</div>';
+}
+function xchOpenInv(id){
+  const x = xch();
+  const inv = id ? x.inventory.find(i => i.id === id) : null;
+  xchFillSelect('xchInvCorridor', XCH_CORRIDORS.map(c => ({ value:c, label:c })), inv ? xchCorridorName(inv.corridor) : '', 'Select corridor');
+  xchFillSelect('xchInvProject', (db.projects || []).map(p => ({ value:p.id, label:p.name + ' · ' + xchCorridorName(p.corridor) })), inv ? (inv.projectId || '') : '', '— New / manual entry —');
+  const set = (eid, val) => { const el = document.getElementById(eid); if(el) el.value = val == null ? '' : val; };
+  set('xchInvId', inv ? inv.id : '');
+  set('xchInvName', inv ? inv.name : '');
+  set('xchInvDev', inv ? inv.developer : '');
+  set('xchInvRera', inv ? inv.rera : '');
+  set('xchInvRate', inv ? inv.rate : '');
+  set('xchInvSizes', inv ? inv.sizes : '');
+  set('xchInvRoad', inv ? inv.roadWidth : '');
+  set('xchInvSlab', inv ? inv.slab : '2');
+  set('xchInvLayout', inv ? inv.layout : '');
+  set('xchInvAmenities', inv ? inv.amenities : '');
+  set('xchInvConnect', inv ? inv.connectivity : '');
+  set('xchInvNotes', inv ? inv.notes : '');
+  const ap = document.getElementById('xchInvApproval'); if(ap) ap.value = (inv && inv.approval) || 'jda';
+  const active = document.getElementById('xchInvActive'); if(active) active.checked = inv ? inv.active !== false : true;
+  const title = document.getElementById('xchInvModalTitle');
+  if(title) title.textContent = inv ? 'Edit inventory · ' + inv.name : 'Exchange inventory';
+  showOverlay('xchInvModal');
+}
+function xchSaveInv(){
+  const x = xch();
+  const val = id => { const el = document.getElementById(id); return el ? el.value : ''; };
+  const id = val('xchInvId');
+  const name = String(val('xchInvName')).trim();
+  if(!name) return toast('Project ka naam likhein', true);
+  const rec = {
+    projectId: val('xchInvProject') || '', name, developer: String(val('xchInvDev')).trim(),
+    corridor: val('xchInvCorridor'), approval: val('xchInvApproval') || 'other',
+    rera: String(val('xchInvRera')).trim(), rate: Number(val('xchInvRate')) || 0,
+    sizes: String(val('xchInvSizes')).trim(), roadWidth: Number(val('xchInvRoad')) || 0,
+    slab: Number(val('xchInvSlab')) || 0, layout: String(val('xchInvLayout')).trim(),
+    amenities: String(val('xchInvAmenities')).trim(), connectivity: String(val('xchInvConnect')).trim(),
+    notes: String(val('xchInvNotes')).trim(),
+    active: document.getElementById('xchInvActive') ? document.getElementById('xchInvActive').checked : true,
+    updatedAt: Date.now()
+  };
+  const existing = id ? x.inventory.find(i => i.id === id) : null;
+  if(existing) Object.assign(existing, rec);
+  else x.inventory.push(Object.assign({ id: uid(), createdAt: Date.now() }, rec));
+  xchSave();
+  try{ closeModal('xchInvModal'); }catch(e){}
+  renderExchange();
+  toast(existing ? 'Inventory updated' : 'Inventory added');
+}
+function xchOpenSettle(id, preset){
+  const x = xch();
+  const rec = id ? x.settlements.find(s => s.id === id) : null;
+  const p = preset || {};
+  const set = (eid, val) => { const el = document.getElementById(eid); if(el) el.value = val == null ? '' : val; };
+  set('xchSetId', rec ? rec.id : '');
+  set('xchSetCode', rec ? rec.code : (p.code || ''));
+  set('xchSetDate', rec ? rec.date : (p.date || todayISO()));
+  set('xchSetMode', rec ? rec.mode : (p.mode || 'pct'));
+  set('xchSetTxn', rec ? rec.txn : (p.txn || ''));
+  set('xchSetSlab', rec ? rec.slab : (p.slab != null ? p.slab : 2));
+  set('xchSetRate', rec ? rec.rate : (p.rate || ''));
+  set('xchSetGaj', rec ? rec.gaj : (p.gaj || ''));
+  set('xchSetGross', rec ? rec.gross : (p.gross || ''));
+  set('xchSetOriginPct', rec ? rec.originPct : (p.originPct != null ? p.originPct : x.settings.originPct));
+  set('xchSetExecPct', rec ? rec.execPct : (p.execPct != null ? p.execPct : x.settings.execPct));
+  set('xchSetBcsPct', rec ? rec.bcsPct : (p.bcsPct != null ? p.bcsPct : x.settings.bcsPct));
+  set('xchSetDevUtr', rec ? rec.devUtr : '');
+  set('xchSetOriginUtr', rec ? rec.originUtr : '');
+  set('xchSetCloserUtr', rec ? rec.closerUtr : '');
+  set('xchSetNotes', rec ? rec.notes : '');
+  const st = document.getElementById('xchSetStatus'); if(st) st.value = (rec && rec.status) || 'pending';
+  const title = document.getElementById('xchSettleModalTitle');
+  if(title) title.textContent = rec ? 'Settlement edit · ' + rec.code : 'Settlement entry';
+  xchModalCalc();
+  showOverlay('xchSettleModal');
+}
+function xchModalCalc(){
+  const g = id => { const el = document.getElementById(id); return el ? el.value : ''; };
+  const r = xchSettleCalc({ mode:g('xchSetMode'), txn:g('xchSetTxn'), slab:g('xchSetSlab'), rate:g('xchSetRate'), gaj:g('xchSetGaj'), gross:g('xchSetGross'), originPct:g('xchSetOriginPct'), execPct:g('xchSetExecPct'), bcsPct:g('xchSetBcsPct') });
+  const out = document.getElementById('xchSetOut');
+  if(out) out.innerHTML = xchOutHTML(r);
+  const note = document.getElementById('xchSetNote');
+  if(note) note.innerHTML = xchCalcNoteHTML(r);
+  return r;
+}
+function xchSaveSettle(){
+  const x = xch();
+  const val = id => { const el = document.getElementById(id); return el ? el.value : ''; };
+  const r = xchModalCalc();
+  if(!r.gross) return toast('Gross receivable zero hai — value, slab ya manual gross check karein', true);
+  if(r.warn && !confirm('Split total ' + r.total + '% hai, 100% nahi. Phir bhi save karein?')) return;
+  const id = val('xchSetId');
+  const code = String(val('xchSetCode')).trim();
+  const lead = x.leads.find(l => l.code === code || l.id === val('xchSetLeadId'));
+  const rec = {
+    code: code || (lead ? lead.code : ''),
+    leadId: lead ? lead.id : '',
+    date: val('xchSetDate') || todayISO(),
+    mode: val('xchSetMode') || 'pct',
+    txn: r.txn, slab: r.slab, rate: r.rate, gaj: r.gaj, gross: r.gross,
+    originPct: r.op, execPct: r.ep, bcsPct: r.bp,
+    originAmt: r.origin, execAmt: r.exec, bcsAmt: r.bcs,
+    devUtr: String(val('xchSetDevUtr')).trim(),
+    originUtr: String(val('xchSetOriginUtr')).trim(),
+    closerUtr: String(val('xchSetCloserUtr')).trim(),
+    notes: String(val('xchSetNotes')).trim(),
+    status: val('xchSetStatus') === 'cleared' ? 'cleared' : 'pending',
+    updatedAt: Date.now()
+  };
+  const existing = id ? x.settlements.find(s => s.id === id) : null;
+  if(existing) Object.assign(existing, rec);
+  else x.settlements.unshift(Object.assign({ id: uid(), createdAt: Date.now() }, rec));
+  if(lead){
+    lead.settlementId = existing ? existing.id : (x.settlements[0] || {}).id;
+    lead.stage = 'settled';
+    lead.dealValue = r.txn;
+    lead.slab = r.slab;
+    lead.gross = r.gross;
+    xchLog(lead, 'Settlement ' + (rec.status === 'cleared' ? 'cleared' : 'logged') + ' · gross ' + xchINR(r.gross));
+  }
+  xchSave();
+  try{ closeModal('xchSettleModal'); }catch(e){}
+  renderExchange();
+  toast(existing ? 'Settlement updated' : 'Settlement logged');
+}
+function xchOpenSettings(){
+  const x = xch();
+  const set = (id, val) => { const el = document.getElementById(id); if(el) el.value = val; };
+  set('xchCfgExpiry', x.settings.expiryDays);
+  const mask = document.getElementById('xchCfgMask'); if(mask) mask.value = x.settings.maskingDefault ? 'on' : 'off';
+  set('xchCfgO', x.settings.originPct);
+  set('xchCfgE', x.settings.execPct);
+  set('xchCfgB', x.settings.bcsPct);
+  const list = document.getElementById('xchMaskAdvList');
+  if(list){
+    const advs = db.advisors || [];
+    list.innerHTML = advs.length ? advs.map(a => '<label style="display:flex;align-items:center;gap:8px;padding:5px 0;font-size:11.5px;font-weight:700;color:var(--ink2)"><input type="checkbox" data-xchadvmask="' + a.id + '"' + (x.maskAdvisors[a.id] ? ' checked' : '') + '> ' + esc(a.name) + (a.phone ? ' · ' + esc(a.phone) : '') + '</label>').join('')
+      : '<div class="xch-note">Koi advisor record nahi. Advisors page se add karein.</div>';
+  }
+  showOverlay('xchSettingsModal');
+}
+function xchSaveSettings(){
+  const x = xch();
+  const val = id => { const el = document.getElementById(id); return el ? el.value : ''; };
+  const days = Number(val('xchCfgExpiry'));
+  if(!(days >= 7 && days <= 365)) return toast('Validity 7–365 din ke beech rakhein', true);
+  const o = Number(val('xchCfgO')), e = Number(val('xchCfgE')), b = Number(val('xchCfgB'));
+  if(Math.abs((o + e + b) - 100) > 0.01) return toast('Split total 100% hona chahiye (abhi ' + (o + e + b) + '%)', true);
+  x.settings.expiryDays = Math.round(days);
+  x.settings.maskingDefault = val('xchCfgMask') === 'on';
+  x.settings.originPct = o; x.settings.execPct = e; x.settings.bcsPct = b;
+  xchSave();
+  try{ closeModal('xchSettingsModal'); }catch(e2){}
+  renderExchange();
+  toast('Exchange settings saved');
+}
+function xchExport(){
+  const x = xch();
+  const payload = { app:'bcs-desk', kind:'exchange', exportedAt:new Date().toISOString(), exchange:x };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type:'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'bcs-exchange-' + todayISO() + '.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  toast('Exchange JSON export ho gaya');
+}
+function xchImportFile(file){
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try{
+      const raw = JSON.parse(String(reader.result || '{}'));
+      const src = raw.exchange || raw;
+      if(!src || !Array.isArray(src.leads)) throw new Error('leads missing');
+      const x = xch();
+      const mergeById = (dest, incoming) => {
+        (incoming || []).forEach(rec => {
+          if(!rec || !rec.id) return;
+          const at = dest.findIndex(d => d.id === rec.id);
+          if(at >= 0) dest[at] = Object.assign({}, dest[at], rec);
+          else dest.push(rec);
+        });
+      };
+      mergeById(x.leads, src.leads);
+      mergeById(x.inventory, src.inventory);
+      mergeById(x.settlements, src.settlements);
+      if(src.settings) x.settings = Object.assign({}, x.settings, src.settings);
+      if(src.maskAdvisors) x.maskAdvisors = Object.assign({}, x.maskAdvisors, src.maskAdvisors);
+      xchEnsure(db);
+      xchSave(); renderExchange();
+      toast('Exchange JSON import ho gaya');
+    }catch(err){ toast('Import fail — valid exchange JSON chahiye', true); }
+  };
+  reader.readAsText(file);
+}
+
+/* ---------- interlinks ---------- */
+function xchDayPlanHTML(day){
+  const leads = xchScopedLeads();
+  const rows = [];
+  leads.forEach(l => {
+    if(l.followUp === day) rows.push({ l, kind:'Follow-up', cls:'' });
+    if(l.expiry === day) rows.push({ l, kind:'Protection expiry', cls:'warn' });
+  });
+  if(!rows.length) return '<div class="xchd-empty">Is din koi exchange follow-up ya expiry nahi. <b>Exchange</b> page se requirement add karein.</div>';
+  return rows.slice(0, 6).map(r => '<button type="button" class="xchd-row" data-xchleadopen="' + r.l.id + '" style="background:none;border:0;border-bottom:1px dashed var(--line2);width:100%;text-align:left;font-family:inherit;cursor:pointer;display:flex;align-items:flex-start;gap:7px;padding:6px 0">'
+    + '<span class="xchd-txt"><b>' + esc(r.l.clientName || 'Client') + ' · ' + esc(r.kind) + '</b><span>' + esc(r.l.code) + ' · ' + esc(xchCorridorName(r.l.corridor)) + ' · ' + esc(xchBudgetText(r.l)) + '</span></span>'
+    + '<span class="xch-exp ' + r.cls + '">' + esc(xchPhoneFor(r.l)) + '</span></button>').join('');
+}
+function xchPriorityItems(){
+  const leads = xchScopedLeads().filter(l => l.stage !== 'settled');
+  const today = todayISO();
+  const out = [];
+  leads.filter(l => l.followUp && l.followUp <= today).slice(0, 2).forEach(l => out.push({ title:l.clientName || 'Exchange lead', sub:'Exchange · follow-up ' + (l.followUp === today ? 'today' : 'overdue'), click:'xchlead', id:l.id }));
+  leads.filter(l => { const d = xchDaysLeft(l.expiry); return d != null && d >= 0 && d <= 10; }).slice(0, 2).forEach(l => out.push({ title:l.clientName || 'Exchange lead', sub:'Exchange · protection ' + xchDaysLeft(l.expiry) + 'd left', click:'xchlead', id:l.id }));
+  leads.filter(l => l.stage === 'token').slice(0, 1).forEach(l => out.push({ title:l.clientName || 'Exchange lead', sub:'Exchange · token → registry pending', click:'xchlead', id:l.id }));
+  return out;
+}
+function xchAdvisorStatsHTML(a){
+  if(!a) return '';
+  const x = xch();
+  const mine = x.leads.filter(l => l.advisorId === a.id || l.execId === a.id);
+  const origin = mine.filter(l => l.advisorId === a.id).length;
+  const closer = mine.filter(l => l.execId === a.id).length;
+  const sets = x.settlements.filter(s => mine.some(l => l.id === s.leadId));
+  const payout = sets.reduce((n, s) => {
+    const lead = mine.find(l => l.id === s.leadId) || {};
+    return n + (lead.execId === a.id ? (Number(s.execAmt) || 0) : (Number(s.originAmt) || 0));
+  }, 0);
+  const masked = !!x.maskAdvisors[a.id];
+  return '<div class="team-stats">'
+    + '<div><div class="k">Exchange leads</div><div class="v">' + mine.length + '</div></div>'
+    + '<div><div class="k">As originator</div><div class="v">' + origin + '</div></div>'
+    + '<div><div class="k">As closer</div><div class="v">' + closer + '</div></div>'
+    + '<div><div class="k">Settled payout</div><div class="v" style="font-size:11.5px">' + (payout ? xchINR(payout) : '—') + '</div></div>'
+    + '</div>'
+    + (isAdmin() ? '<div class="profile-block"><div class="lab">Exchange masking</div><div class="adv-quick">'
+      + '<button type="button" class="btn ' + (masked ? 'primary' : 'ghost') + ' sm" data-xchadvmaskbtn="' + a.id + '">' + (masked ? '✓ Masking on' : 'Masking off') + '</button>'
+      + '<button type="button" class="btn ghost sm" data-xchadvleads="' + a.id + '">Open exchange leads</button>'
+      + '</div><div class="lock-hint">Masking on = is advisor ko exchange leads me client phone masked dikhega. Admin ko hamesha full number.</div></div>' : '');
+}
+function xchInlineCalc(){
+  const root = document.getElementById('xchSettleCalc');
+  if(!root) return null;
+  const get = k => { const el = root.querySelector('[data-xchcf="' + k + '"]'); return el ? el.value : ''; };
+  const r = xchSettleCalc({ mode:get('mode'), txn:get('txn'), slab:get('slab'), rate:get('rate'), gaj:get('gaj'), gross:get('gross'), originPct:get('originPct'), execPct:get('execPct'), bcsPct:get('bcsPct') });
+  const out = root.querySelector('[data-xchout]'); if(out) out.innerHTML = xchOutHTML(r);
+  const note = root.querySelector('[data-xchnote]'); if(note) note.innerHTML = xchCalcNoteHTML(r);
+  return r;
+}
+
+/* ---------- delegation ---------- */
+document.addEventListener('click', function(e){
+  const t = e.target;
+  if(!t || !t.closest) return;
+  const q = sel => t.closest(sel);
+
+  const tab = q('[data-xch-tab]');
+  if(tab){ const x = xch(); x.ui.tab = tab.getAttribute('data-xch-tab'); xchSave(); renderExchange(); return; }
+
+  if(q('#xchNewLeadBtn') || q('#xchVaultAdd')){ e.preventDefault(); xchOpenLead(''); return; }
+  if(q('#xchSettingsBtn')){ e.preventDefault(); xchOpenSettings(); return; }
+  if(q('#xchInvBtn')){ e.preventDefault(); xchOpenInv(''); return; }
+  if(q('#xchImportProjectsBtn')){ e.preventDefault(); xchImportFromProjects(); return; }
+  if(q('#xchLeadSave')){ e.preventDefault(); xchSaveLead(); return; }
+  if(q('#xchInvSave')){ e.preventDefault(); xchSaveInv(); return; }
+  if(q('#xchSetSave')){ e.preventDefault(); xchSaveSettle(); return; }
+  if(q('#xchCfgSave')){ e.preventDefault(); xchSaveSettings(); return; }
+  if(q('#xchExportBtn')){ e.preventDefault(); xchExport(); return; }
+  if(q('#xchImportBtn')){ e.preventDefault(); const f = document.getElementById('xchImportFile'); if(f) f.click(); return; }
+
+  const stageBtn = q('[data-xchstage]');
+  if(stageBtn){ const parts = String(stageBtn.getAttribute('data-xchstage')).split('|'); const x = xch(); xchSetStage(x.leads.find(l => l.id === parts[0]), parts[1]); return; }
+
+  const openLead = q('[data-xchleadopen]');
+  if(openLead){
+    const lid = openLead.getAttribute('data-xchleadopen');
+    if(openLead.getAttribute('data-xchedit')) xchOpenLead(lid, true);
+    else xchOpenDetail(lid);
+    return;
+  }
+  const editLead = q('[data-xcheditlead]');
+  if(editLead){ e.preventDefault(); xchOpenLead(editLead.getAttribute('data-xcheditlead'), true); return; }
+  const matchBtn = q('[data-xchleadmatch]');
+  if(matchBtn){ const x = xch(); x.ui.tab = 'match'; x.ui.matchLeadId = matchBtn.getAttribute('data-xchleadmatch'); xchSave(); renderExchange(); return; }
+  const certBtn = q('[data-xchleadcert]');
+  if(certBtn){ const x = xch(); const l = x.leads.find(a => a.id === certBtn.getAttribute('data-xchleadcert')); if(l){ xchDetailId = l.id; copyText(xchCertificateText(l)).then(ok => toast(ok ? 'Certificate copy — WhatsApp me paste karein' : 'Copy fail', !ok)); } return; }
+  const waBtn = q('[data-xchleadwa]');
+  if(waBtn){ const x = xch(); const l = x.leads.find(a => a.id === waBtn.getAttribute('data-xchleadwa')); if(l){ const win = window.open(xchWa(l.advisorMobile || '', xchLeadShareText(l)), '_blank', 'noopener'); if(!win) toast('WhatsApp popup block hua', true); } return; }
+  const delBtn = q('[data-xchleaddel]');
+  if(delBtn){ const x = xch(); xchDeleteLead(x.leads.find(a => a.id === delBtn.getAttribute('data-xchleaddel'))); return; }
+  const renewBtn = q('[data-xchrenew]');
+  if(renewBtn){ const x = xch(); xchRenew(x.leads.find(l => l.id === renewBtn.getAttribute('data-xchrenew'))); return; }
+  const cmpAdd = q('[data-xchcmpadd]');
+  if(cmpAdd){ const x = xch(); const id = cmpAdd.getAttribute('data-xchcmpadd'); if(x.ui.cmpIds.indexOf(id) < 0) x.ui.cmpIds.push(id); if(x.ui.cmpIds.length > 4) x.ui.cmpIds = x.ui.cmpIds.slice(-4); xchSave(); renderExchange(); return; }
+  const cmpRm = q('[data-xchcmprm]');
+  if(cmpRm){ const x = xch(); x.ui.cmpIds = x.ui.cmpIds.filter(id => id !== cmpRm.getAttribute('data-xchcmprm')); xchSave(); renderExchange(); return; }
+  if(q('[data-xchcmpclear]')){ const x = xch(); x.ui.cmpIds = []; xchSave(); renderExchange(); return; }
+  const docket = q('[data-xchdocket]');
+  if(docket){
+    const x = xch();
+    const inv = x.inventory.find(i => i.id === docket.getAttribute('data-xchdocket'));
+    const lead = x.leads.find(l => l.id === x.ui.matchLeadId) || null;
+    if(inv){ const txt = xchDocketText(inv, lead); copyText(txt).then(ok => { toast(ok ? 'Docket copy — WhatsApp me paste karein' : 'Copy fail', !ok); const win = window.open(xchWa('', txt), '_blank', 'noopener'); if(!win) toast('WhatsApp popup block hua', true); }); }
+    return;
+  }
+  const proj = q('[data-xchproj]');
+  if(proj){ e.preventDefault(); if(typeof openProject === 'function') openProject(proj.getAttribute('data-xchproj')); return; }
+  const clientBtn = q('[data-xchclient]');
+  if(clientBtn){ e.preventDefault(); try{ closeModal('xchDetailModal'); }catch(err){} if(typeof openClient === 'function') openClient(clientBtn.getAttribute('data-xchclient')); return; }
+  if(q('[data-xchinvadd]')){ e.preventDefault(); xchOpenInv(''); return; }
+  if(q('[data-xchinvimport]')){ e.preventDefault(); xchImportFromProjects(); return; }
+  const invOpen = q('[data-xchinvopen]');
+  if(invOpen){ e.preventDefault(); xchOpenInv(invOpen.getAttribute('data-xchinvopen')); return; }
+  const invDel = q('[data-xchinvdel]');
+  if(invDel){ const x = xch(); if(confirm('Inventory se hata dein?')){ x.inventory = x.inventory.filter(i => i.id !== invDel.getAttribute('data-xchinvdel')); xchSave(); renderExchange(); toast('Inventory removed'); } return; }
+  const setOpen = q('[data-xchsetopen]');
+  if(setOpen){ e.preventDefault(); xchOpenSettle(setOpen.getAttribute('data-xchsetopen')); return; }
+  const setDel = q('[data-xchsetdel]');
+  if(setDel){ const x = xch(); if(confirm('Settlement entry delete karein?')){ x.settlements = x.settlements.filter(s => s.id !== setDel.getAttribute('data-xchsetdel')); xchSave(); renderExchange(); toast('Settlement deleted'); } return; }
+  if(q('[data-xchsetnew]')){ e.preventDefault(); xchOpenSettle(''); return; }
+  if(q('[data-xchlogsettle]')){
+    e.preventDefault();
+    const r = xchInlineCalc();
+    if(!r || !r.gross) return toast('Pehle calculator me value bharein', true);
+    const root = document.getElementById('xchSettleCalc');
+    const get = k => { const el = root.querySelector('[data-xchcf="' + k + '"]'); return el ? el.value : ''; };
+    xchOpenSettle('', { mode:get('mode'), code:get('code'), txn:get('txn'), slab:get('slab'), rate:get('rate'), gaj:get('gaj'), gross:get('gross'), originPct:get('originPct'), execPct:get('execPct'), bcsPct:get('bcsPct') });
+    return;
+  }
+  if(q('[data-xchresetcalc]')){
+    const root = document.getElementById('xchSettleCalc');
+    if(root){ Array.prototype.forEach.call(root.querySelectorAll('input[type="number"]'), el => { el.value = ''; }); const s = root.querySelector('[data-xchcf="slab"]'); if(s) s.value = '2'; const m = root.querySelector('[data-xchcf="mode"]'); if(m) m.value = 'pct'; xchInlineCalc(); }
+    return;
+  }
+  const advMaskBtn = q('[data-xchadvmaskbtn]');
+  if(advMaskBtn){ const x = xch(); const id = advMaskBtn.getAttribute('data-xchadvmaskbtn'); x.maskAdvisors[id] = !x.maskAdvisors[id]; xchSave(); renderAdvisorProfile(); toast(x.maskAdvisors[id] ? 'Masking on' : 'Masking off'); return; }
+  const advLeads = q('[data-xchadvleads]');
+  if(advLeads){ try{ closeModal('advisorProfileModal'); }catch(err){} const x = xch(); const a = advLeads.getAttribute('data-xchadvleads'); const l = x.leads.find(z => z.advisorId === a || z.execId === a); if(l){ x.ui.tab = 'vault'; x.ui.vaultQ = ''; xchSave(); go('exchange'); xchOpenDetail(l.id); } else { go('exchange'); } return; }
+
+  const detCopy = q('#xchDetailCopy');
+  if(detCopy){ const x = xch(); const l = x.leads.find(a => a.id === xchDetailId); if(l) copyText(xchCertificateText(l)).then(ok => toast(ok ? 'Copy ho gaya' : 'Copy fail', !ok)); return; }
+  const detWa = q('#xchDetailWa');
+  if(detWa){ const x = xch(); const l = x.leads.find(a => a.id === xchDetailId); if(l){ const win = window.open(xchWa(l.advisorMobile || '', xchLeadShareText(l)), '_blank', 'noopener'); if(!win) toast('WhatsApp popup block hua', true); } return; }
+  const detPrint = q('#xchDetailPrint');
+  if(detPrint){ const x = xch(); const l = x.leads.find(a => a.id === xchDetailId); if(l) xchPrint(xchCertHTML(l) + '<h3 style="font-family:Georgia,serif;margin:18px 0 6px">' + esc(l.code) + ' — ' + esc(l.clientName || 'Client') + '</h3><p style="font-family:Georgia,serif;font-size:12px;line-height:1.6">Corridor: ' + esc(xchCorridorName(l.corridor)) + '<br>Budget: ' + esc(xchBudgetText(l)) + '<br>Size: ' + (l.gaj || '—') + ' gaj<br>Originator: ' + esc(l.advisorName || 'Admin desk') + '<br>Valid till: ' + esc(fmtDate(l.expiry)) + '</p>'); return; }
+});
+document.addEventListener('change', function(e){
+  const t = e.target;
+  if(!t || !t.matches) return;
+  if(t.id === 'xchVaultStage'){ const x = xch(); x.ui.vaultStage = t.value; xchSave(); renderExchange(); return; }
+  if(t.matches('[data-xchmatchlead]')){ const x = xch(); x.ui.matchLeadId = t.value; x.ui.cmpIds = []; xchSave(); renderExchange(); return; }
+  if(t.matches('[data-xchcmppick]')){ const x = xch(); if(t.value && x.ui.cmpIds.indexOf(t.value) < 0) x.ui.cmpIds.push(t.value); xchSave(); renderExchange(); return; }
+  if(t.matches('[data-xchadvmask]')){ const x = xch(); x.maskAdvisors[t.getAttribute('data-xchadvmask')] = !!t.checked; xchSave(); return; }
+  if(t.id === 'xchImportFile'){ xchImportFile(t.files && t.files[0]); t.value = ''; return; }
+  if(t.id === 'xchInvProject'){
+    const p = (db.projects || []).find(x => x.id === t.value);
+    if(p){
+      const set = (id, v) => { const el = document.getElementById(id); if(el) el.value = v == null ? '' : v; };
+      let rate = Number(p.pricePerUnit) || 0;
+      if(rate && p.priceUnit === 'sqft') rate = Math.round(rate * 9);
+      set('xchInvName', p.name || '');
+      set('xchInvDev', ((db.developers || []).find(d => d.id === p.developerId) || {}).name || '');
+      set('xchInvRera', p.rera || '');
+      set('xchInvRate', rate || '');
+      set('xchInvSizes', (String(p.sizes || '').match(/\d+/g) || []).map(Number).filter(n => n >= 20).slice(0, 8).join(', '));
+      set('xchInvLayout', p.mapUrl || '');
+      set('xchInvAmenities', Array.isArray(p.amenities) ? p.amenities.join(', ') : (p.amenities || ''));
+      set('xchInvNotes', p.remarks || p.inventoryNotes || '');
+      const cs = document.getElementById('xchInvCorridor'); if(cs) cs.value = xchCorridorName(p.corridor);
+      const ap = document.getElementById('xchInvApproval'); if(ap) ap.value = XCH_APPROVALS[p.approvalType] ? p.approvalType : 'other';
+    }
+    return;
+  }
+  if(t.matches('[data-xchcf="mode"]')){ xchInlineCalc(); return; }
+});
+document.addEventListener('input', function(e){
+  const t = e.target;
+  if(!t) return;
+  if(t.id === 'xchVaultQ'){ const x = xch(); x.ui.vaultQ = t.value; const body = document.getElementById('xchBody'); if(body) body.innerHTML = xchVaultHTML(); const inp = document.getElementById('xchVaultQ'); if(inp){ inp.focus(); inp.setSelectionRange(inp.value.length, inp.value.length); } return; }
+  if(t.id === 'xchInvQ'){ const x = xch(); x.ui.invQ = t.value; const wrap = document.getElementById('xchInvWrap'); if(wrap){ wrap.outerHTML = xchInventoryHTML(); const inp = document.getElementById('xchInvQ'); if(inp){ inp.focus(); inp.setSelectionRange(inp.value.length, inp.value.length); } } return; }
+  if(t.id && t.id.indexOf('xchSet') === 0){ xchModalCalc(); return; }
+  if(t.matches && t.matches('[data-xchcf]')){ xchInlineCalc(); return; }
+});
+function xchPrint(html){
+  const f = document.createElement('iframe');
+  f.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0';
+  document.body.appendChild(f);
+  try{
+    const doc = f.contentWindow.document;
+    doc.open();
+    doc.write('<!doctype html><html><head><meta charset="utf-8"><title>BCS Exchange</title><style>body{font-family:Georgia,serif;padding:26px;color:#2E2D20}.xch-cert{border:1.5px solid #C79A2E;border-radius:14px;padding:14px 16px;background:#FFFDF6}.xch-cert-top b{font-size:12px;letter-spacing:.7px;text-transform:uppercase;color:#6E5419}.xch-cert-top small{display:block;font-size:9px;color:#9A7A34}.xch-cert-seal{display:none}.xch-cert-ref{font-size:16px;font-weight:900;margin:4px 0 8px}.xch-cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;font-size:11px}.xch-cert-grid .k{font-size:8.5px;letter-spacing:.5px;text-transform:uppercase;color:#9A7A34}.xch-cert-grid .v{font-weight:700}.xch-cert-terms{margin-top:9px;border-top:1px dashed #C79A2E;padding-top:7px;font-size:9.5px;color:#6B5A32}</style></head><body>' + html + '</body></html>');
+    doc.close();
+    f.contentWindow.focus();
+    f.contentWindow.print();
+  }catch(err){ toast('Print fail', true); }
+  setTimeout(() => f.remove(), 5000);
+}
+
+/* ---------- init ---------- */
+try{ xchEnsure(db); }catch(e){ console.warn('[BCS exchange]', e); }
+
 </script>
+
+<!-- ============ EXCHANGE MODALS ============ -->
+<div class="overlay" id="xchLeadModal">
+  <div class="modal" style="width:min(660px,100%)">
+    <div class="modal-head"><h3 id="xchLeadModalTitle">Naya requirement</h3><button class="xbtn" data-close="xchLeadModal">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="xchLeadId">
+      <div class="mkt-form-grid">
+        <div class="field"><label>Advisor name</label><input id="xchAdvName" placeholder="Jisne requirement diya"></div>
+        <div class="field"><label>Advisor mobile</label><input id="xchAdvMobile" inputmode="tel" placeholder="10-digit mobile"></div>
+        <div class="field"><label>Client first name</label><input id="xchClientName" placeholder="Client ka naam"></div>
+        <div class="field"><label>Client phone</label><input id="xchClientPhone" inputmode="tel" placeholder="Full phone — advisors ko masked dikhega"><span class="mkt-hintline" id="xchMaskHint"></span></div>
+        <div class="field"><label>Target corridor</label><select id="xchCorridor"></select></div>
+        <div class="field"><label>Timeline</label><select id="xchTimeline">
+          <option value="immediate">Immediate</option>
+          <option value="30d">30 Days</option>
+          <option value="investment">Investment</option>
+        </select></div>
+        <div class="field"><label>Budget min (₹ lakh)</label><input type="number" id="xchBudgetMin" min="0" step="0.5" placeholder="40"></div>
+        <div class="field"><label>Budget max (₹ lakh)</label><input type="number" id="xchBudgetMax" min="0" step="0.5" placeholder="55"></div>
+        <div class="field"><label>Plot size (gaj)</label><input type="number" id="xchGaj" min="100" max="500" step="5" placeholder="120"></div>
+        <div class="field"><label>Follow-up date</label><input type="date" id="xchFollowUp"></div>
+        <div class="field full" id="xchExecWrap"><label>Executing advisor (closer)</label><select id="xchExec"></select></div>
+        <div class="field full"><label>Requirement notes</label><textarea id="xchNotes" rows="2" placeholder="Kya chahiye — corner plot, park facing, loan needed…"></textarea></div>
+        <label class="chk full" id="xchMaskWrap" style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--ink2)"><input type="checkbox" id="xchMask"> Mask client phone for advisors (admin always sees full)</label>
+      </div>
+      <p class="mkt-hintline">Save karte hi: unique ID <b>REQ-YYYY-XXXX</b>, 90-din ki expiry, client record, follow-up task aur protection certificate ban jayega.</p>
+    </div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="xchLeadModal">Cancel</button>
+      <button class="btn primary" id="xchLeadSave">Save requirement</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="xchDetailModal">
+  <div class="modal" style="width:min(700px,100%)">
+    <div class="modal-head"><h3 id="xchDetailTitle">Requirement</h3><button class="xbtn" data-close="xchDetailModal">✕</button></div>
+    <div class="modal-body" id="xchDetailBody"></div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="xchDetailModal">Close</button>
+      <button class="btn ghost" id="xchDetailCopy">📋 Copy</button>
+      <button class="btn ghost" id="xchDetailPrint">🖨 Print</button>
+      <button class="btn primary" id="xchDetailWa">↗ WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="xchInvModal">
+  <div class="modal" style="width:min(660px,100%)">
+    <div class="modal-head"><h3 id="xchInvModalTitle">Exchange inventory</h3><button class="xbtn" data-close="xchInvModal">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="xchInvId">
+      <div class="mkt-form-grid">
+        <div class="field full"><label>Import from existing project (optional)</label><select id="xchInvProject"></select></div>
+        <div class="field"><label>Project name</label><input id="xchInvName" placeholder="Sunrise Greens"></div>
+        <div class="field"><label>Developer</label><input id="xchInvDev" placeholder="Developer name"></div>
+        <div class="field"><label>Corridor</label><select id="xchInvCorridor"></select></div>
+        <div class="field"><label>Approval type</label><select id="xchInvApproval">
+          <option value="jda">JDA Approved</option>
+          <option value="90a">90-A Converted</option>
+          <option value="society">Society Scheme</option>
+          <option value="other">Other / verify</option>
+        </select></div>
+        <div class="field"><label>RERA number</label><input id="xchInvRera" placeholder="RAJ/RERA/…"></div>
+        <div class="field"><label>Base rate (₹ / gaj)</label><input type="number" id="xchInvRate" min="0" step="100" placeholder="28000"></div>
+        <div class="field"><label>Available plot sizes (gaj)</label><input id="xchInvSizes" placeholder="100, 120, 150"></div>
+        <div class="field"><label>Road width (ft)</label><input type="number" id="xchInvRoad" min="0" step="1" placeholder="30"></div>
+        <div class="field"><label>Master slab (%)</label><input type="number" id="xchInvSlab" min="0" step="0.05" placeholder="2"></div>
+        <div class="field full"><label>Layout / brochure link</label><input id="xchInvLayout" placeholder="https://…"></div>
+        <div class="field full"><label>Amenities</label><input id="xchInvAmenities" placeholder="Gated, park, street lights"></div>
+        <div class="field full"><label>Connectivity</label><input id="xchInvConnect" placeholder="Ring Road 2.5 km, school 1.2 km"></div>
+        <div class="field full"><label>Notes</label><textarea id="xchInvNotes" rows="2" placeholder="Payment plan, availability, title notes…"></textarea></div>
+        <label class="chk full" style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--ink2)"><input type="checkbox" id="xchInvActive" checked> Active in matching</label>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="xchInvModal">Cancel</button>
+      <button class="btn primary" id="xchInvSave">Save inventory</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="xchSettleModal">
+  <div class="modal" style="width:min(640px,100%)">
+    <div class="modal-head"><h3 id="xchSettleModalTitle">Settlement</h3><button class="xbtn" data-close="xchSettleModal">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="xchSetId">
+      <div class="mkt-form-grid">
+        <div class="field"><label>Calculation mode</label><select id="xchSetMode">
+          <option value="pct">Transaction value × slab %</option>
+          <option value="rate">Base rate × gaj × slab %</option>
+          <option value="manual">Manual gross entry</option>
+        </select></div>
+        <div class="field"><label>Deal / REQ ID</label><input id="xchSetCode" placeholder="REQ-2026-0001"></div>
+        <div class="field"><label>Date</label><input type="date" id="xchSetDate"></div>
+        <div class="field"><label>Total transaction value (₹)</label><input type="number" id="xchSetTxn" min="0" step="1000" placeholder="8000000"></div>
+        <div class="field"><label>Developer master slab (%)</label><input type="number" id="xchSetSlab" min="0" step="0.05" placeholder="2"></div>
+        <div class="field"><label>Base rate (₹ / gaj)</label><input type="number" id="xchSetRate" min="0" step="100" placeholder="28000"></div>
+        <div class="field"><label>Plot size (gaj)</label><input type="number" id="xchSetGaj" min="0" step="1" placeholder="120"></div>
+        <div class="field"><label>Gross receivable (₹) — auto / manual</label><input type="number" id="xchSetGross" min="0" step="1000" placeholder="auto"></div>
+        <div class="field"><label>Status</label><select id="xchSetStatus"><option value="pending">Pending</option><option value="cleared">Cleared</option></select></div>
+        <div class="field"><label>Developer payment UTR</label><input id="xchSetDevUtr" placeholder="UTR / cheque ref"></div>
+        <div class="field"><label>Originator payout UTR</label><input id="xchSetOriginUtr" placeholder="UTR"></div>
+        <div class="field"><label>Closer payout UTR</label><input id="xchSetCloserUtr" placeholder="UTR"></div>
+        <div class="field"><label>Originator %</label><input type="number" id="xchSetOriginPct" min="0" max="100" step="1" value="30"></div>
+        <div class="field"><label>Executing %</label><input type="number" id="xchSetExecPct" min="0" max="100" step="1" value="35"></div>
+        <div class="field"><label>BCS %</label><input type="number" id="xchSetBcsPct" min="0" max="100" step="1" value="35"></div>
+        <div class="field full"><label>Notes</label><input id="xchSetNotes" placeholder="TDS, cheque no, remarks…"></div>
+      </div>
+      <div class="xch-out" id="xchSetOut"></div>
+      <div id="xchSetNote"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="xchSettleModal">Cancel</button>
+      <button class="btn primary" id="xchSetSave">Save settlement</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="xchSettingsModal">
+  <div class="modal" style="width:min(600px,100%)">
+    <div class="modal-head"><h3>Exchange settings</h3><button class="xbtn" data-close="xchSettingsModal">✕</button></div>
+    <div class="modal-body">
+      <div class="mkt-form-grid">
+        <div class="field"><label>Lead validity (days)</label><input type="number" id="xchCfgExpiry" min="7" max="365" step="1" value="90"></div>
+        <div class="field"><label>Default masking</label><select id="xchCfgMask"><option value="on">On — advisors see masked phone</option><option value="off">Off — advisors see full phone</option></select></div>
+        <div class="field"><label>Originator %</label><input type="number" id="xchCfgO" min="0" max="100" step="1" value="30"></div>
+        <div class="field"><label>Executing %</label><input type="number" id="xchCfgE" min="0" max="100" step="1" value="35"></div>
+        <div class="field"><label>BCS platform %</label><input type="number" id="xchCfgB" min="0" max="100" step="1" value="35"></div>
+      </div>
+      <div class="xch-detail-sec" style="margin-top:12px">
+        <h5>Advisor-wise masking (admin control)</h5>
+        <div id="xchMaskAdvList"></div>
+        <p class="xch-note">Tick = is advisor ko har lead ka client phone masked dikhega. Admin ko hamesha full number dikhta hai. Lead-wise override bhi hai.</p>
+      </div>
+      <div class="xch-detail-sec">
+        <h5>Data safety</h5>
+        <div class="xch-inline">
+          <button type="button" class="xch-btn" id="xchExportBtn">⬇ Export exchange JSON</button>
+          <button type="button" class="xch-btn" id="xchImportBtn">⬆ Import JSON</button>
+          <input type="file" id="xchImportFile" accept="application/json" style="display:none">
+        </div>
+        <p class="xch-note">Export me leads, inventory, settlements aur settings — sab aata hai. Import merge karega (same ID overwrite).</p>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="xchSettingsModal">Close</button>
+      <button class="btn primary" id="xchCfgSave">Save settings</button>
+    </div>
+  </div>
+</div>
 
 <div class="overlay" id="embedDeckModal" role="dialog" aria-modal="true" aria-labelledby="embedDeckTitle">
   <div class="modal embed-modal">
