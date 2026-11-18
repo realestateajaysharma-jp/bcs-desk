@@ -16396,6 +16396,79 @@ body[data-theme="dark"] .gf-proj.t-completed{border-left-color:#B9DCC4}
   .fp-plots{grid-template-columns:1fr}
 }
 
+/* ============ v188 · FUN LAYER ============ */
+.fun-panel{margin:14px 0;border:1px solid var(--line);border-radius:16px;background:color-mix(in oklab,var(--panel) 90%,transparent);padding:13px;box-shadow:var(--shadow)}
+.fun-title{font:800 13px/1.25 'DM Sans',sans-serif;color:var(--ink);margin:0 0 3px}
+.fun-sub{font:500 10.5px/1.5 'DM Sans',sans-serif;color:var(--mut);margin:0 0 10px}
+.fun-row{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+.fun-chip{border:1px solid var(--line);background:var(--panel);color:var(--mut);border-radius:999px;padding:6px 10px;font:800 10px/1 'DM Sans',sans-serif;cursor:pointer}
+.fun-chip:hover{color:var(--ink);border-color:var(--acc)}
+.fun-chip.on{background:color-mix(in oklab,var(--acc) 20%,transparent);color:var(--ink);border-color:var(--acc)}
+.fun-streak{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:6px 10px;background:linear-gradient(135deg,rgba(231,196,110,.24),rgba(180,69,43,.18));border:1px solid rgba(231,196,110,.42);color:var(--ink);font:900 10px/1 'DM Sans',sans-serif}
+.fun-streak b{font-size:12px}
+.fun-funnel{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;margin-top:4px}
+.fun-fseg{position:relative;border:1px solid var(--line);border-radius:11px;background:color-mix(in oklab,var(--line) 16%,transparent);overflow:hidden;cursor:pointer;text-align:left;padding:9px 7px;min-height:64px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px}
+.fun-fseg i{position:absolute;left:0;right:0;bottom:0;height:var(--h,4%);background:linear-gradient(180deg,color-mix(in oklab,var(--acc) 62%,transparent),color-mix(in oklab,var(--acc) 24%,transparent));animation:funGrow .8s cubic-bezier(.2,.8,.2,1) both;z-index:0}
+@keyframes funGrow{from{height:0}to{height:var(--h)}}
+.fun-fseg b,.fun-fseg small{position:relative;z-index:1}
+.fun-fseg b{font:900 16px/1 'DM Sans',sans-serif;color:var(--ink)}
+.fun-fseg small{font:700 8.5px/1.2 'DM Sans',sans-serif;color:var(--mut);letter-spacing:.2px}
+.fun-fseg:hover{border-color:var(--acc)}
+.fun-motive{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:18px;padding:15px 16px;background:linear-gradient(135deg,color-mix(in oklab,var(--acc) 16%,var(--panel)),color-mix(in oklab,var(--sage) 12%,var(--panel)));margin:0 0 14px}
+.fun-motive:after{content:'✦';position:absolute;right:14px;top:8px;font-size:60px;color:color-mix(in oklab,var(--acc) 12%,transparent);pointer-events:none}
+.fun-motive .fun-eyebrow{font:900 9px/1 'DM Sans',sans-serif;letter-spacing:1.3px;text-transform:uppercase;color:var(--sage-ink)}
+.fun-motive h3{font:800 18px/1.25 'Fraunces',serif;color:var(--ink);margin:5px 0 4px;max-width:80%}
+.fun-motive p{font:600 11px/1.55 'DM Sans',sans-serif;color:var(--mut);margin:0;max-width:82%}
+.fun-motive-stats{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+.fun-motive-stats span{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font:800 10px/1 'DM Sans',sans-serif;color:var(--ink)}
+.fun-map{width:100%;height:auto;max-height:310px;display:block;border-radius:12px;background:radial-gradient(circle at 50% 50%,color-mix(in oklab,var(--acc) 10%,transparent),transparent 68%)}
+.fun-map .fun-road{stroke:var(--line);stroke-width:2;stroke-dasharray:5 5}
+.fun-map .fun-label{fill:var(--mut);font:700 10px 'DM Sans',sans-serif}
+.fun-map .fun-center{fill:var(--acc);opacity:.9}
+.fun-dot{fill:var(--acc);transform-box:fill-box;transform-origin:center;animation:funPulse 2s ease-out infinite}
+@keyframes funPulse{0%{transform:scale(.7);opacity:1}70%{transform:scale(2.1);opacity:0}100%{transform:scale(.7);opacity:0}}
+.fun-map-g{cursor:pointer}
+.fun-map-g:hover .fun-label{fill:var(--ink)}
+.fun-tl{position:relative;margin:6px 0 0 5px;padding-left:17px;border-left:2px solid color-mix(in oklab,var(--acc) 26%,var(--line))}
+.fun-tl-item{position:relative;padding:0 0 11px}
+.fun-tl-item:before{content:'';position:absolute;left:-23px;top:3px;width:9px;height:9px;border-radius:50%;background:var(--panel);border:2px solid var(--acc)}
+.fun-tl-item b{font:800 11px/1.3 'DM Sans',sans-serif;color:var(--ink)}
+.fun-tl-item small{display:block;font:500 10px/1.5 'DM Sans',sans-serif;color:var(--mut)}
+.fun-tree{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.fun-tree-root{border:1px solid var(--acc);border-radius:12px;padding:9px 11px;background:color-mix(in oklab,var(--acc) 10%,var(--panel));font:800 11px/1.3 'DM Sans',sans-serif;color:var(--ink)}
+.fun-tree-kids{display:flex;flex-direction:column;gap:5px;padding-left:16px;border-left:2px dashed var(--line)}
+.fun-tree-kid{font:600 10.5px/1.4 'DM Sans',sans-serif;color:var(--mut)}
+.fun-tree-kid b{color:var(--ink)}
+.fun-quiz-q{font:800 12px/1.4 'DM Sans',sans-serif;color:var(--ink);margin:8px 0}
+.fun-quiz-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px}
+.fun-quiz-opt{border:1px solid var(--line);background:var(--panel);color:var(--mut);border-radius:10px;padding:9px 10px;text-align:left;font:700 10.5px/1.35 'DM Sans',sans-serif;cursor:pointer}
+.fun-quiz-opt.right{border-color:#4E7C62;background:color-mix(in oklab,#4E7C62 18%,transparent);color:var(--ink)}
+.fun-quiz-opt.wrong{border-color:#A4452B;background:color-mix(in oklab,#A4452B 14%,transparent);color:var(--ink)}
+.fun-lab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:7px}
+.fun-swatch{border:1px solid var(--line);border-radius:11px;padding:9px;background:var(--panel);cursor:pointer;font:800 10px/1.3 'DM Sans',sans-serif;color:var(--ink);text-align:left}
+.fun-swatch i{display:block;width:100%;height:19px;border-radius:6px;margin-bottom:6px}
+.fun-swatch.on{border-color:var(--acc);box-shadow:0 0 0 2px color-mix(in oklab,var(--acc) 22%,transparent)}
+.fun-reel-canvas{width:100%;max-width:660px;height:auto;display:block;border-radius:14px;border:1px solid var(--line);margin:0 auto 10px}
+.fun-win{text-align:center}
+.fun-win .fun-win-ic{font-size:38px;line-height:1}
+.fun-win b{display:block;font:800 18px/1.2 'Fraunces',serif;color:var(--ink);margin:6px 0}
+.fun-win p{font:600 11px/1.55 'DM Sans',sans-serif;color:var(--mut);margin:0 0 9px}
+.fun-split{display:flex;gap:6px;justify-content:center;margin:10px 0}
+.fun-split span{flex:1;border:1px solid var(--line);border-radius:10px;padding:8px 5px;background:var(--panel);font:800 10px/1.3 'DM Sans',sans-serif;color:var(--ink)}
+.fun-split span small{display:block;color:var(--mut);font-weight:600}
+.fp-card.just-moved{animation:funPop .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes funPop{0%{transform:scale(.86) translateY(-6px)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
+body.fun-golden .lock-skyline svg path{stroke:#F6D98A !important;opacity:1}
+body.skyline-day .lock-skyline{filter:hue-rotate(28deg) brightness(1.25);opacity:.72}
+body.skyline-rain .lock-skyline{filter:hue-rotate(150deg) saturate(.72) brightness(.88)}
+body.skyline-rain .lock-card:before{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(105deg,transparent 0 7px,rgba(180,210,230,.11) 7px 8px,transparent 8px 15px);border-radius:18px}
+body.skyline-golden .lock-skyline{filter:sepia(.42) saturate(1.5) hue-rotate(-12deg);opacity:.78}
+@media(max-width:640px){
+  .fun-funnel{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .fun-quiz-opts{grid-template-columns:1fr}
+  .fun-motive h3,.fun-motive p{max-width:100%}
+}
+
 </style>
 </head>
 <style id="bcs-mkt-daily-css">
@@ -46840,6 +46913,7 @@ function render(){
   if(currentView === 'sheets'){ try{ paintSheetsInputs(); }catch(e){} }
   storageMeter();
   try{ if(window.BCS_FLOW) window.BCS_FLOW.render(); }catch(e){}
+  try{ if(window.BCS_FUN) window.BCS_FUN.render(); }catch(e){}
   try{ if(window.__bcsArmMotion) window.__bcsArmMotion(); }catch(e){}
 }
 /* ---------- v162: TARGET LISTS — bulk prospects + two-way showcase ----------
@@ -55942,6 +56016,9 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     Document:'ops', Invoice:'ops', Broadcast:'ops', ROI:'ops', 'Client page':'ops', Backup:'ops'
   };
   const SITE_LOG = [
+    { v:'v188', date:'2026-11-18', page:'dashboard', kind:'update',
+      title:'Fun layer — celebrations, streaks, living map, reel and lab',
+      body:'Win confetti aur 30/35/35 card, soft sound design with mute, call streak, animated lead-to-registry funnel, glowing Jaipur corridor map, client/advisor timelines, referral tree, Quick Actions 2.0, Monday motivator, downloadable weekly reel, fun lab for accent/skyline/sound, hidden quiz aur Gemini prompt presets.' },
     { v:'v187', date:'2026-11-18', page:'pipeline', kind:'update',
       title:'Daily calling queue, lead kanban and client / advisor portals',
       body:'Leads se clients tak ek clear flow: roz ka call queue + requirement, drag-drop kanban, har call ka log aur stage update. Booked client ke plots, documents aur referral ek portals me; advisor ke corridor-wise projects, co-broking, referral aur payment ledger. Shareable read-only links bhi.' },
@@ -58808,6 +58885,8 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
           '<small>'+fEsc(r.phone||'')+' · '+fEsc(r.status||'new')+' · '+fEsc(r.note||'')+'</small></div>'+
           '<button type="button" class="bw-btn sm" data-fp-refclient="'+fEsc(c.id)+'" data-refid="'+fEsc(r.id)+'">→ Client</button></div>').join('')+'</div>':
           '<div class="bw-empty">Abhi koi referral nahi. Khush client se referral sabse aasan aata hai.</div>')+'</div>'+
+      '<div data-fun-timeline="client" data-fun-id="'+fEsc(c.id)+'"></div>'+
+      '<div data-fun-tree="client" data-fun-id="'+fEsc(c.id)+'"></div>'+
       '<div class="bw-note"><b>Long-term relation:</b> Client portal ka link client ko bhejein — usse apne plot, documents aur payment ki apni copy dikhti hai. Naam tab dikhega jab likhit permission ho; warna masked.</div>'+
     '</div>';
   }
@@ -58872,6 +58951,8 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
           '<small>'+fEsc(r.phone||'')+' · '+fEsc(r.status||'new')+' · '+fEsc(r.note||'')+'</small></div>'+
           '<button type="button" class="bw-btn sm" data-fp-refclient="'+fEsc(a.id)+'" data-refid="'+fEsc(r.id)+'">→ Client</button></div>').join('')+'</div>':
           '<div class="bw-empty">Abhi koi referral nahi.</div>')+'</div>'+
+      '<div data-fun-timeline="advisor" data-fun-id="'+fEsc(a.id)+'"></div>'+
+      '<div data-fun-tree="advisor" data-fun-id="'+fEsc(a.id)+'"></div>'+
       '<div class="bw-note"><b>Privacy:</b> Advisor portal link read-only hai — sirf assigned projects, deals aur payments dikhte hain. Client phone/email default me nahi dikhte.</div>'+
     '</div>';
   }
@@ -59192,6 +59273,656 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   };
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',checkGuest);
   else checkGuest();
+})();
+</script>
+<script>
+/* ============================================================
+   BCS FUN LAYER (v188)
+   Confetti wins · sound · streaks · living funnel · corridor map
+   timelines · referral tree · quick actions · motivator · reel
+   fun lab · easter eggs · Gemini presets
+   Zero dependency. State on db.fun, everything else on canonical
+   db records so all data keeps flowing through the whole desk.
+   ============================================================ */
+(function(){
+  'use strict';
+
+  const $  = s => document.querySelector(s);
+  const $$ = s => Array.prototype.slice.call(document.querySelectorAll(s));
+  const fEsc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const fUid = () => (window.crypto && crypto.randomUUID ? crypto.randomUUID() : 'fun-'+Date.now()+'-'+Math.random().toString(36).slice(2));
+  const pad = n => String(n).padStart(2,'0');
+  const dayKey = d => { const x=d||new Date(); return x.getFullYear()+'-'+pad(x.getMonth()+1)+'-'+pad(x.getDate()); };
+  const today = () => dayKey();
+  const niceDate = v => { if(!v) return '—'; const s=String(v); return s.length===10?s.slice(8)+' '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][Number(s.slice(5,7))-1]:s; };
+  const rupee = v => { const n=Number(v||0); return n ? '₹'+n.toLocaleString('en-IN') : '—'; };
+  const admin = () => (typeof isAdmin === 'function') ? isAdmin() : true;
+  const leads = () => (db.leadgen && Array.isArray(db.leadgen.leads)) ? db.leadgen.leads : [];
+
+  /* ---------------- self-healing state ---------------- */
+  function FU(){
+    if(!db.fun || typeof db.fun!=='object' || Array.isArray(db.fun)) db.fun={};
+    const f=db.fun;
+    if(typeof f.sound!=='boolean') f.sound=true;
+    if(!f.skyline) f.skyline='night';
+    if(!f.accent){ try{ f.accent=localStorage.getItem('bcs_desk_color')||'olive'; }catch(e){ f.accent='olive'; } }
+    if(!f.quizBest || typeof f.quizBest!=='number') f.quizBest=0;
+    if(!f.corridor) f.corridor='';
+    if(!f.celebrated || typeof f.celebrated!=='object' || Array.isArray(f.celebrated)) f.celebrated={};
+    return f;
+  }
+
+  /* ---------------- sound ---------------- */
+  let actx=null, lastSaveTone=0;
+  function tone(freq,dur,type,vol,delay){
+    try{
+      if(!FU().sound) return;
+      const AC=window.AudioContext||window.webkitAudioContext; if(!AC) return;
+      if(!actx) actx=new AC();
+      if(actx.state==='suspended') actx.resume();
+      const t0=actx.currentTime+(delay||0);
+      const o=actx.createOscillator(), g=actx.createGain();
+      o.type=type||'sine'; o.frequency.setValueAtTime(freq,t0);
+      g.gain.setValueAtTime(0.0001,t0);
+      g.gain.exponentialRampToValueAtTime(vol||0.035,t0+0.012);
+      g.gain.exponentialRampToValueAtTime(0.0001,t0+(dur||0.06));
+      o.connect(g); g.connect(actx.destination);
+      o.start(t0); o.stop(t0+(dur||0.06)+0.03);
+    }catch(e){}
+  }
+  function funSound(kind){
+    if(!FU().sound) return;
+    if(kind==='save'){
+      const now=Date.now(); if(now-lastSaveTone<1800) return; lastSaveTone=now;
+      tone(520,0.03,'sine',0.022);
+    } else if(kind==='call'){
+      tone(690,0.05,'triangle',0.04); tone(910,0.05,'triangle',0.035,0.06);
+    } else if(kind==='cash'){
+      tone(880,0.05,'square',0.028); tone(1320,0.09,'sine',0.035,0.06);
+    } else if(kind==='win'){
+      [660,880,1100].forEach((f,i)=>tone(f,0.10,'sine',0.038,i*0.075));
+    } else if(kind==='tap'){
+      tone(620,0.028,'sine',0.03);
+    } else if(kind==='egg'){
+      [523,659,784,1047].forEach((f,i)=>tone(f,0.13,'triangle',0.035,i*0.09));
+    }
+  }
+
+  /* ---------------- streak ---------------- */
+  function dateList(){
+    return (db.flow && Array.isArray(db.flow.callLogs)) ? db.flow.callLogs.map(x=>x.date).filter(Boolean) : [];
+  }
+  function streak(){
+    const days=Array.from(new Set(dateList())).sort().reverse();
+    if(!days.length) return 0;
+    const t=new Date();
+    let cursor=new Date(t.getFullYear(),t.getMonth(),t.getDate());
+    if(days[0]!==dayKey(cursor)){
+      cursor.setDate(cursor.getDate()-1);
+      if(days[0]!==dayKey(cursor)) return 0;
+    }
+    let n=0;
+    while(days.indexOf(dayKey(cursor))!==-1){ n++; cursor.setDate(cursor.getDate()-1); }
+    return n;
+  }
+
+  /* ---------------- celebration ---------------- */
+  function celebrate(kind,rec){
+    try{
+      const f=FU();
+      const key=kind+':'+(rec&&rec.id||'')+':'+(rec&&rec.stage||'');
+      if(f.celebrated[key]) return;
+      f.celebrated[key]=Date.now();
+      const keys=Object.keys(f.celebrated); if(keys.length>60) delete f.celebrated[keys[0]];
+      funSound(kind==='deal'||kind==='lead'?'win':'cash');
+      if(typeof bcsConfetti==='function') bcsConfetti();
+      const title=kind==='deal'?'Deal mil gaya! 🎉':kind==='lead'?'Lead → Client! 🤝':'Payment recorded 💰';
+      const body=kind==='deal'
+        ? ((rec&&rec.clientName)||'Client')+' · '+((rec&&rec.projectName)||'Project')+' — booking se registry tak ka safar chalka.'
+        : kind==='lead' ? ((rec&&rec.name)||'Lead')+' ne jawab diya. Ab wo client hai — advisor follow-up shuru.'
+        : 'Ledger update ho gaya. Advisor share bhi apne portal me dikhega.';
+      const m=document.createElement('div');
+      m.className='bw-modal on'; m.id='funWinModal';
+      m.innerHTML='<div class="bw-modal-card fun-win" role="dialog" aria-modal="true" aria-label="Celebration">'+
+        '<div class="fun-win-ic">'+(kind==='deal'?'🏆':kind==='lead'?'🤝':'💰')+'</div>'+
+        '<b>'+fEsc(title)+'</b><p>'+fEsc(body)+'</p>'+
+        '<div class="fun-split"><span>30%<small>Originating</small></span><span>35%<small>Executing</small></span><span>35%<small>BCS</small></span></div>'+
+        '<div class="bw-modal-foot" style="justify-content:center">'+
+          '<button type="button" class="bw-btn primary" data-fun-close>Dhanyavaad! ✨</button>'+
+        '</div></div>';
+      document.body.appendChild(m);
+      m.addEventListener('click',e=>{ if(e.target===m||e.target.closest('[data-fun-close]')) m.remove(); });
+    }catch(e){ try{ console.warn('BCS_FUN celebrate',e); }catch(x){} }
+  }
+  window.BCS_FUN_CELEBRATE=celebrate;
+
+  /* ---------------- wrap core functions (safe, reversible hooks) ---------------- */
+  try{
+    const _save=window.save;
+    if(typeof _save==='function') window.save=function(){ const r=_save.apply(this,arguments); funSound('save'); return r; };
+  }catch(e){}
+  try{
+    const _saveDeal=window.saveDeal;
+    if(typeof _saveDeal==='function') window.saveDeal=function(){
+      const before=(db.pipeline||[]).map(d=>[d.id,d.stage]);
+      const r=_saveDeal.apply(this,arguments);
+      try{
+        const won=(db.pipeline||[]).filter(d=>{
+          const prev=(before.find(x=>x[0]===d.id)||[])[1];
+          return prev!==d.stage && ['closed','registry','handover'].indexOf(String(d.stage||''))!==-1;
+        });
+        if(won.length) celebrate('deal',won[0]);
+      }catch(e){}
+      return r;
+    };
+  }catch(e){}
+  try{
+    const _qal=window.quickActionList;
+    if(typeof _qal==='function') window.quickActionList=function(){ return funActions().concat(_qal()); };
+  }catch(e){}
+  try{
+    if(typeof PALETTE_ACTIONS!=='undefined' && Array.isArray(PALETTE_ACTIONS)){
+      funActions().forEach(a=>PALETTE_ACTIONS.push({label:a.label,hint:a.kind,run:a.run}));
+    }
+  }catch(e){}
+
+  /* ---------------- quick actions ---------------- */
+  function funActions(){
+    return [
+      { kind:'Fun', label:'Call next lead', sub:'Queue ka agla call kholein', icon:'📞', color:'linear-gradient(135deg,#A4452B,#E7C46E)', keys:'call queue lead next', run:()=>{
+        go('pipeline'); setTimeout(()=>{ const b=$('[data-fp-call]'); if(b) b.click(); else toast('Queue me abhi koi lead nahi',true); },160);
+      }},
+      { kind:'Fun', label:'Client portal kholein', sub:'Booked plots, docs, referrals', icon:'👤', color:'linear-gradient(135deg,#4E7C62,#A57B36)', keys:'client portal booked documents', run:()=>go('clients') },
+      { kind:'Fun', label:'Advisor portal kholein', sub:'Corridor projects, pay, referral', icon:'🧑‍🤝‍🧑', color:'linear-gradient(135deg,#3A6E8C,#7B67C6)', keys:'advisor portal corridor payment', run:()=>go('advisors') },
+      { kind:'Fun', label:'Weekly highlight reel', sub:'Is hafte ka shareable card', icon:'🎞', color:'linear-gradient(135deg,#7B67C6,#C95C85)', keys:'weekly reel summary share card', run:openReel },
+      { kind:'Fun', label:'Fun lab — look & feel', sub:'Accent, skyline, sound', icon:'🎨', color:'linear-gradient(135deg,#E7B84B,#7B67C6)', keys:'theme accent color skyline sound settings', run:openLab },
+      { kind:'Fun', label:'BCS quiz khelein', sub:'5 quick real-estate questions', icon:'🎲', color:'linear-gradient(135deg,#2F8F6B,#E7B84B)', keys:'quiz game learn fun', run:()=>go('terminology') },
+      { kind:'Fun', label:'Gemini prompt presets', sub:'Thank-you, referral, follow-up', icon:'✦', color:'linear-gradient(135deg,#4C8DF6,#9B72F2)', keys:'gemini ai prompt presets', run:()=>go('links') }
+    ];
+  }
+
+  /* ---------------- funnel visual ---------------- */
+  function stageShort(id){
+    return ({new:'New',contacted:'Contacted',interested:'Interested',visit:'Visit',negotiation:'Negotiation',client:'Client',dead:'Dead'})[id]||id;
+  }
+  function leadStage(l){
+    const p=String(l.pipeStage||'').toLowerCase();
+    if(p) return p;
+    const s=String(l.status||'').toLowerCase();
+    if(s==='won') return 'client'; if(s==='lost') return 'dead';
+    if(s==='negotiation') return 'negotiation';
+    if(s.indexOf('site visit')===0) return 'visit';
+    if(s==='qualified') return 'interested';
+    if(s==='contacted') return 'contacted';
+    return 'new';
+  }
+  function funnelCounts(){
+    const L=leads();
+    const deals=db.pipeline||[];
+    return [
+      {k:'leads', label:'Leads', n:L.length, go:'leadgen'},
+      {k:'contacted', label:'Contacted', n:L.filter(l=>leadStage(l)==='contacted').length, tab:'kanban'},
+      {k:'interested', label:'Interested', n:L.filter(l=>leadStage(l)==='interested').length, tab:'kanban'},
+      {k:'visit', label:'Site visit', n:L.filter(l=>leadStage(l)==='visit').length, tab:'kanban'},
+      {k:'negotiation', label:'Negotiation', n:L.filter(l=>leadStage(l)==='negotiation').length, tab:'kanban'},
+      {k:'client', label:'Clients', n:(db.clients||[]).length, go:'clients'},
+      {k:'booked', label:'Booked', n:deals.filter(d=>['booked','agreement'].indexOf(d.stage)!==-1).length, go:'pipeline'},
+      {k:'registry', label:'Registry', n:deals.filter(d=>['registry','handover','closed'].indexOf(d.stage)!==-1).length, go:'pipeline'}
+    ];
+  }
+  function funnelHTML(){
+    const c=funnelCounts(), max=Math.max(1,...c.map(x=>x.n)), s=streak();
+    return '<div class="fun-panel" id="funFunnel">'+
+      '<div class="fun-row" style="justify-content:space-between"><div>'+
+        '<div class="fun-title">🔥 Lead → Client → Registry — live flow</div>'+
+        '<div class="fun-sub">Har stage ka count real data se. Kisi bhi peeche section click karke usi kaam par chale jayein.</div>'+
+      '</div>'+ (s?'<div class="fun-streak"><span>🔥</span><b>'+s+' din</b><span>call streak</span></div>':'') +'</div>'+
+      '<div class="fun-funnel">'+c.map(x=>
+        '<button type="button" class="fun-fseg" data-fun-seg="'+x.k+'" data-fun-go="'+(x.go||'')+'" data-fun-tab="'+(x.tab||'')+'" aria-label="'+fEsc(x.label)+' '+x.n+'">'+
+          '<i style="--h:'+Math.max(5,Math.round(x.n/max*100))+'%"></i>'+
+          '<b>'+x.n+'</b><small>'+fEsc(x.label)+'</small></button>').join('')+'</div>'+
+    '</div>';
+  }
+
+  /* ---------------- Monday motivator ---------------- */
+  const MOTIVES=[
+    'Aaj 5 calls = 1 client ke thoda closer. Queue se shuru karein — baaki sab apne aap settle hoga.',
+    'Lead me interest nahi, follow-up me interest hai. Aaj wahi ek call dobara karein jo kal chhoot gayi thi.',
+    'Client ka answer "nahi" ho to bhi relation bachta hai — bas tone aur timing sahi rakhein.',
+    'Jo aaj log hoga, kal wahi proof banega. Chhota note bhi kaam ka hota hai.',
+    'Shabdkosh se ek term seekhein — aaj client ko wo ek line samjhana aasan ho jayega.',
+    'Referral sabse sasta lead hai. Khush client ko aaj ek message bhejein.',
+    'Day plan chhota rakhein, par poora karein. Consistency hi real growth hai.'
+  ];
+  function motivatorHTML(){
+    const t=today();
+    const q=(window.BCS_FLOW&&window.BCS_FLOW.queue)?window.BCS_FLOW.queue():[];
+    const due=q.filter(l=>!l.nextCallAt||l.nextCallAt<=t).length;
+    const fu=(db.clients||[]).filter(c=>c.nextFollowUp===t).length;
+    const bdays=(db.clients||[]).concat(db.advisors||[]).filter(x=>x.birthday&&x.birthday.slice(5)===t.slice(5)).length;
+    const wi=(new Date().getDay()+6)%7;
+    const line=MOTIVES[wi];
+    const greet=wi===0?'Monday momentum':wi===6?'Weekend wrap':'Aaj ka desk pulse';
+    return '<div class="fun-motive" id="funMotivator">'+
+      '<div class="fun-eyebrow">BCS · '+fEsc(greet)+' · '+fEsc(niceDate(t))+'</div>'+
+      '<h3>'+(due?'Aaj '+due+' calls pending hain.':'Queue clear hai — growth par dhyaan dein.')+'</h3>'+
+      '<p>'+fEsc(line)+'</p>'+
+      '<div class="fun-motive-stats"><span>📞 '+due+' due calls</span><span>📅 '+fu+' follow-ups</span><span>🎂 '+bdays+' birthdays</span><span>🔥 '+streak()+' streak</span></div>'+
+      '<div class="fun-row" style="margin-top:10px">'+
+        '<button type="button" class="bw-btn sm primary" data-fun-action="calls">Call queue kholein</button>'+
+        '<button type="button" class="bw-btn sm" data-fun-action="reel">🎞 Weekly reel</button>'+
+        '<button type="button" class="bw-btn sm" data-fun-action="lab">🎨 Fun lab</button>'+
+      '</div></div>';
+  }
+
+  /* ---------------- corridor map ---------------- */
+  function corridorValue(p){
+    return String((p&&(p.corridorId||p.corridor))||'Unassigned');
+  }
+  function corridorName(v){
+    try{ const c=(typeof corridor==='function')?corridor(v):null; if(c&&c.name) return c.name; }catch(e){}
+    return String(v||'Unassigned');
+  }
+  function mapHTML(){
+    const ps=(typeof scopedProjects==='function')?scopedProjects():(db.projects||[]);
+    const groups={};
+    ps.forEach(p=>{ const v=corridorValue(p); (groups[v]=groups[v]||[]).push(p); });
+    let keys=Object.keys(groups);
+    if(!keys.length) keys=['Jaipur'];
+    keys=keys.slice(0,8);
+    const cx=300, cy=150, R=112;
+    const nodes=keys.map((k,i)=>{
+      const ang=(Math.PI*2*i/keys.length)-Math.PI/2;
+      const x=cx+Math.cos(ang)*R, y=cy+Math.sin(ang)*R*0.72;
+      const active=(groups[k]||[]).filter(p=>p.active!==false).length;
+      const tx=x+Math.cos(ang)*26, ty=y+Math.sin(ang)*20;
+      return '<g class="fun-map-g" data-fun-corridor="'+fEsc(k)+'">'+
+        '<line class="fun-road" x1="'+cx+'" y1="'+cy+'" x2="'+x+'" y2="'+y+'"/>'+
+        (active?'<circle class="fun-dot" cx="'+x+'" cy="'+y+'" r="6"/>':'')+
+        '<circle cx="'+x+'" cy="'+y+'" r="5" fill="var(--acc)" opacity=".85"/>'+
+        '<text class="fun-label" x="'+tx+'" y="'+ty+'" text-anchor="'+(Math.cos(ang)<-0.2?'end':'start')+'">'+fEsc(corridorName(k))+' · '+((groups[k]||[]).length)+'</text>'+
+      '</g>';
+    }).join('');
+    return '<div class="fun-panel" id="funMap">'+
+      '<div class="fun-title">🗺 Jaipur corridor glow</div>'+
+      '<div class="fun-sub">Pulsing dot = is corridor me active project. Corridor click karte hi neeche wali list filter ho jayegi.</div>'+
+      '<svg class="fun-map" viewBox="0 0 600 300" role="img" aria-label="Jaipur corridor map">'+
+        '<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="none" stroke="var(--line)" stroke-dasharray="3 8"/>'+
+        nodes+'<circle class="fun-center" cx="'+cx+'" cy="'+cy+'" r="9"/>'+
+        '<text class="fun-label" x="'+cx+'" y="'+(cy+27)+'" text-anchor="middle">BCS DESK</text>'+
+      '</svg></div>';
+  }
+
+  /* ---------------- relationship timeline ---------------- */
+  function clientTimeline(c){
+    const items=[];
+    const lead=leads().find(l=>l.clientId===c.id);
+    const logs=(db.flow&&db.flow.callLogs||[]).filter(x=>(lead&&x.leadId===lead.id)||String(x.leadName||'').toLowerCase()===String(c.name||'').toLowerCase()).slice(0,12);
+    logs.forEach(x=>items.push({d:x.date||'',t:x.advisorName||'Call logged',s:(x.outcome||'')+(x.note?' · '+x.note:'')}));
+    (db.visits||[]).filter(v=>v.clientId===c.id).forEach(v=>items.push({d:v.date||v.createdAt||'',t:'Site visit',s:v.projectName||v.note||''}));
+    (db.pipeline||[]).filter(d=>d.clientId===c.id).forEach(d=>{
+      (d.payments||[]).forEach(p=>items.push({d:p.date||'',t:'Payment · '+rupee(p.amount),s:(p.mode||'')+' '+(p.ref||'')}));
+      items.push({d:d.bookingDate||'',t:'Deal · '+String(d.stage||''),s:(d.projectName||'')+' '+(d.plotDetail||'')});
+    });
+    (c.portalDocs||[]).filter(d=>d.status==='done'&&d.updatedAt).forEach(d=>items.push({d:d.updatedAt,t:'Document ✓',s:d.label}));
+    items.sort((a,b)=>String(b.d).localeCompare(String(a.d)));
+    return items.slice(0,14);
+  }
+  function advisorTimeline(a){
+    const items=[];
+    (db.flow&&db.flow.callLogs||[]).filter(x=>x.advisorId===a.id).slice(0,8).forEach(x=>items.push({d:x.date||'',t:'Lead call · '+x.outcome,s:x.leadName||''}));
+    (a.portalPayments||[]).forEach(p=>items.push({d:p.date||'',t:'Payment · '+rupee(p.amount),s:(p.mode||'')+' '+(p.ref||'')}));
+    (db.pipeline||[]).filter(d=>d.advisorId===a.id).forEach(d=>items.push({d:d.bookingDate||d.createdAt||'',t:'Deal · '+String(d.stage||''),s:(d.clientName||'')+' · '+rupee(d.dealValue)}));
+    items.sort((a,b)=>String(b.d).localeCompare(String(a.d)));
+    return items.slice(0,14);
+  }
+  function timelineHTML(kind,id){
+    const rec=kind==='client'?(db.clients||[]).find(x=>x.id===id):(db.advisors||[]).find(x=>x.id===id);
+    if(!rec) return '';
+    const items=kind==='client'?clientTimeline(rec):advisorTimeline(rec);
+    return '<div class="fp-block" data-fun-timeline-block>'+
+      '<div class="fp-block-head"><b>🕰 Relationship timeline</b><span class="bw-chip">'+items.length+' moments</span></div>'+
+      (items.length?'<div class="fun-tl">'+items.map(x=>
+        '<div class="fun-tl-item"><b>'+fEsc(x.t)+'</b><small>'+fEsc(niceDate(x.d))+(x.s?' · '+fEsc(x.s):'')+'</small></div>').join('')+'</div>':
+        '<div class="bw-empty">Abhi koi moment nahi — pehla call ya payment log karte hi timeline ban jayegi.</div>')+
+    '</div>';
+  }
+
+  /* ---------------- referral tree ---------------- */
+  function referralHTML(kind,id){
+    const rec=kind==='client'?(db.clients||[]).find(x=>x.id===id):(db.advisors||[]).find(x=>x.id===id);
+    if(!rec) return '';
+    const refs=Array.isArray(rec.portalRefs)?rec.portalRefs:[];
+    const converted=(db.clients||[]).filter(c=>String(c.sourceNote||'').indexOf(rec.name||'~~~')!==-1 || String(c.source||'').indexOf('Referral')!==-1).slice(0,8);
+    if(!refs.length&&!converted.length) return '';
+    return '<div class="fp-block" data-fun-tree-block>'+
+      '<div class="fp-block-head"><b>🌱 Referral tree</b><span class="bw-chip">'+refs.length+' seeds</span></div>'+
+      '<div class="fun-tree"><div class="fun-tree-root">'+fEsc(rec.name||'Source')+
+        '<div class="fun-tree-kids">'+
+          (refs.map(r=>'<div class="fun-tree-kid"><b>'+fEsc(r.name||'Referral')+'</b> · '+fEsc(r.status||'new')+'</div>').join('')||'')+
+          (converted.map(c=>'<div class="fun-tree-kid">↳ Client: <b>'+fEsc(c.name||c.phone||'')+'</b></div>').join('')||'')+
+        '</div></div></div></div>';
+  }
+
+  /* ---------------- quiz ---------------- */
+  const QUIZ=[
+    {q:'BCS me Originating ka hissa kitna hai?',o:['20%','30%','40%'],a:1},
+    {q:'Executing partner ka split kitna hai?',o:['25%','30%','35%'],a:2},
+    {q:'Lead tab client banta hai jab…',o:['Phone mil jaye','Jawab / interest mile','Naam likh diya jaye'],a:1},
+    {q:'RERA se pehle property promotional message me kya zaroori hai?',o:['RERA number + approval status','Sirf price','Sirf photo'],a:0},
+    {q:'Client ka document kab share karein?',o:['Hamesha','Likhit permission ke baad','Kabhi nahi'],a:1}
+  ];
+  let quizIndex=0, quizScore=0, quizLocked=false;
+  function quizHTML(){
+    const q=QUIZ[quizIndex%QUIZ.length];
+    return '<div class="fun-panel" id="funQuiz">'+
+      '<div class="fun-title">🎲 BCS Quiz — chhota cabinet, bada seekh</div>'+
+      '<div class="fun-sub">Sahi jawab par score barta hai. Best score is device par save hota hai. (Question '+(quizIndex%QUIZ.length+1)+'/'+QUIZ.length+')</div>'+
+      '<div class="fun-row"><span class="fun-chip on">Score '+quizScore+'</span><span class="fun-chip">Best '+FU().quizBest+'</span></div>'+
+      '<div class="fun-quiz-q">'+fEsc(q.q)+'</div>'+
+      '<div class="fun-quiz-opts">'+q.o.map((o,i)=>'<button type="button" class="fun-quiz-opt" data-fun-quizans="'+i+'">'+fEsc(o)+'</button>').join('')+'</div>'+
+      '<div class="fun-row" style="margin-top:8px"><button type="button" class="fun-chip" data-fun-quiznext>Next question →</button>'+
+      '<button type="button" class="fun-chip" data-fun-quizreset>↺ Naya round</button></div></div>';
+  }
+
+  /* ---------------- Gemini presets ---------------- */
+  const PRESETS=[
+    ['Booking ke baad thank-you','BCS Desk ke liye ek warm, short thank-you WhatsApp message likho — client ka naam {client}, project {project}, plot {plot}. 30% Originating / 35% Executing / 35% BCS split ka zikr sirf tab karein jab client ne poocha ho. Hinglish, respectful, no pressure. 3 versions.'],
+    ['Referral request','BCS Desk ke liye ek polite referral request message likho — khush booked client se reference maangna hai. Client name {client}. Hinglish, 3 short options, mention karein ki unki permission ke bina koi detail share nahi karenge.'],
+    ['Follow-up nudge','BCS Desk lead follow-up ke liye 3 short messages likho — lead {lead}, requirement {requirement}, budget {budget}. Ek soft, ek direct, ek site-visit invite. Client names mask rakhein jab tak likhit permission na ho.'],
+    ['Monday momentum','BCS Desk team ke liye ek Monday motivation note — Hinglish, 120 words, calls/discipline/follow-up par focused. 30/35/35 split ki precision bhi yaad dilayein.'],
+    ['Site visit confirm','BCS Desk ke liye site-visit confirmation message — client {client}, project {project}, date {date}, time {time}. Hinglish, clear directions line, aur ek polite reschedule option.']
+  ];
+  function presetsHTML(){
+    return '<div class="fun-panel" id="funPresets">'+
+      '<div class="fun-title">✦ Gemini prompt presets — ek click, ready prompt</div>'+
+      '<div class="fun-sub">Prompt pehle preview me khulega — padhein, edit karein, phir Copy / Copy + Open Gemini. Kuch bhi automatically post nahi hota.</div>'+
+      '<div class="fun-row">'+PRESETS.map((p,i)=>'<button type="button" class="fun-chip" data-fun-preset="'+i+'">'+fEsc(p[0])+'</button>').join('')+'</div></div>';
+  }
+
+  /* ---------------- Fun lab ---------------- */
+  function openLab(){
+    const f=FU();
+    let colors=[];
+    try{ colors=(typeof DESK_COLORS!=='undefined'&&Array.isArray(DESK_COLORS))?DESK_COLORS:[]; }catch(e){}
+    const m=document.createElement('div');
+    m.className='bw-modal on'; m.id='funLabModal';
+    m.innerHTML='<div class="bw-modal-card" role="dialog" aria-modal="true" aria-label="Fun lab">'+
+      '<div class="bw-modal-head"><b>🎨 Fun lab — desk ko apna banayein</b><button type="button" class="bw-btn sm" data-fun-close aria-label="Close">✕</button></div>'+
+      '<div class="bw-modal-body">'+
+        '<div class="fun-title">Desk accent</div><div class="fun-lab-grid">'+colors.map(c=>
+          '<button type="button" class="fun-swatch '+(f.accent===c.id?'on':'')+'" data-fun-color="'+c.id+'"><i style="background:linear-gradient(135deg,'+c.main+','+c.deep+')"></i>'+fEsc(c.label)+'</button>').join('')+'</div>'+
+        '<div class="fun-title" style="margin-top:14px">Lock-screen skyline</div>'+
+        '<div class="fun-row">'+['night','day','rain','golden'].map(k=>
+          '<button type="button" class="fun-chip '+(f.skyline===k?'on':'')+'" data-fun-sky="'+k+'">'+({night:'🌙 Night',day:'☀️ Day',rain:'🌧 Rain',golden:'✨ Golden'})[k]+'</button>').join('')+'</div>'+
+        '<div class="fun-title" style="margin-top:14px">Sound design</div>'+
+        '<button type="button" class="fun-chip '+(f.sound?'on':'')+'" data-fun-sound>'+(f.sound?'🔊 Sounds on — click to mute':'🔇 Sounds muted — click to on')+'</button>'+
+        '<div class="bw-note" style="margin-top:12px">Sab kuch is device par save hota hai. Accent aur skyline sirf look badalte hain — data par koi asar nahi.</div>'+
+      '</div><div class="bw-modal-foot"><button type="button" class="bw-btn primary" data-fun-close>Ho gaya ✨</button></div></div>';
+    document.body.appendChild(m);
+    m.addEventListener('click',e=>{ if(e.target===m||e.target.closest('[data-fun-close]')) m.remove(); });
+  }
+  window.BCS_FUN_LAB=openLab;
+
+  /* ---------------- weekly reel ---------------- */
+  function weekStart(){
+    const d=new Date(); const w=(d.getDay()+6)%7; d.setDate(d.getDate()-w); return dayKey(d);
+  }
+  function reelStats(){
+    const from=weekStart();
+    const inWeek=v=>String(v||'').slice(0,10)>=from;
+    const logs=(db.flow&&db.flow.callLogs||[]).filter(x=>inWeek(x.date));
+    const conv=leads().filter(l=>l.clientId&&inWeek(l.updatedAt)).length;
+    const deals=(db.pipeline||[]).filter(d=>inWeek(d.createdAt||d.updatedAt));
+    const won=deals.filter(d=>['registry','handover','closed'].indexOf(d.stage)!==-1).length;
+    const top={};
+    logs.forEach(x=>{ const n=x.advisorName||'Admin'; top[n]=(top[n]||0)+1; });
+    const best=Object.keys(top).sort((a,b)=>top[b]-top[a])[0]||'—';
+    return {calls:logs.length,conv:conv,deals:deals.length,won:won,best:best,streak:streak()};
+  }
+  function reelText(s){
+    return 'BCS Desk — weekly highlight reel\n\n📞 '+s.calls+' calls logged\n🤝 '+s.conv+' leads became clients\n📄 '+s.deals+' deals touched\n🏆 '+s.won+' reached registry / close\n🔥 '+s.streak+' day call streak\n⭐ Top caller: '+s.best+'\n\nClear record. Clear split. Clear next step.';
+  }
+  function drawReel(cv,s){
+    const x=cv.getContext('2d'), W=cv.width, H=cv.height;
+    const g=x.createLinearGradient(0,0,W,H);
+    g.addColorStop(0,'#142017'); g.addColorStop(.55,'#1D2A20'); g.addColorStop(1,'#3A3928');
+    x.fillStyle=g; x.fillRect(0,0,W,H);
+    x.fillStyle='rgba(231,196,110,.10)';
+    for(let i=0;i<9;i++){ x.beginPath(); x.arc(W-70,60,34+i*29,0,Math.PI*2); x.strokeStyle='rgba(231,196,110,.10)'; x.stroke(); }
+    x.fillStyle='#E7C46E'; x.font='800 15px sans-serif'; x.fillText('BCS DESK · WEEKLY REEL',44,58);
+    x.fillStyle='#F2F0E5'; x.font='800 34px Georgia,serif'; x.fillText('Is hafte ka kaam',42,108);
+    x.fillStyle='rgba(242,240,229,.66)'; x.font='500 14px sans-serif'; x.fillText(weekStart()+' se aaj tak',44,132);
+    const cards=[['📞',s.calls,'calls logged'],['🤝',s.conv,'lead → client'],['📄',s.deals,'deals touched'],['🏆',s.won,'registry / close']];
+    cards.forEach((c,i)=>{
+      const cx=42+i*162, cy=168;
+      x.fillStyle='rgba(255,255,255,.06)'; x.strokeStyle='rgba(231,196,110,.28)';
+      x.beginPath(); x.roundRect(cx,cy,146,128,16); x.fill(); x.stroke();
+      x.font='26px sans-serif'; x.fillText(c[0],cx+16,cy+38);
+      x.fillStyle='#F2F0E5'; x.font='800 36px sans-serif'; x.fillText(String(c[1]),cx+16,cy+84);
+      x.fillStyle='rgba(242,240,229,.62)'; x.font='600 12px sans-serif'; x.fillText(c[2],cx+16,cy+108);
+    });
+    x.fillStyle='#E7C46E'; x.font='800 17px sans-serif'; x.fillText('🔥 '+s.streak+' din streak   ·   ⭐ '+s.best,44,340);
+    x.fillStyle='rgba(242,240,229,.55)'; x.font='600 12px sans-serif'; x.fillText('30% Originating  ·  35% Executing  ·  35% BCS',44,378);
+  }
+  function openReel(){
+    const s=reelStats();
+    const m=document.createElement('div');
+    m.className='bw-modal on'; m.id='funReelModal';
+    m.innerHTML='<div class="bw-modal-card" role="dialog" aria-modal="true" aria-label="Weekly highlight reel">'+
+      '<div class="bw-modal-head"><b>🎞 Weekly highlight reel</b><button type="button" class="bw-btn sm" data-fun-close aria-label="Close">✕</button></div>'+
+      '<div class="bw-modal-body"><canvas class="fun-reel-canvas" id="funReelCv" width="720" height="420"></canvas></div>'+
+      '<div class="bw-modal-foot"><button type="button" class="bw-btn primary" id="funReelDl">⬇ Download PNG</button>'+
+      '<button type="button" class="bw-btn" id="funReelShare">💬 Preview &amp; share</button>'+
+      '<button type="button" class="bw-btn" id="funReelCopy">📋 Copy summary</button>'+
+      '<button type="button" class="bw-btn" data-fun-close>Close</button></div></div>';
+    document.body.appendChild(m);
+    try{ drawReel($('#funReelCv'),s); }catch(e){}
+    m.addEventListener('click',e=>{ if(e.target===m||e.target.closest('[data-fun-close]')) m.remove(); });
+    $('#funReelDl').addEventListener('click',()=>{
+      try{
+        const a=document.createElement('a'); a.download='bcs-weekly-reel-'+today()+'.png';
+        a.href=$('#funReelCv').toDataURL('image/png'); document.body.appendChild(a); a.click(); a.remove();
+        funSound('tap'); toast('Reel download ho gaya 🎞');
+      }catch(e){ toast('Download nahi hua',true); }
+    });
+    $('#funReelCopy').addEventListener('click',()=>{
+      const txt=reelText(s);
+      if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(()=>toast('Summary copy ✓')).catch(()=>toast('Copy fail',true));
+      else toast('Clipboard available nahi',true);
+    });
+    $('#funReelShare').addEventListener('click',()=>{
+      const txt=reelText(s);
+      if(window.BCSPreview&&window.BCSPreview.open) window.BCSPreview.open({title:'BCS weekly reel',text:txt,waText:txt,filename:'bcs-weekly-reel-'+today()+'.txt',kind:'Weekly highlight · preview'});
+      else toast('Preview available nahi',true);
+    });
+  }
+  window.BCS_FUN_REEL=openReel;
+
+  /* ---------------- render + hosts ---------------- */
+  function mount(viewId,hostId,beforeSel,afterSel){
+    const v=document.getElementById(viewId);
+    if(!v||!v.classList.contains('on')) return null;
+    let h=document.getElementById(hostId);
+    if(!h){
+      h=document.createElement('div'); h.id=hostId;
+      const before=beforeSel?v.querySelector(beforeSel):null;
+      const after=afterSel?v.querySelector(afterSel):null;
+      if(before) v.insertBefore(h,before);
+      else if(after&&after.nextSibling) v.insertBefore(h,after.nextSibling);
+      else v.appendChild(h);
+    }
+    return h;
+  }
+  function render(){
+    try{
+      FU();
+      const p=mount('view-pipeline','funFunnelHost','#fpPipelineHost');
+      if(p) p.innerHTML=funnelHTML();
+      const d=mount('view-dashboard','funMotivatorHost',null,'.intro');
+      if(d) d.innerHTML=motivatorHTML();
+      const pr=mount('view-projects','funMapHost','#projectTiles');
+      if(pr) pr.innerHTML=mapHTML();
+      const lk=mount('view-links','funPresetsHost','#linksStats');
+      if(lk) lk.innerHTML=presetsHTML();
+      const tm=mount('view-terminology','funQuizHost','#termOfDay');
+      if(tm) tm.innerHTML=quizHTML();
+
+      $$('[data-fun-timeline]').forEach(el=>{
+        try{ el.innerHTML=timelineHTML(el.dataset.funTimeline,el.dataset.funId); }catch(e){}
+      });
+      $$('[data-fun-tree]').forEach(el=>{
+        try{ el.innerHTML=referralHTML(el.dataset.funTree,el.dataset.funId); }catch(e){}
+      });
+
+      // apply persisted look & feel
+      try{
+        document.body.classList.remove('skyline-night','skyline-day','skyline-rain','skyline-golden');
+        document.body.classList.add('skyline-'+(FU().skyline||'night'));
+        if(FU().accent && typeof applyDeskColor==='function' && (!render._lastAccent||render._lastAccent!==FU().accent)){
+          applyDeskColor(FU().accent); render._lastAccent=FU().accent;
+        }
+      }catch(e){}
+    }catch(e){ try{ console.warn('BCS_FUN render',e); }catch(x){} }
+  }
+  window.BCS_FUN={render:render,celebrate:celebrate,sound:funSound,lab:openLab,reel:openReel,streak:streak,funnel:funnelHTML};
+
+  /* ---------------- events ---------------- */
+  document.addEventListener('click',function(e){
+    const t=e.target; if(!t||!t.closest) return;
+
+    if(t.closest('[data-fun-close]')){ const m=t.closest('.bw-modal'); if(m) m.remove(); return; }
+
+    const act=t.closest('[data-fun-action]');
+    if(act){
+      funSound('tap');
+      const a=act.dataset.funAction;
+      if(a==='calls'){ go('pipeline'); setTimeout(()=>$('[data-fp-call]')?.click(),140); }
+      else if(a==='reel') openReel();
+      else if(a==='lab') openLab();
+      return;
+    }
+
+    const seg=t.closest('[data-fun-seg]');
+    if(seg){
+      funSound('tap');
+      if(seg.dataset.funTab){
+        go('pipeline');
+        setTimeout(()=>{ const b=document.querySelector('[data-fp-tab="'+seg.dataset.funTab+'"]'); if(b) b.click(); },130);
+      } else if(seg.dataset.funGo) go(seg.dataset.funGo);
+      return;
+    }
+
+    const corr=t.closest('[data-fun-corridor]');
+    if(corr){
+      funSound('tap');
+      const v=corr.dataset.funCorridor;
+      FU().corridor=v; save();
+      const sel=$('#filterCorridor');
+      if(sel){ sel.value=v; sel.dispatchEvent(new Event('change',{bubbles:true})); }
+      render();
+      try{ sel&&sel.scrollIntoView({behavior:'smooth',block:'center'}); }catch(e){}
+      toast('Corridor filter · '+corridorName(v));
+      return;
+    }
+
+    const col=t.closest('[data-fun-color]');
+    if(col){
+      const id=col.dataset.funColor; FU().accent=id;
+      try{ applyDeskColor(id); }catch(e){}
+      $$('#funLabModal [data-fun-color]').forEach(b=>b.classList.toggle('on',b.dataset.funColor===id));
+      save(); funSound('tap'); toast('Accent set ✓'); return;
+    }
+    const sky=t.closest('[data-fun-sky]');
+    if(sky){
+      const k=sky.dataset.funSky; FU().skyline=k;
+      document.body.classList.remove('skyline-night','skyline-day','skyline-rain','skyline-golden');
+      document.body.classList.add('skyline-'+k);
+      $$('#funLabModal [data-fun-sky]').forEach(b=>b.classList.toggle('on',b.dataset.funSky===k));
+      save(); funSound('tap'); return;
+    }
+    if(t.closest('[data-fun-sound]')){
+      const f=FU(); f.sound=!f.sound; save();
+      const b=t.closest('[data-fun-sound]');
+      b.textContent=f.sound?'🔊 Sounds on — click to mute':'🔇 Sounds muted — click to on';
+      b.classList.toggle('on',f.sound);
+      if(f.sound) funSound('tap'); return;
+    }
+
+    const preset=t.closest('[data-fun-preset]');
+    if(preset){
+      const p=PRESETS[Number(preset.dataset.funPreset)||0];
+      if(p && window.BCS_GROWTH && window.BCS_GROWTH.openPrompt) window.BCS_GROWTH.openPrompt('Gemini — '+p[0],p[1]);
+      else toast('Prompt studio available nahi',true);
+      funSound('tap'); return;
+    }
+
+    const ans=t.closest('[data-fun-quizans]');
+    if(ans){
+      if(quizLocked) return;
+      quizLocked=true;
+      const q=QUIZ[quizIndex%QUIZ.length], pick=Number(ans.dataset.funQuizans);
+      const right=pick===q.a;
+      if(right){ quizScore++; if(quizScore>FU().quizBest){ FU().quizBest=quizScore; save(); } }
+      ans.classList.add(right?'right':'wrong');
+      $$('#funQuiz [data-fun-quizans]').forEach(b=>b.disabled=true);
+      funSound(right?'success':'tap');
+      toast(right?'Bilkul sahi! ✅':'Thoda nearby — sahi jawab highlight ho gaya');
+      return;
+    }
+    if(t.closest('[data-fun-quiznext]')){ quizIndex++; quizLocked=false; render(); funSound('tap'); return; }
+    if(t.closest('[data-fun-quizreset]')){ quizIndex=0; quizScore=0; quizLocked=false; render(); funSound('tap'); return; }
+  });
+
+  /* sound + celebration hooks for flow actions */
+  let pendingClientCount=0;
+  document.addEventListener('click',function(e){
+    const t=e.target; if(!t||!t.closest) return;
+    if(t.closest('[data-fp-call]')) funSound('call');
+    if(t.closest('[data-fp-leadclient]')) pendingClientCount=(db.clients||[]).length;
+  },true);
+  document.addEventListener('click',function(){
+    if(pendingClientCount){
+      const n=pendingClientCount; pendingClientCount=0;
+      setTimeout(()=>{
+        if((db.clients||[]).length>n){
+          const c=db.clients[db.clients.length-1];
+          celebrate('lead',c);
+        }
+      },180);
+    }
+  });
+  document.addEventListener('change',function(e){
+    const t=e.target;
+    if(t&&t.matches&&t.matches('[data-fp-addpay]')) funSound('cash');
+  });
+
+  /* kanban spring on drop */
+  document.addEventListener('drop',function(e){
+    const col=e.target&&e.target.closest?e.target.closest('[data-fp-stage]'):null;
+    if(!col) return;
+    setTimeout(()=>{ const card=col.querySelector('.fp-card'); if(card){ card.classList.add('just-moved'); setTimeout(()=>card.classList.remove('just-moved'),520); } },90);
+  },true);
+
+  /* easter egg — Konami */
+  const KONAMI=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let kpos=0;
+  document.addEventListener('keydown',function(e){
+    const k=e.key.length===1?e.key.toLowerCase():e.key;
+    if(k===KONAMI[kpos]){ kpos++; if(kpos===KONAMI.length){
+      kpos=0;
+      document.body.classList.add('fun-golden');
+      FU().skyline='golden'; save(); render();
+      funSound('egg');
+      if(typeof bcsConfetti==='function') bcsConfetti();
+      toast('✨ Golden skyline unlock ho gaya — BCS Desk thoda aur chamak gaya!');
+    }} else kpos=(k===KONAMI[0]?1:0);
+  });
+
+  /* boot */
+  try{ window.addEventListener('bcs:render',render); }catch(e){}
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',render);
+  else render();
 })();
 </script>
 </body>
