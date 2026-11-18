@@ -16552,12 +16552,7 @@ body.skyline-parallax .hero-skyline{transform:translateY(var(--sky-y,0px))}
 
 /* ============ v190 · CONNECTED DESK LAYER ============ */
 .lm-legend{font:700 9px/1.3 'DM Sans',sans-serif;color:var(--mut);opacity:.85;letter-spacing:.2px;margin-left:8px}
-.cn-viewbar{display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;gap:6px;padding:6px 14px 0;position:relative;z-index:3}
-.cn-filter-note{font:700 9.5px/1.3 'DM Sans',sans-serif;color:var(--mut);margin-right:auto}
-.cn-corr{max-width:180px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:5px 8px;font:800 10px/1 'DM Sans',sans-serif;cursor:pointer}
 .cn-detail{display:block;width:100%;margin-top:4px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:6px 7px;font:700 11px/1.3 'DM Sans',sans-serif}
-.cn-pdf{border:1px solid color-mix(in oklab,var(--acc) 40%,var(--line));background:color-mix(in oklab,var(--panel) 90%,transparent);color:var(--ink);border-radius:999px;padding:5px 10px;font:900 9px/1 'DM Sans',sans-serif;letter-spacing:.4px;cursor:pointer;box-shadow:var(--shadow)}
-.cn-pdf:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-1px)}
 .cn-panel{margin:14px 0;border:1px solid var(--line);border-radius:16px;background:color-mix(in oklab,var(--panel) 92%,transparent);padding:13px;box-shadow:var(--shadow)}
 .cn-title{font:800 12.5px/1.3 'DM Sans',sans-serif;color:var(--ink);margin:0 0 3px}
 .cn-sub{font:500 10.5px/1.5 'DM Sans',sans-serif;color:var(--mut);margin:0 0 10px}
@@ -16600,25 +16595,10 @@ body.skyline-parallax .hero-skyline{transform:translateY(var(--sky-y,0px))}
 .cn-relation span{font:600 10px/1.4 'DM Sans',sans-serif;color:var(--mut)}
 .cn-link-status{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;background:var(--mut)}
 .cn-link-status.ok{background:#4E7C62}.cn-link-status.fix{background:#E7B84B}.cn-link-status.bad{background:#A4452B}
-.cn-export-fab{position:fixed;right:16px;bottom:86px;z-index:2147482905;border:1px solid color-mix(in oklab,var(--acc) 50%,var(--line));background:color-mix(in oklab,var(--panel) 94%,transparent);color:var(--ink);border-radius:999px;padding:10px 13px;font:900 10.5px/1 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.22);backdrop-filter:blur(10px)}
-.cn-export-fab:hover{border-color:var(--acc);transform:translateY(-2px)}
 .cn-spot{outline:2px solid var(--acc) !important;outline-offset:3px;transition:outline-color .4s ease}
 .cn-flash-target{animation:cnFlash 1.1s ease}
 @keyframes cnFlash{0%,100%{box-shadow:var(--shadow)}35%{box-shadow:0 0 0 4px color-mix(in oklab,var(--acc) 32%,transparent),0 12px 30px rgba(0,0,0,.18)}}
-.cn-pdf{font:500 12px/1.55 'DM Sans',sans-serif;color:#1B271E;background:#fff;padding:22px;max-width:900px;margin:auto}
-.cn-pdf h1{font:800 24px/1.2 'Fraunces',serif;margin:0 0 4px;color:#172016}
-.cn-pdf h2{font:800 13px/1.3 'DM Sans',sans-serif;margin:16px 0 6px;color:#172016;text-transform:uppercase;letter-spacing:.5px}
-.cn-pdf p{color:#4A554E;margin:0 0 10px}
-.cn-pdf table{width:100%;border-collapse:collapse;font-size:10.5px}
-.cn-pdf th,.cn-pdf td{border:1px solid #D7DED9;padding:6px 7px;text-align:left;vertical-align:top}
-.cn-pdf th{background:#EEF3EF;color:#172016}
-.cn-pdf .cn-foot{margin-top:16px;border-top:1px solid #D7DED9;padding-top:8px;font-size:9.5px;color:#66706A}
-@media print{
-  body > *:not(#cnPrintHost){display:none !important}
-  #cnPrintHost{display:block !important;position:static !important;inset:auto !important;width:auto !important;height:auto !important;box-shadow:none !important;border:0 !important;transform:none !important}
-  #cnPrintHost .cn-drawer-head,#cnPrintHost .bw-modal-foot{display:none !important}
-}
-@media(max-width:640px){.cn-grid{grid-template-columns:1fr}.cn-export-fab{bottom:78px;right:12px}}
+@media(max-width:640px){.cn-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <style id="bcs-mkt-daily-css">
@@ -56241,8 +56221,8 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   };
   const SITE_LOG = [
     { v:'v190', date:'2026-11-18', page:'app', kind:'fix',
-      title:'Connected Desk — safe links for every website, preview-first PDF on all 27 pages, editable parse previews, today-stamped rates, clickable heatmap and corridor details everywhere',
-      detail:'Universal http(s) validation + popup-blocker fallback; dead local/LAN links replaced; rate badges stamped on refresh and contradictory numbers unified; PDF preview per view; parse→edit→navigate; connected-record drawer and corridor filters.' },
+      title:'Connected Desk — safe links, preview-first exports, editable parse previews, today-stamped rates, clickable heatmap and connected corridor details',
+      detail:'Universal http(s) validation + popup-blocker fallback; dead local/LAN links replaced; rate badges stamped on refresh and contradictory numbers unified; preview-first PDF through existing export/report actions; parse→edit→navigate; connected-record drawer and clickable corridor details.' },
     { v:'v189', date:'2026-11-18', page:'dashboard', kind:'update',
       title:'Vivid layer — ambient depth, living charts, sprint mode and creative tools',
       body:'Ambient gradient mesh and view-based colour moods, 7-day sparklines and 30/35/35 donut, illustrated empty states, consistent line icons, skyline parallax and scroll reveal, inline edits with Undo toasts, iPad swipe actions, full-screen call sprint, shortcut sheet, draggable KPIs, natural-language quick actions, badge shelf, 6-month call heatmap, next-best-action strip, deal-split toy, voice notes, e-sign pad, seasonal themes and blur-up galleries.' },
@@ -60750,8 +60730,8 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
 /* ============================================================
    BCS CONNECTED DESK LAYER (v190)
    Universal link safety · reliable opens · fresh rate stamping ·
-   per-page PDF preview/export · parse→preview→navigate ·
-   cross-page drilldowns · clickable heatmap · corridor editor
+   preview-first exports in native actions · parse→preview→navigate ·
+   cross-page drilldowns · clickable heatmap · corridor details
    ============================================================ */
 (function(){
   'use strict';
@@ -60897,8 +60877,8 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     setInterval(rollover, 60000);
     document.addEventListener('visibilitychange', () => { if(!document.hidden){ rollover(); cnRefreshRates({ silent:true }); } });
     window.addEventListener('online', () => cnRefreshRates({ silent:true }));
-    window.addEventListener('bcs:render', () => setTimeout(() => { cnStampAll(); cnDecorateViews(); }, 30));
-    setTimeout(() => { cnSyncLiveRates(); cnStampAll(); cnDecorateViews(); }, 600);
+    window.addEventListener('bcs:render', () => setTimeout(cnStampAll, 30));
+    setTimeout(() => { cnSyncLiveRates(); cnStampAll(); }, 600);
   }
 
   /* ---------- 3. preview-first PDF export for every page ---------- */
@@ -61100,62 +61080,26 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       '<div class="cn-panel">' + cnRelList('Leads called', leads, 'lead', ['name','phone']) + cnRelList('Projects on this road', result.projs, 'project', ['name','location']) + cnRelList('Developers', result.devs, 'developer', ['name']) + '</div>');
   };
 
-  /* ---------- 5. corridor filter + details on every panel ---------- */
-  function cnCorridorOptions(){
-    return '<option value="">All corridors</option>' + (PI('corridors')||[]).map(c => '<option value="' + fEsc(c.id) + '"' + (cnState.corridor === c.id ? ' selected' : '') + '>' + fEsc(c.name) + '</option>').join('');
-  }
-  function cnApplyCorridorFilter(view){
-    const v = $('#view-' + view); if(!v) return;
-    const name = cnCorridorName(cnState.corridor).toLowerCase();
-    const sels = 'tr,.card,.ci-row,.lg-card,.client-card,.dev-card,.proj-card,.deal-row,.row,.mini-list>div,.ov-conn-row,.news-card,.link-card';
-    let shown = 0;
-    if(!cnState.corridor){ $$(sels, v).forEach(el => { el.style.removeProperty('display'); delete el.dataset.cnHidden; }); return; }
-    $$(sels, v).forEach(el => {
-      if(el.closest('.cn-viewbar') || el.querySelector('.cn-viewbar')) return;
-      const txt = String(el.textContent || '').toLowerCase();
-      const ids = Object.keys(el.dataset || {}).filter(k => /corridor|road/i.test(k)).map(k => el.dataset[k]);
-      const ok = (name.length > 1 && txt.indexOf(name) >= 0) || ids.some(x => String(x) === cnState.corridor);
-      if(ok){ el.style.removeProperty('display'); delete el.dataset.cnHidden; shown++; }
-      else { el.style.setProperty('display','none','important'); el.dataset.cnHidden = '1'; }
-    });
-    const note = v.querySelector('.cn-filter-note');
-    if(note) note.textContent = shown ? (shown + ' rows match ' + cnCorridorName(cnState.corridor)) : ('No rows match ' + cnCorridorName(cnState.corridor) + ' — add details on this road');
-  }
-  function cnDecorateViews(){
-    $$('.view').forEach(v => {
-      const view = v.id.replace(/^view-/, '');
-      let bar = v.querySelector('.cn-viewbar');
-      if(!bar){
-        bar = document.createElement('div');
-        bar.className = 'cn-viewbar';
-        v.insertBefore(bar, v.firstChild);
-      }
-      if(bar.dataset.cnReady === view) { cnApplyCorridorFilter(view); return; }
-      bar.dataset.cnReady = view;
-      bar.innerHTML = '<span class="cn-filter-note"></span>' +
-        '<select class="cn-corr" aria-label="Filter this page by corridor">' + cnCorridorOptions() + '</select>' +
-        '<button type="button" class="cn-chip" data-cn-addcorr="1">+ Corridor</button>' +
-        '<button type="button" class="cn-chip" data-cn-connected="1">Connected</button>' +
-        '<button type="button" class="cn-pdf" title="Preview + PDF export for this page">PDF</button>';
-      bar.querySelector('.cn-pdf').addEventListener('click', e => { e.stopPropagation(); cnExport(view); });
-      bar.querySelector('.cn-corr').addEventListener('change', e => { cnState.corridor = e.target.value; cnApplyCorridorFilter(view); });
-      cnApplyCorridorFilter(view);
-    });
-  }
-  window.cnDecorateViews = cnDecorateViews;
   document.addEventListener('click', e => {
     const h = e.target.closest('[data-vd-date]');
     if(h){ e.stopPropagation(); cnHeatDrawer(h.dataset.vdDate); return; }
     const l = e.target.closest('[data-cn-link]');
     if(l){ e.stopPropagation(); const p = l.dataset.cnLink.split(':'); cnFocusRecord(p[0], p[1]); return; }
     const f = e.target.closest('[data-cn-filter]');
-    if(f){ cnState.corridor = f.dataset.cnFilter; cnDecorateViews(); if(window.cnConnectedDrawer) cnConnectedDrawer(cnState.corridor); return; }
+    if(f){
+      e.stopPropagation();
+      cnState.corridor = f.dataset.cnFilter;
+      const sel = $('#filterCorridor'); if(sel) sel.value = cnState.corridor;
+      const d = $('#cnDrawer'); if(d) d.classList.remove('on');
+      go('projects'); return;
+    }
     const a = e.target.closest('[data-cn-addcorr]');
     if(a){ e.stopPropagation(); try{ openCorridorManager(); }catch(err){ toast('Corridor manager unavailable', true); } return; }
     const c = e.target.closest('[data-cn-corridor]');
-    if(c){ cnState.corridor = c.dataset.cnCorridor; cnDecorateViews(); return; }
-    const rel = e.target.closest('[data-cn-connected]');
-    if(rel){ e.stopPropagation(); if(cnState.corridor) cnConnectedDrawer(cnState.corridor); else cnConnectedDrawer((PI('corridors')[0]||{}).id || 'agra'); return; }
+    if(c){
+      cnState.corridor = c.dataset.cnCorridor;
+      const sel = $('#filterCorridor'); if(sel) sel.value = cnState.corridor;
+    }
   });
   document.addEventListener('keydown', e => {
     const h = e.target.closest && e.target.closest('[data-vd-date]');
@@ -61173,13 +61117,11 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   /* ---------- boot shared helpers ---------- */
   window.BCS_CONNECT = {
     safeUrl: cnSafeUrl, open: cnOpen, stamp: cnRateStamp,
-    refreshRates: cnRefreshRates, stampAll: cnStampAll,
-    exportPage: cnExport
+    refreshRates: cnRefreshRates, stampAll: cnStampAll
   };
   function boot(){
     wireRates();
     cnStampAll();
-    cnDecorateViews();
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
