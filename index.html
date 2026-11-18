@@ -1851,6 +1851,11 @@ body.advisor-mode .gf-panel{display:none !important}
 
 /* ---------------- password lock ---------------- */
 body.locked{overflow:hidden}
+/* Present / privacy mode — no new chrome, only sensitive text is obscured. */
+body.privacy-mode .client-card,body.privacy-mode .profile-hero,body.privacy-mode .lg-card,body.privacy-mode .pipe-card,body.privacy-mode .booking-card,body.privacy-mode .xch-lead,body.privacy-mode .advisor-card,body.privacy-mode .active-adv-table,body.privacy-mode #qaList .qbody,body.privacy-mode #paletteResults .pl-item,body.privacy-mode [data-private]{filter:blur(7px);user-select:none;-webkit-user-select:none;transition:filter .18s ease}
+body.privacy-mode .client-card:hover,body.privacy-mode .profile-hero:hover,body.privacy-mode .lg-card:hover,body.privacy-mode .pipe-card:hover,body.privacy-mode .booking-card:hover,body.privacy-mode .xch-lead:hover,body.privacy-mode .advisor-card:hover,body.privacy-mode #qaList .qa-item:hover .qbody,body.privacy-mode #paletteResults .pl-item:hover{filter:blur(0)}
+body.privacy-mode [data-privacy-badge]{display:inline-flex}
+[data-privacy-badge]{display:none;align-items:center;gap:4px;border:1px solid var(--line);background:var(--panel);color:var(--mut);border-radius:999px;padding:2px 7px;font-size:9px;font-weight:900;letter-spacing:.5px;text-transform:uppercase}
 body.locked>header,body.locked>main,body.locked>.storage,body.locked>.mob-add,body.locked>.overlay,body.locked>#toast,body.locked>#importFile,body.locked>.media-dock,body.locked>.media-pop,body.locked>.media-mini,body.locked>.webmusic{visibility:hidden}
 .lock{position:fixed;inset:0;z-index:500;display:none;place-items:center;padding:22px;background:
   radial-gradient(90% 70% at 82% 8%, rgba(216,240,236,.6), transparent 58%),
@@ -13278,6 +13283,11 @@ body[data-theme="dark"][data-accent="ocean"]{--acc:#6BC7DC;--acc-deep:#1F3F4D;--
    ============================================================ */
 .ov-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px;margin-bottom:11px}
 .ov-fact{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:11px 13px;min-width:0}
+.watch-alerts{border:1px solid #D7B36A;background:#FFF9E9;border-radius:14px;padding:10px 12px}
+.watch-alert-row{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:#6D531C;padding:4px 0}
+.watch-alert-row .wk{font-size:9px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;background:#F0D994;color:#5A4315;border-radius:999px;padding:3px 7px;white-space:nowrap}
+body[data-theme="dark"] .watch-alerts{background:#2B2515;border-color:#5C4A22}
+body[data-theme="dark"] .watch-alert-row,body[data-theme="dark"] .watch-alert-row .wk{color:#E8C981}
 .ov-fact small{display:block;font-size:9px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:var(--mut);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ov-fact b{display:block;font-size:14.5px;font-weight:800;color:var(--ink);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ov-fact b small{display:inline;font-size:10px;font-weight:700;color:var(--mut);text-transform:none;letter-spacing:0;margin:0}
@@ -17231,11 +17241,6 @@ try{
   kb.style.cssText = 'position:fixed;bottom:24px;left:24px;z-index:89;pointer-events:none;opacity:0;transition:opacity .3s ease';
   document.body.appendChild(kb);
   window.addEventListener('keydown', function(e){
-    if((e.metaKey || e.ctrlKey) && e.key === 'k'){
-      e.preventDefault();
-      var qa = document.querySelector('#qaTrigger');
-      if(qa) qa.click();
-    }
     if(e.key === 'Escape'){
       var overlays = document.querySelectorAll('.overlay.on');
       overlays.forEach(function(o){ o.classList.remove('on'); });
@@ -17650,7 +17655,7 @@ try{
     </div>
 
     <div class="sec-head queue-head">
-      <h3>Next-best-action queue</h3>
+      <h3>Aaj ke 10 Kaam</h3>
       <span class="sub">Subah kholte hi kaam shuru — sabse urgent pehle</span>
       <button class="btn ghost sm" id="weeklyBtn" style="margin-left:auto">📊 Weekly report</button>
       <button class="btn ghost sm" id="teamBoardBtn">Team board</button>
@@ -20256,6 +20261,7 @@ try{
     <div class="detail-foot">
       <button class="btn danger sm" id="detailDelete">Delete</button>
       <button class="btn ghost sm" id="detailFeature" title="Dashboard par promote karein">☆ Feature</button>
+      <button class="btn ghost sm" id="detailWatch" title="Price + RERA watchlist">⚑ Watch</button>
       <button class="btn ghost sm" id="detailCompare" title="Is project ko compare karein">⚖ Compare</button>
       <button class="btn ghost sm" id="detailDossier" title="Poora project file — details, documents, preview/download">📄 Project file</button>
       <button class="btn ghost sm" id="detailCost" title="Cost & quotation">₹ Cost</button>
@@ -22770,6 +22776,62 @@ function priceHistorySeries(p){
   return out;
 }
 
+/* ---------- price / RERA watchlist ---------- */
+function watchProjects(){
+  if(!db.watch || typeof db.watch !== 'object' || Array.isArray(db.watch)) db.watch = {};
+  if(!Array.isArray(db.watch.projects)) db.watch.projects = [];
+  return db.watch.projects;
+}
+function projectWatch(id){ return watchProjects().find(w => w.projectId === id) || null; }
+function toggleProjectWatch(id){
+  const p = db.projects.find(x => x.id === id);
+  if(!p) return;
+  const cur = projectWatch(id);
+  if(cur){
+    db.watch.projects = watchProjects().filter(w => w.id !== cur.id);
+    save(); toast(p.name + ' — watchlist se hata diya');
+  } else {
+    const price = number(p.priceMin), rera = String(p.rera || '').trim();
+    watchProjects().push({ id:'wp_' + uid(), projectId:id, addedAt:Date.now(), baselinePrice:price, baselineRera:rera, lastSeenAt:Date.now(), note:'' });
+    save(); toast(p.name + ' — price + RERA watchlist me add');
+  }
+  if(typeof renderDetail === 'function' && detailId === id) renderDetail();
+  if(typeof renderNextQueue === 'function') renderNextQueue();
+}
+function diffWatchedProjects(){
+  const out = [];
+  const dayOf = ts => { try{ return new Date(+ts || Date.now()).toISOString().slice(0, 10); }catch(e){ return todayISO(); } };
+  watchProjects().forEach(w => {
+    const p = db.projects.find(x => x.id === w.projectId);
+    if(!p) return;
+    const curPrice = number(p.priceMin), basePrice = number(w.baselinePrice);
+    if(curPrice != null && basePrice != null && curPrice !== basePrice){
+      out.push({ kind:'price', projectId:p.id, project:p, title:p.name,
+        detail:'Price ' + fmtPrice(basePrice) + ' → ' + fmtPrice(curPrice),
+        date:dayOf(p.priceUpdatedAt || Date.now()), at:+p.priceUpdatedAt || Date.now() });
+    }
+    const curRera = String(p.rera || '').trim(), baseRera = String(w.baselineRera || '').trim();
+    if(curRera !== baseRera){
+      out.push({ kind:'rera', projectId:p.id, project:p, title:p.name,
+        detail:baseRera ? 'RERA ' + baseRera + ' → ' + (curRera || 'removed') : 'RERA number add hua: ' + curRera,
+        date:dayOf(p.updatedAt || Date.now()), at:+p.updatedAt || Date.now() });
+    }
+  });
+  return out.sort((a,b) => (b.at || 0) - (a.at || 0));
+}
+function ackProjectWatch(id){
+  const w = projectWatch(id), p = db.projects.find(x => x.id === id);
+  if(!w || !p) return;
+  w.baselinePrice = number(p.priceMin);
+  w.baselineRera = String(p.rera || '').trim();
+  w.lastSeenAt = Date.now();
+  save();
+  if(typeof renderDetail === 'function' && detailId === id) renderDetail();
+  if(typeof renderNextQueue === 'function') renderNextQueue();
+  toast('Watch alert review ho gaya');
+}
+window.bcsWatch = { toggle:toggleProjectWatch, diff:diffWatchedProjects, ack:ackProjectWatch };
+
 /* ---------- data quality criteria / score ---------- */
 const QUALITY_AUTO_FIELDS = [
   { id:'developer',    label:'Developer linked',              test:p => !!p.developerId },
@@ -24084,6 +24146,18 @@ function normalizeDb(d){
   if(!['cards','table'].includes(d.ui.corrViewMode)) d.ui.corrViewMode = 'cards';
   if(!d.watch || typeof d.watch !== 'object' || Array.isArray(d.watch)) d.watch = {};
   if(!Array.isArray(d.watch.channels)) d.watch.channels = [];
+  if(!Array.isArray(d.watch.projects)) d.watch.projects = [];
+  d.watch.projects = d.watch.projects
+    .filter(w => w && w.projectId)
+    .map(w => ({
+      id: w.id || ('wp_' + uid()),
+      projectId: String(w.projectId),
+      addedAt: +w.addedAt || Date.now(),
+      baselinePrice: w.baselinePrice == null || w.baselinePrice === '' ? null : Number(w.baselinePrice),
+      baselineRera: String(w.baselineRera || '').trim(),
+      lastSeenAt: +w.lastSeenAt || +w.addedAt || Date.now(),
+      note: String(w.note || '').slice(0, 120)
+    }));
   if(!Array.isArray(d.watch.categories) || !d.watch.categories.length) d.watch.categories = WATCH_DEFAULT_CATS.map(c => ({ id:c.id, label:c.label }));
   const usedCatIds = new Set(d.watch.categories.map(c => c.id));
   d.watch.channels = d.watch.channels
@@ -26278,6 +26352,15 @@ function nextBestActions(){
     const who = x.client ? (x.client.name || x.client.phone || 'Client') : 'Plot due';
     items.push({ kind:'due', id:x.plot.id, title:who, sub:(x.count > 1 ? x.count + ' milestones · ' : '') + moneyINR(x.amount) + (x.overdue ? ' · overdue' : ' · ' + fmtDate(x.date)) + (x.project ? ' · ' + x.project.name : ''), date:x.date, priority: x.overdue ? 0 : urgencyRank(x.date) });
   });
+  (((db.leadgen && db.leadgen.leads) || []).filter(l => l && !l.clientId && !['Won','Lost'].includes(l.status || ''))).forEach(l => {
+    const last = +l.lastContactAt || +l.waSentAt || +l.createdAt || Date.now();
+    const days = Math.max(0, Math.floor((Date.now() - last) / 86400000));
+    if(days < 3) return;
+    items.push({ kind:'lead', id:l.id, title:l.name || ('Lead ' + (l.phone || '')), sub:'Lead follow-up · ' + days + ' din se koi contact nahi', date:new Date(last).toISOString().slice(0,10), priority:days >= 7 ? 1 : 2 });
+  });
+  (typeof diffWatchedProjects === 'function' ? diffWatchedProjects() : []).slice(0, 3).forEach(x => {
+    items.push({ kind:'watch', id:x.projectId, title:x.title, sub:'Price/RERA watch · ' + x.detail, date:x.date || today, priority:1 });
+  });
   return items.sort((a,b) => a.priority - b.priority || (a.date || '').localeCompare(b.date || '')).slice(0, 10);
 }
 function renderNextQueue(){
@@ -26285,8 +26368,8 @@ function renderNextQueue(){
   if(!wrap) return;
   const items = nextBestActions();
   const rates = typeof rateAlerts === 'function' ? rateAlerts() : [];
-  wrap.innerHTML = `<div class="panel-head"><h4>Action list</h4><span class="n-badge">${items.length}</span></div>` +
-    (items.length ? `<div class="queue-list">${items.map(i => `<button type="button" class="queue-row" data-queue="${i.kind}:${i.id}"><span class="queue-ic">${i.kind === 'booking' ? '₹' : i.kind === 'due' ? '₹' : i.kind === 'visit' ? '🧭' : i.kind === 'client' ? '☎' : i.kind === 'advisor' ? '♟' : i.kind === 'task' ? '✓' : '!'}</span><span><b>${esc(i.title)}</b><small>${esc(i.sub)}</small></span><em>Open</em></button>`).join('')}</div>` : '<div class="empty-inline">Aaj ka queue clear hai — main ek bookable slot/client agenda add karo.</div>') +
+  wrap.innerHTML = `<div class="panel-head"><h4>Aaj ke 10 Kaam</h4><span class="n-badge">${items.length}</span></div>` +
+    (items.length ? `<div class="queue-list">${items.map(i => `<button type="button" class="queue-row" data-queue="${i.kind}:${i.id}"><span class="queue-ic">${i.kind === 'booking' ? '₹' : i.kind === 'due' ? '₹' : i.kind === 'visit' ? '🧭' : i.kind === 'client' ? '☎' : i.kind === 'advisor' ? '♟' : i.kind === 'lead' ? '🎯' : i.kind === 'watch' ? '🔔' : i.kind === 'task' ? '✓' : '!'}</span><span><b>${esc(i.title)}</b><small>${esc(i.sub)}</small></span><em>Open</em></button>`).join('')}</div>` : '<div class="empty-inline">Aaj ka queue clear hai — main ek bookable slot/client agenda add karo.</div>') +
     (rates.length ? `<div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)"><div style="display:flex;align-items:center;gap:8px"><b style="font-size:12px">📈 Rate watch</b><span class="n-badge">${rates.length}</span><span style="margin-left:auto;font-size:11px;color:var(--mut)">≥3% move</span></div><div style="display:grid;gap:6px;margin-top:7px">${rates.map(r => `<button type="button" class="queue-row" data-rate="${r.project.id}"><span class="rate-chip ${r.kind}">${r.delta > 0 ? '+' : ''}${r.delta}%</span><span><b>${esc(r.project.name)}</b><small>${esc(fmtPrice(r.prev.price / 100000) || r.prev.price)} → ${esc(fmtPrice(r.last.price / 100000) || r.last.price)} · ${esc(fmtDate(r.last.date))}</small></span><em>Open</em></button>`).join('')}</div></div>` : '');
   $$('#nextQueue [data-queue]').forEach(btn => btn.addEventListener('click', () => {
     const [kind, id] = btn.dataset.queue.split(':');
@@ -26298,6 +26381,8 @@ function renderNextQueue(){
     else if(kind === 'mark') openMonthMark(null);
     else if(kind === 'visit') openCalVisit(id, '');
     else if(kind === 'due') openCalDue(id);
+    else if(kind === 'lead'){ go('leadgen'); setTimeout(() => { if(window.cnFocusRecord) window.cnFocusRecord('lead', id); }, 140); }
+    else if(kind === 'watch') openDetail(id);
   }));
   $$('#nextQueue [data-rate]').forEach(btn => btn.addEventListener('click', () => openDetail(btn.dataset.rate)));
   const add = $('#queueAddTask');
@@ -33801,6 +33886,13 @@ function renderDetail(){
     featBtn.title = p.isFeatured ? 'Dashboard se hata dein' : 'Dashboard par promote karein';
     featBtn.style.display = isAdmin() ? 'inline-flex' : 'none';
   }
+  const watchBtn = $('#detailWatch');
+  if(watchBtn){
+    const wp = projectWatch(p.id), wa = diffWatchedProjects().filter(x => x.projectId === p.id).length;
+    watchBtn.textContent = wp ? (wa ? '🔔 Watch ' + wa : '★ Watching') : '⚑ Watch';
+    watchBtn.classList.toggle('primary', !!wp);
+    watchBtn.title = wp ? 'Price / RERA watch hata dein' : 'Price aur RERA change par alert pane ke liye watch karein';
+  }
 
   $('#detailTabs').innerHTML = DETAIL_TABS.map(t => {
     const n = detailTabCount(p, t.id);
@@ -33854,6 +33946,11 @@ function renderDetail(){
         <div class="ov-fact"><small>RERA</small><b>${p.rera ? '✓ Registered' : '—'}</b><span class="mono">${esc(p.rera || 'Not provided')}</span></div>
       </div>
       ${dlcNoteHTML(p)}
+      ${(() => {
+        const wa = diffWatchedProjects().filter(x => x.projectId === p.id);
+        if(!wa.length) return '';
+        return `<div class="watch-alerts" style="margin-top:9px"><div class="dsec-head" style="padding:0 0 4px"><h4>🔔 Price / RERA watch</h4><span class="cnt">${wa.length} alert${wa.length === 1 ? '' : 's'}</span><button type="button" class="btn ghost sm" data-watchack="${p.id}" style="margin-left:auto">Mark reviewed</button></div>${wa.map(x => `<div class="watch-alert-row"><span class="wk">${esc(x.kind)}</span><span>${esc(x.detail)}</span><span style="margin-left:auto">${esc(fmtDate(x.date))}</span></div>`).join('')}</div>`;
+      })()}
       ${projectPhasesHTML(p)}
       ${hasMoney ? `<div class="ov-sec">
         <div class="dsec-head"><h4>₹ Project money</h4><span class="cnt">${projDeals.length + projBookings.length} live record${(projDeals.length + projBookings.length) === 1 ? '' : 's'}</span><button type="button" class="btn ghost sm" data-projpipeline="${p.id}" style="margin-left:auto">Sales ledger →</button></div>
@@ -34833,6 +34930,8 @@ $('#shareDownloadBtn').addEventListener('click', shareDownloadFile);
 $('#shareCopyBtn').addEventListener('click', () => { try{ copyText(window.__bcsShare ? window.__bcsShare.text : (window.__bcsShare ? window.__bcsShare.html : '')); toast('Share text copy ho gaya'); }catch(e){} });
 $('#shareFileBtn').addEventListener('click', shareDownloadFile);
 $('#detailFeature').addEventListener('click', () => { if(detailId) toggleFeature(detailId); });
+$('#detailWatch').addEventListener('click', () => { if(detailId) toggleProjectWatch(detailId); });
+document.addEventListener('click', e => { const b = e.target.closest && e.target.closest('[data-watchack]'); if(b) ackProjectWatch(b.dataset.watchack); });
 $('#detailCompare').addEventListener('click', () => {
   if(!detailId) return;
   closeModal('detailModal');
@@ -36094,6 +36193,7 @@ function reconnectAdvisors(project, names){
 }
 async function importWorkbookFile(file){
   if(!file) return;
+  try{ if(window.BCS_OPS3 && typeof window.BCS_OPS3.backupNow === 'function') await window.BCS_OPS3.backupNow('import', 'Before Excel import'); }catch(e){}
   try{
     const XLSX = await loadXLSX();
     const buf = await file.arrayBuffer();
@@ -37843,7 +37943,6 @@ function closePalette(){
   if(ov && ov.classList.contains('on')) closeModal('paletteModal');
 }
 document.addEventListener('keydown', e => {
-  if((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')){ e.preventDefault(); paletteOpen ? closePalette() : openPalette(); return; }
   if(e.key === 'Escape' && paletteOpen) closePalette();
 });
 document.addEventListener('click', e => {
@@ -44179,7 +44278,20 @@ function quickActionList(){
     { kind:'Go', label:'Tax & Advice', sub:'Tax saving, CA knowledge, facts, myths, sources', icon:'🧾', color:'linear-gradient(135deg,#7B67C6,#2F8F6B)', keys:'tax advice ca knowledge facts myths source share', run:() => go('tax') },
     { kind:'Go', label:'Advisory', sub:'Client brief, shortlist aur presentation', icon:'★', color:'linear-gradient(135deg,#E7B84B,#C95C85)', keys:'present shortlist', run:() => go('advisory') },
     { kind:'Go', label:'Templates', sub:'WhatsApp, developer aur advisor messages', icon:'✉', color:'linear-gradient(135deg,#DF6A51,#7B67C6)', keys:'message copy', run:() => go('templates') },
-    { kind:'Go', label:'Health', sub:'Storage, backup, sync aur quality', icon:'♥', color:'linear-gradient(135deg,#2F8F7A,#4C8FD6)', keys:'backup sync storage', run:() => go('health') }
+    { kind:'Go', label:'Health', sub:'Storage, backup, sync aur quality', icon:'♥', color:'linear-gradient(135deg,#2F8F7A,#4C8FD6)', keys:'backup sync storage', run:() => go('health') },
+    { kind:'Go', label:'Lead Engine', sub:'Free leads, inbox, outreach aur import', icon:'🎯', color:'linear-gradient(135deg,#DF6A51,#E7B84B)', keys:'leadgen prospects demand inbox', run:() => go('leadgen') },
+    { kind:'Go', label:'Market Pulse', sub:'Rates, corridors aur daily market signals', icon:'↗', color:'linear-gradient(135deg,#E7B84B,#DF6A51)', keys:'market rate pulse corridor', run:() => go('pulse') },
+    { kind:'Go', label:'Calculators', sub:'EMI, ROI, GST aur property maths', icon:'⌘', color:'linear-gradient(135deg,#4C8FD6,#2F8F7A)', keys:'calc emi roi gst math', run:() => go('calc') },
+    { kind:'Go', label:'Inventory', sub:'Plots, units aur availability board', icon:'▦', color:'linear-gradient(135deg,#7CAC5A,#2F8F7A)', keys:'plots units stock', run:() => go('inventory') },
+    { kind:'Go', label:'Pipeline', sub:'Sales ledger, deals aur commissions', icon:'⇢', color:'linear-gradient(135deg,#2F8F7A,#4C8FD6)', keys:'sales deals ledger brokerage', run:() => go('pipeline') },
+    { kind:'Go', label:'Exchange', sub:'Client requirements aur property exchange', icon:'⇄', color:'linear-gradient(135deg,#C95C85,#7B67C6)', keys:'swap exchange requirement', run:() => go('exchange') },
+    { kind:'Go', label:'Partners', sub:'Channel partners, banks, CA aur lawyers', icon:'◉', color:'linear-gradient(135deg,#A57B36,#7CAC5A)', keys:'channel brokers referral', run:() => go('partners') },
+    { kind:'Go', label:'Finance', sub:'Invoices, receivables aur payouts', icon:'💰', color:'linear-gradient(135deg,#E7B84B,#2F8F7A)', keys:'money invoice payout', run:() => go('finance') },
+    { kind:'Go', label:'Analytics', sub:'Numbers, trends aur performance', icon:'▥', color:'linear-gradient(135deg,#4C8FD6,#7B67C6)', keys:'reports metrics growth', run:() => go('analytics') },
+    { kind:'Go', label:'Ops', sub:'Backups, activity, documents aur SOPs', icon:'⌗', color:'linear-gradient(135deg,#3A3928,#A57B36)', keys:'operations backup docs', run:() => go('ops') },
+    { kind:'Go', label:'Podcasts', sub:'Episodes, notes aur recording queue', icon:'🎙', color:'linear-gradient(135deg,#7B67C6,#C95C85)', keys:'audio episode recording', run:() => go('podcasts') },
+    { kind:'Go', label:'Social', sub:'Social desk, reels aur content calendar', icon:'🌐', color:'linear-gradient(135deg,#C95C85,#4C8FD6)', keys:'instagram youtube content', run:() => go('social') },
+    { kind:'Go', label:'Sheets', sub:'Sheet inputs aur calculation workspace', icon:'📊', color:'linear-gradient(135deg,#7CAC5A,#E7B84B)', keys:'spreadsheet sheet calculate', run:() => go('sheets') }
   ];
   if(isAdmin()){
     list.push(
@@ -44202,7 +44314,8 @@ function quickActionList(){
   list.push(
     { kind:'Look', label:'Change accent', sub:'Saffron → Emerald → Indigo → Rose', icon:'✦', color:'linear-gradient(135deg,#7B67C6,#C95C85)', keys:'colour color theme', run:() => cycleAccent() },
     { kind:'Look', label:'Dark / light mode', sub:'Dark mode toggle — saved per device', icon:'☾', color:'linear-gradient(135deg,#26324D,#7A6B4F)', keys:'dark mode night theme', run:() => cycleTheme() },
-    { kind:'Data', label:'Lock desk', sub:'Session band karein', icon:'⌑', color:'linear-gradient(135deg,#3A3928,#7A6B4F)', keys:'logout lock', run:() => { const el = $('#lockBtn'); if(el) el.click(); } }
+    { kind:'Data', label:'Lock desk', sub:'Session band karein', icon:'⌑', color:'linear-gradient(135deg,#3A3928,#7A6B4F)', keys:'logout lock', run:() => { const el = $('#lockBtn'); if(el) el.click(); } },
+    { kind:'Privacy', label:'Privacy / present mode', sub:'Client details blur — PIN se band hote hain', icon:'◉', color:'linear-gradient(135deg,#26324D,#7A6B4F)', keys:'privacy present blur mask client hide', run:() => { if(window.bcsPrivacy) window.bcsPrivacy.toggle(); else toast('Privacy layer abhi load nahi hua', true); } }
   );
   return list;
 }
@@ -44230,6 +44343,26 @@ function quickSearchRecords(q){
       icon:'✎', color:'linear-gradient(135deg,#7B67C6,#C95C85)', run:() => openNewsReader(n.id)
     }));
   }
+  (((db.leadgen && db.leadgen.leads) || [])).filter(l => hit(l.name, l.phone, l.locality, l.requirement, l.type)).slice(0, 4).forEach(l => out.push({
+    kind:'Lead', label:l.name || ('Lead ' + (l.phone || '')), sub:(l.locality || l.type || 'Lead') + (l.budgetMax ? ' · ' + fmtPrice(Math.round(l.budgetMax / 100000)) : ''),
+    icon:'🎯', color:'linear-gradient(135deg,#DF6A51,#E7B84B)', run:() => { if(window.cnFocusRecord) window.cnFocusRecord('lead', l.id); else go('leadgen'); }
+  }));
+  (db.pipeline || []).filter(d => hit(d.clientName, d.code, d.plotDetail, d.remarks)).slice(0, 4).forEach(d => out.push({
+    kind:'Deal', label:d.clientName || ('Deal ' + (d.code || '')), sub:(d.stage || 'deal') + (d.dealValue ? ' · ' + fmtPrice(Math.round(d.dealValue / 100000)) : ''),
+    icon:'⇢', color:'linear-gradient(135deg,#2F8F7A,#4C8FD6)', run:() => { if(window.cnFocusRecord) window.cnFocusRecord('deal', d.id); else go('pipeline'); }
+  }));
+  (db.partners || []).filter(p => hit(p.name, p.contactPerson, p.city, p.phone, p.website)).slice(0, 3).forEach(p => out.push({
+    kind:'Partner', label:p.name || 'Partner', sub:(p.type || 'channel') + (p.contactPerson ? ' · ' + p.contactPerson : ''),
+    icon:'◉', color:'linear-gradient(135deg,#A57B36,#7CAC5A)', run:() => { if(window.cnFocusRecord) window.cnFocusRecord('partner', p.id); else go('partners'); }
+  }));
+  (visibleAdvisors() || []).filter(a => hit(a.name, a.phone, a.city, a.groupName)).slice(0, 3).forEach(a => out.push({
+    kind:'Advisor', label:a.name || 'Advisor', sub:(a.city || a.groupName || 'Team') + (a.phone ? ' · ' + a.phone : ''),
+    icon:'♜', color:'linear-gradient(135deg,#7B67C6,#C95C85)', run:() => { if(window.cnFocusRecord) window.cnFocusRecord('advisor', a.id); else openAdvisorProfile(a.id); }
+  }));
+  (typeof scopedResale === 'function' ? scopedResale() : []).filter(r => hit(r.unit, r.projectName, r.locality, r.notes, r.society)).slice(0, 3).forEach(r => out.push({
+    kind:'Resale', label:r.unit || r.projectName || 'Resale unit', sub:(r.locality || r.projectName || 'Resale') + (r.price ? ' · ' + fmtPrice(r.price) : ''),
+    icon:'⇌', color:'linear-gradient(135deg,#C95C85,#7B67C6)', run:() => { if(window.cnFocusRecord) window.cnFocusRecord('resale', r.id); else if(typeof openResaleView === 'function') openResaleView(r.id); else go('resale'); }
+  }));
   return out;
 }
 
@@ -44415,6 +44548,39 @@ function initExperience(){
     }
   });
 }
+
+/* ==================================================================
+   Present / privacy mode — keyboard + quick-action driven, no chrome
+   ================================================================== */
+(function(){
+  'use strict';
+  const KEY = 'bcs_privacy_mode_v1';
+  let on = false;
+  try{ on = localStorage.getItem(KEY) === 'on'; }catch(e){}
+  function paint(){
+    document.body.classList.toggle('privacy-mode', on);
+    document.body.dataset.privacy = on ? 'on' : 'off';
+    const btn = $('#qaTrigger');
+    if(btn) btn.title = on ? 'Privacy mode ON — ⌘⇧P ya quick action se band karein' : 'Quick actions & search (⌘K)';
+  }
+  function setPrivacy(next, quiet){
+    on = !!next;
+    try{ localStorage.setItem(KEY, on ? 'on' : 'off'); }catch(e){}
+    paint();
+    if(!quiet && typeof toast === 'function') toast(on ? 'Privacy mode ON — client details blur ho gaye' : 'Privacy mode OFF');
+    window.dispatchEvent(new CustomEvent('bcs:privacy', { detail:{ on } }));
+    return on;
+  }
+  function toggle(quiet){ return setPrivacy(!on, quiet); }
+  window.bcsPrivacy = { set:setPrivacy, toggle:toggle, isOn:() => on };
+  window.bcsSetPrivacy = next => setPrivacy(next);
+  document.addEventListener('keydown', e => {
+    if((e.metaKey || e.ctrlKey) && e.shiftKey && String(e.key).toLowerCase() === 'p'){
+      e.preventDefault(); e.stopPropagation(); toggle();
+    }
+  });
+  paint();
+})();
 
 /* ==================================================================
    v14 helpers — custom fields, table/kanban views, analytics
@@ -48350,11 +48516,13 @@ function renderDataStatus(){
   const newsAt = (typeof liveState !== 'undefined' && liveState && liveState.fetchedAt) ? liveState.fetchedAt : 0;
   const wxAt = window.__bcsWeatherAt || 0;
   const syncAt = (function(){ try{ const c = JSON.parse(localStorage.getItem('bcs_sync_v1') || '{}'); return Math.max(c.lastPush || 0, c.lastPull || 0); }catch(e){ return 0; } })();
+  const quota = typeof storageUsage === 'function' ? storageUsage() : { kb:0, pct:0, imgMb:0 };
   const rows = [
     { name:'Live market (FX / Gold / Silver / Crypto)', note:'open.er-api.com + gold-api.com — CORS-friendly, free, no-key — refreshed every 5 min', at: market && market.at, label: market ? 'LIVE' : 'NOT FETCHED YET' },
     { name:'Jaipur weather & AQI', note:'Open-Meteo — refreshes hourly', at: wxAt, label: wxAt ? 'LIVE' : 'OFFLINE' },
     { name:'Live news feed (Google + ET Now)', note:'CORS proxy chain — refreshes every 15 min while app is visible', at: newsAt, label: newsAt ? 'LIVE' : 'NOT FETCHED' },
-    { name:'Cloud sync (Gist)', note:'GitHub Gist — every change pushes automatically when online', at: syncAt, label: syncAt ? 'SYNCED' : 'NOT SET' }
+    { name:'Cloud sync (Gist)', note:'GitHub Gist — every change pushes automatically when online', at: syncAt, label: syncAt ? 'SYNCED' : 'NOT SET' },
+    { name:'Local storage quota', note:'Photos IDB me; JSON localStorage me — limit se pehle warning chahiye', at: Date.now(), label: quota.kb + ' KB used · ' + Math.round(quota.pct) + '% · ' + Number(quota.imgMb || 0).toFixed(1) + ' MB photos' }
   ];
   wrap.innerHTML = `
     <div class="ds-card" style="margin-bottom:14px">
@@ -54634,53 +54802,98 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     toast('Backup saved · ' + nowStamp());
     return rec;
   }
+  const BK_COLLS = ['clients','projects','plots','pipeline','bookings','advisors','developers','resale','partners','news','links','templates','documents','todos','corridors'];
+  function backupDiffText(p, rec){
+    const cur = db, rows = [];
+    const pairs = [
+      ['Clients','clients'], ['Projects','projects'], ['Plots','plots'], ['Deals','pipeline'],
+      ['Bookings','bookings'], ['Advisors','advisors'], ['Developers','developers'], ['Resale','resale'],
+      ['Partners','partners'], ['News','news'], ['Links','links'], ['Documents','documents']
+    ];
+    pairs.forEach(x => {
+      const a = (cur[x[1]] || []).length, b = (p && p[x[1]] || []).length;
+      if(a !== b || b) rows.push(x[0] + ': ' + a + ' → ' + b + (b > a ? '  (+' + (b-a) + ')' : b < a ? '  (' + (b-a) + ')' : ''));
+    });
+    const curLeads = ((cur.leadgen && cur.leadgen.leads) || []).length;
+    const bkLeads = ((p && p.leadgen && p.leadgen.leads) || []).length;
+    rows.push('Lead Engine: ' + curLeads + ' → ' + bkLeads);
+    return [
+      'BACKUP RESTORE — pehle pooraa diff padhein',
+      '',
+      'Snapshot: ' + new Date(rec.ts).toLocaleString('en-IN') + ' · ' + (rec.label || ''),
+      'Kind: ' + rec.kind + ' · Size: ' + (rec.size / 1024).toFixed(0) + ' KB',
+      '',
+      'Current desk → Backup',
+      ...rows,
+      '',
+      'MERGE  = current records rakho + backup se sirf naye records add karein (safe)',
+      'REPLACE = poori desk ko backup wali 3:2 split se replace karein',
+      '',
+      'Kisi bhi mode se pehle current state ka safety snapshot ban jayega.'
+    ].join('\n');
+  }
+  function mergeBackupRecords(p){
+    let added = 0;
+    BK_COLLS.forEach(k => {
+      const cur = Array.isArray(db[k]) ? db[k] : [];
+      const ids = new Set(cur.map(x => x && x.id).filter(Boolean));
+      (Array.isArray(p[k]) ? p[k] : []).forEach(x => {
+        if(!x || !x.id || ids.has(x.id)) return;
+        cur.push(x); ids.add(x.id); added++;
+      });
+      db[k] = cur;
+    });
+    const curLeads = (db.leadgen && Array.isArray(db.leadgen.leads)) ? db.leadgen.leads : [];
+    const leadIds = new Set(curLeads.map(x => x && x.id).filter(Boolean));
+    (((p && p.leadgen && p.leadgen.leads) || [])).forEach(x => {
+      if(!x || !x.id || leadIds.has(x.id)) return;
+      curLeads.push(x); leadIds.add(x.id); added++;
+    });
+    if(!db.leadgen || typeof db.leadgen !== 'object') db.leadgen = {};
+    db.leadgen.leads = curLeads;
+    normalizeDb(db);
+    return added;
+  }
   async function opsRestoreBackup(id){
     const o = opsOf();
     const rec = (o.backups || []).find(b => b.id === id);
     if(!rec) return toast('Backup nahi mila', true);
-    if(!confirm('Is backup par restore karein?\n\n' + new Date(rec.ts).toLocaleString('en-IN') + '\n' + (rec.label || '') + '\n\nCurrent data ka safety snapshot pehle ban jayega.')) return;
     let raw = null;
     try{ raw = await idbGet(BK_PREFIX + id); }catch(e){}
     if(!raw) return toast('Backup data IDB me nahi mila — delete ho gaya hoga', true);
     let parsed;
     try{ parsed = JSON.parse(raw); }catch(e){ return toast('Backup corrupt hai', true); }
+    previewMessage('Backup restore — diff preview', backupDiffText(parsed, rec));
+    const mode = String(prompt('Restore mode type karein:\n\nMERGE  = naye records add karein (safe)\nREPLACE = poora desk replace karein\n\nType MERGE ya REPLACE:', 'MERGE') || '').trim().toUpperCase();
+    if(mode !== 'MERGE' && mode !== 'REPLACE') return toast('Restore cancel — kuch nahi badla');
     await opsBackupNow('restore', 'Safety snapshot before restore');
-    const oldBackups = (o.backups || []).slice();
-    db = normalizeDb(parsed);
-    /* keep the full snapshot history — the restored payload has an older list */
-    const merged = [...((db.ops && db.ops.backups) || []), ...oldBackups];
+    const oldBackups = ((opsOf()).backups || []).slice();
+    let detail = '';
+    if(mode === 'MERGE'){
+      const added = mergeBackupRecords(parsed);
+      detail = 'Merged ' + added + ' new records from ' + new Date(rec.ts).toLocaleString('en-IN');
+    } else {
+      db = normalizeDb(parsed);
+      detail = 'Replaced with backup from ' + new Date(rec.ts).toLocaleString('en-IN');
+    }
+    const allBackups = [...(((db.ops && db.ops.backups) || [])), ...oldBackups];
     const seen = new Set();
-    db.ops.backups = merged
+    db.ops.backups = allBackups
       .filter(b => b && b.id && !seen.has(b.id) && seen.add(b.id))
       .sort((a, b) => b.ts - a.ts)
       .slice(0, 40);
     auditState = null;
-    opsLog('restore', 'Backup', id, 'Restored backup from ' + new Date(rec.ts).toLocaleString('en-IN'), rec.label || '');
+    opsLog('restore', 'Backup', id, detail, rec.label || '');
     save(); renderOps(); render();
-    toast('Restore ho gaya ✓');
+    toast(mode === 'MERGE' ? 'Merge restore ho gaya ✓' : 'Replace restore ho gaya ✓');
   }
-  async function opsPreviewBackup(id){
+  async function opsPreviewBackup(id, overrideText){
     const rec = (opsOf().backups || []).find(b => b.id === id);
     let raw = null;
     try{ raw = await idbGet(BK_PREFIX + id); }catch(e){}
-    let txt = 'Backup data nahi mila.';
-    if(raw){
-      try{
-        const p = JSON.parse(raw);
-        txt = [
-          'Snapshot: ' + new Date(rec.ts).toLocaleString('en-IN'),
-          'Kind: ' + rec.kind + ' · Size: ' + (rec.size / 1024).toFixed(0) + ' KB',
-          '',
-          'Clients: ' + (p.clients || []).length,
-          'Projects: ' + (p.projects || []).length,
-          'Plots: ' + (p.plots || []).length,
-          'Deals: ' + (p.pipeline || []).length,
-          'Advisors: ' + (p.advisors || []).length,
-          'Developers: ' + (p.developers || []).length,
-          '',
-          'Clients: ' + (p.clients || []).slice(0, 12).map(c => c.name || c.phone).filter(Boolean).join(', ')
-        ].join('\n');
-      }catch(e){ txt = 'Backup parse nahi hua.'; }
+    let txt = overrideText || 'Backup data nahi mila.';
+    if(raw && !overrideText){
+      try{ txt = backupDiffText(JSON.parse(raw), rec); }catch(e){ txt = 'Backup parse nahi hua.'; }
     }
     previewMessage('Backup snapshot', txt);
   }
@@ -54688,6 +54901,13 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   function opsAutoBackupTick(){
     if(!db) return;
     const o = opsOf();
+    const day = new Date().toISOString().slice(0, 10);
+    if(o.lastDailyBackupDay !== day){
+      o.lastDailyBackupDay = day;
+      lastAutoBackup = Date.now();
+      opsBackupNow('daily', 'Daily snapshot · ' + day).catch(() => {});
+      return;
+    }
     const last = (o.backups && o.backups[0]) ? o.backups[0].ts : 0;
     if(Date.now() - last < 30 * 60 * 1000) return;
     if(Date.now() - lastAutoBackup < 5 * 60 * 1000) return;
@@ -54754,6 +54974,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     const totalSize = list.reduce((s, b) => s + (b.size || 0), 0);
     const auto = list.filter(b => b.kind === 'auto').length;
     const kindChip = k => k === 'auto' ? '<span class="ops-chip mut">auto</span>'
+      : k === 'daily' ? '<span class="ops-chip ok">daily</span>'
       : k === 'restore' ? '<span class="ops-chip warn">pre-restore</span>'
       : k === 'import' ? '<span class="ops-chip info">import</span>'
       : '<span class="ops-chip ok">manual</span>';
@@ -54786,8 +55007,8 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
         <div class="ops-panel-head"><h4>Kaise kaam karta hai</h4></div>
         <div style="font-size:12px;color:var(--mut);line-height:1.7">
           • Snapshot poora database (clients, projects, plots, sales, ops data) IDB me store karta hai — localStorage bharta nahi.<br>
-          • Auto snapshot tab banta hai jab 30 minute se koi backup nahi hua — app khula ho tab bhi.<br>
-          • Restore se pehle current state ka “pre-restore” snapshot ban jata hai, isliye galti se restore bhi undo ho sakta hai.<br>
+          • Roz ka daily snapshot subah app khulte hi banta hai; uske baad 30 minute ke gap par auto snapshot.<br>
+          • Restore pehle diff preview dikhata hai, phir MERGE (naye records add) ya REPLACE (poora desk replace) choose karte hain. Dono se pehle safety snapshot ban jata hai.<br>
           • 40 se purane snapshots apne aap delete ho jate hain. Export JSON se full off-device copy lein.
         </div>
       </div>`;
@@ -56220,6 +56441,9 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     Document:'ops', Invoice:'ops', Broadcast:'ops', ROI:'ops', 'Client page':'ops', Backup:'ops'
   };
   const SITE_LOG = [
+    { v:'v191', date:'2026-11-18', page:'app', kind:'update',
+      title:'Quiet productivity — global search, Aaj ke 10 Kaam, privacy, safer restore, best-3 drafts, watchlist aur network polish',
+      detail:'Cmd/Ctrl+K ab poori desk ke records aur pages search karta hai; ⌘⇧P privacy mode client details blur karta hai; dashboard queue me stale leads aur price/RERA alerts; daily snapshot + diff-preview restore (MERGE/REPLACE) + import se pehle safety backup; lead se top-3 project drafts; project watchlist; network cards par last-verified, save-link aur preview pitch. 30% Originating · 35% Executing · 35% BCS unchanged.' },
     { v:'v190', date:'2026-11-18', page:'app', kind:'fix',
       title:'Connected Desk — safe links, preview-first exports, editable parse previews, today-stamped rates, clickable heatmap and connected corridor details',
       detail:'Universal http(s) validation + popup-blocker fallback; dead local/LAN links replaced; rate badges stamped on refresh and contradictory numbers unified; preview-first PDF through existing export/report actions; parse→edit→navigate; connected-record drawer and clickable corridor details.' },
@@ -56720,6 +56944,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       <select id="lgFilterStatus" aria-label="Filter status">${opt('', 'All statuses', fStatus)}${LG_STATUSES.map(s => opt(s, s, fStatus)).join('')}</select>
       <select id="lgFilterSource" aria-label="Filter source">${opt('', 'All sources', fSource)}${LG_SOURCES.map(s => opt(s, s, fSource)).join('')}</select>
       <select id="lgSort" aria-label="Sort leads">${opt('score','Best match',sortBy)}${opt('recent','Newest first',sortBy)}${opt('budget','Budget ↓',sortBy)}${opt('name','Name A–Z',sortBy)}</select>
+      <button type="button" class="btn ghost sm" data-lgmatch="1" title="Top lead ke liye best 3 projects + draft">★ Best 3 + draft</button>
       <button type="button" class="btn ghost sm" data-lgclear="1">Clear</button>
       <span class="lg-count" id="lgCount"></span>
     </div>
@@ -56753,6 +56978,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       </div>
       <div class="lg-acts">
         <button type="button" class="btn primary" data-lgwa="${esc(l.id)}">💬 WhatsApp</button>
+        <button type="button" class="btn ghost" data-lgmatchone="${esc(l.id)}" title="Is requirement ke best 3 projects + draft">★ Top 3</button>
         ${phone ? `<a class="btn ghost" href="tel:+91${phone}">📞 Call</a>` : ''}
         <button type="button" class="btn ghost" data-lgclient="${esc(l.id)}">${l.clientId ? '✓ Client' : '→ Client'}</button>
         <select class="lg-status" data-lgstatus="${esc(l.id)}" aria-label="Lead status">${LG_STATUSES.map(st => `<option value="${esc(st)}"${st === l.status ? ' selected' : ''}>${esc(st)}</option>`).join('')}</select>
@@ -57348,6 +57574,77 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     });
   }
 
+  function matchAndDraft(id){
+    const l = id ? byId(id) : filtered().find(x => !x.clientId && x.status !== 'Won' && x.status !== 'Lost');
+    if(!l) return toast('Best match ke liye koi active lead nahi', true);
+    const typeMap = { 'plot':['plot'], 'commercial-plot':['commercial'], 'villa':['residential'], 'apartment':['flat'],
+      'farmhouse':['farmhouse'], 'shop-office':['shop','commercial'], 'agricultural':['plot'] };
+    const loc = String(l.locality || '').toLowerCase();
+    const cor = (db.corridors || []).find(c => loc && (loc.includes(String(c.name||'').toLowerCase()) || String(c.name||'').toLowerCase().includes(loc)));
+    const savedBrief = advBrief, savedAdv = q('#advSearch') ? q('#advSearch').value : '', savedGlobal = q('#globalSearch') ? q('#globalSearch').value : '', savedSort = q('#advSort') ? q('#advSort').value : '';
+    let rows = [], relaxed = '';
+    try{
+      if(q('#advSearch')) q('#advSearch').value = '';
+      if(q('#globalSearch')) q('#globalSearch').value = '';
+      if(q('#advSort')) q('#advSort').value = 'match';
+      const base = emptyBrief();
+      base.budgetMin = l.budgetMin ? Math.round(+l.budgetMin / 100000) : null;
+      base.budgetMax = l.budgetMax ? Math.round(+l.budgetMax / 100000) : null;
+      base.types = typeMap[l.type] || [];
+      base.corridors = cor ? [cor.id] : [];
+      base.notes = String(l.requirement || '').slice(0, 300);
+      base.reraOnly = true;
+      if(/ready|possession|immediate|turant/i.test(String(l.requirement || ''))) base.timeline = 'ready';
+      else if(/6 month|6 mahine|short/i.test(String(l.requirement || ''))) base.timeline = '6m';
+      const stages = [
+        { b:base, label:'' },
+        { b:{...base, timeline:''}, label:'Timeline thoda flexible rakha gaya hai' },
+        { b:{...base, timeline:'', reraOnly:false}, label:'RERA filter thoda broad kiya gaya — verify zaroor karein' },
+        { b:{...base, timeline:'', reraOnly:false, corridors:[]}, label:'Corridor thoda broad kiya gaya hai' },
+        { b:{...base, timeline:'', reraOnly:false, corridors:[], types:[]}, label:'Property type thoda broad kiya gaya hai' }
+      ];
+      for(const stage of stages){
+        advBrief = stage.b;
+        rows = typeof advisoryMatches === 'function' ? advisoryMatches().slice(0, 3) : [];
+        if(rows.length >= 3 || (stage.label && rows.length)){ relaxed = stage.label; break; }
+      }
+    }catch(e){ rows = []; }
+    finally{
+      advBrief = savedBrief;
+      if(q('#advSearch')) q('#advSearch').value = savedAdv;
+      if(q('#globalSearch')) q('#globalSearch').value = savedGlobal;
+      if(q('#advSort')) q('#advSort').value = savedSort;
+    }
+    const lines = [
+      'BCS · Best 3 project draft — requirement match',
+      'Client: Client (naam masked — likhit permission ke bina nahi)',
+      'Need: ' + (l.requirement || typeMeta(l.type).label),
+      'Area: ' + (l.locality || 'Jaipur') + ' · Budget: ' + budgetText(l),
+      ''
+    ];
+    if(rows.length){
+      rows.forEach((r, i) => {
+        lines.push((i + 1) + '. ' + r.p.name + ' — ' + priceRange(r.p) + ' · ' + corridor(r.p.corridor).name);
+        lines.push('   Why: ' + (r.reasons.length ? r.reasons.join(' · ') : 'Requirement se relevant'));
+        lines.push('   RERA: ' + (r.p.rera || 'verify required') + ' · ' + (r.p.approvalType || 'approval verify required'));
+      });
+    } else {
+      lines.push('Is requirement ke liye abhi koi matching project nahi mila.', 'Advisory desk me brief thoda broad karke shortlist nil, phir yahin se draft bana lein.');
+    }
+    if(relaxed) lines.push('', 'Note: ' + relaxed + '.');
+    lines.push('', 'Sirf verified title / approval / RERA options share karein.', '30% Originating · 35% Executing · 35% BCS — written split, no hidden cut.', 'Exact text preview hai — WhatsApp dabane se pehle pooraa padhein.');
+    const msg = lines.join('\n');
+    const phone = phone10(l.phone);
+    if(!window.BCSPreview) return toast('Preview available nahi', true);
+    window.BCSPreview.open({
+      title: 'Best 3 draft — ' + (l.locality || 'Jaipur'),
+      kind: 'Requirement match · top 3 · preview',
+      text: msg, waText: msg, waUrl: phone,
+      filename: 'BCS-best-3-' + String(l.locality || 'requirement').replace(/[^a-z0-9]+/gi, '-').toLowerCase() + '.txt',
+      onWhatsApp: function(){ logContact(l.id); }
+    });
+  }
+
   /* ---------------- playbook ---------------- */
   const GHA = [
     '# BCS free lead pull — public business listings (OpenStreetMap)',
@@ -57637,6 +57934,9 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       if(tabBtn){ setTab(tabBtn.dataset.lgtab); return; }
       const wa = t.closest('[data-lgwa]');
       if(wa){ openWa(wa.dataset.lgwa); return; }
+      const matchOne = t.closest('[data-lgmatchone]');
+      if(matchOne){ matchAndDraft(matchOne.dataset.lgmatchone); return; }
+      if(t.closest('[data-lgmatch]')){ matchAndDraft(); return; }
       const ed = t.closest('[data-lgedit]');
       if(ed){ openLeadModal(ed.dataset.lgedit); return; }
       const del = t.closest('[data-lgdel]');
@@ -57821,7 +58121,8 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       platform: ['telegram','whatsapp','linkedin','facebook','website'].indexOf(c.platform) !== -1 ? c.platform : 'website',
       area: String(c.area||'').slice(0,80), url: String(c.url).slice(0,800),
       focus: String(c.focus||'').slice(0,200), note: String(c.note||'').slice(0,300),
-      createdAt: +c.createdAt || Date.now()
+      createdAt: +c.createdAt || Date.now(),
+      verifiedAt: +c.verifiedAt || 0, seedVerified: !!c.seedVerified
     }));
     if(!g.network.checks || typeof g.network.checks !== 'object' || Array.isArray(g.network.checks)) g.network.checks = {};
     if(g.network.checkDate !== todayKey()){ g.network.checks = {}; g.network.checkDate = todayKey(); }
@@ -58468,6 +58769,12 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     if(rnTab){ netState.tab = rnTab.dataset.rnTab; paintNetwork(); return; }
     const rnPlat = t.closest('[data-rn-platform]');
     if(rnPlat){ netState.platform = rnPlat.dataset.rnPlatform; paintNetwork(); return; }
+    const rnSaveLink = t.closest('[data-rn-savelink]');
+    if(rnSaveLink){ rnSavePublicLink(rnSaveLink.dataset.rnSavelink, rnSaveLink.dataset.url, rnSaveLink.dataset.note); return; }
+    const rnPitch = t.closest('[data-rn-pitch]');
+    if(rnPitch){ rnPreview(rnShareText('intro', { name:rnPitch.dataset.rnPitch, area:rnPitch.dataset.area || 'Jaipur' }), 'BCS network pitch — ' + rnPitch.dataset.rnPitch); return; }
+    const rnVerify = t.closest('[data-rn-verify]');
+    if(rnVerify){ rnVerifyNetwork(rnVerify.dataset.rnVerify, {}); return; }
     const rnCopy = t.closest('[data-rn-copy]');
     if(rnCopy){ copyText(rnCopy.dataset.rnCopy); return; }
     const rnDel = t.closest('[data-rn-del]');
@@ -58481,7 +58788,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
         const name = q('#rnName')?.value.trim(), url = q('#rnUrl')?.value.trim();
         if(!name || !/^https?:\/\//i.test(url)) return toast('Naam aur valid https link chahiye', true);
         G().network.contacts.push({ id:uid(), name, platform:q('#rnPlatform').value, area:q('#rnArea')?.value.trim()||'',
-          url, focus:q('#rnFocus')?.value.trim()||'', note:'Saved from network hub', createdAt:Date.now() });
+          url, focus:q('#rnFocus')?.value.trim()||'', note:'Saved from network hub', createdAt:Date.now(), verifiedAt:0 });
         persist(); paintNetwork(); toast('Network save ho gaya');
       } else if(a === 'capture'){
         const ta = q('#rnPaste'); if(!ta || !ta.value.trim()) return toast('Pehle public details paste karein', true);
@@ -58596,7 +58903,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       { id:'ns12', p:'website', n:'Magicbricks — Jaipur', u:'https://www.magicbricks.com/property-for-sale/real-estate-jaipur', s:'Project/area demand samajhne ke liye public portal.' },
       { id:'ns13', p:'website', n:'Housing.com — Jaipur', u:'https://housing.com/in/buy/jaipur', s:'Public listing aur locality insight.' },
       { id:'ns14', p:'website', n:'Broker / channel discovery — web search', u:gweb('Indian real estate broker network channel Telegram WhatsApp website Jaipur'), s:'Ek search se multiple networks milte hain — link save karke baar baar na dhoondein.' }
-    ];
+    ].map(x => Object.assign({ seedVerified:true, verifiedAt:Date.UTC(2026,10,18) }, x));
   }
   const netState = { platform:'', q:'', paste:'' };
   function rnNetName(v){ return NET_PLATFORMS.find(p => p.id === v) || NET_PLATFORMS[4]; }
@@ -58638,6 +58945,46 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
         filename: 'BCS-network-share-' + todayKey() + '.txt', kind: 'Network · preview' });
     } else openPrompt(title || 'BCS network share', text);
   }
+  function rnVerifiedLine(x){
+    const at = +x.verifiedAt || 0;
+    const label = at ? new Date(at).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' }) : 'not verified';
+    return (x.seedVerified ? 'Seed list · ' : '') + 'Last verified ' + label;
+  }
+  function rnSavePublicLink(name, url, note){
+    const safe = (typeof cnSafeUrl === 'function' ? cnSafeUrl(url) : String(url || ''));
+    if(!/^https?:\/\//i.test(safe)) return toast('Sirf valid http(s) public link save hota hai', true);
+    if(!Array.isArray(db.linkCategories) || !db.linkCategories.length){
+      db.linkCategories = [{ id:uid(), name:'Unsorted', color:'#8B9188', order:0, createdAt:Date.now() }];
+    }
+    if(!Array.isArray(db.links)) db.links = [];
+    if(db.links.some(l => l.url === safe)) return toast('Ye link Links page me pehle se saved hai');
+    const cat = db.linkCategories.find(c => /unsorted/i.test(c.name || '')) || db.linkCategories[0];
+    db.links.push({ id:uid(), name:String(name || 'Network link').slice(0,100), url:safe, categoryId:cat.id,
+      note:String(note || 'Saved from realty network hub').slice(0,220),
+      order:db.links.filter(l => l.categoryId === cat.id).length, createdAt:Date.now(), updatedAt:Date.now() });
+    save(); toast('Link Links page me save ho gaya');
+  }
+  function rnVerifyNetwork(key, x){
+    const g = G();
+    let rec = null;
+    if(String(key).indexOf('saved:') === 0){
+      const id = String(key).slice(6);
+      rec = g.network.contacts.find(c => c.id === id);
+      if(!rec) return toast('Saved network nahi mila', true);
+    } else {
+      const id = String(key).slice(5);
+      const seed = netSeeds().find(s => s.id === id);
+      if(!seed) return toast('Seed network nahi mila', true);
+      rec = g.network.contacts.find(c => c.url === seed.u || c.name === seed.n);
+      if(!rec){
+        rec = { id:uid(), name:seed.n, platform:seed.p, area:'Jaipur', url:seed.u, focus:'Public discovery', note:seed.s, createdAt:Date.now() };
+        g.network.contacts.push(rec);
+      }
+      rec.seedVerified = true;
+    }
+    rec.verifiedAt = Date.now();
+    persist(); paintNetwork(); toast('Network mark verified — ' + rnVerifiedLine(rec));
+  }
   function networkHTML(){
     const g = G();
     const contacts = g.network.contacts;
@@ -58651,10 +58998,13 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       <h4>${rnNetName(x.p).ic} ${esc(x.n)} <span class="bw-chip">${esc(rnNetName(x.p).label)}</span>${x.area?`<span class="bw-chip good">${esc(x.area)}</span>`:''}</h4>
       <div class="bw-sub">${esc(x.s||x.note||'')}</div>
       ${x.focus?`<div class="bw-kv"><span>Focus</span><span>${esc(x.focus)}</span></div>`:''}
+      <div class="bw-kv"><span>Verified</span><span>${esc(rnVerifiedLine(x))}</span></div>
       <div class="bw-actions" style="margin-top:8px">
         <a class="bw-btn sm primary" href="${esc(x.u||x.url)}" target="_blank" rel="noopener noreferrer">Open ↗</a>
-        <button type="button" class="bw-btn sm" data-rn-copy="${esc(saved ? x.url : x.u)}">📋 Copy link</button>
-        <button type="button" class="bw-btn sm" data-rn-intro="${esc(x.n)}">💬 Share intro</button>
+        <button type="button" class="bw-btn sm" data-rn-copy="${esc(x.u||x.url)}">📋 Copy</button>
+        <button type="button" class="bw-btn sm" data-rn-savelink="${esc(x.n)}" data-url="${esc(x.u||x.url)}" data-note="${esc(x.s||x.note||'')}">🔖 Save link</button>
+        <button type="button" class="bw-btn sm" data-rn-pitch="${esc(x.n)}" data-area="${esc(x.area||'Jaipur')}">✉️ Pitch</button>
+        <button type="button" class="bw-btn sm" data-rn-verify="${saved ? 'saved:' + esc(x.id) : 'seed:' + esc(x.id)}" title="Mark verified">✓ Verify</button>
         ${saved?`<button type="button" class="bw-btn sm" data-rn-del="${esc(x.id)}" title="Delete saved network" aria-label="Delete saved network">✕</button>`:''}
       </div>
     </div>`;
@@ -60548,7 +60898,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     if(!sh){ sh=document.createElement('div'); sh.className='vd-sheet'; sh.id='vdShortcuts'; document.body.appendChild(sh); }
     sh.innerHTML='<div class="vd-sheet-card"><h3>⌨ Keyboard shortcuts</h3><div class="vd-sub">Desk chalane ke chhote raaste.</div>'+
       '<div class="vd-keys">'+[
-        ['⌘K / Ctrl+K','Quick actions'],['?','Ye shortcut sheet'],['Esc','Modal / sheet band karein'],
+        ['⌘K / Ctrl+K','Quick actions'],['⌘⇧P / Ctrl+Shift+P','Privacy / present mode'],['?','Ye shortcut sheet'],['Esc','Modal / sheet band karein'],
         ['↑ ↓','Quick action list me move'],['↵','Action run karein'],['Ctrl+P','Print / PDF'],
         ['↑↑↓↓←→←→BA','Golden skyline easter egg']
       ].map(r=>'<span>'+fEsc(r[1])+'</span><kbd>'+fEsc(r[0])+'</kbd>').join('')+'</div>'+
