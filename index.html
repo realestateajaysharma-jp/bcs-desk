@@ -16047,6 +16047,191 @@ body[data-theme="dark"] .sitelog-chip.info{background:rgba(58,143,184,.24);color
   .sitelog-page button{min-height:34px;padding:8px 12px}
   .sitelog-row{padding:9px 6px}
 }
+
+/* ============ v184 · LEAD ENGINE (free lead generation) ============ */
+.lg-head{margin-bottom:6px}
+.lg-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:8px;margin:14px 0 16px}
+.lg-stat{border:1px solid var(--line);border-radius:13px;background:var(--panel);padding:10px 12px;box-shadow:var(--shadow)}
+.lg-stat b{display:block;font:800 20px/1.15 'Fraunces',serif;color:var(--ink);font-variant-numeric:tabular-nums}
+.lg-stat span{display:block;font-size:9.5px;letter-spacing:.7px;text-transform:uppercase;color:var(--mut);font-weight:800;margin-top:3px}
+.lg-stat.hot b{color:#A4452B}
+.lg-stat.good b{color:#2F6644}
+.lg-tabs{display:flex;gap:4px;padding:4px;border-radius:12px;background:color-mix(in oklab,var(--line) 40%,transparent);overflow-x:auto;margin-bottom:14px}
+.lg-tabs button{border:0;background:transparent;color:var(--mut);font:700 11.5px/1 'DM Sans',system-ui,sans-serif;
+  padding:9px 12px;border-radius:9px;cursor:pointer;white-space:nowrap;flex:0 0 auto}
+.lg-tabs button:hover{color:var(--ink)}
+.lg-tabs button.on{background:var(--panel);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.lg-toolbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px}
+.lg-toolbar input[type="search"]{flex:1 1 190px;min-width:150px;padding:9px 11px;border:1px solid var(--line);border-radius:9px;
+  background:var(--panel);font-size:12px;outline:none}
+.lg-toolbar input[type="search"]:focus{border-color:color-mix(in oklab,var(--acc) 45%,var(--line));box-shadow:0 0 0 3px color-mix(in oklab,var(--acc) 10%,transparent)}
+.lg-toolbar select{padding:8px 9px;border:1px solid var(--line);border-radius:9px;background:var(--panel);font-size:11.5px;color:var(--ink2);max-width:150px}
+.lg-count{font-size:10.5px;color:var(--mut);font-weight:700;white-space:nowrap;margin-left:auto}
+.lg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:9px}
+.lg-card{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:11px 12px;display:flex;flex-direction:column;gap:7px;
+  position:relative;transition:border-color .15s,box-shadow .15s}
+.lg-card:hover{border-color:color-mix(in oklab,var(--acc) 32%,var(--line));box-shadow:0 6px 18px -14px rgba(0,0,0,.4)}
+.lg-card.t-hot{border-left:3px solid #A4452B}
+.lg-card.t-warm{border-left:3px solid #C49A3E}
+.lg-card.t-cold{border-left:3px solid color-mix(in oklab,var(--line) 80%,var(--mut))}
+.lg-card-top{display:flex;align-items:flex-start;gap:8px}
+.lg-ava{width:34px;height:34px;flex:0 0 auto;border-radius:10px;display:grid;place-items:center;font:800 12px/1 'DM Sans',sans-serif;
+  background:color-mix(in oklab,var(--acc) 13%,transparent);color:var(--ink)}
+.lg-who{flex:1;min-width:0}
+.lg-name{font-size:13px;font-weight:800;color:var(--ink);line-height:1.3;overflow-wrap:anywhere}
+.lg-sub{font-size:10.5px;color:var(--mut);line-height:1.45;margin-top:1px;overflow-wrap:anywhere}
+.lg-score{flex:0 0 auto;font:800 9.5px/1 'DM Sans',sans-serif;letter-spacing:.4px;padding:5px 7px;border-radius:999px;text-transform:uppercase}
+.lg-score.t-hot{background:rgba(164,69,43,.12);color:#A4452B}
+.lg-score.t-warm{background:rgba(196,154,62,.16);color:#7A5A23}
+.lg-score.t-cold{background:color-mix(in oklab,var(--line) 45%,transparent);color:var(--mut)}
+.lg-chips{display:flex;flex-wrap:wrap;gap:4px}
+.lg-chip{display:inline-flex;align-items:center;gap:3px;font-size:9.5px;font-weight:800;letter-spacing:.2px;padding:3px 7px;border-radius:999px;
+  background:color-mix(in oklab,var(--line) 40%,transparent);color:var(--ink2)}
+.lg-chip.type{background:rgba(65,86,63,.1);color:var(--sage-ink)}
+.lg-chip.prof{background:rgba(165,123,54,.12);color:#7A5A23}
+.lg-chip.src{background:rgba(58,143,184,.1);color:#1F5F66}
+.lg-chip.client{background:rgba(47,102,68,.14);color:#2F6644}
+.lg-req{font-size:11px;color:var(--ink2);line-height:1.5;overflow-wrap:anywhere;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.lg-meta{display:flex;flex-wrap:wrap;gap:8px;font-size:10px;color:var(--mut);font-weight:600}
+.lg-meta b{color:var(--ink2);font-weight:800}
+.lg-acts{display:flex;gap:5px;align-items:center;margin-top:auto;padding-top:2px;flex-wrap:wrap}
+.lg-acts .btn{font-size:10.5px;padding:7px 9px;border-radius:8px}
+.lg-acts .lg-del{margin-left:auto;color:var(--mut);border:1px solid transparent;background:transparent;font-size:12px;cursor:pointer;padding:5px 7px;border-radius:7px}
+.lg-acts .lg-del:hover{color:#A4452B;background:rgba(164,69,43,.08)}
+.lg-status{padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--panel);font-size:10.5px;font-weight:700;color:var(--ink2);max-width:112px}
+.lg-empty{border:1px dashed color-mix(in oklab,var(--line) 80%,var(--mut));border-radius:16px;background:color-mix(in oklab,var(--panel) 70%,var(--bg));
+  padding:28px 18px;text-align:center;color:var(--mut);font-size:12px;line-height:1.65}
+.lg-empty b{display:block;font-size:14px;color:var(--ink);margin-bottom:4px}
+.lg-empty .btn{margin-top:10px}
+
+/* find tab */
+.lg-src-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:9px}
+.lg-src-card{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:12px 13px;display:flex;flex-direction:column;gap:8px}
+.lg-src-head{display:flex;align-items:center;gap:8px}
+.lg-src-ic{width:30px;height:30px;flex:0 0 auto;border-radius:9px;display:grid;place-items:center;font-size:14px;background:color-mix(in oklab,var(--acc) 12%,transparent)}
+.lg-src-head b{font-size:12.5px;color:var(--ink);line-height:1.25}
+.lg-src-head span{display:block;font-size:10px;color:var(--mut);line-height:1.4;margin-top:1px}
+.lg-src-note{font-size:10.5px;color:var(--mut);line-height:1.55}
+.lg-links{display:flex;flex-wrap:wrap;gap:5px}
+.lg-link{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;color:var(--ink2);text-decoration:none;
+  border:1px solid var(--line);border-radius:999px;padding:6px 9px;background:transparent;cursor:pointer;font-family:inherit}
+.lg-link:hover{border-color:var(--acc);color:var(--ink);background:color-mix(in oklab,var(--acc) 6%,transparent)}
+.lg-link.add{border-style:dashed}
+.lg-fetch{border:1px solid color-mix(in oklab,var(--acc) 30%,var(--line));border-radius:14px;background:color-mix(in oklab,var(--acc) 5%,var(--panel));padding:12px 13px}
+.lg-fetch-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.lg-fetch-row select{flex:1 1 190px;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--panel);font-size:11.5px;color:var(--ink)}
+.lg-fetch-status{font-size:10.5px;color:var(--mut);line-height:1.55;margin-top:7px}
+.lg-fetch-status b{color:var(--ink2)}
+.lg-fetch-status.err{color:#A4452B}
+.lg-fetch-log{margin-top:6px;display:flex;flex-wrap:wrap;gap:4px}
+.lg-attr{font-size:9.5px;color:var(--mut);line-height:1.5;margin-top:5px}
+.lg-attr a{color:var(--sage-ink);font-weight:700;text-decoration:none}
+
+/* import tab */
+.lg-grid>*,.lg-stats>*,.lg-src-grid>*,.lg-play-grid>*,.lg-import-grid>*,.lg-out-grid>*{min-width:0}
+.lg-import-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:10px;align-items:start}
+.lg-box{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:12px 13px}
+.lg-box h4{margin:0 0 3px;font-size:12.5px;color:var(--ink)}
+.lg-box p{margin:0 0 9px;font-size:10.5px;color:var(--mut);line-height:1.55}
+.lg-import-grid textarea{width:100%;min-width:0;max-width:100%;min-height:190px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);
+  font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);resize:vertical;outline:none}
+.lg-import-grid textarea:focus{border-color:color-mix(in oklab,var(--acc) 45%,var(--line))}
+.lg-file{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:7px}
+.lg-file input[type="file"]{font-size:10.5px;color:var(--mut);max-width:100%}
+.lg-preview{margin-top:10px}
+.lg-preview table{width:100%;border-collapse:collapse;font-size:10.5px}
+.lg-preview th{text-align:left;font-size:9px;letter-spacing:.5px;text-transform:uppercase;color:var(--mut);padding:5px 6px;border-bottom:1px solid var(--line)}
+.lg-preview td{padding:5px 6px;border-bottom:1px solid var(--line2);color:var(--ink2);overflow-wrap:anywhere}
+.lg-preview tr:last-child td{border-bottom:0}
+.lg-preview .lg-pv-wrap{max-height:230px;overflow:auto;border:1px solid var(--line);border-radius:9px}
+.lg-import-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+
+/* outreach */
+.lg-out-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:10px;align-items:start}
+.lg-next{border:1px solid color-mix(in oklab,var(--acc) 30%,var(--line));border-radius:16px;background:var(--panel);padding:13px 14px}
+.lg-next-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.lg-next-top b{font-size:12px;color:var(--ink);flex:1}
+.lg-next-name{font:800 19px/1.2 'Fraunces',serif;color:var(--ink);overflow-wrap:anywhere}
+.lg-next-req{font-size:11px;color:var(--ink2);line-height:1.55;margin-top:4px;overflow-wrap:anywhere}
+.lg-next-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.lg-next-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.lg-progress{height:7px;border-radius:999px;background:color-mix(in oklab,var(--line) 55%,transparent);overflow:hidden;margin-top:7px}
+.lg-progress i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--acc-deep),var(--acc));transition:width .3s}
+.lg-prog-lbl{display:flex;justify-content:space-between;font-size:10px;color:var(--mut);font-weight:700;margin-top:5px}
+.lg-compose{display:flex;flex-direction:column;gap:7px}
+.lg-compose select,.lg-compose textarea{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--panel);font-size:11.5px;color:var(--ink);outline:none}
+.lg-compose textarea{min-height:180px;line-height:1.6;resize:vertical;font-size:12px}
+.lg-queue{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.lg-q-row{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:10px;padding:7px 8px;background:var(--panel)}
+.lg-q-row .lg-ava{width:26px;height:26px;border-radius:8px;font-size:10px}
+.lg-q-main{flex:1;min-width:0}
+.lg-q-main b{display:block;font-size:11px;color:var(--ink);line-height:1.3;overflow-wrap:anywhere}
+.lg-q-main span{display:block;font-size:9.5px;color:var(--mut);line-height:1.4}
+.lg-q-row .btn{font-size:10px;padding:6px 8px;border-radius:7px}
+
+/* playbook */
+.lg-play-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:9px}
+.lg-play{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:12px 13px}
+.lg-play h4{margin:0 0 6px;font-size:12.5px;color:var(--ink);display:flex;align-items:center;gap:6px}
+.lg-play ol,.lg-play ul{margin:0;padding-left:17px;font-size:11px;color:var(--ink2);line-height:1.7}
+.lg-play li{margin-bottom:3px}
+.lg-note{border:1px solid color-mix(in oklab,var(--gold) 35%,var(--line));border-radius:13px;background:color-mix(in oklab,var(--gold-soft) 55%,var(--panel));
+  padding:11px 13px;font-size:11px;color:var(--ink2);line-height:1.6;margin-top:9px}
+.lg-note b{color:var(--ink)}
+.lg-note.bad{border-color:color-mix(in oklab,var(--danger) 35%,var(--line));background:color-mix(in oklab,var(--danger) 5%,var(--panel))}
+.lg-note.good{border-color:color-mix(in oklab,var(--sage-ink) 30%,var(--line));background:color-mix(in oklab,var(--sage) 55%,var(--panel))}
+.lg-code{font:10px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--bg);border:1px solid var(--line);border-radius:9px;
+  padding:9px 10px;max-height:220px;overflow:auto;white-space:pre;color:var(--ink2);margin-top:7px}
+
+/* modal */
+.lg-modal{width:min(620px,100%)}
+.lg-modal .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.lg-modal .field input,.lg-modal .field select,.lg-modal .field textarea{width:100%}
+.lg-modal textarea{min-height:66px;resize:vertical}
+
+body[data-theme="dark"] .lg-stat,body[data-theme="dark"] .lg-card,body[data-theme="dark"] .lg-src-card,
+body[data-theme="dark"] .lg-box,body[data-theme="dark"] .lg-next,body[data-theme="dark"] .lg-play,
+body[data-theme="dark"] .lg-q-row{background:rgba(255,255,255,.025);border-color:rgba(255,255,255,.09)}
+body[data-theme="dark"] .lg-tabs{background:rgba(255,255,255,.06)}
+body[data-theme="dark"] .lg-tabs button.on{background:#1B221B;color:#F2F0E5;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+body[data-theme="dark"] .lg-chip.type{background:rgba(120,180,140,.14);color:#B9DCC4}
+body[data-theme="dark"] .lg-chip.prof{background:rgba(196,154,62,.18);color:#EBCF8A}
+body[data-theme="dark"] .lg-chip.src{background:rgba(58,143,184,.2);color:#A6D6E8}
+body[data-theme="dark"] .lg-score.t-hot{background:rgba(164,69,43,.25);color:#F0AE97}
+body[data-theme="dark"] .lg-score.t-warm{background:rgba(196,154,62,.24);color:#EBCF8A}
+body[data-theme="dark"] .lg-score.t-cold{background:rgba(255,255,255,.07);color:#B8BFB2}
+body[data-theme="dark"] .lg-chip.client{background:rgba(78,124,91,.24);color:#B9DCC4}
+body[data-theme="dark"] .lg-stat.hot b{color:#F0AE97}
+body[data-theme="dark"] .lg-stat.good b{color:#A8D3B4}
+body[data-theme="dark"] .lg-toolbar input[type="search"],body[data-theme="dark"] .lg-toolbar select,
+body[data-theme="dark"] .lg-status,body[data-theme="dark"] .lg-compose select,body[data-theme="dark"] .lg-compose textarea,
+body[data-theme="dark"] .lg-fetch-row select{background:#111611;border-color:rgba(255,255,255,.12);color:#F2F0E5}
+body[data-theme="dark"] .lg-import-grid textarea,body[data-theme="dark"] .lg-code{background:#111611;border-color:rgba(255,255,255,.12);color:#DBDACD}
+body[data-theme="dark"] .lg-note{background:rgba(196,154,62,.09);border-color:rgba(196,154,62,.3)}
+body[data-theme="dark"] .lg-note.bad{background:rgba(164,69,43,.1);border-color:rgba(164,69,43,.34)}
+body[data-theme="dark"] .lg-note.good{background:rgba(78,124,91,.12);border-color:rgba(78,124,91,.3)}
+body[data-theme="dark"] .lg-fetch{background:rgba(255,255,255,.03)}
+body[data-theme="dark"] .lg-preview th{border-color:rgba(255,255,255,.12)}
+body[data-theme="dark"] .lg-preview td{border-color:rgba(255,255,255,.06)}
+body[data-theme="dark"] .lg-fetch-status.err{color:#F0AE97}
+
+@media (max-width:860px){
+  .lg-import-grid,.lg-out-grid{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .lg-stats{grid-template-columns:repeat(2,1fr)}
+  .lg-tabs{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4px;overflow:visible}
+  .lg-tabs button{padding:10px 8px;font-size:11px}
+  .lg-toolbar input[type="search"]{flex:1 1 100%}
+  .lg-toolbar select{flex:1 1 46%;max-width:none}
+  .lg-count{margin-left:0}
+  .lg-grid{grid-template-columns:1fr}
+  .lg-acts .btn{min-height:34px}
+  .lg-modal .grid3{grid-template-columns:1fr}
+  .lg-tabs button:last-child{grid-column:1 / -1}
+}
+
 </style>
 </head>
 <style id="bcs-mkt-daily-css">
@@ -16729,6 +16914,7 @@ try{
       <button type="button" data-view="projects" aria-label="Projects"><span class="nav-ic" aria-hidden="true">▣</span><span class="nav-lbl">Projects</span></button>
       <button type="button" data-view="developers" aria-label="Developers"><span class="nav-ic" aria-hidden="true">◈</span><span class="nav-lbl">Developers</span></button>
       <button type="button" data-view="clients" aria-label="Clients"><span class="nav-ic" aria-hidden="true">◐</span><span class="nav-lbl">Clients</span></button>
+      <button type="button" data-view="leadgen" aria-label="Lead Engine"><span class="nav-ic" aria-hidden="true">🎯</span><span class="nav-lbl">Leads</span></button>
       <button type="button" data-view="dayplan" aria-label="Day Plan"><span class="nav-ic" aria-hidden="true">◷</span><span class="nav-lbl">Day Plan</span></button>
       <button type="button" data-view="pulse" aria-label="Market Pulse"><span class="nav-ic" aria-hidden="true">↗</span><span class="nav-lbl">Market Pulse</span><span class="nav-dot gold" aria-hidden="true"></span></button>
       <button type="button" data-view="news" aria-label="News"><span class="nav-ic" aria-hidden="true">📰</span><span class="nav-lbl">News</span><span class="nav-dot" aria-hidden="true"></span></button>
@@ -16749,6 +16935,7 @@ try{
           <button type="button" data-view="projects"><span class="nav-ic" aria-hidden="true">▣</span>Projects</button>
           <button type="button" data-view="developers"><span class="nav-ic" aria-hidden="true">◈</span>Developers</button>
           <button type="button" data-view="clients"><span class="nav-ic" aria-hidden="true">◐</span>Clients</button>
+          <button type="button" data-view="leadgen"><span class="nav-ic" aria-hidden="true">🎯</span>Leads</button>
           <button type="button" data-view="dayplan"><span class="nav-ic" aria-hidden="true">◷</span>Day Plan</button>
           <button type="button" data-view="pulse"><span class="nav-ic" aria-hidden="true">↗</span>Market Pulse</button>
           <button type="button" data-view="news"><span class="nav-ic" aria-hidden="true">📰</span>News</button>
@@ -16843,6 +17030,7 @@ try{
           <button class="btn ghost" id="dailyBriefBtn" type="button">☀️ Daily brief</button>
           <button class="btn ghost" id="heroRoadBtn" type="button">Top road hub ◉</button>
           <button class="btn ghost" data-goto="advisors" type="button">Advisors</button>
+          <button class="btn ghost" data-goto="leadgen" type="button">🎯 Leads</button>
           <button class="btn ghost" data-goto="dayplan" type="button">Day plan</button>
           <span class="hero-cta-note">Budget · timeline · shortlist · presentation</span>
         </div>
@@ -17541,6 +17729,69 @@ try{
       <div class="booking-grid" id="bookingGrid"></div>
     </div>
   </section>
+
+
+  <!-- ============ LEAD ENGINE (v184) ============ -->
+  <section class="view" id="view-leadgen">
+    <div class="adv-head lg-head">
+      <div>
+        <div class="eyebrow">BCS · free lead engine</div>
+        <h2 class="adv-title">Demand aapke saamne,<br><em>ek inbox mein.</em></h2>
+        <p class="adv-sub">Jaipur ke active property seekers — plot, commercial plot, villa, farmhouse — plus CA, lawyer, govt officer aur teacher referral prospects. Free sources se laayein, property type se categorize karein, aur WhatsApp par ek-ek karke approach karein.</p>
+      </div>
+      <div class="adv-head-actions">
+        <button class="btn primary" id="lgAddBtn" type="button">+ Add lead</button>
+        <button class="btn ghost" id="lgImportTopBtn" type="button">↑ Import CSV</button>
+        <button class="btn ghost" id="lgExportBtn" type="button">⬇ Export leads</button>
+      </div>
+    </div>
+
+    <div class="lg-stats" id="lgStats"></div>
+
+    <div class="lg-tabs" id="lgTabs" role="tablist" aria-label="Lead engine sections">
+      <button type="button" data-lgtab="inbox" class="on" role="tab" aria-selected="true">📥 Lead inbox</button>
+      <button type="button" data-lgtab="find" role="tab" aria-selected="false">🧭 Find free leads</button>
+      <button type="button" data-lgtab="import" role="tab" aria-selected="false">📋 Import / paste</button>
+      <button type="button" data-lgtab="outreach" role="tab" aria-selected="false">💬 WhatsApp outreach</button>
+      <button type="button" data-lgtab="playbook" role="tab" aria-selected="false">📘 Free playbook</button>
+    </div>
+
+    <div id="lgBody"></div>
+  </section>
+
+  <!-- Lead add / edit -->
+  <div class="overlay" id="lgModal" role="dialog" aria-modal="true" aria-labelledby="lgModalTitle">
+    <div class="modal lg-modal">
+      <div class="modal-head"><h3 id="lgModalTitle">Add lead</h3><button class="xbtn" data-close="lgModal" type="button">✕</button></div>
+      <div class="modal-body">
+        <input type="hidden" id="lgLeadId">
+        <div class="grid2">
+          <div class="field"><label for="lgName">Name *</label><input id="lgName" placeholder="e.g. Rakesh Sharma" autocomplete="off"></div>
+          <div class="field"><label for="lgPhone">Phone / WhatsApp *</label><input id="lgPhone" placeholder="10-digit mobile" inputmode="tel" autocomplete="off"><div class="lg-sub" style="margin-top:3px">+91 auto · duplicate number block hoga</div></div>
+        </div>
+        <div class="grid3">
+          <div class="field"><label for="lgType">Property type</label><select id="lgType"></select></div>
+          <div class="field"><label for="lgProfession">Profession</label><select id="lgProfession"></select></div>
+          <div class="field"><label for="lgSource">Source</label><select id="lgSource"></select></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="lgLocality">Locality / corridor</label><input id="lgLocality" placeholder="e.g. Ajmer Road · Jagatpura" autocomplete="off"></div>
+          <div class="field"><label for="lgStatus">Status</label><select id="lgStatus"></select></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="lgBudgetMin">Budget min (₹)</label><input id="lgBudgetMin" placeholder="e.g. 4000000" inputmode="numeric"></div>
+          <div class="field"><label for="lgBudgetMax">Budget max (₹)</label><input id="lgBudgetMax" placeholder="e.g. 6000000" inputmode="numeric"></div>
+        </div>
+        <div class="field"><label for="lgRequirement">Requirement</label><textarea id="lgRequirement" placeholder="Plot size, road width, loan, timeline, preferred corridor…"></textarea></div>
+        <div class="field"><label for="lgNotes">Private notes</label><textarea id="lgNotes" placeholder="Call summary, referral context, next step…"></textarea></div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn ghost" id="lgDelete" type="button" style="margin-right:auto;display:none">Delete lead</button>
+        <button class="btn ghost" data-close="lgModal" type="button">Cancel</button>
+        <button class="btn primary" id="lgSave" type="button">Save lead</button>
+      </div>
+    </div>
+  </div>
 
   <!-- ============ DAY PLAN ============ -->
   <section class="view" id="view-dayplan">
@@ -23483,6 +23734,47 @@ function normalizeDb(d){
   });
   /* ---- v179: co-brokering exchange root ---- */
   try{ if(typeof xchEnsure === 'function') xchEnsure(d); }catch(e){ console.warn('[BCS exchange normalize]', e); }
+  /* ---- v184: free lead engine (admin-only) ---- */
+  if(!d.leadgen || typeof d.leadgen !== 'object' || Array.isArray(d.leadgen)) d.leadgen = {};
+  const lg = d.leadgen;
+  if(!Array.isArray(lg.leads)) lg.leads = [];
+  if(!lg.settings || typeof lg.settings !== 'object' || Array.isArray(lg.settings)) lg.settings = {};
+  lg.settings.dailyTarget = Math.min(200, Math.max(1, Math.round(+lg.settings.dailyTarget || 20)));
+  const LG_T = ['plot','commercial-plot','villa','apartment','farmhouse','shop-office','agricultural','referral'];
+  const LG_P = ['Investor','Business owner','CA','Lawyer','Govt officer','Teacher','Doctor','NRI','Other'];
+  const LG_S = ['Google Maps','Meta Ad Library','99acres','MagicBricks','Housing.com','OLX','Squareyards','Referral','WhatsApp group','Walk-in','OSM public data','Other'];
+  const LG_ST = ['New','Contacted','Qualified','Site visit','Negotiation','Won','Lost'];
+  const seenPhones = new Set();
+  lg.leads = lg.leads.filter(l => l && typeof l === 'object').map(l => {
+    const phoneDigits = String(l.phone || '').replace(/\D/g, '');
+    const pm = phoneDigits.match(/([6-9]\d{9})$/);
+    const phone = pm ? pm[1] : '';
+    return {
+      id: String(l.id || uid()),
+      name: String(l.name || '').trim().slice(0, 120) || (phone ? 'Lead ' + phone : 'Unnamed lead'),
+      phone,
+      type: LG_T.indexOf(l.type) !== -1 ? l.type : 'plot',
+      profession: LG_P.indexOf(l.profession) !== -1 ? l.profession : '',
+      source: LG_S.indexOf(l.source) !== -1 ? l.source : 'Other',
+      locality: String(l.locality || '').slice(0, 120),
+      budgetMin: Math.max(0, Math.round(+l.budgetMin || 0)),
+      budgetMax: Math.max(0, Math.round(+l.budgetMax || 0)),
+      requirement: String(l.requirement || '').slice(0, 600),
+      notes: String(l.notes || '').slice(0, 600),
+      status: LG_ST.indexOf(l.status) !== -1 ? l.status : 'New',
+      sourceUrl: String(l.sourceUrl || '').slice(0, 800),
+      clientId: String(l.clientId || ''),
+      createdAt: +l.createdAt || Date.now(),
+      updatedAt: +l.updatedAt || +l.createdAt || Date.now(),
+      lastContactAt: +l.lastContactAt || 0,
+      contactCount: Math.max(0, Math.round(+l.contactCount || 0)),
+      waSentAt: +l.waSentAt || 0
+    };
+  }).filter(l => {
+    if(!l.phone || seenPhones.has(l.phone)) return false;
+    seenPhones.add(l.phone);
+    return true;
+  }).slice(0, 2000);
   if(!d.version || d.version < 13) d.version = 13;
   return d;
 }
@@ -46359,6 +46651,7 @@ function render(){
   if(currentView === 'advisors') renderAdvisors();
   if(currentView === 'clients') renderClients();
   if(currentView === 'dayplan') renderDayplan();
+  if(currentView === 'leadgen'){ try{ window.BCS_LEADGEN.render(); }catch(e){ console.warn('[BCS leadgen]', e); } }
   if(currentView === 'news') renderNews();
   if(currentView === 'links') renderLinks();
   if(currentView === 'terminology') renderTerminology();
@@ -55446,6 +55739,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     projects:   { label:'Projects',     ic:'▣',  note:'Developer projects, price bands, approvals' },
     developers: { label:'Developers',   ic:'◈',  note:'Builder profiles + corridor presence' },
     clients:    { label:'Clients',      ic:'◐',  note:'Leads, follow-ups, shortlists, lead source' },
+    leadgen:    { label:'Leads',        ic:'🎯', note:'Free lead engine — demand, categories, WhatsApp outreach' },
     dayplan:    { label:'Day Plan',     ic:'◷',  note:'Tasks, calendar, reminders' },
     pulse:      { label:'Market Pulse', ic:'↗',  note:'Corridor rates + content ideas' },
     news:       { label:'News',         ic:'📰', note:'Jaipur real-estate headlines' },
@@ -55475,6 +55769,15 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     Document:'ops', Invoice:'ops', Broadcast:'ops', ROI:'ops', 'Client page':'ops', Backup:'ops'
   };
   const SITE_LOG = [
+    { v:'v184', date:'2026-11-18', page:'leadgen', kind:'new',
+      title:'Lead Engine — free Jaipur lead generation',
+      detail:'Google Maps, Meta Ad Library, portals, social aur OpenStreetMap se public leads — property type aur profession ke hisaab se categorized.' },
+    { v:'v184', date:'2026-11-18', page:'leadgen', kind:'new',
+      title:'CSV / WhatsApp paste import + smart detect',
+      detail:'CSV, Excel copy ya WhatsApp text paste karein — phone, type, budget, locality, profession aur source auto-detect; duplicate numbers blocked.' },
+    { v:'v184', date:'2026-11-18', page:'leadgen', kind:'new',
+      title:'One-by-one WhatsApp outreach',
+      detail:'Preview-first messages, daily target, queue auto-advance, contact log aur lead → client conversion.' },
     { v:'v183', date:'2026-11-18', page:'dashboard', kind:'new',
       title:'Dashboard — site log',
       detail:'Recent additions aur record changes ek card me — timeline, what’s new aur page-by-page view.' },
@@ -55786,6 +56089,1158 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       setTimeout(() => { try{ previewClientPage(); }catch(e){} }, 80);
     }
   };
+})();
+</script>
+
+
+<script>
+/* =========================================================
+   BCS LEAD ENGINE (v184)
+   ---------------------------------------------------------
+   Free, consent-first lead generation for Jaipur property
+   demand. Everything stays in the existing local database.
+   · inbox + property-type / profession / source filters
+   · free source launcher (Maps, Meta Ad Library, portals,
+     search operators, social)
+   · OpenStreetMap public business listings (free API)
+   · CSV / TSV / WhatsApp paste import with auto-detect
+   · one-by-one WhatsApp outreach with preview-first send
+   · free GitHub Actions template for weekly OSM pulls
+   ========================================================= */
+(function(){
+  'use strict';
+
+  const q = s => document.querySelector(s);
+  const qa = s => Array.prototype.slice.call(document.querySelectorAll(s));
+  const root = () => document.getElementById('view-leadgen');
+  const todayStart = () => { const d = new Date(); d.setHours(0,0,0,0); return d.getTime(); };
+  const digits = s => String(s == null ? '' : s).replace(/\D/g, '');
+  const phone10 = s => { const d = digits(s); const m = d.match(/([6-9]\d{9})$/); return m ? m[1] : ''; };
+  const short = v => { v = Number(v) || 0; if(!v) return '—'; if(v >= 1e7) return '₹' + (v/1e7).toFixed(v % 1e7 ? 2 : 0).replace(/\.00$/,'') + ' Cr'; if(v >= 1e5) return '₹' + (v/1e5).toFixed(v % 1e5 ? 1 : 0).replace(/\.0$/,'') + ' L'; return '₹' + v.toLocaleString('en-IN'); };
+  const ago = ts => { if(!ts) return 'never'; const s = Math.max(0, Math.round((Date.now()-ts)/1000)); if(s < 60) return 'abhi'; const m = Math.round(s/60); if(m < 60) return m+' min pehle'; const h = Math.round(m/60); if(h < 24) return h+' ghante pehle'; const d = Math.round(h/24); if(d < 30) return d+' din pehle'; return new Date(ts).toLocaleDateString('en-IN', { day:'numeric', month:'short' }); };
+  const dateShort = ts => ts ? new Date(ts).toLocaleDateString('en-IN', { day:'numeric', month:'short' }) : '—';
+  const initials = s => String(s || '?').trim().split(/\s+/).map(w => w[0]).join('').slice(0,2).toUpperCase();
+
+  const LG_TYPES = [
+    { id:'plot',            label:'Plot / residential land', ic:'▣' },
+    { id:'commercial-plot', label:'Commercial plot',         ic:'🏬' },
+    { id:'villa',           label:'Villa / independent house',ic:'🏡' },
+    { id:'apartment',       label:'Flat / apartment',         ic:'🏢' },
+    { id:'farmhouse',       label:'Farmhouse',                ic:'🌾' },
+    { id:'shop-office',     label:'Shop / office',            ic:'🏪' },
+    { id:'agricultural',    label:'Agricultural land',        ic:'🌱' },
+    { id:'referral',        label:'Referral prospect',        ic:'🤝' }
+  ];
+  const LG_PROFS = ['Investor','Business owner','CA','Lawyer','Govt officer','Teacher','Doctor','NRI','Other'];
+  const LG_SOURCES = ['Google Maps','Meta Ad Library','99acres','MagicBricks','Housing.com','OLX','Squareyards','Referral','WhatsApp group','Walk-in','OSM public data','Other'];
+  const LG_STATUSES = ['New','Contacted','Qualified','Site visit','Negotiation','Won','Lost'];
+  const HIGH_TRUST = ['CA','Lawyer','Govt officer','Teacher','Doctor','NRI'];
+  const PORTAL_SOURCES = ['99acres','MagicBricks','Housing.com','OLX','Squareyards'];
+
+  const typeMeta = id => LG_TYPES.find(t => t.id === id) || LG_TYPES[0];
+  const typeLabel = id => typeMeta(id).label;
+  const profLabel = id => id || '—';
+  const isHighTrust = p => HIGH_TRUST.indexOf(p) !== -1;
+
+  let tab = 'inbox';
+  let searchQ = '', fType = '', fProf = '', fStatus = '', fSource = '', sortBy = 'score';
+  let importRows = [];
+  let outreachId = '', outreachTpl = 'auto', outreachText = '', outreachTextId = '';
+  let skipSet = {};
+  let osmBusy = false;
+
+  function LG(){
+    if(!db.leadgen || typeof db.leadgen !== 'object' || Array.isArray(db.leadgen)) db.leadgen = {};
+    const g = db.leadgen;
+    if(!Array.isArray(g.leads)) g.leads = [];
+    if(!g.settings || typeof g.settings !== 'object') g.settings = {};
+    if(!(+g.settings.dailyTarget > 0)) g.settings.dailyTarget = 20;
+    return g;
+  }
+  const byId = id => LG().leads.find(l => l && l.id === id) || null;
+
+  function scoreOf(l){
+    let s = 8;
+    const b = Math.max(+l.budgetMin || 0, +l.budgetMax || 0);
+    if(b >= 30000000) s += 25; else if(b >= 15000000) s += 20; else if(b >= 7000000) s += 15; else if(b >= 3000000) s += 10;
+    if(isHighTrust(l.profession)) s += 18;
+    if(l.source === 'Referral') s += 18;
+    else if(PORTAL_SOURCES.indexOf(l.source) !== -1) s += 10;
+    else if(l.source === 'Meta Ad Library') s += 8;
+    else if(l.source === 'Google Maps') s += 6;
+    if(l.type === 'referral') s += 8;
+    if((l.requirement || '').length >= 24) s += 8;
+    if(l.locality) s += 5;
+    if(l.status === 'Qualified') s += 10;
+    else if(l.status === 'Site visit') s += 14;
+    else if(l.status === 'Negotiation') s += 18;
+    else if(l.status === 'Won') s += 22;
+    if(+l.contactCount > 0) s += 4;
+    return Math.min(100, s);
+  }
+  const tierOf = l => { const s = scoreOf(l); return s >= 65 ? 'hot' : s >= 40 ? 'warm' : 'cold'; };
+  const tierLabel = l => ({ hot:'Hot', warm:'Warm', cold:'Cold' })[tierOf(l)];
+
+  function budgetText(l){
+    const a = +l.budgetMin || 0, b = +l.budgetMax || 0;
+    if(a && b && a !== b) return short(Math.min(a,b)) + '–' + short(Math.max(a,b));
+    if(b) return 'up to ' + short(b);
+    if(a) return short(a) + '+';
+    return 'Budget —';
+  }
+
+  /* ---------------- stats ---------------- */
+  function paintStats(){
+    const el = q('#lgStats'); if(!el) return;
+    const leads = LG().leads;
+    const t0 = todayStart();
+    const hot = leads.filter(l => tierOf(l) === 'hot' && l.status !== 'Won' && l.status !== 'Lost').length;
+    const fresh = leads.filter(l => (+l.createdAt || 0) >= t0).length;
+    const contacted = leads.filter(l => (+l.lastContactAt || 0) >= t0).length;
+    const pros = leads.filter(l => isHighTrust(l.profession) && l.status !== 'Lost').length;
+    const won = leads.filter(l => l.status === 'Won').length;
+    el.innerHTML = [
+      ['', leads.length, 'Total leads'],
+      ['hot', hot, 'Hot right now'],
+      ['', fresh, 'Added today'],
+      ['good', contacted, 'Contacted today'],
+      ['', pros, 'Referral pros'],
+      ['good', won, 'Converted'],
+    ].map(([cls, val, lbl]) => `<div class="lg-stat ${cls}"><b>${val}</b><span>${lbl}</span></div>`).join('');
+  }
+
+  /* ---------------- inbox ---------------- */
+  function filtered(){
+    const needle = searchQ.trim().toLowerCase();
+    let rows = LG().leads.slice();
+    if(fType) rows = rows.filter(l => l.type === fType);
+    if(fProf) rows = rows.filter(l => l.profession === fProf);
+    if(fStatus) rows = rows.filter(l => l.status === fStatus);
+    if(fSource) rows = rows.filter(l => l.source === fSource);
+    if(needle) rows = rows.filter(l => [l.name, l.phone, l.locality, l.requirement, l.notes, l.source, l.profession].join(' ').toLowerCase().indexOf(needle) !== -1);
+    rows.sort((a,b) => {
+      if(sortBy === 'recent') return (+b.createdAt||0) - (+a.createdAt||0);
+      if(sortBy === 'budget') return Math.max(+b.budgetMax||0,+b.budgetMin||0) - Math.max(+a.budgetMax||0,+a.budgetMin||0);
+      if(sortBy === 'name') return String(a.name||'').localeCompare(String(b.name||''));
+      return scoreOf(b) - scoreOf(a) || (+b.createdAt||0) - (+a.createdAt||0);
+    });
+    return rows;
+  }
+
+  function inboxHTML(){
+    const opt = (v, label, cur) => `<option value="${esc(v)}"${v === cur ? ' selected' : ''}>${esc(label)}</option>`;
+    return `<div class="lg-toolbar">
+      <input type="search" id="lgSearch" value="${esc(searchQ)}" placeholder="Naam, number, locality, requirement…" autocomplete="off">
+      <select id="lgFilterType" aria-label="Filter property type">${opt('', 'All property types', fType)}${LG_TYPES.map(t => opt(t.id, t.label, fType)).join('')}</select>
+      <select id="lgFilterProf" aria-label="Filter profession">${opt('', 'All professions', fProf)}${LG_PROFS.map(p => opt(p, p, fProf)).join('')}</select>
+      <select id="lgFilterStatus" aria-label="Filter status">${opt('', 'All statuses', fStatus)}${LG_STATUSES.map(s => opt(s, s, fStatus)).join('')}</select>
+      <select id="lgFilterSource" aria-label="Filter source">${opt('', 'All sources', fSource)}${LG_SOURCES.map(s => opt(s, s, fSource)).join('')}</select>
+      <select id="lgSort" aria-label="Sort leads">${opt('score','Best match',sortBy)}${opt('recent','Newest first',sortBy)}${opt('budget','Budget ↓',sortBy)}${opt('name','Name A–Z',sortBy)}</select>
+      <button type="button" class="btn ghost sm" data-lgclear="1">Clear</button>
+      <span class="lg-count" id="lgCount"></span>
+    </div>
+    <div class="lg-grid" id="lgList"></div>`;
+  }
+
+  function cardHTML(l){
+    const t = tierOf(l), s = scoreOf(l);
+    const tm = typeMeta(l.type);
+    const phone = phone10(l.phone);
+    return `<article class="lg-card t-${t}" data-id="${esc(l.id)}">
+      <div class="lg-card-top">
+        <div class="lg-ava" aria-hidden="true">${esc(initials(l.name))}</div>
+        <div class="lg-who">
+          <div class="lg-name">${esc(l.name || 'Unnamed lead')}</div>
+          <div class="lg-sub">${esc(l.locality || 'Locality not set')} · ${esc(budgetText(l))} · ${esc(l.phone || 'no phone')}</div>
+        </div>
+        <span class="lg-score t-${t}">${tierLabel(l)} ${s}</span>
+      </div>
+      <div class="lg-chips">
+        <span class="lg-chip type">${tm.ic} ${esc(tm.label)}</span>
+        ${l.profession ? `<span class="lg-chip prof">${esc(l.profession)}</span>` : ''}
+        <span class="lg-chip src">${esc(l.source || 'Other')}</span>
+        ${l.clientId ? '<span class="lg-chip client">✓ Client</span>' : ''}
+      </div>
+      ${l.requirement ? `<div class="lg-req">${esc(l.requirement)}</div>` : ''}
+      <div class="lg-meta">
+        <span>Added <b>${esc(dateShort(l.createdAt))}</b></span>
+        <span>Last contact <b>${esc(ago(l.lastContactAt))}</b></span>
+        ${l.contactCount ? `<span><b>${l.contactCount}</b> touch${l.contactCount === 1 ? '' : 'es'}</span>` : ''}
+      </div>
+      <div class="lg-acts">
+        <button type="button" class="btn primary" data-lgwa="${esc(l.id)}">💬 WhatsApp</button>
+        ${phone ? `<a class="btn ghost" href="tel:+91${phone}">📞 Call</a>` : ''}
+        <button type="button" class="btn ghost" data-lgclient="${esc(l.id)}">${l.clientId ? '✓ Client' : '→ Client'}</button>
+        <select class="lg-status" data-lgstatus="${esc(l.id)}" aria-label="Lead status">${LG_STATUSES.map(st => `<option value="${esc(st)}"${st === l.status ? ' selected' : ''}>${esc(st)}</option>`).join('')}</select>
+        <button type="button" class="btn ghost" data-lgedit="${esc(l.id)}" title="Edit lead">✎ Edit</button>
+        <button type="button" class="lg-del" data-lgdel="${esc(l.id)}" title="Delete lead" aria-label="Delete lead">🗑</button>
+      </div>
+    </article>`;
+  }
+
+  function paintList(){
+    const box = q('#lgList'); if(!box) return;
+    const rows = filtered();
+    const total = LG().leads.length;
+    const cnt = q('#lgCount'); if(cnt) cnt.textContent = rows.length + ' of ' + total + ' leads';
+    if(!rows.length){
+      box.innerHTML = total
+        ? `<div class="lg-empty" style="grid-column:1/-1"><b>Is filter par koi lead nahi</b>Filter clear karein ya naya lead add karein.</div>`
+        : `<div class="lg-empty" style="grid-column:1/-1"><b>Abhi koi lead nahi</b>Free sources se pehla lead laayein — Google Maps, Meta Ad Library, portal demand desk ya OpenStreetMap public listings.<br><button type="button" class="btn primary" data-lgtab="find">🧭 Find free leads</button></div>`;
+      return;
+    }
+    box.innerHTML = rows.map(cardHTML).join('');
+  }
+
+  function inboxTab(){
+    return inboxHTML();
+  }
+
+  /* ---------------- find tab ---------------- */
+  const gq = s => 'https://www.google.com/search?q=' + encodeURIComponent(s);
+  const maps = s => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(s);
+  const meta = s => 'https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=IN&q=' + encodeURIComponent(s) + '&search_type=keyword_unordered';
+  const link = (label, url) => `<a class="lg-link" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`;
+
+  const FIND = [
+    { ic:'🗺️', title:'Google Maps', sub:'Local demand + profession prospects',
+      note:'Maps par property dealers, CA offices, lawyer chambers, schools aur govt offices dhundein. Listing par phone dikhe to copy karke lead banayein — Maps ko scrape nahi karte.',
+      links:[
+        ['Property dealers · Jaipur', maps('property dealer Jaipur')],
+        ['Real estate agents · Jaipur', maps('real estate agent Jaipur')],
+        ['Plots for sale · Jaipur', maps('plots for sale Jaipur')],
+        ['Villas for sale · Jaipur', maps('villas for sale Jaipur')],
+        ['CA offices · Jaipur', maps('chartered accountant Jaipur')],
+        ['Property lawyers · Jaipur', maps('property lawyer Jaipur')],
+        ['Schools · Jaipur', maps('schools Jaipur')],
+        ['Govt offices · Jaipur', maps('government office Jaipur')]
+      ] },
+    { ic:'📣', title:'Meta Ad Library', sub:'Who is advertising + demand signals',
+      note:'Meta Ad Library free hai. Jaipur ke real-estate ads, creative aur landing pages dekhein. Ad par comment/DM karne wale buyers ko manually capture karein — bulk scraping nahi.',
+      links:[
+        ['Jaipur plot ads', meta('jaipur plot')],
+        ['Jaipur villa ads', meta('jaipur villa')],
+        ['Jaipur commercial ads', meta('jaipur commercial property')],
+        ['Jaipur property ads', meta('jaipur property')]
+      ] },
+    { ic:'🏠', title:'Property portals', sub:'Buyer requirements + inbound demand',
+      note:'Portals par buyers apni requirement post karte hain. Free account se demand desk dekhein ya apni listing post karein — inbound leads aate hain. Login aur portal ToS respect karein.',
+      links:[
+        ['99acres · Jaipur plots', 'https://www.99acres.com/plots-in-jaipur-ffid'],
+        ['99acres · post requirement', 'https://www.99acres.com/post-requirement'],
+        ['MagicBricks · Jaipur', 'https://www.magicbricks.com/property-for-sale/residential-real-estate?cityName=Jaipur'],
+        ['Housing · Jaipur', 'https://housing.com/in/buy/jaipur'],
+        ['OLX · Jaipur plots', 'https://www.olx.in/jaipur_g4059004/q-plot-for-sale'],
+        ['OLX · wanted plot', 'https://www.olx.in/jaipur_g4059004/q-wanted-plot'],
+        ['Squareyards · Jaipur', 'https://www.squareyards.com/sale/property-for-sale-in-jaipur']
+      ] },
+    { ic:'🔎', title:'Google search operators', sub:'Buyers jo khud requirement post kar rahe hain',
+      note:'Ye queries un buyers ko surface karti hain jo groups, forums ya classifieds par requirement likhte hain. Result se naam/phone copy karke lead banayein.',
+      queries:[
+        'site:99acres.com "want to buy" plot Jaipur',
+        'site:magicbricks.com requirement plot Jaipur',
+        '"plot chahiye" Jaipur whatsapp',
+        '"villa chahiye" Jaipur',
+        '"commercial plot" Jaipur requirement',
+        'site:facebook.com/groups "plot chahiye" Jaipur',
+        '"CA in Jaipur" contact',
+        '"property lawyer" Jaipur contact'
+      ] },
+    { ic:'👥', title:'Social & community', sub:'Facebook groups, Instagram, LinkedIn',
+      note:'Jaipur property groups mein buyers roz requirement post karte hain. Pehle value dein, phir DM. Group rules follow karein — spam se ban ho jayega.',
+      links:[
+        ['Facebook groups · Jaipur property', 'https://www.facebook.com/search/groups/?q=jaipur%20property'],
+        ['Facebook Marketplace · Jaipur', 'https://www.facebook.com/marketplace/jaipur/propertyrentals'],
+        ['Instagram · #jaipurproperty', 'https://www.instagram.com/explore/tags/jaipurproperty/'],
+        ['Instagram · #jaipurrealestate', 'https://www.instagram.com/explore/tags/jaipurrealestate/'],
+        ['Telegram · Jaipur property', 'https://t.me/s/jaipurproperty'],
+        ['LinkedIn · CA Jaipur', 'https://www.linkedin.com/search/results/people/?keywords=chartered%20accountant%20jaipur']
+      ] }
+  ];
+
+  const OSM = {
+    ca:      { label:'CA / tax consultants', prof:'CA', req:'Public business listing — CA / tax advisor outreach', tags:['["office"="accountant"]','["office"="tax_advisor"]'] },
+    lawyer:  { label:'Lawyers / notaries', prof:'Lawyer', req:'Public business listing — property lawyer outreach', tags:['["office"="lawyer"]','["office"="notary"]'] },
+    govt:    { label:'Government offices', prof:'Govt officer', req:'Public office listing — govt officer outreach', tags:['["office"="government"]'] },
+    school:  { label:'Schools / teachers', prof:'Teacher', req:'Public school listing — teacher / principal outreach', tags:['["amenity"="school"]'] },
+    doctor:  { label:'Clinics / doctors', prof:'Doctor', req:'Public clinic listing — doctor outreach', tags:['["amenity"="clinic"]','["healthcare"="doctor"]'] },
+    agent:   { label:'Estate agents (referral)', prof:'Business owner', req:'Public estate-agent listing — referral partner', tags:['["office"="estate_agent"]'] }
+  };
+
+  function findTab(){
+    const cards = FIND.map(card => {
+      const links = card.links ? card.links.map(([l,u]) => link(l,u)).join('') : '';
+      const queries = card.queries ? card.queries.map(qq =>
+        `<button type="button" class="lg-link" data-lgcopy="${esc(qq)}" title="Copy query">📋 ${esc(qq)}</button>
+         <a class="lg-link" href="${esc(gq(qq))}" target="_blank" rel="noopener noreferrer" title="Search on Google">↗</a>`
+      ).join('') : '';
+      return `<div class="lg-src-card">
+        <div class="lg-src-head"><span class="lg-src-ic" aria-hidden="true">${card.ic}</span><div><b>${esc(card.title)}</b><span>${esc(card.sub)}</span></div></div>
+        <div class="lg-src-note">${esc(card.note)}</div>
+        <div class="lg-links">${links}${queries}</div>
+        <div class="lg-links"><button type="button" class="lg-link add" data-lgpreset="${esc(card.title)}">＋ Add lead from this source</button></div>
+      </div>`;
+    }).join('');
+    const osmOpts = Object.keys(OSM).map(k => `<option value="${k}">${esc(OSM[k].label)}</option>`).join('');
+    return `<div class="lg-note good"><b>Free &amp; legal by design.</b> Ye page sirf public search, open data (OpenStreetMap) aur aapke apne paste/CSV use karta hai. Google Maps, Meta ya property portals ko login ke peeche scrape karna unke terms ke against hai — isliye yahan woh nahi hota. Jo public dikh raha hai, use aap manually capture karke yahan laa sakte hain.</div>
+      <div class="lg-src-grid" style="margin-top:9px">${cards}</div>
+      <div class="lg-fetch" style="margin-top:9px">
+        <div class="lg-src-head"><span class="lg-src-ic" aria-hidden="true">🌐</span><div><b>OpenStreetMap · free public listings</b><span>CA · lawyer · govt office · school · clinic · estate agent — Jaipur bbox</span></div></div>
+        <div class="lg-fetch-row" style="margin-top:8px">
+          <select id="lgOsmCat" aria-label="Listing category">${osmOpts}</select>
+          <button type="button" class="btn primary" id="lgOsmFetch">⬇ Fetch public listings</button>
+          <button type="button" class="btn ghost" data-lgpreset="OSM public data">＋ Add manually</button>
+        </div>
+        <div class="lg-fetch-status" id="lgOsmStatus">Overpass API se free fetch — 15–25 second lag sakte hain. Sirf woh listings aati hain jinme public phone number ho.</div>
+        <div class="lg-fetch-log" id="lgOsmLog"></div>
+        <div class="lg-attr">Data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> (ODbL). Phone number outreach se pehle verify karein.</div>
+      </div>`;
+  }
+
+  function setOsmStatus(msg, err){
+    const el = q('#lgOsmStatus'); if(!el) return;
+    el.innerHTML = msg;
+    el.classList.toggle('err', !!err);
+  }
+
+  async function osmFetch(){
+    if(osmBusy) return;
+    const sel = q('#lgOsmCat'); if(!sel) return;
+    const cat = OSM[sel.value] || OSM.ca;
+    const lines = cat.tags.map(t => '  nwr' + t + '(26.72,75.60,27.10,76.00);').join('\n');
+    const query = '[out:json][timeout:12];\n(\n' + lines + '\n);\nout center 400;';
+    osmBusy = true;
+    const btn = q('#lgOsmFetch'); if(btn) btn.disabled = true;
+    setOsmStatus('Fetching ' + esc(cat.label) + ' from Overpass API… 15–25 second.');
+    const log = q('#lgOsmLog'); if(log) log.innerHTML = '';
+    let data = null, lastErr = null;
+    const endpoints = [
+      'https://overpass-api.de/api/interpreter',
+      'https://overpass.kumi.systems/api/interpreter',
+      'https://overpass.private.coffee/api/interpreter'
+    ];
+    try{
+      for(let i = 0; i < endpoints.length && !data; i++){
+        let ctrl = null;
+        try{
+          if(window.AbortController){
+            ctrl = new AbortController();
+            setTimeout(() => { try{ ctrl.abort(); }catch(e){} }, 12000);
+          }
+          if(i) setOsmStatus('Overpass busy — mirror ' + (i + 1) + ' try kar rahe hain…');
+          const res = await fetch(endpoints[i], {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+            body: 'data=' + encodeURIComponent(query),
+            signal: ctrl ? ctrl.signal : undefined
+          });
+          if(!res.ok) throw new Error('HTTP ' + res.status);
+          data = await res.json();
+        }catch(err){
+          lastErr = err;
+          if(err && err.name === 'AbortError') continue;
+        }
+      }
+      if(!data) throw lastErr || new Error('network error');
+      const elements = (data && data.elements) || [];
+      let added = 0, dup = 0, noPhone = 0;
+      const names = [];
+      elements.forEach(el => {
+        const t = el.tags || {};
+        const name = String(t.name || t.operator || '').trim();
+        const rawPhone = t.phone || t['contact:phone'] || t.mobile || t['contact:mobile'] || '';
+        const phone = phone10(rawPhone);
+        if(!name){ return; }
+        if(!phone){ noPhone++; return; }
+        if(LG().leads.some(l => phone10(l.phone) === phone)){ dup++; return; }
+        const locality = String(t['addr:suburb'] || t['addr:city_district'] || t['addr:city'] || 'Jaipur').slice(0,120);
+        const addr = [t['addr:housenumber'], t['addr:street'], locality].filter(Boolean).join(', ');
+        LG().leads.unshift({
+          id: uid(), name: name.slice(0,120), phone,
+          type: 'referral', profession: cat.prof, source: 'OSM public data',
+          locality, budgetMin: 0, budgetMax: 0,
+          requirement: cat.req, status: 'New',
+          notes: ('Public listing · ' + (addr || 'Jaipur') + (t.website ? ' · ' + t.website : '')).slice(0,600),
+          sourceUrl: 'https://www.openstreetmap.org/' + (el.type || 'node') + '/' + el.id,
+          createdAt: Date.now(), updatedAt: Date.now(), lastContactAt: 0, contactCount: 0, clientId: ''
+        });
+        added++; names.push(name);
+      });
+      if(added){ save(); paintStats(); }
+      setOsmStatus('Fetched <b>' + elements.length + '</b> public records · <b>' + added + '</b> new leads added' +
+        (dup ? ' · ' + dup + ' duplicate skipped' : '') +
+        (noPhone ? ' · ' + noPhone + ' without phone skipped' : '') + '.');
+      if(names.length && log) log.innerHTML = names.slice(0,14).map(n => `<span class="lg-chip">${esc(n)}</span>`).join('') + (names.length > 14 ? `<span class="lg-chip">+${names.length - 14} more</span>` : '');
+      if(added) toast(added + ' public leads added');
+    }catch(e){
+      const msg = e && e.name === 'AbortError' ? 'timeout' : (e && e.message ? e.message : 'network error');
+      setOsmStatus('Fetch fail — ' + esc(msg) + '. Network ya Overpass free service busy ho sakti hai. Dobara try karein, ya <a href="https://overpass-turbo.eu/" target="_blank" rel="noopener noreferrer" style="color:var(--sage-ink);font-weight:800">Overpass Turbo</a> se CSV laakar Import tab me paste karein.', true);
+      toast('OSM fetch fail — dobara try karein', true);
+    }finally{
+      osmBusy = false;
+      if(btn) btn.disabled = false;
+    }
+  }
+
+  /* ---------------- import / paste ---------------- */
+  function importTab(){
+    return `<div class="lg-import-grid">
+      <div class="lg-box">
+        <h4>Paste leads — CSV, Excel copy, WhatsApp text</h4>
+        <p>Ek line = ek lead. Phone number mandatory hai; baaki cheezein auto-detect ho jayengi (type, budget, locality, profession, source). Header row optional.</p>
+        <textarea id="lgImportText" placeholder="Name, Phone, Type, Budget, Locality, Requirement, Profession, Source&#10;Rakesh Sharma, 9876543210, Plot, 40-60 lakh, Ajmer Road, 120 sq yd loan needed, Business owner, Referral&#10;&#10;Ya seedha WhatsApp text paste karein:&#10;Villa chahiye Jagatpura me, budget 1.2 cr, CA hoon — 9812345678"></textarea>
+        <div class="lg-file">
+          <input type="file" id="lgImportFile" accept=".csv,.tsv,.txt,text/csv,text/plain">
+          <button type="button" class="btn primary sm" id="lgParseBtn">Parse &amp; preview</button>
+          <button type="button" class="btn ghost sm" id="lgTemplateBtn">⬇ CSV template</button>
+        </div>
+        <div class="lg-import-actions">
+          <button type="button" class="btn primary sm" id="lgDoImport" disabled>Import 0 leads</button>
+          <button type="button" class="btn ghost sm" id="lgExportBtn2">⬇ Export all leads</button>
+        </div>
+        <div class="lg-preview" id="lgImportPreview"></div>
+      </div>
+      <div>
+        <div class="lg-box">
+          <h4>Smart detect</h4>
+          <p>Import karte waqt ye cheezein khud pehchani jaati hain:</p>
+          <ul style="margin:0;padding-left:17px;font-size:11px;line-height:1.7;color:var(--ink2)">
+            <li><b>Phone</b> — 10-digit Indian mobile (+91 auto)</li>
+            <li><b>Type</b> — plot, commercial plot, villa, flat, farmhouse, shop/office, agriculture</li>
+            <li><b>Budget</b> — “40 lakh”, “1.2 cr”, “₹80,00,000”</li>
+            <li><b>Locality</b> — Jaipur corridors + colonies</li>
+            <li><b>Profession</b> — CA, lawyer, govt, teacher, doctor, NRI, investor</li>
+            <li><b>Source</b> — 99acres, MagicBricks, OLX, Meta, Maps, referral…</li>
+          </ul>
+        </div>
+        <div class="lg-note"><b>Duplicate-safe.</b> Same phone number wala lead dobara import nahi hota. Import ke baad har lead editable hai, aur WhatsApp preview se pehle message dikhta hai.</div>
+        <div class="lg-note bad"><b>Privacy.</b> Sirf woh data store karein jo client ne public kiya ya aapne consent ke saath liya. DPDP Act ke hisaab se opt-out request par lead delete karein.</div>
+      </div>
+    </div>`;
+  }
+
+  const JAIPUR_AREAS = ['Agra Road','Ajmer Road','Delhi Road','Sikar Road','Tonk Road','Diggi Road','Jagatpura','Mansarovar','Vaishali Nagar','Pratap Nagar','Malviya Nagar','C-Scheme','Civil Lines','Raja Park','Bani Park','Jhotwara','Kalwar Road','Sanganer','Bagru','Chomu','Ring Road','Sitapura','Vatika','Nirman Nagar','Shyam Nagar','Gopalpura','Durgapura','Tonk Phatak','Gandhi Path','Khatipura','Sirsi Road','Bhankrota','Mahapura','Kukas','Amer','SEZ','Muhana','Bassi','Jamdoli','Kukas','Vidhyadhar Nagar','Brahmpuri','Harmada','Koti','Jaisinghpura'];
+
+  function detectType(text){
+    const t = String(text || '').toLowerCase();
+    if(/referral\s*prospect|referral\s*partner/.test(t)) return 'referral';
+    if(/farm\s*house|farmhouse|khet/.test(t)) return 'farmhouse';
+    if(/shop|showroom|office\s*space|commercial\s*shop/.test(t)) return 'shop-office';
+    if(/commercial\s*(plot|land|property)|commercial\b/.test(t)) return 'commercial-plot';
+    if(/villa|bungalow|bunglow|independent\s*(house|home)/.test(t)) return 'villa';
+    if(/agricultur|agriculture|kheti|farm\s*land/.test(t)) return 'agricultural';
+    if(/flat|apartment|builder\s*floor|penthouse|studio/.test(t)) return 'apartment';
+    if(/plot|land|jameen|zameen|yard|sq\s*yd/.test(t)) return 'plot';
+    return 'plot';
+  }
+  function detectProfession(text){
+    const t = String(text || '').toLowerCase();
+    if(/\bca\b|chartered\s*accountant/.test(t)) return 'CA';
+    if(/lawyer|advocate|vakil|legal/.test(t)) return 'Lawyer';
+    if(/govt|government|sarkari|\bias\b|\bras\b|officer|tehsil|registrar/.test(t)) return 'Govt officer';
+    if(/teacher|professor|principal|faculty|lecturer/.test(t)) return 'Teacher';
+    if(/doctor|physician|surgeon|\bdr\.?\b/.test(t)) return 'Doctor';
+    if(/\bnri\b|abroad|usa|uk|canada|dubai|gulf|foreign/.test(t)) return 'NRI';
+    if(/investor|investment|invest/.test(t)) return 'Investor';
+    if(/business|businessman|trader|shop\s*owner|entrepreneur/.test(t)) return 'Business owner';
+    return '';
+  }
+  function detectSource(text){
+    const t = String(text || '').toLowerCase();
+    if(/99acres/.test(t)) return '99acres';
+    if(/magicbricks/.test(t)) return 'MagicBricks';
+    if(/housing\.com|housing\b/.test(t)) return 'Housing.com';
+    if(/\bolx\b/.test(t)) return 'OLX';
+    if(/squareyards/.test(t)) return 'Squareyards';
+    if(/facebook|meta\s*ad|instagram/.test(t)) return 'Meta Ad Library';
+    if(/google\s*maps|maps\b/.test(t)) return 'Google Maps';
+    if(/referral|reference|sifarish/.test(t)) return 'Referral';
+    if(/whatsapp\s*group/.test(t)) return 'WhatsApp group';
+    if(/openstreetmap|\bosm\b/.test(t)) return 'OSM public data';
+    return 'Other';
+  }
+  function detectLocality(text){
+    const t = String(text || '').toLowerCase();
+    for(const a of JAIPUR_AREAS){ if(t.indexOf(a.toLowerCase()) !== -1) return a; }
+    return '';
+  }
+  function parseBudget(text){
+    const t = String(text || '').toLowerCase().replace(/,/g, '');
+    let m = t.match(/(\d+(?:\.\d+)?)\s*(cr|crore|karor|lakh|lac|l\b|k\b)/);
+    if(m){
+      const n = +m[1], u = m[2];
+      if(/cr|crore|karor/.test(u)) return Math.round(n * 1e7);
+      if(/k\b/.test(u)) return Math.round(n * 1e3);
+      return Math.round(n * 1e5);
+    }
+    m = t.match(/(?:₹|rs\.?|inr)?\s*(\d{6,})/);
+    if(m) return +m[1];
+    return 0;
+  }
+  function extractPhone(s){
+    const d = digits(s);
+    const m = d.match(/([6-9]\d{9})/);
+    return m ? m[1] : '';
+  }
+
+  function splitLine(line, delim){
+    const out = []; let cur = '', quote = false;
+    for(let i = 0; i < line.length; i++){
+      const ch = line[i];
+      if(ch === '"'){
+        if(quote && line[i+1] === '"'){ cur += '"'; i++; }
+        else quote = !quote;
+      } else if(ch === delim && !quote){ out.push(cur.trim()); cur = ''; }
+      else cur += ch;
+    }
+    out.push(cur.trim());
+    return out;
+  }
+  function mapHeader(h){
+    const s = String(h || '').toLowerCase().replace(/[^a-z]/g, '');
+    if(/^(name|client|lead|customer|contactperson|person)$/.test(s)) return 'name';
+    if(/phone|mobile|contact|number|whatsapp|tel/.test(s)) return 'phone';
+    if(/type|property|category|requirementtype/.test(s)) return 'type';
+    if(/budget|price|amount/.test(s)) return 'budget';
+    if(/locality|location|area|corridor|project/.test(s)) return 'locality';
+    if(/requirement|need|message|note|remark|detail/.test(s)) return 'requirement';
+    if(/profession|occupation|job|designation/.test(s)) return 'profession';
+    if(/source|portal|channel/.test(s)) return 'source';
+    if(/status|stage/.test(s)) return 'status';
+    return '';
+  }
+
+  function parseLeadText(text){
+    const lines = String(text || '').split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+    if(!lines.length) return [];
+    const delim = (lines[0].split('\t').length > lines[0].split(',').length) ? '\t' : ',';
+    let rows = lines.map(l => splitLine(l, delim));
+    let header = null;
+    const first = rows[0].map(c => String(c).toLowerCase().trim());
+    if(first.some(c => /^(name|client|lead|customer|phone|mobile|contact|number|whatsapp)$/.test(c))) header = rows.shift();
+    const idx = {};
+    if(header) header.forEach((h, i) => { const k = mapHeader(h); if(k && idx[k] == null) idx[k] = i; });
+    const out = [];
+    rows.forEach(row => {
+      const get = k => (idx[k] != null && row[idx[k]] != null) ? String(row[idx[k]]).trim() : '';
+      const blob = row.join(' ');
+      const phone = extractPhone(get('phone') || blob);
+      if(!phone) return;
+      let name = get('name');
+      if(!name){
+        name = row.find(c => c && !extractPhone(c) && !/^\d+$/.test(c) && c.length > 2 && !/^(plot|villa|flat|commercial|shop|farm)/i.test(c)) || '';
+      }
+      const typeRaw = get('type');
+      const profRaw = get('profession');
+      const srcRaw = get('source');
+      const budget = parseBudget(get('budget') || blob);
+      const locality = get('locality') || detectLocality(blob);
+      const requirement = get('requirement') || (header ? '' : row.filter(c => c && c !== name && !extractPhone(c)).join(' · '));
+      const statusRaw = get('status');
+      out.push({
+        id: uid(), name: String(name || 'Lead ' + phone).slice(0,120), phone,
+        type: typeRaw ? detectType(typeRaw) : detectType(blob),
+        profession: profRaw ? (LG_PROFS.find(p => p.toLowerCase() === profRaw.toLowerCase()) || detectProfession(profRaw) || '') : detectProfession(blob),
+        source: srcRaw || detectSource(blob),
+        locality: String(locality || '').slice(0,120),
+        budgetMin: 0, budgetMax: budget,
+        requirement: String(requirement || '').slice(0,600),
+        status: LG_STATUSES.indexOf(statusRaw) !== -1 ? statusRaw : 'New',
+        notes: '', createdAt: Date.now(), updatedAt: Date.now(),
+        lastContactAt: 0, contactCount: 0, clientId: '', sourceUrl: ''
+      });
+    });
+    return out;
+  }
+
+  function paintImportPreview(){
+    const box = q('#lgImportPreview'); if(!box) return;
+    const btn = q('#lgDoImport');
+    if(!importRows.length){
+      box.innerHTML = '';
+      if(btn){ btn.disabled = true; btn.textContent = 'Import 0 leads'; }
+      return;
+    }
+    const rows = importRows.slice(0, 40).map(r => `<tr>
+      <td>${esc(r.name)}</td><td>${esc(r.phone)}</td><td>${esc(typeMeta(r.type).label)}</td>
+      <td>${esc(r.budgetMax ? short(r.budgetMax) : '—')}</td><td>${esc(r.locality || '—')}</td>
+      <td>${esc(r.profession || '—')}</td><td>${esc(r.source)}</td></tr>`).join('');
+    box.innerHTML = `<div class="lg-count" style="margin:0 0 6px">${importRows.length} valid lead${importRows.length === 1 ? '' : 's'} detected${importRows.length > 40 ? ' · first 40 shown' : ''}</div>
+      <div class="lg-pv-wrap"><table><thead><tr><th>Name</th><th>Phone</th><th>Type</th><th>Budget</th><th>Locality</th><th>Profession</th><th>Source</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    if(btn){ btn.disabled = false; btn.textContent = 'Import ' + importRows.length + ' lead' + (importRows.length === 1 ? '' : 's'); }
+  }
+
+  function doImport(){
+    if(!importRows.length) return toast('Pehle parse karein', true);
+    let added = 0, dup = 0;
+    importRows.forEach(r => {
+      if(LG().leads.some(l => phone10(l.phone) === phone10(r.phone))){ dup++; return; }
+      LG().leads.unshift(r); added++;
+    });
+    if(added) save();
+    importRows = [];
+    const ta = q('#lgImportText'); if(ta) ta.value = '';
+    paint();
+    toast(added + ' lead' + (added === 1 ? '' : 's') + ' imported' + (dup ? ' · ' + dup + ' duplicate skipped' : ''), !added);
+  }
+
+  function csvCell(v){
+    const s = String(v == null ? '' : v);
+    return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }
+  function leadsCSV(){
+    const head = ['Name','Phone','Property type','Budget min','Budget max','Locality','Requirement','Profession','Source','Status','Notes','Created'];
+    const rows = LG().leads.map(l => [
+      l.name, l.phone, typeLabel(l.type), l.budgetMin || '', l.budgetMax || '',
+      l.locality, l.requirement, l.profession, l.source, l.status, l.notes,
+      l.createdAt ? new Date(l.createdAt).toISOString().slice(0,10) : ''
+    ].map(csvCell).join(','));
+    return head.join(',') + '\n' + rows.join('\n');
+  }
+  function downloadText(name, text, mime){
+    try{
+      const blob = new Blob([text], { type: mime || 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = name;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => { try{ URL.revokeObjectURL(url); }catch(e){} }, 4000);
+      toast('Download ho gaya — ' + name);
+    }catch(e){ toast('Download fail', true); }
+  }
+
+  /* ---------------- outreach ---------------- */
+  const TPL = {
+    plot: 'Namaste {name} ji 🙏\nBCS Jaipur se — aap Jaipur mein residential plot dekh rahe hain?\n\nRequirement: {type}{locality}{budget}\nHamare paas JDA-approved / RERA-registered options hain — clear title, registry ready.\n\n2 chhoti baatein:\n1) Possession / registry timeline kya hai?\n2) Kaunsa corridor prefer karenge — Ajmer, Sikar, Tonk ya Delhi Road?\n\nMain 2–3 matching plots bhej doon? — Ajay Sharma, BCS',
+    commercial: 'Namaste {name} ji 🙏\nBCS Jaipur — commercial plot / shop investment ke liye.\n\nRequirement: {type}{locality}{budget}\nMain footfall, road width aur rental yield ke hisaab se 2 options shortlist kar sakta hoon.\n\nAapka investment timeline kya hai — 3 mahine, 6 mahine ya long term?\n\nNumbers ke saath comparison bhejta hoon. — Ajay Sharma, BCS',
+    villa: 'Namaste {name} ji 🙏\nBCS Jaipur — villa / independent house search mein help kar sakta hoon.\n\nRequirement: {type}{locality}{budget}\nGated society aur registry-ready options shortlist karunga.\n\nAapko possession ya under-construction prefer hai? — Ajay Sharma, BCS',
+    referral: 'Namaste {name} ji 🙏\nMain Ajay Sharma, BCS Jaipur. Aap {profession} hain — aapke clients/contacts mein koi Jaipur mein plot, commercial plot ya villa kharidna chahta ho to main documentation ke saath help kar sakta hoon.\n\nReferral par transparent 30/35/35 split aur written record — koi hidden cut nahi.\n\nAgar kisi client ki requirement ho to naam aur budget bhej dijiye, main shortlist ready kar dunga. — Ajay Sharma, BCS',
+    followup: 'Namaste {name} ji 🙏\nPichhli baat ka follow-up — {type}{locality}{budget}.\nMain 2 matching options ready kar raha hoon.\n\nAapke liye site visit is weekend possible hai? — Ajay Sharma, BCS'
+  };
+  function autoTpl(l){
+    if(isHighTrust(l.profession)) return 'referral';
+    if(l.type === 'referral') return 'referral';
+    if(l.type === 'commercial-plot' || l.type === 'shop-office') return 'commercial';
+    if(l.type === 'villa' || l.type === 'farmhouse' || l.type === 'apartment') return 'villa';
+    return 'plot';
+  }
+  function buildMsg(l, tplId){
+    const id = (!tplId || tplId === 'auto') ? autoTpl(l) : tplId;
+    const body = TPL[id] || TPL.plot;
+    const first = String(l.name || '').trim().split(/\s+/)[0] || 'ji';
+    const locality = l.locality ? ' · ' + l.locality : '';
+    const budget = (l.budgetMin || l.budgetMax) ? ' · ' + budgetText(l) : '';
+    return body
+      .replace(/\{name\}/g, first)
+      .replace(/\{type\}/g, typeLabel(l.type))
+      .replace(/\{locality\}/g, locality)
+      .replace(/\{budget\}/g, budget)
+      .replace(/\{profession\}/g, l.profession || 'professional')
+      .replace(/[ \t]+\n/g, '\n')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+  }
+
+  function candidates(){
+    return LG().leads
+      .filter(l => l.status !== 'Won' && l.status !== 'Lost' && !skipSet[l.id])
+      .sort((a,b) => scoreOf(b) - scoreOf(a) || (+a.lastContactAt||0) - (+b.lastContactAt||0));
+  }
+  function ensureOutreach(){
+    const list = candidates();
+    if(!list.length){ outreachId = ''; return null; }
+    let l = outreachId ? byId(outreachId) : null;
+    if(!l || l.status === 'Won' || l.status === 'Lost' || skipSet[l.id]){ l = list[0]; outreachId = l.id; }
+    return l;
+  }
+
+  function outreachTab(){
+    const l = ensureOutreach();
+    const target = +LG().settings.dailyTarget || 20;
+    const done = LG().leads.filter(x => (+x.lastContactAt || 0) >= todayStart()).length;
+    const pct = Math.min(100, Math.round(done / Math.max(1,target) * 100));
+    const queue = candidates().slice(0, 8);
+    const queueHTML = queue.length ? queue.map(x => `<div class="lg-q-row">
+        <div class="lg-ava">${esc(initials(x.name))}</div>
+        <div class="lg-q-main"><b>${esc(x.name)}</b><span>${esc(typeMeta(x.type).label)} · ${esc(x.locality || '—')} · ${tierLabel(x)} ${scoreOf(x)}</span></div>
+        <button type="button" class="btn ghost" data-lgwa="${esc(x.id)}">💬</button>
+      </div>`).join('') : '<div class="lg-empty" style="padding:16px"><b>Queue khali hai</b>Naye leads import karein ya Won/Lost ko chhod kar status update karein.</div>';
+
+    if(!l){
+      return `<div class="lg-out-grid">
+        <div class="lg-next"><div class="lg-next-top"><b>Daily outreach</b></div>
+          <div class="lg-prog-lbl"><span>${done} contacted today</span><span>target ${target}</span></div><div class="lg-progress"><i style="width:${pct}%"></i></div>
+          <div class="lg-empty" style="margin-top:12px"><b>Koi outreach-ready lead nahi</b>Pehle Find free leads ya Import se leads laayein.</div>
+          <div class="lg-next-actions"><button type="button" class="btn primary" data-lgtab="find">🧭 Find free leads</button><button type="button" class="btn ghost" data-lgtab="import">📋 Import</button></div>
+        </div>
+        <div class="lg-box"><h4>Queue</h4>${queueHTML}</div>
+      </div>`;
+    }
+
+    const msg = (outreachTextId === l.id && outreachText) ? outreachText : buildMsg(l, outreachTpl);
+    const tplOpts = [['auto','Auto (best for this lead)'],['plot','Residential plot'],['commercial','Commercial / shop'],['villa','Villa / apartment'],['referral','CA · lawyer · govt · teacher'],['followup','Follow-up']]
+      .map(([v,lab]) => `<option value="${v}"${outreachTpl === v ? ' selected' : ''}>${lab}</option>`).join('');
+
+    return `<div class="lg-out-grid">
+      <div class="lg-next">
+        <div class="lg-next-top"><b>Next best lead</b><span class="lg-score t-${tierOf(l)}">${tierLabel(l)} ${scoreOf(l)}</span></div>
+        <div class="lg-next-name">${esc(l.name)}</div>
+        <div class="lg-next-req">${esc(typeMeta(l.type).label)} · ${esc(l.locality || 'locality not set')} · ${esc(budgetText(l))}${l.profession ? ' · ' + esc(l.profession) : ''}</div>
+        ${l.requirement ? `<div class="lg-next-req" style="color:var(--mut)">${esc(l.requirement)}</div>` : ''}
+        <div class="lg-next-meta"><span class="lg-chip src">${esc(l.source)}</span><span class="lg-chip">last contact ${esc(ago(l.lastContactAt))}</span>${l.contactCount ? `<span class="lg-chip">${l.contactCount} touches</span>` : ''}</div>
+        <div class="lg-prog-lbl" style="margin-top:10px"><span>${done} contacted today</span><span>target ${target}</span></div>
+        <div class="lg-progress"><i style="width:${pct}%"></i></div>
+        <div class="lg-next-actions">
+          <button type="button" class="btn primary" id="lgOutSend">💬 Preview &amp; WhatsApp</button>
+          <button type="button" class="btn ghost" id="lgOutMark">✓ Mark contacted</button>
+          <button type="button" class="btn ghost" id="lgOutSkip">Skip →</button>
+          <button type="button" class="btn ghost" data-lgedit="${esc(l.id)}">✎ Edit</button>
+        </div>
+        <div class="lg-next-actions" style="margin-top:9px">
+          <span style="font-size:10px;color:var(--mut);font-weight:700">Daily target</span>
+          <input type="number" id="lgTarget" min="1" max="200" value="${target}" style="width:70px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font-size:11px">
+        </div>
+      </div>
+      <div class="lg-box lg-compose">
+        <h4>Message — preview first</h4>
+        <select id="lgOutTpl" aria-label="Message template">${tplOpts}</select>
+        <textarea id="lgOutMsg" aria-label="WhatsApp message">${esc(msg)}</textarea>
+        <div class="lg-src-note">WhatsApp button pehle poora message preview kholta hai. Send karne par contact log hota hai aur queue agle lead par chali jaati hai.</div>
+      </div>
+      <div class="lg-box" style="grid-column:1/-1"><h4>Queue — one by one</h4>${queueHTML}</div>
+    </div>`;
+  }
+
+  function advanceOutreach(excludeId){
+    let list = candidates();
+    if(excludeId && list.length > 1) list = list.filter(l => l.id !== excludeId);
+    outreachId = list.length ? list[0].id : '';
+    outreachText = ''; outreachTextId = ''; outreachTpl = 'auto';
+  }
+
+  function logContact(id){
+    const l = byId(id); if(!l) return;
+    l.lastContactAt = Date.now();
+    l.contactCount = (+l.contactCount || 0) + 1;
+    l.waSentAt = Date.now();
+    if(l.status === 'New') l.status = 'Contacted';
+    l.updatedAt = Date.now();
+    save();
+    toast('Contact logged — ' + l.name);
+  }
+
+  function openWa(id, msgOverride){
+    const l = byId(id);
+    if(!l) return toast('Lead nahi mila', true);
+    const phone = phone10(l.phone);
+    if(!phone) return toast('Is lead ka phone number missing hai', true);
+    const msg = msgOverride || buildMsg(l, outreachTpl);
+    if(!msg) return toast('Message khali hai', true);
+    if(!window.BCSPreview) return toast('Preview available nahi', true);
+    window.BCSPreview.open({
+      title: 'WhatsApp — ' + l.name,
+      kind: 'Lead outreach · preview',
+      text: msg,
+      waText: msg,
+      waUrl: phone,
+      filename: 'BCS-lead-' + String(l.name || 'client').replace(/[^a-z0-9]+/gi, '-').toLowerCase() + '.txt',
+      onWhatsApp: function(){
+        logContact(id);
+        if(tab === 'outreach'){ advanceOutreach(id); paint(); }
+        else { paintStats(); paintList(); }
+      }
+    });
+  }
+
+  /* ---------------- playbook ---------------- */
+  const GHA = [
+    '# BCS free lead pull — public business listings (OpenStreetMap)',
+    '# Free on public GitHub repos. No API key. No personal buyer data.',
+    'name: BCS free lead pull',
+    'on:',
+    '  workflow_dispatch:',
+    '  schedule:',
+    '    - cron: "30 3 * * 1"',
+    'permissions:',
+    '  contents: read',
+    'jobs:',
+    '  pull:',
+    '    runs-on: ubuntu-latest',
+    '    steps:',
+    '      - uses: actions/checkout@v4',
+    '      - uses: actions/setup-python@v5',
+    '        with:',
+    '          python-version: "3.12"',
+    '      - name: Pull Jaipur public listings',
+    '        run: |',
+    "          cat > fetch_leads.py <<'PY'",
+    '          import csv, json, urllib.parse, urllib.request',
+    "          Q = '''[out:json][timeout:60];",
+    '          (',
+    '            nwr["office"~"accountant|tax_advisor|lawyer|notary|government|estate_agent"](26.72,75.60,27.10,76.00);',
+    '            nwr["amenity"~"school|clinic"](26.72,75.60,27.10,76.00);',
+    '          );',
+    "          out center 1000;'''",
+    '          req = urllib.request.Request(',
+    '              "https://overpass-api.de/api/interpreter",',
+    '              data=urllib.parse.urlencode({"data": Q}).encode())',
+    '          data = json.load(urllib.request.urlopen(req, timeout=90))',
+    '          rows = []',
+    '          for el in data.get("elements", []):',
+    '              t = el.get("tags", {})',
+    '              name = t.get("name") or t.get("operator") or ""',
+    '              phone = t.get("phone") or t.get("contact:phone") or t.get("mobile") or ""',
+    '              if not name or not phone:',
+    '                  continue',
+    '              rows.append({',
+    '                  "Name": name,',
+    '                  "Phone": phone,',
+    '                  "Property type": "Referral prospect",',
+    '                  "Budget": "",',
+    '                  "Locality": t.get("addr:suburb") or t.get("addr:city") or "Jaipur",',
+    '                  "Requirement": "Public business listing - profession / referral outreach",',
+    '                  "Profession": t.get("office") or t.get("amenity") or "",',
+    '                  "Source": "OSM public data",',
+    '                  "Status": "New",',
+    '              })',
+    '          with open("jaipur-public-leads.csv", "w", newline="", encoding="utf-8") as f:',
+    '              w = csv.DictWriter(f, fieldnames=list(rows[0].keys()) if rows else ["Name"])',
+    '              w.writeheader()',
+    '              w.writerows(rows)',
+    '          print(f"{len(rows)} rows written")',
+    '          PY',
+    '          python3 fetch_leads.py',
+    '      - uses: actions/upload-artifact@v4',
+    '        with:',
+    '          name: jaipur-public-leads',
+    '          path: jaipur-public-leads.csv'
+  ].join('\n');
+
+  function playbookTab(){
+    return `<div class="lg-note good"><b>Roz ka 30-minute free routine.</b> Is page ka goal hai: roz 10–15 naye, relevant leads aur unme se 5–8 personalised WhatsApp conversations — bina kisi paid tool ke.</div>
+      <div class="lg-play-grid" style="margin-top:9px">
+        <div class="lg-play"><h4>⏱️ 30-minute daily plan</h4><ol>
+          <li><b>0–5 min</b> — Inbox kholo, aaj ke follow-ups aur naye leads dekho.</li>
+          <li><b>5–15 min</b> — Meta Ad Library + 2 Facebook groups: 3 buyer requirements capture karo.</li>
+          <li><b>15–20 min</b> — 99acres / OLX “wanted” + portal demand desk: 2 leads.</li>
+          <li><b>20–25 min</b> — Google Maps ya OSM se 5 CA / lawyer / teacher / govt contacts.</li>
+          <li><b>25–30 min</b> — WhatsApp outreach queue: 8–10 personalised messages, har contact log karo.</li>
+        </ol></div>
+        <div class="lg-play"><h4>🎯 Kaunse leads best convert karte hain</h4><ul>
+          <li><b>Budget 40L+</b> + locality clear + 3-month timeline.</li>
+          <li><b>CA / lawyer / govt / teacher</b> — high trust, referral network strong.</li>
+          <li><b>Referral</b> — sabse high score; pehle inhe call karein.</li>
+          <li><b>Commercial plot</b> — investor leads, decision fast.</li>
+          <li><b>Portal “wanted” ads</b> — buyer already actively searching.</li>
+        </ul></div>
+        <div class="lg-play"><h4>🧰 Free stack</h4><ul>
+          <li>Google Maps — local businesses + profession prospects</li>
+          <li>Meta Ad Library — competitor ads + demand signals</li>
+          <li>99acres · MagicBricks · Housing · OLX · Squareyards</li>
+          <li>Facebook groups · Instagram hashtags · LinkedIn</li>
+          <li>OpenStreetMap Overpass API — free public listings</li>
+          <li>GitHub Actions — free weekly automation (public repo)</li>
+        </ul></div>
+        <div class="lg-play"><h4>✅ Do</h4><ul>
+          <li>Pehla message value-first: requirement poochho, pitch baad me.</li>
+          <li>Har message preview karke bhejo — naam aur locality personalise karo.</li>
+          <li>Contact log karo; 2 din baad follow-up.</li>
+          <li>Opt-out request aaye to turant delete karo.</li>
+          <li>Phone number verify karo — galat number par message na bhejo.</li>
+        </ul></div>
+        <div class="lg-play"><h4>🚫 Don't</h4><ul>
+          <li>Google Maps / Meta / portals ko login ke peeche scrape mat karo — ToS violation.</li>
+          <li>Bulk unsolicited WhatsApp blast mat karo — number ban ho jayega.</li>
+          <li>Leaked / bought databases use mat karo — DPDP Act risk.</li>
+          <li>Ek hi din 50+ cold messages mat bhejo.</li>
+          <li>Client ki sensitive info bina consent store mat karo.</li>
+        </ul></div>
+        <div class="lg-play"><h4>⚖️ Compliance — short version</h4><ul>
+          <li><b>DPDP Act 2023</b> — purpose batao, consent lo, delete request honour karo.</li>
+          <li><b>TRAI DND</b> — unsolicited commercial calls se pehle DND check karo.</li>
+          <li><b>WhatsApp</b> — personal number par manual, one-by-one outreach; bulk ke liye Business API.</li>
+          <li><b>Portals</b> — login, CAPTCHA ya masked numbers bypass mat karo.</li>
+        </ul></div>
+      </div>
+      <div class="lg-note bad" style="margin-top:9px"><b>Honest limit.</b> Google Maps, Meta aur property portals ke andar se buyer phone numbers automatically nikaalna free + legal nahi hai. Is page par woh kaam jaan-boojh kar nahi kiya gaya. Jo cheez public hai (search results, OSM listings, aapke apne paste/CSV) woh fully free hai — aur wahi 90% kaam kar deti hai.</div>
+      <div class="lg-box" style="margin-top:9px">
+        <h4>🤖 Free GitHub automation — weekly public-listings pull</h4>
+        <p>Ye workflow apne public GitHub repo me daalein. Har Somvaar Overpass API se Jaipur ke public CA / lawyer / govt / school / clinic / estate-agent listings CSV me aayenge. Actions public repo par free hain. CSV download karke Import tab me paste kar dein.</p>
+        <div class="lg-import-actions">
+          <button type="button" class="btn primary sm" id="lgGhaDownload">⬇ Download workflow .yml</button>
+          <button type="button" class="btn ghost sm" data-lgcopy-gha="1">📋 Copy YAML</button>
+          <a class="btn ghost sm" href="https://github.com/new" target="_blank" rel="noopener noreferrer">＋ New GitHub repo ↗</a>
+        </div>
+        <div class="lg-code">${esc(GHA.split('\n').slice(0, 18).join('\n'))}\n…</div>
+        <div class="lg-attr">Sirf public business listings — koi personal buyer database nahi. OSM data ODbL licensed hai; attribution rakhein.</div>
+      </div>`;
+  }
+
+  /* ---------------- paint ---------------- */
+  function paint(){
+    paintStats();
+    qa('#lgTabs button').forEach(b => {
+      const on = b.dataset.lgtab === tab;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    const body = q('#lgBody'); if(!body) return;
+    if(tab === 'inbox'){ body.innerHTML = inboxTab(); paintList(); }
+    else if(tab === 'find') body.innerHTML = findTab();
+    else if(tab === 'import'){ body.innerHTML = importTab(); paintImportPreview(); }
+    else if(tab === 'outreach') body.innerHTML = outreachTab();
+    else body.innerHTML = playbookTab();
+  }
+  function render(){ paint(); }
+
+  function setTab(next){
+    if(!next) return;
+    tab = next;
+    if(tab !== 'outreach'){ outreachText = ''; outreachTextId = ''; }
+    paint();
+  }
+
+  /* ---------------- modal ---------------- */
+  function ensureModalOptions(){
+    const fill = (sel, arr, first) => {
+      const el = q(sel); if(!el || el.options.length) return;
+      el.innerHTML = (first ? `<option value="">${esc(first)}</option>` : '') + arr.map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join('');
+    };
+    const ty = q('#lgType');
+    if(ty && !ty.options.length){
+      ty.innerHTML = LG_TYPES.map(t => `<option value="${esc(t.id)}">${esc(t.label)}</option>`).join('');
+    }
+    fill('#lgProfession', LG_PROFS, '— not recorded —');
+    fill('#lgSource', LG_SOURCES, '');
+    fill('#lgStatus', LG_STATUSES, '');
+  }
+
+  const PRESET_SOURCE = { 'Property portals':'99acres', 'Google search operators':'Other', 'Social & community':'WhatsApp group' };
+
+  function openLeadModal(id, presetSource){
+    ensureModalOptions();
+    if(PRESET_SOURCE[presetSource]) presetSource = PRESET_SOURCE[presetSource];
+    const l = id ? byId(id) : null;
+    q('#lgLeadId').value = l ? l.id : '';
+    q('#lgModalTitle').textContent = l ? 'Edit lead' : 'Add lead';
+    q('#lgName').value = l ? (l.name || '') : '';
+    q('#lgPhone').value = l ? (l.phone || '') : '';
+    q('#lgType').value = l ? l.type : 'plot';
+    q('#lgProfession').value = l ? (l.profession || '') : '';
+    q('#lgSource').value = l ? (l.source || 'Other') : (presetSource && LG_SOURCES.indexOf(presetSource) !== -1 ? presetSource : 'Google Maps');
+    q('#lgLocality').value = l ? (l.locality || '') : '';
+    q('#lgBudgetMin').value = l && l.budgetMin ? l.budgetMin : '';
+    q('#lgBudgetMax').value = l && l.budgetMax ? l.budgetMax : '';
+    q('#lgRequirement').value = l ? (l.requirement || '') : '';
+    q('#lgNotes').value = l ? (l.notes || '') : '';
+    q('#lgStatus').value = l ? (l.status || 'New') : 'New';
+    q('#lgDelete').style.display = l ? 'inline-flex' : 'none';
+    showOverlay('lgModal');
+    setTimeout(() => { try{ q('#lgName').focus(); }catch(e){} }, 80);
+  }
+
+  function saveLead(){
+    const id = q('#lgLeadId').value;
+    const name = q('#lgName').value.trim();
+    const phone = phone10(q('#lgPhone').value);
+    if(!name) return toast('Name required hai', true);
+    if(!phone) return toast('Valid 10-digit mobile number daalein', true);
+    const dup = LG().leads.find(l => phone10(l.phone) === phone && l.id !== id);
+    if(dup) return toast('Ye number pehle se hai — ' + dup.name, true);
+    const payload = {
+      name: name.slice(0,120), phone,
+      type: q('#lgType').value || 'plot',
+      profession: q('#lgProfession').value || '',
+      source: q('#lgSource').value || 'Other',
+      locality: q('#lgLocality').value.trim().slice(0,120),
+      budgetMin: Math.max(0, Math.round(+q('#lgBudgetMin').value || 0)),
+      budgetMax: Math.max(0, Math.round(+q('#lgBudgetMax').value || 0)),
+      requirement: q('#lgRequirement').value.trim().slice(0,600),
+      notes: q('#lgNotes').value.trim().slice(0,600),
+      status: q('#lgStatus').value || 'New',
+      updatedAt: Date.now()
+    };
+    if(id){
+      const l = byId(id);
+      if(l){ Object.assign(l, payload); toast('Lead updated'); }
+    } else {
+      LG().leads.unshift(Object.assign({
+        id: uid(), createdAt: Date.now(), lastContactAt: 0, contactCount: 0,
+        waSentAt: 0, clientId: '', sourceUrl: ''
+      }, payload));
+      toast('Lead added');
+    }
+    save();
+    closeModal('lgModal');
+    paint();
+  }
+
+  function deleteLead(id){
+    const l = byId(id); if(!l) return;
+    if(!confirm('Delete lead — ' + l.name + '?')) return;
+    LG().leads = LG().leads.filter(x => x.id !== id);
+    if(outreachId === id) advanceOutreach();
+    save();
+    closeModal('lgModal');
+    paint();
+    toast('Lead deleted');
+  }
+
+  function toClient(id){
+    const l = byId(id); if(!l) return;
+    if(l.clientId && (db.clients || []).some(c => c.id === l.clientId)) return toast('Ye lead pehle se client hai', true);
+    if(!confirm('Client bana dein — ' + l.name + '?')) return;
+    const typeMap = { plot:['plot'], 'commercial-plot':['commercial','plot'], villa:['residential'], apartment:['flat'], farmhouse:['farmhouse'], 'shop-office':['shop'], agricultural:['agriculture'], referral:['plot'] };
+    const loc = String(l.locality || '').toLowerCase();
+    const corr = (db.corridors || []).find(c => { const n = String(c.name || '').toLowerCase().replace(/\s*road\s*/g,'').trim(); return n && loc.indexOf(n.split(' ')[0]) !== -1; });
+    if(!Array.isArray(db.clients)) db.clients = [];
+    const client = {
+      id: uid(), createdAt: Date.now(), name: l.name, phone: l.phone, email: '',
+      clientStatus: 'new', source: 'Lead engine', sourceNote: (l.source || '') + ' · lead ' + l.id,
+      advisorId: '', nextFollowUp: '', lastContact: '', birthday: '',
+      budgetMin: +l.budgetMin || 0, budgetMax: +l.budgetMax || 0, timeline: '',
+      types: typeMap[l.type] || ['plot'], corridors: corr ? [corr.id] : [],
+      requirement: l.requirement || '', notes: ('Lead engine se convert. ' + (l.notes || '')).trim(),
+      readiness: { kyc:false, income:false, bankPreapproval:false, cibil:false, agreement:false },
+      projectIds: [], custom: {}, status: '', approvalType: '', reraOnly: false, approvedOnly: false,
+      transferHistory: []
+    };
+    db.clients.push(client);
+    l.clientId = client.id;
+    l.status = 'Qualified';
+    l.updatedAt = Date.now();
+    save();
+    paint();
+    toast('Client ban gaya — Clients page par dekhein');
+  }
+
+  /* ---------------- copy / download ---------------- */
+  function fallbackCopy(text){
+    try{
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      document.execCommand('copy');
+      ta.remove();
+      toast('Copy ho gaya ✓');
+    }catch(e){ toast('Copy nahi hua', true); }
+  }
+  function copyText(text){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(() => toast('Copy ho gaya ✓')).catch(() => fallbackCopy(text));
+    } else fallbackCopy(text);
+  }
+
+  /* ---------------- events ---------------- */
+  const host = root();
+  if(host){
+    host.addEventListener('click', e => {
+      const t = e.target;
+      if(!t || !t.closest) return;
+      const tabBtn = t.closest('[data-lgtab]');
+      if(tabBtn){ setTab(tabBtn.dataset.lgtab); return; }
+      const wa = t.closest('[data-lgwa]');
+      if(wa){ openWa(wa.dataset.lgwa); return; }
+      const ed = t.closest('[data-lgedit]');
+      if(ed){ openLeadModal(ed.dataset.lgedit); return; }
+      const del = t.closest('[data-lgdel]');
+      if(del){ deleteLead(del.dataset.lgdel); return; }
+      const cl = t.closest('[data-lgclient]');
+      if(cl){ toClient(cl.dataset.lgclient); return; }
+      const preset = t.closest('[data-lgpreset]');
+      if(preset){ openLeadModal(null, preset.dataset.lgpreset); return; }
+      const cp = t.closest('[data-lgcopy]');
+      if(cp){ copyText(cp.dataset.lgcopy); return; }
+      const cgha = t.closest('[data-lgcopy-gha]');
+      if(cgha){ copyText(GHA); return; }
+      const clear = t.closest('[data-lgclear]');
+      if(clear){ searchQ=''; fType=''; fProf=''; fStatus=''; fSource=''; sortBy='score'; paint(); return; }
+      if(t.closest('#lgOsmFetch')){ osmFetch(); return; }
+      if(t.closest('#lgParseBtn')){
+        const txt = q('#lgImportText') ? q('#lgImportText').value : '';
+        if(!txt.trim()) return toast('Pehle data paste karein', true);
+        importRows = parseLeadText(txt);
+        paintImportPreview();
+        toast(importRows.length ? importRows.length + ' valid leads detected' : 'Koi valid phone number nahi mila', !importRows.length);
+        return;
+      }
+      if(t.closest('#lgDoImport')){ doImport(); return; }
+      if(t.closest('#lgTemplateBtn')){
+        downloadText('BCS-lead-import-template.csv',
+          'Name,Phone,Property type,Budget,Locality,Requirement,Profession,Source,Status\n' +
+          'Rakesh Sharma,9876543210,Plot,"40-60 lakh",Ajmer Road,"120 sq yd, loan needed",Business owner,Referral,New\n' +
+          'Meera Jain,9812345678,Villa,"1.2 cr",Jagatpura,"4 BHK, possession ready",CA,99acres,New\n',
+          'text/csv;charset=utf-8');
+        return;
+      }
+      if(t.closest('#lgExportBtn') || t.closest('#lgExportBtn2')){ downloadText('BCS-leads-' + todayISO() + '.csv', leadsCSV(), 'text/csv;charset=utf-8'); return; }
+      if(t.closest('#lgGhaDownload')){ downloadText('bcs-free-lead-pull.yml', GHA, 'text/yaml;charset=utf-8'); return; }
+      if(t.closest('#lgOutSend')){
+        const ta = q('#lgOutMsg');
+        openWa(outreachId, ta ? ta.value : '');
+        return;
+      }
+      if(t.closest('#lgOutMark')){
+        if(!outreachId) return;
+        const cur = outreachId;
+        logContact(cur);
+        advanceOutreach(cur);
+        paint();
+        return;
+      }
+      if(t.closest('#lgOutSkip')){
+        if(outreachId) skipSet[outreachId] = true;
+        advanceOutreach();
+        paint();
+        return;
+      }
+      if(t.closest('#lgAddBtn') || t.closest('#lgImportTopBtn')){
+        if(t.closest('#lgImportTopBtn')) setTab('import');
+        else openLeadModal(null);
+        return;
+      }
+    });
+
+    host.addEventListener('input', e => {
+      const t = e.target;
+      if(!t) return;
+      if(t.id === 'lgSearch'){ searchQ = t.value || ''; paintList(); return; }
+      if(t.id === 'lgOutMsg'){ outreachText = t.value || ''; outreachTextId = outreachId; return; }
+    });
+
+    host.addEventListener('change', e => {
+      const t = e.target;
+      if(!t) return;
+      if(t.id === 'lgFilterType'){ fType = t.value; paintList(); return; }
+      if(t.id === 'lgFilterProf'){ fProf = t.value; paintList(); return; }
+      if(t.id === 'lgFilterStatus'){ fStatus = t.value; paintList(); return; }
+      if(t.id === 'lgFilterSource'){ fSource = t.value; paintList(); return; }
+      if(t.id === 'lgSort'){ sortBy = t.value; paintList(); return; }
+      if(t.id === 'lgTarget'){ LG().settings.dailyTarget = Math.min(200, Math.max(1, +t.value || 20)); save(); paint(); return; }
+      if(t.id === 'lgOutTpl'){ outreachTpl = t.value; outreachText = ''; outreachTextId = ''; paint(); return; }
+      if(t.id === 'lgImportFile'){
+        const f = t.files && t.files[0];
+        if(!f) return;
+        const reader = new FileReader();
+        reader.onload = () => { const ta = q('#lgImportText'); if(ta) ta.value = String(reader.result || ''); importRows = parseLeadText(String(reader.result || '')); paintImportPreview(); toast(importRows.length + ' valid leads detected'); };
+        reader.onerror = () => toast('File read fail', true);
+        reader.readAsText(f);
+        return;
+      }
+      const st = t.closest('[data-lgstatus]');
+      if(st){
+        const l = byId(st.dataset.lgstatus);
+        if(l){ l.status = st.value; l.updatedAt = Date.now(); save(); paintStats(); if(tab === 'outreach') paint(); else paintList(); toast('Status — ' + st.value); }
+        return;
+      }
+    });
+  }
+
+  q('#lgSave') && q('#lgSave').addEventListener('click', saveLead);
+  q('#lgDelete') && q('#lgDelete').addEventListener('click', () => { const id = q('#lgLeadId').value; if(id) deleteLead(id); });
+
+  window.BCS_LEADGEN = { render: render, openLead: openLeadModal, paint: paint };
+  paint();
 })();
 </script>
 
