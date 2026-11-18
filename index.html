@@ -16498,7 +16498,7 @@ body:before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;opa
 .vd-next b{font:800 12px/1.3 'DM Sans',sans-serif;color:var(--ink)}
 .vd-next p{font:600 11px/1.5 'DM Sans',sans-serif;color:var(--mut);margin:3px 0 0}
 .vd-heat{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,11px);gap:3px;overflow-x:auto;padding-bottom:5px}
-.vd-cell{width:11px;height:11px;border-radius:3px;background:color-mix(in oklab,var(--line) 55%,transparent)}
+.vd-cell{display:block;width:11px;height:11px;border-radius:3px;background:color-mix(in oklab,var(--line) 55%,transparent);cursor:pointer}.vd-cell:hover{outline:2px solid var(--acc);outline-offset:1px;transform:scale(1.3)}.vd-heat-legend{display:flex;align-items:center;gap:3px;margin-top:6px;font:700 9px/1 'DM Sans',sans-serif;color:var(--mut)}
 .vd-cell.l1{background:color-mix(in oklab,var(--acc) 26%,transparent)}
 .vd-cell.l2{background:color-mix(in oklab,var(--acc) 48%,transparent)}
 .vd-cell.l3{background:color-mix(in oklab,var(--acc) 72%,transparent)}
@@ -16548,6 +16548,77 @@ body.skyline-parallax .hero-skyline{transform:translateY(var(--sky-y,0px))}
 .vd-filterbar .vd-chip.on{cursor:default}
 @media(max-width:640px){.vd-grid{grid-template-columns:1fr}.vd-focus button{width:100%}}
 
+
+
+/* ============ v190 · CONNECTED DESK LAYER ============ */
+.lm-legend{font:700 9px/1.3 'DM Sans',sans-serif;color:var(--mut);opacity:.85;letter-spacing:.2px;margin-left:8px}
+.cn-viewbar{display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;gap:6px;padding:6px 14px 0;position:relative;z-index:3}
+.cn-filter-note{font:700 9.5px/1.3 'DM Sans',sans-serif;color:var(--mut);margin-right:auto}
+.cn-corr{max-width:180px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:5px 8px;font:800 10px/1 'DM Sans',sans-serif;cursor:pointer}
+.cn-detail{display:block;width:100%;margin-top:4px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:6px 7px;font:700 11px/1.3 'DM Sans',sans-serif}
+.cn-pdf{border:1px solid color-mix(in oklab,var(--acc) 40%,var(--line));background:color-mix(in oklab,var(--panel) 90%,transparent);color:var(--ink);border-radius:999px;padding:5px 10px;font:900 9px/1 'DM Sans',sans-serif;letter-spacing:.4px;cursor:pointer;box-shadow:var(--shadow)}
+.cn-pdf:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-1px)}
+.cn-panel{margin:14px 0;border:1px solid var(--line);border-radius:16px;background:color-mix(in oklab,var(--panel) 92%,transparent);padding:13px;box-shadow:var(--shadow)}
+.cn-title{font:800 12.5px/1.3 'DM Sans',sans-serif;color:var(--ink);margin:0 0 3px}
+.cn-sub{font:500 10.5px/1.5 'DM Sans',sans-serif;color:var(--mut);margin:0 0 10px}
+.cn-row{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+.cn-chip{border:1px solid var(--line);background:var(--panel);color:var(--mut);border-radius:999px;padding:6px 10px;font:800 10px/1 'DM Sans',sans-serif;cursor:pointer}
+.cn-chip:hover{color:var(--ink);border-color:var(--acc)}
+.cn-chip.on,.cn-chip.primary{background:color-mix(in oklab,var(--acc) 20%,transparent);color:var(--ink);border-color:var(--acc)}
+.cn-chip.bad{border-color:#A4452B;color:#D98A6F}
+.cn-chip.good{border-color:#4E7C62;color:#8FC3A0}
+.cn-rate{display:inline-flex;align-items:center;gap:6px;border:1px solid color-mix(in oklab,var(--sage) 40%,var(--line));border-radius:999px;padding:6px 10px;background:color-mix(in oklab,var(--sage) 12%,var(--panel));font:800 10px/1 'DM Sans',sans-serif;color:var(--ink)}
+.cn-rate b{color:var(--sage-ink)}
+.cn-rate.stale{border-color:#A4452B;color:#E3A188}
+.cn-dot{width:6px;height:6px;border-radius:50%;background:currentColor;box-shadow:0 0 0 4px color-mix(in oklab,currentColor 16%,transparent)}
+.cn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+.cn-card{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:10px;cursor:pointer;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.cn-card:hover{transform:translateY(-2px);border-color:var(--acc);box-shadow:0 8px 22px rgba(0,0,0,.12)}
+.cn-card b{display:block;font:900 12px/1.3 'DM Sans',sans-serif;color:var(--ink)}
+.cn-card span{font:600 10px/1.45 'DM Sans',sans-serif;color:var(--mut)}
+.cn-card small{display:block;margin-top:5px;font:800 9px/1.3 'DM Sans',sans-serif;color:var(--sage-ink)}
+.cn-table{width:100%;border-collapse:collapse;font:600 10.5px/1.45 'DM Sans',sans-serif;color:var(--mut)}
+.cn-table th,.cn-table td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
+.cn-table th{color:var(--ink);font:800 9.5px/1.2 'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:.4px}
+.cn-table td input{width:100%;min-width:80px;font:700 10.5px/1.3 'DM Sans',sans-serif;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:5px 6px}
+.cn-scroll{max-height:320px;overflow:auto;border:1px solid var(--line);border-radius:10px}
+.cn-heat-cell{width:11px;height:11px;border-radius:3px;background:color-mix(in oklab,var(--line) 55%,transparent);cursor:pointer;transition:transform .12s ease,outline-color .12s ease}
+.cn-heat-cell:hover{transform:scale(1.45);outline:2px solid var(--acc);outline-offset:1px}
+.cn-heat-cell.l1{background:color-mix(in oklab,var(--acc) 26%,transparent)}
+.cn-heat-cell.l2{background:color-mix(in oklab,var(--acc) 48%,transparent)}
+.cn-heat-cell.l3{background:color-mix(in oklab,var(--acc) 72%,transparent)}
+.cn-heat-cell.l4{background:var(--acc)}
+.cn-heat-wrap{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,11px);gap:3px;overflow-x:auto;padding:4px 2px 7px}
+.cn-drawer{position:fixed;right:0;top:0;bottom:0;z-index:2147482960;width:min(430px,94vw);background:var(--panel);border-left:1px solid var(--line);box-shadow:-18px 0 50px rgba(0,0,0,.28);transform:translateX(104%);transition:transform .28s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+.cn-drawer.on{transform:none}
+.cn-drawer-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px;border-bottom:1px solid var(--line)}
+.cn-drawer-head b{font:800 15px/1.2 'Fraunces',serif;color:var(--ink)}
+.cn-drawer-body{padding:14px;overflow:auto;flex:1}
+.cn-relation{border:1px solid var(--line);border-radius:11px;padding:9px 10px;margin-bottom:7px;cursor:pointer;background:color-mix(in oklab,var(--panel) 88%,transparent)}
+.cn-relation:hover{border-color:var(--acc)}
+.cn-relation b{display:block;font:800 11px/1.3 'DM Sans',sans-serif;color:var(--ink)}
+.cn-relation span{font:600 10px/1.4 'DM Sans',sans-serif;color:var(--mut)}
+.cn-link-status{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;background:var(--mut)}
+.cn-link-status.ok{background:#4E7C62}.cn-link-status.fix{background:#E7B84B}.cn-link-status.bad{background:#A4452B}
+.cn-export-fab{position:fixed;right:16px;bottom:86px;z-index:2147482905;border:1px solid color-mix(in oklab,var(--acc) 50%,var(--line));background:color-mix(in oklab,var(--panel) 94%,transparent);color:var(--ink);border-radius:999px;padding:10px 13px;font:900 10.5px/1 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.22);backdrop-filter:blur(10px)}
+.cn-export-fab:hover{border-color:var(--acc);transform:translateY(-2px)}
+.cn-spot{outline:2px solid var(--acc) !important;outline-offset:3px;transition:outline-color .4s ease}
+.cn-flash-target{animation:cnFlash 1.1s ease}
+@keyframes cnFlash{0%,100%{box-shadow:var(--shadow)}35%{box-shadow:0 0 0 4px color-mix(in oklab,var(--acc) 32%,transparent),0 12px 30px rgba(0,0,0,.18)}}
+.cn-pdf{font:500 12px/1.55 'DM Sans',sans-serif;color:#1B271E;background:#fff;padding:22px;max-width:900px;margin:auto}
+.cn-pdf h1{font:800 24px/1.2 'Fraunces',serif;margin:0 0 4px;color:#172016}
+.cn-pdf h2{font:800 13px/1.3 'DM Sans',sans-serif;margin:16px 0 6px;color:#172016;text-transform:uppercase;letter-spacing:.5px}
+.cn-pdf p{color:#4A554E;margin:0 0 10px}
+.cn-pdf table{width:100%;border-collapse:collapse;font-size:10.5px}
+.cn-pdf th,.cn-pdf td{border:1px solid #D7DED9;padding:6px 7px;text-align:left;vertical-align:top}
+.cn-pdf th{background:#EEF3EF;color:#172016}
+.cn-pdf .cn-foot{margin-top:16px;border-top:1px solid #D7DED9;padding-top:8px;font-size:9.5px;color:#66706A}
+@media print{
+  body > *:not(#cnPrintHost){display:none !important}
+  #cnPrintHost{display:block !important;position:static !important;inset:auto !important;width:auto !important;height:auto !important;box-shadow:none !important;border:0 !important;transform:none !important}
+  #cnPrintHost .cn-drawer-head,#cnPrintHost .bw-modal-foot{display:none !important}
+}
+@media(max-width:640px){.cn-grid{grid-template-columns:1fr}.cn-export-fab{bottom:78px;right:12px}}
 </style>
 </head>
 <style id="bcs-mkt-daily-css">
@@ -17101,6 +17172,46 @@ body[data-theme="dark"] [style*="background:#FFFDF4"],body[data-theme="dark"] [s
     <p class="lock-note">Privacy view, not encryption. Admin password sirf aapke paas hai · advisors log in with the portal ID + password set by admin.</p>
   </div>
 </div>
+<script>
+/* v190 early helpers — available before the first render */
+function cnSafeUrl(v){
+  let x=String(v==null?'':v).trim().replace(/^<+/,'').replace(/>+$/,'').trim();
+  if(!x||/\s/.test(x)) return '';
+  if(/^[a-z][a-z0-9+.-]*:/i.test(x)){ if(!/^https?:/i.test(x)) return ''; }
+  else x=/^\/\//.test(x)?'https:'+x:'https://'+x.replace(/^\/+/,'');
+  try{ const u=new URL(x); return /^https?:$/i.test(u.protocol)&&u.hostname?u.href:''; }catch(e){ return ''; }
+}
+function cnSelfUrl(){ try{ return location.href.split('#')[0]; }catch(e){ return ''; } }
+function cnLanUrl(){ try{ return /^(localhost|127\.|192\.168\.|10\.|172\.(1[6-9]|2\d|3[01])\.)/i.test(location.hostname)?location.protocol+'//'+location.host+location.pathname:''; }catch(e){ return ''; } }
+function cnOpen(url){
+  const u=cnSafeUrl(url);
+  if(!u){ try{ toast('Link khul nahi sakta — https:// wala sahi URL daalein',true); }catch(e){} return false; }
+  let w=null; try{ w=window.open(u,'_blank','noopener,noreferrer'); }catch(e){}
+  if(!w){ try{ const a=document.createElement('a'); a.href=u; a.target='_blank'; a.rel='noopener noreferrer'; a.style.display='none'; document.body.appendChild(a); a.click(); a.remove(); return true; }catch(e){} }
+  return true;
+}
+function cnRateStamp(){ const d=new Date(),p=n=>String(n).padStart(2,'0'); return p(d.getDate())+' '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]+' '+d.getFullYear()+' · '+p(d.getHours())+':'+p(d.getMinutes()); }
+/* v190: one global popup-blocker fallback for every outbound link in the app. */
+(function(){
+  const nativeOpen = window.open;
+  if(!nativeOpen || nativeOpen.__cnWrapped) return;
+  const wrapped = function(u, n, f, r){
+    let w = null;
+    try{ w = nativeOpen.call(window, u, n, f, r); }catch(e){}
+    if(w) return w;
+    const raw = String(u == null ? '' : u).trim();
+    if(!/^(https?:\/\/|\/\/)/i.test(raw)) return null;
+    try{
+      const a = document.createElement('a');
+      a.href = raw; a.target = n || '_blank'; a.rel = 'noopener noreferrer';
+      a.style.display = 'none'; document.body.appendChild(a); a.click(); a.remove();
+      return { closed:true, focus:function(){}, print:function(){} };
+    }catch(e){ return null; }
+  };
+  wrapped.__cnWrapped = true;
+  window.open = wrapped;
+})();
+</script>
 <script>
 
 /* BCS UI polish — motion & ripple (non-breaking) */
@@ -18613,7 +18724,7 @@ try{
     <div class="links-stats" id="taxStats"></div>
     <div class="panel" id="taxNewsStrip" style="margin-top:12px">
       <div class="panel-head"><h4>🔴 Live updates — FY 2026-27 (best sources)</h4><span class="n-badge" id="taxNewsCount">6</span></div>
-      <p style="font-size:12px;color:var(--mut);line-height:1.55;margin-bottom:10px">Incometax / CBIC / Ministry of Housing ke latest notifications se hand-picked. Har card pe <b>source link</b> — client ko turant forward karo. <b>Last checked: 08 Nov 2026.</b></p>
+      <p style="font-size:12px;color:var(--mut);line-height:1.55;margin-bottom:10px">Incometax / CBIC / Ministry of Housing ke latest notifications se hand-picked. Har card pe <b>source link</b> — client ko turant forward karo. <b>Last checked: <span data-cn-rate-stamp>08 Nov 2026</span>.</b></p>
       <div class="tax-grid" id="taxNewsGrid" style="margin-top:0"></div>
     </div>
 
@@ -19011,7 +19122,7 @@ try{
     <div class="adv-head">
       <div>
         <div class="live-market-wrap" id="liveMarketStrip" role="status" aria-live="polite">
-          <div class="lm-head"><span class="lm-live"><i></i>LIVE MARKET</span><span class="lm-updated" id="liveMarketUpdated">Updated just now</span><button type="button" class="btn ghost sm" id="liveMarketRefresh" title="Refresh market data">↻</button></div>
+          <div class="lm-head"><span class="lm-live"><i></i>LIVE MARKET</span><span class="lm-legend">FX · gold · silver · crypto live — fuel · indices reference</span><span class="lm-updated" id="liveMarketUpdated">Updated just now</span><button type="button" class="btn ghost sm" id="liveMarketRefresh" title="Refresh market data">↻</button></div>
           <div class="lm-row" id="liveMarketRow"></div>
         </div> Aurum + Square Yards + 2bigha + PropertyWala</div>
         <h2 class="adv-title">Jaipur market,<br><em>charon sources, ek tab.</em></h2>
@@ -19042,7 +19153,7 @@ try{
       </div>
     </div>
     <div class="panel" style="margin-top:12px">
-      <div class="panel-head"><h4>Jaipur at a glance — charon sources ka summary</h4><span class="n-badge">Nov 2026</span></div>
+      <div class="panel-head"><h4>Jaipur at a glance — charon sources ka summary</h4><span class="n-badge" data-cn-rate-stamp>Reference — refresh to check</span></div>
       <div class="brief-grid">
         <div class="brief-box"><h5>🏘️ Aurum — localities</h5><p><b>Vaishali</b> mature, <b>Mansarovar</b> mid & resale strong, <b>Jagatpura</b> new stock + airport, <b>Ajmer Road</b> sabse bada launch pipeline, <b>Tonk</b> airport corridor. Infra: Metro + Delhi-Mumbai Expressway belt, Mahindra SEZ.</p></div>
         <div class="brief-box"><h5>📈 Square Yards — price trend</h5><p>Median <b>₹4,800/sq ft</b> (Sep 2026). Sep 4,850 · Jun 4,950 · Mar 4,900 · Dec 5,000. Central 8,400 · East 5,250 · West 4,750 · South 4,600 · North 4,400.</p></div>
@@ -19065,10 +19176,10 @@ try{
           <button data-pulse-src="https://www.propertywala.com/jaipur_rajasthan/">PropertyWala — Jaipur</button>
         </div>
         <div class="pulse-frame-wrap">
-          <div class="pulse-loader" id="pulseLoader"><b>Market Pulse loading…</b><span>Source site khul rahi hai — agar blank rahe to neeche “Open” use karo (koi sites framing block karti hain).</span><div class="sk sk-line w85" style="height:14px"></div><div class="sk sk-line w60" style="height:10px"></div></div>
-          <iframe id="pulseFrame" src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum + Square Yards + 2bigha + PropertyWala" loading="eager" referrerpolicy="no-referrer-when-downgrade" style="opacity:1;width:100%;height:100%;border:0;display:block"></iframe>
+          <div class="pulse-loader hide" id="pulseLoader"><b>Market Pulse loading…</b><span>Source site khul rahi hai…</span><div class="sk sk-line w85" style="height:14px"></div><div class="sk sk-line w60" style="height:10px"></div></div>
+          <iframe id="pulseFrame" src="about:blank" data-cn-src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum + Square Yards + 2bigha + PropertyWala" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="opacity:1;width:100%;height:100%;border:0;display:block"></iframe>
         </div>
-        <div class="pulse-fallback" id="pulseFallback"><span>Frame blank hai? Source site framing block kar rahi ho sakti hai — </span><a href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">Open in new tab ↗</a><span>· Stats upar BCS summary me hain, data loss nahi.</span></div>
+        <div class="pulse-fallback" id="pulseFallback"><span>Live sites aksar framing block karti hain — Page/main site kholne ke liye: </span><a href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">Open in new tab ↗</a><button type="button" class="btn ghost sm" id="pulseEmbedBtn">Load inside app</button><span>· BCS summary upar hamesha kaam karta hai.</span></div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center">
           <a class="btn ghost sm" href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">↗ Aurum</a>
           <a class="btn ghost sm" href="https://www.squareyards.com/jaipur-real-estate" target="_blank" rel="noopener">↗ Square Yards</a>
@@ -19481,7 +19592,7 @@ try{
   <div class="taskpop-list" id="taskPendingList"></div>
   <div class="tp-sec" id="taskDoneHead" hidden><b>Done aaj</b><span id="taskDoneCount"></span></div>
   <div class="taskpop-list" id="taskDoneList"></div>
-  <div class="tp-foot"><a href="#" id="taskOpenDayplan" style="color:var(--sage-ink);font-weight:800;text-decoration:none">Day Plan kholein ↗</a><span id="taskBadgeTxt"></span></div>
+  <div class="tp-foot"><a href="#view-dayplan" id="taskOpenDayplan" style="color:var(--sage-ink);font-weight:800;text-decoration:none">Day Plan kholein ↗</a><span id="taskBadgeTxt"></span></div>
 </div>
 <div class="toolpop" id="roughPop">
   <div class="tp-head"><b>🗒️ Roughpad</b><span class="tp-head-actions"><span class="snote-count" id="roughCount">0/0</span><button class="xbtn sm" data-toolclose="roughPop" aria-label="Close roughpad">✕</button></span></div>
@@ -23439,7 +23550,12 @@ function normalizeDb(d){
   d.corridors = d.corridors.filter(c => c && c.name).map((c, i) => ({
     id: c.id || uid(),
     name: String(c.name).trim(),
-    color: /^#[0-9a-f]{6}$/i.test(c.color || '') ? c.color : CORRIDOR_COLORS[i % CORRIDOR_COLORS.length]
+    color: /^#[0-9a-f]{6}$/i.test(c.color || '') ? c.color : CORRIDOR_COLORS[i % CORRIDOR_COLORS.length],
+    city: String(c.city || 'Jaipur').slice(0, 80),
+    median: Number(c.median) > 0 ? Number(c.median) : 0,
+    dlcLow: Number(c.dlcLow) > 0 ? Number(c.dlcLow) : 0,
+    dlcHigh: Number(c.dlcHigh) > 0 ? Number(c.dlcHigh) : 0,
+    notes: String(c.notes || '').slice(0, 400)
   }));
   if(!d.corridors.length) d.corridors = DEFAULT_CORRIDORS.map(c => ({ ...c }));
   if(!Array.isArray(d.defaultChecklist) || !d.defaultChecklist.length) d.defaultChecklist = [...DEFAULT_CHECKLIST];
@@ -24334,7 +24450,7 @@ function addCorridor(){
   const base = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'corridor';
   let id = base, n = 2;
   while(db.corridors.some(c => c.id === id)) id = base + '-' + (n++);
-  db.corridors.push({ id, name, color: $('#corrNewColor').value || CORRIDOR_COLORS[0] });
+  db.corridors.push({ id, name, color: $('#corrNewColor').value || CORRIDOR_COLORS[0], city:'Jaipur', median:0, dlcLow:0, dlcHigh:0, notes:'' });
   save();
   renderCorridorManager();
   refreshCorridorControls();
@@ -24678,6 +24794,8 @@ function openConnected(kind, id){
   if(kind === 'client') return openClientProfile(id);
   if(kind === 'resale') return openResaleView(id);
   if(kind === 'booking') return openBooking(id);
+  if(kind === 'lead'){ go('leadgen'); if(window.cnFocusRecord) setTimeout(() => cnFocusRecord('lead', id), 200); return; }
+  if(kind === 'partner'){ go('partners'); if(window.cnFocusRecord) setTimeout(() => cnFocusRecord('partner', id), 200); return; }
 }
 /* ---------- road hub: one-click network for a corridor ---------- */
 let roadHubId = null;
@@ -24890,7 +25008,7 @@ function corridorIntelChart(){
   const cityLine = BCS_RATE_REF.cityMedian;
   const bar = (v, color, label) => `<span class="ci-bar"><i style="width:${Math.max(2, Math.round(v / max * 100))}%;background:${color}"></i><em>${label}</em></span>`;
   return rows.map(r => `
-    <div class="ci-row" data-goto="projects" title="Projects board kholein">
+    <div class="ci-row" data-cn-corridor="${esc(r.id)}" data-goto="projects" title="${esc(r.corridor)} — projects, developers aur leads dekho">
       <span class="ci-name">${esc(r.corridor)}</span>
       <span class="ci-bars">${bar(r.median, '#54779E', '₹' + r.median.toLocaleString('en-IN'))}${bar(Math.round((r.dlcLow + r.dlcHigh) / 2), '#A57B36', 'DLC ₹' + Math.round((r.dlcLow + r.dlcHigh) / 2).toLocaleString('en-IN'))}</span>
       <span class="ci-prem ${r.premium >= 0 ? 'up' : 'down'}">${r.premium > 0 ? '+' : ''}${r.premium}%</span>
@@ -26511,13 +26629,13 @@ function quoteText(){
   bind('#dossierPrint', previewDossierNow);
   bind('#weeklyCopy', () => previewText('BCS Weekly Report', typeof weeklyReport === 'function' ? weeklyReport().text : ''));
   bind('#weeklyShare', () => previewText('BCS Weekly Report', typeof weeklyReport === 'function' ? weeklyReport().text : ''));
-  bind('#weeklyPrint', () => previewText('BCS Weekly Report', typeof weeklyReport === 'function' ? weeklyReport().text : ''));
+  bind('#weeklyPrint', () => { if(window.cnPrintText) cnPrintText('BCS Weekly Report', typeof weeklyReport === 'function' ? weeklyReport().text : ''); else previewText('BCS Weekly Report', typeof weeklyReport === 'function' ? weeklyReport().text : ''); });
   bind('#briefCopy', () => previewText('BCS Daily Brief', briefText()));
   bind('#briefShare', () => previewText('BCS Daily Brief', briefText()));
-  bind('#briefPrint', () => previewText('BCS Daily Brief', briefText()));
+  bind('#briefPrint', () => { if(window.cnPrintText) cnPrintText('BCS Daily Brief', briefText()); else previewText('BCS Daily Brief', briefText()); });
   bind('#offerCopy', () => previewText('BCS Offer Sheet', offerText()));
   bind('#offerShare', () => previewText('BCS Offer Sheet', offerText()));
-  bind('#offerPrint', () => previewText('BCS Offer Sheet', offerText()));
+  bind('#offerPrint', () => { if(window.cnPrintText) cnPrintText('BCS Offer Sheet', offerText()); else previewText('BCS Offer Sheet', offerText()); });
   ['#cbArea','#cbRate','#cbPlc','#cbEdc','#cbOther','#cbDiscount','#cbStampPct','#cbRegPct','#cbBrokerPct'].forEach(id => { const el = $(id); if(el) el.addEventListener('input', () => { calcQuotation(); }); });
   const sel = $('#cbProject'); if(sel) sel.addEventListener('change', () => calcQuotation());
   const gst = $('#cbGstType'); if(gst) gst.addEventListener('change', () => calcQuotation());
@@ -26847,10 +26965,10 @@ function quoteText(){
   $('#crLoad')?.addEventListener('click', loadCircleDefault);
   $('#rtSave')?.addEventListener('click', saveRates);
   $('#rtReset')?.addEventListener('click', resetRates);
-  $('#pulseOpen')?.addEventListener('click', () => window.open('https://www.aurumproptech.in/pulse/properties/jaipur/overview', '_blank', 'noopener'));
-  $('#pulseSyOpen')?.addEventListener('click', () => window.open('https://www.squareyards.com/jaipur-real-estate', '_blank', 'noopener'));
-  $('#pulse2bOpen')?.addEventListener('click', () => window.open('https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77', '_blank', 'noopener'));
-  $('#pulsePwOpen')?.addEventListener('click', () => window.open('https://www.propertywala.com/jaipur_rajasthan/', '_blank', 'noopener'));
+  $('#pulseOpen')?.addEventListener('click', () => cnOpen('https://www.aurumproptech.in/pulse/properties/jaipur/overview'));
+  $('#pulseSyOpen')?.addEventListener('click', () => cnOpen('https://www.squareyards.com/jaipur-real-estate'));
+  $('#pulse2bOpen')?.addEventListener('click', () => cnOpen('https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77'));
+  $('#pulsePwOpen')?.addEventListener('click', () => cnOpen('https://www.propertywala.com/jaipur_rajasthan/'));
   $('#pulseShare')?.addEventListener('click', () => {
     const txt = '*BCS Market Pulse — Jaipur* (Aurum + Square Yards + 2bigha + PropertyWala)\n' + 'Pulse: 969 projects · SY: 1,066 listings · PW: 6 featured Jaipur projects\n' + 'News: JDA ₹575 Cr works · RHB 4 schemes · Ashiana ₹1,000 Cr land plan\n' + 'Aurum: https://www.aurumproptech.in/pulse/properties/jaipur/overview\n' + 'SY: https://www.squareyards.com/jaipur-real-estate\n' + '2bigha: https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.98&lng=75.59&zoom=7.77\n' + 'PW: https://www.propertywala.com/jaipur_rajasthan/\n' + 'News: https://www.propertywala.com/news/\n' + 'BCS · Business City Square · @ajaysharma.bcs';
     if(window.BCSPreview) return window.BCSPreview.open({ title: 'BCS Market Pulse — Jaipur', text: txt, waText: txt, filename: 'bcs-market-pulse-' + todayISO() + '.txt', kind: 'Market pulse · preview' });
@@ -26871,6 +26989,7 @@ function quoteText(){
       setTimeout(function(){ if(loader && !loader.classList.contains('hide')){ f.style.opacity = '1'; } }, 9000);
     }
   }
+  $('#pulseEmbedBtn')?.addEventListener('click', () => { const f = $('#pulseFrame'); bcsPulseLoad((f && f.dataset.cnSrc) || 'https://www.aurumproptech.in/pulse/properties/jaipur/overview'); });
   $$('#pulseTabs button').forEach(b => b.addEventListener('click', () => {
     $$('#pulseTabs button').forEach(x => x.classList.toggle('on', x === b));
     bcsPulseLoad(b.dataset.pulseSrc);
@@ -29713,9 +29832,11 @@ function initAdvisorControls(){
       added++;
     });
     if(!added){ toast('Sab leads pehle se database me hain' + (skipped ? ' (' + skipped + ' duplicate)' : ''), true); return; }
+    const firstId = (db.clients[db.clients.length - 1] || {}).id;
     save(); render();
     closeModal('leadImportModal');
     toast(added + ' client import ho gaye' + (skipped ? ' · ' + skipped + ' duplicate skip' : ''));
+    if(firstId && window.cnFocusRecord) setTimeout(() => cnFocusRecord('client', firstId), 220);
     try{ if(window.__bcsArmMotion) window.__bcsArmMotion(); }catch(e){}
   });
   $('#advisorProfileBody').addEventListener('click', e => {
@@ -30963,7 +31084,7 @@ function renderClientProfile(){
       ${c.phone ? `<a href="tel:${esc(c.phone)}">☏ ${esc(c.phone)}</a>` : ''}
       ${c.email ? `<a href="mailto:${esc(c.email)}">✉ ${esc(c.email)}</a>` : ''}
       <span>${esc(fu.label)}</span>
-      ${adv ? `<a href="#" data-cadvisor="${adv.id}">Advisor: ${esc(adv.name)}</a>` : `<span>No advisor assigned</span>`}
+      ${adv ? `<a href="#view-advisors" data-cadvisor="${adv.id}">Advisor: ${esc(adv.name)}</a>` : `<span>No advisor assigned</span>`}
     </div>
     ${c.xchLeadId ? `<div class="profile-block"><div class="lab">Co-brokering exchange</div><div class="adv-quick"><button type="button" class="btn ghost sm" data-xchleadopen="${c.xchLeadId}">⇄ Open requirement in Exchange</button></div><div class="lock-hint">Ye client exchange requirement se linked hai — matching, stage aur settlement wahin control hote hain.</div></div>` : ''}
     ${customFieldsView('client', c)}
@@ -33810,7 +33931,7 @@ function renderDetail(){
         <div class="map-frame" style="margin-bottom:10px"><iframe src="${mapEmbedUrl(p)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map — ${esc(p.name)}"></iframe></div>
         ${conns.length ? `<div class="ov-conn-rows">${conns.map(cc => `<div class="ov-conn-row"><b>${esc(cc.label)}</b><span>${esc(cc.distance || '—')}</span>${cc.note ? `<i>${esc(cc.note)}</i>` : ''}</div>`).join('')}</div>`
           : `<div class="dempty">Distances add nahi hui — Map tab me landmarks (school, metro, hospital) ki distance bharein.</div>`}
-        ${p.location ? `<p class="mini-note" style="margin-top:8px">📍 ${esc(p.location)}${p.mapUrl ? ` · <a href="${esc(p.mapUrl)}" target="_blank" rel="noopener">saved map link ↗</a>` : ''}</p>` : ''}
+        ${p.location ? `<p class="mini-note" style="margin-top:8px">📍 ${esc(p.location)}${cnSafeUrl(p.mapUrl) ? ` · <a href="${esc(cnSafeUrl(p.mapUrl))}" target="_blank" rel="noopener">saved map link ↗</a>` : ''}</p>` : ''}
       </div>
 
       <!-- 5 · DOCUMENTS & BROCHURE -->
@@ -34655,7 +34776,7 @@ function openSharePreview(){
   w.document.open(); w.document.write(s.html); w.document.close();
   setTimeout(() => { try{ w.focus(); w.print(); }catch(e){} }, 600);
 }
-function openSharePdfPreview(){ openSharePreview(); }
+function openSharePdfPreview(){ if(window.cnExport) return window.cnExport(currentView); return openSharePreview(); }
 
 function openShareHub(kind, id){
   let rec = null, html = '';
@@ -34728,9 +34849,9 @@ function shareDownloadFile(){
 }
 $('#detailShareBtn').addEventListener('click', openProjectShare);
 $('#sharePreviewBtn').addEventListener('click', openSharePreview);
-$('#shareDownloadBtn').addEventListener('click', openSharePreview);
-$('#shareCopyBtn').addEventListener('click', openSharePreview);
-$('#shareFileBtn').addEventListener('click', openSharePreview);
+$('#shareDownloadBtn').addEventListener('click', shareDownloadFile);
+$('#shareCopyBtn').addEventListener('click', () => { try{ copyText(window.__bcsShare ? window.__bcsShare.text : (window.__bcsShare ? window.__bcsShare.html : '')); toast('Share text copy ho gaya'); }catch(e){} });
+$('#shareFileBtn').addEventListener('click', shareDownloadFile);
 $('#detailFeature').addEventListener('click', () => { if(detailId) toggleFeature(detailId); });
 $('#detailCompare').addEventListener('click', () => {
   if(!detailId) return;
@@ -35023,12 +35144,7 @@ function openProject(id, presetCorridor, presetDevId, presetAdvisorIds){
   showOverlay('projectModal');
   setTimeout(() => $('#pName').focus(), 80);
 }
-function normalizeWebUrl(v){
-  v = String(v || '').trim();
-  if(!v) return '';
-  if(!/^https?:\/\//i.test(v)) v = 'https://' + v.replace(/^\/+/, '');
-  return v;
-}
+function normalizeWebUrl(v){ return cnSafeUrl(v); }
 function openDeveloper(id){
   if(!isAdmin()) return toast('Advisor login sirf view ke liye hai — admin se edit karwayein', true);
   editingDeveloper = id ? db.developers.find(d => d.id === id) : null;
@@ -35613,17 +35729,24 @@ async function downloadBackup(){
 }
 $('#exportBtn').addEventListener('click', () => downloadBackup().catch(() => toast('Backup failed — dobara try karein', true)));
 $('#importBtn').addEventListener('click', () => $('#importFile').click());
-$('#exportCsvBtn').addEventListener('click', exportCSV);
+$('#exportCsvBtn').addEventListener('click', () => { exportPendingFormat = 'csv'; openExportSelect(); });
 /* PDF / Excel export buttons — open selection modal first */
 let exportPendingFormat = null;
-function openExportSelect(){ showOverlay('exportSelectModal'); }
+function openExportSelect(){
+  if(exportPendingFormat){
+    exportFmt = exportPendingFormat;
+    const id = exportFmt === 'xlsx' ? 'expFmtXlsx' : exportFmt === 'csv' ? 'expFmtCsv' : 'expFmtPdf';
+    $$('#expFmtPdf, #expFmtXlsx, #expFmtCsv').forEach(b => b.classList.toggle('on', b.id === id));
+  }
+  showOverlay('exportSelectModal');
+}
 $('#exportDevPdfBtn')?.addEventListener('click', () => { exportPendingFormat = 'pdf'; openExportSelect(); });
 $('#exportDevXlsxBtn')?.addEventListener('click', () => { exportPendingFormat = 'xlsx'; openExportSelect(); });
 $('#exportAdvPdfBtn')?.addEventListener('click', () => { exportPendingFormat = 'pdf'; openExportSelect(); });
 $('#exportAdvXlsxBtn')?.addEventListener('click', () => { exportPendingFormat = 'xlsx'; openExportSelect(); });
 $('#exportProjPdfBtn')?.addEventListener('click', () => { exportPendingFormat = 'pdf'; openExportSelect(); });
 $('#exportProjXlsxBtn')?.addEventListener('click', () => { exportPendingFormat = 'xlsx'; openExportSelect(); });
-$('#exportCsvBtn')?.addEventListener('click', () => { exportPendingFormat = 'csv'; openExportSelect(); });
+/* v190: CSV button is bound once above — no duplicate modal open. */
 
 /* Export format selection */
 let exportFmt = exportPendingFormat || 'pdf';
@@ -35681,11 +35804,11 @@ $('#expDoExport').addEventListener('click', () => {
   closeModal('exportSelectModal');
   exportPendingFormat = null;
   if(exportFmt === 'pdf'){
-    // PDF: export first selected entity
-    if(sel.projects){ exportPDF('projects'); }
+    if(typeof window.cnExport === 'function'){ window.cnExport('selected', sel); }
+    else if(sel.projects){ exportPDF('projects'); }
     else if(sel.developers){ exportPDF('developers'); }
     else if(sel.advisors){ exportPDF('advisors'); }
-    else if(sel.clients){ toast('Client PDF export coming soon — use Excel for clients', true); }
+    else { toast('Preview unavailable offline — use Excel', true); }
   } else if(exportFmt === 'xlsx'){
     downloadWorkbook(true, 'BCS-export.xlsx');
   } else if(exportFmt === 'csv'){
@@ -36279,6 +36402,7 @@ function loadJSPDF(){
 }
 async function exportPDF(entity){
   try{
+    await loadJSPDF();
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
     const titleMap = { projects:'Projects', developers:'Developers', advisors:'Advisors' };
@@ -37045,7 +37169,9 @@ function renderLinksMini(){
     .slice(0, 8);
   el.innerHTML = list.length ? `<div class="links-mini">${list.map(l => {
     const cat = linkCatById(l.categoryId);
-    return `<a href="${esc(l.url)}" target="_blank" rel="noopener" title="${esc(l.name)} — ${esc(l.url)}">
+    const safe = cnSafeUrl(l.url);
+    if(!safe) return '';
+    return `<a href="${esc(safe)}" target="_blank" rel="noopener" title="${esc(l.name)} — ${esc(l.url)}">
       <span class="lmi-fav"><span>${esc(linkInitial(l))}</span><img src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(linkWebsite(l.url))}&sz=64" alt="" loading="lazy" onerror="this.remove()"></span>
       <span class="lmi-main"><b>${esc(l.name)}</b><small>${esc(cat ? cat.name : linkWebsite(l.url))}</small></span>
     </a>`;
@@ -37438,7 +37564,7 @@ function renderLinks(){
   $$('#linksBoard [data-linkopen]').forEach(b => b.addEventListener('click', e => {
     e.stopPropagation();
     const l = db.links.find(x => x.id === b.dataset.linkopen);
-    if(l && l.url) window.open(l.url, '_blank', 'noopener');
+    if(l && l.url) cnOpen(l.url);
   }));
 }
 
@@ -37582,8 +37708,9 @@ function saveLink(){
   let url = $('#lkUrl').value.trim();
   if(!name) return toast('Website ka naam required hai', true);
   if(!url) return toast('Web link required hai', true);
-  if(!/^https?:\/\//i.test(url)) url = 'https://' + url;
-  try{ new URL(url); }catch(e){ return toast('Link theek nahi lag raha — https:// se likhein', true); }
+  const safeUrl = cnSafeUrl(url);
+  if(!safeUrl) return toast('Link theek nahi lag raha — https:// se likhein', true);
+  url = safeUrl;
   const categoryId = $('#lkCategory').value;
   if(!categoryId) return toast('Category choose karein', true);
   const payload = { name, url, categoryId, note:$('#lkNote').value.trim(), updatedAt:Date.now() };
@@ -45415,11 +45542,7 @@ const PARTNER_MEET_MODES = [
 ];
 const partnerTypeMeta = id => PARTNER_TYPES.find(x => x.id === id) || PARTNER_TYPES[7];
 const partnerStageMeta = id => PARTNER_STAGES.find(x => x.id === id) || PARTNER_STAGES[0];
-function partnerWebHref(url){
-  const u = String(url || '').trim();
-  if(!u) return '';
-  return /^https?:\/\//i.test(u) ? u : 'https://' + u.replace(/^\/+/, '');
-}
+function partnerWebHref(url){ return cnSafeUrl(url); }
 const partnerWebLabel = url => String(url || '').replace(/^https?:\/\//i, '').replace(/\/+$/, '');
 function partnerTagList(v){
   return String(v || '').split(/[,;\n]/).map(s => s.trim()).filter(Boolean);
@@ -45710,15 +45833,25 @@ function renderPtImportPreview(){
   $('#ptImportCount').textContent = `${picked} selected · ${ptImportRows.length} rows · ${ptImportRows.filter(r => r.dupe).length} already exist`;
   $('#ptImportRows').innerHTML = ptImportRows.map((r, i) => `<tr>
     <td><input type="checkbox" data-ptrow="${i}" ${r.checked ? 'checked' : ''}></td>
-    <td class="pt-name">${esc(r.name)}${r.dupe ? '<span class="pt-dupe">exists</span>' : ''}</td>
+    <td class="pt-name"><span contenteditable="true" spellcheck="false" data-ptedit="name" data-ptrowi="${i}">${esc(r.name)}</span>${r.dupe ? '<span class="pt-dupe">exists</span>' : ''}</td>
     <td>${esc(partnerTypeMeta(r.type).label)}</td>
-    <td>${esc(r.phone || '—')}</td>
-    <td>${esc(r.city || '—')}</td>
-    <td>${esc(r.sources.join(', ') || '—')}</td>
-    <td>${esc(r.segments.join(', ') || '—')}</td>
-    <td>${esc(r.corridors.join(', ') || '—')}</td>
-    <td>${esc(r.dealSummary || '—')}</td>
+    <td contenteditable="true" spellcheck="false" data-ptedit="phone" data-ptrowi="${i}">${esc(r.phone || '—')}</td>
+    <td contenteditable="true" spellcheck="false" data-ptedit="city" data-ptrowi="${i}">${esc(r.city || '—')}</td>
+    <td contenteditable="true" spellcheck="false" data-ptedit="sources" data-ptrowi="${i}">${esc(r.sources.join(', ') || '—')}</td>
+    <td contenteditable="true" spellcheck="false" data-ptedit="segments" data-ptrowi="${i}">${esc(r.segments.join(', ') || '—')}</td>
+    <td contenteditable="true" spellcheck="false" data-ptedit="corridors" data-ptrowi="${i}">${esc(r.corridors.join(', ') || '—')}</td>
+    <td contenteditable="true" spellcheck="false" data-ptedit="dealSummary" data-ptrowi="${i}">${esc(r.dealSummary || '—')}</td>
   </tr>`).join('');
+  if(!wrap.dataset.cnEditBound){
+    wrap.dataset.cnEditBound = '1';
+    wrap.addEventListener('input', e => {
+      const c = e.target.closest('[data-ptedit]'); if(!c) return;
+      const r = ptImportRows[+c.dataset.ptrowi]; if(!r) return;
+      const k = c.dataset.ptedit, t = c.textContent.trim();
+      if(['sources','segments','corridors'].indexOf(k) >= 0) r[k] = partnerTagList(t === '—' ? '' : t);
+      else r[k] = t === '—' ? '' : t;
+    });
+  }
   $$('#ptImportRows [data-ptrow]').forEach(cb => cb.addEventListener('change', () => {
     const r = ptImportRows[+cb.dataset.ptrow];
     if(r) r.checked = cb.checked;
@@ -45774,8 +45907,10 @@ function ptDoImport(){
     });
     added++;
   });
+  const firstId = added ? (db.partners[db.partners.length - 1] || {}).id : '';
   save(); renderPartners();
   closeModal('partnerImportModal');
+  if(firstId && window.cnFocusRecord) setTimeout(() => cnFocusRecord('partner', firstId), 220);
   const skipped = picks.length - added;
   ptImportRows = [];
   $('#ptImportPaste').value = '';
@@ -46947,10 +47082,12 @@ function initReports(){
     reportUpdateNote();
   });
   $('#reportRecord').addEventListener('change', reportUpdateNote);
-  ['#reportPreviewBtn', '#reportPdfBtn', '#reportDownloadBtn', '#reportShareBtn', '#reportCopyBtn'].forEach(sel => {
-    const el = $(sel);
-    if(el) el.addEventListener('click', openReportPreview);
-  });
+  const reportAct = (sel, fn) => { const el = $(sel); if(el) el.addEventListener('click', fn); };
+  reportAct('#reportPreviewBtn', openReportPreview);
+  reportAct('#reportPdfBtn', () => { if(window.cnReportAction) cnReportAction('pdf'); else openReportPreview(); });
+  reportAct('#reportDownloadBtn', () => { if(window.cnReportAction) cnReportAction('download'); else openReportPreview(); });
+  reportAct('#reportShareBtn', () => { if(window.cnReportAction) cnReportAction('share'); else openReportPreview(); });
+  reportAct('#reportCopyBtn', () => { if(window.cnReportAction) cnReportAction('copy'); else openReportPreview(); });
   $('#dlReportBtn').addEventListener('click', () => {
     if(editingDealId) openReportBuilder('pipeline', editingDealId);
     else toast('Pehle sale save karein — phir report banegi', true);
@@ -47440,7 +47577,7 @@ setInterval(function(){
       bar.setAttribute('role', 'status');
       bar.innerHTML = '<div><b>Local file mode</b> — ye <code>file:///Users/mac/BCS/index.html</code> hai. Login, projects, calculators, DLC, photos sab offline chalenge. Live News + Market Pulse + PWA install ke liye live link ya localhost behtar hai (file:// pe browser external fetch / service worker rokta hai, aur data https se alag store hota hai).</div>' +
         '<div class="fn-actions"><a href="https://realestateajaysharma-jp.github.io/bcs-desk/" target="_blank" rel="noopener">Open live site ↗</a>' +
-        '<a class="ghost" href="http://localhost:8000/index.html" target="_blank" rel="noopener">Open via localhost</a>' +
+        '<a class="ghost" href="' + esc(cnSelfUrl()) + '" target="_blank" rel="noopener">Open this site</a>' +
         '<button type="button" class="fn-x" aria-label="Dismiss">✕</button></div>';
       bar.querySelector('.fn-x').addEventListener('click', function(){ bar.remove(); });
       document.body.insertBefore(bar, document.body.firstChild);
@@ -47550,6 +47687,8 @@ document.addEventListener('visibilitychange', () => {
    BCS v84 — Embed Deck: open ANY compatible site inside our app
    ============================================================ */
 function bcsOpenInApp(title, url){
+  url = cnSafeUrl(url);
+  if(!url){ toast('Link khul nahi sakta — URL theek karein', true); return; }
   try{
     const modal = document.getElementById('embedDeckModal');
     const frame = document.getElementById('embedDeckIframe');
@@ -48064,7 +48203,7 @@ function renderIndiaRates(){
       <td style="white-space:nowrap;text-align:right">₹${Math.round(sqmToSqyd(d.low)).toLocaleString('en-IN')} – ₹${Math.round(sqmToSqyd(d.high)).toLocaleString('en-IN')}</td>
     </tr>`).join('');
   wrap.innerHTML = `
-    <div class="panel-head"><h4>India + Jaipur rates — jo har call par quote hote hain</h4><span class="n-badge">${esc(r.verifiedLabel)}</span></div>
+    <div class="panel-head"><h4>India + Jaipur rates — jo har call par quote hote hain</h4><span class="n-badge">${esc(r.verifiedLabel)} · <span data-cn-rate-stamp>${typeof cnRateStamp === 'function' ? esc(cnRateStamp()) : 'checking…'}</span></span></div>
     <p style="font-size:11.5px;color:var(--mut);line-height:1.55;margin-bottom:10px">${esc(r.city)} bullion, fuel aur index rates + Jaipur <b>DLC (circle) rate</b> reference. Gold/silver/BTC/ETH/FX upar LIVE strip me bhi auto-refresh hote hain; yeh panel verified local layer hai — deal ya plot quote karne se pehle yahan se number lo.</p>
     <div class="links-stats">
       <div><div class="k">Petrol · Jaipur</div><div class="v">${ratesRefVal(r.fuel.petrol, 2)}<small style="font-size:9.5px;font-weight:700">/L</small></div><small style="font-size:9.5px;color:var(--mut);display:block;margin-top:2px">Rajasthan · no change</small></div>
@@ -48075,10 +48214,10 @@ function renderIndiaRates(){
       ${r.indices.map(idxStat).join('')}
     </div>
     <div class="brief-grid" style="margin-top:10px">
-      <div class="brief-box"><h5>🪙 Gold — Jaipur retail</h5><p><b>24K</b> ₹13,695/g · <b>₹1,36,950/10g</b> (−₹820)<br><b>22K</b> ₹12,555/g · <b>₹1,25,550/10g</b><br><b>18K</b> ₹10,275/g · <b>₹1,02,750/10g</b><br><small style="color:var(--mut)">GST 3% + making charges alag — MCX Dec futures ₹1.36 lakh/10g</small></p></div>
-      <div class="brief-box"><h5>🥈 Silver — Jaipur retail</h5><p><b>₹190/g</b> · <b>₹1,90,000/kg</b> (−₹5,000)<br>10g ₹1,900 · 100g ₹19,000<br><small style="color:var(--mut)">MCX Dec futures ₹1.76 lakh/kg — retail premium = GST + dealer spread</small></p></div>
-      <div class="brief-box"><h5>💵 FX & crypto</h5><p><b>USD/INR ₹94.24</b> (₹94.04 prev · +0.21%)<br><b>BTC</b> $64,906 ≈ ₹61.2 lakh<br><b>ETH</b> $1,780 ≈ ₹1.68 lakh<br><small style="color:var(--mut)">Crypto market cap $2.2T — BTC −21% month, "extreme fear" sentiment</small></p></div>
-      <div class="brief-box"><h5>🏦 Market mood — sales link</h5><p>Nifty Realty <b>921.25 (−1.39%)</b> — worst sector on 13 Nov; Sensex −0.39%. ${esc(r.fii)}. <b>Buyer script:</b> listed realty correction = builder launch prices abhi bhi Jaipur DLC ke paas — value zone, FII registration to dekh kar turant decide karo.</p></div>
+      <div class="brief-box"><h5>🪙 Gold — Jaipur retail</h5><p><b>24K</b> ${ratesRefVal(r.gold.g24)}/g · <b>${ratesRefVal(r.gold.per10g24)}/10g</b> (${r.gold.chg10g})<br><b>22K</b> ${ratesRefVal(r.gold.g22)}/g · <b>${ratesRefVal(r.gold.per10g22)}/10g</b><br><b>18K</b> ${ratesRefVal(r.gold.g18)}/g · <b>${ratesRefVal(r.gold.per10g18)}/10g</b><br><small style="color:var(--mut)">GST 3% + making charges alag — MCX reference ${ratesRefVal(r.mcx.gold10)}/10g</small></p></div>
+      <div class="brief-box"><h5>🥈 Silver — Jaipur retail</h5><p><b>${ratesRefVal(r.silver.g)}/g</b> · <b>${ratesRefVal(r.silver.kg)}/kg</b> (${r.silver.chgKg})<br>10g ${ratesRefVal(r.silver.g * 10)} · 100g ${ratesRefVal(r.silver.g * 100)}<br><small style="color:var(--mut)">MCX reference ${ratesRefVal(r.mcx.silverKg)}/kg — retail premium = GST + dealer spread</small></p></div>
+      <div class="brief-box"><h5>💵 FX & crypto</h5><p><b>USD/INR ${ratesRefVal(r.fx.usdInr, 2)}</b> (${ratesRefVal(r.fx.prev, 2)} prev · ${r.fx.pct}%)<br><b>BTC</b> $${Number(r.crypto.btcUsd).toLocaleString('en-IN')} ≈ ₹${(r.crypto.btcUsd * r.fx.usdInr / 100000).toFixed(1)} lakh<br><b>ETH</b> $${Number(r.crypto.ethUsd).toLocaleString('en-IN')} ≈ ₹${(r.crypto.ethUsd * r.fx.usdInr / 100000).toFixed(2)} lakh<br><small style="color:var(--mut)">Live spot refresh button/upar LIVE strip se sync hota hai</small></p></div>
+      <div class="brief-box"><h5>🏦 Market mood — sales link</h5><p>Nifty Realty <b>${esc(r.indices[2].val)} (${r.indices[2].pct}%)</b> — ${esc(r.indices[2].note)}; Sensex ${r.indices[1].pct}%. ${esc(r.fii)}. <b>Buyer script:</b> listed realty correction = builder launch prices abhi bhi Jaipur DLC ke paas — value zone, FII registration to dekh kar turant decide karo.</p></div>
       <div class="brief-box"><h5>📐 Jaipur DLC (circle) rate</h5><p>Stamp duty <b>${esc(r.stamp.duty)}</b> + registration <b>${esc(r.stamp.reg)}</b> — ${esc(r.stamp.note)}. Colony ka exact rate e-Panjiyan (District Level Committee) se verify karein.</p></div>
       <div class="brief-box"><h5>🔗 Sources</h5><p>${esc(r.sources)}</p></div>
     </div>
@@ -48139,18 +48278,18 @@ function renderLiveMarket(snapshot){
       delta: mktDeltaChip(null, 'unchanged'), sub:'Rajasthan pump · ' + BCS_RATES_REF.verifiedLabel },
     { label:'Diesel · Jaipur', val: ratesRefVal(BCS_RATES_REF.fuel.diesel, 2),
       delta: mktDeltaChip(null, 'unchanged'), sub:'Rajasthan pump · ' + BCS_RATES_REF.verifiedLabel },
-    { label:'Nifty 50', val: '25,291.10',
-      delta: mktDeltaChip(0.58, 'NSE close'), sub:'NSE · 16 Nov close' },
-    { label:'Sensex', val: '82,104.79',
-      delta: mktDeltaChip(0.63, 'BSE close'), sub:'BSE · 16 Nov close' },
-    { label:'Nifty Realty', val: '908.90',
-      delta: mktDeltaChip(-1.34, 'laggard'), sub:'realty sector · 16 Nov' },
-    { label:'Gold · Jaipur 24K', val: '₹1,36,950',
-      delta: mktDeltaChip(-0.60, 'per 10g'), sub:'Jaipur retail · ' + BCS_RATES_REF.verifiedLabel },
-    { label:'Silver · Jaipur', val: '₹1,90,000',
-      delta: mktDeltaChip(-2.56, 'per kg'), sub:'Jaipur retail · ' + BCS_RATES_REF.verifiedLabel },
-    { label:'CNG · Jaipur', val: '₹101.50',
-      delta: mktDeltaChip(null, 'unchanged'), sub:'Rajasthan · ' + BCS_RATES_REF.verifiedLabel }
+    { label:'Nifty 50', val: BCS_RATES_REF.indices[0].val,
+      delta: mktDeltaChip(BCS_RATES_REF.indices[0].pct, 'NSE close'), sub:'reference · ' + BCS_RATES_REF.indices[0].note },
+    { label:'Sensex', val: BCS_RATES_REF.indices[1].val,
+      delta: mktDeltaChip(BCS_RATES_REF.indices[1].pct, 'BSE close'), sub:'reference · ' + BCS_RATES_REF.indices[1].note },
+    { label:'Nifty Realty', val: BCS_RATES_REF.indices[2].val,
+      delta: mktDeltaChip(BCS_RATES_REF.indices[2].pct, 'laggard'), sub:'reference · ' + BCS_RATES_REF.indices[2].note },
+    { label:'Gold · Jaipur 24K', val: ratesRefVal(BCS_RATES_REF.gold.per10g24),
+      delta: mktDeltaChip(null, 'per 10g'), sub:'Jaipur retail reference · ' + BCS_RATES_REF.verifiedLabel },
+    { label:'Silver · Jaipur', val: ratesRefVal(BCS_RATES_REF.silver.kg),
+      delta: mktDeltaChip(null, 'per kg'), sub:'Jaipur retail reference · ' + BCS_RATES_REF.verifiedLabel },
+    { label:'CNG · Jaipur', val: ratesRefVal(BCS_RATES_REF.fuel.cng, 2),
+      delta: mktDeltaChip(null, 'unchanged'), sub:'Rajasthan reference · ' + BCS_RATES_REF.verifiedLabel }
   ];
   row.innerHTML = cards.map(function(c){
     return '<div class="lm-card' + staleCls + '" title="Change since last refresh">' +
@@ -48756,9 +48895,9 @@ try{
       const box = document.createElement('div');
       box.className = 'nav-urls';
       box.innerHTML = '<div class="nu-head">Permanent links <span>Mac · iPhone · Live</span></div>'
-        + '<a href="http://192.168.1.62:8000/" target="_blank" rel="noopener">Mac + iPhone (Wi-Fi)<small>http://192.168.1.62:8000</small></a>'
-        + '<a href="https://realestateajaysharma-jp.github.io/bcs-desk/" target="_blank" rel="noopener">Live PWA (anywhere)<small>realestateajaysharma-jp.github.io/bcs-desk</small></a>'
-        + '<a href="http://localhost:8000/" target="_blank" rel="noopener">This Mac<small>http://localhost:8000</small></a>';
+        + '<a href="' + esc(cnSelfUrl()) + '" target="_blank" rel="noopener">This device<small>' + esc(location.host || 'this device') + '</small></a>'
+        + '<a href="https://realestateajaysharma-jp.github.io/bcs-desk/" target="_blank" rel="noopener">Live PWA (anywhere)<small>github.io/bcs-desk</small></a>'
+        + (cnLanUrl() ? '<a href="' + esc(cnLanUrl()) + '" target="_blank" rel="noopener">On Wi-Fi (same network)<small>' + esc(cnLanUrl()) + '</small></a>' : '');
       panel.appendChild(box);
     }
   }catch(e){}
@@ -48840,7 +48979,7 @@ try{
           + '<div class="pf-actions">'
           + '<button type="button" id="pfDevice" title="Toggle phone / desktop width">▭ Phone view</button>'
           + '<button type="button" id="pfReload" title="Reload">↻ Reload</button>'
-          + '<a id="pfOpen" href="#" target="_blank" rel="noopener" title="Open site in new tab">↗ Open</a>'
+          + '<a id="pfOpen" href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener" title="Open site in new tab">↗ Open</a>'
           + '<button type="button" class="pf-x" id="pfClose" title="Close (Esc)" aria-label="Close fullscreen">✕</button>'
           + '</div></div>'
           + '<div class="pf-body"><iframe id="pfFrame" title="Market Pulse full screen" referrerpolicy="no-referrer-when-downgrade" allow="fullscreen"></iframe></div>'
@@ -49079,8 +49218,13 @@ try{
     /* ---------- engine URL ---------- */
     function engineUrl(engine, q){
       var u = (engine && engine.url) || DEFAULT_ENGINES[0].url;
-      if(u.indexOf('{q}') === -1) return u;
-      return u.replace(/\{q\}/g, encodeURIComponent(q));
+      var q2 = encodeURIComponent(q || '');
+      if(!/^https?:\/\//i.test(u)){
+        if(/^[a-z][a-z0-9+.-]*:/i.test(u)) u = DEFAULT_ENGINES[0].url;
+        else u = 'https://' + u.replace(/^\/+/, '');
+      }
+      var out = u.indexOf('{q}') === -1 ? u : u.replace(/\{q\}/g, q2);
+      return cnSafeUrl(out) || DEFAULT_ENGINES[0].url.replace(/\{q\}/g, q2);
     }
     function openEngineTab(engine, q){
       var url = engineUrl(engine, q);
@@ -50991,7 +51135,7 @@ try{ xchEnsure(db); }catch(e){ console.warn('[BCS exchange]', e); }
       <div class="em-tools">
         <button type="button" class="em-btn" data-em-act="reload" title="Reload site" aria-label="Reload site">↻</button>
         <button type="button" class="em-btn" data-em-act="full" title="Fullscreen" aria-label="Fullscreen">⛶</button>
-        <a class="em-btn em-open" id="embedDeckOpen" href="https://google.com" target="_blank" rel="noopener noreferrer" title="Open original in a new tab">↗ <span>Open</span></a>
+        <a class="em-btn em-open" id="embedDeckOpen" href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener noreferrer" title="Open original in a new tab">↗ <span>Open</span></a>
         <button type="button" class="xbtn" data-close="embedDeckModal" aria-label="Close">✕</button>
       </div>
     </div>
@@ -56096,6 +56240,9 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     Document:'ops', Invoice:'ops', Broadcast:'ops', ROI:'ops', 'Client page':'ops', Backup:'ops'
   };
   const SITE_LOG = [
+    { v:'v190', date:'2026-11-18', page:'app', kind:'fix',
+      title:'Connected Desk — safe links for every website, preview-first PDF on all 27 pages, editable parse previews, today-stamped rates, clickable heatmap and corridor details everywhere',
+      detail:'Universal http(s) validation + popup-blocker fallback; dead local/LAN links replaced; rate badges stamped on refresh and contradictory numbers unified; PDF preview per view; parse→edit→navigate; connected-record drawer and corridor filters.' },
     { v:'v189', date:'2026-11-18', page:'dashboard', kind:'update',
       title:'Vivid layer — ambient depth, living charts, sprint mode and creative tools',
       body:'Ambient gradient mesh and view-based colour moods, 7-day sparklines and 30/35/35 donut, illustrated empty states, consistent line icons, skyline parallax and scroll reveal, inline edits with Undo toasts, iPad swipe actions, full-screen call sprint, shortcut sheet, draggable KPIs, natural-language quick actions, badge shelf, 6-month call heatmap, next-best-action strip, deal-split toy, voice notes, e-sign pad, seasonal themes and blur-up galleries.' },
@@ -57013,16 +57160,26 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   function paintImportPreview(){
     const box = q('#lgImportPreview'); if(!box) return;
     const btn = q('#lgDoImport');
+    if(!box.dataset.cnEditBound){
+      box.dataset.cnEditBound = '1';
+      box.addEventListener('input', e => {
+        const c = e.target.closest('[data-lgedit]'); if(!c) return;
+        const r = importRows[+c.dataset.lgrow]; if(!r) return;
+        const k = c.dataset.lgedit, t = c.textContent.trim();
+        if(k === 'budgetMax'){ const n = Number(t.replace(/[^\d.]/g, '')); if(n > 0) r.budgetMax = /cr/i.test(t) ? n*10000000 : /l/i.test(t) ? n*100000 : n; }
+        else r[k] = t;
+      });
+    }
     if(!importRows.length){
       box.innerHTML = '';
       if(btn){ btn.disabled = true; btn.textContent = 'Import 0 leads'; }
       return;
     }
-    const rows = importRows.slice(0, 40).map(r => `<tr>
-      <td>${esc(r.name)}</td><td>${esc(r.phone)}</td><td>${esc(typeMeta(r.type).label)}</td>
-      <td>${esc(r.budgetMax ? short(r.budgetMax) : '—')}</td><td>${esc(r.locality || '—')}</td>
-      <td>${esc(r.profession || '—')}</td><td>${esc(r.source)}</td></tr>`).join('');
-    box.innerHTML = `<div class="lg-count" style="margin:0 0 6px">${importRows.length} valid lead${importRows.length === 1 ? '' : 's'} detected${importRows.length > 40 ? ' · first 40 shown' : ''}</div>
+    const rows = importRows.slice(0, 40).map((r, i) => `<tr>
+      <td contenteditable="true" spellcheck="false" data-lgedit="name" data-lgrow="${i}">${esc(r.name)}</td><td contenteditable="true" spellcheck="false" data-lgedit="phone" data-lgrow="${i}">${esc(r.phone)}</td><td>${esc(typeMeta(r.type).label)}</td>
+      <td contenteditable="true" spellcheck="false" data-lgedit="budgetMax" data-lgrow="${i}">${esc(r.budgetMax ? short(r.budgetMax) : '—')}</td><td contenteditable="true" spellcheck="false" data-lgedit="locality" data-lgrow="${i}">${esc(r.locality || '—')}</td>
+      <td contenteditable="true" spellcheck="false" data-lgedit="profession" data-lgrow="${i}">${esc(r.profession || '—')}</td><td contenteditable="true" spellcheck="false" data-lgedit="source" data-lgrow="${i}">${esc(r.source)}</td></tr>`).join('');
+    box.innerHTML = `<div class="lg-count" style="margin:0 0 6px">${importRows.length} valid lead${importRows.length === 1 ? '' : 's'} detected${importRows.length > 40 ? ' · first 40 shown' : ''} · tap a cell to edit before import</div>
       <div class="lg-pv-wrap"><table><thead><tr><th>Name</th><th>Phone</th><th>Type</th><th>Budget</th><th>Locality</th><th>Profession</th><th>Source</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     if(btn){ btn.disabled = false; btn.textContent = 'Import ' + importRows.length + ' lead' + (importRows.length === 1 ? '' : 's'); }
   }
@@ -57034,11 +57191,13 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       if(LG().leads.some(l => phone10(l.phone) === phone10(r.phone))){ dup++; return; }
       LG().leads.unshift(r); added++;
     });
+    const firstId = added ? (LG().leads[0] || {}).id : '';
     if(added) save();
     importRows = [];
     const ta = q('#lgImportText'); if(ta) ta.value = '';
     paint();
     toast(added + ' lead' + (added === 1 ? '' : 's') + ' imported' + (dup ? ' · ' + dup + ' duplicate skipped' : ''), !added);
+    if(firstId && window.cnFocusRecord) setTimeout(() => cnFocusRecord('lead', firstId), 220);
   }
 
   function csvCell(v){
@@ -60129,10 +60288,12 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       const d=new Date(start); d.setDate(start.getDate()+i); const k=dkey(d);
       const n=logs().filter(x=>x.date===k).length;
       const lvl=n===0?0:n<2?1:n<4?2:n<7?3:4;
-      cells+='<span class="vd-cell'+(lvl?' l'+lvl:'')+'" title="'+k+' · '+n+' calls"></span>';
+      cells+='<span class="vd-cell'+(lvl?' l'+lvl:'')+'" data-vd-date="'+k+'" role="button" tabindex="0" title="'+k+' · '+n+' calls — click for details"></span>';
     }
     return '<div class="vd-panel" id="vdHeat"><div class="vd-title">🟩 Call heatmap — 6 months</div>'+
-      '<div class="vd-sub">Har chhota square ek din hai. Range badate raho — streak yahin se dikhti hai.</div>'+cells+'</div>';
+      '<div class="vd-sub">Har chhota square ek din hai. Click karo — us din ke calls, leads aur projects dekho.</div>'+
+      '<div class="vd-heat">'+cells+'</div>'+
+      '<div class="vd-heat-legend">Less '+[0,1,2,3,4].map(l=>'<i class="vd-cell l'+l+'"></i>').join('')+' More</div></div>';
   }
   function badgesHTML(){
     return '<div class="vd-panel" id="vdBadges"><div class="vd-title">🏅 Badge shelf</div>'+
@@ -60583,6 +60744,445 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   try{ window.addEventListener('bcs:render',render); }catch(e){}
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',()=>{render();iconGlow();kpiDrag();});
   else { render(); iconGlow(); kpiDrag(); }
+})();
+</script>
+<script>
+/* ============================================================
+   BCS CONNECTED DESK LAYER (v190)
+   Universal link safety · reliable opens · fresh rate stamping ·
+   per-page PDF preview/export · parse→preview→navigate ·
+   cross-page drilldowns · clickable heatmap · corridor editor
+   ============================================================ */
+(function(){
+  'use strict';
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.prototype.slice.call(document.querySelectorAll(s));
+  const fEsc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const pad = n => String(n).padStart(2, '0');
+  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const stamp = () => { const d = new Date(); return pad(d.getDate()) + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear() + ' · ' + pad(d.getHours()) + ':' + pad(d.getMinutes()); };
+  const dkey = d => { const x = d || new Date(); return x.getFullYear() + '-' + pad(x.getMonth() + 1) + '-' + pad(x.getDate()); };
+  const isPrivateHost = h => /^(localhost|127\.|192\.168\.|10\.|172\.(1[6-9]|2\d|3[01])\.)/i.test(String(h || ''));
+
+  /* ---------- 1. universal URL safety + dependable tab opening ---------- */
+  function cnSafeUrl(v){
+    let s = String(v == null ? '' : v).trim().replace(/^<+/, '').replace(/>+$/, '').trim();
+    if(!s || /\s/.test(s)) return '';
+    if(/^[a-z][a-z0-9+.-]*:/i.test(s)){
+      if(!/^https?:/i.test(s)) return '';
+    } else {
+      if(/^\/\//.test(s)) s = 'https:' + s;
+      else s = 'https://' + s.replace(/^\/+/, '');
+    }
+    try{
+      const u = new URL(s);
+      if(!/^https?:$/i.test(u.protocol) || !u.hostname) return '';
+      return u.href;
+    }catch(e){ return ''; }
+  }
+  function cnOpen(url){
+    const u = cnSafeUrl(url);
+    if(!u){ toast('Link khul nahi sakta — https:// wala sahi URL daalein', true); return false; }
+    let w = null;
+    try{ w = window.open(u, '_blank', 'noopener,noreferrer'); }catch(e){}
+    if(!w){
+      try{
+        const a = document.createElement('a');
+        a.href = u; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        a.style.display = 'none'; document.body.appendChild(a); a.click(); a.remove();
+        return true;
+      }catch(e){}
+      try{ window.location.href = u; return true; }catch(e){}
+      toast('Browser ne popup block kiya — link ko allow karein', true);
+      return false;
+    }
+    return true;
+  }
+  function cnSelfUrl(){ try{ return location.href.split('#')[0]; }catch(e){ return ''; } }
+  function cnLanUrl(){
+    try{ return isPrivateHost(location.hostname) ? location.protocol + '//' + location.host + location.pathname : ''; }catch(e){ return ''; }
+  }
+  window.cnSafeUrl = cnSafeUrl;
+  window.cnOpen = cnOpen;
+  window.cnSelfUrl = cnSelfUrl;
+  window.cnLanUrl = cnLanUrl;
+
+  /* ---------- 2. today-dated rates: stamp, sync, single refresh ---------- */
+  function cnRateStamp(){ return stamp(); }
+  window.cnRateStamp = cnRateStamp;
+  function cnStampAll(){
+    const s = stamp();
+    $$('[data-cn-rate-stamp]').forEach(el => { el.textContent = s; el.setAttribute('title', 'Last checked ' + s); });
+  }
+  function cnSyncLiveRates(){
+    try{
+      const snap = mktLoadSnapshot();
+      if(!snap || !snap.at || typeof BCS_RATES_REF === 'undefined') return 0;
+      const r = BCS_RATES_REF;
+      let n = 0;
+      if(typeof snap.usdInr === 'number' && snap.usdInr > 0){
+        const prev = r.fx && r.fx.usdInr > 0 ? r.fx.usdInr : snap.usdInr;
+        r.fx.prev = prev;
+        r.fx.usdInr = snap.usdInr;
+        r.fx.pct = Number((((snap.usdInr - prev) / prev) * 100).toFixed(2));
+        n++;
+      }
+      if(typeof snap.goldUsd === 'number' && snap.goldUsd > 0 && r.gold){
+        const g10 = snap.goldUsd * (snap.usdInr || r.fx.usdInr) * (10 / 31.1035) * 1.15;
+        if(isFinite(g10) && g10 > 0){
+          const g = g10 / 10;
+          r.gold.g24 = Math.round(g); r.gold.per10g24 = Math.round(g10);
+          r.gold.g22 = Math.round(g * 0.917); r.gold.per10g22 = Math.round(g10 * 0.917);
+          r.gold.g18 = Math.round(g * 0.75); r.gold.per10g18 = Math.round(g10 * 0.75);
+          n++;
+        }
+      }
+      if(typeof snap.silverUsd === 'number' && snap.silverUsd > 0 && r.silver){
+        const kg = snap.silverUsd * (snap.usdInr || r.fx.usdInr) * (1000 / 31.1035) * 1.23;
+        if(isFinite(kg) && kg > 0){ r.silver.kg = Math.round(kg); r.silver.g = Math.round(kg / 1000); n++; }
+      }
+      r.checkedAt = stamp();
+      if(typeof BCS_RATE_REF !== 'undefined') BCS_RATE_REF.asOn = new Date().toLocaleDateString('en-IN', { month:'short', year:'numeric' });
+      return n;
+    }catch(e){ return 0; }
+  }
+  /* keep the many automatic triggers from firing the same fetch repeatedly */
+  (function guardMarket(){
+    const orig = window.bcsRefreshMarket;
+    if(typeof orig !== 'function') return;
+    let inflight = null, lastSilent = 0;
+    window.bcsRefreshMarket = function(silent){
+      if(inflight) return inflight;
+      if(silent && Date.now() - lastSilent < 45000){
+        try{ return Promise.resolve(mktLoadSnapshot()); }catch(e){ return Promise.resolve(null); }
+      }
+      if(!silent) lastSilent = Date.now();
+      inflight = Promise.resolve(orig.apply(this, arguments)).then(v => { cnSyncLiveRates(); return v; })
+        .catch(e => { try{ cnSyncLiveRates(); }catch(_){} throw e; })
+        .finally(() => { inflight = null; });
+      return inflight;
+    };
+  })();
+  async function cnRefreshRates(opts){
+    const o = opts || {};
+    try{ await window.bcsRefreshMarket(!!o.silent); }catch(e){}
+    try{ cnSyncLiveRates(); }catch(e){}
+    try{ if(typeof renderLiveMarket === 'function') renderLiveMarket(mktLoadSnapshot()); }catch(e){}
+    try{ if(typeof renderIndiaRates === 'function') renderIndiaRates(); }catch(e){}
+    try{ if(typeof renderDataStatus === 'function') renderDataStatus(); }catch(e){}
+    try{ if(typeof applyRatesToCalcs === 'function') applyRatesToCalcs(); }catch(e){}
+    try{ if(typeof renderCorridorIntel === 'function') renderCorridorIntel(); }catch(e){}
+    cnStampAll();
+    if(!o.silent) toast('Rates checked ' + stamp());
+    window.dispatchEvent && window.dispatchEvent(new CustomEvent('cn:rates', { detail:{ at:Date.now() } }));
+    return true;
+  }
+  window.cnRefreshRates = cnRefreshRates;
+  window.cnSyncLiveRates = cnSyncLiveRates;
+  window.cnStampAll = cnStampAll;
+
+  function wireRates(){
+    const bind = (id, fn) => { const el = $(id); if(el && !el.dataset.cnBound){ el.dataset.cnBound = '1'; el.addEventListener('click', fn); } };
+    bind('#dsRefreshAll', () => cnRefreshRates());
+    bind('#liveMarketRefresh', () => cnRefreshRates());
+    bind('#topStripRefresh', () => cnRefreshRates());
+    bind('#mktRefreshBtn', () => cnRefreshRates());
+    bind('#tickerRefresh', () => cnRefreshRates({ silent:true }));
+    let day = dkey();
+    function rollover(){
+      const now = dkey();
+      if(now !== day){ day = now; cnRefreshRates({ silent:true }); }
+      cnStampAll();
+    }
+    setInterval(rollover, 60000);
+    document.addEventListener('visibilitychange', () => { if(!document.hidden){ rollover(); cnRefreshRates({ silent:true }); } });
+    window.addEventListener('online', () => cnRefreshRates({ silent:true }));
+    window.addEventListener('bcs:render', () => setTimeout(() => { cnStampAll(); cnDecorateViews(); }, 30));
+    setTimeout(() => { cnSyncLiveRates(); cnStampAll(); cnDecorateViews(); }, 600);
+  }
+
+  /* ---------- 3. preview-first PDF export for every page ---------- */
+  const VIEW_TITLES = {
+    dashboard:'Dashboard snapshot', advisory:'Advisory desk', projects:'Projects register',
+    developers:'Developer directory', clients:'Client register', leadgen:'Lead pipeline',
+    dayplan:'Daily plan', pulse:'Jaipur market pulse', news:'News desk', calc:'Calculations',
+    inventory:'Inventory', pipeline:'Deal pipeline', exchange:'Site exchange', advisors:'Advisor directory',
+    partners:'Channel partners', finance:'Finance & invoices', resale:'Resale listings',
+    analytics:'Analytics', ops:'Operations', tax:'Tax desk', terminology:'Terminology',
+    links:'Website directory', templates:'Message templates', podcasts:'Podcast desk',
+    health:'Data health', social:'Social desk', sheets:'Sheets & calculations'
+  };
+  const PI = (v) => { try{ return (db && db[v]) || []; }catch(e){ return []; } };
+  const leadRows = () => { try{ return (db.leadgen && db.leadgen.leads) || []; }catch(e){ return []; } };
+  const pipelineRows = () => PI('pipeline');
+  const simpleRows = (arr, cols) => (Array.isArray(arr) ? arr : []).map(r => cols.map(([k,label]) => [label, r && r[k] != null && r[k] !== '' ? r[k] : '—']));
+  const SECTIONS = {
+    dashboard: () => [
+      { h:'desk snapshot', cols:['Metric','Value'], rows:[['Developers',PI('developers').length],['Projects',PI('projects').length],['Clients',PI('clients').length],['Advisors',PI('advisors').length],['Leads',leadRows().length],['Deals',pipelineRows().length]] },
+      { h:'today', cols:['Note','Value'], rows:[['Checked',stamp()],['Deal split','30% originating · 35% executing · 35% BCS']] }
+    ],
+    projects: () => [{ h:'projects', cols:['Field','Value'], rows:simpleRows(PI('projects'), [['name','Project'],['location','Location'],['corridor','Corridor'],['developer','Developer'],['price','Price'],['status','Status'],['rera','RERA']]) }],
+    developers: () => [{ h:'developers', cols:['Field','Value'], rows:simpleRows(PI('developers'), [['name','Developer'],['ownerName','Owner'],['phone','Phone'],['email','Email'],['city','City'],['notes','Notes']]) }],
+    clients: () => [{ h:'clients', cols:['Field','Value'], rows:simpleRows(PI('clients'), [['name','Client'],['phone','Phone'],['email','Email'],['budget','Budget'],['requirement','Requirement'],['status','Status']]) }],
+    advisors: () => [{ h:'advisors', cols:['Field','Value'], rows:simpleRows(PI('advisors'), [['name','Advisor'],['phone','Phone'],['email','Email'],['corridor','Corridor'],['status','Status']]) }],
+    leadgen: () => [{ h:'leads', cols:['Field','Value'], rows:simpleRows(leadRows(), [['name','Lead'],['phone','Phone'],['budget','Budget'],['locality','Locality'],['source','Source'],['status','Status'],['stage','Stage']]) }],
+    pipeline: () => [{ h:'deals', cols:['Field','Value'], rows:simpleRows(pipelineRows(), [['client','Client'],['project','Project'],['stage','Stage'],['amount','Amount'],['status','Status'],['next','Next step']]) }],
+    partners: () => [{ h:'partners', cols:['Field','Value'], rows:simpleRows(PI('partners'), [['name','Partner'],['type','Type'],['phone','Phone'],['company','Company'],['status','Status']]) }],
+    resale: () => [{ h:'resale', cols:['Field','Value'], rows:simpleRows(PI('resale'), [['title','Listing'],['project','Project'],['price','Price'],['area','Area'],['status','Status']]) }],
+    links: () => [{ h:'saved websites', cols:['Field','Value'], rows:simpleRows(PI('links'), [['name','Website'],['url','URL'],['note','Note']]) }],
+    news: () => [{ h:'news', cols:['Field','Value'], rows:simpleRows(PI('news'), [['title','Headline'],['source','Source'],['date','Date'],['url','Link']]) }],
+    templates: () => [{ h:'templates', cols:['Field','Value'], rows:simpleRows(PI('templates'), [['name','Template'],['body','Message']]) }],
+    taxonomy: () => [{ h:'terms', cols:['Field','Value'], rows:simpleRows(PI('terminology'), [['term','Term'],['meaning','Meaning']]) }],
+    ops: () => [
+      { h:'activity', cols:['Field','Value'], rows:simpleRows((PI('ops')||{}).activity, [['label','Action'],['actor','By'],['kind','Type']]) },
+      { h:'invoices', cols:['Field','Value'], rows:simpleRows((PI('ops')||{}).invoices, [['no','Invoice'],['amount','Amount'],['status','Status'],['due','Due']]) }
+    ],
+    finance: () => [{ h:'invoices', cols:['Field','Value'], rows:simpleRows((PI('ops')||{}).invoices, [['no','Invoice'],['amount','Amount'],['status','Status'],['due','Due']]) }],
+    health: () => [{ h:'data status', cols:['Check','Value'], rows:[['Developers',PI('developers').length],['Projects',PI('projects').length],['Clients',PI('clients').length],['Advisors',PI('advisors').length],['Leads',leadRows().length],['Checked',stamp()]] }],
+    tax: () => [{ h:'rate reference', cols:['Field','Value'], rows:[['USD / INR',BCS_RATES_REF.fx.usdInr],['Gold 24K / 10g',BCS_RATES_REF.gold.per10g24],['Nifty Realty',BCS_RATES_REF.indices[2].val],['Stamp duty',BCS_RATES_REF.stamp.duty],['Checked',stamp()]] }]
+  };
+  SECTIONS.terminology = SECTIONS.taxonomy;
+  SECTIONS.analytics = SECTIONS.dashboard;
+  SECTIONS.pulse = SECTIONS.tax;
+  function cnSections(view, sel){
+    if(sel && typeof sel === 'object'){
+      const rows = [];
+      Object.keys(sel).forEach(k => {
+        const map = { projects:PI('projects'), developers:PI('developers'), advisors:PI('advisors'), clients:PI('clients') };
+        const arr = map[k] || [];
+        if(sel[k] && arr.length) rows.push([k, arr.length + ' records']);
+      });
+      if(rows.length) return [{ h:'selected exports', cols:['Type','Count'], rows:rows }];
+    }
+    try{ if(typeof SECTIONS[view] === 'function') return SECTIONS[view](); }catch(e){}
+    const el = $('#view-' + view);
+    const text = el ? (el.innerText || '').replace(/\n{2,}/g,'\n').trim().slice(0, 3000) : '';
+    return [{ h:'page contents', cols:['Detail','Value'], rows:[['Page',VIEW_TITLES[view] || view],['Checked',stamp()],['Data','See the table below'],['Notes',text || 'No records on this page yet.']] }];
+  }
+  function cnExportHTML(title, sections){
+    const body = sections.map(s => {
+      const head = (s.cols || ['Field','Value']).map(c => '<th>' + fEsc(c) + '</th>').join('');
+      const rows = (s.rows || []).map(r => '<tr>' + r.map(c => '<td>' + fEsc(String(c)) + '</td>').join('') + '</tr>').join('');
+      return '<h2>' + fEsc(s.h || 'Records') + '</h2>' + (rows ? '<table><thead><tr>' + head + '</tr></thead><tbody>' + rows + '</tbody></table>' : '<p>No records yet.</p>');
+    }).join('');
+    return '<!doctype html><html lang="en"><head><meta charset="utf-8"><title>' + fEsc(title) + '</title>' +
+      '<style>body{font:12px/1.5 -apple-system,Segoe UI,Arial,sans-serif;color:#1B271E;background:#fff;padding:24px;max-width:1000px;margin:auto}' +
+      'h1{font:700 22px/1.2 Georgia,serif;margin:0 0 2px}h2{font:700 12px/1.2 sans-serif;text-transform:uppercase;letter-spacing:.5px;margin:18px 0 6px;color:#3B4A3F}' +
+      'p{color:#5B675F;margin:0 0 10px}table{width:100%;border-collapse:collapse;font-size:10.5px}th,td{border:1px solid #D8DFD9;padding:6px 7px;text-align:left;vertical-align:top;word-break:break-word}' +
+      'th{background:#EDF2EE;color:#1B271E}.foot{margin-top:18px;border-top:1px solid #D8DFD9;padding-top:8px;font-size:9.5px;color:#66706A}</style></head><body>' +
+      '<h1>BCS Desk · ' + fEsc(title) + '</h1><p>Business City Square · Jaipur · Prepared ' + fEsc(stamp()) + ' · 30% Originating / 35% Executing / 35% BCS</p>' + body +
+      '<div class="foot">Preview first — print or save as PDF from the preview. Values are from this device\'s BCS Desk data. Verify legal/tax numbers before quoting to a client.</div></body></html>';
+  }
+  function cnExport(view, sel){
+    const v = view || currentView;
+    const title = VIEW_TITLES[v] || (v === 'selected' ? 'Selected exports' : 'BCS Desk page');
+    const sections = cnSections(v === 'selected' ? 'dashboard' : v, sel);
+    const html = cnExportHTML(title, sections);
+    const text = '*' + title + '* · BCS Desk\n' + sections.map(s => s.h + ': ' + s.rows.length + ' rows').join('\n') + '\n30% Originating / 35% Executing / 35% BCS';
+    if(window.BCSPreview) return window.BCSPreview.open({ title:title, html:html, text:text, waText:text, kind:'PDF · preview · print / save as PDF', filename:'BCS-' + String(v).replace(/[^a-z0-9]+/gi,'-') + '-' + dkey() + '.html' });
+    toast('Preview pane unavailable — use Print from this page', true);
+    return false;
+  }
+  window.cnExport = cnExport;
+  window.cnPrintText = function(title, text){
+    const html = cnExportHTML(title, [{ h:'message', cols:['Text'], rows:[[String(text || '').replace(/\n/g,' | ')]] }]);
+    if(window.BCSPreview) return window.BCSPreview.open({ title:title, html:html, text:text, waText:text, kind:'Print-ready · preview', filename:'BCS-' + String(title).replace(/[^a-z0-9]+/gi,'-') + '-' + dkey() + '.html' });
+    toast('Preview pane unavailable', true);
+  };
+  window.cnReportAction = function(action){
+    let text = '', html = '', name = '';
+    try{ text = reportTextSummary(); html = buildReportPage(reportState.kind, reportRecs(), reportState.sel); name = reportFileName(); }catch(e){}
+    if(action === 'copy'){
+      try{ copyText(text); toast('Report summary copied'); }catch(e){ toast('Copy failed', true); }
+      return;
+    }
+    if(action === 'download'){
+      try{
+        const blob = new Blob([html], { type:'text/html;charset=utf-8' });
+        const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name || ('BCS-report-' + dkey() + '.html'); a.click(); URL.revokeObjectURL(a.href); toast('Report downloaded');
+      }catch(e){ toast('Download failed', true); }
+      return;
+    }
+    if(window.BCSPreview) return window.BCSPreview.open({ title:'BCS report', html:html, text:text, waText:text, filename:name || ('BCS-report-' + dkey() + '.html'), kind:action === 'pdf' ? 'PDF · preview · print / save as PDF' : 'Report · preview' });
+    toast('Preview unavailable', true);
+  };
+  /* ---------- 4. connected records: focus, relations, drilldowns ---------- */
+  const cnState = { corridor:'', view:'' };
+  const VIEW_OF = { project:'projects', developer:'developers', advisor:'advisors', client:'clients', lead:'leadgen', partner:'partners', deal:'pipeline', resale:'resale', booking:'pipeline' };
+  function cnFocusRecord(kind, id){
+    if(!kind || !id) return;
+    const view = VIEW_OF[kind] || currentView;
+    if(view && currentView !== view) go(view);
+    setTimeout(() => {
+      let el = null;
+      try{ el = document.querySelector('[data-cn-id="' + kind + ':' + id + '"]'); }catch(e){}
+      if(!el){
+        const attrs = ['data-lead-id','data-client-id','data-partner-id','data-advisor-id','data-project-id','data-developer-id','data-id'];
+        for(const a of attrs){ try{ el = document.querySelector('[' + a + '="' + id + '"]'); }catch(e){} if(el) break; }
+      }
+      if(el){
+        el.scrollIntoView({ block:'center', behavior:'smooth' });
+        el.classList.add('cn-flash-target');
+        setTimeout(() => el.classList.remove('cn-flash-target'), 1400);
+      } else {
+        try{
+          const rec = kind === 'client' ? (PI('clients')||[]).find(x=>x.id===id)
+            : kind === 'developer' ? (PI('developers')||[]).find(x=>x.id===id)
+            : kind === 'advisor' ? (PI('advisors')||[]).find(x=>x.id===id)
+            : kind === 'project' ? (PI('projects')||[]).find(x=>x.id===id)
+            : kind === 'partner' ? (PI('partners')||[]).find(x=>x.id===id) : null;
+          if(kind === 'client' && typeof openClientProfile === 'function') openClientProfile(id);
+          else if(kind === 'developer' && typeof openDeveloperProfile === 'function') openDeveloperProfile(id);
+          else if(kind === 'advisor' && typeof openAdvisorProfile === 'function') openAdvisorProfile(id);
+          else if(kind === 'project' && typeof openDetail === 'function') openDetail(id);
+          else if(kind === 'partner' && rec && typeof openPartner === 'function') openPartner(rec);
+          else if(rec) toast((rec.name || rec.title || 'Record') + ' — ' + (VIEW_TITLES[view] || view) + ' me dekhein');
+        }catch(e){}
+      }
+    }, 240);
+  }
+  window.cnFocusRecord = cnFocusRecord;
+
+  function cnCorridorName(id){
+    const c = (PI('corridors')||[]).find(x => x.id === id || x.name === id);
+    return c ? c.name : String(id || '');
+  }
+  function cnCorridorRecords(id){
+    const name = cnCorridorName(id).toLowerCase();
+    const hit = v => String(v || '').toLowerCase().indexOf(name) >= 0 && name.length > 1;
+    const projs = PI('projects').filter(p => (p.corridor === id) || hit(p.corridor) || hit(p.location) || hit(p.name));
+    const devs = PI('developers').filter(d => projs.some(p => (p.developerId && p.developerId === d.id) || hit(p.developer) || hit(d.notes)));
+    const clients = PI('clients').filter(c => (c.corridors||[]).indexOf(id) >= 0 || (c.corridors||[]).some(hit) || hit(c.requirement));
+    const advisors = PI('advisors').filter(a => (a.corridors||[]).indexOf(id) >= 0 || (a.corridors||[]).some(hit));
+    const leads = leadRows().filter(l => hit(l.locality) || hit(l.source) || (l.corridor === id));
+    const deals = pipelineRows().filter(x => hit(x.project) || hit(x.corridor || ''));
+    return { projs, devs, clients, advisors, leads, deals };
+  }
+  function cnRelList(title, arr, kind, fields){
+    const items = arr.slice(0, 12).map(r => {
+      const label = fields.map(f => r[f]).filter(Boolean).join(' · ') || (r.name || r.title || 'Record');
+      return '<div class="cn-relation" data-cn-link="' + kind + ':' + fEsc(r.id || '') + '"><b>' + fEsc(label) + '</b><span>' + fEsc(kind) + ' · open details ↗</span></div>';
+    }).join('');
+    return '<h3 class="cn-title">' + fEsc(title) + ' <span class="cn-sub">(' + arr.length + ')</span></h3>' + (items || '<p class="cn-sub">Koi record nahi — is road par data add karein.</p>');
+  }
+  function cnDrawer(title, body){
+    let d = $('#cnDrawer');
+    if(!d){
+      d = document.createElement('aside'); d.id = 'cnDrawer'; d.className = 'cn-drawer';
+      d.innerHTML = '<div class="cn-drawer-head"><b></b><button type="button" class="btn ghost sm">✕ Close</button></div><div class="cn-drawer-body"></div>';
+      document.body.appendChild(d);
+      d.querySelector('button').addEventListener('click', () => d.classList.remove('on'));
+    }
+    d.querySelector('b').textContent = title;
+    d.querySelector('.cn-drawer-body').innerHTML = body;
+    d.classList.add('on');
+    return d;
+  }
+  window.cnConnectedDrawer = function(id){
+    const c = (PI('corridors')||[]).find(x => x.id === id);
+    const r = cnCorridorRecords(id);
+    const details = c ? '<div class="cn-panel"><h3 class="cn-title">Corridor details — ' + fEsc(c.name) + '</h3><div class="cn-grid">' +
+      '<label class="cn-sub">Median ₹/sq ft<input class="cn-detail" data-cn-cid="' + fEsc(c.id) + '" data-cn-field="median" type="number" value="' + fEsc(c.median || 0) + '"></label>' +
+      '<label class="cn-sub">DLC low ₹/sq m<input class="cn-detail" data-cn-cid="' + fEsc(c.id) + '" data-cn-field="dlcLow" type="number" value="' + fEsc(c.dlcLow || 0) + '"></label>' +
+      '<label class="cn-sub">DLC high ₹/sq m<input class="cn-detail" data-cn-cid="' + fEsc(c.id) + '" data-cn-field="dlcHigh" type="number" value="' + fEsc(c.dlcHigh || 0) + '"></label>' +
+      '<label class="cn-sub">Notes<input class="cn-detail" data-cn-cid="' + fEsc(c.id) + '" data-cn-field="notes" value="' + fEsc(c.notes || '') + '"></label></div>' +
+      '<div class="cn-row" style="margin-top:8px"><button type="button" class="cn-chip primary" data-cn-addcorr="1">+ Manage corridors</button><button type="button" class="cn-chip" data-cn-filter="' + fEsc(c.id) + '">Filter this road</button></div></div>' : '';
+    cnDrawer('Connected · ' + cnCorridorName(id), details +
+      '<div class="cn-panel">' + cnRelList('Projects', r.projs, 'project', ['name','location','price']) + cnRelList('Developers', r.devs, 'developer', ['name','ownerName']) + cnRelList('Clients', r.clients, 'client', ['name','phone']) + cnRelList('Advisors', r.advisors, 'advisor', ['name','phone']) + cnRelList('Leads', r.leads, 'lead', ['name','phone','locality']) + cnRelList('Deals', r.deals, 'deal', ['client','project','stage']) + '</div>');
+  };
+  window.cnHeatDrawer = function(date){
+    const logs = ((db.flow && db.flow.callLogs) || []).filter(x => x.date === date);
+    const ids = logs.map(x => x.leadId).filter(Boolean);
+    const leads = leadRows().filter(l => ids.indexOf(l.id) >= 0 || logs.some(x => x.leadName && String(l.name || '').toLowerCase() === String(x.leadName).toLowerCase()));
+    const result = leads.length ? cnCorridorRecords(leads[0].corridor || leads[0].locality || '') : cnCorridorRecords(cnState.corridor || 'agra');
+    const rows = logs.map(x => '<div class="cn-relation"><b>' + fEsc(x.leadName || 'Call') + ' · ' + fEsc(x.outcome || 'logged') + '</b><span>' + fEsc(x.note || '') + ' · ' + fEsc(x.advisorId || '') + '</span></div>').join('') || '<p class="cn-sub">Is din koi call log nahi. Call Sprint se call log karein.</p>';
+    cnDrawer('Calls · ' + date, '<div class="cn-panel"><h3 class="cn-title">' + logs.length + ' calls</h3>' + rows + '</div>' +
+      '<div class="cn-panel">' + cnRelList('Leads called', leads, 'lead', ['name','phone']) + cnRelList('Projects on this road', result.projs, 'project', ['name','location']) + cnRelList('Developers', result.devs, 'developer', ['name']) + '</div>');
+  };
+
+  /* ---------- 5. corridor filter + details on every panel ---------- */
+  function cnCorridorOptions(){
+    return '<option value="">All corridors</option>' + (PI('corridors')||[]).map(c => '<option value="' + fEsc(c.id) + '"' + (cnState.corridor === c.id ? ' selected' : '') + '>' + fEsc(c.name) + '</option>').join('');
+  }
+  function cnApplyCorridorFilter(view){
+    const v = $('#view-' + view); if(!v) return;
+    const name = cnCorridorName(cnState.corridor).toLowerCase();
+    const sels = 'tr,.card,.ci-row,.lg-card,.client-card,.dev-card,.proj-card,.deal-row,.row,.mini-list>div,.ov-conn-row,.news-card,.link-card';
+    let shown = 0;
+    if(!cnState.corridor){ $$(sels, v).forEach(el => { el.style.removeProperty('display'); delete el.dataset.cnHidden; }); return; }
+    $$(sels, v).forEach(el => {
+      if(el.closest('.cn-viewbar') || el.querySelector('.cn-viewbar')) return;
+      const txt = String(el.textContent || '').toLowerCase();
+      const ids = Object.keys(el.dataset || {}).filter(k => /corridor|road/i.test(k)).map(k => el.dataset[k]);
+      const ok = (name.length > 1 && txt.indexOf(name) >= 0) || ids.some(x => String(x) === cnState.corridor);
+      if(ok){ el.style.removeProperty('display'); delete el.dataset.cnHidden; shown++; }
+      else { el.style.setProperty('display','none','important'); el.dataset.cnHidden = '1'; }
+    });
+    const note = v.querySelector('.cn-filter-note');
+    if(note) note.textContent = shown ? (shown + ' rows match ' + cnCorridorName(cnState.corridor)) : ('No rows match ' + cnCorridorName(cnState.corridor) + ' — add details on this road');
+  }
+  function cnDecorateViews(){
+    $$('.view').forEach(v => {
+      const view = v.id.replace(/^view-/, '');
+      let bar = v.querySelector('.cn-viewbar');
+      if(!bar){
+        bar = document.createElement('div');
+        bar.className = 'cn-viewbar';
+        v.insertBefore(bar, v.firstChild);
+      }
+      if(bar.dataset.cnReady === view) { cnApplyCorridorFilter(view); return; }
+      bar.dataset.cnReady = view;
+      bar.innerHTML = '<span class="cn-filter-note"></span>' +
+        '<select class="cn-corr" aria-label="Filter this page by corridor">' + cnCorridorOptions() + '</select>' +
+        '<button type="button" class="cn-chip" data-cn-addcorr="1">+ Corridor</button>' +
+        '<button type="button" class="cn-chip" data-cn-connected="1">Connected</button>' +
+        '<button type="button" class="cn-pdf" title="Preview + PDF export for this page">PDF</button>';
+      bar.querySelector('.cn-pdf').addEventListener('click', e => { e.stopPropagation(); cnExport(view); });
+      bar.querySelector('.cn-corr').addEventListener('change', e => { cnState.corridor = e.target.value; cnApplyCorridorFilter(view); });
+      cnApplyCorridorFilter(view);
+    });
+  }
+  window.cnDecorateViews = cnDecorateViews;
+  document.addEventListener('click', e => {
+    const h = e.target.closest('[data-vd-date]');
+    if(h){ e.stopPropagation(); cnHeatDrawer(h.dataset.vdDate); return; }
+    const l = e.target.closest('[data-cn-link]');
+    if(l){ e.stopPropagation(); const p = l.dataset.cnLink.split(':'); cnFocusRecord(p[0], p[1]); return; }
+    const f = e.target.closest('[data-cn-filter]');
+    if(f){ cnState.corridor = f.dataset.cnFilter; cnDecorateViews(); if(window.cnConnectedDrawer) cnConnectedDrawer(cnState.corridor); return; }
+    const a = e.target.closest('[data-cn-addcorr]');
+    if(a){ e.stopPropagation(); try{ openCorridorManager(); }catch(err){ toast('Corridor manager unavailable', true); } return; }
+    const c = e.target.closest('[data-cn-corridor]');
+    if(c){ cnState.corridor = c.dataset.cnCorridor; cnDecorateViews(); return; }
+    const rel = e.target.closest('[data-cn-connected]');
+    if(rel){ e.stopPropagation(); if(cnState.corridor) cnConnectedDrawer(cnState.corridor); else cnConnectedDrawer((PI('corridors')[0]||{}).id || 'agra'); return; }
+  });
+  document.addEventListener('keydown', e => {
+    const h = e.target.closest && e.target.closest('[data-vd-date]');
+    if(h && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); cnHeatDrawer(h.dataset.vdDate); }
+  });
+  document.addEventListener('change', e => {
+    const d = e.target.closest && e.target.closest('.cn-detail');
+    if(!d) return;
+    const c = (PI('corridors')||[]).find(x => x.id === d.dataset.cnCid); if(!c) return;
+    const k = d.dataset.cnField;
+    c[k] = k === 'notes' ? String(d.value || '').slice(0,400) : Math.max(0, Number(d.value) || 0);
+    try{ save(); toast('Corridor details saved'); }catch(err){}
+  });
+
+  /* ---------- boot shared helpers ---------- */
+  window.BCS_CONNECT = {
+    safeUrl: cnSafeUrl, open: cnOpen, stamp: cnRateStamp,
+    refreshRates: cnRefreshRates, stampAll: cnStampAll,
+    exportPage: cnExport
+  };
+  function boot(){
+    wireRates();
+    cnStampAll();
+    cnDecorateViews();
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
 })();
 </script>
 </body>
