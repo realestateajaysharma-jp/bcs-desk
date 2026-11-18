@@ -1995,7 +1995,7 @@ body.locked>header,body.locked>main,body.locked>.storage,body.locked>.mob-add,bo
 .link-cat-head{display:flex;align-items:center;gap:8px;padding:12px 13px;border-bottom:1px solid var(--line2);cursor:grab}
 .link-cat-head:active{cursor:grabbing}
 .link-cat-dot{width:10px;height:10px;border-radius:50%;flex:none;box-shadow:0 0 0 3px rgba(0,0,0,.03)}
-.link-cat-head h4{font-size:12.5px;font-weight:800;color:var(--ink);letter-spacing:.1px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.link-cat-head h3{font-size:12.5px;font-weight:800;color:var(--ink);letter-spacing:.1px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .link-cat-count{font-size:9px;font-weight:800;color:var(--mut);background:#F1F4F2;border-radius:999px;padding:2px 7px;flex:none}
 .link-cat-actions{margin-left:auto;display:flex;gap:2px;flex:none}
 .link-cat-actions button{width:24px;height:24px;border-radius:6px;color:var(--mut);font-size:11px;display:flex;align-items:center;justify-content:center;transition:.15s}
@@ -2094,7 +2094,7 @@ nav button.on{background:linear-gradient(135deg,#fff 0%,#FFF7E7 100%);box-shadow
 .searchbox:focus-within{border-color:#B9A6E8;box-shadow:var(--ring-shadow);background:#fff}
 .qa-trigger{width:auto;min-width:38px;padding:0 9px;display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#fff,#FFF8EA);border-color:#EADFC8;color:var(--ink2)}
 .qa-trigger:hover{border-color:#D9B97B;box-shadow:0 8px 18px -16px rgba(165,123,54,.8)}
-.qa-trigger kbd{font:700 10px/1 'DM Sans',sans-serif;background:#F3E8D3;color:#8F6A2B;border-radius:5px;padding:4px 5px;letter-spacing:.4px}
+.qa-trigger kbd{font:700 10px/1 'DM Sans',sans-serif;background:#F3E8D3;color:#5F4715;border-radius:5px;padding:4px 5px;letter-spacing:.4px}
 .intro{position:relative;isolation:isolate;overflow:hidden;padding:26px 28px;border-radius:26px;border:1px solid rgba(255,255,255,.86);background:linear-gradient(120deg,rgba(255,255,255,.94),rgba(255,255,255,.58));box-shadow:0 24px 60px -42px rgba(46,45,32,.55)}
 .intro:before{content:"";position:absolute;right:-100px;top:-130px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(231,184,75,.35),rgba(223,106,81,.15) 48%,transparent 68%);z-index:-1}
 .intro:after{content:"";position:absolute;left:-130px;bottom:-190px;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(123,103,198,.25),rgba(47,143,122,.12) 48%,transparent 68%);z-index:-1}
@@ -2226,6 +2226,7 @@ nav button.on{background:linear-gradient(135deg,#fff 0%,#FFF7E7 100%);box-shadow
 .quick-add-dock .plus{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--sun),var(--coral));color:#2E2414;font-size:14px;font-weight:800;line-height:1}
 .quick-add-dock kbd{font:700 8px/1 'DM Sans',sans-serif;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);border-radius:4px;padding:2px 3px;color:#F2E8CF}
 body.locked>.quick-add-dock{visibility:hidden}
+.quick-add-dock{display:none !important}
 .qa-layer{position:fixed;inset:0;z-index:300;display:none;align-items:flex-start;justify-content:center;padding:9vh 18px 24px;background:rgba(24,30,26,.45);backdrop-filter:blur(9px)}
 .qa-layer.on{display:flex;animation:qafade .18s ease}
 @keyframes qafade{from{opacity:0}to{opacity:1}}
@@ -14514,6 +14515,7 @@ body[data-theme="dark"] .backup-chip.bad{color:#F0B8A8 !important;background:rgb
 .bell-badge{position:absolute;top:-3px;right:-3px;min-width:16px;height:16px;padding:0 4px;border-radius:999px;
   background:#B4452B;color:#fff;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center;
   box-shadow:0 2px 8px -2px rgba(180,69,43,.6);animation:bcsChipPulse 2.2s ease-in-out infinite}
+.bell-badge[hidden]{display:none !important}
 #reminderBellBtn{position:relative}
 .bcs-reminder-pop{position:absolute;top:calc(100% + 10px);right:0;width:300px;max-width:calc(100vw - 24px);z-index:200;
   background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 60px -20px rgba(0,0,0,.35);
@@ -14578,6 +14580,7 @@ button,a,[role="button"]{-webkit-tap-highlight-color:transparent}
   gap:6px !important;padding:0 9px !important;
 }
 .icon-btn.qa-trigger kbd{flex:none}
+body[data-theme="dark"] .qa-trigger kbd{background:#3B3224;color:#F0D9A8}
 /* hero focus pill: single clean line, ellipsis instead of hard crop */
 .hero-focus>span:last-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
@@ -16233,7 +16236,7 @@ body[data-theme="dark"] .lg-fetch-status.err{color:#F0AE97}
   .lg-tabs button:last-child{grid-column:1 / -1}
 }
 
-/* ============ v185 · GROWTH WORKSPACE + GOOGLE FUNNELS ============ */
+/* ============ v186 · GROWTH WORKSPACE + GOOGLE FUNNELS ============ */
 .bw-panel{border:1px solid var(--line);border-radius:16px;background:color-mix(in oklab,var(--panel) 88%,transparent);padding:14px;margin:14px 0 18px;box-shadow:var(--shadow)}
 .bw-panel>.bw-head{display:flex;flex-wrap:wrap;align-items:flex-start;gap:10px;margin-bottom:12px}
 .bw-head-txt{flex:1;min-width:210px}
@@ -16334,6 +16337,7 @@ body[data-theme="dark"] .bw-chip.warn{background:rgba(196,154,62,.22);color:#E8C
 body[data-theme="dark"] .bw-chip.hot{background:rgba(164,69,43,.24);color:#F0AE97}
 body[data-theme="dark"] .bw-note.bad{border-left-color:#F0AE97}
 body[data-theme="dark"] .gf-proj.t-upcoming{border-left-color:#E8C97C}
+body[data-theme="dark"] .gf-proj.t-completed{border-left-color:#B9DCC4}
 @media(max-width:640px){
   .bw-panel,.gf-panel{padding:11px;border-radius:13px}
   .bw-grid,.bw-grid.two,.gf-grid{grid-template-columns:1fr}
@@ -16991,7 +16995,7 @@ try{
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 0 4 4m-4-4L8 7"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
         <span class="lbl">Restore</span>
       </button>
-      <button class="btn primary" id="addProjectTop">
+      <button class="btn primary" id="addProjectTop" aria-label="Add project">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
         <span class="lbl">Add project</span>
       </button>
@@ -17010,9 +17014,9 @@ try{
       <button class="icon-btn backup-chip" id="backupChipBtn" title="Backup status — click for options" aria-label="Backup status">
         <span class="bchip-ico" id="backupChipIco">☁</span><span class="bchip-txt" id="backupChipTxt">—</span>
       </button>
-      <button class="icon-btn" id="reminderBellBtn" title="Aaj ke reminders — follow-ups & birthdays" aria-label="Reminders">
-        <span style="font-size:14px;line-height:1">🔔</span>
-        <span class="bell-badge" id="reminderBadge" hidden>0</span>
+      <button class="icon-btn" id="reminderBellBtn" title="Aaj ke reminders — follow-ups & birthdays" aria-label="Aaj ke reminders — follow-ups & birthdays">
+        <span style="font-size:14px;line-height:1" aria-hidden="true">🔔</span>
+        <span class="bell-badge" id="reminderBadge" hidden aria-hidden="true">0</span>
       </button>
       <button class="icon-btn" id="lockBtn" title="Lock desk — Ajay Sharma" aria-label="Lock desk">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
@@ -19491,7 +19495,7 @@ try{
     <path fill="url(#gemgrad)" d="M19 15c.4 2 1 2.9 2.2 3.2l1.1.3-1.1.3C20 19.1 19.4 20 19 22c-.4-2-1-2.9-2.2-3.2l-1.1-.3 1.1-.3C18 17.9 18.6 17 19 15z" opacity=".85"/>
   </svg>
 </button>
-<div class="gemini-panel" id="geminiPanel" hidden aria-hidden="true" role="complementary" aria-label="Gemini Pro assistant">
+<div class="gemini-panel" id="geminiPanel" hidden role="complementary" aria-label="Gemini Pro assistant">
   <div class="gemini-head">
     <span class="gemini-spark">✦</span>
     <div style="min-width:0;flex:1"><b style="font-size:13.5px;color:#F2F0E5">Gemini Pro</b>
@@ -37203,7 +37207,7 @@ function renderLinks(){
     return `<section class="link-cat" data-cat="${cat.id}">
       <div class="link-cat-head" draggable="true" data-dragcat="${cat.id}" title="Drag to reorder category">
         <span class="link-cat-dot" style="background:${esc(cat.color || '#8B9188')}"></span>
-        <h4>${esc(cat.name)}</h4>
+        <h3>${esc(cat.name)}</h3>
         <span class="link-cat-count">${list.length}</span>
         <div class="link-cat-actions">
           <button type="button" data-linkcatedit="${cat.id}" title="Edit category">✎</button>
@@ -55888,6 +55892,9 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     Document:'ops', Invoice:'ops', Broadcast:'ops', ROI:'ops', 'Client page':'ops', Backup:'ops'
   };
   const SITE_LOG = [
+    { v:'v186', date:'2026-11-18', page:'projects', kind:'update',
+      title:'Polish pass — cleaner funnels, prompts and daily checks',
+      detail:'Correct project price units in funnel conversion, date-aware daily checklists, focus-safe Gemini prompt preview, preserved paste text, read-only brand notes, single-pass bulk add, clearer labels, larger touch targets and stronger dark-mode contrast.' },
     { v:'v185', date:'2026-11-18', page:'social', kind:'new',
       title:'Brand manager — Ajay Sharma / BCS Jaipur',
       detail:'Trust positioning, client psychology, platform playbooks, Instagram handling, daily must-do targets, video ideas, learning curve aur roz ka plan.' },
@@ -55898,8 +55905,11 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       title:'Area-wise Google project funnel',
       detail:'Upcoming / ongoing / completed tags, corridor aur developer wise separation, search, paste capture aur seedhe existing project panel me add/edit.' },
     { v:'v185', date:'2026-11-18', page:'advisors', kind:'new',
-      title:'Advisor + property dealer Google funnels',
-      detail:'Jaipur area-wise Google Maps/web links, paste se detail capture, duplicate-free drafts aur seedhe Advisors / Developers panel me conversion.' },
+      title:'Advisor Google funnel',
+      detail:'Jaipur area-wise Google Maps/web links, paste se detail capture, duplicate-free drafts aur seedhe Advisors panel me conversion.' },
+    { v:'v185', date:'2026-11-18', page:'developers', kind:'new',
+      title:'Property dealer Google funnel',
+      detail:'Jaipur area-wise Google Maps/web links, paste se detail capture, duplicate-free drafts aur seedhe Developers panel me conversion.' },
     { v:'v185', date:'2026-11-18', page:'links', kind:'new',
       title:'Realty network hub — India brokers, dealers & channels',
       detail:'Bina personal signup ke public Telegram, WhatsApp, LinkedIn, Facebook aur website discovery. Saved networks, paste capture aur preview-first active requirements, projects aur client intros.' },
@@ -57381,7 +57391,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
 
 <script>
 /* =========================================================
-   BCS GROWTH WORKSPACE (v185)
+   BCS GROWTH WORKSPACE (v186)
    ---------------------------------------------------------
    1 Google funnels — area-wise advisor / dealer / project
      discovery links + paste capture, converted into the
@@ -57450,6 +57460,8 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       url: String(c.url).slice(0,800), strategy: String(c.strategy || '').slice(0,500)
     }));
     if(typeof g.brand.notes !== 'string') g.brand.notes = '';
+    if(!g.brand.form || typeof g.brand.form !== 'object' || Array.isArray(g.brand.form)) g.brand.form = { name:'', url:'', strategy:'', platform:'instagram' };
+    if(g.brand.checkDate !== todayKey()){ g.brand.checks.daily = {}; g.brand.checkDate = todayKey(); }
     if(!g.network || typeof g.network !== 'object' || Array.isArray(g.network)) g.network = {};
     if(!Array.isArray(g.network.contacts)) g.network.contacts = [];
     g.network.contacts = g.network.contacts.filter(c => c && c.name && /^https?:\/\//i.test(String(c.url||''))).slice(0,120).map(c => ({
@@ -57460,6 +57472,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       createdAt: +c.createdAt || Date.now()
     }));
     if(!g.network.checks || typeof g.network.checks !== 'object' || Array.isArray(g.network.checks)) g.network.checks = {};
+    if(g.network.checkDate !== todayKey()){ g.network.checks = {}; g.network.checkDate = todayKey(); }
     return g;
   }
   function persist(){ save(); }
@@ -57505,54 +57518,64 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     m.className = 'bw-modal'; m.id = 'bwPromptModal';
     m.innerHTML = `<div class="bw-modal-card" role="dialog" aria-modal="true" aria-label="Gemini prompt preview">
       <div class="bw-modal-head"><b id="bwPromptTitle">Gemini prompt</b><button type="button" class="bw-btn sm" data-bw-modal="close" aria-label="Close">✕ Close</button></div>
-      <div class="bw-modal-body"><div class="bw-note good">Ye exact prompt Gemini me bheja jayega. Pehle padhein, edit kar sakte hain. BCS brand voice aur 30/35/35 model prompt me already hai.</div><textarea id="bwPromptText" spellcheck="false"></textarea></div>
+      <div class="bw-modal-body"><div class="bw-note good">Ye exact prompt Gemini me bheja jayega. Pehle padhein, edit kar sakte hain. BCS brand voice aur 30/35/35 model prompt me already hai.</div><textarea id="bwPromptText" spellcheck="false" aria-label="Exact prompt text"></textarea></div>
       <div class="bw-modal-foot">
         <button type="button" class="bw-btn primary" data-bw-modal="gemini">🤖 Copy + Open Gemini</button>
         <button type="button" class="bw-btn" data-bw-modal="copy">📋 Copy prompt</button>
         <button type="button" class="bw-btn" data-bw-modal="download">⬇ Download .txt</button>
       </div></div>`;
     document.body.appendChild(m);
+    m.addEventListener('click', ev => { if(ev.target === m) closePrompt(); });
     promptModal = m;
     return m;
   }
+  let promptReturnFocus = null;
   function openPrompt(title, text){
     const m = ensurePromptModal();
+    promptReturnFocus = document.activeElement;
     q('#bwPromptTitle').textContent = title || 'Gemini prompt';
     q('#bwPromptText').value = text || '';
     m.classList.add('on');
+    document.body.dataset.bcsModalOverflow = document.body.style.overflow || '';
     document.body.style.overflow = 'hidden';
+    setTimeout(() => { const ta = q('#bwPromptText'); if(ta){ ta.focus(); ta.select(); } }, 0);
   }
   function closePrompt(){
     if(!promptModal) return;
     promptModal.classList.remove('on');
-    document.body.style.overflow = '';
+    document.body.style.overflow = document.body.dataset.bcsModalOverflow || '';
+    delete document.body.dataset.bcsModalOverflow;
+    if(promptReturnFocus && promptReturnFocus.focus){ try{ promptReturnFocus.focus(); }catch(e){} }
+    promptReturnFocus = null;
   }
 
   /* ---------------- Google funnel link builders ---------------- */
   const gmap = query => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(query);
   const gweb = query => 'https://www.google.com/search?q=' + encodeURIComponent(query);
+  const jaipurArea = a => (a && a !== 'Jaipur') ? 'Jaipur ' + a : 'Jaipur';
+  const areaSlug = a => (a && a !== 'Jaipur') ? '-' + encodeURIComponent(a.toLowerCase().replace(/\s+/g,'-')) : '';
   const LINK_SETS = {
     advisors: area => [
-      ['🗺 Google Maps', gmap('real estate advisor Jaipur ' + area)],
-      ['🔎 Google web', gweb('"real estate advisor" Jaipur ' + area + ' contact')],
-      ['🔎 Google web 2', gweb('property consultant Jaipur ' + area + ' phone')],
-      ['🤝 Referral query', gweb('site:linkedin.com/in real estate advisor Jaipur ' + area)]
+      ['🗺 Google Maps', gmap('real estate advisor ' + jaipurArea(area))],
+      ['🔎 Google web', gweb('"real estate advisor" ' + jaipurArea(area) + ' contact')],
+      ['🔎 Google web 2', gweb('property consultant ' + jaipurArea(area) + ' phone')],
+      ['🤝 Referral query', gweb('site:linkedin.com/in real estate advisor ' + jaipurArea(area))]
     ],
     dealers: area => [
-      ['🗺 Google Maps', gmap('property dealer Jaipur ' + area)],
-      ['🔎 Google web', gweb('"property dealer" Jaipur ' + area + ' contact number')],
-      ['🔎 Google web 2', gweb('real estate agent Jaipur ' + area + ' broker')],
-      ['🏢 Builder search', gmap('builder office Jaipur ' + area)]
+      ['🗺 Google Maps', gmap('property dealer ' + jaipurArea(area))],
+      ['🔎 Google web', gweb('"property dealer" ' + jaipurArea(area) + ' contact number')],
+      ['🔎 Google web 2', gweb('real estate agent ' + jaipurArea(area) + ' broker')],
+      ['🏢 Builder search', gmap('builder office ' + jaipurArea(area))]
     ],
     projects: (area, status) => {
       const s = status === 'upcoming' ? 'upcoming new launch' : status === 'completed' ? 'completed ready possession' : status === 'ongoing' ? 'ongoing under construction' : '';
       return [
-        ['🗺 Google Maps', gmap('residential project ' + area + ' Jaipur ' + s)],
-        ['🔎 Google web', gweb(s + ' projects Jaipur ' + area + ' RERA')],
-        ['🏠 99acres', 'https://www.99acres.com/search/property/buy/jaipur-' + encodeURIComponent(area.toLowerCase().replace(/\s+/g,'-'))],
+        ['🗺 Google Maps', gmap('residential project ' + jaipurArea(area) + ' ' + s)],
+        ['🔎 Google web', gweb(s + ' projects ' + jaipurArea(area) + ' RERA')],
+        ['🏠 99acres', 'https://www.99acres.com/search/property/buy/jaipur' + areaSlug(area)],
         ['🏠 MagicBricks', 'https://www.magicbricks.com/property-for-sale/real-estate-jaipur'],
-        ['🏠 Housing.com', 'https://housing.com/in/buy/jaipur/' + encodeURIComponent(area.toLowerCase().replace(/\s+/g,'-'))],
-        ['📑 RERA check', gweb('RERA Jaipur registered projects ' + area)]
+        ['🏠 Housing.com', 'https://housing.com/in/buy/jaipur' + areaSlug(area)],
+        ['📑 RERA check', gweb('RERA registered projects ' + jaipurArea(area))]
       ];
     }
   };
@@ -57572,6 +57595,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     if(/ongoing|under construction|in progress|construction/.test(t)) return 'Ongoing';
     return '';
   }
+  const priceLakh = v => v ? Math.round(+v / 1e5) : null;
   function parsePrice(text){
     const m = String(text||'').match(/(?:₹|rs\.?|inr)?\s*(\d+(?:\.\d+)?)\s*(cr|crore|l|lakh)/i);
     if(!m) return 0;
@@ -57636,13 +57660,14 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     for(const fn of tries){ try{ const r = fn(); if(r !== false) return true; }catch(e){} }
     return false;
   }
-  function addDraft(kind, id, openEditor){
-    if(typeof isAdmin === 'function' && !isAdmin()) return toast('Google funnel se add sirf admin kar sakta hai', true);
+  function addDraft(kind, id, openEditor, silent){
+    if(typeof isAdmin === 'function' && !isAdmin()){ if(!silent) toast('Google funnel se add sirf admin kar sakta hai', true); return 0; }
     const arr = G().drafts[kind];
     const idx = arr.findIndex(d => d.id === id);
-    if(idx === -1) return toast('Draft nahi mila', true);
+    if(idx === -1){ if(!silent) toast('Draft nahi mila', true); return 0; }
     const d = arr[idx];
     const notes = ('Google funnel · ' + (d.area ? d.area + ' · ' : '') + (d.firm ? d.firm + ' · ' : '') + (d.raw || '')).slice(0,600);
+    const priceL = d.price ? Math.round(+d.price / 1e5) : '';
     try{
       if(kind === 'advisors'){
         const corr = CORRIDORS().find(c => c.name === d.corridor || c.name === d.area);
@@ -57659,11 +57684,12 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
         db.projects.push({ id: uid(), name: d.name, developer: d.developer || '', developerId: dev ? dev.id : '',
           corridor: corr ? corr.id : '', corridorId: corr ? corr.id : '', location: d.area || d.corridor || '',
           area: d.area || d.corridor, status: (d.status || 'Ongoing').toLowerCase(), types: [],
-          priceMin: d.price || '', priceMax: d.price || '', price: d.price, priceUnit: d.price ? 'flat' : '',
+          priceMin: priceL, priceMax: priceL,
           source: 'Google funnel', sourceUrl: d.sourceUrl, notes, active: true, createdAt: Date.now() });
       }
-      normalizeDb(db);
       arr.splice(idx,1);
+      if(silent) return 1;
+      normalizeDb(db);
       persist();
       toast(kind === 'projects' ? 'Project add ho gaya — Projects panel me dekhein' :
             kind === 'advisors' ? 'Advisor add ho gaya — Advisors page par dekhein' : 'Dealer add ho gaya — Developers page par dekhein');
@@ -57671,8 +57697,11 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
         const created = (kind === 'advisors' ? db.advisors : kind === 'dealers' ? db.developers : db.projects).slice(-1)[0];
         if(created && !openExisting(kind, created.id)) toast('Record add ho gaya. Edit page par karein.');
       }
-    }catch(e){ toast('Add nahi hua — ' + (e && e.message ? e.message : 'error'), true); }
-    paintFunnel(kind);
+      paintFunnel(kind);
+      return 1;
+    }catch(e){ if(!silent) toast('Add nahi hua — ' + (e && e.message ? e.message : 'error'), true); }
+    if(!silent) paintFunnel(kind);
+    return 0;
   }
 
   /* ---------------- funnel HTML + paint ---------------- */
@@ -57710,7 +57739,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       </div>
       <div class="gf-links">${links.map(l => `<a class="gf-link" href="${esc(l[1])}" target="_blank" rel="noopener noreferrer">${l[0]}</a>`).join('')}</div>
       <ol class="gf-steps"><li>Google link kholein → area aur stage ke hisaab se results dekhein.</li><li>Jo public detail dikhe (naam, phone, firm, project, price) select karke copy karein.</li><li>Neeche paste karein → <b>Parse & preview</b> → phir <b>Add</b> ya <b>Add + edit</b> dabayein.</li></ol>
-      <div class="bw-area" style="margin-top:10px"><textarea data-gf-text="${kind}" placeholder="${kind==='projects'?'Project name, area, stage, developer, price — har line ek project':kind==='advisors'?'Naam, phone, area, firm — har line ek advisor':'Naam, phone, area, firm — har line ek dealer'}"></textarea></div>
+      <div class="bw-area" style="margin-top:10px"><textarea data-gf-text="${kind}" aria-label="Paste public ${kind} details" placeholder="${kind==='projects'?'Project name, area, stage, developer, price — har line ek project':kind==='advisors'?'Naam, phone, area, firm — har line ek advisor':'Naam, phone, area, firm — har line ek dealer'}">${esc(state.text||'')}</textarea></div>
       <div class="bw-actions" style="margin-top:7px">
         <button type="button" class="bw-btn primary sm" data-gf-action="parse" data-gf-kind="${kind}">⚙ Parse & preview</button>
         <button type="button" class="bw-btn sm" data-gf-action="paste" data-gf-kind="${kind}">📋 Paste from clipboard</button>
@@ -57721,10 +57750,10 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       </div>
       <div class="gf-list-wrap">${shown.length ? `<table class="gf-table"><thead><tr><th>Draft</th><th>Detail</th><th>Action</th></tr></thead><tbody>${shown.map(d => `<tr>
         <td><b>${esc(d.name||'—')}</b><br><small>${esc(d.phone||'—')}</small></td>
-        <td><small>${esc([d.area,d.firm,d.corridor,d.status,d.developer,short(d.price)].filter(Boolean).join(' · ')||'—')}</small><br><small>${esc((d.raw||'').slice(0,110))}</small></td>
+        <td><small>${esc([d.area,d.firm,d.corridor,d.status,d.developer,fmtPrice(priceLakh(d.price))||short(d.price)].filter(Boolean).join(' · ')||'—')}</small><br><small>${esc((d.raw||'').slice(0,110))}</small></td>
         <td><div class="bw-row-actions"><button type="button" class="bw-btn sm primary" data-gf-action="add" data-gf-kind="${kind}" data-gf-id="${esc(d.id)}">Add</button>
           <button type="button" class="bw-btn sm" data-gf-action="addedit" data-gf-kind="${kind}" data-gf-id="${esc(d.id)}">Add + edit</button>
-          <button type="button" class="bw-btn sm" data-gf-action="ignore" data-gf-kind="${kind}" data-gf-id="${esc(d.id)}">✕</button></div></td>
+          <button type="button" class="bw-btn sm" data-gf-action="ignore" data-gf-kind="${kind}" data-gf-id="${esc(d.id)}" aria-label="Ignore draft">✕</button></div></td>
       </tr>`).join('')}</tbody></table>` : `<div class="bw-empty">Koi draft nahi. Upar Google link se results copy karke paste karein.</div>`}</div>
       ${existingHTML(kind, state)}
     </div>`;
@@ -57741,7 +57770,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       }).slice(0,40);
       return `<div style="margin-top:12px"><div class="bw-eyebrow">Existing projects · ${projects.length}</div>
         <div class="gf-grid" style="margin-top:7px">${projects.length ? projects.map(p => `<div class="gf-card gf-proj ${String(p.status||'').toLowerCase()==='upcoming'?'t-upcoming':String(p.status||'').toLowerCase()==='completed'?'t-completed':''}">
-          <b>${esc(p.name||'Untitled')}</b><small>${esc([p.area,p.developer,p.status,short(p.price)].filter(Boolean).join(' · ')||'—')}</small>
+          <b>${esc(p.name||'Untitled')}</b><small>${esc([p.area,p.developer,p.status,priceRange(p)].filter(Boolean).join(' · ')||'—')}</small>
           <div class="bw-actions" style="margin-top:7px"><button type="button" class="bw-btn sm" data-gf-openproject="${esc(p.id)}">Open in project panel</button></div>
         </div>`).join('') : '<div class="bw-empty">Filter ke saath koi existing project nahi.</div>'}</div></div>`;
     }
@@ -57757,9 +57786,9 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       </div>`).join('') : '<div class="bw-empty">Is area me koi record nahi.</div>'}</div></div>`;
   }
   const funnelState = {
-    advisors: { area:'Jaipur', q:'', areaF:'' },
-    dealers:  { area:'Jaipur', q:'', areaF:'' },
-    projects: { area:'Jaipur', q:'', areaF:'', status:'ongoing', statusF:'' }
+    advisors: { area:'Jaipur', q:'', areaF:'', text:'' },
+    dealers:  { area:'Jaipur', q:'', areaF:'', text:'' },
+    projects: { area:'Jaipur', q:'', areaF:'', status:'ongoing', statusF:'', text:'' }
   };
   function paintFunnel(kind){
     const host = q('#gf-' + kind);
@@ -57771,7 +57800,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
 
   /* ---------------- brand manager content ---------------- */
   const PILLARS = [
-    { t:'Proof, not promises', d:'Registry done, documentation, client permission ke saath proof. Har post me ekvikas proof — "kaise kiya", "kya check kiya", "kya sikhaya".' },
+    { t:'Proof, not promises', d:'Registry done, documentation, client permission ke saath proof. Har post me ek clear proof — "kaise kiya", "kya check kiya", "kya sikhaya".' },
     { t:'Jaipur ground truth', d:'Agra/Ajmer/Delhi/Sikar/Tonk/Diggi corridor ki real rates, road, approval, water, school, loan ground reality. National gyaan nahi — local truth.' },
     { t:'Transparent money', d:'30% Originating / 35% Executing / 35% BCS, written record, hidden cut nahi. Trust ka biggest differentiator.' },
     { t:'Client psychology', d:'Buyer family safety chahti hai, NRI process trust chahta hai, investor liquidity/ROI chahta hai. Har content us bhookh ke hisaab se.' },
@@ -57782,13 +57811,13 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     { who:'NRI buyer', pain:'Door se kaise trust karein? payment safe?', proof:'Video site visit, written process, step-by-step updates', content:'"NRI se client: 5 documents pehle verify karein"', cta:'NRI kit download' },
     { who:'Investor', pain:'ROI, liquidity, resale demand', proof:'Corridor rate trend, rental yield, exit plan', content:'"Ajmer Road vs Tonk Road — 3 saal ka soch"', cta:'Corridor report' },
     { who:'Seller / developer', pain:'Sahi price, sahi buyer, fast close', proof:'Comparable sales, buyer readiness, split clarity', content:'"Property sell karte waqt 4 galtiyan"', cta:'Free valuation' },
-    { who:'Sceptical first-timer', pain:'Agent se hidden cut ka dar', proof:'30/35/35 written split, no-pressure consult', content:'"Broker kaise choose karein — 3 sawal"', cta:'Trust call' }
+    { who:'Skeptical first-timer', pain:'Agent se hidden cut ka dar', proof:'30/35/35 written split, no-pressure consult', content:'"Broker kaise choose karein — 3 sawal"', cta:'Trust call' }
   ];
   const PLATFORMS = [
     { id:'instagram', label:'Instagram', ic:'📸', cadence:'1 Reel + 1 carousel + 3–5 stories daily', kpi:'Saves, DMs, profile visits', best:'7–9 am · 7–9 pm',
       rules:['Bio: "Ajay Sharma · BCS Jaipur · Plots • Villas • Commercial · 30/35/35 transparent"','Pinned posts: trust proof, area guide, client result','Highlights: Reviews, Documents, Jaipur Areas, Process, 30/35/35, DM me','Stories: hook poll → ground footage → proof → CTA','DM speed: 15 min me reply, pehle sawal poochho, turant pitch nahi'] },
     { id:'youtube', label:'YouTube', ic:'▶️', cadence:'1 long video weekly + 3 Shorts weekly', kpi:'Retention 50%+, watch time, subscribe', best:'Thu 7 pm · Sun 10 am',
-      rules:['Thumbnail: 4–6 words + one face + one number','First 20 sec me "aapko kya milega" bolo','Chapters + description me area links',' pinned comment me free checklist CTA','Shorts se long video teaser — copy nahi, repurpose'] },
+      rules:['Thumbnail: 4–6 words + one face + one number','First 20 sec me "aapko kya milega" bolo','Chapters + description me area links','Pinned comment me free checklist CTA','Shorts se long video teaser — copy nahi, repurpose'] },
     { id:'facebook', label:'Facebook', ic:'👥', cadence:'1 community post daily + 2 group answers', kpi:'Comments, group reach, event RSVP', best:'8–10 am · 6–8 pm',
       rules:['Local groups me pehle madad, phir link','Post me question likho — "Aapki priority kya hai?"','Photo carousel: site visit proofs','Events: free Jaipur property clinic','Page about tab me 30/35/35 aur contact clear'] },
     { id:'linkedin', label:'LinkedIn', ic:'💼', cadence:'3 posts weekly + 5 thoughtful comments daily', kpi:'Profile views, DM replies, trust', best:'Tue/Wed/Thu 8–10 am',
@@ -57825,7 +57854,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     { id:'i7', p:'instagram', title:'Hidden cut nahi — 30/35/35', hook:'"Commission ka split likh ke deta hoon. Ye kyun?"', when:'Saturday', how:'Talking head + split graphic. 30 sec.', why:'Fear of hidden cut', cta:'"Split sheet DM."' },
     { id:'i8', p:'instagram', title:'Site visit me kya photograph karein', hook:'"Site visit par ye 6 photos aapko bachayengi."', when:'After site visit', how:'Real footage, quick cuts, text overlays.', why:'Practical value', cta:'"Save karein."' },
     { id:'i9', p:'linkedin', title:'Jaipur corridor report — Agra Road', hook:'"Ek corridor, 5 numbers, 1 truth."', when:'Tuesday', how:'PDF carousel with rate, road, approval, rental, risk.', why:'Expert knowledge', cta:'"Report chahiye? Comment."' },
-    { id:'i10', p:'facebook', title:'Whose name on registry?', hook:'"Property aapke naam ho ya family ke — pehle ye decide karein."', when:'Weekend', how:'Question post + 4 options poll.', why:'Family decision', cta:'"Call for free guidance."' }
+    { id:'i10', p:'facebook', title:'Registry par naam kiska? (Whose name on registry?)', hook:'"Property aapke naam ho ya family ke — pehle ye decide karein."', when:'Weekend', how:'Question post + 4 options poll.', why:'Family decision', cta:'"Call for free guidance."' }
   ];
   const LEARN = [
     { w:'Week 1', t:'Foundation', tasks:[['l1','Positioning one-liner likho'],['l2','Bio + highlights set karein'],['l3','5 client problems list karein'],['l4','Ek area guide likho']] },
@@ -57894,6 +57923,10 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
           <div class="bw-kv"><span>Primary KPI</span><span>DMs + saved posts + calls</span><span>Daily output</span><span>1 reel · 1 story set · 5 DMs · 1 idea · 1 proof</span><span>Weekly output</span><span>1 YouTube · 3 Shorts · 3 LinkedIn · 1 clinic post</span><span>Best local hook</span><span>"Jaipur me sahi plot kaise chunein" — area + number + risk</span><span>Never</span><span>Fake urgency, hidden cut, client proof without permission</span></div>
           <h4 style="margin-top:12px">Content pillars</h4>${PILLARS.map(p => `<div class="bw-check"><span><b>${esc(p.t)}</b> — ${esc(p.d)}</span></div>`).join('')}
         </div>
+      </div>
+      <div class="bw-card" style="margin-top:9px"><h4>📝 Brand notes</h4>
+        ${b.notes ? `<div class="bw-note good" style="white-space:pre-wrap">${esc(b.notes)}</div>` : '<div class="bw-empty">Abhi koi note nahi. Upar “📝 Notes” se apni strategy likhein — yahin dikhegi.</div>'}
+        <div class="bw-actions" style="margin-top:8px"><button type="button" class="bw-btn sm" data-bw-action="brandnote">✎ Edit note</button></div>
       </div>`;
     } else if(brandTab === 'playbooks'){
       body = `<div class="bw-grid">${PLATFORMS.map(p => `<div class="bw-card"><h4>${p.ic} ${esc(p.label)}</h4>
@@ -57936,14 +57969,14 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
           <div class="bw-sub">${esc(c.s||'')}</div>
           <div class="bw-actions" style="margin-top:8px"><a class="bw-btn sm" href="${esc(c.u)}" target="_blank" rel="noopener noreferrer">Open ${PLAT_NAME(c.p)}</a>
             <button type="button" class="bw-btn sm primary" data-bw-gemini="creator" data-bw-id="${esc(c.id)}">🤖 BCS version</button>
-            ${String(c.id).indexOf('mine-')===0 ? `<button type="button" class="bw-btn sm" data-bw-delcreator="${esc(c.id)}">✕</button>` : ''}</div>
+            ${String(c.id).indexOf('mine-')===0 ? `<button type="button" class="bw-btn sm" data-bw-delcreator="${esc(c.id)}" aria-label="Delete saved creator">✕</button>` : ''}</div>
         </div>`).join('')}</div>
         <div class="bw-card" style="margin-top:9px"><h4>＋ My creators / saved links</h4>
           <div class="bw-form-grid">
-            <div class="bw-field"><label>Name</label><input class="bw-input" id="bwCrName" placeholder="Creator / page name"></div>
-            <div class="bw-field"><label>Platform</label><select class="bw-select" id="bwCrPlatform"><option value="instagram">Instagram</option><option value="youtube">YouTube</option><option value="facebook">Facebook</option><option value="linkedin">LinkedIn</option></select></div>
-            <div class="bw-field" style="grid-column:1/-1"><label>Profile / post link</label><input class="bw-input" id="bwCrUrl" placeholder="https://…"></div>
-            <div class="bw-field" style="grid-column:1/-1"><label>Strategy note — kya seekhna hai</label><input class="bw-input" id="bwCrStrategy" placeholder="Hook, format, trust angle…"></div>
+            <div class="bw-field"><label>Name</label><input class="bw-input" id="bwCrName" value="${esc(b.form.name||'')}" placeholder="Creator / page name"></div>
+            <div class="bw-field"><label>Platform</label><select class="bw-select" id="bwCrPlatform">${['instagram','youtube','facebook','linkedin'].map(p2 => `<option value="${p2}" ${(b.form.platform||'instagram')===p2?'selected':''}>${PLAT_NAME(p2)}</option>`).join('')}</select></div>
+            <div class="bw-field" style="grid-column:1/-1"><label>Profile / post link</label><input class="bw-input" id="bwCrUrl" value="${esc(b.form.url||'')}" placeholder="https://…"></div>
+            <div class="bw-field" style="grid-column:1/-1"><label>Strategy note — kya seekhna hai</label><input class="bw-input" id="bwCrStrategy" value="${esc(b.form.strategy||'')}" placeholder="Hook, format, trust angle…"></div>
           </div>
           <div class="bw-actions" style="margin-top:8px"><button type="button" class="bw-btn sm primary" data-bw-action="addcreator">Save creator</button></div>
         </div>`;
@@ -58031,6 +58064,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
         const name = q('#bwCrName').value.trim(), url = q('#bwCrUrl').value.trim(), plat = q('#bwCrPlatform').value, strat = q('#bwCrStrategy').value.trim();
         if(!name || !/^https?:\/\//i.test(url)) return toast('Naam aur valid https link dono chahiye', true);
         G().brand.creators.push({ id:'mine-'+uid(), name, platform:plat, url, strategy:strat });
+        G().brand.form = { name:'', url:'', strategy:'', platform:'instagram' };
         persist(); paintBrand(); toast('Creator save ho gaya');
       } else if(a === 'brandnote'){
         const note = prompt('BCS brand note (sirf aapke liye):', G().brand.notes || '');
@@ -58063,7 +58097,11 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       } else if(a === 'addall'){
         const list = G().drafts[kind].slice();
         if(!list.length) return toast('Koi draft nahi', true);
-        list.forEach(d => addDraft(kind, d.id, false));
+        let added = 0;
+        list.forEach(d => { added += addDraft(kind, d.id, false, true) || 0; });
+        if(!added) return toast('Koi valid draft nahi', true);
+        normalizeDb(db); persist(); paintFunnel(kind);
+        toast(added + ' record add ho gaye — apne panel me dekhein');
       } else if(a === 'clear'){
         if(!confirm('Saare ' + kind + ' drafts delete karein?')) return;
         G().drafts[kind] = []; persist(); paintFunnel(kind); toast('Drafts clear ho gaye');
@@ -58132,6 +58170,16 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   });
   document.addEventListener('input', e => {
     const t = e.target; if(!t || !t.dataset) return;
+    if(t.dataset.gfText !== undefined){
+      const panel = t.closest('[data-gf-panel]'); if(panel) funnelState[panel.dataset.gfPanel].text = t.value;
+      return;
+    }
+    if(t.id === 'rnPaste'){ netState.paste = t.value; return; }
+    if(t.id === 'bwCrName' || t.id === 'bwCrUrl' || t.id === 'bwCrStrategy' || t.id === 'bwCrPlatform'){
+      G().brand.form = G().brand.form || {};
+      G().brand.form[{bwCrName:'name',bwCrUrl:'url',bwCrStrategy:'strategy',bwCrPlatform:'platform'}[t.id]] = t.value;
+      return;
+    }
     if(t.dataset.rnQ !== undefined){
       netState.q = t.value;
       clearTimeout(netState.qTimer);
@@ -58151,7 +58199,17 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     // keep focus while repainting
     setTimeout(() => { const el = q('[data-gf-q="' + kind + '"]'); if(el){ el.focus(); el.setSelectionRange(el.value.length, el.value.length); } }, 240);
   });
-  document.addEventListener('keydown', e => { if(e.key === 'Escape' && promptModal && promptModal.classList.contains('on')) closePrompt(); });
+  document.addEventListener('keydown', e => {
+    if(!promptModal || !promptModal.classList.contains('on')) return;
+    if(e.key === 'Escape'){ closePrompt(); return; }
+    if(e.key === 'Tab'){
+      const f = [...promptModal.querySelectorAll('button,textarea,a[href],[tabindex]')].filter(el => !el.disabled && el.getClientRects().length);
+      if(!f.length) return;
+      const first = f[0], last = f[f.length-1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
+  });
 
 
 
@@ -58188,7 +58246,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       { id:'ns14', p:'website', n:'Broker / channel discovery — web search', u:gweb('Indian real estate broker network channel Telegram WhatsApp website Jaipur'), s:'Ek search se multiple networks milte hain — link save karke baar baar na dhoondein.' }
     ];
   }
-  const netState = { platform:'', q:'' };
+  const netState = { platform:'', q:'', paste:'' };
   function rnNetName(v){ return NET_PLATFORMS.find(p => p.id === v) || NET_PLATFORMS[4]; }
   function rnShareText(kind, o){
     const who = o.permission ? (o.name || 'Client') : 'Client (naam masked — permission ke baad share)';
@@ -58245,7 +58303,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
         <a class="bw-btn sm primary" href="${esc(x.u||x.url)}" target="_blank" rel="noopener noreferrer">Open ↗</a>
         <button type="button" class="bw-btn sm" data-rn-copy="${esc(saved ? x.url : x.u)}">📋 Copy link</button>
         <button type="button" class="bw-btn sm" data-rn-intro="${esc(x.n)}">💬 Share intro</button>
-        ${saved?`<button type="button" class="bw-btn sm" data-rn-del="${esc(x.id)}" title="Delete saved network">✕</button>`:''}
+        ${saved?`<button type="button" class="bw-btn sm" data-rn-del="${esc(x.id)}" title="Delete saved network" aria-label="Delete saved network">✕</button>`:''}
       </div>
     </div>`;
     const shownSeeds = seeds.filter(filt), shownSaved = contacts.filter(filt);
@@ -58255,7 +58313,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       <div class="bw-head"><div class="bw-head-txt">
         <div class="bw-eyebrow">Networking desk · Links page</div>
         <h3>Realty network hub — India brokers, dealers &amp; channels</h3>
-        <p>Active requirements, projects aur client intros share karne ke liye public Telegram, WhatsApp, LinkedIn, Facebook groups aur portals. Koi personal add jaroori nahi — niche discovery links kholo ya jo public detail mile capitalize karke save karein. Jo bhi share karein, pehle exact text preview hota hai.</p>
+        <p>Active requirements, projects aur client intros share karne ke liye public Telegram, WhatsApp, LinkedIn, Facebook groups aur portals. Koi personal add zaroori nahi — niche discovery links kholo ya jo public detail mile capture karke save karein. Jo bhi share karein, pehle exact text preview hota hai.</p>
       </div><div class="bw-actions"><span class="bw-chip brand">${contacts.length} saved</span><button type="button" class="bw-btn sm" data-rn-tab="share">✉️ Share desk</button></div></div>
       <div class="bw-tabs">
         <button type="button" class="${netState.tab!=='share'?'on':''}" data-rn-tab="discover">Discover networks</button>
@@ -58287,7 +58345,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
         </div>
       </div>` : `<div class="gf-filter-chips">${chips}</div>
         <div class="gf-controls"><input type="search" data-rn-q placeholder="Network search — group, area, focus…" value="${esc(netState.q||'')}" aria-label="Search networks"></div>
-        ${netState.tab === 'mine' ? '' : `<div class="bw-note good"><b>Free &amp; legal:</b> Ye public discovery links hain — koi login/scraping nahi. Telegram/WhatsApp ke liye web search use hota hai kyunkin public directory nahi hoti. Jis group/channel ki public detail mil jaye, neeche paste karke save karein.</div>`}
+        ${netState.tab === 'mine' ? '' : `<div class="bw-note good"><b>Free &amp; legal:</b> Ye public discovery links hain — koi login/scraping nahi. Telegram/WhatsApp ke liye web search use hota hai kyunki public directory nahi hoti. Jis group/channel ki public detail mil jaye, neeche paste karke save karein.</div>`}
         ${netState.tab === 'mine' ? `<div class="bw-card" style="margin-bottom:9px"><h4>＋ Save a public network / channel</h4>
           <div class="bw-form-grid rn-share-grid">
             <div class="bw-field"><label>Name</label><input class="bw-input" id="rnName" placeholder="Group / channel name"></div>
@@ -58300,7 +58358,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
         </div>` : ''}
         <div class="bw-grid">${shownSeeds.map(x => card(x,false)).join('')}${shownSaved.map(x => card({n:x.name,p:x.platform,u:x.url,s:x.note,focus:x.focus,area:x.area,id:x.id},true)).join('')}</div>
         ${netState.tab === 'mine' ? `<div class="bw-card" style="margin-top:9px"><h4>📋 Paste public details to capture</h4>
-          <div class="bw-area"><textarea id="rnPaste" placeholder="Har line: Group naam — public link — area — focus. Jaise: Jaipur Dealer Network — https://t.me/xyz — Jaipur — requirements"></textarea></div>
+          <div class="bw-area"><textarea id="rnPaste" aria-label="Paste public network details" placeholder="Har line: Group naam — public link — area — focus. Jaise: Jaipur Dealer Network — https://t.me/xyz — Jaipur — requirements">${esc(netState.paste||'')}</textarea></div>
           <div class="bw-actions" style="margin-top:7px"><button type="button" class="bw-btn sm primary" data-rn-action="capture">⚙ Capture lines</button></div>
         </div>` : ''}
         ${!shownSeeds.length && !shownSaved.length ? '<div class="bw-empty">Is filter ke saath koi network nahi — platform filter badlein ya search clear karein.</div>' : ''}`}
