@@ -16348,6 +16348,54 @@ body[data-theme="dark"] .gf-proj.t-completed{border-left-color:#B9DCC4}
   .bw-modal-body textarea{min-height:230px}
 }
 
+/* ============ v187 · FLOW WORKSPACE (leads → clients → advisors) ============ */
+.fp-panel{margin-top:14px}
+.fp-call-list,.bw-list{display:flex;flex-direction:column;gap:8px}
+.fp-call-row{display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:11px;align-items:start;padding:11px;border:1px solid var(--line);border-radius:12px;background:color-mix(in oklab,var(--panel) 92%,transparent)}
+.fp-call-no{width:30px;height:30px;border-radius:9px;background:color-mix(in oklab,var(--sage) 16%,transparent);color:var(--sage-ink);display:flex;align-items:center;justify-content:center;font:900 12px/1 'DM Sans',sans-serif}
+.fp-call-main{display:flex;flex-direction:column;gap:3px;min-width:0}
+.fp-call-main b{font:800 13px/1.25 'DM Sans',sans-serif;color:var(--ink);overflow-wrap:anywhere}
+.fp-call-main small,.bw-row-main small{font:500 10.5px/1.45 'DM Sans',sans-serif;color:var(--mut);overflow-wrap:anywhere}
+.fp-call-actions{display:flex;flex-wrap:wrap;gap:5px;align-items:center;justify-content:flex-end;max-width:530px}
+.fp-call-actions .bw-select.sm{width:auto;min-width:120px;padding:5px 7px;font-size:10px}
+.fp-kanban{display:grid;grid-template-columns:repeat(7,minmax(190px,1fr));gap:9px;overflow-x:auto;padding-bottom:8px}
+.fp-col{min-width:190px;border:1px solid var(--line);border-radius:12px;background:color-mix(in oklab,var(--line) 18%,transparent);overflow:hidden}
+.fp-col-head{display:flex;align-items:center;gap:6px;padding:9px 10px;background:color-mix(in oklab,var(--panel) 80%,transparent);border-bottom:1px solid var(--line);font:800 10.5px/1 'DM Sans',sans-serif;color:var(--ink)}
+.fp-col-head b{flex:1}
+.fp-dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
+.fp-col-count{font:800 10px/1 'DM Sans',sans-serif;color:var(--mut);background:var(--panel);border-radius:99px;padding:4px 7px}
+.fp-col-body{min-height:110px;padding:7px;display:flex;flex-direction:column;gap:7px}
+.fp-col-empty{font:600 10px/1.4 'DM Sans',sans-serif;color:var(--mut);text-align:center;padding:16px 6px;border:1px dashed var(--line);border-radius:9px}
+.fp-card{padding:9px;border:1px solid var(--line);border-radius:10px;background:var(--panel);display:flex;flex-direction:column;gap:4px;cursor:grab}
+.fp-card b{font:800 11.5px/1.3 'DM Sans',sans-serif;color:var(--ink);overflow-wrap:anywhere}
+.fp-card small{font:500 10px/1.4 'DM Sans',sans-serif;color:var(--mut);overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.fp-card-act{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}
+.fp-block{border-top:1px solid var(--line);margin-top:12px;padding-top:12px}
+.fp-block-head{display:flex;align-items:center;gap:8px;justify-content:space-between;margin-bottom:8px}
+.fp-block-head b{font:800 12px/1.3 'DM Sans',sans-serif;color:var(--ink)}
+.fp-plots{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.fp-plot{padding:10px;border:1px solid var(--line);border-radius:11px;background:color-mix(in oklab,var(--panel) 92%,transparent);display:flex;flex-direction:column;gap:4px;min-width:0}
+.fp-plot b{font:800 12px/1.3 'DM Sans',sans-serif;color:var(--ink);overflow-wrap:anywhere}
+.fp-plot small{font:500 10.5px/1.45 'DM Sans',sans-serif;color:var(--mut);overflow-wrap:anywhere}
+.fp-corridor{margin-bottom:10px}
+.fp-corridor-head{font:800 11px/1 'DM Sans',sans-serif;color:var(--sage-ink);text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px}
+.fp-corridor-head span{color:var(--mut);margin-left:5px}
+.fp-guest{position:fixed;inset:0;z-index:2147483000;background:color-mix(in oklab,var(--bg) 96%,transparent);display:none;overflow:auto}
+.fp-guest.on{display:block}
+.fp-guest-top{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--bg)}
+.fp-guest-top b{font:800 13px/1 'Fraunces',serif;color:var(--sage-ink);letter-spacing:.5px}
+.fp-guest-inner{max-width:760px;margin:20px auto;padding:0 14px 40px}
+.fp-guest-card{border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:18px;box-shadow:var(--shadow)}
+.fp-guest-card h2{font:800 22px/1.2 'Fraunces',serif;color:var(--ink);margin:7px 0 13px}
+.fp-guest-card h3{font:800 12px/1.3 'DM Sans',sans-serif;color:var(--sage-ink);text-transform:uppercase;letter-spacing:.7px;margin:15px 0 7px}
+@media(max-width:760px){
+  .fp-call-row{grid-template-columns:minmax(0,1fr)}
+  .fp-call-no{width:26px;height:26px}
+  .fp-call-actions{justify-content:flex-start;max-width:none}
+  .fp-kanban{grid-template-columns:repeat(7,minmax(165px,85vw))}
+  .fp-plots{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <style id="bcs-mkt-daily-css">
@@ -46791,6 +46839,7 @@ function render(){
   try{ if(window.BCS_GROWTH && window.BCS_GROWTH.renderFunnels) window.BCS_GROWTH.renderFunnels(); }catch(e){}
   if(currentView === 'sheets'){ try{ paintSheetsInputs(); }catch(e){} }
   storageMeter();
+  try{ if(window.BCS_FLOW) window.BCS_FLOW.render(); }catch(e){}
   try{ if(window.__bcsArmMotion) window.__bcsArmMotion(); }catch(e){}
 }
 /* ---------- v162: TARGET LISTS — bulk prospects + two-way showcase ----------
@@ -47063,6 +47112,7 @@ const hadLocalData = !!localStorage.getItem(LS_KEY);
 if(!hadLocalData && !window.indexedDB) save();
 applyRoleChrome();
 render();
+try{ if(window.BCS_FLOW) window.BCS_FLOW.checkGuest(); }catch(e){}
 try{ document.body.classList.add('booted'); }catch(e){}
 /* BCS: dock collapse (UI only) */
 try{
@@ -55892,6 +55942,9 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     Document:'ops', Invoice:'ops', Broadcast:'ops', ROI:'ops', 'Client page':'ops', Backup:'ops'
   };
   const SITE_LOG = [
+    { v:'v187', date:'2026-11-18', page:'pipeline', kind:'update',
+      title:'Daily calling queue, lead kanban and client / advisor portals',
+      body:'Leads se clients tak ek clear flow: roz ka call queue + requirement, drag-drop kanban, har call ka log aur stage update. Booked client ke plots, documents aur referral ek portals me; advisor ke corridor-wise projects, co-broking, referral aur payment ledger. Shareable read-only links bhi.' },
     { v:'v186', date:'2026-11-18', page:'projects', kind:'update',
       title:'Polish pass — cleaner funnels, prompts and daily checks',
       detail:'Correct project price units in funnel conversion, date-aware daily checklists, focus-safe Gemini prompt preview, preserved paste text, read-only brand notes, single-pass bulk add, clearer labels, larger touch targets and stronger dark-mode contrast.' },
@@ -58414,5 +58467,732 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
 })();
 </script>
 
+<script>
+/* ============================================================
+   BCS FLOW WORKSPACE (v187)
+   Lead calling queue + kanban · client portal · advisor portal
+   Single-file, zero dependency. All state lives on db.flow and
+   on the canonical client/advisor/lead records so every edit
+   flows into the rest of the app after one save().
+   ============================================================ */
+(function(){
+  'use strict';
+
+  const $  = s => document.querySelector(s);
+  const $$ = s => Array.prototype.slice.call(document.querySelectorAll(s));
+  const fEsc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const fUid = () => (window.crypto && crypto.randomUUID ? crypto.randomUUID() : 'fp-'+Date.now()+'-'+Math.random().toString(36).slice(2));
+  const fToday = () => { const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
+  const fTomorrow = () => { const d=new Date(Date.now()+86400000); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
+  const admin = () => (typeof isAdmin === 'function') ? isAdmin() : true;
+  const me = () => (typeof currentAdvisor === 'function') ? currentAdvisor() : null;
+  const money = v => { const n=Number(v||0); return n ? '₹'+n.toLocaleString('en-IN') : '—'; };
+  const cut = (v,n) => String(v==null?'':v).slice(0,n||120);
+
+  /* ---------------- self-healing state ---------------- */
+  function F(){
+    if(!db.flow || typeof db.flow!=='object' || Array.isArray(db.flow)) db.flow={};
+    const f=db.flow;
+    if(!Array.isArray(f.callLogs)) f.callLogs=[];
+    if(!f.ui || typeof f.ui!=='object' || Array.isArray(f.ui)) f.ui={};
+    if(!f.ui.leadTab) f.ui.leadTab='queue';
+    if(!f.ui.clientId) f.ui.clientId='';
+    if(!f.ui.advisorId) f.ui.advisorId='';
+    return f;
+  }
+  function leads(){ return (db.leadgen && Array.isArray(db.leadgen.leads)) ? db.leadgen.leads : []; }
+
+  const STAGES=[
+    {id:'new',         label:'New lead',      color:'#8B9188'},
+    {id:'contacted',   label:'Contacted',     color:'#C49A3E'},
+    {id:'interested',  label:'Interested',    color:'#4E7C62'},
+    {id:'visit',       label:'Site visit',    color:'#3A6E8C'},
+    {id:'negotiation', label:'Negotiation',   color:'#9B72F2'},
+    {id:'client',      label:'Client',        color:'#2F6644'},
+    {id:'dead',        label:'Dead / closed', color:'#A4452B'}
+  ];
+  const QUEUE_STAGES=['new','contacted','interested','visit','negotiation'];
+  const stageLabel = id => (STAGES.find(s=>s.id===id)||STAGES[0]).label;
+  function stageOf(l){
+    const p=String(l.pipeStage||'').toLowerCase();
+    if(STAGES.some(s=>s.id===p)) return p;
+    const st=String(l.status||'').toLowerCase();
+    if(st==='won') return 'client';
+    if(st==='lost') return 'dead';
+    if(st==='negotiation') return 'negotiation';
+    if(st.indexOf('site visit')===0) return 'visit';
+    if(st==='qualified') return 'interested';
+    if(st==='contacted') return 'contacted';
+    return 'new';
+  }
+  function setStage(l,stage){ l.pipeStage=stage; l.updatedAt=Date.now(); if(stage==='dead') l.status='Lost'; }
+  function scopedLeads(){
+    const all=leads();
+    if(admin()) return all;
+    const m=me(), id=m&&m.id;
+    return all.filter(l=>l.flowAdvisorId===id);
+  }
+  function queue(){
+    return scopedLeads().filter(l=>QUEUE_STAGES.indexOf(stageOf(l))!==-1)
+      .sort((a,b)=>String(a.nextCallAt||'').localeCompare(String(b.nextCallAt||'')) ||
+                   String(a.createdAt||'').localeCompare(String(b.createdAt||'')));
+  }
+  const leadName = l => cut(l.name||('Lead '+(l.phone||l.id)),60);
+  const leadReq  = l => [l.requirement, l.type, l.locality, l.profession, l.source].filter(Boolean).join(' · ')||'Requirement not captured yet';
+
+  /* ---------------- cross-view helpers ---------------- */
+  function clientName(id){ const c=(db.clients||[]).find(x=>x.id===id); return c?c.name:''; }
+  function advisorName(id){ const a=(db.advisors||[]).find(x=>x.id===id); return a?a.name:''; }
+  function projectById(id){ return (db.projects||[]).find(p=>p.id===id); }
+  function corridorLabel(p){
+    if(!p) return 'Unassigned';
+    if(p.corridorId){
+      const c=(db.corridors||[]).find(x=>x.id===p.corridorId);
+      if(c) return c.name;
+    }
+    return p.corridor||p.area||'Unassigned';
+  }
+  function clientDeals(id){ return (db.pipeline||[]).filter(d=>d.clientId===id); }
+  function advisorDeals(id){ return (db.pipeline||[]).filter(d=>d.advisorId===id); }
+  function advisorProjects(a){
+    if(!a) return [];
+    const ids=(Array.isArray(a.projectIds)?a.projectIds:[]).filter(Boolean);
+    const corr=(Array.isArray(a.corridors)?a.corridors:[]).filter(Boolean);
+    return (db.projects||[]).filter(p=>ids.indexOf(p.id)!==-1 ||
+      (p.advisorIds&&p.advisorIds.indexOf(a.id)!==-1) ||
+      (p.developerId&&a.developerIds&&a.developerIds.indexOf(p.developerId)!==-1) ||
+      corr.indexOf(p.corridorId)!==-1 || corr.indexOf(p.corridor)!==-1);
+  }
+  function scopedClients(){
+    const all=db.clients||[];
+    if(admin()) return all;
+    const m=me(), id=m&&m.id;
+    return all.filter(c=>c.advisorId===id);
+  }
+  function scopedAdvisors(){
+    const all=db.advisors||[];
+    if(admin()) return all;
+    const m=me(), id=m&&m.id;
+    return all.filter(a=>a.id===id);
+  }
+
+  /* ---------------- lead call queue ---------------- */
+  function callModal(leadId){
+    const l=leads().find(x=>x.id===leadId);
+    if(!l) return toast('Lead nahi mila',true);
+    const outcomes=[['interested','Interested — client banayein / follow-up'],['visit','Site visit fix'],
+      ['negotiation','Negotiation chal rahi'],['callback','Callback fix karein'],
+      ['notreachable','Phone not reachable'],['dead','Dead — interest nahi']];
+    const m=document.createElement('div');
+    m.className='bw-modal on'; m.id='fpCallModal';
+    m.innerHTML='<div class="bw-modal-card" role="dialog" aria-modal="true" aria-label="Log call">'+
+      '<div class="bw-modal-head"><b>📞 Call log — '+fEsc(leadName(l))+'</b>'+
+      '<button type="button" class="bw-btn sm" data-fp-close="fpCallModal" aria-label="Close call log">✕</button></div>'+
+      '<div class="bw-modal-body">'+
+        '<div class="bw-note good"><b>Requirement:</b> '+fEsc(leadReq(l))+'</div>'+
+        '<div class="bw-kv"><span>Phone</span><span>'+fEsc(l.phone||'—')+'</span>'+
+        '<span>Source</span><span>'+fEsc(l.source||'—')+'</span>'+
+        '<span>Current stage</span><span>'+fEsc(stageLabel(stageOf(l)))+'</span>'+
+        '<span>Advisor</span><span>'+fEsc(l.flowAdvisorId?advisorName(l.flowAdvisorId):'Unassigned')+'</span></div>'+
+        '<div class="bw-field" style="margin-top:10px"><label>Call outcome</label>'+
+        '<select class="bw-select" id="fpCallOutcome">'+outcomes.map(o=>'<option value="'+o[0]+'">'+fEsc(o[1])+'</option>').join('')+'</select></div>'+
+        '<div class="bw-form-grid" style="margin-top:8px">'+
+          '<div class="bw-field"><label>Next call date</label><input class="bw-input" type="date" id="fpCallNext" value="'+fTomorrow()+'"></div>'+
+          '<div class="bw-field"><label>Assigned advisor</label><select class="bw-select" id="fpCallAdvisor">'+advisorOptions(l.flowAdvisorId||'')+'</select></div>'+
+        '</div>'+
+        '<div class="bw-field" style="margin-top:8px"><label>Call note</label><textarea class="bw-input" id="fpCallNote" rows="3" aria-label="Call note" placeholder="Kya bola? budget, area, timing, objection…"></textarea></div>'+
+      '</div>'+
+      '<div class="bw-modal-foot"><button type="button" class="bw-btn primary" id="fpCallSave">💾 Save call &amp; update stage</button>'+
+      '<button type="button" class="bw-btn" id="fpCallClient">👤 Move to client</button>'+
+      '<button type="button" class="bw-btn" data-fp-close="fpCallModal">Cancel</button></div>'+
+    '</div>';
+    document.body.appendChild(m);
+    $('#fpCallSave').addEventListener('click',()=>{
+      const outcome=$('#fpCallOutcome').value;
+      const note=$('#fpCallNote').value;
+      const next=$('#fpCallNext').value||fTomorrow();
+      const adv=$('#fpCallAdvisor').value;
+      const from=stageOf(l);
+      let to=from;
+      if(outcome==='interested') to='interested';
+      else if(outcome==='visit') to='visit';
+      else if(outcome==='negotiation') to='negotiation';
+      else if(outcome==='dead') to='dead';
+      setStage(l,to);
+      l.flowAdvisorId=adv||l.flowAdvisorId||'';
+      l.nextCallAt=(outcome==='dead'||outcome==='client')?'':next;
+      l.lastContactAt=Date.now();
+      l.contactCount=(Number(l.contactCount||0)+1);
+      l.updatedAt=Date.now();
+      const mm=me();
+      F().callLogs.unshift({id:fUid(),leadId:l.id,leadName:leadName(l),date:fToday(),
+        time:new Date().toTimeString().slice(0,5),advisorId:adv||(mm&&mm.id||''),
+        advisorName:adv?advisorName(adv):(mm?mm.name:'Admin'),outcome:outcome,
+        note:cut(note,400),nextCallAt:l.nextCallAt,stageFrom:from,stageTo:to});
+      if(F().callLogs.length>2000) F().callLogs.length=2000;
+      save(); m.remove(); renderAll(); toast('Call log save ho gaya · stage: '+stageLabel(to));
+    });
+    $('#fpCallClient').addEventListener('click',()=>{ m.remove(); leadToClient(l.id); });
+    m.addEventListener('click',e=>{ if(e.target===m) m.remove(); });
+  }
+
+  function leadToClient(leadId){
+    const l=leads().find(x=>x.id===leadId);
+    if(!l) return toast('Lead nahi mila',true);
+    if(l.clientId && (db.clients||[]).some(c=>c.id===l.clientId)){
+      toast('Ye lead pehle hi client hai');
+      if(typeof openClientProfile==='function') openClientProfile(l.clientId);
+      return;
+    }
+    if(!admin()) return toast('Lead ko client banane ke liye admin se poochhein',true);
+    const typeMap={'commercial-plot':'Commercial plot','plot':'Plot','villa':'Villa','apartment':'Apartment',
+      'farmhouse':'Farmhouse','shop-office':'Shop / Office','agricultural':'Agricultural','referral':'Referral'};
+    const corr=String(l.locality||'').trim();
+    const c={id:fUid(),createdAt:Date.now(),name:leadName(l),phone:l.phone||'',email:'',
+      clientStatus:'new',source:l.source||'Lead pipeline',sourceNote:'Lead '+l.id+' · '+(l.source||''),
+      advisorId:l.flowAdvisorId||'',nextFollowUp:l.nextCallAt||'',lastContact:fToday(),birthday:'',
+      budgetMin:l.budgetMin||'',budgetMax:l.budgetMax||'',timeline:'',
+      types:l.type?[typeMap[l.type]||l.type]:[],corridors:corr?[corr]:[],
+      requirement:l.requirement||'',notes:'Lead pipeline se convert · '+(l.notes||''),
+      readiness:{},projectIds:[],custom:{},status:'',approvalType:'',reraOnly:false,
+      approvedOnly:false,transferHistory:[],updatedAt:Date.now(),portalDocs:[],portalRefs:[]};
+    db.clients.push(c);
+    setStage(l,'client');
+    l.clientId=c.id; l.status='Qualified'; l.updatedAt=Date.now();
+    save(); renderAll();
+    toast('Client ban gaya — ab advisor follow-up karega');
+    if(typeof openClientProfile==='function') openClientProfile(c.id);
+  }
+
+  function assignLead(leadId,advisorId){
+    if(!admin()) return toast('Assignment sirf admin kar sakta hai',true);
+    const l=leads().find(x=>x.id===leadId); if(!l) return;
+    l.flowAdvisorId=advisorId||''; l.updatedAt=Date.now();
+    save(); renderAll(); toast(advisorId?('Advisor assign ho gaya · '+advisorName(advisorId)):'Lead unassigned ho gaya');
+  }
+
+  /* ---------------- queue / kanban / log HTML ---------------- */
+  function queueHTML(){
+    const q=queue();
+    if(!q.length) return '<div class="bw-empty">Is samay koi lead call queue me nahi. Lead Engine se naye leads laayein ya stage badlein.</div>';
+    return '<div class="fp-call-list">'+q.map((l,i)=>{
+      const over=!l.nextCallAt || l.nextCallAt<=fToday();
+      const adv=l.flowAdvisorId?advisorName(l.flowAdvisorId):'Unassigned';
+      return '<div class="fp-call-row">'+
+        '<div class="fp-call-no">'+(i+1)+'</div>'+
+        '<div class="fp-call-main"><b>'+fEsc(leadName(l))+'</b>'+
+          '<small>'+fEsc(l.phone||'No phone')+' · '+fEsc(adv)+'</small>'+
+          '<small><b>Requirement:</b> '+fEsc(leadReq(l))+'</small>'+
+          '<small>Budget '+fEsc(money(l.budgetMin))+(l.budgetMax?' – '+fEsc(money(l.budgetMax)):'')+
+            ' · Stage '+fEsc(stageLabel(stageOf(l)))+'</small></div>'+
+        '<div class="fp-call-actions">'+
+          (over?'<span class="bw-chip hot">Due</span>':'<span class="bw-chip">'+fEsc(l.nextCallAt)+'</span>')+
+          '<button type="button" class="bw-btn sm primary" data-fp-call="'+fEsc(l.id)+'">📞 Call now</button>'+
+          (l.clientId?'<button type="button" class="bw-btn sm" data-fp-clientopen="'+fEsc(l.clientId)+'">Client</button>':
+             (admin()?'<button type="button" class="bw-btn sm" data-fp-leadclient="'+fEsc(l.id)+'">→ Client</button>':''))+
+          (admin()?'<select class="bw-select sm" data-fp-assign="'+fEsc(l.id)+'" aria-label="Assign advisor">'+advisorOptions(l.flowAdvisorId||'')+'</select>':'')+
+        '</div></div>';
+    }).join('')+'</div>';
+  }
+
+  function kanbanHTML(){
+    const all=scopedLeads();
+    return '<div class="fp-kanban">'+STAGES.map(s=>{
+      const list=all.filter(l=>stageOf(l)===s.id);
+      return '<div class="fp-col" data-fp-stage="'+s.id+'">'+
+        '<div class="fp-col-head"><span class="fp-dot" style="background:'+s.color+'"></span><b>'+fEsc(s.label)+'</b><span class="fp-col-count">'+list.length+'</span></div>'+
+        '<div class="fp-col-body">'+(list.length?list.map(l=>
+          '<div class="fp-card" draggable="true" data-fp-drag="'+fEsc(l.id)+'">'+
+            '<b>'+fEsc(leadName(l))+'</b>'+
+            '<small>'+fEsc(l.phone||'—')+'</small>'+
+            '<small>'+fEsc(leadReq(l))+'</small>'+
+            '<div class="fp-card-act">'+
+              '<button type="button" class="bw-btn sm" data-fp-move="'+fEsc(l.id)+'" data-dir="-1" aria-label="Previous stage">‹</button>'+
+              '<button type="button" class="bw-btn sm" data-fp-move="'+fEsc(l.id)+'" data-dir="1" aria-label="Next stage">›</button>'+
+              '<button type="button" class="bw-btn sm" data-fp-call="'+fEsc(l.id)+'">Call</button>'+
+              (l.clientId?'<button type="button" class="bw-btn sm" data-fp-clientopen="'+fEsc(l.clientId)+'">Client</button>':
+                (admin()?'<button type="button" class="bw-btn sm" data-fp-leadclient="'+fEsc(l.id)+'">→ Client</button>':''))+
+            '</div></div>').join(''):'<div class="fp-col-empty">Drop a lead here</div>')+'</div></div>';
+    }).join('')+'</div>';
+  }
+
+  function logHTML(){
+    const logs=F().callLogs.slice(0,200);
+    if(!logs.length) return '<div class="bw-empty">Abhi koi call log nahi. Queue se pehla call log karein.</div>';
+    return '<div class="bw-list">'+logs.map(x=>
+      '<div class="bw-row"><div class="bw-row-main"><b>'+fEsc(x.leadName||'Lead')+' · '+fEsc(x.outcome||'')+'</b>'+
+      '<small>'+fEsc(x.date||'')+' '+(x.time||'')+' · '+fEsc(x.advisorName||'Admin')+
+        ' · '+fEsc(stageLabel(x.stageFrom||'new'))+' → '+fEsc(stageLabel(x.stageTo||'new'))+'</small>'+
+      (x.note?'<small>'+fEsc(x.note)+'</small>':'')+
+      (x.nextCallAt?'<small>Next call: '+fEsc(x.nextCallAt)+'</small>':'')+'</div></div>').join('')+'</div>';
+  }
+
+  function pipelineHTML(){
+    const f=F(), tabs=[['queue','📞 Call queue'],['kanban','🗂 Lead kanban'],['log','📓 Call log']];
+    const q=queue(), logs=f.callLogs.length;
+    return '<div class="bw-panel fp-panel" id="fpPipeline">'+
+      '<div class="bw-head"><div class="bw-head-txt"><div class="bw-eyebrow">v187 · lead-to-client flow</div>'+
+      '<h3>Daily calling desk — koi lead waste na ho</h3>'+
+      '<p class="bw-sub">Leads alag, clients alag. Har din queue ek-ek karke call karein, outcome log karein aur stage badlein. Jawab milte hi lead ko client bana dein — advisor us client par kaam shuru kar dega.</p></div>'+
+      '<div class="bw-actions"><span class="bw-chip good">'+q.length+' in queue</span><span class="bw-chip">'+logs+' calls logged</span>'+
+      (admin()?'<button type="button" class="bw-btn sm primary" data-fp-newlead>+ New lead</button>':'')+'</div></div>'+
+      '<div class="bw-tabs">'+tabs.map(t=>'<button type="button" class="'+(f.ui.leadTab===t[0]?'on':'')+'" data-fp-tab="'+t[0]+'">'+t[1]+'</button>').join('')+'</div>'+
+      (f.ui.leadTab==='queue'?queueHTML():f.ui.leadTab==='kanban'?kanbanHTML():logHTML())+
+      '<div class="bw-note good"><b>Rule:</b> Lead sirf tab client banta hai jab usne jawab diya ho / interest dikha ho. Dead leads alag column me rehte hain — unhe dobara call na karein. Har call ka log save hota hai.</div>'+
+    '</div>';
+  }
+
+  function advisorOptions(sel){
+    const arr=scopedAdvisors();
+    return '<option value="">Unassigned</option>'+arr.map(a=>
+      '<option value="'+fEsc(a.id)+'" '+(sel===a.id?'selected':'')+'>'+fEsc(a.name||a.phone||a.id)+'</option>').join('');
+  }
+
+  /* ================= CLIENT PORTAL ================= */
+  const DOC_CHECKS=[
+    ['id','ID proof'],['address','Address proof'],['pan','PAN / Form 60'],['photo','Passport photo'],
+    ['booking','Booking receipt'],['agreement','Agreement copy'],['payment','Payment proof'],['registry','Registry docs']
+  ];
+  function docsOf(c){
+    if(!Array.isArray(c.portalDocs)) c.portalDocs=[];
+    DOC_CHECKS.forEach(d=>{
+      if(!c.portalDocs.some(x=>x.key===d[0])) c.portalDocs.push({key:d[0],label:d[1],status:'pending',note:'',updatedAt:''});
+    });
+    return c.portalDocs;
+  }
+  function clientPortalHTML(){
+    const list=scopedClients();
+    if(!list.length) return '<div class="bw-panel fp-panel"><div class="bw-empty">Abhi koi client nahi. Lead ko client bana kar ya Clients page se add karein.</div></div>';
+    const f=F();
+    let c=list.find(x=>x.id===f.ui.clientId);
+    if(!c){ c=list[0]; f.ui.clientId=c.id; }
+    const deals=clientDeals(c.id), docs=docsOf(c), refs=Array.isArray(c.portalRefs)?c.portalRefs:[];
+    const done=docs.filter(d=>d.status==='done').length;
+    const plots=deals.map(d=>{
+      const p=projectById(d.projectId);
+      return '<div class="fp-plot"><b>'+fEsc(d.projectName||(p&&p.name)||'Project')+'</b>'+
+        '<small>'+fEsc(d.plotDetail||'Plot detail pending')+' · '+fEsc(corridorLabel(p))+'</small>'+
+        '<small>Stage '+fEsc(d.stage||'booked')+' · Deal '+fEsc(money(d.dealValue))+
+          ' · Paid '+fEsc(money((d.payments||[]).reduce((s,x)=>s+Number(x.amount||0),0)))+'</small>'+
+        '<div class="fp-card-act"><button type="button" class="bw-btn sm" data-fp-deal="'+fEsc(d.id)+'">Open sale</button>'+
+        (p?'<button type="button" class="bw-btn sm" data-fp-project="'+fEsc(p.id)+'">Project</button>':'')+'</div></div>';
+    }).join('')||'<div class="bw-empty">Abhi koi booked plot / sale nahi. Sale add karte hi yahan aa jayega.</div>';
+    return '<div class="bw-panel fp-panel" id="fpClientPortal">'+
+      '<div class="bw-head"><div class="bw-head-txt"><div class="bw-eyebrow">v187 · client relationship desk</div>'+
+      '<h3>Client portal — booked plots, documents, referrals</h3>'+
+      '<p class="bw-sub">Booked client ki har cheez ek jagah: purchased plot, payment, documents checklist, referral aur shareable read-only link. Ye data client ke purane record se juda hai — yahan badla to sab jagah badla.</p></div>'+
+      '<div class="bw-actions"><select class="bw-select" data-fp-clientpick aria-label="Choose client">'+list.map(x=>
+        '<option value="'+fEsc(x.id)+'" '+(x.id===c.id?'selected':'')+'>'+fEsc(x.name||x.phone||x.id)+'</option>').join('')+'</select>'+
+        '<button type="button" class="bw-btn sm" data-fp-clientprofile="'+fEsc(c.id)+'">Full profile</button>'+
+        '<button type="button" class="bw-btn sm primary" data-fp-share="client" data-fp-id="'+fEsc(c.id)+'">🔗 Shareable link</button></div></div>'+
+      '<div class="bw-grid two">'+
+        '<div class="bw-card"><h4>👤 '+fEsc(c.name||c.phone||'Client')+'</h4>'+
+          '<div class="bw-kv"><span>Phone</span><span>'+fEsc(c.phone||'—')+'</span>'+
+          '<span>Status</span><span>'+fEsc(c.clientStatus||c.stage||'new')+'</span>'+
+          '<span>Advisor</span><span>'+fEsc(c.advisorId?advisorName(c.advisorId):'Unassigned')+'</span>'+
+          '<span>Budget</span><span>'+fEsc(money(c.budgetMin))+(c.budgetMax?' – '+fEsc(money(c.budgetMax)):'')+'</span>'+
+          '<span>Requirement</span><span>'+fEsc(c.requirement||'—')+'</span>'+
+          '<span>Next follow-up</span><span>'+fEsc(c.nextFollowUp||'—')+'</span></div>'+
+          '<div class="bw-prog"><i style="width:'+(docs.length?Math.round(done/docs.length*100):0)+'%"></i></div>'+
+          '<div class="bw-prog-lbl"><span>Documents '+done+'/'+docs.length+'</span><span>'+deals.length+' booked plots</span></div></div>'+
+        '<div class="bw-card"><h4>📁 Documents needed</h4>'+
+          '<div class="bw-list">'+docs.map(d=>
+            '<label class="bw-check '+(d.status==='done'?'done':'')+'"><input type="checkbox" data-fp-doc="'+fEsc(c.id)+'" data-key="'+fEsc(d.key)+'" '+(d.status==='done'?'checked':'')+'>'+
+            '<span><b>'+fEsc(d.label)+'</b>'+(d.note?' · '+fEsc(d.note):'')+'</span></label>').join('')+'</div>'+
+          '<div class="bw-actions" style="margin-top:8px"><button type="button" class="bw-btn sm" data-fp-docnote="'+fEsc(c.id)+'">＋ Document detail / link</button></div></div>'+
+      '</div>'+
+      '<div class="fp-block"><div class="fp-block-head"><b>🏠 Purchased plots &amp; sales</b><button type="button" class="bw-btn sm" data-fp-addsale="'+fEsc(c.id)+'">＋ Add sale</button></div>'+
+        '<div class="fp-plots">'+plots+'</div></div>'+
+      '<div class="fp-block"><div class="fp-block-head"><b>🤝 Referrals given by this client</b><button type="button" class="bw-btn sm" data-fp-addref="client" data-fp-id="'+fEsc(c.id)+'">＋ Add referral</button></div>'+
+        (refs.length?'<div class="bw-list">'+refs.map(r=>'<div class="bw-row"><div class="bw-row-main"><b>'+fEsc(r.name||'Referral')+'</b>'+
+          '<small>'+fEsc(r.phone||'')+' · '+fEsc(r.status||'new')+' · '+fEsc(r.note||'')+'</small></div>'+
+          '<button type="button" class="bw-btn sm" data-fp-refclient="'+fEsc(c.id)+'" data-refid="'+fEsc(r.id)+'">→ Client</button></div>').join('')+'</div>':
+          '<div class="bw-empty">Abhi koi referral nahi. Khush client se referral sabse aasan aata hai.</div>')+'</div>'+
+      '<div class="bw-note"><b>Long-term relation:</b> Client portal ka link client ko bhejein — usse apne plot, documents aur payment ki apni copy dikhti hai. Naam tab dikhega jab likhit permission ho; warna masked.</div>'+
+    '</div>';
+  }
+
+  /* ================= ADVISOR PORTAL ================= */
+  function advisorPortalHTML(){
+    const list=scopedAdvisors();
+    if(!list.length) return '<div class="bw-panel fp-panel"><div class="bw-empty">Abhi koi advisor nahi. Advisors page se active advisor add karein.</div></div>';
+    const f=F();
+    let a=list.find(x=>x.id===f.ui.advisorId);
+    if(!a){ a=list[0]; f.ui.advisorId=a.id; }
+    const projects=advisorProjects(a), deals=advisorDeals(a.id);
+    const groups={};
+    projects.forEach(p=>{ const k=corridorLabel(p); (groups[k]=groups[k]||[]).push(p); });
+    const pays=Array.isArray(a.portalPayments)?a.portalPayments:[];
+    const refs=Array.isArray(a.portalRefs)?a.portalRefs:[];
+    const brokers=Array.isArray(a.coBrokers)?a.coBrokers:[];
+    const due=deals.reduce((s,d)=>s+Number(d.brokerageAmount||0)*Number(d.advisorSharePct||0)/100,0);
+    const paid=pays.reduce((s,x)=>s+Number(x.amount||0),0);
+    return '<div class="bw-panel fp-panel" id="fpAdvisorPortal">'+
+      '<div class="bw-head"><div class="bw-head-txt"><div class="bw-eyebrow">v187 · advisor relationship desk</div>'+
+      '<h3>Advisor portal — projects, co-broking, referral, payment</h3>'+
+      '<p class="bw-sub">Active advisor ka apna page: corridor-wise assigned projects, saath ke deals, co-broking share, referrals aur payment ledger. Advisor login (`?advisor=…`) isi data ko apne hisse se dikhaata hai.</p></div>'+
+      '<div class="bw-actions"><select class="bw-select" data-fp-advisorpick aria-label="Choose advisor">'+list.map(x=>
+        '<option value="'+fEsc(x.id)+'" '+(x.id===a.id?'selected':'')+'>'+fEsc(x.name||x.phone||x.id)+'</option>').join('')+'</select>'+
+        '<button type="button" class="bw-btn sm" data-fp-advisorprofile="'+fEsc(a.id)+'">Full profile</button>'+
+        '<button type="button" class="bw-btn sm primary" data-fp-share="advisor" data-fp-id="'+fEsc(a.id)+'">🔗 Shareable link</button></div></div>'+
+      '<div class="bw-grid two">'+
+        '<div class="bw-card"><h4>🧑‍🤝‍🧑 '+fEsc(a.name||a.phone||'Advisor')+'</h4>'+
+          '<div class="bw-kv"><span>Phone</span><span>'+fEsc(a.phone||'—')+'</span>'+
+          '<span>Status</span><span>'+fEsc(a.status||'prospect')+'</span>'+
+          '<span>Portal</span><span>'+(a.portalEnabled!==false&&a.status==='active'?'Enabled · '+(a.portalId||a.id):'Off')+'</span>'+
+          '<span>Corridors</span><span>'+fEsc((a.corridors||[]).join(', ')||'—')+'</span>'+
+          '<span>Slab</span><span>'+fEsc(a.slabPerSqYd||a.slab||'—')+'</span>'+
+          '<span>Commission</span><span>'+fEsc(a.commissionPct||'—')+'%</span></div></div>'+
+        '<div class="bw-card"><h4>💰 Payment ledger</h4>'+
+          '<div class="bw-kv"><span>Deal share due</span><span>'+fEsc(money(due))+'</span>'+
+          '<span>Paid recorded</span><span>'+fEsc(money(paid))+'</span>'+
+          '<span>Balance</span><span>'+fEsc(money(Math.max(0,due-paid)))+'</span></div>'+
+          '<div class="bw-actions" style="margin-top:8px"><button type="button" class="bw-btn sm primary" data-fp-addpay="'+fEsc(a.id)+'">＋ Record payment</button></div>'+
+          (pays.length?'<div class="bw-list" style="margin-top:7px">'+pays.slice(0,6).map(p=>'<div class="bw-row"><div class="bw-row-main"><b>'+fEsc(money(p.amount))+' · '+fEsc(p.mode||'')+'</b>'+
+            '<small>'+fEsc(p.date||'')+' · '+fEsc(p.ref||'')+' · '+fEsc(p.status||'paid')+'</small></div></div>').join('')+'</div>':'')+
+        '</div>'+
+      '</div>'+
+      '<div class="fp-block"><div class="fp-block-head"><b>🗺 Assigned projects — corridor wise</b><span class="bw-chip">'+projects.length+' projects</span></div>'+
+        (Object.keys(groups).length?Object.keys(groups).map(k=>
+          '<div class="fp-corridor"><div class="fp-corridor-head">'+fEsc(k)+' <span>'+groups[k].length+'</span></div>'+
+          '<div class="fp-plots">'+groups[k].map(p=>'<div class="fp-plot"><b>'+fEsc(p.name||'Project')+'</b>'+
+            '<small>'+fEsc(p.location||p.area||'')+' · '+fEsc(String(p.status||''))+'</small>'+
+            '<div class="fp-card-act"><button type="button" class="bw-btn sm" data-fp-project="'+fEsc(p.id)+'">Open project</button></div></div>').join('')+'</div></div>').join(''):
+          '<div class="bw-empty">Koi project assign nahi. Advisors page se corridor / project assign karein.</div>')+'</div>'+
+      '<div class="fp-block"><div class="fp-block-head"><b>🤝 Co-broking &amp; deals</b><button type="button" class="bw-btn sm" data-fp-addbroker="'+fEsc(a.id)+'">＋ Add co-broker</button></div>'+
+        (brokers.length?'<div class="bw-list">'+brokers.map(b=>'<div class="bw-row"><div class="bw-row-main"><b>'+fEsc(advisorName(b.advisorId)||b.name||'Co-broker')+'</b>'+
+          '<small>'+fEsc(b.note||'')+' · share '+(b.sharePct||0)+'% · '+fEsc(b.status||'active')+'</small></div></div>').join('')+'</div>':'')+
+        (deals.length?'<div class="fp-plots">'+deals.slice(0,8).map(d=>'<div class="fp-plot"><b>'+fEsc(d.clientName||'Deal')+'</b>'+
+          '<small>'+fEsc(d.projectName||'')+' · '+fEsc(d.plotDetail||'')+' · '+fEsc(money(d.dealValue))+'</small>'+
+          '<small>Advisor share '+(d.advisorSharePct||0)+'% · '+fEsc(d.stage||'')+'</small>'+
+          '<div class="fp-card-act"><button type="button" class="bw-btn sm" data-fp-deal="'+fEsc(d.id)+'">Open sale</button></div></div>').join('')+'</div>':'')+
+        (!brokers.length&&!deals.length?'<div class="bw-empty">Abhi koi co-broking ya deal nahi.</div>':'')+'</div>'+
+      '<div class="fp-block"><div class="fp-block-head"><b>↗ Referrals by this advisor</b><button type="button" class="bw-btn sm" data-fp-addref="advisor" data-fp-id="'+fEsc(a.id)+'">＋ Add referral</button></div>'+
+        (refs.length?'<div class="bw-list">'+refs.map(r=>'<div class="bw-row"><div class="bw-row-main"><b>'+fEsc(r.name||'Referral')+'</b>'+
+          '<small>'+fEsc(r.phone||'')+' · '+fEsc(r.status||'new')+' · '+fEsc(r.note||'')+'</small></div>'+
+          '<button type="button" class="bw-btn sm" data-fp-refclient="'+fEsc(a.id)+'" data-refid="'+fEsc(r.id)+'">→ Client</button></div>').join('')+'</div>':
+          '<div class="bw-empty">Abhi koi referral nahi.</div>')+'</div>'+
+      '<div class="bw-note"><b>Privacy:</b> Advisor portal link read-only hai — sirf assigned projects, deals aur payments dikhte hain. Client phone/email default me nahi dikhte.</div>'+
+    '</div>';
+  }
+
+  /* ================= SHAREABLE READ-ONLY LINK ================= */
+  function b64enc(obj){
+    try{ return btoa(unescape(encodeURIComponent(JSON.stringify(obj)))).replace(/=+$/,'').replace(/\+/g,'-').replace(/\//g,'_'); }
+    catch(e){ return ''; }
+  }
+  function b64dec(s){
+    try{
+      let x=String(s||'').replace(/-/g,'+').replace(/_/g,'/');
+      while(x.length%4) x+='=';
+      return JSON.parse(decodeURIComponent(escape(atob(x))));
+    }catch(e){ return null; }
+  }
+  function shareLink(kind,id){
+    let snap={k:kind,t:fToday()};
+    if(kind==='client'){
+      const c=(db.clients||[]).find(x=>x.id===id); if(!c) return '';
+      snap.n=cut(c.name||c.phone,60); snap.ph=cut(c.phone,20); snap.st=cut(c.clientStatus||c.stage,30);
+      snap.req=cut(c.requirement,180); snap.b=money(c.budgetMin)+(c.budgetMax?' – '+money(c.budgetMax):'');
+      snap.adv=advisorName(c.advisorId);
+      snap.plots=clientDeals(id).slice(0,12).map(d=>({p:cut(d.projectName,60),d:cut(d.plotDetail,60),s:d.stage,v:money(d.dealValue)}));
+      snap.docs=docsOf(c).filter(d=>d.status==='done').map(d=>d.label);
+    } else {
+      const a=(db.advisors||[]).find(x=>x.id===id); if(!a) return '';
+      snap.n=cut(a.name||a.phone,60); snap.ph=cut(a.phone,20); snap.st=cut(a.status,30);
+      snap.corr=(a.corridors||[]).slice(0,12);
+      snap.projects=advisorProjects(a).slice(0,24).map(p=>cut(p.name,60));
+      const ds=advisorDeals(id);
+      snap.due=money(ds.reduce((s,d)=>s+Number(d.brokerageAmount||0)*Number(d.advisorSharePct||0)/100,0));
+    }
+    const enc=b64enc(snap);
+    const base=String(location.href||'').split('#')[0].split('?')[0];
+    return base+'#'+kind+'portal='+enc;
+  }
+  function shareModal(kind,id){
+    const url=shareLink(kind,id);
+    if(!url) return toast('Link nahi ban paya',true);
+    const label=kind==='client'?clientName(id):advisorName(id);
+    const m=document.createElement('div');
+    m.className='bw-modal on'; m.id='fpShareModal';
+    m.innerHTML='<div class="bw-modal-card" role="dialog" aria-modal="true" aria-label="Shareable portal link">'+
+      '<div class="bw-modal-head"><b>🔗 Read-only portal link — '+fEsc(label)+'</b>'+
+      '<button type="button" class="bw-btn sm" data-fp-close="fpShareModal" aria-label="Close">✕</button></div>'+
+      '<div class="bw-modal-body"><div class="bw-note good">Ye link frozen snapshot deta hai — kholne par client/advisor ko sirf unki apni details dikhti hain. Live sync nahi, login nahi, internet dependency nahi.</div>'+
+      '<div class="bw-field"><label>Portal link</label><input class="bw-input" id="fpShareUrl" readonly value="'+fEsc(url)+'"></div>'+
+      '<div class="bw-note">Link lambi ho sakti hai. WhatsApp par bhejne se pehle exact text preview hota hai.</div></div>'+
+      '<div class="bw-modal-foot"><button type="button" class="bw-btn primary" id="fpShareCopy">📋 Copy link</button>'+
+      '<button type="button" class="bw-btn" id="fpShareWa">💬 Preview &amp; share</button>'+
+      '<button type="button" class="bw-btn" id="fpShareOpen">↗ Open preview</button>'+
+      '<button type="button" class="bw-btn" data-fp-close="fpShareModal">Close</button></div></div>';
+    document.body.appendChild(m);
+    $('#fpShareCopy').addEventListener('click',()=>{
+      const inp=$('#fpShareUrl'); inp.select();
+      if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(inp.value).then(()=>toast('Link copy ho gaya ✓')).catch(()=>document.execCommand('copy'));
+      else document.execCommand('copy');
+    });
+    $('#fpShareOpen').addEventListener('click',()=>{ window.open(url,'_blank','noopener'); });
+    $('#fpShareWa').addEventListener('click',()=>{
+      const text='BCS Desk — '+(kind==='client'?'aapka client portal':'aapka advisor portal')+'.\n'+label+'\n\n'+url+'\n\nBCS — clear record, clear split, clear next step.';
+      if(window.BCSPreview&&window.BCSPreview.open) window.BCSPreview.open({
+        title:'BCS portal link — '+label,text:text,waText:text,
+        filename:'bcs-'+kind+'-portal.txt',kind:'text'});
+      else toast('Preview available nahi',true);
+    });
+    m.addEventListener('click',e=>{ if(e.target===m) m.remove(); });
+  }
+
+  function guestHTML(kind,s){
+    if(!s||typeof s!=='object') return '<div class="bw-empty">Link kharaab hai ya purana ho gaya. BCS Desk se naya link banayein.</div>';
+    const k=kind==='client'?'Client portal':'Advisor portal';
+    return '<div class="fp-guest-card">'+
+      '<div class="bw-eyebrow">BCS · read-only snapshot · '+fEsc(s.t||'')+'</div>'+
+      '<h2>'+fEsc(k)+'</h2>'+
+      '<div class="bw-kv"><span>Name</span><span>'+fEsc(s.n||'—')+'</span>'+
+      '<span>Status</span><span>'+fEsc(s.st||'—')+'</span>'+
+      (s.ph?'<span>Contact</span><span>'+fEsc(mask(s.ph))+'</span>':'')+
+      (s.adv?'<span>Advisor</span><span>'+fEsc(s.adv)+'</span>':'')+
+      (s.req?'<span>Requirement</span><span>'+fEsc(s.req)+'</span>':'')+
+      (s.b?'<span>Budget</span><span>'+fEsc(s.b)+'</span>':'')+
+      (s.corr?'<span>Corridors</span><span>'+fEsc(s.corr.join(', '))+'</span>':'')+
+      (s.due?'<span>Share due</span><span>'+fEsc(s.due)+'</span>':'')+'</div>'+
+      (s.plots&&s.plots.length?'<h3>Purchased plots</h3><div class="fp-plots">'+s.plots.map(p=>
+        '<div class="fp-plot"><b>'+fEsc(p.p||'Project')+'</b><small>'+fEsc(p.d||'')+'</small>'+
+        '<small>'+fEsc(p.s||'')+' · '+fEsc(p.v||'')+'</small></div>').join('')+'</div>':'')+
+      (s.projects&&s.projects.length?'<h3>Assigned projects</h3><div class="bw-list">'+s.projects.map(p=>
+        '<div class="bw-row"><div class="bw-row-main"><b>'+fEsc(p)+'</b></div></div>').join('')+'</div>':'')+
+      (s.docs&&s.docs.length?'<h3>Documents complete</h3><div class="bw-list">'+s.docs.map(d=>
+        '<div class="bw-row"><div class="bw-row-main"><b>✓ '+fEsc(d)+'</b></div></div>').join('')+'</div>':'')+
+      '<div class="bw-note"><b>BCS — clear record, clear split, clear next step.</b> Ye snapshot sirf dekhne ke liye hai; koi login ya data change nahi hota.</div>'+
+    '</div>';
+  }
+  function mask(p){
+    const s=String(p||''); return s.length>4?s.slice(0,2)+'••••'+s.slice(-2):s;
+  }
+  function checkGuest(){
+    const h=location.hash||'';
+    let m=h.match(/clientportal=([A-Za-z0-9_-]+)/);
+    if(m){ showGuest('client',b64dec(m[1])); return true; }
+    m=h.match(/advisorportal=([A-Za-z0-9_-]+)/);
+    if(m){ showGuest('advisor',b64dec(m[1])); return true; }
+    return false;
+  }
+  function showGuest(kind,s){
+    let g=$('#fpGuestPortal');
+    if(!g){ g=document.createElement('div'); g.className='fp-guest'; g.id='fpGuestPortal'; document.body.appendChild(g); }
+    g.innerHTML='<div class="fp-guest-top"><b>BCS Desk</b><button type="button" class="bw-btn sm" id="fpGuestClose">Close portal ✕</button></div>'+
+      '<div class="fp-guest-inner">'+guestHTML(kind,s)+'</div>';
+    g.classList.add('on');
+    $('#fpGuestClose').addEventListener('click',()=>{
+      g.classList.remove('on');
+      try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){ location.hash=''; }
+    });
+  }
+
+  /* ================= SMALL FORMS ================= */
+  function formModal(title,fields,onSave){
+    const m=document.createElement('div'); m.className='bw-modal on'; m.id='fpFormModal';
+    m.innerHTML='<div class="bw-modal-card" role="dialog" aria-modal="true" aria-label="'+fEsc(title)+'">'+
+      '<div class="bw-modal-head"><b>'+fEsc(title)+'</b><button type="button" class="bw-btn sm" data-fp-close="fpFormModal" aria-label="Close">✕</button></div>'+
+      '<div class="bw-modal-body"><div class="bw-form-grid">'+fields.map(f=>
+        '<div class="bw-field" style="'+(f.wide?'grid-column:1/-1':'')+'"><label>'+fEsc(f.label)+'</label>'+
+        (f.type==='select'?'<select class="bw-select" data-fk="'+f.key+'">'+(f.options||[]).map(o=>'<option value="'+fEsc(o[0])+'">'+fEsc(o[1])+'</option>').join('')+'</select>':
+         f.type==='textarea'?'<textarea class="bw-input" rows="2" data-fk="'+f.key+'" aria-label="'+fEsc(f.label)+'"></textarea>':
+         '<input class="bw-input" type="'+(f.type||'text')+'" data-fk="'+f.key+'" aria-label="'+fEsc(f.label)+'" placeholder="'+fEsc(f.ph||'')+'">')+
+        '</div>').join('')+'</div></div>'+
+      '<div class="bw-modal-foot"><button type="button" class="bw-btn primary" id="fpFormSave">💾 Save</button>'+
+      '<button type="button" class="bw-btn" data-fp-close="fpFormModal">Cancel</button></div></div>';
+    document.body.appendChild(m);
+    $('#fpFormSave').addEventListener('click',()=>{
+      const v={}; $$('#fpFormModal [data-fk]').forEach(el=>{ v[el.dataset.fk]=el.value; });
+      if(onSave(v)!==false){ m.remove(); }
+    });
+    m.addEventListener('click',e=>{ if(e.target===m) m.remove(); });
+    const first=m.querySelector('input,select,textarea'); if(first) first.focus();
+  }
+
+  /* ================= RENDER / EVENTS ================= */
+  function renderAll(){
+    try{
+      const p=$('#view-pipeline');
+      if(p&&p.classList.contains('on')){
+        let host=$('#fpPipelineHost');
+        if(!host){ host=document.createElement('div'); host.id='fpPipelineHost'; p.insertBefore(host,p.querySelector('.panel')); }
+        host.innerHTML=pipelineHTML();
+      }
+      const c=$('#view-clients');
+      if(c&&c.classList.contains('on')){
+        let host=$('#fpClientHost');
+        if(!host){ host=document.createElement('div'); host.id='fpClientHost'; c.insertBefore(host,c.querySelector('.client-mode-bar')); }
+        host.innerHTML=clientPortalHTML();
+      }
+      const a=$('#view-advisors');
+      if(a&&a.classList.contains('on')){
+        let host=$('#fpAdvisorHost');
+        if(!host){ host=document.createElement('div'); host.id='fpAdvisorHost'; a.insertBefore(host,a.querySelector('.team-stats')); }
+        host.innerHTML=advisorPortalHTML();
+      }
+    }catch(e){ try{ console.warn('BCS_FLOW render',e); }catch(x){} }
+  }
+
+  document.addEventListener('click',function(e){
+    const t=e.target; if(!t||!t.closest) return;
+    const close=t.closest('[data-fp-close]');
+    if(close){ const el=document.getElementById(close.dataset.fpClose); if(el) el.remove(); return; }
+    const tab=t.closest('[data-fp-tab]');
+    if(tab){ F().ui.leadTab=tab.dataset.fpTab; save(); renderAll(); return; }
+    const call=t.closest('[data-fp-call]');
+    if(call){ callModal(call.dataset.fpCall); return; }
+    const lc=t.closest('[data-fp-leadclient]');
+    if(lc){ leadToClient(lc.dataset.fpLeadclient); return; }
+    const co=t.closest('[data-fp-clientopen]');
+    if(co){ if(typeof openClientProfile==='function') openClientProfile(co.dataset.fpClientopen); return; }
+    const cp=t.closest('[data-fp-clientprofile]');
+    if(cp){ if(typeof openClientProfile==='function') openClientProfile(cp.dataset.fpClientprofile); return; }
+    const ap=t.closest('[data-fp-advisorprofile]');
+    if(ap){ if(typeof openAdvisorProfile==='function') openAdvisorProfile(ap.dataset.fpAdvisorprofile); return; }
+    const pj=t.closest('[data-fp-project]');
+    if(pj){ if(typeof openDetail==='function') openDetail(pj.dataset.fpProject); return; }
+    const dl=t.closest('[data-fp-deal]');
+    if(dl){ go('pipeline'); return; }
+    const share=t.closest('[data-fp-share]');
+    if(share){ shareModal(share.dataset.fpShare,share.dataset.fpId); return; }
+    const mv=t.closest('[data-fp-move]');
+    if(mv){
+      const l=leads().find(x=>x.id===mv.dataset.fpMove); if(!l) return;
+      const i=STAGES.findIndex(s=>s.id===stageOf(l));
+      const j=Math.max(0,Math.min(STAGES.length-1,i+Number(mv.dataset.dir||0)));
+      setStage(l,STAGES[j].id); save(); renderAll(); return;
+    }
+    const addref=t.closest('[data-fp-addref]');
+    if(addref){
+      const kind=addref.dataset.fpAddref, id=addref.dataset.fpId;
+      formModal('Add referral',[{key:'name',label:'Naam'},{key:'phone',label:'Phone'},{key:'note',label:'Note',wide:true}],
+        v=>{
+          if(!v.name) { toast('Naam likhein',true); return false; }
+          if(kind==='client'){
+            const c=(db.clients||[]).find(x=>x.id===id); if(!c) return;
+            c.portalRefs=Array.isArray(c.portalRefs)?c.portalRefs:[];
+            c.portalRefs.push({id:fUid(),name:v.name,phone:v.phone,note:v.note,status:'new',createdAt:Date.now()});
+          } else {
+            const a=(db.advisors||[]).find(x=>x.id===id); if(!a) return;
+            a.portalRefs=Array.isArray(a.portalRefs)?a.portalRefs:[];
+            a.portalRefs.push({id:fUid(),name:v.name,phone:v.phone,note:v.note,status:'new',createdAt:Date.now()});
+          }
+          save(); renderAll(); toast('Referral save ho gaya');
+        });
+      return;
+    }
+    const refc=t.closest('[data-fp-refclient]');
+    if(refc){
+      const kind=refc.dataset.fpRefclient, rid=refc.dataset.refid;
+      const rec=kind==='client'?(db.clients||[]).find(x=>x.id===refc.dataset.fpRefclient):(db.advisors||[]).find(x=>x.id===refc.dataset.fpRefclient);
+      if(!rec) return;
+      const r=(rec.portalRefs||[]).find(x=>x.id===rid); if(!r) return;
+      if((db.clients||[]).some(c=>c.phone&&c.phone===r.phone)) return toast('Ye phone pehle se client hai',true);
+      db.clients.push({id:fUid(),createdAt:Date.now(),name:r.name,phone:r.phone||'',email:'',clientStatus:'new',
+        source:kind==='client'?'Client referral':'Advisor referral',sourceNote:'Referral by '+(rec.name||''),
+        advisorId:kind==='advisor'?rec.id:'',nextFollowUp:'',lastContact:fToday(),birthday:'',budgetMin:'',budgetMax:'',
+        timeline:'',types:[],corridors:[],requirement:r.note||'',notes:'Referral → client',readiness:{},projectIds:[],
+        custom:{},status:'',approvalType:'',reraOnly:false,approvedOnly:false,transferHistory:[],updatedAt:Date.now(),
+        portalDocs:[],portalRefs:[]});
+      r.status='converted'; save(); renderAll(); toast('Referral client ban gaya'); return;
+    }
+    const addpay=t.closest('[data-fp-addpay]');
+    if(addpay){
+      const id=addpay.dataset.fpAddpay;
+      formModal('Record advisor payment',[{key:'amount',label:'Amount (₹)',type:'number'},
+        {key:'date',label:'Date',type:'date'},{key:'mode',label:'Mode',type:'select',options:[['upi','UPI'],['bank','Bank'],['cheque','Cheque'],['cash','Cash']]},
+        {key:'ref',label:'Reference',wide:true}],v=>{
+          const a=(db.advisors||[]).find(x=>x.id===id); if(!a) return;
+          a.portalPayments=Array.isArray(a.portalPayments)?a.portalPayments:[];
+          a.portalPayments.unshift({id:fUid(),amount:Number(v.amount||0),date:v.date||fToday(),mode:v.mode||'upi',ref:v.ref||'',status:'paid'});
+          save(); renderAll(); toast('Payment record ho gaya');
+        });
+      return;
+    }
+    const addbroker=t.closest('[data-fp-addbroker]');
+    if(addbroker){
+      const id=addbroker.dataset.fpAddbroker;
+      formModal('Add co-broker',[{key:'advisorId',label:'Co-broker',type:'select',options:(db.advisors||[]).filter(a=>a.id!==id).map(a=>[a.id,a.name||a.phone||a.id])},
+        {key:'sharePct',label:'Share %',type:'number'},{key:'note',label:'Note',wide:true}],v=>{
+          const a=(db.advisors||[]).find(x=>x.id===id); if(!a||!v.advisorId) return;
+          a.coBrokers=Array.isArray(a.coBrokers)?a.coBrokers:[];
+          a.coBrokers.push({id:fUid(),advisorId:v.advisorId,sharePct:Number(v.sharePct||0),note:v.note||'',status:'active'});
+          save(); renderAll(); toast('Co-broker save ho gaya');
+        });
+      return;
+    }
+    const addsale=t.closest('[data-fp-addsale]');
+    if(addsale){
+      go('pipeline');
+      setTimeout(()=>{ const b=$('#addDealBtn'); if(b) b.click(); },120);
+      return;
+    }
+    const docnote=t.closest('[data-fp-docnote]');
+    if(docnote){
+      const id=docnote.dataset.fpDocnote;
+      const c=(db.clients||[]).find(x=>x.id===id); if(!c) return;
+      const docs=docsOf(c);
+      formModal('Document detail / link',[{key:'key',label:'Document',type:'select',options:docs.map(d=>[d.key,d.label])},
+        {key:'note',label:'Note or public link',wide:true}],v=>{
+          const d=docs.find(x=>x.key===v.key); if(!d) return;
+          d.note=cut(v.note,240); d.status='done'; d.updatedAt=fToday();
+          save(); renderAll(); toast('Document update ho gaya');
+        });
+      return;
+    }
+    const nl=t.closest('[data-fp-newlead]');
+    if(nl){
+      if(window.BCS_LEADGEN&&window.BCS_LEADGEN.openLead) window.BCS_LEADGEN.openLead();
+      else go('leadgen');
+      return;
+    }
+  });
+
+  document.addEventListener('change',function(e){
+    const t=e.target; if(!t||!t.dataset) return;
+    if(t.dataset.fpAssign!==undefined){ assignLead(t.dataset.fpAssign,t.value); return; }
+    if(t.dataset.fpClientpick!==undefined){ F().ui.clientId=t.value; save(); renderAll(); return; }
+    if(t.dataset.fpAdvisorpick!==undefined){ F().ui.advisorId=t.value; save(); renderAll(); return; }
+    if(t.dataset.fpDoc!==undefined){
+      const c=(db.clients||[]).find(x=>x.id===t.dataset.fpDoc); if(!c) return;
+      const d=docsOf(c).find(x=>x.key===t.dataset.key); if(!d) return;
+      d.status=t.checked?'done':'pending'; d.updatedAt=fToday();
+      save(); renderAll(); return;
+    }
+  });
+
+  /* drag & drop on kanban */
+  document.addEventListener('dragstart',e=>{
+    const card=e.target&&e.target.closest?e.target.closest('[data-fp-drag]'):null;
+    if(card){ e.dataTransfer.setData('text/plain',card.dataset.fpDrag); e.dataTransfer.effectAllowed='move'; }
+  });
+  document.addEventListener('dragover',e=>{
+    const col=e.target&&e.target.closest?e.target.closest('[data-fp-stage]'):null;
+    if(col){ e.preventDefault(); e.dataTransfer.dropEffect='move'; }
+  });
+  document.addEventListener('drop',e=>{
+    const col=e.target&&e.target.closest?e.target.closest('[data-fp-stage]'):null;
+    if(!col) return;
+    e.preventDefault();
+    const id=e.dataTransfer.getData('text/plain');
+    const l=leads().find(x=>x.id===id); if(!l) return;
+    setStage(l,col.dataset.fpStage); save(); renderAll(); toast('Stage update ho gaya · '+stageLabel(col.dataset.fpStage));
+  });
+
+  window.addEventListener('hashchange',()=>{ if(location.hash.indexOf('portal=')!==-1) checkGuest(); });
+
+  window.BCS_FLOW={
+    render:renderAll,
+    checkGuest:checkGuest,
+    shareLink:shareLink,
+    queue:queue,
+    stages:STAGES
+  };
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',checkGuest);
+  else checkGuest();
+})();
+</script>
 </body>
 </html>
