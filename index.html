@@ -1009,7 +1009,8 @@ body.advisor-mode #advProfileAccessBtn,
 body.advisor-mode #advProfileDelete,
 body.advisor-mode #clientProfileDelete,
 body.advisor-mode #rDelete,
-body.advisor-mode #resaleViewDelete{display:none !important}
+body.advisor-mode #resaleViewDelete,
+body.advisor-mode .gf-panel{display:none !important}
 
 .soldout-stamp{position:absolute;top:12px;right:12px;z-index:3;transform:rotate(8deg);font-size:9px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;padding:4px 9px;border:1.5px solid rgba(164,69,43,.8);color:#A4452B;background:rgba(255,250,246,.94);border-radius:5px;backdrop-filter:blur(4px);box-shadow:0 2px 8px rgba(0,0,0,.12);pointer-events:none}
 .soldout-stamp.sm{top:6px;right:6px;font-size:7.5px;padding:2px 6px;border-width:1px;letter-spacing:.8px}
@@ -16232,6 +16233,117 @@ body[data-theme="dark"] .lg-fetch-status.err{color:#F0AE97}
   .lg-tabs button:last-child{grid-column:1 / -1}
 }
 
+/* ============ v185 · GROWTH WORKSPACE + GOOGLE FUNNELS ============ */
+.bw-panel{border:1px solid var(--line);border-radius:16px;background:color-mix(in oklab,var(--panel) 88%,transparent);padding:14px;margin:14px 0 18px;box-shadow:var(--shadow)}
+.bw-panel>.bw-head{display:flex;flex-wrap:wrap;align-items:flex-start;gap:10px;margin-bottom:12px}
+.bw-head-txt{flex:1;min-width:210px}
+.bw-eyebrow{font:800 9.5px/1 'DM Sans',sans-serif;letter-spacing:1.2px;text-transform:uppercase;color:var(--sage-ink)}
+.bw-panel h3{font:800 16px/1.25 'Fraunces',serif;color:var(--ink);margin:4px 0 3px}
+.bw-panel p.bw-sub{font-size:11px;line-height:1.55;color:var(--mut);margin:0;max-width:760px}
+.bw-actions{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.bw-tabs{display:flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:12px;background:color-mix(in oklab,var(--line) 42%,transparent);margin-bottom:12px;overflow-x:auto}
+.bw-tabs button{border:0;background:transparent;color:var(--mut);font:700 11px/1 'DM Sans',sans-serif;padding:9px 11px;border-radius:9px;cursor:pointer;white-space:nowrap;flex:0 0 auto}
+.bw-tabs button:hover{color:var(--ink)}
+.bw-tabs button.on{background:var(--panel);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.bw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:9px;min-width:0}
+.bw-grid.two{grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}
+.bw-card{border:1px solid var(--line);border-radius:13px;background:var(--panel);padding:11px 12px;min-width:0}
+.bw-card h4{font:800 12.5px/1.25 'DM Sans',sans-serif;color:var(--ink);margin:0 0 6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.bw-card .bw-sub{font-size:10.5px;line-height:1.55;color:var(--mut);margin:5px 0 0}
+.bw-card ul{margin:5px 0 0;padding-left:17px;font-size:10.5px;line-height:1.6;color:var(--ink2)}
+.bw-card li{margin:2px 0}
+.bw-card li b{color:var(--ink)}
+.bw-kv{display:grid;grid-template-columns:88px 1fr;gap:3px 8px;font-size:10.5px;line-height:1.5;margin-top:6px}
+.bw-kv span:nth-child(odd){color:var(--mut);font-weight:800}
+.bw-kv span:nth-child(even){color:var(--ink2);overflow-wrap:anywhere}
+.bw-chip{display:inline-flex;align-items:center;gap:3px;font-size:9.5px;font-weight:800;letter-spacing:.2px;padding:3px 7px;border-radius:999px;background:color-mix(in oklab,var(--line) 42%,transparent);color:var(--ink2);white-space:nowrap}
+.bw-chip.good{background:rgba(47,102,68,.14);color:#2F6644}
+.bw-chip.warn{background:rgba(196,154,62,.18);color:#7A5A23}
+.bw-chip.hot{background:rgba(164,69,43,.13);color:#A4452B}
+.bw-chip.brand{background:color-mix(in oklab,var(--acc) 15%,transparent);color:var(--ink)}
+.bw-btn{border:1px solid var(--line);background:var(--panel);color:var(--ink2);font:700 10.5px/1 'DM Sans',sans-serif;padding:8px 10px;border-radius:9px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.bw-btn:hover{border-color:color-mix(in oklab,var(--acc) 42%,var(--line));color:var(--ink)}
+.bw-btn.primary{background:linear-gradient(135deg,#3A3928,#7A6B4F);border-color:transparent;color:#FFFDF6}
+.bw-btn.sm{padding:6px 8px;font-size:9.5px}
+.bw-link{color:var(--sage-ink);font-weight:800;text-decoration:none;border-bottom:1px dotted currentColor}
+.bw-note{font-size:10px;line-height:1.55;color:var(--mut);border-left:3px solid var(--acc);padding:7px 9px;border-radius:0 8px 8px 0;background:color-mix(in oklab,var(--line) 22%,transparent);margin:8px 0}
+.bw-note.good{border-left-color:#2F6644}
+.bw-note.bad{border-left-color:#A4452B}
+.bw-check{display:flex;align-items:flex-start;gap:7px;font-size:10.5px;line-height:1.45;color:var(--ink2);padding:5px 0;cursor:pointer;border-bottom:1px solid color-mix(in oklab,var(--line) 55%,transparent)}
+.bw-check:last-child{border-bottom:0}
+.bw-check input{margin:2px 0 0;accent-color:var(--sage-ink);flex:0 0 auto}
+.bw-check.done span{text-decoration:line-through;color:var(--mut)}
+.bw-check b{color:var(--ink)}
+.bw-prog{height:7px;border-radius:99px;background:color-mix(in oklab,var(--line) 55%,transparent);overflow:hidden;margin:6px 0 3px}
+.bw-prog i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#4E7C62,#C49A3E);transition:width .25s}
+.bw-prog-lbl{font-size:9.5px;color:var(--mut);font-weight:800;display:flex;justify-content:space-between;gap:8px}
+.bw-empty{font-size:10.5px;color:var(--mut);padding:12px;text-align:center;border:1px dashed var(--line);border-radius:10px}
+.bw-list{display:flex;flex-direction:column;gap:7px;min-width:0}
+.bw-row{border:1px solid var(--line);border-radius:11px;background:var(--panel);padding:9px 10px;display:flex;flex-wrap:wrap;gap:7px;align-items:flex-start}
+.bw-row-main{flex:1;min-width:170px}
+.bw-row-main b{font-size:11.5px;color:var(--ink);display:block;overflow-wrap:anywhere}
+.bw-row-main small{font-size:10px;color:var(--mut);line-height:1.5;display:block;margin-top:2px;overflow-wrap:anywhere}
+.bw-row-actions{display:flex;flex-wrap:wrap;gap:5px}
+.bw-input,.bw-select,.bw-area textarea{width:100%;max-width:100%;min-width:0;box-sizing:border-box;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink2);font:500 11px/1.45 'DM Sans',sans-serif;padding:9px 10px;outline:none}
+.bw-input:focus,.bw-select:focus,.bw-area textarea:focus{border-color:color-mix(in oklab,var(--acc) 48%,var(--line));box-shadow:0 0 0 3px color-mix(in oklab,var(--acc) 10%,transparent)}
+.bw-area textarea{min-height:120px;resize:vertical}
+.bw-form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:7px;min-width:0}
+.bw-field{display:flex;flex-direction:column;gap:4px;min-width:0}
+.bw-field label{font-size:9.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--mut)}
+.bw-modal{position:fixed;inset:0;z-index:100010;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,11,9,.66);backdrop-filter:blur(4px)}
+.bw-modal.on{display:flex}
+.bw-modal-card{width:min(720px,100%);max-height:min(86vh,780px);display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;background:var(--panel);box-shadow:0 24px 80px rgba(0,0,0,.4);overflow:hidden}
+.bw-modal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.bw-modal-head b{font:800 14px/1.2 'Fraunces',serif;color:var(--ink)}
+.bw-modal-body{padding:12px 14px;overflow:auto}
+.bw-modal-body textarea{width:100%;min-height:300px;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;background:color-mix(in oklab,var(--panel) 96%,transparent);color:var(--ink2);font:500 11.5px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;padding:11px;resize:vertical;outline:none}
+.bw-modal-foot{display:flex;flex-wrap:wrap;gap:6px;padding:11px 14px;border-top:1px solid var(--line)}
+.rn-share-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:7px;min-width:0}
+.gf-panel{border:1px solid var(--line);border-radius:16px;background:color-mix(in oklab,var(--panel) 88%,transparent);padding:14px;margin:14px 0 18px;box-shadow:var(--shadow)}
+.gf-head{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start}
+.gf-head>div:first-child{flex:1;min-width:210px}
+.gf-head h3{font:800 15px/1.25 'Fraunces',serif;color:var(--ink);margin:3px 0}
+.gf-head p{font-size:10.5px;line-height:1.55;color:var(--mut);margin:0;max-width:720px}
+.gf-controls{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:12px 0}
+.gf-controls select,.gf-controls input[type="search"]{border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink2);font:600 11px/1 'DM Sans',sans-serif;padding:8px 9px;min-width:120px;max-width:190px;outline:none}
+.gf-links{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 10px}
+.gf-link{border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink2);font:700 10px/1 'DM Sans',sans-serif;padding:8px 10px;text-decoration:none;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.gf-link:hover{border-color:color-mix(in oklab,var(--acc) 45%,var(--line));color:var(--ink)}
+.gf-steps{font-size:10px;line-height:1.6;color:var(--mut);margin:4px 0 0;padding-left:18px}
+.gf-steps li{margin:2px 0}
+.gf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:9px;min-width:0}
+.gf-card{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:10px 11px;min-width:0}
+.gf-card b{font-size:11.5px;color:var(--ink);display:block;overflow-wrap:anywhere}
+.gf-card small{display:block;font-size:10px;line-height:1.5;color:var(--mut);margin-top:3px;overflow-wrap:anywhere}
+.gf-card .gf-chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.gf-count{font-size:10px;color:var(--mut);font-weight:800;margin-left:auto;white-space:nowrap}
+.gf-list-wrap{overflow-x:auto}
+.gf-table{width:100%;border-collapse:collapse;font-size:10.5px;min-width:560px}
+.gf-table th,.gf-table td{text-align:left;padding:7px 8px;border-bottom:1px solid color-mix(in oklab,var(--line) 60%,transparent);vertical-align:top;color:var(--ink2)}
+.gf-table th{font-size:9px;letter-spacing:.6px;text-transform:uppercase;color:var(--mut);font-weight:800}
+.gf-table td b{color:var(--ink)}
+.gf-filter-chips{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
+.gf-filter-chips button{border:1px solid var(--line);border-radius:99px;background:var(--panel);color:var(--mut);font:700 9.5px/1 'DM Sans',sans-serif;padding:6px 9px;cursor:pointer}
+.gf-filter-chips button.on{background:color-mix(in oklab,var(--acc) 16%,var(--panel));color:var(--ink);border-color:color-mix(in oklab,var(--acc) 40%,var(--line))}
+.gf-proj{border-left:3px solid #4E7C62}
+.gf-proj.t-upcoming{border-left-color:#C49A3E}
+.gf-proj.t-completed{border-left-color:#2F6644}
+body[data-theme="dark"] .bw-btn.primary{background:linear-gradient(135deg,#B89A6B,#D9BE8A);color:#141A14}
+body[data-theme="dark"] .bw-chip.good{background:rgba(78,124,91,.24);color:#B9DCC4}
+body[data-theme="dark"] .bw-chip.warn{background:rgba(196,154,62,.22);color:#E8C97C}
+body[data-theme="dark"] .bw-chip.hot{background:rgba(164,69,43,.24);color:#F0AE97}
+body[data-theme="dark"] .bw-note.bad{border-left-color:#F0AE97}
+body[data-theme="dark"] .gf-proj.t-upcoming{border-left-color:#E8C97C}
+@media(max-width:640px){
+  .bw-panel,.gf-panel{padding:11px;border-radius:13px}
+  .bw-grid,.bw-grid.two,.gf-grid{grid-template-columns:1fr}
+  .bw-tabs button{padding:9px 8px;font-size:10.5px}
+  .gf-controls select,.gf-controls input[type="search"]{max-width:none;flex:1 1 140px}
+  .bw-form-grid{grid-template-columns:1fr}
+  .bw-modal{padding:8px}
+  .bw-modal-body textarea{min-height:230px}
+}
+
 </style>
 </head>
 <style id="bcs-mkt-daily-css">
@@ -17404,6 +17516,7 @@ try{
     <div class="show-grid" id="galleryGrid" style="display:none"></div>
     <div id="projectListWrap" style="display:none"></div>
     <div class="tgt-ghost-host" id="projGhosts" style="display:none"></div>
+    <div id="gf-projects"></div>
   </section>
 
   <!-- ============ DEVELOPERS ============ -->
@@ -17451,6 +17564,7 @@ try{
     <div id="devListWrap" style="display:none"></div>
     <div class="dev-kanban" id="devKanban" style="display:none"></div>
     <div class="tgt-ghost-host" id="devGhosts" style="display:none"></div>
+    <div id="gf-dealers"></div>
   </section>
 
   <!-- ============ RESALE ============ -->
@@ -17543,6 +17657,7 @@ try{
     </div>
     <div class="advisor-grid" id="advisorGrid"></div>
     <div class="tgt-ghost-host" id="advGhosts" style="display:none"></div>
+    <div id="gf-advisors"></div>
   </section>
 
   <section class="view" id="view-partners">
@@ -18236,6 +18351,7 @@ try{
     </div>
 
     <div class="links-board" id="linksBoard"></div>
+    <div id="rnHost"></div>
   </section>
 
   <section class="view" id="view-terminology">
@@ -18886,6 +19002,7 @@ try{
     </div>
     <div id="mktBody"></div>
     <div class="mkt-platform-strip" id="mktPlatforms"></div>
+    <div id="bwHost"></div>
   </section>
 
   <!-- marketing day planner modal (multi-post) -->
@@ -43335,6 +43452,7 @@ if(mktRefreshBtn) mktRefreshBtn.addEventListener('click', () => {
 
 function renderSocialDesk(){
   mktRender();
+  try{ if(window.BCS_GROWTH && window.BCS_GROWTH.renderBrand) window.BCS_GROWTH.renderBrand(); }catch(e){}
 }
 
 /* ============================================================
@@ -46653,7 +46771,7 @@ function render(){
   if(currentView === 'dayplan') renderDayplan();
   if(currentView === 'leadgen'){ try{ window.BCS_LEADGEN.render(); }catch(e){ console.warn('[BCS leadgen]', e); } }
   if(currentView === 'news') renderNews();
-  if(currentView === 'links') renderLinks();
+  if(currentView === 'links'){ renderLinks(); try{ if(window.BCS_GROWTH && window.BCS_GROWTH.renderNetwork) window.BCS_GROWTH.renderNetwork(); }catch(e){} }
   if(currentView === 'terminology') renderTerminology();
   if(currentView === 'tax') renderTax();
   if(currentView === 'partners') renderPartners();
@@ -46666,6 +46784,7 @@ function render(){
   if(currentView === 'templates') renderTemplates();
   if(currentView === 'health'){ renderHealth(); renderSyncCard(); try{ renderDataStatus(); }catch(e){} }
   if(currentView === 'social'){ try{ renderSocialDesk(); }catch(e){} }
+  try{ if(window.BCS_GROWTH && window.BCS_GROWTH.renderFunnels) window.BCS_GROWTH.renderFunnels(); }catch(e){}
   if(currentView === 'sheets'){ try{ paintSheetsInputs(); }catch(e){} }
   storageMeter();
   try{ if(window.__bcsArmMotion) window.__bcsArmMotion(); }catch(e){}
@@ -55755,11 +55874,11 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     ops:        { label:'Ops',          ic:'⌗',  note:'Backups, audit, docs, money, DD, ROI, invoices' },
     tax:        { label:'Tax & Advice', ic:'₹',  note:'Tax notes + client advisory' },
     terminology:{ label:'Terminology',  ic:'Aa', note:'Glossary of Jaipur land terms' },
-    links:      { label:'Links',        ic:'⛓',  note:'Govt portals + daily tools' },
+    links:      { label:'Links',        ic:'⛓',  note:'Govt portals + realty network hub: public broker/dealer channels, requirements & projects' },
     templates:  { label:'Templates',    ic:'▤',  note:'Message + document templates' },
     podcasts:   { label:'Podcasts',     ic:'🎙', note:'Listening desk' },
     health:     { label:'Health',       ic:'♥',  note:'Data health + sync status' },
-    social:     { label:'Social Media', ic:'🌐', note:'Content desk + daily plan' },
+    social:     { label:'Social Media', ic:'🌐', note:'Content desk + brand manager + creator radar' },
     sheets:     { label:'Google Sheets',ic:'📊', note:'Two-way sheet sync' },
     app:        { label:'Whole app',    ic:'⌘',  note:'Cross-page improvements' }
   };
@@ -55769,6 +55888,21 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     Document:'ops', Invoice:'ops', Broadcast:'ops', ROI:'ops', 'Client page':'ops', Backup:'ops'
   };
   const SITE_LOG = [
+    { v:'v185', date:'2026-11-18', page:'social', kind:'new',
+      title:'Brand manager — Ajay Sharma / BCS Jaipur',
+      detail:'Trust positioning, client psychology, platform playbooks, Instagram handling, daily must-do targets, video ideas, learning curve aur roz ka plan.' },
+    { v:'v185', date:'2026-11-18', page:'social', kind:'new',
+      title:'Creator radar + one-click Gemini prompts',
+      detail:'Instagram, YouTube, Facebook, LinkedIn ke public discovery links aur strategies. Har creator/post ke liye BCS brand aur 30/35/35 model ke saath original Gemini prompt.' },
+    { v:'v185', date:'2026-11-18', page:'projects', kind:'new',
+      title:'Area-wise Google project funnel',
+      detail:'Upcoming / ongoing / completed tags, corridor aur developer wise separation, search, paste capture aur seedhe existing project panel me add/edit.' },
+    { v:'v185', date:'2026-11-18', page:'advisors', kind:'new',
+      title:'Advisor + property dealer Google funnels',
+      detail:'Jaipur area-wise Google Maps/web links, paste se detail capture, duplicate-free drafts aur seedhe Advisors / Developers panel me conversion.' },
+    { v:'v185', date:'2026-11-18', page:'links', kind:'new',
+      title:'Realty network hub — India brokers, dealers & channels',
+      detail:'Bina personal signup ke public Telegram, WhatsApp, LinkedIn, Facebook aur website discovery. Saved networks, paste capture aur preview-first active requirements, projects aur client intros.' },
     { v:'v184', date:'2026-11-18', page:'leadgen', kind:'new',
       title:'Lead Engine — free Jaipur lead generation',
       detail:'Google Maps, Meta Ad Library, portals, social aur OpenStreetMap se public leads — property type aur profession ke hisaab se categorized.' },
@@ -57241,6 +57375,984 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
 
   window.BCS_LEADGEN = { render: render, openLead: openLeadModal, paint: paint };
   paint();
+})();
+</script>
+
+
+<script>
+/* =========================================================
+   BCS GROWTH WORKSPACE (v185)
+   ---------------------------------------------------------
+   1 Google funnels — area-wise advisor / dealer / project
+     discovery links + paste capture, converted into the
+     existing Advisors / Developers / Projects panels.
+   2 Brand manager — trust positioning, client psychology,
+     platform playbooks, daily targets, must-do list,
+     learning curve and video ideas for Ajay Sharma / BCS.
+   3 Creator radar — public discovery links + strategy
+     notes + one-click Gemini prompt to make an original
+     BCS version for our 30/35/35 advisory model.
+   No login scraping. Free, manual, consent-first.
+   ========================================================= */
+(function(){
+  'use strict';
+
+  const q  = s => document.querySelector(s);
+  const qa = s => Array.prototype.slice.call(document.querySelectorAll(s));
+  const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const digits = s => String(s == null ? '' : s).replace(/\D/g, '');
+  const phone10 = s => { const d = digits(s); const m = d.match(/([6-9]\d{9})$/); return m ? m[1] : ''; };
+  const todayKey = () => new Date().toISOString().slice(0,10);
+  const short = v => {
+    v = Number(v) || 0; if(!v) return '—';
+    if(v >= 1e7) return '₹' + (v/1e7).toFixed(v % 1e7 ? 2 : 0).replace(/\.00$/,'') + ' Cr';
+    if(v >= 1e5) return '₹' + (v/1e5).toFixed(v % 1e5 ? 1 : 0).replace(/\.0$/,'') + ' L';
+    return '₹' + v.toLocaleString('en-IN');
+  };
+  const AREAS = ['Agra Road','Ajmer Road','Delhi Road','Sikar Road','Tonk Road','Diggi Road','Jagatpura','Mansarovar','Vaishali Nagar','Pratap Nagar','Malviya Nagar','C-Scheme','Civil Lines','Raja Park','Bani Park','Jhotwara','Kalwar Road','Sanganer','Bagru','Chomu','Ring Road','Sitapura','Vatika','Nirman Nagar','Shyam Nagar','Gopalpura','Durgapura','Tonk Phatak','Gandhi Path','Khatipura','Sirsi Road','Bhankrota','Mahapura','Kukas','Amer','SEZ','Muhana','Bassi','Jamdoli','Vidhyadhar Nagar','Brahmpuri','Harmada','Koti','Jaisinghpura'];
+  const CORRIDORS = () => (Array.isArray(db.corridors) && db.corridors.length ? db.corridors : [
+    {id:'agra',name:'Agra Road'},{id:'delhi',name:'Delhi Road'},{id:'diggi',name:'Diggi Road'},
+    {id:'ajmer',name:'Ajmer Road'},{id:'sikar',name:'Sikar Road'},{id:'tonk',name:'Tonk Road'}
+  ]);
+
+  /* ---------------- storage ---------------- */
+  function G(){
+    if(!db.growth || typeof db.growth !== 'object' || Array.isArray(db.growth)) db.growth = {};
+    const g = db.growth;
+    if(!g.drafts || typeof g.drafts !== 'object' || Array.isArray(g.drafts)) g.drafts = {};
+    ['advisors','dealers','projects'].forEach(k => {
+      if(!Array.isArray(g.drafts[k])) g.drafts[k] = [];
+      g.drafts[k] = g.drafts[k].filter(d => d && typeof d === 'object').slice(0,600).map(d => ({
+        id: String(d.id || uid()),
+        kind: k,
+        name: String(d.name || '').slice(0,120),
+        phone: phone10(d.phone),
+        area: String(d.area || '').slice(0,120),
+        firm: String(d.firm || '').slice(0,140),
+        status: String(d.status || '').slice(0,40),
+        corridor: String(d.corridor || '').slice(0,80),
+        developer: String(d.developer || '').slice(0,120),
+        price: Math.max(0, Math.round(+d.price || 0)),
+        sourceUrl: String(d.sourceUrl || '').slice(0,800),
+        raw: String(d.raw || '').slice(0,500),
+        createdAt: +d.createdAt || Date.now()
+      }));
+    });
+    if(!g.brand || typeof g.brand !== 'object' || Array.isArray(g.brand)) g.brand = {};
+    ['daily','ig','learn','idea'].forEach(s => {
+      if(!g.brand.checks) g.brand.checks = {};
+      if(!g.brand.checks[s] || typeof g.brand.checks[s] !== 'object') g.brand.checks[s] = {};
+    });
+    if(!Array.isArray(g.brand.creators)) g.brand.creators = [];
+    g.brand.creators = g.brand.creators.filter(c => c && c.name && /^https?:\/\//i.test(String(c.url||''))).slice(0,80).map(c => ({
+      id: String(c.id || uid()), name: String(c.name).slice(0,100),
+      platform: ['instagram','youtube','facebook','linkedin'].indexOf(c.platform) !== -1 ? c.platform : 'instagram',
+      url: String(c.url).slice(0,800), strategy: String(c.strategy || '').slice(0,500)
+    }));
+    if(typeof g.brand.notes !== 'string') g.brand.notes = '';
+    if(!g.network || typeof g.network !== 'object' || Array.isArray(g.network)) g.network = {};
+    if(!Array.isArray(g.network.contacts)) g.network.contacts = [];
+    g.network.contacts = g.network.contacts.filter(c => c && c.name && /^https?:\/\//i.test(String(c.url||''))).slice(0,120).map(c => ({
+      id: String(c.id || uid()), name: String(c.name).slice(0,100),
+      platform: ['telegram','whatsapp','linkedin','facebook','website'].indexOf(c.platform) !== -1 ? c.platform : 'website',
+      area: String(c.area||'').slice(0,80), url: String(c.url).slice(0,800),
+      focus: String(c.focus||'').slice(0,200), note: String(c.note||'').slice(0,300),
+      createdAt: +c.createdAt || Date.now()
+    }));
+    if(!g.network.checks || typeof g.network.checks !== 'object' || Array.isArray(g.network.checks)) g.network.checks = {};
+    return g;
+  }
+  function persist(){ save(); }
+  function isChecked(section,id){ return !!G().brand.checks[section][id]; }
+  function toggleCheck(section,id){
+    const b = G().brand;
+    b.checks[section][id] = !b.checks[section][id];
+    persist(); paintBrand();
+  }
+  function progress(section, ids){
+    const done = ids.filter(id => isChecked(section,id)).length;
+    return { done, total: ids.length, pct: ids.length ? Math.round(done/ids.length*100) : 0 };
+  }
+
+  /* ---------------- shared UI helpers ---------------- */
+  function fallbackCopy(text){
+    try{
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+      toast('Copy ho gaya ✓');
+    }catch(e){ toast('Copy nahi hua', true); }
+  }
+  function copyText(text){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(() => toast('Copy ho gaya ✓')).catch(() => fallbackCopy(text));
+    } else fallbackCopy(text);
+  }
+  function downloadText(name, text, type){
+    try{
+      const blob = new Blob([text], {type: type || 'text/plain;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = name;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1500);
+      toast('Download ho gaya — ' + name);
+    }catch(e){ toast('Download nahi hua', true); }
+  }
+  let promptModal = null;
+  function ensurePromptModal(){
+    if(promptModal) return promptModal;
+    const m = document.createElement('div');
+    m.className = 'bw-modal'; m.id = 'bwPromptModal';
+    m.innerHTML = `<div class="bw-modal-card" role="dialog" aria-modal="true" aria-label="Gemini prompt preview">
+      <div class="bw-modal-head"><b id="bwPromptTitle">Gemini prompt</b><button type="button" class="bw-btn sm" data-bw-modal="close" aria-label="Close">✕ Close</button></div>
+      <div class="bw-modal-body"><div class="bw-note good">Ye exact prompt Gemini me bheja jayega. Pehle padhein, edit kar sakte hain. BCS brand voice aur 30/35/35 model prompt me already hai.</div><textarea id="bwPromptText" spellcheck="false"></textarea></div>
+      <div class="bw-modal-foot">
+        <button type="button" class="bw-btn primary" data-bw-modal="gemini">🤖 Copy + Open Gemini</button>
+        <button type="button" class="bw-btn" data-bw-modal="copy">📋 Copy prompt</button>
+        <button type="button" class="bw-btn" data-bw-modal="download">⬇ Download .txt</button>
+      </div></div>`;
+    document.body.appendChild(m);
+    promptModal = m;
+    return m;
+  }
+  function openPrompt(title, text){
+    const m = ensurePromptModal();
+    q('#bwPromptTitle').textContent = title || 'Gemini prompt';
+    q('#bwPromptText').value = text || '';
+    m.classList.add('on');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePrompt(){
+    if(!promptModal) return;
+    promptModal.classList.remove('on');
+    document.body.style.overflow = '';
+  }
+
+  /* ---------------- Google funnel link builders ---------------- */
+  const gmap = query => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(query);
+  const gweb = query => 'https://www.google.com/search?q=' + encodeURIComponent(query);
+  const LINK_SETS = {
+    advisors: area => [
+      ['🗺 Google Maps', gmap('real estate advisor Jaipur ' + area)],
+      ['🔎 Google web', gweb('"real estate advisor" Jaipur ' + area + ' contact')],
+      ['🔎 Google web 2', gweb('property consultant Jaipur ' + area + ' phone')],
+      ['🤝 Referral query', gweb('site:linkedin.com/in real estate advisor Jaipur ' + area)]
+    ],
+    dealers: area => [
+      ['🗺 Google Maps', gmap('property dealer Jaipur ' + area)],
+      ['🔎 Google web', gweb('"property dealer" Jaipur ' + area + ' contact number')],
+      ['🔎 Google web 2', gweb('real estate agent Jaipur ' + area + ' broker')],
+      ['🏢 Builder search', gmap('builder office Jaipur ' + area)]
+    ],
+    projects: (area, status) => {
+      const s = status === 'upcoming' ? 'upcoming new launch' : status === 'completed' ? 'completed ready possession' : status === 'ongoing' ? 'ongoing under construction' : '';
+      return [
+        ['🗺 Google Maps', gmap('residential project ' + area + ' Jaipur ' + s)],
+        ['🔎 Google web', gweb(s + ' projects Jaipur ' + area + ' RERA')],
+        ['🏠 99acres', 'https://www.99acres.com/search/property/buy/jaipur-' + encodeURIComponent(area.toLowerCase().replace(/\s+/g,'-'))],
+        ['🏠 MagicBricks', 'https://www.magicbricks.com/property-for-sale/real-estate-jaipur'],
+        ['🏠 Housing.com', 'https://housing.com/in/buy/jaipur/' + encodeURIComponent(area.toLowerCase().replace(/\s+/g,'-'))],
+        ['📑 RERA check', gweb('RERA Jaipur registered projects ' + area)]
+      ];
+    }
+  };
+
+  /* ---------------- parsing Google-copied text ---------------- */
+  function matchArea(text){
+    const t = String(text || '').toLowerCase();
+    let hit = '';
+    AREAS.forEach(a => { if(!hit && t.indexOf(a.toLowerCase()) !== -1) hit = a; });
+    if(!hit) CORRIDORS().forEach(c => { if(!hit && t.indexOf(String(c.name||'').toLowerCase()) !== -1) hit = c.name; });
+    return hit;
+  }
+  function detectStatus(text){
+    const t = String(text || '').toLowerCase();
+    if(/upcoming|new launch|pre.launch|launching|coming soon/.test(t)) return 'Upcoming';
+    if(/completed|ready possession|ready to move|possession ready|delivered/.test(t)) return 'Completed';
+    if(/ongoing|under construction|in progress|construction/.test(t)) return 'Ongoing';
+    return '';
+  }
+  function parsePrice(text){
+    const m = String(text||'').match(/(?:₹|rs\.?|inr)?\s*(\d+(?:\.\d+)?)\s*(cr|crore|l|lakh)/i);
+    if(!m) return 0;
+    const n = parseFloat(m[1]) || 0;
+    return /^(cr|crore)$/i.test(m[2]) ? Math.round(n*1e7) : Math.round(n*1e5);
+  }
+  function parseDraftText(text, kind){
+    const out = [];
+    String(text || '').split(/\r?\n/).forEach(raw => {
+      const line = String(raw || '').trim();
+      if(line.length < 5) return;
+      const clean = line.replace(/https?:\/\/\S+/gi,' ').replace(/[|•]/g,' ').replace(/\s+/g,' ').trim();
+      const phone = phone10(line);
+      if(kind !== 'projects' && !phone) return;
+      if(kind === 'projects' && clean.length < 8) return;
+      let name = clean;
+      const beforePhone = clean.match(/^(.*?)\s+[6-9]\d{9}(?:\s|$)/);
+      if(beforePhone && beforePhone[1].trim().length >= 2) name = beforePhone[1];
+      else name = clean.split(/[,–—]/)[0] || clean;
+      name = name.replace(/[,;:|\s]+$/g,'').replace(/^\s*(mr\.?|mrs\.?|shri|smt\.?)\s+/i,'').trim();
+      name = name.replace(/\s+\d+(\.\d+)?\s*(★|stars?|rating)/i,'').trim();
+      name = name.replace(/\s+\d{6,}/g,'').trim();
+      if(kind === 'projects'){
+        name = name.split(/\s+(?:ongoing|upcoming|completed|under construction|ready possession|new launch)\b/i)[0];
+        const pm2 = name.match(/^(.*?)\s+(?:₹|rs\.?|inr)?\s*\d+(?:\.\d+)?\s*(?:cr|crore|l|lakh)\b/i);
+        if(pm2 && pm2[1].trim().length >= 2) name = pm2[1];
+        const hit = matchArea(name);
+        if(hit){ const i = name.toLowerCase().indexOf(hit.toLowerCase()); if(i > 1) name = name.slice(0,i); }
+        name = name.replace(/[,;:|\s]+$/g,'').trim();
+      }
+      name = name.slice(0,120);
+      if(!name || /^\d+$/.test(name)) name = kind === 'projects' ? 'Project from Google' : (phone ? 'Lead ' + phone : 'Untitled');
+      const knownDevs = Array.isArray(db.developers) ? db.developers.map(d => String(d.name||'')).filter(Boolean) : [];
+      let developer = '';
+      const dl = clean.toLowerCase();
+      knownDevs.some(n => { if(dl.indexOf(n.toLowerCase()) !== -1){ developer = n; return true; } return false; });
+      let corridor = '';
+      CORRIDORS().some(c => { const n = String(c.name||''); if(n && dl.indexOf(n.toLowerCase()) !== -1){ corridor = n; return true; } return false; });
+      const urlMatch = String(line).match(/https?:\/\/[^\s)]+/i);
+      out.push({
+        id: uid(), kind, name, phone,
+        area: matchArea(clean), firm: kind === 'projects' ? '' : name.slice(0,140),
+        status: kind === 'projects' ? detectStatus(clean) : '',
+        corridor, developer, price: kind === 'projects' ? parsePrice(clean) : 0,
+        sourceUrl: urlMatch ? urlMatch[0].slice(0,800) : '',
+        raw: line.slice(0,500), createdAt: Date.now()
+      });
+    });
+    return out;
+  }
+
+  /* ---------------- convert drafts into existing panels ---------------- */
+  function openExisting(kind, id){
+    const tries = {
+      advisors: [() => typeof openAdvisor === 'function' && openAdvisor(id),
+                 () => window.BCS_ADVISORS && window.BCS_ADVISORS.open && window.BCS_ADVISORS.open(id)],
+      dealers:   [() => typeof openDeveloper === 'function' && openDeveloper(id),
+                  () => window.BCS_DEVELOPERS && window.BCS_DEVELOPERS.open && window.BCS_DEVELOPERS.open(id)],
+      projects:  [() => typeof openProject === 'function' && openProject(id),
+                  () => window.BCS_PROJECTS && window.BCS_PROJECTS.open && window.BCS_PROJECTS.open(id)]
+    }[kind] || [];
+    for(const fn of tries){ try{ const r = fn(); if(r !== false) return true; }catch(e){} }
+    return false;
+  }
+  function addDraft(kind, id, openEditor){
+    if(typeof isAdmin === 'function' && !isAdmin()) return toast('Google funnel se add sirf admin kar sakta hai', true);
+    const arr = G().drafts[kind];
+    const idx = arr.findIndex(d => d.id === id);
+    if(idx === -1) return toast('Draft nahi mila', true);
+    const d = arr[idx];
+    const notes = ('Google funnel · ' + (d.area ? d.area + ' · ' : '') + (d.firm ? d.firm + ' · ' : '') + (d.raw || '')).slice(0,600);
+    try{
+      if(kind === 'advisors'){
+        const corr = CORRIDORS().find(c => c.name === d.corridor || c.name === d.area);
+        db.advisors.push({ id: uid(), name: d.name || ('Advisor ' + d.phone), phone: d.phone,
+          city: d.area || 'Jaipur', area: d.area, corridors: corr ? [corr.id] : [],
+          source: 'Google funnel', sourceUrl: d.sourceUrl, notes, status: 'active', active: true, createdAt: Date.now() });
+      } else if(kind === 'dealers'){
+        db.developers.push({ id: uid(), name: d.name || ('Dealer ' + d.phone), phone: d.phone,
+          area: d.area, category: 'Property dealer', source: 'Google funnel', sourceUrl: d.sourceUrl,
+          notes, active: true, createdAt: Date.now() });
+      } else {
+        const corr = CORRIDORS().find(c => c.name === d.corridor || c.name === d.area);
+        const dev = (db.developers || []).find(x => x.name === d.developer);
+        db.projects.push({ id: uid(), name: d.name, developer: d.developer || '', developerId: dev ? dev.id : '',
+          corridor: corr ? corr.id : '', corridorId: corr ? corr.id : '', location: d.area || d.corridor || '',
+          area: d.area || d.corridor, status: (d.status || 'Ongoing').toLowerCase(), types: [],
+          priceMin: d.price || '', priceMax: d.price || '', price: d.price, priceUnit: d.price ? 'flat' : '',
+          source: 'Google funnel', sourceUrl: d.sourceUrl, notes, active: true, createdAt: Date.now() });
+      }
+      normalizeDb(db);
+      arr.splice(idx,1);
+      persist();
+      toast(kind === 'projects' ? 'Project add ho gaya — Projects panel me dekhein' :
+            kind === 'advisors' ? 'Advisor add ho gaya — Advisors page par dekhein' : 'Dealer add ho gaya — Developers page par dekhein');
+      if(openEditor){
+        const created = (kind === 'advisors' ? db.advisors : kind === 'dealers' ? db.developers : db.projects).slice(-1)[0];
+        if(created && !openExisting(kind, created.id)) toast('Record add ho gaya. Edit page par karein.');
+      }
+    }catch(e){ toast('Add nahi hua — ' + (e && e.message ? e.message : 'error'), true); }
+    paintFunnel(kind);
+  }
+
+  /* ---------------- funnel HTML + paint ---------------- */
+  function funnelHTML(kind){
+    const label = kind === 'advisors' ? 'Active advisors' : kind === 'dealers' ? 'Property dealers' : 'Jaipur projects';
+    const state = funnelState[kind];
+    const links = LINK_SETS[kind](state.area || 'Jaipur', state.status || 'ongoing');
+    const drafts = G().drafts[kind];
+    const shown = drafts.filter(d => {
+      if(state.q && !((d.name||'')+' '+(d.area||'')+' '+(d.phone||'')+' '+(d.developer||'')+' '+(d.raw||'')).toLowerCase().includes(state.q.toLowerCase())) return false;
+      if(state.areaF && d.area !== state.areaF && d.corridor !== state.areaF) return false;
+      if(kind === 'projects' && state.statusF && d.status !== state.statusF) return false;
+      return true;
+    });
+    const areaOpts = ['Jaipur'].concat(AREAS).map(a => `<option value="${esc(a)}" ${state.area===a?'selected':''}>${esc(a)}</option>`).join('');
+    const corridorOpts = [['','All areas']].concat(['Jaipur'].concat(CORRIDORS().map(c => c.name), AREAS)
+      .filter((v,i,a) => a.indexOf(v)===i).map(a => [a,a]))
+      .map(o => `<option value="${esc(o[0])}" ${state.areaF===o[0]?'selected':''}>${esc(o[1])}</option>`).join('');
+    const statusChips = kind === 'projects'
+      ? ['All','Upcoming','Ongoing','Completed'].map(s => `<button type="button" data-gf-status="${s}" class="${(!state.statusF&&s==='All')||state.statusF===s?'on':''}">${s}</button>`).join('')
+      : '';
+    return `<div class="gf-panel" data-gf-panel="${kind}">
+      <div class="gf-head"><div>
+        <div class="bw-eyebrow">Google funnel · ${esc(label)}</div>
+        <h3>Area-wise ${esc(label.toLowerCase())} — Google se dhoondho, yahan capture karo</h3>
+        <p>Google Maps / Google kholo, area choose karein, public listing ka naam · phone · detail copy karke neeche paste karein. App auto-detect karta hai aur phir ${kind === 'projects' ? 'Projects' : kind === 'advisors' ? 'Advisors' : 'Developers'} panel me add karta hai. Login-based scraping nahi — free aur consent-first.</p>
+      </div><div class="bw-actions"><span class="gf-count">${drafts.length} drafts</span>
+        <button type="button" class="bw-btn sm" data-gf-action="addall" data-gf-kind="${kind}">＋ Add all valid</button>
+        <button type="button" class="bw-btn sm" data-gf-action="clear" data-gf-kind="${kind}">Clear drafts</button>
+      </div></div>
+      <div class="gf-controls">
+        <select data-gf-area="${kind}" aria-label="Google search area">${areaOpts}</select>
+        ${kind === 'projects' ? `<select data-gf-status-sel="${kind}" aria-label="Project stage"><option value="ongoing" ${state.status==='ongoing'?'selected':''}>Ongoing</option><option value="upcoming" ${state.status==='upcoming'?'selected':''}>Upcoming</option><option value="completed" ${state.status==='completed'?'selected':''}>Completed</option><option value="" ${!state.status?'selected':''}>All stages</option></select>` : ''}
+        <input type="search" data-gf-q="${kind}" placeholder="Draft search…" value="${esc(state.q||'')}" aria-label="Search drafts">
+      </div>
+      <div class="gf-links">${links.map(l => `<a class="gf-link" href="${esc(l[1])}" target="_blank" rel="noopener noreferrer">${l[0]}</a>`).join('')}</div>
+      <ol class="gf-steps"><li>Google link kholein → area aur stage ke hisaab se results dekhein.</li><li>Jo public detail dikhe (naam, phone, firm, project, price) select karke copy karein.</li><li>Neeche paste karein → <b>Parse & preview</b> → phir <b>Add</b> ya <b>Add + edit</b> dabayein.</li></ol>
+      <div class="bw-area" style="margin-top:10px"><textarea data-gf-text="${kind}" placeholder="${kind==='projects'?'Project name, area, stage, developer, price — har line ek project':kind==='advisors'?'Naam, phone, area, firm — har line ek advisor':'Naam, phone, area, firm — har line ek dealer'}"></textarea></div>
+      <div class="bw-actions" style="margin-top:7px">
+        <button type="button" class="bw-btn primary sm" data-gf-action="parse" data-gf-kind="${kind}">⚙ Parse & preview</button>
+        <button type="button" class="bw-btn sm" data-gf-action="paste" data-gf-kind="${kind}">📋 Paste from clipboard</button>
+      </div>
+      <div class="gf-filter-chips">
+        ${corridorOpts === '' ? '' : `<select data-gf-filter="${kind}" aria-label="Draft corridor filter">${corridorOpts}</select>`}
+        ${statusChips}
+      </div>
+      <div class="gf-list-wrap">${shown.length ? `<table class="gf-table"><thead><tr><th>Draft</th><th>Detail</th><th>Action</th></tr></thead><tbody>${shown.map(d => `<tr>
+        <td><b>${esc(d.name||'—')}</b><br><small>${esc(d.phone||'—')}</small></td>
+        <td><small>${esc([d.area,d.firm,d.corridor,d.status,d.developer,short(d.price)].filter(Boolean).join(' · ')||'—')}</small><br><small>${esc((d.raw||'').slice(0,110))}</small></td>
+        <td><div class="bw-row-actions"><button type="button" class="bw-btn sm primary" data-gf-action="add" data-gf-kind="${kind}" data-gf-id="${esc(d.id)}">Add</button>
+          <button type="button" class="bw-btn sm" data-gf-action="addedit" data-gf-kind="${kind}" data-gf-id="${esc(d.id)}">Add + edit</button>
+          <button type="button" class="bw-btn sm" data-gf-action="ignore" data-gf-kind="${kind}" data-gf-id="${esc(d.id)}">✕</button></div></td>
+      </tr>`).join('')}</tbody></table>` : `<div class="bw-empty">Koi draft nahi. Upar Google link se results copy karke paste karein.</div>`}</div>
+      ${existingHTML(kind, state)}
+    </div>`;
+  }
+  function existingHTML(kind, state){
+    if(kind === 'projects'){
+      const q2 = (state.q||'').toLowerCase();
+      const projects = (db.projects||[]).filter(p => {
+        const st = String(p.status||'').toLowerCase();
+        if(state.statusF && st !== state.statusF.toLowerCase()) return false;
+        if(state.areaF && !((p.area||'')+' '+(p.location||'')+' '+(p.corridor||'')+' '+(p.corridorId||'')+' '+((CORRIDORS().find(c=>c.id===p.corridor)||{}).name||'')).toLowerCase().includes(state.areaF.toLowerCase())) return false;
+        if(q2 && !((p.name||'')+' '+(p.developer||'')+' '+(p.area||'')).toLowerCase().includes(q2)) return false;
+        return true;
+      }).slice(0,40);
+      return `<div style="margin-top:12px"><div class="bw-eyebrow">Existing projects · ${projects.length}</div>
+        <div class="gf-grid" style="margin-top:7px">${projects.length ? projects.map(p => `<div class="gf-card gf-proj ${String(p.status||'').toLowerCase()==='upcoming'?'t-upcoming':String(p.status||'').toLowerCase()==='completed'?'t-completed':''}">
+          <b>${esc(p.name||'Untitled')}</b><small>${esc([p.area,p.developer,p.status,short(p.price)].filter(Boolean).join(' · ')||'—')}</small>
+          <div class="bw-actions" style="margin-top:7px"><button type="button" class="bw-btn sm" data-gf-openproject="${esc(p.id)}">Open in project panel</button></div>
+        </div>`).join('') : '<div class="bw-empty">Filter ke saath koi existing project nahi.</div>'}</div></div>`;
+    }
+    const arr = kind === 'advisors' ? (db.advisors||[]) : (db.developers||[]);
+    const rows = arr.filter(x => !state.areaF || String(x.area||'').toLowerCase().includes(state.areaF.toLowerCase()))
+      .filter(x => !state.q || (String(x.name||'')+' '+String(x.phone||'')+' '+String(x.area||'')).toLowerCase().includes(state.q.toLowerCase()))
+      .slice(0,40);
+    const label = kind === 'advisors' ? 'Existing advisors' : 'Existing dealers / developers';
+    return `<div style="margin-top:12px"><div class="bw-eyebrow">${label} · ${rows.length}</div>
+      <div class="gf-grid" style="margin-top:7px">${rows.length ? rows.map(x => `<div class="gf-card">
+        <b>${esc(x.name||'—')}</b><small>${esc([x.phone,x.area,x.category,x.source].filter(Boolean).join(' · ')||'—')}</small>
+        <div class="bw-actions" style="margin-top:7px"><button type="button" class="bw-btn sm" data-gf-openitem="${kind}" data-gf-id="${esc(x.id)}">Open record</button></div>
+      </div>`).join('') : '<div class="bw-empty">Is area me koi record nahi.</div>'}</div></div>`;
+  }
+  const funnelState = {
+    advisors: { area:'Jaipur', q:'', areaF:'' },
+    dealers:  { area:'Jaipur', q:'', areaF:'' },
+    projects: { area:'Jaipur', q:'', areaF:'', status:'ongoing', statusF:'' }
+  };
+  function paintFunnel(kind){
+    const host = q('#gf-' + kind);
+    if(host){ host.innerHTML = funnelHTML(kind); return; }
+    // fallback: replace the whole panel inside its page
+    const panel = q('[data-gf-panel="' + kind + '"]');
+    if(panel){ panel.outerHTML = funnelHTML(kind); }
+  }
+
+  /* ---------------- brand manager content ---------------- */
+  const PILLARS = [
+    { t:'Proof, not promises', d:'Registry done, documentation, client permission ke saath proof. Har post me ekvikas proof — "kaise kiya", "kya check kiya", "kya sikhaya".' },
+    { t:'Jaipur ground truth', d:'Agra/Ajmer/Delhi/Sikar/Tonk/Diggi corridor ki real rates, road, approval, water, school, loan ground reality. National gyaan nahi — local truth.' },
+    { t:'Transparent money', d:'30% Originating / 35% Executing / 35% BCS, written record, hidden cut nahi. Trust ka biggest differentiator.' },
+    { t:'Client psychology', d:'Buyer family safety chahti hai, NRI process trust chahta hai, investor liquidity/ROI chahta hai. Har content us bhookh ke hisaab se.' },
+    { t:'Day-in-the-desk', d:'Site visit, client call, document check, negotiation — real work dikhana. Perfection se zyada credibility.' }
+  ];
+  const PSYCH = [
+    { who:'Plot buyer (family)', pain:'Zameen clear hai? registry? loan? school?', proof:'Title/approval checklist, family-friendly locality walk', content:'"Plot kharidne se pehle 7 cheezain check karein"', cta:'Checklist DM' },
+    { who:'NRI buyer', pain:'Door se kaise trust karein? payment safe?', proof:'Video site visit, written process, step-by-step updates', content:'"NRI se client: 5 documents pehle verify karein"', cta:'NRI kit download' },
+    { who:'Investor', pain:'ROI, liquidity, resale demand', proof:'Corridor rate trend, rental yield, exit plan', content:'"Ajmer Road vs Tonk Road — 3 saal ka soch"', cta:'Corridor report' },
+    { who:'Seller / developer', pain:'Sahi price, sahi buyer, fast close', proof:'Comparable sales, buyer readiness, split clarity', content:'"Property sell karte waqt 4 galtiyan"', cta:'Free valuation' },
+    { who:'Sceptical first-timer', pain:'Agent se hidden cut ka dar', proof:'30/35/35 written split, no-pressure consult', content:'"Broker kaise choose karein — 3 sawal"', cta:'Trust call' }
+  ];
+  const PLATFORMS = [
+    { id:'instagram', label:'Instagram', ic:'📸', cadence:'1 Reel + 1 carousel + 3–5 stories daily', kpi:'Saves, DMs, profile visits', best:'7–9 am · 7–9 pm',
+      rules:['Bio: "Ajay Sharma · BCS Jaipur · Plots • Villas • Commercial · 30/35/35 transparent"','Pinned posts: trust proof, area guide, client result','Highlights: Reviews, Documents, Jaipur Areas, Process, 30/35/35, DM me','Stories: hook poll → ground footage → proof → CTA','DM speed: 15 min me reply, pehle sawal poochho, turant pitch nahi'] },
+    { id:'youtube', label:'YouTube', ic:'▶️', cadence:'1 long video weekly + 3 Shorts weekly', kpi:'Retention 50%+, watch time, subscribe', best:'Thu 7 pm · Sun 10 am',
+      rules:['Thumbnail: 4–6 words + one face + one number','First 20 sec me "aapko kya milega" bolo','Chapters + description me area links',' pinned comment me free checklist CTA','Shorts se long video teaser — copy nahi, repurpose'] },
+    { id:'facebook', label:'Facebook', ic:'👥', cadence:'1 community post daily + 2 group answers', kpi:'Comments, group reach, event RSVP', best:'8–10 am · 6–8 pm',
+      rules:['Local groups me pehle madad, phir link','Post me question likho — "Aapki priority kya hai?"','Photo carousel: site visit proofs','Events: free Jaipur property clinic','Page about tab me 30/35/35 aur contact clear'] },
+    { id:'linkedin', label:'LinkedIn', ic:'💼', cadence:'3 posts weekly + 5 thoughtful comments daily', kpi:'Profile views, DM replies, trust', best:'Tue/Wed/Thu 8–10 am',
+      rules:['Headline: "Jaipur property advisor | Transparent 30/35/35 | BCS"','Featured: area report, client story, checklist','Carousel/pdf document posts perform well','DM: observe → appreciate → question → call','CA/lawyer/govt/teacher network ko value-first message'] }
+  ];
+  const IG_CHECKS = [
+    { id:'bio', t:'Bio one-line promise + area + 30/35/35' },
+    { id:'pinned', t:'3 pinned posts — proof, area guide, trust' },
+    { id:'highlights', t:'6 highlights — Reviews, Docs, Areas, Process, Split, DM' },
+    { id:'grid', t:'Grid audit — last 12 posts me 5 proof posts' },
+    { id:'story', t:'Aaj 4-story sequence: poll → footage → proof → CTA' },
+    { id:'dm', t:'DM inbox zero — 15 min reply rule' },
+    { id:'cta', t:'Har caption me ek clear CTA (DM / checklist / call)' },
+    { id:'consent', t:'Client proof sirf permission ke saath' }
+  ];
+  const DAILY = [
+    { id:'reel', t:'1 Reel/Short — area truth ya client problem', m:25, why:'Reach + psychology hook' },
+    { id:'story', t:'4 stories — poll, site, proof, CTA', m:10, why:'Trust daily' },
+    { id:'comment', t:'5 genuine comments on local posts', m:10, why:'Community signal' },
+    { id:'dm', t:'5 value-first DMs (CA/lawyer/teacher/owner)', m:15, why:'Referral engine' },
+    { id:'learn', t:'15 min learning — one creator se ek technique', m:15, why:'Learning curve' },
+    { id:'idea', t:'1 new content idea note karein', m:5, why:'Idea bank' },
+    { id:'proof', t:'1 proof point save karein (site/doc/thanks)', m:5, why:'Credibility stock' },
+    { id:'followup', t:'5 old leads/clients ka follow-up', m:15, why:'Conversion' },
+    { id:'metrics', t:'5 min analytics — saves/DMs dekhein', m:5, why:'Iterate' }
+  ];
+  const IDEAS = [
+    { id:'i1', p:'instagram', title:'Plot kharidne se pehle 7 checks', hook:'" ₹50 lakh ka plot kharidne se pehle ye 7 kaam zaroor karein "', when:'Mon/Wed morning', how:'40–50 sec reel. Screen pe checklist, background site footage.', why:'Family safety + fear loss', cta:'"Checklist chahiye? DM karein."' },
+    { id:'i2', p:'youtube', title:'Ajmer Road vs Tonk Road — 3 saal ka soch', hook:'"Dono saste hain — phir bhi ek hi sahi hai. Dekhiye kyun."', when:'Thursday 7 pm', how:'8–10 min. Map, rate table, 3 real examples, verdict.', why:'Investor confusion', cta:'"Free corridor report description me."' },
+    { id:'i3', p:'instagram', title:'CA ke liye referral kaise kaam karta hai', hook:'"CA ji, aapka client Jaipur plot dhundh raha hai? Ye dekhein."', when:'Tuesday evening', how:'Carousel: 5 slides, 30/35/35 split, written record.', why:'High-trust profession', cta:'"Referral kit DM karein."' },
+    { id:'i4', p:'facebook', title:'Jaipur property clinic — free 30 min', hook:'"Is Sunday 10 se 12 — bina kisi cost ke property sawal poochhein."', when:'Friday', how:'Event post + group share + 3 reminder comments.', why:'Community trust', cta:'"Comment CLINIC."' },
+    { id:'i5', p:'linkedin', title:'3 sawal jo har property advisor se poochhne chahiye', hook:'"Agar advisor ye 3 sawal ka jawab na de, to ruk jayein."', when:'Wednesday 8 am', how:'Text + document carousel. Personal story se shuru.', why:'Authority + scepticism', cta:'"Main inka jawab DM deta hoon."' },
+    { id:'i6', p:'youtube', title:'NRI client ka 5-step remote process', hook:'"Dubai se baithe client ne Jaipur plot kaise book kiya?"', when:'Sunday 10 am', how:'Long video + 3 Shorts. Screen record of checklist (no personal data).', why:'NRI trust gap', cta:'"NRI kit link."' },
+    { id:'i7', p:'instagram', title:'Hidden cut nahi — 30/35/35', hook:'"Commission ka split likh ke deta hoon. Ye kyun?"', when:'Saturday', how:'Talking head + split graphic. 30 sec.', why:'Fear of hidden cut', cta:'"Split sheet DM."' },
+    { id:'i8', p:'instagram', title:'Site visit me kya photograph karein', hook:'"Site visit par ye 6 photos aapko bachayengi."', when:'After site visit', how:'Real footage, quick cuts, text overlays.', why:'Practical value', cta:'"Save karein."' },
+    { id:'i9', p:'linkedin', title:'Jaipur corridor report — Agra Road', hook:'"Ek corridor, 5 numbers, 1 truth."', when:'Tuesday', how:'PDF carousel with rate, road, approval, rental, risk.', why:'Expert knowledge', cta:'"Report chahiye? Comment."' },
+    { id:'i10', p:'facebook', title:'Whose name on registry?', hook:'"Property aapke naam ho ya family ke — pehle ye decide karein."', when:'Weekend', how:'Question post + 4 options poll.', why:'Family decision', cta:'"Call for free guidance."' }
+  ];
+  const LEARN = [
+    { w:'Week 1', t:'Foundation', tasks:[['l1','Positioning one-liner likho'],['l2','Bio + highlights set karein'],['l3','5 client problems list karein'],['l4','Ek area guide likho']] },
+    { w:'Week 2', t:'Scripting', tasks:[['l5','10 hooks likho'],['l6','3 reels script karein'],['l7','Ek YouTube outline'],['l8','Ek LinkedIn carousel']] },
+    { w:'Week 3', t:'Filming + editing', tasks:[['l9','Phone setup — mic/light'],['l10','5 site visit clips'],['l11','1 reel edit finish'],['l12','Thumbnail banana seekho']] },
+    { w:'Week 4', t:'Analytics + system', tasks:[['l13','Saves/DMs track karein'],['l14','Best post dobara banayein'],['l15','DM script finalize'],['l16','Weekly review likho']] }
+  ];
+  const CREATOR_SEEDS = [
+    { id:'c1', p:'instagram', n:'Jaipur real estate discovery', u:'https://www.instagram.com/explore/tags/jaipurrealestate/', s:'Local listings + visuals. Strategy: area name + price in first 2 sec, carousel of ground photos, caption me locality question.', f:'Reel / carousel' },
+    { id:'c2', p:'instagram', n:'Property educator discovery', u:'https://www.instagram.com/explore/tags/realestateeducation/', s:'Educators simplify legal/financial confusion. Strategy: one jargon per post, "pehle ye karein" checklist, save-worthy graphic.', f:'Carousel' },
+    { id:'c3', p:'youtube', n:'Jaipur property walkthroughs', u:'https://www.youtube.com/results?search_query=jaipur+property+walkthrough', s:'Long walkthroughs build trust. Strategy: 20-sec location intro, 3 pros/3 cons, final verdict, chapters.', f:'Long + Shorts' },
+    { id:'c4', p:'youtube', n:'Real estate marketing India', u:'https://www.youtube.com/results?search_query=real+estate+marketing+india', s:'Marketing creators teach hooks and funnels. Strategy: hook → problem → proof → CTA; repurpose one idea 4 platforms.', f:'Shorts' },
+    { id:'c5', p:'facebook', n:'Jaipur property groups', u:'https://www.facebook.com/search/groups?q=jaipur%20property', s:'Community-first. Strategy: answer 10 questions before posting once; use local language and real photos.', f:'Group post' },
+    { id:'c6', p:'linkedin', n:'Real estate authority posts', u:'https://www.linkedin.com/search/results/content/?keywords=real%20estate%20advisor%20india', s:'Authority via documents and stories. Strategy: personal story → 3 learnings → one question; no hard sell.', f:'Text + PDF' },
+    { id:'c7', p:'linkedin', n:'Trust / personal branding', u:'https://www.linkedin.com/search/results/content/?keywords=personal%20branding%20trust%20india', s:'Trust creators show process, not just results. Strategy: behind-the-scenes + transparent numbers + consistency.', f:'Carousel' }
+  ];
+  const PLAT_NAME = id => ({instagram:'Instagram',youtube:'YouTube',facebook:'Facebook',linkedin:'LinkedIn'}[id] || id);
+
+  function brandPrompt(ctx){
+    const p = PLATFORMS.find(x => x.id === ctx.platform) || {};
+    return [
+      'You are the brand manager and real-estate marketing expert for Ajay Sharma, BCS Jaipur.',
+      '',
+      'TASK: Create ORIGINAL content inspired by the strategy below. Do not copy the creator’s exact words, visuals or copyrighted material. Make a fresh BCS version.',
+      '',
+      'SOURCE / INSPIRATION: ' + (ctx.title || 'Creator strategy'),
+      'Platform: ' + PLAT_NAME(ctx.platform),
+      'Format: ' + (ctx.format || p.cadence || 'platform-appropriate'),
+      'Strategy to learn: ' + (ctx.strategy || ''),
+      '',
+      'BCS BRAND VOICE: calm, honest, local, practical. Hindi + simple English mix. No hype, no fake urgency.',
+      'BCS PROMISE: Jaipur ground truth, documentation-first, transparent 30% Originating / 35% Executing / 35% BCS split, written record, no hidden cut.',
+      'AUDIENCE PSYCHOLOGY: family safety, NRI trust, investor ROI/liquidity, clear title/approval, fear of hidden commission.',
+      'AUDIENCE: Jaipur property seekers — plot, commercial plot, villa, flat; also CA / lawyer / govt officer / teacher referral partners.',
+      '',
+      'DELIVERABLES:',
+      '1) 5 hook options (first 2 seconds / first line).',
+      '2) Full caption or script with timestamp beats (hook → problem → proof → BCS truth → CTA).',
+      '3) One on-camera line and one text overlay.',
+      '4) CTA comment/DM that asks one simple question.',
+      '5) 8 platform-specific hashtags and 3 posting notes (best time, format, what to film).',
+      '6) One repurpose line: how to turn this into a Short/Reel, a Facebook group post and a LinkedIn document post.',
+      '',
+      'Keep it specific to Jaipur areas/corridors where possible. End with one sentence: "BCS — clear record, clear split, clear next step."'
+    ].join('\n');
+  }
+
+  let brandTab = 'today';
+  const funnelHTMLCache = {};
+  function brandHTML(){
+    const b = G().brand;
+    const tabs = [['today','Today'],['playbooks','Playbooks'],['psychology','Client psychology'],['ig','Instagram handling'],['ideas','Video ideas'],['learn','Learning curve'],['creators','Creator radar']];
+    let body = '';
+    if(brandTab === 'today'){
+      const pr = progress('daily', DAILY.map(d => d.id));
+      const today = todayKey();
+      body = `<div class="bw-grid two">
+        <div class="bw-card"><h4>🎯 Today's must-do · ${esc(today)}</h4>
+          <div class="bw-prog"><i style="width:${pr.pct}%"></i></div>
+          <div class="bw-prog-lbl"><span>${pr.done}/${pr.total} done</span><span>${pr.pct}%</span></div>
+          <div style="margin-top:8px">${DAILY.map(d => `<label class="bw-check ${isChecked('daily',d.id)?'done':''}"><input type="checkbox" data-bw-check="daily" data-bw-id="${d.id}" ${isChecked('daily',d.id)?'checked':''}><span><b>${esc(d.t)}</b> · ${d.m} min<br><small style="color:var(--mut)">${esc(d.why)}</small></span></label>`).join('')}</div>
+          <div class="bw-actions" style="margin-top:9px"><button type="button" class="bw-btn sm" data-bw-action="copyplan">📋 Copy today's plan</button><button type="button" class="bw-btn sm" data-bw-action="resetday">Reset today</button></div>
+        </div>
+        <div class="bw-card"><h4>🧭 Brand manager order</h4>
+          <div class="bw-note good"><b>Positioning:</b> Ajay Sharma — Jaipur property advisor jo proof, local truth aur transparent 30/35/35 ke saath kaam karta hai. Har content ka ek kaam hai: doubt kam karna, next step dena.</div>
+          <div class="bw-kv"><span>Primary KPI</span><span>DMs + saved posts + calls</span><span>Daily output</span><span>1 reel · 1 story set · 5 DMs · 1 idea · 1 proof</span><span>Weekly output</span><span>1 YouTube · 3 Shorts · 3 LinkedIn · 1 clinic post</span><span>Best local hook</span><span>"Jaipur me sahi plot kaise chunein" — area + number + risk</span><span>Never</span><span>Fake urgency, hidden cut, client proof without permission</span></div>
+          <h4 style="margin-top:12px">Content pillars</h4>${PILLARS.map(p => `<div class="bw-check"><span><b>${esc(p.t)}</b> — ${esc(p.d)}</span></div>`).join('')}
+        </div>
+      </div>`;
+    } else if(brandTab === 'playbooks'){
+      body = `<div class="bw-grid">${PLATFORMS.map(p => `<div class="bw-card"><h4>${p.ic} ${esc(p.label)}</h4>
+        <div class="bw-kv"><span>Cadence</span><span>${esc(p.cadence)}</span><span>Best time</span><span>${esc(p.best)}</span><span>KPI</span><span>${esc(p.kpi)}</span></div>
+        <ul>${p.rules.map(r => `<li>${esc(r)}</li>`).join('')}</ul>
+        <div class="bw-actions" style="margin-top:8px"><button type="button" class="bw-btn sm" data-bw-gemini="platform" data-bw-id="${p.id}">🤖 BCS version prompt</button></div>
+      </div>`).join('')}</div>`;
+    } else if(brandTab === 'psychology'){
+      body = `<div class="bw-grid">${PSYCH.map(p => `<div class="bw-card"><h4>🧠 ${esc(p.who)}</h4>
+        <div class="bw-kv"><span>Dar / need</span><span>${esc(p.pain)}</span><span>Proof chahiye</span><span>${esc(p.proof)}</span><span>Content</span><span>${esc(p.content)}</span><span>CTA</span><span>${esc(p.cta)}</span></div>
+        <div class="bw-actions" style="margin-top:8px"><button type="button" class="bw-btn sm" data-bw-gemini="psych" data-bw-id="${esc(p.who)}">🤖 Iske liye BCS post</button></div>
+      </div>`).join('')}</div><div class="bw-note">Rule: pehle samjho, phir sikhao, phir proof dikhao, phir CTA. Seedha pitch = trust loss.</div>`;
+    } else if(brandTab === 'ig'){
+      const pr = progress('ig', IG_CHECKS.map(c => c.id));
+      body = `<div class="bw-grid two"><div class="bw-card"><h4>📸 Instagram page health</h4>
+        <div class="bw-prog"><i style="width:${pr.pct}%"></i></div><div class="bw-prog-lbl"><span>${pr.done}/${pr.total} checks</span><span>${pr.pct}%</span></div>
+        <div style="margin-top:8px">${IG_CHECKS.map(c => `<label class="bw-check ${isChecked('ig',c.id)?'done':''}"><input type="checkbox" data-bw-check="ig" data-bw-id="${c.id}" ${isChecked('ig',c.id)?'checked':''}><span>${esc(c.t)}</span></label>`).join('')}</div>
+      </div><div class="bw-card"><h4>💬 DM handling system</h4>
+        <ul><li><b>0–5 min:</b> thanks + naam + ek clarifying sawal.</li><li><b>5–15 min:</b> 2 area options bhejein, price band poochhein.</li><li><b>Day 1:</b> free checklist/doc sample bhejein — pitch nahi.</li><li><b>Day 2:</b> site visit ya 10-min call ka option.</li><li><b>Day 3:</b> 30/35/35 written split + next step.</li><li><b>Referral DM:</b> "Aapke client ki requirement ho to naam + budget bhej dijiye."</li></ul>
+        <div class="bw-note good">Permission ke bina client photo/name kabhi na dikhaayein. Proof ka matlab trust — leak nahi.</div>
+        <button type="button" class="bw-btn sm" data-bw-gemini="ig" style="margin-top:8px">🤖 7-day IG story sequence prompt</button>
+      </div></div>`;
+    } else if(brandTab === 'ideas'){
+      const pf = brandFilter.platform || '';
+      body = `<div class="gf-filter-chips">${['','instagram','youtube','facebook','linkedin'].map(p => `<button type="button" class="${pf===p?'on':''}" data-bw-filter="${p}">${p?PLAT_NAME(p):'All'}</button>`).join('')}</div>
+        <div class="bw-grid">${IDEAS.filter(i => !pf || i.p===pf).map(i => `<div class="bw-card"><h4>🎬 ${esc(i.title)} <span class="bw-chip brand">${PLAT_NAME(i.p)}</span></h4>
+          <div class="bw-kv"><span>Hook</span><span>${esc(i.hook)}</span><span>When</span><span>${esc(i.when)}</span><span>How</span><span>${esc(i.how)}</span><span>Why</span><span>${esc(i.why)}</span><span>CTA</span><span>${esc(i.cta)}</span></div>
+          <div class="bw-actions" style="margin-top:8px"><label class="bw-btn sm"><input type="checkbox" data-bw-check="idea" data-bw-id="${i.id}" ${isChecked('idea',i.id)?'checked':''}> ${isChecked('idea',i.id)?'Done':'Mark made'}</label>
+            <button type="button" class="bw-btn sm primary" data-bw-gemini="idea" data-bw-id="${i.id}">🤖 Full script prompt</button></div>
+        </div>`).join('')}</div>`;
+    } else if(brandTab === 'learn'){
+      body = `<div class="bw-grid">${LEARN.map(w => { const ids = w.tasks.map(t => t[0]); const pr = progress('learn', ids); return `<div class="bw-card"><h4>📚 ${esc(w.w)} — ${esc(w.t)}</h4>
+        <div class="bw-prog"><i style="width:${pr.pct}%"></i></div><div class="bw-prog-lbl"><span>${pr.done}/${pr.total}</span><span>${pr.pct}%</span></div>
+        <div style="margin-top:8px">${w.tasks.map(t => `<label class="bw-check ${isChecked('learn',t[0])?'done':''}"><input type="checkbox" data-bw-check="learn" data-bw-id="${t[0]}" ${isChecked('learn',t[0])?'checked':''}><span>${esc(t[1])}</span></label>`).join('')}</div>
+      </div>`; }).join('')}</div><div class="bw-note">Learning curve = observe → copy the structure (not the words) → make BCS version → measure → improve. Roz 15 minute enough.</div>`;
+    } else {
+      const creators = CREATOR_SEEDS.concat(b.creators.map(c => ({id:c.id,p:c.platform,n:c.name,u:c.url,s:c.strategy,f:'Platform post'})));
+      body = `<div class="bw-note good"><b>Free & practical:</b> Ye public discovery links hain — specific logins nahi. Jis creator ki post pasand aaye, uska link neeche "My creators" me save karein aur strategy likhein. Gemini prompt original BCS version banata hai — copy nahi.</div>
+        <div class="bw-grid">${creators.map(c => `<div class="bw-card"><h4>🔗 ${esc(c.n)} <span class="bw-chip">${PLAT_NAME(c.p)}</span></h4>
+          <div class="bw-sub">${esc(c.s||'')}</div>
+          <div class="bw-actions" style="margin-top:8px"><a class="bw-btn sm" href="${esc(c.u)}" target="_blank" rel="noopener noreferrer">Open ${PLAT_NAME(c.p)}</a>
+            <button type="button" class="bw-btn sm primary" data-bw-gemini="creator" data-bw-id="${esc(c.id)}">🤖 BCS version</button>
+            ${String(c.id).indexOf('mine-')===0 ? `<button type="button" class="bw-btn sm" data-bw-delcreator="${esc(c.id)}">✕</button>` : ''}</div>
+        </div>`).join('')}</div>
+        <div class="bw-card" style="margin-top:9px"><h4>＋ My creators / saved links</h4>
+          <div class="bw-form-grid">
+            <div class="bw-field"><label>Name</label><input class="bw-input" id="bwCrName" placeholder="Creator / page name"></div>
+            <div class="bw-field"><label>Platform</label><select class="bw-select" id="bwCrPlatform"><option value="instagram">Instagram</option><option value="youtube">YouTube</option><option value="facebook">Facebook</option><option value="linkedin">LinkedIn</option></select></div>
+            <div class="bw-field" style="grid-column:1/-1"><label>Profile / post link</label><input class="bw-input" id="bwCrUrl" placeholder="https://…"></div>
+            <div class="bw-field" style="grid-column:1/-1"><label>Strategy note — kya seekhna hai</label><input class="bw-input" id="bwCrStrategy" placeholder="Hook, format, trust angle…"></div>
+          </div>
+          <div class="bw-actions" style="margin-top:8px"><button type="button" class="bw-btn sm primary" data-bw-action="addcreator">Save creator</button></div>
+        </div>`;
+    }
+    return `<div class="bw-panel" id="bwBrand">
+      <div class="bw-head"><div class="bw-head-txt"><div class="bw-eyebrow">Personal branding + marketing desk</div>
+        <h3>Brand manager — Ajay Sharma / BCS Jaipur</h3>
+        <p>Ye panel aapko roz batata hai kya banayein, kab, kaise aur kyun. Trust-pehle positioning, client psychology, platform playbooks, daily targets, learning curve aur one-click Gemini prompts — sab yahin.</p>
+      </div><div class="bw-actions"><button type="button" class="bw-btn sm" data-bw-action="brandnote">📝 Notes</button></div></div>
+      <div class="bw-tabs">${tabs.map(t => `<button type="button" class="${brandTab===t[0]?'on':''}" data-bw-tab="${t[0]}">${t[1]}</button>`).join('')}</div>
+      ${body}
+    </div>`;
+  }
+  function paintBrand(){
+    const host = q('#bwHost');
+    if(host) host.innerHTML = brandHTML();
+    else { const old = q('#bwBrand'); if(old) old.outerHTML = brandHTML(); }
+  }
+  function todayPlan(){
+    const pr = progress('daily', DAILY.map(d => d.id));
+    return ['BCS · Today plan · ' + todayKey(), '', 'Ajay Sharma — Jaipur property advisor | 30/35/35 transparent.', '',
+      ...DAILY.map((d,i) => (i+1) + '. ' + d.t + ' (' + d.m + ' min) — ' + d.why + (isChecked('daily',d.id) ? ' [DONE]' : '')),
+      '', 'Progress: ' + pr.done + '/' + pr.total + ' (' + pr.pct + '%)', '',
+      'Pillars: proof · Jaipur ground truth · transparent split · client psychology · day-in-the-desk.',
+      'BCS — clear record, clear split, clear next step.'].join('\n');
+  }
+  function geminiFor(kind, id){
+    if(kind === 'platform'){
+      const p = PLATFORMS.find(x => x.id === id);
+      if(!p) return;
+      openPrompt('Gemini — ' + p.label + ' BCS playbook', brandPrompt({platform:id, title:p.label+' playbook', format:p.cadence, strategy:p.rules.join(' | ')}));
+    } else if(kind === 'creator' || kind === 'psych' || kind === 'ig' || kind === 'idea'){
+      const c = CREATOR_SEEDS.find(x => x.id === id) || G().brand.creators.find(x => x.id === id);
+      if(kind === 'creator' && c){
+        openPrompt('Gemini — BCS version of ' + c.n, brandPrompt({platform:c.p, title:c.n, format:c.f||'platform-appropriate', strategy:c.s||''}));
+      } else if(kind === 'psych'){
+        const p = PSYCH.find(x => x.who === id);
+        if(p) openPrompt('Gemini — ' + p.who, brandPrompt({platform:'instagram', title:p.who, format:'Reel + carousel', strategy:p.pain+' | Proof: '+p.proof+' | CTA: '+p.cta}));
+      } else if(kind === 'ig'){
+        openPrompt('Gemini — 7-day Instagram story sequence', brandPrompt({platform:'instagram', title:'7-day story sequence', format:'4 stories per day', strategy:'Day 1 area poll · Day 2 site footage · Day 3 document check · Day 4 client thanks · Day 5 30/35/35 split · Day 6 before-after · Day 7 DM invitation. Permission before client proof.'}));
+      } else {
+        const i = IDEAS.find(x => x.id === id);
+        if(i) openPrompt('Gemini — script for ' + i.title, brandPrompt({platform:i.p, title:i.title, format:i.when+' · '+i.how, strategy:'Hook: '+i.hook+' | Why: '+i.why+' | CTA: '+i.cta}));
+      }
+    }
+  }
+
+  /* ---------------- events ---------------- */
+  document.addEventListener('click', e => {
+    const t = e.target;
+    if(!t || !t.closest) return;
+    const modal = t.closest('[data-bw-modal]');
+    if(modal){
+      const a = modal.dataset.bwModal;
+      if(a === 'close') closePrompt();
+      else if(a === 'copy') copyText(q('#bwPromptText').value);
+      else if(a === 'download') downloadText('BCS-Gemini-prompt-' + todayKey() + '.txt', q('#bwPromptText').value);
+      else if(a === 'gemini'){
+        const text = q('#bwPromptText').value;
+        copyText(text);
+        toast('Prompt copy ho gaya — Gemini khol rahe hain');
+        try{ window.open('https://gemini.google.com/app','_blank','noopener,noreferrer'); }catch(err){ toast('Gemini block ho gaya — prompt copy karke manually kholein', true); }
+      }
+      return;
+    }
+    if(t.closest('#bwPromptModal')) return;
+    const bwTab = t.closest('[data-bw-tab]');
+    if(bwTab){ brandTab = bwTab.dataset.bwTab; paintBrand(); return; }
+    const bwF = t.closest('[data-bw-filter]');
+    if(bwF){ brandFilter.platform = bwF.dataset.bwFilter; paintBrand(); return; }
+    const bwG = t.closest('[data-bw-gemini]');
+    if(bwG){ geminiFor(bwG.dataset.bwGemini, bwG.dataset.bwId); return; }
+    const delCr = t.closest('[data-bw-delcreator]');
+    if(delCr){
+      const b = G().brand;
+      b.creators = b.creators.filter(c => c.id !== delCr.dataset.bwDelcreator);
+      persist(); paintBrand(); toast('Creator link hata diya'); return;
+    }
+    const bwA = t.closest('[data-bw-action]');
+    if(bwA){
+      const a = bwA.dataset.bwAction;
+      if(a === 'copyplan') copyText(todayPlan());
+      else if(a === 'resetday'){ G().brand.checks.daily = {}; persist(); paintBrand(); toast('Today reset ho gaya'); }
+      else if(a === 'addcreator'){
+        const name = q('#bwCrName').value.trim(), url = q('#bwCrUrl').value.trim(), plat = q('#bwCrPlatform').value, strat = q('#bwCrStrategy').value.trim();
+        if(!name || !/^https?:\/\//i.test(url)) return toast('Naam aur valid https link dono chahiye', true);
+        G().brand.creators.push({ id:'mine-'+uid(), name, platform:plat, url, strategy:strat });
+        persist(); paintBrand(); toast('Creator save ho gaya');
+      } else if(a === 'brandnote'){
+        const note = prompt('BCS brand note (sirf aapke liye):', G().brand.notes || '');
+        if(note !== null){ G().brand.notes = String(note).slice(0,1200); persist(); toast('Note save ho gaya'); }
+      }
+      return;
+    }
+    const gfA = t.closest('[data-gf-action]');
+    if(gfA){
+      const kind = gfA.dataset.gfKind, a = gfA.dataset.gfAction, id = gfA.dataset.gfId;
+      if(a === 'parse'){
+        const ta = q('[data-gf-text="' + kind + '"]');
+        const txt = ta ? ta.value : '';
+        if(!txt.trim()) return toast('Pehle Google results paste karein', true);
+        const rows = parseDraftText(txt, kind);
+        if(!rows.length) return toast('Koi valid row nahi mila. Phone/naam check karein.', true);
+        G().drafts[kind] = rows.concat(G().drafts[kind]).slice(0,600);
+        persist(); paintFunnel(kind); toast(rows.length + ' drafts ban gaye — review karke add karein');
+      } else if(a === 'paste'){
+        if(!navigator.clipboard || !navigator.clipboard.readText) return toast('Browser clipboard access nahi — manually paste karein', true);
+        navigator.clipboard.readText().then(txt => {
+          const ta = q('[data-gf-text="' + kind + '"]'); if(ta) ta.value = txt || '';
+          toast('Clipboard paste ho gaya — ab Parse dabayein');
+        }).catch(() => toast('Clipboard read block hua — manually paste karein', true));
+      } else if(a === 'add') addDraft(kind, id, false);
+      else if(a === 'addedit') addDraft(kind, id, true);
+      else if(a === 'ignore'){
+        G().drafts[kind] = G().drafts[kind].filter(d => d.id !== id);
+        persist(); paintFunnel(kind); toast('Draft ignore ho gaya');
+      } else if(a === 'addall'){
+        const list = G().drafts[kind].slice();
+        if(!list.length) return toast('Koi draft nahi', true);
+        list.forEach(d => addDraft(kind, d.id, false));
+      } else if(a === 'clear'){
+        if(!confirm('Saare ' + kind + ' drafts delete karein?')) return;
+        G().drafts[kind] = []; persist(); paintFunnel(kind); toast('Drafts clear ho gaye');
+      }
+      return;
+    }
+    const openP = t.closest('[data-gf-openproject]');
+    if(openP){ if(!openExisting('projects', openP.dataset.gfOpenproject)) toast('Project editor available nahi — Projects page par open karein', true); return; }
+    const openI = t.closest('[data-gf-openitem]');
+    if(openI){ if(!openExisting(openI.dataset.gfOpenitem, openI.dataset.gfId)) toast('Record editor available nahi — page par open karein', true); return; }
+    const rnTab = t.closest('[data-rn-tab]');
+    if(rnTab){ netState.tab = rnTab.dataset.rnTab; paintNetwork(); return; }
+    const rnPlat = t.closest('[data-rn-platform]');
+    if(rnPlat){ netState.platform = rnPlat.dataset.rnPlatform; paintNetwork(); return; }
+    const rnCopy = t.closest('[data-rn-copy]');
+    if(rnCopy){ copyText(rnCopy.dataset.rnCopy); return; }
+    const rnDel = t.closest('[data-rn-del]');
+    if(rnDel){ G().network.contacts = G().network.contacts.filter(c => c.id !== rnDel.dataset.rnDel); persist(); paintNetwork(); toast('Network hata diya'); return; }
+    const rnIntro = t.closest('[data-rn-intro]');
+    if(rnIntro){ rnPreview(rnShareText('intro', {}), 'BCS intro — ' + rnIntro.dataset.rnIntro); return; }
+    const rnAct = t.closest('[data-rn-action]');
+    if(rnAct){
+      const a = rnAct.dataset.rnAction;
+      if(a === 'savenet'){
+        const name = q('#rnName')?.value.trim(), url = q('#rnUrl')?.value.trim();
+        if(!name || !/^https?:\/\//i.test(url)) return toast('Naam aur valid https link chahiye', true);
+        G().network.contacts.push({ id:uid(), name, platform:q('#rnPlatform').value, area:q('#rnArea')?.value.trim()||'',
+          url, focus:q('#rnFocus')?.value.trim()||'', note:'Saved from network hub', createdAt:Date.now() });
+        persist(); paintNetwork(); toast('Network save ho gaya');
+      } else if(a === 'capture'){
+        const ta = q('#rnPaste'); if(!ta || !ta.value.trim()) return toast('Pehle public details paste karein', true);
+        rnCapture(ta.value);
+      } else if(a === 'previewshare'){
+        const v = id => q('#' + id)?.value || '';
+        rnPreview(rnShareText(v('rnKind'), { name:v('rnName2'), area:v('rnArea2'), type:v('rnType2'),
+          need:v('rnNeed2'), budget:v('rnBudget2'), timeline:v('rnTimeline2'), stage:v('rnStage2'),
+          link:v('rnLink2'), permission:q('#rnPermission')?.checked }), 'BCS network share — preview');
+      } else if(a === 'clearshare'){
+        ['rnName2','rnArea2','rnType2','rnNeed2','rnBudget2','rnTimeline2','rnLink2'].forEach(id => { const el=q('#'+id); if(el) el.value=''; });
+        const cb=q('#rnPermission'); if(cb) cb.checked=false;
+        toast('Fields clear ho gaye');
+      } else if(a === 'resetnet'){
+        G().network.checks = {}; persist(); paintNetwork(); toast('Daily targets reset ho gaye');
+      }
+      return;
+    }
+    const st = t.closest('[data-gf-status]');
+    if(st){
+      const panel = st.closest('[data-gf-panel]'); if(!panel) return;
+      funnelState[panel.dataset.gfPanel].statusF = st.dataset.gfStatus === 'All' ? '' : st.dataset.gfStatus;
+      paintFunnel(panel.dataset.gfPanel); return;
+    }
+  });
+  document.addEventListener('change', e => {
+    const t = e.target; if(!t || !t.dataset) return;
+    if(t.dataset.rnCheck){
+      const g = G(); g.network.checks[t.dataset.rnCheck] = !g.network.checks[t.dataset.rnCheck];
+      persist(); paintNetwork(); return;
+    }
+    if(t.dataset.bwCheck){ toggleCheck(t.dataset.bwCheck, t.dataset.bwId); return; }
+    const panel = t.closest('[data-gf-panel]'); if(!panel) return;
+    const kind = panel.dataset.gfPanel, s = funnelState[kind];
+    if(t.dataset.gfArea !== undefined){ s.area = t.value; paintFunnel(kind); }
+    else if(t.dataset.gfStatusSel !== undefined){ s.status = t.value; paintFunnel(kind); }
+    else if(t.dataset.gfFilter !== undefined){ s.areaF = t.value; paintFunnel(kind); }
+  });
+  document.addEventListener('input', e => {
+    const t = e.target; if(!t || !t.dataset) return;
+    if(t.dataset.rnQ !== undefined){
+      netState.q = t.value;
+      clearTimeout(netState.qTimer);
+      netState.qTimer = setTimeout(() => {
+        paintNetwork();
+        const el = q('[data-rn-q]');
+        if(el){ el.focus(); el.setSelectionRange(el.value.length, el.value.length); }
+      }, 220);
+      return;
+    }
+    if(t.dataset.gfQ === undefined) return;
+    const panel = t.closest('[data-gf-panel]'); if(!panel) return;
+    const kind = panel.dataset.gfPanel;
+    funnelState[kind].q = t.value;
+    clearTimeout(funnelState[kind].qTimer);
+    funnelState[kind].qTimer = setTimeout(() => paintFunnel(kind), 220);
+    // keep focus while repainting
+    setTimeout(() => { const el = q('[data-gf-q="' + kind + '"]'); if(el){ el.focus(); el.setSelectionRange(el.value.length, el.value.length); } }, 240);
+  });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && promptModal && promptModal.classList.contains('on')) closePrompt(); });
+
+
+
+  /* ---------------- realty network hub (Links page) ---------------- */
+  const NET_PLATFORMS = [
+    { id:'telegram', label:'Telegram', ic:'✈️' },
+    { id:'whatsapp', label:'WhatsApp', ic:'💬' },
+    { id:'linkedin', label:'LinkedIn', ic:'💼' },
+    { id:'facebook', label:'Facebook', ic:'👥' },
+    { id:'website', label:'Website / portal', ic:'🌐' }
+  ];
+  const NET_TASKS = [
+    { id:'req', t:'1 active requirement share karein (client naam masked)' },
+    { id:'proj', t:'1 project update ya naya launch network me share karein' },
+    { id:'connect', t:'2 brokers / channel admins se value-first connect karein' },
+    { id:'reply', t:'5 requirements ya projects par useful reply dein' },
+    { id:'verify', t:'Mile hue option ki title / approval / RERA verify karein' }
+  ];
+  function netSeeds(){
+    return [
+      { id:'ns1', p:'telegram', n:'Jaipur property dealers — Telegram search', u:gweb('site:t.me Jaipur property dealers group Telegram'), s:'Public Telegram groups/channels dhoondein. Join se pehle admin, purpose aur spam check karein.' },
+      { id:'ns2', p:'telegram', n:'India realty brokers network — Telegram search', u:gweb('site:t.me Indian real estate brokers network Telegram channel'), s:'All-India broker networks jo requirements aur projects circulate karte hain.' },
+      { id:'ns3', p:'telegram', n:'Jaipur RERA / JDA updates — Telegram search', u:gweb('site:t.me Jaipur RERA JDA property updates Telegram'), s:'Approval aur launch updates ke liye public channels.' },
+      { id:'ns4', p:'whatsapp', n:'Jaipur property group links — web search', u:gweb('Jaipur property dealers WhatsApp group link active'), s:'WhatsApp ke liye public directory nahi — web search se public/shared links milte hain. Sirf trusted source se join karein.' },
+      { id:'ns5', p:'whatsapp', n:'Active property requirements — web search', u:gweb('India property buyers requirements WhatsApp group real estate brokers'), s:'Requirement-sharing groups. Pehle value do, phir apna requirement share karein.' },
+      { id:'ns6', p:'linkedin', n:'Indian real estate brokers — LinkedIn groups', u:'https://www.linkedin.com/search/results/groups/?keywords=Indian%20real%20estate%20brokers', s:'Professional network — CA, lawyer aur NRI client referrals yahan milte hain.' },
+      { id:'ns7', p:'linkedin', n:'Jaipur property professionals — LinkedIn search', u:'https://www.linkedin.com/search/results/people/?keywords=Jaipur%20real%20estate%20advisor', s:'Local brokers, developers aur consultants se direct connect.' },
+      { id:'ns8', p:'facebook', n:'Jaipur property dealer groups — Facebook', u:'https://www.facebook.com/search/groups/?q=Jaipur%20property%20dealers', s:'Community groups — pehle 5 sawalon ke jawab dein, phir project share karein.' },
+      { id:'ns9', p:'facebook', n:'Indian real estate network — Facebook groups', u:'https://www.facebook.com/search/groups/?q=Indian%20real%20estate%20brokers%20network', s:'Deal sharing aur cross-city requirements ke liye.' },
+      { id:'ns10', p:'website', n:'RERA Rajasthan — official', u:'https://rera.rajasthan.gov.in/', s:'Project registration verify karne ke liye official portal. Network me share karne se pehle yahan check karein.' },
+      { id:'ns11', p:'website', n:'99acres — Jaipur', u:'https://www.99acres.com/property-in-jaipur-ffid', s:'Public listings se active projects aur price benchmark dekhein.' },
+      { id:'ns12', p:'website', n:'Magicbricks — Jaipur', u:'https://www.magicbricks.com/property-for-sale/real-estate-jaipur', s:'Project/area demand samajhne ke liye public portal.' },
+      { id:'ns13', p:'website', n:'Housing.com — Jaipur', u:'https://housing.com/in/buy/jaipur', s:'Public listing aur locality insight.' },
+      { id:'ns14', p:'website', n:'Broker / channel discovery — web search', u:gweb('Indian real estate broker network channel Telegram WhatsApp website Jaipur'), s:'Ek search se multiple networks milte hain — link save karke baar baar na dhoondein.' }
+    ];
+  }
+  const netState = { platform:'', q:'' };
+  function rnNetName(v){ return NET_PLATFORMS.find(p => p.id === v) || NET_PLATFORMS[4]; }
+  function rnShareText(kind, o){
+    const who = o.permission ? (o.name || 'Client') : 'Client (naam masked — permission ke baad share)';
+    const head = ['BCS · Jaipur property network', 'Ajay Sharma | 30% Originating · 35% Executing · 35% BCS — written split, no hidden cut', ''];
+    let body = [];
+    if(kind === 'requirement'){
+      body = ['[ACTIVE REQUIREMENT · ' + (o.area || 'Jaipur') + ']',
+        'Client: ' + who,
+        'Need: ' + (o.need || 'Property option') + (o.type ? ' · ' + o.type : ''),
+        'Budget: ' + (o.budget || '—'), 'Timeline: ' + (o.timeline || '—'),
+        'Sirf verified title / approval / RERA options share karein.',
+        'Match ho to project naam, area, price aur 2 photos reply karein — hum verify karke client ko dikhaate hain.'];
+    } else if(kind === 'project'){
+      body = ['[PROJECT FOR NETWORK · ' + (o.area || 'Jaipur') + ']',
+        'Project: ' + (o.name || 'Project'), 'Stage: ' + (o.stage || 'Ongoing'),
+        'Price band: ' + (o.budget || '—'), 'USP: ' + (o.need || '—'),
+        'Broker terms: 30/35/35 written split. Genuine buyer bhejein with budget + timeline.',
+        o.link ? 'Details: ' + o.link : 'Details for reply par dein.'];
+    } else if(kind === 'client'){
+      body = ['[CLIENT INTRO / REFERRAL · Jaipur]',
+        'Client: ' + who, 'Looking for: ' + (o.need || 'Property option') + (o.type ? ' · ' + o.type : ''),
+        'Area: ' + (o.area || 'Jaipur'), 'Budget: ' + (o.budget || '—'), 'Timeline: ' + (o.timeline || '—'),
+        'Permission ke bina phone/email share nahi karte. Interested broker pehle details yahin bhejein.',
+        'BCS 30/35/35 split written — referral ka hissa clear.'];
+    } else {
+      body = ['[NETWORK INTRO · Ajay Sharma / BCS Jaipur]',
+        'Namaste! Main Ajay Sharma, BCS Jaipur — plots, villas aur commercial property me advisory karta hoon.',
+        'Hum verification-first kaam karte hain: title, approval, RERA aur written 30/35/35 split — client ko hidden cut nahi.',
+        'Is group me active requirements, verified projects aur genuine client intros share karunga. Agar aapke paas koi matching option ho to gayi details (naam, area, price, photos) yahin bhejein.',
+        'Saath milke clean deals karte hain.'];
+    }
+    return head.concat(body, ['', '— Ajay Sharma, BCS Jaipur · clear record, clear split, clear next step.']).join('\n');
+  }
+  function rnPreview(text, title){
+    if(window.BCSPreview && window.BCSPreview.open){
+      window.BCSPreview.open({ title: title || 'BCS network share', text: text, waText: text,
+        filename: 'BCS-network-share-' + todayKey() + '.txt', kind: 'Network · preview' });
+    } else openPrompt(title || 'BCS network share', text);
+  }
+  function networkHTML(){
+    const g = G();
+    const contacts = g.network.contacts;
+    const seeds = netSeeds();
+    const q = (netState.q || '').toLowerCase();
+    const filt = x => (!netState.platform || x.p === netState.platform) &&
+      (!q || (x.n + ' ' + x.s + ' ' + (x.area||'') + ' ' + (x.focus||'')).toLowerCase().includes(q));
+    const chips = [{id:'',label:'All'}].concat(NET_PLATFORMS).map(p =>
+      `<button type="button" class="${netState.platform===p.id?'on':''}" data-rn-platform="${p.id}">${p.ic||''} ${esc(p.label)}</button>`).join('');
+    const card = (x, saved) => `<div class="bw-card">
+      <h4>${rnNetName(x.p).ic} ${esc(x.n)} <span class="bw-chip">${esc(rnNetName(x.p).label)}</span>${x.area?`<span class="bw-chip good">${esc(x.area)}</span>`:''}</h4>
+      <div class="bw-sub">${esc(x.s||x.note||'')}</div>
+      ${x.focus?`<div class="bw-kv"><span>Focus</span><span>${esc(x.focus)}</span></div>`:''}
+      <div class="bw-actions" style="margin-top:8px">
+        <a class="bw-btn sm primary" href="${esc(x.u||x.url)}" target="_blank" rel="noopener noreferrer">Open ↗</a>
+        <button type="button" class="bw-btn sm" data-rn-copy="${esc(saved ? x.url : x.u)}">📋 Copy link</button>
+        <button type="button" class="bw-btn sm" data-rn-intro="${esc(x.n)}">💬 Share intro</button>
+        ${saved?`<button type="button" class="bw-btn sm" data-rn-del="${esc(x.id)}" title="Delete saved network">✕</button>`:''}
+      </div>
+    </div>`;
+    const shownSeeds = seeds.filter(filt), shownSaved = contacts.filter(filt);
+    const pr = NET_TASKS.filter(t => g.network.checks[t.id]).length;
+    const pct = Math.round(pr / NET_TASKS.length * 100);
+    return `<div class="bw-panel" id="rnHub">
+      <div class="bw-head"><div class="bw-head-txt">
+        <div class="bw-eyebrow">Networking desk · Links page</div>
+        <h3>Realty network hub — India brokers, dealers &amp; channels</h3>
+        <p>Active requirements, projects aur client intros share karne ke liye public Telegram, WhatsApp, LinkedIn, Facebook groups aur portals. Koi personal add jaroori nahi — niche discovery links kholo ya jo public detail mile capitalize karke save karein. Jo bhi share karein, pehle exact text preview hota hai.</p>
+      </div><div class="bw-actions"><span class="bw-chip brand">${contacts.length} saved</span><button type="button" class="bw-btn sm" data-rn-tab="share">✉️ Share desk</button></div></div>
+      <div class="bw-tabs">
+        <button type="button" class="${netState.tab!=='share'?'on':''}" data-rn-tab="discover">Discover networks</button>
+        <button type="button" class="${netState.tab==='mine'?'on':''}" data-rn-tab="mine">My saved network</button>
+        <button type="button" class="${netState.tab==='share'?'on':''}" data-rn-tab="share">Share desk</button>
+      </div>
+      ${netState.tab === 'share' ? `<div class="bw-grid two">
+        <div class="bw-card"><h4>✉️ Preview-first share</h4>
+          <div class="bw-form-grid rn-share-grid">
+            <div class="bw-field"><label>Share type</label><select class="bw-select" id="rnKind"><option value="requirement">Active requirement</option><option value="project">Project update</option><option value="client">Client intro / referral</option><option value="intro">Network join intro</option></select></div>
+            <div class="bw-field"><label>Area / corridor</label><input class="bw-input" id="rnArea2" placeholder="Ajmer Road, Jaipur"></div>
+            <div class="bw-field"><label>Name / project</label><input class="bw-input" id="rnName2" placeholder="Project ya reference naam"></div>
+            <div class="bw-field"><label>Property type</label><input class="bw-input" id="rnType2" placeholder="Plot, 2BHK, commercial…"></div>
+            <div class="bw-field"><label>Need / USP</label><input class="bw-input" id="rnNeed2" placeholder="100–150 sq yd, ready possession…"></div>
+            <div class="bw-field"><label>Budget / price</label><input class="bw-input" id="rnBudget2" placeholder="₹50–70 L"></div>
+            <div class="bw-field"><label>Timeline / stage</label><input class="bw-input" id="rnTimeline2" placeholder="30 days / Ongoing"></div>
+            <div class="bw-field"><label>Stage (project)</label><select class="bw-select" id="rnStage2"><option>Ongoing</option><option>Upcoming</option><option>Completed</option></select></div>
+            <div class="bw-field" style="grid-column:1/-1"><label>Detail link (optional)</label><input class="bw-input" id="rnLink2" placeholder="https://…"></div>
+          </div>
+          <label class="bw-check" style="margin-top:8px"><input type="checkbox" id="rnPermission"><span>Client naam share karne ki <b>likhit permission</b> hai — nahi to naam masked rahega</span></label>
+          <div class="bw-actions" style="margin-top:8px"><button type="button" class="bw-btn primary" data-rn-action="previewshare">👁 Preview exact text</button><button type="button" class="bw-btn" data-rn-action="clearshare">Clear fields</button></div>
+          <div class="bw-note good">WhatsApp / share button sirf preview ke andar hai — text bhejne se pehle pooraa padhein. Client phone/email kabhi default me share nahi hote.</div>
+        </div>
+        <div class="bw-card"><h4>✅ Daily networking rhythm</h4>
+          <div class="bw-prog"><i style="width:${pct}%"></i></div><div class="bw-prog-lbl"><span>${pr}/${NET_TASKS.length} done</span><span>${pct}%</span></div>
+          <div style="margin-top:8px">${NET_TASKS.map(t => `<label class="bw-check ${g.network.checks[t.id]?'done':''}"><input type="checkbox" data-rn-check="${t.id}" ${g.network.checks[t.id]?'checked':''}><span>${esc(t.t)}</span></label>`).join('')}</div>
+          <div class="bw-note">Rule: pehle do — phir mang. Har group me value-first 3 replies, uske baad apna requirement/project. Spam = ban + trust loss.</div>
+          <button type="button" class="bw-btn sm" data-rn-action="resetnet" style="margin-top:6px">Reset daily targets</button>
+        </div>
+      </div>` : `<div class="gf-filter-chips">${chips}</div>
+        <div class="gf-controls"><input type="search" data-rn-q placeholder="Network search — group, area, focus…" value="${esc(netState.q||'')}" aria-label="Search networks"></div>
+        ${netState.tab === 'mine' ? '' : `<div class="bw-note good"><b>Free &amp; legal:</b> Ye public discovery links hain — koi login/scraping nahi. Telegram/WhatsApp ke liye web search use hota hai kyunkin public directory nahi hoti. Jis group/channel ki public detail mil jaye, neeche paste karke save karein.</div>`}
+        ${netState.tab === 'mine' ? `<div class="bw-card" style="margin-bottom:9px"><h4>＋ Save a public network / channel</h4>
+          <div class="bw-form-grid rn-share-grid">
+            <div class="bw-field"><label>Name</label><input class="bw-input" id="rnName" placeholder="Group / channel name"></div>
+            <div class="bw-field"><label>Platform</label><select class="bw-select" id="rnPlatform">${NET_PLATFORMS.map(p=>`<option value="${p.id}">${esc(p.label)}</option>`).join('')}</select></div>
+            <div class="bw-field"><label>Area / city</label><input class="bw-input" id="rnArea" placeholder="Jaipur / India"></div>
+            <div class="bw-field"><label>Focus</label><input class="bw-input" id="rnFocus" placeholder="Requirements, projects, clients"></div>
+            <div class="bw-field" style="grid-column:1/-1"><label>Public link</label><input class="bw-input" id="rnUrl" placeholder="https://t.me/… ya koi bhi public link"></div>
+          </div>
+          <div class="bw-actions" style="margin-top:8px"><button type="button" class="bw-btn sm primary" data-rn-action="savenet">Save network</button></div>
+        </div>` : ''}
+        <div class="bw-grid">${shownSeeds.map(x => card(x,false)).join('')}${shownSaved.map(x => card({n:x.name,p:x.platform,u:x.url,s:x.note,focus:x.focus,area:x.area,id:x.id},true)).join('')}</div>
+        ${netState.tab === 'mine' ? `<div class="bw-card" style="margin-top:9px"><h4>📋 Paste public details to capture</h4>
+          <div class="bw-area"><textarea id="rnPaste" placeholder="Har line: Group naam — public link — area — focus. Jaise: Jaipur Dealer Network — https://t.me/xyz — Jaipur — requirements"></textarea></div>
+          <div class="bw-actions" style="margin-top:7px"><button type="button" class="bw-btn sm primary" data-rn-action="capture">⚙ Capture lines</button></div>
+        </div>` : ''}
+        ${!shownSeeds.length && !shownSaved.length ? '<div class="bw-empty">Is filter ke saath koi network nahi — platform filter badlein ya search clear karein.</div>' : ''}`}
+    </div>`;
+  }
+  function paintNetwork(){
+    const host = q('#rnHost');
+    if(host){ host.innerHTML = networkHTML(); return; }
+    const old = q('#rnHub'); if(old) old.outerHTML = networkHTML();
+  }
+  function rnCapture(text){
+    const arr = G().network.contacts;
+    let added = 0;
+    String(text||'').split(/\r?\n/).forEach(line => {
+      const m = String(line||'').match(/https?:\/\/[^\s)]+/i);
+      if(!m) return;
+      const raw = String(line).replace(m[0],' ');
+      const bits = raw.split(/\s*[|•–—]\s*|\s+-\s+/).map(s => s.replace(/\s+/g,' ').trim()).filter(Boolean);
+      const clean = bits.join(' ');
+      if(clean.length < 2) return;
+      const l = String(line).toLowerCase();
+      let platform = 'website';
+      if(/t\.me|telegram/.test(l)) platform = 'telegram';
+      else if(/wa\.me|whatsapp/.test(l)) platform = 'whatsapp';
+      else if(/linkedin/.test(l)) platform = 'linkedin';
+      else if(/facebook|fb\.com/.test(l)) platform = 'facebook';
+      const name = (bits[0]||clean).trim().slice(0,100);
+      if(!name) return;
+      const area = bits[1] ? matchArea(bits[1]) || bits[1].slice(0,80) : matchArea(clean);
+      arr.push({ id: uid(), name, platform, area, url: m[0].slice(0,800),
+        focus: bits[2] ? bits[2].slice(0,200) : (detectStatus(clean) ? 'Projects' : 'Requirements / deals'),
+        note: 'Public details · captured ' + todayKey(), createdAt: Date.now() });
+      added++;
+    });
+    if(!added) return toast('Koi valid link wali line nahi mili', true);
+    persist(); paintNetwork(); toast(added + ' network' + (added>1?'s':'') + ' save ho gaye');
+  }
+  netState.tab = 'discover';
+
+  const brandFilter = { platform:'' };
+  window.BCS_GROWTH = {
+    render: function(){ paintBrand(); paintFunnel('advisors'); paintFunnel('dealers'); paintFunnel('projects'); paintNetwork(); },
+    renderBrand: paintBrand,
+    renderNetwork: paintNetwork,
+    renderFunnels: function(){ paintFunnel('advisors'); paintFunnel('dealers'); paintFunnel('projects'); },
+    openPrompt: openPrompt,
+    todayPlan: todayPlan
+  };
+  G();
+  paintBrand();
+  paintFunnel('advisors'); paintFunnel('dealers'); paintFunnel('projects');
+  paintNetwork();
 })();
 </script>
 
