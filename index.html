@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Developer & Project Intelligence</title>
+<!-- BCS DESK BUILD bcs-desk-v192 · single-file · zero-dependency · Applications hub -->
 <meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -9830,6 +9831,39 @@ body[data-page="templates"]{--pg:#8A5A9E}
 body[data-page="podcasts"]{--pg:#7A5AC8}
 body[data-page="health"]{--pg:#4E9E63}
 body[data-page="inventory"]{--pg:#3A8FB8}
+body[data-page="applications"]{--pg:#6C63C4}
+
+/* ---------- v192 · Applications hub (single-file, no dependencies) ---------- */
+.apps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;align-items:stretch}
+#view-applications .apps-card{position:relative;display:flex;flex-direction:column;padding:18px;border-radius:16px;border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);min-width:0;overflow:hidden}
+#view-applications .apps-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--app-accent,var(--pg))}
+#view-applications .apps-card:hover{transform:translateY(-3px);border-color:color-mix(in oklab,var(--app-accent,var(--pg)) 55%,var(--line));box-shadow:0 18px 38px -24px rgba(0,0,0,.45)}
+.apps-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.apps-ic{width:42px;height:42px;flex:none;border-radius:12px;display:grid;place-items:center;font-size:17px;font-weight:800;color:var(--app-accent,var(--pg));background:color-mix(in oklab,var(--app-accent,var(--pg)) 16%,var(--panel));border:1px solid color-mix(in oklab,var(--app-accent,var(--pg)) 34%,var(--line))}
+.apps-kicker{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800;color:var(--app-accent,var(--pg))}
+.apps-license{margin-left:auto;font-size:9px;font-weight:800;letter-spacing:.5px;padding:3px 8px;border-radius:999px;color:var(--ink2);background:color-mix(in oklab,var(--app-accent,var(--pg)) 12%,var(--panel));border:1px solid var(--line)}
+#view-applications .apps-card h4{font-family:'Fraunces',serif;font-size:20px;font-weight:600;letter-spacing:-.2px;color:var(--ink);margin:1px 0 6px}
+#view-applications .apps-card .apps-tag{font-size:12px;line-height:1.55;color:var(--ink2);margin:0 0 10px}
+.apps-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.apps-meta span{font-size:9.5px;font-weight:700;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:4px 8px;background:color-mix(in oklab,var(--panel) 86%,var(--app-accent,var(--pg)) 14%)}
+.apps-meta a{font-size:9.5px;font-weight:800;color:var(--app-accent,var(--pg));text-decoration:none;padding:4px 2px;border-bottom:1px dashed color-mix(in oklab,var(--app-accent,var(--pg)) 55%,transparent)}
+.apps-meta a:hover{opacity:.75}
+#view-applications .apps-card .apps-reality{font-size:11px;line-height:1.55;color:var(--ink2);background:color-mix(in oklab,var(--panel) 88%,var(--app-accent,var(--pg)) 12%);border:1px solid var(--line);border-radius:10px;padding:9px 10px;margin:0 0 9px}
+.apps-fit{font-size:10.5px;font-weight:700;color:var(--mut);margin-bottom:10px}
+.apps-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto;padding-top:4px}
+.apps-actions button{flex:1;min-width:104px;justify-content:center}
+#view-applications .apps-note{margin-top:18px;padding:16px 18px;border-radius:16px;border:1px solid var(--line);background:var(--panel)}
+#view-applications .apps-note h4{font-family:'Fraunces',serif;font-size:17px;color:var(--ink);margin-bottom:6px}
+#view-applications .apps-note p{font-size:11.5px;line-height:1.6;color:var(--ink2);margin:0 0 6px}
+#view-applications .apps-note b{color:var(--ink)}
+.apps-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-bottom:14px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+#view-applications .apps-stats div{background:var(--panel);padding:10px 12px;min-width:0}
+#view-applications .apps-stats .k{font-size:8.5px;letter-spacing:1.1px;text-transform:uppercase;color:var(--mut);font-weight:700;margin-bottom:2px}
+#view-applications .apps-stats .v{font-size:13px;font-weight:700;color:var(--ink);line-height:1.3}
+.apps-toolbar{margin-bottom:6px}
+@media(max-width:700px){.apps-stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.apps-grid{grid-template-columns:1fr}.apps-actions button{min-width:0}}
+body.bcs-native #view-applications .apps-grid{grid-template-columns:1fr !important}
 
 /* themed page header */
 body[data-page] .adv-head{
@@ -17369,6 +17403,7 @@ try{
           <button type="button" data-view="health"><span class="nav-ic" aria-hidden="true">♥</span>Health</button>
           <button type="button" data-view="social"><span class="nav-ic" aria-hidden="true">🌐</span>Social Media</button>
           <button type="button" data-view="sheets"><span class="nav-ic" aria-hidden="true">📊</span>Google Sheets</button>
+          <button type="button" data-view="applications"><span class="nav-ic" aria-hidden="true">▤</span>Applications</button>
         </div>
       </div>
     </nav>
@@ -19221,6 +19256,52 @@ try{
     </div>
 
     <div class="tpl-grid" id="tplGrid"></div>
+  </section>
+
+  <section class="view" id="view-applications">
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · applications desk</div>
+        <h2 class="adv-title">Real tools,<br><em>one honest shelf.</em></h2>
+        <p class="adv-sub">Four free and open-source applications, checked and linked from one place. BCS Desk remains a single offline file — nothing is installed into your data, no client name or project number is sent to these tools, and every link opens in a new tab.</p>
+      </div>
+      <div class="adv-head-actions">
+        <button type="button" class="btn primary" data-apps-open="https://canvix.app">Open Canvix ↗</button>
+        <button type="button" class="btn ghost" data-apps-scroll="appsNotes">Setup notes</button>
+      </div>
+    </div>
+
+    <div class="apps-stats links-stats" id="appsStats">
+      <div><div class="k">Reviewed tools</div><div class="v">4 open source</div></div>
+      <div><div class="k">Use in browser</div><div class="v">1 full app + 2 demos</div></div>
+      <div><div class="k">Needs a server</div><div class="v">2 self-host</div></div>
+      <div><div class="k">Device limit</div><div class="v">1 Windows app</div></div>
+    </div>
+
+    <div class="toolbar apps-toolbar">
+      <div class="adv-search links-search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="appsSearch" placeholder="Search by name, use or license…" aria-label="Search applications" autocomplete="off" spellcheck="false">
+      </div>
+      <select id="appsWhere" aria-label="Filter by availability">
+        <option value="">All availability</option>
+        <option value="browser">Full web app</option>
+        <option value="server">Needs a server</option>
+        <option value="windows">Windows only</option>
+      </select>
+      <div class="spacer"></div>
+      <span class="links-toolbar-note" id="appsCount"></span>
+    </div>
+
+    <div class="sec-head"><div><h3>The four applications</h3><div class="sub">What each one really is, what it needs, and where to open it.</div></div></div>
+    <div class="apps-grid" id="appsGrid"></div>
+
+    <div class="apps-note" id="appsNotes">
+      <h4>Why they are linked, not installed inside BCS</h4>
+      <p><b>BCS Desk is one static HTML file</b> that runs on GitHub Pages and offline on iPad — it has no server, database or install runtime. Canvix (Next.js + Postgres) and Listmonk (Go + database + SMTP) need a real server; Firecrawl is a developer API; KillerPDF is a native Windows program. Embedding them would break the single-file, zero-dependency promise and slow every 4G load.</p>
+      <p><b>Free forever is about the software license, not the hosting bill.</b> Canvix is MIT, Listmonk and Firecrawl are AGPL-3.0, KillerPDF is GPL-3.0 — all genuinely open source. Running your own server may have a hosting cost; each card links the official self-hosting guide so you can decide. Firecrawl's hosted plan is paid beyond a small free tier, and its own rules require respecting each website's terms — BCS keeps using free public discovery links and paste-capture for property research.</p>
+      <p><b>Nothing changes in your desk data.</b> Leads, projects, developers, advisors and backups stay exactly where they are. The 30% Originating / 35% Executing / 35% BCS split, client-name masking and preview-before-share rules remain untouched.</p>
+    </div>
   </section>
 
   <section class="view" id="view-podcasts">
@@ -22674,7 +22755,7 @@ const ADMIN_NAME = 'Ajay Sharma';
 const ADMIN_PASSWORD = '5794';
 const ADVISOR_PASSWORD = '3662';
 const AUTH_KEY = 'bcs_auth_v1';
-const ADVISOR_VIEWS = ['dashboard','projects','developers','clients','dayplan','inventory','advisors','resale','analytics','calc','links','pipeline','exchange'];
+const ADVISOR_VIEWS = ['dashboard','projects','developers','clients','dayplan','inventory','advisors','resale','analytics','calc','links','pipeline','exchange','applications'];
 const DEFAULT_CLIENT_STATUSES = [
   { id:'new',         label:'New lead' },
   { id:'contacted',   label:'Contacted' },
@@ -25539,7 +25620,7 @@ function showOverlay(id){
   el.style.setProperty('z-index', String(overlayZ), 'important');
   el.classList.add('on');
 }
-var BCS_MORE_SET = ['partners','resale','tax','terminology','links','templates','podcasts','health','social','sheets'];
+var BCS_MORE_SET = ['partners','resale','tax','terminology','links','templates','podcasts','health','social','sheets','applications'];
 function bcsNavMoreSync(){
   try{
     const mb = $('#navMoreBtn');
@@ -38040,7 +38121,7 @@ function applyRoleChrome(){
     ? 'Prices, approvals, people aur payments — ek hi control room. Jo change save hota hai, wahi sab pages mein live reflect hota hai.'
     : 'Assigned projects, clients, bookings aur payouts — sab ek jagah. Admin jo assign karega, wahi aapke portal me live dikhega.';
   const moreHead = document.querySelector('#navMorePanel .nav-more-head b');
-  if(moreHead) moreHead.textContent = admin ? 'All 22 pages' : 'Advisor tools';
+  if(moreHead) moreHead.textContent = admin ? 'All 28 pages' : 'Advisor tools';
   const gs = document.getElementById('globalSearch');
   if(gs) gs.placeholder = admin ? 'Search projects, developers, advisors, clients…' : 'Search my projects & clients…';
   const lockBtnEl = document.getElementById('lockBtn');
@@ -44291,7 +44372,8 @@ function quickActionList(){
     { kind:'Go', label:'Ops', sub:'Backups, activity, documents aur SOPs', icon:'⌗', color:'linear-gradient(135deg,#3A3928,#A57B36)', keys:'operations backup docs', run:() => go('ops') },
     { kind:'Go', label:'Podcasts', sub:'Episodes, notes aur recording queue', icon:'🎙', color:'linear-gradient(135deg,#7B67C6,#C95C85)', keys:'audio episode recording', run:() => go('podcasts') },
     { kind:'Go', label:'Social', sub:'Social desk, reels aur content calendar', icon:'🌐', color:'linear-gradient(135deg,#C95C85,#4C8FD6)', keys:'instagram youtube content', run:() => go('social') },
-    { kind:'Go', label:'Sheets', sub:'Sheet inputs aur calculation workspace', icon:'📊', color:'linear-gradient(135deg,#7CAC5A,#E7B84B)', keys:'spreadsheet sheet calculate', run:() => go('sheets') }
+    { kind:'Go', label:'Sheets', sub:'Sheet inputs aur calculation workspace', icon:'📊', color:'linear-gradient(135deg,#7CAC5A,#E7B84B)', keys:'spreadsheet sheet calculate', run:() => go('sheets') },
+    { kind:'Go', label:'Applications', sub:'Free open-source tools — Canvix, Listmonk, Firecrawl, KillerPDF', icon:'▤', color:'linear-gradient(135deg,#6C63C4,#4C8FD6)', keys:'apps applications tools canvix listmonk firecrawl killerpdf design pdf newsletter scraping', run:() => go('applications') }
   ];
   if(isAdmin()){
     list.push(
@@ -47273,6 +47355,7 @@ function render(){
   if(currentView === 'social'){ try{ renderSocialDesk(); }catch(e){} }
   try{ if(window.BCS_GROWTH && window.BCS_GROWTH.renderFunnels) window.BCS_GROWTH.renderFunnels(); }catch(e){}
   if(currentView === 'sheets'){ try{ paintSheetsInputs(); }catch(e){} }
+  if(currentView === 'applications'){ try{ window.BCS_APPS_VIEW.render(); }catch(e){ console.warn('[BCS applications]', e); } }
   storageMeter();
   try{ if(window.BCS_FLOW) window.BCS_FLOW.render(); }catch(e){}
   try{ if(window.BCS_FUN) window.BCS_FUN.render(); }catch(e){}
@@ -56433,6 +56516,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     health:     { label:'Health',       ic:'♥',  note:'Data health + sync status' },
     social:     { label:'Social Media', ic:'🌐', note:'Content desk + brand manager + creator radar' },
     sheets:     { label:'Google Sheets',ic:'📊', note:'Two-way sheet sync' },
+    applications:{label:'Applications',ic:'▤',  note:'Free open-source app directory — Canvix, Listmonk, Firecrawl, KillerPDF'},
     app:        { label:'Whole app',    ic:'⌘',  note:'Cross-page improvements' }
   };
   const VIEW_FROM_ENTITY = {
@@ -56441,6 +56525,9 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     Document:'ops', Invoice:'ops', Broadcast:'ops', ROI:'ops', 'Client page':'ops', Backup:'ops'
   };
   const SITE_LOG = [
+    { v:'v192', date:'2026-11-19', page:'applications', kind:'update',
+      title:'Applications desk — four free open-source tools, one honest place',
+      detail:'Canvix, Listmonk, Firecrawl aur KillerPDF ke liye ek dedicated Applications page: har tool ka asli role, license, kya chahiye, khula tab aur official setup guide. BCS single-file aur offline rehta hai — koi client data kahin nahi bheja jata. 30% Originating · 35% Executing · 35% BCS unchanged.' },
     { v:'v191', date:'2026-11-18', page:'app', kind:'update',
       title:'Quiet productivity — global search, Aaj ke 10 Kaam, privacy, safer restore, best-3 drafts, watchlist aur network polish',
       detail:'Cmd/Ctrl+K ab poori desk ke records aur pages search karta hai; ⌘⇧P privacy mode client details blur karta hai; dashboard queue me stale leads aur price/RERA alerts; daily snapshot + diff-preview restore (MERGE/REPLACE) + import se pehle safety backup; lead se top-3 project drafts; project watchlist; network cards par last-verified, save-link aur preview pitch. 30% Originating · 35% Executing · 35% BCS unchanged.' },
@@ -61240,7 +61327,8 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     partners:'Channel partners', finance:'Finance & invoices', resale:'Resale listings',
     analytics:'Analytics', ops:'Operations', tax:'Tax desk', terminology:'Terminology',
     links:'Website directory', templates:'Message templates', podcasts:'Podcast desk',
-    health:'Data health', social:'Social desk', sheets:'Sheets & calculations'
+    health:'Data health', social:'Social desk', sheets:'Sheets & calculations',
+    applications:'Applications directory'
   };
   const PI = (v) => { try{ return (db && db[v]) || []; }catch(e){ return []; } };
   const leadRows = () => { try{ return (db.leadgen && db.leadgen.leads) || []; }catch(e){ return []; } };
@@ -61475,6 +61563,120 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
+})();
+</script>
+<script>
+/* ============ v192 · APPLICATIONS HUB — verified open-source tools ============ */
+(function(){
+  var APPS = [
+    {
+      id:'canvix', name:'Canvix', icon:'C', accent:'#4E9E63',
+      kicker:'Design studio', license:'MIT', where:'Browser ready', whereKey:'browser',
+      tag:'Canva-style editor for social posts, decks, posters and logos — 366 templates, 369 fonts, unwatermarked exports.',
+      needs:'Self-host: Node 20+ and PostgreSQL',
+      reality:'Works in any browser today at canvix.app — no install. To keep it private to your own website you must self-host it on a Node host with a free Postgres database; a static GitHub Pages file cannot run it.',
+      fit:'Best for: marketing creatives, site posters and thumbnails.',
+      launch:'https://canvix.app', launchLabel:'Open free web app',
+      setup:'https://github.com/mir-ashiq/canvix#-quick-start',
+      source:'https://github.com/mir-ashiq/canvix'
+    },
+    {
+      id:'listmonk', name:'Listmonk', icon:'L', accent:'#4C8FD6',
+      kicker:'Newsletter & email', license:'AGPL-3.0', where:'Needs a server', whereKey:'server',
+      tag:'High-performance self-hosted newsletter and subscriber manager. Single Go binary, campaigns, opt-ins and analytics.',
+      needs:'Server with PostgreSQL/MySQL plus SMTP',
+      reality:'Not a browser-only app — it needs a server, database and SMTP to send mail. The current v7 release is a major beta with a redesigned admin UI. The demo is public; your own lists require self-hosting.',
+      fit:'Best for: buyer and developer email lists.',
+      launch:'https://beta.listmonk.app', launchLabel:'See live demo',
+      setup:'https://listmonk.app/docs/',
+      source:'https://github.com/knadh/listmonk'
+    },
+    {
+      id:'firecrawl', name:'Firecrawl', icon:'F', accent:'#D98A2B',
+      kicker:'Web data API', license:'AGPL-3.0', where:'Needs a server', whereKey:'server',
+      tag:'Search, scrape and crawl pages into clean Markdown or JSON. Open source, with a small free tier and a hosted API.',
+      needs:'Hosted API key, or Node + Redis + browser engine',
+      reality:'A developer API, not an end-user web app. Hosted use beyond the small free tier is paid and self-hosting is heavy. Its own docs require respecting each site’s terms; BCS keeps the free public discovery and paste-capture flow for property research.',
+      fit:'Best for: technical users who need bulk public web data.',
+      launch:'https://firecrawl.dev/playground', launchLabel:'Open playground',
+      setup:'https://docs.firecrawl.dev/contributing/self-host',
+      source:'https://github.com/firecrawl/firecrawl'
+    },
+    {
+      id:'killerpdf', name:'KillerPDF', icon:'K', accent:'#8A6BC6',
+      kicker:'PDF editor', license:'GPL-3.0', where:'Windows only', whereKey:'windows',
+      tag:'Full PDF 2.0 editor: view, annotate, OCR, redact, sign, fill forms, merge/split and convert — no account, no subscription.',
+      needs:'Windows PC — portable .exe available',
+      reality:'Cannot run in a website or on iPad: it is a native Windows WPF desktop application. Download the portable build from the GitHub release and run it on a Windows machine. It is never embedded inside BCS Desk.',
+      fit:'Best for: heavy PDF editing on a Windows laptop.',
+      launch:'https://github.com/SteveTheKiller/KillerPDF/releases/latest', launchLabel:'Download for Windows',
+      setup:'https://github.com/SteveTheKiller/KillerPDF#readme',
+      source:'https://github.com/SteveTheKiller/KillerPDF'
+    }
+  ];
+
+  function escA(v){
+    return String(v == null ? '' : v).replace(/[&<>"']/g, function(c){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+    });
+  }
+  function openLink(url){
+    try{
+      if(window.BCS_CONNECT && typeof window.BCS_CONNECT.open === 'function'){ window.BCS_CONNECT.open(url); return; }
+    }catch(e){}
+    try{ window.open(url, '_blank', 'noopener,noreferrer'); }catch(err){}
+  }
+  function card(a){
+    return '<article class="apps-card" style="--app-accent:' + escA(a.accent) + '">' +
+      '<div class="apps-top">' +
+        '<div class="apps-ic" aria-hidden="true">' + escA(a.icon) + '</div>' +
+        '<div class="apps-kicker">' + escA(a.kicker) + '</div>' +
+        '<span class="apps-license">' + escA(a.license) + '</span>' +
+      '</div>' +
+      '<h4>' + escA(a.name) + '</h4>' +
+      '<p class="apps-tag">' + escA(a.tag) + '</p>' +
+      '<div class="apps-meta"><span>' + escA(a.where) + '</span><span>' + escA(a.needs) + '</span>' +
+        '<a href="' + escA(a.source) + '" target="_blank" rel="noopener noreferrer">Source ↗</a></div>' +
+      '<p class="apps-reality">' + escA(a.reality) + '</p>' +
+      '<div class="apps-fit">' + escA(a.fit) + '</div>' +
+      '<div class="apps-actions">' +
+        '<button type="button" class="btn primary sm" data-apps-open="' + escA(a.launch) + '">' + escA(a.launchLabel) + ' ↗</button>' +
+        '<button type="button" class="btn ghost sm" data-apps-open="' + escA(a.setup) + '">Setup guide ↗</button>' +
+      '</div>' +
+    '</article>';
+  }
+  function render(){
+    var grid = document.getElementById('appsGrid');
+    if(!grid) return;
+    var q = '';
+    var w = '';
+    try{ q = String((document.getElementById('appsSearch') || {}).value || '').trim().toLowerCase(); }catch(e){}
+    try{ w = String((document.getElementById('appsWhere') || {}).value || ''); }catch(e){}
+    var list = APPS.filter(function(a){
+      if(w && a.whereKey !== w) return false;
+      if(!q) return true;
+      return [a.name,a.kicker,a.license,a.where,a.tag,a.needs,a.reality,a.fit].join(' ').toLowerCase().indexOf(q) !== -1;
+    });
+    grid.innerHTML = list.length ? list.map(card).join('') :
+      '<div class="empty-inline">Koi application nahi mila. Search ya filter badalein.</div>';
+    var cnt = document.getElementById('appsCount');
+    if(cnt) cnt.textContent = list.length + ' of ' + APPS.length + ' applications';
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target && e.target.closest ? e.target : null;
+    if(!t) return;
+    var open = t.closest('[data-apps-open]');
+    if(open){ e.preventDefault(); openLink(open.getAttribute('data-apps-open')); return; }
+    var scroll = t.closest('[data-apps-scroll]');
+    if(scroll){
+      e.preventDefault();
+      var el = document.getElementById(scroll.getAttribute('data-apps-scroll'));
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+  document.addEventListener('input', function(e){ if(e.target && e.target.id === 'appsSearch') render(); });
+  document.addEventListener('change', function(e){ if(e.target && e.target.id === 'appsWhere') render(); });
+  window.BCS_APPS_VIEW = { render:render, apps:APPS };
 })();
 </script>
 </body>
