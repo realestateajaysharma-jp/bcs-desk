@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Developer & Project Intelligence</title>
-<!-- BCS DESK BUILD bcs-desk-v214 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard (pen, shapes, notes, pages, PNG export, working ruler/protractor/compass/set-square guides with place-on-board, local image/PDF import with direct annotation, clickable web cards, 8 board backgrounds, BenQ-style toolbox, timer, stopwatch, scoreboard, random draw, spinner, calculator, unit converter, spotlight, laser and floating notes) + BenQ EZWrite official launcher + Jaipur Property Map (flat-finder style, free MapLibre tiles + offline SVG fallback, 47 localities, 5-portal benchmark rates + 10-register / 434-row source-attributed dossier index, fixed Google Maps embed height + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase + local category-wise saved places with one-click Google Maps, icons and CSV) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + full dark-mode safety net -->
+<!-- BCS DESK BUILD bcs-desk-v215 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard (pen, shapes, notes, pages, PNG export, working ruler/protractor/compass/set-square guides with place-on-board, local image/PDF import with direct annotation, clickable web cards, 8 board backgrounds, BenQ-style toolbox, timer, stopwatch, scoreboard, random draw, spinner, calculator, unit converter, spotlight, laser and floating notes) + BenQ EZWrite official launcher + Jaipur Property Map (flat-finder style, free CARTO key-enabled MapLibre tiles + Voyager GL vector style + offline SVG fallback, 47 localities, 5-portal benchmark rates + 10-register / 434-row source-attributed dossier index, fixed Google Maps embed height + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase + local category-wise saved places with one-click Google Maps, icons and CSV) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + full dark-mode safety net -->
 <meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -20106,6 +20106,7 @@ try{
             <button type="button" data-b="nightplus">Night+</button>
             <button type="button" data-b="sat">Satellite</button>
             <button type="button" data-b="streets">Streets</button>
+            <button type="button" data-b="voyager">Voyager GL</button>
             <button type="button" data-b="google">Google Maps</button>
           </div>
           <div class="jp-ctl">
@@ -67252,12 +67253,14 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   }
   function resizeMap(){ try{ if(state.map) state.map.resize(); }catch(e){} }
 
-  /* ---------- MapLibre map (free tiles) + self-contained SVG fallback ---------- */
+  /* ---------- MapLibre map (CARTO key-enabled free tiles) + self-contained SVG fallback ---------- */
+  var CARTO_KEY='cb1_5ckm_1_ba2bf5763e858c8ed3e3f588';
+  var CARTO_VECTOR='https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json?key='+CARTO_KEY;
   var TILES={
-    night:['https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png'],
-    nightplus:['https://basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png'],
-    nightlabels:['https://basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png'],
-    streets:['https://basemaps.cartocdn.com/voyager/{z}/{x}/{y}.png'],
+    night:['https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png?key='+CARTO_KEY],
+    nightplus:['https://basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png?key='+CARTO_KEY],
+    nightlabels:['https://basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png?key='+CARTO_KEY],
+    streets:['https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key='+CARTO_KEY],
     sat:['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}']
   };
   function loadML(){
@@ -67277,6 +67280,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     return window.__jpMLPromise;
   }
   function style(){
+    if(state.base==='voyager') return CARTO_VECTOR;
     var attr='© CARTO · © OpenStreetMap contributors · © Esri';
     if(state.base==='nightplus'){
       return {version:8,sources:{
@@ -67317,7 +67321,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     if(state.google) return;
     if(state.map && !state.mapFailed){
       try{ state.map.setStyle(style()); state.map.once('styledata',function(){ syncMarkers(); resizeMap(); }); }catch(e){}
-      if(n) n.textContent=state.base==='sat'?'Satellite · Esri · indicative pins':state.base==='nightplus'?'Night+ · enhanced labels · indicative pins':'Jaipur · indicative locality map';
+      if(n) n.textContent=state.base==='sat'?'Satellite · Esri · indicative pins':state.base==='nightplus'?'Night+ · enhanced labels · indicative pins':state.base==='voyager'?'Voyager GL · CARTO vector · indicative pins':state.base==='streets'?'Streets · CARTO key-enabled · indicative pins':'Jaipur · indicative locality map';
       setTimeout(resizeMap,60);
     } else { if(n) n.textContent='Offline locality map · tiles unavailable'; drawSvg(); }
     setTimeout(resizeMap,120);
@@ -67607,7 +67611,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   },false);
   window.addEventListener('resize',function(){ resizeMap(); });
 
-  window.BCS_JAIPUR={render:render,reset:reset,data:JP,projects:SHOW,projectCats:SHOW_CATS,state:state,fallback:fallback,drawSvg:drawSvg,bench:renderBench,showcase:renderShow,showCsv:showCsv,google:updateGoogleFrame,sources:SOURCE_META,checked:CHECKED,portals:PORTALS,portalsRender:renderPortals,dossiers:DOSSIERS,dossiersRender:renderDossiers,dossierOpen:openDossier,dossierFiltered:dossierFiltered,dossierText:dossierText,dossierCsv:dossierCsv,saved:renderSaved,savedAdd:savePlaceFromForm,savedCsv:savedCsv,savedShow:showSavedOnMap,savedEdit:editSavedPlace,savedDelete:deleteSavedPlace,savedPlaces:function(){return state.saved.slice();},savedTarget:parsePlaceTarget};
+  window.BCS_JAIPUR={render:render,reset:reset,data:JP,projects:SHOW,projectCats:SHOW_CATS,state:state,fallback:fallback,drawSvg:drawSvg,bench:renderBench,showcase:renderShow,showCsv:showCsv,google:updateGoogleFrame,sources:SOURCE_META,checked:CHECKED,portals:PORTALS,portalsRender:renderPortals,dossiers:DOSSIERS,dossiersRender:renderDossiers,dossierOpen:openDossier,dossierFiltered:dossierFiltered,dossierText:dossierText,dossierCsv:dossierCsv,saved:renderSaved,savedAdd:savePlaceFromForm,savedCsv:savedCsv,savedShow:showSavedOnMap,savedEdit:editSavedPlace,savedDelete:deleteSavedPlace,savedPlaces:function(){return state.saved.slice();},savedTarget:parsePlaceTarget,basemaps:TILES,vectorStyle:CARTO_VECTOR,cartoKey:CARTO_KEY};
 })();
 </script>
 <script>
