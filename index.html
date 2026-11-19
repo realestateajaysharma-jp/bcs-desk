@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Developer & Project Intelligence</title>
-<!-- BCS DESK BUILD bcs-desk-v210 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + Jaipur Property Map (flat-finder style, free MapLibre tiles + offline SVG fallback, 47 localities, 5-portal source-checked rates with attributed evidence, fixed Google Maps embed height + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + full dark-mode safety net -->
+<!-- BCS DESK BUILD bcs-desk-v211 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard (pen, shapes, notes, pages, PNG export) + BenQ EZWrite official launcher + Jaipur Property Map (flat-finder style, free MapLibre tiles + offline SVG fallback, 47 localities, 5-portal source-checked rates with attributed evidence, fixed Google Maps embed height + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + full dark-mode safety net -->
 <meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -9833,6 +9833,7 @@ body[data-page="podcasts"]{--pg:#7A5AC8}
 body[data-page="health"]{--pg:#4E9E63}
 body[data-page="inventory"]{--pg:#3A8FB8}
 body[data-page="applications"]{--pg:#6C63C4}
+body[data-page="whiteboard"]{--pg:#6C63C4}
 
 /* ---------- v192 · Applications hub (single-file, no dependencies) ---------- */
 .apps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;align-items:stretch}
@@ -17486,6 +17487,59 @@ body[data-theme="dark"] [style*="background:#EEF2F7"]{background:#17202E !import
 body[data-theme="dark"] :is([style*="background:#FFFDF4"],[style*="background:#FFFBE9"],[style*="background:#FBF8EF"],[style*="background:#FFFDF6"]){background:#241F12 !important;border-color:#5A4518 !important;color:#E8DFC2 !important}
 body[data-theme="dark"] :is([style*="background:#FBEDE8"],[style*="background:#FBECEA"],[style*="background:#FBEAE6"]){background:#33211B !important;border-color:#5C3327 !important;color:#F0A78C !important}
 </style>
+<style id="bcsEzwriteCss">
+/* ============================================================
+   BCS EZWrite — local whiteboard + BenQ launcher
+   Uses BCS tokens only. Dark-mode aware, zero dependencies.
+   ============================================================ */
+.ezb-head-actions{display:flex;gap:8px;flex-wrap:wrap}
+.ezb-shell{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:14px;align-items:start}
+.ezb-board{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;min-width:0}
+.ezb-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 12px;border-bottom:1px solid var(--line);background:color-mix(in oklab,var(--panel) 88%,var(--bg))}
+.ezb-toolset{display:flex;gap:4px;flex-wrap:wrap}
+.ezb-tool{min-width:34px;height:34px;padding:0 8px;border-radius:9px;border:1px solid var(--line);background:color-mix(in oklab,var(--panel) 70%,transparent);color:var(--ink2);font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:5px;justify-content:center}
+.ezb-tool:hover{border-color:var(--gold);color:var(--ink)}
+.ezb-tool.on{background:var(--gold);border-color:var(--gold);color:var(--panel)}
+.ezb-tool .ezb-ico{font-size:15px;line-height:1}
+.ezb-swatches{display:flex;gap:5px;align-items:center;padding-left:6px;border-left:1px solid var(--line)}
+.ezb-dot{width:22px;height:22px;border-radius:50%;border:2px solid transparent;background:transparent;padding:0;display:grid;place-items:center}
+.ezb-dot i{display:block;width:13px;height:13px;border-radius:50%;background:var(--ezb-c);box-shadow:0 0 0 1px color-mix(in oklab,var(--ink) 18%,transparent)}
+.ezb-dot.on{border-color:var(--gold)}
+.ezb-field{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--mut);font-weight:700;letter-spacing:.2px}
+.ezb-field input[type=range]{width:86px;accent-color:var(--gold)}
+.ezb-field select{max-width:110px;padding:6px 8px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-size:11.5px}
+.ezb-mini{height:32px;min-width:32px;padding:0 9px;border-radius:9px;border:1px solid var(--line);background:var(--panel);color:var(--ink2);font-weight:700;font-size:13px}
+.ezb-mini:hover:not(:disabled){border-color:var(--gold);color:var(--ink)}
+.ezb-mini:disabled{opacity:.4;cursor:not-allowed}
+.ezb-pages{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:9px 12px;border-bottom:1px solid var(--line);background:color-mix(in oklab,var(--panel) 94%,var(--bg))}
+.ezb-page{border:1px solid var(--line);background:var(--panel);color:var(--ink2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700;display:inline-flex;align-items:center;gap:6px}
+.ezb-page.on{background:var(--sage);border-color:var(--gold);color:var(--ink)}
+.ezb-page small{opacity:.65;font-weight:600}
+.ezb-addpage{width:28px;height:28px;border-radius:50%;border:1px dashed var(--gold);color:var(--gold);font-weight:800;font-size:16px;display:grid;place-items:center}
+.ezb-stage{position:relative;width:100%;height:min(60vh,600px);min-height:390px;overflow:hidden;background-color:var(--panel);touch-action:none}
+.ezb-stage[data-bg="grid"]{background-image:linear-gradient(rgba(127,127,127,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(127,127,127,.14) 1px,transparent 1px);background-size:24px 24px}
+.ezb-stage[data-bg="dots"]{background-image:radial-gradient(circle,rgba(127,127,127,.32) 1px,transparent 1.4px);background-size:22px 22px}
+.ezb-canvas{display:block;width:100%;height:100%;cursor:crosshair;touch-action:none}
+.ezb-hint{position:absolute;left:14px;bottom:12px;pointer-events:none;font-size:11px;font-weight:700;letter-spacing:.2px;color:var(--mut);background:color-mix(in oklab,var(--panel) 82%,transparent);border:1px solid var(--line);border-radius:999px;padding:5px 10px}
+.ezb-foot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:9px 12px;border-top:1px solid var(--line);font-size:11px;color:var(--mut)}
+.ezb-side{display:grid;gap:12px;min-width:0}
+.ezb-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:var(--shadow)}
+.ezb-card h4{font-family:'Fraunces',serif;font-size:17px;font-weight:600;margin:6px 0 7px}
+.ezb-card p{font-size:12px;line-height:1.55;color:var(--mut)}
+.ezb-card .eyebrow{font-size:9.5px}
+.ezb-card-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.ezb-note{font-size:11px;line-height:1.5;color:var(--mut);margin-top:9px;padding-top:9px;border-top:1px dashed var(--line)}
+.ezb-scratch{width:100%;min-height:96px;resize:vertical;margin-top:9px;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-size:12px;line-height:1.5}
+.ezb-editor{position:fixed;inset:0;z-index:2600;background:rgba(0,0,0,.6);display:grid;place-items:center;padding:20px}
+.ezb-editor[hidden]{display:none !important}
+.ezb-editor-card{width:min(420px,100%);background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow-lg)}
+.ezb-editor-card textarea{width:100%;min-height:120px;margin-top:10px;padding:11px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-size:13px;line-height:1.5;resize:vertical}
+.ezb-editor-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
+.ezb-launch-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.ezb-launch-actions .btn{flex:1 1 auto;justify-content:center}
+@media(max-width:1080px){.ezb-shell{grid-template-columns:1fr}.ezb-side{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.ezb-side{grid-template-columns:1fr}.ezb-stage{height:56vh;min-height:340px}.ezb-toolbar{gap:6px}.ezb-swatches{border-left:0;padding-left:0}.ezb-field input[type=range]{width:64px}}
+</style>
 <style id="bcsJaipurCss">
 /* ============================================================
    BCS Jaipur Property Map — flat-finder style explorer
@@ -17896,6 +17950,7 @@ try{
       <button type="button" data-view="analytics" aria-label="Analytics"><span class="nav-ic" aria-hidden="true">▥</span><span class="nav-lbl">Analytics</span></button>
       <button type="button" data-view="ops" aria-label="Operations"><span class="nav-ic" aria-hidden="true">⌗</span><span class="nav-lbl">Ops</span></button>
       <button type="button" data-view="jaipur" aria-label="Jaipur Map"><span class="nav-ic" aria-hidden="true">🗺</span><span class="nav-lbl">Jaipur Map</span><span class="nav-dot gold" aria-hidden="true"></span></button>
+      <button type="button" data-view="whiteboard" aria-label="BCS EZWrite whiteboard"><span class="nav-ic" aria-hidden="true">✎</span><span class="nav-lbl">Whiteboard</span></button>
       <div class="nav-more-wrap">
         <button type="button" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" title="All pages" aria-label="More pages"><span class="nav-ic" aria-hidden="true">⋯</span><span class="nav-lbl">More</span><span class="nav-chev" aria-hidden="true">▾</span></button>
         <div class="nav-more-panel" id="navMorePanel" hidden>
@@ -17929,6 +17984,7 @@ try{
           <button type="button" data-view="social"><span class="nav-ic" aria-hidden="true">🌐</span>Social Media</button>
           <button type="button" data-view="sheets"><span class="nav-ic" aria-hidden="true">📊</span>Google Sheets</button>
           <button type="button" data-view="applications"><span class="nav-ic" aria-hidden="true">▤</span>Applications</button>
+          <button type="button" data-view="whiteboard"><span class="nav-ic" aria-hidden="true">✎</span>BCS EZWrite board</button>
           <button type="button" data-view="jaipur"><span class="nav-ic" aria-hidden="true">🗺</span>Jaipur Map</button>
         </div>
       </div>
@@ -19963,7 +20019,7 @@ try{
       <div>
         <div class="eyebrow">BCS · applications desk</div>
         <h2 class="adv-title">Real tools,<br><em>one honest shelf.</em></h2>
-        <p class="adv-sub">Four open-source applications, Adobe Express, a built-in Content Growth Studio and a Google field kit built for Jaipur property work. BCS Desk remains a single offline file — nothing is installed into your data, no client name or project number is sent to these tools, and every link opens in a new tab.</p>
+        <p class="adv-sub">Four open-source applications, Adobe Express, a built-in Content Growth Studio, a local BCS EZWrite whiteboard and a Google field kit built for Jaipur property work. BCS Desk remains a single offline file — nothing is installed into your data, no client name or project number is sent to these tools, and every external link opens in a new tab.</p>
       </div>
       <div class="adv-head-actions">
         <button type="button" class="btn primary" data-cgs-open>Content Growth Studio ↗</button>
@@ -19987,6 +20043,19 @@ try{
         <div class="cgs-chips"><span>Reel analyser</span><span>Script builder</span><span>Growth plan</span><span>Trend signals</span><span>Share with care</span><span>Insights</span><span>Best time</span><span>Brand pitches</span><span>Shoot plans</span><span>Hold &amp; energy dips</span></div>
       </div>
       <button type="button" class="btn primary" data-cgs-open>Open studio →</button>
+    </div>
+
+    <div class="cgs-launch" id="appsEzwriteLaunch">
+      <div class="cgs-launch-ic" aria-hidden="true">✎</div>
+      <div class="cgs-launch-copy">
+        <div class="eyebrow">BCS · built-in whiteboard</div>
+        <h4>BCS EZWrite board — and the official BenQ launcher</h4>
+        <p>Sketch site plans, mark plots and run quick client huddles on a local board that never uploads a stroke. Pages, notes and PNG exports stay in this browser. BenQ EZWrite 6 Web is linked separately because it blocks in-app framing and needs its own sign-in.</p>
+        <div class="ezb-launch-actions">
+          <button type="button" class="btn primary sm" data-goto="whiteboard">Open local board →</button>
+          <a class="btn ghost sm" href="https://ezwrite6.benq.com/main/#/" target="_blank" rel="noopener" data-no-frame>BenQ EZWrite ↗</a>
+        </div>
+      </div>
     </div>
 
     <div class="toolbar apps-toolbar">
@@ -20036,8 +20105,96 @@ try{
       <h4>Why they are linked, not installed inside BCS</h4>
       <p><b>BCS Desk is one static HTML file</b> that runs on GitHub Pages and offline on iPad — it has no server, database or install runtime. Canvix (Next.js + Postgres) and Listmonk (Go + database + SMTP) need a real server; Firecrawl is a developer API; KillerPDF is a native Windows program; Adobe Express is a cloud design app. Embedding them would break the single-file, zero-dependency promise and slow every 4G load.</p>
       <p><b>Free forever is about the software license, not the hosting bill.</b> Canvix is MIT, Listmonk and Firecrawl are AGPL-3.0, KillerPDF is GPL-3.0 — all genuinely open source. Adobe Express has a free plan but is proprietary, not open source, and some templates, AI tools and Pro features are paid. Running your own server may have a hosting cost; each open-source card links the official self-hosting guide so you can decide. Firecrawl's hosted plan is paid beyond a small free tier, and its own rules require respecting each website's terms — BCS keeps using free public discovery links and paste-capture for property research.</p>
-      <p><b>The Content Growth Studio is the one tool that runs entirely inside BCS.</b> Its scoring is a transparent rule-based expert check — not a live AI model and not a guarantee of reach. It reads only the script you paste, shows a preview before any copy/share action, and never uploads text, client names or desk records.</p>
+      <p><b>Content Growth Studio and the BCS EZWrite board are the two tools that run entirely inside BCS.</b> The Studio's scoring is a transparent rule-based expert check — not a live AI model and not a guarantee of reach. The whiteboard keeps every stroke, page, note and PNG export in this browser only. Neither uploads text, client names or desk records.</p>
       <p><b>Nothing changes in your desk data.</b> Leads, projects, developers, advisors and backups stay exactly where they are. The 30% Originating / 35% Executing / 35% BCS split, client-name masking and preview-before-share rules remain untouched.</p>
+    </div>
+  </section>
+
+  <section class="view" id="view-whiteboard">
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · local whiteboard</div>
+        <h2 class="adv-title">Sketch it.<br><em>Keep it on this device.</em></h2>
+        <p class="adv-sub">A BenQ EZWrite-style board for site plans, client huddles and quick pitches. Pen, shapes, sticky notes, pages and PNG export — all inside this one file. Nothing is uploaded; every mark is saved only in this browser.</p>
+      </div>
+      <div class="adv-head-actions ezb-head-actions">
+        <button type="button" class="btn primary" id="ezbAddPageTop">+ New page</button>
+        <button type="button" class="btn ghost" data-goto="applications">Applications ↗</button>
+      </div>
+    </div>
+
+    <div class="ezb-shell">
+      <div class="ezb-board">
+        <div class="ezb-toolbar">
+          <div class="ezb-toolset" id="ezbTools" role="toolbar" aria-label="Whiteboard tools">
+            <button type="button" class="ezb-tool on" data-ezb-tool="pen" title="Pen"><span class="ezb-ico" aria-hidden="true">✎</span>Pen</button>
+            <button type="button" class="ezb-tool" data-ezb-tool="marker" title="Highlighter"><span class="ezb-ico" aria-hidden="true">▰</span>Marker</button>
+            <button type="button" class="ezb-tool" data-ezb-tool="eraser" title="Eraser"><span class="ezb-ico" aria-hidden="true">⌫</span>Eraser</button>
+            <button type="button" class="ezb-tool" data-ezb-tool="move" title="Move notes and text"><span class="ezb-ico" aria-hidden="true">✥</span>Move</button>
+            <button type="button" class="ezb-tool" data-ezb-tool="line" title="Line"><span class="ezb-ico" aria-hidden="true">╱</span>Line</button>
+            <button type="button" class="ezb-tool" data-ezb-tool="rect" title="Rectangle"><span class="ezb-ico" aria-hidden="true">▭</span>Rect</button>
+            <button type="button" class="ezb-tool" data-ezb-tool="ellipse" title="Ellipse"><span class="ezb-ico" aria-hidden="true">◯</span>Ellipse</button>
+            <button type="button" class="ezb-tool" data-ezb-tool="text" title="Text"><span class="ezb-ico" aria-hidden="true">T</span>Text</button>
+            <button type="button" class="ezb-tool" data-ezb-tool="note" title="Sticky note"><span class="ezb-ico" aria-hidden="true">▤</span>Note</button>
+          </div>
+          <div class="ezb-swatches" id="ezbSwatches" aria-label="Ink colour"></div>
+          <label class="ezb-field">Size <input id="ezbSize" type="range" min="1" max="18" value="3" aria-label="Stroke size"></label>
+          <select id="ezbBg" aria-label="Board background">
+            <option value="grid">Grid</option>
+            <option value="dots">Dots</option>
+            <option value="plain">Plain</option>
+          </select>
+          <div class="spacer"></div>
+          <button type="button" class="ezb-mini" id="ezbUndo" title="Undo">↶</button>
+          <button type="button" class="ezb-mini" id="ezbRedo" title="Redo">↷</button>
+          <button type="button" class="ezb-mini" id="ezbDuplicate" title="Duplicate this page">⧉</button>
+          <button type="button" class="ezb-mini" id="ezbDeletePage" title="Delete this page">✕</button>
+          <button type="button" class="ezb-mini" id="ezbClear" title="Clear this page">Clear</button>
+          <button type="button" class="btn ghost sm" id="ezbExport">Export PNG</button>
+        </div>
+        <div class="ezb-pages" id="ezbPages"></div>
+        <div class="ezb-stage" id="ezbStage" data-bg="grid">
+          <canvas id="ezbCanvas" aria-label="Drawing board — drag to draw"></canvas>
+          <div class="ezb-hint" id="ezbHint">Drag to draw · double-click text or a note to edit</div>
+        </div>
+        <div class="ezb-foot"><span id="ezbStatus">Local draft · autosaved in this browser</span><span id="ezbCount">0 marks</span></div>
+      </div>
+
+      <aside class="ezb-side">
+        <article class="ezb-card" id="ezbLauncher">
+          <div class="eyebrow">BenQ · official launcher</div>
+          <h4>BenQ EZWrite 6 Web</h4>
+          <p>BenQ blocks in-app framing (X-Frame-Options / frame-ancestors) and asks for a Google, Microsoft or BenQ sign-in. The official button opens BenQ in a fresh tab while your local BCS board stays right here.</p>
+          <div class="ezb-launch-actions">
+            <a class="btn primary sm" href="https://ezwrite6.benq.com/main/#/" target="_blank" rel="noopener" data-no-frame>Open BenQ EZWrite ↗</a>
+            <button type="button" class="btn ghost sm" id="ezbCopyLink">Copy link</button>
+          </div>
+          <div class="ezb-note">Private rule: never paste client names, phone numbers or project documents into any cloud whiteboard. Use this local board for confidential sketches.</div>
+        </article>
+        <article class="ezb-card">
+          <div class="eyebrow">BCS · quick guide</div>
+          <h4>How to run a huddle</h4>
+          <p><b>Pen / marker</b> sketch the site layout. <b>Line / rectangle / ellipse</b> mark roads, plots and zones. <b>Text / note</b> add a label, then double-click to edit. <b>Move</b> drags notes and labels. <b>Undo / redo</b> fix a stroke; <b>Export PNG</b> saves a clean copy.</p>
+          <div class="ezb-note">Pages, marks and the scratch pad live in this browser only. Clearing browser data removes them — export a PNG before a device reset.</div>
+        </article>
+        <article class="ezb-card">
+          <div class="eyebrow">BCS · private scratch</div>
+          <h4>Meeting notes</h4>
+          <p>Quick notes for this board — saved locally with the pages.</p>
+          <textarea class="ezb-scratch" id="ezbScratch" placeholder="Site visit notes, questions, follow-ups…"></textarea>
+        </article>
+      </aside>
+    </div>
+
+    <div class="ezb-editor" id="ezbEditor" hidden role="dialog" aria-modal="true" aria-labelledby="ezbEditorTitle">
+      <div class="ezb-editor-card">
+        <div class="eyebrow" id="ezbEditorTitle">Text</div>
+        <textarea id="ezbEditorText" placeholder="Type here…"></textarea>
+        <div class="ezb-editor-actions">
+          <button type="button" class="btn ghost sm" id="ezbEditorCancel">Cancel</button>
+          <button type="button" class="btn primary sm" id="ezbEditorSave">Save</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -23615,7 +23772,7 @@ const ADMIN_NAME = 'Ajay Sharma';
 const ADMIN_PASSWORD = '5794';
 const ADVISOR_PASSWORD = '3662';
 const AUTH_KEY = 'bcs_auth_v1';
-const ADVISOR_VIEWS = ['dashboard','projects','developers','clients','dayplan','inventory','advisors','resale','analytics','calc','links','pipeline','exchange','applications','jaipur'];
+const ADVISOR_VIEWS = ['dashboard','projects','developers','clients','dayplan','inventory','advisors','resale','analytics','calc','links','pipeline','exchange','applications','whiteboard','jaipur'];
 const DEFAULT_CLIENT_STATUSES = [
   { id:'new',         label:'New lead' },
   { id:'contacted',   label:'Contacted' },
@@ -26890,7 +27047,7 @@ function showOverlay(id){
   el.style.setProperty('z-index', String(overlayZ), 'important');
   el.classList.add('on');
 }
-var BCS_MORE_SET = ['partners','resale','tax','terminology','links','templates','podcasts','health','social','sheets','applications'];
+var BCS_MORE_SET = ['partners','resale','tax','terminology','links','templates','podcasts','health','social','sheets','applications','whiteboard'];
 function bcsNavMoreSync(){
   try{
     const mb = $('#navMoreBtn');
@@ -49483,6 +49640,7 @@ function render(){
   try{ if(window.BCS_GROWTH && window.BCS_GROWTH.renderFunnels) window.BCS_GROWTH.renderFunnels(); }catch(e){}
   if(currentView === 'sheets'){ try{ paintSheetsInputs(); }catch(e){} }
   if(currentView === 'applications'){ try{ window.BCS_APPS_VIEW.render(); }catch(e){ console.warn('[BCS applications]', e); } }
+  if(currentView === 'whiteboard'){ try{ window.BCS_EZWRITE.render(); }catch(e){} }
   if(currentView === 'jaipur'){ try{ window.BCS_JAIPUR.render(); }catch(e){ console.warn('[BCS jaipur]', e); } }
   storageMeter();
   try{ if(window.BCS_FLOW) window.BCS_FLOW.render(); }catch(e){}
@@ -66365,6 +66523,530 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   window.addEventListener('resize',function(){ resizeMap(); });
 
   window.BCS_JAIPUR={render:render,reset:reset,data:JP,projects:SHOW,projectCats:SHOW_CATS,state:state,fallback:fallback,drawSvg:drawSvg,bench:renderBench,showcase:renderShow,showCsv:showCsv,google:updateGoogleFrame,sources:SOURCE_META,checked:CHECKED};
+})();
+</script>
+<script>
+/* ============================================================
+   BCS EZWrite (v211) — local whiteboard + BenQ official launcher
+   Single file, zero dependencies, no upload. Board data is local.
+   ============================================================ */
+(function(){
+  'use strict';
+  var KEY = 'bcs_ezwrite_board_v1';
+  var BENQ = 'https://ezwrite6.benq.com/main/#/';
+  var PALETTE = [
+    {id:'gold',   label:'Gold',   dark:'#C79A3F', light:'#A57B36'},
+    {id:'mint',   label:'Mint',   dark:'#3FA98F', light:'#2F8F6B'},
+    {id:'coral',  label:'Coral',  dark:'#D47055', light:'#A4452B'},
+    {id:'violet', label:'Violet', dark:'#8B6FD1', light:'#7B67C6'},
+    {id:'blue',   label:'Blue',   dark:'#4F86C6', light:'#3A7CB8'},
+    {id:'ink',    label:'Ink',    dark:'#B9B8AD', light:'#2E2D20'}
+  ];
+  var S = {
+    pages:[], page:0, tool:'pen', color:'gold', size:3, scratch:'',
+    undo:[], redo:[], current:null, before:'', move:null, editor:null
+  };
+  var cv = null, ctx = null, stage = null;
+
+  function $(id){ return document.getElementById(id); }
+  function esc(v){
+    return String(v == null ? '' : v).replace(/[&<>"']/g, function(c){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+    });
+  }
+  function notify(msg, bad){ try{ toast(msg, !!bad); }catch(e){} }
+  function dark(){ return document.body.getAttribute('data-theme') === 'dark'; }
+  function cval(id){
+    var p = PALETTE.filter(function(x){ return x.id === id; })[0] || PALETTE[0];
+    return dark() ? p.dark : p.light;
+  }
+  function rgba(hex, a){
+    var h = String(hex || '').replace('#','');
+    if(h.length === 3) h = h.split('').map(function(x){ return x + x; }).join('');
+    var n = parseInt(h, 16);
+    if(isNaN(n)) return 'rgba(127,127,127,' + a + ')';
+    return 'rgba(' + ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',' + a + ')';
+  }
+  function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+  function ist(){
+    var d = new Date(Date.now() + (5.5 * 3600000));
+    var m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return String(d.getUTCDate()).padStart(2,'0') + ' ' + m[d.getUTCMonth()] + ' ' + d.getUTCFullYear();
+  }
+  function blank(name){
+    return {id:uid(), name:name || ('Page ' + (S.pages.length + 1)), items:[], bg:'grid'};
+  }
+  function page(){ return S.pages[S.page] || S.pages[0] || null; }
+  function snap(){ return JSON.stringify({pages:S.pages, page:S.page, scratch:S.scratch}); }
+  function applySnap(raw){
+    try{
+      var o = JSON.parse(raw);
+      if(!o || !Array.isArray(o.pages) || !o.pages.length) return;
+      S.pages = o.pages;
+      S.page = Math.max(0, Math.min(parseInt(o.page,10) || 0, S.pages.length - 1));
+      S.scratch = o.scratch || '';
+    }catch(e){}
+  }
+  function load(){
+    try{
+      var o = JSON.parse(localStorage.getItem(KEY) || '');
+      if(o && Array.isArray(o.pages) && o.pages.length){
+        S.pages = o.pages;
+        S.page = Math.max(0, Math.min(parseInt(o.page,10) || 0, S.pages.length - 1));
+        S.scratch = o.scratch || '';
+        return;
+      }
+    }catch(e){}
+    S.pages = [blank('Page 1')];
+    S.page = 0;
+  }
+  function save(){
+    try{ localStorage.setItem(KEY, snap()); }catch(e){}
+    var st = $('ezbStatus');
+    if(st) st.textContent = 'Local draft · autosaved ' + ist();
+  }
+  function begin(){ return snap(); }
+  function end(before){
+    if(!before || before === snap()) return false;
+    S.undo.push(before);
+    if(S.undo.length > 50) S.undo.shift();
+    S.redo.length = 0;
+    save(); renderAll();
+    return true;
+  }
+  function change(fn){
+    var before = begin();
+    fn();
+    end(before);
+  }
+
+  function renderSwatches(){
+    var host = $('ezbSwatches');
+    if(!host) return;
+    host.innerHTML = PALETTE.map(function(p){
+      return '<button type="button" class="ezb-dot' + (p.id === S.color ? ' on' : '') + '" data-ezb-color="' + p.id + '" title="' + p.label + '" aria-label="' + p.label + '"><i style="--ezb-c:' + cval(p.id) + '"></i></button>';
+    }).join('');
+  }
+  function renderTools(){
+    $$('[data-ezb-tool]').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-ezb-tool') === S.tool); });
+  }
+  function renderPages(){
+    var host = $('ezbPages');
+    if(!host) return;
+    host.innerHTML = S.pages.map(function(p, i){
+      return '<button type="button" class="ezb-page' + (i === S.page ? ' on' : '') + '" data-ezb-page="' + i + '" title="Click to open · double-click to rename">' + esc(p.name) + '<small>' + p.items.length + '</small></button>';
+    }).join('') + '<button type="button" class="ezb-addpage" id="ezbAddPage" title="New page" aria-label="New page">+</button>';
+  }
+  function syncControls(){
+    var p = page();
+    if(!p) return;
+    var bg = p.bg || 'grid';
+    if(stage) stage.dataset.bg = bg;
+    var sel = $('ezbBg'); if(sel) sel.value = bg;
+    var sz = $('ezbSize'); if(sz) sz.value = S.size;
+    var sc = $('ezbScratch'); if(sc && sc.value !== S.scratch) sc.value = S.scratch;
+    var u = $('ezbUndo'); if(u) u.disabled = !S.undo.length;
+    var r = $('ezbRedo'); if(r) r.disabled = !S.redo.length;
+    var cnt = $('ezbCount');
+    if(cnt) cnt.textContent = p.items.length + (p.items.length === 1 ? ' mark' : ' marks') + ' · ' + p.name;
+    var st = $('ezbStatus');
+    if(st) st.textContent = 'Local draft · autosaved ' + ist();
+  }
+  function renderAll(){ renderPages(); syncControls(); redraw(); }
+  function render(){ setTimeout(fit, 60); }
+
+  function fit(){
+    if(!cv || !ctx || !stage) return;
+    var r = stage.getBoundingClientRect();
+    if(r.width < 10 || r.height < 10) return;
+    var d = Math.min(window.devicePixelRatio || 1, 2);
+    var w = Math.round(r.width), h = Math.round(r.height);
+    if(cv.width !== Math.round(w * d) || cv.height !== Math.round(h * d)){
+      cv.width = Math.round(w * d);
+      cv.height = Math.round(h * d);
+      cv.style.width = w + 'px';
+      cv.style.height = h + 'px';
+    }
+    ctx.setTransform(d, 0, 0, d, 0, 0);
+    redraw();
+  }
+  function point(e){
+    var r = cv.getBoundingClientRect();
+    return [
+      Math.round((e.clientX - r.left) * 10) / 10,
+      Math.round((e.clientY - r.top) * 10) / 10
+    ];
+  }
+  function cssSize(){
+    var d = Math.min(window.devicePixelRatio || 1, 2);
+    return {w:cv.width / d, h:cv.height / d, d:d};
+  }
+  function roundRect(g, x, y, w, h, r){
+    r = Math.min(r, w / 2, h / 2);
+    g.beginPath();
+    g.moveTo(x + r, y);
+    g.lineTo(x + w - r, y);
+    g.quadraticCurveTo(x + w, y, x + w, y + r);
+    g.lineTo(x + w, y + h - r);
+    g.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    g.lineTo(x + r, y + h);
+    g.quadraticCurveTo(x, y + h, x, y + h - r);
+    g.lineTo(x, y + r);
+    g.quadraticCurveTo(x, y, x + r, y);
+    g.closePath();
+  }
+  function strokePoints(g, pts, width, color, alpha, erase){
+    if(!pts || !pts.length) return;
+    g.save();
+    if(erase) g.globalCompositeOperation = 'destination-out';
+    g.globalAlpha = alpha;
+    g.strokeStyle = color;
+    g.lineWidth = width;
+    g.lineCap = 'round';
+    g.lineJoin = 'round';
+    g.beginPath();
+    g.moveTo(pts[0][0], pts[0][1]);
+    if(pts.length === 1) g.lineTo(pts[0][0] + 0.1, pts[0][1]);
+    else for(var i = 1; i < pts.length; i++) g.lineTo(pts[i][0], pts[i][1]);
+    g.stroke();
+    g.restore();
+  }
+  function wrapLines(g, text, maxWidth, maxLines){
+    var words = String(text || '').trim().split(/\s+/).filter(Boolean);
+    var lines = [], line = '';
+    words.forEach(function(w){
+      var test = line ? line + ' ' + w : w;
+      if(g.measureText(test).width > maxWidth && line){ lines.push(line); line = w; }
+      else line = test;
+    });
+    if(line) lines.push(line);
+    if(lines.length > maxLines){
+      lines = lines.slice(0, maxLines);
+      var last = lines[maxLines - 1] || '';
+      lines[maxLines - 1] = last.slice(0, Math.max(0, last.length - 1)) + '…';
+    }
+    return lines;
+  }
+  function drawItem(g, it){
+    if(!it) return;
+    if(it.type === 'stroke'){
+      strokePoints(g, it.points, it.size || 3, cval(it.color), it.tool === 'marker' ? 0.32 : 1, false);
+      return;
+    }
+    if(it.type === 'erase'){
+      strokePoints(g, it.points, (it.size || 6) * 1.9, '#000', 1, true);
+      return;
+    }
+    if(it.type === 'shape'){
+      g.save();
+      g.strokeStyle = cval(it.color);
+      g.lineWidth = it.size || 3;
+      g.lineCap = 'round';
+      g.lineJoin = 'round';
+      g.beginPath();
+      if(it.shape === 'line'){
+        g.moveTo(it.x1, it.y1); g.lineTo(it.x2, it.y2);
+      }else if(it.shape === 'rect'){
+        g.rect(Math.min(it.x1,it.x2), Math.min(it.y1,it.y2), Math.abs(it.x2-it.x1), Math.abs(it.y2-it.y1));
+      }else{
+        var cx = (it.x1 + it.x2) / 2, cy = (it.y1 + it.y2) / 2;
+        var rx = Math.abs(it.x2 - it.x1) / 2, ry = Math.abs(it.y2 - it.y1) / 2;
+        if(g.ellipse) g.ellipse(cx, cy, Math.max(1,rx), Math.max(1,ry), 0, 0, Math.PI * 2);
+        else g.arc(cx, cy, Math.max(1, Math.max(rx,ry)), 0, Math.PI * 2);
+      }
+      g.stroke();
+      g.restore();
+      return;
+    }
+    if(it.type === 'text'){
+      var fs = it.fontSize || 18;
+      g.save();
+      g.fillStyle = cval(it.color);
+      g.font = '600 ' + fs + 'px "DM Sans", system-ui, sans-serif';
+      g.textBaseline = 'alphabetic';
+      g.fillText(it.text, it.x, it.y);
+      g.restore();
+      return;
+    }
+    if(it.type === 'note'){
+      var nw = it.w || 154, nh = it.h || 88, nfs = it.fontSize || 16;
+      g.save();
+      roundRect(g, it.x, it.y, nw, nh, 10);
+      g.fillStyle = rgba(cval(it.color), dark() ? 0.18 : 0.12);
+      g.fill();
+      g.strokeStyle = cval(it.color);
+      g.lineWidth = 1.2;
+      g.stroke();
+      g.fillStyle = dark() ? '#F2F0E5' : '#2E2D20';
+      g.font = '600 ' + nfs + 'px "DM Sans", system-ui, sans-serif';
+      g.textBaseline = 'top';
+      var lines = wrapLines(g, it.text, nw - 18, Math.max(2, Math.floor((nh - 16) / (nfs + 3))));
+      lines.forEach(function(l, i){ g.fillText(l, it.x + 9, it.y + 9 + i * (nfs + 3)); });
+      g.restore();
+    }
+  }
+  function redraw(){
+    if(!ctx || !cv) return;
+    var s = cssSize();
+    ctx.clearRect(0, 0, s.w, s.h);
+    var p = page();
+    if(!p) return;
+    p.items.forEach(function(it){ drawItem(ctx, it); });
+    if(S.current) drawItem(ctx, S.current);
+    var cnt = $('ezbCount');
+    if(cnt) cnt.textContent = p.items.length + (p.items.length === 1 ? ' mark' : ' marks') + ' · ' + p.name;
+  }
+  function drawGrid(g, w, h, bg){
+    if(bg === 'plain') return;
+    g.save();
+    if(bg === 'dots'){
+      g.fillStyle = 'rgba(127,127,127,.32)';
+      for(var dx = 11; dx < w; dx += 22) for(var dy = 11; dy < h; dy += 22){ g.beginPath(); g.arc(dx, dy, 1, 0, Math.PI * 2); g.fill(); }
+    }else{
+      g.strokeStyle = 'rgba(127,127,127,.16)';
+      g.lineWidth = 1;
+      for(var x = 0; x <= w; x += 24){ g.beginPath(); g.moveTo(x, 0); g.lineTo(x, h); g.stroke(); }
+      for(var y = 0; y <= h; y += 24){ g.beginPath(); g.moveTo(0, y); g.lineTo(w, y); g.stroke(); }
+    }
+    g.restore();
+  }
+  function exportPng(){
+    fit();
+    if(!cv) return;
+    try{
+      var s = cssSize();
+      var out = document.createElement('canvas');
+      out.width = cv.width; out.height = cv.height;
+      var g = out.getContext('2d');
+      g.setTransform(s.d, 0, 0, s.d, 0, 0);
+      g.fillStyle = dark() ? '#1B201B' : '#FFFFFF';
+      g.fillRect(0, 0, s.w, s.h);
+      drawGrid(g, s.w, s.h, (page() || {}).bg || 'grid');
+      g.setTransform(1, 0, 0, 1, 0, 0);
+      g.drawImage(cv, 0, 0);
+      var a = document.createElement('a');
+      a.href = out.toDataURL('image/png');
+      a.download = 'bcs-ezwrite-' + String((page() || {}).name || 'page').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') + '-' + ist().replace(/ /g,'-') + '.png';
+      document.body.appendChild(a); a.click(); a.remove();
+      notify('PNG export ready');
+    }catch(e){ notify('Export nahi hua — dobara try karein', true); }
+  }
+  function copyText(text, msg){
+    var done = function(ok){ notify(ok ? msg : 'Copy nahi hua — link select karke copy karein', !ok); };
+    try{
+      if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(text).then(function(){ done(true); },function(){ fallbackCopy(text, done); }); return; }
+    }catch(e){}
+    fallbackCopy(text, done);
+  }
+  function fallbackCopy(text, done){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly',''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    var ok = false;
+    try{ ok = document.execCommand('copy'); }catch(e){}
+    ta.remove(); done(ok);
+  }
+
+  function findItem(id){
+    var p = page(); if(!p) return null;
+    return p.items.filter(function(x){ return x.id === id; })[0] || null;
+  }
+  function hitTest(x, y){
+    var p = page(); if(!p) return null;
+    for(var i = p.items.length - 1; i >= 0; i--){
+      var it = p.items[i];
+      if(it.type === 'note' && x >= it.x && x <= it.x + (it.w || 154) && y >= it.y && y <= it.y + (it.h || 88)) return it;
+      if(it.type === 'text'){
+        ctx.save();
+        ctx.font = '600 ' + (it.fontSize || 18) + 'px "DM Sans", system-ui, sans-serif';
+        var tw = ctx.measureText(it.text).width;
+        ctx.restore();
+        if(x >= it.x - 4 && x <= it.x + tw + 6 && y >= it.y - (it.fontSize || 18) - 4 && y <= it.y + 6) return it;
+      }
+    }
+    return null;
+  }
+  function openEditor(kind, x, y, item, index){
+    S.editor = {kind:kind, x:x, y:y, item:item || null, index:index};
+    var title = $('ezbEditorTitle'), ta = $('ezbEditorText'), box = $('ezbEditor');
+    if(!title || !ta || !box) return;
+    title.textContent = kind === 'note' ? 'Sticky note' : (kind === 'page' ? 'Rename page' : 'Text');
+    ta.value = item ? (item.text || item.name || '') : '';
+    box.hidden = false;
+    setTimeout(function(){ try{ ta.focus(); ta.select(); }catch(e){} }, 30);
+  }
+  function closeEditor(){
+    S.editor = null;
+    var box = $('ezbEditor'); if(box) box.hidden = true;
+  }
+  function saveEditor(){
+    var e = S.editor;
+    var ta = $('ezbEditorText');
+    if(!e || !ta) return;
+    var text = ta.value.trim();
+    if(!text){ notify('Pehle kuch type karein', true); return; }
+    var before = begin();
+    if(e.kind === 'page'){
+      if(S.pages[e.index]) S.pages[e.index].name = text;
+    }else if(e.item){
+      e.item.text = text;
+    }else if(e.kind === 'note'){
+      page().items.push({id:uid(), type:'note', text:text, x:e.x, y:e.y, w:154, h:88, color:S.color, fontSize:Math.max(13, Math.min(20, S.size + 13))});
+    }else{
+      page().items.push({id:uid(), type:'text', text:text, x:e.x, y:e.y, color:S.color, fontSize:Math.max(14, Math.min(30, S.size + 13))});
+    }
+    closeEditor();
+    end(before);
+  }
+  function addPage(){ change(function(){ S.pages.push(blank('Page ' + (S.pages.length + 1))); S.page = S.pages.length - 1; }); notify('New page ready'); }
+  function duplicatePage(){
+    var p = page(); if(!p) return;
+    change(function(){ var copy = JSON.parse(JSON.stringify(p)); copy.id = uid(); copy.name = p.name + ' copy'; copy.items.forEach(function(it){ it.id = uid(); }); S.pages.push(copy); S.page = S.pages.length - 1; });
+    notify('Page duplicated');
+  }
+  function deletePage(){
+    if(S.pages.length < 2){ notify('Kam se kam ek page rahega', true); return; }
+    change(function(){ S.pages.splice(S.page, 1); S.page = Math.max(0, Math.min(S.page, S.pages.length - 1)); });
+    notify('Page deleted');
+  }
+  function clearPage(){
+    var p = page(); if(!p) return;
+    if(!p.items.length){ notify('Page already clear hai', true); return; }
+    change(function(){ p.items = []; });
+    notify('Page cleared');
+  }
+  function undo(){
+    if(!S.undo.length){ notify('Undo ke liye kuch nahi hai', true); return; }
+    S.redo.push(snap());
+    applySnap(S.undo.pop());
+    save(); renderAll(); notify('Undo ✓');
+  }
+  function redo(){
+    if(!S.redo.length){ notify('Redo ke liye kuch nahi hai', true); return; }
+    S.undo.push(snap());
+    applySnap(S.redo.pop());
+    save(); renderAll(); notify('Redo ✓');
+  }
+  function reset(){
+    change(function(){ S.pages = [blank('Page 1')]; S.page = 0; S.scratch = ''; });
+    notify('Board reset — local only');
+  }
+  function capture(el){ try{ el.setPointerCapture(el._pid); }catch(e){} }
+
+  cv = $('ezbCanvas'); stage = $('ezbStage');
+  if(cv && stage) ctx = cv.getContext('2d');
+  load();
+  renderSwatches(); renderTools(); renderPages(); syncControls();
+
+  document.addEventListener('click', function(e){
+    var t = e.target && e.target.closest ? e.target : null;
+    if(!t) return;
+    if(e.target === $('ezbEditor')){ closeEditor(); return; }
+    var tool = t.closest('[data-ezb-tool]');
+    if(tool){ S.tool = tool.getAttribute('data-ezb-tool'); renderTools(); return; }
+    var col = t.closest('[data-ezb-color]');
+    if(col){ S.color = col.getAttribute('data-ezb-color'); renderSwatches(); return; }
+    var pg = t.closest('[data-ezb-page]');
+    if(pg){ S.page = parseInt(pg.getAttribute('data-ezb-page'),10) || 0; save(); renderAll(); return; }
+    if(t.closest('#ezbAddPage, #ezbAddPageTop')){ addPage(); return; }
+    if(t.closest('#ezbDuplicate')){ duplicatePage(); return; }
+    if(t.closest('#ezbDeletePage')){ deletePage(); return; }
+    if(t.closest('#ezbClear')){ clearPage(); return; }
+    if(t.closest('#ezbUndo')){ undo(); return; }
+    if(t.closest('#ezbRedo')){ redo(); return; }
+    if(t.closest('#ezbExport')){ exportPng(); return; }
+    if(t.closest('#ezbCopyLink')){ copyText(BENQ, 'BenQ link copied ✓'); return; }
+    if(t.closest('#ezbEditorCancel')){ closeEditor(); return; }
+    if(t.closest('#ezbEditorSave')){ saveEditor(); return; }
+  });
+  document.addEventListener('dblclick', function(e){
+    var t = e.target && e.target.closest ? e.target : null;
+    if(!t) return;
+    var pg = t.closest('[data-ezb-page]');
+    if(pg){
+      var i = parseInt(pg.getAttribute('data-ezb-page'),10) || 0;
+      openEditor('page', 0, 0, S.pages[i], i);
+      return;
+    }
+    if(e.target === cv){
+      var p = point(e);
+      var it = hitTest(p[0], p[1]);
+      if(it) openEditor(it.type, it.x, it.y, it);
+    }
+  });
+  if(cv){
+    cv.addEventListener('pointerdown', function(e){
+      if(e.pointerType === 'mouse' && e.button !== 0) return;
+      e.preventDefault();
+      var p = point(e);
+      cv._pid = e.pointerId;
+      var hit = hitTest(p[0], p[1]);
+      if(hit && S.tool !== 'text' && S.tool !== 'note' && S.tool !== 'move') return;
+      if(S.tool === 'text' || S.tool === 'note'){ openEditor(S.tool, p[0], p[1]); return; }
+      if(S.tool === 'move'){
+        if(!hit){ notify('Note ya text par tap karein', true); return; }
+        S.move = {id:hit.id, x0:hit.x, y0:hit.y, px:p[0], py:p[1], before:begin()};
+        capture(cv); return;
+      }
+      S.before = begin();
+      if(S.tool === 'pen' || S.tool === 'marker'){
+        S.current = {id:uid(), type:'stroke', tool:S.tool, color:S.color, size:S.size, points:[p]};
+      }else if(S.tool === 'eraser'){
+        S.current = {id:uid(), type:'erase', size:Math.max(6, S.size * 2), points:[p]};
+      }else{
+        S.current = {id:uid(), type:'shape', shape:S.tool, color:S.color, size:S.size, x1:p[0], y1:p[1], x2:p[0], y2:p[1]};
+      }
+      capture(cv); redraw();
+    });
+    cv.addEventListener('pointermove', function(e){
+      var p = point(e);
+      if(S.move){
+        var it = findItem(S.move.id);
+        if(it){ it.x = S.move.x0 + (p[0] - S.move.px); it.y = S.move.y0 + (p[1] - S.move.py); }
+        redraw(); return;
+      }
+      if(!S.current) return;
+      if(S.current.points) S.current.points.push(p);
+      else { S.current.x2 = p[0]; S.current.y2 = p[1]; }
+      redraw();
+    });
+    function finish(){
+      if(S.move){ end(S.move.before); S.move = null; return; }
+      if(!S.current) return;
+      var it = S.current;
+      S.current = null;
+      if(page()) page().items.push(it);
+      var before = S.before; S.before = '';
+      end(before);
+    }
+    cv.addEventListener('pointerup', finish);
+    cv.addEventListener('pointercancel', finish);
+    cv.addEventListener('pointerleave', finish);
+  }
+  document.addEventListener('input', function(e){
+    if(!e.target || !e.target.id) return;
+    if(e.target.id === 'ezbSize'){ S.size = parseInt(e.target.value,10) || 3; return; }
+    if(e.target.id === 'ezbScratch'){ S.scratch = e.target.value; save(); return; }
+  });
+  document.addEventListener('change', function(e){
+    if(e.target && e.target.id === 'ezbBg'){ change(function(){ page().bg = e.target.value; }); }
+  });
+  document.addEventListener('keydown', function(e){
+    var v = $('view-whiteboard');
+    if(v && !v.classList.contains('on')) return;
+    var tag = String((e.target && e.target.tagName) || '').toLowerCase();
+    if(tag === 'input' || tag === 'textarea' || tag === 'select' || (e.target && e.target.isContentEditable)) return;
+    var k = String(e.key || '').toLowerCase();
+    if((e.metaKey || e.ctrlKey) && k === 'z'){ e.preventDefault(); if(e.shiftKey) redo(); else undo(); return; }
+    if(k === 'escape' && S.editor) closeEditor();
+  });
+  window.addEventListener('resize', fit);
+  try{ new MutationObserver(function(){ renderSwatches(); redraw(); }).observe(document.body, {attributes:true, attributeFilter:['data-theme']}); }catch(e){}
+
+  window.BCS_EZWRITE = {
+    render:render, reset:reset, exportPng:exportPng, addPage:addPage,
+    state:S, pages:function(){ return S.pages; }, palette:PALETTE, benq:BENQ
+  };
 })();
 </script>
 </body>
