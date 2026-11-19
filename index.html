@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Developer & Project Intelligence</title>
-<!-- BCS DESK BUILD bcs-desk-v193 · single-file · zero-dependency · Applications hub + Google field kit -->
+<!-- BCS DESK BUILD bcs-desk-v195 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express -->
 <meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -9885,6 +9885,82 @@ body.bcs-native #view-applications .apps-grid{grid-template-columns:1fr !importa
   #view-applications .gkit-controls .btn{margin-left:0;width:100%;justify-content:center}
 }
 
+/* ---------- v195 · Content Growth Studio (built into Applications) ---------- */
+#view-applications .cgs-launch{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  margin:0 0 14px;padding:16px 18px;border-radius:18px;
+  border:1px solid color-mix(in oklab,var(--pg) 34%,var(--line));
+  background:linear-gradient(135deg,color-mix(in oklab,var(--pg) 16%,var(--panel)),var(--panel) 72%);
+  box-shadow:var(--shadow)
+}
+#view-applications .cgs-launch-ic{
+  width:52px;height:52px;flex:none;border-radius:15px;display:grid;place-items:center;
+  font-size:22px;font-weight:800;color:#fff;
+  background:linear-gradient(140deg,color-mix(in oklab,var(--pg) 82%,#111) 0%,var(--pg) 100%);
+  border:1px solid color-mix(in oklab,var(--pg) 60%,transparent)
+}
+#view-applications .cgs-launch-copy{flex:1 1 420px;min-width:0}
+#view-applications .cgs-launch-copy .eyebrow{margin-bottom:3px}
+#view-applications .cgs-launch h4{font-family:'Fraunces',serif;font-size:21px;font-weight:600;letter-spacing:-.2px;color:var(--ink);margin:0 0 4px}
+#view-applications .cgs-launch p{font-size:11.5px;line-height:1.6;color:var(--ink2);margin:0}
+#view-applications .cgs-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+#view-applications .cgs-chips span{font-size:9px;font-weight:800;letter-spacing:.3px;color:var(--ink2);padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:var(--panel)}
+#view-applications .cgs-launch .btn{flex:none}
+
+#cgsModal .cgs-modal{width:min(980px,100%);max-height:min(92vh,940px);display:flex;flex-direction:column}
+#cgsModal .cgs-tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:0 16px 10px;border-bottom:1px solid var(--line);flex:none}
+#cgsModal .cgs-tabs::-webkit-scrollbar{display:none}
+#cgsModal .cgs-tabs button{flex:0 0 auto;white-space:nowrap;padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--ink2);font-size:11px;font-weight:700;cursor:pointer}
+#cgsModal .cgs-tabs button.on{background:linear-gradient(135deg,var(--pg),color-mix(in oklab,var(--pg) 70%,#111));color:#fff;border-color:transparent}
+#cgsModal .cgs-body{flex:1;overflow:auto;padding:14px 16px;min-height:260px}
+#cgsModal .cgs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#cgsModal .cgs-field{display:flex;flex-direction:column;gap:5px;min-width:0}
+#cgsModal .cgs-field.full{grid-column:1/-1}
+#cgsModal .cgs-field label{font-size:9.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--mut)}
+#cgsModal .cgs-field input,#cgsModal .cgs-field select,#cgsModal .cgs-field textarea{
+  width:100%;border:1px solid var(--line);border-radius:11px;background:var(--panel);color:var(--ink);
+  padding:9px 11px;font-size:12px;font-weight:600;font-family:inherit
+}
+#cgsModal .cgs-field textarea{min-height:110px;resize:vertical;line-height:1.55}
+#cgsModal .cgs-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+#cgsModal .cgs-actions .btn{justify-content:center}
+#cgsModal .cgs-out{margin-top:14px;padding:14px;border-radius:14px;border:1px solid var(--line);background:color-mix(in oklab,var(--panel) 92%,var(--pg) 8%);font-size:12px;line-height:1.62;color:var(--ink2);white-space:pre-wrap;min-height:80px}
+#cgsModal .cgs-out h5,#cgsModal .cgs-out b{color:var(--ink)}
+#cgsModal .cgs-out h5{font-family:'Fraunces',serif;font-size:16px;margin:0 0 8px}
+#cgsModal .cgs-score{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+#cgsModal .cgs-score-ring{width:74px;height:74px;flex:none;border-radius:50%;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:23px;font-weight:700;color:var(--ink);border:7px solid color-mix(in oklab,var(--pg) 55%,var(--line));background:var(--panel)}
+#cgsModal .cgs-score-copy{flex:1 1 220px}
+#cgsModal .cgs-score-copy strong{display:block;font-family:'Fraunces',serif;font-size:19px;color:var(--ink)}
+#cgsModal .cgs-score-copy span{font-size:11px;color:var(--mut);line-height:1.5;display:block;margin-top:2px}
+#cgsModal .cgs-bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:12px}
+#cgsModal .cgs-bar{padding:9px 10px;border-radius:11px;border:1px solid var(--line);background:var(--panel)}
+#cgsModal .cgs-bar span{font-size:9px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--mut)}
+#cgsModal .cgs-bar b{display:block;font-size:15px;color:var(--ink);margin:2px 0 5px}
+#cgsModal .cgs-bar i{display:block;height:5px;border-radius:99px;background:var(--line);overflow:hidden}
+#cgsModal .cgs-bar i em{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--pg),color-mix(in oklab,var(--pg) 60%,#E8B44B))}
+#cgsModal .cgs-list{margin:10px 0 0;padding-left:18px}
+#cgsModal .cgs-list li{margin-bottom:6px}
+#cgsModal .cgs-issue{padding:9px 11px;border-radius:11px;border:1px solid var(--line);background:color-mix(in oklab,var(--panel) 94%,#E8B44B 6%);margin-bottom:7px}
+#cgsModal .cgs-issue b{font-size:11px;color:var(--ink)}
+#cgsModal .cgs-issue div{font-size:11px;line-height:1.55;color:var(--ink2);margin-top:2px}
+#cgsModal .cgs-issue.high{border-color:color-mix(in oklab,#D9534F 45%,var(--line))}
+#cgsModal .cgs-issue.medium{border-color:color-mix(in oklab,#E8A20B 45%,var(--line))}
+#cgsModal .cgs-check{display:flex;gap:9px;align-items:flex-start;padding:9px 10px;border-radius:11px;border:1px solid var(--line);background:var(--panel);font-size:11.5px;line-height:1.5;color:var(--ink2);cursor:pointer}
+#cgsModal .cgs-check input{margin-top:2px;accent-color:var(--pg);flex:none}
+#cgsModal .cgs-checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#cgsModal .cgs-foot-note{font-size:10.5px;line-height:1.55;color:var(--mut);margin-top:12px}
+#cgsModal .cgs-energy{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+#cgsModal .cgs-energy label{font-size:10px;color:var(--mut);font-weight:700}
+#cgsModal .cgs-energy select{width:100%;margin-top:4px;padding:7px;border-radius:9px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-size:12px}
+@media(max-width:760px){
+  #view-applications .cgs-launch{padding:14px;align-items:flex-start}
+  #view-applications .cgs-launch .btn{width:100%;justify-content:center}
+  #cgsModal .cgs-grid,#cgsModal .cgs-checks{grid-template-columns:1fr}
+  #cgsModal .cgs-energy{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #cgsModal .cgs-modal{max-height:94vh}
+}
+body.bcs-native #cgsModal .cgs-modal{width:100%;max-height:94vh}
+
 /* themed page header */
 body[data-page] .adv-head{
   border-color:color-mix(in oklab, var(--pg) 32%, var(--line)) !important;
@@ -15597,6 +15673,33 @@ html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap > #navMoreBtn{
   html body:not(.bcs-native) .hwrap-nav #nav > button .nav-lbl{font-size:11px !important}
 }
 
+/* ---------- v194 · More stays pinned at the right edge of the scrolling nav ----------
+   Earlier layers made #nav a horizontal scroller; the More tab sat at the far end
+   and disappeared at common laptop widths. Sticky keeps it reachable while the
+   primary tabs still scroll underneath. Mobile bottom tab bar is untouched. */
+html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap{
+  position:sticky !important;
+  right:0 !important;
+  z-index:12 !important;
+  flex:0 0 auto !important;
+  min-width:max-content !important;
+  margin-left:auto !important;
+  background:var(--panel) !important;
+  border:1px solid var(--hair) !important;
+  border-radius:12px !important;
+  box-shadow:-14px 0 20px -16px rgba(0,0,0,.55) !important;
+}
+html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap > #navMoreBtn{
+  width:auto !important;
+  min-width:66px !important;
+  justify-content:center !important;
+}
+html body[data-theme="dark"]:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap{
+  background:#1B201B !important;
+  border-color:rgba(255,255,255,.12) !important;
+  box-shadow:-14px 0 20px -16px rgba(0,0,0,.9) !important;
+}
+
 /* header action rail — icons keep their shape, text never squeezes/clips */
 html body:not(.bcs-native) .hwrap-top .hbtns{flex-wrap:nowrap !important;align-items:center !important;gap:7px !important}
 html body:not(.bcs-native) .hwrap-top .hbtns > *{flex:0 0 auto !important}
@@ -19283,19 +19386,30 @@ try{
       <div>
         <div class="eyebrow">BCS · applications desk</div>
         <h2 class="adv-title">Real tools,<br><em>one honest shelf.</em></h2>
-        <p class="adv-sub">Four free open-source applications plus a Google field kit built for Jaipur property work. BCS Desk remains a single offline file — nothing is installed into your data, no client name or project number is sent to these tools, and every link opens in a new tab.</p>
+        <p class="adv-sub">Four open-source applications, Adobe Express, a built-in Content Growth Studio and a Google field kit built for Jaipur property work. BCS Desk remains a single offline file — nothing is installed into your data, no client name or project number is sent to these tools, and every link opens in a new tab.</p>
       </div>
       <div class="adv-head-actions">
-        <button type="button" class="btn primary" data-apps-scroll="appsGoogleKit">Google field kit ↘</button>
-        <button type="button" class="btn ghost" data-apps-scroll="appsNotes">Setup notes</button>
+        <button type="button" class="btn primary" data-cgs-open>Content Growth Studio ↗</button>
+        <button type="button" class="btn ghost" data-apps-scroll="appsGoogleKit">Google field kit ↘</button>
       </div>
     </div>
 
     <div class="apps-stats links-stats" id="appsStats">
       <div><div class="k">Open-source shelf</div><div class="v">4 reviewed tools</div></div>
-      <div><div class="k">Google field kit</div><div class="v">5 public shortcuts</div></div>
-      <div><div class="k">Google sign-in</div><div class="v">Alerts + My Maps</div></div>
+      <div><div class="k">Free cloud app</div><div class="v">Adobe Express</div></div>
+      <div><div class="k">Built-in studio</div><div class="v">10 growth modules</div></div>
       <div><div class="k">Auto data upload</div><div class="v">None</div></div>
+    </div>
+
+    <div class="cgs-launch" id="appsCgsLaunch">
+      <div class="cgs-launch-ic" aria-hidden="true">◎</div>
+      <div class="cgs-launch-copy">
+        <div class="eyebrow">BCS · built-in growth desk</div>
+        <h4>Content Growth Studio</h4>
+        <p>Paste any reel or caption script before you post. Get an expert score on the hook, body and CTA, then rebuild it, plan 30 days, check timing, diagnose weak views, build pitches and shoot plans — all inside this file, with no upload.</p>
+        <div class="cgs-chips"><span>Reel analyser</span><span>Script builder</span><span>Growth plan</span><span>Trend signals</span><span>Share with care</span><span>Insights</span><span>Best time</span><span>Brand pitches</span><span>Shoot plans</span><span>Hold &amp; energy dips</span></div>
+      </div>
+      <button type="button" class="btn primary" data-cgs-open>Open studio →</button>
     </div>
 
     <div class="toolbar apps-toolbar">
@@ -19311,10 +19425,11 @@ try{
       </select>
       <div class="spacer"></div>
       <button type="button" class="btn ghost sm" data-apps-scroll="appsGoogleKit">Google field kit ↓</button>
+      <button type="button" class="btn ghost sm" data-apps-scroll="appsNotes">Setup notes ↓</button>
       <span class="links-toolbar-note" id="appsCount"></span>
     </div>
 
-    <div class="sec-head"><div><h3>The four applications</h3><div class="sub">What each one really is, what it needs, and where to open it.</div></div></div>
+    <div class="sec-head"><div><h3>Reviewed applications</h3><div class="sub">What each one really is, what it needs, and where to open it.</div></div></div>
     <div class="apps-grid" id="appsGrid"></div>
 
     <div class="sec-head"><div><h3>Google field kit — built for our real estate work</h3><div class="sub">Public research shortcuts, pre-set to our Jaipur corridors. Review the results and paste only verified notes back into BCS.</div></div></div>
@@ -19342,8 +19457,9 @@ try{
 
     <div class="apps-note" id="appsNotes">
       <h4>Why they are linked, not installed inside BCS</h4>
-      <p><b>BCS Desk is one static HTML file</b> that runs on GitHub Pages and offline on iPad — it has no server, database or install runtime. Canvix (Next.js + Postgres) and Listmonk (Go + database + SMTP) need a real server; Firecrawl is a developer API; KillerPDF is a native Windows program. Embedding them would break the single-file, zero-dependency promise and slow every 4G load.</p>
-      <p><b>Free forever is about the software license, not the hosting bill.</b> Canvix is MIT, Listmonk and Firecrawl are AGPL-3.0, KillerPDF is GPL-3.0 — all genuinely open source. Running your own server may have a hosting cost; each card links the official self-hosting guide so you can decide. Firecrawl's hosted plan is paid beyond a small free tier, and its own rules require respecting each website's terms — BCS keeps using free public discovery links and paste-capture for property research.</p>
+      <p><b>BCS Desk is one static HTML file</b> that runs on GitHub Pages and offline on iPad — it has no server, database or install runtime. Canvix (Next.js + Postgres) and Listmonk (Go + database + SMTP) need a real server; Firecrawl is a developer API; KillerPDF is a native Windows program; Adobe Express is a cloud design app. Embedding them would break the single-file, zero-dependency promise and slow every 4G load.</p>
+      <p><b>Free forever is about the software license, not the hosting bill.</b> Canvix is MIT, Listmonk and Firecrawl are AGPL-3.0, KillerPDF is GPL-3.0 — all genuinely open source. Adobe Express has a free plan but is proprietary, not open source, and some templates, AI tools and Pro features are paid. Running your own server may have a hosting cost; each open-source card links the official self-hosting guide so you can decide. Firecrawl's hosted plan is paid beyond a small free tier, and its own rules require respecting each website's terms — BCS keeps using free public discovery links and paste-capture for property research.</p>
+      <p><b>The Content Growth Studio is the one tool that runs entirely inside BCS.</b> Its scoring is a transparent rule-based expert check — not a live AI model and not a guarantee of reach. It reads only the script you paste, shows a preview before any copy/share action, and never uploads text, client names or desk records.</p>
       <p><b>Nothing changes in your desk data.</b> Leads, projects, developers, advisors and backups stay exactly where they are. The 30% Originating / 35% Executing / 35% BCS split, client-name masking and preview-before-share rules remain untouched.</p>
     </div>
   </section>
@@ -44417,7 +44533,7 @@ function quickActionList(){
     { kind:'Go', label:'Podcasts', sub:'Episodes, notes aur recording queue', icon:'🎙', color:'linear-gradient(135deg,#7B67C6,#C95C85)', keys:'audio episode recording', run:() => go('podcasts') },
     { kind:'Go', label:'Social', sub:'Social desk, reels aur content calendar', icon:'🌐', color:'linear-gradient(135deg,#C95C85,#4C8FD6)', keys:'instagram youtube content', run:() => go('social') },
     { kind:'Go', label:'Sheets', sub:'Sheet inputs aur calculation workspace', icon:'📊', color:'linear-gradient(135deg,#7CAC5A,#E7B84B)', keys:'spreadsheet sheet calculate', run:() => go('sheets') },
-    { kind:'Go', label:'Applications', sub:'Open-source tools + Google field kit for Jaipur property work', icon:'▤', color:'linear-gradient(135deg,#6C63C4,#4C8FD6)', keys:'apps applications tools canvix listmonk firecrawl killerpdf google trends earth alerts maps lens design pdf newsletter scraping', run:() => go('applications') }
+    { kind:'Go', label:'Applications', sub:'Content Growth Studio, open-source tools, Adobe Express + Google field kit for Jaipur property work', icon:'▤', color:'linear-gradient(135deg,#6C63C4,#4C8FD6)', keys:'apps applications tools canvix listmonk firecrawl killerpdf adobe express google trends earth alerts maps lens design pdf newsletter scraping reel script analyser hook cta growth plan trend signals share with care insights best time brand pitch shoot plan hold energy dips', run:() => go('applications') }
   ];
   if(isAdmin()){
     list.push(
@@ -56560,7 +56676,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     health:     { label:'Health',       ic:'♥',  note:'Data health + sync status' },
     social:     { label:'Social Media', ic:'🌐', note:'Content desk + brand manager + creator radar' },
     sheets:     { label:'Google Sheets',ic:'📊', note:'Two-way sheet sync' },
-    applications:{label:'Applications',ic:'▤',  note:'Open-source tools + Google field kit — Trends, Earth, Alerts, My Maps, Lens'},
+    applications:{label:'Applications',ic:'▤',  note:'Content Growth Studio, open-source tools, Adobe Express + Google field kit — Trends, Earth, Alerts, My Maps, Lens'},
     app:        { label:'Whole app',    ic:'⌘',  note:'Cross-page improvements' }
   };
   const VIEW_FROM_ENTITY = {
@@ -56569,6 +56685,12 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     Document:'ops', Invoice:'ops', Broadcast:'ops', ROI:'ops', 'Client page':'ops', Backup:'ops'
   };
   const SITE_LOG = [
+    { v:'v195', date:'2026-11-19', page:'applications', kind:'update',
+      title:'Content Growth Studio — pre-post script expert inside Applications',
+      detail:'Applications me ek built-in, offline growth desk: reel/caption script ka hook, body, CTA, trust aur platform fit par 100-point score + exact rewrites. Iske saath script builder, 7/14/30-day growth plan, BCS desk signal reader, share-with-care masking aur exact preview, post insights/underperformance diagnosis, IST best-time test windows, brand pitches, 40-second shoot plans aur 6-beat hold/energy-dip check. Rule-based expert check — live AI nahi, koi upload nahi; 30% Originating · 35% Executing · 35% BCS unchanged.' },
+    { v:'v194', date:'2026-11-19', page:'applications', kind:'fix',
+      title:'More nav pinned + Adobe Express added to Applications',
+      detail:'Desktop nav ke scrolling row me More button ab right edge par pin hai — laptop widths par chhupa nahi. Applications me Adobe Express add hua: free cloud design tool for listing graphics, flyers aur reels, with honest free-tier/not-open-source note. Koi client data upload nahi; 30% Originating · 35% Executing · 35% BCS unchanged.' },
     { v:'v193', date:'2026-11-19', page:'applications', kind:'update',
       title:'Google field kit — Trends, Earth, Alerts, My Maps aur Lens ab real-estate workflows ke saath',
       detail:'Applications page ke andar paanch public Google tools: area aur deal focus chun kar Trends demand compare, Earth ground-check, Alerts RERA/launch watch, My Maps site mapping aur Lens photo checks. Har card naya tab kholta hai aur ready prompt copy karta hai — koi scraping nahi, koi client data upload nahi, Google sign-in sirf Alerts/My Maps ke liye. 30% Originating · 35% Executing · 35% BCS unchanged.' },
@@ -61613,7 +61735,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
 })();
 </script>
 <script>
-/* ============ v193 · APPLICATIONS HUB + GOOGLE FIELD KIT ============ */
+/* ============ v194 · APPLICATIONS HUB + GOOGLE FIELD KIT + ADOBE EXPRESS ============ */
 (function(){
   var APPS = [
     {
@@ -61659,6 +61781,17 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       launch:'https://github.com/SteveTheKiller/KillerPDF/releases/latest', launchLabel:'Download for Windows',
       setup:'https://github.com/SteveTheKiller/KillerPDF#readme',
       source:'https://github.com/SteveTheKiller/KillerPDF'
+    },
+    {
+      id:'adobeexpress', name:'Adobe Express', icon:'Ae', accent:'#8E44D8',
+      kicker:'Design & quick video', license:'Free tier · not OSS', where:'Browser ready', whereKey:'browser',
+      tag:'Template-based design for social posts, site flyers, reels, QR graphics and one-click photo edits — works in the browser on iPad.',
+      needs:'Free Adobe account; Pro features optional',
+      reality:'Adobe Express is a free cloud app, not open-source software: some templates, AI tools and Pro features need a paid plan. Do not upload client lists, private documents or masked records — create public-facing creatives here and keep the source data in BCS.',
+      fit:'Best for: polished listing graphics and quick reels.',
+      launch:'https://www.adobe.com/express/', launchLabel:'Open Adobe Express',
+      setup:'https://www.adobe.com/express/templates/', setupLabel:'Browse templates',
+      source:''
     }
   ];
 
@@ -61822,12 +61955,12 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       '<h4>' + escA(a.name) + '</h4>' +
       '<p class="apps-tag">' + escA(a.tag) + '</p>' +
       '<div class="apps-meta"><span>' + escA(a.where) + '</span><span>' + escA(a.needs) + '</span>' +
-        '<a href="' + escA(a.source) + '" target="_blank" rel="noopener noreferrer">Source ↗</a></div>' +
+        (a.source ? '<a href="' + escA(a.source) + '" target="_blank" rel="noopener noreferrer">Source ↗</a>' : '') + '</div>' +
       '<p class="apps-reality">' + escA(a.reality) + '</p>' +
       '<div class="apps-fit">' + escA(a.fit) + '</div>' +
       '<div class="apps-actions">' +
         '<button type="button" class="btn primary sm" data-apps-open="' + escA(a.launch) + '">' + escA(a.launchLabel) + ' ↗</button>' +
-        '<button type="button" class="btn ghost sm" data-apps-open="' + escA(a.setup) + '">Setup guide ↗</button>' +
+        '<button type="button" class="btn ghost sm" data-apps-open="' + escA(a.setup) + '">' + escA(a.setupLabel || 'Setup guide') + ' ↗</button>' +
       '</div>' +
     '</article>';
   }
@@ -61889,6 +62022,512 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     if(e.target && (e.target.id === 'gkitArea' || e.target.id === 'gkitFocus')) renderGoogle();
   });
   window.BCS_APPS_VIEW = { render:render, apps:APPS, googleTools:GTOOLS, renderGoogle:renderGoogle };
+
+  /* ============ v195 · CONTENT GROWTH STUDIO (inside Applications) ============
+     Transparent rule-based expert check. No API, no upload, no client data stored.
+     Every module is offline and every output is previewed before copy/share. */
+  var CGS = { tab:'analyze', fields:{}, lastOutput:'', lastBuilt:[] };
+  var CGS_TABS = [
+    ['analyze','Analyse'],['build','Script builder'],['plan','Growth plan'],['signals','Trend signals'],
+    ['safety','Share with care'],['insights','Insights'],['timing','Best time'],['pitch','Brand pitches'],
+    ['shoot','Shoot plan'],['hold','Hold & dips']
+  ];
+  var PLATFORMS = [
+    ['reels','Instagram Reels'],['shorts','YouTube Shorts'],['linkedin','LinkedIn post'],
+    ['facebook','Facebook video'],['whatsapp','WhatsApp status'],['carousel','Carousel / static']
+  ];
+  var AUDIENCES = [['buyers','Home buyers'],['sellers','Sellers / landowners'],['developers','Developers'],['investors','Investors'],['advisors','Advisors']];
+  var GOALS = [['leads','Quality leads / DMs'],['awareness','Page awareness'],['engagement','Saves & shares'],['authority','Expert authority']];
+
+  function f(id, dflt){ return Object.prototype.hasOwnProperty.call(CGS.fields,id) ? CGS.fields[id] : dflt; }
+  function cgsPlatform(){ return f('cgsPlatform','reels'); }
+  function cgsAudience(){ return f('cgsAudience','buyers'); }
+  function cgsGoal(){ return f('cgsGoal','leads'); }
+  function labelOf(list,val){ var r=list.filter(function(x){return x[0]===val;})[0]; return r?r[1]:val; }
+  function opts(list,cur){ return list.map(function(x){ return '<option value="'+escA(x[0])+'"'+(x[0]===cur?' selected':'')+'>'+escA(x[1])+'</option>'; }).join(''); }
+  function scriptText(){ return String(f('cgsScript','')||'').trim(); }
+  function wordsOf(s){ return String(s||'').trim().split(/\s+/).filter(Boolean); }
+  function sentencesOf(s){ return String(s||'').split(/[.!?।\n]+/).map(function(x){return x.trim();}).filter(Boolean); }
+  function lower(s){ return String(s||'').toLowerCase(); }
+  function containsAny(s,arr){ var l=lower(s); return arr.some(function(x){ return l.indexOf(lower(x))>=0; }); }
+  function clamp(n,a,b){ return Math.max(a,Math.min(b,Math.round(n))); }
+  function cap(s,n){ var w=wordsOf(s); return w.length>n ? w.slice(0,n).join(' ')+(w.length>n?'…':'') : String(s||''); }
+
+  function cgsField(id,label,control,cls,value){
+    return '<div class="cgs-field '+(cls||'')+'"><label for="'+id+'">'+escA(label)+'</label>'+control+'</div>';
+  }
+  function cgsInput(id,ph,val){ return '<input id="'+id+'" type="text" value="'+escA(val==null?f(id,''):val)+'" placeholder="'+escA(ph)+'" autocomplete="off">'; }
+  function cgsText(id,ph,rows,val){ return '<textarea id="'+id+'" rows="'+(rows||5)+'" placeholder="'+escA(ph)+'">'+escA(val==null?f(id,''):val)+'</textarea>'; }
+  function cgsSelect(id,list){ return '<select id="'+id+'">'+opts(list,f(id,list[0][0]))+'</select>'; }
+  function commonControls(){
+    return cgsField('cgsPlatform','Platform',cgsSelect('cgsPlatform',PLATFORMS))+
+      cgsField('cgsAudience','Audience',cgsSelect('cgsAudience',AUDIENCES))+
+      cgsField('cgsGoal','Primary goal',cgsSelect('cgsGoal',GOALS));
+  }
+  function outText(t){ return '<div class="cgs-out" id="cgsOutput">'+escA(t)+'</div>'; }
+  function setOut(html,plain){
+    CGS.lastOutput=plain||'';
+    var el=document.getElementById('cgsOutput'); if(!el) return;
+    if(html.indexOf('id="cgsOutput"')>=0) el.outerHTML=html; else el.innerHTML=html;
+  }
+
+  function overlayHtml(){
+    return '<div class="overlay" id="cgsModal" role="dialog" aria-modal="true" aria-labelledby="cgsTitle">'+
+      '<div class="modal cgs-modal">'+
+        '<div class="modal-head"><h3 id="cgsTitle">◎ Content Growth Studio</h3><button class="xbtn" data-close="cgsModal" aria-label="Close studio">✕</button></div>'+
+        '<div class="cgs-tabs" id="cgsTabs"></div>'+
+        '<div class="modal-body cgs-body" id="cgsBody"></div>'+
+        '<div class="modal-foot"><span class="cgs-foot-note">Rule-based expert check · offline · no upload · preview before copy</span><span style="flex:1"></span>'+
+          '<button type="button" class="btn ghost sm" data-cgs-act="copy">📋 Copy output</button>'+
+          '<button type="button" class="btn ghost sm" data-close="cgsModal">Close</button>'+
+        '</div>'+
+      '</div></div>';
+  }
+  function paintCgs(){
+    var ov=document.getElementById('cgsModal');
+    if(!ov){ document.body.insertAdjacentHTML('beforeend',overlayHtml()); ov=document.getElementById('cgsModal'); }
+    var tabs=document.getElementById('cgsTabs');
+    if(tabs) tabs.innerHTML=CGS_TABS.map(function(t){ return '<button type="button" data-cgs-tab="'+t[0]+'"'+(CGS.tab===t[0]?' class="on" aria-current="true"':'')+'>'+escA(t[1])+'</button>'; }).join('');
+    var body=document.getElementById('cgsBody'); if(!body) return;
+    var views={
+      analyze:viewAnalyze,build:viewBuild,plan:viewPlan,signals:viewSignals,safety:viewSafety,
+      insights:viewInsights,timing:viewTiming,pitch:viewPitch,shoot:viewShoot,hold:viewHold
+    };
+    body.innerHTML=(views[CGS.tab]||viewAnalyze)();
+    CGS.lastOutput='Open any module and run its check — the exact output appears here before you copy it.';
+  }
+  function openCgs(){ paintCgs(); try{ showOverlay('cgsModal'); }catch(e){ var o=document.getElementById('cgsModal'); if(o)o.classList.add('on'); } }
+
+  function viewAnalyze(){
+    return '<div class="cgs-grid">'+
+      commonControls()+
+      cgsField('cgsArea','Area / corridor','<input id="cgsArea" type="text" value="'+escA(f('cgsArea','Jaipur'))+'" placeholder="Jaipur, Ajmer Road, Jagatpura…" autocomplete="off">')+
+      cgsField('cgsTopic','Topic (optional)','<input id="cgsTopic" type="text" value="'+escA(f('cgsTopic',''))+'" placeholder="plot check, registry cost, RERA…" autocomplete="off">')+
+      cgsField('cgsScript','Paste your reel / caption script',cgsText('cgsScript','Paste the exact script you are about to post. Hook, body aur CTA alag lines me likhein.',8),'full')+
+      '</div>'+
+      '<div class="cgs-actions"><button type="button" class="btn primary" data-cgs-act="analyze">✦ Analyse my script</button>'+
+      '<button type="button" class="btn ghost" data-cgs-act="example">Load sample</button>'+
+      '<button type="button" class="btn ghost" data-cgs-act="clearScript">Clear</button></div>'+
+      outText('Score hook, body, CTA, trust aur platform fit — phir exact fixes aur stronger rewrites dekhein.');
+  }
+  function viewBuild(){
+    return '<div class="cgs-grid">'+
+      commonControls()+
+      cgsField('bTopic','Topic','<input id="bTopic" type="text" value="'+escA(f('bTopic','plot selection'))+'" placeholder="plot selection, registry cost, site visit">')+
+      cgsField('bArea','Area','<input id="bArea" type="text" value="'+escA(f('bArea',f('cgsArea','Jaipur')))+'" placeholder="Jaipur / corridor">')+
+      cgsField('bPain','Buyer pain','<input id="bPain" type="text" value="'+escA(f('bPain','wrong rate comparison'))+'" placeholder="sirf rate dekh kar decide karna">')+
+      cgsField('bProof','Proof you can show','<input id="bProof" type="text" value="'+escA(f('bProof','RERA + boundary check'))+'" placeholder="RERA number, site photo, checklist, verified note">')+
+      cgsField('bOffer','Honest offer','<input id="bOffer" type="text" value="'+escA(f('bOffer','3-point plot checklist'))+'" placeholder="free checklist, site-visit plan, shortlist">')+
+      cgsField('bCta','CTA keyword','<input id="bCta" type="text" value="'+escA(f('bCta','PLOT'))+'" placeholder="PLOT, CHECK, VISIT">')+
+      '</div><div class="cgs-actions"><button type="button" class="btn primary" data-cgs-act="build">Build 3 scripts</button></div>'+
+      outText('Myth-buster, proof-led aur checklist styles me 3 ready scripts — ek ko analyse bhi kar sakte hain.');
+  }
+  function viewPlan(){
+    return '<div class="cgs-grid">'+
+      commonControls()+
+      cgsField('pArea','Area','<input id="pArea" type="text" value="'+escA(f('pArea',f('cgsArea','Jaipur')))+'" placeholder="Jaipur / corridor">')+
+      cgsField('pDays','Horizon','<select id="pDays">'+opts([['7','7 days'],['14','14 days'],['30','30 days']],f('pDays','30'))+'</select>')+
+      cgsField('pCadence','Cadence','<select id="pCadence">'+opts([['daily','1 reel / day'],['five','5 days / week'],['three','3 posts / week']],f('pCadence','five'))+'</select>')+
+      cgsField('pOffer','Lead magnet','<input id="pOffer" type="text" value="'+escA(f('pOffer','Jaipur plot checklist'))+'" placeholder="checklist, shortlist call, site-visit plan">')+
+      '</div><div class="cgs-actions"><button type="button" class="btn primary" data-cgs-act="plan">Generate growth plan</button></div>'+
+      outText('Goal ke hisaab se content pillars, format, KPI aur CTA — 7, 14 ya 30 din ka simple calendar.');
+  }
+  function viewSignals(){
+    return '<div class="cgs-grid">'+
+      cgsField('sArea','Corridor','<input id="sArea" type="text" value="'+escA(f('sArea',f('cgsArea','Jaipur')))+'" placeholder="Jaipur / corridor">')+
+      cgsField('sFocus','Signal focus','<select id="sFocus">'+opts([['inventory','Inventory & projects'],['leads','Lead pipeline'],['proof','Proof available'],['all','All desk signals']],f('sFocus','all'))+'</select>')+
+      cgsField('sNote','Your field note','<input id="sNote" type="text" value="'+escA(f('sNote',''))+'" placeholder="e.g. site visit pending, new launch board seen">')+
+      '</div><div class="cgs-actions"><button type="button" class="btn primary" data-cgs-act="signals">Read desk signals</button></div>'+
+      outText('Sirf BCS desk records + aapki field note se content angles. Ye live market forecast nahi hai — public verification zaroori hai.');
+  }
+  function viewSafety(){
+    var checks=[
+      ['m','Client name masked unless written permission is saved'],
+      ['p','Written permission exists for any named client / proof'],
+      ['r','RERA / approval number verified from a public source'],
+      ['price','Price, rate and taxes have a dated source'],
+      ['urgency','No fake urgency, fake scarcity or guaranteed return'],
+      ['doc','No private document, phone or email in the creative'],
+      ['cta','CTA is specific and deliverable — no overpromise'],
+      ['split','30% Originating / 35% Executing / 35% BCS message stays intact']
+    ];
+    var html='<div class="cgs-grid">'+
+      cgsField('cgsMaskNames','Names to mask (comma separated)','<input id="cgsMaskNames" type="text" value="'+escA(f('cgsMaskNames',''))+'" placeholder="Client name 1, Client name 2">','full')+
+      cgsField('cgsScript','Script / caption to preview',cgsText('cgsScript','Paste the exact post text here.',6),'full')+
+      '</div><div class="cgs-checks" style="margin-top:12px">'+
+      checks.map(function(c){ var id='safe'+c[0].charAt(0).toUpperCase()+c[0].slice(1); return '<label class="cgs-check"><input type="checkbox" id="'+id+'"'+(f(id,false)?' checked':'')+'><span>'+escA(c[1])+'</span></label>'; }).join('')+
+      '</div><div class="cgs-actions"><button type="button" class="btn primary" data-cgs-act="safety">Run share-safety check</button></div>'+
+      outText('Preview exact text, mask names, flag risky claims — then copy only if you choose. Nothing is auto-posted or uploaded.');
+    return html;
+  }
+  function viewInsights(){
+    return '<div class="cgs-grid">'+
+      commonControls()+
+      cgsField('iViews','Views','<input id="iViews" type="number" min="0" value="'+escA(f('iViews',''))+'" placeholder="12000">')+
+      cgsField('iHook','3-second views','<input id="iHook" type="number" min="0" value="'+escA(f('iHook',''))+'" placeholder="8200">')+
+      cgsField('iLikes','Likes','<input id="iLikes" type="number" min="0" value="'+escA(f('iLikes',''))+'" placeholder="420">')+
+      cgsField('iComments','Comments','<input id="iComments" type="number" min="0" value="'+escA(f('iComments',''))+'" placeholder="38">')+
+      cgsField('iShares','Shares','<input id="iShares" type="number" min="0" value="'+escA(f('iShares',''))+'" placeholder="60">')+
+      cgsField('iSaves','Saves','<input id="iSaves" type="number" min="0" value="'+escA(f('iSaves',''))+'" placeholder="95">')+
+      cgsField('iFollows','New follows','<input id="iFollows" type="number" min="0" value="'+escA(f('iFollows',''))+'" placeholder="25">')+
+      cgsField('iDms','DMs / enquiry','<input id="iDms" type="number" min="0" value="'+escA(f('iDms',''))+'" placeholder="9">')+
+      '</div><div class="cgs-actions"><button type="button" class="btn primary" data-cgs-act="insights">Diagnose this post</button></div>'+
+      outText('Engagement, save, share, follow aur DM rate — plus why the reel underperformed and the exact next fix.');
+  }
+  function viewTiming(){
+    return '<div class="cgs-grid">'+commonControls()+
+      cgsField('tArea','Market','<input id="tArea" type="text" value="'+escA(f('tArea',f('cgsArea','Jaipur')))+'" placeholder="Jaipur / India">')+
+      cgsField('tTest','Test length','<select id="tTest">'+opts([['14','2 weeks'],['28','4 weeks']],f('tTest','14'))+'</select>')+
+      '</div><div class="cgs-actions"><button type="button" class="btn primary" data-cgs-act="timing">Suggest posting windows</button></div>'+
+      outText('India / Jaipur IST se shuru hone wale test windows. Universal "best time" nahi — apne analytics se jeetne wala slot chuno.');
+  }
+  function viewPitch(){
+    return '<div class="cgs-grid">'+
+      cgsField('brName','Brand / developer','<input id="brName" type="text" value="'+escA(f('brName',''))+'" placeholder="Project or brand name">')+
+      cgsField('brNiche','Niche','<input id="brNiche" type="text" value="'+escA(f('brNiche','Jaipur real estate'))+'" placeholder="Jaipur plots, luxury flats…">')+
+      cgsField('brFollowers','My followers','<input id="brFollowers" type="text" value="'+escA(f('brFollowers',''))+'" placeholder="e.g. 4800">')+
+      cgsField('brViews','Avg views','<input id="brViews" type="text" value="'+escA(f('brViews',''))+'" placeholder="e.g. 9000">')+
+      cgsField('brAngle','Pitch angle','<input id="brAngle" type="text" value="'+escA(f('brAngle','local buyer education + site proof'))+'" placeholder="launch coverage, site proof, buyer Q&A">')+
+      cgsField('brDeliver','Deliverable','<input id="brDeliver" type="text" value="'+escA(f('brDeliver','2 reels + 1 story set'))+'" placeholder="2 reels + 1 story set">')+
+      '</div><div class="cgs-actions"><button type="button" class="btn primary" data-cgs-act="pitch">Build pitch</button></div>'+
+      outText('Short DM aur email pitch — real numbers hi bharein, fabricated reach nahi. Client data is not needed.');
+  }
+  function viewShoot(){
+    return '<div class="cgs-grid">'+
+      commonControls()+
+      cgsField('shTopic','Topic','<input id="shTopic" type="text" value="'+escA(f('shTopic',f('cgsTopic','')))+'" placeholder="site visit, RERA check, plot comparison">')+
+      cgsField('shArea','Location','<input id="shArea" type="text" value="'+escA(f('shArea',f('cgsArea','Jaipur')))+'" placeholder="Jaipur / site / corridor">')+
+      cgsField('shScript','Script (optional)',cgsText('shScript','Paste the script to turn each line into a shot.',5),'full')+
+      '</div><div class="cgs-actions"><button type="button" class="btn primary" data-cgs-act="shoot">Build shoot plan</button></div>'+
+      outText('Second-by-second shot list: visual, dialogue, on-screen text aur b-roll — camera readiness ke liye.');
+  }
+  function viewHold(){
+    var vals=[0,1,2,3,4,5].map(function(n){return [String(n),n===0?'0 · flat':(n===5?'5 · high':String(n))];});
+    var e='<div class="cgs-energy">';
+    for(var i=1;i<=6;i++){ e+=cgsField('cgsE'+i,'Beat '+i+' (0–5)','<select id="cgsE'+i+'">'+opts(vals,String(f('cgsE'+i,3)))+'</select>'); }
+    e+='</div>';
+    return '<div class="cgs-grid">'+commonControls()+
+      cgsField('cgsScript','Script (optional)',cgsText('cgsScript','Paste script to map energy against your beats.',5),'full')+
+      '</div><div style="margin-top:12px">'+e+'</div>'+
+      '<div class="cgs-actions"><button type="button" class="btn primary" data-cgs-act="hold">Find energy dips</button></div>'+
+      outText('6 beats me jahan energy 2+ girti hai, wahan pattern interrupt — cut, proof, question ya location change — suggest karega.');
+  }
+
+  function targetWords(p){ return ({reels:[45,120],shorts:[70,160],linkedin:[90,220],facebook:[45,130],whatsapp:[25,75],carousel:[40,110]})[p]||[45,120]; }
+  function analyseScript(){
+    var s=scriptText(), p=cgsPlatform(), area=f('cgsArea','Jaipur'), topic=f('cgsTopic','')||guessTopic(s);
+    if(!s){ setOut('<div class="cgs-out" id="cgsOutput">Pehle script paste karein, phir analyse karein.</div>','Pehle script paste karein.'); return; }
+    var w=wordsOf(s), ss=sentencesOf(s), low=lower(s), first=w.slice(0,22).join(' '), tail=w.slice(-30).join(' ');
+    var hook=10, body=8, cta=4, trust=8, fit=6;
+    if(/[?？]/.test(first)||containsAny(first,['kaise','kya','kyun','why','how','what','galti','sach','sabse','pehle'])) hook+=6;
+    if(containsAny(first,['aap','aapki','tum','you','your','buyer','investor'])) hook+=5;
+    if(/\d|₹|%|rera|registry|check/.test(lower(first))) hook+=5;
+    if(containsAny(first,[area,'jaipur',topic])) hook+=5;
+    var hookSentence=ss[0]||first, hookWords=wordsOf(hookSentence);
+    if(hookWords.length<=18) hook+=4; else if(hookWords.length>28) hook-=6;
+    if(containsAny(first,['hello friends','aaj main','welcome','good morning',"namaste friends"])) hook-=9;
+    if(hookWords.length>30) hook-=7;
+    hook=clamp(hook,0,30);
+
+    var tw=targetWords(p), avg=ss.length?w.length/ss.length:w.length, longest=ss.reduce(function(m,x){return Math.max(m,wordsOf(x).length);},0);
+    if(w.length>=tw[0]&&w.length<=tw[1]) body+=7; else if(w.length<tw[0]-15||w.length>tw[1]+30) body-=6; else body+=2;
+    if(ss.length>=3) body+=6; else if(ss.length===2) body+=3;
+    if(/\d|₹|%|rera|registry|source|verified|checklist|site|proof/i.test(s)) body+=6;
+    if(containsAny(s,['kyunki','because','isse','matlab','pehle','phir','isliye','so that'])) body+=5;
+    if(containsAny(s,['client','shortlist','mila','hua','deal','visit','ek din'])) body+=4;
+    if(avg>=8&&avg<=20) body+=4;
+    if(longest>28) body-=6;
+    if(containsAny(s,['basically','actually','simply','thing','idea','kuch'])) body-=4;
+    body=clamp(body,0,30);
+
+    if(/dm |comment|save |share |follow |call |visit |reply |check |book |link|bhej|dekho|milne/.test(lower(tail))) cta+=8;
+    if(/\b(plot|check|checklist|visit|list|rera|registry|safe|plan|shortlist)\b/.test(lower(tail))) cta+=5;
+    if(containsAny(tail,['3-point','free','before','safe','verify','today','exact','quick'])) cta+=4;
+    var ctaCount=['dm','comment','call','link','follow'].filter(function(k){return lower(tail).indexOf(k)>=0;}).length;
+    if(ctaCount===1) cta+=3; else if(ctaCount>2) cta-=5;
+    if(/like.*share|share.*like|support karo/.test(lower(tail))) cta-=6;
+    if(ctaCount===0) cta-=4;
+    cta=clamp(cta,0,20);
+
+    if(containsAny(s,['rera','source','verified','public','consent','permission','permission ke saath','date','dated'])) trust+=4;
+    if(containsAny(s,['guaranteed','100%','sure shot','best ever','overnight','jackpot','confirmed return'])) trust-=6;
+    if(containsAny(s,['last day','today only','urgent','book now','miss karo'])&&!containsAny(s,['verified deadline','source date'])) trust-=5;
+    trust=clamp(trust,0,10);
+
+    if(p==='reels'){ if(w.length>=45&&w.length<=100) fit+=3; if(containsAny(s,['on-screen','text','cut','scene','shot'])) fit+=1; }
+    if(p==='shorts'){ if(w.length>=70&&w.length<=150) fit+=3; }
+    if(p==='linkedin'){ if(/insight|lesson|checklist|framework|experience/.test(low)) fit+=3; if(containsAny(s,['dude','bro','joke'])) fit-=2; }
+    if(p==='whatsapp'){ if(w.length<=75) fit+=3; else fit-=3; }
+    if(p==='carousel'){ if(ss.length>=4||containsAny(s,['slide','carousel','point 1','point 2'])) fit+=3; }
+    fit=clamp(fit,0,10);
+
+    var total=hook+body+cta+trust+fit;
+    var grade=total>=85?'POST-READY':total>=70?'STRONG — minor fixes':total>=55?'NEEDS WORK — fix before posting':'REWORK — do not post yet';
+    var tone=total>=70?'Ready after the small edits below.':'Fix the high-priority items first, then re-run the check.';
+    var issues=[], wins=[];
+    if(hook<21) issues.push(['high','Hook · first 2 seconds',"Hook me number, local cue ya clear tension nahi hai. Pehle 18 words me 'Jaipur + problem + proof' lao."]);
+    if(body<21) issues.push(['high','Body · value',"Body me proof ya 'kyun/kaise' explanation kam hai. Ek verified number, ek check aur ek short example add karo."]);
+    if(cta<14) issues.push(['high','CTA · last line',"Last line me specific action nahi hai. ‘DM PLOT — 3-point checklist’ jaise one clear CTA rakho."]);
+    if(trust<7) issues.push(['medium','Trust & compliance',"Hype, fake urgency ya unverified claim mila. Source/date batana ya claim hata dena."]);
+    if(fit<8) issues.push(['medium','Platform fit',labelOf(PLATFORMS,p)+" ke liye length ya style match nahi. Is platform ke liye recommended word count dekhein."]);
+    if(longest>28) issues.push(['medium','Sentence rhythm',"Sabse lambi line "+longest+" words ki hai. 14–18 words par tod kar readability badhao."]);
+    if(w.length<tw[0]-15) issues.push(['low','Too short',"Sirf "+w.length+" words hain — is platform ke liye "+tw[0]+"–"+tw[1]+" better range hai."]);
+    if(w.length>tw[1]+30) issues.push(['low','Too long',""+w.length+" words zyada hain. Ek proof + ek CTA rakho, baaki trim karo."]);
+    if(!containsAny(first,[area,'jaipur'])) issues.push(['low','Local signal',"Pehle 2 sec me area/corridor ka zikr nahi. Jaipur property audience ke liye local cue strong hota hai."]);
+    if(hook>=24) wins.push('Hook me clarity/specificity hai — isi style ko pehle 2 sec me aur tight karo.');
+    if(body>=23) wins.push('Body me proof + explanation ka structure dikhta hai — yahi repeatable format banayo.');
+    if(cta>=16) wins.push('CTA specific aur single-action hai — same keyword har post me use karo.');
+    if(trust>=9) wins.push('Trust signals (source/verification) present hain — ye audience ke liye bada plus hai.');
+
+    var hookOpts=[
+      'Jaipur me '+topic+' kharidne se pehle ye 3 cheezein check karo — warna rate sahi bhi to deal galat ho sakti hai.',
+      '90% buyers sirf rate dekhte hain. Maine ek '+area+' site par dekha ki asli difference kya tha.',
+      topic.charAt(0).toUpperCase()+topic.slice(1)+' se pehle ek 20-second check — aapko agent se pehle pata chal jayega.'
+    ];
+    var ctaOpts=[
+      'DM “'+String(f('bCta','PLOT')||'PLOT').toUpperCase()+'” — main yahi 3-point checklist bhejta hoon.',
+      'Save karo aur apne next site visit par ye checklist saath le jao.',
+      'Comment me apna corridor likho — main wahan ka local check point batata hoon.'
+    ];
+    var bodySkel='Line 1 — problem: '+(f('bPain','sirf rate dekh kar decide karna')||'sirf rate dekh kar decide karna')+'.\n'+
+      'Line 2 — proof: '+(f('bProof','RERA + boundary check')||'RERA + boundary check')+' — verified source/date ke saath.\n'+
+      'Line 3 — payoff: isse aapko kya milta hai, ek line me, bina overpromise ke.';
+    var plain='BCS CONTENT GROWTH STUDIO — SCRIPT REPORT\n'+labelOf(PLATFORMS,p)+' · '+labelOf(AUDIENCES,cgsAudience())+' · '+labelOf(GOALS,cgsGoal())+'\n'+
+      'WORDS: '+w.length+' · SENTENCES: '+ss.length+'\n\n'+
+      'SCORE: '+total+'/100 — '+grade+'\n'+
+      'Hook '+hook+'/30 · Body '+body+'/30 · CTA '+cta+'/20 · Trust '+trust+'/10 · Platform fit '+fit+'/10\n\n'+
+      'WHAT IS WRONG\n'+(issues.length?issues.map(function(x){return '['+x[0].toUpperCase()+'] '+x[1]+': '+x[2];}).join('\n'):'Koi bada issue nahi mila.')+'\n\n'+
+      'WHAT IS WORKING\n'+(wins.length?wins.map(function(x){return '• '+x;}).join('\n'):'Re-run after fixes to build strengths.')+'\n\n'+
+      'STRONGER HOOK OPTIONS\n'+hookOpts.map(function(x,i){return (i+1)+'. '+x;}).join('\n')+'\n\n'+
+      'BODY SKELETON\n'+bodySkel+'\n\n'+
+      'CTA OPTIONS\n'+ctaOpts.map(function(x,i){return (i+1)+'. '+x;}).join('\n')+'\n\n'+
+      'RULE NOTE: Ye transparent heuristic check hai, live AI nahi. Reach guarantee nahi — post ke baad Insights se actual data check karo.';
+    var breakdown=[['Hook',hook,30],['Body',body,30],['CTA',cta,20],['Trust',trust,10],['Fit',fit,10]];
+    var html='<div class="cgs-score"><div class="cgs-score-ring">'+total+'</div><div class="cgs-score-copy"><strong>'+escA(grade)+'</strong><span>'+escA(tone)+' · '+w.length+' words · '+ss.length+' lines</span></div></div>'+
+      '<div class="cgs-bars">'+breakdown.map(function(b){return '<div class="cgs-bar"><span>'+escA(b[0])+'</span><b>'+b[1]+'/'+b[2]+'</b><i><em style="width:'+Math.round(b[1]/b[2]*100)+'%"></em></i></div>';}).join('')+'</div>'+
+      '<h5>What is wrong</h5>'+(issues.length?issues.map(function(x){return '<div class="cgs-issue '+x[0]+'"><b>'+escA(x[1])+'</b><div>'+escA(x[2])+'</div></div>';}).join(''):'<div class="cgs-out">Koi bada issue nahi mila.</div>')+
+      '<h5 style="margin-top:12px">What is working</h5><ul class="cgs-list">'+(wins.length?wins.map(function(x){return '<li>'+escA(x)+'</li>';}).join(''):'<li>Re-run after fixes.</li>')+'</ul>'+
+      '<h5 style="margin-top:12px">Stronger hook options</h5><ul class="cgs-list">'+hookOpts.map(function(x){return '<li>'+escA(x)+'</li>';}).join('')+'</ul>'+
+      '<h5 style="margin-top:12px">Body skeleton</h5><div class="cgs-out" style="margin-top:0">'+escA(bodySkel)+'</div>'+
+      '<h5 style="margin-top:12px">CTA options</h5><ul class="cgs-list">'+ctaOpts.map(function(x){return '<li>'+escA(x)+'</li>';}).join('')+'</ul>'+
+      '<p class="cgs-foot-note">Rule-based expert check, not live AI. 30% Originating · 35% Executing · 35% BCS unchanged.</p>';
+    setOut(html,plain);
+  }
+  function guessTopic(s){ var ss=sentencesOf(s); var x=ss[0]||'plot'; return cap(x,5).replace(/[“”"']/g,'').trim()||'plot'; }
+
+  function buildScripts(){
+    var topic=f('bTopic','plot selection')||'plot selection', area=f('bArea','Jaipur')||'Jaipur', pain=f('bPain','wrong rate comparison')||'wrong rate comparison';
+    var proof=f('bProof','RERA + boundary check')||'RERA + boundary check', offer=f('bOffer','3-point plot checklist')||'3-point plot checklist', kw=(f('bCta','PLOT')||'PLOT').toUpperCase();
+    var aud=labelOf(AUDIENCES,cgsAudience()).toLowerCase();
+    var v=[
+      {n:'Myth-buster',h:'Jaipur me '+topic+' ka sabse bada myth: sirf cheap rate sahi deal hota hai.',b:'Asli check '+proof+' hai. Ek '+(aud)+' ne '+pain+' kaise avoid kiya — pehle number, phir site, phir paperwork. Verify karo, sirf suno nahi.',c:'DM “'+kw+'” — '+offer+' bhejta hoon.'},
+      {n:'Proof-led story',h:'Ek '+area+' site visit me '+'humne kya mila jo brochure me nahi tha.',b:'Client ne '+pain+' ke chalte pehle shortlist kiya. Humne '+proof+' se cross-check kiya aur 2 options badle. Final decision clear tha kyunki source aur date dono the.',c:'Comment “CHECK” — main wahi verification order share karta hoon.'},
+      {n:'3-point checklist',h:topic+' se pehle 3 numbers yaad rakho — warna confusion pakka.',b:'1) '+proof+'. 2) '+'Road aur boundary ka ground check. 3) '+pain+' ka actual cost. Teenon ka source likho, phir hi advance decide karo.',c:'Save karo + DM “'+kw+'” for '+offer+'.'}
+    ];
+    CGS.lastBuilt=v;
+    var plain=v.map(function(x,i){return 'OPTION '+(i+1)+' — '+x.n+'\nHOOK: '+x.h+'\nBODY: '+x.b+'\nCTA: '+x.c;}).join('\n\n');
+    var html=v.map(function(x,i){return '<div class="cgs-issue"><b>'+escA(x.n)+'</b><div>HOOK: '+escA(x.h)+'\nBODY: '+escA(x.b)+'\nCTA: '+escA(x.c)+'</div><div style="margin-top:8px"><button type="button" class="btn ghost sm" data-cgs-act="useBuilt" data-i="'+i+'">Analyse this script →</button></div></div>';}).join('')+'<p class="cgs-foot-note">Templates are starting points — apne real proof aur source se replace karein.</p>';
+    setOut(html,plain);
+  }
+  function buildPlan(){
+    var days=clamp(parseInt(f('pDays','30'),10)||30,7,30), cad=f('pCadence','five'), area=f('pArea','Jaipur')||'Jaipur', magnet=f('pOffer','Jaipur plot checklist')||'Jaipur plot checklist', goal=cgsGoal();
+    var pillars=goal==='leads'?['Problem','Proof','Process','Area guide','Checklist','Follow-up','Offer']:
+      goal==='authority'?['Myth','Regulation','Case note','Checklist','Field proof','Lesson','Q&A']:
+      goal==='engagement'?['Poll','Save-worthy','Contrarian','Checklist','Story','Comparison','Question']:
+      ['Area','Project','Infra','Education','Proof','Founder note','Recap'];
+    var formats=['Reel','Carousel','Story set','Short','Live Q&A','Post'];
+    var times=timingRows(cgsPlatform());
+    var dayNames=['Mon','Tue','Wed','Thu','Fri','Sat','Sun']; var lines=[], made=0;
+    for(var i=0;i<days;i++){
+      var d=i%7, skip=(cad==='three'&&(d===2||d===5))||(cad==='five'&&d===6);
+      if(skip) continue;
+      var p=pillars[i%pillars.length], fmt=formats[i%formats.length], tm=times[(i)%Math.min(3,times.length)][0];
+      var topic=pillarTopic(p,area), cta=(i%3===0)?('DM “'+magnet.split(' ')[0].toUpperCase()+'”'):(i%3===1?'Save this checklist':'Comment your corridor');
+      lines.push('Day '+(i+1)+' · '+dayNames[d]+' · '+tm+' · '+fmt+'\n'+p+' — '+topic+'\nKPI: '+planKpi(goal)+' · CTA: '+cta);
+      made++;
+    }
+    var plain='BCS '+days+'-DAY GROWTH PLAN · '+labelOf(GOALS,goal)+' · '+area+'\n'+made+' scheduled posts · '+labelOf(PLATFORMS,cgsPlatform())+'\n\n'+lines.join('\n\n')+'\n\nRULE: One pillar per post, one CTA per post, one verified proof per week. Review every Sunday; double what earned saves and DMs.';
+    var html='<div class="cgs-out" id="cgsOutput" style="margin-top:0">'+escA(plain)+'</div>';
+    setOut(html,plain);
+  }
+  function pillarTopic(p,area){
+    var m={
+      Problem:'buyer problem: sirf rate compare karna', Proof:'verified site proof + source',
+      Process:'booking se registry ka clear process', 'Area guide':area+' corridor guide: access, school, market',
+      Checklist:'3-point before-advance checklist', 'Follow-up':'old lead ko value note', Offer:magnetSafe(),
+      Myth:'common property myth breakup', Regulation:'RERA / approval basics',
+      'Case note':'one short client case with permission', 'Field proof':'site observation with date',
+      Lesson:'what went wrong + fix', 'Q&A':'top 3 buyer questions', Poll:'plot vs flat quick poll',
+      'Save-worthy':'number checklist to save', Contrarian:'why cheap is not always better',
+      Story:'one short decision story', Comparison:'2 options, 3 criteria', Question:'ask-one-thing post',
+      Area:area+' micro-market note', Project:'project snapshot: status + source',
+      Infra:'road / metro update from public source', Education:'term of the week',
+      'Founder note':'why BCS checks before advising', Recap:'weekly top 3 learnings'
+    };
+    return m[p]||(p+' — '+area);
+  }
+  function magnetSafe(){ return String(f('pOffer','checklist')||'checklist'); }
+  function planKpi(g){ return ({leads:'DMs + qualified calls',awareness:'reach + follows',engagement:'saves + shares',authority:'comments + profile visits'})[g]||'saves + DMs'; }
+
+  function readSignals(){
+    var area=f('sArea','Jaipur')||'Jaipur', focus=f('sFocus','all'), note=f('sNote','');
+    var projects=(db&&db.projects)||[], leads=(db&&db.leads)||[], corridors=(db&&db.corridors)||[];
+    var statuses={}; leads.forEach(function(l){ var k=(l&&(l.status||l.stage))||'unlabelled'; statuses[k]=(statuses[k]||0)+1; });
+    var projectCorridors={}; projects.forEach(function(p){ var k=(p&&(p.corridor||p.area))||'unlabelled'; projectCorridors[k]=(projectCorridors[k]||0)+1; });
+    var lines=['BCS DESK SIGNALS · '+area+' · '+f('sFocus','all')+' (internal, not a live market forecast)',''];
+    if(focus==='inventory'||focus==='all') lines.push('PROJECTS: '+projects.length+' records in desk. '+(projects.length?'Content angle: one verified project snapshot per week — status, corridor, source date.':'No project records yet — start with a public-listing check, not a claim.'));
+    if(focus==='leads'||focus==='all') lines.push('LEADS: '+leads.length+' records. Status mix: '+Object.keys(statuses).map(function(k){return k+' '+statuses[k];}).join(', ')+'. Content angle: answer the most repeated requirement without naming anyone.');
+    if(focus==='proof'||focus==='all') lines.push('CORRIDORS: '+Object.keys(projectCorridors).map(function(k){return k+' '+projectCorridors[k];}).join(', ')+'. Content angle: area-wise ground truth from site notes.');
+    var devs=(db&&db.developers)||[];
+    lines.push('DEVELOPERS: '+devs.length+' records — developer credibility posts need only public facts and a dated source.');
+    if(note) lines.push('YOUR FIELD NOTE: '+note);
+    lines.push('','CONTENT ANGLES: 1) What the desk keeps seeing 2) What buyers keep asking 3) What was verified on ground 4) What still needs a public source.','RULE: Counts are internal signals, not demand proof or price forecast. Verify publicly before publishing.');
+    var plain=lines.join('\n');
+    setOut('<div class="cgs-out" id="cgsOutput" style="margin-top:0">'+escA(plain)+'</div>',plain);
+  }
+
+  function safetyCheck(){
+    var s=scriptText(); if(!s){ setOut('<div class="cgs-out" id="cgsOutput">Pehle caption/script paste karein.</div>','Pehle caption paste karein.'); return; }
+    var ids=[['safeM','Client name masked unless written permission'],['safeP','Written permission for named proof'],['safeR','RERA / approval verified'],['safePrice','Price + taxes sourced'],['safeUrgency','No fake urgency / guaranteed return'],['safeDoc','No private doc, phone or email'],['safeCta','Specific, deliverable CTA'],['safeSplit','Commission split message intact']];
+    var failed=ids.filter(function(x){return !f(x[0],false);}).map(function(x){return x[1];});
+    var masked=maskScript(s,!!f('safeP',false));
+    var privacy=''; try{ privacy=window.bcsPrivacy&&window.bcsPrivacy.isOn()?'Privacy / present mode is ON.':'Privacy / present mode is OFF.'; }catch(e){}
+    var plain='BCS SHARE-WITH-CARE CHECK\n'+(failed.length?'HOLD — '+failed.length+' check(s) pending:\n• '+failed.join('\n• '):'CLEAR TO PREVIEW — all care checks ticked.')+'\n\n'+privacy+'\n\nEXACT PREVIEW TEXT (nothing is auto-posted):\n'+masked+'\n\nPhone-like and email-like strings are masked automatically. Names listed above are masked unless written permission is checked. Verify the final text yourself before posting.';
+    var html=(failed.length?'<div class="cgs-issue high"><b>Hold — '+failed.length+' check(s) pending</b><div>'+escA(failed.join(' · '))+'</div></div>':'<div class="cgs-issue"><b>Clear to preview</b><div>All care checks ticked. Still read the final text once.</div></div>')+
+      '<p class="cgs-foot-note">'+escA(privacy)+'</p><h5>Exact preview — before copy / WhatsApp / post</h5><div class="cgs-out" id="cgsOutput" style="margin-top:0">'+escA(plain)+'</div>';
+    setOut(html,plain);
+  }
+  function maskScript(text,allowNames){
+    var out=String(text||'');
+    if(!allowNames){
+      String(f('cgsMaskNames','')||'').split(',').map(function(x){return x.trim();}).filter(Boolean).forEach(function(n){ out=out.split(n).join('Client (masked)'); });
+    }
+    out=out.replace(/\b\d{10}\b/g,'[phone hidden]').replace(/\b[\w.+-]+@[\w-]+\.[\w.]+\b/g,'[email hidden]');
+    return out;
+  }
+
+  function num(id){ var v=parseFloat(f(id,'')); return isFinite(v)&&v>=0?v:0; }
+  function diagnose(){
+    var views=num('iViews'); if(!views){ setOut('<div class="cgs-out" id="cgsOutput">Views bharein, phir diagnosis milega.</div>','Views bharein.'); return; }
+    var p=cgsPlatform(), likes=num('iLikes'), comments=num('iComments'), shares=num('iShares'), saves=num('iSaves'), follows=num('iFollows'), dms=num('iDms'), hook=num('iHook');
+    var eng=(likes+comments+shares+saves)/views*100, save=saves/views*100, share=shares/views*100, follow=follows/views*100, dm=dms/views*100, hold=hook?hook/views*100:null;
+    var bench=({reels:4,shorts:3,linkedin:2,facebook:2,whatsapp:5,carousel:3})[p]||3;
+    var verdict=eng>=bench?(hold!=null&&hold>=65?'Healthy — scale this format':'Engagement healthy, hook weak'):(hold!=null&&hold<60?'Underperformance starts at hook':'Underperformance after hook');
+    var reasons=[];
+    if(hold!=null&&hold<65) reasons.push('HOOK DROP: only '+hold.toFixed(1)+'% stayed to 3s. First 2 sec me proof/number/local tension nahi tha. Fix: pehle 18 words me Jaipur + problem + result.');
+    if(eng<bench) reasons.push('LOW ENGAGEMENT: '+eng.toFixed(1)+'% vs '+bench+'% practical starting benchmark. Post useful tha ya nahi — ek clear checklist/proof add karo.');
+    if(save<0.8) reasons.push('LOW SAVES: '+save.toFixed(2)+'%. Content utility kam. “Save this checklist” value create karo.');
+    if(share<0.4) reasons.push('LOW SHARES: '+share.toFixed(2)+'%. Share-worthy identity/status line missing — corridor ya buyer type name karo.');
+    if(comments<0.25) reasons.push('LOW COMMENTS: ek open question ya “comment your corridor” CTA nahi tha.');
+    if(follow<0.25) reasons.push('LOW FOLLOWS: series promise missing. “Har Sunday Jaipur plot check” jaisa reason do.');
+    if(dm<0.08) reasons.push('LOW DMs: CTA vague tha ya trust nahi bana. Specific keyword + source/date dikhao.');
+    if(!reasons.length) reasons.push('Koi red flag nahi. Ab isi format ko same audience ke saath 3 baar repeat karo, phir compare karo.');
+    var plain='BCS POST INSIGHTS · '+labelOf(PLATFORMS,p)+'\nViews '+views+' · 3s '+hook+'\n\n'+
+      'Engagement ' + eng.toFixed(2)+'% · Save '+save.toFixed(2)+'% · Share '+share.toFixed(2)+'% · Follow '+follow.toFixed(2)+'% · DM '+dm.toFixed(2)+'%\n'+
+      'Hook retention '+(hold==null?'not supplied':hold.toFixed(1)+'%')+'\n\nVERDICT: '+verdict+'\n\nWHY IT UNDERPERFORMED\n• '+reasons.join('\n• ')+'\n\nNEXT 3 TESTS: 1) rewrite only the hook 2) add one saved-checklist line 3) replace CTA with one keyword. Change one thing at a time.';
+    var html='<div class="cgs-score"><div class="cgs-score-ring">'+eng.toFixed(0)+'%</div><div class="cgs-score-copy"><strong>'+escA(verdict)+'</strong><span>Engagement · practical starting benchmark '+bench+'% for '+escA(labelOf(PLATFORMS,p))+'</span></div></div>'+
+      '<div class="cgs-bars">'+[['Save',save,2],['Share',share,1],['Follow',follow,1],['DM',dm,0.5],['3s hold',hold==null?0:hold,100]].map(function(b){return '<div class="cgs-bar"><span>'+escA(b[0])+'</span><b>'+b[1].toFixed(2)+'%</b><i><em style="width:'+Math.min(100,Math.round(b[1]/b[2]*100))+'%"></em></i></div>';}).join('')+'</div>'+
+      '<h5>Reasons for underperformance &amp; fixes</h5>'+reasons.map(function(r){return '<div class="cgs-issue medium"><div>'+escA(r)+'</div></div>';}).join('')+'<p class="cgs-foot-note">Benchmarks are planning guides, not platform promises. Compare against your own last 10 posts.</p>';
+    setOut(html,plain);
+  }
+
+  function timingRows(p){
+    var m={
+      reels:[['07:30–09:00','commute / morning scroll'],['12:30–14:00','lunch break'],['19:30–22:00','peak personal time']],
+      shorts:[['07:00–09:00','morning'],['13:00–14:30','lunch'],['18:30–21:00','evening']],
+      linkedin:[['08:00–10:00','desk start'],['13:00–14:00','post-lunch'],['18:00–20:00','wrap-up']],
+      facebook:[['12:30–14:00','lunch'],['19:00–21:00','evening'],['21:00–22:00','late check']],
+      whatsapp:[['09:00–10:00','status catch-up'],['19:30–21:00','family time'],['21:30–22:30','night scroll']],
+      carousel:[['08:00–10:00','morning feed'],['17:30–19:00','evening feed'],['20:00–22:00','peak feed']]
+    };
+    return m[p]||m.reels;
+  }
+  function bestTime(){
+    var p=cgsPlatform(), area=f('tArea','Jaipur')||'Jaipur', days=clamp(parseInt(f('tTest','14'),10)||14,14,28), rows=timingRows(p);
+    var plain='BCS BEST-TIME STARTING PLAN · '+labelOf(PLATFORMS,p)+' · '+area+' (IST)\n\n'+rows.map(function(r,i){return 'WINDOW '+(i+1)+': '+r[0]+' — '+r[1];}).join('\n')+
+      '\n\n'+days+'-DAY TEST: post the same pillar in each window on rotation, keep hook and CTA same, log views at 3s / 24h. Winner = highest save + DM rate, not just likes.\nRULE: These are starting windows for India/Jaipur, not universal truth. Your own analytics wins.';
+    var html='<div class="cgs-issue"><b>Start here · '+escA(labelOf(PLATFORMS,p))+' · IST</b><div>'+rows.map(function(r){return escA(r[0])+' — '+escA(r[1]);}).join('<br>')+'</div></div><div class="cgs-out" id="cgsOutput" style="margin-top:10px">'+escA(plain)+'</div>';
+    setOut(html,plain);
+  }
+
+  function buildPitch(){
+    var brand=f('brName','')||'[brand name]', niche=f('brNiche','Jaipur real estate')||'Jaipur real estate', followers=f('brFollowers','[followers]')||'[followers]', avg=f('brViews','[avg views]')||'[avg views]', angle=f('brAngle','local buyer education + site proof')||'local buyer education + site proof', deliver=f('brDeliver','2 reels + 1 story set')||'2 reels + 1 story set';
+    var dm='Hi '+brand+' team — main BCS Desk se Ajay hoon. '+niche+' audience ke liye '+(angle)+' par '+(deliver)+' ready kar sakta hoon. Current average reach '+(avg)+' hai, followers '+(followers)+'. Agar aap 2 actual site proofs share karein to main 24h me 1 sample script bhejta hoon. Interested?';
+    var email='Subject: '+brand+' × BCS — '+angle+'\n\nNamaste '+brand+' team,\n\nBCS Desk '+niche+' me buyer-education content banata hai. Proposed: '+deliver+' around '+angle+'. Audience: '+(followers)+' followers, average views '+(avg)+'.\n\nMain public facts + dated sources se kaam karta hoon — client names tabhi dikhte hain jab likhit permission ho. Agar aapko sample chahiye to ek site proof bhejein; main 24h me hook aur CTA ke saath draft return karunga.\n\nRegards,\nAjay Sharma · BCS Desk';
+    var plain='BCS BRAND PITCH\n\nSHORT DM\n'+dm+'\n\nEMAIL\n'+email+'\n\nRULE: Sirf real metrics bharein. Fake reach ya guaranteed leads ka promise nahi.';
+    var html='<div class="cgs-out" id="cgsOutput" style="margin-top:0">'+escA(plain)+'</div>';
+    setOut(html,plain);
+  }
+  function shootPlan(){
+    var topic=f('shTopic','')||guessTopic(scriptText()), area=f('shArea','Jaipur')||'Jaipur', p=cgsPlatform(), ss=sentencesOf(f('shScript','')||scriptText());
+    var beats=[
+      ['0–2s','Hook close-up','Aap frame me, direct eye contact','“'+cap(topic,7)+' — pehle ye check karo.”','Hook text: 3 CHECKS'],
+      ['2–5s','Wide establishing','Site / road / board from '+area,'“Yahi asli jagah hai, brochure nahi.”','Area + date overlay'],
+      ['5–10s','Detail 1','RERA / approval board ya public notice','“Source aur number yahan dikhte hain.”','Circle the number'],
+      ['10–16s','Detail 2','Boundary / road / marker close-up','“Boundary aur access ground par match honi chahiye.”','Checkmark graphic'],
+      ['16–23s','Proof beat','Notes / checklist on clipboard','“Client ke liye 2 options badle the — permission ke saath.”','Proof text only'],
+      ['23–30s','Payoff','You + checklist in hand','“Isse advance se pehle clarity milti hai.”','3-point recap'],
+      ['30–35s','CTA','Point to caption / DM cue','“DM PLOT — checklist bhejta hoon.”','CTA keyword big'],
+      ['35–40s','Retain','Walking shot / next location tease','“Agla reel: registry cost line by line.”','Series promise']
+    ];
+    if(ss.length>1){ beats[1][3]='“'+cap(ss[0],12)+'”'; beats[2][3]='“'+cap(ss[1],12)+'”'; if(ss[2])beats[4][3]='“'+cap(ss[2],12)+'”'; }
+    var plain='BCS SHOOT PLAN · '+topic+' · '+area+' · '+labelOf(PLATFORMS,p)+'\n\n'+beats.map(function(b,i){return (i+1)+') '+b[0]+' | '+b[1]+'\nVisual: '+b[2]+'\nDialogue: '+b[3]+'\nOn-screen: '+b[4];}).join('\n\n')+'\n\nSHOOT RULES: 9:16, natural light, 2 sec me face + text, no client name/phone in frame, har clip 1 idea. Verify every claim before posting.';
+    var html='<div class="cgs-issue"><b>'+escA(beats.length)+' shots · ~40 sec · 9:16</b><div>Subtle cuts, no heavy transitions. Client proof sirf permission ke saath.</div></div><div class="cgs-out" id="cgsOutput" style="margin-top:10px">'+escA(plain)+'</div>';
+    setOut(html,plain);
+  }
+  function holdCheck(){
+    var vals=[]; for(var i=1;i<=6;i++) vals.push(clamp(parseInt(f('cgsE'+i,'3'),10)||0,0,5));
+    var drops=[]; for(var j=1;j<vals.length;j++){ if(vals[j-1]-vals[j]>=2) drops.push('Beat '+j+' → '+(j+1)+': '+vals[j-1]+' → '+vals[j]); }
+    var flat=Math.max.apply(null,vals)-Math.min.apply(null,vals)<=1;
+    var avg=vals.reduce(function(a,b){return a+b;},0)/vals.length;
+    var s=scriptText(), sRisk='';
+    if(s){ var first=sentencesOf(s)[0]||''; if(wordsOf(first).length>24) sRisk='Script hook is long ('+wordsOf(first).length+' words) — energy early girne ki wajah yahi ho sakti hai.'; else sRisk='Script hook length is tight — energy dip mostly delivery/shot change se fix karein.'; }
+    var fixes=drops.map(function(d){return d+' → yahan 1 sec cut + on-screen number/question daalein.';});
+    if(flat) fixes.push('Flatline detected — beat 3 par proof ya location change force karo.');
+    if(avg<3) fixes.push('Overall energy low — voice pace aur face presence 20% badhao.');
+    if(!fixes.length) fixes.push('Koi bada dip nahi — is energy map ko next reel ke liye template bana lo.');
+    var plain='BCS HOLD & ENERGY DIP CHECK\nBeats: '+vals.join(' → ')+' (0 flat · 5 high)\nAverage: '+avg.toFixed(1)+'/5\n\n'+(sRisk||'Script optional — energy pattern alone bhi check ho gaya.')+'\n\nDIPS / FIXES\n• '+fixes.join('\n• ')+'\n\nPATTERN LIBRARY: cut to proof · on-screen number · direct question · location change · sound drop · hand gesture · mini result reveal.';
+    var html='<div class="cgs-score"><div class="cgs-score-ring">'+avg.toFixed(1)+'</div><div class="cgs-score-copy"><strong>'+(drops.length?drops.length+' dip(s)':'No major dip')+'</strong><span>6-beat energy map · 0 flat to 5 high</span></div></div><div class="cgs-out" id="cgsOutput" style="margin-top:0">'+escA(plain)+'</div>';
+    setOut(html,plain);
+  }
+
+  function runCgsAct(act,btn){
+    if(act==='analyze'){ analyseScript(); return; }
+    if(act==='build'){ buildScripts(); return; }
+    if(act==='plan'){ buildPlan(); return; }
+    if(act==='signals'){ readSignals(); return; }
+    if(act==='safety'){ safetyCheck(); return; }
+    if(act==='insights'){ diagnose(); return; }
+    if(act==='timing'){ bestTime(); return; }
+    if(act==='pitch'){ buildPitch(); return; }
+    if(act==='shoot'){ shootPlan(); return; }
+    if(act==='hold'){ holdCheck(); return; }
+    if(act==='copy'){ copyOut(CGS.lastOutput||'Koi output nahi abhi.','Studio output copied ✓'); return; }
+    if(act==='example'){
+      CGS.fields.cgsScript='Aaj main Jaipur ke ek plot buyer ki wajah se ye kahta hoon — sirf rate dekh kar plot mat kharidna. Pehle RERA number, phir road access, aur phir registry ka kharcha check karo. Ek client ne ₹48 lakh ka plot shortlist kiya tha, lekin boundary audit me 12 foot ka mismatch mila. Humne 3 safer options nikale aur final deal clear hua. DM “PLOT” — main aapko yahi 3-point checklist bhejta hoon.';
+      CGS.fields.cgsArea='Jaipur'; CGS.fields.cgsTopic='plot selection'; paintCgs(); analyseScript(); return;
+    }
+    if(act==='clearScript'){ CGS.fields.cgsScript=''; paintCgs(); return; }
+    if(act==='useBuilt'){
+      var v=CGS.lastBuilt[parseInt(btn.getAttribute('data-i'),10)||0]; if(!v) return;
+      CGS.fields.cgsScript=v.h+'\n'+v.b+'\n'+v.c; CGS.tab='analyze'; paintCgs(); analyseScript(); return;
+    }
+  }
+  function trackCgs(el){
+    if(!el||!el.id||String(el.id).indexOf('cgs')!==0&&String(el.id).indexOf('b')!==0&&String(el.id).indexOf('p')!==0&&String(el.id).indexOf('s')!==0&&String(el.id).indexOf('i')!==0&&String(el.id).indexOf('t')!==0&&String(el.id).indexOf('br')!==0&&String(el.id).indexOf('sh')!==0&&String(el.id).indexOf('safe')!==0) return;
+    if(el.type==='checkbox') CGS.fields[el.id]=!!el.checked;
+    else if(el.tagName==='SELECT'||el.tagName==='INPUT'||el.tagName==='TEXTAREA') CGS.fields[el.id]=el.value;
+  }
+  document.addEventListener('input',function(e){ trackCgs(e.target); });
+  document.addEventListener('change',function(e){ trackCgs(e.target); });
+  document.addEventListener('click',function(e){
+    var t=e.target&&e.target.closest?e.target:null; if(!t) return;
+    var tab=t.closest('[data-cgs-tab]'); if(tab){ e.preventDefault(); CGS.tab=tab.getAttribute('data-cgs-tab'); paintCgs(); return; }
+    if(t.closest('[data-cgs-open]')){ e.preventDefault(); openCgs(); return; }
+    var act=t.closest('[data-cgs-act]'); if(act){ e.preventDefault(); runCgsAct(act.getAttribute('data-cgs-act'),act); }
+  });
+  window.BCS_CGS = { open:openCgs, analyse:analyseScript, state:CGS };
+  window.BCS_CONTENT_STUDIO = window.BCS_CGS;
 })();
 </script>
 </body>
