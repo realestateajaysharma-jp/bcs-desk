@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Developer & Project Intelligence</title>
-<!-- BCS DESK BUILD bcs-desk-v213 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard (pen, shapes, notes, pages, PNG export, working ruler/protractor/compass/set-square guides with place-on-board, local image/PDF import with direct annotation, clickable web cards, 8 board backgrounds, BenQ-style toolbox, timer, stopwatch, scoreboard, random draw, spinner, calculator, unit converter, spotlight, laser and floating notes) + BenQ EZWrite official launcher + Jaipur Property Map (flat-finder style, free MapLibre tiles + offline SVG fallback, 47 localities, 5-portal benchmark rates + 10-register / 434-row source-attributed dossier index, fixed Google Maps embed height + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + full dark-mode safety net -->
+<!-- BCS DESK BUILD bcs-desk-v214 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard (pen, shapes, notes, pages, PNG export, working ruler/protractor/compass/set-square guides with place-on-board, local image/PDF import with direct annotation, clickable web cards, 8 board backgrounds, BenQ-style toolbox, timer, stopwatch, scoreboard, random draw, spinner, calculator, unit converter, spotlight, laser and floating notes) + BenQ EZWrite official launcher + Jaipur Property Map (flat-finder style, free MapLibre tiles + offline SVG fallback, 47 localities, 5-portal benchmark rates + 10-register / 434-row source-attributed dossier index, fixed Google Maps embed height + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase + local category-wise saved places with one-click Google Maps, icons and CSV) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + full dark-mode safety net -->
 <meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -17819,6 +17819,37 @@ body[data-theme="dark"] .jp-conf.snippet{color:#B8A6EA;border-color:#7B67C6}
 .jp-google-fallback .jp-actions{margin-top:8px}
 .jp-google-fallback button,.jp-google-fallback a{font-size:10.5px;font-weight:800;padding:5px 9px;border-radius:8px;border:1px solid rgba(255,255,255,.18);background:rgba(165,123,54,.2);color:#F5F3E8;text-decoration:none;cursor:pointer}
 .jp-google-fallback button:hover,.jp-google-fallback a:hover{background:rgba(165,123,54,.38)}
+/* local saved places on Google Maps */
+.jp-saved{margin-bottom:12px}
+.jp-saved-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:7px;margin-top:9px;align-items:end}
+.jp-saved-form label{display:grid;gap:3px;font-size:10px;font-weight:800;color:var(--mut);letter-spacing:.03em}
+.jp-saved-form input,.jp-saved-form select{min-height:33px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--ink);padding:5px 8px;font-size:11.5px;outline:none;min-width:0}
+.jp-saved-form input:focus,.jp-saved-form select:focus{border-color:var(--acc)}
+.jp-saved-form .jp-saved-formbtns{display:flex;gap:6px}
+.jp-saved-form .jp-saved-formbtns button{flex:1}
+.jp-saved-filters{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px}
+.jp-saved-chip{border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink2);font-size:10.5px;font-weight:800;padding:5px 9px;cursor:pointer;display:inline-flex;gap:5px;align-items:center}
+.jp-saved-chip b{font-size:9px;opacity:.7}
+.jp-saved-chip:hover{border-color:var(--acc)}
+.jp-saved-chip.on{background:color-mix(in srgb,var(--acc) 18%,transparent);border-color:var(--acc);color:var(--ink)}
+.jp-saved-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(226px,1fr));gap:8px;margin-top:8px}
+.jp-saved-card{border:1px solid var(--line);border-radius:12px;padding:10px;background:color-mix(in srgb,var(--acc) 5%,transparent);min-width:0}
+.jp-saved-card.active{border-color:var(--acc);box-shadow:0 0 0 1px color-mix(in srgb,var(--acc) 40%,transparent)}
+.jp-saved-card .sc-top{display:flex;gap:8px;align-items:flex-start}
+.jp-saved-ic{width:30px;height:30px;flex:0 0 30px;border-radius:9px;display:grid;place-items:center;font-size:15px;background:var(--saved-c);color:#12150F;font-weight:900}
+.jp-saved-name{font-size:12.5px;font-weight:800;color:var(--ink);line-height:1.3;word-break:break-word}
+.jp-saved-cat{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);margin-top:2px}
+.jp-saved-meta{font-size:10px;color:var(--mut);line-height:1.45;margin-top:6px;word-break:break-all}
+.jp-saved-note{font-size:10.5px;color:var(--ink2);line-height:1.45;margin-top:5px}
+.jp-saved-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.jp-saved-actions button,.jp-saved-actions a{font-size:10px;font-weight:800;padding:5px 8px;border-radius:7px;border:1px solid var(--line);background:transparent;color:var(--ink2);text-decoration:none;cursor:pointer}
+.jp-saved-actions button:hover,.jp-saved-actions a:hover{border-color:var(--acc);color:var(--ink)}
+.jp-saved-actions .sc-go{background:var(--acc);border-color:var(--acc);color:#12150F}
+.jp-saved-empty{grid-column:1/-1;border:1px dashed var(--line);border-radius:10px;padding:12px;font-size:11.5px;color:var(--mut);line-height:1.5}
+.jp-saved-pin{display:flex;align-items:center;gap:4px;border:2px solid rgba(255,255,255,.86);border-radius:999px;padding:3px 7px 3px 4px;color:#12150F;font-size:10px;font-weight:900;box-shadow:0 4px 14px rgba(0,0,0,.45);cursor:pointer;white-space:nowrap}
+.jp-saved-pin span{font-size:13px}
+body[data-theme="dark"] .jp-saved-card{background:color-mix(in srgb,var(--acc) 9%,transparent);border-color:rgba(255,255,255,.1)}
+body[data-theme="dark"] .jp-saved-ic{color:#0B0E0C}
 </style>
 <body class="locked">
 <script>/* early theme bootstrap — prevents a light flash before initExperience runs */try{var _t=localStorage.getItem('bcs_theme_v1')||'dark';document.body.dataset.theme=_t;document.documentElement.dataset.theme=_t;document.documentElement.style.colorScheme=_t;}catch(e){}</script>
@@ -20083,6 +20114,7 @@ try{
             <button type="button" id="jpHome" title="Show whole Jaipur" aria-label="Show whole Jaipur">⌂</button>
             <button type="button" id="jp3d" title="Switch 2D / 3D" aria-label="Switch 2D or 3D">2D</button>
             <button type="button" id="jpProjToggle" class="on" title="Show / hide project pins" aria-label="Toggle project pins">🏙</button>
+            <button type="button" id="jpSavedToggle" class="on" title="Show / hide my saved place pins" aria-label="Toggle saved place pins">📍</button>
           </div>
           <div id="jpMap"></div>
           <div class="jp-google" id="jpGoogle" hidden>
@@ -20099,6 +20131,21 @@ try{
           <div class="jp-mapnote" id="jpMapNote">Map loading…</div>
         </div>
       </div>
+    </div>
+    <div class="jp-card jp-saved">
+      <div class="jp-row" style="margin-bottom:2px"><div class="jp-k" style="margin:0">My places · Google Maps shortcuts</div><span class="jp-note" style="font-size:10.5px"><span id="jpSavedCount">0</span> saved <button type="button" class="btn ghost sm" id="jpSavedCsv" style="margin-left:6px">Places CSV</button></span></div>
+      <div class="jp-note">Apni jagah yahan local save karein — ring road, Mahindra SEZ, project, villa, park, metro, bus stand ya Airbnb. Name + Google Maps link ya search text daalein; ek click par place BCS ke andar Google Maps me khul jata hai. Ye list is browser me rehti hai — kisi client data ko upload nahi karti.</div>
+      <div class="jp-saved-form">
+        <label>Name<input id="jpSavedName" type="text" placeholder="e.g. Ring Road, Mahindra SEZ" autocomplete="off" aria-label="Place name"></label>
+        <label>Category<select id="jpSavedCat" aria-label="Place category"></select></label>
+        <label>Google Maps link / search<input id="jpSavedUrl" type="text" placeholder="Maps link, 26.91,75.82 ya search text" autocomplete="off" aria-label="Google Maps link or search"></label>
+        <label>Note (optional)<input id="jpSavedNote" type="text" placeholder="Client / site note" autocomplete="off" aria-label="Place note"></label>
+        <div class="jp-saved-formbtns"><button type="button" class="btn primary sm" id="jpSavedAdd">Save place</button><button type="button" class="btn ghost sm" id="jpSavedCancel" hidden>Cancel</button></div>
+      </div>
+      <div class="jp-saved-filters" id="jpSavedPresets"><span class="jp-note" style="font-size:10px;align-self:center">Quick pick:</span><button type="button" class="jp-saved-chip" data-saved-preset="Ring Road, Jaipur|road|Ring Road, Jaipur">🛣 Ring Road</button><button type="button" class="jp-saved-chip" data-saved-preset="Mahindra SEZ, Jaipur|commercial|Mahindra SEZ, Jaipur">🏬 Mahindra SEZ</button><button type="button" class="jp-saved-chip" data-saved-preset="Jaipur Metro|metro|Jaipur Metro">🚇 Metro</button><button type="button" class="jp-saved-chip" data-saved-preset="Jaipur International Airport|other|Jaipur International Airport">✈ Airport</button></div>
+      <div class="jp-show-tools" style="margin-bottom:0"><input id="jpSavedSearch" type="search" placeholder="Saved places search karein…" autocomplete="off" aria-label="Search saved places"></div>
+      <div class="jp-saved-filters" id="jpSavedFilters"></div>
+      <div class="jp-saved-grid" id="jpSavedGrid"></div>
     </div>
     <div class="jp-card jp-showcase">
       <div class="jp-row" style="margin-bottom:2px"><div class="jp-k" style="margin:0">Project showcase · plots, societies, shops &amp; 90A</div><span class="jp-note" style="font-size:10.5px">Hand-picked · <span id="jpShowCount">0</span> entries <button type="button" class="btn ghost sm" id="jpShowCsv" style="margin-left:6px">Project CSV</button></span></div>
@@ -66570,14 +66617,39 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   D("off_jda_guide","JDA Jaipur — verification path","jda","snippet","","Jaipur official","Jaipur Development Authority","Residential","Official register · not a property listing","","not applicable — no price","","Official register","","","","","Check approved sector plan → Scheme & Allottees layout → year-wise building plan → rejected schemes / unauthorised colonies / notices before payment.","","https://jda.rajasthan.gov.in/")
   ];
 
+  var SAVED_KEY='bcs_jaipur_saved_places_v1';
+  var PLACE_CATS=[
+    {id:'project',    ic:'🏙', label:'Project',      color:'#8B6FD1'},
+    {id:'villa',      ic:'🏡', label:'House / villa',color:'#D47055'},
+    {id:'flat',       ic:'🏢', label:'Flat / apartment',color:'#4F86C6'},
+    {id:'plot',       ic:'🌿', label:'Residential plot',color:'#5C8A66'},
+    {id:'commercial', ic:'🏬', label:'Commercial',   color:'#C79A3F'},
+    {id:'road',       ic:'🛣', label:'Road / ring road',color:'#A57B36'},
+    {id:'park',       ic:'🌳', label:'Park',         color:'#3FA98F'},
+    {id:'metro',      ic:'🚇', label:'Metro',        color:'#6E8FD0'},
+    {id:'rail',       ic:'🚆', label:'Railway',      color:'#8A8F84'},
+    {id:'bus',        ic:'🚌', label:'Bus stand',    color:'#D47055'},
+    {id:'resort',     ic:'🏖', label:'Resort',       color:'#C79A3F'},
+    {id:'airbnb',     ic:'🏠', label:'Airbnb / stay',color:'#8B6FD1'},
+    {id:'other',      ic:'📍', label:'Other place',  color:'#A57B36'}
+  ];
+  function placeCat(id){ return PLACE_CATS.filter(function(c){ return c.id===id; })[0] || PLACE_CATS[PLACE_CATS.length-1]; }
+  function loadSaved(){
+    try{
+      var a=JSON.parse(localStorage.getItem(SAVED_KEY)||'[]');
+      return Array.isArray(a)?a.filter(function(x){ return x && x.name && (x.q||x.url); }):[];
+    }catch(e){ return []; }
+  }
   var state = {
     kind:'all', bhk:{}, mode:'buy', min:10, max:600, amen:{}, q:'', sort:'best',
     onlyList:false, sel:null, base:'night', google:false, googleLoaded:false, googleTimer:null,
     showCat:'all', showProjects:true, map:null, mapTried:false, mapFailed:false,
     dQ:'', dConf:'all', dSrc:'all', dLimit:24, dOpen:null,
-    markers:[], projMarkers:[], inited:false,
+    saved:loadSaved(), savedCat:'all', savedQ:'', savedEdit:null, savedFocus:null, showSaved:true,
+    markers:[], projMarkers:[], savedMarkers:[], inited:false,
     list:(function(){ try{ return new Set(JSON.parse(localStorage.getItem('bcs_jaipur_list_v1')||'[]')); }catch(e){ return new Set(); } })()
   };
+  function saveSaved(){ try{ localStorage.setItem(SAVED_KEY,JSON.stringify(state.saved)); }catch(e){} }
   function saveList(){ try{ localStorage.setItem('bcs_jaipur_list_v1',JSON.stringify(Array.from(state.list))); }catch(e){} }
   function money(l){ l=Number(l)||0; return l>=100 ? '₹'+(l/100).toFixed(l%100?2:0)+' Cr' : '₹'+l+' L'; }
   function istISO(){ return new Date(Date.now()+5.5*3600000).toISOString().slice(0,10); }
@@ -66977,6 +67049,147 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     var base=raw.split('·')[0].trim().toLowerCase().replace(/[^a-z0-9]+/g,'');
     return DOSSIER_BY_NAME[base]||null;
   }
+  /* ---------- Local saved places → one-click Google Maps ---------- */
+  function decodePart(v){ try{ return decodeURIComponent(String(v).replace(/\+/g,' ')); }catch(e){ return String(v); } }
+  function parsePlaceTarget(raw, name){
+    var s=String(raw||'').trim() || String(name||'').trim();
+    var lat=null, lng=null, q='';
+    var at=s.match(/@(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/);
+    if(at){ lat=+at[1]; lng=+at[2]; }
+    if(lat===null){
+      var ex=s.match(/[!?&]3d(-?\d+(?:\.\d+)?)[!&]4d(-?\d+(?:\.\d+)?)/);
+      if(ex){ lat=+ex[1]; lng=+ex[2]; }
+    }
+    if(lat===null){
+      var pair=s.match(/^\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*$/);
+      if(pair){ lat=+pair[1]; lng=+pair[2]; }
+    }
+    var pq=s.match(/[?&](?:q|query|destination)=([^&]+)/i);
+    if(pq) q=decodePart(pq[1]);
+    if(!q){
+      var pm=s.match(/\/maps\/place\/([^/?@]+)/i);
+      if(pm) q=decodePart(pm[1]).replace(/\+/g,' ');
+    }
+    if(lat!==null && lng!==null) q=lat+','+lng;
+    if(!q) q=s;
+    return {q:q, lat:isFinite(lat)?lat:null, lng:isFinite(lng)?lng:null};
+  }
+  function placeEmbed(pl){
+    var q=pl.q||pl.name||'Jaipur Rajasthan';
+    return 'https://www.google.com/maps/embed?q='+encodeURIComponent(q)+'&z='+(pl.lat!==null&&pl.lng!==null?16:14);
+  }
+  function placeFull(pl){
+    var q=pl.q||pl.name||'Jaipur Rajasthan';
+    return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+  }
+  function filteredSaved(){
+    var q=state.savedQ.trim().toLowerCase();
+    return state.saved.filter(function(p){
+      if(state.savedCat!=='all' && p.cat!==state.savedCat) return false;
+      if(!q) return true;
+      return [p.name,p.q||'',p.url||'',p.note||'',placeCat(p.cat).label].join(' ').toLowerCase().indexOf(q)>=0;
+    });
+  }
+  function savedById(id){ return state.saved.filter(function(p){ return p.id===id; })[0]||null; }
+  function renderSaved(){
+    var count=document.getElementById('jpSavedCount'); if(count) count.textContent=state.saved.length;
+    var select=document.getElementById('jpSavedCat');
+    if(select && !select.options.length) select.innerHTML=PLACE_CATS.map(function(c){ return '<option value="'+c.id+'">'+esc2(c.label)+'</option>'; }).join('');
+    var filters=document.getElementById('jpSavedFilters');
+    if(filters){
+      var counts={}; state.saved.forEach(function(p){ counts[p.cat]=(counts[p.cat]||0)+1; });
+      filters.innerHTML='<button type="button" class="jp-saved-chip'+(state.savedCat==='all'?' on':'')+'" data-saved-filter="all">All <b>'+state.saved.length+'</b></button>'
+        +PLACE_CATS.map(function(c){ return '<button type="button" class="jp-saved-chip'+(state.savedCat===c.id?' on':'')+'" data-saved-filter="'+c.id+'"><span>'+c.ic+'</span>'+esc2(c.label)+' <b>'+(counts[c.id]||0)+'</b></button>'; }).join('');
+    }
+    var grid=document.getElementById('jpSavedGrid');
+    if(grid){
+      var list=filteredSaved();
+      if(!list.length){
+        grid.innerHTML='<div class="jp-saved-empty">'+(state.saved.length?'Is category / search me koi saved place nahi.':'Abhi koi place save nahi kiya. Upar name + Maps link ya search text daal kar pehla place save karein.')+'</div>';
+      }else{
+        grid.innerHTML=list.map(function(p){
+          var c=placeCat(p.cat), meta=(p.lat!==null&&p.lng!==null)?(p.lat+', '+p.lng):(p.q||p.url||'');
+          return '<div class="jp-saved-card'+(state.savedFocus===p.id?' active':'')+'" style="--saved-c:'+c.color+'">'
+            +'<div class="sc-top"><div class="jp-saved-ic">'+c.ic+'</div><div style="min-width:0"><div class="jp-saved-name">'+esc2(p.name)+'</div><div class="jp-saved-cat" style="color:'+c.color+'">'+esc2(c.label)+'</div></div></div>'
+            +'<div class="jp-saved-meta">'+esc2(meta)+'</div>'
+            +(p.note?'<div class="jp-saved-note">'+esc2(p.note)+'</div>':'')
+            +'<div class="jp-saved-actions"><button type="button" class="sc-go" data-saved-open="'+p.id+'">Show on Google</button><a href="'+placeFull(p)+'" target="_blank" rel="noopener">Open ↗</a><button type="button" data-saved-edit="'+p.id+'">Edit</button><button type="button" data-saved-del="'+p.id+'">Delete</button></div></div>';
+        }).join('');
+      }
+    }
+    syncSavedMarkers();
+    if(state.mapFailed) drawSvg();
+  }
+  function clearSavedForm(){
+    ['jpSavedName','jpSavedUrl','jpSavedNote'].forEach(function(id){ var el=document.getElementById(id); if(el) el.value=''; });
+    state.savedEdit=null;
+    var btn=document.getElementById('jpSavedAdd'), can=document.getElementById('jpSavedCancel');
+    if(btn) btn.textContent='Save place'; if(can) can.hidden=true;
+  }
+  function savePlaceFromForm(){
+    var ne=document.getElementById('jpSavedName'), ue=document.getElementById('jpSavedUrl'),
+        ce=document.getElementById('jpSavedCat'), no=document.getElementById('jpSavedNote');
+    var name=ne?ne.value.trim():'';
+    if(!name){ toast('Pehle place ka naam likhein',true); if(ne) ne.focus(); return; }
+    var target=parsePlaceTarget(ue?ue.value:'', name);
+    var rec={id:state.savedEdit||('sp-'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)),
+      name:name, cat:ce?ce.value:'other', q:target.q, url:ue?ue.value.trim():'',
+      lat:target.lat, lng:target.lng, note:no?no.value.trim():'', at:new Date().toISOString()};
+    if(state.savedEdit){
+      state.saved=state.saved.map(function(p){ return p.id===state.savedEdit?rec:p; });
+      toast('Place update ho gaya');
+    }else{
+      state.saved.push(rec); toast('Place save ho gaya');
+    }
+    saveSaved(); clearSavedForm(); renderSaved();
+  }
+  function editSavedPlace(id){
+    var p=savedById(id); if(!p) return;
+    var ne=document.getElementById('jpSavedName'), ue=document.getElementById('jpSavedUrl'),
+        ce=document.getElementById('jpSavedCat'), no=document.getElementById('jpSavedNote');
+    if(ne) ne.value=p.name; if(ue) ue.value=p.url||p.q||''; if(ce) ce.value=p.cat; if(no) no.value=p.note||'';
+    state.savedEdit=id;
+    var btn=document.getElementById('jpSavedAdd'), can=document.getElementById('jpSavedCancel');
+    if(btn) btn.textContent='Update place'; if(can) can.hidden=false;
+    try{ if(ne) ne.scrollIntoView({block:'center',behavior:'smooth'}); }catch(e){}
+  }
+  function deleteSavedPlace(id){
+    var p=savedById(id); if(!p) return;
+    state.saved=state.saved.filter(function(x){ return x.id!==id; });
+    if(state.savedFocus===id){ state.savedFocus=null; updateGoogleFrame(); }
+    if(state.savedEdit===id) clearSavedForm();
+    saveSaved(); renderSaved(); toast('Place delete ho gaya');
+  }
+  function showSavedOnMap(id){
+    var p=savedById(id); if(!p) return;
+    state.base='google'; state.google=true; state.savedFocus=id; state.sel=null;
+    document.querySelectorAll('#jpBase button').forEach(function(b){ b.classList.toggle('on',b.dataset.b==='google'); });
+    updateGoogleFrame(); renderSaved();
+    var mw=document.getElementById('jpMapWrap');
+    if(mw) try{ mw.scrollIntoView({block:'center',behavior:'smooth'}); }catch(e){}
+    toast('Google Maps me dikh rahe hain: '+p.name);
+  }
+  function syncSavedMarkers(){
+    state.savedMarkers.forEach(function(m){ try{ m.remove(); }catch(e){} }); state.savedMarkers=[];
+    var map=state.map;
+    if(!map||!window.maplibregl||!state.showSaved||state.mapFailed||state.google) return;
+    state.saved.forEach(function(p){
+      if(p.lat===null||p.lng===null||!isFinite(p.lat)||!isFinite(p.lng)) return;
+      var c=placeCat(p.cat);
+      var el=document.createElement('button'); el.type='button';
+      el.className='jp-saved-pin'; el.style.background=c.color;
+      el.title=p.name+' — '+c.label; el.setAttribute('aria-label',p.name);
+      el.innerHTML='<span>'+c.ic+'</span><b>'+esc2(p.name)+'</b>';
+      el.addEventListener('click',function(ev){ ev.stopPropagation(); showSavedOnMap(p.id); });
+      var mk=new window.maplibregl.Marker({element:el,anchor:'center'}).setLngLat([p.lng,p.lat]).addTo(map);
+      state.savedMarkers.push(mk);
+    });
+  }
+  function savedCsv(){
+    var rows=[['Name','Category','Saved link / search','Google Maps link','Latitude','Longitude','Note']];
+    state.saved.forEach(function(p){ rows.push([p.name,placeCat(p.cat).label,p.q||p.url||'',placeFull(p),p.lat===null?'':p.lat,p.lng===null?'':p.lng,p.note||'']); });
+    downloadCsv(rows,'bcs-jaipur-saved-places-'+istISO()+'.csv');
+  }
   function updateGoogleFrame(){
     var wrap=document.getElementById('jpMapWrap'), frame=document.getElementById('jpGoogleFrame');
     var label=document.getElementById('jpGoogleLabel'), open=document.getElementById('jpGoogleOpen');
@@ -67002,14 +67215,16 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       return;
     }
     var l=null; JP.forEach(function(x){ if(x.id===state.sel) l=x; });
-    var q=l?(l.lat+','+l.lng):'Jaipur Rajasthan';
-    var embed='https://www.google.com/maps/embed?q='+encodeURIComponent(q)+'&z='+(l?13:11);
+    var saved=l?null:(state.savedFocus?savedById(state.savedFocus):null);
+    var q=l?(l.lat+','+l.lng):(saved?(saved.q||saved.name):'Jaipur Rajasthan');
+    var z=l?13:(saved?(saved.lat!==null&&saved.lng!==null?16:14):11);
+    var embed=(saved?placeEmbed(saved):'https://www.google.com/maps/embed?q='+encodeURIComponent(q)+'&z='+z);
     if(frame&&frame.getAttribute('src')!==embed){ state.googleLoaded=false; frame.src=embed; }
-    if(label) label.textContent=l?(l.name+' · Jaipur'):'Jaipur Rajasthan';
-    var full='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+    if(label) label.textContent=l?(l.name+' · Jaipur'):(saved?(saved.name+' · '+placeCat(saved.cat).label):'Jaipur Rajasthan');
+    var full=saved?placeFull(saved):('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q));
     if(open) open.href=full; if(fbOpen) fbOpen.href=full;
     var n=document.getElementById('jpMapNote');
-    if(n) n.textContent=l?('Google Maps · '+l.name):'Google Maps · Jaipur Rajasthan';
+    if(n) n.textContent=l?('Google Maps · '+l.name):(saved?('Google Maps · '+saved.name):'Google Maps · Jaipur Rajasthan');
     if(fb) fb.hidden=true;
     if(state.googleTimer) clearTimeout(state.googleTimer);
     state.googleTimer=setTimeout(function(){
@@ -67149,6 +67364,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       state.markers.push(mk);
     });
     syncProjectMarkers();
+    syncSavedMarkers();
   }
   function fallback(){
     state.mapFailed=true;
@@ -67193,10 +67409,18 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       var sl=null; JP.forEach(function(x){ if(x.id===state.sel) sl=x; });
       if(sl) s+='<circle cx="'+X(sl.lng).toFixed(1)+'" cy="'+Y(sl.lat).toFixed(1)+'" r="15" fill="none" stroke="#F7E8BE" stroke-width="1.4" stroke-dasharray="3 3"/>';
     }
+    if(state.showSaved){
+      state.saved.forEach(function(p){
+        if(p.lat===null||p.lng===null||!isFinite(p.lat)||!isFinite(p.lng)) return;
+        var c=placeCat(p.cat), x=X(p.lng), y=Y(p.lat);
+        s+='<g data-saved-open="'+esc2(p.id)+'" style="cursor:pointer"><circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="9" fill="'+c.color+'" stroke="#fff" stroke-width="1.2"/><text x="'+x.toFixed(1)+'" y="'+(y+3.5).toFixed(1)+'" text-anchor="middle" font-size="10" font-family="sans-serif">'+c.ic+'</text><title>'+esc2(p.name+' — '+c.label)+'</title></g>';
+      });
+    }
     svg.innerHTML=s;
   }
   function select(id){
     state.sel = state.sel===id?null:id;
+    if(state.sel && state.savedFocus){ state.savedFocus=null; renderSaved(); }
     var box=document.getElementById('jpDetail'), results=document.getElementById('jpResults'), card=document.getElementById('jpCountCard');
     if(box) box.hidden=!state.sel;
     if(results) results.style.display=state.sel?'none':'';
@@ -67265,11 +67489,33 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     renderPortals();
     renderShow();
     renderDossiers();
+    renderSaved();
     refresh();
     initMap();
   }
   document.addEventListener('click',function(e){
     var t=e.target; if(!t||!t.closest) return;
+    var sf=t.closest('[data-saved-filter]'); if(sf){ state.savedCat=sf.getAttribute('data-saved-filter'); renderSaved(); return; }
+    var sp=t.closest('[data-saved-preset]'); if(sp){
+      clearSavedForm();
+      var a=String(sp.getAttribute('data-saved-preset')||'').split('|');
+      var ne=document.getElementById('jpSavedName'), ce=document.getElementById('jpSavedCat'), ue=document.getElementById('jpSavedUrl');
+      if(ne) ne.value=a[0]||''; if(ce) ce.value=a[1]||'other'; if(ue) ue.value=a[2]||a[0]||'';
+      try{ if(ne) ne.scrollIntoView({block:'center',behavior:'smooth'}); }catch(e){}
+      toast('Name / category / search bhar diya — review kar ke save karein'); return;
+    }
+    if(t.closest('#jpSavedAdd')){ savePlaceFromForm(); return; }
+    if(t.closest('#jpSavedCancel')){ clearSavedForm(); return; }
+    var so=t.closest('[data-saved-open]'); if(so){ showSavedOnMap(so.getAttribute('data-saved-open')); return; }
+    var se=t.closest('[data-saved-edit]'); if(se){ editSavedPlace(se.getAttribute('data-saved-edit')); return; }
+    var sd=t.closest('[data-saved-del]'); if(sd){ deleteSavedPlace(sd.getAttribute('data-saved-del')); return; }
+    if(t.closest('#jpSavedCsv')){ savedCsv(); return; }
+    if(t.closest('#jpSavedToggle')){
+      state.showSaved=!state.showSaved;
+      var st=document.getElementById('jpSavedToggle'); if(st) st.classList.toggle('on',state.showSaved);
+      syncSavedMarkers(); if(state.mapFailed) drawSvg();
+      toast(state.showSaved?'Saved place pins dikha rahe hain':'Saved place pins chhupa diye'); return;
+    }
     var k=t.closest('[data-kind]'); if(k){ state.kind=k.dataset.kind; refresh(); return; }
     var b=t.closest('[data-bhk]');
     if(b){
@@ -67342,6 +67588,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   document.addEventListener('input',function(e){
     var id=e.target&&e.target.id;
     if(id==='jpSearch'){ state.q=e.target.value.trim(); refresh(); return; }
+    if(id==='jpSavedSearch'){ state.savedQ=e.target.value; renderSaved(); return; }
     if(id==='jpDossierSearch'){ state.dQ=e.target.value.trim(); state.dLimit=24; renderDossiers(); return; }
     if(id==='jpMin'||id==='jpMax'){
       var s=scale();
@@ -67360,7 +67607,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   },false);
   window.addEventListener('resize',function(){ resizeMap(); });
 
-  window.BCS_JAIPUR={render:render,reset:reset,data:JP,projects:SHOW,projectCats:SHOW_CATS,state:state,fallback:fallback,drawSvg:drawSvg,bench:renderBench,showcase:renderShow,showCsv:showCsv,google:updateGoogleFrame,sources:SOURCE_META,checked:CHECKED,portals:PORTALS,portalsRender:renderPortals,dossiers:DOSSIERS,dossiersRender:renderDossiers,dossierOpen:openDossier,dossierFiltered:dossierFiltered,dossierText:dossierText,dossierCsv:dossierCsv};
+  window.BCS_JAIPUR={render:render,reset:reset,data:JP,projects:SHOW,projectCats:SHOW_CATS,state:state,fallback:fallback,drawSvg:drawSvg,bench:renderBench,showcase:renderShow,showCsv:showCsv,google:updateGoogleFrame,sources:SOURCE_META,checked:CHECKED,portals:PORTALS,portalsRender:renderPortals,dossiers:DOSSIERS,dossiersRender:renderDossiers,dossierOpen:openDossier,dossierFiltered:dossierFiltered,dossierText:dossierText,dossierCsv:dossierCsv,saved:renderSaved,savedAdd:savePlaceFromForm,savedCsv:savedCsv,savedShow:showSavedOnMap,savedEdit:editSavedPlace,savedDelete:deleteSavedPlace,savedPlaces:function(){return state.saved.slice();},savedTarget:parsePlaceTarget};
 })();
 </script>
 <script>
