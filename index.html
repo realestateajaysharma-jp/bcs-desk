@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Developer & Project Intelligence</title>
-<!-- BCS DESK BUILD bcs-desk-v209 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + Jaipur Property Map (flat-finder style, free MapLibre tiles + offline SVG fallback, 47 localities, 5-portal source-checked rates with attributed evidence, Google Maps layer + 15-entry project showcase) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + full dark-mode safety net -->
+<!-- BCS DESK BUILD bcs-desk-v210 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + Jaipur Property Map (flat-finder style, free MapLibre tiles + offline SVG fallback, 47 localities, 5-portal source-checked rates with attributed evidence, fixed Google Maps embed height + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + full dark-mode safety net -->
 <meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -17529,17 +17529,17 @@ body[data-theme="dark"] :is([style*="background:#FBEDE8"],[style*="background:#F
 .jp-item .meta{font-size:11.5px;color:var(--mut);margin-top:2px;line-height:1.45}
 .jp-tagrow{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
 .jp-tag{font-size:10px;font-weight:700;letter-spacing:.3px;padding:3px 7px;border-radius:6px;background:color-mix(in srgb,var(--acc) 13%,transparent);color:var(--ink2)}
-.jp-mapwrap{position:relative;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0B0E0C}
-#jpMap{height:min(72vh,680px);width:100%}
+.jp-mapwrap{position:relative;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0B0E0C;height:min(72vh,680px);min-height:360px}
+#jpMap{height:100%;width:100%}
 .jp-mapwrap.fallback #jpMap{display:none}
-.jp-svg{display:none;width:100%;height:min(72vh,680px);background:#0B0E0C}
+.jp-svg{display:none;width:100%;height:100%;background:#0B0E0C}
 .jp-mapwrap.fallback .jp-svg{display:block}
 .jp-legend{position:absolute;left:10px;bottom:10px;z-index:5;background:rgba(14,17,15,.82);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);border-radius:11px;padding:8px 10px;display:flex;gap:12px;flex-wrap:wrap;font-size:10.5px;color:#EDEBD9;pointer-events:none}
 .jp-legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
 .jp-ctl{position:absolute;right:10px;top:10px;z-index:5;display:flex;flex-direction:column;gap:6px}
 .jp-ctl button{width:34px;height:34px;border-radius:9px;border:1px solid rgba(255,255,255,.14);background:rgba(14,17,15,.82);color:#EDEBD9;font-size:15px;cursor:pointer;display:grid;place-items:center;font-weight:600}
 .jp-ctl button:hover{background:rgba(30,36,30,.95)}
-.jp-baselayers{position:absolute;left:10px;top:10px;z-index:5;display:flex;gap:5px}
+.jp-baselayers{position:absolute;left:10px;top:10px;z-index:5;display:flex;gap:5px;flex-wrap:wrap;max-width:calc(100% - 70px)}
 .jp-baselayers button{padding:6px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.14);background:rgba(14,17,15,.82);color:#EDEBD9;font-size:11px;font-weight:600;cursor:pointer}
 .jp-baselayers button.on{background:#A57B36;border-color:#A57B36;color:#fff}
 .jp-mapnote{position:absolute;right:10px;bottom:10px;z-index:5;font-size:10px;color:rgba(237,235,217,.72);background:rgba(14,17,15,.6);padding:3px 7px;border-radius:7px;pointer-events:none}
@@ -17574,8 +17574,8 @@ body[data-theme="dark"] :is([style*="background:#FBEDE8"],[style*="background:#F
 .jp-back{background:none;border:0;color:var(--acc);font:inherit;font-size:12px;font-weight:700;cursor:pointer;padding:0;text-align:left}
 @media (max-width:980px){
   .jp-shell{grid-template-columns:1fr}
-  .jp-mapwrap{order:-1}
-  #jpMap,.jp-svg{height:min(46vh,420px)}
+  .jp-mapwrap{order:-1;height:min(58vh,520px);min-height:320px}
+  #jpMap,.jp-svg{height:100%}
   .jp-filters,.jp-results{max-height:none}
 }
 body[data-theme="dark"] .jp-card,body[data-theme="dark"] .jp-item{background:#1B201B;border-color:rgba(255,255,255,.09)}
@@ -17631,6 +17631,22 @@ body[data-theme="dark"] .jp-show-card{background:color-mix(in srgb,var(--acc) 9%
 body[data-theme="dark"] .jp-show-card h4{color:#F5F3E8}
 body[data-theme="dark"] .jp-show-tabs button.on{background:var(--olive);color:#F6F2E7;border-color:var(--olive)}
 body[data-theme="dark"] .jp-show-tags span{border-color:rgba(255,255,255,.1);color:#E8E6DA}
+/* Night+ pins, project overlay, Google embed safety net */
+.jp-ctl button.on{background:rgba(165,123,54,.92);color:#fff;border-color:#C9A05C}
+.jp-pin{position:relative;display:grid;place-items:center;font-size:9px;padding:0}
+.jp-pin b{display:none;position:absolute;left:20px;top:-4px;white-space:nowrap;background:rgba(11,14,12,.92);border:1px solid rgba(255,255,255,.14);color:#F5F3E8;padding:2px 6px;border-radius:6px;font-size:9.5px;font-weight:700;pointer-events:none}
+.jp-pin:hover b,.jp-pin.sel b{display:block}
+.jp-projpin{position:relative;width:22px;height:22px;border-radius:7px;border:1.5px solid #F0D89A;background:linear-gradient(145deg,#2A2417,#151B16);color:#F7E8BE;font-size:11px;display:grid;place-items:center;cursor:pointer;box-shadow:0 0 0 3px rgba(231,196,110,.13),0 3px 10px rgba(0,0,0,.6);padding:0;z-index:3;transition:transform .15s}
+.jp-projpin:hover{transform:scale(1.2) rotate(-4deg)}
+.jp-projpin b{display:none;position:absolute;left:25px;top:-5px;white-space:nowrap;background:rgba(11,14,12,.94);border:1px solid rgba(240,216,154,.35);color:#F7E8BE;padding:3px 7px;border-radius:7px;font-size:9.5px;font-weight:700;pointer-events:none;max-width:210px;overflow:hidden;text-overflow:ellipsis}
+.jp-projpin:hover b{display:block}
+.jp-show-card.focus{outline:2px solid var(--acc);outline-offset:2px}
+.jp-google-fallback{position:absolute;left:14px;right:14px;top:14px;z-index:8;background:rgba(11,14,12,.96);border:1px solid rgba(255,255,255,.16);border-radius:13px;padding:12px;color:#EDEBD9;font-size:11.5px;line-height:1.5;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.jp-google-fallback[hidden]{display:none}
+.jp-google-fallback b{display:block;color:#F7E8BE;font-size:12.5px;margin-bottom:4px}
+.jp-google-fallback .jp-actions{margin-top:8px}
+.jp-google-fallback button,.jp-google-fallback a{font-size:10.5px;font-weight:800;padding:5px 9px;border-radius:8px;border:1px solid rgba(255,255,255,.18);background:rgba(165,123,54,.2);color:#F5F3E8;text-decoration:none;cursor:pointer}
+.jp-google-fallback button:hover,.jp-google-fallback a:hover{background:rgba(165,123,54,.38)}
 </style>
 <body class="locked">
 <script>/* early theme bootstrap — prevents a light flash before initExperience runs */try{var _t=localStorage.getItem('bcs_theme_v1')||'dark';document.body.dataset.theme=_t;document.documentElement.dataset.theme=_t;document.documentElement.style.colorScheme=_t;}catch(e){}</script>
@@ -19877,6 +19893,7 @@ try{
         <div class="jp-mapwrap" id="jpMapWrap">
           <div class="jp-baselayers" id="jpBase">
             <button type="button" data-b="night" class="on">Night</button>
+            <button type="button" data-b="nightplus">Night+</button>
             <button type="button" data-b="sat">Satellite</button>
             <button type="button" data-b="streets">Streets</button>
             <button type="button" data-b="google">Google Maps</button>
@@ -19886,10 +19903,16 @@ try{
             <button type="button" id="jpZoomOut" title="Zoom out" aria-label="Zoom out">−</button>
             <button type="button" id="jpHome" title="Show whole Jaipur" aria-label="Show whole Jaipur">⌂</button>
             <button type="button" id="jp3d" title="Switch 2D / 3D" aria-label="Switch 2D or 3D">2D</button>
+            <button type="button" id="jpProjToggle" class="on" title="Show / hide project pins" aria-label="Toggle project pins">🏙</button>
           </div>
           <div id="jpMap"></div>
           <div class="jp-google" id="jpGoogle" hidden>
             <iframe id="jpGoogleFrame" title="Google Maps — Jaipur" referrerpolicy="no-referrer-when-downgrade" src="about:blank"></iframe>
+            <div class="jp-google-fallback" id="jpGoogleFallback" hidden>
+              <b>Google embed slow ya block ho gaya?</b>
+              Google Maps embedding kabhi-kabhi network, cookie ya browser extension se ruk jata hai. BCS ka apna dark map aur project pins available hi hain.
+              <div class="jp-actions"><button type="button" id="jpGoogleRetry">Retry embed</button><a id="jpGoogleFallbackOpen" href="https://www.google.com/maps/search/?api=1&query=Jaipur%20Rajasthan" target="_blank" rel="noopener" data-no-frame>Open Google Maps ↗</a></div>
+            </div>
             <div class="jp-google-bar"><span><b id="jpGoogleLabel">Jaipur Rajasthan</b> · <span class="gm-hint">live Google Maps embed · internet zaroori</span></span><a id="jpGoogleOpen" href="https://www.google.com/maps/search/?api=1&query=Jaipur%20Rajasthan" target="_blank" rel="noopener" data-no-frame>Open full Google Maps ↗</a></div>
           </div>
           <svg class="jp-svg" id="jpSvg" viewBox="0 0 800 640" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Jaipur localities map (offline)"></svg>
@@ -65672,10 +65695,14 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
      portal page or a category entry whose links go straight to that portal's own
      search page. Approval status is never asserted — always verify at source. */
   var SHOW_CATS=[
-    {id:'all',label:'All projects'},
-    {id:'plots',label:'Residential plots'},
-    {id:'societies',label:'Housing societies'},
-    {id:'shops',label:'Commercial shops'},
+    {id:'all',label:'All'},
+    {id:'flats',label:'Flats'},
+    {id:'apartments',label:'Apartments'},
+    {id:'villas',label:'Villas'},
+    {id:'townships',label:'Townships'},
+    {id:'plots',label:'Plots / land'},
+    {id:'colonies',label:'Colonies / societies'},
+    {id:'shops',label:'Shops'},
     {id:'s90a',label:'90A converted'},
     {id:'societyprojects',label:'Society projects'}
   ];
@@ -65694,17 +65721,46 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     {id:'gatedJagatpura',name:'Gated projects · Jagatpura',cat:['societyprojects'],zone:'South · airport belt',loc:'jagatpura',meta:'PW · ₹48.5 L–1.65 Cr · SY 244 new projects',note:'Aradhana Bhavyaa Green Grandeur, Kalyan Eva, Redwood Utopia aur Ashiana One44 — sab portals se.',src:['pw','sy','rei'],links:[{n:'PW Jagatpura',u:'https://propertywala.com/jagatpura_jaipur'},{n:'SY Jagatpura',u:'https://www.squareyards.com/sale/property-for-sale-in-jagatpura-jaipur'},{n:'REI Jagatpura',u:'https://www.realestateindia.com/jaipur-property/property-for-sale-in-jagatpura.htm'}]},
     {id:'budgetSocieties',name:'Budget gated projects · west Jaipur',cat:['societyprojects'],zone:'Gandhi Path · Sikar Rd · Lalarpura',loc:'gandhipath',meta:'PW · ₹13.9–64 L entry',note:'Samanvay The Amelias ₹25.5–47.5 L, Brijhari Govindam Tower ₹13.9–37 L, Platinum Heights ₹18.4–31.59 L, Shiv Sky Crown ₹42–64 L.',src:['pw'],links:[{n:'PW Jaipur',u:'https://www.propertywala.com/jaipur_rajasthan/'},{n:'PW Sikar Road',u:'https://propertywala.com/sikar_road_jaipur'}]},
     {id:'readyFlats',name:'Ready-to-move society flats',cat:['societyprojects'],zone:'City-wide',loc:'malviya',meta:'REI · 1,420+ ready flats · PW ready projects',note:'Parwani Radhey Niwas ₹1.35–1.44 Cr, Samanvay Atlantica ₹93 L–1.62 Cr, Manglam Dream Avenue ₹23–33 L.',src:['rei','pw'],links:[{n:'REI ready flats',u:'https://www.realestateindia.com/jaipur-property/'},{n:'PW Jaipur',u:'https://www.propertywala.com/jaipur_rajasthan/'}]},
-    {id:'shops',name:'Commercial shops & showrooms',cat:['shops'],zone:'City-wide',loc:'cscheme',meta:'REI · SY · PW category pages',note:'REI: Commercial Shops/Showrooms for sale aur rent. SY: Shops in Jaipur. PW: Shop / Showroom search. Rates listing-wise — city average nahi.',src:['rei','sy','pw'],links:[{n:'REI shops',u:'https://www.realestateindia.com/jaipur-property/commercial-shops-for-sale.htm'},{n:'REI showrooms',u:'https://www.realestateindia.com/jaipur-property/showroom-for-sale.htm'},{n:'SY shops',u:'https://www.squareyards.com/sale/shops-for-sale-in-jaipur'},{n:'SY shop rent',u:'https://www.squareyards.com/rent/shops-for-rent-in-jaipur'},{n:'PW Jaipur',u:'https://www.propertywala.com/jaipur_rajasthan/'}]}
+    {id:'shops',name:'Commercial shops & showrooms',cat:['shops'],zone:'City-wide',loc:'cscheme',meta:'REI · SY · PW category pages',note:'REI: Commercial Shops/Showrooms for sale aur rent. SY: Shops in Jaipur. PW: Shop / Showroom search. Rates listing-wise — city average nahi.',src:['rei','sy','pw'],links:[{n:'REI shops',u:'https://www.realestateindia.com/jaipur-property/commercial-shops-for-sale.htm'},{n:'REI showrooms',u:'https://www.realestateindia.com/jaipur-property/showroom-for-sale.htm'},{n:'SY shops',u:'https://www.squareyards.com/sale/shops-for-sale-in-jaipur'},{n:'SY shop rent',u:'https://www.squareyards.com/rent/shops-for-rent-in-jaipur'},{n:'PW Jaipur',u:'https://www.propertywala.com/jaipur_rajasthan/'}]},
+    {id:'aurumMayfair',name:'Mayfair · C-Scheme',cat:['flats','apartments','societyprojects'],zone:'Central · C-Scheme',loc:'cscheme',meta:'Aurum · 3,4 BHK · 2,300–3,650 sq ft · ₹2.02 Cr onwards',note:'Aurum Pulse ke featured projects me Mayfair G-1, Jamna Lal Bajaj Marg, C-Scheme. Central premium pocket — rate aur possession source par confirm karo.',src:['aurum'],links:[{n:'Aurum Pulse',u:'https://www.aurumproptech.in/pulse/properties/jaipur/overview'},{n:'REI C-Scheme',u:'https://www.realestateindia.com/jaipur-property/property-for-sale-in-c-scheme.htm'}]},
+    {id:'reiShivgyan',name:'Shivgyan Luxora · C-Scheme',cat:['flats','apartments'],zone:'Central',loc:'cscheme',meta:'REI · 2,3,4 BHK · 1,260–2,570 sq ft · ₹12.60–25.70 L',note:'Real Estate India ongoing project. Central address ke liye indicative range — super area, RERA aur actual availability verify karo.',src:['rei'],links:[{n:'REI Shivgyan Luxora',u:'https://www.realestateindia.com/projects/shivgyan-luxora-by-shivgyan-developers-pvt-ltd-in-jaipur/'}]},
+    {id:'reiGinni',name:'Ginni Gold · Bani Park',cat:['flats','apartments'],zone:'Central-North',loc:'banipark',meta:'REI · 2,3,4 BHK · 1,410–2,587 sq ft · ₹14.50–95 L',note:'Bani Park heritage belt ka ongoing apartment project. Wide price band — configuration-wise source dekho.',src:['rei'],links:[{n:'REI Ginni Gold',u:'https://www.realestateindia.com/projects/ginni-gold-by-aishwarya-group-in-jaipur/'}]},
+    {id:'reiRoyalCastle',name:'Royal Castle · Vaishali Nagar',cat:['flats','apartments'],zone:'West',loc:'vaishali',meta:'REI · 2,3 BHK · 1,030–1,820 sq ft · ₹98.33 L',note:'Vaishali Nagar established colony me apartment supply. Price single figure hai — actual unit aur carpet area source par dekho.',src:['rei'],links:[{n:'REI Royal Castle',u:'https://www.realestateindia.com/projects/royal-castle-by-kotecha-group-in-vaishali-nagar-jaipur/'}]},
+    {id:'reiArihant',name:'Arihant Dynasty · Jawahar Circle',cat:['flats','apartments'],zone:'Central-South',loc:'jawahar',meta:'REI · 1,2,3,4 BHK · 384–1,213 sq ft · ₹16.51–32.03 L',note:'Compact configurations — entry ticket attractive, but 384 sq ft carpet/super area distinction must check karo.',src:['rei'],links:[{n:'REI Arihant Dynasty',u:'https://www.realestateindia.com/projects/arihant-dynasty-by-arihant-group-in-jawahar-circle-jaipur/'}]},
+    {id:'reiSiddha',name:'Siddha Aangan · Ajmer Road',cat:['flats','apartments'],zone:'West corridor',loc:'ajmerroad',meta:'REI · 4 BHK · 2,178–2,580 sq ft · ₹65 L',note:'Ajmer Road growth corridor ka ongoing 4 BHK project. Launch pipeline zyada — compare karo before booking.',src:['rei'],links:[{n:'REI Siddha Aangan',u:'https://www.realestateindia.com/projects/siddha-aangan-by-siddha-group-in-ajmer-road-jaipur/'}]},
+    {id:'pwAradhana',name:'Aradhana Bhavyaa Green Grandeur',cat:['flats','apartments','societyprojects'],zone:'South · Jagatpura',loc:'jagatpura',meta:'PW · 3,4 BHK apartments · ₹96 L–1.65 Cr',note:'PropertyWala featured project — 60%+ open area aur EV charging point. Jagatpura airport belt ka premium gated option.',src:['pw'],links:[{n:'PW Aradhana Green Grandeur',u:'https://www.propertywala.com/aradhana-bhavyaa-green-grandeur-jaipur'}]},
+    {id:'pwRedwood',name:'Redwood Utopia · Jagatpura',cat:['flats','apartments'],zone:'South · Jagatpura',loc:'jagatpura',meta:'PW · 2,3 BHK apartments · ₹48.5–63.5 L',note:'Mid-budget gated apartments. Possession date aur amenities PW page se verify karo.',src:['pw'],links:[{n:'PW Redwood Utopia',u:'https://www.propertywala.com/redwood-utopia-jaipur'}]},
+    {id:'pwKalyan',name:'Kalyan Eva · Jagatpura',cat:['flats','apartments'],zone:'South · Jagatpura',loc:'jagatpura',meta:'PW · 2,3,4 BHK apartments · ₹55–95 L',note:'Jagatpura ka another gated project. Configuration mix aur price source par confirm karo.',src:['pw'],links:[{n:'PW Kalyan Eva',u:'https://www.propertywala.com/kalyan-eva-jaipur'}]},
+    {id:'pwEternia',name:'Gangaa Kotecha Royal Eternia',cat:['flats','apartments'],zone:'West · Vaishali Nagar',loc:'vaishali',meta:'PW · 3,4 BHK apartments · ₹1.31–1.9 Cr',note:'Vaishali Nagar premium apartments — four-tier security aur podium concept. Rate asking hai.',src:['pw'],links:[{n:'PW Royal Eternia',u:'https://www.propertywala.com/gangaa-kotecha-royal-eternia-jaipur'}]},
+    {id:'pwSamanvay',name:'Samanvay The Amelias',cat:['flats','apartments'],zone:'North-West · Sikar Road belt',loc:'sikarroad',meta:'PW · 1,2 BHK apartments · ₹25.5–47.5 L',note:'Chatarpura / Lalya Ka Bas pocket. Entry-level gated flats — commute factor include karo.',src:['pw'],links:[{n:'PW Samanvay Amelias',u:'https://www.propertywala.com/samanvay-the-amelias-jaipur'}]},
+    {id:'pwBrijhari',name:'Brijhari Govindam Tower',cat:['flats','apartments'],zone:'North · Sikar Road',loc:'sikarroad',meta:'PW · 1,2,3 BHK apartments · ₹13.9–37 L',note:'Sikar Road ka budget apartment project. Lowest entry price band me — approval aur delivery track record verify karo.',src:['pw'],links:[{n:'PW Brijhari Govindam Tower',u:'https://www.propertywala.com/brijhari-govindam-tower-jaipur'}]},
+    {id:'syOma',name:'Ashiana Oma · Mansarovar Ext',cat:['flats','apartments','societyprojects'],zone:'South-West',loc:'mansarovarext',meta:'SY · ₹1.35–5.42 Cr · Jaipur top project',note:'Square Yards ka top project. Premium gated apartments — inventory aur possession schedule source par dekho.',src:['sy'],links:[{n:'SY Ashiana Oma',u:'https://www.squareyards.com/ashiana-oma-mansarovar-extension-jaipur-npd-345699'}]},
+    {id:'syEkansh',name:'Ashiana Ekansh · Mansarovar Ext',cat:['flats','apartments'],zone:'South-West',loc:'mansarovarext',meta:'SY · ₹93.11 L–2.46 Cr',note:'Mansarovar Extension ka premium project. Rate band wide hai — unit type source se match karo.',src:['sy'],links:[{n:'SY Ashiana Ekansh',u:'https://www.squareyards.com/jaipur-residential-property/ashiana-ekansh/248037/project'}]},
+    {id:'syOne44',name:'Ashiana One44 · Jagatpura',cat:['flats','apartments'],zone:'South · airport belt',loc:'jagatpura',meta:'SY · ₹1.90–2.50 Cr',note:'Jagatpura me premium apartment supply. Airport proximity ka premium — actual view aur floor check karo.',src:['sy'],links:[{n:'SY Ashiana One44',u:'https://www.squareyards.com/jaipur-residential-property/ashiana-one44/248343/project'}]},
+    {id:'syNitara',name:'Ashiana Nitara · Ajmer Road',cat:['flats','apartments'],zone:'West corridor',loc:'ajmerroad',meta:'SY · ₹75 L–2.91 Cr',note:'Ajmer Road growth corridor ka gated project. Compare with other launches before decision.',src:['sy'],links:[{n:'SY Ashiana Nitara',u:'https://www.squareyards.com/jaipur-residential-property/ashiana-nitara/248698/project'}]},
+    {id:'reiAyodhya',name:'Ayodhya Vistar · Chaksu',cat:['plots','townships'],zone:'Far South-East',loc:'chaksu',meta:'REI · 96–2,872 sq ft · ₹24.39–59.88 L',note:'Chaksu plotted township scheme. Distance bada hai — approach road aur conversion status verify karo.',src:['rei'],links:[{n:'REI Ayodhya Vistar',u:'https://www.realestateindia.com/projects/ayodhya-vistar-by-vistarak-real-estate-llp-in-chaksu-jaipur-pjid-62522/'}]},
+    {id:'reiOrbLotus',name:'ORB Lotus · Tonk Road',cat:['plots','townships'],zone:'South corridor',loc:'tonkroad',meta:'REI · 50–300 sq yd · ₹2–15 L',note:'Tonk Road ka low-entry plotted scheme. Plot measurement aur location exact source par dekho.',src:['rei'],links:[{n:'REI ORB Lotus',u:'https://www.realestateindia.com/projects/orb-lotus-by-shri-veer-teja-real-estate-developers-pvt-ltd-in-jaipur/'}]},
+    {id:'reiVillaVaishali',name:'4.5 BHK villa · Vaishali Nagar',cat:['villas'],zone:'West · Vaishali Nagar',loc:'vaishali',meta:'REI listing · 144 sq yd · ₹3.85 Cr',note:'Individual villa listing, township average nahi. Built-up area aur plot dimension source se confirm karo.',src:['rei'],links:[{n:'REI Vaishali villas',u:'https://www.realestateindia.com/jaipur-property/property-for-sale-in-vaishali-nagar.htm'}]},
+    {id:'reiVillaMansarovar',name:'5 BHK villa · Mansarovar',cat:['villas'],zone:'South-West',loc:'mansarovar',meta:'REI listing · 165 sq yd · ₹3.65 Cr',note:'Individual large villa listing. Price ask hai — registry, RERA aur possession verify karo.',src:['rei'],links:[{n:'REI Mansarovar villas',u:'https://www.realestateindia.com/jaipur-property/property-for-sale-in-mansarovar.htm'}]},
+    {id:'reiFlatSikar',name:'3/4 BHK flats · Sikar Road',cat:['flats','apartments'],zone:'North · Sikar Road',loc:'sikarroad',meta:'REI listings · 3 BHK 1,661 sq ft ₹1.01 Cr · 4 BHK 2,262 sq ft ₹1.38 Cr',note:'Individual resale listings from REI. Project/society name aur tower details source par dekho.',src:['rei'],links:[{n:'REI Sikar Road',u:'https://www.realestateindia.com/jaipur-property/property-for-sale-in-sikar-road.htm'}]},
+    {id:'reiFlatJhotwara',name:'3 BHK flats · Jhotwara',cat:['flats','apartments'],zone:'North-West',loc:'jhotwara',meta:'REI listings · 1,410 sq ft ₹65 L · 1,333 sq ft ₹49 L',note:'Affordable resale flats. Building age aur maintenance source par confirm karo.',src:['rei'],links:[{n:'REI Jhotwara',u:'https://www.realestateindia.com/jaipur-property/property-for-sale-in-jhotwara.htm'}]},
+    {id:'reiRents',name:'Rental flats · live asks',cat:['flats','apartments'],zone:'City-wide',loc:'mansarovar',meta:'REI · 2 BHK Mansarovar ₹22k · 3 BHK Malviya ₹31.5k · 2 BHK Gopalpura ₹19.5k',note:'Rent examples from REI latest listings. Square Yards city rent band ₹9.3k–₹2.3L. Actual rent property aur negotiations pe depend karta hai.',src:['rei','sy'],links:[{n:'REI rent',u:'https://www.realestateindia.com/jaipur-property/'},{n:'SY Jaipur',u:'https://www.squareyards.com/jaipur-real-estate'}]},
+    {id:'colonyPremium',name:'Premium colonies · C-Scheme, Bani Park, Malviya',cat:['colonies','societyprojects'],zone:'Central + south-central',loc:'cscheme',meta:'PW city ask ₹6,060/sq ft · luxury gated ₹25k–40k/sq ft',note:'Established central colonies — low fresh supply, high resale. PropertyWala reports luxury gated apartments/villas quoted ₹25k–40k/sq ft. Indicative band, quote nahi.',src:['pw','rei'],links:[{n:'PW Jaipur',u:'https://www.propertywala.com/jaipur_rajasthan/'},{n:'REI C-Scheme',u:'https://www.realestateindia.com/jaipur-property/property-for-sale-in-c-scheme.htm'}]},
+    {id:'colonyMid',name:'Mid-market colonies · Mansarovar, Vaishali, Jagatpura',cat:['colonies','societyprojects'],zone:'West + south',loc:'mansarovar',meta:'SY median ₹4.8k/sq ft · PW apartment ask ₹6,060/sq ft',note:'Jaipur ka sabse likwid colony belt — schools, metro aur resale demand. Different portal samples alag hain, isliye band dekho.',src:['sy','pw','rei'],links:[{n:'SY Jaipur',u:'https://www.squareyards.com/jaipur-real-estate'},{n:'PW Jaipur',u:'https://www.propertywala.com/jaipur_rajasthan/'},{n:'REI projects',u:'https://www.realestateindia.com/jaipur-property/new-projects.htm'}]},
+    {id:'colonyGrowth',name:'Growth colonies · Ajmer Rd, Kalwar, Jagatpura',cat:['colonies','townships','plots'],zone:'West + south growth corridors',loc:'ajmerroad',meta:'REI 2,508 plots · 177 new projects · JDA ₹575 Cr works',note:'Naye colonies aur plotting schemes yahin aate hain. Conversion/approval status alag-alag ho sakta hai — JDA/90A/RERA verify karo.',src:['rei','pw','sy'],links:[{n:'REI plots',u:'https://www.realestateindia.com/jaipur-property/residential-land-for-sale.htm'},{n:'PW Ajmer Road',u:'https://propertywala.com/ajmer_road_jaipur'},{n:'SY plots',u:'https://www.squareyards.com/sale/plots-for-sale-in-jaipur'}]},
+    {id:'luxuryGated',name:'Luxury gated apartments & villas',cat:['villas','apartments','colonies'],zone:'City-wide premium',loc:'vaishali',meta:'PW · ₹25,000–40,000/sq ft quoted · 2026 report',note:'PropertyWala news summary: luxury gated apartments/villas ₹25k–40k/sq ft quoted. Ye ultra-premium band hai — regular Jaipur average se alag.',src:['pw'],links:[{n:'PW Jaipur',u:'https://www.propertywala.com/jaipur_rajasthan/'},{n:'PW projects',u:'https://propertywala.com/projects/'}]}
   ];
 
   var state = {
     kind:'all', bhk:{}, mode:'buy', min:10, max:600, amen:{}, q:'', sort:'best',
-    onlyList:false, sel:null, base:'night', google:false, showCat:'all', map:null, mapTried:false, mapFailed:false,
-    markers:[], inited:false,
+    onlyList:false, sel:null, base:'night', google:false, googleLoaded:false, googleTimer:null,
+    showCat:'all', showProjects:true, map:null, mapTried:false, mapFailed:false,
+    markers:[], projMarkers:[], inited:false,
     list:(function(){ try{ return new Set(JSON.parse(localStorage.getItem('bcs_jaipur_list_v1')||'[]')); }catch(e){ return new Set(); } })()
   };
   function saveList(){ try{ localStorage.setItem('bcs_jaipur_list_v1',JSON.stringify(Array.from(state.list))); }catch(e){} }
   function money(l){ l=Number(l)||0; return l>=100 ? '₹'+(l/100).toFixed(l%100?2:0)+' Cr' : '₹'+l+' L'; }
+  function istISO(){ return new Date(Date.now()+5.5*3600000).toISOString().slice(0,10); }
   function rentMoney(k){ return '₹'+(Number(k)||0)+'k/mo'; }
   function esc2(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function scale(){ return state.mode==='buy'?{min:10,max:600,step:5}:{min:3,max:300,step:3}; }
@@ -65882,6 +65938,30 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     updateGoogleFrame();
     labels();
   }
+  function projectIcon(p){
+    if(p.cat.indexOf('villas')>=0) return '🏡';
+    if(p.cat.indexOf('shops')>=0) return '🏬';
+    if(p.cat.indexOf('townships')>=0) return '🏙';
+    if(p.cat.indexOf('plots')>=0) return '🌿';
+    return '🏢';
+  }
+  function googleQuery(p){
+    var l=null; if(p&&p.loc) JP.forEach(function(x){ if(x.id===p.loc) l=x; });
+    if(l) return l.lat+','+l.lng;
+    return (p?p.name+' Jaipur':'Jaipur Rajasthan');
+  }
+  function focusProject(pid){
+    var p=null; SHOW.forEach(function(x){ if(x.id===pid) p=x; }); if(!p) return;
+    if(p.loc&&state.sel!==p.loc) select(p.loc); else refresh();
+    state.showCat='all'; renderShow();
+    var card=document.querySelector('#jpShowGrid [data-project="'+pid+'"]');
+    if(card){
+      card.scrollIntoView({block:'center',behavior:'smooth'});
+      card.classList.add('focus');
+      setTimeout(function(){ card.classList.remove('focus'); },2200);
+    }
+    toast(p.name+' — source links below');
+  }
   function renderShow(){
     var tabs=document.getElementById('jpShowTabs'), grid=document.getElementById('jpShowGrid');
     if(!tabs||!grid) return;
@@ -65898,27 +65978,29 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       var links=(p.links||[]).map(function(x){
         return '<a href="'+x.u+'" target="_blank" rel="noopener">'+esc2(x.n)+' ↗</a>';
       }).join('');
+      var g='<a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(googleQuery(p))+'" target="_blank" rel="noopener" data-no-frame>Google Maps ↗</a>';
       var locate=p.loc?'<button type="button" class="jp-show-loc" data-showloc="'+p.loc+'">Show on map ↗</button>':'';
-      return '<div class="jp-show-card"><div class="jp-show-meta">'+esc2(p.zone)+'</div><h4>'+esc2(p.name)+'</h4>'
+      return '<div class="jp-show-card" data-project="'+p.id+'"><div class="jp-show-meta">'+projectIcon(p)+' '+esc2(p.zone)+'</div><h4>'+esc2(p.name)+'</h4>'
         +'<div class="jp-show-meta">'+esc2(p.meta)+'</div>'
         +'<div class="jp-show-tags">'+tags.map(function(t){ return '<span>'+esc2(t)+'</span>'; }).join('')+'</div>'
-        +'<p>'+esc2(p.note)+'</p><div class="jp-show-links">'+locate+links+'</div></div>';
+        +'<p>'+esc2(p.note)+'</p><div class="jp-show-links">'+g+locate+links+'</div></div>';
     }).join('');
   }
   function showCsv(){
-    var head=['Project / scheme','Category','Zone','Locality on map','Sources checked','Checked on','Source note','Source links'];
+    var head=['Project / scheme','Category','Zone','Locality on map','Sources checked','Checked on','Source note','Source links','Google Maps'];
     var lines=[head];
     SHOW.forEach(function(p){
       var l=null; JP.forEach(function(x){ if(x.id===p.loc) l=x; });
       lines.push([p.name,p.cat.map(function(c){ var x=SHOW_CATS.filter(function(y){return y.id===c;})[0]; return x?x.label:c; }).join('; '),p.zone,l?l.name:'',
         (p.src||[]).map(function(s){return SOURCE_NAME[s]||s;}).join('; '),CHECKED,p.note||'',
-        (p.links||[]).map(function(x){return x.n+' '+x.u;}).join(' | ')]);
+        (p.links||[]).map(function(x){return x.n+' '+x.u;}).join(' | '),
+        'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(googleQuery(p))]);
     });
     var txt=lines.map(function(r){ return r.map(function(v){ return '"'+String(v==null?'':v).replace(/"/g,'""')+'"'; }).join(','); }).join('\r\n');
     try{
       var blob=new Blob(['\ufeff'+txt],{type:'text/csv;charset=utf-8'});
       var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
-      a.download='bcs-jaipur-projects-'+new Date().toISOString().slice(0,10)+'.csv';
+      a.download='bcs-jaipur-projects-'+istISO()+'.csv';
       document.body.appendChild(a); a.click(); a.remove();
       setTimeout(function(){ try{ URL.revokeObjectURL(a.href); }catch(e){} },1500);
       toast('Jaipur project showcase CSV ready');
@@ -65927,19 +66009,41 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   function updateGoogleFrame(){
     var wrap=document.getElementById('jpMapWrap'), frame=document.getElementById('jpGoogleFrame');
     var label=document.getElementById('jpGoogleLabel'), open=document.getElementById('jpGoogleOpen');
-    var pane=document.getElementById('jpGoogle');
+    var pane=document.getElementById('jpGoogle'), fb=document.getElementById('jpGoogleFallback');
+    var fbOpen=document.getElementById('jpGoogleFallbackOpen');
     if(!wrap) return;
+    if(frame&&!frame.__jpBound){
+      frame.__jpBound=true;
+      frame.addEventListener('load',function(){
+        var src=frame.getAttribute('src')||'';
+        state.googleLoaded=src.indexOf('maps/embed')>=0;
+        if(state.googleLoaded&&state.googleTimer){ clearTimeout(state.googleTimer); state.googleTimer=null; }
+        if(state.googleLoaded&&fb) fb.hidden=true;
+      });
+    }
     wrap.classList.toggle('google-mode',!!state.google);
     if(pane) pane.hidden=!state.google;
-    if(!state.google){ if(frame&&frame.getAttribute('src')!=='about:blank') frame.src='about:blank'; return; }
+    if(!state.google){
+      if(state.googleTimer){ clearTimeout(state.googleTimer); state.googleTimer=null; }
+      state.googleLoaded=false;
+      if(fb) fb.hidden=true;
+      if(frame&&frame.getAttribute('src')!=='about:blank') frame.src='about:blank';
+      return;
+    }
     var l=null; JP.forEach(function(x){ if(x.id===state.sel) l=x; });
     var q=l?(l.lat+','+l.lng):'Jaipur Rajasthan';
     var embed='https://www.google.com/maps/embed?q='+encodeURIComponent(q)+'&z='+(l?13:11);
-    if(frame&&frame.getAttribute('src')!==embed) frame.src=embed;
+    if(frame&&frame.getAttribute('src')!==embed){ state.googleLoaded=false; frame.src=embed; }
     if(label) label.textContent=l?(l.name+' · Jaipur'):'Jaipur Rajasthan';
-    if(open) open.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+    var full='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+    if(open) open.href=full; if(fbOpen) fbOpen.href=full;
     var n=document.getElementById('jpMapNote');
     if(n) n.textContent=l?('Google Maps · '+l.name):'Google Maps · Jaipur Rajasthan';
+    if(fb) fb.hidden=true;
+    if(state.googleTimer) clearTimeout(state.googleTimer);
+    state.googleTimer=setTimeout(function(){
+      if(state.google&&!state.googleLoaded&&fb) fb.hidden=false;
+    },9000);
   }
   function renderBench(){
     var box=document.getElementById('jpBench'); if(!box) return;
@@ -65965,6 +66069,8 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   /* ---------- MapLibre map (free tiles) + self-contained SVG fallback ---------- */
   var TILES={
     night:['https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png'],
+    nightplus:['https://basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png'],
+    nightlabels:['https://basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png'],
     streets:['https://basemaps.cartocdn.com/voyager/{z}/{x}/{y}.png'],
     sat:['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}']
   };
@@ -65985,9 +66091,19 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     return window.__jpMLPromise;
   }
   function style(){
+    var attr='© CARTO · © OpenStreetMap contributors · © Esri';
+    if(state.base==='nightplus'){
+      return {version:8,sources:{
+          jpBase:{type:'raster',tiles:TILES.nightplus,tileSize:256,attribution:attr},
+          jpLabels:{type:'raster',tiles:TILES.nightlabels,tileSize:256,attribution:attr}
+        },layers:[
+          {id:'jpbase',type:'raster',source:'jpBase',paint:{'raster-saturation':-0.65,'raster-contrast':0.12}},
+          {id:'jplabels',type:'raster',source:'jpLabels',paint:{'raster-opacity':0.94}}
+        ]};
+    }
     return {version:8,sources:{jp:{type:'raster',tiles:TILES[state.base]||TILES.night,tileSize:256,
-      attribution:'© CARTO · © OpenStreetMap contributors · © Esri'}},
-      layers:[{id:'jpbase',type:'raster',source:'jp'}]};
+      attribution:attr}},
+      layers:[{id:'jpbase',type:'raster',source:'jp',paint:{'raster-saturation':state.base==='sat'?0:-0.35}}]};
   }
   function initMap(){
     if(state.map||state.mapTried) return;
@@ -66015,8 +66131,38 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     if(state.google) return;
     if(state.map && !state.mapFailed){
       try{ state.map.setStyle(style()); state.map.once('styledata',function(){ syncMarkers(); resizeMap(); }); }catch(e){}
-      if(n) n.textContent=state.base==='sat'?'Satellite · Esri · indicative pins':'Jaipur · indicative locality map';
+      if(n) n.textContent=state.base==='sat'?'Satellite · Esri · indicative pins':state.base==='nightplus'?'Night+ · enhanced labels · indicative pins':'Jaipur · indicative locality map';
+      setTimeout(resizeMap,60);
     } else { if(n) n.textContent='Offline locality map · tiles unavailable'; drawSvg(); }
+    setTimeout(resizeMap,120);
+  }
+  function projectTone(p){
+    if(p.cat.indexOf('villas')>=0) return {bg:'#5C4A28',ic:'🏡'};
+    if(p.cat.indexOf('shops')>=0) return {bg:'#6A3C47',ic:'🏬'};
+    if(p.cat.indexOf('townships')>=0) return {bg:'#365C57',ic:'🏙'};
+    if(p.cat.indexOf('plots')>=0) return {bg:'#3D5B35',ic:'🌿'};
+    return {bg:'#4C4464',ic:'🏢'};
+  }
+  function syncProjectMarkers(){
+    state.projMarkers.forEach(function(m){ try{ m.remove(); }catch(e){} }); state.projMarkers=[];
+    var map=state.map;
+    if(!map||!window.maplibregl||!state.showProjects||state.mapFailed) return;
+    var counts={};
+    SHOW.forEach(function(p){
+      var l=null; if(p.loc) JP.forEach(function(x){ if(x.id===p.loc) l=x; });
+      if(!l) return;
+      var n=counts[p.loc]||0; counts[p.loc]=n+1;
+      var a=n*2.32, r=n===0?0:17+Math.floor(n/6)*7;
+      var dx=n===0?0:Math.round(Math.cos(a)*r), dy=n===0?0:Math.round(Math.sin(a)*r);
+      var tone=projectTone(p);
+      var el=document.createElement('button'); el.type='button';
+      el.className='jp-projpin'; el.style.background=tone.bg;
+      el.title=p.name+' — '+p.zone; el.setAttribute('aria-label',p.name);
+      el.innerHTML='<span>'+tone.ic+'</span><b>'+esc2(p.name)+'</b>';
+      el.addEventListener('click',function(ev){ ev.stopPropagation(); focusProject(p.id); });
+      var mk=new window.maplibregl.Marker({element:el,anchor:'center',offset:[dx,dy]}).setLngLat([l.lng,l.lat]).addTo(map);
+      state.projMarkers.push(mk);
+    });
   }
   function syncMarkers(){
     var map=state.map; if(!map||!window.maplibregl) return;
@@ -66026,10 +66172,12 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       var el=document.createElement('button'); el.type='button';
       el.className='jp-pin m-'+st+(state.sel===l.id?' sel':'');
       el.title=l.name+' — '+st; el.setAttribute('aria-label',l.name);
+      el.innerHTML='<b>'+esc2(l.name)+'</b>';
       el.addEventListener('click',function(ev){ ev.stopPropagation(); select(l.id); });
       var mk=new window.maplibregl.Marker({element:el,anchor:'center'}).setLngLat([l.lng,l.lat]).addTo(map);
       state.markers.push(mk);
     });
+    syncProjectMarkers();
   }
   function fallback(){
     state.mapFailed=true;
@@ -66055,6 +66203,25 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       s+='<g data-loc="'+l.id+'" style="cursor:pointer"><circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(state.sel===l.id?9:6)+'" fill="'+col+'" stroke="#fff" stroke-width="1.3"/>'
         +'<title>'+esc2(l.name)+'</title><text x="'+(x+10).toFixed(1)+'" y="'+(y+4).toFixed(1)+'" fill="'+(st==='off'?'#71766F':'#EDEBD9')+'" font-size="10.5" font-family="sans-serif">'+esc2(l.name)+'</text></g>';
     });
+    if(state.showProjects){
+      var pg={};
+      SHOW.forEach(function(p){
+        if(!pg[p.loc]) pg[p.loc]={n:0,names:[],first:p};
+        pg[p.loc].n++; pg[p.loc].names.push(p.name);
+      });
+      Object.keys(pg).forEach(function(loc){
+        var l=null; JP.forEach(function(x){ if(x.id===loc) l=x; }); if(!l) return;
+        var g=pg[loc], x=X(l.lng)+16, y=Y(l.lat)-15;
+        var tone=projectTone(g.first);
+        s+='<g data-project="'+g.first.id+'" style="cursor:pointer"><rect x="'+(x-7).toFixed(1)+'" y="'+(y-7).toFixed(1)+'" width="14" height="14" rx="4" fill="'+tone.bg+'" stroke="#F0D89A" stroke-width="1"/>'
+          +'<text x="'+x.toFixed(1)+'" y="'+(y+4).toFixed(1)+'" text-anchor="middle" fill="#F7E8BE" font-size="9" font-family="sans-serif">'+g.n+'</text>'
+          +'<title>'+esc2(l.name+' · '+g.n+' showcase projects: '+g.names.slice(0,8).join(', '))+'</title></g>';
+      });
+    }
+    if(state.sel){
+      var sl=null; JP.forEach(function(x){ if(x.id===state.sel) sl=x; });
+      if(sl) s+='<circle cx="'+X(sl.lng).toFixed(1)+'" cy="'+Y(sl.lat).toFixed(1)+'" r="15" fill="none" stroke="#F7E8BE" stroke-width="1.4" stroke-dasharray="3 3"/>';
+    }
     svg.innerHTML=s;
   }
   function select(id){
@@ -66082,7 +66249,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     try{
       var blob=new Blob(['\ufeff'+txt],{type:'text/csv;charset=utf-8'});
       var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
-      a.download='bcs-jaipur-map-'+new Date().toISOString().slice(0,10)+'.csv';
+      a.download='bcs-jaipur-map-'+istISO()+'.csv';
       document.body.appendChild(a); a.click(); a.remove();
       setTimeout(function(){ try{ URL.revokeObjectURL(a.href); }catch(e){} },1500);
       toast('Jaipur explorer CSV ready');
@@ -66135,6 +66302,12 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     var m=t.closest('#jpMode button'); if(m){ state.mode=m.dataset.m; setScale(); refresh(); return; }
     var bl=t.closest('#jpBase button'); if(bl){ state.base=bl.dataset.b; switchBase(); return; }
     var sc=t.closest('[data-showcat]'); if(sc){ state.showCat=sc.dataset.showcat; renderShow(); return; }
+    var pr=t.closest('svg [data-project]');
+    if(pr){
+      focusProject(pr.getAttribute('data-project'));
+      var pw=document.getElementById('jpMapWrap'); if(pw) try{ pw.scrollIntoView({block:'center',behavior:'smooth'}); }catch(e){}
+      return;
+    }
     var sl=t.closest('[data-showloc]');
     if(sl){
       var sid=sl.getAttribute('data-showloc');
@@ -66154,6 +66327,17 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     if(t.closest('#jpCsv')){ csv(); return; }
     if(t.closest('#jpShowCsv')){ showCsv(); return; }
     if(t.closest('#jpShare')){ share(); return; }
+    if(t.closest('#jpGoogleRetry')){
+      state.googleLoaded=false;
+      var gf=document.getElementById('jpGoogleFrame'); if(gf) gf.src='about:blank';
+      setTimeout(updateGoogleFrame,60); toast('Google embed reload kar rahe hain…'); return;
+    }
+    if(t.closest('#jpProjToggle')){
+      state.showProjects=!state.showProjects;
+      var pt=document.getElementById('jpProjToggle'); if(pt) pt.classList.toggle('on',state.showProjects);
+      syncProjectMarkers(); if(state.mapFailed) drawSvg();
+      toast(state.showProjects?'Project pins dikha rahe hain':'Project pins chhupa diye'); return;
+    }
     if(t.closest('#jpZoomIn')){ if(state.map&&!state.mapFailed) state.map.zoomIn(); else toast('Online map needed for zoom',true); return; }
     if(t.closest('#jpZoomOut')){ if(state.map&&!state.mapFailed) state.map.zoomOut(); else toast('Online map needed for zoom',true); return; }
     if(t.closest('#jpHome')){ if(state.map&&!state.mapFailed) state.map.easeTo({center:[75.80,26.90],zoom:11.05,pitch:state.map.getPitch()}); else drawSvg(); return; }
