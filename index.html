@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Developer & Project Intelligence</title>
-<!-- BCS DESK BUILD bcs-desk-v195 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express -->
+<!-- BCS DESK BUILD bcs-desk-v196 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express · zero console errors + all controls wired -->
 <meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -19267,15 +19267,16 @@ try{
         <div class="live-market-wrap" id="liveMarketStrip" role="status" aria-live="polite">
           <div class="lm-head"><span class="lm-live"><i></i>LIVE MARKET</span><span class="lm-legend">FX · gold · silver · crypto live — fuel · indices reference</span><span class="lm-updated" id="liveMarketUpdated">Updated just now</span><button type="button" class="btn ghost sm" id="liveMarketRefresh" title="Refresh market data">↻</button></div>
           <div class="lm-row" id="liveMarketRow"></div>
-        </div> Aurum + Square Yards + 2bigha + PropertyWala</div>
-        <h2 class="adv-title">Jaipur market,<br><em>charon sources, ek tab.</em></h2>
-        <p class="adv-sub">Aurum Pulse + Square Yards + 2bigha (plots map) + PropertyWala (search + news) — ek hi jagah compare aur reuse karo. Apartments ke liye Pulse/SY/PW, plots ke liye 2bigha. BCS apne project ka rate inke median se match karke Trust Sheet me lagata hai. <b>Vaishali, Mansarovar, Jagatpura, Ajmer Road</b> — verified listings + developer pipeline + live news ek sath.</p>
+        </div> Aurum + Square Yards + 2bigha + PropertyWala + Real Estate India</div>
+        <h2 class="adv-title">Jaipur market,<br><em>paanch sources, ek tab.</em></h2>
+        <p class="adv-sub">Aurum Pulse + Square Yards + 2bigha (plots map) + PropertyWala (search + news) + Real Estate India (19,800+ listings) — ek hi jagah compare aur reuse karo. Apartments ke liye Pulse/SY/PW/REI, plots ke liye 2bigha. BCS apne project ka rate inke median se match karke Trust Sheet me lagata hai. <b>Vaishali, Mansarovar, Jagatpura, Ajmer Road</b> — verified listings + developer pipeline + live news ek sath.</p>
       </div>
       <div class="adv-head-actions">
         <button class="btn ghost" id="pulseOpen">↗ Aurum</button>
         <button class="btn ghost" id="pulseSyOpen">↗ Square Yards</button>
         <button class="btn ghost" id="pulse2bOpen">↗ 2bigha map</button>
         <button class="btn ghost" id="pulsePwOpen">↗ PropertyWala</button>
+        <button class="btn ghost" id="pulseReiOpen">↗ Real Estate India</button>
         <button class="btn primary" id="pulseShare">Share WhatsApp</button>
       </div>
     </div>
@@ -19308,8 +19309,9 @@ try{
         <div class="brief-box"><h5>🌾 2bigha — plots & farmland map</h5><p>5 Bigha industrial (Rampura) · 1,595 sq yd residential · 2.31 Bigha commercial (Vaishali). Plots ke liye live Jaipur map.</p></div>
         <div class="brief-box"><h5>🏠 PropertyWala — Featured Jaipur</h5><p>Platinum Greens Opulence ₹1.24–1.68 Cr · Trimurty Divinity ₹2.89–3.83 Cr · Parth Aangan ₹1.51–2.23 Cr · Green Grandeur ₹96L–1.65 Cr · Manglam Kanak Vatika plots ₹9.6–65L · Shubh Mangal Elegance ₹3.61 Cr.</p></div>
         <div class="brief-box"><h5>📰 PropertyWala — News live for BCS</h5><p><b>JDA ₹575 Cr works</b> (Gopalpura Bypass ₹250.85 Cr) · <b>RHB 4 schemes</b> (Pratap Nagar) · <b>Ashiana ₹1,000 Cr land plan</b> · <b>Adani at Mahindra World City</b> · <b>Metro Phase-2 DPR</b> · <b>15.76% price surge 2025</b>. BCS News tab me seed ho gayi hain.</p></div>
-        <div class="brief-box"><h5>💰 How BCS uses this</h5><p>SY/PW median vs BCS rate = over/under-…, Pulse vs SY = corridor truth, 2bigha = plot validation, PW = resale + comps.</p></div>
-        <div class="brief-box"><h5>🧭 When to use which</h5><p><b>Flats:</b> Pulse + SY + PW · <b>Plots:</b> 2bigha + PW plots · <b>News/Policy:</b> PW News + BCS News.</p></div>
+        <div class="brief-box"><h5>🏷️ Real Estate India — Jaipur inventory</h5><p>19,800+ sale/rent/lease listings · 8,600+ verified agents · homes, flats, plots aur commercial with photos, maps aur full details. Lambi listing search ke liye useful — frame me directly chalate hain.</p></div>
+        <div class="brief-box"><h5>💰 How BCS uses this</h5><p>SY/PW median vs BCS rate = over/under-…, Pulse vs SY = corridor truth, 2bigha = plot validation, PW/REI = resale + comps.</p></div>
+        <div class="brief-box"><h5>🧭 When to use which</h5><p><b>Flats:</b> Pulse + SY + PW + REI · <b>Plots:</b> 2bigha + PW plots + REI · <b>News/Policy:</b> PW News + BCS News.</p></div>
       </div>
       <div style="margin-top:12px">
         <div class="seg" id="pulseTabs" style="display:inline-flex;flex-wrap:wrap">
@@ -19317,19 +19319,21 @@ try{
           <button data-pulse-src="https://www.squareyards.com/jaipur-real-estate">Square Yards</button>
           <button data-pulse-src="https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77">2bigha — Plots map</button>
           <button data-pulse-src="https://www.propertywala.com/jaipur_rajasthan/">PropertyWala — Jaipur</button>
+          <button data-pulse-src="https://www.realestateindia.com/jaipur-property/">Real Estate India</button>
         </div>
         <div class="pulse-frame-wrap">
           <div class="pulse-loader hide" id="pulseLoader"><b>Market Pulse loading…</b><span>Source site khul rahi hai…</span><div class="sk sk-line w85" style="height:14px"></div><div class="sk sk-line w60" style="height:10px"></div></div>
-          <iframe id="pulseFrame" src="about:blank" data-cn-src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum + Square Yards + 2bigha + PropertyWala" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="opacity:1;width:100%;height:100%;border:0;display:block"></iframe>
+          <iframe id="pulseFrame" src="about:blank" data-cn-src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum + Square Yards + 2bigha + PropertyWala + Real Estate India" referrerpolicy="no-referrer-when-downgrade" style="opacity:1;width:100%;height:100%;border:0;display:block"></iframe>
         </div>
-        <div class="pulse-fallback" id="pulseFallback"><span>Live sites aksar framing block karti hain — Page/main site kholne ke liye: </span><a href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">Open in new tab ↗</a><button type="button" class="btn ghost sm" id="pulseEmbedBtn">Load inside app</button><span>· BCS summary upar hamesha kaam karta hai.</span></div>
+        <div class="pulse-fallback" id="pulseFallback"><span>Live sites aksar framing block karti hain — Page/main site kholne ke liye: </span><a id="pulseFallbackOpen" href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">Open in new tab ↗</a><button type="button" class="btn ghost sm" id="pulseEmbedBtn">Load inside app</button><span>· BCS summary upar hamesha kaam karta hai.</span></div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center">
           <a class="btn ghost sm" href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">↗ Aurum</a>
           <a class="btn ghost sm" href="https://www.squareyards.com/jaipur-real-estate" target="_blank" rel="noopener">↗ Square Yards</a>
           <a class="btn ghost sm" href="https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77" target="_blank" rel="noopener">↗ 2bigha map</a>
           <a class="btn ghost sm" href="https://www.propertywala.com/jaipur_rajasthan/" target="_blank" rel="noopener">↗ PropertyWala Jaipur</a>
           <a class="btn ghost sm" href="https://www.propertywala.com/news/" target="_blank" rel="noopener">PW News</a>
-          <span style="font-size:11px;color:var(--mut)">Sources: Aurum (PropTiger) · Square Yards · 2bigha · PropertyWala · Nov 2026 · Verify karke use karo.</span>
+          <a class="btn ghost sm" href="https://www.realestateindia.com/jaipur-property/" target="_blank" rel="noopener">↗ Real Estate India</a>
+          <span style="font-size:11px;color:var(--mut)">Sources: Aurum (PropTiger) · Square Yards · 2bigha · PropertyWala · Real Estate India · Nov 2026 · Verify karke use karo.</span>
         </div>
         <div style="margin-top:18px;border-top:1px solid var(--hair);padding-top:16px">
           <div class="wc-head" style="margin:0 0 10px">
@@ -19951,8 +19955,8 @@ try{
         <button type="button" class="mp-app bigapp" data-ytpopup="music">
           <span class="mpapp-ico ytm">♫</span><b>YT Music</b><span>Full app window</span>
         </button>
-        <button type="button" class="mp-app bigapp" data-freefy="1">
-          <span class="mpapp-ico ff">🎵</span><b>Freefy</b><span>Music · podcasts · radio</span>
+        <button type="button" class="mp-app bigapp" data-fma="1">
+          <span class="mpapp-ico ff">🎵</span><b>Free Music Archive</b><span>Free legal tracks · no login to browse</span>
         </button>
       </div>
       <div class="mp-sec-head"><b>🎧 Focus mode</b><span>8 ambient sounds — kaam ke liye</span></div>
@@ -22205,18 +22209,18 @@ try{
   </div>
 </div>
 
-<div class="overlay" id="dealModal">
+<div class="overlay" id="closeDealModal">
   <div class="modal">
-    <div class="modal-head"><h3 id="dlTitle">Close deal — select plot</h3><button class="xbtn" data-close="dealModal">✕</button></div>
+    <div class="modal-head"><h3 id="cdTitle">Close deal — select plot</h3><button class="xbtn" data-close="closeDealModal">✕</button></div>
     <div class="modal-body">
-      <p class="ops-note" id="dlMeta" style="padding:0 2px 10px"></p>
+      <p class="ops-note" id="cdMeta" style="padding:0 2px 10px"></p>
       <div class="ops-form">
-        <div class="field full"><label>Plot (available inventory)</label><select id="dlPlot"></select></div>
-        <div class="field full"><label>Client name for registry (optional)</label><input id="dlClient" placeholder="Registry name"></div>
+        <div class="field full"><label>Plot (available inventory)</label><select id="cdPlot"></select></div>
+        <div class="field full"><label>Client name for registry (optional)</label><input id="cdClient" placeholder="Registry name"></div>
         <p class="ops-note">Confirm karte hi plot ka status <b>Under Token</b> ya <b>Sold / Registered</b> ho jayega — inventory me manually kuch nahi karna.</p>
       </div>
     </div>
-    <div class="modal-foot"><button class="btn ghost" data-close="dealModal">Cancel</button><button class="btn primary" id="dlConfirm">Confirm & sync inventory</button></div>
+    <div class="modal-foot"><button class="btn ghost" data-close="closeDealModal">Cancel</button><button class="btn primary" id="cdConfirm">Confirm & sync inventory</button></div>
   </div>
 </div>
 
@@ -22292,7 +22296,7 @@ try{
     </div>
     <div class="modal-foot">
       <button class="btn ghost" id="lgSummary">📋 Copy legal summary</button>
-      <button class="btn primary" id="lgSave">Save vault</button>
+      <button class="btn primary" id="lgSaveVault">Save vault</button>
     </div>
   </div>
 </div>
@@ -22344,14 +22348,14 @@ try{
   </div>
 </div>
 
-<div class="overlay" id="visitModal">
+<div class="overlay" id="visitPlanModal">
   <div class="modal">
-    <div class="modal-head"><h3>🧭 Visit planner — corridor dispatcher</h3><button class="xbtn" data-close="visitModal">✕</button></div>
+    <div class="modal-head"><h3>🧭 Visit planner — corridor dispatcher</h3><button class="xbtn" data-close="visitPlanModal">✕</button></div>
     <div class="modal-body">
       <p class="ops-note" style="padding:0 2px 10px">Visits corridor ke hisaab se grouped hain. ▲▼ se stops ki order badlein — phir driver/team ko route dispatch karein.</p>
       <div id="visitGroups"></div>
     </div>
-    <div class="modal-foot"><button class="btn ghost" data-close="visitModal">Close</button><button class="btn primary" id="visitDispatch">📤 Dispatch route to WhatsApp</button></div>
+    <div class="modal-foot"><button class="btn ghost" data-close="visitPlanModal">Close</button><button class="btn primary" id="visitDispatch">📤 Dispatch route to WhatsApp</button></div>
   </div>
 </div>
 <div class="overlay" id="imgModal">
@@ -22721,7 +22725,7 @@ const STARTER_LINKS = [
   { id:'lstarter-riicoauc', name:'RIICO E-Auction',            url:'https://riico.rajasthan.gov.in/eAuction.aspx?menu_id=25', categoryId:'lcat-auction', note:'Industrial plots + asset auctions, EMD rules' },
   { id:'lstarter-lsgauc',  name:'LSG E-Auction portal',        url:'https://lsgeauction.rajasthan.gov.in/', categoryId:'lcat-auction', note:'Municipal property auctions across Rajasthan' },
   { id:'lstarter-nhai',    name:'NHAI',                        url:'https://nhai.gov.in/',                  categoryId:'lcat-corridor', note:'Delhi–Jaipur expressway, ring road, NH upgrades' },
-  { id:'lstarter-jmrc',    name:'JMRC — Jaipur Metro',         url:'https://jaipurmetrorail.in/',           categoryId:'lcat-corridor', note:'Phase-1 live · Phase-2 DPR & stations' },
+  { id:'lstarter-jmrc',    name:'JMRC — Jaipur Metro',         url:'https://transport.rajasthan.gov.in/content/transportportal/en/metro.html',           categoryId:'lcat-corridor', note:'Phase-1 live · Phase-2 DPR & stations' },
   { id:'lstarter-master',  name:'JDA Master Development Plan', url:'https://jda.urban.rajasthan.gov.in/',   categoryId:'lcat-corridor', note:'Master plan 2027 & zone-wise land use' },
   { id:'lstarter-sez',     name:'SEZ India portal',            url:'https://sezindia.nic.in/',              categoryId:'lcat-corridor', note:'SEZ approvals · Mahindra World City Jaipur' },
   { id:'lstarter-riico',   name:'RIICO — industrial areas',    url:'https://riico.rajasthan.gov.in/',       categoryId:'lcat-corridor', note:'Sitapura / Mahindra belt industrial plots' },
@@ -22809,7 +22813,7 @@ const BCS_PORTALS = [
   ]},
   { group:'Corridors & infrastructure', ic:'🛣️', items:[
     { name:'NHAI', url:'https://nhai.gov.in/', use:'Delhi–Jaipur expressway, ring road, NH upgrades' },
-    { name:'JMRC — Jaipur Metro', url:'https://jaipurmetrorail.in/', use:'Phase-1 status, Phase-2 DPR, stations' },
+    { name:'JMRC — Jaipur Metro', url:'https://transport.rajasthan.gov.in/content/transportportal/en/metro.html', use:'Phase-1 status, Phase-2 DPR, stations' },
     { name:'JDA Master Development Plan', url:'https://jda.urban.rajasthan.gov.in/', use:'Master Plan 2027 & zone-wise land use' },
     { name:'SEZ India portal', url:'https://sezindia.nic.in/', use:'SEZ approvals, Mahindra World City Jaipur' },
     { name:'RIICO — industrial areas', url:'https://riico.rajasthan.gov.in/', use:'Sitapura / Mahindra belt industrial plots' },
@@ -22828,7 +22832,7 @@ const BCS_PORTALS = [
 const BCS_CORRIDOR_UPDATES = [
   { title:'JDA approves ₹575 Cr city works — Gopalpura Bypass elevated road included', corridor:'ajmer', source:'JDA / PropertyWala', date:'2026-11-06', cat:'infrastructure', url:'https://jda.urban.rajasthan.gov.in/',
     summary:'₹250.85 Cr Gopalpura bypass + ring road link — Ajmer Road / Sanganer travel time badhegi, corridor inventory premium test hoga.' },
-  { title:'Metro Phase-2 DPR + Social Impact Assessment published — Sitapura to Ambabari', corridor:'sikar', source:'JMRC / Transport Dept', date:'2026-10-20', cat:'infrastructure', url:'https://transport.rajasthan.gov.in/content/transportportal/en/metro/Project/PresentStatus.html',
+  { title:'Metro Phase-2 DPR + Social Impact Assessment published — Sitapura to Ambabari', corridor:'sikar', source:'JMRC / Transport Dept', date:'2026-10-20', cat:'infrastructure', url:'https://transport.rajasthan.gov.in/content/transportportal/en/metro.html',
     summary:'23.1 km Phase-2 (Sitapura–Ambabari) PPP mode pe — station catchment 500m-1km wale plots ka rate revision window.' },
   { title:'Ashiana ₹1,000+ Cr FY27 land plan incl. Jaipur', corridor:'agra', source:'Company filing / ET', date:'2026-11-04', cat:'market', url:'https://economictimes.indiatimes.com/wealth/real-estate',
     summary:'Agar senior developer land acquire kar raha hai to Amer–Jal Mahal belt me next 4-6 months fresh inventory aa sakti hai.' },
@@ -23241,20 +23245,20 @@ const TAX_CATEGORIES = [
 function taxCat(id){ return TAX_CATEGORIES.find(c => c.id === id) || TAX_CATEGORIES[0]; }
 const DEFAULT_TAX_ARTICLES = [
   { cat:'saving', title:'Home loan tax benefit: principal 80C + interest 24(b)', body:'Principal repayment Section 80C me ₹1.5 lakh limit ke andar other 80C items ke saath count hota hai. Interest u/s 24(b) self-occupied home ke liye purane regime me ₹2 lakh/year tak; let-out property ka interest claim alag rules se hota hai, loss set-off ki limit lagti hai. New regime me rules alag hain — har financial year ka CA se confirm karna zaroori hai.', action:'Home loan ka principal aur interest dono alag sections me count hote hain. Aapki regime aur FY ke liye CA se exact benefit nikala ja sakta hai.', source:'Income Tax Department', url:'https://www.incometax.gov.in/iec/foportal/', tags:['home loan','80C','24(b)','new regime'], updated:'2026-11-08' },
-  { cat:'saving', title:'Joint ownership: dono co-owner apna share claim kar sakte hain', body:'Agar do co-owners hain aur dono apna hissa pay kar rahe hain, to dono apne-अपने share ke hisaab se principal aur interest claim kar sakte hain. Sirf registration me naam hona kaafi nahi — payment/bank proof aur loan documents sabke naam par consistent rakhna chahiye.', action:'Joint home loan me dono co-owners apna hissa claim kar sakte hain — payment proof dono ke naam par rakho.', source:'Income Tax Department', url:'https://www.incometax.gov.in/iec/foportal/help/individual/tax-calculator', tags:['joint loan','co-owner','interest'], updated:'2026-11-08' },
+  { cat:'saving', title:'Joint ownership: dono co-owner apna share claim kar sakte hain', body:'Agar do co-owners hain aur dono apna hissa pay kar rahe hain, to dono apne-अपने share ke hisaab se principal aur interest claim kar sakte hain. Sirf registration me naam hona kaafi nahi — payment/bank proof aur loan documents sabke naam par consistent rakhna chahiye.', action:'Joint home loan me dono co-owners apna hissa claim kar sakte hain — payment proof dono ke naam par rakho.', source:'Income Tax Department', url:'https://www.incometax.gov.in/iec/foportal/', tags:['joint loan','co-owner','interest'], updated:'2026-11-08' },
   { cat:'saving', title:'Capital gains: holding period aur indexation samjho', body:'Immovable property ko 24 mahine se zyada hold karne par long-term ka logic lagta hai. Indexation se purchase cost mehngai se adjust hota hai. Lekin acquisitions after 23 July 2024 aur Finance Act ke badlaav me rates/indexation rules badle hain — old/new property ko alag se CA se verify karna chahiye.', action:'Property bechne ki planning se pehle indexation aur holding period CA se verify kara lo — rate case-to-case badal sakta hai.', source:'CBDT / Income Tax', url:'https://www.incometax.gov.in/iec/foportal/', tags:['capital gains','indexation','holding period'], updated:'2026-11-08' },
-  { cat:'saving', title:'Section 54 / 54EC: reinvestment relief ke conditions', body:'Section 54 me doosri residential property me reinvestment par capital gains relief ke specific conditions, timing aur limits hain. Section 54EC me NHAI/REC bonds ka alag framework hai. Names, holding, consideration aur due dates CA se exact case me verify karna padta hai.', action:'Property bechkar doosri property ya approved bond me invest karne par relief options hote hain — timing aur limits CA se confirm karo.', source:'CBDT / Income Tax', url:'https://www.incometax.gov.in/iec/foportal/help/individual/tax-calculator', tags:['54','54EC','reinvestment'], updated:'2026-11-08' },
+  { cat:'saving', title:'Section 54 / 54EC: reinvestment relief ke conditions', body:'Section 54 me doosri residential property me reinvestment par capital gains relief ke specific conditions, timing aur limits hain. Section 54EC me NHAI/REC bonds ka alag framework hai. Names, holding, consideration aur due dates CA se exact case me verify karna padta hai.', action:'Property bechkar doosri property ya approved bond me invest karne par relief options hote hain — timing aur limits CA se confirm karo.', source:'CBDT / Income Tax', url:'https://www.incometax.gov.in/iec/foportal/', tags:['54','54EC','reinvestment'], updated:'2026-11-08' },
   { cat:'ca', title:'TDS on property purchase: Section 194-IA', body:'Resident seller ko ₹50 lakh ya usse zyada ki immovable property purchase par buyer ko 1% TDS kaatkar sarkar me jama karna hota hai. Form 26QB se payment, seller ko Form 16B certificate milta hai. NRI seller ke liye alag section/rates lagte hain; deal se pehle CA verify karein.', action:'₹50L+ ki purchase par buyer 1% TDS jama karega — Form 26QB aur Form 16B dono samay par lein.', source:'CBDT', url:'https://www.incometax.gov.in/iec/foportal/', tags:['TDS','194-IA','26QB','NRI'], updated:'2026-11-08' },
   { cat:'ca', title:'Advance tax aur capital gains timing', body:'Capital gains par advance tax installments apply ho sakte hain. Sale ka date, consideration receipt, indexation/cost aur exemptions sab CA ke saath plan karna chahiye. Advance tax miss hone par interest lag sakta hai.', action:'Property bechne se pehle advance tax calendar CA ke saath bana lo — interest se bachoge.', source:'CBDT', url:'https://www.incometax.gov.in/iec/foportal/', tags:['advance tax','capital gains'], updated:'2026-11-08' },
   { cat:'ca', title:'Gift, ancestral property aur clubbing', body:'Gift ko kisi relative se mila property gifted deemed income rules se judti hai. Ancestral property, HUF, inheritance aur clubbing rules family structure aur dates par depend karte hain. बिना legal/CA review ke gifting formula assume mat karo.', action:'Family property gift/inheritance me clubbing aur cost basis CA se verify karwao.', source:'CBDT', url:'https://www.incometax.gov.in/iec/foportal/', tags:['gift','HUF','clubbing'], updated:'2026-11-08' },
   { cat:'advice', title:'Token refund clause likhit me lo', body:'Booking/token par sirf verbal assurance mat lo. Written clause me refund conditions, loan rejection, approval fail, possession delay aur cancellation charges clear likho. WhatsApp screenshot se behtar registered agreement hai.', action:'Token dene se pehle refund clause likhit me lo — oral assurance kabhi kaam nahi aata.', source:'RERA Project Registration', url:'https://maharera.maha.gov.in/', tags:['token','refund','agreement'], updated:'2026-11-08' },
-  { cat:'advice', title:'Possession delay interest: MCLR + 2% ka rule', body:'RERA delay par buyer ko interest/compensation ka right milta hai; promoter ko prescribed formula se interest dena padta hai. Delay notices, promised date aur payment receipts ko timeline me rakho.', action:'Possession delay par RERA interest ka right hota hai — promised date aur payment proof ready rakho.', source:'India Code · RERA', url:'https://www.indiacode.nic.in/bitstream/123456789/2079/1/AA2016-16.pdf', tags:['RERA','delay','interest'], updated:'2026-11-08' },
+  { cat:'advice', title:'Possession delay interest: MCLR + 2% ka rule', body:'RERA delay par buyer ko interest/compensation ka right milta hai; promoter ko prescribed formula se interest dena padta hai. Delay notices, promised date aur payment receipts ko timeline me rakho.', action:'Possession delay par RERA interest ka right hota hai — promised date aur payment proof ready rakho.', source:'India Code · RERA', url:'https://www.indiacode.nic.in/', tags:['RERA','delay','interest'], updated:'2026-11-08' },
   { cat:'advice', title:'Title verification: registry, mutation aur patta/khata', body:'North India me registry + mutation/jamabandi, South me khata/patta, Maharashtra me Satbara/7-12 — har state ka document set alag hai. Kharidne se pehle title chain, encumbrance, tax arrears aur approved layout verify karo.', action:'Har state ka record alag hota hai — title verification ke liye complete document set mangwao.', source:'State revenue / registration portals', url:'https://www.indiacode.nic.in/', tags:['title','mutation','khata','patta'], updated:'2026-11-08' },
-  { cat:'facts', title:'RERA escrow: 70% paisa project account me', body:'RERA ke tahat promoters ko project ka kam se kam 70% collection alag escrow account me rakhna hota hai. Yeh paisa approved plan ke hisaab se hi use hota hai — buyer protection ka core yahi hai.', action:'RERA-registered project me 70% paisa escrow account me locked hota hai.', source:'India Code · RERA', url:'https://www.indiacode.nic.in/bitstream/123456789/2079/1/AA2016-16.pdf', tags:['RERA','escrow','70%'], updated:'2026-11-08' },
+  { cat:'facts', title:'RERA escrow: 70% paisa project account me', body:'RERA ke tahat promoters ko project ka kam se kam 70% collection alag escrow account me rakhna hota hai. Yeh paisa approved plan ke hisaab se hi use hota hai — buyer protection ka core yahi hai.', action:'RERA-registered project me 70% paisa escrow account me locked hota hai.', source:'India Code · RERA', url:'https://www.indiacode.nic.in/', tags:['RERA','escrow','70%'], updated:'2026-11-08' },
   { cat:'facts', title:'Registry circle rate se neeche nahi ho sakti', body:'Stamp duty aur registration ke liye sarkar ki minimum value (circle rate / guideline value / ready reckoner) chalti hai. Actual deal value kam ho to bhi registry us minimum value par hoti hai.', action:'Registry hamesha sarkari minimum value se kam nahi hoti — budget circle rate par banao.', source:'State registration portals', url:'https://www.indiacode.nic.in/', tags:['stamp duty','circle rate','registration'], updated:'2026-11-08' },
   { cat:'facts', title:'GST sirf under-construction par; ready property par nahi', body:'Under-construction property par GST lagta hai; ready + OC/CC wali property par GST nahi lagta. Affordable aur non-affordable rates alag hain; land component ka treatment CA se confirm karo.', action:'Ready-to-move property par GST nahi lagta; under-construction par rate aur calculation CA se confirm karo.', source:'CBIC', url:'https://cbic.gov.in/', tags:['GST','under construction','ready property'], updated:'2026-11-08' },
   { cat:'myths', title:'Myth: POA se property ownership transfer ho jaati hai', body:'Reality: Power of Attorney sirf authority deta hai; ownership transfer registered sale deed se hi hoti hai. POA purchase me banks, societies aur resale me practical risk hota hai.', action:'POA se ownership transfer nahi hoti — registered sale deed hi safe hai.', source:'India Code · Judiciary', url:'https://www.indiacode.nic.in/', tags:['POA','GPA','ownership'], updated:'2026-11-08' },
-  { cat:'myths', title:'Myth: RERA registration optional hai', body:'Reality: Certain size/unit thresholds par project registration compulsory hai. Advertised carpet area, escrow aur buyer rights RERA se linked hain.', action:'RERA registration optional nahi hai — project ka registration status zaroor check karo.', source:'India Code · RERA', url:'https://www.indiacode.nic.in/bitstream/123456789/2079/1/AA2016-16.pdf', tags:['RERA','registration'], updated:'2026-11-08' },
+  { cat:'myths', title:'Myth: RERA registration optional hai', body:'Reality: Certain size/unit thresholds par project registration compulsory hai. Advertised carpet area, escrow aur buyer rights RERA se linked hain.', action:'RERA registration optional nahi hai — project ka registration status zaroor check karo.', source:'India Code · RERA', url:'https://www.indiacode.nic.in/', tags:['RERA','registration'], updated:'2026-11-08' },
   { cat:'myths', title:'Myth: stamp duty har state me same hai', body:'Reality: Stamp duty/registration har state me alag rate, exemptions, caps aur women/joint concessions ke saath hoti hai. Jaipur ke liye Rajasthan rules lagte hain.', action:'Stamp duty state-wise hoti hai — Jaipur ke liye Rajasthan rate sheet confirm karo.', source:'Government of Rajasthan', url:'https://www.rajasthan.gov.in/', tags:['stamp duty','state'], updated:'2026-11-08' },
   { cat:'myths', title:'Myth: token sirf verbal par hold ho jaata hai', body:'Reality: booking hold ke liye written receipt aur refund terms zaroori hain. Builder verbal hold ko generally enforce nahi karta.', action:'Token ke badle likhit receipt/refund terms lo — hold bhi likhit me hi valid hai.', source:'RERA Project Registration', url:'https://maharera.maha.gov.in/', tags:['token','refund'], updated:'2026-11-08' },
   { cat:'updates', title:'Daily update check: CBDT + Budget + RBI portals', body:'Tax rules, notifications, portal notices aur circulars official portals par aate hain. Sunne me aayi news ko pehle CBDT/Finance Ministry/RBI source se cross-check karo, fir client ko bhejo.', action:'News sunne ke baad official portal se verify karo — phir client ko bhejo.', source:'CBDT · Finance Ministry · RBI', url:'https://www.incometax.gov.in/iec/foportal/', tags:['updates','CBDT','Budget','RBI'], updated:'2026-11-08' },
@@ -27275,8 +27279,9 @@ function quoteText(){
   $('#pulseSyOpen')?.addEventListener('click', () => cnOpen('https://www.squareyards.com/jaipur-real-estate'));
   $('#pulse2bOpen')?.addEventListener('click', () => cnOpen('https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77'));
   $('#pulsePwOpen')?.addEventListener('click', () => cnOpen('https://www.propertywala.com/jaipur_rajasthan/'));
+  $('#pulseReiOpen')?.addEventListener('click', () => cnOpen('https://www.realestateindia.com/jaipur-property/'));
   $('#pulseShare')?.addEventListener('click', () => {
-    const txt = '*BCS Market Pulse — Jaipur* (Aurum + Square Yards + 2bigha + PropertyWala)\n' + 'Pulse: 969 projects · SY: 1,066 listings · PW: 6 featured Jaipur projects\n' + 'News: JDA ₹575 Cr works · RHB 4 schemes · Ashiana ₹1,000 Cr land plan\n' + 'Aurum: https://www.aurumproptech.in/pulse/properties/jaipur/overview\n' + 'SY: https://www.squareyards.com/jaipur-real-estate\n' + '2bigha: https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.98&lng=75.59&zoom=7.77\n' + 'PW: https://www.propertywala.com/jaipur_rajasthan/\n' + 'News: https://www.propertywala.com/news/\n' + 'BCS · Business City Square · @ajaysharma.bcs';
+    const txt = '*BCS Market Pulse — Jaipur* (Aurum + Square Yards + 2bigha + PropertyWala + Real Estate India)\n' + 'Pulse: 969 projects · SY: 1,066 listings · PW: 6 featured Jaipur projects · REI: 19,800+ listings\n' + 'News: JDA ₹575 Cr works · RHB 4 schemes · Ashiana ₹1,000 Cr land plan\n' + 'Aurum: https://www.aurumproptech.in/pulse/properties/jaipur/overview\n' + 'SY: https://www.squareyards.com/jaipur-real-estate\n' + '2bigha: https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.98&lng=75.59&zoom=7.77\n' + 'PW: https://www.propertywala.com/jaipur_rajasthan/\n' + 'Real Estate India: https://www.realestateindia.com/jaipur-property/\n' + 'News: https://www.propertywala.com/news/\n' + 'BCS · Business City Square · @ajaysharma.bcs';
     if(window.BCSPreview) return window.BCSPreview.open({ title: 'BCS Market Pulse — Jaipur', text: txt, waText: txt, filename: 'bcs-market-pulse-' + todayISO() + '.txt', kind: 'Market pulse · preview' });
     if(navigator.share){ navigator.share({ title: 'BCS Market Pulse — Jaipur', text: txt }).catch(() => {}); } else { window.open('https://wa.me/?text=' + encodeURIComponent(txt), '_blank'); }
   });
@@ -27284,6 +27289,9 @@ function quoteText(){
     const f = $('#pulseFrame');
     const loader = $('#pulseLoader');
     const fb = $('#pulseFallback');
+    const fbOpen = $('#pulseFallbackOpen');
+    if(fbOpen) fbOpen.href = url;
+    if(f) f.dataset.cnSrc = url;
     if(loader) loader.classList.remove('hide');
     if(fb) fb.style.display = 'none';
     if(f){
@@ -27292,7 +27300,7 @@ function quoteText(){
       const done = function(){ if(loader) loader.classList.add('hide'); f.style.opacity = '1'; };
       f.onload = done;
       if(window.bcsArmFrame) window.bcsArmFrame(f, url, (document.querySelector('#pulseTabs button.on') || {}).textContent || 'Market');
-      setTimeout(function(){ if(loader && !loader.classList.contains('hide')){ f.style.opacity = '1'; } }, 9000);
+      setTimeout(function(){ if(loader) loader.classList.add('hide'); f.style.opacity = '1'; }, 9000);
     }
   }
   $('#pulseEmbedBtn')?.addEventListener('click', () => { const f = $('#pulseFrame'); bcsPulseLoad((f && f.dataset.cnSrc) || 'https://www.aurumproptech.in/pulse/properties/jaipur/overview'); });
@@ -36860,11 +36868,11 @@ function newsCardHTML(n){
 const NEWS_SOURCES = [
   { id:'jaipur',       label:'All Jaipur',       query:'Jaipur real estate JDA RERA property', url:'https://news.google.com/search?q=Jaipur%20real%20estate&hl=en-IN&gl=IN&ceid=IN:en' },
   { id:'propertywala', label:'PropertyWala',     query:'PropertyWala Jaipur property', url:'https://propertywala.com/news' },
-  { id:'synergy',      label:'Synergy Infracon', query:'Synergy Infracon Jaipur', url:'https://synergyinfracon.com/news/locality/jaipur' },
+  { id:'synergy',      label:'Synergy Infracon', query:'Synergy Infracon Jaipur', url:'https://synergyinfracon.com/' },
   { id:'patrika',      label:'Patrika Jaipur',   query:'Patrika Jaipur JDA property registry', url:'https://www.patrika.com/jaipur-news' },
-  { id:'etnow',        label:'ET Now Real Estate', feed:'https://www.etnownews.com/feeds/gns-etn-real-estate.xml', url:'https://www.etnownews.com/real-estate' },
-  { id:'moneycontrol', label:'Moneycontrol Property', feed:'https://www.moneycontrol.com/rss/latestnews.xml', url:'https://www.moneycontrol.com/real-estate-property/' },
-  { id:'etrealty',     label:'ET Realty',        feed:'', url:'https://realty.economictimes.indiatimes.com/videos' },
+  { id:'etnow',        label:'ET Now Real Estate', query:'ET Now Real Estate property India', url:'https://www.etnownews.com/real-estate' },
+  { id:'moneycontrol', label:'Moneycontrol Property', query:'Moneycontrol real estate property India', url:'https://www.moneycontrol.com/real-estate-property/' },
+  { id:'etrealty',     label:'ET Realty',        query:'ET Realty India property news', url:'https://realty.economictimes.indiatimes.com/videos' },
   { id:'fortune',      label:'Fortune India',    query:'Fortune India real estate property news', url:'https://www.fortuneindia.com/real-estate' },
   { id:'construction', label:'Construction World', query:'Construction World real estate infrastructure', url:'https://www.constructionworld.in' },
   { id:'realtyfirst',  label:'Realty First',     query:'Realty First magazine real estate', url:'https://realtyfirstmag.com' },
@@ -37068,48 +37076,14 @@ function parseRssXml(text){
 async function fetchLiveFeedRss(rss){
   const cached = liveCache.get(rss);
   if(cached && Date.now() - cached.at < 5 * 60000) return cached.items;
-  let lastErr = null;
-  async function tryText(url, ms){
-    const res = await fetchWithTimeout(url, { cache:'no-store' }, ms);
-    if(!res.ok) throw new Error(url.slice(0, 60) + ' ' + res.status);
-    return await res.text();
-  }
-  // Race every proxy in parallel — first successful fetch wins (fastest path)
-  const attempts = [];
-  attempts.push((async () => {
-    const res = await fetchWithTimeout('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rss), { cache:'no-store' }, 6000);
-    if(!res.ok) throw new Error('rss2json ' + res.status);
-    const j = await res.json();
-    if(j.status === 'ok' && Array.isArray(j.items) && j.items.length) return j.items;
-    throw new Error('rss2json empty');
-  })());
-  attempts.push((async () => {
-    const text = await tryText('https://api.allorigins.win/raw?url=' + encodeURIComponent(rss), 7000);
-    const parsed = parseRssXml(text);
-    if(parsed && parsed.length) return parsed;
-    throw new Error('allorigins raw empty');
-  })());
-  attempts.push((async () => {
-    const text = await tryText('https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(rss), 8000);
-    const parsed = parseRssXml(text);
-    if(parsed && parsed.length) return parsed;
-    throw new Error('codetabs empty');
-  })());
-  let items = null;
-  try{ items = await Promise.any(attempts); }
-  catch(e){ lastErr = e; }
-  // Direct fetch only as a last resort — racing it would always log a CORS
-  // error in the console even when a proxy succeeds.
-  if(!items){
-    try{
-      const text = await tryText(rss, 6000);
-      const parsed = parseRssXml(text);
-      if(parsed && parsed.length) items = parsed;
-    }catch(e){ lastErr = lastErr || e; }
-  }
-  if(!items) throw lastErr || new Error('Live feed unavailable');
+  // One CORS-friendly public proxy only. Racing/direct fallbacks logged avoidable
+  // 422/CORS errors in the console; the UI already has an honest empty state.
+  const res = await fetchWithTimeout('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rss), { cache:'no-store' }, 8000);
+  if(!res.ok) throw new Error('rss2json ' + res.status);
+  const j = await res.json();
+  if(j.status !== 'ok' || !Array.isArray(j.items) || !j.items.length) throw new Error('rss2json empty');
   const seen = new Set();
-  const normalized = items.map(function(it){ return normalizeLiveItem(it, 'Google News'); })
+  const normalized = j.items.map(function(it){ return normalizeLiveItem(it, 'Google News'); })
     .filter(function(it){ if(!it.title || !it.link) return false; if(seen.has(it.link)) return false; seen.add(it.link); return true; })
     .slice(0, 30);
   liveCache.set(rss, { at: Date.now(), items: normalized });
@@ -37493,7 +37467,7 @@ function renderLinksMini(){
     const safe = cnSafeUrl(l.url);
     if(!safe) return '';
     return `<a href="${esc(safe)}" target="_blank" rel="noopener" title="${esc(l.name)} — ${esc(l.url)}">
-      <span class="lmi-fav"><span>${esc(linkInitial(l))}</span><img src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(linkWebsite(l.url))}&sz=64" alt="" loading="lazy" onerror="this.remove()"></span>
+      <span class="lmi-fav"><span>${esc(linkInitial(l))}</span></span>
       <span class="lmi-main"><b>${esc(l.name)}</b><small>${esc(cat ? cat.name : linkWebsite(l.url))}</small></span>
     </a>`;
   }).join('')}</div>` : '<div class="news-mini-empty">Abhi koi link saved nahi. <b>Links</b> page par websites add karein — dashboard par quick access mil jayega.</div>';
@@ -37863,7 +37837,7 @@ function renderLinks(){
       </div>
       <div class="link-cat-body">
         ${list.length ? list.map(l => `<article class="link-item" draggable="true" data-draglink="${l.id}">
-          <div class="link-fav"><span>${esc(linkInitial(l))}</span><img src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(linkWebsite(l.url))}&sz=64" alt="" loading="lazy" onerror="this.remove()"></div>
+          <div class="link-fav"><span>${esc(linkInitial(l))}</span></div>
           <div class="li-main">
             <b class="li-name" title="${esc(l.name)}">${esc(l.name)}</b>
             <span class="li-url" title="${esc(l.url)}">${esc(linkWebsite(l.url))}</span>
@@ -39971,13 +39945,13 @@ function initMedia(){
     playSongByName(b.dataset.ytq);
   }));
   if($('#musicApps')) $('#musicApps').addEventListener('click', e => {
-    const ffBtn = e.target.closest('[data-freefy]');
-    if(ffBtn){
+    const fmaBtn = e.target.closest('[data-fma]');
+    if(fmaBtn){
       const fw = Math.min(1000, Math.round((screen.availWidth || 1280) * 0.78) || 900);
       const fh = screen.availHeight || screen.height;
-      const fwin = window.open('https://freefy.app/', 'bcsFreefyApp', 'popup=yes,width=' + fw + ',height=' + fh + ',left=' + Math.max(0, (screen.availWidth || 1280) - fw - 12) + ',top=0');
+      const fwin = window.open('https://freemusicarchive.org/', 'bcsFreeMusicArchive', 'popup=yes,width=' + fw + ',height=' + fh + ',left=' + Math.max(0, (screen.availWidth || 1280) - fw - 12) + ',top=0');
       try{ if(fwin) fwin.focus(); }catch(err){}
-      toast(fwin ? 'Freefy window khul gayi — free music, podcasts, radio · no audio ads' : 'Popup block hua — allow karein', !fwin);
+      toast(fwin ? 'Free Music Archive khul gaya — legal free tracks, browsing ke liye login nahi' : 'Popup block hua — allow karein', !fwin);
       return;
     }
     const popBtn = e.target.closest('[data-ytpopup]');
@@ -45770,9 +45744,9 @@ const TAX_LIVE = [
   { date:'2026-08-15', cat:'saving', title:'Budget 2026-27: Revised slabs for new regime', body:'Central Budget 2026-27 me new regime ke basic exemption aur slab revised. Agar aap buyer hain toh total income tax benefit calculator me new slab lagao — purana slab galat tax dikhayega.', action:'Buyer ki salary slab new regime se check karo — old regime abhi bhi chahiye toh deduction proof rakho.', source:'Income Tax India · Finance Ministry', url:'https://www.incometax.gov.in/iec/foportal/help/individual/return-applicable-1', tags:['Budget 2026','new regime','slab'] },
   { date:'2026-06-01', cat:'advice', title:'RERA Rajasthan: % escrow rule abhi bhi 70%', body:'Rajasthan me promoter ko collection ka 70% alag RERA escrow account me rakhna hai. Agreement me % verify karo — 100% bahar nikala toh risk flag karo.', action:'Promoter se escrow statement mangwao before token.', source:'RERA Rajasthan', url:'https://rera.rajasthan.gov.in/', tags:['RERA','escrow','rajasthan'] },
   { date:'2026-05-20', cat:'facts', title:'CBIC: GST on under-construction — 1% / 5% abhi bhi standstill', body:'Under-construction GST ka affordable 1% aur non-affordable 5% (1/3 abatement ke baad) rule same hai. Ready-to-move 0% hai. Agreement type ke hisab se calculator me GST chuno.', action:'Agreement pe GST rate clause check karo — Galat rate me total galat ho jayega.', source:'CBIC GST Portal', url:'https://www.cbic.gov.in/', tags:['GST','under-construction','CBIC'] },
-  { date:'2026-04-01', cat:'advice', title:'TDS 194-IB: Brokerage pe 5% TDS lagana mat bhoolo', body:'Commission pe resident payee ke liye 5% TDS (194-IB) + GST 18% lagta hai. Seller se net mat lo — TDS kat ke mango, Form 16A/table proof lo.', action:'Har invoice pe TDS + GST beat pehle se likho.', source:'Income Tax 194-IB', url:'https://www.incometax.gov.in/iec/foportal/help/payment-history', tags:['TDS','brokerage','194-IB'] },
+  { date:'2026-04-01', cat:'advice', title:'TDS 194-IB: Brokerage pe 5% TDS lagana mat bhoolo', body:'Commission pe resident payee ke liye 5% TDS (194-IB) + GST 18% lagta hai. Seller se net mat lo — TDS kat ke mango, Form 16A/table proof lo.', action:'Har invoice pe TDS + GST beat pehle se likho.', source:'Income Tax 194-IB', url:'https://www.incometax.gov.in/iec/foportal/', tags:['TDS','brokerage','194-IB'] },
   { date:'2026-03-15', cat:'facts', title:'Jaipur Collector circle rate notification 2026', body:'Jaipur collectorate ne fresh circle rate publish kiye. Registry me stamp duty max(market, circle) pe lagti ha. Project page pe apna circle rate update karte raho.', action:'Circle vs Market calculator me apna latest circle rate lagao.', source:'Jaipur Collector', url:'https://jaipur.rajasthan.gov.in/', tags:['circle rate','Jaipur','registry'] },
-  { date:'2026-02-10', cat:'saving', title:'Home loan 80C + 80EE + 24(b) — FY 2025-26 limit summary', body:'Home loan pe principal 80C me ₹1.5L, interest 24(b) me ₹2L, aur first home pe 80EE extra ₹50k (₹3.5L tak loan shart). Budget update ke baad limit verify karo.', action:'First-time buyer hai toh 80EE extra slab zaroor use karo.', source:'Income Tax Deductions', url:'https://www.incometax.gov.in/iec/foportal/help/individual/deductions', tags:['80C','80EE','24b','home loan'] },
+  { date:'2026-02-10', cat:'saving', title:'Home loan 80C + 80EE + 24(b) — FY 2025-26 limit summary', body:'Home loan pe principal 80C me ₹1.5L, interest 24(b) me ₹2L, aur first home pe 80EE extra ₹50k (₹3.5L tak loan shart). Budget update ke baad limit verify karo.', action:'First-time buyer hai toh 80EE extra slab zaroor use karo.', source:'Income Tax Deductions', url:'https://www.incometax.gov.in/iec/foportal/', tags:['80C','80EE','24b','home loan'] },
 ];
 function renderTaxNews(){
   const wrap = $('#taxNewsGrid');
@@ -47340,11 +47314,15 @@ const REPORT_KINDS = {
     }
   }
 };
-function buildReportPage(kind, recs, sel){
+function reportFmtValue(){ const el = $('#reportFmt'); return el && el.value === 'card' ? 'card' : 'pdf'; }
+function buildReportPage(kind, recs, sel, fmt){
   const def = REPORT_KINDS[kind];
   const cd = shareCardData();
   const stamp = new Date().toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
   const one = recs.length === 1;
+  if(fmt === 'card'){
+    return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(def.title)} — ${esc(cd.brand)} · ${stamp}</title><style>body{font:13px/1.55 -apple-system,'Segoe UI',Roboto,sans-serif;background:#F7F6F2;color:#1D1D1F;margin:0;padding:20px}h1{font-size:20px;margin:0 0 3px}.meta{font-size:11px;color:#7A5A1E;margin-bottom:14px}.card{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:12px 14px;margin-bottom:10px;page-break-inside:avoid}.card b{font-size:14px;display:block;margin-bottom:5px}.card pre{font:12px/1.5 inherit;white-space:pre-wrap;margin:0}.foot{text-align:center;font-size:10px;color:#8A877A;padding:12px}</style></head><body><h1>${esc(def.title)}</h1><div class="meta">${esc(cd.person)} · ${esc(cd.title)} · ${stamp} · ${recs.length} record${recs.length === 1 ? '' : 's'}</div>${recs.map(r => `<div class="card"><b>${esc(def.recName(r))}</b><pre>${esc(def.text(r))}</pre></div>`).join('')}<div class="foot">${esc(cd.brand.toUpperCase())} DESK · compact card format</div></body></html>`;
+  }
   const summary = one ? '' : `<h3 class="sh">Summary — ${recs.length} records</h3><table class="sum"><thead><tr><th>#</th><th class="nm">Record</th>${def.cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${recs.map((r, i) => `<tr><td>${i + 1}</td><td class="nm">${esc(def.recName(r))}</td>${def.row(r).map(v => `<td>${esc(String(v))}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
   const details = recs.map(r => `<div class="card"><h2>${esc(def.recName(r))}</h2>${def.detail(r, sel)}</div>`).join('');
   return `<!DOCTYPE html>
@@ -47411,7 +47389,7 @@ function reportFileName(){
 function reportUpdateNote(){
   try{
     const recs = reportRecs();
-    const html = buildReportPage(reportState.kind, recs, reportState.sel);
+    const html = buildReportPage(reportState.kind, recs, reportState.sel, reportFmtValue());
     const kb = Math.round(html.length / 1024);
     $('#reportSizeNote').textContent = `≈ ${kb} KB · ${recs.length} record${recs.length === 1 ? '' : 's'} · ${Object.keys(reportState.sel).filter(k => reportState.sel[k]).length} sections on`;
   }catch(e){ $('#reportSizeNote').textContent = ''; }
@@ -47441,7 +47419,7 @@ function openReportPreview(){
   const recs = reportRecs();
   if(!recs.length) return toast('Report ke liye records nahi mile', true);
   const def = REPORT_KINDS[reportState.kind];
-  const html = buildReportPage(reportState.kind, recs, reportState.sel);
+  const html = buildReportPage(reportState.kind, recs, reportState.sel, reportFmtValue());
   const text = reportTextSummary();
   const filename = reportFileName();
   if(window.BCSPreview) return window.BCSPreview.open({
@@ -47470,6 +47448,7 @@ function initReports(){
     reportUpdateNote();
   });
   $('#reportRecord').addEventListener('change', reportUpdateNote);
+  $('#reportFmt').addEventListener('change', reportUpdateNote);
   const reportAct = (sel, fn) => { const el = $(sel); if(el) el.addEventListener('click', fn); };
   reportAct('#reportPreviewBtn', openReportPreview);
   reportAct('#reportPdfBtn', () => { if(window.cnReportAction) cnReportAction('pdf'); else openReportPreview(); });
@@ -48659,10 +48638,10 @@ function renderLiveMarket(snapshot){
       delta: mktDeltaChip(mktDelta(silver1kg, silverKgPrev != null ? silverKgPrev * MKT_DUTY.silver : null), '999 landed'), sub:'spot + import duty · est.' },
     { label:'Bitcoin', val: btcInr != null ? mktInrRaw(btcInr, 0) : '—',
       delta: (s.btc24 != null) ? mktDeltaChip(s.btc24, '24h') : mktDeltaChip(mktDelta(btcInr, (prev.btcUsd && prevFx) ? prev.btcUsd * prevFx : null), 'BTC'),
-      sub: (s.btc24 != null) ? 'coingecko · 24h' : 'gold-api.com' },
+      sub: (s.btc24 != null) ? 'snapshot · 24h' : 'gold-api.com' },
     { label:'Ethereum', val: ethInr != null ? mktInrRaw(ethInr, 0) : '—',
       delta: (s.eth24 != null) ? mktDeltaChip(s.eth24, '24h') : mktDeltaChip(mktDelta(ethInr, (prev.ethUsd && prevFx) ? prev.ethUsd * prevFx : null), 'ETH'),
-      sub: (s.eth24 != null) ? 'coingecko · 24h' : 'gold-api.com' },
+      sub: (s.eth24 != null) ? 'snapshot · 24h' : 'gold-api.com' },
     { label:'Petrol · Jaipur', val: ratesRefVal(BCS_RATES_REF.fuel.petrol, 2),
       delta: mktDeltaChip(null, 'unchanged'), sub:'Rajasthan pump · ' + BCS_RATES_REF.verifiedLabel },
     { label:'Diesel · Jaipur', val: ratesRefVal(BCS_RATES_REF.fuel.diesel, 2),
@@ -48697,20 +48676,16 @@ async function bcsRefreshMarket(silent){
     bcsFetchJson('https://api.gold-api.com/price/BTC'),
     bcsFetchJson('https://api.gold-api.com/price/ETH')
   ]);
-  let btc24 = null, eth24 = null;
-  let cgBtc = null, cgEth = null;
-  try{
-    const cg = await bcsFetchJson('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true');
-    if(cg && cg.bitcoin && cg.bitcoin.usd){ cgBtc = Number(cg.bitcoin.usd); btc24 = (cg.bitcoin.usd_24h_change != null) ? Number(cg.bitcoin.usd_24h_change) : null; }
-    if(cg && cg.ethereum && cg.ethereum.usd){ cgEth = Number(cg.ethereum.usd); eth24 = (cg.ethereum.usd_24h_change != null) ? Number(cg.ethereum.usd_24h_change) : null; }
-  }catch(e){}
   const prevSnap = mktLoadSnapshot() || {};
+  let btc24 = null, eth24 = null;
+  // CoinGecko rejects browser calls from file/Pages origins with CORS. Cards
+  // fall back to a snapshot-vs-now delta instead of logging a failed fetch.
   function pick(n, old){ return (n != null && isFinite(n) && n > 0) ? Number(n) : (typeof old === 'number' ? old : null); }
   const usdInr = pick(usd && usd.rates && usd.rates.INR, prevSnap.usdInr);
   const goldUsd = pick(xau && xau.price, prevSnap.goldUsd);
   const silverUsd = pick(xag && xag.price, prevSnap.silverUsd);
-  const btcUsd = pick(cgBtc != null ? cgBtc : (btc && btc.price), prevSnap.btcUsd);
-  const ethUsd = pick(cgEth != null ? cgEth : (eth && eth.price), prevSnap.ethUsd);
+  const btcUsd = pick(btc && btc.price, prevSnap.btcUsd);
+  const ethUsd = pick(eth && eth.price, prevSnap.ethUsd);
   const gotAny = [usdInr, goldUsd, silverUsd, btcUsd, ethUsd].some(function(v){ return v != null; });
   const snapshot = {
     at: gotAny ? Date.now() : (prevSnap.at || 0),
@@ -49782,7 +49757,7 @@ try{
         : '<span class="sv-note">Direct links — results load nahi ho paye</span>';
       var cards = list.map(function(r, i){
         var dom = r.domain || svDomain(r.url);
-        var fav = dom ? '<img src="https://www.google.com/s2/favicons?sz=64&domain=' + encodeURIComponent(dom) + '" alt="" loading="lazy">' : '<span>' + escH((r.title || '?').charAt(0).toUpperCase()) + '</span>';
+        var fav = '<span>' + escH((r.title || dom || '?').charAt(0).toUpperCase()) + '</span>';
         return '<div class="sv-card" role="button" tabindex="0" data-sv-open="' + escH(r.url) + '" data-sv-title="' + escH(r.title) + '">' +
             '<span class="sv-fav">' + fav + '</span>' +
             '<span class="sv-main">' +
@@ -52172,7 +52147,6 @@ try{
       if(!iframe) return;
       var box = iframe.parentElement;
       if(!box) return;
-      var done = false;
       if(getComputedStyle(box).position === 'static') box.style.position = 'relative';
       var fb = box.querySelector('.bcs-frame-fb');
       if(!fb){
@@ -52180,24 +52154,23 @@ try{
         fb.className = 'bcs-frame-fb';
         fb.innerHTML = '<div class="fb-card"><div class="fb-ic">🔒</div><b>In-app open nahi ho paya</b><p>Yeh site security (X-Frame-Options) ki wajah se andar embed hona allow nahi karti — ek click me naye tab me khulegi.</p><button type="button" class="btn primary fb-open">↗ ' + (label || 'Site') + ' kholein</button></div>';
         box.appendChild(fb);
-        fb.querySelector('.fb-open').addEventListener('click', function(){ window.open(url, '_blank', 'noopener'); });
+      }
+      var openBtn = fb.querySelector('.fb-open');
+      if(openBtn){
+        openBtn.textContent = '↗ ' + (label || 'Site') + ' kholein';
+        openBtn.onclick = function(){ window.open(url, '_blank', 'noopener'); };
       }
       fb.style.display = 'none';
-      var settle = function(){
-        if(done) return;
-        var blocked = false;
-        try{
-          var doc = iframe.contentDocument;
-          if(!doc || !doc.body) blocked = true;
-          else if((iframe.getAttribute('src') || '').indexOf('about:blank') === 0) blocked = true;
-          else if(doc.body.innerHTML.trim() === '') blocked = true;
-        }catch(e){ blocked = false; }
-        if(blocked) fb.style.display = 'flex';
-        done = true;
-      };
-      iframe.addEventListener('load', function(){ setTimeout(settle, 90); }, { once:false });
-      if((iframe.getAttribute('src') || '').indexOf('about:blank') > -1) setTimeout(settle, 600);
-      setTimeout(function(){ if(!done) settle(); }, 9000);
+      var loaded = false;
+      iframe.addEventListener('load', function(){
+        loaded = true;
+        fb.style.display = 'none';
+        var l = $('#pulseLoader'); if(l) l.classList.add('hide');
+      });
+      // A cross-origin frame has an opaque contentDocument (null) — that is normal,
+      // NOT an X-Frame-Options block. Only a frame that never fires 'load' at all
+      // deserves the fallback card, so the live site stays operable inside BCS.
+      setTimeout(function(){ if(!loaded) fb.style.display = 'flex'; }, 9000);
     }
     window.bcsArmFrame = bcsArmFrame;
     window.bcsEmbedUrl = bcsEmbedUrl;
@@ -52648,7 +52621,7 @@ function openRangeModal(){
 function generateRange(){
   const pid = $('#prProject').value, from = Math.round(+$('#prFrom').value), to = Math.round(+$('#prTo').value);
   const gaj = Math.round(+$('#prGaj').value), road = Math.round(+$('#prRoad').value);
-  const facing = $('#prFacing').value, rate = Math.round(+$('#prRate').value), note = $('#prNote').value.trim();
+  const facing = $('#prFacing').value, rate = Math.round(+$('#prRate').value), note = $('#prRangeNote').value.trim();
   const skip = $('#prSkip').checked;
   if(!pid) return toast('Pehle project chunein', true);
   if(!from || !to || to < from) return toast('Plot range sahi karein (From ≤ To)', true);
@@ -52813,8 +52786,8 @@ function setStage(id, stage, opts){
 }
 function openDealModal(){
   const c = (db.clients || []).find(x => x.id === pipe.dealFor); if(!c) return;
-  $('#dlTitle').textContent = (pipe.dealStage === 'closed' ? 'Registry / Closed — ' : 'Token / Negotiation — ') + (c.name || 'client');
-  $('#dlMeta').textContent = `Budget ${budgetText(c)} · ${clientCorridorId(c) ? corridorName(clientCorridorId(c)) : 'koi corridor set nahi'}${c.sizeGaj ? ' · ' + c.sizeGaj + ' Gaj' : ''} — matching available plots niche`;
+  $('#cdTitle').textContent = (pipe.dealStage === 'closed' ? 'Registry / Closed — ' : 'Token / Negotiation — ') + (c.name || 'client');
+  $('#cdMeta').textContent = `Budget ${budgetText(c)} · ${clientCorridorId(c) ? corridorName(clientCorridorId(c)) : 'koi corridor set nahi'}${c.sizeGaj ? ' · ' + c.sizeGaj + ' Gaj' : ''} — matching available plots niche`;
   const avail = (db.plots || []).filter(p => p.status === 'available' || p.status === 'release');
   const corr = clientCorridorId(c);
   avail.sort((a,b) => {
@@ -52822,24 +52795,24 @@ function openDealModal(){
     const ma = (corr && pa.corridor === corr) ? 0 : 1, mb = (corr && pb.corridor === corr) ? 0 : 1;
     return ma - mb || plotPrice(a) - plotPrice(b);
   });
-  $('#dlPlot').innerHTML = avail.length ? avail.map(p => {
+  $('#cdPlot').innerHTML = avail.length ? avail.map(p => {
     const pr = projectOf(p.projectId) || {};
     return `<option value="${esc(p.id)}">Plot ${esc(p.label || p.num)} · ${esc(pr.name || '—')} · ${esc(corridorName(pr.corridor))} · ${p.sizeGaj || 0} Gaj · ${money(plotPrice(p))}</option>`;
   }).join('') : '<option value="">— koi available plot nahi (Generate range se add karein) —</option>';
-  $('#dlClient').value = c.name || '';
-  showOverlay('dealModal');
+  $('#cdClient').value = c.name || '';
+  showOverlay('closeDealModal');
 }
 function confirmDeal(){
   const c = (db.clients || []).find(x => x.id === pipe.dealFor); if(!c) return;
-  const plotId = $('#dlPlot').value;
+  const plotId = $('#cdPlot').value;
   if(!plotId) return toast('Available plot nahi mila — pehle inventory generate karein', true);
   const pl = (db.plots || []).find(x => x.id === plotId); if(!pl) return;
   pl.status = pipe.dealStage === 'closed' ? 'sold' : 'token';
-  pl.clientId = c.id; pl.clientName = $('#dlClient').value.trim() || c.name || ''; pl.updatedAt = Date.now();
+  pl.clientId = c.id; pl.clientName = $('#cdClient').value.trim() || c.name || ''; pl.updatedAt = Date.now();
   c.stage = pipe.dealStage; c.dealPlotId = pl.id; c.projectId = pl.projectId;
   c.lastFollowUp = todayISO(); c.updatedAt = Date.now();
   save(); renderPipeline(); if(currentView === 'inventory') renderInvBody();
-  try{ closeModal('dealModal'); }catch(e){ document.getElementById('dealModal').classList.remove('on'); }
+  try{ closeModal('closeDealModal'); }catch(e){ document.getElementById('closeDealModal').classList.remove('on'); }
   toast(`Deal synced — Plot ${pl.label || pl.num} → ${PST(pl.status).label}`);
 }
 function openDealEdit(id){
@@ -52944,7 +52917,7 @@ document.addEventListener('click', e => {
     const parts = t.dataset.matchedal.split('|');
     pipe.dealFor = parts[0]; pipe.dealStage = 'token';
     try{ closeModal('matchModal'); }catch(err){ document.getElementById('matchModal').classList.remove('on'); }
-    setTimeout(() => { openDealModal(); const s = document.getElementById('dlPlot'); if(s) s.value = parts[1]; }, 60);
+    setTimeout(() => { openDealModal(); const s = document.getElementById('cdPlot'); if(s) s.value = parts[1]; }, 60);
     return;
   }
 });
@@ -52964,7 +52937,7 @@ function wire(){
   on('#invMapOpacity', 'input', () => { const img = document.querySelector('#invMapImg'); if(img) img.style.opacity = (+$('#invMapOpacity').value / 100).toFixed(2); });
   on('#peSave', 'click', savePlotEdit);
   on('#invPayoutBtn', 'click', openPayout);
-  on('#dlConfirm', 'click', confirmDeal);
+  on('#cdConfirm', 'click', confirmDeal);
   on('#deSave', 'click', saveDealEdit);
   /* pipeline drag & drop */
   const board = document.getElementById('pipeBoard'); if(!board) return;
@@ -53355,7 +53328,7 @@ function openVisitPlanner(){
       }).join('')}
     </div>`).join('')
   : '<div class="inv-empty">Koi visit schedule nahi — client card ✎ Open karke “Site visit date” bharo, yahan corridor-wise group ho jayega.</div>';
-  showOverlay('visitModal');
+  showOverlay('visitPlanModal');
 }
 function moveStop(id, dir){
   const list = visitClients();
@@ -54070,7 +54043,7 @@ function wire2(){
     window.print();
   });
   on('#lgAddBank', 'click', () => { const p = projectOf(legalFor); if(!p) return; legalOf(p).banks.push({ name:'', apf:'' }); renderBanks(); });
-  on('#lgSave', 'click', () => {
+  on('#lgSaveVault', 'click', () => {
     const p = projectOf(legalFor); if(!p) return;
     const L = legalOf(p);
     L.sanction90A = document.getElementById('lgSanction').value.trim();
@@ -56685,6 +56658,9 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     Document:'ops', Invoice:'ops', Broadcast:'ops', ROI:'ops', 'Client page':'ops', Backup:'ops'
   };
   const SITE_LOG = [
+    { v:'v196', date:'2026-11-19', page:'app', kind:'fix',
+      title:'Clean console + every control wired — no dead buttons, no broken links',
+      detail:'External Google favicon fetches removed — local letter badges only. Live news ab sirf Google News RSS + rss2json se aata hai (422/CORS fallbacks gaye). Market cards ab CORS-blocked CoinGecko ke bina gold-api + saved snapshot se chalte hain. Broken destination links (Synergy 410, Jaipur Metro HTTP-only, Income Tax 404s, India Code timeout, Freefy 520) badle gaye. Duplicate overlay IDs (visitModal, dealModal, lgSave) resolve kiye gaye; report format aur plot-range note ab actually kaam karte hain. Market Pulse me Real Estate India (19,800+ Jaipur listings) add hua — frame me chalta hai, open/share/fallback sab usi source ko follow karte hain. 30% Originating · 35% Executing · 35% BCS unchanged.' },
     { v:'v195', date:'2026-11-19', page:'applications', kind:'update',
       title:'Content Growth Studio — pre-post script expert inside Applications',
       detail:'Applications me ek built-in, offline growth desk: reel/caption script ka hook, body, CTA, trust aur platform fit par 100-point score + exact rewrites. Iske saath script builder, 7/14/30-day growth plan, BCS desk signal reader, share-with-care masking aur exact preview, post insights/underperformance diagnosis, IST best-time test windows, brand pitches, 40-second shoot plans aur 6-beat hold/energy-dip check. Rule-based expert check — live AI nahi, koi upload nahi; 30% Originating · 35% Executing · 35% BCS unchanged.' },
@@ -61578,7 +61554,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   };
   window.cnReportAction = function(action){
     let text = '', html = '', name = '';
-    try{ text = reportTextSummary(); html = buildReportPage(reportState.kind, reportRecs(), reportState.sel); name = reportFileName(); }catch(e){}
+    try{ text = reportTextSummary(); html = buildReportPage(reportState.kind, reportRecs(), reportState.sel, reportFmtValue()); name = reportFileName(); }catch(e){}
     if(action === 'copy'){
       try{ copyText(text); toast('Report summary copied'); }catch(e){ toast('Copy failed', true); }
       return;
