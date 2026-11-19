@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Developer & Project Intelligence</title>
-<!-- BCS DESK BUILD bcs-desk-v192 · single-file · zero-dependency · Applications hub -->
+<!-- BCS DESK BUILD bcs-desk-v193 · single-file · zero-dependency · Applications hub + Google field kit -->
 <meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -9865,6 +9865,26 @@ body[data-page="applications"]{--pg:#6C63C4}
 @media(max-width:560px){.apps-grid{grid-template-columns:1fr}.apps-actions button{min-width:0}}
 body.bcs-native #view-applications .apps-grid{grid-template-columns:1fr !important}
 
+/* ---------- v193 · Google field kit for Jaipur real estate ---------- */
+#view-applications .gkit-panel{margin-top:22px;padding:18px;border-radius:18px;border:1px solid color-mix(in oklab,var(--pg) 26%,var(--line));background:linear-gradient(160deg,color-mix(in oklab,var(--panel) 90%,var(--pg) 10%),var(--panel) 62%);box-shadow:var(--shadow)}
+#view-applications .gkit-panel h4{font-family:'Fraunces',serif;font-size:21px;font-weight:600;letter-spacing:-.2px;color:var(--ink);margin:4px 0 6px}
+#view-applications .gkit-panel .gkit-intro{font-size:12px;line-height:1.6;color:var(--ink2);margin:0 0 14px;max-width:820px}
+#view-applications .gkit-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;padding:10px;border-radius:12px;border:1px solid var(--line);background:color-mix(in oklab,var(--panel) 92%,var(--pg) 8%)}
+#view-applications .gkit-controls label{display:flex;flex-direction:column;gap:5px;min-width:180px;font-size:9px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:var(--mut)}
+#view-applications .gkit-controls select{min-width:180px;max-width:100%;font-size:12px;font-weight:650;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:8px 10px}
+#view-applications .gkit-controls .btn{margin-left:auto}
+#view-applications .gkit-grid .apps-card{min-height:0}
+#view-applications .gkit-grid .apps-tag{margin-bottom:8px}
+#view-applications .gkit-grid .apps-reality{margin-bottom:8px}
+#view-applications .gkit-foot{margin:12px 2px 0;font-size:11px;line-height:1.6;color:var(--ink2)}
+#view-applications .gkit-foot b{color:var(--ink)}
+@media(max-width:560px){
+  #view-applications .gkit-controls{align-items:stretch}
+  #view-applications .gkit-controls label{min-width:0;flex:1 1 140px}
+  #view-applications .gkit-controls select{width:100%;min-width:0}
+  #view-applications .gkit-controls .btn{margin-left:0;width:100%;justify-content:center}
+}
+
 /* themed page header */
 body[data-page] .adv-head{
   border-color:color-mix(in oklab, var(--pg) 32%, var(--line)) !important;
@@ -19263,19 +19283,19 @@ try{
       <div>
         <div class="eyebrow">BCS · applications desk</div>
         <h2 class="adv-title">Real tools,<br><em>one honest shelf.</em></h2>
-        <p class="adv-sub">Four free and open-source applications, checked and linked from one place. BCS Desk remains a single offline file — nothing is installed into your data, no client name or project number is sent to these tools, and every link opens in a new tab.</p>
+        <p class="adv-sub">Four free open-source applications plus a Google field kit built for Jaipur property work. BCS Desk remains a single offline file — nothing is installed into your data, no client name or project number is sent to these tools, and every link opens in a new tab.</p>
       </div>
       <div class="adv-head-actions">
-        <button type="button" class="btn primary" data-apps-open="https://canvix.app">Open Canvix ↗</button>
+        <button type="button" class="btn primary" data-apps-scroll="appsGoogleKit">Google field kit ↘</button>
         <button type="button" class="btn ghost" data-apps-scroll="appsNotes">Setup notes</button>
       </div>
     </div>
 
     <div class="apps-stats links-stats" id="appsStats">
-      <div><div class="k">Reviewed tools</div><div class="v">4 open source</div></div>
-      <div><div class="k">Use in browser</div><div class="v">1 full app + 2 demos</div></div>
-      <div><div class="k">Needs a server</div><div class="v">2 self-host</div></div>
-      <div><div class="k">Device limit</div><div class="v">1 Windows app</div></div>
+      <div><div class="k">Open-source shelf</div><div class="v">4 reviewed tools</div></div>
+      <div><div class="k">Google field kit</div><div class="v">5 public shortcuts</div></div>
+      <div><div class="k">Google sign-in</div><div class="v">Alerts + My Maps</div></div>
+      <div><div class="k">Auto data upload</div><div class="v">None</div></div>
     </div>
 
     <div class="toolbar apps-toolbar">
@@ -19290,11 +19310,35 @@ try{
         <option value="windows">Windows only</option>
       </select>
       <div class="spacer"></div>
+      <button type="button" class="btn ghost sm" data-apps-scroll="appsGoogleKit">Google field kit ↓</button>
       <span class="links-toolbar-note" id="appsCount"></span>
     </div>
 
     <div class="sec-head"><div><h3>The four applications</h3><div class="sub">What each one really is, what it needs, and where to open it.</div></div></div>
     <div class="apps-grid" id="appsGrid"></div>
+
+    <div class="sec-head"><div><h3>Google field kit — built for our real estate work</h3><div class="sub">Public research shortcuts, pre-set to our Jaipur corridors. Review the results and paste only verified notes back into BCS.</div></div></div>
+    <div class="gkit-panel" id="appsGoogleKit">
+      <div class="eyebrow">Google · public research</div>
+      <h4>Five tools, five field jobs.</h4>
+      <p class="gkit-intro">Choose an area and a deal focus. Each card opens the right Google tool in a new tab and offers a ready-to-copy prompt or alert query — no login inside BCS, no scraping, and no client name sent anywhere.</p>
+      <div class="gkit-controls">
+        <label>Area
+          <select id="gkitArea" aria-label="Area for Google field kit"></select>
+        </label>
+        <label>Focus
+          <select id="gkitFocus" aria-label="Deal focus for Google field kit">
+            <option value="demand">Buyer demand</option>
+            <option value="rera">RERA / approval</option>
+            <option value="price">Price &amp; inventory</option>
+            <option value="infra">Infrastructure</option>
+          </select>
+        </label>
+        <button type="button" class="btn primary sm" id="gkitCopyAll">Copy all 5 prompts</button>
+      </div>
+      <div class="apps-grid gkit-grid" id="gkitGrid"></div>
+      <p class="gkit-foot"><b>BCS rule:</b> Trends shows public interest, not a forecast. Earth, Alerts, My Maps and Lens can need a Google account. Use them for public leads, site checks and verification only — never upload client lists, private documents or masked-name records. The 30% Originating / 35% Executing / 35% BCS split stays unchanged.</p>
+    </div>
 
     <div class="apps-note" id="appsNotes">
       <h4>Why they are linked, not installed inside BCS</h4>
@@ -44373,7 +44417,7 @@ function quickActionList(){
     { kind:'Go', label:'Podcasts', sub:'Episodes, notes aur recording queue', icon:'🎙', color:'linear-gradient(135deg,#7B67C6,#C95C85)', keys:'audio episode recording', run:() => go('podcasts') },
     { kind:'Go', label:'Social', sub:'Social desk, reels aur content calendar', icon:'🌐', color:'linear-gradient(135deg,#C95C85,#4C8FD6)', keys:'instagram youtube content', run:() => go('social') },
     { kind:'Go', label:'Sheets', sub:'Sheet inputs aur calculation workspace', icon:'📊', color:'linear-gradient(135deg,#7CAC5A,#E7B84B)', keys:'spreadsheet sheet calculate', run:() => go('sheets') },
-    { kind:'Go', label:'Applications', sub:'Free open-source tools — Canvix, Listmonk, Firecrawl, KillerPDF', icon:'▤', color:'linear-gradient(135deg,#6C63C4,#4C8FD6)', keys:'apps applications tools canvix listmonk firecrawl killerpdf design pdf newsletter scraping', run:() => go('applications') }
+    { kind:'Go', label:'Applications', sub:'Open-source tools + Google field kit for Jaipur property work', icon:'▤', color:'linear-gradient(135deg,#6C63C4,#4C8FD6)', keys:'apps applications tools canvix listmonk firecrawl killerpdf google trends earth alerts maps lens design pdf newsletter scraping', run:() => go('applications') }
   ];
   if(isAdmin()){
     list.push(
@@ -56516,7 +56560,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     health:     { label:'Health',       ic:'♥',  note:'Data health + sync status' },
     social:     { label:'Social Media', ic:'🌐', note:'Content desk + brand manager + creator radar' },
     sheets:     { label:'Google Sheets',ic:'📊', note:'Two-way sheet sync' },
-    applications:{label:'Applications',ic:'▤',  note:'Free open-source app directory — Canvix, Listmonk, Firecrawl, KillerPDF'},
+    applications:{label:'Applications',ic:'▤',  note:'Open-source tools + Google field kit — Trends, Earth, Alerts, My Maps, Lens'},
     app:        { label:'Whole app',    ic:'⌘',  note:'Cross-page improvements' }
   };
   const VIEW_FROM_ENTITY = {
@@ -56525,6 +56569,9 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     Document:'ops', Invoice:'ops', Broadcast:'ops', ROI:'ops', 'Client page':'ops', Backup:'ops'
   };
   const SITE_LOG = [
+    { v:'v193', date:'2026-11-19', page:'applications', kind:'update',
+      title:'Google field kit — Trends, Earth, Alerts, My Maps aur Lens ab real-estate workflows ke saath',
+      detail:'Applications page ke andar paanch public Google tools: area aur deal focus chun kar Trends demand compare, Earth ground-check, Alerts RERA/launch watch, My Maps site mapping aur Lens photo checks. Har card naya tab kholta hai aur ready prompt copy karta hai — koi scraping nahi, koi client data upload nahi, Google sign-in sirf Alerts/My Maps ke liye. 30% Originating · 35% Executing · 35% BCS unchanged.' },
     { v:'v192', date:'2026-11-19', page:'applications', kind:'update',
       title:'Applications desk — four free open-source tools, one honest place',
       detail:'Canvix, Listmonk, Firecrawl aur KillerPDF ke liye ek dedicated Applications page: har tool ka asli role, license, kya chahiye, khula tab aur official setup guide. BCS single-file aur offline rehta hai — koi client data kahin nahi bheja jata. 30% Originating · 35% Executing · 35% BCS unchanged.' },
@@ -61328,7 +61375,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     analytics:'Analytics', ops:'Operations', tax:'Tax desk', terminology:'Terminology',
     links:'Website directory', templates:'Message templates', podcasts:'Podcast desk',
     health:'Data health', social:'Social desk', sheets:'Sheets & calculations',
-    applications:'Applications directory'
+    applications:'Applications & Google field kit'
   };
   const PI = (v) => { try{ return (db && db[v]) || []; }catch(e){ return []; } };
   const leadRows = () => { try{ return (db.leadgen && db.leadgen.leads) || []; }catch(e){ return []; } };
@@ -61566,7 +61613,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
 })();
 </script>
 <script>
-/* ============ v192 · APPLICATIONS HUB — verified open-source tools ============ */
+/* ============ v193 · APPLICATIONS HUB + GOOGLE FIELD KIT ============ */
 (function(){
   var APPS = [
     {
@@ -61615,6 +61662,145 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     }
   ];
 
+  /* ---------- v193 · Google field kit (public Google tools, real-estate jobs) ---------- */
+  var FOCUS = {
+    demand:{
+      label:'Buyer demand',
+      trends:['property','flats','plots','ready to move flats'],
+      alert:'{AREA} ("property" OR "flats" OR "plots") (launch OR booking OR demand)',
+      earth:'Check {AREA}: note road access, nearby schools, hospitals, markets, construction stage and visible plot boundaries. Record only public observations in BCS notes.',
+      map:'Project | Corridor | Landmark | PIN / coordinates | Status | Public price note | Next visit | Source link',
+      lens:'Read this site photo: project name, developer board, road sign, nearby landmark, construction stage, and any public RERA or approval number visible. Do not include client names.'
+    },
+    rera:{
+      label:'RERA / approval',
+      trends:['RERA Jaipur','JDA approval Jaipur','building plan approval','CLU Jaipur'],
+      alert:'{AREA} (RERA OR "JDA approved" OR "building plan" OR CLU) (project OR plot OR township)',
+      earth:'Check {AREA}: verify the site boundary against the displayed project address, look for an approval or RERA board on site, and note neighbouring landmarks. Save only what is publicly visible.',
+      map:'Project | Corridor | RERA / approval no. | Approval status | Public source | Site pin | Photo date | Follow-up',
+      lens:'Read this notice or brochure photo: project name, developer name, RERA or approval number, issue date, scheme number and any warning text. Cross-check before adding it to a BCS project record.'
+    },
+    price:{
+      label:'Price & inventory',
+      trends:['property rates Jaipur','flat price Jaipur','plot rate Jaipur','ready to move flat price'],
+      alert:'{AREA} ("price list" OR "rate per sqft" OR "rate per sq yd" OR booking) (property OR plot OR flat)',
+      earth:'Check {AREA}: compare the site surroundings with the claimed location, note road width, corner plots, neighbouring construction and visible amenities that affect price. Do not guess unseen details.',
+      map:'Project | Corridor | Plot / tower | Size | Public rate | Rate date | Incentive note | Source link',
+      lens:'Read this price-sheet photo: project, unit type, size, rate, taxes, payment plan, offer date and developer contact. Mark unclear numbers as unverified in BCS.'
+    },
+    infra:{
+      label:'Infrastructure',
+      trends:['Jaipur metro','Jaipur ring road','Jaipur infrastructure','Jaipur flyover'],
+      alert:'{AREA} (metro OR "ring road" OR flyover OR "road widening" OR drainage) (property OR corridor OR plot)',
+      earth:'Check {AREA}: trace the nearest metro, ring road or flyover alignment, note current ground progress, access points and visible disruptions. Record date and public source with each observation.',
+      map:'Corridor | Work type | Nearest site | Distance | Status | Expected update | Public source | Date checked',
+      lens:'Read this infrastructure photo: road name, project board, work type, contractor or authority name, date visible, and location cues. Verify with a public notice before using it in a client brief.'
+    }
+  };
+
+  var GTOOLS = [
+    {
+      id:'trends', name:'Google Trends', icon:'↗', accent:'#C5221F', kind:'Demand signals', license:'Free · no login',
+      tag:'Compare public search interest for property, flats and plots in the chosen area over the last 12 months.',
+      needs:'Aggregated public interest',
+      reality:'Useful for timing content, Pulse posts and which corridor to check first. It is not a buyer count, lead list or price forecast.',
+      fit:'BCS use: plan content and site-visit priority.', copyLabel:'Copy terms',
+      url:function(a,f){ return 'https://trends.google.com/trends/explore?date=' + encodeURIComponent('today 12-m') + '&geo=IN&q=' + encodeURIComponent(termsFor(a,f).join(',')); },
+      copy:function(a,f){ return 'Google Trends — ' + a + ' / ' + FOCUS[f].label + '\n' + termsFor(a,f).join('\n') + '\n\nCompare 12-month interest in India. Treat a rising line as a content cue, not a forecast. Paste only the conclusion into BCS notes.'; }
+    },
+    {
+      id:'earth', name:'Google Earth', icon:'◎', accent:'#3B78E7', kind:'Ground truth', license:'Free · web',
+      tag:'Inspect the locality in 3D / satellite view before or after a site visit — roads, landmarks and surrounding build-out.',
+      needs:'Browser or desktop app',
+      reality:'Google Earth web can say unsupported on iPad; use a desktop browser or the Google Earth app. Imagery dates vary, so confirm on ground before quoting anything to a client.',
+      fit:'BCS use: verify access, neighbours and visible amenities.', copyLabel:'Copy check-list',
+      url:function(a,f){ return 'https://earth.google.com/web/search/' + encodeURIComponent(a === 'Jaipur' ? 'Jaipur, Rajasthan' : a + ', Jaipur, Rajasthan'); },
+      copy:function(a,f){ return 'Google Earth check — ' + a + ' / ' + FOCUS[f].label + '\n' + fillArea(FOCUS[f].earth,a) + '\n\nAdd only verified observations to the BCS site-visit note.'; }
+    },
+    {
+      id:'alerts', name:'Google Alerts', icon:'⚑', accent:'#E8A20B', kind:'News watch', license:'Free · Google sign-in',
+      tag:'Get new public news, RERA updates and launch mentions for the chosen corridor delivered to your email.',
+      needs:'Google account for saved alerts',
+      reality:'BCS cannot create or own an alert for you. Open Alerts, paste the copied query, choose as-it-happens / all results / English + Hindi / India, then verify each source before saving it as a lead or note.',
+      fit:'BCS use: early warning on approvals and launches.', copyLabel:'Copy query',
+      url:function(a,f){ return 'https://www.google.com/alerts?q=' + encodeURIComponent(alertQuery(a,f)); },
+      copy:function(a,f){ return 'Google Alert query — ' + a + ' / ' + FOCUS[f].label + '\n' + alertQuery(a,f) + '\n\nSettings: as-it-happens · all results · English + Hindi · India · News + Blogs + Web. Verify the source before adding anything to BCS.'; }
+    },
+    {
+      id:'mymaps', name:'Google My Maps', icon:'⌖', accent:'#188038', kind:'Site mapping', license:'Free · Google sign-in',
+      tag:'Build a private shared map of shortlisted sites, visited plots, price watch points and risk flags by corridor.',
+      needs:'Google account to save a map',
+      reality:'My Maps needs a Google account and is not embedded in BCS. Use the copied column plan as your pin template; keep the map private and share by explicit link only after removing client names.',
+      fit:'BCS use: one visual map for the whole deal team.', copyLabel:'Copy pin plan',
+      url:function(){ return 'https://www.google.com/maps/d/'; },
+      copy:function(a,f){ return 'Google My Maps plan — ' + a + ' / ' + FOCUS[f].label + '\n' + FOCUS[f].map + '\n\nLayers: Shortlisted | Visited | Price watch | Risk flags. Keep pins to public project and site data only — no client names, phones or private documents.'; }
+    },
+    {
+      id:'lens', name:'Google Lens', icon:'◉', accent:'#9334E6', kind:'Photo checks', license:'Free · app / web',
+      tag:'Search from a site photo, brochure screenshot or approval notice to find matching public pages and read visible text.',
+      needs:'Browser upload or Google app',
+      reality:'Lens reads what is in the image and may be wrong. On iPad use the Lens icon in Photos or the Google app; on desktop use lens.google.com. Never upload a client document or a photo containing personal data.',
+      fit:'BCS use: check boards, brochures and RERA text.', copyLabel:'Copy Lens prompts',
+      url:function(){ return 'https://lens.google.com/'; },
+      copy:function(a,f){ return 'Google Lens check — ' + a + ' / ' + FOCUS[f].label + '\n' + fillArea(FOCUS[f].lens,a) + '\n\nLens can misread text. Verify every number and name with a public source before updating a BCS record.'; }
+    }
+  ];
+
+  function termsFor(a,f){ return (FOCUS[f] || FOCUS.demand).trends.map(function(t){ return a + ' ' + t; }); }
+  function areaPart(a){ return a === 'Jaipur' ? '"Jaipur"' : '"' + a + '" Jaipur'; }
+  function alertQuery(a,f){ return fillArea((FOCUS[f] || FOCUS.demand).alert,a); }
+  function fillArea(s,a){ return String(s || '').replace(/\{AREA\}/g,areaPart(a)); }
+  function gkitArea(){ try{ return (document.getElementById('gkitArea') || {}).value || 'Jaipur'; }catch(e){ return 'Jaipur'; } }
+  function gkitFocus(){ try{ return (document.getElementById('gkitFocus') || {}).value || 'demand'; }catch(e){ return 'demand'; } }
+  function syncGkitArea(){
+    var sel = document.getElementById('gkitArea');
+    if(!sel) return;
+    var names = ['Jaipur'];
+    try{ ((db && db.corridors) || []).forEach(function(c){ var n = c && String(c.name || '').trim(); if(n && names.indexOf(n) < 0) names.push(n); }); }catch(e){}
+    var cur = sel.value || 'Jaipur';
+    if(names.indexOf(cur) < 0) cur = 'Jaipur';
+    sel.innerHTML = names.map(function(n){ return '<option value="' + escA(n) + '"' + (n === cur ? ' selected' : '') + '>' + escA(n) + '</option>'; }).join('');
+  }
+  function copyOut(text,msg){
+    var done = function(ok){ try{ toast(ok ? msg : 'Copy nahi hua — text select karke copy karein', !ok); }catch(e){} };
+    try{
+      if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(text).then(function(){ done(true); },function(){ fallbackCopy(text,done); }); return; }
+    }catch(e){}
+    fallbackCopy(text,done);
+  }
+  function fallbackCopy(text,done){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly',''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    var ok = false;
+    try{ ok = document.execCommand('copy'); }catch(e){}
+    ta.remove(); done(ok);
+  }
+  function renderGoogle(){
+    var grid = document.getElementById('gkitGrid');
+    if(!grid) return;
+    syncGkitArea();
+    var a = gkitArea(), f = gkitFocus();
+    grid.innerHTML = GTOOLS.map(function(t){
+      return '<article class="apps-card" style="--app-accent:' + escA(t.accent) + '">' +
+        '<div class="apps-top">' +
+          '<div class="apps-ic" aria-hidden="true">' + escA(t.icon) + '</div>' +
+          '<div class="apps-kicker">' + escA(t.kind) + '</div>' +
+          '<span class="apps-license">' + escA(t.license) + '</span>' +
+        '</div>' +
+        '<h4>' + escA(t.name) + '</h4>' +
+        '<p class="apps-tag">' + escA(t.tag) + '</p>' +
+        '<div class="apps-meta"><span>' + escA(a) + '</span><span>' + escA((FOCUS[f] || FOCUS.demand).label) + '</span><span>' + escA(t.needs) + '</span></div>' +
+        '<p class="apps-reality">' + escA(t.reality) + '</p>' +
+        '<div class="apps-fit">' + escA(t.fit) + '</div>' +
+        '<div class="apps-actions">' +
+          '<button type="button" class="btn primary sm" data-gkit-open="' + escA(t.id) + '">Open tool ↗</button>' +
+          '<button type="button" class="btn ghost sm" data-gkit-copy="' + escA(t.id) + '">' + escA(t.copyLabel) + '</button>' +
+        '</div>' +
+      '</article>';
+    }).join('');
+  }
+
   function escA(v){
     return String(v == null ? '' : v).replace(/[&<>"']/g, function(c){
       return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
@@ -61661,12 +61847,35 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       '<div class="empty-inline">Koi application nahi mila. Search ya filter badalein.</div>';
     var cnt = document.getElementById('appsCount');
     if(cnt) cnt.textContent = list.length + ' of ' + APPS.length + ' applications';
+    renderGoogle();
   }
   document.addEventListener('click', function(e){
     var t = e.target && e.target.closest ? e.target : null;
     if(!t) return;
     var open = t.closest('[data-apps-open]');
     if(open){ e.preventDefault(); openLink(open.getAttribute('data-apps-open')); return; }
+    var gOpen = t.closest('[data-gkit-open]');
+    if(gOpen){
+      e.preventDefault();
+      var gt = GTOOLS.filter(function(x){ return x.id === gOpen.getAttribute('data-gkit-open'); })[0];
+      if(gt) openLink(gt.url(gkitArea(), gkitFocus()));
+      return;
+    }
+    var gCopy = t.closest('[data-gkit-copy]');
+    if(gCopy){
+      e.preventDefault();
+      var ct = GTOOLS.filter(function(x){ return x.id === gCopy.getAttribute('data-gkit-copy'); })[0];
+      if(ct) copyOut(ct.copy(gkitArea(), gkitFocus()), ct.name + ' prompt copied ✓');
+      return;
+    }
+    if(t.closest('#gkitCopyAll')){
+      e.preventDefault();
+      var a = gkitArea(), f = gkitFocus();
+      var all = 'BCS Google field kit — ' + a + ' / ' + (FOCUS[f] || FOCUS.demand).label + '\n\n' +
+        GTOOLS.map(function(x,i){ return (i + 1) + '. ' + x.name + '\n' + x.copy(a,f); }).join('\n\n');
+      copyOut(all, 'All 5 Google prompts copied ✓');
+      return;
+    }
     var scroll = t.closest('[data-apps-scroll]');
     if(scroll){
       e.preventDefault();
@@ -61675,8 +61884,11 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     }
   });
   document.addEventListener('input', function(e){ if(e.target && e.target.id === 'appsSearch') render(); });
-  document.addEventListener('change', function(e){ if(e.target && e.target.id === 'appsWhere') render(); });
-  window.BCS_APPS_VIEW = { render:render, apps:APPS };
+  document.addEventListener('change', function(e){
+    if(e.target && e.target.id === 'appsWhere') render();
+    if(e.target && (e.target.id === 'gkitArea' || e.target.id === 'gkitFocus')) renderGoogle();
+  });
+  window.BCS_APPS_VIEW = { render:render, apps:APPS, googleTools:GTOOLS, renderGoogle:renderGoogle };
 })();
 </script>
 </body>
