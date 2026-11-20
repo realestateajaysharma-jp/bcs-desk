@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Developer & Project Intelligence</title>
-<meta name="bcs-build" content="bcs-desk-v219">
-<!-- BCS DESK BUILD bcs-desk-v219 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard (pen, shapes, notes, pages, PNG export, working ruler/protractor/compass/set-square guides with place-on-board, local image/PDF import with direct annotation, clickable web cards, 8 board backgrounds, BenQ-style toolbox, timer, stopwatch, scoreboard, random draw, spinner, calculator, unit converter, spotlight, laser and floating notes) + BenQ EZWrite official launcher + Jaipur Property Map (flat-finder style, free CARTO key-enabled MapLibre tiles + Voyager GL vector style + offline SVG fallback, 47 localities, 5-portal benchmark rates + 10-register / 434-row source-attributed dossier index, fixed Google Maps embed height + working output=embed saved-place/link maps with in-app link conversion + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase + local category-wise saved places with one-click Google Maps, icons and CSV) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net -->
+<meta name="bcs-build" content="bcs-desk-v220">
+<!-- BCS DESK BUILD bcs-desk-v220 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard (pen, shapes, notes, pages, PNG export, working ruler/protractor/compass/set-square guides with place-on-board, local image/PDF import with direct annotation, clickable web cards, 8 board backgrounds, BenQ-style toolbox, timer, stopwatch, scoreboard, random draw, spinner, calculator, unit converter, spotlight, laser and floating notes) + BenQ EZWrite official launcher + Jaipur Property Map (flat-finder style, free CARTO key-enabled MapLibre tiles + Voyager GL vector style + offline SVG fallback, 47 localities, 5-portal benchmark rates + 10-register / 434-row source-attributed dossier index, fixed Google Maps embed height + working output=embed saved-place/link maps with in-app link conversion + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase + local category-wise saved places with one-click Google Maps, icons and CSV) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net -->
 <meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -17914,6 +17914,130 @@ body[data-theme="dark"] .jp-conf.snippet{color:#B8A6EA;border-color:#7B67C6}
 .jp-saved-pin span{font-size:13px}
 body[data-theme="dark"] .jp-saved-card{background:color-mix(in srgb,var(--acc) 9%,transparent);border-color:rgba(255,255,255,.1)}
 body[data-theme="dark"] .jp-saved-ic{color:#0B0E0C}
+
+/* ============================================================
+   BCS v220 — Calm premium refinement (final cascade layer)
+   Visual only: one green/gold identity, one header language,
+   readable labels, predictable hidden states, no feature changes.
+   ============================================================ */
+:root{
+  --bcs-gold:#E7C46E; --bcs-gold-deep:#A57B36;
+  --r-control:12px; --r-card:18px; --r-modal:22px;
+}
+body[data-theme="dark"]{
+  --bg:#0E120F!important; --panel:#171C17!important; --ink:#F3F1E6!important; --ink2:#D8DACB!important; --mut:#A9B0A2!important;
+  --line:#30392F!important; --line2:#242C24!important;
+  --olive:#D8C99A!important; --sage:#223027!important; --sage-ink:#CDEBD7!important; --mint:#17312A!important; --sand:#292C23!important;
+  --gold:#E7C46E!important; --gold-deep:#A57B36!important; --gold-soft:#332C1E!important;
+  --bs-bg:#0E120F!important; --c-surface:#171C17!important; --c-ink:#F3F1E6!important; --c-ink2:#D8DACB!important; --c-mut:#A9B0A2!important;
+  --c-gold:#E7C46E!important; --c-gold-dark:#C89B45!important; --c-gold-deep:#A57B36!important; --c-gold-soft:#332C1E!important;
+  --c-line:rgba(231,196,110,.11)!important; --c-line2:rgba(231,196,110,.06)!important;
+  --shadow:0 1px 2px rgba(0,0,0,.45), 0 12px 28px -22px rgba(0,0,0,.85)!important;
+  --shadow-lg:0 24px 60px -28px rgba(0,0,0,.90)!important;
+  --bcs-shadow:0 1px 2px rgba(0,0,0,.45), 0 14px 30px -22px rgba(0,0,0,.85)!important;
+  --bcs-shadow-hi:0 18px 40px -22px rgba(0,0,0,.92)!important;
+}
+body:not([data-theme="dark"]){
+  --bg:#F3F6F3!important; --panel:#FFFFFF!important; --ink:#24291F!important; --ink2:#515849!important; --mut:#7E8779!important;
+  --line:#E1E8DF!important; --line2:#EDF1EC!important;
+  --gold:#A57B36!important; --gold-deep:#7C5B24!important; --gold-soft:#F6EDDA!important;
+  --bs-bg:#F3F6F3!important; --c-surface:#FFFFFF!important; --c-ink:#24291F!important; --c-ink2:#515849!important; --c-mut:#7E8779!important;
+  --c-gold:#A57B36!important; --c-gold-dark:#7C5B24!important; --c-gold-deep:#6B4E20!important; --c-gold-soft:#F6EDDA!important;
+  --c-line:rgba(36,41,31,.09)!important; --c-line2:rgba(36,41,31,.05)!important;
+}
+html[data-theme="dark"]{background:#0E120F!important}
+html[data-theme="light"]{background:#F3F6F3!important}
+body{background-color:var(--bg)!important;color:var(--ink)!important}
+body[data-theme]{background-color:var(--bg)!important;color:var(--ink)!important}
+/* hidden must always mean hidden, including flex/grid components */
+[hidden]{display:none!important}
+
+/* one header language across all 30 pages */
+.adv-head,.intro.hero-life{
+  border:1px solid var(--line)!important;
+  border-radius:var(--r-card)!important;
+  background:linear-gradient(145deg,color-mix(in srgb,var(--gold) 7%,var(--panel)) 0%,var(--panel) 68%)!important;
+  box-shadow:var(--bcs-shadow)!important;
+  padding:clamp(18px,2.2vw,28px)!important;
+  gap:18px!important;
+  align-items:center!important;
+}
+.adv-head{min-height:128px!important}
+.adv-head>div:first-child{min-width:0!important;flex:1 1 auto!important}
+.adv-head-actions{display:flex!important;flex-wrap:wrap!important;justify-content:flex-end!important;align-items:center!important;gap:8px!important;max-width:100%!important}
+.adv-sub{font-size:13px!important;line-height:1.62!important;max-width:82ch!important}
+.adv-title{font-size:clamp(27px,2.8vw,36px)!important;line-height:1.1!important}
+.adv-title em,body[data-page] .adv-title em{
+  background:linear-gradient(95deg,var(--gold),var(--gold-deep) 55%,var(--gold))!important;
+  -webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;
+}
+body[data-page] .adv-head{border-color:var(--line)!important;background:linear-gradient(145deg,color-mix(in srgb,var(--gold) 7%,var(--panel)) 0%,var(--panel) 68%)!important}
+body[data-page] .adv-head .eyebrow,body[data-theme="dark"] .eyebrow{color:var(--gold)!important;letter-spacing:.12em!important}
+body[data-page] .adv-head .btn.primary{
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep))!important;
+  border-color:var(--gold-deep)!important;color:#12150F!important;
+}
+.page-orbs i{opacity:.18!important}
+
+/* consistent controls without touching behavior */
+body .btn,body .btn.sm,body .btn.ghost{
+  min-height:38px!important;height:38px!important;
+  padding:0 14px!important;border-radius:var(--r-control)!important;
+  font-size:12.5px!important;line-height:1!important;white-space:nowrap!important;
+}
+body .chip,body .tag,body .pill,body .badge,body .bchip{min-height:28px;border-radius:999px!important}
+body .toolbar,body .links-toolbar,body .filter-bar{
+  display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:8px!important;
+  border-radius:14px!important;padding:10px 12px!important;
+}
+
+/* readable micro-type: no sub-10px labels */
+.eyebrow,.f-label,.field label,.sec-head .sub,.jp-saved-cat,.nav-lbl{
+  font-size:11px!important;letter-spacing:.06em!important;line-height:1.45!important;
+}
+
+/* quiet, unified surfaces and empty states */
+:is(.panel,.dash-card,.calc-card,.cat-card,.cor-card,.live-card,.idea-card,.pulse-card,.adv-card,.dev-card,.client-card,.advisor-card,.partner-card,.resale-card,.tm-card,.an-card,.health-card,.kpi,.tile,.cov-card,.hub-card,.dev-kcard,.kb-card,.news-card,.proj-card,.link-item,.tpl-card,.fest-card,.booking-card,.cal-card,.show-card,.card,.queue-panel,.journey-panel,.senior-panel,.month-panel,.excel-panel){
+  border:1px solid var(--line)!important;
+  border-radius:var(--r-card)!important;
+  box-shadow:var(--bcs-shadow)!important;
+}
+:is(.empty,.adv-empty,.inv-empty,.unit-empty,.mini-empty,.live-empty,.an-empty,.empty-inline,.wc-empty,.yt-empty){
+  background:color-mix(in srgb,var(--gold) 5%,var(--panel))!important;
+  border:1px dashed var(--line)!important;border-radius:14px!important;
+  color:var(--ink2)!important;padding:16px!important;text-align:center!important;
+}
+.overlay .modal{
+  border:1px solid var(--line)!important;border-radius:var(--r-modal)!important;
+  background:var(--panel)!important;box-shadow:var(--shadow-lg)!important;
+  max-height:min(92dvh,900px)!important;overflow:hidden!important;
+}
+.overlay .modal-body{overflow:auto!important}
+.overlay .modal-head,.overlay .modal-foot{flex-wrap:wrap;gap:8px}
+
+@media(max-width:700px){
+  .adv-head,.intro.hero-life{align-items:flex-start!important;padding:18px!important}
+  .adv-head-actions{justify-content:flex-start!important}
+  .adv-title{font-size:26px!important}
+  .adv-sub{font-size:12.5px!important}
+  body .btn,body .btn.sm,body .btn.ghost{min-height:36px!important;height:36px!important;padding:0 12px!important}
+}
+
+/* v220 navigation: 8 pinned pages in the bar, everything else one click away.
+   Pinned copies stay in the panel only on phones, where the tab bar hides them. */
+@media(min-width:431px){
+  #navMorePanel button.more-pinned{display:none!important}
+}
+#navMorePanel{min-width:0!important;z-index:95!important}
+#navMorePanel button.on{
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep))!important;
+  color:#12150F!important;border-color:var(--gold-deep)!important;
+}
+#navMorePanel button.on .nav-ic{background:rgba(18,21,15,.14)!important;color:#12150F!important}
+body.bcs-native #pagesFab{display:none!important}
+@media(max-width:480px){
+  #navMorePanel{width:calc(100vw - 24px)!important;left:12px!important}
+}
 </style>
 <body class="locked">
 <script>/* early theme bootstrap — prevents a light flash before initExperience runs */try{var _t=localStorage.getItem('bcs_theme_v1')||'dark';document.body.dataset.theme=_t;document.documentElement.dataset.theme=_t;document.documentElement.style.colorScheme=_t;}catch(e){}</script>
@@ -18002,7 +18126,7 @@ function cnOpen(url){
   const u=cnSafeUrl(url);
   if(!u){ try{ toast('Link khul nahi sakta — https:// wala sahi URL daalein',true); }catch(e){} return false; }
   let w=null; try{ w=window.open(u,'_blank','noopener,noreferrer'); }catch(e){}
-  if(!w){ try{ const a=document.createElement('a'); a.href=u; a.target='_blank'; a.rel='noopener noreferrer'; a.style.display='none'; document.body.appendChild(a); a.click(); a.remove(); return true; }catch(e){} }
+  if(!w){ try{ const a=document.createElement('a'); a.href=u; a.target='_blank'; a.rel='noopener noreferrer'; a.setAttribute('data-no-frame',''); a.style.display='none'; document.body.appendChild(a); a.click(); a.remove(); return true; }catch(e){} }
   return true;
 }
 function cnRateStamp(){ const d=new Date(),p=n=>String(n).padStart(2,'0'); return p(d.getDate())+' '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]+' '+d.getFullYear()+' · '+p(d.getHours())+':'+p(d.getMinutes()); }
@@ -18019,6 +18143,7 @@ function cnRateStamp(){ const d=new Date(),p=n=>String(n).padStart(2,'0'); retur
     try{
       const a = document.createElement('a');
       a.href = raw; a.target = n || '_blank'; a.rel = 'noopener noreferrer';
+      a.setAttribute('data-no-frame','');
       a.style.display = 'none'; document.body.appendChild(a); a.click(); a.remove();
       return { closed:true, focus:function(){}, print:function(){} };
     }catch(e){ return null; }
@@ -18150,40 +18275,30 @@ try{
   <div class="hwrap hwrap-nav">
     <nav id="nav" role="navigation" aria-label="BCS desk pages">
       <button type="button" data-view="dashboard" class="on" aria-current="page" aria-label="Dashboard"><span class="nav-ic" aria-hidden="true">⌂</span><span class="nav-lbl">Dashboard</span></button>
-      <button type="button" data-view="advisory" aria-label="Advisory"><span class="nav-ic" aria-hidden="true">✦</span><span class="nav-lbl">Advisory</span></button>
       <button type="button" data-view="projects" aria-label="Projects"><span class="nav-ic" aria-hidden="true">▣</span><span class="nav-lbl">Projects</span></button>
-      <button type="button" data-view="developers" aria-label="Developers"><span class="nav-ic" aria-hidden="true">◈</span><span class="nav-lbl">Developers</span></button>
       <button type="button" data-view="clients" aria-label="Clients"><span class="nav-ic" aria-hidden="true">◐</span><span class="nav-lbl">Clients</span></button>
       <button type="button" data-view="leadgen" aria-label="Lead Engine"><span class="nav-ic" aria-hidden="true">🎯</span><span class="nav-lbl">Leads</span></button>
       <button type="button" data-view="dayplan" aria-label="Day Plan"><span class="nav-ic" aria-hidden="true">◷</span><span class="nav-lbl">Day Plan</span></button>
-      <button type="button" data-view="pulse" aria-label="Market Pulse"><span class="nav-ic" aria-hidden="true">↗</span><span class="nav-lbl">Market Pulse</span><span class="nav-dot gold" aria-hidden="true"></span></button>
-      <button type="button" data-view="news" aria-label="News"><span class="nav-ic" aria-hidden="true">📰</span><span class="nav-lbl">News</span><span class="nav-dot" aria-hidden="true"></span></button>
-      <button type="button" data-view="calc" aria-label="Calculators"><span class="nav-ic" aria-hidden="true">⌘</span><span class="nav-lbl">Calculators</span></button>
-      <button type="button" data-view="inventory" aria-label="Plot Inventory"><span class="nav-ic" aria-hidden="true">▦</span><span class="nav-lbl">Inventory</span></button>
       <button type="button" data-view="pipeline" aria-label="Sales Pipeline"><span class="nav-ic" aria-hidden="true">⇢</span><span class="nav-lbl">Pipeline</span></button>
-      <button type="button" data-view="exchange" aria-label="Exchange"><span class="nav-ic" aria-hidden="true">⇄</span><span class="nav-lbl">Exchange</span></button>
-      <button type="button" data-view="advisors" aria-label="Advisors"><span class="nav-ic" aria-hidden="true">◎</span><span class="nav-lbl">Advisors</span></button>
-      <button type="button" data-view="analytics" aria-label="Analytics"><span class="nav-ic" aria-hidden="true">▥</span><span class="nav-lbl">Analytics</span></button>
-      <button type="button" data-view="ops" aria-label="Operations"><span class="nav-ic" aria-hidden="true">⌗</span><span class="nav-lbl">Ops</span></button>
+      <button type="button" data-view="calc" aria-label="Calculators"><span class="nav-ic" aria-hidden="true">⌘</span><span class="nav-lbl">Calculators</span></button>
       <button type="button" data-view="jaipur" aria-label="Jaipur Map"><span class="nav-ic" aria-hidden="true">🗺</span><span class="nav-lbl">Jaipur Map</span><span class="nav-dot gold" aria-hidden="true"></span></button>
-      <button type="button" data-view="whiteboard" aria-label="BCS EZWrite whiteboard"><span class="nav-ic" aria-hidden="true">✎</span><span class="nav-lbl">Whiteboard</span></button>
       <div class="nav-more-wrap">
         <button type="button" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" title="All pages" aria-label="More pages"><span class="nav-ic" aria-hidden="true">⋯</span><span class="nav-lbl">More</span><span class="nav-chev" aria-hidden="true">▾</span></button>
         <div class="nav-more-panel" id="navMorePanel" hidden>
           <div class="nav-more-head"><b>All pages</b><span>one click away</span></div>
           <input type="search" id="navPageSearch" class="nav-page-search" placeholder="Jump to a page…  /" aria-label="Search all pages" autocomplete="off" spellcheck="false">
-          <button type="button" data-view="dashboard"><span class="nav-ic" aria-hidden="true">⌂</span>Dashboard</button>
+          <button type="button" class="more-pinned" data-view="dashboard"><span class="nav-ic" aria-hidden="true">⌂</span>Dashboard</button>
           <button type="button" data-view="advisory"><span class="nav-ic" aria-hidden="true">✦</span>Advisory</button>
-          <button type="button" data-view="projects"><span class="nav-ic" aria-hidden="true">▣</span>Projects</button>
+          <button type="button" class="more-pinned" data-view="projects"><span class="nav-ic" aria-hidden="true">▣</span>Projects</button>
           <button type="button" data-view="developers"><span class="nav-ic" aria-hidden="true">◈</span>Developers</button>
-          <button type="button" data-view="clients"><span class="nav-ic" aria-hidden="true">◐</span>Clients</button>
-          <button type="button" data-view="leadgen"><span class="nav-ic" aria-hidden="true">🎯</span>Leads</button>
-          <button type="button" data-view="dayplan"><span class="nav-ic" aria-hidden="true">◷</span>Day Plan</button>
+          <button type="button" class="more-pinned" data-view="clients"><span class="nav-ic" aria-hidden="true">◐</span>Clients</button>
+          <button type="button" class="more-pinned" data-view="leadgen"><span class="nav-ic" aria-hidden="true">🎯</span>Leads</button>
+          <button type="button" class="more-pinned" data-view="dayplan"><span class="nav-ic" aria-hidden="true">◷</span>Day Plan</button>
           <button type="button" data-view="pulse"><span class="nav-ic" aria-hidden="true">↗</span>Market Pulse</button>
           <button type="button" data-view="news"><span class="nav-ic" aria-hidden="true">📰</span>News</button>
-          <button type="button" data-view="calc"><span class="nav-ic" aria-hidden="true">⌘</span>Calculators</button>
+          <button type="button" class="more-pinned" data-view="calc"><span class="nav-ic" aria-hidden="true">⌘</span>Calculators</button>
           <button type="button" data-view="inventory"><span class="nav-ic" aria-hidden="true">▦</span>Plot Inventory</button>
-          <button type="button" data-view="pipeline"><span class="nav-ic" aria-hidden="true">⇢</span>Sales Pipeline</button>
+          <button type="button" class="more-pinned" data-view="pipeline"><span class="nav-ic" aria-hidden="true">⇢</span>Sales Pipeline</button>
           <button type="button" data-view="exchange"><span class="nav-ic" aria-hidden="true">⇄</span>Exchange</button>
           <button type="button" data-view="advisors"><span class="nav-ic" aria-hidden="true">◎</span>Advisors</button>
           <button type="button" data-view="partners"><span class="nav-ic" aria-hidden="true">◉</span>Partners</button>
@@ -18201,7 +18316,7 @@ try{
           <button type="button" data-view="sheets"><span class="nav-ic" aria-hidden="true">📊</span>Google Sheets</button>
           <button type="button" data-view="applications"><span class="nav-ic" aria-hidden="true">▤</span>Applications</button>
           <button type="button" data-view="whiteboard"><span class="nav-ic" aria-hidden="true">✎</span>BCS EZWrite board</button>
-          <button type="button" data-view="jaipur"><span class="nav-ic" aria-hidden="true">🗺</span>Jaipur Map</button>
+          <button type="button" class="more-pinned" data-view="jaipur"><span class="nav-ic" aria-hidden="true">🗺</span>Jaipur Map</button>
         </div>
       </div>
     </nav>
@@ -18561,6 +18676,8 @@ try{
     <div class="sec-head">
       <h3>Data &amp; Excel</h3>
       <span class="sub">Poora format download karein, Excel mein bharein, phir import karein</span>
+      <button type="button" class="btn ghost sm bcs-role-hidden" data-goto="sheets" style="margin-left:auto">📊 Google Sheets</button>
+      <button type="button" class="btn ghost sm bcs-role-hidden" data-goto="health">♥ Data health</button>
     </div>
     <div class="panel excel-panel">
       <div class="excel-copy">
@@ -18604,6 +18721,8 @@ try{
         <p class="adv-sub">Type, road aur developer — kisi bhi column se group karein. KPI, corridor/type chips, developer aur search se instant filter; multi-type project har matching type column me dikhta hai. Open any card for the full project file with RERA aur price bands.</p>
       </div>
       <div class="adv-head-actions">
+        <button class="btn ghost sm" data-goto="inventory">▦ Inventory</button>
+        <button class="btn ghost sm" data-goto="analytics">▥ Analytics</button>
         <button class="btn ghost" id="bulkProjectBtn" title="Add several projects in one go">⚡ Bulk add</button>
         <button class="btn ghost" data-repbtn="projects" title="Customised projects report — PDF / AirDrop">📊 Report</button>
         <button class="btn primary" id="addProjectBtn">
@@ -18718,6 +18837,8 @@ try{
         <p class="adv-sub">Primary inventory khatam ho jaye tab bhi deal nahi rukti. Kisi bhi project ka resale plot, flat, shop ya client ki apni unit — sab ek tab mein, seller aur asking price ke saath.</p>
       </div>
       <div class="adv-head-actions">
+        <button class="btn ghost sm" data-goto="inventory">▦ Primary inventory</button>
+        <button class="btn ghost sm" data-goto="projects">▣ Projects</button>
         <button class="btn primary" id="addResaleBtn">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
           Add resale unit
@@ -18838,6 +18959,7 @@ try{
         <p class="adv-sub">Booking, payment dates, bank/cheque trail, agreement, registry, handover aur brokerage slab — advisor ki sale ka poora lifecycle ek jagah, amount paid &amp; pending ke saath.</p>
       </div>
       <div class="adv-head-actions">
+        <button class="btn ghost sm bcs-role-hidden" data-goto="finance">💰 Finance</button>
         <button class="btn ghost" data-repbtn="pipeline" title="Customised sales report — PDF / AirDrop">📊 Report</button>
         <button class="btn primary" id="addDealBtn">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
@@ -19181,6 +19303,9 @@ try{
         <p class="adv-sub">Budget, timeline, property type aur corridor set karo — sirf wahi projects dikhenge jo fit hain. Shortlist banao aur client ko clean sheet mein present karo.</p>
       </div>
       <div class="adv-head-actions">
+        <button class="btn ghost sm" data-goto="whiteboard">✎ Present board</button>
+        <button class="btn ghost sm bcs-role-hidden" data-goto="terminology">Aa Shabdkosh</button>
+        <button class="btn ghost sm bcs-role-hidden" data-goto="tax">₹ Tax &amp; advice</button>
         <button class="btn ghost" id="advSaveBrief">Save client brief</button>
         <button class="btn primary" id="advPresentTop" disabled>Present shortlist <span class="pill" id="advPresentCount">0</span></button>
       </div>
@@ -19288,6 +19413,9 @@ try{
           <p class="adv-sub">Developer ki verbal list se range generate karo — "1 to 50 = 111 Gaj, 40 ft road" — status ek click me toggle, layout map ke upar matrix, aur payout apne aap.</p>
         </div>
         <div class="adv-head-actions">
+          <button class="btn ghost sm" data-goto="projects">▣ Projects</button>
+          <button class="btn ghost sm" data-goto="resale">⇌ Resale</button>
+          <button class="btn ghost sm" data-goto="jaipur">🗺 Map view</button>
           <button class="btn ghost" id="invLegalBtn">⚖ Legal vault</button>
           <button class="btn ghost" id="invDocketBtn">📄 Project docket</button>
           <button class="btn ghost" id="invMapBtn">🗺 Layout map</button>
@@ -19343,6 +19471,8 @@ try{
         <p class="adv-sub">Koi bhi news link paste karein — full website preview, source aur date ke saath save hoga. Link na ho to apni editorial note likhein — market, policy, infrastructure ya kisi project ka update.</p>
       </div>
       <div class="adv-head-actions">
+        <button class="btn ghost sm" data-goto="podcasts">🎙 Listen desk</button>
+        <button class="btn ghost sm" data-goto="social">🌐 Social</button>
         <button class="btn ghost" id="newsRefreshBtn" title="Refresh saved link previews">↻ Refresh previews</button>
         <button class="btn primary" id="addNewsBtn">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
@@ -19413,6 +19543,7 @@ try{
           <p>Channels kholo, video paste karo, yahin dekho — PropertyWala, Square Yards, Housing, ET Realty.</p>
         </div>
         <div class="live-hero-actions">
+          <button type="button" class="btn ghost sm" data-goto="podcasts">🎙 Podcasts &amp; library</button>
           <a class="btn ghost" href="https://www.youtube.com/results?search_query=Jaipur+real+estate" target="_blank" rel="noopener">YouTube search ↗</a>
         </div>
       </div>
@@ -19464,7 +19595,7 @@ try{
       <div class="player-frame-wrap" id="wpFrameWrap"><iframe id="wpFrame" title="Channel player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="display:none;opacity:0"></iframe></div>
       <div class="watch-modal-note" id="wpNote">Latest uploads from the channel — bina YouTube tab kholein.</div>
     </div>
-    <div class="modal-foot"><a class="btn ghost" id="wpOpenYT" href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">↗ Open on YouTube</a><button class="btn primary" data-close="watchPlayerModal">Close</button></div>
+    <div class="modal-foot"><a class="btn ghost" id="wpOpenYT" href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" data-no-frame>↗ Open on YouTube</a><button class="btn primary" data-close="watchPlayerModal">Close</button></div>
   </div>
 </div>
 
@@ -19489,6 +19620,8 @@ try{
           <p>News ko content me badlein. Idea capture karein, hook likhein, status track karein — idea → script → filmed → posted. Live news card se ek click me idea ban jata hai.</p>
         </div>
         <div class="live-hero-actions">
+          <button type="button" class="btn ghost sm" data-goto="templates">▤ Templates</button>
+          <button type="button" class="btn ghost sm" data-goto="social">🌐 Social desk</button>
           <button type="button" class="btn primary" id="addVideoIdeaBtn">＋ New video idea</button>
         </div>
       </div>
@@ -19617,6 +19750,8 @@ try{
         <p class="adv-sub">Rajasthan registration, EMI, GST, brokerage, rent yield, plot area — sab ek jagah. Rates FY 2026-27 ke liye editable hain — naye slab aa jayein toh yahin update kar lo, har calculation turant sahi hogi. Sources ke saath, client ko turant share karo.</p>
       </div>
       <div class="adv-head-actions">
+        <button class="btn ghost sm bcs-role-hidden" data-goto="tax">₹ Tax &amp; advice</button>
+        <button class="btn ghost sm bcs-role-hidden" data-goto="terminology">Aa Shabdkosh</button>
         <button class="btn ghost" id="calcPrintAll">Print / PDF</button>
         <button class="btn primary" id="calcShareAll">Share WhatsApp</button>
       </div>
@@ -20004,6 +20139,8 @@ try{
         <button class="btn ghost" id="pulsePwOpen">↗ PropertyWala</button>
         <button class="btn ghost" id="pulseReiOpen">↗ Real Estate India</button>
         <button class="btn ghost" data-goto="jaipur">🗺 Jaipur Map</button>
+        <button class="btn ghost sm" data-goto="news">📰 News desk</button>
+        <button class="btn ghost sm" data-goto="projects">▣ Projects</button>
         <button class="btn primary" id="pulseShare">Share WhatsApp</button>
       </div>
     </div>
@@ -20092,6 +20229,8 @@ try{
         <p class="adv-sub">Flats, plots, villas aur commercial — Jaipur ki har badi locality ek interactive map par. <b>Magicbricks, 99acres, Housing.com, Square Yards, Aurum Pulse, 2bigha, PropertyWala, Real Estate India aur official RERA/JDA verification</b> se public project details, source-attributed dossiers aur Google Maps locations judi hain. Budget, BHK aur amenities set karo, matching localities highlight ho jayengi. Har dossier me builder, configuration, area, indicative asking price, status, possession, RERA ID, amenities, connectivity aur verbatim evidence milta hai. <b>Raate indicative asking rates hain, sold prices nahi</b> — source par verify karo. BCS kuch bhi upload ya auto-send nahi karta.</p>
       </div>
       <div class="adv-head-actions">
+        <button type="button" class="btn ghost sm" data-goto="projects">▣ Projects</button>
+        <button type="button" class="btn ghost sm" data-goto="inventory">▦ Inventory</button>
         <button type="button" class="btn ghost" id="jpReset">↺ Reset filters</button>
         <button type="button" class="btn ghost" id="jpCsv">⇩ Export CSV</button>
         <button type="button" class="btn primary" id="jpShare">Share WhatsApp</button>
@@ -20190,9 +20329,9 @@ try{
             <div class="jp-google-fallback" id="jpGoogleFallback" hidden>
               <b>Google embed slow ya block ho gaya?</b>
               Google Maps embedding kabhi-kabhi network, cookie ya browser extension se ruk jata hai. BCS ka apna dark map aur project pins available hi hain.
-              <div class="jp-actions"><button type="button" id="jpGoogleRetry">Retry embed</button><a id="jpGoogleFallbackOpen" href="https://www.google.com/maps/search/?api=1&query=Jaipur%20Rajasthan" target="_blank" rel="noopener">Open Google Maps ↗</a></div>
+              <div class="jp-actions"><button type="button" id="jpGoogleRetry">Retry embed</button><a id="jpGoogleFallbackOpen" href="https://www.google.com/maps/search/?api=1&query=Jaipur%20Rajasthan" target="_blank" rel="noopener" data-no-frame>Open Google Maps ↗</a></div>
             </div>
-            <div class="jp-google-bar"><span><b id="jpGoogleLabel">Jaipur Rajasthan</b> · <span class="gm-hint">live Google Maps embed · internet zaroori</span></span><a id="jpGoogleOpen" href="https://www.google.com/maps/search/?api=1&query=Jaipur%20Rajasthan" target="_blank" rel="noopener">Open full Google Maps ↗</a></div>
+            <div class="jp-google-bar"><span><b id="jpGoogleLabel">Jaipur Rajasthan</b> · <span class="gm-hint">live Google Maps embed · internet zaroori</span></span><a id="jpGoogleOpen" href="https://www.google.com/maps/search/?api=1&query=Jaipur%20Rajasthan" target="_blank" rel="noopener" data-no-frame>Open full Google Maps ↗</a></div>
           </div>
           <svg class="jp-svg" id="jpSvg" viewBox="0 0 800 640" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Jaipur localities map (offline)"></svg>
           <div class="jp-legend"><span><i style="background:#E7C46E"></i>Match</span><span><i style="background:#C99A5C"></i>Near</span><span><i style="background:#4A4A44"></i>No match</span></div>
@@ -20259,6 +20398,8 @@ try{
         <p class="adv-sub">Developer, project aur advisor-wise messages save karein. Placeholder jaise <b>{project}</b>, <b>{price}</b>, <b>{advisor}</b> record ke saath automatically bhar jaate hain. Card par Copy dabao aur WhatsApp / email mein paste karo.</p>
       </div>
       <div class="adv-head-actions">
+        <button type="button" class="btn ghost sm" data-goto="social">🌐 Social desk</button>
+        <button type="button" class="btn ghost sm" data-goto="tax">₹ Tax &amp; advice</button>
         <button class="btn primary" id="addTemplateBtn">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
           New template
@@ -20284,6 +20425,7 @@ try{
         <h4>Reel DM reply kit</h4>
         <span class="hint">Profession-wise one-liner comment, ad copy aur PDF ke baad bhejne wala personalized DM reply.</span>
         <span class="sp"></span>
+        <button type="button" class="btn ghost sm" data-goto="tax">₹ Tax rules</button>
         <button type="button" class="btn ghost sm" id="proReplyCsv">⬇ CSV</button>
         <button type="button" class="btn primary sm" id="addProReplyBtn">+ New reply kit</button>
       </div>
@@ -20308,6 +20450,8 @@ try{
         <p class="adv-sub">Four open-source applications, Adobe Express, a built-in Content Growth Studio, a local BCS EZWrite whiteboard and a Google field kit built for Jaipur property work. BCS Desk remains a single offline file — nothing is installed into your data, no client name or project number is sent to these tools, and normal links open inside BCS’s in-app frame, with an explicit “Original” action for a new tab.</p>
       </div>
       <div class="adv-head-actions">
+        <button type="button" class="btn ghost sm" data-goto="links">⛓ Links desk</button>
+        <button type="button" class="btn ghost sm bcs-role-hidden" data-goto="social">🌐 Social desk</button>
         <button type="button" class="btn primary" data-cgs-open>Content Growth Studio ↗</button>
         <button type="button" class="btn ghost" data-apps-scroll="appsGoogleKit">Google field kit ↘</button>
       </div>
@@ -20520,6 +20664,10 @@ try{
         <h2 class="adv-title">Podcasts &amp; Library,<br><em>knowledge without the noise.</em></h2>
         <p class="adv-sub">Play Podcast, Libby aur Kanopy — real estate, business aur storytelling ke 3 premium sources. Card kholne ke liye library card chahiye; yahin apne favorite podcasts bhi save kar sakte hain.</p>
       </div>
+      <div class="adv-head-actions">
+        <button type="button" class="btn ghost sm" data-goto="news">📰 News desk</button>
+        <button type="button" class="btn ghost sm" data-goto="social">🌐 Social</button>
+      </div>
     </div>
     <div class="pod-studio" id="podStudio">
       <div class="ps-top">
@@ -20565,7 +20713,7 @@ try{
         <h4>Kanopy</h4>
         <p>30,000+ films, documentaries aur world cinema — library/university card se 100% free streaming.</p>
         <div class="pod-note">Needs: <b>Library ya university login</b> · Monthly play credits per library</div>
-        <div class="pod-foot"><a class="pod-open" href="https://www.kanopy.com/en" target="_blank" rel="noopener noreferrer">Open Kanopy ↗</a></div>
+        <div class="pod-foot"><a class="pod-open" href="https://www.kanopy.com/en" target="_blank" rel="noopener noreferrer" data-no-frame>Open Kanopy ↗</a></div>
       </div>
     </div>
     <div class="sec-head">
@@ -20694,6 +20842,10 @@ try{
         <h2 class="adv-title">Google Sheets,<br><em>full data sync.</em></h2>
         <p class="adv-sub">Poora BCS data Google Sheet me export karein aur wapas import karein. Ek hi sheet me sab records — projects, developers, clients, advisors — ek row ek record, sabhi fields columns me. Kabhi data loss nahi.</p>
       </div>
+      <div class="adv-head-actions">
+        <button type="button" class="btn ghost sm" data-goto="dashboard">⌂ Dashboard</button>
+        <button type="button" class="btn ghost sm" data-goto="health">♥ Data health</button>
+      </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:24px">
       <div style="border-radius:18px;border:1px solid var(--line);background:var(--panel);padding:24px;text-align:center">
@@ -20745,6 +20897,7 @@ try{
         <p class="adv-sub">Poora system ek nazar mein — kaunse projects ka data adhoora hai, kahan duplicate entry hai, price history kitni maintained hai aur browser storage kitna bhar chuka hai.</p>
       </div>
       <div class="adv-head-actions">
+        <button class="btn ghost sm bcs-role-hidden" data-goto="sheets">📊 Google Sheets</button>
         <button class="btn ghost" id="healthQualityBtn">Rating items</button>
         <button class="btn ghost" id="healthDupBtn">Check duplicates</button>
         <button class="btn primary" id="healthBackupBtn">Download backup</button>
@@ -20769,6 +20922,14 @@ try{
           <button data-anrange="90">Last 90 days</button>
         </div>
       </div>
+    </div>
+    <div class="toolbar an-source-strip" style="margin-bottom:14px">
+      <span class="eyebrow">Live source records</span>
+      <button type="button" class="btn ghost sm" data-goto="projects">▣ Projects</button>
+      <button type="button" class="btn ghost sm" data-goto="clients">◐ Clients</button>
+      <button type="button" class="btn ghost sm" data-goto="pipeline">⇢ Pipeline</button>
+      <button type="button" class="btn ghost sm" data-goto="inventory">▦ Inventory</button>
+      <button type="button" class="btn ghost sm" data-goto="advisors">◎ Advisors</button>
     </div>
     <div class="an-kpis" id="anKpis"></div>
     <div class="an-grid">
@@ -20824,6 +20985,10 @@ try{
         <p class="adv-sub">Versioned backups, activity audit, document checklists, receivables aging, due-diligence packs, lead-source ROI, commission ledger, broadcast queue aur locality pins — sab aapke apne records se, live.</p>
       </div>
       <div class="adv-head-actions">
+        <button class="btn ghost sm" data-goto="clients">◐ Clients</button>
+        <button class="btn ghost sm" data-goto="pipeline">⇢ Pipeline</button>
+        <button class="btn ghost sm" data-goto="inventory">▦ Inventory</button>
+        <button class="btn ghost sm" data-goto="finance">💰 Finance</button>
         <button class="btn ghost" id="opsBackupNow">⤓ Backup now</button>
         <button class="btn ghost" id="opsExportAll">⬇ Export JSON</button>
       </div>
@@ -20942,7 +21107,7 @@ try{
     <div class="yt-now" id="ytNow">
       <span class="yn-live" id="ytLiveBadge">Playing</span>
       <b id="ytNowTitle">YouTube video</b>
-      <a class="yn-open" id="ytOpen" href="https://www.youtube.com/" target="_blank" rel="noopener" title="YouTube app ke andar kholein">↗</a>
+      <a class="yn-open" id="ytOpen" href="https://www.youtube.com/" target="_blank" rel="noopener" data-no-frame title="YouTube app ke andar kholein">↗</a>
       <button type="button" class="yn-next" id="ytNext" title="Agla search result try karein" hidden>↻ Next</button>
       <button type="button" class="yn-stop" id="ytStop">Stop</button>
     </div>
@@ -27552,17 +27717,52 @@ function showOverlay(id){
   el.style.setProperty('z-index', String(overlayZ), 'important');
   el.classList.add('on');
 }
-var BCS_MORE_SET = ['partners','resale','tax','terminology','links','templates','podcasts','health','social','sheets','applications','whiteboard'];
+var BCS_MORE_SET = [];
+function bcsNavVisibleViews(){
+  try{
+    if(document.body.classList.contains('bcs-native')){
+      const tabs = $$('#nav > button.bcs-tab[data-view]').map(b => b.dataset.view).filter(Boolean);
+      if(tabs.length) return tabs;
+    }
+    return $$('#nav > button[data-view]').map(b => b.dataset.view).filter(Boolean);
+  }catch(e){ return []; }
+}
+function bcsMoreViews(){
+  try{
+    const visible = new Set(bcsNavVisibleViews());
+    return $$('#navMorePanel button[data-view]').map(b => b.dataset.view).filter(v => v && !visible.has(v));
+  }catch(e){ return []; }
+}
 function bcsNavMoreSync(){
   try{
+    BCS_MORE_SET = bcsMoreViews();
+    const visible = new Set(bcsNavVisibleViews());
     const mb = $('#navMoreBtn');
-    if(!mb) return;
-    const inMore = BCS_MORE_SET.includes(currentView);
-    mb.classList.toggle('on', inMore);
+    if(mb) mb.classList.toggle('on', !!currentView && !visible.has(currentView));
     $$('#navMorePanel button').forEach(function(b){ b.classList.toggle('on', b.dataset.view === currentView); });
   }catch(e){}
 }
-function bcsNavMoreClose(){ try{ const p = $('#navMorePanel'); if(p){ p.hidden = true; } const mb = $('#navMoreBtn'); if(mb) mb.setAttribute('aria-expanded','false'); }catch(e){} }
+function bcsNavMorePosition(){
+  try{
+    if(window.BCS_NAVX && typeof window.BCS_NAVX.positionMore === 'function') window.BCS_NAVX.positionMore();
+    else if(typeof window.bcsPlaceMore === 'function') window.bcsPlaceMore();
+  }catch(e){}
+}
+function bcsNavMoreOpen(focusSearch){
+  try{
+    const p = $('#navMorePanel'), mb = $('#navMoreBtn');
+    if(!p || !mb) return;
+    p.hidden = false; mb.setAttribute('aria-expanded','true');
+    bcsNavMoreSync();
+    setTimeout(bcsNavMorePosition, 0);
+    if(focusSearch && window.innerWidth >= 1000 && $('#navPageSearch')){
+      const s = $('#navPageSearch'); s.value = '';
+      try{ s.focus({ preventScroll:true }); }catch(e){ s.focus(); }
+    }
+  }catch(e){}
+}
+function bcsNavMoreToggle(){ try{ const p = $('#navMorePanel'); if(p && !p.hidden) bcsNavMoreClose(); else bcsNavMoreOpen(true); }catch(e){} }
+function bcsNavMoreClose(){ try{ const p = $('#navMorePanel'); if(p){ p.hidden = true; } const mb = $('#navMoreBtn'); if(mb) mb.setAttribute('aria-expanded','false'); bcsNavMoreSync(); }catch(e){} }
 function go(view){
   if(!isAdmin() && !ADVISOR_VIEWS.includes(view)){
     try{ toast('Advisor portal me ye page available nahi hai', true); }catch(e){}
@@ -27571,7 +27771,8 @@ function go(view){
   try{ bcsSound('nav'); }catch(e){}
   try{ setTimeout(function(){ if(view === 'analytics') bcsAnimateBars(document); }, 60); }catch(e){}
   currentView = view; bcsNavMoreClose();
-  $$('#nav button').forEach(b => { const on = b.dataset.view === view; b.classList.toggle('on', on); if(on) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
+  $$('#nav button[data-view]').forEach(b => { const on = b.dataset.view === view; b.classList.toggle('on', on); if(on) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
+  bcsNavMoreSync();
   $$('.view').forEach(v => v.classList.toggle('on', v.id === 'view-' + view));
   render();
   window.scrollTo({top:0, behavior:'smooth'});
@@ -27580,14 +27781,7 @@ try{
   const _nav = $('#nav');
   if(_nav){
     _nav.addEventListener('click', e => {
-      const mb = e.target.closest('#navMoreBtn');
-      if(mb){
-        const p = $('#navMorePanel');
-        const open = p && !p.hidden;
-        if(p) p.hidden = open;
-        mb.setAttribute('aria-expanded', open ? 'false' : 'true');
-        return;
-      }
+      if(e.target.closest('#navMoreBtn')) return;
       const b = e.target.closest('button[data-view]');
       if(b) go(b.dataset.view);
     });
@@ -51241,11 +51435,14 @@ document.addEventListener('visibilitychange', () => {
   document.addEventListener("click", function(e){
     const a = e.target.closest('a[href^="#"]');
     if(!a) return;
-    const target = document.querySelector(a.getAttribute("href"));
+    const href = a.getAttribute("href") || '';
+    if(href.length < 2 || href.indexOf('#') !== 0) return;
+    let target;
+    try{ target = document.querySelector(href); }catch(err){ return; }
     if(!target) return;
     e.preventDefault();
     try{ target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block:"start" }); }catch(err){}
-  }, {passive:true});
+  });
   // Inject skeleton placeholders for async panes while empty (non-destructive; removed on render)
   try{
     document.querySelectorAll(".live-grid, .cal-wrap, .an-kpis").forEach(function(el){
@@ -51409,7 +51606,7 @@ window.bcsOpenInApp = bcsOpenInApp;
 document.addEventListener('click', function(e){
   if(e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
   var a = e.target.closest && e.target.closest('a[href]');
-  if(!a || a.hasAttribute('download') || a.hasAttribute('data-no-frame')) return;
+  if(!a || a.hasAttribute('download') || a.hasAttribute('data-no-frame') || a.hasAttribute('data-sv-ext')) return;
   if(a.target === '_self' || a.target === '_top' || a.target === '_parent') return;
   var raw = a.getAttribute('href') || '';
   if(!/^https?:\/\//i.test(raw) || bcsIsWaLink(raw)) return;
@@ -51520,7 +51717,7 @@ function openWatchPlayer(id){
   if(!wrap) return;
   wrap.innerHTML = '';
   if(!embed){
-    wrap.innerHTML = '<div class="watch-error"><b>Embed nahi chalega</b><span>Is channel ki embedding unavailable hai — “Open on YouTube” use karein.</span><a class="btn primary" href="' + esc(watchChannelPage(c)) + '" target="_blank" rel="noopener noreferrer">↗ Open on YouTube</a></div>';
+    wrap.innerHTML = '<div class="watch-error"><b>Embed nahi chalega</b><span>Is channel ki embedding unavailable hai — “Open on YouTube” use karein.</span><a class="btn primary" href="' + esc(watchChannelPage(c)) + '" target="_blank" rel="noopener noreferrer" data-no-frame>↗ Open on YouTube</a></div>';
   } else {
     const iframe = document.createElement('iframe');
     iframe.id = 'wpFrame';
@@ -52610,15 +52807,14 @@ try{
       }
       moreBtn.addEventListener('click', function(e){
         e.stopPropagation();
+        try{ if(typeof bcsNavMoreToggle === 'function'){ bcsNavMoreToggle(); return; } }catch(err){}
         var isOpen = !morePanel.hidden;
         if(isOpen){
           morePanel.hidden = true;
           moreBtn.setAttribute('aria-expanded','false');
-          moreBtn.classList.remove('on');
         }else{
           morePanel.hidden = false;
           moreBtn.setAttribute('aria-expanded','true');
-          moreBtn.classList.add('on');
           setTimeout(placeMore, 0);
         }
       });
@@ -53143,7 +53339,7 @@ try{
             '</span>' +
             '<span class="sv-acts">' +
               '<em>open</em>' +
-              '<a class="sv-ext" href="' + escH(r.url) + '" target="_blank" rel="noopener noreferrer" title="New tab me kholein" data-sv-ext="1">↗</a>' +
+              '<a class="sv-ext" href="' + escH(r.url) + '" target="_blank" rel="noopener noreferrer" title="New tab me kholein" data-sv-ext="1" data-no-frame>↗</a>' +
             '</span>' +
           '</div>';
       }).join('');
@@ -55264,27 +55460,14 @@ try{ xchEnsure(db); }catch(e){ console.warn('[BCS exchange]', e); }
     }
     function togglePages(open, focusSearch){
       var willOpen = typeof open === 'boolean' ? open : morePanel.hidden;
-      morePanel.hidden = !willOpen;
-      moreBtn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
-      if(willOpen && pageSearch){
+      if(!willOpen){ try{ bcsNavMoreClose(); }catch(e){} return; }
+      try{ bcsNavMoreOpen(false); }catch(e){ morePanel.hidden = false; moreBtn.setAttribute('aria-expanded','true'); }
+      if(pageSearch){
         pageSearch.value = '';
         filterPages();
-        if(typeof window.bcsPlaceMore === 'function') setTimeout(function(){ try{ window.bcsPlaceMore(); }catch(e){} }, 0);
         if(focusSearch) setTimeout(function(){ try{ pageSearch.focus({ preventScroll:true }); }catch(e){ pageSearch.focus(); } }, 60);
       }
     }
-    moreBtn.addEventListener('click', function(){
-      setTimeout(function(){
-        if(!morePanel.hidden){
-          if(pageSearch){
-            pageSearch.value = '';
-            filterPages();
-            // Desktop: jump straight into filtering. Mobile: keep the keyboard down.
-            if(window.innerWidth >= 1000){ try{ pageSearch.focus({ preventScroll:true }); }catch(e){} }
-          }
-        }
-      }, 80);
-    });
     document.addEventListener('keydown', function(e){
       if(e.key === '/' && !e.metaKey && !e.ctrlKey && !e.altKey){
         var t = e.target;
@@ -57788,7 +57971,6 @@ function boot(){
   applySaved();
   nav.addEventListener('wheel', onWheel, { passive:false });
   document.addEventListener('click', e => {
-    if(e.target.closest('#navMoreBtn')) requestAnimationFrame(positionMorePanel);
     const pv = e.target.closest && e.target.closest('#navMorePanel button[data-view]');
     if(pv && pv.closest('#navMorePanel').parentNode === document.body){
       e.stopPropagation();
@@ -57859,8 +58041,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     var moreBtn = n.querySelector('#navMoreBtn');
     var syncMore = function(){
       if(!moreBtn) return;
-      var page = document.body.getAttribute('data-page') || '';
-      moreBtn.classList.toggle('on', TAB_VIEWS.indexOf(page) === -1);
+      try{ if(typeof bcsNavMoreSync === 'function') bcsNavMoreSync(); }catch(e){}
     };
     try{ new MutationObserver(syncMore).observe(document.body, { attributes:true, attributeFilter:['data-page'] }); }catch(e){}
     syncMore();
@@ -61349,6 +61530,32 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
           closeModal('clientProfileModal');
           go('ops');
           setTimeout(() => { try{ renderOps(); }catch(e){} }, 60);
+        });
+      }
+      if(!q('#opsClientDocsBtn')){
+        const d = document.createElement('button');
+        d.className = 'btn ghost'; d.id = 'opsClientDocsBtn'; d.type = 'button';
+        d.title = 'Deal documents for this client';
+        d.textContent = '📄 Documents';
+        const close = foot.querySelector('[data-close="clientProfileModal"]');
+        if(close) foot.insertBefore(d, close); else foot.appendChild(d);
+        d.addEventListener('click', () => {
+          closeModal('clientProfileModal');
+          opsTab = 'docs';
+          go('ops');
+          setTimeout(() => { try{ renderOps(); }catch(e){} }, 60);
+        });
+      }
+      if(!q('#opsClientFinanceBtn')){
+        const f = document.createElement('button');
+        f.className = 'btn ghost'; f.id = 'opsClientFinanceBtn'; f.type = 'button';
+        f.title = 'Payment plans and receivables';
+        f.textContent = '💰 Finance';
+        const close = foot.querySelector('[data-close="clientProfileModal"]');
+        if(close) foot.insertBefore(f, close); else foot.appendChild(f);
+        f.addEventListener('click', () => {
+          closeModal('clientProfileModal');
+          go('finance');
         });
       }
     }catch(e){}
