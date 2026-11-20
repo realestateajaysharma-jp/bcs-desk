@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Developer & Project Intelligence</title>
-<meta name="bcs-build" content="bcs-desk-v221">
-<!-- BCS DESK BUILD bcs-desk-v221 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard (pen, shapes, notes, pages, PNG export, working ruler/protractor/compass/set-square guides with place-on-board, local image/PDF import with direct annotation, clickable web cards, 8 board backgrounds, BenQ-style toolbox, timer, stopwatch, scoreboard, random draw, spinner, calculator, unit converter, spotlight, laser and floating notes) + BenQ EZWrite official launcher + Jaipur Property Map (flat-finder style, free CARTO key-enabled MapLibre tiles + Voyager GL vector style + offline SVG fallback, 47 localities, 5-portal benchmark rates + 10-register / 434-row source-attributed dossier index, fixed Google Maps embed height + working output=embed saved-place/link maps with in-app link conversion + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase + local category-wise saved places with one-click Google Maps, icons and CSV) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net -->
+<meta name="bcs-build" content="bcs-desk-v223">
+<!-- BCS DESK BUILD bcs-desk-v223 · single-file · zero-dependency · pinned More nav + drag-to-bar customization with persisted order + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard + Jaipur Property Map (source-attributed public portals: Aurum, Square Yards, PropertyWala, 2bigha, Real Estate India, Housing.com, IndiaProperty, TrueHomes24, Anarock media + official registers) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net -->
 <meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -446,7 +446,7 @@ main{max-width:1480px;margin:0 auto;padding:28px 32px 100px}
 .gemini-body iframe{flex:1;width:100%;border:0;background:#fff}
 .gemini-fallback,.gemini-blocked{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px}
 .gemini-foot{flex:none;padding:9px 14px;border-top:1px solid rgba(255,255,255,.08);font-size:10px;color:rgba(242,240,229,.55);line-height:1.5}
-@media (max-width:640px){ .gemini-panel{width:100vw} .gemini-fab{left:12px;bottom:14px} }
+@media (max-width:640px){ .gemini-panel{width:100%} .gemini-fab{left:12px;bottom:14px} }
 body.locked .gemini-fab{display:none}
 .gemini-prompts{display:flex;flex-wrap:wrap;gap:7px;padding:0 14px 12px}
 .gemini-chip{font:600 11px/1 'DM Sans',sans-serif;color:#F2F0E5;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:8px 11px;cursor:pointer;transition:.12s}
@@ -2187,7 +2187,7 @@ nav button.on{background:linear-gradient(135deg,#fff 0%,#FFF7E7 100%);box-shadow
 .hero-stat{cursor:pointer;text-align:left;font:inherit;min-width:104px}
 .hero-stat:hover{border-color:rgba(165,123,54,.45);transform:translateY(-2px)}
 .hero-road{border:1px solid rgba(229,234,232,.75);background:rgba(255,255,255,.66);border-radius:16px;padding:11px 13px}
-.hero-road h4{font-size:9px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+.hero-road h3{font-size:9px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
 .hero-road-rows{display:grid;gap:6px}
 .hero-road-row{display:flex;align-items:center;gap:8px;width:100%;text-align:left;font-size:11.5px;color:var(--ink);border:0;background:transparent;padding:2px 0;cursor:pointer}
 .hero-road-row:hover{color:var(--gold)}
@@ -3580,7 +3580,7 @@ select{
 #view-dashboard .hero-stat b{font-size:21px}
 #view-dashboard .hero-stat span{font-size:8.5px}
 #view-dashboard .hero-road{padding:9px 11px}
-#view-dashboard .hero-road h4{margin-bottom:6px}
+#view-dashboard .hero-road h3{margin-bottom:6px}
 #view-dashboard .hero-road-rows{gap:4px}
 #view-dashboard .dash-grid{gap:10px;margin-bottom:14px}
 #view-dashboard .dash-card{border-radius:20px}
@@ -3917,7 +3917,7 @@ body[data-theme="dark"] .mini-day{background:#1B201B;border-color:var(--line);co
 body[data-theme="dark"] .mini-day.fest{background:#2B2A1D}
 body[data-theme="dark"] .hero-focus{background:linear-gradient(90deg,#2E3324,#242B22);border-color:#4A4430;color:var(--ink)}
 body[data-theme="dark"] .hero-road{background:#1B201B;border-color:var(--line);color:var(--ink)}
-body[data-theme="dark"] .hero-road h4{color:var(--mut)}
+body[data-theme="dark"] .hero-road h3{color:var(--mut)}
 body[data-theme="dark"] .hero-road small{color:var(--mut)}
 body[data-theme="dark"] .hero-actions .hero-cta-note{color:var(--mut)}
 body[data-theme="dark"] .intro{background:linear-gradient(120deg,#1B201B,#242923);border-color:rgba(48,56,48,.95);box-shadow:0 24px 60px -42px rgba(0,0,0,.8)}
@@ -5199,9 +5199,9 @@ header::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px
 .ticker-viewport{flex:1;overflow:hidden;mask-image:linear-gradient(90deg,transparent,black 4%,black 96%,transparent)}
 .ticker-track{display:flex;white-space:nowrap;animation:bcsTick 42s linear infinite;font-size:12.5px;font-weight:600;color:rgba(246,242,231,.88)}
 .ticker-refresh{
-  flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;
+  flex:0 0 44px;width:44px;height:44px;min-width:44px;min-height:44px;border-radius:50%;display:grid;place-items:center;
   background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#F6F2E7;
-  cursor:pointer;font-size:13px;transition:all .18s;
+  cursor:pointer;font-size:16px;transition:all .18s;margin:0 4px 0 0;position:relative;z-index:3;
 }
 .ticker-refresh:hover{background:var(--gold);color:#1E210F;border-color:transparent;transform:rotate(-30deg) scale(1.05)}
 body[data-theme="light"] .ticker-refresh{background:rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.12);color:#1D1D1F}
@@ -7586,7 +7586,7 @@ body[data-theme="dark"] .schedule-day{background:rgba(255,255,255,.04) !importan
    ============================================================ */
 
 /* ---------- 1. Global safety: zero horizontal overflow ---------- */
-html, body{max-width:100vw !important; overflow-x:hidden !important}
+html, body{max-width:100% !important; overflow-x:hidden !important}
 main{max-width:100% !important; width:100% !important; margin:0 !important; padding:24px 28px 90px !important}
 img, canvas, svg, iframe, video{max-width:100% !important}
 
@@ -9510,11 +9510,11 @@ body[data-theme="dark"] #nav button.on .nav-ic{background:rgba(0,0,0,.16) !impor
 .nav-dot{width:6px !important; height:6px !important; border-radius:50% !important; background:var(--gold) !important; box-shadow:0 0 8px color-mix(in oklab, var(--gold) 85%, transparent) !important; flex:none !important}
 .nav-more-wrap{position:relative}
 #navMorePanel{
-  position:absolute !important; top:calc(100% + 10px) !important; right:0 !important; min-width:224px !important;
+  min-width:0 !important;
   background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 94%, white 6%), var(--panel)) !important;
   border:1px solid var(--line) !important; border-radius:20px !important; padding:10px !important;
   box-shadow:var(--mod-shadow-lg) !important; display:grid !important; grid-template-columns:repeat(3, minmax(0,1fr)) !important; gap:6px !important;
-  animation:popIn .18s var(--ease) both; z-index:60;
+  animation:popIn .18s var(--ease) both;
 }
 #navMorePanel[hidden]{display:none !important}
 #navMorePanel button{border:0 !important; background:transparent !important; justify-content:flex-start !important; border-radius:11px !important; padding:8px 11px !important; text-align:left !important}
@@ -9524,7 +9524,7 @@ body[data-theme="dark"] #navMorePanel{background:linear-gradient(180deg, color-m
   #navMorePanel{grid-template-columns:repeat(2, minmax(0,1fr)) !important}
 }
 @media (max-width:480px){
-  #navMorePanel{grid-template-columns:repeat(2, minmax(0,1fr)) !important; min-width:auto !important; right:10px !important; left:10px !important; width:calc(100vw - 20px) !important}
+  #navMorePanel{grid-template-columns:repeat(2, minmax(0,1fr)) !important}
 }
 
 /* ---------- HERO — cinematic panel ---------- */
@@ -10349,32 +10349,12 @@ body[data-theme="dark"] #nav button.on{color:#fff !important; background:linear-
 #nav button:hover .nav-ic{background:none !important;border:0 !important;color:inherit !important}
 .nav-dot{width:6px;height:6px;margin-left:1px;flex:none}
 .nav-more-wrap{flex:0 0 auto !important}
-/* More panel — one authoritative layout (legacy #navMorePanel forces absolute/flex-column) */
-header .hwrap-nav #nav{backdrop-filter:none !important; -webkit-backdrop-filter:none !important}
-@media (min-width:1000px){
-  #navMorePanel{
-    position:fixed !important;
-    inset:var(--mp-top, 64px) auto auto var(--mp-left, auto) !important;
-    display:grid !important; flex-direction:row !important;
-    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
-    gap:6px !important; padding:10px !important; border-radius:20px !important;
-    width:min(640px, calc(100vw - 24px)) !important;
-    min-width:0 !important; max-width:calc(100vw - 24px) !important;
-    max-height:var(--mp-max, calc(100vh - 96px)) !important; overflow:auto !important;
-    z-index:320 !important;
-  }
+/* More panel layout helpers (BCS_NAVX controls fixed position/size via inline styles) */
+#navMorePanel{
+  display:grid !important; grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  gap:6px !important; padding:10px !important; border-radius:20px !important;
 }
 @media (max-width:999px){
-  #navMorePanel{
-    position:fixed !important;
-    inset:var(--mp-top, 110px) 10px auto 10px !important;
-    display:grid !important; flex-direction:row !important;
-    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
-    gap:6px !important; padding:10px !important; border-radius:20px !important;
-    width:auto !important; min-width:0 !important; max-width:none !important;
-    max-height:var(--mp-max, calc(100dvh - 150px)) !important; overflow:auto !important;
-    z-index:620 !important;
-  }
   #navMorePanel .nav-urls{grid-column:1 / -1 !important; grid-template-columns:1fr !important}
 }
 .nav-urls{grid-column:1 / -1; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; padding:8px 2px 2px; margin-top:4px; border-top:1px solid var(--hair)}
@@ -10820,7 +10800,7 @@ body[data-theme="dark"] .ps-top{background:linear-gradient(180deg,rgba(255,255,2
 .ps-open:hover{transform:translateY(-1px);background:color-mix(in oklab,var(--pg,var(--acc)) 16%, var(--panel));box-shadow:0 8px 18px -12px rgba(0,0,0,.4)}
 .ps-stage{position:relative;height:clamp(620px, 78vh, 1000px);background:#0E100E}
 .ps-stage iframe{width:100%;height:100%;border:0;display:block;background:#fff}
-.ps-stage:fullscreen{height:100vh;width:100vw;background:#0E100E}
+.ps-stage:fullscreen{height:100vh;width:100%;background:#0E100E}
 .ps-stage:fullscreen iframe{height:100vh}
 .ps-loading{
   position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;gap:10px;
@@ -10875,7 +10855,7 @@ body[data-theme="dark"] .pod-card::after{background:linear-gradient(140deg,rgba(
 /* ---------- 4. EMBED DECK — full-bleed site, reliable controls ---------- */
 #embedDeckModal{align-items:stretch !important;padding:0 !important}
 #embedDeckModal .embed-modal{
-  width:100vw !important;
+  width:100% !important;
   height:100dvh !important;
   max-height:none !important;
   border-radius:0 !important;
@@ -10927,7 +10907,7 @@ body[data-theme="dark"] .embed-reader-body a{color:#E7C46E}
 .embed-reader-body .er-loading,.embed-reader-body .er-fail{padding:26px;border:1px dashed var(--line);border-radius:16px;text-align:center;color:var(--mut);font-size:13px}
 @media (max-width:700px){
   #embedDeckModal{padding:0 !important}
-  #embedDeckModal .embed-modal{width:100vw !important;height:100dvh !important;max-height:none !important;border-radius:0 !important}
+  #embedDeckModal .embed-modal{width:100% !important;height:100dvh !important;max-height:none !important;border-radius:0 !important}
   #embedDeckModal .embed-head{padding:7px 8px !important}
   #embedDeckModal .em-tools .em-open span{display:none}
   .embed-reader-body{padding:22px 18px 70px;font-size:14px}
@@ -12118,612 +12098,49 @@ body[data-theme="dark"] .tb-fest-btn:hover{
    Labels hidden, icons centered · More arrow shows all pages
    ============================================================ */
 
-/* Show text labels on nav buttons (labels visible) */
+/* v223 nav: single authoritative desktop nav block (BCS_NAVX). Labels/icons visible, horizontal scroll contained, no page overflow. Mobile tab bar (body.bcs-native / __bcsMobileNav) untouched. */
 #nav .nav-lbl{display:inline !important}
-
-/* Icon-only nav buttons — centered, compact, pill-shaped */
-#nav button{
-  display:inline-flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  gap:0 !important;
-  padding:8px 10px !important;
-  min-width:44px !important;
-  width:44px !important;
-  height:44px !important;
-  border-radius:12px !important;
-  font-size:0 !important;
-  color:var(--ink2) !important;
-  background:rgba(255,255,255,.5) !important;
-  border:1px solid rgba(46,45,32,.1) !important;
-  transition:all .2s cubic-bezier(.22,1,.36,1) !important;
-  position:relative !important;
+.hwrap-nav{padding:8px 24px 12px !important;max-width:100% !important;box-sizing:border-box !important}
+html body:not(.bcs-native) .hwrap-nav #nav{
+  display:flex !important;flex-wrap:nowrap !important;align-items:center !important;justify-content:flex-start !important;
+  gap:6px !important;padding:8px 10px !important;width:100% !important;max-width:100% !important;min-width:0 !important;
+  border-radius:18px !important;background:linear-gradient(180deg,rgba(255,255,255,.62),rgba(255,255,255,.38)) !important;
+  border:1px solid rgba(255,255,255,.5) !important;backdrop-filter:blur(18px) saturate(1.3) !important;-webkit-backdrop-filter:blur(18px) saturate(1.3) !important;
+  box-shadow:0 16px 32px -16px rgba(46,45,32,.16),inset 0 1px 0 rgba(255,255,255,.7) !important;
+  overflow-x:auto !important;overflow-y:hidden !important;scrollbar-width:thin !important;
+  -webkit-overflow-scrolling:touch;box-sizing:border-box !important;
 }
-#nav button:hover{
-  background:rgba(255,255,255,.75) !important;
-  border-color:rgba(46,45,32,.25) !important;
-  color:var(--ink) !important;
-  transform:translateY(-2px) !important;
-  box-shadow:0 6px 16px -6px rgba(46,45,32,.15) !important;
+html body:not(.bcs-native) .hwrap-nav #nav::-webkit-scrollbar{height:6px}
+html body:not(.bcs-native) .hwrap-nav #nav::-webkit-scrollbar-thumb{background:rgba(0,0,0,.18);border-radius:999px}
+html body:not(.bcs-native) #nav > button[data-view],
+html body:not(.bcs-native) #navMoreBtn{
+  display:inline-flex !important;align-items:center !important;justify-content:center !important;gap:7px !important;
+  flex:0 0 auto !important;width:auto !important;min-width:0 !important;height:40px !important;min-height:40px !important;
+  padding:8px 12px !important;border-radius:12px !important;border:1px solid rgba(46,45,32,.1) !important;
+  background:rgba(255,255,255,.45) !important;color:var(--ink2,#5A574A) !important;
+  font-size:12.5px !important;font-weight:700 !important;line-height:1 !important;white-space:nowrap !important;
+  cursor:pointer !important;transition:all .2s ease !important;
 }
-#nav button.on{
-  background:linear-gradient(135deg,var(--gold),var(--olive)) !important;
-  border-color:var(--gold) !important;
-  color:#171A14 !important;
-  box-shadow:0 4px 14px -4px rgba(165,123,54,.4) !important;
-  transform:translateY(-2px) !important;
-}
-#nav button.on .nav-ic{color:#171A14 !important;opacity:1 !important;font-size:15px !important}
-#nav button.on::after{display:none !important}
-
-/* Icon size */
-#nav .nav-ic{
-  font-size:17px !important;
-  width:17px !important;
-  height:17px !important;
-  line-height:1 !important;
-  opacity:.85 !important;
-  display:grid !important;
-  place-items:center !important;
-  flex:none !important;
-}
-
-/* More button — arrow style, icon only */
-#navMoreBtn{
-  width:auto !important;
-  min-width:auto !important;
-  padding:8px 12px !important;
-  border-radius:12px !important;
-  background:rgba(255,255,255,.5) !important;
-  border:1px solid rgba(46,45,32,.1) !important;
-  color:var(--ink2) !important;
-  position:relative !important;
-}
-#navMoreBtn:hover{
-  background:rgba(255,255,255,.75) !important;
-  transform:translateY(-2px) !important;
-}
-#navMoreBtn .nav-ic{font-size:16px !important;opacity:.85 !important}
-#navMoreBtn .nav-chev{
-  font-size:10px !important;
-  margin-left:4px !important;
-  opacity:.6 !important;
-  font-weight:700 !important;
-}
-
-/* Active page indicator — subtle glow under icon */
-#nav button.on::before{
-  content:"" !important;
-  position:absolute !important;
-  bottom:8px !important;
-  left:50% !important;
-  width:10px !important;
-  height:2px !important;
-  background:var(--gold) !important;
-  border-radius:2px !important;
-  transform:translateX(-50%) !important;
-  opacity:.9 !important;
-}
-
-/* Dark theme — icon-only nav */
-body[data-theme="dark"] #nav button{
-  background:rgba(255,255,255,.06) !important;
-  border:1px solid rgba(255,255,255,.08) !important;
-  color:var(--mut) !important;
-}
-body[data-theme="dark"] #nav button:hover{
-  background:rgba(255,255,255,.12) !important;
-  border-color:rgba(255,255,255,.2) !important;
-  color:#F2F0E5 !important;
-}
-body[data-theme="dark"] #nav button.on{
-  background:linear-gradient(135deg,#E7C46E,#B8892E) !important;
-  border-color:rgba(229,190,98,.5) !important;
-  color:#171A14 !important;
-}
-body[data-theme="dark"] #nav button.on .nav-ic{color:#171A14 !important}
-body[data-theme="dark"] #navMoreBtn{
-  background:rgba(255,255,255,.06) !important;
-  border:1px solid rgba(255,255,255,.08) !important;
-  color:var(--mut) !important;
-}
-body[data-theme="dark"] #navMoreBtn:hover{
-  background:rgba(255,255,255,.12) !important;
-}
-
-/* ============================================================
-   MODERN NAV BAR — all pages in one sleek horizontal row
-   Glassmorphism container · pill buttons · glow states · scroll-snap
-   ============================================================ */
-
-.hwrap-nav{padding-top:0 !important;padding-bottom:16px !important}
-.hwrap-nav #nav{
-  display:flex !important;
-  flex-wrap:nowrap !important;
-  gap:8px !important;
-  padding:10px 14px !important;
-  border-radius:20px !important;
-  background:linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.38)) !important;
-  border:1px solid rgba(255,255,255,.5) !important;
-  backdrop-filter:blur(20px) saturate(1.4) !important;
-  -webkit-backdrop-filter:blur(20px) saturate(1.4) !important;
-  box-shadow:0 20px 40px -16px rgba(46,45,32,.18), inset 0 1px 0 rgba(255,255,255,.7) !important;
-  overflow-x:auto !important;
-  scroll-snap-type:x mandatory !important;
-  scrollbar-width:none !important;
-  max-width:100% !important;
-}
-.hwrap-nav #nav::-webkit-scrollbar{display:none !important}
-
-/* Each nav button — modern pill with icon + label */
-#nav button{
-  display:inline-flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  gap:7px !important;
-  padding:0 14px !important;
-  height:44px !important;
-  min-height:44px !important;
-  border-radius:14px !important;
-  border:1px solid transparent !important;
-  background:rgba(255,255,255,.35) !important;
-  color:var(--ink2) !important;
-  font-size:12px !important;
-  font-weight:700 !important;
-  letter-spacing:0.2px !important;
-  white-space:nowrap !important;
-  cursor:pointer !important;
-  transition:all .28s cubic-bezier(.22,1,.36,1) !important;
-  scroll-snap-align:center !important;
-  flex:0 0 auto !important;
-  position:relative !important;
-  overflow:hidden !important;
-}
-#nav button::before{
-  content:"" !important;
-  position:absolute !important;
-  inset:0 !important;
-  border-radius:14px !important;
-  background:linear-gradient(180deg, rgba(255,255,255,.5), rgba(255,255,255,.05)) !important;
-  opacity:0 !important;
-  transition:opacity .2s ease !important;
-  pointer-events:none !important;
-}
-#nav button:hover::before{opacity:1 !important;}
-#nav button:hover{
-  border-color:rgba(165,123,54,.25) !important;
-  background:rgba(255,255,255,.55) !important;
-  color:var(--ink) !important;
-  transform:translateY(-3px) !important;
-  box-shadow:0 10px 24px -10px rgba(46,45,32,.15) !important;
-}
-#nav button:active{transform:translateY(0) scale(.96) !important}
-
-/* Active state — gold gradient with glow */
-#nav button.on{
-  background:linear-gradient(135deg, var(--gold) 0%, var(--olive) 100%) !important;
-  border-color:var(--gold) !important;
-  color:#171A14 !important;
-  box-shadow:0 8px 20px -6px rgba(165,123,54,.45) !important;
-  transform:translateY(-3px) !important;
-  color:#171A14 !important;
-}
-#nav button.on::after{
-  content:"" !important;
-  position:absolute !important;
-  bottom:-2px !important;
-  left:50% !important;
-  width:10px !important;
-  height:3px !important;
-  background:var(--gold) !important;
-  border-radius:2px !important;
-  transform:translateX(-50%) !important;
-  opacity:1 !important;
-}
-#nav button.on .nav-ic{color:#171A14 !important;opacity:1 !important}
-
-/* Icon */
-#nav .nav-ic{
-  font-size:16px !important;
-  width:20px !important;
-  height:20px !important;
-  line-height:1 !important;
-  display:grid !important;
-  place-items:center !important;
-  flex:none !important;
-  opacity:.85 !important;
-}
-/* Label */
-#nav .nav-lbl{
-  font-size:12px !important;
-  font-weight:700 !important;
-  letter-spacing:0.2px !important;
-  flex:none !important;
-  white-space:nowrap !important;
-}
-
-/* Notification dot */
-#nav .nav-dot{
-  width:6px !important;height:6px !important;border-radius:50% !important;
-  background:var(--gold) !important;box-shadow:0 0 6px var(--gold) !important;
-  flex:none !important;margin-left:2px !important;
-}
-#nav .nav-dot.gold{background:var(--gold) !important;box-shadow:0 0 8px var(--gold) !important;}
-#nav .nav-dot{background:#E5BE62 !important;box-shadow:0 0 6px #E5BE62 !important;}
-
-/* Dark theme — deep glass */
-body[data-theme="dark"] .hwrap-nav #nav{
-  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)) !important;
-  border:1px solid rgba(255,255,255,.12) !important;
-  box-shadow:0 20px 40px -16px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.08) !important;
-}
-body[data-theme="dark"] #nav button{
-  background:rgba(255,255,255,.06) !important;
-  border:1px solid rgba(255,255,255,.08) !important;
-  color:var(--mut) !important;
-}
-body[data-theme="dark"] #nav button:hover{
-  background:rgba(255,255,255,.12) !important;
-  border-color:rgba(165,123,54,.3) !important;
-  color:#F2F0E5 !important;
-  transform:translateY(-3px) !important;
-  box-shadow:0 10px 24px -10px rgba(165,123,54,.2) !important;
-}
-body[data-theme="dark"] #nav button.on{
-  background:linear-gradient(135deg,#E7C46E 0%,#B8892E 100%) !important;
-  border-color:rgba(229,190,98,.5) !important;
-  color:#171A14 !important;
-  box-shadow:0 10px 24px -8px rgba(229,190,98,.35) !important;
-}
-body[data-theme="dark"] #nav button.on .nav-ic{color:#171A14 !important;opacity:1 !important}
-
-/* Mobile — horizontal scroll with snap, compact pills */
-@media (max-width:820px){
-  .hwrap-nav #nav{
-    padding:8px 12px !important;
-    gap:6px !important;
-    border-radius:16px !important;
-  }
-  #nav button{
-    height:40px !important;
-    min-height:40px !important;
-    padding:0 12px !important;
-    border-radius:12px !important;
-    font-size:11px !important;
-  }
-  #nav .nav-ic{font-size:15px !important;width:18px !important;height:18px !important;}
-  #nav .nav-lbl{font-size:11px !important;}
-  #nav button.on::after{bottom:-2px !important;height:2.5px !important;}
-}
-
-/* Extra small — tighter */
-@media (max-width:480px){
-  .hwrap-nav #nav{padding:7px 10px !important;gap:5px !important;}
-  #nav button{height:38px !important;min-height:38px !important;padding:0 10px !important;border-radius:11px !important;}
-  #nav .nav-ic{font-size:14px !important;}
-  #nav .nav-lbl{font-size:10px !important;}
-}
-
-/* ============================================================
-   MODERN LABELLED NAV BAR — separate row, More toggle
-   Main 9 pages with labels · More panel with all 19 pages
-   Glassmorphism · Sleek · Modern
-   ============================================================ */
-
-/* Nav container — glassmorphism row */
-.hwrap-nav{padding:8px 24px 12px !important}
-.hwrap-nav #nav{
-  display:flex !important;
-  flex-wrap:nowrap !important;
-  align-items:center !important;
-  justify-content:center !important;
-  gap:8px !important;
-  padding:10px 14px !important;
-  border-radius:20px !important;
-  background:linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.38)) !important;
-  border:1px solid rgba(255,255,255,.5) !important;
-  backdrop-filter:blur(20px) saturate(1.4) !important;
-  -webkit-backdrop-filter:blur(20px) saturate(1.4) !important;
-  box-shadow:0 20px 40px -16px rgba(46,45,32,.18), inset 0 1px 0 rgba(255,255,255,.7) !important;
-  overflow-x:auto !important;
-  scroll-snap-type:x mandatory !important;
-  scrollbar-width:none !important;
-  max-width:100% !important;
-}
-.hwrap-nav #nav::-webkit-scrollbar{display:none !important}
-
-/* Each nav button — modern pill with icon + label */
-#nav button{
-  display:inline-flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  gap:8px !important;
-  padding:0 16px !important;
-  height:44px !important;
-  min-height:44px !important;
-  border-radius:14px !important;
-  border:1px solid transparent !important;
-  background:rgba(255,255,255,.35) !important;
-  color:#5A574A !important;
-  font-size:13px !important;
-  font-weight:700 !important;
-  letter-spacing:0.2px !important;
-  white-space:nowrap !important;
-  cursor:pointer !important;
-  transition:all .28s cubic-bezier(.22,1,.36,1) !important;
-  scroll-snap-align:center !important;
-  flex:0 0 auto !important;
-  position:relative !important;
-}
-#nav button:hover{
-  border-color:rgba(165,123,54,.25) !important;
-  background:rgba(255,255,255,.55) !important;
-  color:#A57B36 !important;
-  transform:translateY(-2px) !important;
-  box-shadow:0 8px 20px -8px rgba(46,45,32,.12) !important;
-}
-#nav button:active{transform:translateY(0) scale(.96) !important}
-
-/* Active state — gold gradient with glow */
-#nav button.on{
-  background:linear-gradient(135deg, var(--gold) 0%, var(--olive) 100%) !important;
-  border-color:var(--gold) !important;
-  color:#FFFFFF !important;
-  box-shadow:0 6px 18px -6px rgba(165,123,54,.4) !important;
-  transform:translateY(-1px) !important;
-}
-#nav button.on .nav-ic{color:#FFFFFF !important;opacity:1 !important}
-#nav button.on::before{
-  content:"" !important;
-  position:absolute !important;
-  bottom:-2px !important;
-  left:50% !important;
-  width:10px !important;
-  height:2px !important;
-  background:var(--gold) !important;
-  border-radius:2px !important;
-  transform:translateX(-50%) !important;
-  opacity:1 !important;
-}
-
-/* Icon */
-#nav .nav-ic{
-  font-size:15px !important;
-  width:18px !important;
-  height:18px !important;
-  line-height:1 !important;
-  display:grid !important;
-  place-items:center !important;
-  flex:none !important;
-  opacity:.85 !important;
-}
-/* Label */
-#nav .nav-lbl{
-  font-size:13px !important;
-  font-weight:700 !important;
-  letter-spacing:0.2px !important;
-  flex:none !important;
-  white-space:nowrap !important;
-}
-
-/* Notification dot */
-#nav .nav-dot{
-  width:6px !important;height:6px !important;border-radius:50% !important;
-  background:var(--gold) !important;box-shadow:0 0 6px var(--gold) !important;
-  flex:none !important;margin-left:2px !important;
-}
-#nav .nav-dot.gold{background:var(--gold) !important;box-shadow:0 0 8px var(--gold) !important;}
-#nav .nav-dot{background:#E5BE62 !important;box-shadow:0 0 6px #E5BE62 !important;}
-
-/* More button — sleek toggle */
-.nav-more-wrap{position:relative !important;display:inline-flex !important;flex:none !important}
-#navMoreBtn{
-  display:inline-flex !important;
-  align-items:center !important;
-  gap:6px !important;
-  padding:0 14px !important;
-  height:44px !important;
-  min-height:44px !important;
-  border-radius:14px !important;
-  border:1px solid transparent !important;
-  background:rgba(255,255,255,.35) !important;
-  color:#5A574A !important;
-  font-size:13px !important;
-  font-weight:700 !important;
-  letter-spacing:0.2px !important;
-  cursor:pointer !important;
-  transition:all .28s cubic-bezier(.22,1,.36,1) !important;
-  position:relative !important;
-  flex:0 0 auto !important;
-}
-#navMoreBtn:hover{
-  border-color:rgba(165,123,54,.25) !important;
-  background:rgba(255,255,255,.55) !important;
-  color:#A57B36 !important;
-  transform:translateY(-2px) !important;
-  box-shadow:0 8px 20px -8px rgba(46,45,32,.12) !important;
-}
-#navMoreBtn .nav-ic{font-size:16px !important;opacity:.85 !important}
-#navMoreBtn .nav-lbl{font-size:13px !important;font-weight:700 !important}
-#navMoreBtn .nav-chev{
-  font-size:10px !important;
-  margin-left:2px !important;
-  opacity:.6 !important;
-  font-weight:700 !important;
-  transition:transform .2s ease !important;
-}
-#navMoreBtn[aria-expanded="true"] .nav-chev{transform:rotate(180deg) !important}
-#navMoreBtn.on{
-  background:linear-gradient(135deg, var(--gold) 0%, var(--olive) 100%) !important;
-  border-color:var(--gold) !important;
-  color:#FFFFFF !important;
-  box-shadow:0 6px 18px -6px rgba(165,123,54,.4) !important;
-}
-#navMoreBtn.on .nav-ic,#navMoreBtn.on .nav-chev{color:#FFFFFF !important;opacity:1 !important}
-
-/* More panel — glassmorphism dropdown with all 19 pages */
-#navMorePanel{
-  position:fixed !important;
-  top:100px !important;
-  right:20px !important;
-  width:340px !important;
-  max-height:520px !important;
-  overflow-y:auto !important;
-  background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.88)) !important;
-  border:1px solid rgba(255,255,255,.6) !important;
-  border-radius:20px !important;
-  box-shadow:0 24px 60px -20px rgba(46,45,32,.22), inset 0 1px 0 rgba(255,255,255,.8) !important;
-  backdrop-filter:blur(24px) saturate(1.4) !important;
-  -webkit-backdrop-filter:blur(24px) saturate(1.4) !important;
-  padding:16px !important;
-  z-index:9999 !important;
-  display:flex !important;
-  flex-direction:column !important;
-  gap:4px !important;
-  animation:morePanelIn .25s cubic-bezier(.22,1,.36,1) both !important;
-}
-@keyframes morePanelIn{from{opacity:0;transform:translateY(-10px) scale(.95)}to{opacity:1;transform:none}}
+html body:not(.bcs-native) #nav .nav-ic{font-size:15px !important;width:16px !important;height:16px !important;display:inline-grid !important;place-items:center !important;opacity:.9 !important;flex:none !important}
+html body:not(.bcs-native) #nav .nav-lbl,#navMoreBtn .nav-lbl{display:inline !important;font-size:12.5px !important;font-weight:700 !important;line-height:1 !important;color:inherit !important}
+html body:not(.bcs-native) #nav > button[data-view]:hover,html body:not(.bcs-native) #navMoreBtn:hover{background:rgba(255,255,255,.72) !important;border-color:rgba(165,123,54,.25) !important;color:var(--ink,#2E2D20) !important}
+html body:not(.bcs-native) #nav > button.on,html body:not(.bcs-native) #navMoreBtn.on{background:linear-gradient(135deg,var(--gold,#B8892E),var(--olive,#6B6A42)) !important;border-color:var(--gold,#B8892E) !important;color:#171A14 !important;box-shadow:0 4px 14px -4px rgba(165,123,54,.35) !important}
+html body:not(.bcs-native) #nav > button.on .nav-ic,html body:not(.bcs-native) #navMoreBtn.on .nav-ic{color:#171A14 !important;opacity:1 !important}
+#navMoreBtn .nav-chev{font-size:10px !important;margin-left:1px !important;opacity:.7 !important}
+html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap{position:sticky !important;right:0 !important;margin-left:auto !important;flex:0 0 auto !important;z-index:5 !important;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.55) 18%,rgba(255,255,255,.55)) !important;padding-left:6px !important}
+#navMorePanel{position:fixed !important;z-index:9999 !important;max-height:calc(100vh - 24px) !important;overflow-y:auto !important}
 #navMorePanel[hidden]{display:none !important}
-#navMorePanel .nav-more-head{
-  display:flex !important;
-  align-items:center !important;
-  justify-content:space-between !important;
-  padding-bottom:12px !important;
-  margin-bottom:8px !important;
-  border-bottom:1px solid rgba(229,234,232,.6) !important;
-}
-#navMorePanel .nav-more-head b{font-size:14px !important;font-weight:800 !important;color:#2E2D20 !important;letter-spacing:-0.01em !important}
-#navMorePanel .nav-more-head span{font-size:10px !important;color:#8A877A !important;font-weight:600 !important;letter-spacing:0.5px !important}
-#navMorePanel .nav-page-search{
-  width:100% !important;
-  padding:10px 14px !important;
-  border-radius:12px !important;
-  border:1px solid rgba(229,234,232,.8) !important;
-  background:rgba(255,255,255,.8) !important;
-  color:#2E2D20 !important;
-  font-size:13px !important;
-  font-weight:600 !important;
-  margin-bottom:10px !important;
-  outline:none !important;
-  transition:all .2s ease !important;
-}
-#navMorePanel .nav-page-search:focus{
-  border-color:#A57B36 !important;
-  box-shadow:0 0 0 3px rgba(165,123,54,.12) !important;
-}
-#navMorePanel .nav-page-search::placeholder{color:#8A877A !important}
-#navMorePanel [data-view]{
-  display:flex !important;
-  align-items:center !important;
-  gap:12px !important;
-  padding:10px 14px !important;
-  border-radius:12px !important;
-  border:1px solid transparent !important;
-  background:transparent !important;
-  color:#2E2D20 !important;
-  font-size:13px !important;
-  font-weight:600 !important;
-  text-align:left !important;
-  cursor:pointer !important;
-  transition:all .2s ease !important;
-  white-space:nowrap !important;
-}
-#navMorePanel [data-view]:hover{
-  background:rgba(165,123,54,.08) !important;
-  border-color:rgba(165,123,54,.2) !important;
-  color:#A57B36 !important;
-  transform:translateX(4px) !important;
-}
-#navMorePanel [data-view] .nav-ic{
-  font-size:16px !important;
-  width:20px !important;
-  height:20px !important;
-  display:grid !important;
-  place-items:center !important;
-  flex:none !important;
-  opacity:.8 !important;
-}
-
-/* Dark theme — deep glass nav */
-body[data-theme="dark"] .hwrap-nav #nav{
-  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)) !important;
-  border:1px solid rgba(255,255,255,.12) !important;
-  box-shadow:0 20px 40px -16px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.08) !important;
-}
-body[data-theme="dark"] #nav button{
-  background:rgba(255,255,255,.06) !important;
-  border:1px solid rgba(255,255,255,.08) !important;
-  color:#A7ACA0 !important;
-}
-body[data-theme="dark"] #nav button:hover{
-  background:rgba(255,255,255,.12) !important;
-  border-color:rgba(165,123,54,.3) !important;
-  color:#F2F0E5 !important;
-  box-shadow:0 8px 20px -8px rgba(165,123,54,.2) !important;
-}
-body[data-theme="dark"] #nav button.on{
-  background:linear-gradient(135deg,#E7C46E,#B8892E) !important;
-  border-color:rgba(229,190,98,.5) !important;
-  color:#171A14 !important;
-  box-shadow:0 6px 18px -6px rgba(229,190,98,.45) !important;
-}
-body[data-theme="dark"] #nav button.on .nav-ic{color:#171A14 !important}
-body[data-theme="dark"] #navMoreBtn{
-  background:rgba(255,255,255,.06) !important;
-  border:1px solid rgba(255,255,255,.08) !important;
-  color:#A7ACA0 !important;
-}
-body[data-theme="dark"] #navMoreBtn:hover{
-  background:rgba(255,255,255,.12) !important;
-  border-color:rgba(165,123,54,.3) !important;
-  color:#F2F0E5 !important;
-}
-body[data-theme="dark"] #navMoreBtn.on{
-  background:linear-gradient(135deg,#E7C46E,#B8892E) !important;
-  border-color:rgba(229,190,98,.5) !important;
-  color:#171A14 !important;
-}
-body[data-theme="dark"] #navMorePanel{
-  background:linear-gradient(180deg, rgba(27,32,27,.97), rgba(20,23,19,.95)) !important;
-  border:1px solid rgba(255,255,255,.1) !important;
-  box-shadow:0 24px 60px -20px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.06) !important;
-}
-body[data-theme="dark"] #navMorePanel .nav-more-head{border-color:rgba(255,255,255,.08) !important}
-body[data-theme="dark"] #navMorePanel .nav-more-head b{color:#F2F0E5 !important}
-body[data-theme="dark"] #navMorePanel .nav-more-head span{color:#A7ACA0 !important}
-body[data-theme="dark"] #navMorePanel .nav-page-search{
-  background:rgba(255,255,255,.06) !important;
-  border-color:rgba(255,255,255,.1) !important;
-  color:#F2F0E5 !important;
-}
-body[data-theme="dark"] #navMorePanel .nav-page-search:focus{border-color:#E5BE62 !important;box-shadow:0 0 0 3px rgba(229,190,98,.12) !important}
-body[data-theme="dark"] #navMorePanel .nav-page-search::placeholder{color:#A7ACA0 !important}
-body[data-theme="dark"] #navMorePanel [data-view]{color:#F2F0E5 !important}
-body[data-theme="dark"] #navMorePanel [data-view]:hover{
-  background:rgba(229,190,98,.1) !important;
-  border-color:rgba(229,190,98,.25) !important;
-  color:#E5BE62 !important;
-}
-
-/* Mobile — compact nav with scroll */
-@media (max-width:900px){
-  .hwrap-nav{padding:6px 12px 10px !important}
-  .hwrap-nav #nav{padding:8px 10px !important;gap:6px !important;border-radius:16px !important;justify-content:flex-start !important}
-  #nav button{height:40px !important;min-height:40px !important;padding:0 12px !important;border-radius:12px !important;font-size:12px !important;gap:6px !important}
-  #nav .nav-ic{font-size:14px !important;width:16px !important;height:16px !important}
-  #nav .nav-lbl{font-size:12px !important}
-  #navMoreBtn{height:40px !important;min-height:40px !important;padding:0 12px !important;border-radius:12px !important;font-size:12px !important}
-  #navMorePanel{width:min(340px, calc(100vw - 24px)) !important;right:auto !important;left:0 !important}
-}
-
-/* Extra small */
-@media (max-width:480px){
-  .hwrap-nav #nav{padding:7px 8px !important;gap:5px !important}
-  #nav button{height:38px !important;min-height:38px !important;padding:0 10px !important;border-radius:11px !important}
-  #nav .nav-ic{font-size:13px !important}
-  #nav .nav-lbl{font-size:11px !important}
-  #navMoreBtn{height:38px !important;min-height:38px !important;padding:0 10px !important;border-radius:11px !important}
-}
+#navMorePanel .nav-more-head span{font-size:10.5px !important}
+/* dark */
+body[data-theme="dark"]:not(.bcs-native) .hwrap-nav #nav{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03)) !important;border-color:rgba(255,255,255,.12) !important}
+body[data-theme="dark"]:not(.bcs-native) #nav > button[data-view],body[data-theme="dark"]:not(.bcs-native) #navMoreBtn{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.08) !important;color:#A7ACA0 !important}
+body[data-theme="dark"]:not(.bcs-native) #nav > button[data-view]:hover,body[data-theme="dark"]:not(.bcs-native) #navMoreBtn:hover{background:rgba(255,255,255,.12) !important;color:#F2F0E5 !important}
+body[data-theme="dark"]:not(.bcs-native) #nav > button.on,body[data-theme="dark"]:not(.bcs-native) #navMoreBtn.on{background:linear-gradient(135deg,#E7C46E,#B8892E) !important;border-color:rgba(229,190,98,.5) !important;color:#171A14 !important}
+body[data-theme="dark"]:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap{background:linear-gradient(90deg,rgba(27,32,27,0),rgba(27,32,27,.9) 18%,rgba(27,32,27,.9)) !important}
+body[data-theme="dark"] #navMorePanel{background:linear-gradient(180deg,rgba(27,32,27,.98),rgba(20,23,19,.96)) !important;border-color:rgba(255,255,255,.1) !important;color:#F2F0E5 !important}
+body[data-theme="dark"] #navMorePanel [data-view],body[data-theme="dark"] #navMorePanel .nav-more-head b{color:#F2F0E5 !important}
+body[data-theme="dark"] #navMorePanel .nav-page-search{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.1) !important;color:#F2F0E5 !important}
+@media (max-width:900px){.hwrap-nav{padding:6px 12px 10px !important} html body:not(.bcs-native) #nav > button[data-view],html body:not(.bcs-native) #navMoreBtn{height:38px !important;min-height:38px !important;padding:7px 10px !important;font-size:12px !important}}
 
 /* ============================================================
    BCS v136 — COMPLETE DARK MODE FIX (every page, every surface)
@@ -14397,12 +13814,8 @@ header .hwrap-nav #nav .nav-dot{width:6px !important;height:6px !important}
   display:grid !important;
   grid-template-columns:repeat(3, minmax(0,1fr)) !important;
   gap:8px !important;
-  width:min(720px, calc(100vw - 24px)) !important;
-  max-width:calc(100vw - 24px) !important;
   padding:14px 16px !important;
   border-radius:22px !important;
-  right:12px !important;
-  left:auto !important;
 }
 #navMorePanel > .nav-more-head,
 #navMorePanel > .nav-page-search{ grid-column:1 / -1 !important; }
@@ -14422,7 +13835,7 @@ header .hwrap-nav #nav .nav-dot{width:6px !important;height:6px !important}
 }
 #navMorePanel [data-view] .nav-ic{ flex:none !important; width:20px !important; text-align:center !important; }
 @media (max-width:760px){
-  #navMorePanel{ grid-template-columns:repeat(2, minmax(0,1fr)) !important; width:calc(100vw - 20px) !important; left:10px !important; right:10px !important; }
+  #navMorePanel{ grid-template-columns:repeat(2, minmax(0,1fr)) !important; }
 }
 @media (max-width:430px){
   #navMorePanel{ grid-template-columns:repeat(2, minmax(0,1fr)) !important; }
@@ -14671,13 +14084,14 @@ body.bcs-grain-on .bcs-grain{opacity:.14}
 }
 
 /* ---------- W2 · parallax decorative layers ---------- */
-.bcs-parallax-layer{position:absolute;inset:-16% -4%;z-index:1;pointer-events:none;
-  transform:translate3d(0,var(--py,0px),0);will-change:transform;opacity:.9;
-  transition:transform .12s linear}
+.hero-life,.tb-festival{overflow:hidden}
+.bcs-parallax-layer{position:absolute;inset:-12% 0;z-index:1;pointer-events:none;
+  transform:translate3d(0,var(--py,0px),0);will-change:transform;opacity:.85;
+  transition:transform .12s linear;max-width:100%;overflow:hidden;contain:paint}
 .bcs-parallax-layer i{position:absolute;border-radius:50%;filter:blur(46px);display:block}
-.bcs-parallax-layer i:nth-child(1){width:38%;aspect-ratio:1;left:6%;top:4%;background:color-mix(in srgb,var(--acc) 20%,transparent)}
-.bcs-parallax-layer i:nth-child(2){width:30%;aspect-ratio:1;right:10%;top:0%;background:color-mix(in srgb,var(--gold,#E7C46E) 16%,transparent)}
-.bcs-parallax-layer i:nth-child(3){width:44%;aspect-ratio:1.4;left:32%;bottom:-14%;background:color-mix(in srgb,var(--acc) 12%,transparent)}
+.bcs-parallax-layer i:nth-child(1){width:38%;aspect-ratio:1;left:4%;top:4%;background:color-mix(in srgb,var(--acc) 20%,transparent)}
+.bcs-parallax-layer i:nth-child(2){width:30%;aspect-ratio:1;right:6%;top:0%;background:color-mix(in srgb,var(--gold,#E7C46E) 16%,transparent)}
+.bcs-parallax-layer i:nth-child(3){width:44%;aspect-ratio:1.4;left:28%;bottom:-10%;background:color-mix(in srgb,var(--acc) 12%,transparent)}
 @media (prefers-reduced-motion:reduce){.bcs-parallax-layer{display:none!important}}
 
 /* ---------- Onboarding checklist ---------- */
@@ -14841,7 +14255,7 @@ body[data-theme="dark"] .qa-trigger kbd{background:#3B3224;color:#F0D9A8}
 #navMorePanel .nav-more-head,
 #navMorePanel .nav-page-search{grid-column:1/-1 !important}
 @media (max-width:820px){
-  #navMorePanel{grid-template-columns:repeat(2,minmax(0,1fr)) !important;min-width:0 !important;left:10px !important;right:10px !important;width:auto !important}
+  #navMorePanel{grid-template-columns:repeat(2,minmax(0,1fr)) !important;min-width:0 !important}
 }
 
 /* ---------- 4 · Live ticker ---------- */
@@ -14899,8 +14313,8 @@ body[data-theme="light"] .ticker-track a:hover{background:rgba(160,125,45,.12) !
 body[data-theme="light"] .ticker-track b{color:#2F6644 !important}
 .ticker-age{
   flex:none !important;display:inline-flex !important;align-items:center !important;
-  padding:0 10px !important;font-size:9.5px !important;font-weight:800 !important;letter-spacing:.1em !important;
-  color:rgba(246,242,231,.5) !important;white-space:nowrap !important;
+  padding:0 8px 0 4px !important;font-size:10.5px !important;font-weight:700 !important;letter-spacing:.02em !important;
+  color:rgba(246,242,231,.7) !important;white-space:nowrap !important;
   font-variant-numeric:tabular-nums;
 }
 body[data-theme="light"] .ticker-age{color:rgba(60,50,20,.55) !important}
@@ -15683,28 +15097,9 @@ html body[data-theme="dark"] .tb-bcs-logo{
    · trailing spacer so the LAST tab is fully reachable
    · mobile tab bar (body.bcs-native) keeps its own grid layout
    ============================================================ */
-html body:not(.bcs-native) .hwrap-nav #nav{
-  flex-wrap:nowrap !important;
-  overflow-x:auto !important;
-  overflow-y:hidden !important;
-  white-space:nowrap !important;
-  justify-content:flex-start !important;
-  align-items:center !important;
-  scrollbar-width:none !important;
-  -ms-overflow-style:none !important;
-  overscroll-behavior-x:contain !important;
-  -webkit-overflow-scrolling:touch !important;
-  scroll-padding-inline:4px !important;
-}
-html body:not(.bcs-native) .hwrap-nav #nav::-webkit-scrollbar{
-  display:none !important;width:0 !important;height:0 !important;
-}
-html body:not(.bcs-native) .hwrap-nav #nav > *{flex:0 0 auto !important;flex-shrink:0 !important}
-html body:not(.bcs-native) .hwrap-nav #nav > button{
-  white-space:nowrap !important;flex-shrink:0 !important;
-  user-select:none !important;-webkit-user-select:none !important;
-}
-html body:not(.bcs-native) .hwrap-nav #nav::after{content:"";flex:0 0 8px;height:1px;flex-shrink:0 !important}
+/* v223: earlier scroll/reorder base kept minimal; sizing/visuals from authoritative nav block */
+html body:not(.bcs-native) .hwrap-nav #nav > *{flex:0 0 auto !important}
+html body:not(.bcs-native) .hwrap-nav #nav > button{user-select:none !important;-webkit-user-select:none !important}
 /* drag-to-reorder affordances */
 html body:not(.bcs-native) .hwrap-nav #nav > button[data-view]{cursor:grab}
 html body:not(.bcs-native) .hwrap-nav #nav > button.nav-dragging{
@@ -15714,80 +15109,9 @@ html body:not(.bcs-native) .hwrap-nav #nav > button.nav-drop-hint{
   box-shadow:inset 0 0 0 2px var(--acc, #A57B36) !important;border-radius:12px !important;
 }
 
-/* More panel must escape the scrollable nav row (overflow clips absolute children) */
-html body:not(.bcs-native) #navMorePanel{
-  position:fixed !important;
-  right:auto !important; bottom:auto !important;
-  transform-origin:top right !important;
-}
+/* More panel positioning is controlled by BCS_NAVX.positionMorePanel() (inline !important). */
 
-/* 10 primary tabs — grow to fill the whole bar (no dead space on the right).
-   flex-grow distributes spare width; flex-shrink stays 0 so labels never clip. */
-html body:not(.bcs-native) .hwrap-nav #nav{
-  width:100% !important;
-  justify-content:flex-start !important;
-  gap:5px !important;
-  padding:6px 8px !important;
-}
-html body:not(.bcs-native) .hwrap-nav #nav::after{display:none !important}
-html body:not(.bcs-native) .hwrap-nav #nav > button,
-html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap{
-  flex:1 0 auto !important;
-  min-width:max-content !important;
-}
-html body:not(.bcs-native) .hwrap-nav #nav > button{
-  display:flex !important;
-  justify-content:center !important;
-  align-items:center !important;
-  padding:5px 7px !important;
-  font-size:11.5px !important;
-  gap:4px !important;
-}
-html body:not(.bcs-native) .hwrap-nav #nav > button .nav-ic{width:15px !important;height:15px !important;font-size:12px !important}
-html body:not(.bcs-native) .hwrap-nav #nav > button .nav-lbl{font-size:11.5px !important}
-html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap{display:flex !important}
-html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap > #navMoreBtn{
-  flex:1 1 auto !important;
-  width:100% !important;
-  justify-content:center !important;
-  padding:5px 7px !important;
-  font-size:11.5px !important;
-}
-/* 12 tabs on narrower desktops — compact just enough to fit without scrolling */
-@media (max-width:1320px){
-  html body:not(.bcs-native) .hwrap-nav #nav{gap:4px !important}
-  html body:not(.bcs-native) .hwrap-nav #nav > button,
-  html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap > #navMoreBtn{padding:4px 6px !important;font-size:11px !important;gap:3px !important}
-  html body:not(.bcs-native) .hwrap-nav #nav > button .nav-ic{width:14px !important;height:14px !important;font-size:11px !important}
-  html body:not(.bcs-native) .hwrap-nav #nav > button .nav-lbl{font-size:11px !important}
-}
-
-/* ---------- v194 · More stays pinned at the right edge of the scrolling nav ----------
-   Earlier layers made #nav a horizontal scroller; the More tab sat at the far end
-   and disappeared at common laptop widths. Sticky keeps it reachable while the
-   primary tabs still scroll underneath. Mobile bottom tab bar is untouched. */
-html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap{
-  position:sticky !important;
-  right:0 !important;
-  z-index:12 !important;
-  flex:0 0 auto !important;
-  min-width:max-content !important;
-  margin-left:auto !important;
-  background:var(--panel) !important;
-  border:1px solid var(--hair) !important;
-  border-radius:12px !important;
-  box-shadow:-14px 0 20px -16px rgba(0,0,0,.55) !important;
-}
-html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap > #navMoreBtn{
-  width:auto !important;
-  min-width:66px !important;
-  justify-content:center !important;
-}
-html body[data-theme="dark"]:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap{
-  background:#1B201B !important;
-  border-color:rgba(255,255,255,.12) !important;
-  box-shadow:-14px 0 20px -16px rgba(0,0,0,.9) !important;
-}
+/* v223: removed broken/conflicting nav sizing block (authoritative nav rules above). */
 
 /* header action rail — icons keep their shape, text never squeezes/clips */
 html body:not(.bcs-native) .hwrap-top .hbtns{flex-wrap:nowrap !important;align-items:center !important;gap:7px !important}
@@ -17916,7 +17240,7 @@ body[data-theme="dark"] .jp-saved-card{background:color-mix(in srgb,var(--acc) 9
 body[data-theme="dark"] .jp-saved-ic{color:#0B0E0C}
 
 /* ============================================================
-   BCS v221 — Calm premium refinement (final cascade layer)
+   BCS v222 — Calm premium refinement (final cascade layer)
    Visual only: one green/gold identity, one header language,
    readable labels, predictable hidden states, no feature changes.
    ============================================================ */
@@ -17938,11 +17262,11 @@ body[data-theme="dark"]{
   --bcs-shadow-hi:0 18px 40px -22px rgba(0,0,0,.92)!important;
 }
 body:not([data-theme="dark"]){
-  --bg:#F3F6F3!important; --panel:#FFFFFF!important; --ink:#24291F!important; --ink2:#515849!important; --mut:#7E8779!important;
+  --bg:#F3F6F3!important; --panel:#FFFFFF!important; --ink:#24291F!important; --ink2:#515849!important; --mut:#66705F!important;
   --line:#E1E8DF!important; --line2:#EDF1EC!important;
-  --gold:#A57B36!important; --gold-deep:#7C5B24!important; --gold-soft:#F6EDDA!important;
-  --bs-bg:#F3F6F3!important; --c-surface:#FFFFFF!important; --c-ink:#24291F!important; --c-ink2:#515849!important; --c-mut:#7E8779!important;
-  --c-gold:#A57B36!important; --c-gold-dark:#7C5B24!important; --c-gold-deep:#6B4E20!important; --c-gold-soft:#F6EDDA!important;
+  --gold:#8C6628!important; --gold-deep:#6F4F1E!important; --gold-soft:#F6EDDA!important;
+  --bs-bg:#F3F6F3!important; --c-surface:#FFFFFF!important; --c-ink:#24291F!important; --c-ink2:#515849!important; --c-mut:#66705F!important;
+  --c-gold:#8C6628!important; --c-gold-dark:#6F4F1E!important; --c-gold-deep:#5F4318!important; --c-gold-soft:#F6EDDA!important;
   --c-line:rgba(36,41,31,.09)!important; --c-line2:rgba(36,41,31,.05)!important;
 }
 html[data-theme="dark"]{background:#0E120F!important}
@@ -18023,20 +17347,26 @@ body .toolbar,body .links-toolbar,body .filter-bar{
   body .btn,body .btn.sm,body .btn.ghost{min-height:36px!important;height:36px!important;padding:0 12px!important}
 }
 
-/* v221 navigation: 12 pinned icons in the bar, everything else one click away.
-   Pinned copies stay in the panel only on phones, where the tab bar hides them. */
+/* v223 navigation: consolidated above; keep only panel/group helpers */
 @media(min-width:431px){
-  #navMorePanel button.more-pinned{display:none!important}
-  html body:not(.bcs-native) .hwrap-nav #nav{gap:4px!important;justify-content:flex-start!important}
-  html body:not(.bcs-native) .hwrap-nav #nav > button[data-view]{width:38px!important;min-width:38px!important;flex:0 0 38px!important;padding:0!important;gap:0!important;justify-content:center!important}
-  html body:not(.bcs-native) .hwrap-nav #nav > button[data-view] .nav-lbl{display:none!important}
-  html body:not(.bcs-native) .hwrap-nav #nav > button[data-view] .nav-ic{font-size:15px!important;width:auto!important;height:auto!important;background:transparent!important;border:0!important}
-  html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap{margin-left:10px!important;padding-left:0!important}
-  html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap > #navMoreBtn{flex:0 0 auto!important;min-width:72px!important;padding:4px 12px!important;margin-left:0!important}
+  html body:not(.bcs-native) .hwrap-nav #nav{max-width:100%!important}
 }
 /* v219 manager stays global only — no per-section clutter */
 .sec-mgr-host,.sec-mgr-btn{display:none!important}
-#navMorePanel{min-width:0!important;z-index:95!important}
+#navMorePanel{min-width:0!important}
+#navMorePanel .nav-more-group{
+  grid-column:1/-1!important;display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;
+  padding-top:6px!important;border-top:1px solid var(--line)!important;
+}
+#navMorePanel .nav-more-group[data-more-group="Daily desk"]{border-top:0!important;padding-top:0!important}
+#navMorePanel .nav-more-group-title{
+  grid-column:1/-1!important;font-size:10.5px!important;font-weight:800!important;
+  letter-spacing:.14em!important;text-transform:uppercase!important;
+  color:var(--mut)!important;padding:4px 6px 2px!important;
+}
+#navMorePanel .nav-more-group[hidden]{display:none!important}
+@media(max-width:480px){#navMorePanel .nav-more-group{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 #navMorePanel button.on{
   background:linear-gradient(135deg,var(--gold),var(--gold-deep))!important;
   color:#12150F!important;border-color:var(--gold-deep)!important;
@@ -18044,11 +17374,88 @@ body .toolbar,body .links-toolbar,body .filter-bar{
 #navMorePanel button.on .nav-ic{background:rgba(18,21,15,.14)!important;color:#12150F!important}
 body.bcs-native #pagesFab{display:none!important}
 @media(max-width:480px){
-  #navMorePanel{width:calc(100vw - 24px)!important;left:12px!important}
+  /* positioning handled by BCS_NAVX on desktop; native mobile uses tab bar */
 }
+
+/* ============================================================
+   BCS v222 — accessibility, contrast and readability pass
+   Visual only: clearer focus, stronger light-mode contrast,
+   readable micro-labels and comfortable touch targets.
+   ============================================================ */
+html{scroll-padding-top:150px;scrollbar-color:color-mix(in srgb,var(--gold) 34%,transparent) transparent}
+.skip-link{
+  position:fixed;top:10px;left:10px;z-index:10000!important;
+  padding:10px 14px;border-radius:12px;background:var(--gold)!important;
+  color:#12150F!important;font-size:13px;font-weight:800;text-decoration:none;
+  box-shadow:var(--shadow-lg)!important;transform:translateY(-160%);
+  transition:transform .16s ease;
+}
+.skip-link:focus{transform:translateY(0);outline:2px solid var(--ink)!important;outline-offset:2px}
+body.locked .skip-link{display:none!important}
+#mainContent{outline:none!important;scroll-margin-top:146px}
+:focus-visible{outline:2px solid var(--gold)!important;outline-offset:2px!important;box-shadow:0 0 0 4px color-mix(in srgb,var(--gold) 22%,transparent)!important}
+body :is(a,button,input,select,textarea,label,[role="button"],[tabindex]){scroll-margin-top:150px!important}
+
+/* no meaningful label smaller than 10.5px */
+body .view small,
+body .view :is(.c360-k,.c360-s,.fest-days,.month-legend,.cal-chip.fest,.tb-fest-chip,.bm-label,.bm-label i,.bm-rates,.tb-quote-by,.tb-next,.tb-bcs-qr,.fest-date small,.hero-road-row em,.hero-road-row small,.fun-eyebrow,.tb-month,.tb-week,.tb-meridiem,.tb-fest-name,.tb-fest-en,.dd-sev,.pulse-tag,.n-badge,.price-badge,.chk-chip,.vd-badge,.bw-btn.sm,.tl-txt,.ticker-age,.c360-head span,.pulse-copy,.news-mini-copy,.li-url,.li-edit,.lm-label,.lm-sub,.lab,.pr-prof,.apps-kicker,.jp-show-meta,.dc-sub,.meta,.jp-note,.jp-k,.sitelog-sub,.calc-src,.bw-sub,.nav-more-head span){
+  font-size:10.5px!important;line-height:1.4!important;letter-spacing:.02em!important;
+}
+body .view .vd-card span:not(.vd-badge){font-size:10.5px!important}
+body .view .hero-road h3{font-size:11px!important}
+#navMorePanel .nav-more-head span{font-size:10.5px!important}
+.nav-pin-txt{flex:1;min-width:0}
+.nav-pin-toggle{
+  flex:0 0 auto;margin-left:auto;border:1px solid var(--line)!important;background:var(--panel-2,#fff)!important;
+  color:var(--ink2)!important;border-radius:999px!important;padding:4px 9px!important;
+  font-size:10px!important;font-weight:800!important;letter-spacing:.02em!important;cursor:pointer;
+  line-height:1.2!important;white-space:nowrap!important;
+}
+#navMorePanel [data-view].in-bar .nav-pin-toggle{background:color-mix(in srgb,var(--gold) 18%,var(--panel))!important;color:var(--ink)!important;border-color:color-mix(in srgb,var(--gold) 45%,var(--line))!important}
+.nav-pin-toggle:hover{border-color:var(--gold)!important;color:var(--ink)!important}
+#navMorePanel [data-view]{cursor:grab}
+#navMorePanel [data-view]:active{cursor:grabbing}
+#nav > button[data-view].nav-dragging,#navMorePanel button[data-view].nav-dragging{opacity:.55;transform:scale(.97)}
+#nav.nav-drop-target{outline:2px dashed var(--gold)!important;outline-offset:2px}
+#navMorePanel.nav-drop-hint{outline:2px dashed var(--gold)!important;outline-offset:-2px}
+#nav > button.nav-drop-hint{box-shadow:inset 3px 0 0 var(--gold)!important}
+body.bcs-nav-dragging{user-select:none!important;-webkit-user-select:none!important}
+body.bcs-nav-dragging #navMorePanel, body.bcs-nav-dragging #nav{transition:none!important}
+
+
+/* comfortable, predictable touch targets */
+body .hero-road-rows{gap:6px!important}
+body .hero-road-row{min-height:30px!important;padding:6px 9px!important;border-radius:11px!important;border:1px solid transparent!important}
+body .hero-road-row:hover,body .hero-road-row:focus-visible{background:color-mix(in srgb,var(--gold) 9%,transparent)!important;border-color:color-mix(in srgb,var(--gold) 24%,transparent)!important}
+body :is(.vd-chip,.bw-btn.sm){min-height:30px!important;padding:0 11px!important}
+body :is(.col-hub,.fav,.add,.cor-hub,.bm-chip,.linkbtn,.sitelog-tabs button,.sitelog-filters button){
+  min-width:28px!important;min-height:28px!important;border-radius:9px!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+}
+body .hero-ticker{min-height:52px!important;gap:10px!important;padding-right:6px!important}
+body .ticker-refresh{
+  width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;
+  flex:0 0 44px!important;position:relative!important;z-index:3!important;margin:0 4px 0 0!important;
+  font-size:16px!important;
+}
+body .ticker-viewport{min-width:0!important}
+
+
+/* one high-contrast accent treatment for selected controls */
+body :is(.bw-btn.sm.primary,.bw-btn.primary.sm),
+body :is(.bm-rates,.seg button.on){
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep))!important;
+  color:#12150F!important;border-color:var(--gold-deep)!important;
+}
+body .bm-rates i{color:inherit!important}
+body:not([data-theme="dark"]) :is(.jp-show-loc,.dc-ask,.dc-open,.jp-detail-btn,.jp-conf.page,.pr-prof,.eyebrow,.hero-road-row em,.sen-row em){color:var(--gold)!important}
+body:not([data-theme="dark"]) .apps-kicker{color:var(--ink2)!important}
+body:not([data-theme="dark"]) .tick-sep{color:color-mix(in srgb,var(--gold) 72%,transparent)!important}
+body[data-theme="dark"] :is(.jp-show-loc,.dc-ask,.dc-open,.jp-detail-btn,.jp-conf.page){color:var(--gold)!important}
 </style>
 <body class="locked">
 <script>/* early theme bootstrap — prevents a light flash before initExperience runs */try{var _t=localStorage.getItem('bcs_theme_v1')||'dark';document.body.dataset.theme=_t;document.documentElement.dataset.theme=_t;document.documentElement.style.colorScheme=_t;}catch(e){}</script>
+<a class="skip-link" href="#mainContent">Skip to workspace</a>
 
 <div class="lock on" id="lockScreen">
   <div class="lock-skyline" aria-hidden="true">
@@ -18297,38 +17704,50 @@ try{
       <div class="nav-more-wrap">
         <button type="button" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" title="All pages" aria-label="More pages"><span class="nav-ic" aria-hidden="true">⋯</span><span class="nav-lbl">More</span><span class="nav-chev" aria-hidden="true">▾</span></button>
         <div class="nav-more-panel" id="navMorePanel" hidden>
-          <div class="nav-more-head"><b>All pages</b><span>one click away</span></div>
+          <div class="nav-more-head"><b>All pages</b><span>drag to bar · or use + Add to bar</span></div>
           <input type="search" id="navPageSearch" class="nav-page-search" placeholder="Jump to a page…  /" aria-label="Search all pages" autocomplete="off" spellcheck="false">
-          <button type="button" class="more-pinned" data-view="dashboard"><span class="nav-ic" aria-hidden="true">⌂</span>Dashboard</button>
-          <button type="button" class="more-pinned" data-view="advisory"><span class="nav-ic" aria-hidden="true">✦</span>Advisory</button>
-          <button type="button" class="more-pinned" data-view="projects"><span class="nav-ic" aria-hidden="true">▣</span>Projects</button>
-          <button type="button" class="more-pinned" data-view="developers"><span class="nav-ic" aria-hidden="true">◈</span>Developers</button>
-          <button type="button" class="more-pinned" data-view="clients"><span class="nav-ic" aria-hidden="true">◐</span>Clients</button>
-          <button type="button" class="more-pinned" data-view="leadgen"><span class="nav-ic" aria-hidden="true">🎯</span>Leads</button>
-          <button type="button" class="more-pinned" data-view="dayplan"><span class="nav-ic" aria-hidden="true">◷</span>Day Plan</button>
-          <button type="button" class="more-pinned" data-view="pulse"><span class="nav-ic" aria-hidden="true">↗</span>Market Pulse</button>
-          <button type="button" class="more-pinned" data-view="news"><span class="nav-ic" aria-hidden="true">📰</span>News</button>
-          <button type="button" class="more-pinned" data-view="calc"><span class="nav-ic" aria-hidden="true">⌘</span>Calculators</button>
-          <button type="button" class="more-pinned" data-view="inventory"><span class="nav-ic" aria-hidden="true">▦</span>Plot Inventory</button>
-          <button type="button" class="more-pinned" data-view="pipeline"><span class="nav-ic" aria-hidden="true">⇢</span>Sales Pipeline</button>
-          <button type="button" data-view="exchange"><span class="nav-ic" aria-hidden="true">⇄</span>Exchange</button>
-          <button type="button" data-view="advisors"><span class="nav-ic" aria-hidden="true">◎</span>Advisors</button>
-          <button type="button" data-view="partners"><span class="nav-ic" aria-hidden="true">◉</span>Partners</button>
-          <button type="button" data-view="finance"><span class="nav-ic" aria-hidden="true">💰</span>Finance</button>
-          <button type="button" data-view="resale"><span class="nav-ic" aria-hidden="true">⇌</span>Resale</button>
-          <button type="button" data-view="analytics"><span class="nav-ic" aria-hidden="true">▥</span>Analytics</button>
-          <button type="button" data-view="ops"><span class="nav-ic" aria-hidden="true">⌗</span>Operations</button>
-          <button type="button" data-view="tax"><span class="nav-ic" aria-hidden="true">₹</span>Tax &amp; Advice</button>
-          <button type="button" data-view="terminology"><span class="nav-ic" aria-hidden="true">Aa</span>Terminology</button>
-          <button type="button" data-view="links"><span class="nav-ic" aria-hidden="true">⛓</span>Links</button>
-          <button type="button" data-view="templates"><span class="nav-ic" aria-hidden="true">▤</span>Templates</button>
-          <button type="button" data-view="podcasts"><span class="nav-ic" aria-hidden="true">🎙</span>Podcasts</button>
-          <button type="button" data-view="health"><span class="nav-ic" aria-hidden="true">♥</span>Health</button>
-          <button type="button" data-view="social"><span class="nav-ic" aria-hidden="true">🌐</span>Social Media</button>
-          <button type="button" data-view="sheets"><span class="nav-ic" aria-hidden="true">📊</span>Google Sheets</button>
-          <button type="button" data-view="applications"><span class="nav-ic" aria-hidden="true">▤</span>Applications</button>
-          <button type="button" data-view="whiteboard"><span class="nav-ic" aria-hidden="true">✎</span>BCS EZWrite board</button>
-          <button type="button" data-view="jaipur"><span class="nav-ic" aria-hidden="true">🗺</span>Jaipur Map</button>
+          <div class="nav-more-group" data-more-group="Daily desk">
+            <div class="nav-more-group-title">Daily desk</div>
+            <button type="button" class="more-pinned" data-view="dashboard"><span class="nav-ic" aria-hidden="true">⌂</span>Dashboard</button>
+            <button type="button" class="more-pinned" data-view="advisory"><span class="nav-ic" aria-hidden="true">✦</span>Advisory</button>
+            <button type="button" class="more-pinned" data-view="projects"><span class="nav-ic" aria-hidden="true">▣</span>Projects</button>
+            <button type="button" class="more-pinned" data-view="developers"><span class="nav-ic" aria-hidden="true">◈</span>Developers</button>
+            <button type="button" class="more-pinned" data-view="clients"><span class="nav-ic" aria-hidden="true">◐</span>Clients</button>
+            <button type="button" class="more-pinned" data-view="leadgen"><span class="nav-ic" aria-hidden="true">🎯</span>Leads</button>
+            <button type="button" class="more-pinned" data-view="dayplan"><span class="nav-ic" aria-hidden="true">◷</span>Day Plan</button>
+            <button type="button" class="more-pinned" data-view="pulse"><span class="nav-ic" aria-hidden="true">↗</span>Market Pulse</button>
+            <button type="button" class="more-pinned" data-view="news"><span class="nav-ic" aria-hidden="true">📰</span>News</button>
+            <button type="button" data-view="health"><span class="nav-ic" aria-hidden="true">♥</span>Health</button>
+          </div>
+          <div class="nav-more-group" data-more-group="Deal desk">
+            <div class="nav-more-group-title">Deal desk</div>
+            <button type="button" class="more-pinned" data-view="inventory"><span class="nav-ic" aria-hidden="true">▦</span>Plot Inventory</button>
+            <button type="button" class="more-pinned" data-view="pipeline"><span class="nav-ic" aria-hidden="true">⇢</span>Sales Pipeline</button>
+            <button type="button" data-view="exchange"><span class="nav-ic" aria-hidden="true">⇄</span>Exchange</button>
+            <button type="button" data-view="advisors"><span class="nav-ic" aria-hidden="true">◎</span>Advisors</button>
+            <button type="button" data-view="partners"><span class="nav-ic" aria-hidden="true">◉</span>Partners</button>
+            <button type="button" data-view="finance"><span class="nav-ic" aria-hidden="true">💰</span>Finance</button>
+            <button type="button" data-view="resale"><span class="nav-ic" aria-hidden="true">⇌</span>Resale</button>
+          </div>
+          <div class="nav-more-group" data-more-group="Studio &amp; growth">
+            <div class="nav-more-group-title">Studio &amp; growth</div>
+            <button type="button" class="more-pinned" data-view="calc"><span class="nav-ic" aria-hidden="true">⌘</span>Calculators</button>
+            <button type="button" data-view="tax"><span class="nav-ic" aria-hidden="true">₹</span>Tax &amp; Advice</button>
+            <button type="button" data-view="terminology"><span class="nav-ic" aria-hidden="true">Aa</span>Terminology</button>
+            <button type="button" data-view="links"><span class="nav-ic" aria-hidden="true">⛓</span>Links</button>
+            <button type="button" data-view="templates"><span class="nav-ic" aria-hidden="true">▤</span>Templates</button>
+            <button type="button" data-view="podcasts"><span class="nav-ic" aria-hidden="true">🎙</span>Podcasts</button>
+            <button type="button" data-view="social"><span class="nav-ic" aria-hidden="true">🌐</span>Social Media</button>
+            <button type="button" data-view="sheets"><span class="nav-ic" aria-hidden="true">📊</span>Google Sheets</button>
+            <button type="button" data-view="applications"><span class="nav-ic" aria-hidden="true">▤</span>Applications</button>
+            <button type="button" data-view="whiteboard"><span class="nav-ic" aria-hidden="true">✎</span>BCS EZWrite board</button>
+          </div>
+          <div class="nav-more-group" data-more-group="City &amp; systems">
+            <div class="nav-more-group-title">City &amp; systems</div>
+            <button type="button" data-view="jaipur"><span class="nav-ic" aria-hidden="true">🗺</span>Jaipur Map</button>
+            <button type="button" data-view="analytics"><span class="nav-ic" aria-hidden="true">▥</span>Analytics</button>
+            <button type="button" data-view="ops"><span class="nav-ic" aria-hidden="true">⌗</span>Operations</button>
+          </div>
         </div>
       </div>
     </nav>
@@ -18386,7 +17805,7 @@ try{
   <div class="accent-grid" id="accentGrid"></div>
 </div>
 
-<main>
+<main id="mainContent" tabindex="-1" aria-label="BCS Desk workspace">
   <!-- ============ DASHBOARD ============ -->
   <section class="view on" id="view-dashboard">
     <div class="intro hero-life">
@@ -18713,14 +18132,14 @@ try{
     <div class="panel sitelog-panel">
       <div class="sitelog-top">
         <div class="sitelog-tabs" id="siteLogTabs" role="tablist" aria-label="Site log views">
-          <button type="button" data-sltab="timeline" class="on">🕘 Timeline</button>
-          <button type="button" data-sltab="whatsnew">✨ What's new</button>
-          <button type="button" data-sltab="pages">🗂 Page by page</button>
+          <button type="button" id="siteLogTabTimeline" data-sltab="timeline" class="on" role="tab" aria-selected="true" aria-controls="siteLogBody" tabindex="0">🕘 Timeline</button>
+          <button type="button" id="siteLogTabWhatsnew" data-sltab="whatsnew" role="tab" aria-selected="false" aria-controls="siteLogBody" tabindex="-1">✨ What's new</button>
+          <button type="button" id="siteLogTabPages" data-sltab="pages" role="tab" aria-selected="false" aria-controls="siteLogBody" tabindex="-1">🗂 Page by page</button>
         </div>
         <span class="sitelog-stat" id="siteLogStats"></span>
         <div class="sitelog-filters" id="siteLogFilters"></div>
       </div>
-      <div class="sitelog-body" id="siteLogBody"></div>
+      <div class="sitelog-body" id="siteLogBody" role="tabpanel" aria-labelledby="siteLogTabTimeline" tabindex="0"></div>
     </div>
   </section>
 
@@ -20196,20 +19615,27 @@ try{
           <button data-pulse-src="https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77">2bigha — Plots map</button>
           <button data-pulse-src="https://www.propertywala.com/jaipur_rajasthan/">PropertyWala — Jaipur</button>
           <button data-pulse-src="https://www.realestateindia.com/jaipur-property/">Real Estate India</button>
+          <button data-pulse-src="https://housing.com/in/buy/jaipur">Housing.com — Jaipur</button>
+          <button data-pulse-src="https://www.indiaproperty.com/jaipur-properties">IndiaProperty — Jaipur</button>
+          <button data-pulse-src="https://www.truehomes24.com/sale/property-for-sale-in-jaipur">TrueHomes24 — Jaipur</button>
+          <button data-pulse-src="https://www.anarock.com/media/podcasts-videos">ANAROCK Media</button>
         </div>
         <div class="pulse-frame-wrap">
           <div class="pulse-loader hide" id="pulseLoader"><b>Market Pulse loading…</b><span>Source site khul rahi hai…</span><div class="sk sk-line w85" style="height:14px"></div><div class="sk sk-line w60" style="height:10px"></div></div>
-          <iframe id="pulseFrame" src="about:blank" data-cn-src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum + Square Yards + 2bigha + PropertyWala + Real Estate India" referrerpolicy="no-referrer-when-downgrade" style="opacity:1;width:100%;height:100%;border:0;display:block"></iframe>
+          <iframe id="pulseFrame" src="about:blank" data-cn-src="https://www.aurumproptech.in/pulse/properties/jaipur/overview" title="Market intelligence — Aurum + Square Yards + 2bigha + PropertyWala + Real Estate India + Housing.com + IndiaProperty + TrueHomes24 + ANAROCK Media (public sources, verify at source)" referrerpolicy="no-referrer-when-downgrade" style="opacity:1;width:100%;height:100%;border:0;display:block"></iframe>
         </div>
         <div class="pulse-fallback" id="pulseFallback"><span>Live sites aksar framing block karti hain — Page/main site kholne ke liye: </span><a id="pulseFallbackOpen" href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">Open in app ↗</a><button type="button" class="btn ghost sm" id="pulseEmbedBtn">Load inside app</button><span>· BCS summary upar hamesha kaam karta hai.</span></div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center">
           <a class="btn ghost sm" href="https://www.aurumproptech.in/pulse/properties/jaipur/overview" target="_blank" rel="noopener">↗ Aurum</a>
           <a class="btn ghost sm" href="https://www.squareyards.com/jaipur-real-estate" target="_blank" rel="noopener">↗ Square Yards</a>
           <a class="btn ghost sm" href="https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.980761094270548&lng=75.59877449999999&zoom=7.77" target="_blank" rel="noopener">↗ 2bigha map</a>
-          <a class="btn ghost sm" href="https://www.propertywala.com/jaipur_rajasthan/" target="_blank" rel="noopener">↗ PropertyWala Jaipur</a>
-          <a class="btn ghost sm" href="https://www.propertywala.com/news/" target="_blank" rel="noopener">PW News</a>
+          <a class="btn ghost sm" href="https://www.propertywala.com/jaipur_rajasthan/" target="_blank" rel="noopener">↗ PropertyWala</a>
           <a class="btn ghost sm" href="https://www.realestateindia.com/jaipur-property/" target="_blank" rel="noopener">↗ Real Estate India</a>
-          <span style="font-size:11px;color:var(--mut)">Sources: Aurum (PropTiger) · Square Yards · 2bigha · PropertyWala · Real Estate India · <span id="pulseSourceMonth">—</span> · Checked <span data-cn-rate-stamp>checking…</span> · Verify karke use karo.</span>
+          <a class="btn ghost sm" href="https://housing.com/in/buy/jaipur" target="_blank" rel="noopener">↗ Housing.com</a>
+          <a class="btn ghost sm" href="https://www.indiaproperty.com/jaipur-properties" target="_blank" rel="noopener">↗ IndiaProperty</a>
+          <a class="btn ghost sm" href="https://www.truehomes24.com/sale/property-for-sale-in-jaipur" target="_blank" rel="noopener">↗ TrueHomes24</a>
+          <a class="btn ghost sm" href="https://www.anarock.com/media/podcasts-videos" target="_blank" rel="noopener">↗ ANAROCK Media</a>
+          <span style="font-size:11px;color:var(--mut)">Sources (public, attributed): Aurum · Square Yards · 2bigha · PropertyWala · Real Estate India · Housing.com · IndiaProperty · TrueHomes24 · ANAROCK Media · <span id="pulseSourceMonth">—</span> · Checked <span data-cn-rate-stamp>checking…</span> · Verify karke use karo. BCS figures invent nahi karta.</span>
         </div>
         <div style="margin-top:18px;border-top:1px solid var(--hair);padding-top:16px">
           <div class="wc-head" style="margin:0 0 10px">
@@ -20674,7 +20100,7 @@ try{
       <div>
         <div class="eyebrow">BCS · listen &amp; read desk</div>
         <h2 class="adv-title">Podcasts &amp; Library,<br><em>knowledge without the noise.</em></h2>
-        <p class="adv-sub">Play Podcast, Libby aur Kanopy — real estate, business aur storytelling ke 3 premium sources. Card kholne ke liye library card chahiye; yahin apne favorite podcasts bhi save kar sakte hain.</p>
+        <p class="adv-sub">Play Podcast, Libby, Kanopy aur ANAROCK Media — real estate, business aur storytelling ke public/premium sources. Kuch sources ko library card ya account chahiye ho sakta hai; ANAROCK ka media hub public podcasts/videos ke liye source-attributed reference hai. Yahin apne favorite podcasts bhi save kar sakte hain.</p>
       </div>
       <div class="adv-head-actions">
         <button type="button" class="btn ghost sm" data-goto="news">📰 News desk</button>
@@ -20687,6 +20113,7 @@ try{
           <button type="button" class="ps-tab on" role="tab" aria-selected="true" data-ps-site="playpodcast" data-ps-url="https://www.playpodcast.net/" data-ps-title="Play Podcast"><span>🎙️</span><b>Play Podcast</b></button>
           <button type="button" class="ps-tab" role="tab" aria-selected="false" data-ps-site="libby" data-ps-url="https://libbyapp.com" data-ps-title="Libby"><span>📚</span><b>Libby</b></button>
           <button type="button" class="ps-tab" role="tab" aria-selected="false" data-ps-site="kanopy" data-ps-url="https://www.kanopy.com/en" data-ps-title="Kanopy"><span>🎬</span><b>Kanopy</b></button>
+          <button type="button" class="ps-tab" role="tab" aria-selected="false" data-ps-site="anarock" data-ps-url="https://www.anarock.com/media/podcasts-videos" data-ps-title="ANAROCK Media"><span>🏢</span><b>ANAROCK</b></button>
         </div>
         <div class="ps-tools">
           <button type="button" class="ps-ico" data-ps-act="reload" title="Reload this site" aria-label="Reload this site">↻</button>
@@ -24185,7 +23612,11 @@ const STARTER_LINKS = [
   { id:'lstarter-etrealty', name:'ET Realty',                  url:'https://economictimes.indiatimes.com/wealth/real-estate', categoryId:'lcat-market', note:'Policy, RERA & market analysis' },
   { id:'lstarter-credai',  name:'CREDAI',                      url:'https://www.credai.org/',              categoryId:'lcat-market',   note:'Builder body — launches & policy' },
   { id:'lstarter-99',      name:'99acres',                     url:'https://www.99acres.com/',              categoryId:'lcat-portals', note:'Competitor listings' },
-  { id:'lstarter-housing', name:'Housing.com',                 url:'https://housing.com/',                  categoryId:'lcat-portals', note:'Project research' },
+  { id:'lstarter-housing', name:'Housing.com',                 url:'https://housing.com/in/buy/jaipur',     categoryId:'lcat-portals', note:'Jaipur listings & project research · public portal (verify at source)' },
+  { id:'lstarter-rei',     name:'Real Estate India — Jaipur',  url:'https://www.realestateindia.com/jaipur-property/', categoryId:'lcat-portals', note:'Jaipur sale/rent/lease listings · public portal (verify at source)' },
+  { id:'lstarter-ip',      name:'IndiaProperty — Jaipur',      url:'https://www.indiaproperty.com/jaipur-properties',  categoryId:'lcat-portals', note:'Jaipur property search/listings · public portal (verify at source)' },
+  { id:'lstarter-th24',    name:'TrueHomes24 — Jaipur',        url:'https://www.truehomes24.com/sale/property-for-sale-in-jaipur', categoryId:'lcat-portals', note:'Jaipur sale listings · public portal (verify at source)' },
+  { id:'lstarter-anarock', name:'ANAROCK Podcasts & Videos',   url:'https://www.anarock.com/media/podcasts-videos', categoryId:'lcat-market',  note:'Real estate podcasts, research talks & videos · public media (source attribution)' },
   { id:'lstarter-calc',    name:'Google Calculator',           url:'https://www.google.com/search?q=calculator', categoryId:'lcat-tools', note:'Quick sq yd / rate maths' },
 ];
 const DEFAULT_BOOKING_STAGES = [
@@ -27913,7 +27344,7 @@ function renderDashboard(){
   const pulse = $('#heroRoadPulse');
   if(pulse){
     pulse.innerHTML = roadCounts.length ? `
-      <div class="hero-road"><h4>Road pulse · click for hub</h4><div class="hero-road-rows">
+      <div class="hero-road"><h3>Road pulse · click for hub</h3><div class="hero-road-rows">
         ${roadCounts.map(x => `<button type="button" class="hero-road-row" data-roadpulse="${x.c.id}"><span class="cor-dot" style="background:${x.c.color}"></span><b>${esc(x.c.name)}</b><small>${x.projects} proj · ${x.advisors} adv · ${x.devs} dev</small><em>Hub</em></button>`).join('')}
       </div></div>` : '<div class="hero-road"><h4>Road pulse</h4><small>Koi corridor data abhi nahi.</small></div>';
     $$('#heroRoadPulse [data-roadpulse]').forEach(btn => btn.onclick = () => openRoadHub(btn.dataset.roadpulse));
@@ -29260,7 +28691,7 @@ function quoteText(){
   $('#pulsePwOpen')?.addEventListener('click', () => cnOpen('https://www.propertywala.com/jaipur_rajasthan/'));
   $('#pulseReiOpen')?.addEventListener('click', () => cnOpen('https://www.realestateindia.com/jaipur-property/'));
   $('#pulseShare')?.addEventListener('click', () => {
-    const txt = '*BCS Market Pulse — Jaipur* (Aurum + Square Yards + 2bigha + PropertyWala + Real Estate India)\n' + 'Pulse: 969 projects · SY: 1,066 listings · PW: 6 featured Jaipur projects · REI: 19,800+ listings\n' + 'News: JDA ₹575 Cr works · RHB 4 schemes · Ashiana ₹1,000 Cr land plan\n' + 'Aurum: https://www.aurumproptech.in/pulse/properties/jaipur/overview\n' + 'SY: https://www.squareyards.com/jaipur-real-estate\n' + '2bigha: https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.98&lng=75.59&zoom=7.77\n' + 'PW: https://www.propertywala.com/jaipur_rajasthan/\n' + 'Real Estate India: https://www.realestateindia.com/jaipur-property/\n' + 'News: https://www.propertywala.com/news/\n' + 'BCS · Business City Square · @ajaysharma.bcs';
+    const txt = '*BCS Market Pulse — Jaipur* (public, source-attributed)\n' + 'Sources: Aurum Pulse · Square Yards · 2bigha · PropertyWala · Real Estate India · Housing.com · IndiaProperty · TrueHomes24 · ANAROCK Media\n' + 'Aurum: https://www.aurumproptech.in/pulse/properties/jaipur/overview\n' + 'SY: https://www.squareyards.com/jaipur-real-estate\n' + '2bigha: https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur?lat=26.98&lng=75.59&zoom=7.77\n' + 'PW: https://www.propertywala.com/jaipur_rajasthan/\n' + 'REI: https://www.realestateindia.com/jaipur-property/\n' + 'Housing: https://housing.com/in/buy/jaipur\n' + 'IndiaProperty: https://www.indiaproperty.com/jaipur-properties\n' + 'TrueHomes24: https://www.truehomes24.com/sale/property-for-sale-in-jaipur\n' + 'ANAROCK: https://www.anarock.com/media/podcasts-videos\n' + 'BCS · indicative public info only, verify at source · @ajaysharma.bcs';
     if(window.BCSPreview) return window.BCSPreview.open({ title: 'BCS Market Pulse — Jaipur', text: txt, waText: txt, filename: 'bcs-market-pulse-' + todayISO() + '.txt', kind: 'Market pulse · preview' });
     if(navigator.share){ navigator.share({ title: 'BCS Market Pulse — Jaipur', text: txt }).catch(() => {}); } else { window.open('https://wa.me/?text=' + encodeURIComponent(txt), '_blank'); }
   });
@@ -39683,6 +39114,7 @@ const NEWS_SOURCES = [
   { id:'fortune',      label:'Fortune India',    query:'Fortune India real estate property news', url:'https://www.fortuneindia.com/real-estate' },
   { id:'construction', label:'Construction World', query:'Construction World real estate infrastructure', url:'https://www.constructionworld.in' },
   { id:'realtyfirst',  label:'Realty First',     query:'Realty First magazine real estate', url:'https://realtyfirstmag.com' },
+  { id:'anarock',      label:'ANAROCK Media',    query:'ANAROCK India real estate research podcasts videos', url:'https://www.anarock.com/media/podcasts-videos' },
   { id:'national',     label:'India market',     query:'India real estate market property', url:'https://realty.economictimes.indiatimes.com' }
 ];
 const DEFAULT_VIDEO_STATUSES = [
@@ -43875,7 +43307,7 @@ function proReplyCsv(){
 }
 
 /* ---------- global admin section manager (Add / Edit / Delete everywhere) ---------- */
-const BCS_SECTION_MANAGER = {};
+const BCS_SECTION_MANAGER = (typeof window !== 'undefined' && window.BCS_SECTION_MANAGER) ? window.BCS_SECTION_MANAGER : {}; if(typeof window !== 'undefined') window.BCS_SECTION_MANAGER = BCS_SECTION_MANAGER;
 let secMgrKey = '', secMgrEditId = null;
 function bcsRegisterSectionManager(cfg){ if(cfg && cfg.key) BCS_SECTION_MANAGER[cfg.key] = cfg; }
 function bcsPathGet(obj, path){
@@ -50911,6 +50343,26 @@ function initReports(){
     else toast('Pehle sale save karein — phir invoice banegi', true);
   });
 }
+/* v222: enforce a readable floor on visible micro-labels without changing data or events. */
+function bcsReadabilityPass(){
+  try{
+    const root = document.querySelector('.view.on') || document;
+    const nodes = root.querySelectorAll('*');
+    for(const el of nodes){
+      let hasText = false;
+      for(const n of el.childNodes){ if(n.nodeType === 3 && n.nodeValue && n.nodeValue.trim()){ hasText = true; break; } }
+      if(!hasText) continue;
+      const cs = getComputedStyle(el);
+      if(cs.display === 'none' || cs.visibility === 'hidden') continue;
+      const fs = parseFloat(cs.fontSize);
+      if(fs && fs < 10.5){
+        el.style.setProperty('font-size','10.5px','important');
+        const lh = parseFloat(cs.lineHeight);
+        if(lh && lh < 14) el.style.setProperty('line-height','1.4','important');
+      }
+    }
+  }catch(e){}
+}
 function render(){
   fillFilterCorridor($('#filterCorridor').value);
   fillFilterDeveloper($('#filterDeveloper')?.value);
@@ -50951,7 +50403,8 @@ function render(){
   try{ if(window.BCS_FUN) window.BCS_FUN.render(); }catch(e){}
   try{ if(window.BCS_VIVID) window.BCS_VIVID.render(); }catch(e){}
   try{ if(window.__bcsArmMotion) window.__bcsArmMotion(); }catch(e){}
-  /* v221: no per-section Manage chips — the single global manager stays in the header. */
+  bcsReadabilityPass();
+  /* v222: no per-section Manage chips — the single global manager stays in the header. */
   /* bcsInjectSectionManagerButtons() remains available for admin tooling, but is not auto-injected. */
 }
 /* ---------- v162: TARGET LISTS — bulk prospects + two-way showcase ----------
@@ -52800,42 +52253,16 @@ try{
     const morePanel = document.getElementById('navMorePanel');
     if(moreBtn && morePanel){
       function placeMore(){
-        /* delegated to the nav module's positioner (single authority —
-           the legacy maths here fought the scrollable-nav layout) */
-        if(window.BCS_NAVX && window.BCS_NAVX.positionMore){ window.BCS_NAVX.positionMore(); return; }
-        const moreBtnEl = document.getElementById('navMoreBtn');
-        const vw = window.innerWidth || document.documentElement.clientWidth;
-        const vh = window.innerHeight || document.documentElement.clientHeight;
-        if(!moreBtnEl) return;
-        const r = moreBtnEl.getBoundingClientRect();
-        /* Position panel below the button, aligned to its right edge */
-        let top = r.bottom + 10;
-        let left = r.right - 340; /* panel width 340px */
-        if(left < 12) left = 12;
-        if(left + 340 > vw - 12) left = vw - 340 - 12;
-        if(top + 400 > vh) top = Math.max(12, r.top - 420);
-        morePanel.style.top = top + 'px';
-        morePanel.style.left = left + 'px';
-        morePanel.style.right = 'auto';
+        /* delegated to the nav module's single authority */
+        if(window.BCS_NAVX && typeof window.BCS_NAVX.positionMore === 'function'){ window.BCS_NAVX.positionMore(); return; }
+        if(typeof bcsNavMorePosition === 'function'){ bcsNavMorePosition(); }
       }
       moreBtn.addEventListener('click', function(e){
         e.stopPropagation();
-        try{ if(typeof bcsNavMoreToggle === 'function'){ bcsNavMoreToggle(); return; } }catch(err){}
-        var isOpen = !morePanel.hidden;
-        if(isOpen){
-          morePanel.hidden = true;
-          moreBtn.setAttribute('aria-expanded','false');
-        }else{
-          morePanel.hidden = false;
-          moreBtn.setAttribute('aria-expanded','true');
-          setTimeout(placeMore, 0);
-        }
+        try{ if(typeof bcsNavMoreToggle === 'function'){ bcsNavMoreToggle(); } }catch(err){}
       });
       window.bcsPlaceMore = placeMore;
-      window.addEventListener('resize', placeMore);
-      window.addEventListener('scroll', function(){
-        if(!morePanel.hidden) placeMore();
-      }, { passive:true });
+      /* positioning/scroll/resize listeners owned by BCS_NAVX + bcsNavMore* to avoid duplicate handlers */
     }
   }catch(e){}
 
@@ -55463,6 +54890,10 @@ try{ xchEnsure(db); }catch(e){ console.warn('[BCS exchange]', e); }
       $$('#navMorePanel [data-view]').forEach(function(b){
         b.hidden = !!q && (b.textContent || '').toLowerCase().indexOf(q) === -1;
       });
+      $$('#navMorePanel .nav-more-group').forEach(function(g){
+        var any = $$('#navMorePanel .nav-more-group [data-view]:not([hidden])').some(function(b){ return g.contains(b); });
+        g.hidden = !any;
+      });
     }
     if(pageSearch){
       pageSearch.addEventListener('input', filterPages);
@@ -57864,61 +57295,209 @@ window.calcFinanceClient = calcFinanceClient;
 
 <script>
 /* =========================================================
-   BCS NAV · horizontal scroll + wheel→horizontal + drag reorder
-   ---------------------------------------------------------
-   · wheel over the nav scrolls it horizontally (only while there
-     is room — otherwise the page keeps scrolling normally)
-   · drag any tab onto another to change the sequence; order is
-     persisted in localStorage (bcs_nav_order_v1) and restored on
-     boot. The “More” pill always stays last.
-   · the phone tab bar (body.bcs-native) keeps its own layout.
+   BCS NAV · horizontal scroll + drag reorder + customizable showcase
+   - Nav shows icon + page names (desktop). Horizontal scroll/wheel.
+   - Primary showcased set/order persisted in localStorage (bcs_nav_order_v1).
+   - Drag pages from More panel onto nav to showcase; drag out to remove.
+   - Click "Pin to bar"/"In bar" in More panel as non-drag alternative.
+   - Phone tab bar (body.bcs-native) keeps its own fixed layout.
    ========================================================= */
 (function(){
 'use strict';
 const KEY = 'bcs_nav_order_v1';
+const DEFAULT_PRIMARY = ['dashboard','advisory','projects','developers','clients','leadgen','dayplan','pulse','news','calc','inventory','pipeline'];
 let nav = null, drag = null, dragEndedAt = 0;
-
 const isMobile = () => document.body.classList.contains('bcs-native');
+const $  = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
 const primaryButtons = () => $$('#nav > button[data-view]');
+const moreWrap = () => nav && nav.querySelector('.nav-more-wrap');
+const panelEl = () => document.getElementById('navMorePanel');
 
-/* ---------- order restore / persist ---------- */
-function applySaved(){
-  if(!nav || isMobile()) return;
-  let order = [];
-  try{ order = JSON.parse(localStorage.getItem(KEY) || '[]'); }catch(e){}
-  if(!Array.isArray(order) || !order.length) return;
-  const btns = primaryButtons();
-  const ids = btns.map(b => b.dataset.view);
-  const known = new Set(ids);
-  const seq = [...new Set(order.filter(id => known.has(id)))];
-  if(!seq.length) return;                           /* nothing recognisable → keep default */
-  const map = new Map(btns.map(b => [b.dataset.view, b]));
-  const wrap = nav.querySelector('.nav-more-wrap');
-  seq.forEach(id => { const b = map.get(id); if(b) nav.insertBefore(b, wrap); });
+function viewMeta(btn){
+  if(!btn) return null;
+  const view = btn.dataset.view;
+  const ic = btn.querySelector('.nav-ic') ? btn.querySelector('.nav-ic').textContent.trim() : '';
+  let label = '';
+  const lbl = btn.querySelector('.nav-lbl');
+  if(lbl) label = lbl.textContent.trim();
+  else label = (btn.textContent || '').replace(ic,'').trim();
+  return { view, icon: ic || '•', label: label || view };
+}
+function allButtons(){
+  const seen = new Set(), out = [];
+  [...primaryButtons(), ...$$('#navMorePanel button[data-view]')].forEach(b => {
+    const v = b.dataset.view; if(!v || seen.has(v)) return; seen.add(v); out.push(b);
+  });
+  return out;
+}
+function metaMap(){
+  const m = new Map();
+  allButtons().forEach(b => m.set(b.dataset.view, viewMeta(b)));
+  // ensure every view in DOM (including duplicates not yet deduped) is known
+  $$('button[data-view]').forEach(b => { if(b.dataset.view && !m.has(b.dataset.view)) m.set(b.dataset.view, viewMeta(b)); });
+  return m;
+}
+function ensureHomeGroups(){
+  $$('#navMorePanel .nav-more-group').forEach(g => {
+    const name = g.dataset.moreGroup || 'More';
+    $$('button[data-view]', g).forEach(b => { if(!b.dataset.homeGroup) b.dataset.homeGroup = name; });
+  });
+  $$('#navMorePanel button[data-view]').forEach(b => { if(!b.dataset.homeGroup) b.dataset.homeGroup = b.closest('.nav-more-group')?.dataset.moreGroup || 'More'; });
+}
+function toNavButton(btn, meta){
+  if(!btn) return btn;
+  const m = meta || viewMeta(btn);
+  btn.className = btn.className.replace(/\bmore-pinned\b/g,'').trim();
+  btn.innerHTML = '<span class="nav-ic" aria-hidden="true"></span><span class="nav-lbl"></span>';
+  btn.querySelector('.nav-ic').textContent = m.icon;
+  btn.querySelector('.nav-lbl').textContent = m.label;
+  btn.setAttribute('aria-label', m.label);
+  btn.removeAttribute('draggable');
+  return btn;
+}
+function toPanelButton(btn, meta){
+  if(!btn) return btn;
+  const m = meta || viewMeta(btn);
+  btn.className = btn.className.replace(/\bmore-pinned\b/g,'').trim();
+  btn.innerHTML = '<span class="nav-ic" aria-hidden="true"></span><span class="nav-pin-txt"></span><button type="button" class="nav-pin-toggle" data-pin-toggle="1" aria-label=""></button>';
+  btn.querySelector('.nav-ic').textContent = m.icon;
+  btn.querySelector('.nav-pin-txt').textContent = m.label;
+  btn.setAttribute('aria-label', m.label);
+  btn.setAttribute('draggable','true');
+  return btn;
+}
+function dedupeAndCatalog(){
+  ensureHomeGroups();
+  const byView = new Map();
+  // collect all, prefer element that already has richest info; keep one
+  $$('button[data-view]').forEach(b => {
+    const v = b.dataset.view; if(!v) return;
+    if(!byView.has(v)) byView.set(v, []);
+    byView.get(v).push(b);
+  });
+  const catalog = new Map();
+  byView.forEach((els, v) => {
+    // choose canonical: prefer nav one, else first
+    let keep = els.find(e => e.closest('#nav') && !e.closest('#navMorePanel')) || els[0];
+    const meta = viewMeta(keep);
+    const home = keep.dataset.homeGroup || keep.closest('.nav-more-group')?.dataset.moreGroup || els.map(e=>e.dataset.homeGroup||e.closest('.nav-more-group')?.dataset.moreGroup).find(Boolean) || 'More';
+    catalog.set(v, { el: keep, meta, home });
+    els.forEach(e => { if(e !== keep) e.remove(); });
+  });
+  return catalog;
+}
+function getSavedPrimary(catalog){
+  let arr = null;
+  try{ const raw = JSON.parse(localStorage.getItem(KEY) || 'null'); if(Array.isArray(raw)) arr = raw; }catch(e){}
+  const known = new Set(catalog.keys());
+  if(!arr || !arr.length){
+    // derive from current nav, else default
+    const cur = primaryButtons().map(b=>b.dataset.view).filter(v=>known.has(v));
+    arr = cur.length ? cur : DEFAULT_PRIMARY.filter(v=>known.has(v));
+  } else {
+    arr = arr.filter(v => known.has(v));
+  }
+  // if somehow empty, fallback
+  if(!arr.length) arr = DEFAULT_PRIMARY.filter(v=>known.has(v));
+  return arr;
+}
+let CATALOG = null;
+function applyLayout(primaryIds){
+  if(!CATALOG || !nav) return;
+  const p = panelEl(), w = moreWrap();
+  if(!p || !w) return;
+  const primary = [];
+  const seen = new Set();
+  (primaryIds || []).forEach(v => { if(CATALOG.has(v) && !seen.has(v)){ primary.push(v); seen.add(v); } });
+  // place primary in nav in order
+  primary.forEach(v => {
+    const item = CATALOG.get(v); if(!item) return;
+    toNavButton(item.el, item.meta);
+    nav.insertBefore(item.el, w);
+  });
+  // place rest into panel groups (append to their home groups, preserving relative order by iterating catalog in a stable way)
+  const rest = [];
+  CATALOG.forEach((item, v) => { if(!seen.has(v)) rest.push(v); });
+  // stable group order by DOM
+  const groupEls = $$('#navMorePanel .nav-more-group');
+  const groupMap = new Map(groupEls.map(g => [g.dataset.moreGroup, g]));
+  rest.forEach(v => {
+    const item = CATALOG.get(v); if(!item) return;
+    toPanelButton(item.el, item.meta);
+    const g = groupMap.get(item.home) || groupEls[groupEls.length-1] || p;
+    g.appendChild(item.el);
+  });
+  // ensure More wrap last
+  nav.appendChild(w);
+  syncPanelStates();
+  if(typeof window.bcsNavMoreSync === 'function') window.bcsNavMoreSync();
+}
+function syncPanelStates(){
+  const primary = new Set(primaryButtons().map(b=>b.dataset.view));
+  $$('#navMorePanel button[data-view]').forEach(b => {
+    const inBar = primary.has(b.dataset.view);
+    b.classList.toggle('in-bar', inBar);
+    b.classList.toggle('on', b.dataset.view === (window.currentView||''));
+    const t = b.querySelector('.nav-pin-toggle');
+    if(t){
+      t.textContent = inBar ? 'In bar ✓' : '+ Add to bar';
+      t.setAttribute('aria-label', inBar ? ('Remove ' + (CATALOG.get(b.dataset.view)?.meta.label||b.dataset.view) + ' from bar') : ('Add ' + (CATALOG.get(b.dataset.view)?.meta.label||b.dataset.view) + ' to bar'));
+      t.title = inBar ? 'Remove from navigation bar' : 'Show on navigation bar';
+    }
+  });
+  // show a hint in panel head once
+  const head = $('#navMorePanel .nav-more-head span');
+  if(head && !head.dataset.navhint){ head.dataset.navhint='1'; head.textContent = 'drag to bar · or use + Add to bar'; }
 }
 function persist(){
   try{ localStorage.setItem(KEY, JSON.stringify(primaryButtons().map(b => b.dataset.view))); }catch(e){}
+  syncPanelStates();
+}
+function addToBar(view, beforeView){
+  if(!CATALOG || !CATALOG.has(view) || isMobile()) return;
+  const cur = primaryButtons().map(b=>b.dataset.view);
+  if(cur.includes(view)) return;
+  if(beforeView && cur.includes(beforeView)){
+    const i = cur.indexOf(beforeView); cur.splice(i,0,view);
+  } else cur.push(view);
+  applyLayout(cur); persist();
+  try{ toast('Added to navigation bar'); }catch(e){}
+}
+function removeFromBar(view){
+  if(!CATALOG || isMobile()) return;
+  const cur = primaryButtons().map(b=>b.dataset.view).filter(v=>v!==view);
+  if(!cur.length){ try{ toast('At least one page must stay on the bar', true); }catch(e){} return; }
+  applyLayout(cur); persist();
+  try{ toast('Removed from navigation bar'); }catch(e){}
 }
 
 /* ---------- vertical wheel → horizontal scroll ---------- */
 function onWheel(e){
   if(!nav || isMobile()) return;
   const max = nav.scrollWidth - nav.clientWidth;
-  if(max <= 2) return;                              /* nothing to scroll → normal page scroll */
+  if(max <= 2) return;
   const d = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
   const goingRight = d > 0;
   const canGo = goingRight ? nav.scrollLeft < max - 1 : nav.scrollLeft > 1;
-  if(!canGo) return;                                /* at the end → hand back to the page */
+  if(!canGo) return;
   e.preventDefault();
   nav.scrollLeft += d;
 }
 
-/* ---------- drag to reorder (pointer based — works with a mouse) ---------- */
+/* ---------- drag (pointer) for reorder + panel<->nav ---------- */
+function clearHints(){
+  $$('#nav > button.nav-drop-hint, #navMorePanel.nav-drop-hint, #navMorePanel .nav-more-group.nav-drop-hint').forEach(el=>el.classList.remove('nav-drop-hint'));
+  if(nav) nav.classList.remove('nav-drop-target');
+}
 function onPointerDown(e){
-  if(!nav || isMobile() || e.button !== 0) return;
-  const btn = e.target.closest('#nav > button[data-view]');
+  if(isMobile() || e.button !== 0) return;
+  if(e.target.closest('.nav-pin-toggle')) return; // toggle click handles it
+  const navBtn = e.target.closest('#nav > button[data-view]');
+  const panelBtn = e.target.closest('#navMorePanel button[data-view]');
+  const btn = navBtn || panelBtn;
   if(!btn) return;
-  drag = { btn, startX:e.clientX, startY:e.clientY, moved:false, over:null };
+  drag = { btn, from: navBtn ? 'nav' : 'panel', startX:e.clientX, startY:e.clientY, moved:false, over:null, overPanel:false };
 }
 function onPointerMove(e){
   if(!drag) return;
@@ -57926,45 +57505,72 @@ function onPointerMove(e){
     if(Math.abs(e.clientX - drag.startX) < 6 && Math.abs(e.clientY - drag.startY) < 6) return;
     drag.moved = true;
     drag.btn.classList.add('nav-dragging');
+    document.body.classList.add('bcs-nav-dragging');
   }
+  clearHints();
+  drag.over = null; drag.overPanel = false;
   const el = document.elementFromPoint(e.clientX, e.clientY);
-  const over = (el && el.closest) ? el.closest('#nav > button[data-view]') : null;
-  $$('#nav > button.nav-drop-hint').forEach(b => { if(b !== drag.btn) b.classList.remove('nav-drop-hint'); });
-  if(over && over !== drag.btn){ over.classList.add('nav-drop-hint'); drag.over = over; }
-  else drag.over = null;
-  /* edge auto-scroll while dragging */
-  const r = nav.getBoundingClientRect();
-  if(e.clientX > r.right - 48) nav.scrollLeft += 14;
-  else if(e.clientX < r.left + 48) nav.scrollLeft -= 14;
+  const overNavBtn = el && el.closest ? el.closest('#nav > button[data-view]') : null;
+  const overNav = el && el.closest ? el.closest('#nav') : null;
+  const overPanelArea = el && el.closest ? el.closest('#navMorePanel') : null;
+  if(overNavBtn && overNavBtn !== drag.btn){
+    overNavBtn.classList.add('nav-drop-hint'); drag.over = overNavBtn;
+  } else if(overNav && !overNavBtn){
+    nav.classList.add('nav-drop-target'); drag.over = 'nav-end';
+  }
+  if(overPanelArea && drag.from === 'nav'){
+    overPanelArea.classList.add('nav-drop-hint'); drag.overPanel = true;
+  }
+  // edge auto-scroll while dragging over nav
+  if(nav){
+    const r = nav.getBoundingClientRect();
+    if(e.clientX > r.right - 48) nav.scrollLeft += 14;
+    else if(e.clientX < r.left + 48) nav.scrollLeft -= 14;
+  }
 }
 function onPointerUp(e){
   if(!drag) return;
-  const { btn, moved, over } = drag;
+  const { btn, from, moved, over, overPanel } = drag;
   btn.classList.remove('nav-dragging');
-  $$('#nav > button.nav-drop-hint').forEach(b => b.classList.remove('nav-drop-hint'));
-  if(moved && over && over !== btn){
-    const r = over.getBoundingClientRect();
-    const before = e.clientX < r.left + r.width / 2;
-    if(before) nav.insertBefore(btn, over); else nav.insertBefore(btn, over.nextSibling);
-    const wrap = nav.querySelector('.nav-more-wrap');      /* More always stays last */
-    if(wrap) nav.appendChild(wrap);
-    persist();
-    dragEndedAt = Date.now();          /* suppress only the click that follows this drag */
-    try{ toast('Nav order saved'); }catch(err){}
+  document.body.classList.remove('bcs-nav-dragging');
+  clearHints();
+  const view = btn.dataset.view;
+  if(moved){
+    if(from === 'panel'){
+      if(over === 'nav-end' || over){
+        // add to nav (at position or end)
+        const before = (over && over !== 'nav-end') ? over.dataset.view : null;
+        addToBar(view, before);
+        dragEndedAt = Date.now();
+      }
+    } else if(from === 'nav'){
+      if(overPanel){
+        removeFromBar(view);
+        dragEndedAt = Date.now();
+      } else if(over && over !== 'nav-end' && over !== btn){
+        const r = over.getBoundingClientRect();
+        const before = e.clientX < r.left + r.width / 2;
+        if(before) nav.insertBefore(btn, over); else nav.insertBefore(btn, over.nextSibling);
+        const w = moreWrap(); if(w) nav.appendChild(w);
+        persist();
+        dragEndedAt = Date.now();
+        try{ toast('Nav order saved'); }catch(err){}
+      } else if(over === 'nav-end' && btn.nextSibling !== moreWrap()){
+        const w = moreWrap(); nav.insertBefore(btn, w); persist(); dragEndedAt = Date.now();
+      }
+    }
   }
   drag = null;
 }
 
 /* More dropdown: fixed positioning so the scrollable nav row can't clip it */
 function positionMorePanel(){
-  const panel = document.getElementById('navMorePanel');
+  const panel = panelEl();
   const btn = document.getElementById('navMoreBtn');
   if(!panel || !btn || panel.hidden || isMobile()) return;
-  /* fixed inside the header still gets clipped (blur/transform ancestors +
-     the nav's own overflow) — re-parent to <body> so it truly floats */
   if(panel.parentNode !== document.body) document.body.appendChild(panel);
   const r = btn.getBoundingClientRect();
-  const pw = Math.min(620, window.innerWidth - 24);
+  const pw = Math.min(720, window.innerWidth - 24);
   let left = Math.max(12, Math.min(r.right - pw, window.innerWidth - pw - 12));
   let top = r.bottom + 10;
   const approxH = panel.offsetHeight || 420;
@@ -57979,35 +57585,56 @@ function positionMorePanel(){
   st.setProperty('max-height', (window.innerHeight - top - 12) + 'px','important');
   st.setProperty('overflow-y','auto','important');
 }
+
 function boot(){
   nav = document.getElementById('nav'); if(!nav) return;
-  applySaved();
+  // build catalog and normalize layout
+  CATALOG = dedupeAndCatalog();
+  const primary = getSavedPrimary(CATALOG);
+  applyLayout(primary);
+  persist();
+
   nav.addEventListener('wheel', onWheel, { passive:false });
+
+  // click pin toggles in panel
+  document.addEventListener('click', e => {
+    const t = e.target.closest && e.target.closest('.nav-pin-toggle');
+    if(t){
+      e.preventDefault(); e.stopPropagation();
+      const b = t.closest('button[data-view]'); if(!b) return;
+      if(b.classList.contains('in-bar')) removeFromBar(b.dataset.view);
+      else addToBar(b.dataset.view);
+      return;
+    }
+  }, true);
+
   document.addEventListener('click', e => {
     const pv = e.target.closest && e.target.closest('#navMorePanel button[data-view]');
-    if(pv && pv.closest('#navMorePanel').parentNode === document.body){
+    if(pv && panelEl() && panelEl().parentNode === document.body){
+      if(e.target.closest('.nav-pin-toggle')) return;
       e.stopPropagation();
       if(typeof go === 'function') go(pv.dataset.view);
-      try{ bcsNavMoreClose(); }catch(err){}
+      try{ if(typeof bcsNavMoreClose === 'function') bcsNavMoreClose(); }catch(err){}
     }
   });
   window.addEventListener('resize', positionMorePanel);
   window.addEventListener('scroll', positionMorePanel, { passive:true, capture:true });
   nav.addEventListener('scroll', positionMorePanel, { passive:true });
-  nav.addEventListener('pointerdown', onPointerDown);
+  document.addEventListener('pointerdown', onPointerDown);
   window.addEventListener('pointermove', onPointerMove, { passive:true });
   window.addEventListener('pointerup', onPointerUp);
-  /* a finished drag must not also fire the dropped-on tab's navigation click
-     (scoped to tabs only — the More button must keep working right after a drag) */
   nav.addEventListener('click', e => {
     if(Date.now() - dragEndedAt < 350 && e.target.closest && e.target.closest('#nav > button[data-view]')){
       e.stopPropagation(); e.preventDefault();
     }
   }, true);
+
+  // keep panel state fresh
+  try{ const mo = new MutationObserver(syncPanelStates); mo.observe(nav, {childList:true}); }catch(e){}
 }
 if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
 else boot();
-window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
+window.BCS_NAVX = { applySaved: function(){ if(CATALOG) applyLayout(getSavedPrimary(CATALOG)); }, persist, positionMore: positionMorePanel, addToBar, removeFromBar };
 })();
 </script>
 
@@ -61381,6 +61008,8 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
       const on = b.dataset.sltab === dashLogTab;
       b.classList.toggle('on', on);
       b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.setAttribute('tabindex', on ? '0' : '-1');
+      if(on){ const panel = q('#siteLogBody'); if(panel) panel.setAttribute('aria-labelledby', b.id); }
     });
     const fullBtn = q('#siteLogFullBtn');
     if(fullBtn) fullBtn.style.display = isAdmin() ? '' : 'none';
@@ -61485,6 +61114,18 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   }
   function dayLabelOf(iso){
     try{ return fmtDate(iso); }catch(e){ return iso || ''; }
+  }
+
+  const siteTabs = q('#siteLogTabs');
+  if(siteTabs){
+    siteTabs.addEventListener('keydown', function(e){
+      if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key)) return;
+      const tabs = qa('#siteLogTabs [role=tab]'); if(!tabs.length) return;
+      const i = tabs.indexOf(document.activeElement); if(i < 0) return;
+      e.preventDefault();
+      const next = e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : (i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+      tabs[next].focus(); tabs[next].click();
+    });
   }
 
   document.addEventListener('click', function(e){
@@ -67206,14 +66847,17 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
   var SOURCE_META=[
     {id:'mb',name:'Magicbricks',url:'https://www.magicbricks.com/new-projects-in-Jaipur',value:'15 pages',sub:'S1–S15 · seen on page',desc:'Vaishali 287+ · Mansarovar 242+ · Jagatpura 444+ · Ajmer Rd 436+ · Tonk Rd 293+ · Malviya 56+'},
     {id:'99',name:'99acres',url:'https://www.99acres.com/property-in-jaipur-ffid',value:'snippet only',sub:'direct fetch 403',desc:'Vantara · The Signature · Manglams Aananda · J Park · Ventura · locality counts'},
-    {id:'housing',name:'Housing.com',url:'https://housing.com/in/buy/jaipur',value:'snippet only',sub:'direct fetch 406',desc:'Jagatpura 1053+ flats · 22+ villas · ready-to-move and rental rows'},
+    {id:'housing',name:'Housing.com',url:'https://housing.com/in/buy/jaipur',value:'public portal',sub:'Jaipur listings page',desc:'Public buy/listing portal for Jaipur. Direct structured extraction not available here — search snippet only / verify individual listings, counts and rates at source.'},
     {id:'aurum',name:'Aurum Pulse',url:'https://www.aurumproptech.in/pulse/properties/jaipur/overview',value:'₹5,223/sq ft',sub:'city avg · Q4 2026',desc:'969 projects · 348 newly launched · Mayfair C-Scheme ₹2.02 Cr+'},
     {id:'sy',name:'Square Yards',url:'https://www.squareyards.com/jaipur-real-estate',value:'₹4.8k/sq ft',sub:'median · 1,066 listings',desc:'Central ₹8,400 · North ₹4,400 · 1BHK rent ₹9.3k'},
     {id:'pw',name:'PropertyWala',url:'https://www.propertywala.com/jaipur_rajasthan/',value:'₹6,060/sq ft',sub:'apartment ask · 25Q4–26Q3',desc:'Plots ₹7,354 · commercial land ₹12,774 · rent ₹19/sq ft'},
     {id:'bigha',name:'2bigha map',url:'https://2bigha.ai/map/plots-lands-for-sale-rajasthan-jaipur',value:'₹15 Cr / 5 Bigha',sub:'Rampura industrial land',desc:'Benar 1,595 sq yd ₹4.79 Cr · Vaishali 2.31 Bigha ₹250 Cr'},
     {id:'rei',name:'Real Estate India',url:'https://www.realestateindia.com/jaipur-property/',value:'1,169+',sub:'residential projects',desc:'2,174+ rent · 1,420+ ready flats · 1,851 freehold plots'},
     {id:'rera',name:'Rajasthan RERA',url:'https://rera.rajasthan.gov.in/',value:'verify live',sub:'official register',desc:'RERA IDs below are portal-reported, never confirmed here — check official status first'},
-    {id:'jda',name:'JDA Jaipur',url:'https://jda.rajasthan.gov.in/',value:'verify live',sub:'official approvals',desc:'JDA approval and Section 90A conversion claims are portal-reported — confirm at JDA'}
+    {id:'jda',name:'JDA Jaipur',url:'https://jda.rajasthan.gov.in/',value:'verify live',sub:'official approvals',desc:'JDA approval and Section 90A conversion claims are portal-reported — confirm at JDA'},
+    {id:'indiaproperty',name:'IndiaProperty',url:'https://www.indiaproperty.com/jaipur-properties',value:'public portal',sub:'Jaipur listings page',desc:'Public Jaipur property search/listing portal. Detailed counts/rates not independently extracted here — search snippet only / not available; verify each listing at source.'},
+    {id:'truehomes24',name:'TrueHomes24',url:'https://www.truehomes24.com/sale/property-for-sale-in-jaipur',value:'public portal',sub:'Jaipur sale listings',desc:'Public Jaipur sale listings portal. Detailed counts/rates not independently extracted here — search snippet only / not available; verify each listing at source.'},
+    {id:'anarock',name:'ANAROCK Media',url:'https://www.anarock.com/media/podcasts-videos',value:'public media',sub:'podcasts & videos',desc:'Public real estate media hub (podcasts/videos). Not a project/listing data source — use for market insights with source attribution; project figures not available from this page.'}
   ];
   var BENCH_IDS=['aurum','sy','pw','bigha','rei'];
   var TIER_LABEL={primary:'Official / primary',page:'Seen on page',snippet:'Search snippet only',none:'Not available'};
@@ -67360,9 +67004,12 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     {id:'rei',name:'Real Estate India',tier:'Seen on page',url:'https://www.realestateindia.com/jaipur-property/',desc:'Fetched project pages with sq ft, unit-wise configurations, possession and RERA IDs.'},
     {id:'aurum',name:'Aurum Pulse',tier:'Seen on page',url:'https://www.aurumproptech.in/pulse/properties/jaipur/overview',desc:'City-level asking-rate benchmark — not an individual project feed.'},
     {id:'99',name:'99acres',tier:'Search snippet only',url:'https://www.99acres.com/property-in-jaipur-ffid',desc:'Direct fetch returned 403. Snippet figures stay labelled and are never promoted to page-verified.'},
-    {id:'housing',name:'Housing.com',tier:'Search snippet only',url:'https://housing.com/in/buy/jaipur',desc:'Direct fetch returned 406. Counts and asks come from public snippets only.'},
+    {id:'housing',name:'Housing.com',tier:'Search snippet only',url:'https://housing.com/in/buy/jaipur',desc:'Public Jaipur listing portal. Earlier direct fetch was blocked (406) and no verified structured extract is stored here — search snippet only / listing details not available; verify at source.'},
     {id:'pw',name:'PropertyWala',tier:'Search snippet only',url:'https://www.propertywala.com/jaipur_rajasthan/',desc:'HTML fetches truncated and PDFs unsupported — figures retained as snippets with anomalies intact.'},
-    {id:'bigha',name:'2bigha.ai',tier:'Search snippet only',url:'https://2bigha.ai/',desc:'Land parcels from search snippets; direct fetch returned no page content.'}
+    {id:'bigha',name:'2bigha.ai',tier:'Search snippet only',url:'https://2bigha.ai/',desc:'Land parcels from search snippets; direct fetch returned no page content.'},
+    {id:'indiaproperty',name:'IndiaProperty',tier:'Search snippet only',url:'https://www.indiaproperty.com/jaipur-properties',desc:'Public Jaipur property search/listing portal (accessible). No project-level dossier/count extract stored here — search snippet only / not available; verify listings and figures at source.'},
+    {id:'truehomes24',name:'TrueHomes24',tier:'Search snippet only',url:'https://www.truehomes24.com/sale/property-for-sale-in-jaipur',desc:'Public Jaipur sale listings portal (accessible). No project-level dossier/count extract stored here — search snippet only / not available; verify listings and figures at source.'},
+    {id:'anarock',name:'ANAROCK Media',tier:'Public media',url:'https://www.anarock.com/media/podcasts-videos',desc:'Public podcasts/videos hub for market commentary. Not a listing/project register — use with source attribution; project-specific data not available from this page.'}
   ];
   function D(id,name,src,conf,loc,zone,builder,type,cfg,area,ask,rate,status,units,total,amen,rating,rera,evidence,url){
     return {id:id,name:name,src:src,conf:conf,loc:loc,zone:zone,builder:builder,type:type,cfg:cfg,area:area,ask:ask,rate:rate,status:status,units:units,total:total,amen:amen,rating:rating,rera:rera,evidence:evidence,url:url};
