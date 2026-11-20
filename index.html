@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Developer & Project Intelligence</title>
-<meta name="bcs-build" content="bcs-desk-v218">
-<!-- BCS DESK BUILD bcs-desk-v218 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard (pen, shapes, notes, pages, PNG export, working ruler/protractor/compass/set-square guides with place-on-board, local image/PDF import with direct annotation, clickable web cards, 8 board backgrounds, BenQ-style toolbox, timer, stopwatch, scoreboard, random draw, spinner, calculator, unit converter, spotlight, laser and floating notes) + BenQ EZWrite official launcher + Jaipur Property Map (flat-finder style, free CARTO key-enabled MapLibre tiles + Voyager GL vector style + offline SVG fallback, 47 localities, 5-portal benchmark rates + 10-register / 434-row source-attributed dossier index, fixed Google Maps embed height + working output=embed saved-place/link maps with in-app link conversion + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase + local category-wise saved places with one-click Google Maps, icons and CSV) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net -->
+<meta name="bcs-build" content="bcs-desk-v219">
+<!-- BCS DESK BUILD bcs-desk-v219 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard (pen, shapes, notes, pages, PNG export, working ruler/protractor/compass/set-square guides with place-on-board, local image/PDF import with direct annotation, clickable web cards, 8 board backgrounds, BenQ-style toolbox, timer, stopwatch, scoreboard, random draw, spinner, calculator, unit converter, spotlight, laser and floating notes) + BenQ EZWrite official launcher + Jaipur Property Map (flat-finder style, free CARTO key-enabled MapLibre tiles + Voyager GL vector style + offline SVG fallback, 47 localities, 5-portal benchmark rates + 10-register / 434-row source-attributed dossier index, fixed Google Maps embed height + working output=embed saved-place/link maps with in-app link conversion + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase + local category-wise saved places with one-click Google Maps, icons and CSV) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net -->
 <meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -738,6 +738,37 @@ body.locked .gemini-fab{display:none}
 .pr-preview-box .btn{margin-top:8px}
 .pr-token-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
 .pr-token-row button{font-size:9px;font-weight:800;padding:3px 7px;border-radius:6px;background:#F1F4F2;border:1px solid var(--line);color:var(--ink2)}
+
+/* admin section manager — Add / Edit / Delete for every section */
+.sec-mgr-btn{font-size:9px;font-weight:800;padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:var(--gold-soft);color:var(--gold);white-space:nowrap}
+.sec-mgr-btn:hover{filter:brightness(.95)}
+.sec-mgr-wrap{display:grid;grid-template-columns:220px 1fr;gap:14px;min-height:320px}
+.sec-mgr-cats{display:flex;flex-direction:column;gap:4px;max-height:430px;overflow:auto;padding-right:4px}
+.sec-mgr-cat{display:flex;align-items:center;gap:7px;text-align:left;font-size:11px;font-weight:700;color:var(--ink2);padding:8px 9px;border-radius:9px;border:1px solid transparent;background:transparent}
+.sec-mgr-cat:hover{background:var(--line2)}
+.sec-mgr-cat.on{background:var(--gold-soft);border-color:rgba(165,123,54,.3);color:var(--gold)}
+.sec-mgr-cat span{font-size:13px}
+.sec-mgr-main{min-width:0;display:flex;flex-direction:column;gap:10px}
+.sec-mgr-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.sec-mgr-head b{font-size:13px;color:var(--ink)}
+.sec-mgr-head small{font-size:10px;color:var(--mut)}
+.sec-mgr-head .sp{flex:1}
+.sec-mgr-list{display:flex;flex-direction:column;gap:6px;max-height:250px;overflow:auto;padding-right:3px}
+.sec-mgr-row{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:9px;padding:8px 9px;background:var(--panel);min-width:0}
+.sec-mgr-row.on{border-color:var(--gold);background:var(--gold-soft)}
+.sec-mgr-row .txt{min-width:0;flex:1}
+.sec-mgr-row .txt b{display:block;font-size:11.5px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sec-mgr-row .txt small{display:block;font-size:9.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.sec-mgr-row button{font-size:9.5px;font-weight:800;padding:4px 8px;border-radius:7px;border:1px solid var(--line);background:var(--panel);color:var(--ink2)}
+.sec-mgr-row button.del{color:#A45A42;border-color:rgba(164,90,66,.35)}
+.sec-mgr-empty{border:1px dashed var(--line);border-radius:10px;padding:20px;text-align:center;color:var(--mut);font-size:11.5px;line-height:1.5}
+.sec-mgr-editor{border-top:1px solid var(--line);padding-top:10px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+.sec-mgr-editor .field label{font-size:9.5px}
+body[data-theme="dark"] :is(.sec-mgr-row,.sec-mgr-cat.on,.sec-mgr-btn){background:#1B201B !important;border-color:var(--line) !important;color:#D9DED6 !important}
+body[data-theme="dark"] .sec-mgr-cat.on{background:#2B2515 !important;border-color:#5C4A22 !important;color:#E8C981 !important}
+body[data-theme="dark"] .sec-mgr-row.on{background:#2B2515 !important;border-color:#5C4A22 !important}
+body[data-theme="dark"] .sec-mgr-row button{background:#20261F !important;border-color:var(--line) !important;color:#D9DED6 !important}
+@media(max-width:700px){.sec-mgr-wrap{grid-template-columns:1fr}.sec-mgr-cats{flex-direction:row;max-height:none;overflow:auto}.sec-mgr-cat{white-space:nowrap}}
 
 @media (max-width:760px){
   .unit-stats{grid-template-columns:repeat(3,1fr)}
@@ -18089,6 +18120,9 @@ try{
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
         <span class="lbl">Add project</span>
       </button>
+      <button class="icon-btn sec-mgr-global" id="sectionMgrGlobalBtn" title="Manage every section (admin)" aria-label="Manage every section">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21h-4v-.09A1.7 1.7 0 0 0 8.95 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.58 15a1.7 1.7 0 0 0-1.56-1.03H3v-4h.09A1.7 1.7 0 0 0 4.6 8.95a1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.83-2.83.06.06A1.7 1.7 0 0 0 8.97 4.58 1.7 1.7 0 0 0 10 3.02V3h4v.09a1.7 1.7 0 0 0 1.05 1.56 1.7 1.7 0 0 0 1.88-.34l.06-.06 2.83 2.83-.06.06a1.7 1.7 0 0 0-.34 1.88A1.7 1.7 0 0 0 20.98 10H21v4h-.09a1.7 1.7 0 0 0-1.51 1Z"/></svg>
+      </button>
       <button class="icon-btn qa-trigger" id="qaTrigger" title="Quick actions &amp; search (⌘K)" aria-label="Quick actions">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.7 4.8L18.5 9.5l-4.8 1.7L12 16l-1.7-4.8L5.5 9.5l4.8-1.7L12 3Z"/><path d="m18 15 .8 2.2L21 18l-2.2.8L18 21l-.8-2.2L15 18l2.2-.8L18 15Z"/></svg>
         <kbd>⌘K</kbd>
@@ -21944,6 +21978,39 @@ try{
       <span class="cgs-foot-note">Exact preview · copy only · no auto-send</span>
       <span style="flex:1"></span>
       <button class="btn ghost" data-close="proSendModal">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ADMIN SECTION MANAGER MODAL ============ -->
+<div class="overlay" id="sectionManagerModal">
+  <div class="modal" style="width:min(980px,100%)">
+    <div class="modal-head">
+      <h3 id="secMgrTitle">Manage sections</h3>
+      <button class="xbtn" data-close="sectionManagerModal" type="button">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="sec-mgr-wrap">
+        <div class="sec-mgr-cats" id="secMgrCats"></div>
+        <div class="sec-mgr-main">
+          <div class="sec-mgr-head">
+            <b id="secMgrLabel">Section</b>
+            <small id="secMgrCount"></small>
+            <span class="sp"></span>
+            <button type="button" class="btn primary sm" id="secMgrAdd">+ Add new</button>
+          </div>
+          <div class="sec-mgr-list" id="secMgrList"></div>
+          <div class="sec-mgr-editor" id="secMgrEditor"></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn danger" id="secMgrDelete" style="margin-right:auto;display:none">Delete selected</button>
+      <span class="cgs-foot-note">Admin only · stored locally · no upload</span>
+      <span style="flex:1"></span>
+      <button class="btn ghost" id="secMgrClear">Clear</button>
+      <button class="btn primary" id="secMgrSave" style="display:none">Save item</button>
+      <button class="btn ghost" data-close="sectionManagerModal">Close</button>
     </div>
   </div>
 </div>
@@ -43601,6 +43668,398 @@ function proReplyCsv(){
   toast('Profession reply kit CSV downloaded');
 }
 
+/* ---------- global admin section manager (Add / Edit / Delete everywhere) ---------- */
+const BCS_SECTION_MANAGER = {};
+let secMgrKey = '', secMgrEditId = null;
+function bcsRegisterSectionManager(cfg){ if(cfg && cfg.key) BCS_SECTION_MANAGER[cfg.key] = cfg; }
+function bcsPathGet(obj, path){
+  return String(path || '').split('.').reduce((o, k) => (o && typeof o === 'object' ? o[k] : undefined), obj);
+}
+function bcsPathSet(obj, path, value){
+  const parts = String(path || '').split('.');
+  let cur = obj;
+  for(let i = 0; i < parts.length - 1; i++){
+    const k = parts[i];
+    if(!cur[k] || typeof cur[k] !== 'object' || Array.isArray(cur[k])) cur[k] = {};
+    cur = cur[k];
+  }
+  cur[parts[parts.length - 1]] = value;
+  return value;
+}
+function bcsHumanKey(k){
+  return String(k || '').replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/[_-]+/g, ' ').replace(/\b\w/g, c => c.toUpperCase()).trim();
+}
+function bcsInferFields(items){
+  const samples = (items || []).filter(x => x && typeof x === 'object' && !Array.isArray(x)).slice(0, 8);
+  if(!samples.length) return [{ key:'name', label:'Name', placeholder:'Record name' }];
+  const keys = [];
+  samples.forEach(s => Object.keys(s).forEach(k => { if(keys.indexOf(k) === -1) keys.push(k); }));
+  const skip = { id:1, createdAt:1, updatedAt:1 };
+  const useful = keys.filter(k => !skip[k]);
+  if(!useful.length) return [{ key:'name', label:'Name', placeholder:'Record name' }];
+  return useful.map(k => {
+    const vals = samples.map(s => s[k]).filter(v => v !== undefined && v !== null);
+    const v = vals[0];
+    if(vals.some(x => x && typeof x === 'object')) return { key:k, label:bcsHumanKey(k), type:'json', rows:2 };
+    if(/body|content|note|text|summary|desc|description|dm|comment|adcopy|meaning|example|script|greet|notes/i.test(k) || vals.some(x => String(x).length > 70))
+      return { key:k, label:bcsHumanKey(k), type:'textarea', rows:3 };
+    if(vals.some(x => typeof x === 'number')) return { key:k, label:bcsHumanKey(k), type:'number' };
+    return { key:k, label:bcsHumanKey(k), placeholder:bcsHumanKey(k) + '…' };
+  });
+}
+function bcsRegisterDbCollection(key, label, path, opts){
+  const o = opts || {};
+  const get = () => {
+    let arr = bcsPathGet(db, path);
+    if(!Array.isArray(arr)) return [];
+    if(typeof o.mapGet === 'function') arr = arr.map(o.mapGet);
+    return arr;
+  };
+  bcsRegisterSectionManager({
+    key, label, icon:o.icon || '▤', section:o.section,
+    get,
+    set:arr => bcsPathSet(db, path, typeof o.mapSet === 'function' ? o.mapSet(arr) : arr),
+    title:o.title || ((x) => (x && (x.name || x.label || x.title || x.text || x.value)) || 'Record'),
+    sub:o.sub || ((x) => {
+      if(!x || typeof x !== 'object') return '';
+      return [x.category, x.scope, x.profession, x.type, x.status, x.stage].filter(Boolean).join(' · ');
+    }),
+    fields:o.fields || null,
+    add:o.add, edit:o.edit, del:o.del, validate:o.validate
+  });
+}
+function secMgrCfg(){ return BCS_SECTION_MANAGER[secMgrKey] || null; }
+function secMgrItems(){
+  const c = secMgrCfg(); if(!c || typeof c.get !== 'function') return [];
+  const arr = c.get(); return Array.isArray(arr) ? arr : [];
+}
+function secMgrItemId(item, i){ return String((item && item.id) || ('idx_' + i)); }
+function secMgrFind(id){
+  const items = secMgrItems();
+  return items.find((x, i) => secMgrItemId(x, i) === String(id)) || null;
+}
+function secMgrTitle(item, c){
+  if(typeof item === 'string') return item;
+  if(typeof c.title === 'function') return c.title(item);
+  return (item && (item.name || item.label || item.title || item.text || item.value)) || 'Record';
+}
+function secMgrSub(item, c){
+  if(typeof item === 'string') return '';
+  if(typeof c.sub === 'function') return c.sub(item);
+  const parts = [item.category, item.scope, item.profession, item.type, item.note].filter(Boolean);
+  return parts.join(' · ');
+}
+function secMgrCommit(items){
+  const c = secMgrCfg(); if(!c || typeof c.set !== 'function') return;
+  c.set(items);
+  try{ save(); }catch(e){}
+  try{ render(); }catch(e){}
+  if(typeof c.refresh === 'function') c.refresh();
+}
+function renderSecMgrCats(){
+  const host = $('#secMgrCats'); if(!host) return;
+  host.innerHTML = Object.keys(BCS_SECTION_MANAGER).map(k => {
+    const c = BCS_SECTION_MANAGER[k];
+    return `<button type="button" class="sec-mgr-cat${k === secMgrKey ? ' on' : ''}" data-sec-mgr-cat="${esc(k)}"><span>${c.icon || '▤'}</span>${esc(c.label || k)}</button>`;
+  }).join('');
+}
+function secMgrSelectOptions(field){
+  const opts = field.options || [];
+  return opts.map(o => {
+    const v = (o && typeof o === 'object') ? (o.v != null ? o.v : o.value) : o;
+    const l = (o && typeof o === 'object') ? (o.l != null ? o.l : o.label) : o;
+    return `<option value="${esc(v)}"${String(v) === String(field.value) ? ' selected' : ''}>${esc(l)}</option>`;
+  }).join('');
+}
+function renderSecMgrEditor(item){
+  const c = secMgrCfg(), host = $('#secMgrEditor'); if(!c || !host) return;
+  const fields = c.fields || bcsInferFields(secMgrItems());
+  if(!fields.length){ host.innerHTML = ''; return; }
+  host.innerHTML = fields.map(f => {
+    let val = item ? (item[f.key] != null ? item[f.key] : '') : (f.default != null ? f.default : '');
+    const label = `<label>${esc(f.label || f.key)}</label>`;
+    let input = '';
+    if(f.type === 'json') input = `<textarea data-sec-field="${esc(f.key)}" rows="${f.rows || 2}" spellcheck="false">${esc(JSON.stringify(val == null ? {} : val, null, 2))}</textarea>`;
+    else if(f.type === 'textarea') input = `<textarea data-sec-field="${esc(f.key)}" rows="${f.rows || 3}" placeholder="${esc(f.placeholder || '')}">${esc(val)}</textarea>`;
+    else if(f.type === 'select'){
+      const selOpts = (f.options || []).map(o => {
+        const ov = (o && typeof o === 'object') ? (o.v != null ? o.v : o.value) : o;
+        const ol = (o && typeof o === 'object') ? (o.l != null ? o.l : o.label) : o;
+        return { v:ov, l:ol };
+      });
+      input = `<select data-sec-field="${esc(f.key)}">` + selOpts.map(o => `<option value="${esc(o.v)}"${String(o.v) === String(val) ? ' selected' : ''}>${esc(o.l)}</option>`).join('') + `</select>`;
+    }
+    else input = `<input data-sec-field="${esc(f.key)}" type="${f.type || 'text'}" value="${esc(val)}" placeholder="${esc(f.placeholder || '')}">`;
+    return `<div class="field">${label}${input}</div>`;
+  }).join('');
+  const first = host.querySelector('input,textarea,select'); if(first) setTimeout(() => first.focus(), 40);
+}
+function renderSecMgr(){
+  const c = secMgrCfg(); if(!c) return;
+  const items = secMgrItems();
+  $('#secMgrLabel').textContent = c.label || secMgrKey;
+  $('#secMgrCount').textContent = items.length + ' record' + (items.length === 1 ? '' : 's');
+  const addBtn = $('#secMgrAdd'); if(addBtn) addBtn.style.display = c.noAdd ? 'none' : 'inline-flex';
+  const delBtn = $('#secMgrDelete'); if(delBtn) delBtn.style.display = secMgrEditId ? 'inline-flex' : 'none';
+  const saveBtn = $('#secMgrSave'); if(saveBtn) saveBtn.style.display = (secMgrEditId !== null || (c.fields || bcsInferFields(items)).length) ? 'inline-flex' : 'none';
+  const host = $('#secMgrList'); if(!host) return;
+  host.innerHTML = items.length ? items.map((x, i) => {
+    const id = secMgrItemId(x, i);
+    return `<div class="sec-mgr-row${String(id) === String(secMgrEditId) ? ' on' : ''}">
+      <div class="txt"><b>${esc(secMgrTitle(x, c))}</b><small>${esc(secMgrSub(x, c))}</small></div>
+      <button type="button" data-sec-mgr-edit="${esc(id)}">Edit</button>
+      <button type="button" class="del" data-sec-mgr-del="${esc(id)}">Delete</button>
+    </div>`;
+  }).join('') : `<div class="sec-mgr-empty">Is section me abhi koi record nahi. “+ Add new” se pehla record banaein.</div>`;
+}
+function openSectionManager(key){
+  if(!isAdmin()) return toast('Sirf admin isko edit kar sakta hai', true);
+  const keys = Object.keys(BCS_SECTION_MANAGER);
+  secMgrKey = key && BCS_SECTION_MANAGER[key] ? key : (keys[0] || '');
+  secMgrEditId = null;
+  renderSecMgrCats(); renderSecMgr(); renderSecMgrEditor(null);
+  $('#secMgrTitle').textContent = 'Manage sections · admin';
+  showOverlay('sectionManagerModal');
+}
+function secMgrNew(){
+  const c = secMgrCfg(); if(!c) return;
+  if(typeof c.add === 'function'){ closeModal('sectionManagerModal'); return c.add(); }
+  secMgrEditId = null; renderSecMgr(); renderSecMgrEditor(null); toast('Naya record ready — fields bharein aur Save karein');
+}
+function secMgrEditItem(id){
+  const c = secMgrCfg(); if(!c) return;
+  if(typeof c.edit === 'function'){ closeModal('sectionManagerModal'); return c.edit(id); }
+  const item = secMgrFind(id); if(!item) return;
+  secMgrEditId = id; renderSecMgr(); renderSecMgrEditor(item);
+}
+function secMgrReadEditor(){
+  const c = secMgrCfg(), out = {}; if(!c) return out;
+  (c.fields || bcsInferFields(secMgrItems())).forEach(f => {
+    const el = document.querySelector('#secMgrEditor [data-sec-field="' + CSS.escape(f.key) + '"]');
+    if(el) out[f.key] = el.value;
+  });
+  return out;
+}
+function secMgrSave(){
+  const c = secMgrCfg(); if(!c) return;
+  const vals = secMgrReadEditor();
+  const fields = c.fields || bcsInferFields(secMgrItems());
+  for(const f of fields){
+    if(f.type !== 'json' || vals[f.key] == null) continue;
+    try{ vals[f.key] = JSON.parse(vals[f.key]); }
+    catch(err){ return toast(f.label + ' me valid JSON likhein', true); }
+  }
+  if(c.validate){ const err = c.validate(vals, secMgrEditId); if(err) return toast(err, true); }
+  const items = secMgrItems();
+  if(secMgrEditId !== null){
+    const item = secMgrFind(secMgrEditId);
+    if(item) Object.assign(item, vals, { updatedAt: Date.now() });
+  } else {
+    items.push({ id:uid(), createdAt:Date.now(), updatedAt:Date.now(), ...vals });
+  }
+  secMgrCommit(items);
+  secMgrEditId = null; renderSecMgr(); renderSecMgrEditor(null); toast('Section record saved');
+}
+function secMgrDelete(){
+  const c = secMgrCfg(); if(!c) return;
+  if(typeof c.del === 'function'){ const item = secMgrFind(secMgrEditId); closeModal('sectionManagerModal'); return c.del(item); }
+  if(secMgrEditId === null) return;
+  const item = secMgrFind(secMgrEditId); if(!item) return;
+  if(!confirm('Ye record delete karein: ' + secMgrTitle(item, c) + '?')) return;
+  const items = secMgrItems().filter((x, i) => secMgrItemId(x, i) !== String(secMgrEditId));
+  secMgrCommit(items); secMgrEditId = null; renderSecMgr(); renderSecMgrEditor(null); toast('Record deleted');
+}
+function bcsInjectSectionManagerButtons(){
+  const globalBtn = $('#sectionMgrGlobalBtn');
+  if(globalBtn) globalBtn.style.display = isAdmin() ? 'inline-flex' : 'none';
+  if(!isAdmin()) return;
+  Object.keys(BCS_SECTION_MANAGER).forEach(k => {
+    const c = BCS_SECTION_MANAGER[k]; if(!c || !c.section) return;
+    document.querySelectorAll(c.section).forEach(sec => {
+      if(sec.querySelector(':scope > .sec-mgr-host')) return;
+      const host = document.createElement('div'); host.className = 'sec-mgr-host';
+      const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'sec-mgr-btn'; btn.dataset.secMgrOpen = k; btn.textContent = '⚙ Manage';
+      host.appendChild(btn);
+      const head = sec.querySelector('.dsec-head') || sec.querySelector('.adv-head-actions') || sec.querySelector('.links-toolbar') || sec;
+      head.appendChild(host);
+    });
+  });
+}
+document.addEventListener('click', e => {
+  const secOpen = e.target.closest('[data-sec-mgr-open]');
+  if(secOpen){ e.preventDefault(); return openSectionManager(secOpen.dataset.secMgrOpen); }
+  if(e.target.closest('#sectionMgrGlobalBtn')){ e.preventDefault(); return openSectionManager(); }
+  const cat = e.target.closest('[data-sec-mgr-cat]');
+  if(cat){
+    e.preventDefault(); secMgrKey = cat.dataset.secMgrCat; secMgrEditId = null;
+    renderSecMgrCats(); renderSecMgr(); renderSecMgrEditor(null); return;
+  }
+  const ed = e.target.closest('[data-sec-mgr-edit]');
+  if(ed){ e.preventDefault(); return secMgrEditItem(ed.dataset.secMgrEdit); }
+  const dl = e.target.closest('[data-sec-mgr-del]');
+  if(dl){
+    e.preventDefault(); secMgrEditId = dl.dataset.secMgrDel; renderSecMgr(); return secMgrDelete();
+  }
+  if(e.target.closest('#secMgrAdd')){ e.preventDefault(); return secMgrNew(); }
+  if(e.target.closest('#secMgrSave')){ e.preventDefault(); return secMgrSave(); }
+  if(e.target.closest('#secMgrDelete')){ e.preventDefault(); return secMgrDelete(); }
+  if(e.target.closest('#secMgrClear')){
+    e.preventDefault(); secMgrEditId = null; renderSecMgr(); renderSecMgrEditor(null); return;
+  }
+});
+
+/* ---------- manager registry: every local section/category ---------- */
+function bcsRegisterLocalCollection(key, label, lsKey, opts){
+  const o = opts || {};
+  const read = () => {
+    try{
+      let v = JSON.parse(localStorage.getItem(lsKey) || '[]');
+      if(typeof o.mapGet === 'function') v = o.mapGet(v);
+      return Array.isArray(v) ? v : [];
+    }
+    catch(err){ return []; }
+  };
+  bcsRegisterSectionManager({
+    key, label, icon:o.icon || '▤', section:o.section,
+    get:read,
+    set:arr => { try{ localStorage.setItem(lsKey, JSON.stringify(typeof o.mapSet === 'function' ? o.mapSet(arr) : arr)); }catch(err){ toast('Local storage save nahi hua', true); } },
+    title:o.title || ((x) => (x && (x.name || x.label || x.title || x.text)) || 'Record'),
+    sub:o.sub || ((x) => (x && (x.type || x.category || x.url)) || ''),
+    fields:o.fields || null, add:o.add, edit:o.edit, del:o.del
+  });
+}
+function bcsModuleAction(view, fnName, arg){
+  closeModal('sectionManagerModal');
+  try{ if(typeof go === 'function') go(view); }catch(err){}
+  setTimeout(() => {
+    try{
+      const mod = window[fnName.split('.')[0]], fn = fnName.includes('.') ? window[fnName.split('.')[0]][fnName.split('.')[1]] : window[fnName];
+      if(typeof fn === 'function') fn(arg);
+      else if(typeof window[fnName] === 'function') window[fnName](arg);
+    }catch(err){ toast('Section editor abhi available nahi hai', true); }
+  }, 90);
+}
+
+/* existing full-screen editors stay the single source of truth for complex records */
+function bcsRegisterDelegated(key, label, path, icon, section, add, edit, del, title, sub){
+  bcsRegisterDbCollection(key, label, path, { icon, section, add, edit, del, title, sub });
+}
+bcsRegisterDelegated('clients','Clients','clients','👥','#view-clients',()=>openClient(),id=>openClient(id),item=>deleteClientById(item.id));
+bcsRegisterDelegated('projects','Projects','projects','🏗','#view-projects',()=>openNewProject(),id=>openProject(id),item=>deleteProjectById(item.id));
+bcsRegisterDelegated('developers','Developers','developers','🏢','#view-developers',()=>addQuickDeveloper(),id=>openDeveloper(id),item=>deleteDeveloperById(item.id));
+bcsRegisterDelegated('advisors','Advisors','advisors','🤝','#view-advisors',()=>openAdvisor(),id=>openAdvisor(id),item=>deleteAdvisor(item.id));
+bcsRegisterDelegated('resale','Resale inventory','resale','🔁','#view-resale',()=>openResale(),id=>openResale(id),item=>deleteResale(item.id));
+bcsRegisterDelegated('bookings','Bookings & payments','bookings','🧾','#view-clients',()=>openBooking(),id=>openBooking(id),item=>deleteBooking(item.id));
+bcsRegisterDelegated('pipeline','Sales / pipeline','pipeline','💼','#view-pipeline',()=>openDeal(),item=>openDeal(item),item=>deleteDeal(item.id));
+bcsRegisterDelegated('news','Saved news','news','📰','#view-news',()=>openNews(),id=>openNews(id),item=>deleteNews(item.id));
+bcsRegisterDelegated('links','Website directory','links','🔗','#view-links',()=>openLink(),id=>openLink(id),item=>deleteLink(item.id));
+bcsRegisterDelegated('linkCats','Link categories','linkCategories','🗂','#view-links',()=>openLinkCategory(),id=>openLinkCategory(id),item=>deleteLinkCategory(item.id));
+bcsRegisterDelegated('templates','Message templates','templates','✉','#view-templates',()=>openTemplate(),id=>openTemplate(id));
+bcsRegisterDelegated('proReplies','Reel DM reply kits','proReplies','💬','#view-templates .pro-reply-sec',()=>openProReply(),id=>openProReply(id));
+bcsRegisterDelegated('videoIdeas','Video ideas','videoIdeas','🎬','#view-news',()=>openVideoIdea(),id=>openVideoIdea(id),item=>deleteVideoIdea(item.id));
+bcsRegisterDelegated('quality','Quality criteria','qualityCriteria','✅','#view-health',()=>openQualityManager(),()=>openQualityManager(),()=>openQualityManager());
+bcsRegisterDelegated('corridors','Corridors','corridors','🧭','#view-dashboard',()=>openCorridorManager(),()=>openCorridorManager(),()=>openCorridorManager());
+bcsRegisterDelegated('checklist','Default project checklist','defaultChecklist','📋','#view-projects',()=>openNewProject(),()=>openNewProject(),()=>openNewProject());
+bcsRegisterDelegated('festivals','Festivals','festivals','🎉','#view-social',()=>openFestivalManager(),()=>openFestivalManager(),()=>openFestivalManager());
+bcsRegisterDelegated('watchChannels','Watch channels','watch.channels','📺','#view-podcasts',()=>openWatchChannelModal(),id=>openWatchChannelModal(id),item=>deleteWatchChannel(item.id));
+bcsRegisterDelegated('customFields','Custom fields','customFields','🧩','#view-applications',()=>openFieldManager('client'),()=>openFieldManager('client'),()=>openFieldManager('client'));
+bcsRegisterDelegated('leads','Lead engine leads','leadgen.leads','🎯','#view-leadgen',()=>bcsModuleAction('leadgen','BCS_LEADGEN.openLead'),()=>bcsModuleAction('leadgen','BCS_LEADGEN.openLead'));
+
+/* remaining local collections get safe generic Add / Edit / Delete editors */
+[
+  ['dupIgnores','Duplicate ignores','dupIgnores','🚫','#view-health'],
+  ['todos','To-do list','todos','✔','#view-dayplan'],
+  ['documents','Documents','documents','📄','#view-clients'],
+  ['visits','Site visits','visits','📅','#view-dayplan'],
+  ['monthMarks','Calendar marks','monthMarks','🗓','#view-dayplan'],
+  ['partners','Channel partners','partners','🤝','#view-partners'],
+  ['targets','Target lists','targets','🎯','#view-projects'],
+  ['plots','Plots / inventory','plots','🗺','#view-inventory'],
+  ['terminology','Terminology / shabdkosh','terminology','📚','#view-terminology'],
+  ['taxArticles','Tax articles','taxArticles','🧾','#view-tax'],
+  ['quotes','Quote library','quotes','💬','#view-social'],
+  ['stickyNotes','Sticky notes','stickyNotes','📝','#view-dashboard'],
+  ['roughpad','Rough pad','roughpad','✍','#view-dayplan'],
+  ['journeyLogs','Journey logs','journeyLogs','🧭','#view-clients'],
+  ['opsDocs','Deal documents','ops.docs','📎','#view-ops'],
+  ['opsReminders','Payment reminders','ops.reminders','⏰','#view-ops'],
+  ['opsWaTemplates','WhatsApp templates','ops.waTemplates','💬','#view-ops'],
+  ['opsBroadcasts','Broadcast drafts','ops.broadcasts','📣','#view-ops'],
+  ['opsWaInbox','WhatsApp inbox drafts','ops.waInbox','📥','#view-ops'],
+  ['opsRoi','Lead source ROI','ops.roi','📊','#view-ops'],
+  ['opsDd','Due diligence packs','ops.dd','🔍','#view-ops'],
+  ['opsInvoices','Commission invoices','ops.invoices','🧾','#view-ops'],
+  ['opsPins','Locality pins','ops.pins','📍','#view-ops'],
+  ['opsLocality','Locality notes','ops.locality','🗒','#view-ops'],
+  ['opsSources','Source records','ops.sources','🔗','#view-ops'],
+  ['opsWaProspects','WhatsApp extract prospects','ops.waExtract.prospects','👤','#view-ops'],
+  ['mediaYoutube','Saved YouTube media','media.youtube.saved','▶','#view-pulse'],
+  ['mediaMusic','Saved music','media.music.custom','🎵','#view-pulse'],
+  ['bcsCardLinks','BCS card links','daily.bcsCard.links','🔖','#view-dashboard'],
+  ['opsShortlists','Shortlists','ops.shortlists','⭐','#view-ops'],
+  ['marketingCampaigns','Marketing campaigns','marketing.campaigns','📢','#view-social'],
+  ['marketingIdeas','My marketing ideas','marketing.myIdeas','💡','#view-social'],
+  ['marketingFollowers','Follower log','marketing.followerLog','👣','#view-social'],
+  ['exchangeLeads','Exchange leads','exchange.leads','🔄','#view-exchange'],
+  ['exchangeInventory','Exchange inventory','exchange.inventory','🏠','#view-exchange'],
+  ['exchangeSettlements','Exchange settlements','exchange.settlements','🤝','#view-exchange'],
+  ['watchCategories','Watch categories','watch.categories','🏷','#view-podcasts'],
+  ['watchProjects','Watch projects','watch.projects','🎬','#view-podcasts'],
+  ['podcasts','Podcasts','podcasts.items','🎙','#view-podcasts'],
+  ['growthCreators','Brand creators','growth.brand.creators','🌟','#view-social'],
+  ['growthContacts','Network contacts','growth.network.contacts','🕸','#view-social'],
+  ['growthAdvisors','Growth drafts · advisors','growth.drafts.advisors','✍','#view-social'],
+  ['growthDealers','Growth drafts · dealers','growth.drafts.dealers','✍','#view-social'],
+  ['growthProjects','Growth drafts · projects','growth.drafts.projects','✍','#view-social']
+].forEach(x => bcsRegisterDbCollection(x[0], x[1], x[2], { icon:x[3], section:x[4] }));
+
+/* dropdown vocabularies — existing list manager already covers Add/Rename/Hide/Delete */
+bcsRegisterSectionManager({
+  key:'lists', label:'Dropdown lists & categories', icon:'📑',
+  get:() => LIST_DEFS.map(d => ({ id:d.key, name:d.title, label:d.title, sub:d.hint, hint:d.hint })),
+  title:x => x.label, sub:x => x.hint,
+  add:() => openListManager(), edit:x => openListManager(x.id), del:x => openListManager(x.id)
+});
+
+/* standalone local-only sections */
+bcsRegisterLocalCollection('savedPlaces','Jaipur saved places','bcs_jaipur_saved_places_v1',{
+  icon:'📍', section:'#view-jaipur',
+  add:() => bcsModuleAction('jaipur','BCS_JAIPUR.savedAdd'),
+  edit:item => bcsModuleAction('jaipur','BCS_JAIPUR.savedEdit',item.id),
+  del:item => bcsModuleAction('jaipur','BCS_JAIPUR.savedDelete',item.id)
+});
+bcsRegisterLocalCollection('whiteboardWidgets','Whiteboard tools & web cards','bcs_ezwrite_widgets_v1',{
+  icon:'🧰', section:'#view-whiteboard',
+  mapGet:o => Object.keys((o && o.pos) || {}).map(k => ({ id:k, name:k, pos:o.pos[k], data:(o.data||{})[k], open:!!(o.open||{})[k] })),
+  mapSet:arr => {
+    const out = { pos:{}, data:{}, open:{} };
+    arr.forEach(x => { if(x && x.id){ out.pos[x.id]=x.pos||{}; out.data[x.id]=x.data||null; out.open[x.id]=!!x.open; } });
+    return out;
+  },
+  add:() => bcsModuleAction('whiteboard','BCS_EZWRITE.openToolbox'),
+  edit:item => bcsModuleAction('whiteboard','BCS_EZWRITE.openWidget',item.id),
+  del:item => {
+    try{
+      const raw = JSON.parse(localStorage.getItem('bcs_ezwrite_widgets_v1') || '{}');
+      ['pos','data','open'].forEach(k => { if(raw[k] && item.id) delete raw[k][item.id]; });
+      localStorage.setItem('bcs_ezwrite_widgets_v1', JSON.stringify(raw));
+      location.reload();
+    }catch(err){ toast('Widget delete nahi hua', true); }
+  }
+});
+bcsRegisterLocalCollection('jaipurList','Jaipur saved shortlist','bcs_jaipur_list_v1',{
+  icon:'⭐', section:'#view-jaipur',
+  mapGet:arr => (Array.isArray(arr) ? arr : []).map((x, i) => ({ id:String(x) || ('item_' + i), name:String(x) })),
+  mapSet:arr => arr.map(x => x && (x.name || x.id)).filter(Boolean),
+  del:item => {
+    try{
+      const arr = JSON.parse(localStorage.getItem('bcs_jaipur_list_v1') || '[]').filter(x => String(x) !== String(item.id));
+      localStorage.setItem('bcs_jaipur_list_v1', JSON.stringify(arr)); location.reload();
+    }catch(err){ toast('Shortlist delete nahi hua', true); }
+  }
+});
+bcsRegisterLocalCollection('searchEngines','Search engines','bcs_search_engines_v2',{ icon:'🔎', section:'#view-health' });
+
 /* ============================================================
    DATA HEALTH + STORAGE
    ============================================================ */
@@ -50286,6 +50745,7 @@ function render(){
   try{ if(window.BCS_FUN) window.BCS_FUN.render(); }catch(e){}
   try{ if(window.BCS_VIVID) window.BCS_VIVID.render(); }catch(e){}
   try{ if(window.__bcsArmMotion) window.__bcsArmMotion(); }catch(e){}
+  try{ bcsInjectSectionManagerButtons(); }catch(e){}
 }
 /* ---------- v162: TARGET LISTS — bulk prospects + two-way showcase ----------
    Har page (Projects / Developers / Advisors / Clients) par ek target panel:
