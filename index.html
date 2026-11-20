@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Developer & Project Intelligence</title>
-<!-- BCS DESK BUILD bcs-desk-v216 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard (pen, shapes, notes, pages, PNG export, working ruler/protractor/compass/set-square guides with place-on-board, local image/PDF import with direct annotation, clickable web cards, 8 board backgrounds, BenQ-style toolbox, timer, stopwatch, scoreboard, random draw, spinner, calculator, unit converter, spotlight, laser and floating notes) + BenQ EZWrite official launcher + Jaipur Property Map (flat-finder style, free CARTO key-enabled MapLibre tiles + Voyager GL vector style + offline SVG fallback, 47 localities, 5-portal benchmark rates + 10-register / 434-row source-attributed dossier index, fixed Google Maps embed height + working output=embed saved-place/link maps with in-app link conversion + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase + local category-wise saved places with one-click Google Maps, icons and CSV) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + full dark-mode safety net -->
+<meta name="bcs-build" content="bcs-desk-v217">
+<!-- BCS DESK BUILD bcs-desk-v217 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard (pen, shapes, notes, pages, PNG export, working ruler/protractor/compass/set-square guides with place-on-board, local image/PDF import with direct annotation, clickable web cards, 8 board backgrounds, BenQ-style toolbox, timer, stopwatch, scoreboard, random draw, spinner, calculator, unit converter, spotlight, laser and floating notes) + BenQ EZWrite official launcher + Jaipur Property Map (flat-finder style, free CARTO key-enabled MapLibre tiles + Voyager GL vector style + offline SVG fallback, 47 localities, 5-portal benchmark rates + 10-register / 434-row source-attributed dossier index, fixed Google Maps embed height + working output=embed saved-place/link maps with in-app link conversion + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase + local category-wise saved places with one-click Google Maps, icons and CSV) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net -->
 <meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -20218,7 +20219,7 @@ try{
       <div>
         <div class="eyebrow">BCS · applications desk</div>
         <h2 class="adv-title">Real tools,<br><em>one honest shelf.</em></h2>
-        <p class="adv-sub">Four open-source applications, Adobe Express, a built-in Content Growth Studio, a local BCS EZWrite whiteboard and a Google field kit built for Jaipur property work. BCS Desk remains a single offline file — nothing is installed into your data, no client name or project number is sent to these tools, and every external link opens in a new tab.</p>
+        <p class="adv-sub">Four open-source applications, Adobe Express, a built-in Content Growth Studio, a local BCS EZWrite whiteboard and a Google field kit built for Jaipur property work. BCS Desk remains a single offline file — nothing is installed into your data, no client name or project number is sent to these tools, and normal links open inside BCS’s in-app frame, with an explicit “Original” action for a new tab.</p>
       </div>
       <div class="adv-head-actions">
         <button type="button" class="btn primary" data-cgs-open>Content Growth Studio ↗</button>
@@ -28904,7 +28905,7 @@ function docRenderAttach(){
 async function docReadFile(file){
   if(!file) return null;
   if(!/^image\//i.test(file.type) && file.type !== 'application/pdf') throw new Error('Sirf PDF ya image file chalegi');
-  if(file.size > 20 * 1024 * 1024) throw new Error('File 20 MB se badi hai — chhoti file chunein');
+  /* No app-side size cap: files are stored in IndexedDB up to the browser/device quota. */
   let dataUrl, thumb = '';
   if(/^image\//i.test(file.type)){
     dataUrl = await fileToImage(file, 1800, .9);
@@ -43476,7 +43477,8 @@ function renderHealth(){
     <div class="health-grid">
       ${healthCard('Average data quality', avg + '/100', `${grade.label} · ${grade.note}. ${scores.filter(x => x.s.score < 65).length} projects ko verify karna hai.`, '<button class="btn ghost sm" id="healthQualityBtn2">Manage rating items</button>')}
       ${healthCard('Duplicate groups', dupCount, dupCount ? 'Developers, projects, clients ya advisors me duplicate mile hain.' : 'Koi duplicate group nahi mila.', '<button class="btn ghost sm" id="healthDupBtn2">Open duplicate checker</button>')}
-      ${healthCard('Storage used', usage.kb + ' KB', `${usage.imgCount} images · ~${usage.imgMb.toFixed(1)} MB image data. Text limit ~5 MB; photos browser database me (phone par 1 GB+).`, '<button class="btn ghost sm" id="healthCompressBtn">Compress images</button>')}
+      ${healthCard('Storage used', usage.kb + ' KB', `${usage.imgCount} images · ~${usage.imgMb.toFixed(1)} MB image data. Text localStorage + IDB mirror; files browser quota tak — koi app-side cap nahi.`, '<button class="btn ghost sm" id="healthCompressBtn">Compress images</button>')}
+      ${healthCard('Internet + updates', navigator.onLine ? 'Online' : 'Offline', 'Public feeds, maps aur tiles live fetch hote hain. Client/lead/project data kabhi upload nahi. App tiny build probe se update check karta hai; remote code/CDN nahi.', '<div class="conn-actions" style="margin-top:8px;flex-wrap:wrap"><button class="btn ghost sm" id="healthNetBtn">Check latest</button><button class="btn ghost sm" id="healthRefreshLiveBtn">Refresh live data</button></div>')}
       ${healthCard('Price history', withHistory + '/' + projects.length, 'Projects with at least one logged price revision.', '<button class="btn ghost sm" data-goto="projects">Open projects</button>')}
       ${healthCard('Unit inventory', totalUnits, `${availableUnits} units available · ${withUnits}/${projects.length} projects track units.`, '<button class="btn ghost sm" data-goto="projects">Add units</button>')}
       ${healthCard('Templates', (db.templates || []).length, 'Ready-to-copy developer, project aur advisor messages.', '<button class="btn ghost sm" data-goto="templates">Open templates</button>')}
@@ -43514,7 +43516,7 @@ function renderHealth(){
         <p id="idbStatsLine" style="margin-top:8px;color:var(--mut)">Checking browser DB & quota…</p>
         <p id="persistLine" style="margin-top:4px;color:var(--mut)">Persist (Mac keeps data forever): checking…</p>
         <p id="lastBackupLine" style="margin-top:4px;color:var(--mut)">Last backup: checking…</p>
-        <p style="margin-top:6px;font-size:11px;color:var(--mut);line-height:1.6">Full Local Mode: text DB mirror har save pe browser DB me jata hai, badi photos auto IDB me shift hoti hain (1 GB+). Chrome/Safari me site storage ko persist pe rakho toh Mac saaf karke bhi data safe rahega. Koi cloud limit nahi, koi server nahi — bilkul offline free forever.</p>
+        <p style="margin-top:6px;font-size:11px;color:var(--mut);line-height:1.6">Full Local Mode: text DB har save pe IDB me mirror, badi photos/files browser DB me (device quota tak — 1 GB+ possible). Chrome/Safari me persist ON rakho. Internet unrestricted hai: public feeds/maps live fetch, client data sirf is device par. Koi remote code, koi forced upload nahi.</p>
         <div class="conn-actions" style="margin-top:10px;flex-wrap:wrap">
           <button class="btn primary sm" id="healthPersistBtn">♾️ Enable Unlimited Local</button>
           <button class="btn ghost sm" id="healthGrainBtn">🌾 Grain texture: OFF</button>
@@ -43538,6 +43540,10 @@ function renderHealth(){
   ['#healthQualityBtn2'].forEach(sel => { const el = $(sel); if(el) el.addEventListener('click', openQualityManager); });
   ['#healthDupBtn2'].forEach(sel => { const el = $(sel); if(el) el.addEventListener('click', openDuplicates); });
   ['#healthBackupBtn2'].forEach(sel => { const el = $(sel); if(el) el.addEventListener('click', () => $('#exportBtn').click()); });
+  const netBtn = $('#healthNetBtn');
+  if(netBtn) netBtn.addEventListener('click', () => { try{ bcsCheckAppUpdate(true); }catch(e){ toast('Update check unavailable', true); } });
+  const liveBtn = $('#healthRefreshLiveBtn');
+  if(liveBtn) liveBtn.addEventListener('click', () => { try{ window.bcsRefreshAllLive(); }catch(e){ toast('Live refresh unavailable', true); } });
   const shareBtn = $('#healthShareBtn');
   if(shareBtn){
     const canShareFiles = !!(navigator.canShare && navigator.canShare({ files: [new File(['{}'], 'x.json', { type: 'application/json' })] }));
@@ -50318,7 +50324,7 @@ setInterval(function(){
       var bar = document.createElement('div');
       bar.className = 'file-note';
       bar.setAttribute('role', 'status');
-      bar.innerHTML = '<div><b>Local file mode</b> — ye <code>file:///Users/mac/BCS/index.html</code> hai. Login, projects, calculators, DLC, photos sab offline chalenge. Live News + Market Pulse + PWA install ke liye live link ya localhost behtar hai (file:// pe browser external fetch / service worker rokta hai, aur data https se alag store hota hai).</div>' +
+      bar.innerHTML = '<div><b>Local file mode</b> — ye <code>file:///Users/mac/BCS/index.html</code> hai. Login, projects, calculators, DLC, photos sab offline chalenge. Internet unrestricted hai; live feeds/maps browser ki file:// security ke andar best chalte hain — full live + PWA ke liye live link ya localhost use karein (data https se alag store hota hai).</div>' +
         '<div class="fn-actions"><a href="https://realestateajaysharma-jp.github.io/bcs-desk/" target="_blank" rel="noopener">Open live site ↗</a>' +
         '<a class="ghost" href="' + esc(cnSelfUrl()) + '" target="_blank" rel="noopener">Open this site</a>' +
         '<button type="button" class="fn-x" aria-label="Dismiss">✕</button></div>';
@@ -54476,7 +54482,7 @@ try{ xchEnsure(db); }catch(e){ console.warn('[BCS exchange]', e); }
     if(morePanel && !morePanel.hidden){ morePanel.hidden = true; if(moreBtn) moreBtn.setAttribute('aria-expanded','false'); }
   });
 })();
-/* ---------- PWA: offline shell + persistent storage ---------- */
+/* ---------- PWA: online-first shell + persistent on-device storage ---------- */
 if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('sw.js').catch(() => {});
@@ -54485,6 +54491,71 @@ if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
 if(navigator.storage && navigator.storage.persist){
   navigator.storage.persist().catch(() => {});
 }
+/* Tiny update probe: sw.js carries the build marker, so checking for a new
+   release never downloads the 4.6 MB app twice. No store, no client data. */
+function bcsShowUpdateBanner(remote){
+  try{
+    if(document.getElementById('bcsUpdateBanner')) return;
+    var old = document.querySelector('.file-note[data-update]'); if(old) old.remove();
+    var bar = document.createElement('div');
+    bar.className = 'file-note'; bar.id = 'bcsUpdateBanner'; bar.dataset.update = '1';
+    bar.setAttribute('role','status');
+    bar.innerHTML = '<div><b>Latest BCS update available</b> — build ' + esc(remote) +
+      ' is live. Refresh to load the newest maps, feeds and features. Your local data stays on this device.</div>' +
+      '<div class="fn-actions"><a href="#" id="bcsUpdateReload">Refresh to latest ↗</a>' +
+      '<button type="button" class="fn-x" id="bcsUpdateLater" aria-label="Dismiss update">✕</button></div>';
+    var reload = bar.querySelector('#bcsUpdateReload');
+    if(reload) reload.addEventListener('click', function(e){ e.preventDefault(); location.reload(); });
+    var later = bar.querySelector('#bcsUpdateLater');
+    if(later) later.addEventListener('click', function(){ bar.remove(); });
+    document.body.insertBefore(bar, document.body.firstChild);
+  }catch(e){}
+}
+async function bcsCheckAppUpdate(explicit){
+  if(!/^https?:$/.test(location.protocol)){
+    if(explicit) toast('Update check needs the live site — local file still works offline', true);
+    return { status:'local' };
+  }
+  try{
+    var res = await fetch('./sw.js?bcs=' + Date.now(), { cache:'no-store' });
+    if(!res || !res.ok) throw new Error('update probe failed');
+    var txt = await res.text();
+    var remote = (txt.match(/bcs-desk-v(\d+)/) || [])[1];
+    var meta = document.querySelector('meta[name="bcs-build"]');
+    var local = (meta && meta.content ? meta.content : '').match(/bcs-desk-v(\d+)/);
+    local = local ? local[1] : '';
+    if(remote && local && Number(remote) > Number(local)){
+      bcsShowUpdateBanner(remote);
+      if(explicit) toast('Update ' + remote + ' available — tap the banner to refresh');
+      return { status:'update', remote:remote, local:local };
+    }
+    if(explicit) toast('You are on the latest BCS build');
+    return { status:'current', remote:remote, local:local };
+  }catch(e){
+    if(explicit) toast('Update check unavailable right now', true);
+    return { status:'offline' };
+  }
+}
+window.bcsCheckAppUpdate = bcsCheckAppUpdate;
+window.bcsRefreshAllLive = async function(){
+  try{ if(typeof liveCache !== 'undefined' && liveCache && liveCache.clear) liveCache.clear(); }catch(e){}
+  var jobs = [];
+  try{ jobs.push(fetchLiveNews(liveState.sourceId || 'jaipur')); }catch(e){}
+  try{ jobs.push(refreshFestivalsOnline()); }catch(e){}
+  try{ if(window.cnRefreshRates) jobs.push(window.cnRefreshRates({ silent:true })); }catch(e){}
+  try{
+    if(window.Promise && Promise.allSettled) await Promise.allSettled(jobs);
+    else await Promise.all(jobs.map(function(j){ return Promise.resolve(j).catch(function(){}); }));
+  }catch(e){}
+  toast('Latest public data refreshed — client data stayed local');
+  return true;
+};
+if(navigator.onLine) setTimeout(function(){ bcsCheckAppUpdate(false); }, 3500);
+window.addEventListener('online', function(){
+  setTimeout(function(){ bcsCheckAppUpdate(false); }, 1200);
+  setTimeout(function(){ try{ renderHealth(); }catch(e){} }, 1400);
+});
+window.addEventListener('offline', function(){ try{ renderHealth(); }catch(e){} });
 try{
   const qv = new URLSearchParams(location.search).get('view');
   if(qv && document.querySelector('#view-' + qv)) go(qv);
@@ -68813,12 +68884,12 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     var arr = [].slice.call(files || []);
     if(!arr.length) return;
     var target = page(); if(!target) return;
-    var s = stageSize(), before = begin(), added = 0, skipped = 0;
+    var s = stageSize(), before = begin(), added = 0, skipped = 0, quotaFailed = 0;
     var jobs = arr.map(function(file, i){
       var isImage = /^image\//i.test(file.type);
       var isPdf = /pdf/i.test(file.type) || /\.pdf$/i.test(file.name || '');
       if(!isImage && !isPdf){ skipped++; return Promise.resolve(); }
-      if(file.size > 15 * 1024 * 1024){ skipped++; return Promise.resolve(); }
+      /* No app-side size cap — the browser's own storage quota is the only limit. */
       var key = 'ezbmedia:' + uid();
       var x = Math.min(36 + (i%4)*34, Math.max(8, s.w - 560));
       var y = Math.min(36 + (i%5)*28, Math.max(8, s.h - 380));
@@ -68840,13 +68911,17 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
         var pdf = {id:uid(), type:'pdf', key:key, name:file.name || 'Document', x:x, y:y, w:520, h:364, color:S.color};
         setMediaWidth(pdf, Math.min(620, Math.max(300, s.w * 0.62)));
         target.items.push(pdf); added++;
-      }).catch(function(){ skipped++; });
+      }).catch(function(err){
+        if(err && /quota/i.test(String((err && err.name) || err || ''))) quotaFailed++;
+        else skipped++;
+      });
     });
     return Promise.all(jobs).then(function(){
       if(added) end(before);
       renderAll(); paintMedia();
-      notify(added ? (added + ' file board par add ho gaye' + (skipped ? ' · ' + skipped + ' skip' : '')) : 'Koi file add nahi hui', !added);
-      return {added:added, skipped:skipped};
+      var suffix = quotaFailed ? ' · browser storage full' : (skipped ? ' · ' + skipped + ' skip' : '');
+      notify(added ? (added + ' file board par add ho gaye' + suffix) : (quotaFailed ? 'Browser storage full — free space karein' : 'Koi file add nahi hui'), !added);
+      return {added:added, skipped:skipped, quotaFailed:quotaFailed};
     });
   }
   function paintMedia(box){

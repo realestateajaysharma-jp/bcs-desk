@@ -1,5 +1,8 @@
-/* BCS Desk — offline app shell */
-const CACHE = 'bcs-desk-v216';
+/* BCS Desk — online-first PWA shell.
+   Public internet is unrestricted: cross-origin requests are never intercepted.
+   Same-origin app files are network-first; the cache is only an offline fallback.
+   Live/public data endpoints are never cached. Client data stays on-device. */
+const CACHE = 'bcs-desk-v217';
 const ASSETS = [
   './festivals.json',
   './',
@@ -35,11 +38,19 @@ self.addEventListener('fetch', event => {
 
   let url;
   try { url = new URL(req.url); } catch (e) { return; }
-  if (url.origin !== self.location.origin) return; // CDN/fonts/YouTube go direct
 
-  // Network-first so updates appear, cache as offline fallback.
+  // Never touch the open internet: maps, feeds, tiles, CDNs, APIs go direct.
+  if (url.origin !== self.location.origin) return;
+
+  // Never cache live/public data or explicit no-store/cache-bust requests.
+  const noCache = req.cache === 'no-store' ||
+    /[?&](?:_|t|ts|v|cb|nocache|bcs)=/i.test(url.search) ||
+    /\/sw\.js$|\/festivals\.json$/i.test(url.pathname);
+  if (noCache) return;
+
+  // Network-first for the app shell; cache is only used when offline.
   event.respondWith(
-    fetch(req)
+    fetch(req, { cache: 'no-store' })
       .then(res => {
         if (res && res.ok && res.type !== 'opaque') {
           const copy = res.clone();
