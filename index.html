@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Developer & Project Intelligence</title>
-<meta name="bcs-build" content="bcs-desk-v220">
-<!-- BCS DESK BUILD bcs-desk-v220 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard (pen, shapes, notes, pages, PNG export, working ruler/protractor/compass/set-square guides with place-on-board, local image/PDF import with direct annotation, clickable web cards, 8 board backgrounds, BenQ-style toolbox, timer, stopwatch, scoreboard, random draw, spinner, calculator, unit converter, spotlight, laser and floating notes) + BenQ EZWrite official launcher + Jaipur Property Map (flat-finder style, free CARTO key-enabled MapLibre tiles + Voyager GL vector style + offline SVG fallback, 47 localities, 5-portal benchmark rates + 10-register / 434-row source-attributed dossier index, fixed Google Maps embed height + working output=embed saved-place/link maps with in-app link conversion + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase + local category-wise saved places with one-click Google Maps, icons and CSV) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net -->
+<meta name="bcs-build" content="bcs-desk-v221">
+<!-- BCS DESK BUILD bcs-desk-v221 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard (pen, shapes, notes, pages, PNG export, working ruler/protractor/compass/set-square guides with place-on-board, local image/PDF import with direct annotation, clickable web cards, 8 board backgrounds, BenQ-style toolbox, timer, stopwatch, scoreboard, random draw, spinner, calculator, unit converter, spotlight, laser and floating notes) + BenQ EZWrite official launcher + Jaipur Property Map (flat-finder style, free CARTO key-enabled MapLibre tiles + Voyager GL vector style + offline SVG fallback, 47 localities, 5-portal benchmark rates + 10-register / 434-row source-attributed dossier index, fixed Google Maps embed height + working output=embed saved-place/link maps with in-app link conversion + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase + local category-wise saved places with one-click Google Maps, icons and CSV) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net -->
 <meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -17916,7 +17916,7 @@ body[data-theme="dark"] .jp-saved-card{background:color-mix(in srgb,var(--acc) 9
 body[data-theme="dark"] .jp-saved-ic{color:#0B0E0C}
 
 /* ============================================================
-   BCS v220 — Calm premium refinement (final cascade layer)
+   BCS v221 — Calm premium refinement (final cascade layer)
    Visual only: one green/gold identity, one header language,
    readable labels, predictable hidden states, no feature changes.
    ============================================================ */
@@ -18023,11 +18023,19 @@ body .toolbar,body .links-toolbar,body .filter-bar{
   body .btn,body .btn.sm,body .btn.ghost{min-height:36px!important;height:36px!important;padding:0 12px!important}
 }
 
-/* v220 navigation: 8 pinned pages in the bar, everything else one click away.
+/* v221 navigation: 12 pinned icons in the bar, everything else one click away.
    Pinned copies stay in the panel only on phones, where the tab bar hides them. */
 @media(min-width:431px){
   #navMorePanel button.more-pinned{display:none!important}
+  html body:not(.bcs-native) .hwrap-nav #nav{gap:4px!important;justify-content:flex-start!important}
+  html body:not(.bcs-native) .hwrap-nav #nav > button[data-view]{width:38px!important;min-width:38px!important;flex:0 0 38px!important;padding:0!important;gap:0!important;justify-content:center!important}
+  html body:not(.bcs-native) .hwrap-nav #nav > button[data-view] .nav-lbl{display:none!important}
+  html body:not(.bcs-native) .hwrap-nav #nav > button[data-view] .nav-ic{font-size:15px!important;width:auto!important;height:auto!important;background:transparent!important;border:0!important}
+  html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap{margin-left:10px!important;padding-left:0!important}
+  html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap > #navMoreBtn{flex:0 0 auto!important;min-width:72px!important;padding:4px 12px!important;margin-left:0!important}
 }
+/* v219 manager stays global only — no per-section clutter */
+.sec-mgr-host,.sec-mgr-btn{display:none!important}
 #navMorePanel{min-width:0!important;z-index:95!important}
 #navMorePanel button.on{
   background:linear-gradient(135deg,var(--gold),var(--gold-deep))!important;
@@ -18275,29 +18283,33 @@ try{
   <div class="hwrap hwrap-nav">
     <nav id="nav" role="navigation" aria-label="BCS desk pages">
       <button type="button" data-view="dashboard" class="on" aria-current="page" aria-label="Dashboard"><span class="nav-ic" aria-hidden="true">⌂</span><span class="nav-lbl">Dashboard</span></button>
+      <button type="button" data-view="advisory" aria-label="Advisory"><span class="nav-ic" aria-hidden="true">✦</span><span class="nav-lbl">Advisory</span></button>
       <button type="button" data-view="projects" aria-label="Projects"><span class="nav-ic" aria-hidden="true">▣</span><span class="nav-lbl">Projects</span></button>
+      <button type="button" data-view="developers" aria-label="Developers"><span class="nav-ic" aria-hidden="true">◈</span><span class="nav-lbl">Developers</span></button>
       <button type="button" data-view="clients" aria-label="Clients"><span class="nav-ic" aria-hidden="true">◐</span><span class="nav-lbl">Clients</span></button>
       <button type="button" data-view="leadgen" aria-label="Lead Engine"><span class="nav-ic" aria-hidden="true">🎯</span><span class="nav-lbl">Leads</span></button>
       <button type="button" data-view="dayplan" aria-label="Day Plan"><span class="nav-ic" aria-hidden="true">◷</span><span class="nav-lbl">Day Plan</span></button>
-      <button type="button" data-view="pipeline" aria-label="Sales Pipeline"><span class="nav-ic" aria-hidden="true">⇢</span><span class="nav-lbl">Pipeline</span></button>
+      <button type="button" data-view="pulse" aria-label="Market Pulse"><span class="nav-ic" aria-hidden="true">↗</span><span class="nav-lbl">Market Pulse</span><span class="nav-dot gold" aria-hidden="true"></span></button>
+      <button type="button" data-view="news" aria-label="News"><span class="nav-ic" aria-hidden="true">📰</span><span class="nav-lbl">News</span><span class="nav-dot" aria-hidden="true"></span></button>
       <button type="button" data-view="calc" aria-label="Calculators"><span class="nav-ic" aria-hidden="true">⌘</span><span class="nav-lbl">Calculators</span></button>
-      <button type="button" data-view="jaipur" aria-label="Jaipur Map"><span class="nav-ic" aria-hidden="true">🗺</span><span class="nav-lbl">Jaipur Map</span><span class="nav-dot gold" aria-hidden="true"></span></button>
+      <button type="button" data-view="inventory" aria-label="Plot Inventory"><span class="nav-ic" aria-hidden="true">▦</span><span class="nav-lbl">Inventory</span></button>
+      <button type="button" data-view="pipeline" aria-label="Sales Pipeline"><span class="nav-ic" aria-hidden="true">⇢</span><span class="nav-lbl">Pipeline</span></button>
       <div class="nav-more-wrap">
         <button type="button" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" title="All pages" aria-label="More pages"><span class="nav-ic" aria-hidden="true">⋯</span><span class="nav-lbl">More</span><span class="nav-chev" aria-hidden="true">▾</span></button>
         <div class="nav-more-panel" id="navMorePanel" hidden>
           <div class="nav-more-head"><b>All pages</b><span>one click away</span></div>
           <input type="search" id="navPageSearch" class="nav-page-search" placeholder="Jump to a page…  /" aria-label="Search all pages" autocomplete="off" spellcheck="false">
           <button type="button" class="more-pinned" data-view="dashboard"><span class="nav-ic" aria-hidden="true">⌂</span>Dashboard</button>
-          <button type="button" data-view="advisory"><span class="nav-ic" aria-hidden="true">✦</span>Advisory</button>
+          <button type="button" class="more-pinned" data-view="advisory"><span class="nav-ic" aria-hidden="true">✦</span>Advisory</button>
           <button type="button" class="more-pinned" data-view="projects"><span class="nav-ic" aria-hidden="true">▣</span>Projects</button>
-          <button type="button" data-view="developers"><span class="nav-ic" aria-hidden="true">◈</span>Developers</button>
+          <button type="button" class="more-pinned" data-view="developers"><span class="nav-ic" aria-hidden="true">◈</span>Developers</button>
           <button type="button" class="more-pinned" data-view="clients"><span class="nav-ic" aria-hidden="true">◐</span>Clients</button>
           <button type="button" class="more-pinned" data-view="leadgen"><span class="nav-ic" aria-hidden="true">🎯</span>Leads</button>
           <button type="button" class="more-pinned" data-view="dayplan"><span class="nav-ic" aria-hidden="true">◷</span>Day Plan</button>
-          <button type="button" data-view="pulse"><span class="nav-ic" aria-hidden="true">↗</span>Market Pulse</button>
-          <button type="button" data-view="news"><span class="nav-ic" aria-hidden="true">📰</span>News</button>
+          <button type="button" class="more-pinned" data-view="pulse"><span class="nav-ic" aria-hidden="true">↗</span>Market Pulse</button>
+          <button type="button" class="more-pinned" data-view="news"><span class="nav-ic" aria-hidden="true">📰</span>News</button>
           <button type="button" class="more-pinned" data-view="calc"><span class="nav-ic" aria-hidden="true">⌘</span>Calculators</button>
-          <button type="button" data-view="inventory"><span class="nav-ic" aria-hidden="true">▦</span>Plot Inventory</button>
+          <button type="button" class="more-pinned" data-view="inventory"><span class="nav-ic" aria-hidden="true">▦</span>Plot Inventory</button>
           <button type="button" class="more-pinned" data-view="pipeline"><span class="nav-ic" aria-hidden="true">⇢</span>Sales Pipeline</button>
           <button type="button" data-view="exchange"><span class="nav-ic" aria-hidden="true">⇄</span>Exchange</button>
           <button type="button" data-view="advisors"><span class="nav-ic" aria-hidden="true">◎</span>Advisors</button>
@@ -18316,7 +18328,7 @@ try{
           <button type="button" data-view="sheets"><span class="nav-ic" aria-hidden="true">📊</span>Google Sheets</button>
           <button type="button" data-view="applications"><span class="nav-ic" aria-hidden="true">▤</span>Applications</button>
           <button type="button" data-view="whiteboard"><span class="nav-ic" aria-hidden="true">✎</span>BCS EZWrite board</button>
-          <button type="button" class="more-pinned" data-view="jaipur"><span class="nav-ic" aria-hidden="true">🗺</span>Jaipur Map</button>
+          <button type="button" data-view="jaipur"><span class="nav-ic" aria-hidden="true">🗺</span>Jaipur Map</button>
         </div>
       </div>
     </nav>
@@ -50939,7 +50951,8 @@ function render(){
   try{ if(window.BCS_FUN) window.BCS_FUN.render(); }catch(e){}
   try{ if(window.BCS_VIVID) window.BCS_VIVID.render(); }catch(e){}
   try{ if(window.__bcsArmMotion) window.__bcsArmMotion(); }catch(e){}
-  try{ bcsInjectSectionManagerButtons(); }catch(e){}
+  /* v221: no per-section Manage chips — the single global manager stays in the header. */
+  /* bcsInjectSectionManagerButtons() remains available for admin tooling, but is not auto-injected. */
 }
 /* ---------- v162: TARGET LISTS — bulk prospects + two-way showcase ----------
    Har page (Projects / Developers / Advisors / Clients) par ek target panel:
