@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Developer & Project Intelligence</title>
-<meta name="bcs-build" content="bcs-desk-v217">
-<!-- BCS DESK BUILD bcs-desk-v217 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard (pen, shapes, notes, pages, PNG export, working ruler/protractor/compass/set-square guides with place-on-board, local image/PDF import with direct annotation, clickable web cards, 8 board backgrounds, BenQ-style toolbox, timer, stopwatch, scoreboard, random draw, spinner, calculator, unit converter, spotlight, laser and floating notes) + BenQ EZWrite official launcher + Jaipur Property Map (flat-finder style, free CARTO key-enabled MapLibre tiles + Voyager GL vector style + offline SVG fallback, 47 localities, 5-portal benchmark rates + 10-register / 434-row source-attributed dossier index, fixed Google Maps embed height + working output=embed saved-place/link maps with in-app link conversion + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase + local category-wise saved places with one-click Google Maps, icons and CSV) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net -->
+<meta name="bcs-build" content="bcs-desk-v218">
+<!-- BCS DESK BUILD bcs-desk-v218 · single-file · zero-dependency · pinned More nav + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard (pen, shapes, notes, pages, PNG export, working ruler/protractor/compass/set-square guides with place-on-board, local image/PDF import with direct annotation, clickable web cards, 8 board backgrounds, BenQ-style toolbox, timer, stopwatch, scoreboard, random draw, spinner, calculator, unit converter, spotlight, laser and floating notes) + BenQ EZWrite official launcher + Jaipur Property Map (flat-finder style, free CARTO key-enabled MapLibre tiles + Voyager GL vector style + offline SVG fallback, 47 localities, 5-portal benchmark rates + 10-register / 434-row source-attributed dossier index, fixed Google Maps embed height + working output=embed saved-place/link maps with in-app link conversion + Night+ basemap + on-map project pins + 41-entry flats/villas/apartments/townships/colony showcase + local category-wise saved places with one-click Google Maps, icons and CSV) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + calm premium layout pass + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net -->
 <meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -711,6 +711,33 @@ body.locked .gemini-fab{display:none}
 .tpl-placeholders button{font-size:9px;font-weight:700;padding:3px 7px;border-radius:6px;background:#F1F4F2;border:1px solid var(--line);color:var(--ink2)}
 .tpl-placeholders button:hover{background:#E7EFE9}
 .tpl-empty{border:1px dashed #CFD9D3;border-radius:12px;padding:26px 16px;text-align:center;color:var(--mut);font-size:12.5px;line-height:1.6;background:#FBFCFA;grid-column:1/-1}
+
+/* profession-wise reel comment + PDF DM reply kit */
+.pro-reply-sec{margin-top:22px;border-top:1px solid var(--line);padding-top:18px}
+.pro-reply-toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.pro-reply-toolbar .adv-search{flex:1;min-width:220px}
+.pro-reply-toolbar select{min-width:170px}
+.pro-reply-count{font-size:10.5px;font-weight:800;color:var(--mut);white-space:nowrap}
+.pro-reply-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.pro-reply-card{display:flex;flex-direction:column;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow);min-width:0}
+.pr-top{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.pr-prof{display:inline-flex;align-items:center;gap:4px;font-size:8.5px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--gold-soft);color:var(--gold);border:1px solid rgba(165,123,54,.25)}
+.pr-label{font-size:13.5px;font-weight:800;color:var(--ink);line-height:1.3;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pr-line{background:#FBFCFA;border:1px solid var(--line2);border-radius:9px;padding:8px 10px;min-width:0}
+.pr-line b{display:block;font-size:8.5px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;color:var(--mut);margin-bottom:3px}
+.pr-line p{margin:0;font-size:10.5px;line-height:1.5;color:var(--ink2);white-space:pre-wrap;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pr-line.dm p{-webkit-line-clamp:4}
+.pr-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:auto}
+.pr-actions .btn{flex:1;justify-content:center;min-width:76px}
+.pro-reply-note{font-size:10.5px;line-height:1.55;color:var(--mut);margin:10px 2px 0}
+.pro-reply-empty{grid-column:1/-1;border:1px dashed #CFD9D3;border-radius:12px;padding:22px 16px;text-align:center;color:var(--mut);font-size:12.5px;line-height:1.6;background:#FBFCFA}
+.pro-reply-preview{display:grid;gap:8px}
+.pr-preview-box{background:#FBFCFA;border:1px solid var(--line2);border-radius:10px;padding:10px 11px}
+.pr-preview-box b{display:block;font-size:9px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;color:var(--mut);margin-bottom:5px}
+.pr-preview-box p{margin:0;font-size:11.5px;line-height:1.6;color:var(--ink2);white-space:pre-wrap;overflow-wrap:anywhere}
+.pr-preview-box .btn{margin-top:8px}
+.pr-token-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+.pr-token-row button{font-size:9px;font-weight:800;padding:3px 7px;border-radius:6px;background:#F1F4F2;border:1px solid var(--line);color:var(--ink2)}
 
 @media (max-width:760px){
   .unit-stats{grid-template-columns:repeat(3,1fr)}
@@ -13403,6 +13430,11 @@ body[data-theme="dark"] .an-insight .ic{background:#26302A !important}
 body[data-theme="dark"] :is(.an-table th,.an-table tbody tr:hover td){background:#20261F !important}
 /* templates — preview pane */
 body[data-theme="dark"] .tpl-card .preview{background:#161B18 !important;border-color:var(--line) !important;color:#D9DED6 !important}
+body[data-theme="dark"] :is(.pro-reply-card,.pr-line,.pr-preview-box){background:#1B201B !important;border-color:rgba(255,255,255,.1) !important;color:#D9DED6 !important}
+body[data-theme="dark"] .pr-line b,body[data-theme="dark"] .pr-preview-box b,body[data-theme="dark"] .pro-reply-note{color:#9AA298 !important}
+body[data-theme="dark"] .pr-line p,body[data-theme="dark"] .pr-preview-box p{color:#D9DED6 !important}
+body[data-theme="dark"] .pr-prof{background:#2B2515 !important;color:#E8C981 !important;border-color:#5C4A22 !important}
+body[data-theme="dark"] :is(.pr-token-row button,.pro-reply-empty){background:#20261F !important;border-color:var(--line) !important;color:#D9DED6 !important}
 /* terminology — icon, example, regions, formula, action buttons */
 body[data-theme="dark"] .tm-card .tm-ic{background:#26302A !important;border-color:#3A4438 !important}
 body[data-theme="dark"] :is(.tm-example,.tm-meaning){color:#D9DED6 !important}
@@ -20212,6 +20244,26 @@ try{
     </div>
 
     <div class="tpl-grid" id="tplGrid"></div>
+
+    <div class="dsec pro-reply-sec">
+      <div class="dsec-head">
+        <h4>Reel DM reply kit</h4>
+        <span class="hint">Profession-wise one-liner comment, ad copy aur PDF ke baad bhejne wala personalized DM reply.</span>
+        <span class="sp"></span>
+        <button type="button" class="btn ghost sm" id="proReplyCsv">⬇ CSV</button>
+        <button type="button" class="btn primary sm" id="addProReplyBtn">+ New reply kit</button>
+      </div>
+      <div class="pro-reply-toolbar">
+        <div class="adv-search links-search">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="proReplySearch" placeholder="Search profession, label or text…">
+        </div>
+        <select id="proReplyFilter"><option value="">All professions</option></select>
+        <span class="pro-reply-count" id="proReplyCount"></span>
+      </div>
+      <div class="pro-reply-grid" id="proReplyGrid"></div>
+      <p class="pro-reply-note">Sirf copy + paste — koi auto-send, WhatsApp Web automation ya client-data upload nahi. Personalize modal me exact preview dekh kar hi copy karein.</p>
+    </div>
   </section>
 
   <section class="view" id="view-applications">
@@ -21820,6 +21872,78 @@ try{
       <button class="btn ghost" data-close="templateModal">Cancel</button>
       <button class="btn ghost" id="tplCopy">Copy text</button>
       <button class="btn primary" id="tplSave">Save template</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PROFESSION REPLY KIT MODAL ============ -->
+<div class="overlay" id="proReplyModal">
+  <div class="modal" style="width:min(720px,100%)">
+    <div class="modal-head">
+      <h3 id="proReplyTitle">New reply kit</h3>
+      <button class="xbtn" data-close="proReplyModal" type="button">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="grid2">
+        <div class="field"><label>Profession *</label><select id="proReplyProfession"></select></div>
+        <div class="field"><label>Kit label *</label><input id="proReplyLabel" placeholder="e.g. 3BHK family buyer"></div>
+      </div>
+      <div class="field">
+        <label>Reel comment — one liner</label>
+        <textarea id="proReplyComment" style="min-height:70px" placeholder="Jaipur me 3BHK ka shortlist chahiye? Comment “PDF”."></textarea>
+      </div>
+      <div class="field">
+        <label>Ad copy / CTA option</label>
+        <textarea id="proReplyAd" style="min-height:80px" placeholder="Jaipur 3BHK shortlist — indicative rates + locations. Comment PDF."></textarea>
+      </div>
+      <div class="field">
+        <label>DM reply after PDF is sent *</label>
+        <textarea id="proReplyDm" style="min-height:150px" placeholder="Namaste {name} ji, PDF bhej diya…"></textarea>
+        <div class="pr-token-row" id="proReplyTokens"></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn danger" id="proReplyDelete" style="margin-right:auto">Delete</button>
+      <button class="btn ghost" data-close="proReplyModal">Cancel</button>
+      <button class="btn primary" id="proReplySave">Save reply kit</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PERSONALIZE REPLY MODAL ============ -->
+<div class="overlay" id="proSendModal">
+  <div class="modal" style="width:min(760px,100%)">
+    <div class="modal-head">
+      <h3 id="psTitle">Personalize & preview</h3>
+      <button class="xbtn" data-close="proSendModal" type="button">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="grid2">
+        <div class="field"><label>Name</label><input id="psName" placeholder="e.g. Rahul"></div>
+        <div class="field"><label>Profession</label><input id="psProfession" placeholder="auto from kit"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Project</label><input id="psProject" placeholder="e.g. Project name"></div>
+        <div class="field"><label>PDF link</label><input id="psPdf" placeholder="e.g. https://…/brochure.pdf"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Area / configuration</label><input id="psArea" placeholder="e.g. 3BHK, 1750 sq ft"></div>
+        <div class="field"><label>Budget</label><input id="psBudget" placeholder="e.g. ₹1.2–1.5 Cr"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>City</label><input id="psCity" placeholder="Jaipur"></div>
+        <div class="field"><label>Reel topic</label><input id="psReel" placeholder="e.g. west Jaipur investment"></div>
+      </div>
+      <div class="pro-reply-preview">
+        <div class="pr-preview-box"><b>Reel comment</b><p id="psCommentOut"></p><button class="btn ghost sm" id="psCopyComment">Copy comment</button></div>
+        <div class="pr-preview-box"><b>Ad copy / CTA</b><p id="psAdOut"></p><button class="btn ghost sm" id="psCopyAd">Copy ad copy</button></div>
+        <div class="pr-preview-box"><b>DM reply after PDF</b><p id="psDmOut"></p><button class="btn primary sm" id="psCopyDm">Copy DM reply</button></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <span class="cgs-foot-note">Exact preview · copy only · no auto-send</span>
+      <span style="flex:1"></span>
+      <button class="btn ghost" data-close="proSendModal">Close</button>
     </div>
   </div>
 </div>
@@ -24269,11 +24393,83 @@ const DEFAULT_TEMPLATES = [
   { name:'Weekly target & review', scope:'advisor', content:'Namaste {advisor} ji,\n\nIs hafte ka focus:\n1. 2 site visits\n2. 5 fresh client calls\n3. 1 booking proposal\n\nAapke assigned projects aur pending follow-ups BCS desk par ready hain. Aaj shaam quick review kar lete hain.\n\n— Ajay Sharma, BCS' }
 ];
 
+/* ---------- profession-wise reel comment + PDF DM reply kit ---------- */
+const PRO_REPLY_PROFESSIONS = [
+  { id:'buyer',      label:'Home buyer',          icon:'🏠' },
+  { id:'investor',   label:'Investor',            icon:'📈' },
+  { id:'developer',  label:'Developer / Builder', icon:'🏗️' },
+  { id:'architect',  label:'Architect',           icon:'📐' },
+  { id:'interior',   label:'Interior designer',   icon:'🛋️' },
+  { id:'broker',     label:'Broker / Partner',    icon:'🤝' },
+  { id:'ca',         label:'CA / Tax advisor',    icon:'🧾' },
+  { id:'lawyer',     label:'Lawyer / Legal',      icon:'⚖️' },
+  { id:'contractor', label:'Contractor',          icon:'🧱' },
+  { id:'nri',        label:'NRI client',          icon:'✈️' },
+  { id:'landlord',   label:'Landlord',            icon:'🔑' },
+  { id:'firsttime',  label:'First-time buyer',    icon:'🌱' }
+];
+const PRO_REPLY_TOKENS = [
+  ['{name}','Person name'], ['{profession}','Profession'], ['{project}','Project'],
+  ['{pdf}','PDF link'], ['{area}','Area / configuration'], ['{budget}','Budget'],
+  ['{city}','City'], ['{reel}','Reel topic'], ['{advisor}','Advisor'], ['{company}','BCS']
+];
+const DEFAULT_PRO_REPLIES = [
+  { profession:'buyer', label:'2BHK shortlist',
+    comment:'Jaipur me 2BHK ka clean shortlist chahiye? Comment “PDF” — indicative rates bhej deta hoon.',
+    adCopy:'Jaipur 2BHK shortlist 🏠 Location · indicative asking rate · size — one free PDF. Comment “PDF” for details.',
+    dm:'Namaste {name} ji,\n\n{project} ka {area} detail PDF bhej diya — isme location, sizes aur indicative asking rates hain. Final rate site visit ke baad developer confirm karta hai.\n\nAgar aapka budget {budget} hai toh main 2–3 close options shortlist kar ke bhejta hoon. Kab convenient hai?\n\n— {advisor} · {company}' },
+  { profession:'investor', label:'Rental + resale view',
+    comment:'Investment ke liye area-wise demand aur indicative yield chart chahiye? “PDF” comment karein.',
+    adCopy:'Jaipur investment map 📈 Rental demand · resale liquidity · indicative rates. Free PDF for serious investors.',
+    dm:'Namaste {name} ji,\n\n{reel} par aapki interest dekhi — {city} ke liye investment PDF bhej diya. Isme indicative asking rates aur demand cues hain, sold prices ya live feed nahi.\n\nAapka target {budget} aur preferred {area} batayein toh main 2 options compare kar ke bhejta hoon.\n\n— {advisor} · {company}' },
+  { profession:'developer', label:'Inventory + mandate',
+    comment:'Developer sahab, apne project ka advisor-network plan chahiye? PDF bhej deta hoon.',
+    adCopy:'Jaipur developers ke liye simple distribution plan — positioning, advisor network, site-visit pipeline. Free PDF.',
+    dm:'Namaste {name} ji,\n\n{project} ke liye BCS distribution PDF bhej diya. Isme advisor network, site-visit flow aur follow-up format hai — client data kabhi share nahi hota.\n\nAapka current inventory aur slab share karein, main ek practical 30-day plan bana deta hoon.\n\n— {advisor} · {company}' },
+  { profession:'architect', label:'Layout + plot shortlist',
+    comment:'Architect ji, plot dimensions aur layout options ka ready sheet chahiye? Comment “PDF”.',
+    adCopy:'Plot + layout shortlist for architects 📐 Dimensions, orientation, indicative rates — free PDF.',
+    dm:'Namaste {name} ji,\n\n{city} ke {area} me plot/layout options ka PDF bhej diya. Dimensions aur indicative asking rates hain; approval/status developer ya authority se verify karna hota hai.\n\nAgar aap {project} ke around kaam kar rahe hain, main wahi focused list bhejta hoon.\n\n— {advisor} · {company}' },
+  { profession:'interior', label:'Handover-ready checklist',
+    comment:'Interior designers ke liye handover checklist + area sheet — comment “PDF” bhej deta hoon.',
+    adCopy:'Designers: site handover checklist, carpet/built-up clarity aur vendor shortlist — free PDF.',
+    dm:'Namaste {name} ji,\n\nHandover aur measurement PDF bhej diya. Isme {area} type ke liye checklist hai — carpet, built-up, super area aur common area confirm karne ke liye.\n\nAgar aap {project} me kaam kar rahe hain, builder drawing ke saath match kar ke short note bana deta hoon.\n\n— {advisor} · {company}' },
+  { profession:'broker', label:'Channel partner brief',
+    comment:'Partner sahab, project brief + slab format chahiye? PDF bhej deta hoon.',
+    adCopy:'Channel partners: ready project brief, indicative rates, slab format aur site-visit script. Free PDF.',
+    dm:'Namaste {name} ji,\n\n{project} ka partner brief PDF bhej diya. Rates indicative hain; slab/commission developer se confirm karke aapko update kar deta hoon.\n\nJo client ko aapne shortlist kiya hai, uska {budget} aur {area} bhej dijiye — main matching 2 projects nikal deta hoon.\n\n— {advisor} · {company}' },
+  { profession:'ca', label:'Cost + tax checklist',
+    comment:'CA ji, property cost sheet aur tax checklist chahiye? Comment “PDF” — bhej deta hoon.',
+    adCopy:'Property cost sheet for CAs 🧾 Stamp duty, registration, GST, TDS — indicative, source-linked checklist PDF.',
+    dm:'Namaste {name} ji,\n\nCost sheet PDF bhej diya. Isme stamp duty, registration, GST aur TDS heads hain — figures indicative hain, final calculation client ki transaction par depend karta hai.\n\n{project} ke for {budget} case me aapka view chahiye toh reply kar dijiye.\n\n— {advisor} · {company}' },
+  { profession:'lawyer', label:'Title + approval checklist',
+    comment:'Legal ji, title/approval verification checklist chahiye? “PDF” comment karein.',
+    adCopy:'Legal verification checklist for Jaipur property ⚖️ Title, approval, RERA/JDA — free PDF.',
+    dm:'Namaste {name} ji,\n\nVerification PDF bhej diya. Isme title, approval, RERA/JDA aur registry checklist hai — main kisi bhi project ko approved nahi bolta, official record verify karana zaroori hai.\n\n{project} ka specific reference bhej dijiye toh main checklist usi hisaab se short kar deta hoon.\n\n— {advisor} · {company}' },
+  { profession:'contractor', label:'Scope + BOQ base',
+    comment:'Contractor ji, site scope aur BOQ base sheet chahiye? PDF bhej deta hoon.',
+    adCopy:'Contractors: site scope + BOQ base format 🧱 Measurement, handover, snag list — free PDF.',
+    dm:'Namaste {name} ji,\n\nScope sheet PDF bhej diya. {area} ke liye measurement format aur handover/snag points hain. Rates include nahi — site inspect karke quote aap khud final karein.\n\n{project} me kaam hai toh drawing ke saath sheet bhej dijiye.\n\n— {advisor} · {company}' },
+  { profession:'nri', label:'Remote shortlist pack',
+    comment:'NRI clients ke liye remote shortlist + video-visit format — comment “PDF” bhej deta hoon.',
+    adCopy:'NRI property shortlist ✈️ Locality, indicative rates, video-visit format — one free PDF.',
+    dm:'Namaste {name} ji,\n\n{reel} dekhkar PDF bhej diya. Isme {city} ke shortlisted areas, indicative asking rates aur video-visit format hai. Main koi payment link nahi bhejta aur client data local rakhta hoon.\n\nAapka budget {budget} aur preferred {area} batayein — 2 options pe call schedule kar deta hoon.\n\n— {advisor} · {company}' },
+  { profession:'landlord', label:'Lease + rent review',
+    comment:'Landlord ji, rent review aur lease checklist chahiye? “PDF” comment karein.',
+    adCopy:'Landlords: lease checklist + rent review format 🔑 Free PDF for Jaipur property owners.',
+    dm:'Namaste {name} ji,\n\nLease checklist PDF bhej diya. Isme notice period, deposit, rent revision aur possession checklist hai — final terms aapke agreement par depend karte hain.\n\nAgar aapki property {area} me hai, details bhej dijiye toh main comparison format bhejta hoon.\n\n— {advisor} · {company}' },
+  { profession:'firsttime', label:'First-home simple guide',
+    comment:'Pehla ghar? 1-page guide + budget sheet — comment “PDF”, bhej deta hoon.',
+    adCopy:'First home in Jaipur 🌱 Budget, documents, site-visit questions — simple free PDF.',
+    dm:'Namaste {name} ji,\n\nFirst-home PDF bhej diya. Isme budget sheet, documents list aur site visit ke 5 sawal hain. Rates indicative hain — final developer se confirm hote hain.\n\nAapka budget {budget} aur preferred {area} likh dijiye, main 2 simple options shortlist kar deta hoon.\n\n— {advisor} · {company}' }
+];
+
 function seed(){
   return {
     version: 11,
     qualityCriteria: DEFAULT_QUALITY_CRITERIA.map(c => ({ ...c })),
     templates: DEFAULT_TEMPLATES.map((t, i) => ({ ...t, id:uid(), createdAt:Date.now() + i, updatedAt:Date.now() + i })),
+    proReplies: DEFAULT_PRO_REPLIES.map((t, i) => ({ ...t, id:uid(), createdAt:Date.now() + i, updatedAt:Date.now() + i })),
     dupIgnores: [],
     corridors: DEFAULT_CORRIDORS.map(c => ({ ...c })),
     defaultChecklist: [...DEFAULT_CHECKLIST],
@@ -25312,6 +25508,19 @@ function normalizeDb(d){
     refId: t.refId == null ? '' : String(t.refId),
     category: t.category == null ? '' : String(t.category).trim(),
     content: t.content == null ? '' : String(t.content),
+    createdAt: t.createdAt || Date.now(),
+    updatedAt: t.updatedAt || t.createdAt || Date.now()
+  }));
+  if(!Array.isArray(d.proReplies) || !d.proReplies.length){
+    d.proReplies = DEFAULT_PRO_REPLIES.map((t, i) => ({ ...t, id:uid(), createdAt:Date.now() + i, updatedAt:Date.now() + i }));
+  }
+  d.proReplies = d.proReplies.filter(t => t && String(t.label || '').trim()).map(t => ({
+    id: t.id || uid(),
+    profession: PRO_REPLY_PROFESSIONS.some(p => p.id === t.profession) ? t.profession : 'buyer',
+    label: String(t.label).trim(),
+    comment: t.comment == null ? '' : String(t.comment),
+    adCopy: t.adCopy == null ? '' : String(t.adCopy),
+    dm: t.dm == null ? '' : String(t.dm),
     createdAt: t.createdAt || Date.now(),
     updatedAt: t.updatedAt || t.createdAt || Date.now()
   }));
@@ -43177,6 +43386,7 @@ function renderTemplates(){
       </div>
     </article>`;
   }).join('') : `<div class="tpl-empty">Koi template nahi mila. “New template” se apna message save karein.</div>`;
+  renderProReplies();
 }
 let editingTemplateId = null;
 function openTemplate(id){
@@ -43228,6 +43438,167 @@ function deleteTemplate(){
   if(!confirm('Delete template "' + t.name + '"?')) return;
   db.templates = db.templates.filter(x => x.id !== editingTemplateId);
   save(); closeModal('templateModal'); renderTemplates(); render(); toast('Template deleted');
+}
+
+/* ---------- profession-wise reel comment + PDF DM reply kit ---------- */
+let editingProReplyId = null, activeProSendKit = null, proReplyLastField = null;
+function proProfession(id){
+  return PRO_REPLY_PROFESSIONS.find(p => p.id === id) || { id:id || '', label:'General', icon:'✉' };
+}
+function proReplyFillSelects(){
+  const sel = $('#proReplyProfession');
+  if(sel && !sel.dataset.filled){
+    sel.innerHTML = PRO_REPLY_PROFESSIONS.map(p => `<option value="${p.id}">${p.icon} ${esc(p.label)}</option>`).join('');
+    sel.dataset.filled = '1';
+  }
+  const filter = $('#proReplyFilter');
+  if(filter && !filter.dataset.filled){
+    filter.innerHTML = `<option value="">All professions</option>` + PRO_REPLY_PROFESSIONS.map(p => `<option value="${p.id}">${p.icon} ${esc(p.label)}</option>`).join('');
+    filter.dataset.filled = '1';
+  }
+}
+function proReplyRenderTokens(){
+  const host = $('#proReplyTokens');
+  if(!host || host.dataset.filled) return;
+  host.innerHTML = PRO_REPLY_TOKENS.map(([k, label]) => `<button type="button" data-pro-token="${esc(k)}" title="${esc(label)}">${esc(k)}</button>`).join('');
+  host.dataset.filled = '1';
+}
+function resolveProReplyText(text, values){
+  let out = String(text || '');
+  Object.keys(values || {}).forEach(k => { out = out.split(k).join(values[k] == null ? '' : String(values[k])); });
+  /* case-insensitive fallback for hand-typed uppercase tokens */
+  Object.keys(values || {}).forEach(k => {
+    const re = new RegExp(k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+    out = out.replace(re, values[k] == null ? '' : String(values[k]));
+  });
+  return out;
+}
+function proReplyValues(kit){
+  const val = id => { const el = $(id); return el ? String(el.value || '').trim() : ''; };
+  const me = currentAdvisor();
+  return {
+    '{name}': val('#psName'),
+    '{profession}': val('#psProfession') || proProfession(kit && kit.profession).label,
+    '{project}': val('#psProject'),
+    '{pdf}': val('#psPdf'),
+    '{area}': val('#psArea'),
+    '{budget}': val('#psBudget'),
+    '{city}': val('#psCity') || 'Jaipur',
+    '{reel}': val('#psReel'),
+    '{advisor}': me ? (me.name || 'Ajay Sharma') : 'Ajay Sharma',
+    '{company}': 'BCS (Business City Square), Jaipur'
+  };
+}
+function renderProSendPreview(){
+  if(!activeProSendKit) return;
+  const v = proReplyValues(activeProSendKit);
+  const put = (id, text) => { const el = $(id); if(el) el.textContent = resolveProReplyText(text, v) || '—'; };
+  put('#psCommentOut', activeProSendKit.comment);
+  put('#psAdOut', activeProSendKit.adCopy);
+  put('#psDmOut', activeProSendKit.dm);
+}
+function openProSend(id){
+  const kit = (db.proReplies || []).find(x => x.id === id);
+  if(!kit) return;
+  activeProSendKit = kit;
+  const p = proProfession(kit.profession);
+  $('#psTitle').textContent = 'Personalize · ' + p.label + ' · ' + kit.label;
+  $('#psProfession').value = p.label;
+  ['#psName','#psProject','#psPdf','#psArea','#psBudget','#psCity','#psReel'].forEach(s => { const el = $(s); if(el) el.value = ''; });
+  $('#psCity').value = 'Jaipur';
+  renderProSendPreview();
+  showOverlay('proSendModal');
+  setTimeout(() => { const el = $('#psName'); if(el) el.focus(); }, 60);
+}
+function copyProSendField(kind){
+  if(!activeProSendKit) return;
+  const v = proReplyValues(activeProSendKit);
+  const text = resolveProReplyText(activeProSendKit[kind], v);
+  if(!text.trim()) return toast('Pehle text likhein ya preview check karein', true);
+  copyText(text).then(ok => toast(ok ? 'Copied — ab DM / comment me paste karein' : 'Copy failed — try again', !ok));
+}
+function renderProReplies(){
+  proReplyFillSelects();
+  const search = $('#proReplySearch'), filter = $('#proReplyFilter'), grid = $('#proReplyGrid');
+  if(!grid) return;
+  const q = search ? String(search.value || '').trim().toLowerCase() : '';
+  const prof = filter ? filter.value : '';
+  const list = (db.proReplies || []).filter(r => {
+    if(prof && r.profession !== prof) return false;
+    if(!q) return true;
+    const p = proProfession(r.profession);
+    return [p.label, r.label, r.comment, r.adCopy, r.dm].join(' ').toLowerCase().includes(q);
+  }).sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+  const cnt = $('#proReplyCount');
+  if(cnt) cnt.textContent = list.length + ' kit' + (list.length === 1 ? '' : 's');
+  grid.innerHTML = list.length ? list.map(r => {
+    const p = proProfession(r.profession);
+    const line = (lab, text, cls) => `<div class="pr-line ${cls || ''}"><b>${lab}</b><p>${esc(text || '—')}</p></div>`;
+    return `<article class="pro-reply-card">
+      <div class="pr-top"><span class="pr-prof">${p.icon} ${esc(p.label)}</span><span class="pr-label" title="${esc(r.label)}">${esc(r.label)}</span></div>
+      ${line('Reel comment', r.comment)}
+      ${line('Ad copy / CTA', r.adCopy)}
+      ${line('DM after PDF', r.dm, 'dm')}
+      <div class="pr-actions">
+        <button type="button" class="btn primary sm" data-pro-send="${r.id}">Personalize ↗</button>
+        <button type="button" class="btn ghost sm" data-pro-edit="${r.id}">Edit</button>
+      </div>
+    </article>`;
+  }).join('') : `<div class="pro-reply-empty">Koi reply kit nahi mila. “+ New reply kit” se profession-wise comment, ad copy aur DM reply save karein.</div>`;
+}
+function openProReply(id){
+  if(!isAdmin()) return toast('Advisor login view-only hai', true);
+  proReplyFillSelects(); proReplyRenderTokens();
+  const kit = id ? (db.proReplies || []).find(x => x.id === id) : null;
+  editingProReplyId = id || null;
+  $('#proReplyTitle').textContent = kit ? 'Edit reply kit' : 'New reply kit';
+  $('#proReplyProfession').value = kit ? kit.profession : 'buyer';
+  $('#proReplyLabel').value = kit ? kit.label : '';
+  $('#proReplyComment').value = kit ? (kit.comment || '') : '';
+  $('#proReplyAd').value = kit ? (kit.adCopy || '') : '';
+  $('#proReplyDm').value = kit ? (kit.dm || '') : '';
+  $('#proReplyDelete').style.display = kit ? 'inline-flex' : 'none';
+  proReplyLastField = '#proReplyDm';
+  showOverlay('proReplyModal');
+  setTimeout(() => { const el = $('#proReplyLabel'); if(el) el.focus(); }, 60);
+}
+function saveProReply(){
+  if(!isAdmin()) return toast('Advisor login view-only hai', true);
+  const label = $('#proReplyLabel').value.trim();
+  const dm = $('#proReplyDm').value;
+  if(!label) return toast('Kit label required hai', true);
+  if(!dm.trim()) return toast('PDF ke baad wala DM reply required hai', true);
+  const payload = {
+    profession: $('#proReplyProfession').value || 'buyer',
+    label,
+    comment: $('#proReplyComment').value,
+    adCopy: $('#proReplyAd').value,
+    dm,
+    updatedAt: Date.now()
+  };
+  if(editingProReplyId){
+    const kit = (db.proReplies || []).find(x => x.id === editingProReplyId);
+    if(kit) Object.assign(kit, payload);
+  } else {
+    db.proReplies.push({ id:uid(), createdAt:Date.now(), ...payload });
+  }
+  save(); closeModal('proReplyModal'); renderProReplies(); render();
+  toast(editingProReplyId ? 'Reply kit updated' : 'Reply kit saved');
+}
+function deleteProReply(){
+  if(!isAdmin() || !editingProReplyId) return;
+  const kit = (db.proReplies || []).find(x => x.id === editingProReplyId);
+  if(!kit) return;
+  if(!confirm('Delete reply kit "' + kit.label + '"?')) return;
+  db.proReplies = db.proReplies.filter(x => x.id !== editingProReplyId);
+  save(); closeModal('proReplyModal'); renderProReplies(); render(); toast('Reply kit deleted');
+}
+function proReplyCsv(){
+  const rows = [['Profession','Kit label','Reel comment','Ad copy / CTA','DM reply after PDF']];
+  (db.proReplies || []).forEach(r => rows.push([proProfession(r.profession).label, r.label, r.comment, r.adCopy, r.dm]));
+  if(rows.length === 1) return toast('Export ke liye koi reply kit nahi', true);
+  csvDownload(rows, `bcs-pro-reply-kit-${todayISO()}.csv`);
+  toast('Profession reply kit CSV downloaded');
 }
 
 /* ============================================================
@@ -43481,7 +43852,7 @@ function renderHealth(){
       ${healthCard('Internet + updates', navigator.onLine ? 'Online' : 'Offline', 'Public feeds, maps aur tiles live fetch hote hain. Client/lead/project data kabhi upload nahi. App tiny build probe se update check karta hai; remote code/CDN nahi.', '<div class="conn-actions" style="margin-top:8px;flex-wrap:wrap"><button class="btn ghost sm" id="healthNetBtn">Check latest</button><button class="btn ghost sm" id="healthRefreshLiveBtn">Refresh live data</button></div>')}
       ${healthCard('Price history', withHistory + '/' + projects.length, 'Projects with at least one logged price revision.', '<button class="btn ghost sm" data-goto="projects">Open projects</button>')}
       ${healthCard('Unit inventory', totalUnits, `${availableUnits} units available · ${withUnits}/${projects.length} projects track units.`, '<button class="btn ghost sm" data-goto="projects">Add units</button>')}
-      ${healthCard('Templates', (db.templates || []).length, 'Ready-to-copy developer, project aur advisor messages.', '<button class="btn ghost sm" data-goto="templates">Open templates</button>')}
+      ${healthCard('Templates', (db.templates || []).length + ' + ' + (db.proReplies || []).length, 'Ready-to-copy messages + profession-wise reel/DM reply kits.', '<button class="btn ghost sm" data-goto="templates">Open templates</button>')}
     </div>
     <div class="dsec">
       <div class="dsec-head"><h4>Projects needing data work</h4><span class="cnt">${low.length}</span></div>
@@ -44219,6 +44590,40 @@ function initFeatureControls(){
     ta.focus();
     ta.selectionStart = ta.selectionEnd = start + btn.dataset.tplph.length;
   });
+
+  /* profession-wise reply kit */
+  const addPro = $('#addProReplyBtn'); if(addPro) addPro.addEventListener('click', () => openProReply());
+  const proCsv = $('#proReplyCsv'); if(proCsv) proCsv.addEventListener('click', proReplyCsv);
+  const proSearch = $('#proReplySearch'); if(proSearch) proSearch.addEventListener('input', renderProReplies);
+  const proFilter = $('#proReplyFilter'); if(proFilter) proFilter.addEventListener('change', renderProReplies);
+  const proGrid = $('#proReplyGrid');
+  if(proGrid) proGrid.addEventListener('click', e => {
+    const send = e.target.closest('[data-pro-send]');
+    if(send) return openProSend(send.dataset.proSend);
+    const edit = e.target.closest('[data-pro-edit]');
+    if(edit) return openProReply(edit.dataset.proEdit);
+  });
+  const proSave = $('#proReplySave'); if(proSave) proSave.addEventListener('click', saveProReply);
+  const proDel = $('#proReplyDelete'); if(proDel) proDel.addEventListener('click', deleteProReply);
+  ['#proReplyComment','#proReplyAd','#proReplyDm'].forEach(sel => {
+    const el = $(sel); if(el) el.addEventListener('focus', () => { proReplyLastField = sel; });
+  });
+  const proTokens = $('#proReplyTokens');
+  if(proTokens) proTokens.addEventListener('click', e => {
+    const btn = e.target.closest('[data-pro-token]'); if(!btn) return;
+    const ta = $(proReplyLastField || '#proReplyDm'); if(!ta) return;
+    const start = ta.selectionStart ?? ta.value.length;
+    const end = ta.selectionEnd ?? ta.value.length;
+    ta.value = ta.value.slice(0, start) + btn.dataset.proToken + ta.value.slice(end);
+    ta.focus();
+    ta.selectionStart = ta.selectionEnd = start + btn.dataset.proToken.length;
+  });
+  ['#psName','#psProfession','#psProject','#psPdf','#psArea','#psBudget','#psCity','#psReel'].forEach(sel => {
+    const el = $(sel); if(el) el.addEventListener('input', renderProSendPreview);
+  });
+  const psCopyComment = $('#psCopyComment'); if(psCopyComment) psCopyComment.addEventListener('click', () => copyProSendField('comment'));
+  const psCopyAd = $('#psCopyAd'); if(psCopyAd) psCopyAd.addEventListener('click', () => copyProSendField('adCopy'));
+  const psCopyDm = $('#psCopyDm'); if(psCopyDm) psCopyDm.addEventListener('click', () => copyProSendField('dm'));
 
   /* health header */
   const hq = $('#healthQualityBtn'); if(hq) hq.addEventListener('click', openQualityManager);
@@ -58501,13 +58906,13 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     toast('Backup saved · ' + nowStamp());
     return rec;
   }
-  const BK_COLLS = ['clients','projects','plots','pipeline','bookings','advisors','developers','resale','partners','news','links','templates','documents','todos','corridors'];
+  const BK_COLLS = ['clients','projects','plots','pipeline','bookings','advisors','developers','resale','partners','news','links','templates','proReplies','documents','todos','corridors'];
   function backupDiffText(p, rec){
     const cur = db, rows = [];
     const pairs = [
       ['Clients','clients'], ['Projects','projects'], ['Plots','plots'], ['Deals','pipeline'],
       ['Bookings','bookings'], ['Advisors','advisors'], ['Developers','developers'], ['Resale','resale'],
-      ['Partners','partners'], ['News','news'], ['Links','links'], ['Documents','documents']
+      ['Partners','partners'], ['News','news'], ['Links','links'], ['Reply kits','proReplies'], ['Documents','documents']
     ];
     pairs.forEach(x => {
       const a = (cur[x[1]] || []).length, b = (p && p[x[1]] || []).length;
@@ -65016,7 +65421,7 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     inventory:'Inventory', pipeline:'Deal pipeline', exchange:'Site exchange', advisors:'Advisor directory',
     partners:'Channel partners', finance:'Finance & invoices', resale:'Resale listings',
     analytics:'Analytics', ops:'Operations', tax:'Tax desk', terminology:'Terminology',
-    links:'Website directory', templates:'Message templates', podcasts:'Podcast desk',
+    links:'Website directory', templates:'Message + reel reply templates', podcasts:'Podcast desk',
     health:'Data health', social:'Social desk', sheets:'Sheets & calculations',
     applications:'Applications & Google field kit'
   };
@@ -65039,7 +65444,10 @@ window.BCS_NAVX = { applySaved, persist, positionMore: positionMorePanel };
     resale: () => [{ h:'resale', cols:['Field','Value'], rows:simpleRows(PI('resale'), [['title','Listing'],['project','Project'],['price','Price'],['area','Area'],['status','Status']]) }],
     links: () => [{ h:'saved websites', cols:['Field','Value'], rows:simpleRows(PI('links'), [['name','Website'],['url','URL'],['note','Note']]) }],
     news: () => [{ h:'news', cols:['Field','Value'], rows:simpleRows(PI('news'), [['title','Headline'],['source','Source'],['date','Date'],['url','Link']]) }],
-    templates: () => [{ h:'templates', cols:['Field','Value'], rows:simpleRows(PI('templates'), [['name','Template'],['body','Message']]) }],
+    templates: () => [
+      { h:'templates', cols:['Field','Value'], rows:simpleRows(PI('templates'), [['name','Template'],['body','Message']]) },
+      { h:'reply kits', cols:['Field','Value'], rows:simpleRows(PI('proReplies'), [['label','Kit'],['profession','Profession'],['comment','Reel comment'],['adCopy','Ad copy'],['dm','DM reply']]) }
+    ],
     taxonomy: () => [{ h:'terms', cols:['Field','Value'], rows:simpleRows(PI('terminology'), [['term','Term'],['meaning','Meaning']]) }],
     ops: () => [
       { h:'activity', cols:['Field','Value'], rows:simpleRows((PI('ops')||{}).activity, [['label','Action'],['actor','By'],['kind','Type']]) },
