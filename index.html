@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>BCS Desk — Jaipur Developer & Project Intelligence</title>
-<meta name="bcs-build" content="bcs-desk-v223">
-<!-- BCS DESK BUILD bcs-desk-v223 · single-file · zero-dependency · pinned More nav + drag-to-bar customization with persisted order + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard + Jaipur Property Map (source-attributed public portals: Aurum, Square Yards, PropertyWala, 2bigha, Real Estate India, Housing.com, IndiaProperty, TrueHomes24, Anarock media + official registers) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net -->
-<meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
+<title>BCS Desk — Jaipur Real Estate Advisory & Project Intelligence</title>
+<meta name="bcs-build" content="bcs-desk-v224">
+<!-- BCS DESK BUILD bcs-desk-v224 · advisory-led consultancy design + iPhone 15 Pro app shell · single-file · zero-dependency · pinned More nav + drag-to-bar customization with persisted order + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard + Jaipur Property Map (source-attributed public portals: Aurum, Square Yards, PropertyWala, 2bigha, Real Estate India, Housing.com, IndiaProperty, TrueHomes24, Anarock media + official registers) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net -->
+<meta name="description" content="BCS (Business City Square) — private Jaipur real estate advisory desk for projects, inventory, client shortlists and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
-<meta name="description" content="BCS (Business City Square) Jaipur property intelligence desk — projects, developers, advisors, inventory, news and daily plan.">
+<meta name="description" content="BCS (Business City Square) — private Jaipur real estate advisory desk for projects, inventory, client shortlists and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -4722,6 +4722,7 @@ header::before{height:3px;background:linear-gradient(90deg,var(--olive),var(--go
 #nav button.on::after{display:none}
 .nav-dot{width:6px;height:6px;border-radius:50%;background:#2F8F6B;box-shadow:0 0 0 3px rgba(47,143,107,.18);animation:bcsNavPulse 2s ease-in-out infinite;flex:none;margin-left:2px}
 .nav-dot.gold{background:#C79A2E;box-shadow:0 0 0 3px rgba(199,154,46,.18)}
+.nav-fire{font-size:11px;line-height:1;flex:none;margin-left:1px;filter:drop-shadow(0 0 6px rgba(255,140,50,.45));animation:bcsNavPulse 1.8s ease-in-out infinite}
 @keyframes bcsNavPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
 .nav-sep{margin:6px 3px}
 .hwrap-top .searchbox{
@@ -9893,6 +9894,7 @@ body[data-page="health"]{--pg:#4E9E63}
 body[data-page="inventory"]{--pg:#3A8FB8}
 body[data-page="applications"]{--pg:#6C63C4}
 body[data-page="whiteboard"]{--pg:#6C63C4}
+body[data-page="tts"]{--pg:#0E8A7A}
 
 /* ---------- v192 · Applications hub (single-file, no dependencies) ---------- */
 .apps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;align-items:stretch}
@@ -12124,8 +12126,14 @@ html body:not(.bcs-native) #navMoreBtn{
 html body:not(.bcs-native) #nav .nav-ic{font-size:15px !important;width:16px !important;height:16px !important;display:inline-grid !important;place-items:center !important;opacity:.9 !important;flex:none !important}
 html body:not(.bcs-native) #nav .nav-lbl,#navMoreBtn .nav-lbl{display:inline !important;font-size:12.5px !important;font-weight:700 !important;line-height:1 !important;color:inherit !important}
 html body:not(.bcs-native) #nav > button[data-view]:hover,html body:not(.bcs-native) #navMoreBtn:hover{background:rgba(255,255,255,.72) !important;border-color:rgba(165,123,54,.25) !important;color:var(--ink,#2E2D20) !important}
-html body:not(.bcs-native) #nav > button.on,html body:not(.bcs-native) #navMoreBtn.on{background:linear-gradient(135deg,var(--gold,#B8892E),var(--olive,#6B6A42)) !important;border-color:var(--gold,#B8892E) !important;color:#171A14 !important;box-shadow:0 4px 14px -4px rgba(165,123,54,.35) !important}
+html body:not(.bcs-native) #nav > button[data-view],html body:not(.bcs-native) #navMoreBtn{position:relative !important;overflow:visible !important}
+html body:not(.bcs-native) #nav > button.on,html body:not(.bcs-native) #navMoreBtn.on{background:linear-gradient(135deg,var(--gold,#B8892E),var(--olive,#6B6A42)) !important;border-color:var(--gold,#B8892E) !important;color:#171A14 !important;box-shadow:0 6px 18px -6px rgba(165,123,54,.45) !important;transform:translateY(-1px)}
 html body:not(.bcs-native) #nav > button.on .nav-ic,html body:not(.bcs-native) #navMoreBtn.on .nav-ic{color:#171A14 !important;opacity:1 !important}
+html body:not(.bcs-native) #nav > button.on::before,html body:not(.bcs-native) #navMoreBtn.on::before{content:'';position:absolute;left:10px;right:10px;bottom:-8px;height:3px;border-radius:999px;background:linear-gradient(90deg,rgba(184,137,46,0),rgba(184,137,46,.95),rgba(184,137,46,0));box-shadow:0 0 12px rgba(184,137,46,.55);animation:bcsNavActiveGlow 1.8s ease-in-out infinite;pointer-events:none}
+html body:not(.bcs-native) #nav > button.on::after{content:'';position:absolute;inset:-2px;border-radius:inherit;border:1px solid rgba(231,196,110,.45);opacity:.65;animation:bcsNavActivePulse 1.8s ease-in-out infinite;pointer-events:none}
+@keyframes bcsNavActiveGlow{0%,100%{opacity:.45;transform:scaleX(.65)}50%{opacity:1;transform:scaleX(1)}}
+@keyframes bcsNavActivePulse{0%,100%{opacity:.15;transform:scale(1)}50%{opacity:.55;transform:scale(1.03)}}
+@media (prefers-reduced-motion:reduce){html body:not(.bcs-native) #nav > button.on::before,html body:not(.bcs-native) #nav > button.on::after,html body:not(.bcs-native) #navMoreBtn.on::before{animation:none}}
 #navMoreBtn .nav-chev{font-size:10px !important;margin-left:1px !important;opacity:.7 !important}
 html body:not(.bcs-native) .hwrap-nav #nav > .nav-more-wrap{position:sticky !important;right:0 !important;margin-left:auto !important;flex:0 0 auto !important;z-index:5 !important;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.55) 18%,rgba(255,255,255,.55)) !important;padding-left:6px !important}
 #navMorePanel{position:fixed !important;z-index:9999 !important;max-height:calc(100vh - 24px) !important;overflow-y:auto !important}
@@ -16264,6 +16272,183 @@ body.skyline-parallax .hero-skyline{transform:translateY(var(--sky-y,0px))}
 @keyframes cnFlash{0%,100%{box-shadow:var(--shadow)}35%{box-shadow:0 0 0 4px color-mix(in oklab,var(--acc) 32%,transparent),0 12px 30px rgba(0,0,0,.18)}}
 @media(max-width:640px){.cn-grid{grid-template-columns:1fr}}
 </style>
+<style>
+/* ============================================================
+   BCS v224 VIVID REFRESH — readability, vibrant palette, nav
+   Appended late to override legacy dull styles.
+   ============================================================ */
+:root{
+  --bg:#F4F7FF;
+  --bg2:#EEF2FF;
+  --panel:#FFFFFF;
+  --panel-2:#F8FAFF;
+  --ink:#182033;
+  --ink2:#33405C;
+  --mut:#5E6D87;
+  --line:#DCE5F4;
+  --line2:#EAF0FA;
+  --olive:#1B2540;
+  --sage:#E8F1FF;
+  --sage-ink:#25457A;
+  --mint:#DCF7F1;
+  --sand:#FFF4D9;
+  --gold:#F5B400;
+  --gold-soft:#FFF2C9;
+  --pg:#2563EB;
+  --pg2:#14B8A6;
+  --accent:#FF5A7A;
+  --danger:#E5484D;
+  --shadow:0 10px 30px -18px rgba(25,40,80,.25),0 2px 8px rgba(25,40,80,.05);
+  --shadow-lg:0 28px 70px -28px rgba(25,40,80,.35);
+  --r:20px;
+  --r2:14px;
+  --r3:11px;
+}
+body{
+  font-size:15px;
+  line-height:1.45;
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 650px at -5% -10%, rgba(37,99,235,.16), transparent 60%),
+    radial-gradient(900px 560px at 105% -5%, rgba(20,184,166,.14), transparent 58%),
+    radial-gradient(900px 560px at 50% 110%, rgba(245,180,0,.12), transparent 62%),
+    linear-gradient(180deg,#F8FAFF 0%,#F3F7FF 45%,#EEF4FF 100%) !important;
+  background-attachment:fixed;
+}
+body[data-theme="dark"]{
+  --bg:#0B1220;
+  --bg2:#111B2E;
+  --panel:#141F34;
+  --panel-2:#19263F;
+  --ink:#F5F8FF;
+  --ink2:#D5DEEE;
+  --mut:#A9B7CF;
+  --line:#263754;
+  --line2:#314766;
+  --olive:#0E1730;
+  --sage:#182947;
+  --sage-ink:#9FC0FF;
+  --mint:#143A38;
+  --sand:#3A2E14;
+  --gold:#FFC857;
+  --gold-soft:#3A3118;
+  --pg:#5B93FF;
+  --pg2:#2DD4BF;
+  --accent:#FF7A95;
+  --danger:#FF7276;
+  --shadow:0 16px 40px -24px rgba(0,0,0,.65),0 2px 10px rgba(0,0,0,.25);
+  --shadow-lg:0 30px 80px -30px rgba(0,0,0,.75);
+  background:
+    radial-gradient(900px 520px at 0% -10%, rgba(91,147,255,.22), transparent 60%),
+    radial-gradient(900px 520px at 100% 0%, rgba(45,212,191,.14), transparent 58%),
+    radial-gradient(900px 520px at 50% 110%, rgba(255,200,87,.12), transparent 62%),
+    linear-gradient(180deg,#0B1220 0%,#0F1829 55%,#111C31 100%) !important;
+}
+/* Typography / readability */
+html{font-size:16px}
+body, button, input, select, textarea{font-size:15px}
+p, li, .hint, .mut, .sub, .adv-sub, .vs-small, .tts-note, .ttl-sub, .desc{line-height:1.6}
+h1,h2,h3,h4,.adv-title,.ttl{letter-spacing:-.02em}
+.adv-title{font-size:clamp(30px,4vw,48px) !important;line-height:1.08 !important;color:var(--ink) !important}
+.adv-sub{font-size:16px !important;color:var(--ink2) !important;max-width:900px}
+.sec-head h3,.panel-head h4,.card h4{font-size:20px !important;color:var(--ink)}
+.mut,.hint,.sub{color:var(--mut) !important;font-size:13px !important}
+/* Surfaces */
+.panel,.card,.kpi,.live-card,.cat-card,.pulse-card,.idea-card,.app-card,.adv-card,.dev-card,.sec-card,.client-card,.proj-card,.inventory-card,.lead-card,.task-card{
+  background:linear-gradient(180deg,color-mix(in oklab,var(--panel) 96%,white 4%),var(--panel)) !important;
+  border:1px solid var(--line) !important;
+  box-shadow:var(--shadow) !important;
+  border-radius:var(--r) !important;
+}
+body[data-theme="dark"] .panel,body[data-theme="dark"] .card,body[data-theme="dark"] .kpi,body[data-theme="dark"] .live-card,body[data-theme="dark"] .cat-card,body[data-theme="dark"] .pulse-card,body[data-theme="dark"] .idea-card,body[data-theme="dark"] .app-card,body[data-theme="dark"] .adv-card,body[data-theme="dark"] .dev-card{
+  background:linear-gradient(180deg,color-mix(in oklab,var(--panel) 92%,#22365b 8%),var(--panel)) !important;
+  border-color:var(--line) !important;
+}
+.panel:hover,.card:hover,.live-card:hover,.cat-card:hover,.pulse-card:hover,.idea-card:hover,.app-card:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-lg) !important;
+  border-color:color-mix(in oklab,var(--pg) 28%,var(--line)) !important;
+}
+/* Buttons/inputs */
+.btn{min-height:44px;padding:10px 16px !important;font-size:14px !important;font-weight:700 !important;border-radius:12px !important}
+.btn.primary{background:linear-gradient(135deg,var(--pg),#4F8CFF) !important;color:#fff !important;border:0 !important;box-shadow:0 12px 28px -14px rgba(37,99,235,.7) !important}
+.btn.gold{background:linear-gradient(135deg,#FFD05A,var(--gold)) !important;color:#1B2540 !important;border:0 !important}
+.btn.ghost,button.ghost{background:color-mix(in oklab,var(--panel) 88%,var(--bg) 12%) !important;color:var(--ink) !important;border:1px solid var(--line) !important}
+.btn:hover{transform:translateY(-1px)}
+input,select,textarea,.adv-search,.nav-page-search{font-size:14px !important;color:var(--ink) !important;background:color-mix(in oklab,var(--panel) 92%,var(--bg) 8%) !important;border:1px solid var(--line) !important;border-radius:12px !important}
+input:focus,select:focus,textarea:focus,.adv-search:focus,.nav-page-search:focus{outline:none !important;border-color:color-mix(in oklab,var(--pg) 55%,var(--line)) !important;box-shadow:0 0 0 4px color-mix(in oklab,var(--pg) 16%,transparent) !important}
+/* Header/nav */
+header{background:color-mix(in oklab,var(--bg) 82%,transparent) !important;backdrop-filter:blur(18px) saturate(1.2) !important;border-bottom:1px solid color-mix(in oklab,var(--line) 80%,transparent) !important}
+.brand .logo{width:46px;height:46px !important;border-radius:14px !important;background:linear-gradient(135deg,var(--pg),var(--pg2)) !important;color:#fff !important;box-shadow:0 12px 28px -14px rgba(37,99,235,.8) !important;font-size:14px !important}
+.brand h1{font-size:22px !important}
+.brand p{font-size:11px !important;color:var(--mut) !important;letter-spacing:1.4px !important}
+.hwrap-nav #nav{background:color-mix(in oklab,var(--panel) 78%,var(--bg) 22%) !important;border:1px solid var(--line) !important;border-radius:18px !important;padding:8px !important;gap:8px !important;box-shadow:var(--shadow) !important}
+#nav > button[data-view], #navMoreBtn{
+  min-height:48px !important;padding:10px 14px !important;border-radius:14px !important;
+  font-size:14px !important;font-weight:700 !important;color:var(--ink2) !important;
+  background:color-mix(in oklab,var(--panel) 90%,var(--bg) 10%) !important;
+  border:1px solid transparent !important;
+}
+#nav .nav-ic, #navMoreBtn .nav-ic{
+  width:30px !important;height:30px !important;border-radius:10px !important;font-size:16px !important;
+  display:inline-grid !important;place-items:center !important;
+  background:linear-gradient(180deg,color-mix(in oklab,var(--pg) 12%,var(--panel)),color-mix(in oklab,var(--pg2) 10%,var(--panel))) !important;
+  color:var(--pg) !important;border:1px solid color-mix(in oklab,var(--pg) 15%,var(--line)) !important;opacity:1 !important;
+}
+#nav > button[data-view]:hover,#navMoreBtn:hover{background:color-mix(in oklab,var(--pg) 8%,var(--panel)) !important;color:var(--ink) !important;border-color:color-mix(in oklab,var(--pg) 20%,var(--line)) !important;transform:translateY(-1px)}
+html body:not(.bcs-native) #nav > button.on,html body:not(.bcs-native) #navMoreBtn.on{
+  background:linear-gradient(135deg,var(--pg),#4F8CFF 55%,var(--pg2)) !important;
+  color:#fff !important;border-color:transparent !important;box-shadow:0 14px 30px -14px rgba(37,99,235,.75) !important;
+}
+html body:not(.bcs-native) #nav > button.on .nav-ic,html body:not(.bcs-native) #navMoreBtn.on .nav-ic{background:rgba(255,255,255,.18) !important;color:#fff !important;border-color:rgba(255,255,255,.24) !important}
+html body:not(.bcs-native) #nav > button.on::before{bottom:-10px !important;height:4px !important;background:linear-gradient(90deg,transparent,#FFD05A,#fff,#FFD05A,transparent) !important;box-shadow:0 0 16px rgba(255,208,90,.8) !important}
+.nav-fire{font-size:14px !important;filter:drop-shadow(0 0 8px rgba(255,120,60,.75)) !important}
+/* More panel */
+#navMorePanel{background:color-mix(in oklab,var(--panel) 96%,var(--bg) 4%) !important;border:1px solid var(--line) !important;border-radius:18px !important;box-shadow:var(--shadow-lg) !important;padding:12px !important}
+#navMorePanel .nav-more-head b{font-size:16px !important}
+#navMorePanel .nav-more-head span{font-size:11px !important;color:var(--mut) !important;text-transform:none !important;letter-spacing:0 !important;font-weight:700 !important}
+#navMorePanel [data-view]{min-height:46px !important;padding:10px 12px !important;border-radius:12px !important;font-size:14px !important;font-weight:650 !important;color:var(--ink) !important}
+#navMorePanel [data-view]:hover{background:color-mix(in oklab,var(--pg) 8%,var(--panel)) !important}
+#navMorePanel [data-view].in-bar{background:color-mix(in oklab,var(--pg) 10%,var(--panel)) !important}
+#navMorePanel [data-view].on{background:linear-gradient(135deg,color-mix(in oklab,var(--pg) 18%,var(--panel)),color-mix(in oklab,var(--pg2) 14%,var(--panel))) !important;border:1px solid color-mix(in oklab,var(--pg) 25%,var(--line)) !important}
+#navMorePanel .nav-ic{width:28px !important;height:28px !important;border-radius:9px !important;display:inline-grid !important;place-items:center !important;background:color-mix(in oklab,var(--pg) 10%,var(--panel)) !important;color:var(--pg) !important}
+.nav-pin-toggle{width:30px !important;height:30px !important;border-radius:10px !important;font-size:18px !important;font-weight:800 !important}
+/* Dark readability fixes */
+body[data-theme="dark"] .mut,body[data-theme="dark"] .hint,body[data-theme="dark"] .sub,body[data-theme="dark"] .adv-sub,body[data-theme="dark"] p{color:var(--ink2) !important}
+body[data-theme="dark"] .btn.ghost,body[data-theme="dark"] button.ghost{background:color-mix(in oklab,var(--panel) 85%,#22365b 15%) !important;color:var(--ink) !important;border-color:var(--line) !important}
+body[data-theme="dark"] #navMorePanel [data-view].on .nav-ic{color:#fff !important}
+/* Small text bump globally */
+.sec-title,.card-title,.kpi-v,.stat-v{color:var(--ink)}
+.kpi-v,.stat-v{font-size:clamp(28px,3vw,40px) !important}
+.kpi-l,.stat-l,.label{font-size:12px !important;font-weight:700 !important;letter-spacing:.06em !important;color:var(--mut) !important}
+/* mobile */
+@media(max-width:900px){
+  .adv-title{font-size:34px !important}
+  #nav > button[data-view],#navMoreBtn{min-height:44px !important;padding:9px 12px !important;font-size:13px !important}
+  #nav .nav-ic{width:26px !important;height:26px !important;font-size:14px !important}
+}
+</style>
+<style>
+/* BCS workflow/page flow */
+.page-flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0 18px}
+.page-flow .step-card{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:color-mix(in oklab,var(--panel) 92%,var(--pg) 8%);color:var(--ink);text-decoration:none;cursor:pointer;transition:.18s}
+.page-flow .step-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:color-mix(in oklab,var(--pg) 30%,var(--line))}
+.page-flow .step-n{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;font:800 12px/1 'DM Sans',sans-serif;background:linear-gradient(135deg,var(--pg),var(--pg2));color:#fff;flex:none}
+.page-flow .step-card b{display:block;font-size:13px;line-height:1.2;margin-bottom:2px;color:var(--ink)}
+.page-flow .step-card span{display:block;font-size:11.5px;line-height:1.4;color:var(--ink2)}
+.page-flow .step-card.is-next{background:linear-gradient(135deg,color-mix(in oklab,var(--pg) 14%,var(--panel)),color-mix(in oklab,var(--gold) 12%,var(--panel)));border-color:color-mix(in oklab,var(--pg) 30%,var(--line))}
+.page-jump{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 16px}
+.page-jump button,.page-jump a{border:1px solid var(--line);background:var(--panel);color:var(--ink2);padding:8px 12px;border-radius:999px;font:700 12px 'DM Sans',sans-serif;cursor:pointer}
+.page-jump button:hover,.page-jump a:hover{color:var(--ink);border-color:color-mix(in oklab,var(--pg) 25%,var(--line));background:color-mix(in oklab,var(--pg) 7%,var(--panel))}
+.section-anchor{scroll-margin-top:92px}
+</style>
+<style>
+/* Auctions tracker */
+#view-auctions .auc-card{transition:.18s ease}
+#view-auctions .auc-card:hover{transform:translateY(-2px)}
+#view-auctions .pill{display:inline-flex;align-items:center;gap:4px;padding:4px 9px;border-radius:999px;font:700 11px/1 'DM Sans',sans-serif;background:color-mix(in oklab,var(--panel) 88%,var(--bg) 12%);border:1px solid var(--line);color:var(--ink2);white-space:nowrap}
+#view-auctions .auc-sources a{white-space:nowrap}
+</style>
 </head>
 <style id="bcs-mkt-daily-css">
 /* ===== v177 · social daily plan, custom ideas, day-plan interlink ===== */
@@ -17359,7 +17544,8 @@ body .toolbar,body .links-toolbar,body .filter-bar{
   grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;
   padding-top:6px!important;border-top:1px solid var(--line)!important;
 }
-#navMorePanel .nav-more-group[data-more-group="Daily desk"]{border-top:0!important;padding-top:0!important}
+#navMorePanel .nav-more-group[data-more-group="1. Start here"]{border-top:0!important;padding-top:0!important}
+#navMorePanel .nav-more-group-title{background:linear-gradient(90deg,color-mix(in oklab,var(--pg) 12%,transparent),transparent);padding:4px 8px;border-radius:8px}
 #navMorePanel .nav-more-group-title{
   grid-column:1/-1!important;font-size:10.5px!important;font-weight:800!important;
   letter-spacing:.14em!important;text-transform:uppercase!important;
@@ -17406,13 +17592,13 @@ body .view .hero-road h3{font-size:11px!important}
 #navMorePanel .nav-more-head span{font-size:10.5px!important}
 .nav-pin-txt{flex:1;min-width:0}
 .nav-pin-toggle{
-  flex:0 0 auto;margin-left:auto;border:1px solid var(--line)!important;background:var(--panel-2,#fff)!important;
-  color:var(--ink2)!important;border-radius:999px!important;padding:4px 9px!important;
-  font-size:10px!important;font-weight:800!important;letter-spacing:.02em!important;cursor:pointer;
-  line-height:1.2!important;white-space:nowrap!important;
+  flex:0 0 auto;margin-left:auto;width:26px;height:26px;border:1px solid var(--line)!important;background:var(--panel-2,#fff)!important;
+  color:var(--ink2)!important;border-radius:8px!important;padding:0!important;
+  font-size:16px!important;font-weight:700!important;cursor:pointer;
+  line-height:1!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
 }
 #navMorePanel [data-view].in-bar .nav-pin-toggle{background:color-mix(in srgb,var(--gold) 18%,var(--panel))!important;color:var(--ink)!important;border-color:color-mix(in srgb,var(--gold) 45%,var(--line))!important}
-.nav-pin-toggle:hover{border-color:var(--gold)!important;color:var(--ink)!important}
+.nav-pin-toggle:hover{border-color:var(--gold)!important;color:var(--ink)!important;background:color-mix(in srgb,var(--gold) 10%,var(--panel))!important}
 #navMorePanel [data-view]{cursor:grab}
 #navMorePanel [data-view]:active{cursor:grabbing}
 #nav > button[data-view].nav-dragging,#navMorePanel button[data-view].nav-dragging{opacity:.55;transform:scale(.97)}
@@ -17453,6 +17639,109 @@ body:not([data-theme="dark"]) .apps-kicker{color:var(--ink2)!important}
 body:not([data-theme="dark"]) .tick-sep{color:color-mix(in srgb,var(--gold) 72%,transparent)!important}
 body[data-theme="dark"] :is(.jp-show-loc,.dc-ask,.dc-open,.jp-detail-btn,.jp-conf.page){color:var(--gold)!important}
 </style>
+<style id="bcsAdvisoryDesignCss">
+/* ============================================================
+   BCS CONSULTANCY IDENTITY — advisory-led design pass
+   Visual only. No selectors, data, links or behaviours changed.
+   ============================================================ */
+:root{
+  --adv-serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --adv-rule:rgba(231,196,110,.24);
+  --adv-wash:color-mix(in oklab,var(--gold) 7%,transparent);
+}
+body[data-theme="dark"]{--adv-rule:rgba(231,196,110,.22)}
+
+/* --- brand lockup: quieter, more like a practice than a portal --- */
+body .brand h1{font-family:var(--adv-serif)!important;font-size:21px!important;font-weight:600!important;letter-spacing:-.025em!important}
+body .brand p{letter-spacing:.24em!important;font-weight:700!important}
+body .brand .logo{box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 10px 24px -12px color-mix(in oklab,var(--gold) 55%,transparent)!important}
+
+/* --- private client lock screen --- */
+body .lock-card{border-radius:24px!important;border-color:var(--adv-rule)!important;background-image:linear-gradient(180deg,var(--adv-wash),transparent 38%)!important}
+body .lock-card h2{font-family:var(--adv-serif)!important;font-size:34px!important;line-height:1.06!important;letter-spacing:-.03em!important}
+body .lock-card h2 em{font-style:italic!important;color:var(--gold)!important}
+body .lock-kicker{letter-spacing:.26em!important}
+body .lock-brand h1{font-family:var(--adv-serif)!important;font-size:18px!important}
+
+/* --- editorial hero language --- */
+body .intro h2,body .adv-title{font-family:var(--adv-serif)!important;font-weight:500!important;letter-spacing:-.03em!important;line-height:1.08!important}
+body .intro h2 em,body .adv-title em{font-style:italic!important;color:var(--gold)!important}
+body .intro>p,body .adv-sub{font-size:14px!important;line-height:1.6!important;max-width:64ch}
+body .eyebrow{letter-spacing:.24em!important;font-weight:800!important;color:var(--gold)!important}
+body .eyebrow::before{width:22px!important;height:2px!important;background:linear-gradient(90deg,var(--gold),transparent)!important}
+
+/* --- advisory practice band (dashboard) --- */
+.adv-practice{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0 12px;padding:8px 14px;border:1px solid var(--adv-rule);border-radius:14px;background:linear-gradient(100deg,var(--adv-wash),transparent 65%),var(--panel)}
+.adv-practice-label{font:800 10px/1 'DM Sans',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding-right:12px;border-right:1px solid var(--adv-rule);white-space:nowrap}
+.adv-practice button{display:inline-flex;align-items:center;gap:7px;border:0;background:transparent;color:var(--ink2);font:700 12px/1.3 'DM Sans',sans-serif;cursor:pointer;padding:8px;border-radius:9px;min-height:40px}
+.adv-practice button b{font:800 12px/1 var(--adv-serif);color:var(--gold);letter-spacing:.04em}
+.adv-practice button:hover{background:var(--adv-wash);color:var(--ink)}
+@media(max-width:900px){.adv-practice button{min-height:44px}}
+@media(max-width:700px){.adv-practice-label{width:100%;border-right:0;border-bottom:1px solid var(--adv-rule);padding:0 0 7px}.adv-practice button{padding:6px;font-size:11px}}
+
+/* --- consultancy method band (advisory) --- */
+.adv-method{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:0 0 14px;padding:10px 14px;border:1px solid var(--adv-rule);border-radius:14px;background:var(--panel);font:700 11px/1.4 'DM Sans',sans-serif;color:var(--ink2)}
+.adv-method>i{width:18px;height:1px;background:var(--adv-rule);flex:none}
+.adv-method b{color:var(--gold);font-family:var(--adv-serif);font-size:12px;margin-right:3px}
+.adv-method small{margin-left:auto;font-size:10.5px;font-weight:600;color:var(--mut)}
+@media(max-width:700px){.adv-method small{margin-left:0;width:100%}}
+
+/* --- cards: one quiet gold wash, one consistent lift --- */
+body :is(.panel,.dash-card,.cat-card,.pcard,.adv-panel,.auc-card,.mkt-plan-card){
+  background-image:linear-gradient(180deg,var(--adv-wash),transparent 46%);
+  box-shadow:var(--bcs-shadow);
+  border-radius:var(--bcs-r);
+}
+body :is(.panel,.dash-card,.cat-card,.pcard,.adv-panel,.auc-card):hover{box-shadow:var(--bcs-shadow-hi)}
+
+/* --- workflow steps read as engagement stages --- */
+body .page-flow{padding-top:12px;border-top:1px solid var(--adv-rule)}
+body .page-flow::before{content:"RECOMMENDED PATH";grid-column:1/-1;display:block;font:800 10px/1 'DM Sans',sans-serif;letter-spacing:.2em;color:var(--gold);margin-bottom:2px}
+body .page-flow .step-card{padding:13px 14px;border-radius:14px}
+body .page-flow .step-n{font-family:var(--adv-serif);font-size:14px;background:linear-gradient(135deg,var(--gold),var(--gold-deep,#A57B36))!important;color:#14170F}
+body .sec-head h3::before{background:linear-gradient(180deg,var(--gold),var(--gold-deep,#A57B36))!important}
+
+/* --- market desk ticker --- */
+body .hero-ticker{border-color:var(--adv-rule)!important}
+body .ticker-live{letter-spacing:.16em!important}
+
+/* --- iPhone 15 Pro · app-like consultancy shell (393 × 852, 3×) --- */
+@media (max-width:430px){
+  body.bcs-native{--bcs-tabbar-h:66px}
+  body.bcs-native .bcs-tabbar{padding:6px 10px calc(8px + var(--bcs-safe-b));box-shadow:0 -16px 34px -24px rgba(0,0,0,.65)}
+  body.bcs-native #nav > button.bcs-tab,
+  body.bcs-native #nav > .nav-more-wrap > #navMoreBtn{min-height:50px !important;border-radius:15px !important;gap:2px !important}
+  body.bcs-native #nav > button.bcs-tab.on,
+  body.bcs-native #nav > .nav-more-wrap > #navMoreBtn.on{box-shadow:inset 0 2px 0 var(--gold) !important}
+  body.bcs-native #navMorePanel{grid-template-columns:repeat(2,minmax(0,1fr)) !important;border-radius:26px !important;padding:14px !important}
+  body.bcs-native #navMorePanel [data-view]{min-height:50px !important;font-size:12px !important}
+  body.bcs-native .hwrap-top{padding:10px 12px !important}
+  body.bcs-native .hwrap-top .brand h1{font-size:16px !important;letter-spacing:-.02em !important}
+  body.bcs-native .hwrap-top .hbtns :is(.btn,.icon-btn){min-height:40px !important}
+  body.bcs-native :is(.btn,.icon-btn,select){min-height:44px !important}
+  body.bcs-native .intro h2{font-size:30px !important;line-height:1.08 !important}
+  body.bcs-native .intro>p,body.bcs-native .adv-sub{font-size:13px !important;max-width:100% !important}
+  body.bcs-native .adv-practice,
+  body.bcs-native .adv-method{
+    flex-wrap:nowrap !important;overflow-x:auto !important;scroll-snap-type:x proximity !important;
+    -webkit-overflow-scrolling:touch !important;scrollbar-width:none !important;
+  }
+  body.bcs-native .adv-practice::-webkit-scrollbar,
+  body.bcs-native .adv-method::-webkit-scrollbar{display:none !important}
+  body.bcs-native .adv-practice-label{display:none !important}
+  body.bcs-native .adv-practice button,
+  body.bcs-native .adv-method > span{scroll-snap-align:start;white-space:nowrap !important;flex:0 0 auto !important;min-height:44px !important}
+  body.bcs-native .adv-practice button:active{transform:scale(.97)}
+  body.bcs-native .adv-method > i{display:none !important}
+  body.bcs-native .adv-method small{flex:0 0 auto !important;white-space:nowrap !important}
+  body.bcs-native :is(.panel,.dash-card,.cat-card,.pcard,.adv-panel,.auc-card){border-radius:16px !important}
+  body.bcs-native .page-flow{grid-template-columns:1fr !important}
+  body.bcs-native .page-flow::before{font-size:11px !important}
+  body.bcs-native .lock-card{border-radius:26px !important;padding:26px 22px calc(22px + var(--bcs-safe-b)) !important}
+  body.bcs-native .lock-card h2{font-size:31px !important}
+  body.bcs-native .lock-card :is(button,.btn){min-height:46px !important}
+}
+</style>
 <body class="locked">
 <script>/* early theme bootstrap — prevents a light flash before initExperience runs */try{var _t=localStorage.getItem('bcs_theme_v1')||'dark';document.body.dataset.theme=_t;document.documentElement.dataset.theme=_t;document.documentElement.style.colorScheme=_t;}catch(e){}</script>
 <a class="skip-link" href="#mainContent">Skip to workspace</a>
@@ -17488,9 +17777,9 @@ body[data-theme="dark"] :is(.jp-show-loc,.dc-ask,.dc-open,.jp-detail-btn,.jp-con
   <div class="lock-card" id="lockCard">
     <div class="lock-brand">
       <div class="logo">BCS</div>
-      <div><h1>Business City Square</h1><p>Jaipur property intelligence</p></div>
+      <div><h1>Business City Square</h1><p>Jaipur real estate advisory</p></div>
     </div>
-    <div class="lock-kicker">Private advisory desk</div>
+    <div class="lock-kicker">Private client advisory desk</div>
     <h2>Welcome back,<br><em>Ajay.</em></h2>
     <p class="lock-sub">Admin sees the whole desk. Each advisor gets a private portal ID and password — assigned projects, clients and payouts only.</p>
     <div class="lock-roles" id="lockRoles">
@@ -17635,7 +17924,7 @@ try{
       <div class="logo">BCS</div>
       <div>
         <h1>Business City Square</h1>
-        <p>Pink City • Property Intelligence</p>
+        <p>Jaipur · Real Estate Advisory</p>
       </div>
     </div>
     
@@ -17690,62 +17979,69 @@ try{
   <div class="hwrap hwrap-nav">
     <nav id="nav" role="navigation" aria-label="BCS desk pages">
       <button type="button" data-view="dashboard" class="on" aria-current="page" aria-label="Dashboard"><span class="nav-ic" aria-hidden="true">⌂</span><span class="nav-lbl">Dashboard</span></button>
+      <button type="button" data-view="dayplan" aria-label="Day Plan"><span class="nav-ic" aria-hidden="true">◷</span><span class="nav-lbl">Day Plan</span></button>
+      <button type="button" data-view="leadgen" aria-label="Lead Engine"><span class="nav-ic" aria-hidden="true">🎯</span><span class="nav-lbl">Leads</span></button>
+      <button type="button" data-view="clients" aria-label="Clients"><span class="nav-ic" aria-hidden="true">◐</span><span class="nav-lbl">Clients</span></button>
       <button type="button" data-view="advisory" aria-label="Advisory"><span class="nav-ic" aria-hidden="true">✦</span><span class="nav-lbl">Advisory</span></button>
       <button type="button" data-view="projects" aria-label="Projects"><span class="nav-ic" aria-hidden="true">▣</span><span class="nav-lbl">Projects</span></button>
-      <button type="button" data-view="developers" aria-label="Developers"><span class="nav-ic" aria-hidden="true">◈</span><span class="nav-lbl">Developers</span></button>
-      <button type="button" data-view="clients" aria-label="Clients"><span class="nav-ic" aria-hidden="true">◐</span><span class="nav-lbl">Clients</span></button>
-      <button type="button" data-view="leadgen" aria-label="Lead Engine"><span class="nav-ic" aria-hidden="true">🎯</span><span class="nav-lbl">Leads</span></button>
-      <button type="button" data-view="dayplan" aria-label="Day Plan"><span class="nav-ic" aria-hidden="true">◷</span><span class="nav-lbl">Day Plan</span></button>
-      <button type="button" data-view="pulse" aria-label="Market Pulse"><span class="nav-ic" aria-hidden="true">↗</span><span class="nav-lbl">Market Pulse</span><span class="nav-dot gold" aria-hidden="true"></span></button>
-      <button type="button" data-view="news" aria-label="News"><span class="nav-ic" aria-hidden="true">📰</span><span class="nav-lbl">News</span><span class="nav-dot" aria-hidden="true"></span></button>
-      <button type="button" data-view="calc" aria-label="Calculators"><span class="nav-ic" aria-hidden="true">⌘</span><span class="nav-lbl">Calculators</span></button>
       <button type="button" data-view="inventory" aria-label="Plot Inventory"><span class="nav-ic" aria-hidden="true">▦</span><span class="nav-lbl">Inventory</span></button>
       <button type="button" data-view="pipeline" aria-label="Sales Pipeline"><span class="nav-ic" aria-hidden="true">⇢</span><span class="nav-lbl">Pipeline</span></button>
+      <button type="button" data-view="pulse" aria-label="Market Pulse"><span class="nav-ic" aria-hidden="true">↗</span><span class="nav-lbl">Market Pulse</span><span class="nav-fire" aria-hidden="true">🔥</span></button>
+      <button type="button" data-view="news" aria-label="News"><span class="nav-ic" aria-hidden="true">📰</span><span class="nav-lbl">News</span><span class="nav-fire" aria-hidden="true">🔥</span></button>
+      <button type="button" data-view="auctions" aria-label="Auctions"><span class="nav-ic" aria-hidden="true">🔨</span><span class="nav-lbl">Auctions</span></button>
+      <button type="button" data-view="calc" aria-label="Calculators"><span class="nav-ic" aria-hidden="true">⌘</span><span class="nav-lbl">Calculators</span></button>
+      <button type="button" data-view="finance" aria-label="Finance"><span class="nav-ic" aria-hidden="true">💰</span><span class="nav-lbl">Finance</span></button>
       <div class="nav-more-wrap">
         <button type="button" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" title="All pages" aria-label="More pages"><span class="nav-ic" aria-hidden="true">⋯</span><span class="nav-lbl">More</span><span class="nav-chev" aria-hidden="true">▾</span></button>
         <div class="nav-more-panel" id="navMorePanel" hidden>
-          <div class="nav-more-head"><b>All pages</b><span>drag to bar · or use + Add to bar</span></div>
+          <div class="nav-more-head"><b>All pages</b><span>all pages · + add / − remove from bar</span></div>
           <input type="search" id="navPageSearch" class="nav-page-search" placeholder="Jump to a page…  /" aria-label="Search all pages" autocomplete="off" spellcheck="false">
-          <div class="nav-more-group" data-more-group="Daily desk">
-            <div class="nav-more-group-title">Daily desk</div>
+          <div class="nav-more-group" data-more-group="1. Start here">
+            <div class="nav-more-group-title">1. Start here</div>
             <button type="button" class="more-pinned" data-view="dashboard"><span class="nav-ic" aria-hidden="true">⌂</span>Dashboard</button>
+            <button type="button" class="more-pinned" data-view="dayplan"><span class="nav-ic" aria-hidden="true">◷</span>Day Plan</button>
+            <button type="button" class="more-pinned" data-view="leadgen"><span class="nav-ic" aria-hidden="true">🎯</span>Leads</button>
+            <button type="button" class="more-pinned" data-view="clients"><span class="nav-ic" aria-hidden="true">◐</span>Clients</button>
+          </div>
+          <div class="nav-more-group" data-more-group="2. Advise &amp; match">
+            <div class="nav-more-group-title">2. Advise &amp; match</div>
             <button type="button" class="more-pinned" data-view="advisory"><span class="nav-ic" aria-hidden="true">✦</span>Advisory</button>
             <button type="button" class="more-pinned" data-view="projects"><span class="nav-ic" aria-hidden="true">▣</span>Projects</button>
             <button type="button" class="more-pinned" data-view="developers"><span class="nav-ic" aria-hidden="true">◈</span>Developers</button>
-            <button type="button" class="more-pinned" data-view="clients"><span class="nav-ic" aria-hidden="true">◐</span>Clients</button>
-            <button type="button" class="more-pinned" data-view="leadgen"><span class="nav-ic" aria-hidden="true">🎯</span>Leads</button>
-            <button type="button" class="more-pinned" data-view="dayplan"><span class="nav-ic" aria-hidden="true">◷</span>Day Plan</button>
-            <button type="button" class="more-pinned" data-view="pulse"><span class="nav-ic" aria-hidden="true">↗</span>Market Pulse</button>
-            <button type="button" class="more-pinned" data-view="news"><span class="nav-ic" aria-hidden="true">📰</span>News</button>
-            <button type="button" data-view="health"><span class="nav-ic" aria-hidden="true">♥</span>Health</button>
-          </div>
-          <div class="nav-more-group" data-more-group="Deal desk">
-            <div class="nav-more-group-title">Deal desk</div>
             <button type="button" class="more-pinned" data-view="inventory"><span class="nav-ic" aria-hidden="true">▦</span>Plot Inventory</button>
+            <button type="button" data-view="jaipur"><span class="nav-ic" aria-hidden="true">🗺</span>Jaipur Map</button>
+          </div>
+          <div class="nav-more-group" data-more-group="3. Close the deal">
+            <div class="nav-more-group-title">3. Close the deal</div>
             <button type="button" class="more-pinned" data-view="pipeline"><span class="nav-ic" aria-hidden="true">⇢</span>Sales Pipeline</button>
+            <button type="button" data-view="finance"><span class="nav-ic" aria-hidden="true">💰</span>Finance</button>
             <button type="button" data-view="exchange"><span class="nav-ic" aria-hidden="true">⇄</span>Exchange</button>
+            <button type="button" data-view="resale"><span class="nav-ic" aria-hidden="true">⇌</span>Resale</button>
             <button type="button" data-view="advisors"><span class="nav-ic" aria-hidden="true">◎</span>Advisors</button>
             <button type="button" data-view="partners"><span class="nav-ic" aria-hidden="true">◉</span>Partners</button>
-            <button type="button" data-view="finance"><span class="nav-ic" aria-hidden="true">💰</span>Finance</button>
-            <button type="button" data-view="resale"><span class="nav-ic" aria-hidden="true">⇌</span>Resale</button>
           </div>
-          <div class="nav-more-group" data-more-group="Studio &amp; growth">
-            <div class="nav-more-group-title">Studio &amp; growth</div>
+          <div class="nav-more-group" data-more-group="4. Market &amp; tools">
+            <div class="nav-more-group-title">4. Market &amp; tools</div>
+            <button type="button" class="more-pinned" data-view="pulse"><span class="nav-ic" aria-hidden="true">↗</span>Market Pulse</button>
+            <button type="button" class="more-pinned" data-view="news"><span class="nav-ic" aria-hidden="true">📰</span>News</button>
+            <button type="button" data-view="auctions"><span class="nav-ic" aria-hidden="true">🔨</span>Auctions</button>
             <button type="button" class="more-pinned" data-view="calc"><span class="nav-ic" aria-hidden="true">⌘</span>Calculators</button>
             <button type="button" data-view="tax"><span class="nav-ic" aria-hidden="true">₹</span>Tax &amp; Advice</button>
             <button type="button" data-view="terminology"><span class="nav-ic" aria-hidden="true">Aa</span>Terminology</button>
-            <button type="button" data-view="links"><span class="nav-ic" aria-hidden="true">⛓</span>Links</button>
             <button type="button" data-view="templates"><span class="nav-ic" aria-hidden="true">▤</span>Templates</button>
-            <button type="button" data-view="podcasts"><span class="nav-ic" aria-hidden="true">🎙</span>Podcasts</button>
-            <button type="button" data-view="social"><span class="nav-ic" aria-hidden="true">🌐</span>Social Media</button>
+            <button type="button" data-view="links"><span class="nav-ic" aria-hidden="true">⛓</span>Links</button>
             <button type="button" data-view="sheets"><span class="nav-ic" aria-hidden="true">📊</span>Google Sheets</button>
-            <button type="button" data-view="applications"><span class="nav-ic" aria-hidden="true">▤</span>Applications</button>
-            <button type="button" data-view="whiteboard"><span class="nav-ic" aria-hidden="true">✎</span>BCS EZWrite board</button>
           </div>
-          <div class="nav-more-group" data-more-group="City &amp; systems">
-            <div class="nav-more-group-title">City &amp; systems</div>
-            <button type="button" data-view="jaipur"><span class="nav-ic" aria-hidden="true">🗺</span>Jaipur Map</button>
+          <div class="nav-more-group" data-more-group="5. Create &amp; manage">
+            <div class="nav-more-group-title">5. Create &amp; manage</div>
+            <button type="button" data-view="applications"><span class="nav-ic" aria-hidden="true">▤</span>Applications</button>
+            <button type="button" data-view="social"><span class="nav-ic" aria-hidden="true">🌐</span>Social Media</button>
+            <button type="button" data-view="podcasts"><span class="nav-ic" aria-hidden="true">🎙</span>Podcasts</button>
+            <button type="button" data-view="tts"><span class="nav-ic" aria-hidden="true">🔊</span>Hindi TTS</button>
+            <button type="button" data-view="whiteboard"><span class="nav-ic" aria-hidden="true">✎</span>EZWrite Board</button>
+            <button type="button" data-view="videostudio"><span class="nav-ic" aria-hidden="true">🎬</span>Video Studio</button>
             <button type="button" data-view="analytics"><span class="nav-ic" aria-hidden="true">▥</span>Analytics</button>
+            <button type="button" data-view="health"><span class="nav-ic" aria-hidden="true">♥</span>Health</button>
             <button type="button" data-view="ops"><span class="nav-ic" aria-hidden="true">⌗</span>Operations</button>
           </div>
         </div>
@@ -17811,9 +18107,9 @@ try{
     <div class="intro hero-life">
       <div class="hero-skyline" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 120 V82 Q40 62 80 82 V120 Z M80 120 V55 Q120 30 160 55 V120 Z M160 120 V75 Q200 52 240 75 V120 Z M300 120 V48 Q340 22 380 48 V120 Z M380 120 V68 Q420 46 460 68 V120 Z M520 120 V58 Q560 34 600 58 V120 Z M700 120 V42 Q760 12 820 42 V120 Z M820 120 V66 Q860 46 900 66 V120 Z M1020 120 V52 Q1060 28 1100 52 V120 Z M1180 120 V70 Q1220 50 1260 70 V120 Z M1340 120 V60 Q1380 38 1420 60 V120 Z" fill="rgba(246,242,231,0.10)"/><path d="M0 120 V96 Q360 84 720 96 T1440 96 V120 Z" fill="rgba(10,18,13,0.35)"/></svg></div>
       <div class="intro-main">
-        <div class="eyebrow" id="dashEyebrow">BCS · Jaipur portfolio</div>
-        <h2>Every developer, every plot,<br><em>one clear view.</em></h2>
-        <p>Prices, approvals, people aur payments — ek hi control room. Jo change save hota hai, wahi sab pages mein live reflect hota hai.</p>
+        <div class="eyebrow" id="dashEyebrow">BCS · Jaipur advisory desk</div>
+        <h2>The right property,<br><em>for the right client.</em></h2>
+        <p>Budget, approvals, inventory aur payments — ek hi advisory desk. Har recommendation source-backed aur client-ready.</p>
         <button type="button" id="heroFocusLine" class="hero-focus" aria-live="polite"><span class="hero-focus-dot"></span><span>Today ka focus load ho raha hai…</span></button>
         <div class="intro-cta hero-actions">
           <button class="btn primary" data-goto="advisory">Start client advisory →</button>
@@ -17823,7 +18119,7 @@ try{
           <button class="btn ghost" data-goto="advisors" type="button">Advisors</button>
           <button class="btn ghost" data-goto="leadgen" type="button">🎯 Leads</button>
           <button class="btn ghost" data-goto="dayplan" type="button">Day plan</button>
-          <span class="hero-cta-note">Budget · timeline · shortlist · presentation</span>
+          <span class="hero-cta-note">Discover · evaluate · shortlist · present</span>
         </div>
       </div>
       <div class="intro-right">
@@ -17836,6 +18132,13 @@ try{
         </div>
         <div class="hero-pulse" id="heroRoadPulse"></div>
       </div>
+    </div>
+    <div class="adv-practice" aria-label="Advisory practice standards">
+      <span class="adv-practice-label">Advisory standard</span>
+      <button type="button" data-goto="projects"><b>01</b> Verified project file</button>
+      <button type="button" data-goto="advisory"><b>02</b> Need-based shortlist</button>
+      <button type="button" data-goto="inventory"><b>03</b> Live inventory check</button>
+      <button type="button" data-goto="clients"><b>04</b> Client-ready handover</button>
     </div>
     <div class="hero-ticker" aria-label="Live Jaipur market ticker">
       <span class="ticker-live"><i></i><span class="tl-txt">LIVE</span></span>
@@ -18729,9 +19032,9 @@ try{
   <section class="view" id="view-advisory">
     <div class="adv-head">
       <div>
-        <div class="eyebrow">BCS · client advisory desk</div>
+        <div class="eyebrow">BCS · consultancy practice</div>
         <h2 class="adv-title">Match the client,<br><em>not just the inventory.</em></h2>
-        <p class="adv-sub">Budget, timeline, property type aur corridor set karo — sirf wahi projects dikhenge jo fit hain. Shortlist banao aur client ko clean sheet mein present karo.</p>
+        <p class="adv-sub">Structured discovery, evidence-backed evaluation aur clean client presentation — sirf wahi projects jo sach mein fit hain.</p>
       </div>
       <div class="adv-head-actions">
         <button class="btn ghost sm" data-goto="whiteboard">✎ Present board</button>
@@ -18740,6 +19043,14 @@ try{
         <button class="btn ghost" id="advSaveBrief">Save client brief</button>
         <button class="btn primary" id="advPresentTop" disabled>Present shortlist <span class="pill" id="advPresentCount">0</span></button>
       </div>
+    </div>
+
+    <div class="adv-method" aria-label="Consultancy method">
+      <span><b>01</b> Discover</span><i aria-hidden="true"></i>
+      <span><b>02</b> Evaluate</span><i aria-hidden="true"></i>
+      <span><b>03</b> Shortlist</span><i aria-hidden="true"></i>
+      <span><b>04</b> Present</span>
+      <small>Every recommendation stays source-backed &amp; client-ready.</small>
     </div>
 
     <div class="saved-briefs" id="savedBriefs"></div>
@@ -19060,6 +19371,96 @@ try{
       <div class="ideas-filter" id="ideasFilter"></div>
       <div class="ideas-grid" id="ideasGrid"></div>
     </div>
+  </section>
+
+  <!-- ============ AUCTIONS TRACKER ============ -->
+  <section class="view" id="view-auctions">
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · auction watch</div>
+        <h2 class="adv-title">Auction properties,<br><em>date-wise, verified.</em></h2>
+        <p class="adv-sub">Track Jaipur bank, JDA, UDH, LSG, RIICO and other auction properties in one place. Add source links, verify details, and share weekly auction updates with clients through videos or messages.</p>
+      </div>
+      <div class="adv-head-actions">
+        <button class="btn ghost sm" id="aucRefreshStatusBtn" title="Recalculate upcoming/today/closed by date">↻ Refresh status</button>
+        <button class="btn ghost sm" id="aucCopyWeeklyBtn" title="Copy weekly auction brief">📋 Weekly brief</button>
+        <button class="btn primary" id="aucAddBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+          Add auction
+        </button>
+      </div>
+    </div>
+
+    <div class="auc-sources panel" style="margin-bottom:14px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+        <div><b style="font-size:15px">Official & reference portals</b><div class="mut" style="font-size:12px">Use official portals for final notice/terms. Aggregators are useful for discovery — always open the source notice and verify dates, reserve, EMD, possession, and documents before sharing.</div></div>
+      </div>
+      <div style="font:700 11px 'DM Sans',sans-serif;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin:4px 0 8px">Official / primary</div>
+      <div class="page-jump" style="margin:0 0 12px">
+        <a href="https://udhonline.rajasthan.gov.in/Portal/PortalAuctionList" target="_blank" rel="noopener" data-no-frame="1">JDA / UDH Auctions</a>
+        <a href="https://jdaauction.databanks.in/" target="_blank" rel="noopener" data-no-frame="1">JDA Auction (Databanks)</a>
+        <a href="https://lsgeauction.rajasthan.gov.in/" target="_blank" rel="noopener" data-no-frame="1">LSG E-Auction</a>
+        <a href="https://riico.rajasthan.gov.in/eAuction.aspx?menu_id=25" target="_blank" rel="noopener" data-no-frame="1">RIICO E-Auction</a>
+        <a href="https://ibapi.in/" target="_blank" rel="noopener" data-no-frame="1">IBAPI</a>
+        <a href="https://eauction.gov.in/" target="_blank" rel="noopener" data-no-frame="1">eAuction India</a>
+        <a href="https://baanknet.com/" target="_blank" rel="noopener" data-no-frame="1">BAANKNET</a>
+      </div>
+      <div style="font:700 11px 'DM Sans',sans-serif;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin:4px 0 8px">Statutory / auction platforms</div>
+      <div class="page-jump" style="margin:0 0 12px">
+        <a href="https://bankdrt.com/" target="_blank" rel="noopener" data-no-frame="1">BankDRT</a>
+        <a href="https://foreclosureindia.com/" target="_blank" rel="noopener" data-no-frame="1">Foreclosure India</a>
+        <a href="https://auction.arcil.co.in/" target="_blank" rel="noopener" data-no-frame="1">Arcil Auctions</a>
+        <a href="https://bankeauctions.com/" target="_blank" rel="noopener" data-no-frame="1">C1 India Bank E-Auctions</a>
+        <a href="https://www.mstcecommerce.com/" target="_blank" rel="noopener" data-no-frame="1">MSTC E-Commerce</a>
+      </div>
+      <div style="font:700 11px 'DM Sans',sans-serif;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin:4px 0 8px">Newspaper / notice sources</div>
+      <div class="page-jump" style="margin:0 0 12px">
+        <a href="https://www.bhaskar.com/" target="_blank" rel="noopener" data-no-frame="1">Dainik Bhaskar</a>
+        <a href="https://www.patrika.com/" target="_blank" rel="noopener" data-no-frame="1">Rajasthan Patrika</a>
+        <span class="mut" style="font-size:12px;align-self:center">Check classified/e-auction notice sections for statutory notices.</span>
+      </div>
+      <div style="font:700 11px 'DM Sans',sans-serif;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin:4px 0 8px">Discovery / reference aggregators</div>
+      <div class="page-jump" style="margin:0">
+        <a href="https://bankauctiondeals.com/properties/state/rajasthan/jaipur" target="_blank" rel="noopener" data-no-frame="1">BankAuctionDeals Jaipur</a>
+        <a href="https://www.eauctionsindia.com/city/jaipur" target="_blank" rel="noopener" data-no-frame="1">eAuctionsIndia Jaipur</a>
+        <a href="https://banksauctions.com/properties?district=Jaipur" target="_blank" rel="noopener" data-no-frame="1">BanksAuctions Jaipur</a>
+        <a href="https://eauctionindia.co.in/locations/rajasthan/jaipur/" target="_blank" rel="noopener" data-no-frame="1">eAuctionIndia Jaipur</a>
+        <a href="https://auctionkhoj.com/city/jaipur" target="_blank" rel="noopener" data-no-frame="1">AuctionKhoj Jaipur</a>
+        <a href="https://eauctionhunt.com/bank-auction-property-in/jaipur" target="_blank" rel="noopener" data-no-frame="1">eAuctionHunt Jaipur</a>
+        <a href="https://www.auctionhubindia.com/en/bank-auctions/jaipur" target="_blank" rel="noopener" data-no-frame="1">AuctionHubIndia Jaipur</a>
+        <a href="https://banksauctions.com/blog" target="_blank" rel="noopener" data-no-frame="1">BanksAuctions Blog</a>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-bottom:14px;padding:14px">
+      <div style="display:flex;gap:10px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap">
+        <div>
+          <b style="font-size:14px">Reference snapshot (checked 24 Nov 2026 — verify live)</b>
+          <div class="mut" style="font-size:12px;margin-top:4px">Use these portals for discovery, then confirm the actual auction notice before sharing with clients.</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:10px">
+        <div style="padding:10px;border:1px solid var(--line);border-radius:12px;background:color-mix(in oklab,var(--panel) 92%,var(--bg) 8%)"><b>IBAPI</b><div class="mut" style="font-size:12px">IBA/Ministry of Finance portal for PSB auction properties. Good official starting point for bank auctions.</div></div>
+        <div style="padding:10px;border:1px solid var(--line);border-radius:12px;background:color-mix(in oklab,var(--panel) 92%,var(--bg) 8%)"><b>BankDRT / C1 / MSTC / Arcil</b><div class="mut" style="font-size:12px">Statutory/platform sources for DRT/SARFAESI, bank e-auctions, PSU/ARC listings. Verify each notice on the originating bank/authority.</div></div>
+        <div style="padding:10px;border:1px solid var(--line);border-radius:12px;background:color-mix(in oklab,var(--panel) 92%,var(--bg) 8%)"><b>JDA / UDH / LSG / RIICO</b><div class="mut" style="font-size:12px">Primary government auction sources for Jaipur plots/properties. Use official notice for dates, EMD, BSP/reserve, terms.</div></div>
+        <div style="padding:10px;border:1px solid var(--line);border-radius:12px;background:color-mix(in oklab,var(--panel) 92%,var(--bg) 8%)"><b>Newspapers & aggregators</b><div class="mut" style="font-size:12px">Dainik Bhaskar/Rajasthan Patrika for statutory notices; aggregators for discovery. Always confirm with official source before sharing.</div></div>
+      </div>
+    </div>
+
+    <div class="pipeline-stats" id="aucStats"></div>
+
+    <div class="toolbar" style="gap:10px;flex-wrap:wrap;margin:14px 0">
+      <div class="adv-search" style="flex:1;min-width:220px">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="aucSearch" placeholder="Search property, bank, location, borrower, source…">
+      </div>
+      <select id="aucSourceFilter"><option value="">All sources</option><option>Bank</option><option>JDA</option><option>UDH</option><option>LSG</option><option>RIICO</option><option>RHB</option><option>Court/DRT</option><option>Other</option></select>
+      <select id="aucStatusFilter"><option value="">All statuses</option><option value="upcoming">Upcoming</option><option value="today">Today</option><option value="live">Live</option><option value="closed">Closed</option><option value="postponed">Postponed</option><option value="cancelled">Cancelled</option><option value="unknown">Unknown</option></select>
+      <select id="aucSort"><option value="date-asc">Auction date: soonest</option><option value="date-desc">Auction date: latest</option><option value="updated">Recently updated</option><option value="reserve-desc">Reserve: high to low</option></select>
+      <label class="news-pin-filter"><input type="checkbox" id="aucVerifiedOnly"> Verified only</label>
+    </div>
+
+    <div id="aucList"></div>
   </section>
 
   <!-- ============ IMPORTANT LINKS ============ -->
@@ -19978,6 +20379,98 @@ try{
     </div>
   </section>
 
+  <section class="view" id="view-videostudio">
+    <style>
+      #view-videostudio .vs-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:16px;align-items:start}
+      #view-videostudio .vs-card{min-width:0}
+      #view-videostudio .vs-drop{border:1px dashed color-mix(in oklab,var(--gold,#B8892E) 45%,var(--line,#E2E0D4));background:color-mix(in oklab,var(--panel,#fff) 92%,var(--pg,#0E8A7A) 8%);border-radius:14px;padding:14px}
+      #view-videostudio .vs-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+      #view-videostudio .vs-row label{font-size:11px;font-weight:700;color:var(--ink2,#6B6A52)}
+      #view-videostudio .vs-row input[type="text"],#view-videostudio .vs-row input[type="number"],#view-videostudio .vs-row select,#view-videostudio .vs-row textarea{padding:8px 10px;border-radius:10px;border:1px solid var(--line,#E2E0D4);background:var(--bg,#F7F6EF);color:var(--ink,#2E2D20);font:600 12px 'DM Sans',system-ui,sans-serif}
+      #view-videostudio .vs-row textarea{width:100%;min-height:72px;resize:vertical}
+      #view-videostudio .vs-preview{width:100%;max-width:360px;aspect-ratio:9/16;background:#111;border-radius:16px;overflow:hidden;margin:0 auto;box-shadow:0 16px 40px -20px rgba(0,0,0,.45)}
+      #view-videostudio .vs-preview video,#view-videostudio .vs-preview canvas{width:100%;height:100%;object-fit:cover;display:block}
+      #view-videostudio .vs-small{font-size:11.5px;line-height:1.55;color:var(--ink2,#6B6A52)}
+      #view-videostudio .vs-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}
+      #view-videostudio .vs-step{padding:12px;border-radius:12px;border:1px solid var(--line,#E2E0D4);background:var(--panel,#fff)}
+      #view-videostudio .vs-step b{display:block;font-size:12px;margin-bottom:4px}
+      #view-videostudio .vs-step span{font-size:11px;color:var(--ink2,#6B6A52);line-height:1.45}
+      #view-videostudio .vs-list{font-size:11.5px;color:var(--ink2,#6B6A52);line-height:1.55;margin:8px 0 0;padding-left:18px}
+      #view-videostudio .vs-kv{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+      #view-videostudio .vs-kv > div{display:flex;flex-direction:column;gap:4px}
+      #view-videostudio .vs-progress{height:8px;background:var(--line,#E2E0D4);border-radius:999px;overflow:hidden;margin-top:10px}
+      #view-videostudio .vs-progress i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--pg,#0E8A7A),var(--gold,#B8892E))}
+      @media(max-width:980px){#view-videostudio .vs-grid{grid-template-columns:1fr}#view-videostudio .vs-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+      @media(max-width:560px){#view-videostudio .vs-steps{grid-template-columns:1fr}}
+    </style>
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · local video studio · free</div>
+        <h2 class="adv-title">Simple reel edit,<br><em>local on your device.</em></h2>
+        <p class="adv-sub">3-folder workflow for quick Full HD reels: raw footage, style reference, export. Everything runs locally in browser — no paid API, no credits, no upload required for basic edit/render. Optional AI prompts are provided for your own Gemini/Antigravity workflow.</p>
+      </div>
+      <div class="adv-head-actions">
+        <button type="button" class="btn ghost sm" data-goto="applications">Applications</button>
+        <button type="button" class="btn ghost sm" data-goto="whiteboard">EZWrite</button>
+      </div>
+    </div>
+
+    <div class="vs-steps">
+      <div class="vs-step"><b>Step 1 · 3 folders</b><span>Raw footage, Style reference, export. Keep assets organized.</span></div>
+      <div class="vs-step"><b>Step 2 · Antigravity workspace</b><span>Use the prompt box to plan edits with Gemini/Antigravity (your own free setup).</span></div>
+      <div class="vs-step"><b>Step 3 · Style copy</b><span>Load reference video/image and note colors, pacing, caption style.</span></div>
+      <div class="vs-step"><b>Step 4 · Edit &amp; render</b><span>Trim, text overlay, preview, export Full HD reel (MP4/WebM fallback).</span></div>
+    </div>
+
+    <div class="vs-grid">
+      <div class="panel vs-card">
+        <div class="panel-head"><h4>Preview / Render</h4><span class="hint" id="vsRenderState">Ready</span></div>
+        <div class="vs-preview"><canvas id="vsCanvas" width="1080" height="1920"></canvas></div>
+        <div class="vs-row" style="justify-content:center">
+          <button type="button" class="btn primary sm" id="vsPlayBtn">▶ Preview</button>
+          <button type="button" class="btn ghost sm" id="vsStopBtn">■ Stop</button>
+          <button type="button" class="btn ghost sm" id="vsRenderBtn">Export Full HD</button>
+        </div>
+        <div class="vs-progress" hidden id="vsProgressWrap"><i id="vsProgressBar"></i></div>
+        <div class="vs-small" id="vsStatus" style="margin-top:10px">Import a raw video clip to start. Export uses browser MediaRecorder (local). MP4 preferred when supported; WebM fallback may be used.</div>
+        <video id="vsSourceVideo" playsinline muted style="display:none"></video>
+        <video id="vsRefVideo" playsinline muted controls style="width:100%;margin-top:10px;border-radius:12px;display:none"></video>
+        <img id="vsRefImage" alt="Style reference" style="width:100%;margin-top:10px;border-radius:12px;display:none" />
+      </div>
+
+      <div class="panel vs-card">
+        <div class="panel-head"><h4>Project folders</h4><span class="hint">Local workflow</span></div>
+        <div class="vs-drop">
+          <div class="vs-row"><label>Raw footage</label><input type="file" id="vsRawInput" accept="video/*,image/*,audio/*" multiple></div>
+          <div class="vs-row"><label>Style reference</label><input type="file" id="vsStyleInput" accept="video/*,image/*" multiple></div>
+          <div class="vs-row"><label>Export name</label><input type="text" id="vsExportName" value="bcs-reel-fullhd" style="flex:1;min-width:160px"></div>
+          <div class="vs-small" id="vsFileInfo">No files loaded.</div>
+        </div>
+
+        <div class="panel-head" style="margin-top:14px"><h4>Edit controls</h4><span class="hint">Simple</span></div>
+        <div class="vs-kv">
+          <div><label class="vs-small">Start (sec)</label><input type="number" id="vsStart" min="0" step="0.1" value="0"></div>
+          <div><label class="vs-small">End (sec)</label><input type="number" id="vsEnd" min="0" step="0.1" value="6"></div>
+          <div><label class="vs-small">Caption</label><input type="text" id="vsCaption" value="BCS Jaipur Property Update"></div>
+          <div><label class="vs-small">Caption size</label><input type="number" id="vsCaptionSize" min="24" max="120" value="64"></div>
+        </div>
+        <div class="vs-row"><label class="vs-small">Style notes</label><textarea id="vsStyleNotes" placeholder="Colors, fonts, pacing, transitions, caption style observed from reference..."></textarea></div>
+        <div class="vs-row">
+          <button type="button" class="btn ghost sm" id="vsApplyStyleBtn">Save style notes</button>
+          <button type="button" class="btn ghost sm" id="vsGeminiPromptBtn">Copy Gemini prompt</button>
+        </div>
+
+        <div class="panel-head" style="margin-top:14px"><h4>Free/open-source stack</h4><span class="hint">References</span></div>
+        <ul class="vs-list">
+          <li>Local browser render: Canvas + MediaRecorder (free, no credit).</li>
+          <li>Optional local tools: FFmpeg, Whisper, Edge TTS (user-installed).</li>
+          <li>Optional AI workspace: Antigravity + Gemini 3.8 Flash (use your own free/account setup; no key stored by BCS).</li>
+          <li>Refs: Roo Code, GSD, Lemo Opuscar, Hyperframes (for workflow inspiration).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section class="view" id="view-whiteboard">
     <div class="adv-head">
       <div>
@@ -20092,6 +20585,133 @@ try{
         <div class="ezb-toolbox-grid" id="ezbToolboxGrid"></div>
         <div class="ezb-note"><b>BCS privacy rule:</b> team names, client names, phone numbers and project documents belong in this local board, never in a cloud whiteboard. The official BenQ launcher stays separate because BenQ blocks in-app framing and needs its own account.</div>
       </div>
+    </div>
+  </section>
+
+  <section class="view" id="view-tts">
+    <style>
+      #view-tts .tts-layout{display:grid;grid-template-columns:1.65fr 1fr;gap:16px;align-items:start;margin-bottom:16px}
+      #view-tts .tts-main,#view-tts .tts-side,#view-tts .tts-export{min-width:0}
+      #view-tts .tts-text{width:100%;min-height:320px;resize:vertical;padding:14px 16px;border-radius:14px;border:1px solid var(--line,#E2E0D4);background:var(--bg,#F7F6EF);color:var(--ink,#2E2D20);font:500 15px/1.7 'DM Sans',system-ui,sans-serif}
+      #view-tts .tts-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+      #view-tts .tts-status{margin-top:10px;font-size:12px;line-height:1.55;color:var(--ink2,#6B6A52);padding:10px 12px;border-radius:10px;border:1px solid var(--line,#E2E0D4);background:color-mix(in oklab,var(--panel,#fff) 86%,var(--pg,#0E8A7A) 14%)}
+      #view-tts .tts-note{font-size:11.5px;line-height:1.55;color:var(--mut,#8A8872);margin:8px 0 0}
+      #view-tts .tts-side .field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+      #view-tts .tts-side label{font-size:11px;font-weight:700;color:var(--ink2,#6B6A52);display:flex;justify-content:space-between;gap:8px}
+      #view-tts .tts-side select,#view-tts .tts-side input[type="range"],#view-tts .tts-side input[type="text"]{width:100%}
+      #view-tts .tts-side select,#view-tts .tts-side input[type="text"]{padding:9px 10px;border-radius:10px;border:1px solid var(--line,#E2E0D4);background:var(--bg,#F7F6EF);color:var(--ink,#2E2D20);font:600 13px 'DM Sans',system-ui,sans-serif}
+      #view-tts .tts-progress{margin-top:12px}
+      #view-tts .tts-progress-bar{height:8px;border-radius:999px;background:var(--line,#E2E0D4);overflow:hidden}
+      #view-tts .tts-progress-bar i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--pg,#0E8A7A),color-mix(in oklab,var(--pg,#0E8A7A) 60%,#fff));transition:width .2s ease}
+      #view-tts .tts-progress-txt{margin-top:6px;font-size:11px;color:var(--mut,#8A8872)}
+      #view-tts .tts-audio{width:100%;margin-top:12px}
+      #view-tts .tts-honest{margin-top:12px;padding:12px 14px;border-radius:12px;border:1px dashed color-mix(in oklab,var(--pg,#0E8A7A) 45%,var(--line,#E2E0D4));background:color-mix(in oklab,var(--panel,#fff) 92%,var(--pg,#0E8A7A) 8%);font-size:11.5px;line-height:1.6;color:var(--ink2,#6B6A52)}
+      #view-tts .tts-honest b{color:var(--ink,#2E2D20)}
+      #view-tts .tts-mode{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+      #view-tts .tts-mode button{flex:1 1 140px;padding:10px 12px;border-radius:12px;border:1px solid var(--line,#E2E0D4);background:var(--bg,#F7F6EF);color:var(--ink2,#6B6A52);font:700 12px 'DM Sans',system-ui,sans-serif;cursor:pointer;text-align:left}
+      #view-tts .tts-mode button.on{border-color:color-mix(in oklab,var(--pg,#0E8A7A) 55%,var(--line));background:color-mix(in oklab,var(--pg,#0E8A7A) 12%,var(--panel));color:var(--ink)}
+      #view-tts .tts-mode button small{display:block;font-weight:500;opacity:.85;margin-top:2px;line-height:1.35}
+      #view-tts .tts-pill-row{display:flex;gap:6px;flex-wrap:wrap}
+      #view-tts .tts-pill{padding:6px 10px;border-radius:999px;border:1px solid var(--line,#E2E0D4);background:var(--bg,#F7F6EF);color:var(--ink2,#6B6A52);font:700 11px 'DM Sans',system-ui,sans-serif;cursor:pointer}
+      #view-tts .tts-pill.on{background:color-mix(in oklab,var(--pg,#0E8A7A) 14%,var(--panel));color:var(--ink);border-color:color-mix(in oklab,var(--pg,#0E8A7A) 45%,var(--line))}
+      @media(max-width:980px){#view-tts .tts-layout{grid-template-columns:1fr}#view-tts .tts-text{min-height:240px}}
+    </style>
+    <div class="adv-head">
+      <div>
+        <div class="eyebrow">BCS · voice studio · 100% free</div>
+        <h2 class="adv-title">Hindi boliye,<br><em>audio banaiye.</em></h2>
+        <p class="adv-sub">Jaipur-standard, saaf aur swabhavik Hindi <b>aur Hinglish</b> ke liye free voice studio. <b>Instant mode</b> device/browser voices use karta hai (koi text upload nahi). <b>Neural HD mode</b> free open-source Kokoro-82M model ko aapke device/browser par download karke natural, confident male/female Hindi-Hinglish audio banata hai — text paid API par nahi jata. <b>ElevenLabs jaisi cloud quality bina credits/limits ke is app ke free/no-upload rules me possible nahi</b>; Neural HD is the best free local alternative.</p>
+      </div>
+      <div class="adv-head-actions">
+        <button type="button" class="btn ghost sm" data-goto="applications">▤ Applications</button>
+        <button type="button" class="btn ghost sm" data-goto="templates">▤ Templates</button>
+      </div>
+    </div>
+
+    <div class="tts-layout">
+      <div class="panel tts-main">
+        <div class="panel-head"><h4>Text to speech</h4><span class="hint" id="ttsCount">0 characters · 0 words</span></div>
+        <textarea id="ttsText" class="tts-text" placeholder="Yahan apna Hindi ya English text likhein/paste karein… (koi app-side output limit nahi)" spellcheck="false"></textarea>
+        <div class="tts-actions">
+          <button type="button" class="btn primary" id="ttsSpeakBtn">▶ Sunen / Generate</button>
+          <button type="button" class="btn ghost" id="ttsPauseBtn">⏸ Pause / Resume</button>
+          <button type="button" class="btn ghost" id="ttsStopBtn">■ Stop</button>
+          <button type="button" class="btn ghost" id="ttsClearBtn">Clear</button>
+          <button type="button" class="btn ghost" id="ttsCopyBtn">Copy text</button>
+          <button type="button" class="btn ghost" id="ttsSampleBtn">Sample Hinglish</button>
+          <button type="button" class="btn ghost" id="ttsConfidentBtn" title="One-click confident male Hinglish setup">🎙 Confident male (Hinglish)</button>
+        </div>
+        <div class="tts-status" id="ttsStatus" role="status" aria-live="polite">Ready. Confident Hinglish male voice (hm_omega) selected. Text daal kar Sunen dabayen.</div>
+        <div class="tts-progress" id="ttsProgressWrap" hidden>
+          <div class="tts-progress-bar"><i id="ttsProgressBar"></i></div>
+          <div class="tts-progress-txt" id="ttsProgressTxt">Preparing…</div>
+        </div>
+        <audio id="ttsPreviewAudio" class="tts-audio" controls preload="none"></audio>
+      </div>
+
+      <div class="panel tts-side">
+        <div class="panel-head"><h4>Voice settings</h4><button type="button" class="btn ghost sm" id="ttsRefreshVoices">Refresh</button></div>
+        <div class="field">
+          <label>Mode</label>
+          <div class="tts-mode" id="ttsModeWrap">
+            <button type="button" data-tts-mode="device">Instant device voices<small>Turant playback, device ki available Hindi/English voices.</small></button>
+            <button type="button" class="on" data-tts-mode="neural">Neural HD (free, confident Hinglish male)<small>On-device Kokoro-82M hm_omega, natural Hindi-Hinglish, WAV/MP3. No API/text upload.</small></button>
+          </div>
+        </div>
+        <div class="field">
+          <label>Language</label>
+          <div class="tts-pill-row" id="ttsLangWrap">
+            <button type="button" class="tts-pill" data-tts-lang="hi">Hindi</button>
+            <button type="button" class="tts-pill on" data-tts-lang="hinglish">Hinglish</button>
+            <button type="button" class="tts-pill" data-tts-lang="en">English</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>Voice type</label>
+          <div class="tts-pill-row" id="ttsGenderWrap">
+            <button type="button" class="tts-pill" data-tts-gender="female">Female</button>
+            <button type="button" class="tts-pill on" data-tts-gender="male">Male</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>Delivery style</label>
+          <div class="tts-pill-row" id="ttsStyleWrap">
+            <button type="button" class="tts-pill" data-tts-style="natural">Natural</button>
+            <button type="button" class="tts-pill on" data-tts-style="confident">Confident</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="ttsVoice">Awaaz</label>
+          <select id="ttsVoice"></select>
+        </div>
+        <div class="field">
+          <label for="ttsRate">Speed <span id="ttsRateVal">0.95×</span></label>
+          <input type="range" id="ttsRate" min="0.6" max="1.4" step="0.05" value="0.95">
+        </div>
+        <div class="field">
+          <label for="ttsPitch">Pitch / expression <span id="ttsPitchVal">1.0</span></label>
+          <input type="range" id="ttsPitch" min="0.7" max="1.4" step="0.05" value="1">
+        </div>
+        <div class="field">
+          <label for="ttsVolume">Volume <span id="ttsVolumeVal">100%</span></label>
+          <input type="range" id="ttsVolume" min="0" max="1" step="0.05" value="1">
+        </div>
+        <p class="tts-note" id="ttsModeNote">Neural HD: free Kokoro-82M model aapke browser/device par chalega. Hinglish male ke liye hm_omega (warm/confident) default hai; English words Indian accent me aa sakte hain. Pehli baar download ho sakta hai; text device se bahar nahi jata, no API/credits.</p>
+      </div>
+    </div>
+
+    <div class="panel tts-export">
+      <div class="panel-head"><h4>Audio file / engine</h4><span class="hint" id="ttsEngineState">Neural HD selected</span></div>
+      <div class="tts-honest" id="ttsHonest">
+        <b>ElevenLabs request — seedhi sachai:</b> ElevenLabs ek paid cloud API hai. Is app ke rules (100% free, zero paid API/subscription/credit, no text upload) ke andar ElevenLabs ko bina credits/limits ke use karna possible nahi hai, aur aapka text ElevenLabs server par bhejna bhi is app me allowed nahi hai. <br><br>
+        <b>Best free local alternative:</b> <b>Neural HD</b> mode free open-source <b>Kokoro-82M</b> model ko aapke browser/device par chalata hai — text device se bahar nahi jata, koi API key/credit nahi. Pehli baar model download hota hai; browser cache ke baad agli baar fast load ho sakta hai. Hindi, Hinglish aur English male-female audio, WAV/MP3 download milta hai. Hinglish male ke liye <b>hm_omega</b> (warm, grounded, deliberate) aur <b>hm_psi</b> (bright, crisp) free voices available hain. English words Hindi voice me Indian accent ke saath aa sakte hain — yehi natural Hinglish feel hai. <b>Instant</b> mode device voices use karta hai (turant, private). Quality ElevenLabs cloud jaisi nahi hogi, par is app ke constraints me yeh sabse behtar free/no-upload option hai.
+      </div>
+      <div class="tts-actions" style="margin-top:12px">
+        <button type="button" class="btn primary" id="ttsLoadEngineBtn">Load Neural HD engine</button>
+        <button type="button" class="btn ghost" id="ttsGenerateMp3Btn">Generate MP3</button>
+        <button type="button" class="btn ghost" id="ttsDownloadWavBtn">Download WAV</button>
+      </div>
+      <div class="tts-status" id="ttsHdStatus" role="status" aria-live="polite">Confident male Hinglish preset ready (hm_omega). Pehli baar “Sunen / Generate” dabane par Neural HD model download hoga; WAV/MP3 available.</div>
     </div>
   </section>
 
@@ -22388,6 +23008,42 @@ try{
 </div>
 
 <!-- ============ NEWS / LINK EDITOR ============ -->
+<div class="overlay" id="auctionModal">
+  <div class="modal" style="max-width:920px;width:min(920px,96vw)">
+    <div class="modal-head">
+      <h3 id="aucModalTitle">Add auction property</h3>
+      <button class="xbtn" data-close="auctionModal">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
+        <label class="fg" style="grid-column:1/-1"><span>Property / Auction title</span><input id="aucFTitle" placeholder="e.g. Bank e-auction: Plot in Jagatpura"></label>
+        <label class="fg"><span>Source</span><select id="aucFSource"><option>Bank</option><option>JDA</option><option>UDH</option><option>LSG</option><option>RIICO</option><option>RHB</option><option>Court/DRT</option><option>Other</option></select></label>
+        <label class="fg"><span>Auction date</span><input id="aucFDate" type="date"></label>
+        <label class="fg"><span>Status</span><select id="aucFStatus"><option value="upcoming">Upcoming</option><option value="today">Today</option><option value="live">Live</option><option value="closed">Closed</option><option value="postponed">Postponed</option><option value="cancelled">Cancelled</option><option value="unknown">Unknown</option></select></label>
+        <label class="fg"><span>Location / Area</span><input id="aucFLoc" placeholder="Jagatpura, Jaipur"></label>
+        <label class="fg"><span>City</span><input id="aucFCity" value="Jaipur"></label>
+        <label class="fg"><span>Property type</span><input id="aucFType" placeholder="Plot / Flat / Commercial / Land"></label>
+        <label class="fg"><span>Reserve price</span><input id="aucFReserve" placeholder="₹45,00,000"></label>
+        <label class="fg"><span>EMD amount</span><input id="aucFEmd" placeholder="₹4,50,000"></label>
+        <label class="fg"><span>EMD last date</span><input id="aucFEmdDate" type="date"></label>
+        <label class="fg"><span>Inspection date</span><input id="aucFInspect" type="date"></label>
+        <label class="fg"><span>Area / Size</span><input id="aucFArea" placeholder="200 sq yd"></label>
+        <label class="fg"><span>Borrower / Owner / Dept</span><input id="aucFBorrower"></label>
+        <label class="fg"><span>Bank / Branch / Office</span><input id="aucFBranch"></label>
+        <label class="fg"><span>Contact</span><input id="aucFContact" placeholder="Officer / phone / email"></label>
+        <label class="fg" style="grid-column:1/-1"><span>Source URL (required before sharing)</span><input id="aucFUrl" placeholder="https://..." spellcheck="false"><div class="mut" style="font-size:11px;margin-top:4px">Paste official notice/listing URL. Aggregator links are fine for discovery, but verify on official notice before sharing.</div></label>
+        <label class="fg" style="grid-column:1/-1"><span>Notes / terms / documents</span><textarea id="aucFNotes" rows="4" placeholder="EMD terms, documents needed, possession status, caution notes..."></textarea></label>
+        <label class="fg" style="display:flex;gap:8px;align-items:center;padding-top:22px"><input id="aucFVerified" type="checkbox"> <span>Verified from official source</span></label>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn danger ghost" id="aucFDelete" style="margin-right:auto;display:none">Delete</button>
+      <button class="btn ghost" data-close="auctionModal">Cancel</button>
+      <button class="btn primary" id="aucFSave">Save auction</button>
+    </div>
+  </div>
+</div>
+
 <div class="overlay" id="newsModal">
   <div class="modal" style="width:min(780px,100%)">
     <div class="modal-head">
@@ -24153,6 +24809,7 @@ function seed(){
     resale: [],
     bookings: [],
     news: [],
+    auctions: [],
     linkCategories: DEFAULT_LINK_CATEGORIES.map((c, i) => ({ ...c, order:i, createdAt:Date.now() })),
     links: STARTER_LINKS.map((l, i) => ({ ...l, order:i, createdAt:Date.now(), updatedAt:Date.now() })),
     media: {
@@ -24569,6 +25226,7 @@ function load(){
     if(!Array.isArray(parsed.advisors)) parsed.advisors = [];
     if(!Array.isArray(parsed.resale)) parsed.resale = [];
     if(!Array.isArray(parsed.bookings)) parsed.bookings = [];
+    if(!Array.isArray(parsed.auctions)) parsed.auctions = [];
     return parsed;
   }catch(e){
     console.error('[BCS] Database load failed — trying recovery', e);
@@ -24733,6 +25391,33 @@ function jDue(rec, today){
 window.BCS_JOURNEY = { stages:BCS_JSTAGES, meta:journeyMeta, stage:jStage, next:jNext, touch:jTouch, due:jDue, normalize:normalizeJourney };
 
 function normalizeDb(d){
+  if(!Array.isArray(d.auctions)) d.auctions = [];
+  d.auctions = d.auctions.filter(a => a && typeof a === 'object').map(a => ({
+    id: String(a.id || uid()),
+    title: String(a.title || a.propertyName || '').slice(0, 220),
+    source: String(a.source || 'Other').slice(0, 80),
+    sourceUrl: String(a.sourceUrl || a.url || '').slice(0, 500),
+    auctionDate: String(a.auctionDate || a.date || '').slice(0, 20),
+    emdLastDate: String(a.emdLastDate || '').slice(0, 20),
+    inspectionDate: String(a.inspectionDate || '').slice(0, 20),
+    location: String(a.location || a.area || '').slice(0, 180),
+    city: String(a.city || 'Jaipur').slice(0, 80),
+    propertyType: String(a.propertyType || 'Property').slice(0, 80),
+    reservePrice: a.reservePrice == null || a.reservePrice === '' ? '' : String(a.reservePrice).slice(0, 60),
+    emdAmount: a.emdAmount == null || a.emdAmount === '' ? '' : String(a.emdAmount).slice(0, 60),
+    bidIncrement: a.bidIncrement == null || a.bidIncrement === '' ? '' : String(a.bidIncrement).slice(0, 60),
+    areaSize: String(a.areaSize || '').slice(0, 80),
+    borrower: String(a.borrower || '').slice(0, 140),
+    bankBranch: String(a.bankBranch || '').slice(0, 140),
+    contact: String(a.contact || '').slice(0, 140),
+    status: ['upcoming','today','live','closed','cancelled','postponed','unknown'].includes(a.status) ? a.status : 'upcoming',
+    verified: !!a.verified,
+    notes: String(a.notes || '').slice(0, 1200),
+    documents: Array.isArray(a.documents) ? a.documents.filter(Boolean).map(x=>String(x).slice(0,300)).slice(0,20) : [],
+    tags: Array.isArray(a.tags) ? a.tags.filter(Boolean).map(x=>String(x).slice(0,40)).slice(0,20) : [],
+    createdAt: +a.createdAt || Date.now(),
+    updatedAt: +a.updatedAt || Date.now()
+  }));
   /* ---- BCS OPS III: operations workspace ---------------------------------
      backups · activity/undo · deal documents · receivables + reminders ·
      due-diligence packs · lead-source ROI · commission ledger + invoices ·
@@ -27172,8 +27857,7 @@ function bcsNavVisibleViews(){
 }
 function bcsMoreViews(){
   try{
-    const visible = new Set(bcsNavVisibleViews());
-    return $$('#navMorePanel button[data-view]').map(b => b.dataset.view).filter(v => v && !visible.has(v));
+    return $$('#navMorePanel button[data-view]').map(b => b.dataset.view).filter(Boolean);
   }catch(e){ return []; }
 }
 function bcsNavMoreSync(){
@@ -27181,8 +27865,20 @@ function bcsNavMoreSync(){
     BCS_MORE_SET = bcsMoreViews();
     const visible = new Set(bcsNavVisibleViews());
     const mb = $('#navMoreBtn');
-    if(mb) mb.classList.toggle('on', !!currentView && !visible.has(currentView));
-    $$('#navMorePanel button').forEach(function(b){ b.classList.toggle('on', b.dataset.view === currentView); });
+    const panel = $('#navMorePanel');
+    if(mb) mb.classList.toggle('on', !!currentView && (!visible.has(currentView) || (panel && !panel.hidden)));
+    $$('#navMorePanel button[data-view]').forEach(function(b){
+      const inBar = visible.has(b.dataset.view);
+      b.classList.toggle('on', b.dataset.view === currentView);
+      b.classList.toggle('in-bar', inBar);
+      const t = b.querySelector('.nav-pin-toggle');
+      if(t){
+        t.textContent = inBar ? '−' : '+';
+        const label = (b.querySelector('.nav-pin-txt')||{}).textContent || b.getAttribute('aria-label') || b.dataset.view || 'page';
+        t.setAttribute('aria-label', (inBar ? 'Remove ' : 'Add ') + label + (inBar ? ' from bar' : ' to bar'));
+        t.title = (inBar ? 'Remove ' : 'Add ') + label + (inBar ? ' from bar' : ' to bar');
+      }
+    });
   }catch(e){}
 }
 function bcsNavMorePosition(){
@@ -27206,6 +27902,156 @@ function bcsNavMoreOpen(focusSearch){
 }
 function bcsNavMoreToggle(){ try{ const p = $('#navMorePanel'); if(p && !p.hidden) bcsNavMoreClose(); else bcsNavMoreOpen(true); }catch(e){} }
 function bcsNavMoreClose(){ try{ const p = $('#navMorePanel'); if(p){ p.hidden = true; } const mb = $('#navMoreBtn'); if(mb) mb.setAttribute('aria-expanded','false'); bcsNavMoreSync(); }catch(e){} }
+function bcsSmoothScrollTo(el, offset){
+  if(!el) return;
+  try{
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - (offset==null?90:offset);
+    window.scrollTo({top: Math.max(0, top), behavior: reduce ? 'auto' : 'smooth'});
+  }catch(e){ try{ el.scrollIntoView({behavior:'smooth', block:'start'}); }catch(_){} }
+}
+window.bcsSmoothScrollTo = bcsSmoothScrollTo;
+
+const BCS_PAGE_FLOW = {
+  dashboard: {title:'Daily command center', steps:[
+    {n:'1', t:'Check focus', d:'See today\'s brief, follow-ups, and urgent items.', target:'#dashEyebrow'},
+    {n:'2', t:'Take action', d:'Open leads, clients, day plan, or advisory.', target:'#heroFocusLine'},
+    {n:'3', t:'Review output', d:'Scroll to live cards, ticker, and dashboard panels.', target:'#tickerTrack', next:true}
+  ], jumps:[['Focus',' #heroFocusLine'],['Market ticker','#tickerTrack'],['Dashboard cards','.dash-grid, #view-dashboard .panel, #view-dashboard .card']]},
+  dayplan: {title:'Plan the day', steps:[
+    {n:'1', t:'Pick date', d:'Choose today or another day.', target:'#dayDate'},
+    {n:'2', t:'Add tasks', d:'Create quick tasks and priorities.', target:'#tQuickCall'},
+    {n:'3', t:'Track output', d:'Watch timer, task list, and completion progress.', target:'#dayTimer', next:true}
+  ], jumps:[['Add task','#tQuickCall'],['Timer','#dayTimer'],['Task list','#dayTaskList, #view-dayplan .task-list, #view-dayplan .panel']]},
+  leadgen: {title:'Capture and qualify leads', steps:[
+    {n:'1', t:'Add/import lead', d:'Create lead or import from WhatsApp/Excel.', target:'#leadAddBtn, #leadImportBtn, #view-leadgen .adv-head-actions'},
+    {n:'2', t:'Qualify', d:'Set requirement, budget, source, and status.', target:'#leadStats, #view-leadgen .pipeline-stats'},
+    {n:'3', t:'Next action', d:'Move qualified leads to clients/follow-up.', target:'#leadList, #view-leadgen .panel', next:true}
+  ], jumps:[['Add lead','#leadAddBtn, #view-leadgen .btn.primary'],['Lead stats','#leadStats'],['Lead list','#leadList, #view-leadgen .panel']]},
+  clients: {title:'Manage client relationships', steps:[
+    {n:'1', t:'Add/find client', d:'Create client or search existing records.', target:'#addClientBtn'},
+    {n:'2', t:'Update need', d:'Capture requirement, budget, and follow-up.', target:'#clientStatusBar'},
+    {n:'3', t:'See output', d:'Use pipeline, bookings, suggestions, and reports.', target:'#clientDesk', next:true}
+  ], jumps:[['Add client','#addClientBtn'],['Pipeline','#clientDesk'],['Bookings','.client-mode-bar']]},
+  advisory: {title:'Advise and shortlist', steps:[
+    {n:'1', t:'Capture requirement', d:'Budget, area, size, and purpose.', target:'#view-advisory .adv-head, #advForm, #view-advisory input, #view-advisory select'},
+    {n:'2', t:'Generate shortlist', d:'Run advisory matching and compare projects.', target:'#view-advisory .btn.primary, #advResults, #view-advisory .panel'},
+    {n:'3', t:'Share output', d:'Save to client, copy, or open presentation.', target:'#advResults, #view-advisory .panel', next:true}
+  ], jumps:[['Requirement','#view-advisory .adv-head'],['Results','#advResults, #view-advisory .panel'],['Projects','[data-goto="projects"]']]},
+  projects: {title:'Explore projects', steps:[
+    {n:'1', t:'Filter/search', d:'Find projects by area, developer, status, or budget.', target:'#view-projects .adv-head, #view-projects input, #view-projects select'},
+    {n:'2', t:'Open project', d:'Inspect price, approvals, plots, and details.', target:'#projectGrid, #view-projects .panel'},
+    {n:'3', t:'Take action', d:'Shortlist, share, or move to inventory/pipeline.', target:'#projectGrid, #view-projects .panel', next:true}
+  ], jumps:[['Search','#view-projects input, #view-projects select'],['Project list','#projectGrid, #view-projects .panel'],['Inventory','[data-goto="inventory"]']]},
+  inventory: {title:'Check plot inventory', steps:[
+    {n:'1', t:'Select project', d:'Choose project and filter available plots.', target:'#view-inventory .adv-head, #view-inventory select, #view-inventory input'},
+    {n:'2', t:'Review plots', d:'Check size, facing, price, and status.', target:'#invGrid, #view-inventory .panel'},
+    {n:'3', t:'Move to deal', d:'Reserve, share, or send to pipeline/client.', target:'#invGrid, #view-inventory .panel', next:true}
+  ], jumps:[['Filters','#view-inventory select, #view-inventory input'],['Inventory','#invGrid, #view-inventory .panel'],['Pipeline','[data-goto="pipeline"]']]},
+  pipeline: {title:'Close deals', steps:[
+    {n:'1', t:'Review stages', d:'See booking, negotiation, docs, and closure.', target:'#view-pipeline .adv-head'},
+    {n:'2', t:'Update deal', d:'Move deals forward and assign next action.', target:'#pipelineBoard, #view-pipeline .panel'},
+    {n:'3', t:'Track output', d:'Monitor due actions and conversion.', target:'#pipelineBoard, #view-pipeline .panel', next:true}
+  ], jumps:[['Pipeline board','#pipelineBoard, #view-pipeline .panel'],['Clients','[data-goto="clients"]'],['Finance','[data-goto="finance"]']]},
+  pulse: {title:'Read market pulse', steps:[
+    {n:'1', t:'Scan signals', d:'Check live rates, updates, and movement.', target:'#view-pulse .adv-head'},
+    {n:'2', t:'Filter', d:'Focus by area/topic/source.', target:'#view-pulse input, #view-pulse select'},
+    {n:'3', t:'Use insight', d:'Apply to advisory, client, or content.', target:'#view-pulse .panel, #pulseGrid', next:true}
+  ], jumps:[['Filters','#view-pulse input, #view-pulse select'],['Pulse cards','#pulseGrid, #view-pulse .panel'],['News','[data-goto="news"]']]},
+  news: {title:'Track news', steps:[
+    {n:'1', t:'Scan headlines', d:'Read latest Jaipur/real-estate updates.', target:'#view-news .adv-head'},
+    {n:'2', t:'Filter/source', d:'Narrow by topic or source.', target:'#view-news input, #view-news select'},
+    {n:'3', t:'Act', d:'Share, save, or turn into client insight.', target:'#newsGrid, #view-news .panel', next:true}
+  ], jumps:[['Filters','#view-news input, #view-news select'],['News list','#newsGrid, #view-news .panel'],['Social','[data-goto="social"]']]},
+  auctions: {title:'Track auction properties', steps:[
+    {n:'1', t:'Check sources', d:'Open official JDA/UDH/LSG/RIICO/bank portals and verify notices.', target:'#view-auctions .auc-sources'},
+    {n:'2', t:'Add auction', d:'Record property, date, reserve/EMD, and right source link.', target:'#aucAddBtn'},
+    {n:'3', t:'Share weekly', d:'Review date-wise upcoming auctions and copy weekly brief.', target:'#aucList', next:true}
+  ], jumps:[['Sources','#view-auctions .auc-sources'],['Add auction','#aucAddBtn'],['Auction list','#aucList']]},
+  calc: {title:'Calculate quickly', steps:[
+    {n:'1', t:'Pick calculator', d:'Choose EMI, ROI, stamp duty, area, etc.', target:'#view-calc .adv-head, #view-calc .calc-tabs, #view-calc button'},
+    {n:'2', t:'Enter values', d:'Fill inputs with client/project numbers.', target:'#view-calc input, #view-calc select'},
+    {n:'3', t:'Use output', d:'Copy/share result into client discussion.', target:'#view-calc .calc-result, #view-calc .panel', next:true}
+  ], jumps:[['Calculator','#view-calc .calc-tabs, #view-calc .adv-head'],['Inputs','#view-calc input'],['Result','#view-calc .calc-result, #view-calc .panel']]},
+  finance: {title:'Plan finance', steps:[
+    {n:'1', t:'Select client/deal', d:'Pick context for loan/payment planning.', target:'#view-finance .adv-head'},
+    {n:'2', t:'Enter numbers', d:'Add loan, rate, tenure, payment details.', target:'#view-finance input, #view-finance select'},
+    {n:'3', t:'Review output', d:'Use schedule, eligibility, or payment plan.', target:'#view-finance .panel, #financeOut', next:true}
+  ], jumps:[['Inputs','#view-finance input, #view-finance select'],['Output','#financeOut, #view-finance .panel'],['Pipeline','[data-goto="pipeline"]']]}
+};
+const BCS_FLOW_DEFAULT = {title:'Use this page', steps:[
+  {n:'1', t:'Start at top', d:'Read the page purpose and primary action.', target:'.adv-head, .sec-head, h2'},
+  {n:'2', t:'Fill/filter', d:'Enter inputs or choose filters.', target:'input, select, textarea, .btn.primary'},
+  {n:'3', t:'Review output', d:'Results appear below; buttons scroll to output.', target:'.panel, .card, .grid, table', next:true}
+]};
+
+function bcsPageFlowHTML(view){
+  const cfg = BCS_PAGE_FLOW[view] || BCS_FLOW_DEFAULT;
+  const steps = cfg.steps.map(s=>`<button type="button" class="step-card ${s.next?'is-next':''}" data-flow-target="${esc(s.target||'')}"><span class="step-n">${esc(s.n)}</span><span><b>${esc(s.t)}</b><span>${esc(s.d)}</span></span></button>`).join('');
+  const jumps = (cfg.jumps||[]).map(j=>`<button type="button" data-flow-target="${esc(j[1])}">${esc(j[0])}</button>`).join('');
+  return `<div class="page-flow" data-flow-for="${esc(view)}">${steps}</div>${jumps?`<div class="page-jump" data-flow-for="${esc(view)}"><span style="font:700 11px 'DM Sans',sans-serif;color:var(--mut);align-self:center;margin-right:4px">Jump to:</span>${jumps}</div>`:''}`;
+}
+
+function bcsEnsurePageFlows(){
+  $$('.view[id^="view-"]').forEach(v=>{
+    if(v.querySelector('.page-flow')) return;
+    const view = v.id.replace('view-','');
+    const anchor = v.querySelector('.adv-head, .intro, .sec-head, h2');
+    if(!anchor) return;
+    const wrap = document.createElement('div');
+    wrap.innerHTML = bcsPageFlowHTML(view);
+    anchor.insertAdjacentElement('afterend', wrap);
+    // unwrap
+    while(wrap.firstChild) wrap.parentNode.insertBefore(wrap.firstChild, wrap);
+    wrap.remove();
+  });
+}
+
+function bcsFlowScroll(targetSpec){
+  if(!targetSpec) return;
+  const view = document.querySelector('.view.on') || document;
+  const targets = String(targetSpec).split(',').map(s=>s.trim()).filter(Boolean);
+  for(const sel of targets){
+    let el = null;
+    try{ el = view.querySelector(sel) || document.querySelector(sel); }catch(e){}
+    if(el){ bcsSmoothScrollTo(el, 92); return; }
+  }
+}
+
+document.addEventListener('click', function(e){
+  const flow = e.target.closest('[data-flow-target]');
+  if(flow){ e.preventDefault(); bcsFlowScroll(flow.getAttribute('data-flow-target')); return; }
+  const jump = e.target.closest('[data-scroll-target]');
+  if(jump){ const t=jump.getAttribute('data-scroll-target'); if(t){ setTimeout(()=>bcsFlowScroll(t), 120); } }
+}, true);
+
+function bcsAutoScrollAfterAction(btn){
+  try{
+    const view = btn.closest('.view'); if(!view) return;
+    const explicit = btn.getAttribute('data-scroll-target') || btn.dataset.scrollTarget;
+    if(explicit){ setTimeout(()=>bcsFlowScroll(explicit), 140); return; }
+    const txt=(btn.textContent||'').toLowerCase();
+    if(!/(generate|calculate|search|find|show|create|add|save|submit|apply|compare|refresh|analy|shortlist|report|preview|export|send|build|plan|recommend|suggest)/.test(txt)) return;
+    const candidates = Array.from(view.querySelectorAll('[id*="result"],[id*="Result"],[id*="output"],[id*="Output"],[id*="list"],[id*="List"],[id*="grid"],[id*="Grid"],[id*="board"],[id*="Board"],.calc-result,.result,.output,.results,.panel,.card')).filter(el=>el.offsetParent!==null);
+    if(!candidates.length) return;
+    const btnTop = btn.getBoundingClientRect().top + window.pageYOffset;
+    const next = candidates.find(el=> (el.getBoundingClientRect().top + window.pageYOffset) > btnTop + 40) || candidates[candidates.length-1];
+    setTimeout(()=>bcsSmoothScrollTo(next, 92), 180);
+  }catch(e){}
+}
+document.addEventListener('click', function(e){
+  const btn = e.target.closest('button,.btn,[role="button"]');
+  if(btn && !btn.closest('[data-flow-target]')) bcsAutoScrollAfterAction(btn);
+}, true);
+
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', ()=>{ try{ bcsEnsurePageFlows(); }catch(e){} });
+else { try{ bcsEnsurePageFlows(); }catch(e){} }
+window.bcsEnsurePageFlows = bcsEnsurePageFlows;
+try{
+  const mo = new MutationObserver(()=>{ clearTimeout(window.__bcsFlowT); window.__bcsFlowT=setTimeout(()=>{ try{ bcsEnsurePageFlows(); }catch(e){} }, 120); });
+  mo.observe(document.body, {childList:true, subtree:true});
+}catch(e){}
+
 function go(view){
   if(!isAdmin() && !ADVISOR_VIEWS.includes(view)){
     try{ toast('Advisor portal me ye page available nahi hai', true); }catch(e){}
@@ -27218,7 +28064,16 @@ function go(view){
   bcsNavMoreSync();
   $$('.view').forEach(v => v.classList.toggle('on', v.id === 'view-' + view));
   render();
+  try{ bcsEnsurePageFlows(); }catch(e){}
   window.scrollTo({top:0, behavior:'smooth'});
+  setTimeout(function(){
+    try{
+      var v = document.getElementById('view-'+view);
+      if(!v) return;
+      var focus = v.querySelector('.page-flow .step-card, .adv-head, .intro, .sec-head, h2, h3');
+      if(focus) bcsSmoothScrollTo(focus, 86);
+    }catch(e){}
+  }, 70);
 }
 try{
   const _nav = $('#nav');
@@ -27302,7 +28157,7 @@ function renderDashboard(){
   if($('#dashEyebrow')){
     const me = currentAdvisor();
     $('#dashEyebrow').textContent = isAdmin()
-      ? `BCS · Jaipur portfolio · ${db.corridors.length} road corridors`
+      ? `BCS · Jaipur advisory desk · ${db.corridors.length} road corridors`
       : `Advisor portal · ${me ? me.name : 'Advisor'} · ${projects.length} assigned project${projects.length === 1 ? '' : 's'} · ${clients.length} client${clients.length === 1 ? '' : 's'}`;
   }
   $('#statDevs').textContent = devs.length;
@@ -39681,6 +40536,240 @@ function setNewsMode(mode){
   if(newsMode === 'ideas') renderVideoIdeas();
 }
 
+
+/* ====================== AUCTIONS TRACKER ====================== */
+const AUCTION_SOURCES = ['Bank','JDA','UDH','LSG','RIICO','RHB','Court/DRT','Other'];
+const AUCTION_STATUSES = [
+  {id:'upcoming', label:'Upcoming', color:'#2563EB'},
+  {id:'today', label:'Today', color:'#D97706'},
+  {id:'live', label:'Live', color:'#DC2626'},
+  {id:'closed', label:'Closed', color:'#64748B'},
+  {id:'postponed', label:'Postponed', color:'#7C3AED'},
+  {id:'cancelled', label:'Cancelled', color:'#991B1B'},
+  {id:'unknown', label:'Unknown', color:'#475569'}
+];
+function aucStatusMeta(id){ return AUCTION_STATUSES.find(s=>s.id===id) || AUCTION_STATUSES[0]; }
+function aucParseDate(v){
+  const s=String(v||'').trim(); if(!s) return null;
+  const m=s.match(/^(\d{4})-(\d{2})-(\d{2})/); if(m) return new Date(+m[1], +m[2]-1, +m[3]);
+  const d=new Date(s); return isNaN(d.getTime())?null:new Date(d.getFullYear(),d.getMonth(),d.getDate());
+}
+function aucDateLabel(v){ const d=aucParseDate(v); return d?d.toLocaleDateString('en-IN',{weekday:'short',day:'2-digit',month:'short',year:'numeric'}):'Date not set'; }
+function aucDateKey(v){ const d=aucParseDate(v); return d?d.toISOString().slice(0,10):'9999-99-99'; }
+function aucAutoStatus(a){
+  if(['cancelled','postponed','live','unknown'].includes(a.status)) return a.status;
+  const d=aucParseDate(a.auctionDate); if(!d) return a.status||'unknown';
+  const now=new Date(); const today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  if(d.getTime()===today.getTime()) return 'today';
+  if(d.getTime()<today.getTime()) return 'closed';
+  return 'upcoming';
+}
+function aucNormalizeAll(saveAfter){
+  let changed=false;
+  (db.auctions||[]).forEach(a=>{
+    const s=aucAutoStatus(a);
+    if(a.status!==s){ a.status=s; a.updatedAt=Date.now(); changed=true; }
+  });
+  if(changed && saveAfter){ try{ save(); }catch(e){} }
+  return changed;
+}
+function aucFiltered(){
+  aucNormalizeAll(false);
+  const q=(($('#aucSearch')||{}).value||'').trim().toLowerCase();
+  const src=(($('#aucSourceFilter')||{}).value||'').trim();
+  const st=(($('#aucStatusFilter')||{}).value||'').trim();
+  const ver=!!(($('#aucVerifiedOnly')||{}).checked);
+  const sort=(($('#aucSort')||{}).value||'date-asc');
+  let arr=(db.auctions||[]).filter(a=>{
+    if(src && a.source!==src) return false;
+    if(st && aucAutoStatus(a)!==st) return false;
+    if(ver && !a.verified) return false;
+    if(q){
+      const hay=[a.title,a.source,a.location,a.city,a.propertyType,a.reservePrice,a.emdAmount,a.borrower,a.bankBranch,a.notes,a.contact,a.sourceUrl,(a.tags||[]).join(' ')].join(' ').toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  });
+  arr.sort((a,b)=>{
+    if(sort==='date-desc') return aucDateKey(b.auctionDate).localeCompare(aucDateKey(a.auctionDate));
+    if(sort==='updated') return (+b.updatedAt||0)-(+a.updatedAt||0);
+    if(sort==='reserve-desc') return (parseFloat(String(b.reservePrice).replace(/[^0-9.]/g,''))||0)-(parseFloat(String(a.reservePrice).replace(/[^0-9.]/g,''))||0);
+    return aucDateKey(a.auctionDate).localeCompare(aucDateKey(b.auctionDate)) || (+b.updatedAt||0)-(+a.updatedAt||0);
+  });
+  return arr;
+}
+function aucMoney(v){ const s=String(v||'').trim(); return s?esc(s):'<span class="mut">—</span>'; }
+function aucSourceLink(a){
+  const u=String(a.sourceUrl||'').trim(); if(!u) return '<span class="mut">No source link</span>';
+  const safe=esc(u); return `<a href="${safe}" target="_blank" rel="noopener" data-no-frame="1" class="btn ghost sm" style="padding:6px 10px;font-size:12px">Source ↗</a>`;
+}
+function aucCard(a){
+  const st=aucStatusMeta(aucAutoStatus(a));
+  const docs=(a.documents||[]).filter(Boolean);
+  return `<article class="panel auc-card" style="padding:14px;border-left:4px solid ${st.color}">
+    <div style="display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap">
+      <div style="min-width:0;flex:1">
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px">
+          <span class="pill" style="background:${st.color}18;color:${st.color};border:1px solid ${st.color}33">${esc(st.label)}</span>
+          <span class="pill">${esc(a.source||'Other')}</span>
+          ${a.verified?'<span class="pill" style="background:#16a34a18;color:#16a34a;border:1px solid #16a34a33">Verified</span>':'<span class="pill" style="background:#f59e0b18;color:#b45309;border:1px solid #f59e0b33">Unverified</span>'}
+          <span class="mut" style="font-size:12px">${esc(aucDateLabel(a.auctionDate))}</span>
+        </div>
+        <h4 style="margin:0 0 6px;font-size:18px;line-height:1.3">${esc(a.title||'Untitled auction property')}</h4>
+        <div class="mut" style="font-size:13px">${esc([a.propertyType,a.location,a.city].filter(Boolean).join(' · ')||'Location not set')}</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">${aucSourceLink(a)}<button class="btn ghost sm" data-auc-edit="${esc(a.id)}">Edit</button><button class="btn ghost sm" data-auc-del="${esc(a.id)}" style="color:var(--danger)">Delete</button></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:12px">
+      <div><div class="mut" style="font-size:11px;font-weight:700;text-transform:uppercase">Reserve</div><div style="font-weight:700">${aucMoney(a.reservePrice)}</div></div>
+      <div><div class="mut" style="font-size:11px;font-weight:700;text-transform:uppercase">EMD</div><div>${aucMoney(a.emdAmount)}</div></div>
+      <div><div class="mut" style="font-size:11px;font-weight:700;text-transform:uppercase">EMD last date</div><div>${esc(a.emdLastDate||'—')}</div></div>
+      <div><div class="mut" style="font-size:11px;font-weight:700;text-transform:uppercase">Inspection</div><div>${esc(a.inspectionDate||'—')}</div></div>
+      <div><div class="mut" style="font-size:11px;font-weight:700;text-transform:uppercase">Area/Size</div><div>${esc(a.areaSize||'—')}</div></div>
+      <div><div class="mut" style="font-size:11px;font-weight:700;text-transform:uppercase">Borrower/Owner</div><div>${esc(a.borrower||'—')}</div></div>
+    </div>
+    ${a.notes?`<div style="margin-top:10px;font-size:13px;color:var(--ink2);white-space:pre-wrap">${esc(a.notes)}</div>`:''}
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:var(--mut)">
+      ${a.bankBranch?`<span>Branch: ${esc(a.bankBranch)}</span>`:''}
+      ${a.contact?`<span>Contact: ${esc(a.contact)}</span>`:''}
+      ${docs.length?`<span>Docs: ${esc(docs.join(', '))}</span>`:''}
+      ${a.sourceUrl?`<span style="max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">URL: ${esc(a.sourceUrl)}</span>`:''}
+    </div>
+  </article>`;
+}
+function renderAuctions(){
+  const host=$('#aucList'), stats=$('#aucStats'); if(!host) return;
+  aucNormalizeAll(false);
+  const arr=aucFiltered();
+  const all=db.auctions||[];
+  const todayKey=new Date().toISOString().slice(0,10);
+  const upcoming=all.filter(a=>['upcoming','today','live'].includes(aucAutoStatus(a))).length;
+  const today=all.filter(a=>aucAutoStatus(a)==='today').length;
+  const verified=all.filter(a=>a.verified).length;
+  if(stats) stats.innerHTML=[
+    ['Total',all.length],['Upcoming/Live',upcoming],['Today',today],['Verified',verified]
+  ].map(x=>`<div class="stat"><b>${x[1]}</b><span>${x[0]}</span></div>`).join('');
+
+  if(!arr.length){
+    host.innerHTML=`<div class="panel" style="padding:18px"><b>No auction records found.</b><div class="mut" style="margin-top:6px">Add auction properties from JDA/UDH, bank e-auctions, LSG, RIICO, or court notices. Always keep the source link.</div></div>`;
+    return;
+  }
+  const groups=new Map();
+  arr.forEach(a=>{ const k=aucDateKey(a.auctionDate); if(!groups.has(k)) groups.set(k,[]); groups.get(k).push(a); });
+  host.innerHTML=[...groups.entries()].map(([k,items])=>{
+    const label=k==='9999-99-99'?'Date not set':aucDateLabel(k);
+    const isToday=k===todayKey;
+    return `<section style="margin:14px 0 18px"><div style="display:flex;align-items:center;gap:10px;margin:0 0 10px"><h3 style="margin:0;font-size:16px">${esc(label)}</h3><span class="pill">${items.length} auction${items.length>1?'s':''}</span>${isToday?'<span class="pill" style="background:#d9770618;color:#b45309;border:1px solid #d9770633">Today</span>':''}</div><div style="display:grid;gap:12px">${items.map(aucCard).join('')}</div></section>`;
+  }).join('');
+
+  host.querySelectorAll('[data-auc-edit]').forEach(btn=>btn.addEventListener('click',()=>openAuctionForm(btn.getAttribute('data-auc-edit'))));
+  host.querySelectorAll('[data-auc-del]').forEach(btn=>btn.addEventListener('click',()=>deleteAuction(btn.getAttribute('data-auc-del'))));
+}
+let editingAuctionId=null;
+function openAuctionForm(id){
+  const a=(db.auctions||[]).find(x=>x.id===id)||null;
+  editingAuctionId=a?a.id:null;
+  const isEdit=!!a;
+  $('#aucModalTitle').textContent=isEdit?'Edit auction property':'Add auction property';
+  $('#aucFTitle').value=a?.title||'';
+  $('#aucFSource').value=a?.source||'Bank';
+  $('#aucFDate').value=String(a?.auctionDate||'').slice(0,10);
+  $('#aucFStatus').value=aucAutoStatus(a||{status:'upcoming'});
+  $('#aucFLoc').value=a?.location||'';
+  $('#aucFCity').value=a?.city||'Jaipur';
+  $('#aucFType').value=a?.propertyType||'';
+  $('#aucFReserve').value=a?.reservePrice||'';
+  $('#aucFEmd').value=a?.emdAmount||'';
+  $('#aucFEmdDate').value=String(a?.emdLastDate||'').slice(0,10);
+  $('#aucFInspect').value=String(a?.inspectionDate||'').slice(0,10);
+  $('#aucFArea').value=a?.areaSize||'';
+  $('#aucFBorrower').value=a?.borrower||'';
+  $('#aucFBranch').value=a?.bankBranch||'';
+  $('#aucFContact').value=a?.contact||'';
+  $('#aucFUrl').value=a?.sourceUrl||'';
+  $('#aucFNotes').value=a?.notes||'';
+  $('#aucFVerified').checked=!!a?.verified;
+  $('#aucFDelete').style.display=isEdit?'inline-flex':'none';
+  showOverlay('auctionModal');
+  setTimeout(()=>$('#aucFTitle')?.focus(),80);
+}
+function saveAuctionForm(){
+  const prev=(db.auctions||[]).find(x=>x.id===editingAuctionId)||{};
+  const rec={
+    id: prev.id || uid(),
+    title:($('#aucFTitle').value||'').trim(),
+    source:($('#aucFSource').value||'Other').trim(),
+    auctionDate:($('#aucFDate').value||'').trim(),
+    status:($('#aucFStatus').value||'upcoming').trim(),
+    location:($('#aucFLoc').value||'').trim(),
+    city:($('#aucFCity').value||'Jaipur').trim(),
+    propertyType:($('#aucFType').value||'').trim(),
+    reservePrice:($('#aucFReserve').value||'').trim(),
+    emdAmount:($('#aucFEmd').value||'').trim(),
+    emdLastDate:($('#aucFEmdDate').value||'').trim(),
+    inspectionDate:($('#aucFInspect').value||'').trim(),
+    areaSize:($('#aucFArea').value||'').trim(),
+    borrower:($('#aucFBorrower').value||'').trim(),
+    bankBranch:($('#aucFBranch').value||'').trim(),
+    contact:($('#aucFContact').value||'').trim(),
+    sourceUrl:($('#aucFUrl').value||'').trim(),
+    notes:($('#aucFNotes').value||'').trim(),
+    verified:!!$('#aucFVerified').checked,
+    documents: prev.documents || [],
+    tags: prev.tags || [],
+    createdAt: prev.createdAt || Date.now(),
+    updatedAt: Date.now()
+  };
+  if(!rec.title){ toast('Auction title required',true); return; }
+  if(!rec.auctionDate){ toast('Auction date required',true); return; }
+  if(rec.sourceUrl && !/^https?:\/\//i.test(rec.sourceUrl)){ toast('Source URL must start with http/https',true); return; }
+  rec.status = aucAutoStatus(rec);
+  if(prev.id){ const i=db.auctions.findIndex(x=>x.id===prev.id); if(i>-1) db.auctions[i]=rec; }
+  else { db.auctions.unshift(rec); }
+  save(); closeModal('auctionModal'); renderAuctions(); render(); toast(prev.id?'Auction updated':'Auction added');
+}
+function deleteAuction(id){
+  const a=(db.auctions||[]).find(x=>x.id===id); if(!a) return;
+  if(!confirm(`Delete auction "${a.title||'this record'}"?`)) return;
+  db.auctions=db.auctions.filter(x=>x.id!==id); save(); renderAuctions(); render(); toast('Auction deleted');
+}
+function aucCopyWeeklyBrief(){
+  aucNormalizeAll(false);
+  const now=new Date(); const today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  const in7=new Date(today); in7.setDate(in7.getDate()+7);
+  const items=(db.auctions||[]).filter(a=>{
+    const d=aucParseDate(a.auctionDate); if(!d) return false;
+    const s=aucAutoStatus(a);
+    return d>=today && d<=in7 && !['cancelled'].includes(s);
+  }).sort((a,b)=>aucDateKey(a.auctionDate).localeCompare(aucDateKey(b.auctionDate)));
+  const lines=[`BCS Jaipur Auction Watch — ${today.toLocaleDateString('en-IN')} to ${in7.toLocaleDateString('en-IN')}`, ''];
+  if(!items.length) lines.push('No upcoming auctions in the next 7 days. Verify official portals for new notices.');
+  items.forEach((a,i)=>{
+    lines.push(`${i+1}. ${a.title||'Auction property'}`);
+    lines.push(`   Date: ${aucDateLabel(a.auctionDate)} | Source: ${a.source||'Other'} | Status: ${aucStatusMeta(aucAutoStatus(a)).label}`);
+    lines.push(`   Location: ${[a.location,a.city].filter(Boolean).join(', ')||'—'}`);
+    lines.push(`   Reserve: ${a.reservePrice||'—'} | EMD: ${a.emdAmount||'—'}${a.emdLastDate?` | EMD last date: ${a.emdLastDate}`:''}`);
+    if(a.sourceUrl) lines.push(`   Source: ${a.sourceUrl}`);
+    if(a.notes) lines.push(`   Note: ${a.notes}`);
+    lines.push('');
+  });
+  lines.push('Verify reserve price, EMD, dates, and terms on the official source before bidding/sharing.');
+  const text=lines.join('\n');
+  navigator.clipboard?.writeText(text).then(()=>toast('Weekly auction brief copied')).catch(()=>{ prompt('Copy weekly brief', text); });
+}
+function initAuctions(){
+  $('#aucAddBtn')?.addEventListener('click',()=>openAuctionForm());
+  $('#aucFSave')?.addEventListener('click',saveAuctionForm);
+  $('#aucFDelete')?.addEventListener('click',()=>{ if(editingAuctionId) deleteAuction(editingAuctionId); closeModal('auctionModal'); });
+  $('#aucRefreshStatusBtn')?.addEventListener('click',()=>{ aucNormalizeAll(true); renderAuctions(); toast('Auction statuses refreshed'); });
+  $('#aucCopyWeeklyBtn')?.addEventListener('click',aucCopyWeeklyBrief);
+  ['aucSearch','aucSourceFilter','aucStatusFilter','aucSort','aucVerifiedOnly'].forEach(id=>{
+    const el=document.getElementById(id); if(!el) return;
+    el.addEventListener(el.type==='checkbox'?'change':'input', renderAuctions);
+    if(el.tagName==='SELECT') el.addEventListener('change', renderAuctions);
+  });
+}
+
 function renderNews(){
   const grid = $('#newsGrid'); if(!grid) return;
   const total = db.news.length;
@@ -40508,9 +41597,9 @@ function applyRoleChrome(){
   if(heroAdv) heroAdv.textContent = admin ? 'Advisors' : 'My profile';
   const heroH2 = document.querySelector('#view-dashboard .hero-life .intro-main h2');
   const heroP = document.querySelector('#view-dashboard .hero-life .intro-main > p');
-  if(heroH2) heroH2.innerHTML = admin ? 'Every developer, every plot,<br><em>one clear view.</em>' : 'Your projects, clients,<br><em>one clear portal.</em>';
+  if(heroH2) heroH2.innerHTML = admin ? 'The right property,<br><em>for the right client.</em>' : 'Your projects, clients,<br><em>one clear portal.</em>';
   if(heroP) heroP.textContent = admin
-    ? 'Prices, approvals, people aur payments — ek hi control room. Jo change save hota hai, wahi sab pages mein live reflect hota hai.'
+    ? 'Budget, approvals, inventory aur payments — ek hi advisory desk. Har recommendation source-backed aur client-ready.'
     : 'Assigned projects, clients, bookings aur payouts — sab ek jagah. Admin jo assign karega, wahi aapke portal me live dikhega.';
   const moreHead = document.querySelector('#navMorePanel .nav-more-head b');
   if(moreHead) moreHead.textContent = admin ? 'All ' + document.querySelectorAll('.view').length + ' pages' : 'Advisor tools';
@@ -43590,6 +44679,7 @@ bcsRegisterDelegated('resale','Resale inventory','resale','🔁','#view-resale',
 bcsRegisterDelegated('bookings','Bookings & payments','bookings','🧾','#view-clients',()=>openBooking(),id=>openBooking(id),item=>deleteBooking(item.id));
 bcsRegisterDelegated('pipeline','Sales / pipeline','pipeline','💼','#view-pipeline',()=>openDeal(),item=>openDeal(item),item=>deleteDeal(item.id));
 bcsRegisterDelegated('news','Saved news','news','📰','#view-news',()=>openNews(),id=>openNews(id),item=>deleteNews(item.id));
+bcsRegisterDelegated('auctions','Auction properties','auctions','🔨','#view-auctions',()=>openAuctionForm(),id=>openAuctionForm(id),item=>deleteAuction(item.id));
 bcsRegisterDelegated('links','Website directory','links','🔗','#view-links',()=>openLink(),id=>openLink(id),item=>deleteLink(item.id));
 bcsRegisterDelegated('linkCats','Link categories','linkCategories','🗂','#view-links',()=>openLinkCategory(),id=>openLinkCategory(id),item=>deleteLinkCategory(item.id));
 bcsRegisterDelegated('templates','Message templates','templates','✉','#view-templates',()=>openTemplate(),id=>openTemplate(id));
@@ -50396,7 +51486,10 @@ function render(){
   try{ if(window.BCS_GROWTH && window.BCS_GROWTH.renderFunnels) window.BCS_GROWTH.renderFunnels(); }catch(e){}
   if(currentView === 'sheets'){ try{ paintSheetsInputs(); }catch(e){} }
   if(currentView === 'applications'){ try{ window.BCS_APPS_VIEW.render(); }catch(e){ console.warn('[BCS applications]', e); } }
+  if(currentView === 'auctions'){ try{ renderAuctions(); }catch(e){ console.warn('[BCS auctions]', e); } }
+  if(currentView === 'tts'){ try{ window.BCS_TTS && window.BCS_TTS.render(); }catch(e){} }
   if(currentView === 'whiteboard'){ try{ window.BCS_EZWRITE.render(); }catch(e){} }
+  if(currentView === 'videostudio'){ try{ window.BCS_VIDEOSTUDIO && window.BCS_VIDEOSTUDIO.render(); }catch(e){} }
   if(currentView === 'jaipur'){ try{ window.BCS_JAIPUR.render(); }catch(e){ console.warn('[BCS jaipur]', e); } }
   storageMeter();
   try{ if(window.BCS_FLOW) window.BCS_FLOW.render(); }catch(e){}
@@ -50656,6 +51749,7 @@ initResale();
 initAdvisory();
 initDayplan();
 initNews();
+initAuctions();
 initLinks();
 initTerminology();
 initTax();
@@ -57305,7 +58399,7 @@ window.calcFinanceClient = calcFinanceClient;
 (function(){
 'use strict';
 const KEY = 'bcs_nav_order_v1';
-const DEFAULT_PRIMARY = ['dashboard','advisory','projects','developers','clients','leadgen','dayplan','pulse','news','calc','inventory','pipeline'];
+const DEFAULT_PRIMARY = ['dashboard','dayplan','leadgen','clients','advisory','projects','inventory','pipeline','pulse','news','calc','finance'];
 let nav = null, drag = null, dragEndedAt = 0;
 const isMobile = () => document.body.classList.contains('bcs-native');
 const $  = (s, r=document) => r.querySelector(s);
@@ -57317,11 +58411,21 @@ const panelEl = () => document.getElementById('navMorePanel');
 function viewMeta(btn){
   if(!btn) return null;
   const view = btn.dataset.view;
-  const ic = btn.querySelector('.nav-ic') ? btn.querySelector('.nav-ic').textContent.trim() : '';
+  const icEl = btn.querySelector('.nav-ic');
+  const ic = icEl ? icEl.textContent.trim() : '';
   let label = '';
   const lbl = btn.querySelector('.nav-lbl');
   if(lbl) label = lbl.textContent.trim();
-  else label = (btn.textContent || '').replace(ic,'').trim();
+  else {
+    const pinTxt = btn.querySelector('.nav-pin-txt');
+    if(pinTxt) label = pinTxt.textContent.trim();
+    else label = (btn.textContent || '').replace(ic,'').replace(/[+−]/g,'').trim();
+  }
+  // prefer known catalog icon/label if this button was transformed
+  if(CATALOG && CATALOG.has(view)){
+    const prev = CATALOG.get(view).meta || {};
+    return { view, icon: ic || prev.icon || '•', label: label || prev.label || view };
+  }
   return { view, icon: ic || '•', label: label || view };
 }
 function allButtons(){
@@ -57345,32 +58449,43 @@ function ensureHomeGroups(){
   });
   $$('#navMorePanel button[data-view]').forEach(b => { if(!b.dataset.homeGroup) b.dataset.homeGroup = b.closest('.nav-more-group')?.dataset.moreGroup || 'More'; });
 }
-function toNavButton(btn, meta){
+function extraBadges(btn){
+  if(!btn) return [];
+  return Array.from(btn.querySelectorAll('.nav-dot,.nav-fire,.nav-badge')).map(n => n.cloneNode(true));
+}
+function applyBadges(btn, badges){
+  if(!btn || !badges) return;
+  badges.forEach(n => { if(n && n.className) btn.appendChild(n.cloneNode(true)); });
+}
+function toNavButton(btn, meta, badges){
   if(!btn) return btn;
   const m = meta || viewMeta(btn);
-  btn.className = btn.className.replace(/\bmore-pinned\b/g,'').trim();
+  const bgs = (badges && badges.length ? badges : extraBadges(btn));
+  btn.className = (btn.className||'').replace(/\bmore-pinned\b/g,'').trim();
   btn.innerHTML = '<span class="nav-ic" aria-hidden="true"></span><span class="nav-lbl"></span>';
   btn.querySelector('.nav-ic').textContent = m.icon;
   btn.querySelector('.nav-lbl').textContent = m.label;
   btn.setAttribute('aria-label', m.label);
   btn.removeAttribute('draggable');
+  applyBadges(btn, bgs);
   return btn;
 }
-function toPanelButton(btn, meta){
+function toPanelButton(btn, meta, badges){
   if(!btn) return btn;
   const m = meta || viewMeta(btn);
-  btn.className = btn.className.replace(/\bmore-pinned\b/g,'').trim();
+  const bgs = (badges && badges.length ? badges : extraBadges(btn));
+  btn.className = (btn.className||'').replace(/\bmore-pinned\b/g,'').trim();
   btn.innerHTML = '<span class="nav-ic" aria-hidden="true"></span><span class="nav-pin-txt"></span><button type="button" class="nav-pin-toggle" data-pin-toggle="1" aria-label=""></button>';
   btn.querySelector('.nav-ic').textContent = m.icon;
   btn.querySelector('.nav-pin-txt').textContent = m.label;
   btn.setAttribute('aria-label', m.label);
   btn.setAttribute('draggable','true');
+  applyBadges(btn, bgs);
   return btn;
 }
 function dedupeAndCatalog(){
   ensureHomeGroups();
   const byView = new Map();
-  // collect all, prefer element that already has richest info; keep one
   $$('button[data-view]').forEach(b => {
     const v = b.dataset.view; if(!v) return;
     if(!byView.has(v)) byView.set(v, []);
@@ -57378,12 +58493,22 @@ function dedupeAndCatalog(){
   });
   const catalog = new Map();
   byView.forEach((els, v) => {
-    // choose canonical: prefer nav one, else first
-    let keep = els.find(e => e.closest('#nav') && !e.closest('#navMorePanel')) || els[0];
-    const meta = viewMeta(keep);
-    const home = keep.dataset.homeGroup || keep.closest('.nav-more-group')?.dataset.moreGroup || els.map(e=>e.dataset.homeGroup||e.closest('.nav-more-group')?.dataset.moreGroup).find(Boolean) || 'More';
-    catalog.set(v, { el: keep, meta, home });
-    els.forEach(e => { if(e !== keep) e.remove(); });
+    const navOne = els.find(e => e.closest('#nav') && !e.closest('#navMorePanel'));
+    const panelOne = els.find(e => e.closest('#navMorePanel'));
+    const keepMeta = navOne || panelOne || els[0];
+    const icEl = keepMeta.querySelector('.nav-ic');
+    const lblEl = keepMeta.querySelector('.nav-lbl') || keepMeta.querySelector('.nav-pin-txt');
+    const icon = icEl ? icEl.textContent.trim() : (CATALOG && CATALOG.get(v)?.meta?.icon) || '•';
+    let label = lblEl ? lblEl.textContent.trim() : (keepMeta.textContent||'').replace(icon,'').replace(/[+−]/g,'').trim();
+    if(CATALOG && CATALOG.get(v)?.meta?.label) label = label || CATALOG.get(v).meta.label;
+    const meta = { view:v, icon: icon || '•', label: label || v };
+    const home = (keepMeta.dataset.homeGroup) || keepMeta.closest('.nav-more-group')?.dataset.moreGroup || els.map(e=>e.dataset.homeGroup||e.closest('.nav-more-group')?.dataset.moreGroup).find(Boolean) || 'More';
+    const badges = extraBadges(keepMeta);
+    catalog.set(v, { el: panelOne || navOne || els[0], meta, home, panelEl: panelOne || null, navEl: navOne || null, badges });
+    els.forEach(e => { if(e === navOne || e === panelOne) return; e.remove(); });
+    const it = catalog.get(v);
+    if(it.panelEl) it.el = it.panelEl;
+    else if(it.navEl) it.el = it.navEl;
   });
   return catalog;
 }
@@ -57392,17 +58517,28 @@ function getSavedPrimary(catalog){
   try{ const raw = JSON.parse(localStorage.getItem(KEY) || 'null'); if(Array.isArray(raw)) arr = raw; }catch(e){}
   const known = new Set(catalog.keys());
   if(!arr || !arr.length){
-    // derive from current nav, else default
     const cur = primaryButtons().map(b=>b.dataset.view).filter(v=>known.has(v));
     arr = cur.length ? cur : DEFAULT_PRIMARY.filter(v=>known.has(v));
   } else {
     arr = arr.filter(v => known.has(v));
   }
-  // if somehow empty, fallback
   if(!arr.length) arr = DEFAULT_PRIMARY.filter(v=>known.has(v));
   return arr;
 }
 let CATALOG = null;
+function ensurePanelButton(v){
+  const item = CATALOG && CATALOG.get(v); if(!item) return null;
+  let b = item.panelEl;
+  if(!b || !b.isConnected){
+    b = document.createElement('button');
+    b.type = 'button';
+    b.dataset.view = v;
+    item.panelEl = b;
+  }
+  b.dataset.homeGroup = item.home || 'More';
+  toPanelButton(b, item.meta, item.badges);
+  return b;
+}
 function applyLayout(primaryIds){
   if(!CATALOG || !nav) return;
   const p = panelEl(), w = moreWrap();
@@ -57410,25 +58546,35 @@ function applyLayout(primaryIds){
   const primary = [];
   const seen = new Set();
   (primaryIds || []).forEach(v => { if(CATALOG.has(v) && !seen.has(v)){ primary.push(v); seen.add(v); } });
-  // place primary in nav in order
-  primary.forEach(v => {
-    const item = CATALOG.get(v); if(!item) return;
-    toNavButton(item.el, item.meta);
-    nav.insertBefore(item.el, w);
-  });
-  // place rest into panel groups (append to their home groups, preserving relative order by iterating catalog in a stable way)
-  const rest = [];
-  CATALOG.forEach((item, v) => { if(!seen.has(v)) rest.push(v); });
-  // stable group order by DOM
+  // Panel: ALL pages, in stable home-group order; in-bar pages get '-' action
   const groupEls = $$('#navMorePanel .nav-more-group');
   const groupMap = new Map(groupEls.map(g => [g.dataset.moreGroup, g]));
-  rest.forEach(v => {
-    const item = CATALOG.get(v); if(!item) return;
-    toPanelButton(item.el, item.meta);
+  CATALOG.forEach((item, v) => {
+    const b = ensurePanelButton(v);
+    if(!b) return;
     const g = groupMap.get(item.home) || groupEls[groupEls.length-1] || p;
-    g.appendChild(item.el);
+    g.appendChild(b);
   });
-  // ensure More wrap last
+  // Nav: only primary, in order.
+  primary.forEach(v => {
+    const item = CATALOG.get(v); if(!item) return;
+    let nb = item.navEl;
+    if(!nb || !nb.isConnected){
+      nb = document.createElement('button');
+      nb.type = 'button';
+      nb.dataset.view = v;
+      item.navEl = nb;
+    }
+    toNavButton(nb, item.meta, item.badges);
+    nav.insertBefore(nb, w);
+  });
+  // remove any stale nav buttons not primary
+  $$('#nav > button[data-view]').forEach(b => {
+    const v = b.dataset.view;
+    if(seen.has(v)) return;
+    const it = CATALOG.get(v);
+    if(it){ it.navEl = b; b.remove(); } else b.remove();
+  });
   nav.appendChild(w);
   syncPanelStates();
   if(typeof window.bcsNavMoreSync === 'function') window.bcsNavMoreSync();
@@ -57441,14 +58587,14 @@ function syncPanelStates(){
     b.classList.toggle('on', b.dataset.view === (window.currentView||''));
     const t = b.querySelector('.nav-pin-toggle');
     if(t){
-      t.textContent = inBar ? 'In bar ✓' : '+ Add to bar';
-      t.setAttribute('aria-label', inBar ? ('Remove ' + (CATALOG.get(b.dataset.view)?.meta.label||b.dataset.view) + ' from bar') : ('Add ' + (CATALOG.get(b.dataset.view)?.meta.label||b.dataset.view) + ' to bar'));
-      t.title = inBar ? 'Remove from navigation bar' : 'Show on navigation bar';
+      t.textContent = inBar ? '−' : '+';
+      const name = (CATALOG.get(b.dataset.view)?.meta.label||b.dataset.view);
+      t.setAttribute('aria-label', inBar ? ('Remove ' + name + ' from bar') : ('Add ' + name + ' to bar'));
+      t.title = inBar ? ('Remove ' + name + ' from bar') : ('Add ' + name + ' to bar');
     }
   });
-  // show a hint in panel head once
   const head = $('#navMorePanel .nav-more-head span');
-  if(head && !head.dataset.navhint){ head.dataset.navhint='1'; head.textContent = 'drag to bar · or use + Add to bar'; }
+  if(head) head.textContent = 'all pages · + add / − remove from bar';
 }
 function persist(){
   try{ localStorage.setItem(KEY, JSON.stringify(primaryButtons().map(b => b.dataset.view))); }catch(e){}
@@ -70027,6 +71173,852 @@ window.BCS_NAVX = { applySaved: function(){ if(CATALOG) applyLayout(getSavedPrim
     toolbox:TOOLBOX, widgets:function(){ return W; }, calcEval:calcEval,
     state:S, pages:function(){ return S.pages; }, palette:PALETTE, benq:BENQ
   };
+})();
+</script>
+
+<script>
+/* ============================================================
+   BCS v223 · Local Video Studio (simple, free, browser-local)
+   - 3-folder workflow: Raw footage / Style reference / export
+   - Local preview + Full HD canvas export via MediaRecorder
+   - MP4 preferred when browser supports it; WebM fallback
+   ============================================================ */
+(function(){
+  'use strict';
+  var root=null, inited=false;
+  var rawFiles=[], styleFiles=[], styleNotes='';
+  var srcVideo=null, refVideo=null, refImage=null;
+  var canvas=null, ctx=null, raf=null, playing=false, recorder=null, recChunks=[], rendering=false;
+
+  function $(id){ return root ? root.querySelector('#'+id) : document.getElementById(id); }
+  function setStatus(msg){ var el=$('vsStatus'); if(el) el.textContent=msg||''; }
+  function setRState(msg){ var el=$('vsRenderState'); if(el) el.textContent=msg||''; }
+  function setProg(p){ var w=$('vsProgressWrap'), b=$('vsProgressBar'); if(!w||!b) return; w.hidden=false; b.style.width=Math.max(0,Math.min(100,p||0))+'%'; if(p>=100) setTimeout(function(){ w.hidden=true; b.style.width='0%'; }, 900); }
+
+  function pickMime(){
+    var types=['video/mp4;codecs=avc1.42E01E,mp4a.40.2','video/mp4','video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm'];
+    for(var i=0;i<types.length;i++){ try{ if(window.MediaRecorder && MediaRecorder.isTypeSupported(types[i])) return types[i]; }catch(e){} }
+    return '';
+  }
+  function extFromMime(m){ if(!m) return 'webm'; if(m.indexOf('mp4')>=0) return 'mp4'; return 'webm'; }
+
+  function drawFrame(){
+    if(!canvas||!ctx) return;
+    var w=canvas.width, h=canvas.height;
+    ctx.fillStyle='#0f1115'; ctx.fillRect(0,0,w,h);
+    var v=$('vsSourceVideo');
+    if(v && v.readyState>=2){
+      var vw=v.videoWidth||w, vh=v.videoHeight||h;
+      var scale=Math.max(w/vw, h/vh);
+      var dw=vw*scale, dh=vh*scale, dx=(w-dw)/2, dy=(h-dh)/2;
+      ctx.drawImage(v,dx,dy,dw,dh);
+    } else {
+      ctx.fillStyle='#1a1d24'; ctx.fillRect(0,0,w,h);
+      ctx.fillStyle='#e6e1cf'; ctx.font='700 42px DM Sans, Arial'; ctx.textAlign='center';
+      ctx.fillText('Load Raw footage video', w/2, h/2 - 20);
+      ctx.font='500 28px DM Sans, Arial'; ctx.fillStyle='#b7b09a';
+      ctx.fillText('Step 1: Raw footage / Style reference / export', w/2, h/2 + 30);
+    }
+    var cap = ($('vsCaption')||{}).value || '';
+    if(cap){
+      ctx.textAlign='center';
+      var size = Math.max(24, Math.min(120, parseInt(($('vsCaptionSize')||{}).value||64,10)||64));
+      ctx.font='700 '+size+'px DM Sans, Arial';
+      var pad=28, th=size*1.4;
+      ctx.fillStyle='rgba(0,0,0,.42)';
+      ctx.fillRect(60, h-220, w-120, th+pad);
+      ctx.fillStyle='#fff';
+      ctx.fillText(cap, w/2, h-220+th-8);
+    }
+    ctx.fillStyle='rgba(0,0,0,.35)'; ctx.fillRect(36,36,360,56);
+    ctx.fillStyle='#F2E9D0'; ctx.font='700 28px DM Sans, Arial'; ctx.textAlign='left';
+    ctx.fillText('BCS Video Studio', 52, 72);
+  }
+
+  function stopPlay(){
+    playing=false;
+    if(raf){ cancelAnimationFrame(raf); raf=null; }
+    var v=$('vsSourceVideo'); try{ v && v.pause(); }catch(e){}
+  }
+  function loop(){
+    drawFrame();
+    var v=$('vsSourceVideo');
+    var end=parseFloat(($('vsEnd')||{}).value||'0')||0;
+    if(playing && v && !v.paused){
+      if(end>0 && v.currentTime>=end){ stopPlay(); setStatus('Preview finished at end point.'); return; }
+      raf=requestAnimationFrame(loop);
+    }
+  }
+  function play(){
+    var v=$('vsSourceVideo');
+    if(!v || !v.src){ setStatus('Pehle Raw footage me video import karein.'); return; }
+    var start=Math.max(0, parseFloat(($('vsStart')||{}).value||'0')||0);
+    var end=parseFloat(($('vsEnd')||{}).value||'0')||0;
+    if(end>0 && end<=start){ setStatus('End time start se bada hona chahiye.'); return; }
+    try{ v.currentTime=start; }catch(e){}
+    v.muted=true;
+    var p=v.play();
+    playing=true;
+    if(p && p.catch) p.catch(function(){ playing=false; setStatus('Preview play nahi ho saka. Browser autoplay/policy check karein.'); });
+    raf=requestAnimationFrame(loop);
+    setStatus('Preview playing locally…');
+  }
+
+  function fileInfo(){
+    var parts=[];
+    if(rawFiles.length) parts.push('Raw: '+rawFiles.length+' file(s)');
+    if(styleFiles.length) parts.push('Style ref: '+styleFiles.length+' file(s)');
+    parts.push('Notes: '+(styleNotes? 'saved':'empty'));
+    var el=$('vsFileInfo'); if(el) el.textContent=parts.join(' · ');
+  }
+
+  function onRaw(files){
+    rawFiles=Array.from(files||[]);
+    var v=$('vsSourceVideo');
+    var firstVideo=rawFiles.find(function(f){ return /^video\//.test(f.type); });
+    if(firstVideo){
+      var url=URL.createObjectURL(firstVideo);
+      v.src=url; v.onloadedmetadata=function(){
+        var dur=v.duration||0;
+        if($('vsEnd') && (parseFloat($('vsEnd').value)||0)<=0) $('vsEnd').value=Math.min(dur||6, 15).toFixed(1);
+        setStatus('Raw video loaded: '+firstVideo.name+' ('+Math.round(dur)+'s).');
+        drawFrame();
+      };
+      v.load();
+    } else {
+      setStatus('Raw footage me video file select karein (image/audio reference only supported for workflow).');
+    }
+    fileInfo();
+  }
+  function onStyle(files){
+    styleFiles=Array.from(files||[]);
+    var vid=styleFiles.find(function(f){ return /^video\//.test(f.type); });
+    var img=styleFiles.find(function(f){ return /^image\//.test(f.type); });
+    if(vid){ var rv=$('vsRefVideo'); rv.src=URL.createObjectURL(vid); rv.style.display='block'; rv.load(); }
+    if(img){ var ri=$('vsRefImage'); ri.src=URL.createObjectURL(img); ri.style.display='block'; }
+    setStatus('Style reference loaded. Notes likh kar "Save style notes" dabayen.');
+    fileInfo();
+  }
+
+  async function renderExport(){
+    if(rendering) return;
+    var v=$('vsSourceVideo');
+    if(!v || !v.src){ setStatus('Export ke liye raw video chahiye.'); return; }
+    if(!window.MediaRecorder){ setStatus('Is browser me MediaRecorder support nahi hai. Chrome/Edge/Safari latest try karein.'); return; }
+    var start=Math.max(0, parseFloat(($('vsStart')||{}).value||'0')||0);
+    var end=parseFloat(($('vsEnd')||{}).value||'0')||0;
+    var dur = (end>start?end-start:Math.min(v.duration||6,6));
+    dur=Math.max(1, Math.min(60, dur));
+    var mime=pickMime();
+    rendering=true; setRState('Rendering…'); setProg(2); setStatus('Local Full HD render start… ('+extFromMime(mime).toUpperCase()+')');
+    stopPlay();
+    try{ v.currentTime=start; }catch(e){}
+    drawFrame();
+    var stream = canvas.captureStream(30);
+    recChunks=[];
+    var opts = mime ? {mimeType:mime, videoBitsPerSecond:6000000} : {videoBitsPerSecond:6000000};
+    try{ recorder=new MediaRecorder(stream, opts); }
+    catch(e){ try{ recorder=new MediaRecorder(stream); mime=recorder.mimeType||mime; }catch(err){ rendering=false; setRState('Failed'); setStatus('Recorder start nahi ho saka: '+(err&&err.message||err)); return; } }
+    recorder.ondataavailable=function(e){ if(e.data && e.data.size) recChunks.push(e.data); };
+    recorder.onstop=function(){
+      rendering=false; setProg(100); setRState('Ready');
+      var blob=new Blob(recChunks, {type: mime || 'video/webm'});
+      var a=document.createElement('a');
+      var name=(($('vsExportName')||{}).value||'bcs-reel-fullhd').replace(/[^a-z0-9\-_]+/gi,'-');
+      a.href=URL.createObjectURL(blob);
+      a.download=name+'-1080x1920.'+extFromMime(mime||blob.type);
+      document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); },1500);
+      setStatus('Export ready. File downloaded: '+a.download+(extFromMime(mime||blob.type)==='webm'?' (WebM fallback; MP4 browser support par depend karta hai).':''));
+    };
+    recorder.start(250);
+    try{ await v.play(); }catch(e){}
+    playing=true; raf=requestAnimationFrame(loop);
+    var started=Date.now();
+    var timer=setInterval(function(){
+      var elapsed=(Date.now()-started)/1000;
+      setProg(Math.min(95,(elapsed/dur)*100));
+      if(elapsed>=dur || (end>0 && v.currentTime>=end) || v.ended){
+        clearInterval(timer);
+        stopPlay();
+        try{ recorder.state!=='inactive' && recorder.stop(); }catch(e){}
+      }
+    }, 120);
+  }
+
+  function copyGeminiPrompt(){
+    var notes=(($('vsStyleNotes')||{}).value||'').trim();
+    var cap=(($('vsCaption')||{}).value||'').trim();
+    var prompt = [
+      'You are a video editing assistant for a local BCS real estate reel.',
+      'Goal: create a simple Full HD 9:16 MP4 reel for Jaipur real estate.',
+      'Use Gemini 3.8 Flash for free ideation/caption suggestions if available in my workspace.',
+      'No paid APIs. Keep local-first.',
+      '',
+      'Inputs:',
+      '- Raw footage folder: ./Raw footage',
+      '- Style reference folder: ./Style reference',
+      '- Export folder: ./export',
+      '',
+      'Style notes:', notes || '(add style notes)',
+      'Caption:', cap || '(add caption)',
+      '',
+      'Tasks:',
+      '1) Suggest trim points and pacing for a 6-15s reel.',
+      '2) Match style reference mood/colors/caption placement.',
+      '3) Output edit plan and optional FFmpeg command for 1080x1920 MP4 export.',
+      '4) Keep text short, clear, premium, and suitable for WhatsApp/Instagram.'
+    ].join('\n');
+    try{ navigator.clipboard.writeText(prompt).then(function(){ setStatus('Gemini/Antigravity prompt copied.'); }); }
+    catch(e){ setStatus('Prompt copy nahi ho saka.'); }
+  }
+
+  function wire(){
+    if(inited) return;
+    root=document.getElementById('view-videostudio');
+    if(!root) return;
+    inited=true;
+    canvas=$('vsCanvas'); ctx=canvas && canvas.getContext('2d');
+    $('vsRawInput') && $('vsRawInput').addEventListener('change', function(e){ onRaw(e.target.files); });
+    $('vsStyleInput') && $('vsStyleInput').addEventListener('change', function(e){ onStyle(e.target.files); });
+    $('vsPlayBtn') && $('vsPlayBtn').addEventListener('click', play);
+    $('vsStopBtn') && $('vsStopBtn').addEventListener('click', function(){ stopPlay(); setStatus('Stopped.'); });
+    $('vsRenderBtn') && $('vsRenderBtn').addEventListener('click', function(){ renderExport(); });
+    $('vsApplyStyleBtn') && $('vsApplyStyleBtn').addEventListener('click', function(){ styleNotes=(($('vsStyleNotes')||{}).value||'').trim(); fileInfo(); setStatus('Style notes saved locally in this session.'); });
+    $('vsGeminiPromptBtn') && $('vsGeminiPromptBtn').addEventListener('click', copyGeminiPrompt);
+    ['vsCaption','vsCaptionSize','vsStart','vsEnd'].forEach(function(id){ var el=$(id); if(el) el.addEventListener('input', drawFrame); });
+    drawFrame();
+    fileInfo();
+  }
+
+  function render(){ try{ wire(); drawFrame(); }catch(e){} }
+
+  window.BCS_VIDEOSTUDIO = { render:render, play:play, stop:stopPlay, export:renderExport };
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', wire); else wire();
+})();
+</script>
+
+<script>
+/* ============================================================
+   BCS v223 · Voice Studio (free, no API, no credit, no char limit)
+   - Instant: Web Speech API device voices (private, no upload)
+   - Neural HD: Kokoro-82M on-device via transformers/kokoro-js CDN
+     Model files download on demand; text processed locally in browser.
+   ============================================================ */
+(function(){
+  'use strict';
+  var root=null, inited=false;
+  var deviceVoices=[], voiceReady=false;
+  var chunks=[], chunkIndex=0, speaking=false, paused=false;
+  var lastWavBlob=null, lastMp3Blob=null, lastAudioUrl='', lastGenId=0;
+  var hd={loading:false,ready:false,tts:null,kind:'',device:'wasm'};
+  var state={mode:'neural', lang:'hinglish', gender:'male', style:'confident'};
+
+  var NEURAL_VOICES={
+    hi:{
+      female:[
+        {id:'hf_alpha', name:'Hindi Alpha (Female)', lang:'hi', gender:'female', note:'Natural Hindi female'},
+        {id:'hf_beta',  name:'Hindi Beta (Female)',  lang:'hi', gender:'female', note:'Natural Hindi female'}
+      ],
+      male:[
+        {id:'hm_omega', name:'Hindi Omega (Male)', lang:'hi', gender:'male', note:'Natural Hindi male'},
+        {id:'hm_psi',   name:'Hindi Psi (Male)',   lang:'hi', gender:'male', note:'Natural Hindi male'}
+      ]
+    },
+    hinglish:{
+      female:[
+        {id:'hf_alpha', name:'Hinglish Alpha (Female)', lang:'hi', gender:'female', note:'Hindi + English words'},
+        {id:'hf_beta',  name:'Hinglish Beta (Female)',  lang:'hi', gender:'female', note:'Soft Hinglish female'}
+      ],
+      male:[
+        {id:'hm_omega', name:'Confident Omega (Male, Hinglish)', lang:'hi', gender:'male', note:'Warm, grounded, deliberate'},
+        {id:'hm_psi',   name:'Bright Psi (Male, Hinglish)',      lang:'hi', gender:'male', note:'Crisp, energetic male'}
+      ]
+    },
+    en:{
+      female:[
+        {id:'af_heart',  name:'Heart (Female, EN-US)', lang:'en-us', gender:'female', note:'Clear English female'},
+        {id:'af_bella',  name:'Bella (Female, EN-US)', lang:'en-us', gender:'female', note:'Warm English female'},
+        {id:'bf_emma',   name:'Emma (Female, EN-GB)',  lang:'en-gb', gender:'female', note:'British English female'}
+      ],
+      male:[
+        {id:'am_michael',name:'Michael (Male, EN-US)', lang:'en-us', gender:'male', note:'Clear English male'},
+        {id:'am_fenrir', name:'Fenrir (Male, EN-US)',  lang:'en-us', gender:'male', note:'Deep English male'},
+        {id:'bm_george', name:'George (Male, EN-GB)',  lang:'en-gb', gender:'male', note:'British English male'}
+      ]
+    }
+  };
+
+  function $(id){ return root ? root.querySelector('#'+id) : document.getElementById(id); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]);}); }
+  function setStatus(msg, elId){ var el=$(elId||'ttsStatus'); if(el) el.textContent=msg||''; }
+  function setProgress(pct, txt){ var w=$('ttsProgressWrap'),b=$('ttsProgressBar'),t=$('ttsProgressTxt'); if(w) w.hidden=false; if(b) b.style.width=Math.max(0,Math.min(100,pct||0))+'%'; if(t && txt!=null) t.textContent=txt; }
+  function hideProgress(){ var w=$('ttsProgressWrap'); if(w) w.hidden=true; }
+  function getText(){ var ta=$('ttsText'); return ta?String(ta.value||''):''; }
+  function updateCount(){ var text=getText(); var chars=text.length; var words=(text.trim().match(/\S+/g)||[]).length; var el=$('ttsCount'); if(el) el.textContent=chars+' characters · '+words+' words'; }
+
+  function loadVoices(){ try{ if(!('speechSynthesis' in window)) return []; var list=window.speechSynthesis.getVoices()||[]; if(list&&list.length) deviceVoices=list.slice(); return deviceVoices; }catch(e){ return deviceVoices; } }
+  function voiceScore(v){
+    var name=(v.name||'').toLowerCase(), lang=(v.lang||'').toLowerCase(), s=0;
+    var wantHi = state.lang==='hi' || state.lang==='hinglish';
+    if(wantHi){
+      if(lang==='hi-in') s+=120; else if(lang.indexOf('hi')===0) s+=100; else if(lang.indexOf('en-in')===0) s+=35; else if(lang.indexOf('en')===0) s+=10;
+      if(name.indexOf('lekha')!==-1) s+=60;
+      if(name.indexOf('google')!==-1 && lang.indexOf('hi')===0) s+=40;
+      if(name.indexOf('hindi')!==-1 || name.indexOf('हिन्दी')!==-1) s+=45;
+    } else {
+      if(lang.indexOf('en-in')===0) s+=80; else if(lang.indexOf('en-us')===0) s+=70; else if(lang.indexOf('en-gb')===0) s+=65; else if(lang.indexOf('en')===0) s+=60;
+    }
+    if(/neural|natural|enhanced|premium|online/.test(name)) s+=18;
+    if(state.gender==='female' && /female|woman|lekha|swara|aarti|neerja|nisha|kavya|sangeeta|jenny|aria|zira|samantha|victoria|serena|emma|sonia/.test(name)) s+=20;
+    if(state.gender==='male' && /male|man|prabhat|madhur|hemant|rishi|guy|davis|mark|ryan|daniel|george|thomas/.test(name)) s+=20;
+    if(v.localService) s+=2;
+    return s;
+  }
+  function isProbablyMale(v){ return /male|man|prabhat|madhur|hemant|rishi|guy|davis|mark|ryan|daniel|george|thomas|aarav|neil/.test((v.name||'').toLowerCase()); }
+  function isProbablyFemale(v){ return /female|woman|lekha|swara|aarti|neerja|nisha|kavya|sangeeta|jenny|aria|zira|samantha|victoria|serena|emma|sonia|sara|natasha/.test((v.name||'').toLowerCase()); }
+  function filterByGender(list, gender){
+    if(!gender) return list;
+    var matched=list.filter(function(v){ return gender==='male'?isProbablyMale(v):isProbablyFemale(v); });
+    return matched.length?matched:list;
+  }
+
+  function populateDeviceVoices(){
+    var sel=$('ttsVoice'); if(!sel) return;
+    loadVoices();
+    var prev=sel.value;
+    var wantHi=state.lang==='hi' || state.lang==='hinglish';
+    var base=deviceVoices.filter(function(v){ var l=(v.lang||'').toLowerCase(); return wantHi ? (l.indexOf('hi')===0 || l.indexOf('en-in')===0 || l.indexOf('en')===0) : l.indexOf('en')===0; });
+    var gendered=filterByGender(base, state.gender);
+    var list=gendered.slice().sort(function(a,b){ return voiceScore(b)-voiceScore(a) || (a.name||'').localeCompare(b.name||''); });
+    if(wantHi){
+      var hi=list.filter(function(v){ return (v.lang||'').toLowerCase().indexOf('hi')===0; });
+      var rest=list.filter(function(v){ return (v.lang||'').toLowerCase().indexOf('hi')!==0; });
+      list=hi.concat(rest);
+    }
+    sel.innerHTML='';
+    if(!list.length){
+      var opt=document.createElement('option'); opt.value=''; opt.textContent='No device voices found'; sel.appendChild(opt);
+      setStatus('Is device par voices nahi mili. Neural HD mode try karein.', 'ttsStatus'); return;
+    }
+    list.forEach(function(v,i){
+      var o=document.createElement('option');
+      o.value=(v.voiceURI||v.name||'')+'||'+(v.lang||'');
+      o.textContent=(v.name||'Voice')+' — '+(v.lang||'');
+      o.dataset.name=v.name||''; o.dataset.lang=v.lang||'';
+      if(i===0) o.selected=true;
+      sel.appendChild(o);
+    });
+    if(prev){ for(var i=0;i<sel.options.length;i++){ if(sel.options[i].value===prev){ sel.selectedIndex=i; break; } } }
+    var hiCount=list.filter(function(v){ return (v.lang||'').toLowerCase().indexOf('hi')===0; }).length;
+    if(state.lang==='hinglish') setStatus(hiCount?('Instant Hinglish ready. '+hiCount+' Hindi voice(s) mili; English words device accent me aa sakte hain.'): 'Instant Hinglish: Hindi device voice nahi mili. Confident Hinglish ke liye Neural HD mode use karein.', 'ttsStatus');
+    else if(state.lang==='hi') setStatus(hiCount?('Instant mode ready. '+hiCount+' Hindi voice(s) mili.'): 'Instant mode: Hindi device voice nahi mili; English/available voice select hui. Behtar Hindi ke liye Neural HD mode use karein.', 'ttsStatus');
+    else setStatus('Instant mode ready. English device voice select karein aur Sunen dabayen.', 'ttsStatus');
+  }
+
+  function populateNeuralVoices(){
+    var sel=$('ttsVoice'); if(!sel) return;
+    var prev=sel.value;
+    var list=(NEURAL_VOICES[state.lang] && NEURAL_VOICES[state.lang][state.gender]) || [];
+    sel.innerHTML='';
+    list.forEach(function(v,i){
+      var o=document.createElement('option');
+      o.value=v.id; o.textContent=v.name + (v.note?' — '+v.note:'');
+      o.dataset.voiceId=v.id; o.dataset.lang=v.lang; o.dataset.gender=v.gender;
+      if(i===0) o.selected=true;
+      sel.appendChild(o);
+    });
+    if(prev){ for(var i=0;i<sel.options.length;i++){ if(sel.options[i].value===prev){ sel.selectedIndex=i; break; } } }
+    var neuralMsg;
+    if(state.lang==='hinglish') neuralMsg = state.gender==='male'
+      ? 'Neural Hinglish male ready. hm_omega = warm/confident, hm_psi = bright/crisp. English words Indian accent me aa sakte hain; pehli baar model download hoga.'
+      : 'Neural Hinglish female ready. Hindi + English words on-device; pehli baar model download hoga.';
+    else if(state.lang==='hi') neuralMsg = 'Neural HD: free Kokoro Hindi voices (male/female). Pehli baar engine load me model download hoga.';
+    else neuralMsg = 'Neural HD: free Kokoro English voices. Pehli baar engine load me model download hoga.';
+    setStatus(neuralMsg, 'ttsStatus');
+  }
+
+  function populateVoices(){ if(state.mode==='neural') populateNeuralVoices(); else populateDeviceVoices(); }
+
+  function selectedDeviceVoice(){
+    var sel=$('ttsVoice'); if(!sel) return null;
+    var val=sel.value||'', opt=sel.options[sel.selectedIndex];
+    var name=opt?(opt.dataset.name||''):''; var lang=opt?(opt.dataset.lang||''):'';
+    loadVoices();
+    for(var i=0;i<deviceVoices.length;i++){ var key=(deviceVoices[i].voiceURI||deviceVoices[i].name||'')+'||'+(deviceVoices[i].lang||''); if(val && key===val) return deviceVoices[i]; }
+    for(var j=0;j<deviceVoices.length;j++){ if(name && deviceVoices[j].name===name && (!lang || deviceVoices[j].lang===lang)) return deviceVoices[j]; }
+    return deviceVoices[0]||null;
+  }
+  function selectedNeuralVoiceId(){
+    var sel=$('ttsVoice');
+    var list=(NEURAL_VOICES[state.lang] && NEURAL_VOICES[state.lang][state.gender]) || [];
+    var def=(list[0]||{}).id || (state.lang==='hinglish'?'hm_omega':'hf_alpha');
+    if(!sel) return def;
+    return sel.value || def;
+  }
+
+  function normalizeText(text){
+    return String(text==null?'':text)
+      .replace(/\u00A0/g,' ')
+      .replace(/[\u2018\u2019]/g,"'")
+      .replace(/[\u201C\u201D]/g,'"')
+      .replace(/[\u2013\u2014]/g,'-')
+      .replace(/\u2026/g,'...')
+      .replace(/[ \t]+\n/g,'\n')
+      .replace(/\n{3,}/g,'\n\n')
+      .replace(/ {2,}/g,' ')
+      .trim();
+  }
+  function splitChunks(text){
+    var t=normalizeText(text);
+    if(!t) return [];
+    var parts=t.split(/(\n+|[।!?\.]+(?:\s+|$))/);
+    var segs=[], cur='';
+    for(var i=0;i<parts.length;i++){
+      var p=parts[i]; if(p==null||p==='') continue;
+      if(/^\n+$/.test(p)){ if(cur.trim()){ segs.push(cur.trim()); cur=''; } continue; }
+      cur+=p;
+      if(/[।!?\.]+(\s+|$)/.test(p) || cur.length>=220){ if(cur.trim()) segs.push(cur.trim()); cur=''; }
+    }
+    if(cur.trim()) segs.push(cur.trim());
+    var out=[];
+    segs.forEach(function(s){
+      if(s.length<=280){ out.push(s); return; }
+      var words=s.split(/\s+/), buf='';
+      words.forEach(function(w){
+        var next=(buf?buf+' ':'')+w;
+        if(next.length>220){ if(buf.trim()) out.push(buf.trim()); buf=w; } else buf=next;
+      });
+      if(buf.trim()) out.push(buf.trim());
+    });
+    return out.filter(Boolean);
+  }
+
+  function stopSpeak(silent){
+    try{ if('speechSynthesis' in window) window.speechSynthesis.cancel(); }catch(e){}
+    try{ var a=$('ttsPreviewAudio'); if(a){ a.pause(); } }catch(e){}
+    speaking=false; paused=false; chunks=[]; chunkIndex=0;
+    if(!silent) setStatus('Stopped.', 'ttsStatus');
+  }
+
+  function speakNextDevice(){
+    if(!speaking) return;
+    if(chunkIndex>=chunks.length){ speaking=false; paused=false; setStatus('Playback complete. ('+chunks.length+' parts)', 'ttsStatus'); return; }
+    var text=chunks[chunkIndex]; if(!text){ chunkIndex++; speakNextDevice(); return; }
+    try{
+      var u=new SpeechSynthesisUtterance(text);
+      var v=selectedDeviceVoice();
+      if(v) u.voice=v;
+      u.lang = v && v.lang ? v.lang : (state.lang==='hi' ? 'hi-IN' : 'en-IN');
+      var rate=parseFloat(($('ttsRate')||{}).value||'1')||1;
+      var pitch=parseFloat(($('ttsPitch')||{}).value||'1')||1;
+      var vol=parseFloat(($('ttsVolume')||{}).value||'1'); if(isNaN(vol)) vol=1;
+      u.rate=rate; u.pitch=pitch; u.volume=vol;
+      u.onstart=function(){ setStatus('Speaking part '+(chunkIndex+1)+' of '+chunks.length+'…', 'ttsStatus'); };
+      u.onend=function(){ if(!speaking) return; chunkIndex++; speakNextDevice(); };
+      u.onerror=function(e){ if(!speaking) return; var err=(e&&e.error)?e.error:'error'; if(err==='canceled'||err==='interrupted') return; setStatus('Speech error: '+err+'. Koshish jaari…', 'ttsStatus'); chunkIndex++; speakNextDevice(); };
+      window.speechSynthesis.speak(u);
+    }catch(e){ speaking=false; setStatus('Speech start nahi ho paya: '+(e&&e.message?e.message:'unknown error'), 'ttsStatus'); }
+  }
+
+  function startDeviceSpeak(){
+    if(!('speechSynthesis' in window)){ setStatus('Is browser me Web Speech API uplabdh nahi hai. Chrome, Edge, Safari ya updated browser try karein, ya Neural HD mode use karein.', 'ttsStatus'); return; }
+    var text=getText().trim();
+    if(!text){ setStatus('Pehle text likhein ya paste karein.', 'ttsStatus'); try{$('ttsText').focus();}catch(e){} return; }
+    stopSpeak(true);
+    chunks=splitChunks(text);
+    if(!chunks.length){ setStatus('Bolne layak text nahi mila.', 'ttsStatus'); return; }
+    speaking=true; paused=false; chunkIndex=0;
+    try{ window.speechSynthesis.resume(); }catch(e){}
+    speakNextDevice();
+  }
+
+  function togglePause(){
+    if(state.mode==='neural'){
+      var a=$('ttsPreviewAudio');
+      if(!a || !a.src){ setStatus('Neural audio abhi play nahi ho raha. Pehle Generate/Sunen karein.', 'ttsStatus'); return; }
+      if(a.paused){ a.play().catch(function(){}); setStatus('Resumed.', 'ttsStatus'); }
+      else { a.pause(); setStatus('Paused.', 'ttsStatus'); }
+      return;
+    }
+    if(!('speechSynthesis' in window)) return;
+    try{
+      if(!speaking){ setStatus('Abhi kuch play nahi ho raha.', 'ttsStatus'); return; }
+      if(window.speechSynthesis.paused || paused){ window.speechSynthesis.resume(); paused=false; setStatus('Resumed…', 'ttsStatus'); }
+      else { window.speechSynthesis.pause(); paused=true; setStatus('Paused.', 'ttsStatus'); }
+    }catch(e){ setStatus('Pause/resume is browser par uplabdh nahi.', 'ttsStatus'); }
+  }
+
+  function updateRangeLabels(){
+    var r=$('ttsRate'), p=$('ttsPitch'), v=$('ttsVolume');
+    if(r && $('ttsRateVal')) $('ttsRateVal').textContent=(parseFloat(r.value)||1).toFixed(2).replace(/\.00$/,'').replace(/0$/,'')+'×';
+    if(p && $('ttsPitchVal')) $('ttsPitchVal').textContent=(parseFloat(p.value)||1).toFixed(2).replace(/\.00$/,'').replace(/0$/,'');
+    if(v && $('ttsVolumeVal')) $('ttsVolumeVal').textContent=Math.round((parseFloat(v.value)||0)*100)+'%';
+  }
+
+  function getSettings(){
+    var rate=parseFloat(($('ttsRate')||{}).value||'1')||1;
+    var pitch=parseFloat(($('ttsPitch')||{}).value||'1')||1;
+    var vol=parseFloat(($('ttsVolume')||{}).value||'1'); if(isNaN(vol)) vol=1;
+    rate=Math.min(1.4,Math.max(0.6,rate)); pitch=Math.min(1.4,Math.max(0.7,pitch)); vol=Math.min(1,Math.max(0,vol));
+    return {rate:rate,pitch:pitch,vol:vol};
+  }
+
+  /* ---------- Audio helpers ---------- */
+  function loadScript(src){
+    return new Promise(function(resolve,reject){
+      try{
+        var existing=document.querySelector('script[data-bcs-src="'+src+'"]');
+        if(existing){ if(existing.dataset.loaded==='1') return resolve(); existing.addEventListener('load',resolve); existing.addEventListener('error',reject); return; }
+        var s=document.createElement('script'); s.src=src; s.async=true; s.crossOrigin='anonymous'; s.dataset.bcsSrc=src;
+        s.onload=function(){ s.dataset.loaded='1'; resolve(); };
+        s.onerror=function(){ reject(new Error('Load failed: '+src)); };
+        document.head.appendChild(s);
+      }catch(e){ reject(e); }
+    });
+  }
+  function revokeAudioUrl(){ try{ if(lastAudioUrl){ URL.revokeObjectURL(lastAudioUrl); lastAudioUrl=''; } }catch(e){} }
+  function setAudioBlob(blob, type){
+    revokeAudioUrl();
+    if(!blob) return;
+    lastAudioUrl=URL.createObjectURL(blob);
+    var a=$('ttsPreviewAudio');
+    if(a){ a.src=lastAudioUrl; a.type=type||blob.type||''; try{ a.load(); }catch(e){} }
+  }
+  function downloadBlob(blob, name){
+    try{
+      var url=URL.createObjectURL(blob);
+      var a=document.createElement('a'); a.href=url; a.download=name; a.rel='noopener';
+      document.body.appendChild(a); a.click();
+      setTimeout(function(){ try{ URL.revokeObjectURL(url); a.remove(); }catch(e){} }, 1500);
+    }catch(e){ setStatus('Download start nahi ho paya.', 'ttsHdStatus'); }
+  }
+  function encodeWav(samples, sampleRate){
+    var numChannels=1, bitsPerSample=16, bytesPerSample=2, blockAlign=2, dataSize=samples.length*bytesPerSample;
+    var buffer=new ArrayBuffer(44+dataSize), view=new DataView(buffer);
+    function ws(o,s){ for(var i=0;i<s.length;i++) view.setUint8(o+i,s.charCodeAt(i)); }
+    ws(0,'RIFF'); view.setUint32(4,36+dataSize,true); ws(8,'WAVE');
+    ws(12,'fmt '); view.setUint32(16,16,true); view.setUint16(20,1,true);
+    view.setUint16(22,numChannels,true); view.setUint32(24,sampleRate,true);
+    view.setUint32(28,sampleRate*blockAlign,true); view.setUint16(32,blockAlign,true);
+    view.setUint16(34,bitsPerSample,true); ws(36,'data'); view.setUint32(40,dataSize,true);
+    var offset=44;
+    for(var i=0;i<samples.length;i++,offset+=2){ var s=Math.max(-1,Math.min(1,samples[i])); view.setInt16(offset, s<0 ? s*0x8000 : s*0x7FFF, true); }
+    return new Blob([buffer], {type:'audio/wav'});
+  }
+  function mergeFloat32(chunksArr){
+    var total=0; chunksArr.forEach(function(a){ total+=a.length; });
+    var out=new Float32Array(total), o=0; chunksArr.forEach(function(a){ out.set(a,o); o+=a.length; }); return out;
+  }
+  function wavToMp3(wavBlob){
+    return new Promise(function(resolve,reject){
+      try{
+        if(!window.lamejs) return reject(new Error('MP3 encoder not loaded'));
+        var reader=new FileReader();
+        reader.onload=function(){
+          try{
+            var buf=reader.result, dv=new DataView(buf);
+            var channels=dv.getUint16(22,true)||1, sampleRate=dv.getUint32(24,true)||22050, bits=dv.getUint16(34,true)||16;
+            var dataOff=12;
+            while(dataOff+8<=dv.byteLength){ var id=String.fromCharCode(dv.getUint8(dataOff),dv.getUint8(dataOff+1),dv.getUint8(dataOff+2),dv.getUint8(dataOff+3)); var sz=dv.getUint32(dataOff+4,true); if(id==='data'){ dataOff+=8; break; } dataOff+=8+sz; }
+            var dataLen=Math.min(dv.byteLength-dataOff, dv.getUint32(dataOff-4,true)||(dv.byteLength-dataOff));
+            var frameCount=Math.floor(dataLen/((bits/8)*channels));
+            var left=new Int16Array(frameCount), right=channels>1?new Int16Array(frameCount):null;
+            var i, idx=dataOff;
+            if(bits===16){ for(i=0;i<frameCount;i++){ left[i]=dv.getInt16(idx,true); idx+=2; if(channels>1){ right[i]=dv.getInt16(idx,true); idx+=2; } } }
+            else { for(i=0;i<frameCount;i++){ var v=dv.getUint8(idx++); left[i]=(v-128)<<8; if(channels>1){ v=dv.getUint8(idx++); right[i]=(v-128)<<8; } } }
+            var mp3enc=new window.lamejs.Mp3Encoder(channels,sampleRate,128), mp3Data=[], blockSize=1152;
+            for(i=0;i<frameCount;i+=blockSize){ var l=left.subarray(i,i+blockSize); var mp3buf=channels===1?mp3enc.encodeBuffer(l):mp3enc.encodeBuffer(l,right.subarray(i,i+blockSize)); if(mp3buf&&mp3buf.length>0) mp3Data.push(new Int8Array(mp3buf)); }
+            var end=mp3enc.flush(); if(end&&end.length>0) mp3Data.push(new Int8Array(end));
+            resolve(new Blob(mp3Data,{type:'audio/mpeg'}));
+          }catch(err){ reject(err); }
+        };
+        reader.onerror=function(){ reject(new Error('WAV read failed')); };
+        reader.readAsArrayBuffer(wavBlob);
+      }catch(e){ reject(e); }
+    });
+  }
+
+  async function ensureLame(){
+    if(window.lamejs) return;
+    await loadScript('https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js');
+    if(!window.lamejs) throw new Error('MP3 encoder not available');
+  }
+
+  /* ---------- Neural HD (Kokoro) ---------- */
+  async function ensureNeuralEngine(){
+    if(hd.ready && hd.tts) return hd.tts;
+    if(hd.loading && hd._promise) return hd._promise;
+    hd.loading=true; hd.ready=false; hd.error='';
+    $('ttsEngineState') && ($('ttsEngineState').textContent='Loading Neural HD…');
+    setProgress(2,'Loading Neural HD engine (first time can take a few minutes)…');
+    setStatus('Neural HD engine load ho raha hai. Pehli baar model files download hongi; text aapke device par hi process hota hai, koi paid API nahi.', 'ttsHdStatus');
+    hd._promise=(async function(){
+      try{
+        setProgress(8,'Loading Kokoro runtime…');
+        var mod = await import('https://cdn.jsdelivr.net/npm/kokoro-js@1.2.1/dist/kokoro.web.js');
+        var KokoroTTS = mod.KokoroTTS || mod.default || mod;
+        if(!KokoroTTS) throw new Error('KokoroTTS unavailable');
+        setProgress(15,'Downloading voice model (on-device)…');
+        var device='wasm';
+        try{ if(navigator.gpu) device='webgpu'; }catch(e){}
+        var tts = await KokoroTTS.from_pretrained('onnx-community/Kokoro-82M-v1.0-ONNX', {
+          dtype:'q8',
+          device: device,
+          progress_callback: function(p){
+            try{
+              if(!p) return;
+              if(p.status==='progress' && p.total){ var pct=15 + Math.round((p.loaded/p.total)*75); setProgress(Math.min(92,pct), 'Downloading '+(p.file||'model')+'… '+Math.round((p.loaded/p.total)*100)+'%'); }
+              else if(p.status==='done') setProgress(92,'Loading '+(p.file||'file')+'…');
+              else if(p.status==='ready') setProgress(95,'Model ready…');
+            }catch(e){}
+          }
+        });
+        // patch voice validation so Hindi voices (hf_*, hm_*) can be used
+        try{ tts._validate_voice = function(v){ return String(v||'').charAt(0) || 'a'; }; }catch(e){}
+        hd.tts=tts; hd.ready=true; hd.loading=false; hd.kind='kokoro'; hd.device=device;
+        setProgress(100,'Neural HD ready.'); setTimeout(hideProgress, 1200);
+        $('ttsEngineState') && ($('ttsEngineState').textContent='Neural HD ready ('+device+')');
+        setStatus('Neural HD ready. Hindi/English male-female voices select karke Sunen/Generate dabayen. Audio aapke device par banta hai — no API, no text upload.', 'ttsHdStatus');
+        return tts;
+      }catch(err){
+        hd.loading=false; hd.ready=false; hd.tts=null;
+        $('ttsEngineState') && ($('ttsEngineState').textContent='Neural load failed');
+        setStatus('Neural HD load nahi ho saka: '+(err&&err.message?err.message:'error')+'. Internet/model download ya browser memory issue ho sakta hai. Instant device mode abhi bhi free/private kaam karta hai.', 'ttsHdStatus');
+        hideProgress();
+        throw err;
+      }
+    })();
+    return hd._promise;
+  }
+
+  async function generateNeural(playAfter){
+    var text=getText().trim();
+    if(!text){ setStatus('Pehle text likhein ya paste karein.', 'ttsStatus'); return; }
+    stopSpeak(true);
+    var genId=++lastGenId;
+    var settings=getSettings();
+    var voiceId=selectedNeuralVoiceId();
+    var parts=splitChunks(text); if(!parts.length) parts=[normalizeText(text)];
+    var flowLabel=state.lang==='hinglish' ? 'Hinglish confident male' : (state.lang==='hi' ? 'Hindi' : 'English');
+    setStatus('Neural HD ('+flowLabel+') audio generate ho raha hai…', 'ttsStatus');
+    $('ttsEngineState') && ($('ttsEngineState').textContent='Generating…');
+    try{
+      var tts=await ensureNeuralEngine();
+      if(genId!==lastGenId) return;
+      var pcmChunks=[], sampleRate=24000;
+      for(var i=0;i<parts.length;i++){
+        if(genId!==lastGenId) return;
+        setProgress(5 + Math.round((i/parts.length)*85), 'Generating part '+(i+1)+' of '+parts.length+'…');
+        setStatus('Generating '+(i+1)+'/'+parts.length+' ('+voiceId+')…', 'ttsStatus');
+        var out=null;
+        try{
+          // Prefer generate_from_ids pathless generate; patch allows non-listed voices.
+          out = await tts.generate(parts[i], { voice: voiceId, speed: settings.rate });
+        }catch(e1){
+          // fallback: try direct generate without validation assumptions
+          if(tts._validate_voice) try{ tts._validate_voice=function(v){return String(v||'a').charAt(0);}; }catch(_){}
+          out = await tts.generate(parts[i], { voice: voiceId, speed: settings.rate });
+        }
+        if(genId!==lastGenId) return;
+        var audio = out && out.audio ? out.audio : out;
+        var sr = (audio && audio.sampling_rate) || (audio && audio.sampleRate) || out.sampling_rate || 24000;
+        sampleRate = sr || sampleRate;
+        var data = audio && audio.data ? audio.data : (audio && audio.audio ? audio.audio : null);
+        if(!data && out && out.toWav) {
+          // RawAudio-like
+          var wav = out.toWav();
+          // parse wav to float32
+          var ab = wav instanceof ArrayBuffer ? wav : (wav.buffer ? wav.buffer.slice(wav.byteOffset, wav.byteOffset+wav.byteLength) : null);
+          if(ab){ var parsed=parseWavPcm(ab); sr=parsed.sampleRate||sr; data=parsed.samples; }
+        }
+        if(data){
+          if(data instanceof Float32Array) pcmChunks.push(data);
+          else if(ArrayBuffer.isView(data)) pcmChunks.push(new Float32Array(data.buffer.slice(data.byteOffset, data.byteOffset+data.byteLength)));
+          else if(Array.isArray(data)) pcmChunks.push(Float32Array.from(data));
+        }
+      }
+      if(genId!==lastGenId) return;
+      if(!pcmChunks.length) throw new Error('No audio generated');
+      var merged=mergeFloat32(pcmChunks);
+      lastWavBlob=encodeWav(merged, sampleRate);
+      lastMp3Blob=null;
+      setAudioBlob(lastWavBlob, 'audio/wav');
+      setProgress(100,'Audio ready.'); setTimeout(hideProgress, 900);
+      $('ttsEngineState') && ($('ttsEngineState').textContent='Neural HD ready ('+hd.device+')');
+      setStatus('Neural HD audio ready ('+parts.length+' part'+(parts.length>1?'s':'')+'). WAV ready; MP3 ke liye Generate MP3 dabayen.', 'ttsStatus');
+      setStatus('Audio ready. WAV download available. MP3 chahiye to “Generate MP3” dabayen.', 'ttsHdStatus');
+      var a=$('ttsPreviewAudio');
+      if(a){ a.volume=settings.vol; a.playbackRate=1; } // speed is applied inside Kokoro; avoid fake pitch-shift for natural tone
+      if(playAfter && a){ try{ await a.play(); setStatus('Playing Neural HD audio…', 'ttsStatus'); }catch(e){ setStatus('Audio ready. Play button dabayen.', 'ttsStatus'); } }
+      return {wav:lastWavBlob, sampleRate:sampleRate};
+    }catch(err){
+      if(genId!==lastGenId) return;
+      setStatus('Neural generation fail: '+(err&&err.message?err.message:'error'), 'ttsStatus');
+      setStatus('Generation fail: '+(err&&err.message?err.message:'error'), 'ttsHdStatus');
+      hideProgress();
+    }
+  }
+
+  function parseWavPcm(ab){
+    var dv=new DataView(ab);
+    var channels=dv.getUint16(22,true)||1;
+    var sampleRate=dv.getUint32(24,true)||24000;
+    var bits=dv.getUint16(34,true)||16;
+    var off=12;
+    while(off+8<=dv.byteLength){ var id=String.fromCharCode(dv.getUint8(off),dv.getUint8(off+1),dv.getUint8(off+2),dv.getUint8(off+3)); var sz=dv.getUint32(off+4,true); if(id==='data'){ off+=8; break; } off+=8+sz; }
+    var dataBytes=Math.min(dv.byteLength-off, dv.getUint32(off-4,true)||(dv.byteLength-off));
+    var count=Math.floor(dataBytes/((bits/8)*channels));
+    var out=new Float32Array(count); var idx=off;
+    for(var i=0;i<count;i++){
+      var v=0;
+      if(bits===16){ v=dv.getInt16(idx,true)/32768; idx+=2*channels; }
+      else if(bits===8){ v=(dv.getUint8(idx)-128)/128; idx+=1*channels; }
+      else { idx+=(bits/8)*channels; }
+      out[i]=v;
+    }
+    return {sampleRate:sampleRate, samples:out};
+  }
+
+  async function generateMp3(){
+    try{
+      if(!lastWavBlob){
+        if(state.mode==='neural'){ await generateNeural(false); }
+        else { setStatus('MP3 ke liye Neural HD mode me audio generate karein, ya pehle Neural HD use karein. Instant device voice ko browser seedha MP3 me export nahi kar sakta.', 'ttsHdStatus'); return; }
+      }
+      if(!lastWavBlob){ return; }
+      setStatus('MP3 encode ho raha hai…', 'ttsHdStatus');
+      setProgress(96,'Encoding MP3…');
+      await ensureLame();
+      var mp3=await wavToMp3(lastWavBlob);
+      lastMp3Blob=mp3; setAudioBlob(mp3,'audio/mpeg');
+      setProgress(100,'MP3 ready.'); setTimeout(hideProgress,800);
+      downloadBlob(mp3,'bcs-tts-'+state.lang+'-'+state.gender+'-'+Date.now()+'.mp3');
+      setStatus('MP3 ready aur download ho gayi.', 'ttsHdStatus');
+    }catch(e){ setStatus('MP3 encode fail: '+(e&&e.message?e.message:'error'), 'ttsHdStatus'); hideProgress(); }
+  }
+
+  function downloadCurrentWav(){
+    if(lastWavBlob) return downloadBlob(lastWavBlob,'bcs-tts-'+state.lang+'-'+state.gender+'-'+Date.now()+'.wav');
+    if(lastMp3Blob) return downloadBlob(lastMp3Blob,'bcs-tts-'+state.lang+'-'+state.gender+'-'+Date.now()+'.mp3');
+    setStatus('Pehle Neural HD audio generate karein.', 'ttsHdStatus');
+  }
+
+  function updateSampleLabel(){
+    var b=$('ttsSampleBtn');
+    if(b) b.textContent = state.lang==='hinglish' ? 'Sample Hinglish' : (state.lang==='en' ? 'Sample English' : 'Sample Hindi');
+  }
+  function updateStyleButtons(){
+    root && root.querySelectorAll('[data-tts-style]').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-tts-style')===state.style); });
+  }
+  function setMode(mode){
+    state.mode = mode==='neural' ? 'neural' : 'device';
+    root && root.querySelectorAll('[data-tts-mode]').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-tts-mode')===state.mode); });
+    var note=$('ttsModeNote');
+    if(note){
+      if(state.mode==='neural'){
+        var txt='Neural HD: free Kokoro-82M model aapke browser/device par chalega. Pehli baar download ho sakta hai; cache ke baad fast. Text device se bahar nahi jata, no API/credits.';
+        if(state.lang==='hinglish') txt+=' Hinglish male ke liye hm_omega (warm/confident) default hai; English words Indian accent me aa sakte hain.';
+        txt+=' Pitch slider device voices ke liye hai; neural tone natural rakhne ke liye speed model par apply hoti hai.';
+        note.textContent=txt;
+      } else {
+        note.textContent='Instant mode: device/browser voices turant bolti hain, koi download nahi. Agar Hindi/Hinglish robotic lage, Neural HD mode try karein.';
+      }
+    }
+    $('ttsEngineState') && ($('ttsEngineState').textContent = state.mode==='neural' ? (hd.ready?'Neural HD ready ('+hd.device+')':'Neural HD selected') : 'Instant device mode');
+    populateVoices();
+  }
+  function setLang(lang){
+    state.lang = lang==='en' ? 'en' : (lang==='hinglish' ? 'hinglish' : 'hi');
+    root && root.querySelectorAll('[data-tts-lang]').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-tts-lang')===state.lang); });
+    if(state.lang==='hinglish'){
+      state.gender='male'; state.style='confident';
+      var r=$('ttsRate'), p=$('ttsPitch'), v=$('ttsVolume');
+      if(r) r.value='0.95'; if(p) p.value='1'; if(v) v.value='1';
+      updateRangeLabels();
+      root && root.querySelectorAll('[data-tts-gender]').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-tts-gender')===state.gender); });
+    }
+    updateSampleLabel(); updateStyleButtons(); setMode(state.mode);
+  }
+  function setGender(g){
+    state.gender = g==='male'?'male':'female';
+    root && root.querySelectorAll('[data-tts-gender]').forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-tts-gender')===state.gender); });
+    populateVoices();
+  }
+  function setStyle(style){
+    state.style = style==='confident'?'confident':'natural';
+    updateStyleButtons();
+    var r=$('ttsRate'), p=$('ttsPitch'), v=$('ttsVolume');
+    if(r) r.value = state.style==='confident' ? '0.95' : '1';
+    if(p) p.value='1'; if(v) v.value='1';
+    updateRangeLabels(); setMode(state.mode);
+  }
+  function applyConfidentHinglish(){
+    setLang('hinglish'); setMode('neural'); setGender('male'); setStyle('confident');
+    var sel=$('ttsVoice'); if(sel) sel.value='hm_omega';
+    setStatus('Confident male Hinglish preset ready: hm_omega, 0.95× speed. Text abhi bhi device par hai. “Sunen / Generate” dabayen.', 'ttsStatus');
+    setStatus('Preset ready. Pehli baar generate par Neural HD model download hoga; koi credits/API nahi.', 'ttsHdStatus');
+  }
+
+  function startSpeak(){
+    if(state.mode==='neural') return generateNeural(true);
+    return startDeviceSpeak();
+  }
+
+  function wire(){
+    if(inited) return;
+    root=document.getElementById('view-tts');
+    if(!root) return;
+    inited=true;
+    var ta=$('ttsText'); if(ta) ta.addEventListener('input', updateCount);
+    updateCount();
+    ['ttsRate','ttsPitch','ttsVolume'].forEach(function(id){ var el=$(id); if(el) el.addEventListener('input', updateRangeLabels); });
+    updateRangeLabels();
+    $('ttsSpeakBtn') && $('ttsSpeakBtn').addEventListener('click', function(){ startSpeak(); });
+    $('ttsPauseBtn') && $('ttsPauseBtn').addEventListener('click', togglePause);
+    $('ttsStopBtn') && $('ttsStopBtn').addEventListener('click', function(){ stopSpeak(false); });
+    $('ttsClearBtn') && $('ttsClearBtn').addEventListener('click', function(){ stopSpeak(true); if($('ttsText')) $('ttsText').value=''; updateCount(); setStatus('Cleared.', 'ttsStatus'); try{$('ttsText').focus();}catch(e){} });
+    $('ttsCopyBtn') && $('ttsCopyBtn').addEventListener('click', function(){ var text=getText(); if(!text.trim()) return setStatus('Copy karne ke liye text nahi hai.', 'ttsStatus'); try{ navigator.clipboard.writeText(text).then(function(){ setStatus('Text copy ho gaya.', 'ttsStatus'); }); }catch(e){ setStatus('Copy nahi ho saka.', 'ttsStatus'); } });
+    $('ttsSampleBtn') && $('ttsSampleBtn').addEventListener('click', function(){
+      var sample;
+      if(state.lang==='en') sample = 'Hello! This is BCS Voice Studio. You can convert your Hindi, Hinglish or English text into natural speech, choose a male or female voice, and adjust speed, pitch, and volume. Everything runs free on your device with no text upload.';
+      else if(state.lang==='hinglish') sample = 'Namaste! Main aapka property advisor hoon. Jaipur mein sahi property shortlist karna hai? Pehle budget, phir location, aur phir builder track record. Main aapko clear options aur next step aaj hi de deta hoon.';
+      else sample = 'नमस्ते! मैं बीसीएस वॉइस स्टूडियो हूँ। आप यहाँ अपना हिंदी या अंग्रेज़ी पाठ साफ़, स्वाभाविक आवाज़ में सुन सकते हैं। पुरुष या महिला आवाज़ चुनिए, गति और पिच बदलकर अपनी पसंद की आवाज़ बनाइए। यह सुविधा पूरी तरह मुफ़्त है और आपका पाठ कहीं अपलोड नहीं होता।';
+      if($('ttsText')) $('ttsText').value=sample; updateCount(); setStatus('Sample text daal diya gaya hai. “Sunen / Generate” dabayen.', 'ttsStatus');
+    });
+    $('ttsConfidentBtn') && $('ttsConfidentBtn').addEventListener('click', applyConfidentHinglish);
+    $('ttsRefreshVoices') && $('ttsRefreshVoices').addEventListener('click', function(){ populateVoices(); if(state.mode==='neural') setStatus('Neural voices ready.', 'ttsStatus'); });
+    $('ttsLoadEngineBtn') && $('ttsLoadEngineBtn').addEventListener('click', function(){ setMode('neural'); ensureNeuralEngine().catch(function(){}); });
+    $('ttsGenerateMp3Btn') && $('ttsGenerateMp3Btn').addEventListener('click', function(){ generateMp3(); });
+    $('ttsDownloadWavBtn') && $('ttsDownloadWavBtn').addEventListener('click', downloadCurrentWav);
+
+    root.querySelectorAll('[data-tts-mode]').forEach(function(b){ b.addEventListener('click', function(){ setMode(b.getAttribute('data-tts-mode')); }); });
+    root.querySelectorAll('[data-tts-lang]').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.getAttribute('data-tts-lang')); }); });
+    root.querySelectorAll('[data-tts-gender]').forEach(function(b){ b.addEventListener('click', function(){ setGender(b.getAttribute('data-tts-gender')); }); });
+    root.querySelectorAll('[data-tts-style]').forEach(function(b){ b.addEventListener('click', function(){ setStyle(b.getAttribute('data-tts-style')); }); });
+
+    updateSampleLabel(); updateStyleButtons();
+    populateVoices();
+    if('speechSynthesis' in window){
+      try{ window.speechSynthesis.onvoiceschanged=function(){ voiceReady=true; if(state.mode==='device') populateDeviceVoices(); }; }catch(e){}
+      setTimeout(function(){ if(state.mode==='device') populateDeviceVoices(); }, 250);
+      setTimeout(function(){ if(state.mode==='device') populateDeviceVoices(); }, 1000);
+    }
+    setMode(state.mode);
+  }
+
+  function render(){ try{ wire(); populateVoices(); updateCount(); updateSampleLabel(); updateStyleButtons(); }catch(e){} }
+
+  window.BCS_TTS = {
+    render: render,
+    speak: startSpeak,
+    stop: function(){ stopSpeak(false); },
+    confidentHinglish: applyConfidentHinglish,
+    setLang: setLang,
+    setGender: setGender,
+    setStyle: setStyle
+  };
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire);
+  else wire();
 })();
 </script>
 </body>

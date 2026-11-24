@@ -1,7 +1,7 @@
 {
   "name": "BCS Desk — Business City Square",
   "short_name": "BCS Desk",
-  "description": "Jaipur property intelligence desk — projects, developers, advisors, inventory and daily plan.",
+  "description": "Private Jaipur real estate advisory desk — projects, inventory, client shortlists and daily plan.",
   "id": "./",
   "start_url": "./index.html",
   "scope": "./",
