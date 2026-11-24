@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Real Estate Advisory & Project Intelligence</title>
-<meta name="bcs-build" content="bcs-desk-v224">
-<!-- BCS DESK BUILD bcs-desk-v224 · advisory-led consultancy design + iPhone 15 Pro app shell · single-file · zero-dependency · pinned More nav + drag-to-bar customization with persisted order + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard + Jaipur Property Map (source-attributed public portals: Aurum, Square Yards, PropertyWala, 2bigha, Real Estate India, Housing.com, IndiaProperty, TrueHomes24, Anarock media + official registers) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net -->
+<meta name="bcs-build" content="bcs-desk-v225">
+<!-- BCS DESK BUILD bcs-desk-v225 · advisory-led consultancy design + iPhone 15 Pro app shell · single-file · zero-dependency · pinned More nav + drag-to-bar customization with persisted order + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard + Jaipur Property Map (source-attributed public portals: Aurum, Square Yards, PropertyWala, 2bigha, Real Estate India, Housing.com, IndiaProperty, TrueHomes24, Anarock media + official registers) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net + command deck (today/client 360/closure timeline/compare/trust/money/tools/iPhone) + verification-first brief pack + data freshness layer + undo + offline queue + pull-to-refresh -->
 <meta name="description" content="BCS (Business City Square) — private Jaipur real estate advisory desk for projects, inventory, client shortlists and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -17742,6 +17742,106 @@ body .ticker-live{letter-spacing:.16em!important}
   body.bcs-native .lock-card :is(button,.btn){min-height:46px !important}
 }
 </style>
+<style id="bcsModernSystemCss">
+/* ============================================================
+   BCS MODERN SYSTEM v13 — structured, calmer, more stylish
+   Layout + typography + controls only. No feature/data changes.
+   ============================================================ */
+:root{
+  --ui-hair:color-mix(in oklab, var(--line) 62%, transparent);
+  --ui-sheen:color-mix(in oklab, var(--gold) 10%, transparent);
+}
+
+/* --- page mastheads: one kicker pill, one clean baseline --- */
+body .view.on > :is(.intro,.adv-head){
+  border-bottom:1px solid var(--ui-hair) !important;
+  padding-bottom:18px !important;
+}
+body .view.on > :is(.intro,.adv-head) > div > .eyebrow{
+  display:inline-flex !important;align-items:center !important;gap:0 !important;
+  padding:5px 11px !important;border-radius:999px !important;
+  border:1px solid var(--ui-hair) !important;background:var(--ui-sheen) !important;
+}
+body .view.on > :is(.intro,.adv-head) > div > .eyebrow::before{display:none !important}
+
+/* --- section headers: title + controls on one row, context below --- */
+body .sec-head{
+  display:flex !important;flex-wrap:wrap !important;align-items:center !important;
+  gap:6px 14px !important;padding:2px 0 !important;
+}
+body .sec-head h3{order:1 !important;flex:0 1 auto !important;min-width:0 !important}
+body .sec-head > .sub{order:3 !important;flex:1 1 100% !important;max-width:78ch !important}
+body .sec-head > :is(button,.cor-table-toggle,.sec-count,select,input){order:2 !important;margin-left:auto !important}
+body .sec-head::after{display:none !important}
+
+/* --- panel heads read as labelled tables/cards --- */
+body .panel-head{
+  display:flex !important;align-items:center !important;gap:10px !important;
+  padding-bottom:10px !important;margin-bottom:14px !important;
+  border-bottom:1px solid var(--ui-hair) !important;
+}
+body .panel-head h4{font-size:15px !important;letter-spacing:-.01em !important;font-weight:700 !important}
+
+/* --- surfaces: quiet hairline + top sheen, no colour take-over --- */
+body :is(.panel,.dash-card,.cat-card,.pcard,.adv-panel,.auc-card,.kpi,.tile){
+  border:1px solid var(--ui-hair) !important;
+  border-radius:var(--bcs-r) !important;
+  box-shadow:inset 0 1px 0 var(--ui-sheen), var(--bcs-shadow) !important;
+}
+body :is(.panel,.dash-card,.cat-card,.pcard,.adv-panel,.auc-card):hover{
+  border-color:color-mix(in oklab, var(--acc, var(--gold)) 30%, var(--line)) !important;
+  box-shadow:inset 0 1px 0 var(--ui-sheen), var(--bcs-shadow-hi) !important;
+}
+
+/* --- controls: one radius, softer fields, clear focus --- */
+body :is(input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]):not([type=file]),select,textarea){
+  border-radius:11px !important;
+  border-color:var(--ui-hair) !important;
+  background-color:color-mix(in oklab, var(--panel) 94%, var(--bg) 6%) !important;
+}
+body :focus-visible{outline:2px solid color-mix(in oklab, var(--gold) 75%, transparent) !important;outline-offset:2px}
+body .btn.primary{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 12px 24px -16px color-mix(in oklab, var(--acc, var(--gold)) 75%, transparent) !important;
+}
+
+/* --- More sheet groups: a clear five-stage index --- */
+body #navMorePanel .nav-more-group-title{
+  color:var(--gold) !important;letter-spacing:.18em !important;
+  background:linear-gradient(90deg,var(--ui-sheen),transparent) !important;
+}
+
+/* --- grids share one breathing rhythm --- */
+body :is(.two-col,.dash-grid,.adv-layout,.corridor-grid,.show-grid,.cat-strip){gap:16px !important}
+
+/* --- phone: keep the structure, keep it thumb-sized --- */
+@media (max-width:430px){
+  body.bcs-native .view.on > :is(.intro,.adv-head){padding-bottom:14px !important}
+  body.bcs-native .sec-head{gap:5px 10px !important}
+  body.bcs-native .sec-head > .sub{font-size:11.5px !important;line-height:1.5 !important}
+  body.bcs-native .sec-head > :is(button,.cor-table-toggle,.sec-count){margin-left:auto !important}
+  body.bcs-native :is(.two-col,.dash-grid,.adv-layout,.corridor-grid,.show-grid,.cat-strip){gap:12px !important}
+}
+
+/* --- provenance badges + editor --- */
+.trust-pill{display:inline-flex;align-items:center;gap:3px;padding:3px 8px;border-radius:999px;font:800 10px/1.3 'DM Sans',sans-serif;letter-spacing:.01em;white-space:nowrap;border:1px solid var(--line);background:color-mix(in oklab,var(--panel) 92%,var(--bg) 8%);color:var(--ink2);vertical-align:middle}
+.trust-pill.t-official{color:var(--gold);border-color:color-mix(in oklab,var(--gold) 35%,var(--line));background:color-mix(in oklab,var(--gold) 10%,var(--panel))}
+.trust-pill.t-snippet{color:var(--ink2);border-color:color-mix(in oklab,var(--mut) 35%,var(--line))}
+.trust-pill.t-unverified{color:var(--mut)}
+.trust-pill.stale{color:#E08A6A;border-color:rgba(224,138,106,.4);background:rgba(224,138,106,.1)}
+.trust-edit{padding:12px;border-radius:14px;border:1px solid var(--ui-hair);background:color-mix(in oklab,var(--gold) 5%,var(--panel));display:grid;gap:8px}
+.trust-edit small{font-size:11px;line-height:1.5;color:var(--mut)}
+.trust-edit .grid2{margin:0}
+.bp-wrap{margin:18px 0 24px;border:1px solid var(--ui-hair);border-radius:14px;overflow:hidden;background:color-mix(in oklab,var(--panel) 96%,var(--bg) 4%)}
+.bp-table{width:100%;border-collapse:collapse;font-size:12px}
+.bp-table th{text-align:left;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);background:color-mix(in oklab,var(--gold) 7%,transparent);padding:9px 10px;border-bottom:1px solid var(--ui-hair)}
+.bp-table td{padding:10px;border-bottom:1px solid var(--ui-hair);vertical-align:top;color:var(--ink2)}
+.bp-table td b{color:var(--ink)}
+.bp-table td span,.bp-table small{color:var(--mut)}
+.bp-table .bp-n{font-family:'Fraunces',serif;font-size:16px;color:var(--gold);width:26px}
+.bp-table a{color:var(--olive);text-decoration:none;font-weight:700}
+.bp-legend{padding:10px 12px;font-size:11px;line-height:1.55;color:var(--mut);background:color-mix(in oklab,var(--gold) 4%,transparent)}
+.bp-legend b{color:var(--ink2)}
+</style>
 <body class="locked">
 <script>/* early theme bootstrap — prevents a light flash before initExperience runs */try{var _t=localStorage.getItem('bcs_theme_v1')||'dark';document.body.dataset.theme=_t;document.documentElement.dataset.theme=_t;document.documentElement.style.colorScheme=_t;}catch(e){}</script>
 <a class="skip-link" href="#mainContent">Skip to workspace</a>
@@ -19042,6 +19142,8 @@ try{
         <button class="btn ghost sm bcs-role-hidden" data-goto="tax">₹ Tax &amp; advice</button>
         <button class="btn ghost" id="advSaveBrief">Save client brief</button>
         <button class="btn primary" id="advPresentTop" disabled>Present shortlist <span class="pill" id="advPresentCount">0</span></button>
+        <button class="btn ghost sm" id="advBriefPack" disabled>Brief pack</button>
+        <button class="btn ghost sm" id="advSelfView" disabled>Self-view link</button>
       </div>
     </div>
 
@@ -21917,6 +22019,16 @@ try{
           <div class="field"><label>Society name (if society approved)</label><input id="pSociety" placeholder="e.g. Shree Vihar Society"></div>
         </div>
         <div class="field"><label>Approval / legal remarks</label><textarea id="pRemarks" placeholder="Title status, conversion, CLU, encumbrance, official remarks…"></textarea></div>
+        <div class="field full trust-edit">
+          <label>Verification tier</label>
+          <select id="pTrustTier"><option value="unverified">Unverified</option><option value="snippet">Search snippet only</option><option value="official">Official / primary</option></select>
+          <div class="grid2">
+            <div class="field"><label>Source name</label><input id="pTrustSource" placeholder="e.g. JDA notice / RERA / portal"></div>
+            <div class="field"><label>Source link</label><input id="pTrustUrl" placeholder="https://…"></div>
+          </div>
+          <div class="field"><label>Last checked (IST)</label><input id="pTrustChecked" type="date"></div>
+          <small>Portal snippets are discovery only. Official notice verify karne ke baad hi “Official” mark karein.</small>
+        </div>
         <label class="switchline"><input type="checkbox" id="pSoldOut"><span><b>Project sold out</b> — primary inventory khatam; card par stamp dikhega aur resale units alag track hongi.</span></label>
         <div class="field"><label>Sold-out note (optional)</label><input id="pSoldOutNote" placeholder="e.g. Only 2 resale plots available with existing buyers"></div>
       </div>
@@ -23713,6 +23825,15 @@ try{
         <div class="field"><label>Facing</label><select id="peFacing"></select></div>
         <div class="field"><label>Rate (₹ / Gaj)</label><input id="peRate" type="number" min="0" step="100"></div>
         <div class="field full"><label>Note</label><input id="peNote" placeholder="Corner, park facing, registry done by…"></div>
+        <div class="field full trust-edit">
+          <label>Verification tier</label>
+          <select id="peTrustTier"><option value="unverified">Unverified</option><option value="snippet">Search snippet only</option><option value="official">Official / primary</option></select>
+          <div class="grid2">
+            <div class="field"><label>Source name</label><input id="peTrustSource" placeholder="e.g. JDA / owner / site visit"></div>
+            <div class="field"><label>Source link</label><input id="peTrustUrl" placeholder="https://…"></div>
+          </div>
+          <div class="field"><label>Last checked (IST)</label><input id="peTrustChecked" type="date"></div>
+        </div>
       </div>
     </div>
     <div class="modal-foot"><button class="btn ghost" data-close="plotEditModal">Cancel</button><button class="btn primary" id="peSave">Save plot</button></div>
@@ -25650,6 +25771,11 @@ function normalizeDb(d){
     if(!Array.isArray(p.legal.banks)) p.legal.banks = [];
   });
   (Array.isArray(d.plots) ? d.plots : []).forEach(pl => {
+    if(!pl.trust || typeof pl.trust !== 'object') pl.trust = { tier:'unverified', source:'', url:'', checkedAt:'' };
+    else {
+      if(!['official','snippet','unverified'].includes(pl.trust.tier)) pl.trust.tier = 'unverified';
+      pl.trust.source = String(pl.trust.source || ''); pl.trust.url = String(pl.trust.url || ''); pl.trust.checkedAt = String(pl.trust.checkedAt || '');
+    }
     if(!pl.investor || typeof pl.investor !== 'object') pl.investor = { name:'', phone:'', buyRate:null, buyDate:'', exitRate:null };
     if(!pl.ledger || typeof pl.ledger !== 'object') pl.ledger = { quotedRateGaj:null, baseRateGaj:null, registryDate:'', milestones:[] };
     if(!Array.isArray(pl.ledger.milestones)) pl.ledger.milestones = [];
@@ -25985,6 +26111,11 @@ function normalizeDb(d){
     if(c.requirement == null) c.requirement = '';
   });
   d.projects.forEach(p => {
+    if(!p.trust || typeof p.trust !== 'object') p.trust = { tier:'unverified', source:'', url:'', checkedAt:'' };
+    else {
+      if(!['official','snippet','unverified'].includes(p.trust.tier)) p.trust.tier = 'unverified';
+      p.trust.source = String(p.trust.source || ''); p.trust.url = String(p.trust.url || ''); p.trust.checkedAt = String(p.trust.checkedAt || '');
+    }
     if(!Array.isArray(p.types)) p.types = [];
     if(p.slab == null) p.slab = '';
     if(p.slabNote == null) p.slabNote = '';
@@ -26955,6 +27086,26 @@ function toast(msg, err){
   clearTimeout(t._to);
     t._to = setTimeout(() => { t.className = 'toast'; try{ t.textContent = ''; }catch(e){} }, 2000);
   try{ bcsSound(err ? 'error' : 'success'); }catch(e){}
+}
+/* ---- advisory provenance: one trust vocabulary for projects + plots ---- */
+const BCS_TRUST_LABEL = { official:'Official / primary', snippet:'Search snippet only', unverified:'Unverified' };
+function bcsTrustOf(rec){
+  const t = rec && rec.trust && typeof rec.trust === 'object' ? rec.trust : {};
+  return {
+    tier: ['official','snippet','unverified'].includes(t.tier) ? t.tier : 'unverified',
+    source: String(t.source || ''), url: String(t.url || ''), checkedAt: String(t.checkedAt || '')
+  };
+}
+function bcsTrustStale(rec){
+  const c = bcsTrustOf(rec).checkedAt;
+  if(!c) return false;
+  const t = Date.parse(c + 'T00:00:00Z');
+  return isFinite(t) && (Date.now() - t) > 30 * 86400000;
+}
+function bcsTrustBadgeHTML(rec, compact){
+  const t = bcsTrustOf(rec), stale = bcsTrustStale(rec);
+  const title = [t.source || 'No source recorded', t.checkedAt ? 'Checked ' + t.checkedAt : 'Not checked yet', stale ? 'STALE — verify again' : ''].filter(Boolean).join(' · ');
+  return `<span class="trust-pill t-${t.tier}${stale ? ' stale' : ''}" title="${esc(title)}">${compact ? '' : '◆ '}${esc(BCS_TRUST_LABEL[t.tier])}${stale ? ' · stale' : ''}</span>`;
 }
 const initial = name => (name||'?').trim().charAt(0).toUpperCase();
 function avatarHTML(d){
@@ -31845,7 +31996,7 @@ function projectCard(p){
     </div>
     <div class="body">
       <div class="ttl">${esc(p.name)}</div>
-      <div class="dev">${esc(d ? d.name : 'No developer')}</div>
+      <div class="dev">${esc(d ? d.name : 'No developer')} ${bcsTrustBadgeHTML(p, true)}</div>
       <div class="price">${priceRange(p)}</div>
       ${projIsActive(p) ? '' : `<div class="hold-chip sm">○ On hold — activation lane se live karein</div>`}
       ${(priceBadgeHTML(p) || qualityBadgeHTML(p)) ? `<div class="tags" style="margin-top:5px">${priceBadgeHTML(p)}${qualityBadgeHTML(p)}</div>` : ''}
@@ -36403,6 +36554,8 @@ function initAdvisory(){
   $('#advReset').addEventListener('click', resetAdvisory);
   $('#advSaveBrief').addEventListener('click', saveBriefHandler);
   $('#advPresentTop').addEventListener('click', openPresentation);
+  $('#advBriefPack').addEventListener('click', () => openPresentation('pack'));
+  $('#advSelfView').addEventListener('click', openClientSelfView);
   $('#advCopy').addEventListener('click', () => copyAdvisorySummary());
   $('#presentPrint').addEventListener('click', () => { if(typeof openPresentation === 'function') openPresentation(); });
   $('#presentCopy').addEventListener('click', copyPresentationText);
@@ -36554,6 +36707,7 @@ function advCardHTML(r, showMatch){
       <div class="adv-card-top">
         ${showMatch ? `<span class="adv-match ${label.toLowerCase()}">${label} match</span>` : ''}
         <span class="adv-status">${statusLabel[p.status]||''}</span>
+        ${bcsTrustBadgeHTML(p, true)}
       </div>
       <h4>${esc(p.name)}</h4>
       <div class="adv-loc">${esc(c.name)}${p.location ? ' · ' + esc(p.location) : ''}</div>
@@ -36641,6 +36795,8 @@ function updatePresentButton(){
   const n = advShortlist.length;
   $('#advPresentCount').textContent = n;
   $('#advPresentTop').disabled = !n;
+  $('#advBriefPack').disabled = !n;
+  $('#advSelfView').disabled = !n;
 }
 function toggleShortlist(id){
   if(advShortlist.includes(id)) advShortlist = advShortlist.filter(x => x !== id);
@@ -36747,8 +36903,8 @@ function presentProjectHTML(p, i){
   return `<div class="present-proj">
     <div class="present-num">${String(i + 1).padStart(2, '0')}</div>
     <div class="present-pbody">
-      <h5>${esc(p.name)}</h5>
-      <div class="present-ploc">${esc(c.name)}${p.location ? ' · ' + esc(p.location) : ''}</div>
+      <h5>${esc(p.name)} ${bcsTrustBadgeHTML(p, true)}</h5>
+      <div class="present-ploc">${esc(c.name)}${p.location ? ' · ' + esc(p.location) : ''}${bcsTrustOf(p).checkedAt ? ' · Checked ' + esc(bcsTrustOf(p).checkedAt) : ''}</div>
       <div class="present-pgrid">
         <div><div class="lab">Price</div><div class="val">${priceRange(p)}</div></div>
         <div><div class="lab">Rate</div><div class="val">${esc(rateText(p) || '—')}</div></div>
@@ -36776,9 +36932,21 @@ function presentProjectHTML(p, i){
     </div>
   </div>`;
 }
-function openPresentation(){
+function briefPackTable(items){
+  const rows = items.map((p, i) => {
+    const t = bcsTrustOf(p), stale = bcsTrustStale(p);
+    const src = t.url && /^https?:\/\//i.test(t.url)
+      ? `<a href="${esc(t.url)}" target="_blank" rel="noopener noreferrer" data-no-frame="1">${esc(t.source || 'Source ↗')}</a>`
+      : (t.source ? esc(t.source) : '—');
+    return `<tr><td class="bp-n">${i + 1}</td><td><b>${esc(p.name)}</b><br><span>${esc(corridor(p.corridor).name)}</span></td><td>${esc(priceRange(p))}</td><td>${bcsTrustBadgeHTML(p)}${stale ? '<br><small>Verify again</small>' : ''}</td><td>${src}${t.checkedAt ? '<br><small>Checked ' + esc(t.checkedAt) + '</small>' : ''}</td></tr>`;
+  }).join('');
+  return `<div class="bp-wrap"><table class="bp-table"><thead><tr><th>#</th><th>Project</th><th>Indicative price</th><th>Verification</th><th>Source</th></tr></thead><tbody>${rows}</tbody></table>
+    <div class="bp-legend"><b>Advisory note</b> — “Official / primary” means a government notice or RERA/JDA record was checked. “Search snippet only” is discovery reference, not a confirmed figure. Prices and availability are indicative and must be re-verified before booking.</div></div>`;
+}
+function openPresentation(mode){
   const items = advShortlist.map(id => scopedProjects().find(p => p.id === id)).filter(Boolean);
   if(!items.length) return toast('Pehle 1–2 projects shortlist karein', true);
+  const isPack = mode === 'pack';
   const b = advBrief;
   const date = new Date().toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
   const budget = (number(b.budgetMin) != null || number(b.budgetMax) != null) ? budgetText(b) : 'Flexible';
@@ -36789,6 +36957,7 @@ function openPresentation(){
   const prices = items.flatMap(p => [p.priceMin, p.priceMax]).map(number).filter(v => v != null);
   const range = prices.length ? fmtPrice(Math.min(...prices)) + ' – ' + fmtPrice(Math.max(...prices)) : '—';
 
+  const packBlock = isPack ? briefPackTable(items) : '';
   $('#presentSheet').innerHTML = `<div class="present-brand">
       <div class="logo">BCS</div>
       <div><h4>Business City Square</h4><p>Jaipur property advisory</p></div>
@@ -36808,7 +36977,8 @@ function openPresentation(){
       <div><div class="lab">Prepared</div><div class="val">${date}</div></div>
       ${b.notes ? `<div class="wide"><div class="lab">Client notes</div><div class="val">${esc(b.notes)}</div></div>` : ''}
     </div>
-    <div class="present-sec"><h4>Shortlisted projects</h4><span>${items.length} option${items.length === 1 ? '' : 's'}</span></div>
+    ${packBlock}
+    <div class="present-sec"><h4>${isPack ? 'Detailed options' : 'Shortlisted projects'}</h4><span>${items.length} option${items.length === 1 ? '' : 's'}</span></div>
     ${items.map(presentProjectHTML).join('')}
     <div class="present-foot">
       <div><b>BCS · Business City Square</b><br>@ajaysharma.bcs · Jaipur</div>
@@ -36817,15 +36987,55 @@ function openPresentation(){
   if(window.BCSPreview){
     const txt = summaryText(items);
     return window.BCSPreview.open({
-      title: 'Client presentation — ' + (b.name || 'Shortlist'),
+      title: (isPack ? 'Client brief pack — ' : 'Client presentation — ') + (b.name || 'Shortlist'),
       html: $('#presentSheet').innerHTML,
       text: txt,
-      filename: 'BCS-presentation-' + todayISO() + '.html',
+      filename: (isPack ? 'BCS-brief-pack-' : 'BCS-presentation-') + todayISO() + '.html',
       waText: txt,
-      kind: 'Client presentation · full preview'
+      kind: isPack ? 'Client brief pack · verification-first' : 'Client presentation · full preview'
     });
   }
   showOverlay('presentModal');
+}
+function openClientSelfView(){
+  const items = advShortlist.map(id => scopedProjects().find(p => p.id === id)).filter(Boolean);
+  if(!items.length) return toast('Pehle 1–2 projects shortlist karein', true);
+  const b = advBrief;
+  const date = new Date().toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+  const cards = items.map((p, i) => {
+    const t = bcsTrustOf(p);
+    const src = t.url && /^https?:\/\//i.test(t.url)
+      ? `<a href="${esc(t.url)}" target="_blank" rel="noopener noreferrer" data-no-frame="1">${esc(t.source || 'View source ↗')}</a>`
+      : (t.source ? esc(t.source) : '—');
+    return `<article class="sv-card"><div class="sv-n">0${i + 1}</div><div><h3>${esc(p.name)}</h3><p>${esc(corridor(p.corridor).name)} · ${esc(priceRange(p))}</p>${bcsTrustBadgeHTML(p)} ${t.checkedAt ? `<small>Checked ${esc(t.checkedAt)}</small>` : ''}<div class="sv-src">Source: ${src}</div></div></article>`;
+  }).join('');
+  const html = `<div class="sv-wrap"><style>
+    .sv-wrap{font-family:'DM Sans',sans-serif;color:#20241C;background:#FBF8F0;padding:28px;max-width:820px;margin:auto}
+    .sv-top{border-bottom:2px solid #8C6628;padding-bottom:16px;margin-bottom:22px;display:flex;justify-content:space-between;gap:16px;align-items:flex-end}
+    .sv-brand{font:700 13px 'DM Sans',sans-serif;letter-spacing:.16em;color:#8C6628;text-transform:uppercase}
+    .sv-top h1{font:600 28px 'Fraunces',serif;margin:6px 0 0;color:#20241C}
+    .sv-top .sv-date{font-size:12px;color:#6B7167}
+    .sv-card{display:flex;gap:18px;padding:18px;border:1px solid #E1E4DC;border-radius:16px;background:#fff;margin-bottom:12px}
+    .sv-n{font:600 22px 'Fraunces',serif;color:#B8892E;min-width:34px}
+    .sv-card h3{font:600 18px 'Fraunces',serif;margin:0 0 4px;color:#20241C}
+    .sv-card p{margin:0 0 8px;color:#4C534A;font-size:14px}
+    .sv-src{font-size:12px;color:#6B7167;margin-top:8px}
+    .sv-note{font-size:12px;line-height:1.6;color:#6B7167;border-top:1px solid #E1E4DC;margin-top:18px;padding-top:14px}
+    .trust-pill{display:inline-flex;padding:3px 8px;border-radius:999px;font-size:10px;font-weight:800;border:1px solid #D8DCD3;background:#F7F5ED;color:#4C534A}
+    .trust-pill.t-official{color:#8C6628;border-color:#D8BC80;background:#FBF2D8}
+    .trust-pill.stale{color:#B85C3C;border-color:#E4B8A5;background:#FFF0E9}
+  </style><div class="sv-top"><div><div class="sv-brand">Business City Square · Jaipur</div><h1>${b.name ? 'Options for ' + esc(b.name) : 'Your shortlist'}</h1></div><div class="sv-date">${date}<br>Private client view</div></div>
+  ${cards}<div class="sv-note"><b>Advisory note:</b> Figures are indicative and drawn from the desk's own records. “Official / primary” means a government notice or RERA/JDA record was checked; “Search snippet only” is discovery reference. Please re-verify pricing, availability and approvals before any booking. This file stays on your device unless you choose to share it.</div></div>`;
+  if(window.BCSPreview){
+    return window.BCSPreview.open({
+      title: 'Client self-view — ' + (b.name || 'Shortlist'),
+      html, text: summaryText(items, 'BCS — your private shortlist'),
+      filename: 'BCS-self-view-' + todayISO() + '.html',
+      waText: summaryText(items, 'BCS — your private shortlist'),
+      kind: 'Client self-view · no phone or internal notes'
+    });
+  }
+  toast('Preview engine not ready', true);
 }
 function summaryText(list, heading){
   const b = advBrief;
@@ -38543,6 +38753,11 @@ function openProject(id, presetCorridor, presetDevId, presetAdvisorIds, presetTy
   $('#pApproval').value = p.approval || '';
   $('#pSociety').value = p.societyName || '';
   $('#pRemarks').value = p.remarks || '';
+  const pt = bcsTrustOf(p);
+  if($('#pTrustTier')) $('#pTrustTier').value = pt.tier;
+  if($('#pTrustSource')) $('#pTrustSource').value = pt.source;
+  if($('#pTrustUrl')) $('#pTrustUrl').value = pt.url;
+  if($('#pTrustChecked')) $('#pTrustChecked').value = pt.checkedAt;
   $('#pSoldOut').checked = !!p.soldOut;
   $('#pSoldOutNote').value = p.soldOutNote || '';
   $('#pPros').value = p.pros || '';
@@ -38841,6 +39056,12 @@ $('#pSave').addEventListener('click', () => {
     notes: $('#pNotes').value.trim(),
     checklist: readChecklistEditor(),
     custom: cfPayload(editingProject, '#pCustomFields'),
+    trust: {
+      tier: $('#pTrustTier') ? $('#pTrustTier').value : 'unverified',
+      source: $('#pTrustSource') ? $('#pTrustSource').value.trim() : '',
+      url: $('#pTrustUrl') ? $('#pTrustUrl').value.trim() : '',
+      checkedAt: $('#pTrustChecked') ? $('#pTrustChecked').value : ''
+    },
   };
   let savedProject;
   const oldPrice = editingProject ? {
@@ -56829,7 +57050,7 @@ function renderInvBody(){
         <td>${pl.rateGaj ? money(pl.rateGaj) : '—'}</td>
         <td class="inv-price">${pr ? money(pr) : '—'}</td>
         <td><button type="button" class="pst pst-${pl.status}" data-plotcycle="${pl.id}" title="Click = next status"><i></i>${st.label}</button></td>
-        <td class="inv-note" title="${esc(pl.note || '')}">${esc(pl.note || '—')}</td>
+        <td class="inv-note" title="${esc(pl.note || '')}">${esc(pl.note || '—')} ${bcsTrustBadgeHTML(pl, true)}</td>
         <td><span class="inv-rowbtns">${pl.investor && pl.investor.name ? `<button type="button" class="btn ghost sm" data-plotinv="${pl.id}" title="Investor: ${esc(pl.investor.name)}">🏦</button>` : ''}${(pl.status === 'token' || pl.status === 'sold') ? `<button type="button" class="btn ghost sm" data-plotfin="${pl.id}" title="Financials & milestones">💰</button>` : ''}<button type="button" class="btn ghost sm" data-docketplot="${pl.id}" title="WhatsApp docket">📄</button><button type="button" class="btn ghost sm" data-plotedit="${pl.id}" title="Edit plot">✎</button></span></td>
       </tr>`;
     }).join('')}</tbody>`;
@@ -56882,6 +57103,11 @@ function openPlotEdit(id){
   $('#peGaj').value = pl.sizeGaj || ''; $('#peRoad').value = pl.roadFt || '';
   $('#peFacing').innerHTML = FACINGS.map(f => `<option${f === pl.facing ? ' selected' : ''}>${f}</option>`).join('');
   $('#peRate').value = pl.rateGaj || ''; $('#peNote').value = pl.note || '';
+  const t = bcsTrustOf(pl);
+  if($('#peTrustTier')) $('#peTrustTier').value = t.tier;
+  if($('#peTrustSource')) $('#peTrustSource').value = t.source;
+  if($('#peTrustUrl')) $('#peTrustUrl').value = t.url;
+  if($('#peTrustChecked')) $('#peTrustChecked').value = t.checkedAt;
   showOverlay('plotEditModal');
 }
 function savePlotEdit(){
@@ -56889,6 +57115,12 @@ function savePlotEdit(){
   pl.status = $('#peStatus').value; pl.sizeGaj = Math.round(+$('#peGaj').value) || null;
   pl.roadFt = Math.round(+$('#peRoad').value) || null; pl.facing = $('#peFacing').value;
   pl.rateGaj = Math.round(+$('#peRate').value) || null; pl.note = $('#peNote').value.trim();
+  pl.trust = {
+    tier: $('#peTrustTier') ? $('#peTrustTier').value : 'unverified',
+    source: $('#peTrustSource') ? $('#peTrustSource').value.trim() : '',
+    url: $('#peTrustUrl') ? $('#peTrustUrl').value.trim() : '',
+    checkedAt: $('#peTrustChecked') ? $('#peTrustChecked').value : ''
+  };
   pl.updatedAt = Date.now();
   save(); renderInvBody(); renderPipeline();
   try{ closeModal('plotEditModal'); }catch(e){ document.getElementById('plotEditModal').classList.remove('on'); }
@@ -72019,6 +72251,414 @@ window.BCS_NAVX = { applySaved: function(){ if(CATALOG) applyLayout(getSavedPrim
   };
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire);
   else wire();
+})();
+</script>
+<style id="bcsSuperCss">
+/* BCS SUPERLAYER — command deck, trust, timeline, local tools, mobile polish */
+.bcs-cmd-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:38px;height:36px;padding:0 11px;border-radius:11px;border:1px solid color-mix(in oklab,var(--gold) 42%,var(--line));background:linear-gradient(135deg,color-mix(in oklab,var(--gold) 18%,var(--panel)),var(--panel));color:var(--gold);font:800 11px/1 'DM Sans',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.18s}
+.bcs-cmd-btn:hover{transform:translateY(-1px);box-shadow:0 10px 22px -16px color-mix(in oklab,var(--gold) 70%,transparent)}
+#bcsDeckModal .bcs-deck-modal{width:min(1080px,100%);max-height:calc(100vh - 40px)}
+.bcs-deck-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 18px;border-bottom:1px solid var(--ui-hair);background:linear-gradient(120deg,color-mix(in oklab,var(--gold) 11%,var(--panel)),var(--panel))}
+.bcs-deck-kicker{font:800 9.5px/1.2 'DM Sans',sans-serif;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}
+.bcs-deck-head h3{margin:4px 0 0;font:600 21px/1.1 'Fraunces',serif;color:var(--ink)}
+.bcs-deck-head-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.bcs-deck-tabs{display:flex;gap:5px;padding:10px 14px;overflow-x:auto;border-bottom:1px solid var(--ui-hair);scrollbar-width:thin}
+.bcs-deck-tabs button{flex:none;min-height:34px;padding:0 11px;border-radius:10px;border:1px solid transparent;background:transparent;color:var(--mut);font:700 11px/1 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap}
+.bcs-deck-tabs button:hover{color:var(--ink);background:color-mix(in oklab,var(--gold) 8%,transparent)}
+.bcs-deck-tabs button.on{color:#151811;background:linear-gradient(135deg,var(--gold),var(--gold-deep));border-color:var(--gold-deep)}
+.bcs-deck-body{padding:16px 18px 22px;overflow:auto;min-height:320px}
+.bcs-deck-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.bcs-deck-card{border:1px solid var(--ui-hair);border-radius:14px;background:color-mix(in oklab,var(--panel) 96%,var(--bg) 4%);padding:14px;min-width:0}
+.bcs-deck-card.wide{grid-column:1/-1}
+.bcs-deck-card h4{margin:0 0 4px;font:600 15px/1.25 'Fraunces',serif;color:var(--ink)}
+.bcs-deck-card .hint{font-size:11px;color:var(--mut);line-height:1.5;margin:0 0 10px}
+.bcs-deck-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--ui-hair);font-size:12px}
+.bcs-deck-row:last-child{border-bottom:0}
+.bcs-deck-row .gx{min-width:0;flex:1}
+.bcs-deck-row b{color:var(--ink);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bcs-deck-row small{color:var(--mut);display:block;line-height:1.4}
+.bcs-deck-row .acts{display:flex;gap:5px;flex:none}
+.bcs-deck-row .acts button,.bcs-deck-inline button{min-height:30px;padding:0 9px;border-radius:9px;border:1px solid var(--line);background:var(--panel);color:var(--ink2);font:700 10px/1 'DM Sans',sans-serif;cursor:pointer}
+.bcs-deck-row .acts button:hover,.bcs-deck-inline button:hover{color:var(--gold);border-color:var(--gold)}
+.bcs-deck-field{display:grid;gap:5px;margin-bottom:9px}
+.bcs-deck-field label{font:700 10px/1.2 'DM Sans',sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--mut)}
+.bcs-deck-field input,.bcs-deck-field select,.bcs-deck-field textarea{min-height:38px;width:100%;border-radius:10px;border:1px solid var(--ui-hair);background:color-mix(in oklab,var(--panel) 94%,var(--bg) 6%);color:var(--ink);padding:8px 10px;font:500 12px/1.4 'DM Sans',sans-serif}
+.bcs-deck-inline{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.bcs-deck-empty{padding:24px;text-align:center;color:var(--mut);font-size:12px;border:1px dashed var(--line);border-radius:12px}
+.bcs-deck-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.bcs-deck-stat>div{padding:10px;border-radius:11px;border:1px solid var(--ui-hair);background:color-mix(in oklab,var(--gold) 5%,transparent)}
+.bcs-deck-stat b{display:block;font:600 20px/1.1 'Fraunces',serif;color:var(--gold)}
+.bcs-deck-stat span{font-size:10px;color:var(--mut)}
+.bcs-deck-bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:5px}
+.bcs-deck-bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--olive))}
+.bcs-deck-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:99px;border:1px solid var(--line);background:var(--panel);color:var(--ink2);font:700 10px/1 'DM Sans',sans-serif;margin:0 4px 4px 0}
+.bcs-deck-chip.on{border-color:var(--gold);color:var(--gold);background:color-mix(in oklab,var(--gold) 10%,transparent)}
+.bcs-deck-note{font-size:11px;line-height:1.55;color:var(--mut);border-top:1px solid var(--ui-hair);margin-top:10px;padding-top:9px}
+#bcsPullIndicator{position:fixed;top:-52px;left:50%;transform:translateX(-50%);z-index:220;padding:7px 14px;border-radius:99px;background:var(--gold);color:#12150F;font:800 11px/1 'DM Sans',sans-serif;transition:top .18s;pointer-events:none}
+#bcsPullIndicator.on{top:8px}
+#bcsContextRail{position:fixed;right:12px;top:50%;transform:translateY(-50%);z-index:60;width:168px;padding:11px;border-radius:14px;border:1px solid var(--ui-hair);background:color-mix(in oklab,var(--panel) 94%,var(--bg) 6%);box-shadow:var(--bcs-shadow-hi)}
+#bcsContextRail .r-lab{font:800 9px/1 'DM Sans',sans-serif;letter-spacing:.14em;color:var(--mut);text-transform:uppercase}
+#bcsContextRail b{display:block;margin:5px 0 8px;font:600 12px/1.3 'Fraunces',serif;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#bcsContextRail button{width:100%;min-height:30px;margin-top:5px;border-radius:9px;border:1px solid var(--line);background:var(--panel);color:var(--ink2);font:700 10px/1 'DM Sans',sans-serif;cursor:pointer}
+body[data-density="compact"] .bcs-deck-row{padding:5px 0}
+body[data-role-palette="advisor"]{--gold:#8FB0A0;--gold-deep:#6F9483}
+body[data-role-palette="admin"]{--gold:#E7C46E;--gold-deep:#B8892E}
+body.bcs-deck-loading .bcs-deck-body{opacity:.45;filter:blur(1px)}
+.voice-mic{min-height:30px;padding:0 8px;border-radius:9px;border:1px solid var(--line);background:var(--panel);color:var(--gold);font:700 11px/1 'DM Sans',sans-serif;cursor:pointer}
+[contenteditable="true"]{outline:2px dashed var(--gold);outline-offset:3px;border-radius:5px;background:color-mix(in oklab,var(--gold) 8%,transparent)}
+.bp-table th,.bcs-deck-body th{position:sticky;top:0;z-index:2}
+@media(max-width:720px){#bcsDeckModal .bcs-deck-modal{max-height:calc(100vh - 20px)}.bcs-deck-grid{grid-template-columns:1fr}.bcs-deck-head,.bcs-deck-body{padding-left:13px;padding-right:13px}#bcsContextRail{display:none!important}}
+</style>
+<script id="bcsSuperlayerJs">
+(function(){
+'use strict';
+if(window.__bcsSuperlayer) return; window.__bcsSuperlayer=true;
+var K='bcs_super_v1';
+var DEF={commissions:[],devCRM:{},docs:[],handover:{},filters:[],mobileTabs:['dashboard','projects','clients','dayplan'],compare:[],deckTab:'today',autoTheme:false,density:'',rolePalette:'',offlineQueue:[],lastProject:'',lastClient:'',lastUndo:null};
+var S=(function(){try{var o=JSON.parse(localStorage.getItem(K)||'{}');var x={};Object.keys(DEF).forEach(function(k){x[k]=(o&&o[k]!=null)?o[k]:DEF[k];});return x;}catch(e){return JSON.parse(JSON.stringify(DEF));}})();
+function persist(){try{localStorage.setItem(K,JSON.stringify(S));}catch(e){}}
+function D(){try{return (typeof db!=='undefined'&&db)?db:(window.db||null);}catch(e){return window.db||null;}}
+function he(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function today(){try{return (typeof bcsISTDate==='function')?bcsISTDate():new Date().toISOString().slice(0,10);}catch(e){return new Date().toISOString().slice(0,10);}}
+function plus(days){var d=new Date(today()+'T00:00:00Z');d.setUTCDate(d.getUTCDate()+days);return d.toISOString().slice(0,10);}
+function n(v){var x=parseFloat(String(v==null?'':v).replace(/[^0-9.\-]/g,''));return isFinite(x)?x:0;}
+function rupee(v){v=n(v);if(!v)return '—';if(v>=10000000)return '₹'+(v/10000000).toFixed(2)+' Cr';if(v>=100000)return '₹'+(v/100000).toFixed(2)+' L';return '₹'+Math.round(v).toLocaleString('en-IN');}
+function uid2(){return 'sp_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,7);}
+function arr(v){return Array.isArray(v)?v:[];}
+function findById(list,id){return arr(list).find(function(x){return x&&x.id===id;})||null;}
+function buzz(){try{if(navigator.vibrate)navigator.vibrate(8);}catch(e){}}
+function toast2(m,err){try{if(typeof toast==='function')toast(m,err);}catch(e){}}
+function saveDb(){try{if(typeof save==='function')save();}catch(e){}}
+function renderAll(){try{if(typeof render==='function')render();}catch(e){}}
+function safeOpenPreview(o){try{if(window.BCSPreview&&window.BCSPreview.open)return window.BCSPreview.open(o);toast2('Preview engine not ready',true);}catch(e){toast2('Preview failed',true);}}
+
+function trustOf(r){var t=(r&&r.trust&&typeof r.trust==='object')?r.trust:{};return {tier:(['official','snippet','unverified'].indexOf(t.tier)>-1?t.tier:'unverified'),source:String(t.source||''),url:String(t.url||''),checkedAt:String(t.checkedAt||'')};}
+function trustStale(r){var c=trustOf(r).checkedAt;if(!c)return true;var t=Date.parse(c+'T00:00:00Z');return !isFinite(t)||(Date.now()-t)>30*86400000;}
+function trustLabel(t){return t==='official'?'Official / primary':t==='snippet'?'Search snippet only':'Unverified';}
+function trustPill(r){var t=trustOf(r);return '<span class="trust-pill t-'+t.tier+(trustStale(r)?' stale':'')+'">'+he(trustLabel(t.tier))+(trustStale(r)?' · stale':'')+'</span>';}
+
+function injectShell(){
+ if(document.getElementById('bcsDeckModal')) return;
+ var btn=document.createElement('button');btn.className='bcs-cmd-btn';btn.id='bcsDeckBtn';btn.type='button';btn.title='Command deck — today, clients, timeline, trust, tools';
+ btn.innerHTML='<span aria-hidden="true">⌘</span><span>Deck</span>';
+ var hb=document.querySelector('.hbtns');
+ if(hb&&hb.querySelector('#qaTrigger'))hb.insertBefore(btn,hb.querySelector('#qaTrigger'));
+ else if(hb)hb.appendChild(btn);
+ else document.body.appendChild(btn);
+ var pull=document.createElement('div');pull.id='bcsPullIndicator';pull.textContent='↻ Release to refresh';document.body.appendChild(pull);
+ var ov=document.createElement('div');ov.className='overlay';ov.id='bcsDeckModal';
+ ov.innerHTML='<div class="modal bcs-deck-modal" role="dialog" aria-modal="true" aria-label="BCS command deck">'+
+  '<div class="bcs-deck-head"><div><div class="bcs-deck-kicker">BCS operating system</div><h3>Command deck</h3></div>'+
+  '<div class="bcs-deck-head-actions"><button type="button" class="btn ghost sm" data-deck-act="undo" title="Undo last deck change">↶ Undo</button><button type="button" class="btn ghost sm" data-deck-act="refresh">↻ Refresh</button><button type="button" class="btn ghost sm" data-deck-act="share">↗ Share</button><button type="button" class="icon-btn" data-close="bcsDeckModal" aria-label="Close">✕</button></div></div>'+
+  '<div class="bcs-deck-tabs">'+
+   [['today','Today'],['clients','Client 360'],['timeline','Closure'],['compare','Compare'],['trust','Data trust'],['money','Money'],['tools','Tools'],['mobile','iPhone']]
+   .map(function(x){return '<button type="button" data-decktab="'+x[0]+'" class="'+(S.deckTab===x[0]?'on':'')+'">'+x[1]+'</button>';}).join('')+
+  '</div><div class="bcs-deck-body" id="bcsDeckBody"></div></div>';
+ document.body.appendChild(ov);
+ btn.addEventListener('click',function(){buzz();showOverlay('bcsDeckModal');renderDeck();});
+ ov.addEventListener('click',onDeckClick);
+ ov.addEventListener('change',onDeckChange);
+ initRail();initVoice();initPull();initMobileOrder();
+}
+function card(title,hint,body,wide){return '<section class="bcs-deck-card'+(wide?' wide':'')+'"><h4>'+title+'</h4>'+(hint?'<p class="hint">'+hint+'</p>':'')+body+'</section>';}
+function row(title,sub,acts){return '<div class="bcs-deck-row"><div class="gx"><b>'+title+'</b><small>'+sub+'</small></div><div class="acts">'+(acts||'')+'</div></div>';}
+function act(label,fn,extra){return '<button type="button" data-deck-act="'+fn+'" '+(extra||'')+'>'+label+'</button>';}
+
+function clientRows(){return arr(D()&&D().clients);}
+function projectRows(){return arr(D()&&D().projects);}
+function dealRows(){return arr(D()&&D().pipeline);}
+function sourceName(v){v=String(v||'Unknown');return v.replace(/^Lead engine\s*·*\s*/i,'').replace(/^Lead journey\s*·*\s*/i,'').trim()||'Unknown';}
+
+function todayItems(){
+ var db0=D()||{},t=today(),out=[];
+ clientRows().forEach(function(c){
+  var st=String(c.clientStatus||'').toLowerCase();
+  if(c.nextFollowUp&&c.nextFollowUp<=plus(7)&&st!=='booked'&&st!=='lost'&&st!=='closed')
+   out.push({k:'Follow-up',id:c.id,title:c.name||c.phone||'Client',sub:(c.nextFollowUp<t?'Overdue · ':'Due ')+c.nextFollowUp+(c.phone?' · '+c.phone:''),a:'client',rank:c.nextFollowUp<t?0:2});
+  if(c.journey&&window.BCS_JOURNEY&&window.BCS_JOURNEY.due(c,t))out.push({k:'Journey',id:c.id,title:c.name||'Client',sub:window.BCS_JOURNEY.next(c)||'Next step pending',a:'journey',rank:1});
+ });
+ arr(db0.todos).forEach(function(x){if(!x.done&&x.date&&x.date<=plus(3))out.push({k:'Task',id:x.id,title:x.title||'Task',sub:(x.date<t?'Overdue · ':'')+x.date+(x.time?' · '+x.time:''),a:'task',rank:x.date<t?0:2});});
+ projectRows().forEach(function(p){if(trustStale(p))out.push({k:'Trust',id:p.id,title:p.name||'Project',sub:'Verification '+(trustOf(p).checkedAt?'checked '+trustOf(p).checkedAt:'not recorded')+' · stale',a:'project',rank:2});});
+ arr(db0.auctions).forEach(function(a){if(a.auctionDate&&String(a.auctionDate)<=plus(14))out.push({k:'Auction',id:a.id,title:a.title||'Auction',sub:'Date '+a.auctionDate+(a.verified?' · verified':' · verify official notice'),a:'auction',rank:1});});
+ arr(db0.clients).concat(arr(db0.developers),arr(db0.advisors)).forEach(function(x){
+  var b=String(x.birthday||x.dob||'');if(!b)return;var md=b.slice(-5);
+  if(md===t.slice(5))out.push({k:'Birthday',id:x.id,title:x.name||'Contact',sub:'Today — warm wish, no auto-send',a:'client',rank:2});
+ });
+ out.sort(function(a,b){return a.rank-b.rank;});
+ return out;
+}
+function renderToday(){
+ var db0=D()||{},items=todayItems();
+ var staleP=projectRows().filter(trustStale).length,stalePlot=arr(db0.plots).filter(trustStale).length;
+ var travel=clientRows().filter(function(c){return c.visitDate&&c.visitDate>=today()&&c.visitDate<=plus(7);}).length;
+ var stats='<div class="bcs-deck-stat"><div><b>'+items.length+'</b><span>next actions</span></div><div><b>'+(staleP+stalePlot)+'</b><span>stale records</span></div><div><b>'+travel+'</b><span>visits in 7d</span></div></div>';
+ var body=items.length?items.slice(0,18).map(function(x){
+  var ac=x.a==='client'?act('Open','client-open','data-id="'+he(x.id)+'"'):x.a==='journey'?act('Step','journey-open','data-id="'+he(x.id)+'"'):x.a==='project'?act('Fix','trust-focus','data-id="'+he(x.id)+'"'):x.a==='auction'?act('Open','goto-auction'):act('Go','goto-dayplan');
+  return row('<span class="bcs-deck-chip">'+he(x.k)+'</span> '+he(x.title),he(x.sub),ac);
+ }).join(''):'<div class="bcs-deck-empty">All clear. Add a client or project to populate the command queue.</div>';
+ return card('Prioritised action queue','One row, one next move. Sorted overdue → journey → trust.',stats+body,true);
+}
+function renderClients(){
+ var cs=clientRows();if(!cs.length)return card('Client 360','No clients yet.','<div class="bcs-deck-empty">Add a client to build a 360 view. <button type="button" class="btn primary sm" data-deck-act="goto-clients">Open clients</button></div>',true);
+ if(!findById(cs,S.lastClient))S.lastClient=cs[0].id;
+ var c=findById(cs,S.lastClient),db0=D()||{};
+ var sel='<div class="bcs-deck-field"><label>Client</label><select id="bcsDeckClientSel">'+cs.map(function(x){return '<option value="'+he(x.id)+'"'+(x.id===c.id?' selected':'')+'>'+he(x.name||x.phone||'Client')+'</option>';}).join('')+'</select></div>';
+ var j=c.journey||{},stage=(window.BCS_JOURNEY?window.BCS_JOURNEY.stage(c):(j.stage||'lead'));
+ var pids=arr(c.projectIds).map(function(id){return findById(projectRows(),id);}).filter(Boolean);
+ var visits=arr(db0.visits).filter(function(v){return v.clientId===c.id;}).slice(-5);
+ var bookings=arr(db0.bookings).filter(function(b){return b.clientId===c.id;});
+ var docs=arr(S.docs).filter(function(x){return x.clientId===c.id;});
+ var actions='<div class="bcs-deck-inline">'+act('Open profile','client-open','data-id="'+he(c.id)+'"')+act('Advisory brief','client-advisory','data-id="'+he(c.id)+'"')+act('Present brief','client-present','data-id="'+he(c.id)+'"')+act('Journey','journey-open','data-id="'+he(c.id)+'"')+'</div>';
+ var brief='<div class="bcs-deck-row"><div class="gx"><b>'+he(stage)+' · '+he(j.nextAction||'Next step not set')+'</b><small>'+he(c.phone||'No phone')+' · '+(c.budgetMin||c.budgetMax?rupee(c.budgetMin)+' – '+rupee(c.budgetMax):'Budget flexible')+'</small></div></div>';
+ var projects=pids.length?pids.map(function(p){return '<span class="bcs-deck-chip">'+he(p.name)+'</span>';}).join(''):'<span class="hint">No shortlisted projects</span>';
+ var visitHTML=visits.length?visits.map(function(v){return row(he(v.projectName||'Site visit'),he(v.date||v.visitAt||'')+' '+(v.note||''));}).join(''):'<div class="hint">No visits logged</div>';
+ var docHTML=docs.length?docs.map(function(d){return row(he(d.type||'Document'),he(d.name||'')+(d.expiry?' · exp '+he(d.expiry):''));}).join(''):'<div class="hint">No documents tracked</div>';
+ var docForm='<div class="bcs-deck-inline"><input id="bcsDeckDocType" placeholder="Doc type (KYC / agreement)" style="flex:1;min-width:120px"><input id="bcsDeckDocExpiry" type="date"><button type="button" data-deck-act="client-doc-add" data-id="'+he(c.id)+'">Add tracker</button></div>';
+ var ho=S.handover[c.id]||{},hoSteps=['Registry','Possession','Utilities','Society','Warranty','Welcome note'],doneN=hoSteps.filter(function(s){return !!ho[s];}).length;
+ var hoHTML='<div class="bcs-deck-inline">'+hoSteps.map(function(s){return '<button type="button" class="bcs-deck-chip '+(ho[s]?'on':'')+'" data-deck-act="handover-toggle" data-id="'+he(c.id)+'" data-step="'+he(s)+'">'+(ho[s]?'✓ ':'○ ')+he(s)+'</button>';}).join('')+'</div><div class="bcs-deck-bar"><i style="width:'+Math.round(doneN/hoSteps.length*100)+'%"></i></div><div class="bcs-deck-note">'+doneN+' of '+hoSteps.length+' handover steps complete. Local checklist only.</div>';
+ return sel+card('Snapshot',null,brief+actions,true)+card('Shortlist',null,projects,true)+card('Visits & bookings',null,visitHTML+(bookings.length?'<div class="bcs-deck-note">'+bookings.length+' booking record(s) linked.</div>':''))+card('Document vault',null,docHTML+docForm)+card('Post-sale handover',null,hoHTML);
+}
+function renderTimeline(){
+ var cs=clientRows().concat(arr(D()&&D().leadgen&&D().leadgen.leads));
+ if(!cs.length)return card('Closure timeline','No leads or clients yet.','<div class="bcs-deck-empty">The guided journey opens here as soon as a lead exists.</div>',true);
+ var stages=(window.BCS_JOURNEY?window.BCS_JOURNEY.stages:[]);
+ var counts={};cs.forEach(function(r){var s=window.BCS_JOURNEY?window.BCS_JOURNEY.stage(r):'lead';counts[s]=(counts[s]||0)+1;});
+ var funnel=stages.map(function(s){var pct=cs.length?Math.round((counts[s.id]||0)/cs.length*100):0;return '<div><small>'+he(s.label)+' · '+(counts[s.id]||0)+'</small><div class="bcs-deck-bar"><i style="width:'+pct+'%"></i></div></div>';}).join('');
+ var body=cs.slice(0,30).map(function(r){
+  var s=window.BCS_JOURNEY?window.BCS_JOURNEY.stage(r):'lead',m=window.BCS_JOURNEY?window.BCS_JOURNEY.meta(s):{label:s};
+  return row(he(r.name||r.phone||'Lead'),he(m.label+' · '+(window.BCS_JOURNEY?window.BCS_JOURNEY.next(r):'Next step')),act('Open journey','journey-open','data-id="'+he(r.id)+'" data-kind="'+(r.journey&&r.journey.stage==='lead'&&!findById(clientRows(),r.id)?'lead':'client')+'"'));
+ }).join('');
+ return card('Journey funnel',null,funnel,true)+card('Live closure ladder','Lead → call → WhatsApp → client → suggested → visit → final → payment → registry → referral.',body,true);
+}
+function compareList(){
+ var ps=projectRows().filter(function(p){return S.compare.indexOf(p.id)>-1;});
+ return ps;
+}
+function renderCompare(){
+ var ps=projectRows();
+ if(!ps.length)return card('Compare tray','No projects saved.','<div class="bcs-deck-empty">Add projects first, then compare up to three.</div>',true);
+ var list=ps.slice(0,40).map(function(p){var on=S.compare.indexOf(p.id)>-1;return '<button type="button" class="bcs-deck-chip '+(on?'on':'')+'" data-deck-act="compare-toggle" data-id="'+he(p.id)+'">'+(on?'✓ ':'+ ')+he(p.name)+'</button>';}).join('');
+ var sel=compareList(),table='';
+ if(sel.length){
+  var fields=[['Corridor',function(p){return (typeof corridor==='function'?corridor(p.corridor).name:p.corridor)||'—';}],['Price',function(p){return typeof priceRange==='function'?priceRange(p):rupee(p.priceMin);}],['RERA',function(p){return p.rera||'—';}],['Approval',function(p){return p.approval||'—';}],['Possession',function(p){return p.timeline||'—';}],['Verification',function(p){return trustLabel(trustOf(p).tier)+(trustStale(p)?' · stale':'');}]];
+  table='<div style="overflow:auto"><table class="bp-table"><thead><tr><th>Factor</th>'+sel.map(function(p){return '<th>'+he(p.name)+'</th>';}).join('')+'</tr></thead><tbody>'+fields.map(function(f){return '<tr><td><b>'+f[0]+'</b></td>'+sel.map(function(p){return '<td>'+he(f[1](p))+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table></div>';
+ }
+ return card('Compare tray','Pick up to 3 projects. Local only — no data leaves the device.',list+'<div class="bcs-deck-inline" style="margin-top:10px">'+act('Build brief pack','compare-brief')+act('Clear','compare-clear')+'</div>',true)+(table?card('Side-by-side',null,table,true):'');
+}
+function renderTrust(){
+ var db0=D()||{},bad=[];
+ projectRows().forEach(function(p){if(trustStale(p))bad.push({t:'Project',r:p,label:p.name||'Project'});});
+ arr(db0.plots).forEach(function(p){if(trustStale(p))bad.push({t:'Plot',r:p,label:'Plot '+(p.label||p.num)});});
+ var body=bad.length?bad.slice(0,40).map(function(x){
+  var a=x.t==='Project'?act('Open edit','project-edit','data-id="'+he(x.r.id)+'"'):act('Open edit','plot-edit','data-id="'+he(x.r.id)+'"');
+  return row('<span class="bcs-deck-chip">'+x.t+'</span> '+he(x.label),trustPill(x.r)+' · '+(trustOf(x.r).source||'no source')+' · '+(trustOf(x.r).checkedAt||'not checked'),a+act('Mark checked','trust-check','data-type="'+x.t+'" data-id="'+he(x.r.id)+'"'));
+ }).join(''):'<div class="bcs-deck-empty">Every saved project and plot has a fresh check. Well done.</div>';
+ var legend='<div class="bcs-deck-note"><b>Vocabulary:</b> Official / primary = government notice or RERA/JDA record checked. Search snippet only = discovery reference. Unverified = not yet checked. Older than 30 days shows <b>stale</b>.</div>';
+ return card('Data trust desk',''+bad.length+' record(s) need attention.',legend+body,true);
+}
+function renderMoney(){
+ var db0=D()||{},cs=S.commissions||[],received=cs.reduce(function(a,x){return a+n(x.received);},0),pending=cs.reduce(function(a,x){return a+n(x.amount)-n(x.received);},0);
+ var dealTotal=dealRows().reduce(function(a,d){return a+n(d.dealValue||d.amount||d.value);},0);
+ var form='<div class="bcs-deck-grid"><div class="bcs-deck-field"><label>Client / deal</label><input id="bcsDeckCommClient" placeholder="Client or project name"></div><div class="bcs-deck-field"><label>Developer</label><input id="bcsDeckCommDev" placeholder="Developer"></div><div class="bcs-deck-field"><label>Total fee ₹</label><input id="bcsDeckCommAmt" type="number" min="0" step="100"></div><div class="bcs-deck-field"><label>Received ₹</label><input id="bcsDeckCommRec" type="number" min="0" step="100"></div><div class="bcs-deck-field"><label>Due date</label><input id="bcsDeckCommDue" type="date"></div><div class="bcs-deck-inline" style="align-items:flex-end"><button type="button" data-deck-act="comm-add">Add ledger row</button></div></div>';
+ var rows=cs.length?cs.map(function(x){return row(he(x.client||'Deal'),he((x.developer||'—')+' · due '+(x.dueDate||'—')),act('+₹','comm-paid','data-id="'+he(x.id)+'"')+act('✕','comm-del','data-id="'+he(x.id)+'"'))+'<div class="bcs-deck-bar"><i style="width:'+Math.min(100,n(x.amount)?n(x.received)/n(x.amount)*100:0)+'%"></i></div>';}).join(''):'<div class="hint">No commission rows yet.</div>';
+ var devs=arr(db0.developers).slice(0,20).map(function(d){
+  var r=S.devCRM[d.id]||{},stars='';for(var i=1;i<=5;i++)stars+='<button type="button" data-deck-act="crm-rate" data-id="'+he(d.id)+'" data-rate="'+i+'">'+(i<=n(r.rating)?'★':'☆')+'</button>';
+  return '<div class="bcs-deck-row"><div class="gx"><b>'+he(d.name||'Developer')+'</b><small>'+he(r.terms||'Terms not recorded')+' · '+(r.lastContact?'Last contact '+he(r.lastContact):'No contact log')+'</small></div><div class="acts">'+stars+'</div></div><div class="bcs-deck-inline"><input id="bcsCrmTerms_'+he(d.id)+'" value="'+he(r.terms||'')+'" placeholder="Commission terms" style="flex:1;min-width:130px"><button type="button" data-deck-act="crm-save" data-id="'+he(d.id)+'">Save</button><button type="button" data-deck-act="crm-contact" data-id="'+he(d.id)+'">Log contact</button></div>';
+ }).join('')||'<div class="hint">No developers saved.</div>';
+ var src={};clientRows().forEach(function(c){var k=sourceName(c.source);src[k]=src[k]||{all:0,win:0};src[k].all++;if(/booked|closed|won/i.test(c.clientStatus||''))src[k].win++;});
+ arr(db0.leadgen&&db0.leadgen.leads).forEach(function(l){var k=sourceName(l.source);src[k]=src[k]||{all:0,win:0};src[k].all++;if(/won|qualified/i.test(l.status||''))src[k].win++;});
+ var max=1;Object.keys(src).forEach(function(k){max=Math.max(max,src[k].all);});
+ var ref=Object.keys(src).map(function(k){var pct=Math.round(src[k].all/max*100);return '<div><small>'+he(k)+' · '+src[k].all+' leads · '+src[k].win+' advanced ('+(src[k].all?Math.round(src[k].win/src[k].all*100):0)+'%)</small><div class="bcs-deck-bar"><i style="width:'+pct+'%"></i></div></div>';}).join('')||'<div class="hint">No sources tagged yet.</div>';
+ return '<div class="bcs-deck-stat"><div><b>'+rupee(received)+'</b><span>received</span></div><div><b>'+rupee(pending)+'</b><span>pending</span></div><div><b>'+rupee(dealTotal)+'</b><span>saved deal value</span></div></div>'+card('Commission & payout ledger',null,form+rows,true)+card('Developer relationship CRM','Ratings, terms and contact history stay local.',devs)+card('Referral source map','Tag leads by source in Leadgen / Clients to see conversion here.',ref);
+}
+function renderTools(){
+ var ps=projectRows(),db0=D()||{};
+ var psel='<div class="bcs-deck-field"><label>Project for price timeline</label><select id="bcsDeckPriceProj">'+ps.map(function(p){return '<option value="'+he(p.id)+'"'+(S.lastProject===p.id?' selected':'')+'>'+he(p.name)+'</option>';}).join('')+'</select></div>';
+ var p=findById(ps,S.lastProject)||ps[0],hist=p?arr(p.priceHistory):[];
+ var timeline=hist.length?hist.slice(-12).map(function(h){return row(he(h.date||new Date(h.at||Date.now()).toISOString().slice(0,10)),he(rupee(h.oldMin)+' → '+rupee(h.newMin)+(h.note?' · '+h.note:'')));}).join(''):'<div class="hint">No price changes recorded for this project.</div>';
+ var corr={};ps.forEach(function(x){var k=(typeof corridor==='function'?corridor(x.corridor).name:x.corridor)||'Unassigned';corr[k]=corr[k]||{n:0,sum:0};corr[k].n++;corr[k].sum+=n(x.priceMin);});
+ var cmax=1;Object.keys(corr).forEach(function(k){cmax=Math.max(cmax,corr[k].n);});
+ var heat=Object.keys(corr).map(function(k){return '<div><small>'+he(k)+' · '+corr[k].n+' projects · indicative from '+rupee(corr[k].sum/corr[k].n)+'</small><div class="bcs-deck-bar"><i style="width:'+Math.round(corr[k].n/cmax*100)+'%"></i></div></div>';}).join('')||'<div class="hint">No projects yet.</div>';
+ var seen={},dups=[];
+ clientRows().forEach(function(c){var key=String(c.phone||'').replace(/\D/g,'').slice(-10)||String(c.name||'').trim().toLowerCase();if(!key)return;if(seen[key])dups.push([seen[key],c]);else seen[key]=c;});
+ var dup=dups.length?dups.slice(0,12).map(function(x){return row(he(x[0].name||x[0].phone)+' ↔ '+he(x[1].name||x[1].phone),he((x[0].phone||'—')+' · same phone or name'),act('Mark duplicate','dup-mark','data-id="'+he(x[1].id)+'"'));}).join(''):'<div class="hint">No duplicate phone/name pairs found.</div>';
+ var filters=(S.filters||[]).map(function(f){return '<span class="bcs-deck-chip">'+he(f.name)+' '+act('Apply','filter-apply','data-id="'+he(f.id)+'"')+' '+act('✕','filter-del','data-id="'+he(f.id)+'"')+'</span>';}).join('')||'<div class="hint">No saved views yet.</div>';
+ var fform='<div class="bcs-deck-inline"><input id="bcsDeckFilterName" placeholder="View name, e.g. RERA under 1 Cr" style="flex:1;min-width:160px"><button type="button" data-deck-act="filter-save">Save current brief</button></div>';
+ var loan='<div class="bcs-deck-grid"><div class="bcs-deck-field"><label>Loan ₹</label><input id="bcsDeckLoanP" type="number" value="5000000"></div><div class="bcs-deck-field"><label>Rate %</label><input id="bcsDeckLoanR" type="number" value="8.5" step="0.05"></div><div class="bcs-deck-field"><label>Years</label><input id="bcsDeckLoanY" type="number" value="20"></div><div class="bcs-deck-inline" style="align-items:flex-end"><button type="button" data-deck-act="loan-calc">Calculate EMI</button></div></div><div id="bcsDeckLoanOut" class="bcs-deck-note">User-entered rates only — no live bank data.</div>';
+ var quick=ps.length?'<div class="bcs-deck-inline" style="margin-top:8px">'+act('Build rate card','rate-card')+act('Open visit planner','visit-plan')+act('Focus mode','focus-toggle')+'</div>':'';
+ return card('Rate card & brief pack','Uses your selected compare projects. No invented rates.',psel+quick)+card('Price-change timeline',null,timeline)+card('Corridor heatmap','Saved projects only — no external pricing.',heat)+card('Duplicate detection','Mark, never auto-delete.',dup)+card('Saved filter views','Store the current advisory brief as a reusable view.',filters+fform)+card('Loan desk',null,loan);
+}
+function renderMobile(){
+ var tabNames={dashboard:'Today',projects:'Projects',clients:'Clients',dayplan:'Day plan'};
+ var order=S.mobileTabs.map(function(id){return '<span class="bcs-deck-chip">'+he(tabNames[id]||id)+' '+act('←','tab-left','data-id="'+id+'"')+act('→','tab-right','data-id="'+id+'"')+'</span>';}).join('');
+ var q=arr(S.offlineQueue).map(function(x){return row(he(x.label),he(x.at||''));}).join('')||'<div class="hint">Queue is empty.</div>';
+ var toggles='<div class="bcs-deck-inline">'+act('Auto theme','auto-theme')+act('Compact density','density-toggle')+act('Role palette','role-palette')+act('Focus / privacy','focus-toggle')+'</div>';
+ return card('Tab bar layout','The four core tabs stay present; only their order changes. More stays the fifth slot.',order,true)+card('Offline action queue','Actions are local reminders only — no client data is auto-sent.',q+'<div class="bcs-deck-inline" style="margin-top:8px">'+act('Queue refresh','offline-queue')+act('Replay now','offline-replay')+'</div>')+card('Native feel',null,toggles+'<div class="bcs-deck-note">Pull down from the top of any page in the iPhone app to refresh. Voice-note mic buttons appear beside key note fields where speech recognition is available.</div>');
+}
+function renderDeck(){
+ var body=document.getElementById('bcsDeckBody');if(!body)return;
+ var f={today:renderToday,clients:renderClients,timeline:renderTimeline,compare:renderCompare,trust:renderTrust,money:renderMoney,tools:renderTools,mobile:renderMobile};
+ try{body.innerHTML=(f[S.deckTab]||renderToday)();}catch(e){body.innerHTML='<div class="bcs-deck-empty">This panel could not render. Your data is safe. '+(e&&e.message?he(e.message):'')+'</div>';}
+ document.querySelectorAll('#bcsDeckModal [data-decktab]').forEach(function(b){b.classList.toggle('on',b.dataset.decktab===S.deckTab);});
+}
+function onDeckClick(e){
+ var tab=e.target.closest('[data-decktab]');if(tab){buzz();S.deckTab=tab.dataset.decktab;persist();renderDeck();return;}
+ var a=e.target.closest('[data-deck-act]');if(!a)return;
+ buzz();handleAct(a.dataset.deckAct,a);
+}
+function onDeckChange(e){if(e.target&&e.target.id==='bcsDeckClientSel'){S.lastClient=e.target.value;persist();renderDeck();}if(e.target&&e.target.id==='bcsDeckPriceProj'){S.lastProject=e.target.value;persist();renderDeck();}}
+function markUndo(label,payload){S.lastUndo={label:label,at:Date.now(),payload:payload};persist();}
+function undoLast(){
+ var u=S.lastUndo;if(!u){return toast2('Nothing to undo',true);}
+ try{
+  var p=u.payload||{};
+  if(p.kind==='commission'){S.commissions.splice(p.index,0,p.row);}
+  else if(p.kind==='filter'){S.filters.splice(p.index,0,p.row);}
+  else if(p.kind==='duplicate'){var c=findById(clientRows(),p.id);if(c){c.notes=p.notes;if(p.duplicateOf==null)delete c.duplicateOf;else c.duplicateOf=p.duplicateOf;saveDb();}}
+  else if(p.kind==='trust'){var rec=p.type==='Project'?findById(projectRows(),p.id):findById((D()||{}).plots,p.id);if(rec){if(p.trust==null)delete rec.trust;else rec.trust=p.trust;saveDb();}}
+  else if(p.kind==='rename'){var r=p.isProject?findById(projectRows(),p.id):findById(clientRows(),p.id);if(r)r.name=p.old;saveDb();}
+  S.lastUndo=null;persist();renderAll();renderDeck();toast2('Undone: '+u.label);
+ }catch(e){toast2('Undo failed — data safe',true);}
+}
+function closeDeck(){try{closeModal('bcsDeckModal');}catch(e){var o=document.getElementById('bcsDeckModal');if(o)o.classList.remove('on');}}
+function handleAct(kind,el){
+ var id=(el&&el.dataset&&el.dataset.id)?el.dataset.id:'',db0=D()||{};
+ try{
+ switch(kind){
+ case 'refresh':document.body.classList.add('bcs-deck-loading');try{window.bcsRefreshAllLive&&window.bcsRefreshAllLive();}catch(e){}setTimeout(function(){document.body.classList.remove('bcs-deck-loading');renderDeck();},450);toast2('Live sources refreshed');break;
+ case 'share':safeOpenPreview({title:'BCS desk — action snapshot',kind:'Command deck · local data',text:todayItems().slice(0,12).map(function(x){return '• '+x.k+' — '+x.title+' · '+x.sub;}).join('\n'),filename:'BCS-action-snapshot-'+today()+'.txt'});break;
+ case 'goto-dayplan':closeDeck();go('dayplan');break;
+ case 'goto-clients':closeDeck();go('clients');break;
+ case 'goto-auction':closeDeck();go('auctions');break;
+ case 'client-open':closeDeck();try{openClientProfile(id);}catch(e){go('clients');}break;
+ case 'client-advisory':closeDeck();try{loadClientInAdvisory(id,false);}catch(e){}go('advisory');break;
+ case 'client-present':try{loadClientInAdvisory(id,false);}catch(e){}go('advisory');setTimeout(function(){try{openPresentation('pack');}catch(e){}},180);break;
+ case 'journey-open':closeDeck();try{var kind2=el.dataset.kind||(findById(clientRows(),id)?'client':'lead');window.BCS_JOURNEY_UI.open(kind2,id);}catch(e){toast2('Journey UI not ready',true);}break;
+ case 'trust-focus':S.deckTab='trust';persist();renderDeck();toast2('Open edit from the trust desk');break;
+ case 'project-edit':closeDeck();try{openDetail(id);}catch(e){}break;
+ case 'plot-edit':closeDeck();try{openPlotEdit(id);}catch(e){}break;
+ case 'trust-check':var type=el.dataset.type,rec=type==='Project'?findById(projectRows(),id):findById(db0.plots,id);if(rec){markUndo('trust check',{kind:'trust',type:type,id:id,trust:rec.trust?JSON.parse(JSON.stringify(rec.trust)):null});rec.trust=rec.trust||{};rec.trust.tier=rec.trust.tier==='unverified'?'snippet':rec.trust.tier;rec.trust.checkedAt=today();saveDb();renderDeck();toast2('Last checked set to '+today());}break;
+ case 'compare-toggle':var ix=S.compare.indexOf(id);if(ix>-1)S.compare.splice(ix,1);else{if(S.compare.length>=3)return toast2('Max 3 projects',true);S.compare.push(id);}persist();renderDeck();break;
+ case 'compare-clear':S.compare=[];persist();renderDeck();break;
+ case 'compare-brief':var sel=compareList();if(!sel.length)return toast2('Pick 1–3 projects',true);advShortlist=sel.map(function(p){return p.id;});persistAdvDraft();renderAdvisoryResults();closeDeck();go('advisory');setTimeout(function(){openPresentation('pack');},180);break;
+ case 'comm-add':var cm={id:uid2(),client:val('bcsDeckCommClient'),developer:val('bcsDeckCommDev'),amount:n(val('bcsDeckCommAmt')),received:n(val('bcsDeckCommRec')),dueDate:val('bcsDeckCommDue')};if(!cm.client||!cm.amount)return toast2('Client and fee required',true);S.commissions.push(cm);persist();renderDeck();toast2('Commission row added');break;
+ case 'comm-paid':var cc=findById(S.commissions,id);if(cc){var v=prompt('Amount received ₹',String(n(cc.amount)-n(cc.received)));if(v!=null){cc.received=Math.min(n(cc.amount),n(cc.received)+n(v));persist();renderDeck();}}break;
+ case 'comm-del':var ci=arr(S.commissions).findIndex(function(x){return x.id===id;});if(ci>-1){markUndo('commission delete',{kind:'commission',index:ci,row:S.commissions[ci]});S.commissions.splice(ci,1);persist();renderDeck();}break;
+ case 'crm-rate':S.devCRM[id]=S.devCRM[id]||{};S.devCRM[id].rating=n(el.dataset.rate);persist();renderDeck();break;
+ case 'crm-save':S.devCRM[id]=S.devCRM[id]||{};S.devCRM[id].terms=val('bcsCrmTerms_'+id);persist();renderDeck();toast2('CRM note saved');break;
+ case 'crm-contact':S.devCRM[id]=S.devCRM[id]||{};S.devCRM[id].lastContact=today();S.devCRM[id].contacts=arr(S.devCRM[id].contacts);S.devCRM[id].contacts.push({at:today(),note:'Contact logged from command deck'});persist();renderDeck();toast2('Contact logged');break;
+ case 'client-doc-add':var dn=prompt('Document name / type','KYC');if(dn){S.docs.push({id:uid2(),clientId:id,name:dn,type:dn,expiry:val('bcsDeckDocExpiry')});persist();renderDeck();toast2('Document tracked');}break;
+ case 'filter-save':var fn=val('bcsDeckFilterName');if(!fn)return toast2('View name required',true);S.filters.push({id:uid2(),name:fn,payload:JSON.parse(JSON.stringify(advBrief||{}))});persist();renderDeck();toast2('Filter view saved');break;
+ case 'filter-apply':var f=findById(S.filters,id);if(f){try{Object.assign(advBrief,f.payload||{});applyBriefToForm(advBrief);renderAdvisoryResults();}catch(e){}toast2('View applied to advisory');closeDeck();go('advisory');}break;
+ case 'filter-del':var fi=arr(S.filters).findIndex(function(x){return x.id===id;});if(fi>-1){markUndo('filter delete',{kind:'filter',index:fi,row:S.filters[fi]});S.filters.splice(fi,1);persist();renderDeck();}break;
+ case 'dup-mark':var dc=findById(clientRows(),id);if(dc){markUndo('duplicate mark',{kind:'duplicate',id:id,notes:dc.notes,duplicateOf:dc.duplicateOf});dc.duplicateOf=dc.duplicateOf||'marked';dc.notes=String(dc.notes||'')+'\n[Command deck] Marked duplicate — verify before merge.';saveDb();renderDeck();toast2('Marked duplicate; nothing deleted');}break;
+ case 'handover-toggle':var hc=id,step=el.dataset.step;if(hc&&step){S.handover[hc]=S.handover[hc]||{};S.handover[hc][step]=!S.handover[hc][step];persist();renderDeck();}break;
+ case 'undo':undoLast();break;
+ case 'rate-card':buildRateCard();break;
+ case 'visit-plan':closeDeck();try{openVisitPlanner();}catch(e){go('dayplan');}break;
+ case 'focus-toggle':var on=!document.body.classList.contains('privacy-mode');if(window.bcsPrivacy&&window.bcsPrivacy.set)window.bcsPrivacy.set(on);else document.body.classList.toggle('privacy-mode',on);toast2(on?'Focus mode on':'Focus mode off');break;
+ case 'loan-calc':var P=n(val('bcsDeckLoanP')),R=n(val('bcsDeckLoanR'))/1200,N=n(val('bcsDeckLoanY'))*12,out=document.getElementById('bcsDeckLoanOut');if(!out)break;if(!P||!R||!N){out.textContent='Enter loan amount, rate and years.';break;}var emi=P*R*Math.pow(1+R,N)/(Math.pow(1+R,N)-1);out.innerHTML='<b style="color:var(--gold);font:600 18px Fraunces,serif">₹'+Math.round(emi).toLocaleString('en-IN')+' / month</b><br>Total payable ≈ ₹'+Math.round(emi*N).toLocaleString('en-IN')+' · interest ≈ ₹'+Math.round(emi*N-P).toLocaleString('en-IN');break;
+ case 'auto-theme':S.autoTheme=!S.autoTheme;persist();applyAutoTheme();renderDeck();toast2('Auto theme '+(S.autoTheme?'on':'off'));break;
+ case 'density-toggle':S.density=S.density==='compact'?'':'compact';document.body.dataset.density=S.density;persist();renderDeck();break;
+ case 'role-palette':S.rolePalette=S.rolePalette==='admin'?'advisor':S.rolePalette==='advisor'?'':'admin';document.body.dataset.rolePalette=S.rolePalette;persist();renderDeck();break;
+ case 'tab-left':moveTab(id,-1);break;
+ case 'tab-right':moveTab(id,1);break;
+ case 'offline-queue':S.offlineQueue.push({id:uid2(),label:'Refresh live sources',at:today(),fn:'refresh'});persist();renderDeck();toast2('Queued locally');break;
+ case 'offline-replay':var q=arr(S.offlineQueue).slice();S.offlineQueue=[];persist();q.forEach(function(x){if(x.fn==='refresh'&&window.bcsRefreshAllLive)window.bcsRefreshAllLive();});renderDeck();toast2(q.length?q.length+' local action(s) replayed':'Nothing queued');break;
+ default:break;
+ }
+ }catch(err){toast2('Action failed — data safe',true);try{console.debug('[bcsSuperlayer]',kind,err);}catch(e){}}
+}
+function val(id){var x=document.getElementById(id);return x?String(x.value||'').trim():'';}
+function buildRateCard(){
+ var sel=compareList();if(!sel.length){var p=findById(projectRows(),S.lastProject);if(p)sel=[p];}if(!sel.length)return toast2('Select a project first',true);
+ var rows=sel.map(function(p,i){var plots=arr(D().plots).filter(function(x){return x.projectId===p.id&&/available|release/i.test(x.status||'');}).slice(0,6);
+  return '<tr><td>'+(i+1)+'</td><td><b>'+he(p.name)+'</b><br>'+he(typeof corridor==='function'?corridor(p.corridor).name:p.corridor)+'</td><td>'+he(typeof priceRange==='function'?priceRange(p):rupee(p.priceMin))+'</td><td>'+he(rateText(p)?rateText(p):'On request')+'</td><td>'+(plots.length?plots.map(function(x){return '#'+he(x.label||x.num)+' '+he(x.sizeGaj||'')+' gaj '+he(rupee(n(x.rateGaj)*n(x.sizeGaj)));}).join('<br>'):'Ask for live inventory')+'</td><td>'+trustLabel(trustOf(p).tier)+'</td></tr>';}).join('');
+ var html='<div style="font-family:DM Sans,sans-serif;padding:24px;max-width:880px;margin:auto;color:#20241C"><div style="border-bottom:2px solid #8C6628;padding-bottom:12px"><div style="font:800 10px DM Sans;letter-spacing:.16em;color:#8C6628">BUSINESS CITY SQUARE · JAIPUR</div><h1 style="font:600 24px Fraunces,serif;margin:5px 0">Indicative rate card</h1></div><table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:16px"><thead><tr>'+['#','Project','Price band','Rate','Indicative inventory','Verification'].map(function(h){return '<th style="text-align:left;padding:8px;border-bottom:1px solid #D8DCD3;color:#6B7167">'+h+'</th>';}).join('')+'</tr></thead><tbody>'+rows+'</tbody></table><p style="font-size:11px;color:#6B7167;line-height:1.6;border-top:1px solid #E1E4DC;margin-top:16px;padding-top:12px">Rates are desk-entered and indicative. Availability and approvals must be re-verified at source before booking. No external data is fetched or uploaded.</p></div>';
+ safeOpenPreview({title:'BCS indicative rate card',kind:'Rate card · local data',html:html,text:'BCS indicative rate card\n\n'+sel.map(function(p){return '• '+p.name+' — '+(typeof priceRange==='function'?priceRange(p):rupee(p.priceMin));}).join('\n'),filename:'BCS-rate-card-'+today()+'.html'});
+}
+function moveTab(id,dir){
+ var i=S.mobileTabs.indexOf(id),j=i+dir;if(i<0||j<0||j>=S.mobileTabs.length)return;
+ var tmp=S.mobileTabs[i];S.mobileTabs[i]=S.mobileTabs[j];S.mobileTabs[j]=tmp;persist();try{window.__bcsApplyTabOrder&&window.__bcsApplyTabOrder();}catch(e){}renderDeck();toast2('Tab order saved');
+}
+function applyAutoTheme(){
+ if(!S.autoTheme)return;
+ var hr=0;try{hr=parseInt(new Intl.DateTimeFormat('en-IN',{hour:'2-digit',hour12:false,timeZone:'Asia/Kolkata'}).format(new Date()),10)||0;}catch(e){hr=new Date().getHours();}
+ var th=(hr>=19||hr<6)?'dark':'light';try{localStorage.setItem('bcs_theme_v1',th);}catch(e){}
+ document.body.dataset.theme=th;document.documentElement.dataset.theme=th;document.documentElement.style.colorScheme=th;
+}
+function initRail(){
+ if(window.innerWidth<=720||document.getElementById('bcsContextRail'))return;
+ var r=document.createElement('aside');r.id='bcsContextRail';r.innerHTML='<div class="r-lab">Context</div><b id="bcsRailName">Nothing pinned</b><button type="button" data-deck-act="refresh">Open deck</button>';
+ document.body.appendChild(r);
+ r.querySelector('button').addEventListener('click',function(){showOverlay('bcsDeckModal');renderDeck();});
+}
+function updateRail(){
+ var r=document.getElementById('bcsContextRail');if(!r)return;var name='',rec=null;
+ if(S.lastClient){rec=findById(clientRows(),S.lastClient);if(rec)name=rec.name||rec.phone||'Client';}
+ if(!name&&S.lastProject){rec=findById(projectRows(),S.lastProject);if(rec)name=rec.name||'Project';}
+ var n=document.getElementById('bcsRailName');if(n)n.textContent=name||'Nothing pinned';
+}
+document.addEventListener('click',function(e){
+ var p=e.target.closest('[data-detail]');if(p&&p.dataset.detail){S.lastProject=p.dataset.detail;persist();updateRail();}
+ var c=e.target.closest('[data-clientopen],[data-openclient]');if(c){var id=c.dataset.clientopen||c.dataset.openclient;if(id){S.lastClient=id;persist();updateRail();}}
+},true);
+function initVoice(){
+ var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR)return;
+ ['advNotes','stickyNote'].forEach(function(id){
+  var t=document.getElementById(id);if(!t||t.dataset.voiceReady)return;t.dataset.voiceReady='1';
+  var b=document.createElement('button');b.type='button';b.className='voice-mic';b.textContent='🎙 Voice';b.title='Dictate into this note';
+  b.addEventListener('click',function(){try{var rec=new SR();rec.lang='hi-IN';rec.interimResults=false;rec.onresult=function(ev){var txt=ev.results[0][0].transcript;t.value=(t.value?t.value+' ':'')+txt;t.dispatchEvent(new Event('input',{bubbles:true}));};rec.start();toast2('Listening…');}catch(e){toast2('Voice dictation unavailable',true);}});
+  if(t.parentNode)t.parentNode.insertBefore(b,t.nextSibling);
+ });
+}
+function initInlineEdit(){
+ document.addEventListener('dblclick',function(e){
+  if(e.target.closest('#bcsDeckModal'))return;
+  var t=e.target.closest('.pcard .ttl,.client-card h4,[data-clientopen] h4');if(!t)return;
+  var card=t.closest('[data-detail],[data-clientopen]');if(!card)return;
+  var isProject=!!card.dataset.detail,id=isProject?card.dataset.detail:(card.dataset.clientopen||'');if(!id)return;
+  var rec=findById(isProject?projectRows():clientRows(),id);if(!rec)return;
+  e.preventDefault();e.stopPropagation();
+  var old=String(rec.name||'');t.contentEditable='true';t.spellcheck=false;t.focus();
+  try{var r=document.createRange();r.selectNodeContents(t);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}catch(err){}
+  var finished=false;
+  function done(saveIt){
+   if(finished)return;finished=true;t.contentEditable='false';
+   var v=String(t.textContent||'').trim();
+   if(saveIt&&v&&v!==old){markUndo('rename',{kind:'rename',isProject:isProject,id:id,old:old});rec.name=v;saveDb();renderAll();toast2('Renamed — undo available in Deck');}
+   else t.textContent=old;
+  }
+  t.addEventListener('blur',function(){done(true);},{once:true});
+  t.addEventListener('keydown',function(ev){if(ev.key==='Enter'){ev.preventDefault();done(true);}if(ev.key==='Escape'){ev.preventDefault();done(false);}});
+ },true);
+}
+function initPull(){
+ var start=null,dy=0,active=false,el=document.getElementById('bcsPullIndicator');
+ document.addEventListener('touchstart',function(e){if(!document.body.classList.contains('bcs-native')||e.touches.length!==1||window.scrollY>2)return;if(e.target.closest('.fp-call-row,.fp-card'))return;start=e.touches[0].clientY;dy=0;active=false;},{passive:true});
+ document.addEventListener('touchmove',function(e){if(start==null)return;dy=e.touches[0].clientY-start;if(dy>12){active=true;if(el)el.classList.add('on');if(dy>70&&e.cancelable)e.preventDefault();}},{passive:false});
+ document.addEventListener('touchend',function(){if(active&&dy>70){if(navigator.onLine){try{window.bcsRefreshAllLive&&window.bcsRefreshAllLive();}catch(e){}}else{S.offlineQueue.push({id:uid2(),label:'Refresh live sources',at:today(),fn:'refresh'});persist();toast2('Offline — refresh queued');}}if(el)el.classList.remove('on');start=null;dy=0;active=false;},{passive:true});
+ window.addEventListener('online',function(){if(arr(S.offlineQueue).length)toast2('Back online — queued actions ready');});
+}
+function initMobileOrder(){
+ function apply(){
+  if(!document.body.classList.contains('bcs-native'))return;
+  var nav=document.getElementById('nav');if(!nav)return;
+  var key=S.mobileTabs.join(',');if(nav.dataset.spOrder===key)return;
+  var tabs=S.mobileTabs.map(function(id){return nav.querySelector('button[data-view="'+id+'"]');}).filter(Boolean);
+  if(tabs.length!==4)return;
+  var more=nav.querySelector('.nav-more-wrap');
+  tabs.forEach(function(t){nav.appendChild(t);});if(more)nav.appendChild(more);nav.dataset.spOrder=key;
+ }
+ window.__bcsApplyTabOrder=apply;
+ var mo=new MutationObserver(function(){clearTimeout(window.__spOrderT);window.__spOrderT=setTimeout(apply,40);});
+ var nav=document.getElementById('nav');if(nav)mo.observe(nav,{childList:true});
+ window.addEventListener('resize',function(){setTimeout(apply,60);});
+ if(window.__bcsMobileNav&&window.__bcsMobileNav.apply){var old=window.__bcsMobileNav.apply;window.__bcsMobileNav.apply=function(){var r=old.apply(this,arguments);setTimeout(apply,0);return r;};}
+ apply();
+}
+function boot(){injectShell();applyAutoTheme();document.body.dataset.density=S.density||'';document.body.dataset.rolePalette=S.rolePalette||'';updateRail();initInlineEdit();}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
 </script>
 </body>
