@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Real Estate Advisory & Project Intelligence</title>
-<meta name="bcs-build" content="bcs-desk-v225">
-<!-- BCS DESK BUILD bcs-desk-v225 · advisory-led consultancy design + iPhone 15 Pro app shell · single-file · zero-dependency · pinned More nav + drag-to-bar customization with persisted order + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard + Jaipur Property Map (source-attributed public portals: Aurum, Square Yards, PropertyWala, 2bigha, Real Estate India, Housing.com, IndiaProperty, TrueHomes24, Anarock media + official registers) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net + command deck (today/client 360/closure timeline/compare/trust/money/tools/iPhone) + verification-first brief pack + data freshness layer + undo + offline queue + pull-to-refresh -->
+<meta name="bcs-build" content="bcs-desk-v226">
+<!-- BCS DESK BUILD bcs-desk-v226 · advisory-led consultancy design + iPhone 15 Pro app shell · single-file · zero-dependency · pinned More nav + drag-to-bar customization with persisted order + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard + Jaipur Property Map (source-attributed public portals: Aurum, Square Yards, PropertyWala, 2bigha, Real Estate India, Housing.com, IndiaProperty, TrueHomes24, Anarock media + official registers) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net + command deck (today/client 360/closure timeline/compare/trust/money/tools/iPhone) + verification-first brief pack + data freshness layer + undo + offline queue + pull-to-refresh + DIGIPIN local grid converter with source-backed address standard -->
 <meta name="description" content="BCS (Business City Square) — private Jaipur real estate advisory desk for projects, inventory, client shortlists and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -18140,6 +18140,7 @@ try{
             <button type="button" data-view="tts"><span class="nav-ic" aria-hidden="true">🔊</span>Hindi TTS</button>
             <button type="button" data-view="whiteboard"><span class="nav-ic" aria-hidden="true">✎</span>EZWrite Board</button>
             <button type="button" data-view="videostudio"><span class="nav-ic" aria-hidden="true">🎬</span>Video Studio</button>
+            <button type="button" data-view="digipin"><span class="nav-ic" aria-hidden="true">⌖</span>DIGIPIN</button>
             <button type="button" data-view="analytics"><span class="nav-ic" aria-hidden="true">▥</span>Analytics</button>
             <button type="button" data-view="health"><span class="nav-ic" aria-hidden="true">♥</span>Health</button>
             <button type="button" data-view="ops"><span class="nav-ic" aria-hidden="true">⌗</span>Operations</button>
@@ -21156,6 +21157,255 @@ try{
     </div>
     <div class="ops-tabs" id="opsTabs" role="tablist" aria-label="Operations sections"></div>
     <div id="opsBody"></div>
+  </section>
+
+  <!-- ============ DIGIPIN · OPEN-SOURCE LOCATION GRID ============ -->
+  <section class="view" id="view-digipin">
+    <div class="digi-hero">
+      <div class="digi-kicker">India Post · Department of Posts · open-source standard</div>
+      <h2 class="digi-title">Know your location in <em>ten characters.</em></h2>
+      <p class="digi-sub">DIGIPIN (Digital PIN) is India's open geospatial addressing grid — built by India Post with IIT Hyderabad and NRSC/ISRO. Convert latitude &amp; longitude to a 10-character code, decode a code back to coordinates, find your device location, or pick a point on the grid. Every calculation runs here, on this device. Nothing is uploaded, logged or sent.</p>
+      <div class="digi-inline">
+        <button type="button" class="digi-btn primary" data-digi-go="encode">Convert coordinates</button>
+        <button type="button" class="digi-btn" data-digi-go="decode">Decode a DIGIPIN</button>
+        <button type="button" class="digi-btn" id="digiHeroGeo">Use my location</button>
+        <button type="button" class="digi-btn ghost" data-digi-go="sources">Sources &amp; standard</button>
+      </div>
+    </div>
+
+    <div class="digi-stats">
+      <div><b>10</b><span>characters · no hyphens</span></div>
+      <div><b>~3.8 m</b><span>final grid cell</span></div>
+      <div><b>16ⁿ</b><span>4×4 hierarchy, 10 levels</span></div>
+      <div><b>0</b><span>coordinates uploaded</span></div>
+    </div>
+
+    <div class="digi-tabs" id="digiTabs" role="tablist" aria-label="DIGIPIN sections">
+      <button type="button" data-digitab="encode" class="on" role="tab" aria-selected="true">⌖ Encode</button>
+      <button type="button" data-digitab="decode" role="tab" aria-selected="false">⇄ Decode</button>
+      <button type="button" data-digitab="location" role="tab" aria-selected="false">◉ My location</button>
+      <button type="button" data-digitab="map" role="tab" aria-selected="false">🗺 Grid map</button>
+      <button type="button" data-digitab="saved" role="tab" aria-selected="false">▤ Saved locally</button>
+      <button type="button" data-digitab="sources" role="tab" aria-selected="false">⛓ Sources</button>
+    </div>
+
+    <!-- ENCODE -->
+    <div class="digi-pane" id="digiPaneEncode" data-digipane="encode">
+      <div class="digi-grid">
+        <div class="digi-panel">
+          <div class="digi-panel-head">
+            <div><div class="eyebrow">Coordinates → DIGIPIN</div><h4>Enter a latitude &amp; longitude.</h4></div>
+            <span class="digi-badge">official algorithm</span>
+          </div>
+          <form class="digi-form" id="digiEncodeForm" autocomplete="off">
+            <div class="digi-field"><label for="digiLat">Latitude (°N)</label><input id="digiLat" type="number" step="any" min="2.5" max="38.5" placeholder="26.912400" aria-label="Latitude" required></div>
+            <div class="digi-field"><label for="digiLon">Longitude (°E)</label><input id="digiLon" type="number" step="any" min="63.5" max="99.5" placeholder="75.787300" aria-label="Longitude" required></div>
+            <div class="digi-inline">
+              <button type="submit" class="digi-btn primary">Convert to DIGIPIN →</button>
+              <button type="button" class="digi-btn ghost" id="digiJaipurSample">Jaipur sample</button>
+              <button type="button" class="digi-btn ghost" id="digiEncodeGeo">Use my location</button>
+            </div>
+          </form>
+          <div class="digi-result off" id="digiEncodeResult" aria-live="polite">
+            <div class="digi-result-label">Your DIGIPIN</div>
+            <div class="digi-code" id="digiCodeContinuous">—</div>
+            <div class="digi-display" id="digiCodeGrouped">—</div>
+            <div class="digi-meta">
+              <div class="digi-metric"><b id="digiEncodeLat">—</b><span>latitude</span></div>
+              <div class="digi-metric"><b id="digiEncodeLon">—</b><span>longitude</span></div>
+              <div class="digi-metric"><b>~3.8 × 3.8 m</b><span>grid cell</span></div>
+            </div>
+          </div>
+          <div class="digi-inline" id="digiEncodeActions" hidden style="margin-top:10px">
+            <button type="button" class="digi-btn" data-digi-act="copy-code">Copy code</button>
+            <button type="button" class="digi-btn" data-digi-act="copy-display">Copy 3-4-3 display</button>
+            <button type="button" class="digi-btn" data-digi-act="preview">Preview / share</button>
+            <button type="button" class="digi-btn" data-digi-act="maps">Open in Maps</button>
+            <button type="button" class="digi-btn ghost" data-digi-act="save">Save locally</button>
+          </div>
+          <div class="digi-status" id="digiEncodeStatus" role="status"></div>
+        </div>
+        <div class="digi-panel">
+          <div class="digi-panel-head"><div><div class="eyebrow">How the code works</div><h4>General → precise, left to right.</h4></div></div>
+          <div class="digi-note">The India grid is <b>63.5°–99.5° E</b> and <b>2.5°–38.5° N</b> (WGS84 / EPSG:4326). It is split 4×4 at each of 10 levels. The first character names a ~1000 km region; the tenth lands inside a ~3.8 m square.</div>
+          <div class="digi-char">2 3 4 5 6 7 8 9 C J K L M P F T</div>
+          <div class="digi-note">Only these 16 characters are valid. System format is one continuous 10-character string, e.g. <code>39J49LL8T4</code>. For reading aloud, a <b>3-4-3</b> space grouping is allowed: <code>39J 49L L8T4</code>. Hyphens are not part of the standard.</div>
+          <div class="digi-example-list">
+            <button type="button" data-digi-example="13.11179621,80.20264269"><b>Chennai example</b><span>13.11179621, 80.20264269 → 4T396F42L7</span></button>
+            <button type="button" data-digi-example="28.622788,77.213033"><b>Dak Bhawan, New Delhi</b><span>28.622788, 77.213033 → 39J49LL8T4</span></button>
+          </div>
+          <div class="digi-note digi-honest">Grid lines follow the official export: points on a line go to the east/north cell, with the top and right edges handled as the standard describes. Inputs outside the India bounding box are rejected — no guessed codes.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DECODE -->
+    <div class="digi-pane" id="digiPaneDecode" data-digipane="decode" hidden>
+      <div class="digi-grid">
+        <div class="digi-panel">
+          <div class="digi-panel-head"><div><div class="eyebrow">DIGIPIN → Coordinates</div><h4>Got a code? Find its cell centre.</h4></div><span class="digi-badge">reverse lookup</span></div>
+          <form class="digi-form" id="digiDecodeForm" autocomplete="off">
+            <div class="digi-field"><label for="digiPinInput">DIGIPIN code</label><input id="digiPinInput" type="text" placeholder="4P3JK852C9 or 4P3 JK85 2C9" aria-label="DIGIPIN code" spellcheck="false" autocapitalize="characters" required maxlength="14"></div>
+            <div class="digi-inline">
+              <button type="submit" class="digi-btn primary">Decode →</button>
+              <button type="button" class="digi-btn ghost" data-digi-decodesample="4P3JK852C9">Bengaluru sample</button>
+              <button type="button" class="digi-btn ghost" data-digi-decodesample="39J49LL8T4">Dak Bhawan sample</button>
+            </div>
+          </form>
+          <div class="digi-result off" id="digiDecodeResult" aria-live="polite">
+            <div class="digi-result-label">Cell centre</div>
+            <div class="digi-coord" id="digiDecodedCoord">—</div>
+            <div class="digi-meta">
+              <div class="digi-metric"><b id="digiDecodedLat">—</b><span>latitude</span></div>
+              <div class="digi-metric"><b id="digiDecodedLon">—</b><span>longitude</span></div>
+              <div class="digi-metric"><b id="digiDecodedCode">—</b><span>normalised code</span></div>
+            </div>
+            <div class="digi-note" id="digiDecodedBounds">—</div>
+          </div>
+          <div class="digi-inline" id="digiDecodeActions" hidden style="margin-top:10px">
+            <button type="button" class="digi-btn" data-digi-act="copy-coord">Copy coordinates</button>
+            <button type="button" class="digi-btn" data-digi-act="preview">Preview / share</button>
+            <button type="button" class="digi-btn" data-digi-act="maps">Open in Maps</button>
+            <button type="button" class="digi-btn ghost" data-digi-act="map">Show on grid</button>
+          </div>
+          <div class="digi-status" id="digiDecodeStatus" role="status"></div>
+        </div>
+        <div class="digi-panel">
+          <div class="digi-panel-head"><div><div class="eyebrow">Format rules</div><h4>What a decoder will accept.</h4></div></div>
+          <div class="digi-note"><b>Accepted:</b> continuous <code>4P3JK852C9</code>, lowercase, and display spacing <code>4P3 JK85 2C9</code>. Spaces are removed before validation; the code is uppercased.</div>
+          <div class="digi-note digi-honest"><b>Rejected:</b> hyphens, punctuation, anything other than exactly 10 approved characters. India Post's API stores codes with no separators — the decoder here mirrors that rule.</div>
+          <div class="digi-note">Decoded coordinates are the <b>centre of the grid cell</b>, not a surveyed address point. A DIGIPIN identifies a ~3.8 m area; for a door or plot boundary, verify on the ground and at the official portal.</div>
+          <div class="digi-example-list">
+            <button type="button" data-digi-decodesample="4P3JK852C9"><b>4P3JK852C9</b><span>12.971601° N, 77.594584° E</span></button>
+            <button type="button" data-digi-decodesample="39J49LL8T4"><b>39J49LL8T4</b><span>28.622793° N, 77.213049° E</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MY LOCATION -->
+    <div class="digi-pane" id="digiPaneLocation" data-digipane="location" hidden>
+      <div class="digi-grid">
+        <div class="digi-panel">
+          <div class="digi-panel-head"><div><div class="eyebrow">Device location</div><h4>Find your DIGIPIN where you stand.</h4></div><span class="digi-badge">on-device only</span></div>
+          <div class="digi-note">BCS asks your browser for one GPS/network fix, converts it with the India Post algorithm and fills the converter. Your position is never stored on a server, never attached to a client record and never sent to WhatsApp.</div>
+          <div class="digi-inline" style="margin-top:12px">
+            <button type="button" class="digi-btn primary" id="digiGeoBtn">⌖ Get my DIGIPIN</button>
+            <button type="button" class="digi-btn ghost" id="digiGeoClear">Clear result</button>
+          </div>
+          <div class="digi-status" id="digiGeoStatus" role="status"></div>
+          <div class="digi-result off" id="digiGeoResult" style="margin-top:10px">
+            <div class="digi-result-label">Your current grid</div>
+            <div class="digi-code" id="digiGeoCode">—</div>
+            <div class="digi-display" id="digiGeoDisplay">—</div>
+            <div class="digi-meta">
+              <div class="digi-metric"><b id="digiGeoLat">—</b><span>latitude</span></div>
+              <div class="digi-metric"><b id="digiGeoLon">—</b><span>longitude</span></div>
+              <div class="digi-metric"><b id="digiGeoAccuracy">—</b><span>reported accuracy</span></div>
+            </div>
+          </div>
+          <div class="digi-inline" id="digiGeoActions" hidden style="margin-top:10px">
+            <button type="button" class="digi-btn" data-digi-act="copy-code">Copy code</button>
+            <button type="button" class="digi-btn" data-digi-act="preview">Preview / share</button>
+            <button type="button" class="digi-btn" data-digi-act="maps">Open in Maps</button>
+            <button type="button" class="digi-btn ghost" data-digi-act="save">Save locally</button>
+          </div>
+        </div>
+        <div class="digi-panel">
+          <div class="digi-panel-head"><div><div class="eyebrow">Before you tap</div><h4>Honest device limits.</h4></div></div>
+          <div class="digi-note"><b>HTTPS or localhost</b> is required by browsers for geolocation. On a plain <code>file://</code> page the browser will refuse the request — use the served PWA or a local HTTPS tunnel.</div>
+          <div class="digi-note">Location accuracy depends on the device. A phone with GNSS may report 4–10 m; a laptop on Wi-Fi may report 50 m or more. A 10-character DIGIPIN is precise, but the coordinate you feed it may not be.</div>
+          <div class="digi-note digi-honest">If permission is denied, nothing is guessed. Enter latitude and longitude manually in the Encode tab, or tap a point in the Grid map tab.</div>
+          <div class="digi-note">India Post's reference grid covers India and its maritime zone. Coordinates outside that box are rejected rather than silently wrapped.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAP -->
+    <div class="digi-pane" id="digiPaneMap" data-digipane="map" hidden>
+      <div class="digi-grid">
+        <div class="digi-panel wide">
+          <div class="digi-panel-head"><div><div class="eyebrow">Offline grid preview</div><h4>Tap anywhere to read its DIGIPIN.</h4></div><span class="digi-badge">no map API key</span></div>
+          <div class="digi-mapwrap">
+            <svg id="digiMapSvg" viewBox="0 0 800 560" preserveAspectRatio="none" role="img" aria-label="DIGIPIN India grid — tap to choose a location">
+              <defs><pattern id="digiMapDots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="color-mix(in oklab, var(--gold) 16%, transparent)"/></pattern></defs>
+              <rect x="0" y="0" width="800" height="560" fill="color-mix(in oklab, var(--panel) 94%, var(--olive))"/>
+              <rect x="0" y="0" width="800" height="560" fill="url(#digiMapDots)"/>
+              <g id="digiMapGrid"></g>
+              <g id="digiCellBox" hidden><rect x="0" y="0" width="10" height="10" fill="color-mix(in oklab, var(--gold) 22%, transparent)" stroke="var(--gold)" stroke-width="2"/><text x="0" y="0" fill="var(--gold)" font-size="12" font-family="DM Sans, sans-serif">cell</text></g>
+              <g id="digiJaipurPin"><circle cx="0" cy="0" r="4" fill="var(--olive)" stroke="var(--panel)" stroke-width="2"/><text x="0" y="0" fill="var(--ink2)" font-size="12" font-family="DM Sans, sans-serif">Jaipur</text></g>
+              <g id="digiMapMarker" hidden><circle id="digiMarkerHalo" cx="0" cy="0" r="11" fill="color-mix(in oklab, var(--gold) 24%, transparent)"/><circle id="digiMarkerDot" cx="0" cy="0" r="5" fill="var(--gold)" stroke="#fff" stroke-width="1.5"/></g>
+            </svg>
+            <div class="digi-mapctl">
+              <button type="button" id="digiZoomIn" aria-label="Zoom in" title="Zoom in">+</button>
+              <button type="button" id="digiZoomOut" aria-label="Zoom out" title="Zoom out">−</button>
+              <button type="button" id="digiFitIndia" aria-label="Fit whole India grid" title="Fit India">⌂</button>
+              <button type="button" id="digiZoomCell" aria-label="Zoom to current cell" title="Zoom to cell">◎</button>
+            </div>
+            <div class="digi-mapnote" id="digiMapNote">For site planning only — indicative grid, not a survey or street map. Tap to set coordinates · drag to pan.</div>
+          </div>
+          <div class="digi-inline" style="margin-top:10px">
+            <button type="button" class="digi-btn primary" id="digiMapMaps">Open this point in Google Maps</button>
+            <button type="button" class="digi-btn" id="digiMapCopy">Copy point</button>
+            <button type="button" class="digi-btn ghost" id="digiMapUseEncode">Send to converter</button>
+          </div>
+          <div class="digi-status" id="digiMapStatus" role="status"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SAVED -->
+    <div class="digi-pane" id="digiPaneSaved" data-digipane="saved" hidden>
+      <div class="digi-grid">
+        <div class="digi-panel wide">
+          <div class="digi-panel-head"><div><div class="eyebrow">Private local list</div><h4>Save a code for a site visit or client brief.</h4></div><span class="digi-badge">this browser only</span></div>
+          <div class="digi-note">Saved DIGIPINs stay in this browser's local storage. They are not client records, not uploaded and never auto-shared. Use <b>Use</b> to load a code back into the converter.</div>
+          <div class="digi-inline" style="margin:12px 0">
+            <input id="digiSaveNote" type="text" placeholder="Optional note — e.g. Site visit, Ring Road plot" aria-label="Optional note for saved DIGIPIN" style="flex:1;min-width:180px">
+            <button type="button" class="digi-btn primary" id="digiSaveCurrent">Save current code</button>
+          </div>
+          <div id="digiSavedList" class="digi-saved-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOURCES -->
+    <div class="digi-pane" id="digiPaneSources" data-digipane="sources" hidden>
+      <div class="digi-panel wide">
+        <div class="digi-panel-head"><div><div class="eyebrow">Provenance &amp; standards</div><h4>Every claim keeps its source.</h4></div><span class="digi-badge">verified links</span></div>
+        <div class="digi-note">BCS runs the open-source India Post algorithm locally. These links open inside the app's in-app view; use the <b>Original</b> button in that view for a new tab.</div>
+        <div class="digi-source-grid">
+          <div class="digi-source">
+            <div class="digi-badge">Official / primary</div>
+            <h4>India Post · DIGIPIN documentation</h4>
+            <p>Technical specification &amp; architecture standard, including the May 2026 revision: 10 continuous characters, approved alphabet, bounding box and grid rules.</p>
+            <a href="https://github.com/INDIAPOST-gov/digipin/tree/a15339e8fdea93b13ae0d7336e567c9ae6ceac8e/docs">Open official docs ↗</a>
+            <a href="https://raw.githubusercontent.com/INDIAPOST-gov/digipin/a15339e8fdea93b13ae0d7336e567c9ae6ceac8e/docs/DIGIPIN_Technical_Document.md">Read technical document ↗</a>
+          </div>
+          <div class="digi-source">
+            <div class="digi-badge">Official / source code</div>
+            <h4>India Post · encoder &amp; decoder</h4>
+            <p>The pinned <code>src/digipin.js</code> implementation that defines <code>getDigiPin()</code> and <code>getLatLngFromDigiPin()</code>. This page follows it directly.</p>
+            <a href="https://raw.githubusercontent.com/INDIAPOST-gov/digipin/a15339e8fdea93b13ae0d7336e567c9ae6ceac8e/src/digipin.js">Open algorithm source ↗</a>
+            <a href="https://github.com/INDIAPOST-gov/digipin">Open repository ↗</a>
+          </div>
+          <div class="digi-source">
+            <div class="digi-badge">Official / portal</div>
+            <h4>My DIGIPIN · Department of Posts</h4>
+            <p>Official India Post map portal. It is a live map service, so availability depends on the portal — BCS does not scrape or store its data.</p>
+            <a href="https://dac.indiapost.gov.in/mydigipin/home">Open My DIGIPIN portal ↗</a>
+          </div>
+          <div class="digi-source">
+            <div class="digi-badge">Independent · on-device demo</div>
+            <h4>digipin.com</h4>
+            <p>Public on-device converter and explainer. Useful as a second reference; it is not the Government of India portal and is not used as a data source here.</p>
+            <a href="https://www.digipin.com/">Open digipin.com ↗</a>
+          </div>
+        </div>
+        <div class="digi-note" style="margin-top:12px"><b>Attribution:</b> DIGIPIN is an open-source initiative of the Department of Posts, Ministry of Communications, Government of India, developed with IIT Hyderabad and NRSC/ISRO. Grid reference: EPSG:4326, 63.5°–99.5° E, 2.5°–38.5° N. BCS provides a local converter and does not claim to issue official addresses.</div>
+        <div class="digi-note digi-honest">Always confirm a DIGIPIN at the official portal before using it as an address proof, delivery instruction or legal reference.</div>
+      </div>
+    </div>
   </section>
 </main>
 
@@ -24577,7 +24827,7 @@ const ADMIN_NAME = 'Ajay Sharma';
 const ADMIN_PASSWORD = '5794';
 const ADVISOR_PASSWORD = '3662';
 const AUTH_KEY = 'bcs_auth_v1';
-const ADVISOR_VIEWS = ['dashboard','projects','developers','clients','dayplan','inventory','advisors','resale','analytics','calc','links','pipeline','exchange','applications','whiteboard','jaipur'];
+const ADVISOR_VIEWS = ['dashboard','projects','developers','clients','dayplan','inventory','advisors','resale','analytics','calc','links','pipeline','exchange','applications','whiteboard','jaipur','digipin'];
 const DEFAULT_CLIENT_STATUSES = [
   { id:'new',         label:'New lead' },
   { id:'contacted',   label:'Contacted' },
@@ -29728,7 +29978,8 @@ function quoteText(){
   $('#calcPrintAll')?.addEventListener('click', () => {
     const text = calcSummaryText();
     if(window.BCSPreview) return window.BCSPreview.open({ title: 'Calculator summary', text: text, waText: text, filename: 'bcs-calculator-summary-' + todayISO() + '.txt', kind: 'Calculator · print preview' });
-    window.print();
+    try{ navigator.clipboard && navigator.clipboard.writeText(text); }catch(e){}
+    toast('Preview unavailable — summary copied locally');
   });
   $('#calcShareAll')?.addEventListener('click', calcShareAll);
   try{ loadRates(); }catch(e){}
@@ -58497,7 +58748,8 @@ function wire2(){
     if(!parts.length) return toast('Pehle calculator chalayein — result ke baad print/preview', true);
     const txt = ['*BCS Finance Summary*', '', parts.join('\n\n———\n\n'), '', '— BCS · Business City Square · @ajaysharma.bcs'].join('\n');
     if(window.BCSPreview) return window.BCSPreview.open({ title: 'Finance summary', text: txt, waText: txt, filename: 'BCS-finance-summary-' + todayISO() + '.txt', kind: 'Finance summary · print preview' });
-    window.print();
+    try{ navigator.clipboard && navigator.clipboard.writeText(txt); }catch(e){}
+    toast('Preview unavailable — summary copied locally');
   });
   on('#lgAddBank', 'click', () => { const p = projectOf(legalFor); if(!p) return; legalOf(p).banks.push({ name:'', apf:'' }); renderBanks(); });
   on('#lgSaveVault', 'click', () => {
@@ -72314,7 +72566,7 @@ body.bcs-deck-loading .bcs-deck-body{opacity:.45;filter:blur(1px)}
 'use strict';
 if(window.__bcsSuperlayer) return; window.__bcsSuperlayer=true;
 var K='bcs_super_v1';
-var DEF={commissions:[],devCRM:{},docs:[],handover:{},filters:[],mobileTabs:['dashboard','projects','clients','dayplan'],compare:[],deckTab:'today',autoTheme:false,density:'',rolePalette:'',offlineQueue:[],lastProject:'',lastClient:'',lastUndo:null};
+var DEF={commissions:[],devCRM:{},docs:[],handover:{},filters:[],mobileTabs:['dashboard','projects','clients','dayplan'],compare:[],deckTab:'daily',autoTheme:false,density:'',rolePalette:'',offlineQueue:[],lastProject:'',lastClient:'',lastUndo:null};
 var S=(function(){try{var o=JSON.parse(localStorage.getItem(K)||'{}');var x={};Object.keys(DEF).forEach(function(k){x[k]=(o&&o[k]!=null)?o[k]:DEF[k];});return x;}catch(e){return JSON.parse(JSON.stringify(DEF));}})();
 function persist(){try{localStorage.setItem(K,JSON.stringify(S));}catch(e){}}
 function D(){try{return (typeof db!=='undefined'&&db)?db:(window.db||null);}catch(e){return window.db||null;}}
@@ -72351,7 +72603,7 @@ function injectShell(){
   '<div class="bcs-deck-head"><div><div class="bcs-deck-kicker">BCS operating system</div><h3>Command deck</h3></div>'+
   '<div class="bcs-deck-head-actions"><button type="button" class="btn ghost sm" data-deck-act="undo" title="Undo last deck change">↶ Undo</button><button type="button" class="btn ghost sm" data-deck-act="refresh">↻ Refresh</button><button type="button" class="btn ghost sm" data-deck-act="share">↗ Share</button><button type="button" class="icon-btn" data-close="bcsDeckModal" aria-label="Close">✕</button></div></div>'+
   '<div class="bcs-deck-tabs">'+
-   [['today','Today'],['clients','Client 360'],['timeline','Closure'],['compare','Compare'],['trust','Data trust'],['money','Money'],['tools','Tools'],['mobile','iPhone']]
+   [['daily','Daily brief'],['today','Today'],['clients','Client 360'],['deal','Deal room'],['timeline','Closure'],['compare','Compare'],['trust','Data trust'],['insights','Insights'],['lists','Smart lists'],['money','Money'],['tools','Tools'],['mobile','iPhone']]
    .map(function(x){return '<button type="button" data-decktab="'+x[0]+'" class="'+(S.deckTab===x[0]?'on':'')+'">'+x[1]+'</button>';}).join('')+
   '</div><div class="bcs-deck-body" id="bcsDeckBody"></div></div>';
  document.body.appendChild(ov);
@@ -72497,7 +72749,8 @@ function renderMobile(){
 }
 function renderDeck(){
  var body=document.getElementById('bcsDeckBody');if(!body)return;
- var f={today:renderToday,clients:renderClients,timeline:renderTimeline,compare:renderCompare,trust:renderTrust,money:renderMoney,tools:renderTools,mobile:renderMobile};
+ var L2=window.BCS_LEVEL2||{};
+ var f={daily:L2.daily||renderToday,today:renderToday,clients:renderClients,deal:L2.deal||renderClients,timeline:renderTimeline,compare:renderCompare,trust:L2.trust||renderTrust,insights:L2.insights||renderMoney,lists:L2.lists||renderToday,money:renderMoney,tools:renderTools,mobile:renderMobile};
  try{body.innerHTML=(f[S.deckTab]||renderToday)();}catch(e){body.innerHTML='<div class="bcs-deck-empty">This panel could not render. Your data is safe. '+(e&&e.message?he(e.message):'')+'</div>';}
  document.querySelectorAll('#bcsDeckModal [data-decktab]').forEach(function(b){b.classList.toggle('on',b.dataset.decktab===S.deckTab);});
 }
@@ -72658,6 +72911,935 @@ function initMobileOrder(){
  apply();
 }
 function boot(){injectShell();applyAutoTheme();document.body.dataset.density=S.density||'';document.body.dataset.rolePalette=S.rolePalette||'';updateRail();initInlineEdit();}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+</script>
+<style id="bcsLevel2Css">
+/* BCS LEVEL 2 — intelligence + motion + command bar */
+.bcs-ask-btn{min-width:40px;padding:0 10px;border-radius:11px;border:1px solid color-mix(in oklab,var(--olive) 45%,var(--line));background:linear-gradient(135deg,color-mix(in oklab,var(--olive) 18%,var(--panel)),var(--panel));color:var(--olive);font:800 11px/1 'DM Sans',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.18s}
+.bcs-ask-btn:hover{transform:translateY(-1px)}
+#bcsCmdModal .modal{width:min(680px,100%);max-height:calc(100vh - 90px)}
+.bcs-cmd-wrap{display:flex;flex-direction:column;min-height:0}
+.bcs-cmd-top{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--ui-hair)}
+.bcs-cmd-top input{flex:1;min-height:44px;border-radius:12px;border:1px solid color-mix(in oklab,var(--gold) 35%,var(--line));background:var(--panel);color:var(--ink);padding:0 14px;font:600 14px 'DM Sans',sans-serif}
+.bcs-cmd-results{padding:10px 12px 16px;overflow:auto}
+.bcs-cmd-item{display:flex;align-items:center;gap:11px;width:100%;min-height:46px;padding:8px 10px;border-radius:12px;border:1px solid transparent;background:transparent;color:var(--ink2);text-align:left;cursor:pointer;font:600 12px 'DM Sans',sans-serif}
+.bcs-cmd-item:hover,.bcs-cmd-item.hot{border-color:color-mix(in oklab,var(--gold) 35%,var(--line));background:color-mix(in oklab,var(--gold) 8%,transparent);color:var(--ink)}
+.bcs-cmd-ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:color-mix(in oklab,var(--gold) 12%,var(--panel));color:var(--gold);font-size:14px;flex:none}
+.bcs-l2-hero{position:relative;overflow:hidden;border-radius:18px;border:1px solid color-mix(in oklab,var(--gold) 28%,var(--line));background:linear-gradient(135deg,color-mix(in oklab,var(--gold) 13%,var(--panel)),color-mix(in oklab,var(--olive) 7%,var(--panel)));padding:18px;margin-bottom:14px}
+.bcs-l2-hero:after{content:"";position:absolute;width:220px;height:220px;right:-70px;top:-110px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--gold) 24%,transparent),transparent 68%);pointer-events:none}
+.bcs-l2-hero h4{position:relative;margin:0 0 5px;font:600 21px/1.15 'Fraunces',serif;color:var(--ink)}
+.bcs-l2-hero p{position:relative;margin:0;color:var(--mut);font-size:12px;line-height:1.55;max-width:70ch}
+.bcs-l2-score{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;border:1px solid color-mix(in oklab,var(--gold) 35%,var(--line));background:color-mix(in oklab,var(--gold) 10%,transparent);color:var(--gold);font:800 10px/1 'DM Sans',sans-serif;letter-spacing:.06em}
+.bcs-l2-score.low{color:#E08A6A;border-color:rgba(224,138,106,.4);background:rgba(224,138,106,.1)}
+.bcs-l2-score.mid{color:var(--ink2)}
+.bcs-l2-check{width:17px;height:17px;accent-color:var(--gold);cursor:pointer}
+.bcs-l2-gate{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.bcs-l2-gate button{min-height:28px;padding:0 9px;border-radius:9px;border:1px solid var(--line);background:var(--panel);color:var(--mut);font:700 10px/1 'DM Sans',sans-serif;cursor:pointer}
+.bcs-l2-gate button.on{border-color:var(--gold);color:var(--gold);background:color-mix(in oklab,var(--gold) 10%,transparent)}
+.bcs-l2-bar{height:7px;border-radius:99px;background:var(--line);overflow:hidden;margin:7px 0}
+.bcs-l2-bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--olive))}
+body.bcs-verified-only .pcard.low-trust,body.bcs-verified-only .adv-card.low-trust{display:none!important}
+.bcs-l2-fade{animation:l2rise .42s cubic-bezier(.2,.8,.2,1) both}
+@keyframes l2rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#bcsFeedbackModal .modal{width:min(680px,100%);max-height:calc(100vh - 90px);overflow:auto}
+.bcs-fb-grid{display:grid;gap:10px}
+.bcs-fb-opts{max-height:180px;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:5px}
+.bcs-fb-out{white-space:pre-wrap;font:12px/1.6 'DM Sans',sans-serif;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;max-height:180px;overflow:auto;color:var(--ink2)}
+#bcsSwipeSheet .modal{width:min(420px,100%);max-height:calc(100vh - 90px)}
+.bcs-swipe-actions{display:grid;gap:8px}
+.bcs-swipe-actions button{min-height:44px}
+.bcs-brief-bar{display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--bcs-tabbar-h, 64px) + env(safe-area-inset-bottom, 0px) + 8px);z-index:57;align-items:center;gap:10px;max-width:calc(100vw - 20px);padding:7px 9px 7px 13px;border-radius:16px;border:1px solid color-mix(in oklab,var(--gold) 35%,var(--line));background:color-mix(in oklab,var(--panel) 92%,transparent);box-shadow:var(--shadow-lg);backdrop-filter:blur(14px);color:var(--ink);font:700 11px/1.2 'DM Sans',sans-serif}
+body.bcs-native.bcs-brief-bar-on .bcs-brief-bar{display:flex}
+.bcs-brief-bar button{min-height:36px;padding:0 11px;border-radius:10px;border:0;background:var(--gold);color:#fff;font:800 11px/1 'DM Sans',sans-serif;cursor:pointer}
+.bcs-brief-bar button.ghost{background:var(--panel);color:var(--mut);border:1px solid var(--line)}
+@media(max-width:720px){
+ .bcs-l2-hero{padding:14px;border-radius:15px}
+ .bcs-l2-hero h4{font-size:18px}
+ #bcsCmdModal .modal{max-height:calc(100dvh - 24px)}
+}
+</style>
+<style id="bcsLevel3Css">
+/* BCS LEVEL 3 — iPhone edge-to-edge authority + desktop motion/typography polish */
+html{scroll-behavior:smooth}
+::selection{background:color-mix(in oklab,var(--gold) 28%,transparent);color:var(--ink)}
+body{font-feature-settings:'ss01' on,'cv11' on;text-rendering:optimizeLegibility}
+header{box-shadow:0 12px 42px rgba(28,32,24,.10)!important}
+body[data-theme="dark"] header{box-shadow:0 14px 48px rgba(0,0,0,.42)!important}
+#nav button.on::after{background:linear-gradient(90deg,var(--gold),color-mix(in oklab,var(--gold) 45%,var(--olive)))!important;box-shadow:0 0 16px color-mix(in oklab,var(--gold) 45%,transparent)!important;height:3px!important;border-radius:99px!important;background-size:200% 100%;animation:bcsL3Flow 16s linear infinite}
+.icon-btn,.dock-btn,.bcs-ask-btn,.bcs-cmd-ic{box-shadow:inset 0 1px 0 color-mix(in oklab,var(--panel) 55%,transparent),0 4px 14px rgba(28,32,24,.08)}
+.cat-card,.panel,.pcard,.adv-card,.tile,.dev-card,.bcs-deck-card{background-image:linear-gradient(145deg,color-mix(in oklab,var(--gold) 5%,transparent),transparent 42%)}
+.hero-life h2,.intro h2,.bcs-l2-hero h4,.sec-head h3,.brand h1{text-wrap:balance;letter-spacing:-.015em}
+.eyebrow,.bcs-l2-score,.bcs-cmd-ic,.bcs-ask-btn{letter-spacing:.1em}
+.bcs-ask-btn,.bcs-l2-score{animation:bcsL3Pulse 3.4s ease-in-out infinite}
+#bcsDeckBody .bcs-deck-card{animation:bcsL3CardIn .34s cubic-bezier(.2,.8,.2,1) both;transition:border-color .2s,box-shadow .2s}
+@keyframes bcsL3Flow{from{background-position:0% 50%}to{background-position:200% 50%}}
+@keyframes bcsL3Pulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.12)}}
+@keyframes bcsL3CardIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+
+/* iPhone 15 Pro: no hidden top/bottom, everything above the tab bar */
+body.bcs-native header{position:sticky!important;top:0!important;z-index:120!important;padding-top:calc(8px + var(--bcs-safe-t, env(safe-area-inset-top, 0px)))!important}
+body.bcs-native .hwrap,body.bcs-native main{padding-left:max(12px,env(safe-area-inset-left,0px))!important;padding-right:max(12px,env(safe-area-inset-right,0px))!important}
+body.bcs-native .view.on>*{max-width:100%!important;min-width:0!important}
+body.bcs-native.bcs-brief-bar-on main{padding-bottom:calc(var(--bcs-tabbar-h, 66px) + var(--bcs-safe-b, env(safe-area-inset-bottom, 0px)) + 82px)!important}
+body.bcs-native .tooldock{bottom:calc(var(--bcs-tabbar-h, 66px) + var(--bcs-safe-b, env(safe-area-inset-bottom, 0px)) + 12px)!important;z-index:93!important}
+body.bcs-native .toolpop{bottom:calc(var(--bcs-tabbar-h, 66px) + var(--bcs-safe-b, env(safe-area-inset-bottom, 0px)) + 76px)!important;z-index:97!important}
+body.bcs-native #backToTop,body.bcs-native .gemini-fab,body.bcs-native .media-dock,body.bcs-native .media-mini,body.bcs-native .mob-add{bottom:calc(var(--bcs-tabbar-h, 66px) + var(--bcs-safe-b, env(safe-area-inset-bottom, 0px)) + 12px)!important;z-index:93!important}
+body.bcs-native.bcs-brief-bar-on .tooldock,body.bcs-native.bcs-brief-bar-on #backToTop,body.bcs-native.bcs-brief-bar-on .gemini-fab,body.bcs-native.bcs-brief-bar-on .media-dock,body.bcs-native.bcs-brief-bar-on .media-mini,body.bcs-native.bcs-brief-bar-on .mob-add{bottom:calc(var(--bcs-tabbar-h, 66px) + var(--bcs-safe-b, env(safe-area-inset-bottom, 0px)) + 66px)!important}
+body.bcs-native #toast,body.bcs-native #toast.on{transform:none!important;left:12px!important;right:12px!important;text-align:center}
+body.bcs-native .modal-head{padding-top:calc(14px + var(--bcs-safe-t, env(safe-area-inset-top, 0px)))!important}
+body.bcs-native .modal-foot{padding-bottom:calc(12px + var(--bcs-safe-b, env(safe-area-inset-bottom, 0px)))!important}
+body.bcs-native .present-actions{padding-top:calc(12px + var(--bcs-safe-t, env(safe-area-inset-top, 0px)))!important}
+body.bcs-native .present-sheet{padding-bottom:calc(20px + var(--bcs-safe-b, env(safe-area-inset-bottom, 0px)))!important}
+body.bcs-native #imgModal .img-close{top:calc(12px + var(--bcs-safe-t, env(safe-area-inset-top, 0px)))!important;right:calc(12px + env(safe-area-inset-right,0px))!important;width:44px!important;height:44px!important}
+body.bcs-native .lock{padding-top:calc(22px + var(--bcs-safe-t, env(safe-area-inset-top, 0px)))!important;padding-bottom:calc(22px + var(--bcs-safe-b, env(safe-area-inset-bottom, 0px)))!important}
+body.bcs-native .bcs-ask-btn,body.bcs-native .bcs-l2-gate button,body.bcs-native .bcs-deck-inline button,body.bcs-native .bcs-brief-bar button{min-height:44px!important}
+
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ #nav button.on::after,.bcs-ask-btn,.bcs-l2-score,#bcsDeckBody .bcs-deck-card{animation:none!important}
+}
+</style>
+<script id="bcsLevel2Js">
+(function(){
+'use strict';
+if(window.__bcsL2) return; window.__bcsL2=true;
+var consoleIssues=[];
+['warn','error'].forEach(function(k){try{var o=console[k]&&console[k].bind(console);console[k]=function(){try{consoleIssues.push(k+': '+Array.prototype.slice.call(arguments).join(' ').slice(0,180));}catch(e){}if(o)return o.apply(null,arguments);};}catch(e){}});
+window.__bcsL2Issues=consoleIssues;
+var KEY='bcs_level2_v1';
+var DEF={deals:{},feedback:[],verifiedOnly:false,currentList:'overdue',currentDeal:'',lastReport:'',selectedRows:[],responses:[]};
+var S=(function(){try{var o=JSON.parse(localStorage.getItem(KEY)||'{}'),x={};Object.keys(DEF).forEach(function(k){x[k]=(o&&o[k]!=null)?o[k]:DEF[k];});return x;}catch(e){return JSON.parse(JSON.stringify(DEF));}})();
+function save2(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function D2(){try{return (typeof db!=='undefined'&&db)?db:(window.db||null);}catch(e){return window.db||null;}}
+function superState(){try{var o=JSON.parse(localStorage.getItem('bcs_super_v1')||'{}');return o&&typeof o==='object'?o:{};}catch(e){return {};}}
+function h(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function iso(){try{return (typeof bcsISTDate==='function')?bcsISTDate():new Date().toISOString().slice(0,10);}catch(e){return new Date().toISOString().slice(0,10);}}
+function addDays(d){var x=new Date(iso()+'T00:00:00Z');x.setUTCDate(x.getUTCDate()+d);return x.toISOString().slice(0,10);}
+function num(v){var x=parseFloat(String(v==null?'':v).replace(/[^0-9.\-]/g,''));return isFinite(x)?x:0;}
+function money(v){v=num(v);if(!v)return '—';if(v>=10000000)return '₹'+(v/10000000).toFixed(2)+' Cr';if(v>=100000)return '₹'+(v/100000).toFixed(2)+' L';return '₹'+Math.round(v).toLocaleString('en-IN');}
+function arr(v){return Array.isArray(v)?v:(v&&typeof v.length==='number'&&typeof v!=='string'?Array.prototype.slice.call(v):[]);}
+function byId(list,id){return arr(list).find(function(x){return x&&x.id===id;})||null;}
+function clients(){return arr(D2()&&D2().clients);}
+function projects(){return arr(D2()&&D2().projects);}
+function toast2(m,err){try{if(typeof toast==='function')toast(m,err);}catch(e){}}
+function saveDb(){try{if(typeof save==='function')save();}catch(e){}}
+function renderAll(){try{if(typeof render==='function')render();}catch(e){}}
+function preview(o){try{if(window.BCSPreview&&window.BCSPreview.open)return window.BCSPreview.open(o);toast2('Preview not ready',true);}catch(e){toast2('Preview failed',true);}}
+function card(title,hint,body,wide){return '<section class="bcs-deck-card'+(wide?' wide':'')+'"><h4>'+title+'</h4>'+(hint?'<p class="hint">'+hint+'</p>':'')+body+'</section>';}
+function row(title,sub,acts){return '<div class="bcs-deck-row"><div class="gx"><b>'+title+'</b><small>'+sub+'</small></div><div class="acts">'+(acts||'')+'</div></div>';}
+function btn(label,act,attrs){return '<button type="button" data-l2act="'+act+'" '+(attrs||'')+'>'+label+'</button>';}
+function chip(text,act,attrs,on){return '<button type="button" class="bcs-deck-chip '+(on?'on':'')+'" data-l2act="'+act+'" '+(attrs||'')+'>'+(on?'✓ ':'')+h(text)+'</button>';}
+function rerender(){var on=document.querySelector('#bcsDeckModal [data-decktab].on');if(on)on.click();}
+function goTab(t){var b=document.getElementById('bcsDeckBtn');if(b&&!document.getElementById('bcsDeckModal').classList.contains('on'))b.click();var x=document.querySelector('#bcsDeckModal [data-decktab="'+t+'"]');if(x)x.click();}
+
+function trustOf(rec){var t=(rec&&rec.trust&&typeof rec.trust==='object')?rec.trust:{};return {tier:(['official','snippet','unverified'].indexOf(t.tier)>-1?t.tier:'unverified'),source:String(t.source||''),url:String(t.url||''),checkedAt:String(t.checkedAt||'')};}
+function scoreOf(rec){
+ var t=trustOf(rec),score=0;
+ if(t.tier==='official')score+=45;else if(t.tier==='snippet')score+=18;
+ if(t.source)score+=10;if(t.url)score+=10;
+ if(t.checkedAt){score+=12;var age=Date.now()-Date.parse(t.checkedAt+'T00:00:00Z');score+=(isFinite(age)&&age<=30*86400000)?15:-10;}
+ if(rec&&rec.rera)score+=8;if(rec&&rec.approval)score+=5;if(rec&&rec.image)score+=5;if(rec&&num(rec.priceMin))score+=5;
+ score=Math.max(0,Math.min(100,score));
+ var band=score>=75?'high':score>=45?'mid':'low';
+ return {score:score,band:band,tier:t.tier,stale:!t.checkedAt||(Date.now()-Date.parse(t.checkedAt+'T00:00:00Z'))>30*86400000};
+}
+function scoreChip(rec){var s=scoreOf(rec);return '<span class="bcs-l2-score '+(s.band==='high'?'':s.band==='mid'?'mid':'low')+'">Trust '+s.score+'</span>';}
+function deadline(rec){var j=rec&&rec.journey;return j&&j.nextAt?j.nextAt:'';}
+function isClosed(c){return /booked|closed|won|lost/i.test(String(c.clientStatus||''));}
+
+function dailyItems(){
+ var t=iso(),out=[];
+ clients().forEach(function(c){
+  if(!isClosed(c)&&c.nextFollowUp&&c.nextFollowUp<=addDays(3))out.push({p:c.nextFollowUp<t?0:1,kind:'client',id:c.id,icon:'☎',title:c.name||c.phone||'Client',sub:(c.nextFollowUp<t?'Overdue follow-up · ':'Follow-up ')+c.nextFollowUp+(c.phone?' · '+c.phone:''),act:'draft'});
+  var j=c.journey;if(j&&j.nextAt&&j.nextAt<=addDays(7)&&!isClosed(c))out.push({p:2,kind:'client',id:c.id,icon:'↗',title:c.name||'Client',sub:'Journey: '+(j.nextAction||'Next step due'),act:'draft'});
+  if(c.visitDate&&c.visitDate>=t&&c.visitDate<=addDays(7))out.push({p:0,kind:'client',id:c.id,icon:'⌖',title:c.name||'Client',sub:'Site visit '+c.visitDate,act:'draft'});
+  var b=String(c.birthday||c.dob||'');if(b.slice(-5)===t.slice(5))out.push({p:3,kind:'client',id:c.id,icon:'✦',title:c.name||'Client',sub:'Birthday today — warm wish, no auto-send',act:'draft'});
+ });
+ arr(D2()&&D2().todos).forEach(function(x){if(!x.done&&x.date&&x.date<=addDays(2))out.push({p:x.date<t?0:2,kind:'task',id:x.id,icon:'☑',title:x.title||'Task',sub:(x.date<t?'Overdue · ':'')+x.date,act:'done-task'});});
+ projects().forEach(function(p){var s=scoreOf(p);if(s.stale||s.score<45)out.push({p:3,kind:'project',id:p.id,icon:'◆',title:p.name||'Project',sub:'Trust '+s.score+' · '+(trustOf(p).source||'no source'),act:'open-project'});});
+ arr(D2()&&D2().auctions).forEach(function(a){if(a.auctionDate&&String(a.auctionDate)<=addDays(14))out.push({p:2,kind:'auction',id:a.id,icon:'⚑',title:a.title||'Auction',sub:'Auction '+a.auctionDate+(a.verified?' · verified':' · verify official notice'),act:'open-auction'});});
+ out.sort(function(a,b){return a.p-b.p;});
+ return out;
+}
+function daily(){
+ var items=dailyItems(),now=items.filter(function(x){return x.p<=1;}),later=items.filter(function(x){return x.p>1;});
+ var stats='<div class="bcs-deck-stat"><div><b>'+now.length+'</b><span>act now</span></div><div><b>'+later.length+'</b><span>this week</span></div><div><b>'+projects().filter(function(p){return scoreOf(p).band==='high';}).length+'</b><span>high-trust projects</span></div></div>';
+ function list(a){return a.length?a.slice(0,14).map(function(x){return row('<span class="bcs-cmd-ic">'+x.icon+'</span> '+h(x.title),h(x.sub),btn('Draft','draft','data-kind="'+x.kind+'" data-id="'+h(x.id)+'"')+btn('Open',x.act,'data-id="'+h(x.id)+'"'));}).join(''):'<div class="hint">Nothing here — all clear.</div>';}
+ return '<div class="bcs-l2-hero bcs-l2-fade"><h4>Good morning, Ajay.</h4><p>Your desk has read the local records and ranked the next moves. No external data, no auto-send — just the clearest path through today.</p><div style="margin-top:10px;display:flex;gap:7px;flex-wrap:wrap">'+btn('Speak brief','speak-brief')+btn('Weekly report','weekly-report')+btn('Client portal','client-portal')+btn('Response desk','feedback-desk')+btn('Open command bar','open-command')+'</div></div>'+card('Act now','Overdue, today and site visits.',stats+list(now),true)+card('This week','Journey steps, trust checks and auction deadlines.',list(later),true);
+}
+function deal(){
+ var cs=clients();if(!cs.length)return card('Deal Room','No clients yet.','<div class="bcs-deck-empty">Create a client to open a deal room.</div>',true);
+ if(!byId(cs,S.currentDeal))S.currentDeal=cs[0].id;
+ var c=byId(cs,S.currentDeal),d=S.deals[c.id]||{},stages=arr(window.BCS_JOURNEY&&window.BCS_JOURNEY.stages),cur=window.BCS_JOURNEY?window.BCS_JOURNEY.stage(c):'lead';
+ var sel='<div class="bcs-deck-field"><label>Client</label><select id="bcsL2DealClient">'+cs.map(function(x){return '<option value="'+h(x.id)+'"'+(x.id===c.id?' selected':'')+'>'+h(x.name||x.phone||'Client')+'</option>';}).join('')+'</select></div>';
+ var gates='<div class="bcs-l2-gate">'+stages.map(function(s,i){var active=s.id===cur;return '<button type="button" data-l2act="stage" data-id="'+h(c.id)+'" data-stage="'+h(s.id)+'" class="'+(active?'on':'')+'">'+(i+1)+'. '+h(s.label)+'</button>';}).join('')+'</div>';
+ var ev=arr(D2()&&D2().visits).filter(function(v){return v.clientId===c.id;}).length,bk=arr(D2()&&D2().bookings).filter(function(b){return b.clientId===c.id;}).length,pipe=arr(D2()&&D2().pipeline).filter(function(p){return p.clientId===c.id;}).length;
+ var summary='<div class="bcs-deck-stat"><div><b>'+ev+'</b><span>visits</span></div><div><b>'+bk+'</b><span>bookings</span></div><div><b>'+pipe+'</b><span>deals</span></div></div>';
+ var form='<div class="bcs-deck-inline"><input id="bcsL2DealOwner" placeholder="Next action owner" value="'+h(d.owner||'')+'" style="flex:1;min-width:130px"><input id="bcsL2DealDue" type="date" value="'+h(d.due||'')+'"><button type="button" data-l2act="deal-save" data-id="'+h(c.id)+'">Save next action</button></div>';
+ var feedback='<div class="bcs-deck-field" style="margin-top:10px"><label>Client feedback / response</label><textarea id="bcsL2Feedback" rows="2" placeholder="Paste client response, interest or objection…"></textarea></div><div class="bcs-deck-inline">'+btn('Save feedback','feedback-add','data-id="'+h(c.id)+'"')+btn('Response desk','feedback-desk')+btn('Copy deal summary','deal-summary','data-id="'+h(c.id)+'"')+btn('Open journey','journey-open','data-id="'+h(c.id)+'"')+'</div>';
+ var fb=arr(S.feedback).filter(function(x){return x.clientId===c.id;}).slice(-5).map(function(x){return row(h(x.text),h(x.at));}).join('');
+ return sel+card('Deal room · '+(c.name||c.phone||'Client'),'One place for stage, next action, touchpoints and feedback.',gates+summary+form+feedback+(fb?card('Recent feedback',null,fb):''),true);
+}
+function trust(){
+ var all=projects().concat(arr(D2()&&D2().plots)),high=all.filter(function(r){return scoreOf(r).band==='high';}).length,mid=all.filter(function(r){return scoreOf(r).band==='mid';}).length,low=all.length-high-mid;
+ var stats='<div class="bcs-deck-stat"><div><b>'+high+'</b><span>high trust</span></div><div><b>'+mid+'</b><span>medium</span></div><div><b>'+low+'</b><span>low</span></div></div>';
+ var toggle='<div class="bcs-deck-inline" style="margin-bottom:10px">'+chip('Verified only',S.verifiedOnly?'verified-off':'verified-on',{},S.verifiedOnly)+'<span class="hint">Hides low-trust project/advisory cards across the desk.</span></div>';
+ var rows=all.slice(0,50).map(function(r){var s=scoreOf(r);return row(h(r.name||('Plot '+(r.label||r.num))),scoreChip(r)+' · '+h(trustOf(r).tier)+(s.stale?' · stale':''),btn('Open','open-record','data-kind="'+((r.units||r.plotUse||r.developerId)?'project':'plot')+'" data-id="'+h(r.id)+'"'));}).join('');
+ return card('Trust engine','Score = source tier + link + freshness + completeness. Local only.',stats+toggle+rows,true);
+}
+function weeklyText(){
+ var t=iso(),cs=clients(),ps=projects(),newc=cs.filter(function(c){return String(c.createdAt||0).slice(0,4)!=='';}).length;
+ var visits=arr(D2()&&D2().visits).filter(function(v){return String(v.date||v.visitAt||'').slice(0,10)>=addDays(-7);}).length;
+ var bk=arr(D2()&&D2().bookings).filter(function(b){return String(b.bookingDate||'').slice(0,10)>=addDays(-7);}).length;
+ var pend=arr(S.commissions||[]).reduce(function(a,x){return a+Math.max(0,num(x.amount)-num(x.received));},0);
+ var out=['*BCS Weekly Desk Brief*','Week ending '+t,'','Clients: '+cs.length+' · Projects: '+ps.length,'Visits (7d): '+visits+' · Bookings (7d): '+bk,'Commission pending: '+(pend?money(pend):'—'),'','Priority actions:'];
+ dailyItems().slice(0,8).forEach(function(x,i){out.push((i+1)+'. '+x.title+' — '+x.sub);});
+ out.push('','Trust: '+ps.filter(function(p){return scoreOf(p).band==='high';}).length+' high-trust of '+ps.length+'.','Source verification must be checked before any external sharing.');
+ return out.join('\n');
+}
+function insights(){
+ var devs=arr(D2()&&D2().developers),deals=arr(D2()&&D2().pipeline),ss=superState(),crm=ss.devCRM||{},com=arr(ss.commissions),bookings=arr(D2()&&D2().bookings);
+ var devRows=devs.map(function(d){
+  var ds=deals.filter(function(x){return x.developerId===d.id||x.developer===d.id;});
+  var prs=projects().filter(function(p){return p.developerId===d.id;});
+  var value=ds.reduce(function(a,x){return a+num(x.dealValue||x.amount);},0);
+  var mine=com.filter(function(x){return x.developerId===d.id||x.developer===d.id;});
+  var paid=mine.reduce(function(a,x){return a+num(x.received);},0),pend=mine.reduce(function(a,x){return a+Math.max(0,num(x.amount)-num(x.received));},0);
+  var closes=bookings.filter(function(b){var pid=b.projectId||b.project;return b.developerId===d.id||prs.some(function(p){return p.id===pid;});}).length;
+  var rec=crm[d.id]||{},last=rec.lastContact||'—',rating=num(rec.rating);
+  var rel=Math.min(100,rating*12+Math.min(ds.length,5)*7+Math.min(prs.length,5)*3+Math.min(closes,5)*5+(last!=='—'?10:0));
+  var sub='Score '+rel+' · '+prs.length+' inventory · '+ds.length+' deals · '+closes+' closures · commission '+(pend?'pending '+money(pend):money(paid));
+  return row(h(d.name||'Developer'),h(sub),btn('Report','dev-report','data-id="'+h(d.id)+'"'));
+ }).join('')||'<div class="hint">No developers saved.</div>';
+ var corr={};projects().forEach(function(p){var k=(typeof corridor==='function'?corridor(p.corridor).name:p.corridor)||'Unassigned';corr[k]=corr[k]||{n:0,v:0};corr[k].n++;corr[k].v+=num(p.priceMin);});
+ var max=1;Object.keys(corr).forEach(function(k){max=Math.max(max,corr[k].n);});
+ var bars=Object.keys(corr).map(function(k){return '<div><small>'+h(k)+' · '+corr[k].n+' projects · from '+money(corr[k].v/corr[k].n)+'</small><div class="bcs-l2-bar"><i style="width:'+Math.round(corr[k].n/max*100)+'%"></i></div></div>';}).join('');
+ return '<div class="bcs-l2-hero"><h4>Business intelligence, from your own data.</h4><p>No invented figures. No portal scraping. Every number below comes from records saved on this device.</p><div style="margin-top:10px;display:flex;gap:7px;flex-wrap:wrap">'+btn('Generate weekly brief','weekly-report')+btn('Run visual QA','run-qa')+btn('Open command bar','open-command')+'</div></div>'+card('Weekly report','Share-ready text with verification note.',weeklyText().split('\n').slice(0,10).map(function(x){return '<div class="hint" style="margin:2px 0">'+h(x)+'</div>';}).join(''),true)+card('Developer performance','Local relationship score, inventory, closures and commission.',devRows)+card('Corridor activity','Saved project density.',bars);
+}
+function listItems(){
+ var t=iso(),out=[];
+ clients().forEach(function(c){if(!isClosed(c)&&c.nextFollowUp&&c.nextFollowUp<=t)out.push({key:'overdue',kind:'client',id:c.id,title:c.name||c.phone,sub:'Overdue '+c.nextFollowUp});if(!isClosed(c)&&(!c.lastContactAt||Date.now()-num(c.lastContactAt)>7*86400000))out.push({key:'nostouch',kind:'client',id:c.id,title:c.name||c.phone,sub:'No recent contact'});if(c.visitDate&&c.visitDate>=t&&c.visitDate<=addDays(7))out.push({key:'visits',kind:'client',id:c.id,title:c.name||c.phone,sub:'Visit '+c.visitDate});});
+ projects().forEach(function(p){var s=scoreOf(p);if(s.stale||s.score<45)out.push({key:'stale',kind:'project',id:p.id,title:p.name,sub:'Trust '+s.score});});
+ arr(D2()&&D2().auctions).forEach(function(a){if(a.auctionDate&&String(a.auctionDate)<=addDays(30))out.push({key:'auctions',kind:'auction',id:a.id,title:a.title,sub:'Date '+a.auctionDate});});
+ return out;
+}
+function lists(){
+ var defs=[['overdue','Overdue'],['nostouch','No contact 7d'],['visits','Visits 7d'],['stale','Low trust'],['auctions','Auctions 30d']];
+ var items=listItems().filter(function(x){return x.key===S.currentList;});
+ var tabs=defs.map(function(d){var n=listItems().filter(function(x){return x.key===d[0];}).length;return chip(d[1]+' · '+n,'list-select','data-list="'+d[0]+'"',S.currentList===d[0]);}).join('');
+ var rows=items.length?items.map(function(x){var v=x.kind+':'+x.id;return '<div class="bcs-deck-row"><input type="checkbox" class="bcs-l2-check" data-l2check value="'+h(v)+'"'+(S.selectedRows.indexOf(v)>-1?' checked':'')+'><div class="gx"><b>'+h(x.title)+'</b><small>'+h(x.sub)+'</small></div></div>';}).join(''):'<div class="hint">Nothing in this list.</div>';
+ var bulk='<div class="bcs-deck-inline" style="margin-top:10px"><select id="bcsL2Advisor"><option value="">Advisor…</option>'+arr(D2()&&D2().advisors).map(function(a){return '<option value="'+h(a.id)+'">'+h(a.name||a.id)+'</option>';}).join('')+'</select>'+btn('Assign','bulk-assign')+btn('Follow up +3d','bulk-followup')+btn('Add to brief','bulk-brief')+'</div>';
+ return card('Smart lists','Dynamic views from local records. Select rows then apply one action.',tabs+rows+bulk,true);
+}
+function feedbackText(c,opts,interest,notes){
+ return '*BCS client feedback*\\nClient: '+(c&&(c.name||c.phone)||'—')+'\\nInterested: '+(opts.length?opts.join(', '):(interest||'Not selected'))+'\\nStatus: '+(interest||'Not selected')+'\\nNotes: '+(notes||'—')+'\\n\\nRecorded locally on '+iso()+'. Nothing sent automatically.';
+}
+function clientPortal(){
+ var c=clients()[0];if(!c)return toast2('Add a client first',true);
+ var ps=projects().slice(0,6);
+ var html='<div style="font-family:DM Sans,sans-serif;max-width:720px;margin:auto;padding:24px;color:#20241C"><div style="border-bottom:2px solid #8C6628;padding-bottom:12px"><div style="font:800 10px DM Sans;letter-spacing:.16em;color:#8C6628">BUSINESS CITY SQUARE · JAIPUR</div><h1 style="font:600 24px Fraunces,serif;margin:5px 0">Private client view</h1></div><p style="font-size:13px;color:#6B7167;line-height:1.6">Review the options prepared for '+(c.name?'you':'the client')+'. Mark your interest and write your questions. Nothing is uploaded or sent automatically.</p>'+(ps.length?ps.map(function(p){return '<div style="padding:12px;border:1px solid #E1E4DC;border-radius:12px;margin-bottom:8px;background:#fff"><b>'+h(p.name)+'</b><br><small style="color:#6B7167">'+h((typeof corridor==='function'?corridor(p.corridor).name:p.corridor)||'')+'</small> · '+scoreChip(p)+'</div>';}).join(''):'<p style="font-size:13px;color:#6B7167">No shortlisted projects yet.</p>')+'<div style="margin-top:14px;border:1px solid #E1E4DC;border-radius:12px;padding:12px;background:#fff"><b style="font-size:12px">Your response template</b><pre style="white-space:pre-wrap;font:12px/1.6 DM Sans,sans-serif;margin:6px 0 0">'+h(feedbackText(c,[],'Interested','Your questions here'))+'</pre><p style="font-size:11px;color:#6B7167;margin:8px 0 0">Select the text above and copy it back to your advisor. For an interactive form, use the Response desk in the app.</p></div></div>';
+ preview({title:'BCS private client view',kind:'Client self-view · local only',html:html,text:feedbackText(c,[],'Interested','—'),filename:'BCS-client-view-'+iso()+'.html'});
+}
+function paintFeedback(){
+ var out=document.getElementById('bcsFbOut');if(!out)return;
+ var c=byId(clients(),val('bcsFbClient'))||clients()[0],opts=[];
+ arr(document.querySelectorAll('#bcsFbOpts input:checked')).forEach(function(x){opts.push(x.value);});
+ var st=document.querySelector('#bcsFeedbackModal [data-fbact="status"][data-v].on');
+ out.textContent=feedbackText(c,opts,st?st.dataset.v:'',val('bcsFbNotes'));
+}
+function openFeedbackDesk(){
+ injectFeedback();var c=clients()[0];if(!c)return toast2('Add a client first',true);
+ var ov=document.getElementById('bcsFeedbackModal'),sel=document.getElementById('bcsFbClient');
+ if(sel){sel.innerHTML=clients().map(function(x){return '<option value="'+h(x.id)+'"'+(x.id===c.id?' selected':'')+'>'+h(x.name||x.phone||'Client')+'</option>';}).join('');}
+ var box=document.getElementById('bcsFbOpts');
+ if(box)box.innerHTML=projects().slice(0,8).map(function(p){return '<label class="bcs-deck-row"><input type="checkbox" class="bcs-l2-check" value="'+h(p.name)+'"><div class="gx"><b>'+h(p.name)+'</b><small>'+h(trustOf(p).tier)+' · '+scoreOf(p).score+'</small></div></label>';}).join('')||'<div class="hint">No projects saved yet.</div>';
+ showOverlay('bcsFeedbackModal');paintFeedback();
+}
+function handleFeedback(act,el){
+ var ov=document.getElementById('bcsFeedbackModal');if(!ov)return;
+ if(act==='status'){arr(ov.querySelectorAll('[data-fbact="status"]')).forEach(function(b){b.classList.toggle('on',b===el);});paintFeedback();return;}
+ if(act==='preview'){clientPortal();return;}
+ if(act==='copy'){
+  var t=val('bcsFbOut')||feedbackText(clients()[0],[],'','');
+  try{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(function(){toast2('Response copied');}).catch(function(){toast2('Select and copy the text',true);});else{var o=document.getElementById('bcsFbOut');if(o){var r=document.createRange();r.selectNodeContents(o);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}toast2('Select and copy the highlighted text');}}catch(e){toast2('Copy not available — select the text',true);}
+  return;
+ }
+ if(act==='save'){
+  var c=byId(clients(),val('bcsFbClient'))||clients()[0];if(!c)return toast2('Add a client first',true);
+  var opts=[];arr(document.querySelectorAll('#bcsFbOpts input:checked')).forEach(function(x){opts.push(x.value);});
+  var st=ov.querySelector('[data-fbact="status"].on'),notes=val('bcsFbNotes'),text=feedbackText(c,opts,st?st.dataset.v:'',notes);
+  S.responses.push({id:'resp_'+Date.now(),clientId:c.id,projectNames:opts,status:st?st.dataset.v:'',notes:notes,text:text,at:iso()});
+  S.feedback.push({id:'fb_'+Date.now(),clientId:c.id,text:text.replace(/\\n/g,' · '),at:iso()});
+  save2();renderAll();paintFeedback();toast2('Client response saved locally');return;
+ }
+}
+function injectFeedback(){
+ if(document.getElementById('bcsFeedbackModal'))return;
+ var ov=document.createElement('div');ov.id='bcsFeedbackModal';ov.className='overlay';
+ ov.innerHTML='<div class="modal" role="dialog" aria-modal="true" aria-label="Client response desk"><div class="bcs-l2-hero" style="margin-bottom:10px;padding:14px"><h4 style="font-size:18px">Client response desk</h4><p>Capture interest, favourites and questions. Save or copy locally — never auto-sent.</p></div><div class="bcs-fb-grid"><div class="bcs-deck-field"><label>Client</label><select id="bcsFbClient"></select></div><div class="bcs-deck-field"><label>Interested projects</label><div id="bcsFbOpts" class="bcs-fb-opts"></div></div><div class="bcs-deck-field"><label>Interest</label><div class="bcs-l2-gate"><button type="button" data-fbact="status" data-v="Interested">Interested</button><button type="button" data-fbact="status" data-v="Maybe">Maybe</button><button type="button" data-fbact="status" data-v="Not interested">Not interested</button></div></div><div class="bcs-deck-field"><label>Questions / notes</label><textarea id="bcsFbNotes" rows="3" placeholder="Client questions, objections, preferred corridor…"></textarea></div><pre id="bcsFbOut" class="bcs-fb-out"></pre><div class="bcs-deck-inline"><button type="button" data-fbact="save">Save locally</button><button type="button" data-fbact="copy">Copy response</button><button type="button" data-fbact="preview">Client view</button><button type="button" class="icon-btn" data-close="bcsFeedbackModal">✕</button></div></div></div>';
+ document.body.appendChild(ov);
+ ov.addEventListener('input',paintFeedback);ov.addEventListener('change',paintFeedback);
+ ov.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-fbact]');if(b){e.stopPropagation();handleFeedback(b.dataset.fbact,b);}});
+}
+function handle(act,el){
+ var id=(el&&el.dataset&&el.dataset.id)?el.dataset.id:'',kind=(el&&el.dataset&&el.dataset.kind)?el.dataset.kind:'';
+ try{
+ switch(act){
+ case 'draft':var rec=kind==='client'?byId(clients(),id):kind==='project'?byId(projects(),id):byId(arr(D2()&&D2().auctions),id);var txt='*BCS follow-up*\n'+(rec&&rec.name?rec.name:'Client')+'\n\nAapki requirement aur available options par baat karna tha. Main aapko shortlist aur verification status bhej raha hoon.\n\n— BCS · Business City Square';preview({title:'BCS follow-up draft',kind:'Ready-to-send draft · no auto-send',text:txt,waText:txt,filename:'BCS-followup-'+iso()+'.txt'});break;
+ case 'done-task':var t=byId(arr(D2()&&D2().todos),id);if(t){t.done=true;t.doneAt=Date.now();saveDb();renderAll();rerender();toast2('Task done');}break;
+ case 'open-project':case 'open-record':case 'open-auction':closeDeck();if(kind==='plot'||act==='open-record'){try{openPlotEdit(id);}catch(e){}}else if(act==='open-auction'){try{go('auctions');}catch(e){}}else{try{openDetail(id);}catch(e){}}break;
+ case 'speak-brief':var text=dailyItems().slice(0,6).map(function(x,i){return (i+1)+'. '+x.title+'. '+x.sub;}).join(' ');if(window.BCS_TTS&&window.BCS_TTS.speak){window.BCS_TTS.speak('Aaj ka BCS brief. '+text);toast2('Speaking your brief');}else toast2('TTS not ready',true);break;
+ case 'weekly-report':var wt=weeklyText();preview({title:'BCS weekly desk brief',kind:'Weekly report · local data',text:wt,waText:wt,filename:'BCS-weekly-brief-'+iso()+'.txt'});S.lastReport=wt;save2();break;
+ case 'client-portal':clientPortal();break;
+ case 'feedback-desk':openFeedbackDesk();break;
+ case 'run-qa':runQA();break;
+ case 'open-command':openCommand();break;
+ case 'stage':var c=byId(clients(),id);if(c&&window.BCS_JOURNEY){window.BCS_JOURNEY.touch(c,el.dataset.stage,'Stage set from Deal Room');saveDb();renderAll();rerender();toast2('Journey stage updated');}break;
+ case 'deal-save':var dc=byId(clients(),id);if(dc){S.deals[id]=S.deals[id]||{};S.deals[id].owner=val('bcsL2DealOwner');S.deals[id].due=val('bcsL2DealDue');dc.nextFollowUp=S.deals[id].due||dc.nextFollowUp;save2();saveDb();rerender();toast2('Next action saved');}break;
+ case 'feedback-add':var ft=val('bcsL2Feedback');if(ft){S.feedback.push({id:'fb_'+Date.now(),clientId:id,text:ft,at:iso()});save2();rerender();toast2('Feedback saved locally');}break;
+ case 'deal-summary':var sc=byId(clients(),id),j=sc&&sc.journey||{};var st=window.BCS_JOURNEY?window.BCS_JOURNEY.stage(sc):'lead';var sum='*BCS deal room summary*\nClient: '+(sc.name||sc.phone||'')+'\nStage: '+st+'\nNext: '+(j.nextAction||'—')+'\nOwner: '+((S.deals[id]||{}).owner||'—')+'\nDue: '+((S.deals[id]||{}).due||'—');preview({title:'Deal room summary',kind:'Deal summary · local',text:sum,waText:sum,filename:'BCS-deal-summary-'+iso()+'.txt'});break;
+ case 'journey-open':closeDeck();try{window.BCS_JOURNEY_UI.open('client',id);}catch(e){}break;
+ case 'verified-on':S.verifiedOnly=true;save2();applyVerified();rerender();toast2('Verified only ON');break;
+ case 'verified-off':S.verifiedOnly=false;save2();applyVerified();rerender();toast2('Verified only OFF');break;
+ case 'dev-report':var dv=(D2().developers||[]).find(function(x){return x.id===id;})||{},dc=superState(),dcrm=(dc.devCRM||{})[id]||{},dcom=arr(dc.commissions).filter(function(x){return x.developerId===id||x.developer===id;}),dprs=projects().filter(function(p){return p.developerId===id;}),ddeals=arr(D2().pipeline).filter(function(x){return x.developerId===id||x.developer===id;}),dpaid=dcom.reduce(function(a,x){return a+num(x.received);},0),dpend=dcom.reduce(function(a,x){return a+Math.max(0,num(x.amount)-num(x.received));},0);var dt=['*BCS developer report*',dv.name||'Developer','','Inventory shared: '+dprs.length+' project(s)','Pipeline deals: '+ddeals.length,'Commission received: '+(dpaid?money(dpaid):'—'),'Commission pending: '+(dpend?money(dpend):'—'),'Terms on file: '+(dcrm.terms||'—'),'Last contact: '+(dcrm.lastContact||'—'),'Rating: '+(num(dcrm.rating)||'—')+'/5','','All figures come from local desk records. Verify before sharing.'].join('\n');preview({title:'Developer report — '+(dv.name||''),kind:'Developer relationship report',text:dt,filename:'BCS-developer-'+iso()+'.txt'});break;
+ case 'list-select':S.currentList=el.dataset.list;clearSelected();rerender();break;
+ case 'bulk-assign':var adv=val('bcsL2Advisor'),pick=selected();if(!adv)return toast2('Choose an advisor',true);if(!pick.length)return toast2('Select rows first',true);pick.forEach(function(x){if(x.kind==='client'){var c=byId(clients(),x.id);if(c)c.advisorId=adv;}});saveDb();clearSelected();rerender();toast2('Advisor assigned');break;
+ case 'bulk-followup':var pick2=selected();if(!pick2.length)return toast2('Select rows first',true);pick2.forEach(function(x){if(x.kind==='client'){var c=byId(clients(),x.id);if(c)c.nextFollowUp=addDays(3);}});saveDb();clearSelected();rerender();toast2('Follow-ups set for +3 days');break;
+ case 'bulk-brief':var pick3=selected();if(!pick3.length)return toast2('Select rows first',true);var ids=pick3.filter(function(x){return x.kind==='client';}).map(function(x){var c=byId(clients(),x.id);return c?arr(c.projectIds):[];});var flat=[];ids.forEach(function(a){a.forEach(function(i){if(flat.indexOf(i)<0)flat.push(i);});});if(flat.length){advShortlist=flat.slice(0,5);persistAdvDraft();renderAdvisoryResults();clearSelected();closeDeck();go('advisory');toast2('Brief updated');}else toast2('No linked projects',true);break;
+ }
+ }catch(e){toast2('Action failed — data safe',true);}
+}
+function closeDeck(){try{closeModal('bcsDeckModal');}catch(e){}}
+function val(id){var x=document.getElementById(id);return x?String(x.value||'').trim():'';}
+function selected(){
+ var fromDom=arr(document.querySelectorAll('[data-l2check]:checked')).map(function(x){return String(x.value||'');});
+ var use=fromDom.length?fromDom:arr(S.selectedRows);
+ return use.map(function(v){var p=String(v||'').split(':');return {kind:p[0],id:p[1]};}).filter(function(x){return x.kind&&x.id;});
+}
+function clearSelected(){S.selectedRows=[];save2();}
+function applyVerified(){
+ document.body.classList.toggle('bcs-verified-only',!!S.verifiedOnly);
+ arr(document.querySelectorAll('.pcard[data-detail],.adv-card')).forEach(function(el){
+  var id=el.dataset.detail||el.dataset.short||'';var p=byId(projects(),id);if(!p)return;
+  el.classList.toggle('low-trust',scoreOf(p).band==='low');
+ });
+}
+function runQA(){
+ var ids=arr(document.querySelectorAll('[id]')).map(function(e){return e.id;}),dup=ids.filter(function(x,i){return ids.indexOf(x)!==i;});
+ var d=document.documentElement,overflow=(d.scrollWidth>d.clientWidth+1);
+ var need={BCSPreview:!!window.BCSPreview,BCS_TTS:!!window.BCS_TTS,BCS_VIDEOSTUDIO:!!window.BCS_VIDEOSTUDIO,BCS_JOURNEY:!!window.BCS_JOURNEY,BCS_JOURNEY_UI:!!window.BCS_JOURNEY_UI,bcsPrivacy:!!window.bcsPrivacy,Superlayer:!!window.__bcsSuperlayer,DigiPin:!!window.BCS_DIGIPIN,Deck:!!document.getElementById('bcsDeckBtn'),More:!!document.getElementById('navMoreBtn'),Manager:!!document.getElementById('sectionMgrGlobalBtn')};
+ var missing=Object.keys(need).filter(function(k){return !need[k];});
+ var deckTabs=document.querySelectorAll('#bcsDeckModal [data-decktab]').length;
+ var lines=['*BCS visual QA — '+iso()+'*','','Duplicate IDs: '+(dup.length?'FAIL · '+dup.slice(0,8).join(', '):'PASS'),'Horizontal overflow: '+(overflow?'FAIL · '+d.scrollWidth+'>'+d.clientWidth:'PASS'),'Missing core symbols: '+(missing.length?'FAIL · '+missing.join(', '):'PASS'),'Deck tabs rendered: '+deckTabs+(deckTabs>=12?' · PASS':' · FAIL'),'Runtime console issues since Level 2 boot: '+consoleIssues.length,consoleIssues.slice(0,5).map(function(x){return '  · '+x;}).join('\\n'),'','Local storage keys: '+Object.keys(localStorage).length,'Marker: '+(document.querySelector('meta[name="bcs-build"]')||{}).content,'Viewport: '+d.clientWidth+'×'+d.clientHeight,''];
+
+ preview({title:'BCS visual QA',kind:'One-command QA · local report',text:lines.join('\\n'),filename:'BCS-QA-'+iso()+'.txt'});
+}
+var CMD=[
+ {ic:'⌘',t:'Open Daily Brief',k:'daily brief today morning',run:function(){goTab('daily');}},
+ {ic:'◉',t:'Open Client Deal Room',k:'client deal room profile',run:function(){goTab('deal');}},
+ {ic:'◆',t:'Show trusted projects only',k:'verified trust official only',run:function(){S.verifiedOnly=true;save2();applyVerified();goTab('trust');}},
+ {ic:'◇',t:'Show all projects',k:'unverified all trust',run:function(){S.verifiedOnly=false;save2();applyVerified();goTab('trust');}},
+ {ic:'↗',t:'Generate weekly brief',k:'weekly report summary',run:function(){handle('weekly-report');}},
+ {ic:'☎',t:'Create follow-ups +3 days for overdue clients',k:'followup overdue client reminder',run:function(){clients().filter(function(c){return !isClosed(c)&&c.nextFollowUp&&c.nextFollowUp<=iso();}).forEach(function(c){c.nextFollowUp=addDays(3);});saveDb();renderAll();toast2('Overdue follow-ups pushed +3 days');}},
+ {ic:'✎',t:'Open advisory shortlist',k:'brief presentation client shortlist',run:function(){go('advisory');}},
+ {ic:'⚑',t:'Open auctions',k:'auction notices deadline',run:function(){go('auctions');}},
+ {ic:'✦',t:'Open client portal',k:'client self view feedback',run:function(){clientPortal();}},
+ {ic:'✎',t:'Open client response desk',k:'feedback interest notes capture',run:function(){openFeedbackDesk();}},
+ {ic:'✓',t:'Run visual QA',k:'qa check duplicate overflow console symbols',run:function(){runQA();}},
+  {ic:'⌖',t:'Open DIGIPIN location tool',k:'digipin location code geo pin address',run:function(){go('digipin');}}
+];
+function openCommand(){
+ var ov=document.getElementById('bcsCmdModal');if(!ov)return;
+ showOverlay('bcsCmdModal');var inp=document.getElementById('bcsCmdInput');if(inp){inp.value='';paintCmd('');setTimeout(function(){inp.focus();},40);}
+}
+function paintCmd(q){
+ var box=document.getElementById('bcsCmdResults');if(!box)return;
+ q=String(q||'').toLowerCase();
+ var list=CMD.filter(function(c){return !q||c.t.toLowerCase().indexOf(q)>-1||c.k.indexOf(q)>-1;}).slice(0,9);
+ box.innerHTML=list.length?list.map(function(c,i){return '<button type="button" class="bcs-cmd-item'+(i===0?' hot':'')+'" data-cmd="'+h(c.t)+'"><span class="bcs-cmd-ic">'+c.ic+'</span><span>'+h(c.t)+'</span></button>';}).join(''):'<div class="bcs-deck-empty">No command matched. Try “weekly”, “verified” or “deal room”.</div>';
+}
+function runCmd(text){
+ var c=CMD.find(function(x){return x.t===text;});if(c){try{closeModal('bcsCmdModal');c.run();}catch(e){toast2('Command failed',true);}}
+}
+function injectCommand(){
+ if(document.getElementById('bcsCmdModal'))return;
+ var btn=document.createElement('button');btn.type='button';btn.id='bcsAskBtn';btn.className='bcs-ask-btn';btn.title='Ask BCS — command bar (⌘⇧K)';btn.innerHTML='✦ Ask';
+ var deck=document.getElementById('bcsDeckBtn'),hb=document.querySelector('.hbtns');
+ if(hb&&deck)hb.insertBefore(btn,deck.nextSibling);else if(hb)hb.appendChild(btn);else document.body.appendChild(btn);
+ btn.addEventListener('click',openCommand);
+ var ov=document.createElement('div');ov.id='bcsCmdModal';ov.className='overlay';
+ ov.innerHTML='<div class="modal" role="dialog" aria-modal="true" aria-label="BCS command bar"><div class="bcs-cmd-wrap"><div class="bcs-cmd-top"><span class="bcs-cmd-ic">⌘</span><input id="bcsCmdInput" placeholder="Type a command — weekly report, verified only, deal room…"><button type="button" class="icon-btn" data-close="bcsCmdModal">✕</button></div><div class="bcs-cmd-results" id="bcsCmdResults"></div></div></div>';
+ document.body.appendChild(ov);
+ ov.addEventListener('input',function(e){if(e.target.id==='bcsCmdInput')paintCmd(e.target.value);});
+ ov.addEventListener('click',function(e){var b=e.target.closest('[data-cmd]');if(b)runCmd(b.dataset.cmd);});
+ ov.addEventListener('keydown',function(e){if(e.key==='Enter'){var b=ov.querySelector('.bcs-cmd-item.hot');if(b)runCmd(b.dataset.cmd);}});
+ document.addEventListener('keydown',function(e){
+  if((e.metaKey||e.ctrlKey)&&e.shiftKey&&e.key.toLowerCase()==='k'){e.preventDefault();openCommand();}
+  if(e.key==='Escape'&&ov.classList.contains('on'))closeModal('bcsCmdModal');
+ });
+}
+document.addEventListener('click',function(e){var a=e.target.closest('[data-l2act]');if(!a)return;e.stopPropagation();handle(a.dataset.l2act,a);},true);
+document.addEventListener('change',function(e){
+ if(!e.target)return;
+ if(e.target.id==='bcsL2DealClient'){S.currentDeal=e.target.value;save2();rerender();return;}
+ if(e.target.matches&&e.target.matches('[data-l2check]')){
+  var v=String(e.target.value||''),i=S.selectedRows.indexOf(v);
+  if(e.target.checked&&i<0)S.selectedRows.push(v);
+  if(!e.target.checked&&i>-1)S.selectedRows.splice(i,1);
+  save2();
+ }
+});
+var mo=new MutationObserver(function(){clearTimeout(window.__l2Mot);window.__l2Mot=setTimeout(function(){applyVerified();updateBriefBar();},80);});
+function injectSwipe(){
+ if(document.getElementById('bcsSwipeSheet'))return;
+ var ov=document.createElement('div');ov.id='bcsSwipeSheet';ov.className='overlay';
+ ov.innerHTML='<div class="modal" role="dialog" aria-modal="true" aria-label="Quick actions"><div class="bcs-l2-hero" style="margin-bottom:10px;padding:14px"><h4 id="bcsSwipeTitle" style="font-size:18px">Quick actions</h4><p id="bcsSwipeSub" style="font-size:11px">Swipe actions stay local — nothing is sent.</p></div><div id="bcsSwipeActions" class="bcs-swipe-actions"></div><div class="bcs-deck-inline" style="margin-top:10px"><button type="button" data-close="bcsSwipeSheet">Close</button></div></div>';
+ document.body.appendChild(ov);
+ ov.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-swact]');if(!b)return;e.stopPropagation();swipeAct(b.dataset.swact,b);});
+}
+function openSwipeSheet(info){
+ injectSwipe();
+ var t=document.getElementById('bcsSwipeTitle'),s=document.getElementById('bcsSwipeSub'),box=document.getElementById('bcsSwipeActions');if(!box)return;
+ var rec=(info.type==='client'?byId(clients(),info.id):byId(projects(),info.id)),name=rec&&(rec.name||rec.phone)||'Record';
+ t.textContent=name;s.textContent=(info.type==='client'?'Client':'Project')+' · quick actions on this device only';
+ var a=info.type==='client'
+  ? [['Open client','sw-open'],['Draft follow-up','sw-draft'],['Set follow-up +3 days','sw-followup'],['Open deal room','sw-deal']]
+  : [['Open project','sw-open'],['Add to brief','sw-brief'],['Mark source checked','sw-verify'],['Generate rate card','sw-rate']];
+ box.innerHTML=a.map(function(x){return '<button type="button" data-swact="'+x[1]+'" data-type="'+info.type+'" data-id="'+h(info.id)+'">'+x[0]+'</button>';}).join('');
+ showOverlay('bcsSwipeSheet');
+}
+function swipeAct(act,el){
+ var id=el.dataset.id||'',type=el.dataset.type||'client';
+ if(act==='sw-open'){closeModal('bcsSwipeSheet');try{if(type==='client')window.BCS_JOURNEY_UI.open('client',id);else openDetail(id);}catch(e){}return;}
+ if(act==='sw-draft'){closeModal('bcsSwipeSheet');try{window.__bcsL2Handle&&window.__bcsL2Handle('draft',{dataset:{kind:'client',id:id}});}catch(e){}return;}
+ if(act==='sw-followup'){var c=byId(clients(),id);if(c){c.nextFollowUp=addDays(3);saveDb();renderAll();}closeModal('bcsSwipeSheet');toast2('Follow-up set for +3 days');return;}
+ if(act==='sw-deal'){closeModal('bcsSwipeSheet');S.currentDeal=id;save2();goTab('deal');return;}
+ if(act==='sw-brief'){var i=arr(advShortlist).indexOf(id);if(i<0)advShortlist.push(id);else advShortlist.splice(i,1);persistAdvDraft();renderAdvisoryResults();updateBriefBar();closeModal('bcsSwipeSheet');toast2('Brief updated');return;}
+ if(act==='sw-verify'){var p=byId(projects(),id);if(p){p.trust=p.trust||{};p.trust.tier=p.trust.tier==='unverified'?'snippet':p.trust.tier;p.trust.checkedAt=iso();saveDb();renderAll();}closeModal('bcsSwipeSheet');toast2('Source check date updated');return;}
+ if(act==='sw-rate'){closeModal('bcsSwipeSheet');try{goTab('tools');}catch(e){}return;}
+}
+var swipeBound=false;
+function initSwipeActions(){
+ if(!document.body.classList.contains('bcs-native')||swipeBound)return;
+ swipeBound=true;var start=null;
+ document.addEventListener('touchstart',function(e){
+  if(document.body.classList.contains('locked')||e.touches.length!==1)return;
+  var row=e.target.closest&&e.target.closest('.client-card,[data-clientopen],.pcard[data-detail]');if(!row)return;
+  var id=row.dataset.clientopen||row.dataset.detail||row.dataset.id||'',type=row.dataset.detail?'project':'client';if(!id)return;
+  start={x:e.touches[0].clientX,y:e.touches[0].clientY,at:Date.now(),id:id,type:type};
+ },{passive:true});
+ document.addEventListener('touchend',function(e){
+  if(!start||!e.changedTouches||!e.changedTouches[0])return;
+  var dx=e.changedTouches[0].clientX-start.x,dy=e.changedTouches[0].clientY-start.y;
+  if(Math.abs(dx)>58&&Math.abs(dx)>Math.abs(dy)*1.35&&Date.now()-start.at<800){if(e.cancelable)e.preventDefault();openSwipeSheet(start);}
+  start=null;
+ },{passive:false});
+}
+function injectBriefBar(){
+ if(document.getElementById('bcsBriefBar'))return;
+ var b=document.createElement('div');b.id='bcsBriefBar';b.className='bcs-brief-bar';
+ b.innerHTML='<span>Brief · <b id="bcsBriefCount">0</b></span><button type="button" data-briefact="open">Open pack</button><button type="button" class="ghost" data-briefact="clear">Clear</button>';
+ document.body.appendChild(b);
+ b.addEventListener('click',function(e){var x=e.target.closest&&e.target.closest('[data-briefact]');if(!x)return;e.stopPropagation();if(x.dataset.briefact==='open'){try{openPresentation('pack');}catch(e){toast2('Brief pack not ready',true);}}else{try{advShortlist=[];persistAdvDraft();renderAdvisoryResults();}catch(e){}updateBriefBar();}});
+}
+function updateBriefBar(){
+ var n=0;try{n=arr(advShortlist).length;}catch(e){}
+ document.body.classList.toggle('bcs-brief-bar-on',n>0);
+ var c=document.getElementById('bcsBriefCount');if(c)c.textContent=String(n);
+}
+function boot(){injectCommand();injectFeedback();injectSwipe();injectBriefBar();initSwipeActions();window.addEventListener('resize',initSwipeActions);applyVerified();updateBriefBar();var main=document.getElementById('mainContent')||document.body;try{mo.observe(main,{childList:true,subtree:true});}catch(e){}}
+window.__bcsL2Handle=handle;
+window.BCS_LEVEL2={daily:daily,deal:deal,trust:trust,insights:insights,lists:lists,applyVerifiedFilter:applyVerified,openCommand:openCommand,openFeedbackDesk:openFeedbackDesk,clientPortal:clientPortal,weeklyText:weeklyText,openFeedback:openFeedbackDesk,runQA:runQA};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+</script>
+<style id="bcsDigiCss">
+/* BCS DIGIPIN — dedicated open-source location grid page */
+#view-digipin.on{display:flex!important;flex-direction:column;gap:14px;min-width:0}
+#view-digipin .digi-pane[hidden]{display:none!important}
+.digi-hero{position:relative;overflow:hidden;border-radius:18px;border:1px solid color-mix(in oklab,var(--gold) 30%,var(--line));background:linear-gradient(135deg,color-mix(in oklab,var(--gold) 14%,var(--panel)),color-mix(in oklab,var(--olive) 8%,var(--panel)));padding:20px;min-width:0}
+.digi-hero:after{content:"";position:absolute;right:-80px;top:-120px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--gold) 22%,transparent),transparent 68%);pointer-events:none}
+.digi-kicker,.digi-result-label{font:800 10px/1.3 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.digi-title{position:relative;margin:6px 0 8px;font:600 clamp(25px,3.2vw,36px)/1.12 'Fraunces',serif;color:var(--ink);text-wrap:balance;letter-spacing:-.015em}
+.digi-title em{font-style:normal;color:var(--olive)}
+.digi-sub{position:relative;margin:0;max-width:92ch;color:var(--mut);font-size:12.5px;line-height:1.65}
+.digi-inline{display:flex;flex-wrap:wrap;gap:8px;align-items:center;max-width:100%}
+.digi-hero .digi-inline{position:relative;margin-top:13px}
+.digi-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:8px;min-width:0}
+.digi-stats>div{min-width:0;padding:10px 12px;border:1px solid var(--line);border-radius:13px;background:color-mix(in oklab,var(--panel) 92%,transparent)}
+.digi-stats b{display:block;font:700 18px/1.2 'Fraunces',serif;color:var(--ink);overflow-wrap:anywhere}
+.digi-stats span{display:block;margin-top:3px;color:var(--mut);font:600 10.5px/1.3 'DM Sans',sans-serif}
+.digi-tabs{display:flex;gap:7px;max-width:100%;overflow-x:auto;scrollbar-width:none;padding:3px 1px 5px}
+.digi-tabs::-webkit-scrollbar{display:none}
+.digi-tabs button{flex:0 0 auto;min-height:40px;padding:0 13px;border-radius:11px;border:1px solid var(--line);background:var(--panel);color:var(--mut);font:750 12px/1 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:background .18s,color .18s,border-color .18s,transform .18s}
+.digi-tabs button:hover{color:var(--ink);border-color:color-mix(in oklab,var(--gold) 40%,var(--line))}
+.digi-tabs button.on{background:linear-gradient(135deg,color-mix(in oklab,var(--gold) 18%,var(--panel)),color-mix(in oklab,var(--olive) 12%,var(--panel)));border-color:color-mix(in oklab,var(--gold) 42%,var(--line));color:var(--ink)}
+.digi-tabs button:active{transform:scale(.97)}
+.digi-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:12px;align-items:start;min-width:0}
+.digi-panel{min-width:0;padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--panel);box-shadow:0 10px 30px rgba(28,32,24,.045)}
+.digi-panel.wide{grid-column:1/-1}
+body[data-theme="dark"] .digi-panel{box-shadow:0 12px 36px rgba(0,0,0,.3)}
+.digi-panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px;min-width:0}
+.digi-panel-head h4{margin:4px 0 0;font:600 19px/1.2 'Fraunces',serif;color:var(--ink);text-wrap:balance}
+.digi-badge{display:inline-flex;flex:0 0 auto;align-items:center;padding:5px 9px;border-radius:999px;border:1px solid color-mix(in oklab,var(--gold) 38%,var(--line));background:color-mix(in oklab,var(--gold) 10%,transparent);color:var(--gold);font:800 9.5px/1 'DM Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.digi-form{display:grid;gap:10px;min-width:0}
+.digi-field{min-width:0}
+.digi-field label{display:block;margin-bottom:5px;color:var(--ink2);font:750 11px/1.3 'DM Sans',sans-serif;letter-spacing:.02em}
+.digi-field input,.digi-inline input{width:100%;min-width:0;box-sizing:border-box;min-height:42px;padding:9px 11px;border-radius:11px;border:1px solid var(--line);background:color-mix(in oklab,var(--panel) 88%,var(--pg,var(--line)));color:var(--ink);font:600 13px/1.3 'DM Sans',sans-serif;outline:none}
+.digi-field input:focus,.digi-inline input:focus{border-color:color-mix(in oklab,var(--gold) 55%,var(--line));box-shadow:0 0 0 3px color-mix(in oklab,var(--gold) 13%,transparent)}
+.digi-btn{min-height:40px;padding:0 13px;border-radius:11px;border:1px solid var(--line);background:var(--panel);color:var(--ink2);font:750 11.5px/1 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:transform .16s,background .16s,border-color .16s}
+.digi-btn:hover{border-color:color-mix(in oklab,var(--gold) 42%,var(--line));background:color-mix(in oklab,var(--gold) 8%,var(--panel));color:var(--ink)}
+.digi-btn:active{transform:scale(.97)}
+.digi-btn.primary{background:linear-gradient(135deg,var(--gold),color-mix(in oklab,var(--gold) 72%,var(--olive)));border-color:transparent;color:#fff}
+.digi-btn.ghost{background:transparent}
+.digi-result{margin-top:13px;padding:14px;border-radius:14px;border:1px solid color-mix(in oklab,var(--gold) 30%,var(--line));background:linear-gradient(135deg,color-mix(in oklab,var(--gold) 9%,var(--panel)),color-mix(in oklab,var(--olive) 5%,var(--panel)));min-width:0;transition:opacity .2s}
+.digi-result.off{opacity:.55}
+.digi-code{margin:7px 0 2px;font:800 clamp(21px,4vw,31px)/1.15 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;color:var(--ink);overflow-wrap:anywhere;word-break:break-all}
+.digi-display{margin-bottom:10px;color:var(--mut);font:600 12px/1.4 'DM Sans',sans-serif;letter-spacing:.12em;overflow-wrap:anywhere}
+.digi-coord{margin:7px 0 10px;font:700 clamp(17px,3vw,23px)/1.25 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);overflow-wrap:anywhere}
+.digi-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:7px;min-width:0}
+.digi-metric{min-width:0;padding:8px 10px;border-radius:11px;border:1px solid var(--line);background:color-mix(in oklab,var(--panel) 88%,transparent)}
+.digi-metric b{display:block;color:var(--ink);font:750 12px/1.35 'DM Sans',sans-serif;overflow-wrap:anywhere}
+.digi-metric span{display:block;margin-top:3px;color:var(--mut);font:600 9.5px/1.2 'DM Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.digi-status{min-height:18px;margin-top:9px;color:var(--mut);font:600 11px/1.5 'DM Sans',sans-serif;overflow-wrap:anywhere}
+.digi-status.err{color:#D87861}
+.digi-status.ok{color:var(--olive)}
+.digi-note{min-width:0;margin:8px 0;color:var(--ink2);font:500 12px/1.65 'DM Sans',sans-serif;overflow-wrap:anywhere}
+.digi-note b{color:var(--ink);font-weight:800}
+.digi-note code,.digi-char,.digi-source code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px}
+.digi-honest{padding:9px 11px;border-left:3px solid var(--olive);border-radius:0 10px 10px 0;background:color-mix(in oklab,var(--olive) 8%,transparent);color:var(--mut)}
+.digi-char{padding:11px;border-radius:11px;border:1px dashed color-mix(in oklab,var(--gold) 45%,var(--line));background:color-mix(in oklab,var(--gold) 7%,transparent);color:var(--gold);letter-spacing:.1em;text-align:center;overflow-wrap:anywhere}
+.digi-example-list{display:grid;gap:7px;margin-top:11px}
+.digi-example-list button{display:grid;gap:3px;width:100%;min-width:0;padding:10px 11px;border-radius:11px;border:1px solid var(--line);background:color-mix(in oklab,var(--panel) 90%,transparent);color:var(--ink2);text-align:left;cursor:pointer}
+.digi-example-list button:hover{border-color:color-mix(in oklab,var(--gold) 45%,var(--line));background:color-mix(in oklab,var(--gold) 7%,var(--panel))}
+.digi-example-list b{color:var(--ink);font:750 11.5px/1.3 'DM Sans',sans-serif}
+.digi-example-list span{color:var(--mut);font:500 10.5px/1.4 'DM Sans',sans-serif;overflow-wrap:anywhere}
+.digi-mapwrap{position:relative;min-width:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}
+#digiMapSvg{display:block;width:100%;height:330px;max-width:100%;touch-action:none;cursor:crosshair;user-select:none}
+.digi-mapctl{position:absolute;right:8px;top:8px;z-index:2;display:grid;gap:5px}
+.digi-mapctl button{width:34px;height:34px;border-radius:9px;border:1px solid color-mix(in oklab,var(--gold) 35%,var(--line));background:color-mix(in oklab,var(--panel) 92%,transparent);color:var(--ink);font:800 15px/1 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 4px 12px rgba(28,32,24,.12)}
+.digi-mapctl button:hover{background:color-mix(in oklab,var(--gold) 14%,var(--panel))}
+.digi-mapnote{position:absolute;left:8px;right:8px;bottom:8px;z-index:2;padding:7px 9px;border-radius:9px;background:color-mix(in oklab,var(--panel) 90%,transparent);border:1px solid var(--line);color:var(--mut);font:600 10px/1.4 'DM Sans',sans-serif;backdrop-filter:blur(8px)}
+.digi-source-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;min-width:0}
+.digi-source{display:flex;flex-direction:column;align-items:flex-start;gap:7px;min-width:0;padding:13px;border:1px solid var(--line);border-radius:13px;background:color-mix(in oklab,var(--panel) 92%,transparent)}
+.digi-source h4{margin:0;color:var(--ink);font:650 15px/1.25 'Fraunces',serif}
+.digi-source p{margin:0;color:var(--mut);font:500 11.5px/1.6 'DM Sans',sans-serif;overflow-wrap:anywhere}
+.digi-source a{align-self:flex-start;color:var(--gold);font:750 11px/1.4 'DM Sans',sans-serif;text-decoration:none;border-bottom:1px solid color-mix(in oklab,var(--gold) 40%,transparent);overflow-wrap:anywhere}
+.digi-source a:hover{border-bottom-color:var(--gold)}
+.digi-saved-list{display:grid;gap:8px;min-width:0}
+.digi-saved-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-width:0;padding:10px 11px;border:1px solid var(--line);border-radius:12px;background:color-mix(in oklab,var(--panel) 92%,transparent)}
+.digi-saved-row .digi-saved-main{flex:1 1 220px;min-width:0}
+.digi-saved-row b{display:block;color:var(--ink);font:750 13px/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.05em;overflow-wrap:anywhere}
+.digi-saved-row small{display:block;margin-top:3px;color:var(--mut);font:500 10.5px/1.4 'DM Sans',sans-serif;overflow-wrap:anywhere}
+.digi-saved-row .digi-btn{min-height:34px;padding:0 10px}
+@media(max-width:900px){
+  .digi-grid{grid-template-columns:1fr}
+  .digi-panel.wide{grid-column:auto}
+  #digiMapSvg{height:300px}
+  .digi-panel{padding:13px}
+}
+body.bcs-native .digi-tabs button,body.bcs-native .digi-btn,body.bcs-native .digi-mapctl button,body.bcs-native .digi-saved-row .digi-btn{min-height:44px!important}
+body.bcs-native .digi-panel{padding:14px!important}
+@media(prefers-reduced-motion:reduce){.digi-tabs button,.digi-btn,.digi-result{transition:none!important}}
+</style>
+<script id="bcsDigiPinJs">
+(function(){
+'use strict';
+if(window.__bcsDigiPin) return; window.__bcsDigiPin=true;
+
+/* India Post / Department of Posts DIGIPIN — pinned open-source implementation.
+   Docs: https://github.com/INDIAPOST-gov/digipin/tree/a15339e8fdea93b13ae0d7336e567c9ae6ceac8e/docs
+   Source: https://raw.githubusercontent.com/INDIAPOST-gov/digipin/a15339e8fdea93b13ae0d7336e567c9ae6ceac8e/src/digipin.js
+   Local only: no fetch, no upload, no auto-send. */
+var GRID=[['F','C','9','8'],['J','3','2','7'],['K','4','5','6'],['L','M','P','T']];
+var B={minLat:2.5,maxLat:38.5,minLon:63.5,maxLon:99.5};
+var VALID=/^[23456789CJKLMPFT]{10}$/;
+var DOC_URL='https://github.com/INDIAPOST-gov/digipin/tree/a15339e8fdea93b13ae0d7336e567c9ae6ceac8e/docs';
+var SKEY='bcs_digipin_v1';
+var state={current:null,tab:'encode',view:{x:0,y:0,w:800,h:560},drag:null};
+var $=function(id){return document.getElementById(id);};
+function h(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function fmt(n,d){var v=Number(n);if(!isFinite(v))return '—';return v.toFixed(d==null?6:d).replace(/\.?0+$/,'');}
+function grouped(code){var s=String(code||'');return s.length===10?s.slice(0,3)+' '+s.slice(3,7)+' '+s.slice(7):s;}
+function toastS(m,err){try{if(typeof toast==='function')toast(m,!!err);}catch(e){}}
+function say(id,text,kind){var el=$(id);if(!el)return;el.textContent=String(text||'');el.classList.toggle('err',kind==='err');el.classList.toggle('ok',kind==='ok');}
+
+/* ---------- official encode / decode ---------- */
+function encodeDigi(lat,lon){
+  lat=Number(lat); lon=Number(lon);
+  if(!isFinite(lat)||!isFinite(lon)) throw new Error('Latitude aur longitude valid numbers honi chahiye.');
+  if(lat<B.minLat||lat>B.maxLat||lon<B.minLon||lon>B.maxLon) throw new Error('Ye point DIGIPIN India grid ke bahar hai. Allowed: lat 2.5°–38.5° N, lon 63.5°–99.5° E.');
+  var minLat=B.minLat,maxLat=B.maxLat,minLon=B.minLon,maxLon=B.maxLon,out='';
+  for(var level=1;level<=10;level++){
+    var latDiv=(maxLat-minLat)/4,lonDiv=(maxLon-minLon)/4;
+    var row=3-Math.floor((lat-minLat)/latDiv);
+    var col=Math.floor((lon-minLon)/lonDiv);
+    row=Math.max(0,Math.min(3,row)); col=Math.max(0,Math.min(3,col));
+    out+=GRID[row][col];
+    maxLat=minLat+latDiv*(4-row); minLat=minLat+latDiv*(3-row);
+    minLon=minLon+lonDiv*col; maxLon=minLon+lonDiv;
+  }
+  return out;
+}
+function decodeDigi(value){
+  var raw=String(value==null?'':value).trim();
+  if(/-/.test(raw)) throw new Error('Hyphen DIGIPIN ka hissa nahi hai. Continuous code ya 3-4-3 spacing use karein.');
+  var pin=raw.replace(/\s+/g,'').toUpperCase();
+  if(pin.length!==10) throw new Error('DIGIPIN exactly 10 characters ka hota hai.');
+  if(!VALID.test(pin)) throw new Error('Sirf approved characters allowed hain: 2,3,4,5,6,7,8,9,C,J,K,L,M,P,F,T.');
+  var minLat=B.minLat,maxLat=B.maxLat,minLon=B.minLon,maxLon=B.maxLon;
+  for(var i=0;i<10;i++){
+    var ch=pin[i],ri=-1,ci=-1,found=false;
+    for(var r=0;r<4;r++){
+      for(var c=0;c<4;c++){ if(GRID[r][c]===ch){ri=r;ci=c;found=true;break;} }
+      if(found)break;
+    }
+    if(!found) throw new Error('Invalid character in DIGIPIN.');
+    var latDiv=(maxLat-minLat)/4,lonDiv=(maxLon-minLon)/4;
+    var lat1=maxLat-latDiv*(ri+1),lat2=maxLat-latDiv*ri;
+    var lon1=minLon+lonDiv*ci,lon2=minLon+lonDiv*(ci+1);
+    minLat=lat1; maxLat=lat2; minLon=lon1; maxLon=lon2;
+  }
+  var centerLat=(minLat+maxLat)/2,centerLon=(minLon+maxLon)/2;
+  return {code:pin,latitude:centerLat.toFixed(6),longitude:centerLon.toFixed(6),lat:centerLat,lon:centerLon,minLat:minLat,maxLat:maxLat,minLon:minLon,maxLon:maxLon};
+}
+function fromDecoded(d){
+  return {code:d.code,lat:d.lat,lon:d.lon,centerLat:d.lat,centerLon:d.lon,latText:d.latitude,lonText:d.longitude,minLat:d.minLat,maxLat:d.maxLat,minLon:d.minLon,maxLon:d.maxLon,geo:false};
+}
+
+/* ---------- shared state + result painting ---------- */
+function fillInputs(lat,lon){
+  var a=$('digiLat'),b=$('digiLon');
+  if(a)a.value=fmt(lat,8);
+  if(b)b.value=fmt(lon,8);
+}
+function setCurrent(rec,origin){
+  state.current=rec;
+  var e=$('digiEncodeResult');
+  if(e){
+    e.classList.remove('off');
+    var c=$('digiCodeContinuous'),g=$('digiCodeGrouped');
+    if(c)c.textContent=rec.code;
+    if(g)g.textContent=grouped(rec.code);
+    var la=$('digiEncodeLat'),lo=$('digiEncodeLon');
+    if(la)la.textContent=rec.latText+'° N';
+    if(lo)lo.textContent=rec.lonText+'° E';
+  }
+  var ea=$('digiEncodeActions'); if(ea)ea.hidden=false;
+  var d=$('digiDecodeResult');
+  if(d){
+    d.classList.remove('off');
+    var dc=$('digiDecodedCoord'); if(dc)dc.textContent=fmt(rec.centerLat,6)+'° N, '+fmt(rec.centerLon,6)+'° E';
+    var dl=$('digiDecodedLat'); if(dl)dl.textContent=fmt(rec.centerLat,6)+'° N';
+    var dn=$('digiDecodedLon'); if(dn)dn.textContent=fmt(rec.centerLon,6)+'° E';
+    var dcode=$('digiDecodedCode'); if(dcode)dcode.textContent=grouped(rec.code);
+    var db=$('digiDecodedBounds'); if(db)db.textContent='Cell bounds: '+fmt(rec.minLat,6)+'–'+fmt(rec.maxLat,6)+'° N · '+fmt(rec.minLon,6)+'–'+fmt(rec.maxLon,6)+'° E. Centre shown, not a surveyed door point.';
+  }
+  var da=$('digiDecodeActions'); if(da)da.hidden=false;
+  if(rec.geo) paintGeo(rec,null);
+  paintMapReadout(rec);
+  drawMap();
+  if(origin) say('digiEncodeStatus','On-device result'+(origin==='device location'?' from device location':'')+' · '+grouped(rec.code)+' · nothing uploaded','ok');
+  return rec;
+}
+function setCoords(lat,lon,origin,accuracy){
+  var code=encodeDigi(lat,lon),cell=decodeDigi(code);
+  var rec={code:code,lat:Number(lat),lon:Number(lon),centerLat:cell.lat,centerLon:cell.lon,latText:fmt(lat,6),lonText:fmt(lon,6),minLat:cell.minLat,maxLat:cell.maxLat,minLon:cell.minLon,maxLon:cell.maxLon,geo:origin==='device location',accuracy:accuracy};
+  fillInputs(lat,lon);
+  return setCurrent(rec,origin);
+}
+function requireCurrent(){
+  if(!state.current){toastS('Pehle coordinates ya DIGIPIN daalein',true);return null;}
+  return state.current;
+}
+
+/* ---------- tabs ---------- */
+function setTab(name){
+  var tabs=$('digiTabs'); if(!tabs)return;
+  var found=false;
+  Array.prototype.forEach.call(tabs.querySelectorAll('[data-digitab]'),function(b){
+    var on=b.dataset.digitab===name;
+    b.classList.toggle('on',on);
+    b.setAttribute('aria-selected',on?'true':'false');
+    if(on)found=true;
+  });
+  if(!found)return;
+  state.tab=name;
+  Array.prototype.forEach.call(document.querySelectorAll('#view-digipin [data-digipane]'),function(p){p.hidden=p.dataset.digipane!==name;});
+  if(name==='map')setTimeout(drawMap,30);
+  if(name==='saved')renderSaved();
+}
+
+/* ---------- local save list ---------- */
+function loadSaved(){try{var a=JSON.parse(localStorage.getItem(SKEY)||'[]');return Array.isArray(a)?a:[];}catch(e){return [];}}
+function storeSaved(a){try{localStorage.setItem(SKEY,JSON.stringify(a));return true;}catch(e){return false;}}
+function renderSaved(){
+  var box=$('digiSavedList'); if(!box)return;
+  var a=loadSaved();
+  if(!a.length){box.innerHTML='<div class="digi-note">Abhi kuch save nahi hua. Upar code generate karke “Save current code” dabayein.</div>';return;}
+  box.innerHTML=a.map(function(r){
+    var at=r.at?String(r.at).slice(0,16).replace('T',' · '):'—';
+    return '<div class="digi-saved-row"><div class="digi-saved-main"><b>'+h(r.code)+'</b><small>'+h(grouped(r.code))+' · '+h(fmt(r.lat,6))+', '+h(fmt(r.lon,6))+' · '+h(at)+(r.note?' · '+h(r.note):'')+'</small></div>'+
+      '<button type="button" class="digi-btn" data-digi-saved="use" data-code="'+h(r.code)+'">Use</button>'+
+      '<button type="button" class="digi-btn" data-digi-saved="copy" data-code="'+h(r.code)+'">Copy</button>'+
+      '<button type="button" class="digi-btn ghost" data-digi-saved="delete" data-code="'+h(r.code)+'">Delete</button></div>';
+  }).join('');
+}
+function saveCurrent(){
+  var c=requireCurrent(); if(!c)return;
+  var n=$('digiSaveNote'),note=n?String(n.value||'').trim().slice(0,100):'';
+  var a=loadSaved();
+  a.unshift({code:c.code,lat:c.lat,lon:c.lon,note:note,at:new Date().toISOString()});
+  a=a.slice(0,24);
+  if(!storeSaved(a))return toastS('Local storage available nahi',true);
+  if(n)n.value='';
+  renderSaved(); toastS('DIGIPIN is device par save ho gaya');
+}
+function savedAction(act,btn){
+  var code=String(btn.dataset.code||'');
+  if(act==='copy'){copyDigi(code,'DIGIPIN');return;}
+  if(act==='delete'){
+    var a=loadSaved().filter(function(r){return r.code!==code;});
+    if(storeSaved(a)){renderSaved();toastS('Saved code deleted');}
+    return;
+  }
+  if(act==='use'){
+    try{
+      var d=decodeDigi(code),rec=fromDecoded(d);
+      fillInputs(rec.lat,rec.lon); setCurrent(rec,'saved code'); setTab('encode');
+      toastS('Saved DIGIPIN loaded');
+    }catch(err){toastS(err.message,true);}
+  }
+}
+
+/* ---------- clipboard + preview + maps ---------- */
+function copyDigi(text,label){
+  var done=function(){toastS(label+' copied ✓');};
+  var fallback=function(){
+    try{
+      var ta=document.createElement('textarea');ta.value=String(text);ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';
+      document.body.appendChild(ta);ta.select();var ok=document.execCommand('copy');ta.remove();
+      if(ok)done();else toastS('Copy block hua — text select karke copy karein',true);
+    }catch(e){toastS('Copy block hua — text select karke copy karein',true);}
+  };
+  try{
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(String(text)).then(done).catch(fallback);
+    else fallback();
+  }catch(e){fallback();}
+}
+function shareDigi(){
+  var c=requireCurrent(); if(!c)return;
+  var txt=['*DIGIPIN · BCS*','Code: '+c.code,'Read as: '+grouped(c.code),'Latitude: '+fmt(c.lat,6)+'° N','Longitude: '+fmt(c.lon,6)+'° E','Grid: ~3.8 m × 3.8 m (India Post standard)','','Generated on this device with the India Post open-source algorithm. Verify at the official portal before using as an address.','Source: '+DOC_URL].join('\n');
+  try{
+    if(window.BCSPreview&&typeof window.BCSPreview.open==='function'){
+      window.BCSPreview.open({title:'DIGIPIN — '+grouped(c.code),kind:'DIGIPIN · preview before sharing',text:txt,waText:txt,filename:'BCS-DIGIPIN-'+c.code+'.txt'});
+    }else copyDigi(txt,'DIGIPIN summary');
+  }catch(e){copyDigi(txt,'DIGIPIN summary');}
+}
+function openMaps(){
+  var c=requireCurrent(); if(!c)return;
+  var q=fmt(c.lat,6)+','+fmt(c.lon,6);
+  var url='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+  try{
+    if(window.bcsOpenInApp)window.bcsOpenInApp('Google Maps — '+q,url);
+    else if(window.bcsNativeOpen)window.bcsNativeOpen(url,'_blank','noopener,noreferrer');
+    else window.open(url,'_blank','noopener,noreferrer');
+  }catch(e){toastS('Map link nahi khul paya',true);}
+}
+
+/* ---------- geolocation (explicit tap only) ---------- */
+function paintGeo(rec,pos){
+  var box=$('digiGeoResult'); if(!box)return;
+  box.classList.remove('off');
+  var c=$('digiGeoCode'),g=$('digiGeoDisplay'),la=$('digiGeoLat'),lo=$('digiGeoLon'),ac=$('digiGeoAccuracy');
+  if(c)c.textContent=rec.code;
+  if(g)g.textContent=grouped(rec.code);
+  if(la)la.textContent=fmt(rec.lat,6)+'° N';
+  if(lo)lo.textContent=fmt(rec.lon,6)+'° E';
+  if(ac)ac.textContent=(pos&&isFinite(pos.coords.accuracy))?'±'+Math.round(pos.coords.accuracy)+' m':'device reported';
+  var a=$('digiGeoActions'); if(a)a.hidden=false;
+}
+function getGeo(){
+  if(!navigator.geolocation){say('digiGeoStatus','Is browser me geolocation available nahi hai — niche Encode tab me latitude/longitude manually daalein.','err');return;}
+  say('digiGeoStatus','Ek location fix maang rahe hain… browser permission allow karein.');
+  navigator.geolocation.getCurrentPosition(function(pos){
+    try{
+      var rec=setCoords(pos.coords.latitude,pos.coords.longitude,'device location',pos.coords.accuracy);
+      rec.geo=true; paintGeo(rec,pos);
+      say('digiGeoStatus','Device location converted locally. Accuracy ±'+(isFinite(pos.coords.accuracy)?Math.round(pos.coords.accuracy)+' m':'unknown')+' — position kisi server par nahi gaya.','ok');
+    }catch(err){say('digiGeoStatus',err.message,'err');}
+  },function(err){
+    var m=(err&&err.code===1)?'Permission deny ho gaya. Browser location access allow karein, ya manually coordinates daalein.':(err&&err.code===2)?'Device se position available nahi hua. Wi-Fi/GPS check karein.':'Location request timeout ho gaya. Dobara try karein ya manually daalein.';
+    say('digiGeoStatus',m,'err');
+  },{enableHighAccuracy:true,timeout:12000,maximumAge:60000});
+}
+
+/* ---------- zero-dependency grid map ---------- */
+function project(lat,lon){return {x:(lon-B.minLon)/(B.maxLon-B.minLon)*800,y:(B.maxLat-lat)/(B.maxLat-B.minLat)*560};}
+function unproject(x,y){return {lat:B.maxLat-(y/560)*(B.maxLat-B.minLat),lon:B.minLon+(x/800)*(B.maxLon-B.minLon)};}
+function clampView(){
+  var v=state.view;
+  v.w=Math.max(12,Math.min(800,v.w)); v.h=v.w*0.7;
+  v.x=Math.max(0,Math.min(800-v.w,v.x));
+  v.y=Math.max(0,Math.min(560-v.h,v.y));
+}
+function drawMap(){
+  var svg=$('digiMapSvg'),grid=$('digiMapGrid'); if(!svg||!grid)return;
+  clampView(); svg.setAttribute('viewBox',state.view.x+' '+state.view.y+' '+state.view.w+' '+state.view.h);
+  var lines=[];
+  for(var i=1;i<4;i++){
+    lines.push('<line x1="'+(i*200)+'" y1="0" x2="'+(i*200)+'" y2="560" stroke="#C9A227" stroke-width="1.4" opacity=".46"/>');
+    lines.push('<line x1="0" y1="'+(i*140)+'" x2="800" y2="'+(i*140)+'" stroke="#C9A227" stroke-width="1.4" opacity=".46"/>');
+  }
+  for(var j=1;j<16;j++){
+    lines.push('<line x1="'+(j*50)+'" y1="0" x2="'+(j*50)+'" y2="560" stroke="#C9A227" stroke-width=".6" opacity=".16"/>');
+    lines.push('<line x1="0" y1="'+(j*35)+'" x2="800" y2="'+(j*35)+'" stroke="#C9A227" stroke-width=".6" opacity=".16"/>');
+  }
+  grid.innerHTML=lines.join('');
+  var jp=project(26.9124,75.7873),jpG=$('digiJaipurPin');
+  if(jpG){
+    jpG.querySelector('circle').setAttribute('cx',jp.x); jpG.querySelector('circle').setAttribute('cy',jp.y);
+    var jt=jpG.querySelector('text'); jt.setAttribute('x',jp.x+8); jt.setAttribute('y',jp.y+4);
+  }
+  var box=$('digiCellBox'),marker=$('digiMapMarker');
+  if(state.current){
+    var c=state.current;
+    var topLeft=project(c.maxLat,c.minLon),bottomRight=project(c.minLat,c.maxLon);
+    if(box){
+      box.hidden=false;
+      var rect=box.querySelector('rect'),txt=box.querySelector('text');
+      rect.setAttribute('x',topLeft.x); rect.setAttribute('y',topLeft.y);
+      rect.setAttribute('width',Math.max(0.4,bottomRight.x-topLeft.x)); rect.setAttribute('height',Math.max(0.4,bottomRight.y-topLeft.y));
+      txt.setAttribute('x',topLeft.x+4); txt.setAttribute('y',topLeft.y+15); txt.textContent='cell';
+    }
+    var p=project(c.lat,c.lon);
+    if(marker){
+      marker.hidden=false;
+      Array.prototype.forEach.call(marker.querySelectorAll('circle'),function(el){el.setAttribute('cx',p.x);el.setAttribute('cy',p.y);});
+    }
+  }else{
+    if(box)box.hidden=true;
+    if(marker)marker.hidden=true;
+  }
+}
+function paintMapReadout(rec){
+  var n=$('digiMapNote');
+  if(n)n.textContent='Tap to set coordinates · drag to pan · '+grouped(rec.code)+' · '+fmt(rec.lat,6)+'° N, '+fmt(rec.lon,6)+'° E · indicative grid, not a survey map.';
+}
+function zoomBy(factor){
+  var v=state.view,cx=v.x+v.w/2,cy=v.y+v.h/2;
+  v.w=Math.max(12,Math.min(800,v.w*factor)); v.h=v.w*0.7;
+  v.x=cx-v.w/2; v.y=cy-v.h/2;
+  drawMap();
+}
+function fitIndia(){state.view={x:0,y:0,w:800,h:560};drawMap();}
+function zoomCell(){
+  var c=requireCurrent(); if(!c)return;
+  var spanLon=c.maxLon-c.minLon;
+  var w=Math.max(12,Math.min(800,spanLon/(B.maxLon-B.minLon)*800*320));
+  var p=project(c.lat,c.lon);
+  state.view={x:p.x-w/2,y:p.y-w*0.35,w:w,h:w*0.7};
+  drawMap();
+}
+function bindMap(){
+  var svg=$('digiMapSvg'); if(!svg||svg.__digiBound)return; svg.__digiBound=true;
+  svg.addEventListener('pointerdown',function(e){
+    if(e.button!==0)return;
+    var r=svg.getBoundingClientRect();
+    state.drag={id:e.pointerId,x:e.clientX,y:e.clientY,moved:false,rect:r};
+    try{svg.setPointerCapture(e.pointerId);}catch(err){}
+  });
+  svg.addEventListener('pointermove',function(e){
+    var d=state.drag; if(!d||d.id!==e.pointerId)return;
+    var dx=e.clientX-d.x,dy=e.clientY-d.y;
+    if(Math.abs(dx)+Math.abs(dy)>4)d.moved=true;
+    if(d.moved){
+      state.view.x-=dx*(state.view.w/d.rect.width);
+      state.view.y-=dy*(state.view.h/d.rect.height);
+      clampView();drawMap();d.x=e.clientX;d.y=e.clientY;
+    }
+  });
+  svg.addEventListener('pointerup',function(e){
+    var d=state.drag; if(!d||d.id!==e.pointerId)return;
+    if(!d.moved){
+      var r=svg.getBoundingClientRect();
+      var x=state.view.x+((e.clientX-r.left)/r.width)*state.view.w;
+      var y=state.view.y+((e.clientY-r.top)/r.height)*state.view.h;
+      var p=unproject(x,y);
+      try{
+        setCoords(p.lat,p.lon,'grid map');
+        say('digiMapStatus','Point set on the indicative grid. For street-level location, open Google Maps in-app.','ok');
+      }catch(err){say('digiMapStatus',err.message,'err');}
+    }
+    state.drag=null;
+  });
+  svg.addEventListener('pointercancel',function(){state.drag=null;});
+}
+
+/* ---------- one click router for this page ---------- */
+function handleClick(e){
+  var t=e.target&&e.target.closest?e.target:null; if(!t)return;
+  var tab=t.closest('[data-digitab]'); if(tab){setTab(tab.dataset.digitab);return;}
+  var jump=t.closest('[data-digi-go]'); if(jump){setTab(jump.dataset.digiGo);return;}
+  var ex=t.closest('[data-digi-example]');
+  if(ex){
+    var v=String(ex.dataset.digiExample||'').split(',');
+    try{setCoords(v[0],v[1],'reference example');say('digiEncodeStatus','Official reference example loaded locally.','ok');}catch(err){say('digiEncodeStatus',err.message,'err');}
+    return;
+  }
+  var ds=t.closest('[data-digi-decodesample]');
+  if(ds){
+    try{
+      var d=decodeDigi(ds.dataset.digiDecodesample),rec=fromDecoded(d);
+      fillInputs(rec.lat,rec.lon);setCurrent(rec,'reference code');setTab('decode');
+      say('digiDecodeStatus','Official reference code decoded locally.','ok');
+    }catch(err){say('digiDecodeStatus',err.message,'err');}
+    return;
+  }
+  var act=t.closest('[data-digi-act]');
+  if(act){
+    var a=act.dataset.digiAct,c=requireCurrent(); if(!c)return;
+    if(a==='copy-code')copyDigi(c.code,'DIGIPIN');
+    else if(a==='copy-display')copyDigi(grouped(c.code),'DIGIPIN display');
+    else if(a==='copy-coord')copyDigi(fmt(c.lat,6)+', '+fmt(c.lon,6),'Coordinates');
+    else if(a==='preview')shareDigi();
+    else if(a==='maps')openMaps();
+    else if(a==='save'){setTab('saved');saveCurrent();}
+    else if(a==='map'){setTab('map');setTimeout(zoomCell,40);}
+    return;
+  }
+  var saved=t.closest('[data-digi-saved]'); if(saved){savedAction(saved.dataset.digiSaved,saved);return;}
+}
+
+/* ---------- boot ---------- */
+function boot(){
+  bindMap();
+  var ef=$('digiEncodeForm');
+  if(ef)ef.addEventListener('submit',function(e){
+    e.preventDefault();
+    try{setCoords($('digiLat').value,$('digiLon').value,'coordinates');say('digiEncodeStatus','Converted on this device — no network call, no upload.','ok');}
+    catch(err){say('digiEncodeStatus',err.message,'err');}
+  });
+  var df=$('digiDecodeForm');
+  if(df)df.addEventListener('submit',function(e){
+    e.preventDefault();
+    try{
+      var d=decodeDigi($('digiPinInput').value),rec=fromDecoded(d);
+      fillInputs(rec.lat,rec.lon);setCurrent(rec,'DIGIPIN code');setTab('decode');
+      say('digiDecodeStatus','Decoded to the centre of this ~3.8 m cell.','ok');
+    }catch(err){say('digiDecodeStatus',err.message,'err');}
+  });
+  var ids=[['digiHeroGeo',getGeo],['digiEncodeGeo',getGeo],['digiGeoBtn',getGeo],['digiJaipurSample',function(){try{setCoords(26.9124,75.7873,'Jaipur sample');say('digiEncodeStatus','Jaipur sample loaded. Replace with your exact site coordinates.','ok');}catch(err){say('digiEncodeStatus',err.message,'err');}}],['digiGeoClear',function(){var b=$('digiGeoResult'),a=$('digiGeoActions');if(b)b.classList.add('off');if(a)a.hidden=true;say('digiGeoStatus','');}],['digiZoomIn',function(){zoomBy(0.6);}],['digiZoomOut',function(){zoomBy(1.67);}],['digiFitIndia',fitIndia],['digiZoomCell',zoomCell],['digiMapMaps',openMaps],['digiMapCopy',function(){var c=requireCurrent();if(c)copyDigi(fmt(c.lat,6)+', '+fmt(c.lon,6),'Map point');}],['digiMapUseEncode',function(){var c=requireCurrent();if(!c)return;setTab('encode');say('digiEncodeStatus','Grid point loaded in the converter.','ok');}],['digiSaveCurrent',saveCurrent]];
+  ids.forEach(function(p){var el=$(p[0]);if(el)el.addEventListener('click',p[1]);});
+  document.addEventListener('click',handleClick);
+  renderSaved();drawMap();
+  var view=$('view-digipin');
+  if(view&&window.MutationObserver){
+    new MutationObserver(function(){if(view.classList.contains('on'))setTimeout(drawMap,60);}).observe(view,{attributes:true,attributeFilter:['class']});
+  }
+}
+window.BCS_DIGIPIN={encode:encodeDigi,decode:decodeDigi,setCoords:setCoords,render:drawMap,open:function(){try{go('digipin');}catch(e){}setTab('encode');}};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
 </script>
