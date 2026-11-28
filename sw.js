@@ -2,7 +2,7 @@
    Public internet is unrestricted: cross-origin requests are never intercepted.
    Same-origin app files are network-first; the cache is only an offline fallback.
    Live/public data endpoints are never cached. Client data stays on-device. */
-const CACHE = 'bcs-desk-v226';
+const CACHE = 'bcs-desk-v227';
 const ASSETS = [
   './festivals.json',
   './',

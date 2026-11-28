@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Real Estate Advisory & Project Intelligence</title>
-<meta name="bcs-build" content="bcs-desk-v226">
-<!-- BCS DESK BUILD bcs-desk-v226 · advisory-led consultancy design + iPhone 15 Pro app shell · single-file · zero-dependency · pinned More nav + drag-to-bar customization with persisted order + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard + Jaipur Property Map (source-attributed public portals: Aurum, Square Yards, PropertyWala, 2bigha, Real Estate India, Housing.com, IndiaProperty, TrueHomes24, Anarock media + official registers) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net + command deck (today/client 360/closure timeline/compare/trust/money/tools/iPhone) + verification-first brief pack + data freshness layer + undo + offline queue + pull-to-refresh + DIGIPIN local grid converter with source-backed address standard -->
+<meta name="bcs-build" content="bcs-desk-v227">
+<!-- BCS DESK BUILD bcs-desk-v227 · advisory-led consultancy design + iPhone 15 Pro app shell · single-file · zero-dependency · pinned More nav + drag-to-bar customization with persisted order + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard + Jaipur Property Map (source-attributed public portals: Aurum, Square Yards, PropertyWala, 2bigha, Real Estate India, Housing.com, IndiaProperty, TrueHomes24, Anarock media + official registers) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net + command deck (today/client 360/closure timeline/compare/trust/money/tools/iPhone) + verification-first brief pack + data freshness layer + undo + offline queue + pull-to-refresh + DIGIPIN local grid converter with source-backed address standard -->
 <meta name="description" content="BCS (Business City Square) — private Jaipur real estate advisory desk for projects, inventory, client shortlists and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -28469,6 +28469,9 @@ function go(view){
   window.scrollTo({top:0, behavior:'smooth'});
   setTimeout(function(){
     try{
+      /* Phones: a page change always starts at the real top (the app bar is
+         part of the page flow now, so an offset jump would look like a cut). */
+      if(window.matchMedia('(max-width:430px)').matches){ window.scrollTo({top:0, behavior:'auto'}); return; }
       var v = document.getElementById('view-'+view);
       if(!v) return;
       var focus = v.querySelector('.page-flow .step-card, .adv-head, .intro, .sec-head, h2, h3');
@@ -73443,6 +73446,249 @@ body.bcs-native .digi-tabs button,body.bcs-native .digi-btn,body.bcs-native .dig
 body.bcs-native .digi-panel{padding:14px!important}
 @media(prefers-reduced-motion:reduce){.digi-tabs button,.digi-btn,.digi-result{transition:none!important}}
 </style>
+<style id="bcsMobileShellV227">
+/* ============================================================
+   BCS MOBILE SHELL v227 — phone-only app layout (body.bcs-native)
+   · Real brand stays visible; primary actions are always on screen.
+   · Every other header icon stays in a swipeable second row.
+   · A labelled command bar keeps tools / add / music / AI reachable.
+   · Sheets, player, modals and lock screen stay inside the safe area.
+   ============================================================ */
+@media (max-width:430px){:root{--bcs-app-bar-h:64px}}
+@media (max-width:430px){
+
+  /* ---------- 1 · compact two-row app bar ---------- */
+  body.bcs-native header{
+    position:relative!important;top:auto!important;z-index:100!important;
+    padding:calc(6px + var(--bcs-safe-t,0px)) 0 6px!important;
+    box-shadow:0 12px 28px -24px rgba(0,0,0,.6)!important;
+  }
+  body.bcs-native header .hwrap-top{
+    flex-wrap:wrap!important;align-items:center!important;gap:5px!important;
+    padding:0 12px!important;min-height:0!important;
+  }
+  body.bcs-native .hwrap-top .brand{
+    order:0!important;flex:1 1 auto!important;min-width:0!important;gap:8px!important;
+  }
+  body.bcs-native .hwrap-top .brand .logo{
+    width:30px!important;height:30px!important;min-width:30px!important;
+    border-radius:9px!important;font-size:11px!important;
+  }
+  body.bcs-native .hwrap-top .brand h1{
+    font-size:12.5px!important;line-height:1.12!important;max-width:120px!important;
+    white-space:normal!important;letter-spacing:-.2px!important;margin:0!important;
+  }
+  body.bcs-native .hwrap-top .brand p{display:none!important}
+  body.bcs-native .hwrap-top .spacer,
+  body.bcs-native .hwrap-top .searchbox{display:none!important}
+
+  body.bcs-native .hwrap-quick{
+    order:1!important;flex:0 0 auto!important;display:flex!important;
+    align-items:center!important;gap:5px!important;
+  }
+  body.bcs-native .hwrap-quick>*{
+    width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;
+    padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important;
+    border-radius:11px!important;font-size:13px!important;
+  }
+  body.bcs-native .hwrap-quick #bcsAskBtn{font-size:0!important}
+  body.bcs-native .hwrap-quick #bcsAskBtn::after{content:'✦';font-size:15px!important}
+  body.bcs-native .hwrap-quick #searchEngineBtn{order:0!important}
+  body.bcs-native .hwrap-quick .lbl,
+  body.bcs-native .hbtns .lbl,
+  body.bcs-native #qaTrigger kbd{display:none!important}
+  body.bcs-native #qaTrigger,
+  body.bcs-native #exportBtn,
+  body.bcs-native #importBtn,
+  body.bcs-native #soundBtn{display:flex!important}
+
+  body.bcs-native .hwrap-top .hbtns{
+    order:2!important;flex:1 1 100%!important;min-width:0!important;
+    display:flex!important;flex-wrap:nowrap!important;justify-content:flex-start!important;
+    align-items:center!important;gap:5px!important;padding:2px 12px 4px!important;
+    overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important;
+    -webkit-overflow-scrolling:touch!important;overscroll-behavior-x:contain!important;
+  }
+  body.bcs-native .hwrap-top .hbtns>*{flex:0 0 auto!important;width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;padding:0!important;border-radius:11px!important;justify-content:center!important}
+  body.bcs-native .hwrap-top .hbtns svg,
+  body.bcs-native .hwrap-quick svg{width:16px!important;height:16px!important}
+  body.bcs-native .role-chip{display:none!important}
+
+  /* ---------- 2 · content reaches the real top and the real end ---------- */
+  body.bcs-native main{
+    padding-top:12px!important;
+    padding-bottom:calc(calc(var(--bcs-tabbar-h,66px) + var(--bcs-safe-b,0px)) + var(--bcs-app-bar-h) + 44px)!important;
+  }
+  body.bcs-native .view{padding-bottom:0!important}
+  body.bcs-native #view-dashboard::before{inset:0!important}
+
+  /* ---------- 3 · labelled command bar (nothing stacked or hidden) ---------- */
+  body.bcs-native #bcsMobileActions{
+    position:fixed!important;left:8px!important;right:8px!important;
+    bottom:calc(var(--bcs-tabbar-h,66px) + var(--bcs-safe-b,0px))!important;height:var(--bcs-app-bar-h)!important;
+    z-index:95!important;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:6px!important;padding:6px!important;border-radius:20px!important;
+    border:1px solid color-mix(in oklab,var(--gold,#C79A2E) 26%,var(--line))!important;
+    background:color-mix(in oklab,var(--panel) 92%,transparent)!important;
+    box-shadow:0 18px 42px -20px rgba(0,0,0,.55)!important;
+    backdrop-filter:blur(16px) saturate(1.2)!important;
+    -webkit-backdrop-filter:blur(16px) saturate(1.2)!important;
+  }
+  .bcs-app-slot{position:relative;display:flex!important;align-items:center;justify-content:center;min-width:0}
+  .bcs-app-slot::after{
+    content:attr(data-label);position:absolute;left:0;right:0;bottom:0;text-align:center;
+    font:700 9px/1 'DM Sans',sans-serif;letter-spacing:.02em;color:var(--mut);pointer-events:none;
+  }
+  body.bcs-native .bcs-app-btn{
+    position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+    transform:none!important;width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;
+    margin:0 0 9px!important;z-index:auto!important;border-radius:14px!important;
+    display:flex!important;align-items:center;justify-content:center!important;padding:0!important;
+  }
+  body.bcs-native #bcsMobileActions #toolDock{
+    position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+    transform:none!important;width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;
+    margin:0 0 9px!important;padding:0!important;gap:0!important;border-radius:14px!important;
+    overflow:hidden!important;display:flex!important;align-items:center!important;justify-content:center!important;
+    z-index:auto!important;background:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;
+  }
+  body.bcs-native #bcsMobileActions #toolDock #dockToggle{
+    width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;margin:0!important;
+    border-radius:14px!important;
+    border:1px solid color-mix(in oklab,var(--gold,#C79A2E) 32%,var(--line))!important;
+    background:color-mix(in oklab,var(--gold,#C79A2E) 12%,var(--panel))!important;
+    color:var(--ink)!important;display:grid!important;place-items:center!important;font-size:18px!important;
+  }
+  body.bcs-native #bcsMobileActions #mediaDock{
+    position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+    transform:none!important;width:46px!important;height:46px!important;margin:0 0 9px!important;z-index:auto!important;
+  }
+  body.bcs-native #bcsMobileActions #mediaDock .media-fab{
+    width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;
+    border-radius:14px!important;display:grid!important;place-items:center!important;
+  }
+  body.bcs-native #bcsMobileActions #geminiFab{display:flex!important}
+  body.bcs-native #bcsMobileActions #geminiFab svg{width:20px!important;height:20px!important}
+  body.bcs-native #bcsMobileActions #mobAdd{font-size:22px!important}
+
+  /* tools open as a reachable sheet, not a hidden strip */
+  body.bcs-native #bcsMobileActions #toolDock:not(.collapsed){
+    position:fixed!important;left:8px!important;right:8px!important;top:auto!important;
+    bottom:calc(calc(var(--bcs-tabbar-h,66px) + var(--bcs-safe-b,0px)) + var(--bcs-app-bar-h) + 8px)!important;
+    transform:none!important;width:auto!important;height:auto!important;max-width:none!important;
+    max-height:calc(100dvh - calc(var(--bcs-tabbar-h,66px) + var(--bcs-safe-b,0px)) - var(--bcs-app-bar-h) - var(--bcs-safe-t,0px) - 24px)!important;
+    display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;align-content:start!important;
+    gap:8px!important;padding:12px!important;border-radius:20px!important;overflow:auto!important;
+    overscroll-behavior:contain!important;background:var(--panel)!important;border:1px solid var(--line)!important;
+    box-shadow:0 32px 70px -28px rgba(0,0,0,.65)!important;z-index:98!important;
+  }
+  body.bcs-native #bcsMobileActions #toolDock:not(.collapsed) .dock-btn{
+    width:100%!important;min-width:0!important;height:58px!important;min-height:58px!important;flex:none!important;
+    border-radius:14px!important;flex-direction:column!important;gap:2px!important;
+  }
+  body.bcs-native #bcsMobileActions #toolDock:not(.collapsed) .dock-btn i{font-size:9px!important;font-style:normal!important}
+  body.bcs-native #bcsMobileActions #toolDock:not(.collapsed) .dock-sep{display:none!important}
+  body.bcs-native #bcsMobileActions #toolDock:not(.collapsed) #dockToggle{
+    grid-column:1/-1!important;width:100%!important;height:42px!important;flex-direction:row!important;
+    border-radius:12px!important;background:color-mix(in oklab,var(--gold,#C79A2E) 14%,var(--panel))!important;
+  }
+  body.bcs-native #mediaPop .mp-hbtns button{min-width:36px!important;min-height:36px!important}
+  body.bcs-native #bcsMobileActions #toolDock:not(.collapsed) #dockToggle span{display:none!important}
+  body.bcs-native #bcsMobileActions #toolDock:not(.collapsed) #dockToggle::after{content:'✕  Close tools';font:800 12px/1 'DM Sans',sans-serif;color:var(--ink)}
+
+  /* ---------- 4 · floating controls never sit on the bar ---------- */
+  body.bcs-native #backToTop{
+    left:auto!important;right:12px!important;
+    bottom:calc(calc(var(--bcs-tabbar-h,66px) + var(--bcs-safe-b,0px)) + var(--bcs-app-bar-h) + 14px)!important;
+    z-index:96!important;width:44px!important;height:44px!important;
+  }
+  body.bcs-native .storage{
+    left:12px!important;right:auto!important;top:auto!important;
+    bottom:calc(calc(var(--bcs-tabbar-h,66px) + var(--bcs-safe-b,0px)) + var(--bcs-app-bar-h) + 14px)!important;
+    z-index:96!important;max-width:56vw!important;
+  }
+  body.bcs-native .toast,body.bcs-native #toast{
+    bottom:calc(calc(var(--bcs-tabbar-h,66px) + var(--bcs-safe-b,0px)) + var(--bcs-app-bar-h) + 66px)!important;left:12px!important;right:12px!important;
+  }
+  body.bcs-native .bcs-brief-bar{bottom:calc(calc(var(--bcs-tabbar-h,66px) + var(--bcs-safe-b,0px)) + var(--bcs-app-bar-h) + 8px)!important}
+
+  /* ---------- 5 · media, tools, assistant and quick sheets ---------- */
+  body.bcs-native .toolpop{
+    left:8px!important;right:8px!important;top:calc(var(--bcs-safe-t,0px) + 8px)!important;
+    bottom:calc(calc(var(--bcs-tabbar-h,66px) + var(--bcs-safe-b,0px)) + var(--bcs-app-bar-h) + 8px)!important;
+    width:auto!important;max-width:none!important;max-height:none!important;transform:none!important;
+    z-index:99!important;padding:12px!important;overscroll-behavior:contain!important;
+  }
+  body.bcs-native #mediaPop{
+    left:8px!important;right:8px!important;top:calc(var(--bcs-safe-t,0px) + 8px)!important;
+    bottom:calc(calc(var(--bcs-tabbar-h,66px) + var(--bcs-safe-b,0px)) + var(--bcs-app-bar-h) + 8px)!important;
+    width:auto!important;max-width:none!important;max-height:none!important;transform:none!important;z-index:110!important;
+  }
+  body.bcs-native #mediaPop.cinema{
+    inset:0!important;top:0!important;bottom:0!important;left:0!important;right:0!important;
+    width:auto!important;max-height:none!important;border-radius:0!important;
+  }
+  body.bcs-native .media-mini{
+    left:8px!important;right:8px!important;max-width:none!important;
+    bottom:calc(calc(var(--bcs-tabbar-h,66px) + var(--bcs-safe-b,0px)) + var(--bcs-app-bar-h) + 8px)!important;z-index:106!important;
+  }
+  body.bcs-native .webmusic{
+    padding:calc(var(--bcs-safe-t,0px) + 8px) 8px calc(calc(var(--bcs-tabbar-h,66px) + var(--bcs-safe-b,0px)) + var(--bcs-app-bar-h) + 8px)!important;
+    z-index:120!important;
+  }
+  body.bcs-native #geminiPanel{
+    width:min(430px,100vw)!important;z-index:115!important;
+    padding-top:calc(var(--bcs-safe-t,0px) + 8px)!important;
+    padding-bottom:calc(calc(var(--bcs-tabbar-h,66px) + var(--bcs-safe-b,0px)) + var(--bcs-app-bar-h) + 8px)!important;
+  }
+  body.bcs-native #geminiPanel[hidden]{display:none!important}
+  body.bcs-native .qa-layer{
+    padding:calc(var(--bcs-safe-t,0px) + 8px) 8px calc(calc(var(--bcs-tabbar-h,66px) + var(--bcs-safe-b,0px)) + var(--bcs-app-bar-h) + 8px)!important;
+    z-index:120!important;
+  }
+
+  /* ---------- 6 · modals and lock screen ---------- */
+  body.bcs-native .overlay{
+    padding:calc(var(--bcs-safe-t,0px) + 8px) 8px calc(var(--bcs-safe-b,0px) + 8px)!important;
+    align-items:center!important;overscroll-behavior:contain!important;
+  }
+  body.bcs-native .overlay .modal{
+    max-height:calc(100dvh - var(--bcs-safe-t,0px) - var(--bcs-safe-b,0px) - 16px)!important;
+    width:100%!important;border-radius:18px!important;align-self:center!important;
+  }
+  body.bcs-native .modal-head{padding:12px 16px 10px!important}
+  body.bcs-native .modal-body{padding:14px 16px!important;overscroll-behavior:contain!important}
+  body.bcs-native .modal-foot{padding:10px 16px calc(10px + var(--bcs-safe-b,0px))!important}
+  body.bcs-native #presentModal.overlay,body.bcs-native #embedDeckModal.overlay{padding:0!important}
+  body.bcs-native #presentModal .modal,body.bcs-native #embedDeckModal .embed-modal{max-height:100dvh!important;height:100dvh!important;border-radius:0!important}
+  body.bcs-native #embedDeckModal .modal-head{padding-top:calc(10px + var(--bcs-safe-t,0px))!important}
+  body.bcs-native #embedDeckModal .embed-body{padding-bottom:calc(10px + var(--bcs-safe-b,0px))!important}
+
+  body.bcs-native #detailModal .detail-foot{
+    flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;gap:8px!important;
+    padding:10px 12px calc(10px + var(--bcs-safe-b,0px))!important;scrollbar-width:none!important;
+    -webkit-overflow-scrolling:touch!important;overscroll-behavior-x:contain!important;
+  }
+  body.bcs-native #detailModal .detail-foot::-webkit-scrollbar{display:none!important}
+  body.bcs-native #detailModal .detail-foot>*{flex:0 0 auto!important;white-space:nowrap!important;height:40px!important;min-height:40px!important}
+  body.bcs-native #detailModal .detail-foot .sp{display:none!important}
+  body.bcs-native #detailModal .detail-foot #detailEdit{order:-2}
+  body.bcs-native #detailModal .detail-foot>button:not([id]){order:-1}
+  body.bcs-native #detailModal .detail-tabs{flex-wrap:nowrap!important;overflow-x:auto!important;scrollbar-width:none!important}
+  body.bcs-native #detailModal .detail-tabs::-webkit-scrollbar{display:none!important}
+
+  body.bcs-native .lock{
+    position:fixed!important;inset:0!important;z-index:500!important;display:none;
+    flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;
+    overflow:auto!important;min-height:100dvh!important;overscroll-behavior:contain!important;
+  }
+  body.bcs-native .lock.on{display:flex!important}
+  body.bcs-native .lock .lock-card{margin-block:auto!important;width:100%!important;max-width:520px!important}
+  body.locked .bcs-tabbar,body.locked #bcsMobileActions,body.locked .tooldock,
+  body.locked .mob-add,body.locked .media-dock,body.locked .media-pop,body.locked .media-mini,
+  body.locked .gemini-fab,body.locked .gemini-panel,body.locked #backToTop,body.locked .storage{display:none!important}
+}
+</style>
 <script id="bcsDigiPinJs">
 (function(){
 'use strict';
@@ -73841,6 +74087,122 @@ function boot(){
 }
 window.BCS_DIGIPIN={encode:encodeDigi,decode:decodeDigi,setCoords:setCoords,render:drawMap,open:function(){try{go('digipin');}catch(e){}setTab('encode');}};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+</script>
+<script id="bcsMobileShellV227Js">
+/* Phone shell: keep every control reachable.
+   · primary header actions move into a permanent top strip
+   · tools / add / music / AI move into one labelled command bar
+   · all moves are reversed when the viewport leaves phone width */
+(function(){
+  'use strict';
+  var MQ = window.matchMedia('(max-width:430px)');
+  var HEADER_IDS = ['searchEngineBtn','addProjectTop','qaTrigger','bcsDeckBtn','bcsAskBtn','lockBtn'];
+  var BAR_ITEMS = [
+    { id:'toolDock', label:'Tools', cls:'' },
+    { id:'mobAdd', label:'Add', cls:'bcs-app-btn' },
+    { id:'mediaDock', label:'Music', cls:'' },
+    { id:'geminiFab', label:'AI', cls:'bcs-app-btn' }
+  ];
+  var quick = null, bar = null, moved = [], appliedPhone = false;
+
+  function restoreHeader(){
+    moved.slice().reverse().forEach(function(m){
+      if(!m.el || !m.parent) return;
+      try{ m.parent.insertBefore(m.el, m.next && m.next.parentNode === m.parent ? m.next : null); }
+      catch(e){ try{ m.parent.appendChild(m.el); }catch(e2){} }
+    });
+    moved = [];
+    if(quick && quick.parentNode) quick.parentNode.removeChild(quick);
+    quick = null;
+  }
+  function mountHeader(){
+    if(quick) return;
+    var wrap = document.querySelector('.hwrap-top');
+    if(!wrap) return;
+    quick = document.createElement('div');
+    quick.className = 'hwrap-quick';
+    quick.id = 'bcsHQuick';
+    quick.setAttribute('aria-label','Primary actions');
+    wrap.appendChild(quick);
+    HEADER_IDS.forEach(function(id){
+      var el = document.getElementById(id);
+      if(!el || el.parentNode === quick) return;
+      moved.push({ el:el, parent:el.parentNode, next:el.nextSibling });
+      quick.appendChild(el);
+    });
+  }
+
+  function restoreBar(){
+    if(!bar) return;
+    Array.prototype.slice.call(bar.children).forEach(function(slot){
+      var el = slot.firstElementChild;
+      if(!el) return;
+      el.classList.remove('bcs-app-btn');
+      document.body.appendChild(el);
+    });
+    if(bar.parentNode) bar.parentNode.removeChild(bar);
+    bar = null;
+    var dock = document.getElementById('toolDock');
+    if(dock){
+      dock.classList.remove('collapsed');
+      var t = document.getElementById('dockToggle');
+      if(t){ t.setAttribute('aria-expanded','true'); t.innerHTML = '<span>—</span>'; }
+    }
+  }
+  function mountBar(){
+    if(bar) return;
+    if(!document.getElementById('bcsTabBar')) return;
+    bar = document.createElement('div');
+    bar.className = 'bcs-mobile-actions';
+    bar.id = 'bcsMobileActions';
+    bar.setAttribute('aria-label','Quick actions');
+    document.body.appendChild(bar);
+    BAR_ITEMS.forEach(function(spec){
+      var el = document.getElementById(spec.id);
+      if(!el) return;
+      if(spec.cls) el.classList.add(spec.cls);
+      var slot = document.createElement('div');
+      slot.className = 'bcs-app-slot';
+      slot.setAttribute('data-label', spec.label);
+      slot.appendChild(el);
+      bar.appendChild(slot);
+    });
+    var dock = document.getElementById('toolDock');
+    if(dock && !dock.classList.contains('collapsed')){
+      dock.classList.add('collapsed');
+      var t = document.getElementById('dockToggle');
+      if(t){ t.setAttribute('aria-expanded','false'); t.innerHTML = '<span>▦</span>'; }
+    }
+  }
+
+  function apply(){
+    if(MQ.matches){
+      appliedPhone = true;
+      mountHeader();
+      mountBar();
+    }else if(appliedPhone || quick || bar){
+      appliedPhone = false;
+      restoreHeader();
+      restoreBar();
+    }
+  }
+  function boot(){
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply, { once:true });
+    else apply();
+  }
+  boot();
+  if(MQ.addEventListener) MQ.addEventListener('change', apply);
+  else if(MQ.addListener) MQ.addListener(apply);
+  window.addEventListener('resize', apply, { passive:true });
+
+  /* A page change closes an open tools sheet so content is never covered. */
+  document.addEventListener('click', function(e){
+    if(!MQ.matches || !e.target.closest) return;
+    if(!e.target.closest('#nav button, #navMoreBtn, .bcs-tab, .more-pinned')) return;
+    var d = document.getElementById('toolDock');
+    if(d && !d.classList.contains('collapsed')) d.classList.add('collapsed');
+  }, false);
 })();
 </script>
 </body>
