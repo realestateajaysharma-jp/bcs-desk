@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>BCS Desk — Jaipur Real Estate Advisory & Project Intelligence</title>
-<meta name="bcs-build" content="bcs-desk-v227">
-<!-- BCS DESK BUILD bcs-desk-v227 · advisory-led consultancy design + iPhone 15 Pro app shell · single-file · zero-dependency · pinned More nav + drag-to-bar customization with persisted order + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard + Jaipur Property Map (source-attributed public portals: Aurum, Square Yards, PropertyWala, 2bigha, Real Estate India, Housing.com, IndiaProperty, TrueHomes24, Anarock media + official registers) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net + command deck (today/client 360/closure timeline/compare/trust/money/tools/iPhone) + verification-first brief pack + data freshness layer + undo + offline queue + pull-to-refresh + DIGIPIN local grid converter with source-backed address standard -->
+<meta name="bcs-build" content="bcs-desk-v228">
+<!-- BCS DESK BUILD bcs-desk-v228 · advisory-led consultancy design + iPhone 15 Pro app shell · single-file · zero-dependency · pinned More nav + drag-to-bar customization with persisted order + Applications hub + Content Growth Studio + Google field kit + Adobe Express + BCS EZWrite local whiteboard + Jaipur Property Map (source-attributed public portals: Aurum, Square Yards, PropertyWala, 2bigha, Real Estate India, Housing.com, IndiaProperty, TrueHomes24, Anarock media + official registers) · lead-to-referral ladder + free WhatsApp extractor, advisor/client routing, paced outreach + local wacrm handoff + local daily additions + IST live refresh engine + universal in-app web frame with reader fallback + unrestricted live public internet + persistent on-device storage + tiny build-update probe + full dark-mode safety net + command deck (today/client 360/closure timeline/compare/trust/money/tools/iPhone) + verification-first brief pack + data freshness layer + undo + offline queue + pull-to-refresh + DIGIPIN local grid converter with source-backed address standard -->
 <meta name="description" content="BCS (Business City Square) — private Jaipur real estate advisory desk for projects, inventory, client shortlists and daily plan.">
 <meta name="theme-color" content="#3A3928">
 <meta name="mobile-web-app-capable" content="yes">
@@ -43179,7 +43179,7 @@ function initMedia(){
     ytNowTitle.textContent = title;
     if(ytOpen) ytOpen.href = 'https://www.youtube.com/watch?v=' + encodeURIComponent(id);
     if(ytNext) ytNext.hidden = !(ytQueue.length && ytQueueIndex < ytQueue.length - 1);
-    ytStage.innerHTML = `<iframe id="${pid}" src="${embedUrl(id)}" data-ytid="${esc(id)}" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>`;
+    ytStage.innerHTML = `<iframe id="${pid}" src="${embedUrl(id)}" data-ytid="${esc(id)}" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
     // If the helper page never responds, tell the user instead of spinning forever.
     ytConfirmTimer = setTimeout(() => {
       if(ytPlayingId === id && !ytReady && ytLiveBadge) ytLiveBadge.textContent = 'Load nahi hua';
@@ -73448,7 +73448,7 @@ body.bcs-native .digi-panel{padding:14px!important}
 </style>
 <style id="bcsMobileShellV227">
 /* ============================================================
-   BCS MOBILE SHELL v227 — phone-only app layout (body.bcs-native)
+   BCS MOBILE SHELL v228 — phone-only app layout (body.bcs-native)
    · Real brand stays visible; primary actions are always on screen.
    · Every other header icon stays in a swipeable second row.
    · A labelled command bar keeps tools / add / music / AI reachable.
@@ -73687,6 +73687,124 @@ body.bcs-native .digi-panel{padding:14px!important}
   body.locked .bcs-tabbar,body.locked #bcsMobileActions,body.locked .tooldock,
   body.locked .mob-add,body.locked .media-dock,body.locked .media-pop,body.locked .media-mini,
   body.locked .gemini-fab,body.locked .gemini-panel,body.locked #backToTop,body.locked .storage{display:none!important}
+}
+
+/* ---------- 7 · phone polish: strict alignment + compact dashboard ---------- */
+@media (max-width:430px){
+  body.bcs-native header{
+    position:sticky!important;top:0!important;
+    padding:calc(6px + var(--bcs-safe-t,0px)) 0 6px!important;
+    box-shadow:0 10px 24px -20px rgba(0,0,0,.55)!important;
+  }
+  body.bcs-native header .hwrap-top{
+    display:grid!important;
+    grid-template-columns:minmax(92px,1fr) auto!important;
+    grid-template-rows:34px 38px!important;
+    align-items:center!important;
+    column-gap:6px!important;row-gap:5px!important;
+    padding:0 10px!important;min-height:0!important;
+  }
+  body.bcs-native .hwrap-top .brand{
+    grid-area:1/1!important;flex:0 1 auto!important;min-width:0!important;
+    gap:6px!important;overflow:hidden!important;
+  }
+  body.bcs-native .hwrap-top .brand .logo{
+    width:28px!important;height:28px!important;min-width:28px!important;
+    border-radius:8px!important;font-size:10px!important;
+  }
+  body.bcs-native .hwrap-top .brand h1{
+    font-size:11.5px!important;line-height:1.1!important;max-width:none!important;
+    white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;
+  }
+  body.bcs-native .hwrap-top .hwrap-quick{
+    grid-area:1/2!important;display:flex!important;flex-wrap:nowrap!important;
+    gap:4px!important;width:auto!important;max-width:none!important;overflow:visible!important;
+  }
+  body.bcs-native .hwrap-top .hwrap-quick>*{width:32px!important;height:32px!important;min-width:32px!important;min-height:32px!important;border-radius:9px!important;font-size:12px!important}
+  body.bcs-native .hwrap-top .hwrap-quick #bcsAskBtn::after{font-size:13px!important}
+  body.bcs-native .hwrap-top .hbtns{
+    grid-area:2/1/3/3!important;justify-self:stretch!important;
+    width:100%!important;min-width:0!important;height:38px!important;
+    padding:0!important;margin:0!important;gap:5px!important;
+  }
+  body.bcs-native .hwrap-top .hbtns>*{width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important;border-radius:10px!important}
+  body.bcs-native main{padding-top:8px!important}
+
+  /* Command bar: four equal, clearly labelled app actions. */
+  body.bcs-native #bcsMobileActions{
+    bottom:calc(var(--bcs-tabbar-h,66px) + var(--bcs-safe-b,0px) + 4px)!important;
+    height:66px!important;padding:4px 6px!important;gap:4px!important;border-radius:18px!important;
+    background:color-mix(in oklab,var(--panel) 96%,var(--ink))!important;
+  }
+  body.bcs-native .bcs-app-slot::after{
+    bottom:2px!important;font-size:10px!important;font-weight:800!important;
+    color:color-mix(in oklab,var(--ink) 62%,transparent)!important;
+  }
+  body.bcs-native .bcs-app-btn,
+  body.bcs-native #bcsMobileActions #toolDock,
+  body.bcs-native #bcsMobileActions #mediaDock,
+  body.bcs-native #bcsMobileActions #geminiFab{
+    width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;
+    margin:0 0 12px!important;border-radius:13px!important;
+  }
+  body.bcs-native #bcsMobileActions #toolDock #dockToggle{width:100%!important;height:100%!important;border-radius:13px!important}
+
+  /* Dashboard hero: no 1100px intro wall; everything stays reachable in horizontal strips. */
+  body.bcs-native #view-dashboard .intro.hero-life{
+    display:block!important;min-height:0!important;padding:12px!important;gap:0!important;
+  }
+  body.bcs-native #view-dashboard .intro.hero-life .bcs-parallax-layer{display:none!important}
+  body.bcs-native #view-dashboard .intro-main{width:100%!important}
+  body.bcs-native #view-dashboard .intro-main .eyebrow{font-size:9px!important;line-height:1.2!important}
+  body.bcs-native #view-dashboard .intro-main h2{font-size:20px!important;line-height:1.12!important;margin:4px 0!important}
+  body.bcs-native #view-dashboard .intro-main p{
+    font-size:11px!important;line-height:1.35!important;margin:5px 0!important;
+    display:-webkit-box!important;-webkit-line-clamp:2!important;-webkit-box-orient:vertical!important;overflow:hidden!important;
+  }
+  body.bcs-native #view-dashboard .hero-focus{min-height:34px!important;padding:6px 8px!important;font-size:10px!important;margin-top:6px!important}
+  body.bcs-native #view-dashboard .intro-cta{
+    flex-wrap:nowrap!important;overflow-x:auto!important;gap:6px!important;
+    margin-top:8px!important;padding-bottom:3px!important;scrollbar-width:none!important;
+    -webkit-overflow-scrolling:touch!important;overscroll-behavior-x:contain!important;
+  }
+  body.bcs-native #view-dashboard .intro-cta::-webkit-scrollbar,
+  body.bcs-native #view-dashboard .intro-stats::-webkit-scrollbar,
+  body.bcs-native #view-dashboard .hero-road-rows::-webkit-scrollbar{display:none!important}
+  body.bcs-native #view-dashboard .intro-cta .btn{
+    flex:0 0 auto!important;height:32px!important;min-height:32px!important;
+    padding:0 10px!important;font-size:10.5px!important;white-space:nowrap!important;
+  }
+  body.bcs-native #view-dashboard .hero-cta-note{display:none!important}
+  body.bcs-native #view-dashboard .intro-right{display:block!important;width:100%!important;margin-top:8px!important}
+  body.bcs-native #view-dashboard .intro-stats{
+    display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;gap:6px!important;
+    scrollbar-width:none!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-x:contain!important;
+  }
+  body.bcs-native #view-dashboard .intro-stats .istat{
+    flex:0 0 78px!important;width:78px!important;height:52px!important;min-height:52px!important;
+    padding:6px!important;gap:1px!important;
+  }
+  body.bcs-native #view-dashboard .intro-stats .istat b{font-size:16px!important;line-height:1!important}
+  body.bcs-native #view-dashboard .intro-stats .istat span{font-size:9px!important;line-height:1.1!important;white-space:nowrap!important}
+  body.bcs-native #view-dashboard .hero-pulse{margin-top:8px!important}
+  body.bcs-native #view-dashboard .hero-pulse h3{font-size:10px!important;margin:0 0 5px!important}
+  body.bcs-native #view-dashboard .hero-road-rows{
+    display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;gap:6px!important;
+    padding-bottom:3px!important;scrollbar-width:none!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-x:contain!important;
+  }
+  body.bcs-native #view-dashboard .hero-road-row{
+    flex:0 0 142px!important;width:142px!important;min-height:46px!important;height:auto!important;
+    padding:6px 8px!important;gap:2px!important;
+  }
+  body.bcs-native #view-dashboard .hero-road-row b{font-size:10.5px!important}
+  body.bcs-native #view-dashboard .hero-road-row small,
+  body.bcs-native #view-dashboard .hero-road-row em{font-size:9px!important}
+
+  /* Keep modal headers tidy in light and dark themes. */
+  body.bcs-native .modal-head .xbtn{
+    position:static!important;right:auto!important;top:auto!important;
+    margin-left:auto!important;flex:0 0 38px!important;
+  }
 }
 </style>
 <script id="bcsDigiPinJs">
